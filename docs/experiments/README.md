@@ -32,10 +32,36 @@ from the advisor, only once the Director has seen the evidence.**
   `bake_hero_prep`'s island scaling allocates texels. A head can hold 84% of the faces and
   45% of the texel area at the same time. A gate comparing UV area to *face count* is
   meaningless on a deliberately non-uniform mesh — compare UV area to **3D surface area**.
-- **UV island count drives atlas efficiency, and margins are tuned to it.** Two meshes at
-  an identical 287k faces: A0 packs 8,486 islands (34 faces each) into 20.34% of a 4096
-  atlas; a decimated mesh packs 35,070 islands (8 faces each) into 4.01%. At a fixed
-  16 px gutter, a 4× island count is a silent catastrophe.
+- **The gutter, not the island count, ate the atlas.** Two meshes at an identical 287k
+  faces: A0 packs 8,486 islands (34 faces each) into 20.34% of a 4096 atlas; a decimated
+  mesh packs 35,070 islands (8 faces each) into 4.01%. Dropping `island_margin`
+  0.004 → 0.001 took it **4.01% → 18.76%**. Raising `angle_limit` 1.15 → 1.50 moved island
+  count by **0.8%** and bought nothing — `smart_project` splits on UV distortion, not angle
+  alone, and decimation's long thin triangles distort regardless of the threshold. The
+  advisor predicted the opposite; the margin was the entire gain.
+- **Atlas packing and styled coverage are independent.** Valid texels rose 4.7× and styled
+  texels rose 5.4× — the ratio barely moved, falsifying the "most valid texels are
+  bake-margin halo" hypothesis.
+- **⚠ The coverage baseline was contaminated, and the floor built on it was void.**
+  `figure_mask` keys A0's twin over its own background: **30.2% and 32.3% of the bottom
+  corners** register as figure, where a centred standing figure cannot reach. A0's twin is
+  painted concept art with a background gradient and a cast shadow, and a flat top-corner
+  median at tol 0.06 keys a third of the lower background as paintable surface. The
+  clinching arithmetic: A0 styles **81–100% of its geometrically orientable texels** against
+  a two-view ceiling of 61.5% — a number brushing an unreachable ceiling is a broken
+  measurement, not a good result. Measure **`styled / geometrically-reachable`**, which has
+  a true ceiling of 1.0 and is comparable across silhouettes; and take the mask from the
+  render the twin was restylized from, where it is exact and registered by construction,
+  rather than re-keying the twin heuristically.
+- **Consequence for shipped work:** the warrior the Director rejected has background grey
+  projected into its atlas, and a contaminated mask also disables the edge guard meant to
+  keep silhouette pixels out. Three independent faults in that asset — poor geometry, twins
+  never registered to it, background baked into the texture. None of them the texture
+  architecture.
+- **Prompt per view.** A shared prompt asking for "a long red beard, gold necklace" on every
+  view overrode a correct ControlNet contour and put a face on the back of the head at both
+  0.92 and 0.75 denoise. Per-view prompting fixed it outright — face detections 1 → 0
+  against a source-back control of 0, with silhouette held at IoU 0.784.
 - **Framing is a route stage, not a tweak** — 3.1–4.5× head polygons, and the gain is
   separated eyelids, a brow furrow and modelled nostril cavities rather than sharper blur.
 - **Shell soup was ours.** Reconstruction returns 1 connected component; our UV unwrap and
