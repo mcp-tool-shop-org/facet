@@ -53,6 +53,11 @@ Two numbers together explain them:
 - **31% of hole texels sit in islands containing no styled texel at all.** Their only colour
   arrives by bleeding across the 4 px gutter into whichever island the packer placed beside
   them.
+  > **CORRECTED at E05 Gate 0: the figure is 75.0%, not 31%.** The 31% came from a
+  > constrained-fill A/B that was invalid — `bake.margin = 8` against a 4 px gutter means
+  > adjacent islands' `valid` regions *overlap*, so an island-constrained fill still leaks,
+  > through the bake margin instead of the gutter. It was never island-local. The
+  > "constraining it trades artifacts for grey" conclusion below is withdrawn.
 
 **Atlas adjacency is not surface adjacency.** An island holding part of the beard takes
 colour from a geometrically unrelated island packed next to it. That is what a floating
