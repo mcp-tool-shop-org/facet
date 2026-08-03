@@ -12,7 +12,7 @@ holds DATA (a projection-confidence map) rather than colour, the render must be 
 round on this asset (a self-check failed at 34/255 that should have passed at ~1/255).
 
   blender -b -P turn_render.py -- --glb <in.glb> --out <dir> --tag proj [--views 0,1,7]
-                                  [--w 757 --h 1024] [--flat] [--clay]
+                                  [--w 752 --h 1024] [--flat] [--clay]
 """
 import argparse
 import math
@@ -31,7 +31,12 @@ ap.add_argument("--views", default="0,1,2,3,4,5,6,7",
 ap.add_argument("--step", type=float, default=45.0,
                 help="degrees per view index (45 = the classic 8-direction turnaround; "
                      "smaller steps give a dense sweep for head-pose estimation)")
-ap.add_argument("--w", type=int, default=757)
+ap.add_argument("--w", type=int, default=752,
+                help="752, not 757 — the existing twins are 752 wide and "
+                     "project_twins.py derives h_ext from 752:1024, so 757 was a "
+                     "0.7%% horizontal misregistration waiting to be debugged. "
+                     "Vertical calibration is unaffected: ortho_scale applies to "
+                     "the larger dimension.")
 ap.add_argument("--h", type=int, default=1024)
 ap.add_argument("--flat", action="store_true",
                 help="FLAT light + Standard view transform: render the texture VALUE, not a lit look")
