@@ -48,6 +48,41 @@
 > nothing. If that file exists, A0 becomes valid and reconnects the experiment to the
 > shipped asset. If not, proceed without it.
 
+> ### Amendment 2 (advisor, 2026-08-04) — provenance resolved, A0 restored, second subject added
+>
+> The Director produced both clay inputs. Verified, not assumed:
+>
+> **The mislabel is precisely characterised.** One Comfy batch produced two characters.
+> `p1_00001` (clean-shaven, plate armour, sword point-down in the left hand, topknot) is
+> **byte-identical** to `warrior/clay_concept.png` — sha256 `df9d0ecd22a0d28c`, 832×1216,
+> zero pixel difference. `p1_00002` (bald, full beard, bare chest, ornate pauldrons,
+> sword raised in the right hand) is the true source of `warrior/mesh.glb`, confirmed by
+> a side-by-side clay render of the mesh against it: same costume, same pose, same
+> silhouette. A prior session copied the **wrong member of the right batch** into the
+> warrior folder. That is why it looked plausible to every session that saw it.
+>
+> **A0 is restored** as a reference point — not a controlled arm, because its generation
+> settings were never recorded. It is the lineage of the shipped asset, so every arm can
+> now be compared against work whose quality the Director has already judged.
+>
+> **Canonical inputs, hashed:**
+> - subject **W** (bearded): `E:\AI\training\facet_E01\inputs\A0_source_clay.png` — sha256 `13d8ad9c3f6e2023`
+> - subject **P** (plate, clean-shaven): `p1_00001` / `warrior/clay_concept.png` — sha256 `df9d0ecd22a0d28c`
+>
+> **Second subject added, for a reason.** Subject W's beard occludes his mouth, jaw and
+> lower cheeks — a poor subject for judging whether geometry holds facial structure.
+> Subject P is clean-shaven and unobstructed. Running the baseline and bust arms on both
+> costs ~20 minutes and turns every H1/H4 finding from n=1 into n=2. A conclusion drawn
+> from one character's face is not a conclusion about reconstruction.
+>
+> **Unrelated finding, recorded so it does not evaporate — NOT part of E01.** The clay
+> for subject W is **bare-chested** (pectorals and abs modelled), but `twin_front.png`,
+> the styled twin driving the entire texture stage, dresses him in a **green knit tunic**.
+> The twin invented a garment the geometry does not have, so the texture pass has been
+> painting cloth onto anatomy that reads as skin. This is a costume divergence inside the
+> twin architecture and a plausible contributor to the ghosting the Director flagged.
+> Candidate for E02. Do not chase it in E01.
+
 ---
 
 ## 0. Read this before anything else
@@ -197,16 +232,23 @@ named variable.
 at `warrior\clay_concept.png`), the same seed where the tool accepts one, the same
 post-processing (none — measure raw generator output).
 
-| arm | input | generator | settings | tests |
-|---|---|---|---|---|
-| ~~**A0**~~ | ~~existing mesh~~ | — | — | **DROPPED, amendment 1** — `mesh.glb` is a different character from `clay_concept.png`; it cannot control for arms fed that input |
-| **A1** bust crop | `clay_concept.png` cropped to head-and-shoulders, upscaled to the generator's native input size | TRELLIS.2 | `1024_cascade` | H1 (vs A3) |
-| **A2** resolution | `clay_concept.png`, full figure | TRELLIS.2 | `512` | H2 (vs A3) |
-| **A3** **BASELINE** | `clay_concept.png`, full figure | TRELLIS.2 | `1024_cascade` | the control every other arm is compared against |
-| **A4** generator | `clay_concept.png`, full figure | local TripoSG/TripoSR (MIT) | defaults | H3 (vs A3), H4 |
-| **A5** generator + framing | bust crop (same as A1) | local TripoSG/TripoSR | defaults | H1 × H3 interaction |
+Two subjects (amendment 2). **W** = bearded (`facet_E01/inputs/A0_source_clay.png`),
+the shipped asset's lineage. **P** = plate warrior, clean-shaven and therefore the
+better face to judge — no beard occluding mouth and jaw.
 
-**Run A3 first** — nothing can be interpreted until the baseline exists.
+| arm | subject | input | generator | settings | tests |
+|---|---|---|---|---|---|
+| **A0** reference | W | — | Director's Comfy graph | **unrecorded** | not a controlled arm; the shipped asset (`warrior/mesh.glb`), for comparison only |
+| **W3** **BASELINE** | W | full figure | TRELLIS.2 | `1024_cascade` | the control every other arm is compared against; also A0-vs-W3 = free H3 data (Comfy graph vs TRELLIS, identical input) |
+| **W1** bust crop | W | head-and-shoulders crop, upscaled to the generator's native input size | TRELLIS.2 | `1024_cascade` | H1 (vs W3) |
+| **W2** resolution | W | full figure | TRELLIS.2 | `512` | H2 (vs W3) |
+| **W4** generator | W | full figure | local TripoSG/TripoSR (MIT) | defaults | H3 (vs W3), H4 |
+| **W5** generator + framing | W | bust crop (same as W1) | local TripoSG/TripoSR | defaults | H1 × H3 interaction |
+| **P3** baseline, 2nd subject | P | full figure | TRELLIS.2 | `1024_cascade` | n=2 on H4; unobstructed face |
+| **P1** bust crop, 2nd subject | P | head-and-shoulders crop | TRELLIS.2 | `1024_cascade` | n=2 on H1 — the decisive pair, since P's face is not hidden behind a beard |
+
+**Order: W3 → W1 → P3 → P1 → then Gate 1.** Nothing is interpretable until the baseline
+exists, and the P pair is what turns H1 from an anecdote into a result.
 
 **On A4/A5:** local Tripo has not been stood up on this rig — the store recorded it as
 untested. Standing it up is part of this experiment. It is MIT-licensed and runs local;
@@ -220,10 +262,15 @@ margin — then upscale with `tools/sr_views.py` to the generator's expected inp
 The point is that the reconstructor sees a face filling its input rather than a face
 occupying 12% of it.
 
-**Gate 1 — after A3 and A1 exist.** Render both as **clay** (`head_render.py --clay`,
-geometry only, no texture) at matched zoom, side by side. **Send that sheet to the
-Director and stop.** If the two faces are indistinguishable, H1 is likely false and the
-remaining arms may not be worth running — that is the Director's call, not yours.
+**Gate 1 — after W3, W1, P3 and P1 exist (amendment 2).** Render all four as **clay**
+(`head_render.py --clay`, geometry only, no texture) at matched zoom, as two labelled
+pairs: baseline vs bust crop, for each subject. Include A0 alongside the W pair for
+reference. **Send that sheet to the Director and stop.**
+
+If the bust crop is indistinguishable from the baseline on **both** subjects, H1 is
+likely false and the remaining arms may not be worth running — the Director's call, not
+yours. If the two subjects disagree, say so plainly and do not average them; a
+subject-dependent effect is itself a finding.
 
 State your prediction for H1 in the message *before* showing the sheet, so a surprise is
 visible as a surprise rather than rationalised after the fact.
