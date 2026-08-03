@@ -78,7 +78,10 @@ problem, not a decimation problem.
 
 `head_render.py` and `turn_render.py` are the verification cameras;
 `head_crop.py` builds comparison sheets at zoom; `gate_mesh.py` is a mesh QA gate
-(character-only — its head/shoulder logic is meaningless on other subjects).
+(character-only — its head/shoulder logic is meaningless on other subjects);
+`mesh_stats.py` measures any mesh identically — shell count, face-rect polygon
+density, and curvature variance inside the face rect — so two meshes made months
+apart by different tools are still comparable.
 
 ## Hard-won rules
 
