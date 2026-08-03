@@ -21,6 +21,15 @@ deliberately exaggerated, and the topology comes back better. The styled twin,
 generated alongside the clay from the same control, stays as the colour and identity
 reference for the texture stage.
 
+**Frame the face, get a face.** Reconstruct a second time from a head-and-shoulders crop
+of the same clay. Measured in [E01](docs/experiments/E01-facial-structure-ceiling.md)
+across two characters: the crop puts **3.1–4.5× more polygons** on the head, and the
+difference is structural rather than cosmetic. Full-figure input gives a continuous brow
+bar over a shallow recess and flat punctured nostrils; the same character from a bust
+crop gains separated upper and lower eyelids, a brow furrow, and modelled nostril
+cavities. A face is a small fraction of a full-figure frame, and reconstructors spend
+their resolution where the pixels are.
+
 **Density where the form is.** Small polygons on the face, larger ones on flat
 expanses. Facial structure that survives reconstruction survives every downstream
 step, and styling applied to real structure reads naturally instead of sitting on
@@ -37,6 +46,12 @@ Nothing here is marked working unless it produced an artifact a human looked at.
 failures are in the repo too, with the reason, because a claim sitting next to
 runnable code can be checked in minutes instead of trusted.
 
+Claims that turned out to be wrong are corrected **in place, with the measurement that
+overturned them**, rather than quietly deleted — see the `smart_decimate.py` entry below
+for a worked example. The evidence trail lives in
+[docs/experiments](docs/experiments/): a spec is written before the work, a report after,
+and conclusions come last.
+
 ### `tools/` — works, load-bearing
 
 | tool | what it does | evidence |
@@ -50,20 +65,34 @@ runnable code can be checked in minutes instead of trusted.
 | `texpass_finalize.py` | dilation fill for residual holes | closed 868k texels with zero mean fallback |
 | `texpass_loop.ps1` | the whole loop: reset, eight strokes, finalize, render | ~8 min per character, unattended |
 | `bake_hero_{prep,fuse,pack}.py` | multi-view baker — depth-tested visibility, per-texel ownership, seam levelling | kills through-projection: a raised sword no longer bakes onto the chest behind it |
-| `resample_atlas.py` | nearest-surface texture transfer between topologies | replaces Blender's ray bake, which returned a black atlas on shell-soup meshes |
+| `resample_atlas.py` | nearest-surface texture transfer between topologies | replaces Blender's ray bake, which returned a black atlas when rays were cast from a seam-split mesh |
 
-### `tools/` — works mechanically, blocked upstream
+### `tools/` — works mechanically, one known fix outstanding
 
 **`smart_decimate.py`** allocates polygon budget by face rect and carries UVs through
 the cut, so the existing atlas keeps working with no re-UV and no re-bake. Mechanically
 sound and verified: 287k → 150k with UV span intact.
 
-It is nonetheless **blocked**, and the reason matters more than the tool: reconstruction
-output is roughly 8,600 disconnected shells, not a connected surface. Collapse
-decimation redistributes density by merging neighbours, and shell soup has no
-neighbours to merge into — so it tears holes and leaves lace instead of reallocating.
-Budget allocation needs a solid surface to operate on. That is a mesh-generation
-problem, not a decimation problem.
+Decimating tore holes and left lace instead of redistributing density. **The cause was
+mislabelled in this file until it was measured, and the correction matters more than the
+tool.** An earlier version blamed reconstruction — "roughly 8,600 disconnected shells" —
+a number inherited from a session record and never checked. Measured in
+[E01](docs/experiments/E01-facial-structure-ceiling.md):
+
+| mesh | connected components |
+|---|---|
+| raw reconstruction (`warrior/mesh.glb`) | **1** |
+| four fresh reconstructions | **40–191** (92–98% of faces in one shell) |
+| `hero_bake/prep_uv.glb`, `texpass/warrior_texpass.glb` | **285,654** |
+
+Reconstruction returns a connected surface. **Our own UV unwrap and glTF export splits a
+vertex at every UV seam**, which with per-triangle islands explodes the mesh into one
+shell per face — and decimation was handed that. Collapse decimation merges neighbours;
+per-triangle shells have none.
+
+**The fix is local and cheap: weld before decimating.** Blender stores UVs per-loop
+rather than per-vertex, so merge-by-distance restores connectivity without disturbing the
+atlas. Untested as of this writing — it is the next thing to try, not a claim.
 
 ### `tools/superseded/` — kept because the failure is the lesson
 
