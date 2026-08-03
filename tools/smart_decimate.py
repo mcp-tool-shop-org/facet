@@ -10,11 +10,21 @@ Blender's collapse decimate INTERPOLATES existing UV layers, so a textured mesh 
 working texture coordinates through the cut. No re-UV, no bake, no transfer, no new
 failure surface: same atlas, fewer polygons, density spent where the form is.
 
+WELD FIRST (added 2026-08-04, E01). Earlier runs tore holes and left lace, and this
+file blamed reconstruction for emitting shell soup. Measured: reconstruction returns
+ONE connected component. The glTF export in front of this step splits a vertex at
+every UV seam, and with per-triangle islands that is one shell per face — 285,654 of
+them. Collapse decimation reallocates density by merging neighbours, and a
+per-triangle shell has none, so it deletes instead of merging. Blender stores UVs per
+LOOP rather than per vertex, so merging coincident vertices restores the connectivity
+without disturbing the atlas; the run asserts the UV array survives byte-identical.
+
 Head protection uses a FRONT-VIEW FACE RECT, not a height band — a raised weapon rises
 above the crown, so a height band protects the blade and starves the face.
 
   blender -b -P smart_decimate.py -- --glb textured.glb --out smart.glb
           --target 120000 --head-crop 360,240,700,600 [--crop-res 1024] [--pad-frac 0.25]
+          [--weld-dist 1e-5 | --no-weld]
 """
 import argparse
 import json
@@ -42,6 +52,12 @@ ap.add_argument("--body-weight", type=float, default=0.8,
                      "from being annihilated to pay for the face.")
 ap.add_argument("--factor", type=float, default=3.0,
                 help="decimate vertex_group_factor; 10 is near-binary, 3 grades")
+ap.add_argument("--weld-dist", type=float, default=1e-5,
+                help="merge-by-distance threshold before decimating. Seam-split "
+                     "vertices are EXACTLY coincident, so this only has to beat "
+                     "float noise — keep it far below any real feature size.")
+ap.add_argument("--no-weld", action="store_true",
+                help="reproduce the pre-2026-08-04 behaviour, which shredded")
 ap.add_argument("--report", default=None)
 args = ap.parse_args(argv)
 CX0, CY0, CX1, CY1 = [float(v) for v in args.head_crop.split(",")]
@@ -75,6 +91,92 @@ if n_uv == 0:
     die("source has no UVs — this route requires an already-textured mesh")
 if not has_tex:
     die("source has no image texture — nothing to carry through the cut")
+
+import numpy as np
+
+
+def loop_uvs(mesh):
+    a = np.empty(len(mesh.loops) * 2, dtype=np.float32)
+    mesh.uv_layers[0].data.foreach_get("uv", a)
+    return a
+
+
+def face_uv_keys(mesh):
+    """Per-face UV tuples, as hashable keys. None if the mesh is not all triangles.
+
+    Merging coincident vertices can legitimately destroy a face — if two of a
+    triangle's corners were the same point, the triangle had no area to begin
+    with. What must NOT happen is a surviving face's texture coordinates moving.
+    Comparing the multiset of per-face UVs tests exactly that, where byte-equality
+    of the whole loop array would also fail on a harmless degenerate removal.
+    """
+    counts = np.empty(len(mesh.polygons), dtype=np.int32)
+    mesh.polygons.foreach_get("loop_total", counts)
+    if len(counts) == 0 or not np.all(counts == 3):
+        return None
+    return [row.tobytes() for row in loop_uvs(mesh).reshape(-1, 6)]
+
+
+def shell_count(mesh):
+    """Connected components by shared vertices — the number decimation cares about."""
+    parent = list(range(len(mesh.vertices)))
+
+    def find(x):
+        while parent[x] != x:
+            parent[x] = parent[parent[x]]
+            x = parent[x]
+        return x
+
+    for poly in mesh.polygons:
+        vs = poly.vertices
+        r0 = find(vs[0])
+        for v in vs[1:]:
+            r = find(v)
+            if r != r0:
+                parent[r] = r0
+    return len({find(v) for poly in mesh.polygons for v in poly.vertices})
+
+
+# ---- weld: restore connectivity the glTF export split at every UV seam ----
+shells_before = shell_count(me)
+print(f"[smart] shells before weld: {shells_before:,}", flush=True)
+if args.no_weld:
+    print("[smart] --no-weld: skipping the weld (pre-2026-08-04 behaviour)", flush=True)
+else:
+    keys_before = face_uv_keys(me)
+    f_before, v_before = len(me.polygons), len(me.vertices)
+    bpy.ops.object.mode_set(mode="EDIT")
+    bpy.ops.mesh.select_all(action="SELECT")
+    bpy.ops.mesh.remove_doubles(threshold=args.weld_dist)
+    bpy.ops.object.mode_set(mode="OBJECT")
+    me = obj.data       # RNA refs go stale across a mode_set round trip
+    shells_after = shell_count(me)
+    print(f"[smart] weld: {v_before:,} -> {len(me.vertices):,} verts, "
+          f"shells {shells_before:,} -> {shells_after:,}", flush=True)
+    # only zero-area faces may disappear; anything more is geometry loss
+    lost = f_before - len(me.polygons)
+    print(f"[smart] weld dropped {lost:,} degenerate face(s) "
+          f"({lost / max(f_before, 1) * 100:.4f}%)", flush=True)
+    if lost > f_before * 0.001:
+        die(f"weld destroyed {lost:,} faces (>0.1%) — --weld-dist is merging real "
+            f"geometry, not just seam duplicates")
+    # the whole claim is that per-face UVs are untouched by a per-vertex merge
+    keys_after = face_uv_keys(me)
+    if keys_before is None or keys_after is None:
+        print("[smart] WARNING: mesh is not all triangles — skipping the exact "
+              "per-face UV check", flush=True)
+    else:
+        from collections import Counter
+        missing = Counter(keys_after) - Counter(keys_before)
+        if missing:
+            die(f"weld moved the UVs of {sum(missing.values()):,} face(s) — "
+                f"the atlas would no longer line up")
+        print(f"[smart] every surviving face kept its exact UVs "
+              f"({len(keys_after):,} faces checked)", flush=True)
+    if shells_after >= shells_before:
+        die(f"weld did not reconnect anything ({shells_before:,} -> {shells_after:,}) "
+            f"— wrong --weld-dist, or the split is not positional")
+    shells_before = shells_after
 
 # ---- protection weights from the face rect ----
 co = [obj.matrix_world @ v.co for v in me.vertices]
@@ -113,15 +215,14 @@ if len(me.uv_layers) == 0:
 bpy.ops.object.shade_smooth()
 
 # ANDON: UVs must still span the atlas, not have collapsed to a point
-import numpy as np
-nl = len(me.loops)
-uv = np.empty(nl * 2, dtype=np.float32)
-me.uv_layers[0].data.foreach_get("uv", uv)
-uv = uv.reshape(-1, 2)
+uv = loop_uvs(me).reshape(-1, 2)
 span = float(uv.max(axis=0).min() - uv.min(axis=0).max())
 print(f"[smart] surviving UV span {span:.3f}, var {float(uv.var()):.4f}", flush=True)
 if float(uv.var()) < 1e-4:
     die("UVs collapsed during decimate")
+
+shells_out = shell_count(me)
+print(f"[smart] shells after decimate: {shells_out:,}", flush=True)
 
 out = os.path.abspath(args.out)
 os.makedirs(os.path.dirname(out), exist_ok=True)
@@ -133,6 +234,8 @@ kb = os.path.getsize(out) // 1024
 print(f"[smart] wrote {out} ({kb} KB)", flush=True)
 if args.report:
     json.dump({"src_faces": n_before, "out_faces": n_after,
-               "protected_verts": n_protected, "kb": kb},
+               "protected_verts": n_protected, "kb": kb,
+               "welded": not args.no_weld, "weld_dist": args.weld_dist,
+               "shells_in": shells_before, "shells_out": shells_out},
               open(args.report, "w"), indent=1)
 print("[smart] OK", flush=True)

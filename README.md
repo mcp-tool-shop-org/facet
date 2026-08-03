@@ -67,7 +67,7 @@ and conclusions come last.
 | `bake_hero_{prep,fuse,pack}.py` | multi-view baker — depth-tested visibility, per-texel ownership, seam levelling | kills through-projection: a raised sword no longer bakes onto the chest behind it |
 | `resample_atlas.py` | nearest-surface texture transfer between topologies | replaces Blender's ray bake, which returned a black atlas when rays were cast from a seam-split mesh |
 
-### `tools/` — works mechanically, one known fix outstanding
+### `tools/` — unblocked, fix measured
 
 **`smart_decimate.py`** allocates polygon budget by face rect and carries UVs through
 the cut, so the existing atlas keeps working with no re-UV and no re-bake. Mechanically
@@ -90,9 +90,21 @@ vertex at every UV seam**, which with per-triangle islands explodes the mesh int
 shell per face — and decimation was handed that. Collapse decimation merges neighbours;
 per-triangle shells have none.
 
-**The fix is local and cheap: weld before decimating.** Blender stores UVs per-loop
-rather than per-vertex, so merge-by-distance restores connectivity without disturbing the
-atlas. Untested as of this writing — it is the next thing to try, not a claim.
+**The fix is local and cheap: weld before decimating** — merge-by-distance now runs
+before the decimate modifier, because Blender stores UVs per-loop rather than per-vertex.
+Measured on `warrior_texpass.glb`, both arms at `--target 150000` with identical
+protection settings, the second reproducing the historical shredded output exactly:
+
+| run | verts in | shells in | faces out | shells out | legs |
+|---|---|---|---|---|---|
+| `--no-weld` (old behaviour) | 858,562 | 285,654 | 150,000 | **149,528** | shredded to lace |
+| welded (default) | 858,562 → 137,607 | 285,654 → **1** | 149,996 | **1** | intact |
+
+The atlas survives the weld: every one of the 287,230 surviving faces kept its exact UVs,
+and a textured flat render of the welded 150k mesh differs from the 287k source by a mean
+of **0.47/255**. Four zero-area triangles (0.0014%) collapse in the merge — a triangle
+whose corners were the same point had no area to lose. The run asserts both facts and
+halts if either fails, and `--no-weld` reproduces the old behaviour for comparison.
 
 ### `tools/superseded/` — kept because the failure is the lesson
 
