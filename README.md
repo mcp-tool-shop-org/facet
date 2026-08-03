@@ -40,6 +40,22 @@ twins are projected onto whatever surface they can see; everything they cannot s
 recorded as an explicit hole map and filled by a masked inpainting brush, one camera
 at a time, with already-styled texels never overwritten.
 
+**Twins belong to a mesh, not to a character.** A styled twin is a canny-locked restylize
+of a *render of one specific mesh*, so it carries that mesh's silhouette. Measured: A0's
+bounding box gives x/z 0.722 against the twin frame's 0.734 and registers to 1.6%; W3
+reconstructs the same clay at x/z 0.458 — 38% narrower — and the same twins project the
+arms and sword into empty space beside the mesh, collapsing styled coverage from 62% to
+22.7%. **Generate twins from the mesh you are about to texture**, every time. It is one
+job per view, and it is the difference between registration and garbage.
+
+**Allocate density before styling — and only once.** The atlas is packed per UV island
+with a gutter, so an un-decimated 975k-face mesh packs 74,901 islands into **2.11%** of a
+4096² atlas against a decimated mesh's **20.34%**. Decimate first. But note the two
+stages compose: `smart_decimate` and `bake_hero_prep` both allocate to the same face rect,
+so running prep's ×3 head-island scale on an already-allocated mesh double-subscribes —
+at 80.7% of faces in the head band its own gate becomes arithmetically unreachable.
+Allocation is idempotent by intent, not by construction.
+
 ## Status of every tool — measured, not asserted
 
 Nothing here is marked working unless it produced an artifact a human looked at. The

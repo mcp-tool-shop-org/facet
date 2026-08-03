@@ -108,9 +108,17 @@ archived `final_report.json`), which is what makes this conclusive rather than s
 
 ## The constraint that E01 actually uncovered
 
-TRELLIS caps input at **1024 px on the long side** (measured). A full-figure clay
-therefore puts ~123 px on the head; a bust crop of the same clay puts ~600 px on the same
-head. That cap — not reconstruction, not polycount, not the texture stage — is the
+TRELLIS caps input at **1024 px on the long side** (measured). Worked through
+`preprocess_image` — long side to 1024, square crop to the alpha bbox, resize to 1024 —
+with subject W's head measured at 150 px in an 832×1216 clay: a full-figure input puts
+**~138 px** on the head, a bust crop **~439 px**. About **3.2×**.
+
+> *Corrected 2026-08-04.* The advisor's first pass estimated ~123 → ~600 px (4.9×) by
+> eye rather than through the preprocessing path. Same mechanism, same conclusion,
+> smaller multiplier. Recorded because an E02 spec would otherwise be planned on a number
+> that was never derived.
+
+That cap — not reconstruction, not polycount, not the texture stage — is the
 facial-structure ceiling this experiment set out to find.
 
 It also means the bust crop's better face cannot ship on its own. `project_twins.py`

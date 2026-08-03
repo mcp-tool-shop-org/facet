@@ -16,8 +16,12 @@ from the advisor, only once the Director has seen the evidence.**
 ### What E01 established
 
 - **Reconstruction is not the facial ceiling.** The generator's **1024 px input cap** is:
-  a full-figure clay puts ~123 px on the head; a bust crop of the same clay puts ~600 px
-  on the same head.
+  worked through the preprocessing path, a full-figure clay puts **~138 px** on the head
+  and a bust crop of the same clay puts **~439 px** — about **3.2×**.
+- **The styled twins are bound to the mesh they were rendered from.** They are a
+  derivative of one specific silhouette, not a reusable asset, so twin generation is a
+  pipeline stage rather than an input. Any new reconstruction — or head graft — needs
+  its own twins.
 - **Framing is a route stage, not a tweak** — 3.1–4.5× head polygons, and the gain is
   separated eyelids, a brow furrow and modelled nostril cavities rather than sharper blur.
 - **Shell soup was ours.** Reconstruction returns 1 connected component; our UV unwrap and
