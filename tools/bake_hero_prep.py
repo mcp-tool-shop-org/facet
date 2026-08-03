@@ -52,16 +52,21 @@ ap.add_argument("--island-margin", type=float, default=0.001,
                      "pre-renders and the dilation fill extends past island borders.")
 ap.add_argument("--pack-margin", type=float, default=0.001,
                 help="pack_islands margin; same economics as --island-margin")
-ap.add_argument("--keep-uvs", action="store_true",
-                help="do NOT delete the incoming UV layer and re-unwrap — scale and "
-                     "repack the atlas the mesh already carries. TRELLIS ships xatlas "
-                     "UVs and smart_decimate carries them through the cut, so the "
-                     "default path discards a finished atlas to build a worse one: "
-                     "measured on the same 287,170-face W3 mesh, xatlas gives 14,010 "
-                     "islands (20.5 faces each) where smart_project gives 34,783 (8.3). "
-                     "Island size is what decides whether the dilation fill stays inside "
-                     "a region that belongs together — at 8 faces an island is small "
-                     "enough to be entirely unpainted, and 54.6%% of them were.")
+ap.add_argument("--reunwrap", action="store_true",
+                help="DELETE the incoming UV layer and rebuild it with smart_project. "
+                     "This was the default until E05 and is kept only to reproduce "
+                     "historical runs — it discards a finished atlas to build a worse "
+                     "one. TRELLIS ships xatlas UVs and smart_decimate carries them "
+                     "through the cut; measured on the same 287,170-face W3 mesh, "
+                     "xatlas gives 14,010 islands (20.5 faces each) where smart_project "
+                     "gives 34,783 (8.3). Island size decides whether the dilation fill "
+                     "stays inside a region that belongs together: at 8 faces an island "
+                     "is small enough to be entirely unpainted, and 54.6%% of them were. "
+                     "Keeping the native atlas painted 923,466 texels against 711,183, "
+                     "dropped colourless-island hole texels 14.2 points, and put speckle "
+                     "below the rejected A0 asset at two of three thresholds where the "
+                     "smart_project path was worse than A0 at all three. Native UVs are "
+                     "now the default; this flag is the escape hatch, not the route.")
 ap.add_argument("--head-scale", type=float, default=3.0)
 ap.add_argument("--no-head-scale", action="store_true",
                 help="skip the head-island scale because the INPUT is already "
@@ -87,10 +92,12 @@ obj = bpy.context.view_layer.objects.active
 bpy.ops.object.transform_apply(location=True, rotation=True, scale=True)
 me = obj.data
 
-if args.keep_uvs:
-    assert me.uv_layers, ("ANDON: --keep-uvs but the input GLB carries no UV layer — "
-                          "drop the flag, or check the mesh survived smart_decimate "
-                          "with its UVs intact")
+if not args.reunwrap:
+    assert me.uv_layers, (
+        "ANDON: the input GLB carries no UV layer, so there is no native atlas to "
+        "keep. Either the mesh lost its UVs upstream (smart_decimate carries them "
+        "through the cut — check there first), or this input genuinely needs an "
+        "unwrap, in which case pass --reunwrap deliberately.")
     me.uv_layers[0].name = "uv_bake"
     while len(me.uv_layers) > 1:
         for lay in me.uv_layers:
@@ -98,9 +105,11 @@ if args.keep_uvs:
                 me.uv_layers.remove(lay)
                 break
     me.uv_layers.active = me.uv_layers["uv_bake"]
-    print("[prep] --keep-uvs: using the atlas the mesh arrived with, no re-unwrap",
+    print("[prep] native UVs: using the atlas the mesh arrived with, no re-unwrap",
           flush=True)
 else:
+    print("[prep] --reunwrap: DISCARDING the mesh's own atlas for smart_project "
+          "(historical path)", flush=True)
     while me.uv_layers:
         me.uv_layers.remove(me.uv_layers[0])
     uv_bake = me.uv_layers.new(name="uv_bake")
