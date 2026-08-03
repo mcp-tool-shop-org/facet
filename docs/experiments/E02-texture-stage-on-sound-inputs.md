@@ -122,10 +122,37 @@ simply exclude by a named material/region if the mesh supports it. If a principl
 derivation is not reachable in this session, **say so and use the pixel rect with a loud
 comment** — do not quietly ship a magic rectangle as if it were general.
 
+> **RESOLVED at Gate 0 — better than this spec asked for.** Both routes named above are
+> unreachable on this asset, and the reason is a standing finding: the exported mesh is not
+> a solid (293,099 verts for 287,170 faces; signed distance at the chest centre reads
+> *outside*), so no volumetric predicate works, and a ray along the surface normal measures
+> the tessellation rather than the geometry. The executor superseded the probe rather than
+> retuning its threshold, and wired a **two-sided camera-ray extent** test into `emit`
+> instead — `extent = 2D − t_front − t_back`, needing neither normal nor interior. The pixel
+> rectangle is **gone, not fallen back to**, and the second historical rect (the invented
+> medallion) is dropped entirely in favour of per-view prompting.
+>
+> Known limit, measured: a blade edge-on to the camera reads thick, so only 49.9% of the
+> sword column was withheld at yaw 90. The general fix — compute per view, back-project to
+> texels, union across views — is recorded but deliberately **not** done in E02, since the
+> blade was demonstrably not invented even with half its column offered.
+
 ### Stage D — the loop
 
-`texpass_loop.ps1`, eight strokes: yaws 90, 270, 45, 135, 225, 315 plus elevations
-±55 at yaws 0 and 180. Then `texpass_finalize.py`, then `bake_hero_pack.py`.
+**Stroke order (amended at Gate 0 — this is load-bearing, not cosmetic):**
+
+```
+45 → 315 → 135 → 225 → 90 → 270 → 0/+55 → 180/+55
+```
+
+Spiral outward from the styled poles. The brush runs at denoise 1.0 inside the mask, so
+hole texels have nothing to preserve and the model anchors only on prompt and contour. The
+original order opened at **yaw 90 — 95% hole**, the worst-anchored camera in the set, and
+the first stroke invented a plaited belt, a shoulder strap and a lengthened tunic. At 45°
+roughly half the visible surface already carries twin paint, so the brush extends a
+character instead of composing one, and every commit anchors the next stroke.
+
+Then `texpass_finalize.py`, then `bake_hero_pack.py`.
 
 **ComfyUI must be launched with a VRAM cap** — `--reserve-vram 8.0 --disable-smart-memory`.
 Bare launch peaks at the watchdog's kill ceiling and the watchdog will terminate it

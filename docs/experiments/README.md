@@ -63,6 +63,28 @@ from the advisor, only once the Director has seen the evidence.**
   view overrode a correct ControlNet contour and put a face on the back of the head at both
   0.92 and 0.75 denoise. Per-view prompting fixed it outright — face detections 1 → 0
   against a source-back control of 0, with silhouette held at IoU 0.784.
+- **⚠ The exported mesh is not a solid — no volumetric predicate works on it.**
+  `prep_uv.glb` carries **293,099 verts for 287,170 faces**: the glTF export splits a vertex
+  at every UV seam, so every island boundary is a topological crack. `compute_signed_distance`
+  at the figure's own bbox centre — the middle of a standing warrior's chest — returns
+  **+0.0019**, i.e. *outside*. Ray parity leaks, containment is meaningless, and only **37%**
+  of outward rays escape. Any query needing thickness, containment or inside/outside must run
+  against the **welded mesh before export**. Related trap: a ray cast along the surface normal
+  measures the *tessellation*, not the geometry — median reported thickness 0.00204 against a
+  median edge length of 0.00290 is a sub-triangle hit on a neighbouring face.
+- **Thinness is a property of the surface, not of a camera.** A two-sided camera-ray extent
+  probe (`extent = 2D − t_front − t_back`) needs neither normal nor interior, so it survives
+  the above — but it reads a blade as *thick* when the blade is edge-on to that camera, and
+  withheld only 49.9% of the sword column at yaw 90. The general form is to compute the thin
+  mask per view, back-project to texels, and **union across views**.
+- **A masked inpainting brush invents when it is starved of context.** At denoise 1.0 hole
+  texels have nothing to preserve, so the model anchors only on prompt and contour. At yaw 90,
+  95% of the figure is hole — the worst-anchored camera in the set, furthest from both styled
+  poles — and the brush returned a plaited rope belt where the twins have a flat leather band,
+  a shoulder strap over bare flesh, and a tunic extended from waist to mid-thigh. **Order the
+  strokes to spiral outward from the styled poles** (45 → 315 → 135 → 225 → 90 → 270), so each
+  stroke extends an existing character rather than composing a new one, and each commit
+  anchors the next.
 - **One mask cannot answer two questions.** *Is there real surface here* is answered by the
   mesh silhouette, un-eroded — a visible texel always projects inside it, by definition.
   *Is the paint here trustworthy* is answered by the twin's own painted figure, eroded.
