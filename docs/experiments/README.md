@@ -12,6 +12,7 @@ from the advisor, only once the Director has seen the evidence.**
 |---|---|---|
 | [E01](E01-facial-structure-ceiling.md) | Where is the facial-structure ceiling — framing, generation resolution, generator, or reconstruction itself? Does any configuration produce a connected surface rather than shell soup? | **RULED** → [Gate 1 ruling](E01-ruling-gate1.md) |
 | [E02](E02-texture-stage-on-sound-inputs.md) | Is the texture stage sound when its inputs are? Every texture result in this project was produced on a blob mesh with twins belonging to a different silhouette. | **RULED — answer is NO** → [Gate 1 ruling](E02-ruling-gate1.md). Director rejected with every input sound. Two twins + eight cameras paint only ~25% of the surface; the rest is interpolated across a 35,070-island atlas where neighbours are unrelated pieces of the model. Next target is the UV unwrap, not the brush. |
+| [E05](E05-paint-more-surface.md) | Why is three quarters of the asset interpolated rather than painted? Eight cameras closed only 27% of holes, and 31% of hole texels sit in islands with no paint at all. | **SPEC — highest priority.** E03 and E04 wait on it |
 | E03 | How does the bust crop's facial geometry reach the full-figure mesh — head graft, or detail transfer? | blocked on E02 |
 | E04 | Does the route hold on a **non-character subject**? A galleon: landscape framing, no face to anchor density on, and thin rigging everywhere. | inputs staged, Director-flagged as next after E02; E03/E04 ordering is his call |
 
