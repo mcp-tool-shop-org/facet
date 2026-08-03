@@ -50,6 +50,11 @@ param(
   [Parameter(Mandatory=$true)][string]$OutDir,
   [Parameter(Mandatory=$true)][string]$PromptsJson,
   [double]$ThinExtent = 0.03,
+  # commit acceptance half-angle. 0.25 is the E02 value. Each stroke accepts a texel only
+  # where it is a hole AND faces that camera past this AND survives visibility AND survives
+  # edge erosion; eight narrow bands with overlaps left three quarters of the E02 asset
+  # unpainted. E05 arm U3 widens it to 0.10.
+  [double]$CommitFacingMin = 0.25,
   [int]$Seed = 770700,
   [int]$From = 1,
   [int]$To = 8,
@@ -126,7 +131,8 @@ for ($i = $From; $i -le $To; $i++) {
   }
 
   & $Python "$Tools\texpass_iter.py" commit --state $StateDir --prep $Prep `
-      --edited "$StateDir\$job\inpainted.png" --cam "$StateDir\$job\cam.json" 2>&1 |
+      --edited "$StateDir\$job\inpainted.png" --cam "$StateDir\$job\cam.json" `
+      --facing-min $CommitFacingMin 2>&1 |
       Select-String '\[commit\]|ANDON'
   $sw.Stop()
   Write-Output ("[loop] stroke {0} done ({1:0.0}s)" -f $i, $sw.Elapsed.TotalSeconds)

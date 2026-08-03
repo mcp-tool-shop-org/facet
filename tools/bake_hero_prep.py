@@ -52,6 +52,16 @@ ap.add_argument("--island-margin", type=float, default=0.001,
                      "pre-renders and the dilation fill extends past island borders.")
 ap.add_argument("--pack-margin", type=float, default=0.001,
                 help="pack_islands margin; same economics as --island-margin")
+ap.add_argument("--keep-uvs", action="store_true",
+                help="do NOT delete the incoming UV layer and re-unwrap — scale and "
+                     "repack the atlas the mesh already carries. TRELLIS ships xatlas "
+                     "UVs and smart_decimate carries them through the cut, so the "
+                     "default path discards a finished atlas to build a worse one: "
+                     "measured on the same 287,170-face W3 mesh, xatlas gives 14,010 "
+                     "islands (20.5 faces each) where smart_project gives 34,783 (8.3). "
+                     "Island size is what decides whether the dilation fill stays inside "
+                     "a region that belongs together — at 8 faces an island is small "
+                     "enough to be entirely unpainted, and 54.6%% of them were.")
 ap.add_argument("--head-scale", type=float, default=3.0)
 ap.add_argument("--no-head-scale", action="store_true",
                 help="skip the head-island scale because the INPUT is already "
@@ -77,16 +87,31 @@ obj = bpy.context.view_layer.objects.active
 bpy.ops.object.transform_apply(location=True, rotation=True, scale=True)
 me = obj.data
 
-while me.uv_layers:
-    me.uv_layers.remove(me.uv_layers[0])
-uv_bake = me.uv_layers.new(name="uv_bake")
-assert uv_bake is not None, "ANDON: uv_bake creation failed (8-layer cap returns None)"
-me.uv_layers.active = uv_bake
-bpy.ops.object.mode_set(mode="EDIT")
-bpy.ops.mesh.select_all(action="SELECT")
-bpy.ops.uv.smart_project(angle_limit=args.angle_limit,
-                         island_margin=args.island_margin)
-bpy.ops.object.mode_set(mode="OBJECT")
+if args.keep_uvs:
+    assert me.uv_layers, ("ANDON: --keep-uvs but the input GLB carries no UV layer — "
+                          "drop the flag, or check the mesh survived smart_decimate "
+                          "with its UVs intact")
+    me.uv_layers[0].name = "uv_bake"
+    while len(me.uv_layers) > 1:
+        for lay in me.uv_layers:
+            if lay.name != "uv_bake":
+                me.uv_layers.remove(lay)
+                break
+    me.uv_layers.active = me.uv_layers["uv_bake"]
+    print("[prep] --keep-uvs: using the atlas the mesh arrived with, no re-unwrap",
+          flush=True)
+else:
+    while me.uv_layers:
+        me.uv_layers.remove(me.uv_layers[0])
+    uv_bake = me.uv_layers.new(name="uv_bake")
+    assert uv_bake is not None, \
+        "ANDON: uv_bake creation failed (8-layer cap returns None)"
+    me.uv_layers.active = uv_bake
+    bpy.ops.object.mode_set(mode="EDIT")
+    bpy.ops.mesh.select_all(action="SELECT")
+    bpy.ops.uv.smart_project(angle_limit=args.angle_limit,
+                             island_margin=args.island_margin)
+    bpy.ops.object.mode_set(mode="OBJECT")
 # mode_set rebuilds mesh data — every RNA reference from before is STALE (reading
 # through one silently returns zeros; cost one ANDON round). Re-fetch after EVERY
 # edit-mode round trip.
