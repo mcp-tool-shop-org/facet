@@ -13,6 +13,17 @@ from the advisor, only once the Director has seen the evidence.**
 | [E01](E01-facial-structure-ceiling.md) | Where is the facial-structure ceiling — framing, generation resolution, generator, or reconstruction itself? Does any configuration produce a connected surface rather than shell soup? | **RULED** → [Gate 1 ruling](E01-ruling-gate1.md) |
 | [E02](E02-texture-stage-on-sound-inputs.md) | Is the texture stage sound when its inputs are? Every texture result in this project was produced on a blob mesh with twins belonging to a different silhouette. | **SPEC — ready to run** |
 | E03 | How does the bust crop's facial geometry reach the full-figure mesh — head graft, or detail transfer? | blocked on E02 |
+| E04 | Does the route hold on a **non-character subject**? A galleon: landscape framing, no face to anchor density on, and thin rigging everywhere. | inputs staged, Director-flagged as next after E02; E03/E04 ordering is his call |
+
+**E04 inputs staged** — `E:\AI\training\facet_next\galleon_clay\`, three form-first clay
+variants at 1216×1024 (sha256 `59c25940075dca93`, `80263b1551d5fd7b`, `bb8da35402cf2a10`).
+Known stressors, recorded before the spec is written: the pipeline's framing is
+portrait-shaped throughout (`turn_render` 752×1024, `project_twins` deriving `h_ext` from
+`v_ext × 752/1024`, `ortho_scale` on the larger dimension) and a ship is wider than tall —
+the same class of break the bust mesh caused; `smart_decimate` allocates density by *face*
+rect and a galleon has none; the thin-extent probe will fire on the entire rig, which may
+be correct or may withhold most of the subject; and `gate_mesh.py` is character-only and
+must not be run on it.
 
 ### What E01 established
 

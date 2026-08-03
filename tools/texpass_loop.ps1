@@ -63,12 +63,22 @@ $ErrorActionPreference = 'Stop'
 
 # The eight cameras. Six yaws at eye level plus two at +55 elevation, which are the only
 # cameras that can see the crown, the tops of the pauldrons and the tops of the boots.
-$views = @(
-  @{y=90;  e=0},  @{y=270; e=0},  @{y=45;  e=0},  @{y=135; e=0},
-  @{y=225; e=0},  @{y=315; e=0},  @{y=0;   e=55}, @{y=180; e=55}
-)
+#
+# ORDER IS LOAD-BEARING, not cosmetic, and it lives in the recipe file rather than here.
+# The brush runs at denoise 1.0 inside the mask; a hole texel has no content to preserve,
+# so the model composes freely and anchors only on the prompt and the contour. How much
+# anchoring context a camera gets is therefore decided by what has already been committed
+# when its turn comes. Measured on W3: opening on yaw 90 — 95% hole, the camera furthest
+# from both styled poles — returned a plaited belt, a strap across the upper arm, and a
+# tunic extended to mid-thigh. Spiralling outward from the styled poles instead means the
+# first stroke already sees roughly half its surface painted. Give -PromptsJson an
+# `_order` array of job keys to set it; the fallback below is the historical order.
+$default_order = @('y+090_e+00','y+270_e+00','y+045_e+00','y+135_e+00',
+                   'y+225_e+00','y+315_e+00','y+000_e+55','y+180_e+55')
 
 $prompts = Get-Content $PromptsJson -Raw | ConvertFrom-Json
+$order = if ($prompts.PSObject.Properties.Name -contains '_order') { $prompts._order } else { $default_order }
+$negative = if ($prompts.PSObject.Properties.Name -contains '_negative') { $prompts._negative } else { $null }
 New-Item -ItemType Directory -Force -Path $StateDir, $OutDir | Out-Null
 
 Write-Output "[loop] tools       $Tools"
@@ -76,7 +86,9 @@ Write-Output "[loop] prep        $Prep"
 Write-Output "[loop] glb         $Glb"
 Write-Output "[loop] state       $StateDir"
 Write-Output "[loop] prompts     $PromptsJson"
-Write-Output "[loop] thin-extent $ThinExtent   seed $Seed   strokes $From..$To"
+Write-Output "[loop] thin-extent $ThinExtent   seed $Seed   strokes $From..$To of $($order.Count)"
+Write-Output "[loop] order       $($order -join ' -> ')"
+if ($negative) { Write-Output "[loop] negative    $negative" }
 
 if ($SeedState) {
   $base = [IO.Path]::Combine([IO.Path]::GetDirectoryName($Stage1Atlas),
@@ -89,20 +101,23 @@ if ($SeedState) {
 }
 
 for ($i = $From; $i -le $To; $i++) {
-  $v   = $views[$i - 1]
-  $job = ("job_y{0:+000;-000}_e{1:+00;-00}" -f $v.y, $v.e)
-  $key = ("y{0:+000;-000}_e{1:+00;-00}" -f $v.y, $v.e)
+  $key = $order[$i - 1]
+  if ($key -notmatch '^y([+-]\d+)_e([+-]\d+)$') { throw "ANDON: malformed order key '$key'" }
+  $yaw = [int]$Matches[1]
+  $el  = [int]$Matches[2]
+  $job = "job_$key"
   $p   = $prompts.$key
   if (-not $p) { throw "ANDON: no prompt for $key in $PromptsJson" }
-  Write-Output "[loop] --- stroke $i/$($views.Count)  $job ---"
+  Write-Output "[loop] --- stroke $i/$($order.Count)  $job ---"
   $sw = [Diagnostics.Stopwatch]::StartNew()
 
   & $Python "$Tools\texpass_iter.py" emit --state $StateDir --prep $Prep --glb $Glb `
-      --yaw $v.y --el $v.e --thin-extent $ThinExtent 2>&1 |
+      --yaw $yaw --el $el --thin-extent $ThinExtent 2>&1 |
       Select-String '\[emit\]|ANDON'
 
-  & $Python "$Tools\texpass_brush.py" --job "$StateDir\$job" --seed $Seed --prompt $p 2>&1 |
-      Select-String '\[brush\]|ANDON'
+  $brushArgs = @('--job', "$StateDir\$job", '--seed', $Seed, '--prompt', $p)
+  if ($negative) { $brushArgs += @('--negative', $negative) }
+  & $Python "$Tools\texpass_brush.py" @brushArgs 2>&1 | Select-String '\[brush\]|ANDON'
 
   if ($StopBeforeCommit) {
     $sw.Stop()
