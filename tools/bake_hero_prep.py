@@ -37,6 +37,10 @@ ap.add_argument("--crop", default="360,240,700,600",
 ap.add_argument("--crop-res", type=int, default=1024,
                 help="resolution the crop rect is expressed in")
 ap.add_argument("--head-scale", type=float, default=3.0)
+ap.add_argument("--no-head-scale", action="store_true",
+                help="skip the head-island scale because the INPUT is already "
+                     "density-allocated (smart_decimate has run). Both stages "
+                     "allocate to the same face rect; composed, they double-subscribe.")
 ap.add_argument("--bound", type=float, default=0.55)
 args = ap.parse_args(argv)
 os.makedirs(args.outdir, exist_ok=True)
@@ -139,14 +143,36 @@ in_head_island = np.isin(roots, np.fromiter(head_roots, dtype=np.int64))
 print(f"[prep] islands total {len(np.unique(roots)):,}; head islands {len(head_roots):,} "
       f"({int(in_head_island.sum()):,} faces)", flush=True)
 
+def head_area_share(luv_flat):
+    """Fraction of total UV area held by head islands."""
+    uva_ = luv_flat.reshape(nf, 3, 2)
+    a_ = 0.5 * np.abs((uva_[:, 1, 0] - uva_[:, 0, 0]) * (uva_[:, 2, 1] - uva_[:, 0, 1])
+                      - (uva_[:, 2, 0] - uva_[:, 0, 0]) * (uva_[:, 1, 1] - uva_[:, 0, 1]))
+    return float(a_[in_head_island].sum() / max(a_.sum(), 1e-12))
+
+
+# The gate below compares against the INPUT's own distribution, not a fixed
+# multiple of face count. Measured 2026-08-04: run on a mesh smart_decimate has
+# already allocated, the head band is 80.7% of faces, and `share_area >
+# share_count * 1.5` becomes arithmetically unreachable — the gate fires
+# correctly on a mesh that is already right. Density allocation is idempotent by
+# intent, not by construction, so the two stages must not both scale.
+share_area_pre = head_area_share(luv)
+print(f"[prep] head UV-area share before scaling {share_area_pre:.4f} "
+      f"(face-count share {float(in_head_island.sum() / nf):.4f})", flush=True)
+
 # scale head islands x3 about their own centroid (overlap is fine — pack fixes it)
 loop_in_head = in_head_island[loop_face]
-for r in head_roots:
-    sel = (roots[loop_face] == r)
-    c = luv[sel].mean(axis=0)
-    luv[sel] = c + args.head_scale * (luv[sel] - c)
-uv_bake.data.foreach_set("uv", luv.reshape(-1))
-me.update()
+if args.no_head_scale:
+    print("[prep] --no-head-scale: input is already density-allocated, "
+          "leaving island scale alone", flush=True)
+else:
+    for r in head_roots:
+        sel = (roots[loop_face] == r)
+        c = luv[sel].mean(axis=0)
+        luv[sel] = c + args.head_scale * (luv[sel] - c)
+    uv_bake.data.foreach_set("uv", luv.reshape(-1))
+    me.update()
 
 scene.tool_settings.use_uv_select_sync = True
 bpy.ops.object.mode_set(mode="EDIT")
@@ -168,9 +194,32 @@ area = 0.5 * np.abs((uva[:, 1, 0] - uva[:, 0, 0]) * (uva[:, 2, 1] - uva[:, 0, 1]
 share_area = float(area[in_head_island].sum() / max(area.sum(), 1e-12))
 share_count = float(in_head_island.sum() / nf)
 print(f"[prep] head island UV-area share {share_area:.4f} vs face-count share "
-      f"{share_count:.4f}", flush=True)
-assert share_area > share_count * 1.5, \
-    "ANDON: head islands did not keep their x3 scale through pack_islands"
+      f"{share_count:.4f} (before scaling {share_area_pre:.4f})", flush=True)
+if args.no_head_scale:
+    # Nothing was scaled, so the question is whether the INPUT already puts texels
+    # on the head. Compare UV area against 3D SURFACE area, not face count:
+    # smart_decimate allocates POLYGONS, so the head carries many small triangles
+    # and its face-count share says nothing about its texel density. Measured
+    # 2026-08-04: head band 84.4% of faces but 44.8% of UV area on an allocated
+    # mesh — comparing UV area to face count fires on a mesh that is already right.
+    lidx = np.empty(nl, dtype=np.int64)
+    me.loops.foreach_get("vertex_index", lidx)
+    tri3 = co[lidx].reshape(nf, 3, 3)
+    a3 = 0.5 * np.linalg.norm(np.cross(tri3[:, 1] - tri3[:, 0],
+                                       tri3[:, 2] - tri3[:, 0]), axis=1)
+    share_3d = float(a3[in_head_island].sum() / max(a3.sum(), 1e-12))
+    print(f"[prep] head 3D-surface share {share_3d:.4f} — UV share must beat it "
+          f"for the head to carry more texels per unit surface", flush=True)
+    assert share_area > share_3d, (
+        f"ANDON: --no-head-scale but the input puts no extra texels on the head — "
+        f"head holds {share_area:.4f} of UV area for {share_3d:.4f} of surface "
+        f"area; run smart_decimate first or drop --no-head-scale")
+else:
+    # the scaling must have moved area toward the head, judged against this
+    # input's own starting distribution rather than a fixed multiple of face count
+    assert share_area > share_area_pre * 1.2, (
+        f"ANDON: head islands did not keep their x{args.head_scale:g} scale through "
+        f"pack_islands ({share_area_pre:.4f} -> {share_area:.4f})")
 
 # ---- EMIT bakes: encoded position, encoded normal, mask ----
 lo = co.min(axis=0)
