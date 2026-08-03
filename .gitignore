@@ -1,0 +1,30 @@
+# Assets are large and regenerable — the pipeline is the deliverable, not its output.
+*.glb
+*.gltf
+*.npy
+*.blend
+*.blend1
+*.safetensors
+*.pth
+
+# Renders, atlases, contact sheets
+*.png
+*.jpg
+*.jpeg
+*.exr
+!docs/**/*.png
+
+# Working dirs
+state/
+job_*/
+renders*/
+prep/
+smart/
+texpass/
+
+__pycache__/
+*.pyc
+.venv/
+venv/
+.DS_Store
+Thumbs.db

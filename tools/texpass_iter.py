@@ -1,0 +1,251 @@
+"""TEXTURE-SPACE PASS, stage 2 write-head — emit / commit / selftest.
+
+The progressive loop's deterministic half. The atlas is the single accumulating
+state; diffusion only ever paints PIXELS of an emitted view, and commit writes
+those pixels into HOLE texels only — styled texels are never overwritten.
+
+  emit    — render the asset wearing the current atlas from (yaw, el) + the
+            projected hole mask (dilated) + cam.json  ->  an inpaint job
+  commit  — take the edited render, write masked hole texels back into the
+            atlas (visibility + facing tested), shrink the hole map
+  selftest— emit; fake-inpaint by local blur; commit; assert styled texels
+            byte-identical and holes strictly shrink. Run before any real brush.
+
+Framing = the twin/turn_render convention (v_ext = bbox_z*1.204, 752x1024),
+so emitted views are drop-in for the measured Qwen+saltroad graphs.
+Standards compliance: see bake_hero_fuse.py (same stage family).
+
+  texpass_iter.py emit    --state DIR --prep DIR --glb packed.glb --yaw 90 [--el 0]
+  texpass_iter.py commit  --state DIR --prep DIR --edited img.png --cam cam.json
+  texpass_iter.py selftest --state DIR --prep DIR --glb packed.glb [--yaw 90]
+
+--state holds: atlas.png, holes.png, styled_mask.npy (project_twins output copied in).
+"""
+import argparse
+import json
+import os
+import shutil
+
+import numpy as np
+import open3d as o3d
+import trimesh
+from PIL import Image
+from scipy.ndimage import (distance_transform_edt, gaussian_filter, maximum_filter,
+                           minimum_filter)
+
+Image.MAX_IMAGE_PIXELS = None
+W, H = 752, 1024
+D = 2.0
+
+ap = argparse.ArgumentParser()
+ap.add_argument("mode", choices=["emit", "commit", "selftest"])
+ap.add_argument("--state", required=True)
+ap.add_argument("--prep", required=True)
+ap.add_argument("--glb", help="packed GLB with UVs (emit/selftest)")
+ap.add_argument("--yaw", type=float, default=90.0)
+ap.add_argument("--el", type=float, default=0.0)
+ap.add_argument("--edited", help="inpainted render (commit)")
+ap.add_argument("--cam", help="cam.json from the matching emit (commit)")
+ap.add_argument("--facing-min", type=float, default=0.25,
+                help="commit acceptance: grazing texels near the silhouette were the "
+                     "white-fleck class (first full loop, 2026-08-04)")
+ap.add_argument("--edge-dist", type=float, default=4.0,
+                help="commit: reject brush pixels this close to the figure edge — "
+                     "they carry background-grey mix")
+ap.add_argument("--bias", type=float, default=3e-3)
+ap.add_argument("--noffs", type=float, default=1.5e-3)
+ap.add_argument("--mask-dilate", type=int, default=9)
+args = ap.parse_args()
+
+S = args.state
+atlas = np.asarray(Image.open(os.path.join(S, "atlas.png")).convert("RGB"),
+                   dtype=np.float32) / 255.0
+holes = np.asarray(Image.open(os.path.join(S, "holes.png")).convert("L"),
+                   dtype=np.float32) / 255.0
+styled = np.load(os.path.join(S, "styled_mask.npy"))
+RES = atlas.shape[0]
+
+meta = json.load(open(os.path.join(args.prep, "meta.json")))
+mask_np = np.load(os.path.join(args.prep, "mask.npy"))[..., 0] > 0.5
+
+
+def basis(yaw_d, el_d):
+    th, el = np.radians(yaw_d), np.radians(el_d)
+    cd = np.array([np.sin(th) * np.cos(el), -np.cos(th) * np.cos(el), np.sin(el)])
+    look = -cd / np.linalg.norm(cd)
+    up0 = np.array([0.0, 0.0, 1.0])
+    right = np.cross(look, up0)
+    right /= np.linalg.norm(right) + 1e-12
+    up = np.cross(right, look)
+    return cd, look, right, up / (np.linalg.norm(up) + 1e-12)
+
+
+def load_scene():
+    m = trimesh.load(args.glb, force="mesh", process=False)
+    v = np.asarray(m.vertices, dtype=np.float64)
+    f = np.asarray(m.faces, dtype=np.int64)
+    uv = np.asarray(m.visual.uv, dtype=np.float64)
+    vmax = np.abs(v).max()
+    v = np.stack([v[:, 0], -v[:, 2], v[:, 1]], axis=1) / vmax * 0.5
+    rs = o3d.t.geometry.RaycastingScene()
+    rs.add_triangles(o3d.core.Tensor(v.astype(np.float32)),
+                     o3d.core.Tensor(f.astype(np.uint32)))
+    return v, f, uv, rs
+
+
+def bilin(img, x, y):
+    Hh, Ww = img.shape[:2]
+    x = np.clip(x, 0.0, Ww - 1.001)
+    y = np.clip(y, 0.0, Hh - 1.001)
+    x0, y0 = x.astype(np.int64), y.astype(np.int64)
+    fx, fy = x - x0, y - y0
+    if img.ndim == 3:
+        fx, fy = fx[:, None], fy[:, None]
+    return (img[y0, x0] * (1 - fx) * (1 - fy) + img[y0, x0 + 1] * fx * (1 - fy)
+            + img[y0 + 1, x0] * (1 - fx) * fy + img[y0 + 1, x0 + 1] * fx * fy)
+
+
+def emit(yaw, el, tag="job"):
+    v, f, uv, rs = load_scene()
+    blo, bhi = v.min(axis=0), v.max(axis=0)
+    bmid = (blo + bhi) / 2
+    v_ext = (bhi[2] - blo[2]) * 1.204
+    h_ext = v_ext * (W / H)
+    cd, look, right, up = basis(yaw, el)
+    xs = (np.arange(W) + 0.5) / W * h_ext - h_ext / 2
+    ys = v_ext / 2 - (np.arange(H) + 0.5) / H * v_ext
+    gx, gy = np.meshgrid(xs, ys)
+    origins = (bmid[None, None, :] + gx[..., None] * right[None, None, :]
+               + gy[..., None] * up[None, None, :] - look[None, None, :] * D)
+    dirs = np.broadcast_to(look, origins.shape)
+    ans = rs.cast_rays(o3d.core.Tensor(np.concatenate(
+        [origins, dirs], axis=-1).reshape(-1, 6).astype(np.float32)))
+    prim = ans["primitive_ids"].numpy().reshape(H, W)
+    buv = ans["primitive_uvs"].numpy().reshape(H, W, 2)
+    hit = np.isfinite(ans["t_hit"].numpy().reshape(H, W))
+    render = np.full((H, W, 3), 0.42, dtype=np.float32)
+    holemask = np.zeros((H, W), dtype=np.float32)
+    if hit.any():
+        tri = f[prim[hit]]
+        w_u = buv[hit][:, 0:1]
+        w_v = buv[hit][:, 1:2]
+        w0 = 1.0 - w_u - w_v
+        uvp = w0 * uv[tri[:, 0]] + w_u * uv[tri[:, 1]] + w_v * uv[tri[:, 2]]
+        ax = uvp[:, 0] * RES - 0.5
+        ay = (1.0 - uvp[:, 1]) * RES - 0.5
+        render[hit] = bilin(atlas, ax, ay)
+        holemask[hit] = bilin(holes, ax, ay)
+    hm = (maximum_filter(holemask, size=args.mask_dilate) > 0.05) & hit
+    outdir = os.path.join(S, f"{tag}_y{int(yaw):+04d}_e{int(el):+03d}")
+    os.makedirs(outdir, exist_ok=True)
+    Image.fromarray((render * 255).round().astype(np.uint8)).save(
+        os.path.join(outdir, "render.png"))
+    Image.fromarray((hm * 255).astype(np.uint8)).save(os.path.join(outdir, "mask.png"))
+    json.dump({"yaw": yaw, "el": el, "v_ext": v_ext, "h_ext": h_ext,
+               "bmid": bmid.tolist(), "W": W, "H": H},
+              open(os.path.join(outdir, "cam.json"), "w"))
+    print(f"[emit] {outdir}: {int(hit.sum()):,} figure px, "
+          f"{int(hm.sum()):,} hole px to inpaint", flush=True)
+    return outdir
+
+
+def commit(edited_path, cam_path):
+    cam = json.load(open(cam_path))
+    edited = np.asarray(Image.open(edited_path).convert("RGB"),
+                        dtype=np.float32) / 255.0
+    jobmask = np.asarray(Image.open(
+        os.path.join(os.path.dirname(cam_path), "mask.png")).convert("L"),
+        dtype=np.float32) / 255.0
+    v, f, uv, rs = load_scene() if args.glb else (None,) * 4
+    if rs is None:
+        m = trimesh.load(os.path.join(args.prep, "prep_uv.glb"),
+                         force="mesh", process=False)
+        v = np.asarray(m.vertices, dtype=np.float64)
+        fc = np.asarray(m.faces, dtype=np.int64)
+        v = np.stack([v[:, 0], -v[:, 2], v[:, 1]], axis=1) / np.abs(v).max() * 0.5
+        rs = o3d.t.geometry.RaycastingScene()
+        rs.add_triangles(o3d.core.Tensor(v.astype(np.float32)),
+                         o3d.core.Tensor(fc.astype(np.uint32)))
+    pos_e = np.load(os.path.join(args.prep, "pos.npy"))
+    nor_e = np.load(os.path.join(args.prep, "nor.npy"))
+    lo = np.array(meta["lo"])
+    hi = np.array(meta["hi"])
+    hole_flat = (holes.reshape(-1) > 0.5) & mask_np.reshape(-1)
+    hidx = np.where(hole_flat)[0]
+    P = (pos_e.reshape(-1, 3)[hidx].astype(np.float64)
+         * (hi - lo) + lo) / meta["maxabs"] * 0.5
+    Nn = nor_e.reshape(-1, 3)[hidx].astype(np.float64) * 2.0 - 1.0
+    Nn /= np.linalg.norm(Nn, axis=1, keepdims=True) + 1e-12
+    cd, look, right, up = basis(cam["yaw"], cam["el"])
+    dtc = -look
+    facing = Nn @ dtc
+    keep = facing > args.facing_min
+    hidx, P, Nn, facing = hidx[keep], P[keep], Nn[keep], facing[keep]
+    origins = (P + Nn * args.noffs + dtc[None, :] * args.bias).astype(np.float32)
+    t_hit = rs.cast_rays(o3d.core.Tensor(np.concatenate(
+        [origins, np.broadcast_to(dtc.astype(np.float32), origins.shape)],
+        axis=1)))["t_hit"].numpy()
+    vis = ~np.isfinite(t_hit)
+    hidx, P = hidx[vis], P[vis]
+    bmid = np.array(cam["bmid"])
+    px = ((P - bmid) @ right / cam["h_ext"] + 0.5) * cam["W"] - 0.5
+    py = (0.5 - (P - bmid) @ up / cam["v_ext"]) * cam["H"] - 0.5
+    injob = bilin(jobmask, px, py) > 0.5
+    hidx, px, py = hidx[injob], px[injob], py[injob]
+    # figure-mask + edge-distance guard on the BRUSH OUTPUT: silhouette pixels mix
+    # background grey and commit as white flecks on grazing texels (measured on the
+    # first full loop). Same guard family as project_twins' stage-1 fix.
+    c8 = np.concatenate([edited[:8, :8].reshape(-1, 3), edited[:8, -8:].reshape(-1, 3)])
+    bg = np.median(c8, axis=0)
+    fm_e = minimum_filter(
+        (np.abs(edited - bg).max(axis=-1) > 0.06).astype(np.float32), size=5)
+    dist_e = distance_transform_edt(fm_e > 0.5).astype(np.float32)
+    ok = bilin(dist_e, px, py) >= args.edge_dist
+    hidx, px, py = hidx[ok], px[ok], py[ok]
+    col = bilin(edited, px, py).astype(np.float32)
+    before = int((holes > 0.5).sum())
+    a2 = atlas.reshape(-1, 3).copy()
+    a2[hidx] = col
+    h2 = holes.reshape(-1).copy()
+    h2[hidx] = 0.0
+    s2 = styled.reshape(-1).copy()
+    s2[hidx] = True
+    protected = styled.reshape(-1)
+    assert not protected[hidx].any(), "ANDON: commit tried to touch styled texels"
+    shutil.copy(os.path.join(S, "atlas.png"), os.path.join(S, "atlas.prev.png"))
+    Image.fromarray((a2.reshape(RES, RES, 3) * 255).round().astype(np.uint8)).save(
+        os.path.join(S, "atlas.png"))
+    Image.fromarray((h2.reshape(RES, RES) * 255).astype(np.uint8)).save(
+        os.path.join(S, "holes.png"))
+    np.save(os.path.join(S, "styled_mask.npy"), s2.reshape(RES, RES))
+    after = int((h2 > 0.5).sum())
+    print(f"[commit] wrote {len(hidx):,} texels; holes {before:,} -> {after:,}",
+          flush=True)
+    assert after < before or len(hidx) == 0, "ANDON: holes did not shrink"
+    return len(hidx)
+
+
+if args.mode == "emit":
+    emit(args.yaw, args.el)
+elif args.mode == "commit":
+    commit(args.edited, args.cam)
+else:
+    job = emit(args.yaw, args.el, tag="selftest")
+    r = np.asarray(Image.open(os.path.join(job, "render.png")).convert("RGB"),
+                   dtype=np.float32) / 255.0
+    jm = np.asarray(Image.open(os.path.join(job, "mask.png")).convert("L"),
+                    dtype=np.float32) / 255.0
+    fake = np.stack([gaussian_filter(r[..., k], 12.0) for k in range(3)], axis=-1)
+    edited = np.where(jm[..., None] > 0.5, fake, r)
+    ep = os.path.join(job, "fake_inpaint.png")
+    Image.fromarray((edited * 255).round().astype(np.uint8)).save(ep)
+    pre_styled = styled.copy()
+    pre_atlas = atlas.copy()
+    n = commit(ep, os.path.join(job, "cam.json"))
+    a_new = np.asarray(Image.open(os.path.join(S, "atlas.png")).convert("RGB"),
+                       dtype=np.float32) / 255.0
+    diff = np.abs(a_new - pre_atlas)[pre_styled].max() if pre_styled.any() else 0
+    print(f"[selftest] styled-texel max delta {diff:.6f} (must be ~0), "
+          f"committed {n:,}", flush=True)
+    assert diff < 1e-3, "ANDON: selftest — styled texels were modified"
+    print("[selftest] PASS — write-head is lossless on styled texels", flush=True)
