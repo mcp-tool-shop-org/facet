@@ -36,6 +36,15 @@ ap.add_argument("--crop", default="360,240,700,600",
                 help="face-crop rect x0,y0,x1,y1 in front-view pixels")
 ap.add_argument("--crop-res", type=int, default=1024,
                 help="resolution the crop rect is expressed in")
+ap.add_argument("--angle-limit", type=float, default=1.15,
+                help="smart_project split angle in radians. Higher merges more "
+                     "faces per island. Decimation makes long thin triangles with "
+                     "varied normals and 1.15 splits aggressively on those.")
+ap.add_argument("--island-margin", type=float, default=0.004,
+                help="smart_project margin. Every island pays this as a gutter, so "
+                     "the cost scales with ISLAND COUNT, not mesh size.")
+ap.add_argument("--pack-margin", type=float, default=0.004,
+                help="pack_islands margin; same economics as --island-margin")
 ap.add_argument("--head-scale", type=float, default=3.0)
 ap.add_argument("--no-head-scale", action="store_true",
                 help="skip the head-island scale because the INPUT is already "
@@ -68,7 +77,8 @@ assert uv_bake is not None, "ANDON: uv_bake creation failed (8-layer cap returns
 me.uv_layers.active = uv_bake
 bpy.ops.object.mode_set(mode="EDIT")
 bpy.ops.mesh.select_all(action="SELECT")
-bpy.ops.uv.smart_project(angle_limit=1.15, island_margin=0.004)
+bpy.ops.uv.smart_project(angle_limit=args.angle_limit,
+                         island_margin=args.island_margin)
 bpy.ops.object.mode_set(mode="OBJECT")
 # mode_set rebuilds mesh data — every RNA reference from before is STALE (reading
 # through one silently returns zeros; cost one ANDON round). Re-fetch after EVERY
@@ -140,8 +150,10 @@ for j in range(1, nl + 1):
 roots = np.array([find(i) for i in range(nf)], dtype=np.int64)
 head_roots = set(np.unique(roots[head_face]).tolist())
 in_head_island = np.isin(roots, np.fromiter(head_roots, dtype=np.int64))
-print(f"[prep] islands total {len(np.unique(roots)):,}; head islands {len(head_roots):,} "
-      f"({int(in_head_island.sum()):,} faces)", flush=True)
+n_isl = len(np.unique(roots))
+print(f"[prep] islands total {n_isl:,} ({nf / max(n_isl, 1):.1f} faces/island); "
+      f"head islands {len(head_roots):,} ({int(in_head_island.sum()):,} faces)",
+      flush=True)
 
 def head_area_share(luv_flat):
     """Fraction of total UV area held by head islands."""
@@ -177,7 +189,7 @@ else:
 scene.tool_settings.use_uv_select_sync = True
 bpy.ops.object.mode_set(mode="EDIT")
 bpy.ops.mesh.select_all(action="SELECT")
-bpy.ops.uv.pack_islands(margin=0.004)
+bpy.ops.uv.pack_islands(margin=args.pack_margin)
 bpy.ops.object.mode_set(mode="OBJECT")
 me = obj.data                      # stale again after the edit round trip
 uv_bake = me.uv_layers["uv_bake"]
