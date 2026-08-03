@@ -77,10 +77,58 @@ untested — the next thing to try.
    produced on a blob. The pipeline has never been tried on a mesh with a real face, so
    nothing about its output quality has actually been tested.
 
+## Addendum — W2 and the weld fix (same session)
+
+**H2 — supported in direction, archived strength corrected.** W2 (`512`) and W3
+(`1024_cascade`) land 0.02% apart in output faces (975,496 vs 975,300), so the comparison
+is generation resolution, not budget. `1024_cascade` puts **42% more polygons on the
+head** (89,972 vs 63,442). Qualitatively W2 has a soft rounded brow, shallow eye
+depressions with no lid edge, and an unformed mouth; W3 has a creased brow bar, upper lid
+edges, nostril wings, a formed mouth cavity and carved beard strands.
+
+**The archived claim "`512` produced a face with no eyes" does not replicate.** W2 has
+eyes — shallower, without lid definition. Direction confirmed, strength overstated. This
+is the fourth inherited claim to fail in E01, after the clay provenance, the shell count
+and the facial ceiling.
+
+**The weld fix works — polygon budget allocation is unblocked.** Both arms at
+`--target 150000`, identical protection settings:
+
+| run | verts in | shells in | faces out | shells out | legs |
+|---|---|---|---|---|---|
+| `--no-weld` | 858,562 | 285,654 | 150,000 | 149,528 | shredded to lace |
+| welded | 858,562 → 137,607 | 285,654 → **1** | 149,996 | **1** | intact |
+
+Atlas undisturbed: every one of 287,230 surviving faces kept exact UVs; a textured flat
+render of the welded 150k mesh differs from the 287k source by a mean of 0.47/255. Four
+zero-area triangles (0.0014%) collapse in the merge — a triangle whose corners were one
+point had no area to lose. **The `--no-weld` control reproduces the historical shredded
+output exactly** (1,516 trimesh components, 102,698 verts, 24,573 KB, matching the
+archived `final_report.json`), which is what makes this conclusive rather than suggestive.
+
+## The constraint that E01 actually uncovered
+
+TRELLIS caps input at **1024 px on the long side** (measured). A full-figure clay
+therefore puts ~123 px on the head; a bust crop of the same clay puts ~600 px on the same
+head. That cap — not reconstruction, not polycount, not the texture stage — is the
+facial-structure ceiling this experiment set out to find.
+
+It also means the bust crop's better face cannot ship on its own. `project_twins.py`
+registers twins against the mesh bounding box, and a bust mesh (`extent
+[1.0009, 0.4214, 0.4529]`, x-dominant) would misregister a full-figure twin by roughly 7×.
+A textured bust is not a deliverable.
+
+**So the open question is transfer:** how does the bust's facial geometry reach the
+full-figure mesh? Head graft, or detail transfer from bust to full figure. That is E02,
+and it is the highest-value unknown remaining.
+
 ## Standing correction to how this project reasons
 
-Three claims failed in E01 — the clay provenance, the shell count, and the facial ceiling.
-All three were inherited from session records and restated as fact, twice by the advisor
-inside a spec written specifically to prevent that. The repo is the countermeasure and it
-worked: each was overturned by a measurement that took minutes, because the claim sat next
-to runnable code.
+Four claims failed in E01 — the clay provenance, the shell count, the facial ceiling, and
+the strength of the `512`-has-no-eyes observation. All four were inherited from session
+records and restated as fact, twice by the advisor inside a spec written specifically to
+prevent that. The repo is the countermeasure and it worked: each was overturned by a
+measurement that took minutes, because the claim sat next to runnable code.
+
+The generalisable form: **an inherited claim is a hypothesis wearing a fact's clothes.**
+The cost of checking one is minutes; the cost of building on one is a session.
