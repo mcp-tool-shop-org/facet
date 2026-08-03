@@ -1,9 +1,52 @@
 # E01 — Where is the facial-structure ceiling?
 
-**Status:** SPEC — not yet run
+**Status:** AMENDED after Gate 0 — arms not yet run
 **Author:** advisor session, 2026-08-04
 **Executor:** a fresh session (Sonnet is sufficient; this is measurement, not design)
 **Estimated cost:** ~2–3 GPU hours, $0 (all local), one Director review at the end
+
+> ### Amendment 1 (advisor, 2026-08-04, after Gate 0)
+>
+> The executor passed Gate 0 and returned two findings that change the spec. Both were
+> correct; both were errors in the original spec, recorded here rather than quietly
+> patched.
+>
+> **(a) The gate pair was badly chosen — advisor error.** `warrior_texpass.glb` vs
+> `warrior_final.glb` differ almost entirely in the legs, and `smart_decimate.py`
+> *protects* the face rect (it kept 70,049 → 69,756 faces, 99.6%, while the mesh overall
+> went 287,234 → 150,000). Asking a face-rect metric to detect leg shredding could not
+> have worked. `components` separated the pair decisively (1 vs 1,516) and that is the
+> metric H4 turns on, so **Gate 0 is passed.**
+>
+> **(b) `face_curvature_var` measures crease density, not facial structure.** The
+> executor's clean controls establish the metric is alive — icosphere 5.6e-08, subdivided
+> box 2.3e-05, warrior face rect 1.38e-04, four orders of range — but also that an
+> equal-size *lower-body* rect on the same mesh scores 3× **higher** than the head. It
+> tracks armour edges, boot rims and blades. It is hereby **renamed `crease_density` and
+> demoted to advisory.** No replacement scalar is being commissioned: no cheap number
+> reliably answers "does this read as a face", which is exactly why this spec puts the
+> Director's eye on clay renders as the verdict. A metric that looks authoritative but
+> is not would recreate the failure this repo exists to prevent.
+>
+> **(c) A0 is dropped as a control — advisor error.** `warrior/clay_concept.png`
+> (clean-shaven, plate armour, heroic proportions, sword on the viewer's right) and
+> `warrior/mesh.glb` (bearded, tunic bulk, dwarf proportions, sword on the left) are
+> **different characters**; the mesh matches `twin_front.png`. The original spec assumed
+> one produced the other, inherited from an archived note and never verified — the exact
+> failure this spec was written to prevent, committed inside the spec itself. No clay
+> render of the bearded warrior exists under `E:\AI\training` or `E:\AI\facet`, and A0's
+> generation settings are unrecorded.
+>
+> **Consequences:** **A3 becomes the baseline.** Every arm now derives from
+> `clay_concept.png`, so H1 = A1 vs A3, H2 = A2 vs A3, H3 = A4 vs A3. This is better
+> internal validity than the original design. The stated cost: results can no longer be
+> compared against the shipped asset, only against each other.
+>
+> **Open question for the Director (do not guess):** the bearded warrior came from Mike's
+> own Comfy graph (`mesh_saltroad_warrior_p1_00004` lineage), so its clay input would be
+> in Comfy outputs rather than under `E:\AI\training` — which is why the search found
+> nothing. If that file exists, A0 becomes valid and reconnects the experiment to the
+> shipped asset. If not, proceed without it.
 
 ---
 
@@ -112,7 +155,7 @@ worthless unless every mesh is measured identically by the same code.
 | `watertight` | boolean, from `trimesh.is_watertight` |
 | `face_rect_faces` | faces whose centroid projects inside the front-view face rect |
 | `face_rect_density` | `face_rect_faces` / (rect area as a fraction of the figure's projected area) — polygons per unit of face, the number that actually matters |
-| `face_curvature_var` | variance of per-vertex mean curvature within the face rect — a flat blob scores near zero, real sockets and a nose bridge score high |
+| `crease_density` | variance of per-vertex mean curvature within the rect. **Advisory only** — measured 2026-08-04 to track hard edges (armour, boot rims, blades), not facial structure: an equal-size lower-body rect scores 3× higher than the head on the same mesh. Report it; do not conclude from it. |
 | `bbox`, `maxabs` | for cross-checking that meshes are comparably normalised |
 
 **Implementation notes.** Use `trimesh` for components and watertightness; reuse the
@@ -120,6 +163,16 @@ face-rect projection from `tools/smart_decimate.py` verbatim (do not re-derive i
 projects from the front view rather than using a height band, because a raised weapon
 rises above the crown and height bands grab the blade). Curvature: `trimesh.curvature.
 discrete_mean_curvature_measure` with a radius of ~1% of the bounding-box diagonal.
+
+**Report TWO rects for every mesh (amendment 1).** The default
+`360,240,700,600` is a **bust** rect — measured to cover head, shoulders and upper
+torso: 24% of all faces and 43% of the projected silhouette. Keep it, because prior work
+is expressed in it and dropping it breaks comparability. **Add a tightened head-only
+rect** — crown to chin, ear to ear — determined empirically: overlay the candidate rect
+on a front render, confirm by eye that it frames the head alone, and record the exact
+rect in the report. Both rects run through the same code path (`--crop`, no code change).
+The tight rect is what H1/H2/H3 are actually about; the wide rect is the bridge to
+earlier numbers.
 
 **Gate 0 — the instrument must discriminate before it is trusted.** Run it on two
 meshes already on disk that are known to differ:
@@ -146,12 +199,14 @@ post-processing (none — measure raw generator output).
 
 | arm | input | generator | settings | tests |
 |---|---|---|---|---|
-| **A0** baseline | existing full-figure clay | as originally produced | as originally produced | control — this is the mesh we know is crude |
-| **A1** bust crop | clay cropped to head-and-shoulders, upscaled to the generator's native input size | TRELLIS.2 | `1024_cascade` | H1 |
-| **A2** resolution | full-figure clay | TRELLIS.2 | `512` | H2 (paired against A3) |
-| **A3** resolution | full-figure clay | TRELLIS.2 | `1024_cascade` | H2 |
-| **A4** generator | full-figure clay | local TripoSG/TripoSR (MIT) | defaults | H3, H4 |
+| ~~**A0**~~ | ~~existing mesh~~ | — | — | **DROPPED, amendment 1** — `mesh.glb` is a different character from `clay_concept.png`; it cannot control for arms fed that input |
+| **A1** bust crop | `clay_concept.png` cropped to head-and-shoulders, upscaled to the generator's native input size | TRELLIS.2 | `1024_cascade` | H1 (vs A3) |
+| **A2** resolution | `clay_concept.png`, full figure | TRELLIS.2 | `512` | H2 (vs A3) |
+| **A3** **BASELINE** | `clay_concept.png`, full figure | TRELLIS.2 | `1024_cascade` | the control every other arm is compared against |
+| **A4** generator | `clay_concept.png`, full figure | local TripoSG/TripoSR (MIT) | defaults | H3 (vs A3), H4 |
 | **A5** generator + framing | bust crop (same as A1) | local TripoSG/TripoSR | defaults | H1 × H3 interaction |
+
+**Run A3 first** — nothing can be interpreted until the baseline exists.
 
 **On A4/A5:** local Tripo has not been stood up on this rig — the store recorded it as
 untested. Standing it up is part of this experiment. It is MIT-licensed and runs local;
@@ -165,11 +220,13 @@ margin — then upscale with `tools/sr_views.py` to the generator's expected inp
 The point is that the reconstructor sees a face filling its input rather than a face
 occupying 12% of it.
 
-**Gate 1 — after A1 and A3 exist.** Render both as **clay** (`head_render.py --clay`,
-geometry only, no texture) beside the A0 baseline at matched zoom. **Send that sheet to
-the Director and stop.** If the faces are indistinguishable, H1 and H2 are both likely
-false and the remaining arms may not be worth running — that is the Director's call, not
-yours.
+**Gate 1 — after A3 and A1 exist.** Render both as **clay** (`head_render.py --clay`,
+geometry only, no texture) at matched zoom, side by side. **Send that sheet to the
+Director and stop.** If the two faces are indistinguishable, H1 is likely false and the
+remaining arms may not be worth running — that is the Director's call, not yours.
+
+State your prediction for H1 in the message *before* showing the sheet, so a surprise is
+visible as a surprise rather than rationalised after the fact.
 
 ---
 
