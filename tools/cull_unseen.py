@@ -63,6 +63,15 @@ ap.add_argument("--max-seen", type=float, default=0.90)
 ap.add_argument("--iou-cameras", default="0,45,90,135,180,225,270,315")
 ap.add_argument("--iou-el", default="0,0,0,0,0,0,0,0")
 ap.add_argument("--max-iou-drop", type=float, default=0.01)
+ap.add_argument("--max-depth-shift", type=float, default=1e-3,
+                help="std-frame units. Silhouette IoU alone is BLIND to interior holes: "
+                     "remove a face from the middle of the visible chest and the ray "
+                     "simply hits the surface behind it, so the pixel still registers as "
+                     "figure and IoU stays 1.0. Comparing FIRST-HIT DEPTH catches it — a "
+                     "pixel whose surface receded is a visible face that was culled. "
+                     "Default 1e-3 is a third of a median edge length on the W3 mesh.")
+ap.add_argument("--max-depth-shift-px", type=int, default=0,
+                help="how many pixels may exceed --max-depth-shift before halting")
 ap.add_argument("--iou-res", type=int, default=1504,
                 help="silhouette raster width; 2x the production 752 so a one-pixel "
                      "rounding difference cannot spend the whole IoU budget")
@@ -216,7 +225,7 @@ ys = v_ext / 2 - (np.arange(H) + 0.5) / H * v_ext
 gx, gy = np.meshgrid(xs, ys)
 
 
-def silhouette(rsx, yaw, el):
+def depthmap(rsx, yaw, el):
     t, e = np.radians(yaw), np.radians(el)
     cd = np.array([np.sin(t) * np.cos(e), -np.cos(t) * np.cos(e), np.sin(e)])
     look = -cd / np.linalg.norm(cd)
@@ -227,31 +236,45 @@ def silhouette(rsx, yaw, el):
            + gy[..., None] * up[None, None, :] - look[None, None, :] * D)
     ans = rsx.cast_rays(o3d.core.Tensor(np.concatenate(
         [org, np.broadcast_to(look, org.shape)], axis=-1).reshape(-1, 6).astype(np.float32)))
-    return np.isfinite(ans["t_hit"].numpy().reshape(H, W))
+    t_hit = ans["t_hit"].numpy().reshape(H, W)
+    return np.isfinite(t_hit), t_hit
 
 
 ious = []
 worst = 1.0
-print(f"[cull] silhouette IoU, uncut vs culled, {W}x{H}, framing from the uncut mesh:",
-      flush=True)
+worst_depth = 0.0
+worst_depth_px = 0
+print(f"[cull] silhouette IoU + first-hit depth, uncut vs culled, {W}x{H}, "
+      f"framing from the uncut mesh:", flush=True)
 for yaw, el in zip(yaws, els):
-    a = silhouette(rs, yaw, el)
-    b = silhouette(rs2, yaw, el)
+    a, ta = depthmap(rs, yaw, el)
+    b, tb = depthmap(rs2, yaw, el)
     inter = int((a & b).sum())
     union = int((a | b).sum())
     iou = inter / max(union, 1)
     lost = int((a & ~b).sum())
     gained = int((b & ~a).sum())
+    both = a & b
+    # A pixel whose surface RECEDED lost a visible face; a nearer hit is impossible
+    # from removing geometry, so the signed test is the meaningful one.
+    rec = np.zeros((H, W), dtype=np.float64)
+    rec[both] = tb[both] - ta[both]
+    nshift = int((rec > args.max_depth_shift).sum())
+    mxshift = float(rec.max()) if both.any() else 0.0
+    worst_depth = max(worst_depth, mxshift)
+    worst_depth_px = max(worst_depth_px, nshift)
     ious.append({"yaw": yaw, "el": el, "iou": round(iou, 5),
                  "px_uncut": int(a.sum()), "px_culled": int(b.sum()),
-                 "px_lost": lost, "px_gained": gained})
+                 "px_lost": lost, "px_gained": gained,
+                 "px_receded": nshift, "max_recession": round(mxshift, 6)})
     worst = min(worst, iou)
     print(f"[cull]   yaw {yaw:+6.1f} el {el:+5.1f}  IoU {iou:.5f}  "
-          f"uncut {int(a.sum()):,}px  culled {int(b.sum()):,}px  "
-          f"lost {lost:,}  gained {gained:,}", flush=True)
+          f"lost {lost:,}px gained {gained:,}px  |  receded >"
+          f"{args.max_depth_shift:g}: {nshift:,}px  max {mxshift:.6f}", flush=True)
 
-print(f"[cull] worst IoU {worst:.5f}  (halt threshold {1-args.max_iou_drop:.5f})",
-      flush=True)
+print(f"[cull] worst IoU {worst:.5f} (halt below {1-args.max_iou_drop:.5f})   "
+      f"worst recession {worst_depth:.6f} over {worst_depth_px:,}px "
+      f"(halt above {args.max_depth_shift_px:,}px)", flush=True)
 report = {"glb_in": args.glb, "glb_out": args.out, "cameras": len(dirs),
           "samples_per_face": args.samples, "rings": args.rings,
           "faces_in": nf, "verts_in": nv, "shells_in": comps_in,
@@ -261,7 +284,9 @@ report = {"glb_in": args.glb, "glb_out": args.out, "cameras": len(dirs),
           "faces_out": nf2, "verts_out": nv2, "shells_out": comps_out,
           "faces_removed": nf - nf2, "removed_frac": round((nf - nf2) / nf, 4),
           "duplicate_pos_verts_after": int(dup),
-          "silhouette_iou": ious, "worst_iou": round(worst, 5)}
+          "silhouette_iou": ious, "worst_iou": round(worst, 5),
+          "worst_recession": round(worst_depth, 6),
+          "worst_recession_px": worst_depth_px}
 if args.json:
     json.dump(report, open(args.json, "w"), indent=1)
     print(f"[cull] wrote {args.json}", flush=True)
@@ -270,6 +295,12 @@ assert worst >= 1.0 - args.max_iou_drop, (
     f"ANDON: silhouette IoU fell to {worst:.5f}, more than {args.max_iou_drop*100:.0f}% "
     f"below 1.0. Culling must be invisible from outside by definition, so this means the "
     f"cull removed surface that shows. The mesh was NOT written.")
+assert worst_depth_px <= args.max_depth_shift_px, (
+    f"ANDON: {worst_depth_px:,} pixels see a surface that RECEDED by more than "
+    f"{args.max_depth_shift:g} (worst {worst_depth:.6f}). Those are visible faces the "
+    f"cull removed, leaving the camera to hit whatever was behind them — a hole the "
+    f"silhouette test cannot see, because the pixel still registers as figure. The mesh "
+    f"was NOT written.")
 
 culled.export(args.out)
 print(f"[cull] wrote {args.out} ({os.path.getsize(args.out)//1024} KB) — DONE", flush=True)
