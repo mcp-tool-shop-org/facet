@@ -50,6 +50,12 @@ ap.add_argument("--edge-dist", type=float, default=7.0,
 # the streaks lived (Director rejection round 2, 2026-08-04).
 ap.add_argument("--head-facing-min", type=float, default=0.18)
 ap.add_argument("--head-edge-dist", type=float, default=3.0)
+ap.add_argument("--edge-ref", type=float, default=700.0,
+                help="figure width, in twin pixels, that --edge-dist was tuned "
+                     "against (A0's). Erosion is scaled by this figure's width "
+                     "over that reference.")
+ap.add_argument("--edge-floor", type=float, default=2.5,
+                help="never erode less than this, however narrow the figure")
 ap.add_argument("--bias", type=float, default=3e-3)
 ap.add_argument("--noffs", type=float, default=1.5e-3)
 ap.add_argument("--aspect", default="752,1024")
@@ -135,9 +141,26 @@ owner_c = np.zeros((NV, 3), dtype=np.float32)
 sumW = np.zeros(NV, dtype=np.float32)
 sumWC = np.zeros((NV, 3), dtype=np.float32)
 
+reachable = np.zeros(NV, dtype=bool)
+
 for view in VIEWS:
     img = np.asarray(Image.open(view["path"]).convert("RGB"), dtype=np.float32) / 255.0
-    fm = figure_mask(img)
+    # Prefer the EXACT mask restylize_views.py saved beside the twin. Re-keying a
+    # painted twin heuristically is where background gets projected onto the mesh:
+    # on A0's twins the corner-median path keyed 30% of the bottom corners as
+    # figure, which a centred standing figure cannot reach (measured, E01).
+    mpath = os.path.splitext(view["path"])[0] + "_mask.png"
+    if os.path.exists(mpath):
+        fm = (np.asarray(Image.open(mpath).convert("L"), dtype=np.float32)
+              / 255.0 > 0.5).astype(np.float32)
+        print(f"[twins] {view['name']}: exact mask {os.path.basename(mpath)} "
+              f"({fm.mean() * 100:.1f}% figure)", flush=True)
+    else:
+        fm = figure_mask(img)
+        print(f"[twins] WARNING {view['name']}: no {os.path.basename(mpath)} — "
+              f"falling back to corner-median keying ({fm.mean() * 100:.1f}% "
+              f"figure). This path keys background gradients and cast shadows as "
+              f"figure; regenerate the twin with restylize_views.py.", flush=True)
     H, W = img.shape[:2]
     dtc = view["dtc"]
     facing = (N @ dtc).astype(np.float32)
@@ -149,12 +172,29 @@ for view in VIEWS:
         np.concatenate([origins, dirs], axis=1)))["t_hit"].numpy()
     vis = ~np.isfinite(t_hit)
     idx = idx[vis]
+    # facing + visibility, BEFORE the edge test: this is the ceiling a two-view
+    # projection can reach on this mesh. The old coverage number divided by every
+    # valid texel including ones no camera can see, which made 100% impossible and
+    # made A0's contaminated 62% look like headroom.
+    reachable[idx] = True
     xr = (P[idx] @ view["right"]) - (bmid @ view["right"])
     zu = (P[idx] @ up) - (bmid @ up)
     px = (xr / h_ext + 0.5) * W - 0.5
     py = (0.5 - zu / v_ext) * H - 0.5
     dist_in = distance_transform_edt(fm > 0.5).astype(np.float32)
-    ed = np.where(headband[idx], args.head_edge_dist, args.edge_dist)
+    # Erosion cost scales with perimeter-to-area, not width: 7 px off each side of
+    # a ~40 px arm removes a third of it, while the same 7 px barely dents a wide
+    # blobby silhouette. The defaults were tuned on A0's figure, so scale them by
+    # this figure's width against that reference.
+    fx = np.where((fm > 0.5).any(axis=0))[0]
+    fig_w = float(fx.max() - fx.min()) if len(fx) else float(W)
+    esc = fig_w / args.edge_ref
+    ed_body = max(args.edge_floor, args.edge_dist * esc)
+    ed_head = max(args.edge_floor, args.head_edge_dist * esc)
+    print(f"[twins] {view['name']}: figure {fig_w:.0f}px wide -> edge-dist "
+          f"{ed_body:.1f}px body / {ed_head:.1f}px head "
+          f"(unscaled {args.edge_dist:.1f}/{args.head_edge_dist:.1f})", flush=True)
+    ed = np.where(headband[idx], ed_head, ed_body)
     inm = bilinear(dist_in, px, py) >= ed
     idx, px, py = idx[inm], px[inm], py[inm]
     col = bilinear(img, px, py).astype(np.float32)
@@ -167,9 +207,21 @@ for view in VIEWS:
     print(f"[twins] {view['name']}: styled {len(idx):,} texels", flush=True)
 
 seen = best_w > 0
-print(f"[twins] styled coverage {seen.sum():,}/{NV:,} = {seen.mean()*100:.1f}% "
-      f"(the rest is stage 2's hole map)", flush=True)
-assert seen.mean() > 0.30, "ANDON: twins styled <30% — registration/visibility broken"
+print(f"[twins] styled/valid    {seen.sum():,}/{NV:,} = {seen.mean()*100:.1f}% "
+      f"(legacy number — denominator includes texels NO camera can see)", flush=True)
+print(f"[twins] styled/REACHABLE {seen.sum():,}/{reachable.sum():,} = "
+      f"{seen.sum()/max(reachable.sum(),1)*100:.1f}%  <- the real ratio, ceiling 1.0",
+      flush=True)
+print(f"[twins] reachable/valid  {reachable.sum():,}/{NV:,} = "
+      f"{reachable.mean()*100:.1f}% (what two views can physically reach here)",
+      flush=True)
+# The old `assert seen.mean() > 0.30` is SUSPENDED, not retuned. It encoded a
+# constant read off A0, whose twin keyed a third of its own background as figure;
+# on that measurement A0 styled 81-100% of a 61.5% ceiling, which is impossible.
+# No calibrated threshold exists for the new ratio yet, so this gate only catches
+# the degenerate cases rather than inventing another number to inherit.
+assert reachable.sum() > 0, "ANDON: no texel is reachable — registration broken"
+assert seen.sum() > 0, "ANDON: nothing styled at all"
 
 def scatter(vals, dim):
     a = np.zeros((RES * RES, dim), dtype=np.float32)

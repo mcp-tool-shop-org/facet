@@ -101,7 +101,8 @@ def control_image(path):
     contour = cv2.morphologyEx((fm > 0.5).astype(np.uint8) * 255,
                                cv2.MORPH_GRADIENT, k)
     ctrl = np.maximum(edges, contour)
-    return ctrl, int((edges > 0).sum()), int((contour > 0).sum()), int((ctrl > 0).sum())
+    return (ctrl, fm, int((edges > 0).sum()), int((contour > 0).sum()),
+            int((ctrl > 0).sum()))
 
 
 def upload(path):
@@ -161,11 +162,20 @@ def graph(render_name, ctrl_name):
 
 for path in args.inputs:
     stem = os.path.splitext(os.path.basename(path))[0]
-    ctrl, n_edge, n_contour, n_ctrl = control_image(path)
+    ctrl, fm, n_edge, n_contour, n_ctrl = control_image(path)
     ctrl_path = os.path.join(args.outdir, f"{stem}_control.png")
     Image.fromarray(ctrl).save(ctrl_path)
+    # The exact figure mask, saved beside the twin. project_twins consumes this
+    # rather than re-keying: it comes from the render the twin was made from, so
+    # it is registered by construction. Heuristic re-keying on a painted twin with
+    # a background gradient keyed a THIRD of the lower background as figure and
+    # projected it onto the mesh (measured on A0's twins, E01).
+    mask_path = os.path.join(args.outdir, f"{stem}_mask.png")
+    Image.fromarray((fm > 0.5).astype(np.uint8) * 255).save(mask_path)
     print(f"[restyle] {stem}: control image {n_ctrl:,} px "
-          f"(canny {n_edge:,} + contour {n_contour:,})", flush=True)
+          f"(canny {n_edge:,} + contour {n_contour:,}); figure mask "
+          f"{(fm > 0.5).mean() * 100:.1f}% -> {os.path.basename(mask_path)}",
+          flush=True)
     if n_contour < 500:
         raise SystemExit(f"ANDON: figure mask produced almost no contour "
                          f"({n_contour} px) — keying failed on {stem}")

@@ -37,13 +37,20 @@ ap.add_argument("--crop", default="360,240,700,600",
 ap.add_argument("--crop-res", type=int, default=1024,
                 help="resolution the crop rect is expressed in")
 ap.add_argument("--angle-limit", type=float, default=1.15,
-                help="smart_project split angle in radians. Higher merges more "
-                     "faces per island. Decimation makes long thin triangles with "
-                     "varied normals and 1.15 splits aggressively on those.")
-ap.add_argument("--island-margin", type=float, default=0.004,
+                help="smart_project split angle in radians. Raising it to 1.5 was "
+                     "MEASURED to move island count by 0.8% and change nothing: "
+                     "smart_project splits on UV DISTORTION as well as angle, and "
+                     "decimation's long thin triangles distort whatever the "
+                     "threshold. Kept as a flag; do not expect it to merge islands.")
+ap.add_argument("--island-margin", type=float, default=0.001,
                 help="smart_project margin. Every island pays this as a gutter, so "
-                     "the cost scales with ISLAND COUNT, not mesh size.")
-ap.add_argument("--pack-margin", type=float, default=0.004,
+                     "the cost scales with ISLAND COUNT, not mesh size: at 8 faces "
+                     "per island the old 0.004 (16 px at 4096) wrapped ~20x20 px of "
+                     "content in a ~52x52 footprint and packed 4.01%% of the atlas; "
+                     "0.001 packs 18.76%%. Caveat: 4 px of gutter is thin at "
+                     "aggressive mip levels — fine here because this route "
+                     "pre-renders and the dilation fill extends past island borders.")
+ap.add_argument("--pack-margin", type=float, default=0.001,
                 help="pack_islands margin; same economics as --island-margin")
 ap.add_argument("--head-scale", type=float, default=3.0)
 ap.add_argument("--no-head-scale", action="store_true",
