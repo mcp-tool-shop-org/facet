@@ -11,7 +11,8 @@ from the advisor, only once the Director has seen the evidence.**
 | id | question | status |
 |---|---|---|
 | [E01](E01-facial-structure-ceiling.md) | Where is the facial-structure ceiling — framing, generation resolution, generator, or reconstruction itself? Does any configuration produce a connected surface rather than shell soup? | **RULED** → [Gate 1 ruling](E01-ruling-gate1.md) |
-| E02 | How does the bust crop's facial geometry reach the full-figure mesh — head graft, or detail transfer? | spec pending |
+| [E02](E02-texture-stage-on-sound-inputs.md) | Is the texture stage sound when its inputs are? Every texture result in this project was produced on a blob mesh with twins belonging to a different silhouette. | **SPEC — ready to run** |
+| E03 | How does the bust crop's facial geometry reach the full-figure mesh — head graft, or detail transfer? | blocked on E02 |
 
 ### What E01 established
 
@@ -62,6 +63,15 @@ from the advisor, only once the Director has seen the evidence.**
   view overrode a correct ControlNet contour and put a face on the back of the head at both
   0.92 and 0.75 denoise. Per-view prompting fixed it outright — face detections 1 → 0
   against a source-back control of 0, with silhouette held at IoU 0.784.
+- **One mask cannot answer two questions.** *Is there real surface here* is answered by the
+  mesh silhouette, un-eroded — a visible texel always projects inside it, by definition.
+  *Is the paint here trustworthy* is answered by the twin's own painted figure, eroded.
+  Conflating them and eroding the mesh mask cost **480k texels**: near the silhouette the
+  surface turns edge-on and enormous numbers of texels foreshorten into a thin band, so
+  peeling a few pixels off it removes far more than the same peel anywhere else. The bug was
+  invisible under the old heuristic mask, which keyed *wider* than the mesh so erosion ate
+  background instead of surface. `mesh_mask ∧ erode(twin_mask)` took styled coverage
+  **23.8% → 53.7%** of reachable with the denominator unchanged.
 - **Framing is a route stage, not a tweak** — 3.1–4.5× head polygons, and the gain is
   separated eyelids, a brow furrow and modelled nostril cavities rather than sharper blur.
 - **Shell soup was ours.** Reconstruction returns 1 connected component; our UV unwrap and
