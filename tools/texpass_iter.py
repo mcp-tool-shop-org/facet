@@ -55,6 +55,23 @@ ap.add_argument("--edge-dist", type=float, default=4.0,
 ap.add_argument("--bias", type=float, default=3e-3)
 ap.add_argument("--noffs", type=float, default=1.5e-3)
 ap.add_argument("--mask-dilate", type=int, default=9)
+ap.add_argument("--thin-extent", type=float, default=0.0,
+                help="emit: withhold from diffusion any pixel whose figure extent "
+                     "ALONG THE VIEW RAY is below this (std-frame units, figure "
+                     "~1.0 tall). 0 = off. This is the blade policy — thin "
+                     "hard-surface props take projected/dilated colour, never "
+                     "invented content — expressed as geometry instead of as the "
+                     "hardcoded pixel rectangle it used to be. Measured by casting "
+                     "the CAMERA's rays from the front plane and again from the "
+                     "back plane: extent = 2*D - t_front - t_back. Two probes that "
+                     "look like the obvious ones both FAILED on this mesh and are "
+                     "recorded in tools/superseded/texpass_thin_mask.py — a probe "
+                     "along the surface normal measures the triangle spacing "
+                     "(median 0.0020 against a median edge length of 0.0029), and "
+                     "any containment test is meaningless because prep_uv.glb is "
+                     "seam-split (293,099 verts for 287,170 faces) so signed "
+                     "distance at the figure's own bbox centre comes back POSITIVE. "
+                     "Camera rays need neither a normal nor an interior.")
 args = ap.parse_args()
 
 S = args.state
@@ -136,11 +153,32 @@ def emit(yaw, el, tag="job"):
         render[hit] = bilin(atlas, ax, ay)
         holemask[hit] = bilin(holes, ax, ay)
     hm = (maximum_filter(holemask, size=args.mask_dilate) > 0.05) & hit
+    thin = np.zeros((H, W), dtype=bool)
+    if args.thin_extent > 0.0:
+        # Second pass with the SAME grid, fired from the far plane back toward the
+        # camera. origins sit at -look*D from bmid, so +look*2D lands on +look*D.
+        ansB = rs.cast_rays(o3d.core.Tensor(np.concatenate(
+            [origins + look[None, None, :] * (2 * D),
+             np.broadcast_to(-look, origins.shape)],
+            axis=-1).reshape(-1, 6).astype(np.float32)))
+        tB = ansB["t_hit"].numpy().reshape(H, W)
+        tF = ans["t_hit"].numpy().reshape(H, W)
+        both = hit & np.isfinite(tB)
+        ext = np.full((H, W), np.inf, dtype=np.float64)
+        ext[both] = 2 * D - tF[both] - tB[both]
+        thin = (ext < args.thin_extent) & hit
+        hm = hm & ~thin
+        print(f"[emit] thin-extent {args.thin_extent}: withheld "
+              f"{int(thin.sum()):,} px ({thin.sum() / max(int(hit.sum()), 1) * 100:.1f}%"
+              f" of figure) from diffusion", flush=True)
     outdir = os.path.join(S, f"{tag}_y{int(yaw):+04d}_e{int(el):+03d}")
     os.makedirs(outdir, exist_ok=True)
     Image.fromarray((render * 255).round().astype(np.uint8)).save(
         os.path.join(outdir, "render.png"))
     Image.fromarray((hm * 255).astype(np.uint8)).save(os.path.join(outdir, "mask.png"))
+    if args.thin_extent > 0.0:
+        Image.fromarray((thin * 255).astype(np.uint8)).save(
+            os.path.join(outdir, "thin.png"))
     json.dump({"yaw": yaw, "el": el, "v_ext": v_ext, "h_ext": h_ext,
                "bmid": bmid.tolist(), "W": W, "H": H},
               open(os.path.join(outdir, "cam.json"), "w"))
