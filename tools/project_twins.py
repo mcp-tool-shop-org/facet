@@ -25,7 +25,8 @@ import numpy as np
 import open3d as o3d
 import trimesh
 from PIL import Image
-from scipy.ndimage import distance_transform_edt, gaussian_filter, minimum_filter
+from scipy.ndimage import (distance_transform_edt, gaussian_filter, maximum_filter,
+                           minimum_filter)
 
 Image.MAX_IMAGE_PIXELS = None
 
@@ -149,18 +150,34 @@ for view in VIEWS:
     # painted twin heuristically is where background gets projected onto the mesh:
     # on A0's twins the corner-median path keyed 30% of the bottom corners as
     # figure, which a centred standing figure cannot reach (measured, E01).
+    # TWO masks, two questions. Conflating them is what cost 480k texels:
+    #   is there real surface here?   -> the MESH silhouette, NOT eroded
+    #   is the paint here trustworthy? -> the TWIN's painted figure, eroded
+    # A visible mesh texel projects inside the mesh silhouette by definition, so
+    # eroding THAT mask rejects nothing but good texels — and it bites hardest at
+    # the silhouette, where the surface turns edge-on and a huge number of texels
+    # foreshorten into a thin band. The twin is painted fatter than the mesh
+    # (measured 15.8% of frame against 9.9%, IoU 0.777), so eroding the TWIN's
+    # mask never reaches the mesh boundary while still excluding background.
     mpath = os.path.splitext(view["path"])[0] + "_mask.png"
+    twin_fm = figure_mask(img)
     if os.path.exists(mpath):
-        fm = (np.asarray(Image.open(mpath).convert("L"), dtype=np.float32)
-              / 255.0 > 0.5).astype(np.float32)
-        print(f"[twins] {view['name']}: exact mask {os.path.basename(mpath)} "
-              f"({fm.mean() * 100:.1f}% figure)", flush=True)
+        mesh_fm = (np.asarray(Image.open(mpath).convert("L"), dtype=np.float32)
+                   / 255.0 > 0.5).astype(np.float32)
+        # figure_mask eroded by minimum_filter when this was saved; undo it, or the
+        # AND term reintroduces a 2 px version of the same silhouette-band bug
+        mesh_fm = maximum_filter(mesh_fm, size=5)
+        print(f"[twins] {view['name']}: mesh mask {os.path.basename(mpath)} "
+              f"({mesh_fm.mean() * 100:.1f}% after un-erode), twin mask "
+              f"{twin_fm.mean() * 100:.1f}%", flush=True)
     else:
-        fm = figure_mask(img)
+        mesh_fm = np.ones_like(twin_fm)
         print(f"[twins] WARNING {view['name']}: no {os.path.basename(mpath)} — "
-              f"falling back to corner-median keying ({fm.mean() * 100:.1f}% "
-              f"figure). This path keys background gradients and cast shadows as "
-              f"figure; regenerate the twin with restylize_views.py.", flush=True)
+              f"falling back to corner-median keying of the twin alone "
+              f"({twin_fm.mean() * 100:.1f}% figure). That path keys background "
+              f"gradients and cast shadows as figure; regenerate the twin with "
+              f"restylize_views.py.", flush=True)
+    fm = twin_fm
     H, W = img.shape[:2]
     dtc = view["dtc"]
     facing = (N @ dtc).astype(np.float32)
@@ -195,7 +212,8 @@ for view in VIEWS:
           f"{ed_body:.1f}px body / {ed_head:.1f}px head "
           f"(unscaled {args.edge_dist:.1f}/{args.head_edge_dist:.1f})", flush=True)
     ed = np.where(headband[idx], ed_head, ed_body)
-    inm = bilinear(dist_in, px, py) >= ed
+    inm = (bilinear(dist_in, px, py) >= ed) & (bilinear(
+        mesh_fm[..., None], px, py)[:, 0] > 0.5)
     idx, px, py = idx[inm], px[inm], py[inm]
     col = bilinear(img, px, py).astype(np.float32)
     w = np.power(facing[idx], args.power)
