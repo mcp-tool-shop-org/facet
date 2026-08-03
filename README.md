@@ -46,15 +46,33 @@ bounding box gives x/z 0.722 against the twin frame's 0.734 and registers to 1.6
 reconstructs the same clay at x/z 0.458 — 38% narrower — and the same twins project the
 arms and sword into empty space beside the mesh, collapsing styled coverage from 62% to
 22.7%. **Generate twins from the mesh you are about to texture**, every time. It is one
-job per view, and it is the difference between registration and garbage.
+job per view.
 
-**Allocate density before styling — and only once.** The atlas is packed per UV island
-with a gutter, so an un-decimated 975k-face mesh packs 74,901 islands into **2.11%** of a
-4096² atlas against a decimated mesh's **20.34%**. Decimate first. But note the two
-stages compose: `smart_decimate` and `bake_hero_prep` both allocate to the same face rect,
-so running prep's ×3 head-island scale on an already-allocated mesh double-subscribes —
-at 80.7% of faces in the head band its own gate becomes arithmetically unreachable.
-Allocation is idempotent by intent, not by construction.
+**Build the control image; don't hope Canny finds the silhouette.** A clay render is flat
+grey on flat grey, so Canny returns 0.84% edge pixels and almost no outer contour — the
+ControlNet constrains nothing and the model regenerates the character. Composite the
+figure onto a contrasting background *and* union the figure mask's morphological gradient
+into the edge map. Measured: control 6,482 → 33,864 px, silhouette IoU **0.290 → 0.777**,
+bbox x/y 0.797 → 0.457 against the source's 0.458. `restylize_views.py` does this.
+
+**Prompt per view, or the text overrides the control.** With a correct contour the back
+view still came back front-facing at both 0.92 and 0.75 denoise — the control carries
+facing (mirrored-front vs back edge-map IoU 0.165), but a prompt asking for "a long red
+beard, gold necklace" on every view is an instruction to draw a face, and the text wins.
+
+**Polygons and texels are separate budgets.** `smart_decimate` allocates polygons;
+`bake_hero_prep`'s island scaling allocates texels. These do *not* double-subscribe — a
+head can hold 84.4% of the faces and only 44.8% of the UV area simultaneously. Any gate
+comparing UV area to **face count** is meaningless on a deliberately non-uniform mesh;
+compare UV area to **3D surface area**, which is texels per unit of surface.
+
+**Watch the island count — margins are tuned to it.** The atlas packs per UV island with a
+gutter, and at `island_margin` 0.004 on a 4096 atlas that is 16 px around every island. Two
+meshes at an identical ~287k faces: A0 packs **8,486** islands (34 faces each) into
+**20.34%** of the atlas; a decimated mesh packs **35,070** islands (8 faces each) into
+**4.01%**. Decimation makes long thin triangles with varied normals, which `smart_project`
+splits aggressively. A 4× island count at a fixed gutter is a silent catastrophe — raise
+`angle_limit` and drop the margin together.
 
 ## Status of every tool — measured, not asserted
 

@@ -22,6 +22,20 @@ from the advisor, only once the Director has seen the evidence.**
   derivative of one specific silhouette, not a reusable asset, so twin generation is a
   pipeline stage rather than an input. Any new reconstruction — or head graft — needs
   its own twins.
+- **Canny cannot find a silhouette that isn't there.** A Workbench clay render is flat
+  grey on flat grey by design, so Canny returns 0.84% edge pixels and almost no outer
+  contour — the ControlNet then constrains nothing and the model regenerates the
+  character freely. Composite onto a contrasting background *and* union the figure mask's
+  morphological gradient into the edge map: silhouette IoU went 0.290 → **0.777**.
+  The recipe had been developed against lit concept art and carried to flat renders.
+- **Polygons and texels are separate budgets.** `smart_decimate` allocates polygons;
+  `bake_hero_prep`'s island scaling allocates texels. A head can hold 84% of the faces and
+  45% of the texel area at the same time. A gate comparing UV area to *face count* is
+  meaningless on a deliberately non-uniform mesh — compare UV area to **3D surface area**.
+- **UV island count drives atlas efficiency, and margins are tuned to it.** Two meshes at
+  an identical 287k faces: A0 packs 8,486 islands (34 faces each) into 20.34% of a 4096
+  atlas; a decimated mesh packs 35,070 islands (8 faces each) into 4.01%. At a fixed
+  16 px gutter, a 4× island count is a silent catastrophe.
 - **Framing is a route stage, not a tweak** — 3.1–4.5× head polygons, and the gain is
   separated eyelids, a brow furrow and modelled nostril cavities rather than sharper blur.
 - **Shell soup was ours.** Reconstruction returns 1 connected component; our UV unwrap and
