@@ -60,6 +60,46 @@ Removing ~half the faces should:
 If islands do **not** merge after culling, the fragmentation has a second cause and that is
 itself the finding.
 
+> ### Amendment 1 (advisor, 2026-08-04, on Gate 0)
+>
+> **The gate as specified was blind to the operation's failure mode — advisor error.** I made
+> silhouette IoU the load-bearing check on an operation whose defining risk is holes punched
+> through *visible* surface. IoU cannot see that: the ray behind a removed face still hits
+> geometry, so the pixel still reads as figure. On a mesh with a **0.297 hole clean through
+> it**, IoU returned **1.00000 at all eight cameras**.
+>
+> The executor noticed before reporting, added a **first-hit depth** comparison, and it fired
+> immediately — 262 px receding at yaw 225, 208 px at yaw 135. **Depth comparison is the gate
+> from now on.** General form, now a repo rule: *a gate must test the operation's failure
+> mode, not its success mode.*
+>
+> **Cause, measured:** a generic 46-camera sphere puts 12 yaws at 30° on the equator and
+> therefore misses **six of the ten production cameras** — all four diagonals and both
+> elevated. 228 faces visible from a production camera were culled; the ring dilation rescued
+> 85 of 313. Union costs 0.08% (150,568 vs 150,340).
+>
+> **RULED — stop deleting faces; exclude them from the atlas instead.** The union fixes
+> *this* camera set, but any future orbit reopens the same class of hole, and a guarantee that
+> depends on nobody adding a camera is not a guarantee. Instead:
+>
+> - compute the visible set as now, **union'd with every production camera**
+> - unwrap and pack **only** the visible faces
+> - collapse unseen faces' UVs to a single shared texel
+> - **never modify the geometry**
+>
+> Same benefit — texel density doubles on visible surface, and charts are computed on the
+> visible subset, which is where 16,684 → 10,842 came from — with the risk eliminated rather
+> than managed: the silhouette cannot change, a hole is structurally impossible, and a future
+> camera sees flat grey instead of through the torso.
+>
+> **§4.3's "delete, then re-weld" is withdrawn.** The executor was right not to weld: trimesh
+> stores UVs per-vertex where Blender stores them per-loop, so welding there endangers the
+> native atlas adopted in E05. Under UV-exclude the mesh is untouched and the question
+> dissolves.
+>
+> **Halting was correct** even though the remedy looked trivial — that is exactly the
+> condition under which an earlier session improvised and hit the same gate harder.
+
 ## 4. Method
 
 **Build `tools/cull_unseen.py`.** Input the welded, decimated mesh **before** any UV work.

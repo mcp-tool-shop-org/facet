@@ -73,6 +73,19 @@ the thing it was compared against was real. It was not.
 **Bound an expensive arm before spending it.** Compute the ceiling first. One executor
 priced a six-stroke experiment at +1.7 points before running it, and skipped it.
 
+**A gate must test the operation's failure mode, not its success mode.** A cull was gated on
+silhouette IoU — which is structurally blind to holes punched through *visible* surface,
+because the ray behind a removed face still hits geometry. IoU returned 1.00000 on a mesh
+with a hole clean through it. The executor noticed the gate could not see its own failure,
+added a first-hit depth comparison, and it fired immediately. **Ask what the operation would
+look like if it went wrong, then check for that.**
+
+**Prefer eliminating a risk to gating it.** When the same cull was changed from *deleting*
+faces to *excluding them from the atlas*, the failure became impossible rather than
+detectable — geometry is never modified, so the silhouette cannot change and a future camera
+sees flat grey instead of a hole. A guarantee that depends on nobody adding a camera is not a
+guarantee.
+
 **Failures stay in the repo, next to the code, with the reason.** `tools/superseded/` is not
 an archive; it is the mechanism that stops a falsified approach quietly becoming doctrine
 again. Anyone can run those tools and watch them fail the same way.
