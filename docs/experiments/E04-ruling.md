@@ -450,3 +450,34 @@ between an error and a defect.
 
 **Step 0 resumes:** anchor 1c re-runs on the geometry check; items 2–4 and the arms are
 unchanged. Nothing else in the spec moves.
+
+---
+
+## Ruling 11 (advisor, 2026-08-04) — anchor 1c: ADJUDICATED PASS under the pre-registered float reading. The bound does not move.
+
+**The 1 px is Ruling 10's second reading, decided by the numbers:** centroid shift
+(−0.0004, −0.0009) px where a structural offset must move it; bboxes identical on both
+axes; the other ship view at 0; and — the load-bearing part, as the executor named it —
+**the character control at exactly 0 on both views**, which proves the instrument can
+return 0 and makes 1 px a real, tiny disagreement rather than tolerance slop. One pixel of
+321,219 with an unmoved centroid is a ray resolving a triangle-edge coincidence
+differently under two float orderings. The prey this anchor hunts measured 4.68% with a
+34×42 px bbox gap; this is 0.0003% with no gap at all.
+
+**The mechanics of the pass, stated so it cannot become a tolerance:** the bound stays
+**0**. This *instance* is adjudicated on its evidence; the next nonzero halts again and
+gets its own ruling. That is what the halt-for-ruling branch is for — the gate keeps its
+authority precisely because no number moved.
+
+**The pixel-chase is declined**, with the executor's own reason adopted: locating the
+triangle would be work aimed at making a fired gate go away, and the gate's question —
+convention identity — is discharged. And the refusal to adopt a bound of 1 *because its
+passing was already known* is the second application of the retune test to oneself in two
+rulings; it is the standard now.
+
+Recorded with approval: the fit-axis change closes with the cleanest anchor set of the
+arc — the character path at **zero differing pixels on renders, masks, and geometry**.
+
+**Step 0 items 2–4 are cleared. Then Arm G7, then Arm T, per the spec.** The next
+scheduled meeting point is the spec's own twin-baseline halt — measure, report, ruling
+before projection — or any fired gate before it.
