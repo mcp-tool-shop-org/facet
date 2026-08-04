@@ -506,6 +506,68 @@ ceiling and ~79% is the ceiling at any count tested. The honest framing of E08's
 > under version control**, like the loop does. Filed, not fixed here — it is not this arm's
 > variable.
 
+> ### Amendment 7 (advisor, 2026-08-04) — the diagnosis is confirmed, and the residual is answerable by measurement rather than taste
+>
+> **Confirmed, decisively.** Control contour identical at **9,958 px on all four passes**,
+> divergence 0.219% / 0.134% confined to the antialiased rim, and gross material relocation
+> collapses about tenfold (>ΔE 25: 19.1% → **2.3%** front, 23.2% → **2.1%** back). The
+> localiser is the clean part: **BG2-grey matches BG1-blue, not BG1-grey.** Pinning the control
+> moved the baseline, so the cause was the control. The executor pre-registered that the grey
+> baseline would move and regenerated both sides rather than comparing against the shipped
+> twin — which is why this run can say that at all.
+>
+> Separation survives: min ΔE to the subject gamut **0.35 / 0.40** grey → **58.44 / 64.16**
+> blue, both views agreeing. **The background arm's premise is intact.**
+>
+> ### I looked at the sheet, and it reframes the residual
+>
+> The executor was right that I had not seen these twins and right to hand it over. Having
+> looked: **three of the four agree and the shipped twin is the odd one out — and it is also the
+> visibly degraded one.** Its figure sits smaller in frame, its right hand is a smudge, its
+> lower legs and boots are vague where the other three are legible.
+>
+> That is exactly what its control predicts. BG1-grey's control was built from a mask measured
+> at **9.9% of frame against a 19.01% truth** — the keying failure A2 fixed on the projection
+> side, still governing the generator. A control missing a quarter of the silhouette produces a
+> twin painted small and soft. The other three had correct controls, by two independent routes.
+>
+> **So "the subject repaints" was the wrong frame, and it was mine.** There is no ground truth
+> twin; the shipped one is not correct, merely first. The question is not whether BG2 differs
+> from it but whether BG2 is a **better reference** — and this repo already established what
+> makes one, with numbers.
+>
+> ### The measurement that decides it, and it is free
+>
+> **Registration.** E01 established it as load-bearing: silhouette IoU 0.290 → 0.777 was the
+> fix, and carrying a mis-registered twin collapsed styled coverage from 62% to 22.7%. So:
+>
+> **For each of the four twins, report painted-figure fraction and IoU against the exact mesh
+> silhouette (19.01%).** No GPU, no diffusion; the machinery exists — the shipped pair was
+> already measured at twin 17.43% against mesh 19.01%, IoU 0.911.
+>
+> **Pre-registered reading, so it cannot be argued after the fact:**
+>
+> - **BG2 registers better → BG2 is adopted.** Better registration is a better reference by this
+>   repo's own established criterion, and no taste is required to say so. The material
+>   differences then go to the Director as a *separate* question about canon — gold knee plates
+>   against fur wraps is a design call, not a blocker.
+> - **BG2 registers worse → the arm dies** and the erosion's cost stands confirmed.
+> - **No meaningful difference → it is genuinely the Director's eye**, and he gets the sheet with
+>   the residual stated as what it is.
+>
+> ### One thing this raises that I want measured, not assumed
+>
+> BG1-grey's control carried **~23,000 px more** than BG2's. Some of that was spurious edges
+> from mask holes — but a mask gradient also carries interior crease detail that a pure
+> silhouette does not, and the shipped twin's boots match the prompt's "heavy dark boots" where
+> the other three do not. **A second accidentally-load-bearing defect is possible here**, in the
+> same shape as the erosion. The registration measurement bears on it directly: if the extra
+> control was signal, the shipped twin should register *well* despite its broken mask. If it was
+> noise, it will not.
+>
+> `figure_mask` is now retired from every path that governs anything — recorded, and it is the
+> quiet result of this whole sequence.
+
 ## 5. What this does not settle
 
 Whether ~40–53% reference coverage is *enough* for the Director to accept the asset is not a
