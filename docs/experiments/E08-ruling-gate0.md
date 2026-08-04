@@ -83,8 +83,70 @@ invention — even though one of those cameras sees it better than the others do
 comparative rule we already have never gets to arbitrate it, because the absolute rule already
 threw it away. **The gate and the ownership rule are in the wrong order.**
 
-That reading is from our source and the arithmetic above is from the executor's measurements;
-neither depends on anything imported. (A parallel research dispatch has surfaced published
+> ### ⚠ Amendment 1 (advisor, 2026-08-05) — the mechanism above is FALSIFIED. The conclusion is not.
+>
+> **The reorder is a no-op, measured.** Comparative ownership is byte-identical to the absolute
+> gate at floors 0.45, 0.25 and 0.10. I read the loop as gate-then-arbitrate; it is
+> **arbitrate-across-independently-gated-views**. Each view accumulates its own accepted set and
+> updates `best_w` separately, so a texel the best-facing view rejects **is already supplied by
+> a worse-facing one**. The fallback I said was missing has been in the code the whole time.
+> And the facing floor is not the lever either — 0.45 → 0.05 buys **+1.31 points**, toward a
+> setting the Director already rejected on other grounds.
+>
+> **"Acceptance is the first lever" survives** — the executor's own table carries it without my
+> mechanism:
+>
+> | removed | styled | of valid | gain |
+> |---|---|---|---|
+> | as shipped | 681,212 | 28.35% | — |
+> | no EDGE | 892,299 | 37.14% | +211,087 |
+> | no MASK | 938,723 | 39.07% | +257,511 |
+> | **neither** | **1,265,391** | **52.66%** | **+584,179** |
+>
+> **The root cause is an E01 fix that never reached its second consumer.** `project_twins`
+> treats `*_mask.png` as the mesh silhouette. Against the silhouette its own raycasting scene
+> already builds: **146,356 px true against 111,602 used, IoU 0.76**, and only 216 px the other
+> way — a near-strict subset. Registration ruled out at shift (0,0). The loss is *interior*: a
+> stripe down the whole blade, patches through pauldrons, chest, greaves, boots. `figure_mask`
+> keys the **clay** render at tol 0.06, and flat-grey-on-flat-grey is the exact property
+> [E01](E01-facial-structure-ceiling.md) identified when Canny returned 0.84% edge pixels.
+> **E01 fixed it by compositing onto contrast — for the control-image path only. The mask path
+> never got the fix.** One root cause, two consumers, one repaired.
+>
+> **And a load-bearing comment in the source is wrong.** `project_twins:158-161` justifies
+> eroding the twin's mask because "the twin is painted fatter than the mesh (15.8% vs 9.9%,
+> IoU 0.777)." Both figures reproduce exactly — **against the wrong objects.** 15.81% is the
+> *eroded twin*; 9.94% is the *saved keyed mask*, which is the broken artifact. Measured
+> against the true silhouette it is twin **17.43%** against mesh **19.01%**, IoU **0.911** —
+> **the mesh is fatter**, with 12,625 px of it outside the twin's paint. The premise that made
+> erosion safe is void, and the comment is corrected in place rather than deleted.
+>
+> **Ruled — do not fix the keying; remove it.** `project_twins` already has the raycasting
+> scene. The mesh silhouette is available *exactly*, from geometry, with no threshold, no
+> tolerance and no dependence on how the render was lit. That is the repo's own preference for
+> eliminating a risk over gating it, and it retires a heuristic that has now produced two
+> separate defects.
+>
+> **The EDGE test is not deleted with it.** E01's background-keying failure is real and
+> independent, and this repo already states the rule the bug violated: *one mask cannot answer
+> two questions.* The reason it went wrong is that the mask answering **"is there surface
+> here"** was never the mesh silhouette — it was a keyed clay render impersonating one. With an
+> exact silhouette the two questions finally separate as designed, and the erosion applies only
+> to **"is the paint trustworthy"**.
+>
+> **Arm A2 is authorised:** rebuild stage 1 with the raycast silhouette in place of the keyed
+> mask, edge erosion retained against the twin's own paint. Grade on reference coverage against
+> 28.35% and on the Gate 0 ΔE instrument. Whether the recovered surface is *good* is the
+> Director's at a gate — coverage is not quality, and this repo has confused the two before.
+>
+> **Two executor self-corrections worth keeping.** The first mask check compared the saved mask
+> against its own dilation — an operation that cannot lose a pixel — and returned 0.00%. It was
+> reported as *untested*, not as confirmation. That is the same family as E06's silhouette-IoU
+> gate, caught one step earlier. And a one-sided rejection band that looked like a registration
+> offset was tested by shift search and was not one.
+
+The mechanism claim in the paragraph above was falsified by measurement — see Amendment 1. It
+is left in place because the correction is more useful than the original. (A parallel research dispatch has surfaced published
 methods that rank views comparatively rather than by absolute cutoff, with a defensible
 empirical basis for a ~60° incidence limit — but those citations have **not** cleared the
 verification gate and are **not** load-bearing for this ruling. See

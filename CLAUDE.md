@@ -79,6 +79,27 @@ results, and the session that runs it does not decide their meaning.
 building on one costs a session. If a spec, README or handoff asserts a number, verify it
 before designing around it — including numbers written by the advisor.
 
+**When you fix a root cause, find its other consumers.** E01 established that a Workbench clay
+render is flat grey on flat grey, so a threshold cannot find the figure in it — and fixed the
+*control-image* path by compositing onto contrast first. The **same function on the same
+render** still keys the figure mask, and it was silently losing a quarter of the silhouette:
+146,356 px of true surface against 111,602 used, the loss *interior* rather than at the rim —
+a stripe down the whole blade, patches through pauldrons, chest and greaves. A root cause has
+as many sites as it has callers. Grep for them when you fix one.
+
+**A number that reproduces exactly can still be measured against the wrong object.**
+`project_twins` justified eroding the twin's mask with "the twin is painted fatter than the
+mesh — 15.8% against 9.9%." Both figures reproduce to the digit. 15.81% is the *eroded twin*
+and 9.94% is the *broken keyed mask*; against the true silhouette it is 17.43% against 19.01%,
+and **the mesh is fatter**. Reproducibility is not validity. Check what the operands are, not
+just whether the arithmetic replays.
+
+**A check that cannot fail is not a check.** An executor tested the erosion hypothesis by
+comparing the saved mask against its own dilation — an operation that cannot lose a pixel — and
+got 0.00%. It was reported as *untested* rather than as confirmation, which is exactly right,
+and it is the same family as the silhouette-IoU gate that returned 1.00000 on a holed mesh.
+Before trusting a 0, ask what a non-zero would have required.
+
 **When a number will not move, check the baseline.** The most valuable measurement in this
 repo's history came from an executor who stopped chasing a stuck figure and asked whether
 the thing it was compared against was real. It was not.
