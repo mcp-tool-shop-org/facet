@@ -883,6 +883,79 @@ ceiling and ~79% is the ceiling at any count tested. The honest framing of E08's
 > **The bracer test is now step 1's second data point rather than a curiosity** — it is the
 > evidence that prompt-expressible canon generalises past one lucky term.
 
+> ### Amendment 13 (advisor, 2026-08-04) — the split is a grammar finding, not a failed premise
+>
+> **The premise is not falsified.** The element *appeared* — fur became smooth segmented
+> leather, decisively, with the control byte-matched and nothing else drifting. What failed is
+> **modifier fidelity inside a compound noun phrase**: the head noun landed and the compound
+> adjective did not.
+>
+> Look at the two results together:
+>
+> | term | shape | outcome |
+> |---|---|---|
+> | "gold knee plates" | head noun with **one** modifier | **landed in full** |
+> | "gold-trimmed brown leather bracers" | head noun with a **stacked compound** modifier | head noun landed, modifier dropped |
+>
+> That is not "specifications are unreliable." It is a constraint on **how a specification must
+> be written**, and if it holds it is worth far more than the bracer — it governs every term in
+> the spec and every character after this one.
+>
+> **Refusing to tune was right and the distinction matters.** Adding "gold bracer plate" and
+> re-rolling until it appears is fitting the spec to the outcome. Stating a hypothesis and
+> testing it once is not. The hypothesis, derived from the table above rather than from the
+> outcome:
+>
+> > **An element expressed as its own head noun lands. An element expressed as a modifier on
+> > another noun is unreliable.**
+>
+> **Authorised: one test, one prediction, no iteration.** Promote the trim to its own noun
+> phrase — a gold plate on the outer forearm as an element, not an adjective on bracers — and
+> record the prediction before looking. **Stopping rule: if the promoted phrase also drops it,
+> the premise is weaker than Amendment 12 assumed, Arm B waits, and the artifact reading comes
+> back onto the table.** One roll either way; do not vary the wording a second time.
+>
+> ### The spec needs three categories, not one list
+>
+> D3 exposes it: fur trim edging the knee plates, which **the new twins produce unprompted**. A
+> single "named elements" list has nowhere to put that, and the rule *a canon element not named
+> in the prompt is arriving by accident* would wrongly condemn it. Something appearing
+> consistently across arms without a term is not arriving by accident — it is arriving from the
+> **mesh** through the control, or from the **style LoRA**. Those are stable sources; a text term
+> is not required, but the dependency must be recorded or a future change to either silently
+> removes it.
+>
+> - **NAMED** — must appear in the prompt; absent it, it leaves.
+> - **MESH-SUPPLIED** — arrives through the control from geometry; record it so a mesh change is
+>   noticed.
+> - **STYLE-SUPPLIED** — arrives from the LoRA; record it so a model change is noticed.
+>
+> **The knee plates are the cautionary case for this taxonomy**: they *looked* mesh-supplied —
+> they came from the mesh's own knee armour — and were lost the moment the control was cleaned.
+> Arriving from the mesh through a **noisy** control is not the same as arriving from the mesh.
+> Default to NAMED; require evidence across at least two clean-control arms before filing
+> anything as supplied.
+>
+> ### The necklace observation is the sharpest thing in the report
+>
+> The prompt says "gold necklace"; there is no necklace at the throat in canon; there is a gold
+> belt medallion. **A term in the prompt is misnaming a canon element, and the element survives
+> by accident** — which is precisely the pattern Amendment 12's rule exists to kill, found by the
+> executor one step after the rule was written. Correcting it is not optional polish; it is the
+> same class as the knee plates.
+>
+> ### Corroboration, offered as observation and not as a canon ruling
+>
+> I have looked at the canon twin at full size. Present in the image: the **gold belt medallion**,
+> an **ornate gold crossguard and pommel**, a **green skirt layer** beside the wine-red panel,
+> and **scrollwork on the pauldrons**. I see **no necklace at the throat**. Presence is
+> observable and I can report it; whether each is *canon* is the Director's, and that question
+> goes to him now.
+>
+> **The MANIFEST demotion is ratified**, including the standing line not to project from the
+> canon pair — under-filling the silhouette at 17.38% / 17.01% against 19.01% while showing a
+> body that is not the mesh's is exactly why.
+
 ## 5. What this does not settle
 
 Whether ~40–53% reference coverage is *enough* for the Director to accept the asset is not a
