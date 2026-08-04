@@ -9,9 +9,19 @@ Named for both halves of the problem: the polygons, and the face they have to ho
 ## The route
 
 ```
-form-exaggerated clay concept ─┐
-styled twin (canny-locked)    ─┴─► image-to-3D ─► density allocation ─► texture-space styling
+form-exaggerated clay concept ──► image-to-3D ──► weld ──► density allocation
+                                                             │
+                    cull what no camera can see ◄────────────┘
+                                 │
+                                 ▼
+       twins, generated from THIS mesh ──► project ──► brush the holes ──► fill
 ```
+
+**Where it stands.** Geometry is solved: reconstruction produces real facial structure
+given the right framing, and polygon budget allocation works. Texture is improving under
+measurement — interpolation is down **68%** and the current asset is *"a lot better"* by the
+Director's eye, with two named defects remaining (below). Nothing here is claimed as
+finished.
 
 **Form first, style second.** Image-to-3D reconstructors key off shading, silhouette
 clarity and unambiguous depth. A heavily stylized sprite — weathered planks, painted
@@ -66,13 +76,30 @@ head can hold 84.4% of the faces and only 44.8% of the UV area simultaneously. A
 comparing UV area to **face count** is meaningless on a deliberately non-uniform mesh;
 compare UV area to **3D surface area**, which is texels per unit of surface.
 
-**Watch the island count — margins are tuned to it.** The atlas packs per UV island with a
-gutter, and at `island_margin` 0.004 on a 4096 atlas that is 16 px around every island. Two
-meshes at an identical ~287k faces: A0 packs **8,486** islands (34 faces each) into
-**20.34%** of the atlas; a decimated mesh packs **35,070** islands (8 faces each) into
-**4.01%**. Decimation makes long thin triangles with varied normals, which `smart_project`
-splits aggressively. A 4× island count at a fixed gutter is a silent catastrophe — raise
-`angle_limit` and drop the margin together.
+**Keep the generator's atlas; watch the gutter.** TRELLIS ships xatlas UVs, and
+`bake_hero_prep` used to delete them and re-run `smart_project` — which on the same 287k-face
+mesh produced **35,070** islands (8 faces each) where the native atlas has **14,010** (20.5
+faces each). Native UVs are now the default. Then the gutter: at `island_margin` 0.004 on a
+4096 atlas that is 16 px around **every** island, which took packed coverage to 4.01%;
+dropping it to 0.001 restored **18.76%**. Raising `angle_limit` to merge islands was tried
+and moved the count **0.8%** — `smart_project` splits on UV distortion as well as angle, so
+decimation's long thin triangles split whatever the threshold.
+
+**Cull what no camera can see — from the atlas, not from the mesh.** Measured across 46
+exterior cameras: **49% of valid atlas texels are never visible from outside** — interior
+shells, deep folds, behind a beard, between fingers. The atlas was paying texels for surface
+the brush could never reach, then dilating them, then bleeding that into the surface you can
+see. Excluding those faces from the UV layout took interpolation down **68%** (2,551,893 →
+813,773 dilated texels) and brush coverage from 27% of holes to **52.7%**.
+
+Do this by **excluding faces from the atlas, never by deleting them**. Deletion needs a
+perfect gate forever — and the obvious gate does not work: silhouette IoU is structurally
+blind to holes punched through visible surface, because the ray behind a removed face still
+hits geometry. It returned **1.00000 at all eight cameras** on a mesh with a hole clean
+through the torso. Under atlas-exclusion the geometry is never modified, so the failure is
+impossible rather than detectable, and a camera you add later sees a flat patch instead of a
+hole. The visibility set must also be a **superset of every production camera** — a generic
+sphere is not, however dense.
 
 ## Status of every tool — measured, not asserted
 
@@ -100,6 +127,9 @@ and conclusions come last.
 | `texpass_loop.ps1` | the whole loop: reset, eight strokes, finalize, render | ~8 min per character, unattended |
 | `bake_hero_{prep,fuse,pack}.py` | multi-view baker — depth-tested visibility, per-texel ownership, seam levelling | kills through-projection: a raised sword no longer bakes onto the chest behind it |
 | `resample_atlas.py` | nearest-surface texture transfer between topologies | replaces Blender's ray bake, which returned a black atlas when rays were cast from a seam-split mesh |
+| `restylize_views.py` | generates a mesh's own twins — builds the control image, saves the exact figure mask beside each twin | silhouette IoU **0.290 → 0.777**; per-view prompts take face detections on the rear view 1 → 0 |
+| `cull_unseen.py` | classifies faces by exterior visibility so the atlas can skip them | 47.6% of faces unseen by 46 cameras; interpolation down **68%**; gated on first-hit **depth**, not silhouette |
+| `texpass_provenance.py` | replays the commit chain offline to tell you, per texel, whether colour came from a twin, a specific stroke, or dilation | reproduces live commit counts to the texel; settled the blotch question without a GPU |
 
 ### `tools/` — unblocked, fix measured
 
@@ -183,6 +213,38 @@ view.
 
 **Detail overlays mask; it never restores.** No texture pass can add facial structure a
 mesh does not have. If the face is crude in clay, it will be crude when painted.
+
+**A gate must test the operation's failure mode, not its success mode.** See the cull
+above: silhouette IoU checked "is the silhouette still there" when the risk was "did
+anything behind it disappear," and returned a perfect score on a broken mesh.
+
+**A guard that fires on a correct input is worse than no guard.** A centroid checksum
+compared Blender's float32 `polygon.center` against trimesh's float64. They agree to
+5.6e-8 — which straddles a 5-decimal rounding boundary on thousands of values, so an exact
+hash mismatched on a perfectly aligned mask. Compare positions within a tolerance, and size
+the tolerance against the thing you are detecting (a one-face shuffle moves a centroid
+~0.0029; the noise floor is 5.96e-08).
+
+## Known defects, named
+
+**Stroke seams are not levelled.** Stage 1 applies a low-frequency Gaussian levelling
+across projection boundaries. **The brush loop has none** — so every boundary between two
+strokes, and between stage 1 and the first stroke, is an unlevelled tonal step. Provenance
+replay found the forehead "blotch" on the current asset is exactly this: twin paint below
+meeting the overhead stroke above, two blotch pixels in the whole disc, a step rather than a
+defect in either source. The architecture called for Poisson seam levelling; it was
+implemented in projection and never carried into the loop.
+
+**Dilation still bleeds between unrelated islands.** Down from 75% of hole texels to 33.9%
+of the atlas, but dilation-filled texels remain **4.8× enriched** in visible blotches
+against a 5% base. Colour crosses the gutter from whichever island the packer placed next
+door, and atlas adjacency is not surface adjacency.
+
+**Chart fragmentation is the binding constraint on texel density.** Culling invisible
+surface removed 47% of faces but only 34% of charts — because invisible surface is
+interleaved *within* charts, so excluding it perforates them rather than freeing them.
+Faces-per-chart fell 20.5 → 16.4, bbox fill 42.1% → 36.6%, packed coverage 24.81% → 14.32%.
+Net texels landing on visible surface rose ~17% where a naive reading predicts double.
 
 ## Licence position
 
