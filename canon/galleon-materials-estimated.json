@@ -9,7 +9,7 @@
     {"id": "G3",  "name": "black tarred strakes",          "rgb": [ 34,  30,  28], "thin": true},
     {"id": "G4",  "name": "weathered tan canvas sails",    "rgb": [206, 180, 140], "thin": false},
     {"id": "G5",  "name": "gilded stern scrollwork",       "rgb": [198, 158,  72], "thin": false},
-    {"id": "G6",  "name": "verdigris copper spire",        "rgb": [ 92, 150, 132], "thin": false},
+    {"id": "G6",  "name": "gilded spire (AMENDED: gold)", "rgb": [198, 158,  72], "thin": false},
     {"id": "G7",  "name": "red-lined gun port lids",       "rgb": [150,  42,  36], "thin": false},
     {"id": "G8",  "name": "black iron cannon barrels",     "rgb": [ 40,  40,  44], "thin": true},
     {"id": "G9",  "name": "dark tarred rigging/ratlines",  "rgb": [ 48,  42,  38], "thin": true},
