@@ -1,0 +1,20 @@
+{
+  "_what_this_is": "Expected sRGB for each of GALLEON-IDENTITY.md's twelve named elements, ESTIMATED FROM THE FIXTURE'S WORDS by the executor, 2026-08-04 (E04 Task 4b). These are not measurements. No styled image of this ship exists yet, so nothing here has been observed - it is the best reading of 'warm oak-brown', 'weathered tan', 'verdigris' and so on, and it is the weakest link in the backdrop derivation that consumes it.",
+  "_how_it_must_be_corrected": "The fixture's non-circularity rule for the palette bands applies here too: once the styled target pair exists, measure each element's ACTUAL colour on the pair and re-run e04_backdrop.py against the measured table. If the pair disagrees with these estimates, the pair wins - it is an observation and this is a guess.",
+  "_thin_flag": "thin=true marks the elements that antialias toward the backdrop and therefore key out 4.2-6.8x more often than bulk (E04 fixture check). Their distance requirement is weighted up, because a thin element sitting near the backdrop is the measured failure this whole derivation exists to prevent.",
+
+  "materials": [
+    {"id": "G1",  "name": "gilded lion figurehead",        "rgb": [198, 158,  72], "thin": false},
+    {"id": "G2",  "name": "warm oak-brown hull planking",  "rgb": [140, 100,  62], "thin": false},
+    {"id": "G3",  "name": "black tarred strakes",          "rgb": [ 34,  30,  28], "thin": true},
+    {"id": "G4",  "name": "weathered tan canvas sails",    "rgb": [206, 180, 140], "thin": false},
+    {"id": "G5",  "name": "gilded stern scrollwork",       "rgb": [198, 158,  72], "thin": false},
+    {"id": "G6",  "name": "verdigris copper spire",        "rgb": [ 92, 150, 132], "thin": false},
+    {"id": "G7",  "name": "red-lined gun port lids",       "rgb": [150,  42,  36], "thin": false},
+    {"id": "G8",  "name": "black iron cannon barrels",     "rgb": [ 40,  40,  44], "thin": true},
+    {"id": "G9",  "name": "dark tarred rigging/ratlines",  "rgb": [ 48,  42,  38], "thin": true},
+    {"id": "G10", "name": "pale scrubbed deck planking",   "rgb": [196, 176, 146], "thin": false},
+    {"id": "G11", "name": "deep sea-blue frieze band",     "rgb": [ 36,  62, 110], "thin": false},
+    {"id": "G12", "name": "gilded stern-gallery railings", "rgb": [198, 158,  72], "thin": true}
+  ]
+}
