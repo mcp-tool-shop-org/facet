@@ -177,6 +177,73 @@ at a 53.8% acceptance rate we already know is the binding term.
 ceiling and ~79% is the ceiling at any count tested. The honest framing of E08's question is
 **"raise reference from 28% toward the ceiling"**, and the ceiling is a measured 74%, not 100%.
 
+> ### Amendment 2 (advisor, 2026-08-05) — A2 ratified; my grading instruction was half wrong
+>
+> **[Arm A2](E08-armA2.md) is ratified and adopted as the default stage-1 path.** 681,212 →
+> **938,718** styled, 28.4% → **39.1%** of valid, 53.8% → **74.2%** of reachable, **lost 0** —
+> strictly additive, on the two twins already on disk, with no diffusion and no GPU. The
+> `--mask-keyed` escape hatch reproduces C1's shipped stage 1 byte-for-byte (`b12917a2c7c14c4b`),
+> so every prior arm stays comparable.
+>
+> The discipline is what makes it adoptable rather than the number: a reproduction anchor
+> before the change, a strictly-additive check, a **failure-mode** test aimed at the specific
+> way this change could have gone wrong — if the silhouette were too fat, recovered texels
+> would carry the twin's background — and then a look at the sheet. Recovered texels sit at
+> median **ΔE 38.31** from background grey with **0.18%** within ΔE 10, *cleaner than the
+> 681,212 texels that were already trusted* (38.99 / 0.32%). **That background-ΔE probe is now
+> the standard check on any change that widens an acceptance mask**, and it is the executor's
+> instrument, not mine.
+>
+> **My §4 grading instruction was half wrong and the executor was right to refuse it.** I said
+> grade A2 "on reference coverage against 28.35% *and* on the Gate 0 ΔE instrument." A stage-1
+> ΔE grade is **vacuous by construction** — recovered texels carry the twin's own colour, so
+> comparing them against that twin returns ~0 whatever the change did. Reference agreement only
+> earns its keep on a **finished** asset, where recovered reference has displaced invention and
+> interpolation. Corrected: stage-1 arms grade on **coverage plus the background-contamination
+> probe**; ΔE grades finished assets only.
+>
+> ### The blade, and the erosion arm — A3
+>
+> The blade is still hole, now held by the EDGE test rather than the mask, and the geometry is
+> the point: **a ~15 px blade has almost no interior left after 3.8 px of erosion from each
+> side.** The erosion is scaled by *global figure width* (`esc = fig_w / edge_ref`) and applied
+> to *local* structures, so its cost runs inversely with local feature width. That is the same
+> shape as the blade rectangle `texpass_loop.ps1` was rewritten to remove — a global constant
+> governing a local feature — and the same shape as E01's silhouette-band erosion, which cost
+> 480k texels because a peel near an edge-on region removes far more than the same peel
+> elsewhere. Three instances now; it is a pattern, not an incident.
+>
+> **A3 is authorised, and it is a build with an invariant rather than a tuning pass.** The
+> erosion must never remove more than a bounded fraction of a structure's own width, whatever
+> that width is. `dist_in` — the distance transform already computed — carries the local
+> half-width, so a scale-free criterion is available without new machinery; the construction is
+> the executor's call. **Gate it on its failure mode:** per connected structure in the twin
+> mask, report the fraction of area the erosion removes, and halt if any structure loses more
+> than a stated share. That check would have caught this on the first character.
+>
+> A3 does **not** delete the erosion. Its stated justification is void (Amendment 1) but the
+> failure it was built for — background-grey mixing at the twin's painted boundary, measured as
+> white flecks — is real and unaddressed by anything else.
+>
+> ### The GPU, and why it waits for A3
+>
+> Not authorised yet, and the reason is the Director's own verdict rather than caution. A2
+> raises reference to 39.1% while leaving the blade — **the loudest defect he named** — still
+> hole. A loop run now would put an asset in front of him with a flesh-toned blade, which is
+> the thing he already rejected, and would spend the GPU to re-answer a question he has
+> answered.
+>
+> Sequencing, and the attribution stays clean: **A2 and A3 are both stage-1 changes and both
+> are measurable for free on coverage**, so single-variable attribution happens without a GPU
+> at all. One loop run then goes on the combined best configuration, and it is a **Gate 1
+> artifact** — its job is to answer the only question the GPU can answer, which is whether the
+> Director accepts the asset. It is not an attribution experiment and must not be reported as
+> one.
+>
+> **The executor's scoping is ratified in full:** A2 supports exactly one claim, that reference
+> coverage rises 28.4% → 39.1%. Whether the defect goes with the coverage is unanswered.
+> Declining to claim more than the arm supports is the behaviour this repo exists to protect.
+
 ## 5. What this does not settle
 
 Whether ~40–53% reference coverage is *enough* for the Director to accept the asset is not a

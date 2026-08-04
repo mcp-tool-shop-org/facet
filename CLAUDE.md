@@ -94,6 +94,27 @@ and 9.94% is the *broken keyed mask*; against the true silhouette it is 17.43% a
 and **the mesh is fatter**. Reproducibility is not validity. Check what the operands are, not
 just whether the arithmetic replays.
 
+**A global constant must not govern a local feature.** Three instances now, and each cost a
+session: a blade rectangle measured on one character's silhouette and applied to a mesh 38%
+narrower; an erosion tuned on a wide figure that ate 480k texels where the surface turns
+edge-on; and an edge-distance scaled by *global figure width* that leaves a ~15 px blade with
+no interior after 3.8 px is taken from each side. The cost of a fixed peel runs inversely with
+local feature width. Derive the quantity per structure, or bound it as a fraction of that
+structure's own width — and gate it by reporting, per structure, how much of its area the
+operation removed.
+
+**Grade an arm only on what it can move.** A stage-1 arm cannot be graded on reference
+agreement: recovered texels carry the reference's own colour, so the comparison returns ~0
+however the change went. An advisor asked for exactly that and an executor refused it, which
+was right. Before adopting a metric for an arm, ask what value it takes when the arm does
+nothing and when it works perfectly — if those are the same number, it is not measuring the arm.
+
+**When you widen an acceptance mask, test that you did not admit background.** The check is
+cheap and it is now standard here: compare the newly-admitted texels against the source's own
+background colour. A2 admitted 257,506 texels at median ΔE 38.31 from background with 0.18%
+within ΔE 10 — cleaner than the set already trusted. That is what makes a widening adoptable
+rather than merely larger.
+
 **A check that cannot fail is not a check.** An executor tested the erosion hypothesis by
 comparing the saved mask against its own dilation — an operation that cannot lose a pixel — and
 got 0.00%. It was reported as *untested* rather than as confirmation, which is exactly right,
