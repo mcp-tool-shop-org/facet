@@ -1,0 +1,6 @@
+{
+  "_purpose": "Step 2 — the full-spec reproduction gate. All sixteen NAMED elements of canon/W3-IDENTITY.md, specified simultaneously, each as its own noun phrase per Amendment 13's form rule. Nothing is added to anything: the character is specified from scratch, which is the pipeline's actual use case, rather than patched, which is what N11 was.",
+  "_baseline_caveat": "Scored before running: fourteen to fifteen of the sixteen already arrive in the UNSPECIFIED baseline. N11 is the only element with clear headroom; N5 is possibly the second. See facet_E08/SPEC/PREDICTIONS.md.",
+  "_negative": "braided belt, plaited belt, woven belt, rope belt, shoulder strap, chest strap, baldric, bandolier, watermark, text, logo, blurry, photo, deformed",
+  "w3clay_0": "a burly warrior, a bald head, a long red beard, a dark green knitted sleeveless tunic, polished gold pauldrons, gold scrollwork on the pauldrons, a gold belt medallion, a brown leather belt, a dark red layered cloth skirt, green cloth panels in the skirt, brown leather bracers, a gold plate on each outer forearm, gold knee plates, heavy dark boots, a massive greatsword, an ornate gold crossguard, a gold pommel, plain grey background, visible brushstrokes, painterly worked surface"
+}
