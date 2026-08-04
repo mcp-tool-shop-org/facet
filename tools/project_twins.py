@@ -101,8 +101,16 @@ ap.add_argument("--bbox-tol", type=float, default=0.25,
                      "silhouette's by more than this in either dimension. Free, and it "
                      "tests the failure mode — a broken key overshot by 93% while every "
                      "correct twin measured within 1%.")
-ap.add_argument("--trust-intersect", action="store_true",
-                help="E08 Amendment 26: restrict the TRUST mask to surface that "
+ap.add_argument("--trust-intersect", action=argparse.BooleanOptionalAction, default=True,
+                help="ADOPTED AS THE ROUTE DEFAULT, E08 Amendment 27. "
+                     "--no-trust-intersect restores the pre-adoption operand and is "
+                     "required, alongside the other legacy flags, to reproduce any arm "
+                     "before Amendment 27. Measured cost of adoption on the two-camera "
+                     "pair: -7,574 styled texels (1,050,368 -> 1,042,794), 43.7% -> "
+                     "43.4% of valid, 83.0% -> 82.4% of reachable, ZERO gains, ZERO "
+                     "losses in the two thinnest half-width strata, every loss within "
+                     "5px of paint that sat on no surface. "
+                     "E08 Amendment 26: restrict the TRUST mask to surface that "
                      "exists — fm becomes twin_fm AND mesh_fm before the distance "
                      "transform. Paint outside the silhouette is on no surface at all, "
                      "so asking whether it is trustworthy is a category error, and "
@@ -110,10 +118,27 @@ ap.add_argument("--trust-intersect", action="store_true",
                      "answer for texels that DO exist. Measured on the re-rolled "
                      "twin_6, whose cast shadow is CONNECTED to the figure: 27.49% of "
                      "the figure's texels get an edge distance changed by >0.5px, "
-                     "21.24% by >2px, max 36.22px. Default OFF so every prior arm "
-                     "reproduces. ⚠ Under --mask-keyed, mesh_fm is the size-5 DILATED "
-                     "sidecar, not the exact silhouette, so combining the two flags is "
-                     "NOT the exact-silhouette intersection.")
+                     "21.24% by >2px, max 36.22px. ⚠ Under --mask-keyed, mesh_fm is the "
+                     "size-5 DILATED sidecar, not the exact silhouette, so combining "
+                     "the two flags is NOT the exact-silhouette intersection.")
+ap.add_argument("--reg-iou-min", type=float, default=0.80,
+                help="ANDON (E08 Amendment 27): halt if IoU(raw twin_fm, the EXACT "
+                     "raycast silhouette) falls below this on any view. Derived from "
+                     "both sides of the line and from neither the arm it gates — every "
+                     "adjudicated ARMB view measures 0.8329-0.9533 (worst is the "
+                     "shadowed profile, view 6) and every measured registration failure "
+                     "sits at or below 0.578 (the E01-era sidecars, 0.5230 / 0.5780). "
+                     "0.80 clears the worst adjudicated view by 0.033 and the nearest "
+                     "failure by 0.22. It CANNOT fire on the current eight — they are "
+                     "its calibration set — and its jurisdiction is future twins. "
+                     "It CANNOT catch identity substitution: the better-registered "
+                     "different man measured 0.9040 against 0.9088, which stays the "
+                     "prompt's job. This REPLACES the bbox assert, which tested extent "
+                     "against the figure's own width and so fired on the narrowest view "
+                     "while passing the two dirtiest. ⚠ Evaluated only where the exact "
+                     "silhouette exists, i.e. NOT under --mask-keyed, where mesh_fm is "
+                     "the dilated sidecar (which measures 0.6735 / 0.7001 and would "
+                     "halt a legacy reproduction on the wrong operand).")
 ap.add_argument("--diag-npz",
                 help="dump per-view acceptance internals (candidate indices, sample "
                      "edge distances and thresholds, the dist_in field, mesh_fm) so a "
@@ -434,6 +459,30 @@ for view in VIEWS:
     print(f"[twins] {view['name']}: registration — IoU(twin,mesh) {iou_tm:.4f}  "
           f"centroid offset dx {cdx:+.1f} dy {cdy:+.1f} px "
           f"(|d| {np.hypot(cdx, cdy):.1f})", flush=True)
+    # ANDON, ARMED (E08 Amendment 27) — on the direction the intersection does NOT
+    # foreclose. The intersection kills "shadow paint contaminates the distance field" by
+    # construction; it says nothing about a twin that is genuinely registered to the wrong
+    # place. That is the live risk, and IoU against the exact silhouette measures it
+    # directly rather than through a proxy: 0.80 sits 0.033 below the worst adjudicated
+    # view and 0.22 above the nearest measured failure.
+    #
+    # ⚠ ONLY WHERE THE EXACT SILHOUETTE EXISTS. Under --mask-keyed, mesh_fm is the size-5
+    # dilated sidecar — a mask that holds 76,549px of a 146,356px silhouette and scores
+    # 0.6735 / 0.7001 against the twins it was shipped beside. Halting on that would be
+    # halting a legacy reproduction on the wrong operand, which is the error this repo
+    # keeps paying for; so the gate reports itself skipped and names why.
+    if args.mask_keyed:
+        print(f"[twins] {view['name']}: registration ANDON SKIPPED — --mask-keyed, so "
+              f"mesh_fm is the dilated sidecar, not the exact silhouette. IoU "
+              f"{iou_tm:.4f} above is against that sidecar and is NOT the gated "
+              f"quantity.", flush=True)
+    else:
+        assert iou_tm >= args.reg_iou_min, (
+            f"ANDON: {view['name']}: IoU(raw twin paint, exact silhouette) {iou_tm:.4f} "
+            f"is below {args.reg_iou_min:.2f} — the twin is registered to the wrong "
+            f"place. Every adjudicated view measures 0.8329 or better; every measured "
+            f"registration failure sits at or below 0.578. Regenerate the twin against "
+            f"this mesh's control; do not tune this threshold.")
     # NAME THE OPERAND. Under --mask-keyed this is measured against the size-5 dilated
     # SIDECAR, which on the E01-era twins holds 76,549px of a 146,356px silhouette — so
     # calling it "outside the silhouette" there would be the wrong-object error this repo
@@ -442,27 +491,35 @@ for view in VIEWS:
     print(f"[twins] {view['name']}: keyed OUTSIDE the {ref_nm} {n_out:,}px  "
           f"largest component {cc_out:,}px  "
           f"({n_out / max(int(tb.sum()), 1) * 100:.2f}% of keyed paint)", flush=True)
-    # ⚠ THE BBOX HALT DEMOTES WHEN THE INTERSECTION IS ON (E08 Amendment 26). The
-    # intersection kills the pathway this andon was standing guard over — shadow paint can
-    # no longer reach the distance field — so halting on raw bbox extent would now stop
-    # correct work, the same error A3's area-loss gate made. It does NOT kill "the twin is
-    # genuinely misregistered"; that halt goes on a registration quantity, and the two
-    # printed above are its baseline. Arming it is the advisor's, from measured numbers.
+    # ⚠ THE BBOX HALT IS DEMOTED, PERMANENTLY (E08 Amendments 26 and 27). Two reasons,
+    # both measured rather than argued:
     #
-    # Stated precisely, because the amendment's parenthetical is not quite right: the raw
-    # bbox is measured on twin_fm, which the intersection does not touch, so this assert
-    # could still fire — it is not "passing by construction." The reason to demote is the
-    # first one, that the quantity no longer governs anything downstream.
+    #   1. The intersection kills the pathway it was standing guard over — shadow paint can
+    #      no longer reach the distance field — so halting on raw bbox extent would stop
+    #      correct work, the same error A3's area-loss gate made.
+    #   2. It was measuring the wrong thing. bbox extent is relative to the FIGURE'S OWN
+    #      WIDTH, not to how much paint sits off-surface. Across the eight ARMB twins it
+    #      fired on view 6 at a 1.921 width ratio — the 279px-wide profile — while passing
+    #      views 0, 4 and 5, whose off-surface components (5,911 / 5,487 / 4,562 px) are
+    #      LARGER than view 6's 4,436 px, because a 388px-wide figure hides the same band.
+    #      A ratio test on a quantity that swings 1.65x with camera geometry cannot carry
+    #      a halt. Fourth moving-denominator instance in this repo.
+    #
+    # It is kept as a printed twin-quality diagnostic: a twin that paints a shadow is worth
+    # knowing about. The halt that replaced it is the registration IoU above — aimed at the
+    # direction the intersection does NOT foreclose.
+    #
+    # Also on the record: the amendment's parenthetical for demoting — "intersection makes
+    # the bbox match by construction" — is wrong as specified. The bbox is measured on
+    # twin_fm, which the intersection does not touch, so it never passed by construction.
+    # The demotion rests on the two reasons above.
     bbox_ok = th <= mh * (1 + args.bbox_tol) and tw_ <= mw * (1 + args.bbox_tol)
-    bbox_msg = (f"{view['name']}: keyed twin bbox {th}x{tw_} exceeds the mesh "
-                f"silhouette's {mh}x{mw} by more than {args.bbox_tol*100:.0f}% — the key "
-                f"is finding the backdrop, not the figure.")
-    if args.trust_intersect:
-        if not bbox_ok:
-            print(f"[twins] WARNING (halt demoted, --trust-intersect): {bbox_msg}",
-                  flush=True)
-    else:
-        assert bbox_ok, f"ANDON: {bbox_msg}"
+    if not bbox_ok:
+        print(f"[twins] {view['name']}: NOTE (diagnostic, not a halt) — keyed twin bbox "
+              f"{th}x{tw_} exceeds the mesh silhouette's {mh}x{mw} by more than "
+              f"{args.bbox_tol*100:.0f}%. The twin is painting something outside the "
+              f"figure's extent, most likely a cast shadow; the trust mask no longer "
+              f"reads it. Gated quantity is the registration IoU above.", flush=True)
     facing = (N @ dtc).astype(np.float32)
     fmin = np.where(headband, args.head_facing_min, args.facing_min)
     idx = np.where(facing > fmin)[0]

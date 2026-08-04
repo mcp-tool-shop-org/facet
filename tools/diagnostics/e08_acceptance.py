@@ -52,6 +52,14 @@ ap.add_argument("--bias", type=float, default=3e-3)
 ap.add_argument("--noffs", type=float, default=1.5e-3)
 ap.add_argument("--aspect", default="752,1024")
 ap.add_argument("--expect-styled", type=int, default=681212)
+# ⚠ EXPLICIT MASK PATHS (E08 Amendment 27 §7). The derived path — the twin's own stem plus
+# "_mask.png" — cannot reach the ARMB layout at all: there, `twin_0.png` sits beside
+# `w3clay_0_mask.png`, so the derivation looks for a `twin_0_mask.png` that does not exist.
+# An override is the whole fix; a stem-rewriting convention would be one more thing to get
+# subtly wrong.
+ap.add_argument("--front-mask", help="exact silhouette for the front view; overrides the "
+                                    "derived <twin stem>_mask.png")
+ap.add_argument("--back-mask", help="exact silhouette for the back view; same")
 ap.add_argument("--trust-intersect", action="store_true",
                 help="E08 Amendment 26, mirrored from project_twins so the instrument "
                      "and the pipeline share the operand: the TRUST mask (fm) is "
@@ -102,9 +110,45 @@ up = np.array([0.0, 0.0, 1.0])
 
 
 def figure_mask(img, tol=0.06, erode=5):
+    """⚠ CORNER-MEDIAN, DELIBERATELY. This instrument's --expect-styled anchor pins the
+    HISTORICAL acceptance, and that history ran on this key; porting the fitted estimator
+    in would silently retire the anchor. So the key stays, and a guard below refuses to
+    report numbers when it has failed — see keyed_bbox_guard.
+
+    Corner-median keying is retired for the ROUTE (project_twins uses the fitted
+    estimator). It survives here as the object being reproduced, not as a recommendation.
+    """
     c = np.concatenate([img[:8, :8].reshape(-1, 3), img[:8, -8:].reshape(-1, 3)])
     bg = np.median(c, axis=0)
     return minimum_filter((np.abs(img - bg).max(axis=-1) > tol).astype(np.float32), size=erode)
+
+
+def keyed_bbox_guard(name, twin_fm, sil, tol=0.25):
+    """Bbox-check a keyed mask against the geometry before reading a number from it.
+
+    The repo's standing rule, and this instrument did not have it. Found by running
+    Amendment 27 step 3: pointed at the ARMB twins, the corner-median key above returns
+    465,363 px — 60.4% of frame against a 19.01% truth — because a diffusion model paints
+    a lit studio backdrop and a single corner sample is the wrong model for it. That is the
+    documented 31-76% failure, and without this guard the instrument reported 1,063,039
+    styled texels off it, a number that measures the key's collapse and nothing else.
+
+    The guard is on the KEY. The Amendment-27 guard added below is on the SILHOUETTE. Two
+    operands, two checks; verifying one says nothing about the other.
+    """
+    ys_t, xs_t = np.where(twin_fm > 0.5)
+    ys_m, xs_m = np.where(sil)
+    assert len(ys_t) and len(ys_m), f"ANDON: {name}: empty keyed or silhouette mask"
+    th, tw = ys_t.max() - ys_t.min(), xs_t.max() - xs_t.min()
+    mh, mw = ys_m.max() - ys_m.min(), xs_m.max() - xs_m.min()
+    assert th <= mh * (1 + tol) and tw <= mw * (1 + tol), (
+        f"ANDON: {name}: the corner-median key's bbox {th}x{tw} exceeds the mesh "
+        f"silhouette's {mh}x{mw} by more than {tol*100:.0f}% — it has keyed the backdrop, "
+        f"not the figure ({twin_fm.mean()*100:.1f}% of frame against the silhouette's "
+        f"{sil.mean()*100:.1f}%). This instrument keys with a corner median to reproduce "
+        f"its own anchor, and corner-median keying fails on any non-flat backdrop. Nothing "
+        f"it reports on this twin would mean anything; use project_twins, whose key is the "
+        f"fitted estimator.")
 
 
 def bilinear(img, x, y):
@@ -119,21 +163,70 @@ def bilinear(img, x, y):
 
 
 VIEWS = [{"name": "front", "path": args.front, "dtc": np.array([0.0, -1.0, 0.0]),
-          "right": np.array([1.0, 0.0, 0.0])},
+          "right": np.array([1.0, 0.0, 0.0]), "mask": args.front_mask},
          {"name": "back", "path": args.back, "dtc": np.array([0.0, 1.0, 0.0]),
-          "right": np.array([-1.0, 0.0, 0.0])}]
+          "right": np.array([-1.0, 0.0, 0.0]), "mask": args.back_mask}]
+
+
+def live_silhouette(view):
+    """The exact silhouette by raycast, project_twins' construction. The authoritative
+    answer to 'is there surface here' (A2), and the object --trust-intersect must use."""
+    dtc = view["dtc"]
+    look, rgt = -dtc, view["right"]
+    upv = np.cross(rgt, look)
+    upv = upv / np.linalg.norm(upv)
+    Wi, Hi = int(AW), int(AH)
+    xs2 = (np.arange(Wi) + 0.5) / Wi * h_ext - h_ext / 2
+    ys2 = v_ext / 2 - (np.arange(Hi) + 0.5) / Hi * v_ext
+    g1, g2 = np.meshgrid(xs2, ys2)
+    o2 = (bmid[None, None, :] + g1[..., None] * rgt[None, None, :]
+          + g2[..., None] * upv[None, None, :] - look[None, None, :] * 2.0)
+    return np.isfinite(rs.cast_rays(o3d.core.Tensor(np.concatenate(
+        [o2, np.broadcast_to(look, o2.shape)], axis=-1
+    ).reshape(-1, 6).astype(np.float32)))["t_hit"].numpy().reshape(Hi, Wi))
+
+
+if not args.trust_intersect:
+    # ASCII only in prints: U+26A0 is not in cp1252 and raises UnicodeEncodeError on a
+    # Windows console. Comments and docstrings never reach stdout, so they keep the glyph.
+    print("[acc] !! MEASURING THE PRE-ADOPTION OPERAND. The route default is now "
+          "trust-intersect ON (E08 Amendment 27); this run has it off, which is what the "
+          f"--expect-styled {args.expect_styled:,} anchor pins. Do not read these numbers "
+          "as the route's current behaviour.", flush=True)
 
 st = {}
 for view in VIEWS:
     img = np.asarray(Image.open(view["path"]).convert("RGB"), dtype=np.float32) / 255.0
     twin_fm = figure_mask(img)
-    mp = os.path.splitext(view["path"])[0] + "_mask.png"
+    mp = view["mask"] or os.path.splitext(view["path"])[0] + "_mask.png"
+    assert os.path.exists(mp), (
+        f"ANDON: no silhouette at {mp}. Pass --{view['name']}-mask explicitly — the "
+        f"derived <twin stem>_mask.png does not exist in every twin layout.")
     rawm = (np.asarray(Image.open(mp).convert("L"), dtype=np.float32) / 255.0 > 0.5)
     mesh_fm = maximum_filter(rawm.astype(np.float32), size=5)
+    # THE KEY's guard, before anything is computed off it. Against the LIVE silhouette
+    # rather than the sidecar, so a broken sidecar cannot excuse a broken key.
+    keyed_bbox_guard(view["name"], twin_fm, live_silhouette(view))
     # THE TRUST OPERAND, mirrored from project_twins (E08 Amendment 26). Intersected with
     # the UNDILATED sidecar, not with mesh_fm: the size-5 dilation is a sampling tolerance
     # for mask_ok and would admit a 2px collar of non-surface back into the trust mask.
     if args.trust_intersect:
+        # ANDON (E08 Amendment 27 §7): the sidecar must BE the exact silhouette, not merely
+        # be named like one. Intersecting an E01-era keyed clay mask measured -388,764
+        # styled texels — a measurement of a broken mask, not of the intersection. The
+        # authoritative object is the raycast, so verify against it rather than trust the
+        # filename. Eliminating the hazard, not documenting it.
+        sil = live_silhouette(view)
+        nd = int((sil != rawm).sum())
+        assert nd == 0, (
+            f"ANDON: {view['name']}: the sidecar {os.path.basename(mp)} differs from the "
+            f"live raycast silhouette by {nd:,} px ({int(rawm.sum()):,} vs "
+            f"{int(sil.sum()):,}) — it is NOT the exact silhouette, so intersecting with "
+            f"it measures the sidecar's defect. E01-era masks score IoU 0.523/0.578 here. "
+            f"Point --{view['name']}-mask at an exact silhouette (silhouette_masks.py "
+            f"writes them; silhouette_agree.py checks them).")
+        print(f"[acc] {view['name']}: sidecar == live raycast silhouette, 0 differing px "
+              f"({int(sil.sum()):,}px)", flush=True)
         fm = (twin_fm > 0.5) & rawm
         print(f"[acc] {view['name']}: TRUST INTERSECT — keyed paint "
               f"{int((twin_fm > 0.5).sum()):,}px -> trust {int(fm.sum()):,}px "

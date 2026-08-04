@@ -237,12 +237,25 @@ for nm in views:
             row["removed_region"]["top_components"] = [
                 int(s) for s in np.sort(sizes)[::-1][:5]]
     if ng:
+        # A gain is IMPOSSIBLE while ed is fixed — dist_in of a subset mask is pointwise
+        # smaller — so the two cases mean completely different things and the message must
+        # not conflate them. ed moving is the fig_w channel: the intersection narrowed the
+        # keyed figure, so `esc = fig_w / edge_ref` fell and the erosion loosened globally
+        # on that view. ed fixed and a gain nonzero is a bug in the implementation.
         dg = d1[gained]
-        print(f"  ⚠ GAINED {ng:,} samples with ed identical "
-              f"({np.array_equal(ed0, ed1)}) — median R1 edge distance "
-              f"{np.median(dg):.2f}px. With a subset mask and a fixed threshold this "
-              f"should be impossible; investigate before reading any other number.")
+        same_ed = np.array_equal(ed0, ed1)
+        if same_ed:
+            print(f"  !! GAINED {ng:,} samples with ed IDENTICAL — median R1 edge distance "
+                  f"{np.median(dg):.2f}px. A subset mask with a fixed threshold cannot "
+                  f"admit anything new; this is an implementation fault. Investigate "
+                  f"before reading any other number on this view.")
+        else:
+            print(f"  GAINED {ng:,} samples — expected, because ed MOVED on this view "
+                  f"({float(np.max(ed0)):.2f} -> {float(np.max(ed1)):.2f}px): the "
+                  f"intersection narrowed fig_w, so the globally-scaled erosion loosened. "
+                  f"Median R1 edge distance {np.median(dg):.2f}px.")
         row["gained_edge_dist_R1_median"] = round(float(np.median(dg)), 2)
+        row["gained_explained_by_ed_move"] = bool(not same_ed)
 
     out["views"][nm] = row
 
