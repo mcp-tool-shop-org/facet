@@ -115,6 +115,20 @@ background colour. A2 admitted 257,506 texels at median ΔE 38.31 from backgroun
 within ΔE 10 — cleaner than the set already trusted. That is what makes a widening adoptable
 rather than merely larger.
 
+**A condition whose stated derivation does not describe it was never a threshold.** An
+off-palette gate justified its 0.5% bound as *"set from the seven clean views measuring exactly
+0 px"* — but that 0 px came from a different, cruder check; the gate's own clean baseline was
+0.06–0.33%. **Withdraw such a condition rather than re-deriving it**, because re-deriving while
+looking at the results it would judge is retuning however principled the reasoning. Withdrawing
+is not choosing a new number, and that is the whole difference.
+
+**Normalise a boundary quantity by perimeter, not by area.** Off-palette pixels live at material
+edges, so they scale with perimeter — while figure *area* swings 1.65× between a profile and a
+rear three-quarter on the same subject. A percentage-of-area bound therefore fails a clean
+profile and passes a dirty front view. Fourth moving-denominator instance in this repo, and the
+first found in an instrument written an hour earlier: **check what your denominator is made of
+before the first result depends on it.**
+
 **A detector that only reproduces what its author already noticed is not an instrument.** A
 hand-rolled check asked *is it blue* and found one bad twin. The same question asked properly —
 *is anything outside the declared palette* — found two, the second a 5,068 px olive-khaki mass

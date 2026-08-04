@@ -1510,6 +1510,67 @@ ceiling and ~79% is the ceiling at any count tested. The honest framing of E08's
 > wrong. Written down by the executor rather than discovered later — which is the difference
 > between a gate with a known blind spot and a gate that quietly certifies.
 
+> ### Amendment 25 (advisor, 2026-08-04) — the percentage bound is VOID, not tight. Project eight.
+>
+> **Director: "blob 402 seems like a winner."** Ruling agrees, and the reasoning matters more
+> than the agreement.
+>
+> **The blob bound stands and both re-rolls clear it.** 402 and 345 against **800** — declared
+> before the re-roll, and declared *as the garment detector*, which is its stated purpose. The
+> blue sleeve is gone, the olive leg mass is gone, and the dominant off-palette hue on both moved
+> into 110–120° — **the same band the six passing views carry.** A pre-registered condition
+> was written, the artifacts were re-rolled once, and they cleared it by a factor of two.
+>
+> ### The percentage bound is withdrawn, and that is not the same as retuning it
+>
+> Its own JSON says it was *"set from the seven clean views measuring exactly 0 px"* and is *"an
+> order of magnitude above nothing."* **Neither statement is true of this gate.** That 0 px came
+> from the ad-hoc blue-only check; this gate's clean baseline is 0.06–0.33%, so 0.5% is 1.5× the
+> highest clean view. **The stated derivation describes a different instrument's output.**
+>
+> A condition whose derivation does not describe it never had a valid derivation. **It is not a
+> tight threshold — it is not a threshold.** So it is **withdrawn**, exactly as three conditions
+> before it were withdrawn rather than retuned: `project_twins`' `seen.mean() > 0.30`, E07's
+> ≤ 3.25 ratio, and A3's stratum area-loss gate.
+>
+> **Withdrawing is not choosing a new number**, which is the move that would be forbidden. I am
+> not re-deriving 0.5% into something the re-rolls clear. Nothing replaces it today.
+>
+> ### And its denominator moves — fourth instance, in an instrument an hour old
+>
+> Figure area runs 90,553 px on a profile to 149,780 on a rear three-quarter, a **1.65× swing
+> driven by camera geometry**. Off-palette pixels are a **boundary** phenomenon — antialiasing at
+> material edges — so they scale with perimeter, not area. **A percentage of area normalises a
+> boundary quantity by the wrong thing.** twin_6's 603 px sits beside the passing views' 462 and
+> 401 in absolute terms and fails only on the denominator.
+>
+> **Ruled: project eight.**
+>
+> ### What is lost, named rather than glossed
+>
+> Withdrawing the percentage removes the **speckle half** of the two-threshold design praised one
+> amendment ago. The gate now detects garments and not diffuse contamination. That is a real gap.
+>
+> **The replacement is specified as a unit, not a number:** normalise by figure **perimeter**, or
+> report absolute count with the camera's figure area beside it. **Derive its threshold from a
+> clean baseline measured before the arm that tests it** — never from the arm's own output. Do
+> not build it now; building a bound while looking at results it would judge is how the last one
+> went wrong.
+>
+> **And twin_2 is flagged, not cleared.** At 1,073 px it carries ~2.3× the passing views'
+> off-palette even in absolute terms, and its largest blob of 402 says the excess is *distributed*
+> — speckle-class, which is precisely what the withdrawn half measured. **We cannot rule on it
+> today.** It projects, it is recorded as carrying uncharacterised diffuse off-palette, and
+> **Gate 1 is where that gets judged** — the Director's eye on the finished asset is the
+> instrument for diffuse contamination, and always was.
+>
+> ### The halt was right, and for the right reason
+>
+> Reading the ruling literally, both failed and six project. The executor did not execute that,
+> because **the failure might be the instrument rather than the twins, and dropping two cameras
+> is not recoverable by measurement afterwards.** Asymmetric cost, correctly weighed. A halt that
+> costs one exchange beats an irreversible loss of two views.
+
 ## 5. What this does not settle
 
 Whether ~40–53% reference coverage is *enough* for the Director to accept the asset is not a
