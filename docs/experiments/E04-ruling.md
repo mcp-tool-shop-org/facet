@@ -1,0 +1,94 @@
+# E04 — the ruling document
+
+Advisor rulings for the E04 arc, in the E08 pattern: rulings appended in place with dates
+and reasons, corrections in place with the measurement that overturned them. The closed E08
+record is [E08-ruling-gate0.md](E08-ruling-gate0.md); the dispatch is
+[E04-executor-kickoff.md](E04-executor-kickoff.md).
+
+---
+
+## Ruling 1 (advisor, 2026-08-04) — the crown is an OWNER SEAM. A new defect class is named, and my prior is falsified the right way.
+
+**Ratified in full.** The Director's blotch is a **stage-1 inter-camera ownership seam**:
+`argmax(facing)` hands the crown half to the yaw-090 twin and half to the yaw-135 twin, and
+**the two sources disagree about the scalp by ΔE 17.97** on surface both see above the
+pipeline's own facing floor (per-texel median 17.56, p90 32.00) — of which 10.3–13.8
+survives into the atlas as a hard edge. Claim-only boundaries explain **0.0–1.3%** of the
+head's strong steps on every camera; owner-only explain 43.5–77.8%; the null control
+collapses on the region (100% → 4.7%). The alternates are measured and dismissed on their
+own numbers: chart fragmentation at 1.67–3.00 against the seam's 15.75–19.33, dilation the
+flattest class present — and **0.0% dilation in the region at all**.
+
+### Why this class is dangerous, and why nothing caught it
+
+Two structural properties. **It is provenance-blind by construction** — both sides of the
+edge are class TWINS, so the instrument that decided E07 cannot see it. And **it lives on
+the best surface, not the worst**: the crown is 89.2% stage-1 covered against 59.8% outside
+the head band, precisely because `--head-facing-min 0.18` exists to keep the head off the
+brush. This is not a shortage of paint; it is a disagreement between two *good* sources.
+The defect is **multi-view tone inconsistency between independently generated twins**,
+surfacing wherever ownership switches — an argmax over sources that were never harmonised.
+
+**It is subject-independent and it is going to the galleon.** Every value involved is
+code-level, not profile-level, and a ship is mostly large smooth surfaces — hull planking
+under eight independently toned twins will carry owner seams wherever neighbours disagree.
+E04's Gate 1 should *expect* them; this arm may earn its priority there rather than on the
+accepted warrior.
+
+### The prior — falsified properly, and ledger nineteen
+
+Amendment 35 stated the prior as a prior, named alternates, and the check was built not to
+assume its answer — **this is the falsification working as designed**, the contrast to
+Amendment 32's "known object." What goes in the ledger is *how* the prior was built:
+**it contradicted a flag whose entire purpose was to prevent the situation I described.**
+I claimed the crown was where "grazing stage-1 paint, both elevated strokes, and dilation
+meet" — while `--head-facing-min 0.18` against the body's 0.45 exists precisely so the head
+band does not go to the brush. An unread flag, again in a file I had open for other reasons.
+And the guess propagated: three of the executor's nine predictions inherited it and fell
+together. **Standing correction: a dispatch prior carries its evidence status — *measured*,
+*inferred from the record*, or *unread guess* — because an unlabeled prior travels as fact
+and bends the predictions built downstream of it.**
+
+The prior's defect is real on this asset — `TWINS|BRUSH` seams measure 12.6–31.4,
+concentrated at the elevated cameras. Right defect, wrong region.
+
+### Rulings that follow
+
+1. **The owner-seam arm is specified as its own polish arm**, distinct from the stroke-seam
+   levelling arm, and it inherits the Director's named region. Targeting data: source
+   disagreement ΔE 17.97 / median 17.56, atlas step 10.3–13.8 across the y090|y135 line;
+   the fair-set machinery in `e04_seam_sources.py` is the calibration instrument a
+   harmonisation fix would be measured with. **Its first question is why stage 1's σ=16
+   levelling did not touch a ΔE 13 step** — scale, or boundary class it never applied to.
+   Candidate fixes, one pre-convicted: naive cross-view averaging is **ghosting**
+   (`bake_multiview_glb`'s conviction stands); the live candidates are pre-projection tone
+   harmonisation between twins over co-visible surface, and cross-owner levelling at a
+   scale matched to the step. If research grounding is commissioned for the multi-view
+   consistency question, **RG01's citation gate re-runs through Crossref first** — its
+   findings are currently unverified.
+2. **`project_twins` saves what it computes.** The ownership map and the facing-weighted
+   blend both exist at projection time and are discarded; the executor had to reconstruct
+   one and could not obtain the other, which is exactly the "shading vs content" split the
+   report marks as not established. Owner-map and blend sidecars become standing outputs —
+   folded into Task 2's refactor touch, with the byte-identity gates still binding on the
+   existing outputs (additive sidecars move no atlas byte).
+3. **The polish queue, restated with the named region reassigned:** dilation flood (27.0%
+   of valid — still the largest class) · **owner seams** (the Director's named region;
+   will recur on E04) · stroke-seam levelling (12.6–31.4, elevated cameras) · blade band ·
+   A3's cap. All post-Gate-1 polish; **the galleon runs first, per the Director.**
+4. **The watchdog died hard twice today.** Before Task 3's TRELLIS reconstructions, read
+   `_watchdog_KILL.log` / the DEAD sentinel's reason and report it — a protection process
+   that keeps dying hard is itself a defect, and Task 3 is the first GPU work since.
+5. **Tasks 2 and 3 are CLEARED to proceed** as dispatched.
+
+### Endorsed by name
+
+Predictions hashed before any artifact was opened — twice, the source test separately
+before it ran. The claim map built with no replay and asserted against four recorded counts
+plus two checks it did not need to pass. S1 falsified by its own operand, corrected with an
+**inherited** floor rather than a chosen one, and still reported falsified rather than
+softened. The null control published with the one place it does not collapse cleanly. The
+`--head-facing-min` claim verified before commit — *"that is the exact error I am
+reporting"* — and the 0.003% numeric coincidence flagged so nobody builds on it. Six of
+nine predictions wrong, every one reported with its reason. **That is what a falsified
+prior is supposed to look like from the inside.**
