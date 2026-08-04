@@ -134,6 +134,14 @@ again. Anyone can run those tools and watch them fail the same way.
   of misdirected work.
 - **At the Director's zoom, not from a contact sheet.** Defects that decide acceptance are
   invisible at thumbnail scale.
+- **Beside the reference, with provenance.** The cheapest diagnostic in this repo is
+  *reference | asset | provenance | error* on one sheet, and it did not exist until E08's
+  Gate 0. E07 ran four arms and two gates without once putting the asset next to the thing it
+  is supposed to look like. When the sheet was finally built, the Director read the whole
+  thesis off panel 2 in a sentence — the blade is flesh where the reference is steel, and the
+  provenance panel shows it carries no reference at all. **Build that sheet before the
+  metrics, not after them.** A number tells you a region is wrong; the sheet tells you what it
+  was supposed to be, which is the part that decides what to do next.
 
 ## Experiments
 
