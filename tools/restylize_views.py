@@ -86,6 +86,11 @@ ap.add_argument("--prompt", default=(
     "with a leather belt, heavy dark boots, holding a massive greatsword, plain "
     "grey background, visible brushstrokes, painterly worked surface"))
 ap.add_argument("--negative", default="watermark, text, logo, blurry, photo, deformed")
+ap.add_argument("--emit-only", action="store_true",
+                help="build and write the control image + exact figure mask per view, then "
+                     "stop WITHOUT submitting to ComfyUI. For the Comfy Cloud path (E08 "
+                     "Amendment 18), where this rig cannot run the job but must still build "
+                     "the control — keeping control construction in one place.")
 args = ap.parse_args()
 BASE = f"http://{args.host}"
 BG = np.array([float(v) for v in args.bg.split(",")], dtype=np.float32)
@@ -216,6 +221,17 @@ for _i, path in enumerate(args.inputs):
     if n_contour < 500:
         raise SystemExit(f"ANDON: figure mask produced almost no contour "
                          f"({n_contour} px) — keying failed on {stem}")
+
+    if args.emit_only:
+        # E08 Arm B: the local rig cannot run this job — the staged model set is
+        # ~31 GB against a 31,200 MiB ceiling on a 32,607 MiB card, so generation
+        # moved to Comfy Cloud (Amendment 18). The control image is still built
+        # HERE, by the same function, because it is the one place that knows how:
+        # composite onto contrast, Canny, then OR in the mask's morphological
+        # gradient. Duplicating that in a cloud submitter is exactly the
+        # "root cause has as many sites as it has callers" trap this repo keeps
+        # paying for. Emit and stop; the caller uploads and submits.
+        continue
 
     req = urllib.request.Request(
         f"{BASE}/prompt",
