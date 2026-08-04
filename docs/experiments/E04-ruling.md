@@ -340,3 +340,52 @@ recording the original ask as the measured history. The backdrop re-derivation l
 mid-green material and should barely move.
 
 4d proceeds. After it: the E04 spec proper, from the advisor, with every number in hand.
+
+---
+
+## Ruling 8 (advisor, 2026-08-04) — Task 4 closes. The gate is stronger than costed, the backdrop decision moves to the spec on the operative number, and G7 sits in the open window.
+
+**4d ratified, and the clustering method with it** — a cluster table measures what is
+there and can return *"nothing like this is present,"* which a hand-placed disc never can;
+it earned that property immediately by finding no red anywhere on the ship. The stated
+limit is carried honestly: LANDED means the colour is present, not placed — the gate's
+known blind spot governs the table that feeds it.
+
+**The bands: ratified as measured, and both prior costings die.** Twelve names collapse to
+two hue groups, and the ship's forbidden span is **288° (80.0%) against W3's 170°
+(47.2%)** — the gate is *stronger* on the subject where it carries the judgment, reversing
+the executor's Task-1 warning and my Ruling 4 acceptance of it in one measurement. The
+Director's gold amendment did half of that work. **The blue band stays suspended** on its
+3.69% denominator with the ±10° margin named as convention — suspend rather than invent,
+correctly applied.
+
+**G7 red-lined gun port lids: the window is open.** No red exists on the ship above the
+chroma floor — an element that did not land, G6's class exactly, no re-roll. **Default
+absent the Director's word: G7 stays red as authored**, and the E04 spec gains what is
+actually a valuable thing — a known-miss element to test landing mechanisms against
+(stronger phrasing, ordering, or the contradiction protocol). His one-sentence overrule to
+brown-as-arrived stands open, per the G6 precedent.
+
+**The backdrop: the regression is in the metric, and the decision moves to the spec on the
+operative number.** Two facts that pull apart: the min-distance metric says the realised
+backdrop (173) is *worse* than W3's grey (0.1000 vs 0.1451) — driven by a near-neutral
+pale cluster (rgb 198,195,192 · 4.62% · C\* 2.2, below the chroma floor and thus invisible
+to the palette gate) that no derivation anticipated. But the **operative** quantity — the
+fraction of silhouette pixels at or under the key cut — measured **1.48% on the pair
+against the accepted character's 1.77–2.45%.** The repo's rule is to gate on the failure
+itself, not a proxy for it, and min-distance is the proxy here. **Ruling 5's regeneration
+clause is overtaken:** the pair is Director-ratified canon (Ruling 7) and a derivation
+metric does not outrank his eye — the pair stands, and its realised backdrop is now simply
+*data* for the twins' backdrop decision. **The spec's default, stated now so it is not
+chosen while looking at twin results: the twins' backdrop word stays `plain white`** — its
+ask→realise transfer is the only one measured (255→173), and its operative margin beats
+the accepted baseline. Chasing the metric optimum through an unmeasured transfer function
+would trade a measured 1.48% for an unknown; the spec may overrule this default only with
+a measurement, not a derivation. The pale cluster is banked as a named watch item: below
+the chroma floor, ungated by palette, tightest key margin on the asset — the E04 twins'
+keying reports it per view.
+
+**Task 4 is closed.** Next: the E04 spec proper, from the advisor — the fit-axis work item
+(`turn_render` + `silhouette_masks` together, character anchors byte-identical), the cull
+superset grown to the ship's cameras, the route staged on the measured profile, the
+landing-test design for G7, and the gates this arc has earned, derived per subject.
