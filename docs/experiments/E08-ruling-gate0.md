@@ -999,6 +999,70 @@ ceiling and ~79% is the ceiling at any count tested. The honest framing of E08's
 >    present or halt. **A spec tuned until it passes is not a spec.**
 > 3. **Arm B** — eight views carrying the spec, drift measured against it rather than argued.
 
+> ### Amendment 15 (advisor, 2026-08-04) — the halt stands; co-location beats my grammar hypothesis
+>
+> **N11 dropped, the stopping rule fires, and I am not rerolling it.** The grammar hypothesis
+> was mine and it is not what is doing the work.
+>
+> **The sharper measurement is that the model did not respond at all** — median ΔE **1.07** over
+> the whole figure, 1.15 on the forearm. Not a wrong element, not a mis-bound attribute: no
+> perturbation. Grammar failure predicts *something* moves. Nothing moved. That is evidence
+> against my hypothesis and for the executor's.
+>
+> | element | form | result |
+> |---|---|---|
+> | gold knee plates | head noun, **replaces** what occupied the surface | landed |
+> | brown leather bracers | head noun, **replaces** what occupied the surface | landed |
+> | gold trim on the bracer | modifier, **co-located** | dropped |
+> | a gold plate on each outer forearm | own head noun, **co-located** | dropped |
+>
+> **Both grammatical forms land when they replace and drop when they add.** Co-location is the
+> better axis, and the executor recorded the pattern *before* the roll rather than after.
+>
+> ### What "weaker premise" actually means now — and it is not what the stopping rule assumed
+>
+> Amendment 12 assumed any element could be stated and obtained. That is false, so the stopping
+> rule's condition is met and the halt is honoured. But the reason it mattered has changed under
+> the Director's Amendment 14 ruling, and the corrected premise is narrower rather than broken:
+>
+> > **A specification determines what occupies each surface. It cannot add a second element to a
+> > surface already occupied.**
+>
+> **N11 failed because we were patching, and a new sprite is not patched.** Retrofitting a gold
+> plate onto a fur cuff that the model has already committed is a different operation from
+> specifying a character from scratch, where every element occupies its own surface by
+> construction. The pipeline's actual use case is the second one. **So the premise is intact for
+> what it is for, and the failure mode is specific to retrofit** — which is itself a pipeline
+> finding worth having: *specify from scratch, never patch.*
+>
+> ### Step 2 is not a reroll, and it is now a sharp test
+>
+> The full-spec generation was already the gate and it is a *different* operation from N11 — all
+> sixteen elements specified simultaneously, nothing added to anything. The executor's reason for
+> isolating N11 first has been served, so it is clean to run.
+>
+> **And the spec has three co-location cases built into it**, which makes it discriminating
+> rather than merely confirmatory. Pre-registered:
+>
+> - **N5** gold scrollwork *on the pauldrons*, **N9** green panels *in the skirt*, **N11** a gold
+>   plate *on each outer forearm* — all additions to occupied surfaces. **Predicted to drop.**
+> - The remaining thirteen occupy their own surfaces. **Predicted to land.**
+>
+> **If that pattern holds, co-location is confirmed and is a real, statable pipeline constraint.
+> If N5 and N9 land while N11 drops, co-location is wrong too and something narrower is going
+> on.** Either result is worth the one generation it costs. Halt and report; **a spec tuned until
+> it passes is still not a spec.**
+>
+> **Arm B stays waiting** on step 2, as sequenced — not on N11.
+>
+> ### The instrument the executor threw away
+>
+> A gold-pixel count over the forearm crop caught the pauldron edge and read 5.6% / 5.1% against
+> canon's 1.96% — **inverting the truth**, and it would have flattered the reading. It was
+> reported as unusable rather than quoted. That is the third self-caught bad instrument in this
+> session, after the vacuous dilation check and the invented precedent, and it is the habit that
+> makes the rest of the record worth trusting.
+
 ## 5. What this does not settle
 
 Whether ~40–53% reference coverage is *enough* for the Director to accept the asset is not a

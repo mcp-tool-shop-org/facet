@@ -50,10 +50,21 @@ the target; there is a belt medallion. A term that misnames an element, and prod
 thing by accident, is the exact failure the identity-in-the-prompt rule exists to kill. The
 Director left the call to the advisor: **the medallion is the element, the necklace term goes.**
 
-**N11 is the live experiment.** Predicted before running: promoting the trim from a compound
-modifier to its own head noun makes it land. **One roll. If it drops again, the specification
-premise is weaker than [Amendment 12](../docs/experiments/E08-ruling-gate0.md) assumed, Arm B
-waits, and this is reported rather than reworded.**
+**⚠ N11 was the grammar experiment and it DROPPED — measured, not predicted.** Promoting the
+trim to its own head noun produced **no change at all**: median ΔE 1.07 over the figure, 1.15 on
+the forearm. Not a wrong element — no response to the phrase. The advisor's grammar hypothesis
+is not what governs.
+
+**The measured axis is co-location, not grammar** ([Amendment 15](../docs/experiments/E08-ruling-gate0.md)):
+
+> A specification determines what occupies each surface. It cannot add a second element to a
+> surface already occupied.
+
+Knee plates and bracers *replaced* what was on their surface and landed, in the same grammatical
+form that dropped when *adding*. **N5, N9 and N11 are the three co-location cases in this spec
+and are predicted to drop; the other thirteen are predicted to land.** That prediction is
+recorded before the full-spec run, and the run is the test of it. **Not to be reworded until it
+passes — a spec tuned until it passes is not a spec.**
 
 ## MESH-SUPPLIED — arrives through the control from geometry; record the dependency
 
