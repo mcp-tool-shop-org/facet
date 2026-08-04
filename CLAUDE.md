@@ -115,6 +115,20 @@ background colour. A2 admitted 257,506 texels at median ΔE 38.31 from backgroun
 within ΔE 10 — cleaner than the set already trusted. That is what makes a widening adoptable
 rather than merely larger.
 
+**"One variable" is a property of the dependency graph, not of the parameter you edited.** The
+background arm changed one setting — the clay render's background colour — and thereby changed
+*two* inputs to the generator, because the control image is built from a mask keyed off that
+same render. Contour went 33,026 → 9,699 px alongside the intended change, and the result
+could not be apportioned. Before running an arm, trace what the parameter feeds and pin the
+consumers you did not mean to vary.
+
+**A failure's signature tells you which cause to suspect.** The same run repainted the subject,
+and the question was whether the background reached the latent or the control had been
+weakened. The answer was in the *kind* of change: a latent colour cast shifts hue, and this
+shifted **material and identity** — gold plates gone, boots to fur, wine-red to green — which
+is the documented signature of a control that constrains nothing. Read what broke before
+deciding what broke it.
+
 **Distant medians do not imply a gap between them.** An advisor read two summary statistics —
 region medians around 25 against a contaminated set's median of 4.9 — as evidence of a
 separable distribution, and specified a threshold "derived from the measured bimodality."

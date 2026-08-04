@@ -444,6 +444,68 @@ ceiling and ~79% is the ceiling at any count tested. The honest framing of E08's
 >
 > **A2 stands. A3's invariant is kept and correct. Front's 633,518 stays unbanked.**
 
+> ### Amendment 6 (advisor, 2026-08-05) — the halt is ratified; one bounded arm before the line closes
+>
+> **REQ 2 fired as designed and the arm is withdrawn.** Median ΔE **14.30 / 11.41** inside the
+> exact silhouette, 69.9% / 56.1% above ΔE 10, and the executor looked before concluding: it is
+> **material-level, not a hue shift** — gold knee plates gone, charcoal boots to brown fur,
+> wine-red skirt to green, on the exact terms the prompt held byte-identical. An arm that
+> improves keying by rewriting the reference has broken what it was protecting.
+>
+> **REQ 1 produced the session's cleanest single number.** Derived background rgb (0,0,255) at
+> min ΔE **123.31** to the subject gamut, against the current grey at **6.00** — *below the
+> ΔE 10 line, i.e. the background is effectively inside the subject's own gamut.* That is
+> A4's failure expressed in one figure, and it should be quoted whenever someone proposes
+> thresholding a keyed mask on colour again.
+>
+> **REQ 3 passed and falsified a prediction worth keeping:** the render background beat an
+> explicit "plain grey background" prompt term at denoise 0.92. The render, not the text, owns
+> the background.
+>
+> ### The confound the executor flagged is load-bearing, and I am not letting it go
+>
+> The control image changed too — contour **33,026 → 9,699 px** — because it is built from the
+> keyed clay mask and the mask became correct. The executor called this unapportionable, which
+> is right for *this* run. But their own observation points hard at which side it came from:
+>
+> **A latent colour cast produces a hue shift. This was not a hue shift; it was identity and
+> material.** And identity drift under a weakened control is the mechanism [E01](E01-facial-structure-ceiling.md)
+> already measured in this repo — a control that constrains nothing lets the model regenerate
+> the character freely, which is how silhouette IoU 0.290 became 0.777 when the control was
+> *strengthened*. A 3.4× reduction in control pixels is a large weakening, and the drift
+> signature matches control weakness rather than latent contamination.
+>
+> **One arm, bounded, before this line closes: hold the control constant and vary only the
+> latent background.** Build the control image from the **exact mesh silhouette** rather than
+> any keyed mask — the same move A2 made for the projection path, and it removes `figure_mask`
+> from the last place it governs anything. Then the blue and grey renders differ only in what
+> reaches the latent.
+>
+> - **If the subject still repaints**, the background reaches the latent and rewrites identity.
+>   The arm is dead, the erosion's cost is confirmed necessary, and this line closes with three
+>   falsified alternatives instead of two-and-a-confound.
+> - **If it does not**, we get colour separation, a correct keyed mask *and* the blade — and the
+>   whole A3/A4 sequence resolves.
+>
+> Cost is one twin pair, ~2 minutes of GPU, against a prize that decides the arm. Pre-registered
+> so it cannot be read either way after the fact.
+>
+> **Everything else stands as reported.** Generating both sides with the same pinned prompt was
+> correct — it is what "vary only the render background" requires, and comparing against the
+> shipped twin would not have been. `turn_render` gaining `--bg` with the default unchanged, and
+> the clay re-render reproducing the shipped views byte-for-byte, are the right shape.
+>
+> ### A repo defect this uncovered, recorded separately
+>
+> **The shipped asset's back twin cannot be reproduced.** Its prompt is not in the repo:
+> `E02-prompts.json` holds the eight brush strokes, not the two twin cameras, and
+> `restylize_views.py` takes a single `--prompt` for all inputs whose default is front-flavoured.
+> E02's report states a different prompt was used for the back. That is a provenance hole in a
+> shipped artifact, and it is the same failure `texpass_loop.ps1` was rewritten to fix when a
+> recipe existed only in a log. **`restylize_views.py` should take per-view prompts from a file
+> under version control**, like the loop does. Filed, not fixed here — it is not this arm's
+> variable.
+
 ## 5. What this does not settle
 
 Whether ~40–53% reference coverage is *enough* for the Director to accept the asset is not a
