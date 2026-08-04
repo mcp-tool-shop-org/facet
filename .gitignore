@@ -14,6 +14,15 @@
 *.exr
 !docs/**/*.png
 
+# canon/ is the ONE exception, and it is the exception this file's own premise allows.
+# "Large and regenerable" is measured FALSE for these two: rebuilt from the same clay,
+# the same default prompt, the same seed and the same control, the front twin does not
+# reproduce (painted 17.73% vs 17.38%, IoU 0.9040 vs 0.9088), and the parameters that
+# made it are not in this repo. The Director ruled 2026-08-04 that this pair IS the
+# character. It is not regenerable, so it is not an output — it is an input we happen
+# to hold.
+!canon/**
+
 # Working dirs
 state/
 job_*/

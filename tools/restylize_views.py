@@ -50,6 +50,13 @@ from scipy.ndimage import minimum_filter
 ap = argparse.ArgumentParser()
 ap.add_argument("--inputs", nargs="+", required=True)
 ap.add_argument("--outdir", required=True)
+ap.add_argument("--prompts",
+                help="versioned JSON of per-view prompts, keyed by INPUT STEM, with an "
+                     "optional _negative. The twin pair this project treats as canon was "
+                     "made with prompts that were never written down — E02-prompts.json "
+                     "holds the eight brush strokes, not the two twin cameras — so the "
+                     "character cannot be regenerated. A prompt that lives only in a shell "
+                     "history is the same defect texpass_loop.ps1 was rewritten to remove.")
 ap.add_argument("--masks", nargs="+", default=None,
                 help="figure mask per input, parallel to --inputs. Supply the exact "
                      "mesh silhouette here; without it the mask is keyed off the "
@@ -139,7 +146,7 @@ def upload(path):
     return json.load(urllib.request.urlopen(req, timeout=60))["name"]
 
 
-def graph(render_name, ctrl_name):
+def graph(render_name, ctrl_name, pos, neg):
     return {
         "1": {"class_type": "UNETLoader", "inputs": {
             "unet_name": "qwen_image_fp8_e4m3fn.safetensors", "weight_dtype": "default"}},
@@ -156,9 +163,9 @@ def graph(render_name, ctrl_name):
         "6": {"class_type": "ModelSamplingAuraFlow", "inputs": {
             "model": ["5", 0], "shift": 3.1}},
         "7": {"class_type": "CLIPTextEncode", "inputs": {
-            "clip": ["2", 0], "text": args.prompt}},
+            "clip": ["2", 0], "text": pos}},
         "8": {"class_type": "CLIPTextEncode", "inputs": {
-            "clip": ["2", 0], "text": args.negative}},
+            "clip": ["2", 0], "text": neg}},
         # latent comes from the UNTOUCHED render, so the composite bg never ships
         "9": {"class_type": "LoadImage", "inputs": {"image": render_name}},
         "10": {"class_type": "LoadImage", "inputs": {"image": ctrl_name}},
@@ -182,8 +189,15 @@ if args.masks:
     assert len(args.masks) == len(args.inputs), (
         f"ANDON: {len(args.masks)} masks for {len(args.inputs)} inputs — --masks is "
         f"parallel to --inputs")
+PROMPTS = json.load(open(args.prompts, encoding="utf-8")) if args.prompts else {}
 for _i, path in enumerate(args.inputs):
     stem = os.path.splitext(os.path.basename(path))[0]
+    pos = PROMPTS.get(stem, args.prompt)
+    neg = PROMPTS.get("_negative", args.negative)
+    if args.prompts and stem not in PROMPTS:
+        print(f"[restyle] {stem}: NOT in {os.path.basename(args.prompts)} — falling back "
+              f"to --prompt. A per-view prompt is how a rear camera is kept from being "
+              f"told about a beard (E01).", flush=True)
     ctrl, fm, n_edge, n_contour, n_ctrl = control_image(
         path, args.masks[_i] if args.masks else None)
     ctrl_path = os.path.join(args.outdir, f"{stem}_control.png")
@@ -205,7 +219,7 @@ for _i, path in enumerate(args.inputs):
 
     req = urllib.request.Request(
         f"{BASE}/prompt",
-        data=json.dumps({"prompt": graph(upload(path), upload(ctrl_path)),
+        data=json.dumps({"prompt": graph(upload(path), upload(ctrl_path), pos, neg),
                          "client_id": "restylize"}).encode(),
         headers={"Content-Type": "application/json"})
     pid = json.load(urllib.request.urlopen(req, timeout=60))["prompt_id"]
@@ -230,6 +244,34 @@ for _i, path in enumerate(args.inputs):
                 with open(dst, "wb") as fh:
                     fh.write(urllib.request.urlopen(f"{BASE}/view?{q}", timeout=120).read())
                 print(f"[restyle] {stem} -> {dst}  ({time.time() - t0:.0f}s)", flush=True)
+                # Provenance travels WITH the artifact. The pair this project treats as
+                # canon has an unknown-parameters section in its manifest because no
+                # sidecar existed when it was made, and it therefore cannot be
+                # regenerated — measured, not feared (E08 director ruling).
+                import hashlib
+                side = {
+                    "output": os.path.basename(dst),
+                    "output_sha256": hashlib.sha256(open(dst, "rb").read()).hexdigest(),
+                    "input": os.path.abspath(path),
+                    "input_sha256": hashlib.sha256(open(path, "rb").read()).hexdigest(),
+                    "mask": os.path.abspath(args.masks[_i]) if args.masks else None,
+                    "mask_source": "file" if args.masks else "keyed from the render",
+                    "prompt": pos, "negative": neg,
+                    "prompts_file": os.path.abspath(args.prompts) if args.prompts else None,
+                    "prompt_from_file": bool(args.prompts and stem in PROMPTS),
+                    "seed": args.seed, "steps": args.steps, "cfg": args.cfg,
+                    "denoise": args.denoise, "lora_w": args.lora_w,
+                    "cn_strength": args.cn_strength,
+                    "canny_low": args.canny_low, "canny_high": args.canny_high,
+                    "bg": args.bg, "contour_width": args.contour_width,
+                    "tol": args.tol, "erode": args.erode,
+                    "control_px": {"total": n_ctrl, "canny": n_edge, "contour": n_contour},
+                    "figure_mask_pct_of_frame": round(float((fm > 0.5).mean() * 100), 3),
+                }
+                with open(os.path.join(args.outdir, f"{stem}_gen.json"), "w",
+                          encoding="utf-8") as fh:
+                    json.dump(side, fh, indent=1)
+                print(f"[restyle] {stem}: provenance -> {stem}_gen.json", flush=True)
                 break
         if time.time() - t0 > 900:
             raise SystemExit(f"ANDON: restylize timed out on {stem} (900s)")

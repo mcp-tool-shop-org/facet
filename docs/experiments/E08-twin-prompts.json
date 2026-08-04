@@ -1,0 +1,13 @@
+{
+  "_purpose": "Per-view prompts for the TWIN cameras (yaw 0 and yaw 180), versioned. E02-prompts.json covers the eight brush strokes and never covered these two, which is why the canon pair's prompts are unknown and the pair cannot be regenerated. Consumed by restylize_views.py --prompts; keys are INPUT STEMS.",
+
+  "_rule": "Inherited from E02-prompts.json: describe what THAT camera can see and omit what it cannot. Palette and material words are IDENTITY and stay byte-identical across views; only anatomy and framing words change. A rear camera is never told about a beard, a face, or the belt medallion.",
+
+  "_armour_note": "w3clay_0 below is restylize_views.py's own default prompt with ONE term inserted — 'gold knee plates' — and nothing else altered, so the test is a single term. The Director ruled 2026-08-04 that the canon twin's gold knee plates are the design. Those plates were never in any prompt: they came through the ControlNet from the mesh's own knee armour under a noisy keyed-mask control, and vanished when the control was cleaned to the exact silhouette. If naming them restores them, canon can be stated in the prompt and the control is free to be clean. Untested before now.",
+
+  "_negative": "braided belt, plaited belt, woven belt, rope belt, shoulder strap, chest strap, baldric, bandolier, watermark, text, logo, blurry, photo, deformed",
+
+  "w3clay_0": "a burly bald warrior with a long red beard, dark green knitted sleeveless tunic, polished gold pauldrons, gold necklace, dark red layered cloth skirt with a leather belt, gold knee plates, heavy dark boots, holding a massive greatsword, plain grey background, visible brushstrokes, painterly worked surface",
+
+  "w3clay_4": "rear view of a bald muscular warrior seen from directly behind, back of a bare shaved skull, no face, broad muscular back, high knitted collar and a vertical strap running down the spine, raised right arm gripping a leather-wrapped hilt, dark green ribbed knitted sleeveless tunic, ornate polished gold pauldrons, dark wine-red layered cloth skirt, plain wide dark brown leather belt band, gold-trimmed brown leather bracers, gold knee plates, heavy dark charcoal boots, plain flat grey background, painterly visible brushstrokes, worked matte surface"
+}
