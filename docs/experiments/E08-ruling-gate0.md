@@ -1571,6 +1571,72 @@ ceiling and ~79% is the ceiling at any count tested. The honest framing of E08's
 > is not recoverable by measurement afterwards.** Asymmetric cost, correctly weighed. A halt that
 > costs one exchange beats an irreversible loss of two views.
 
+> ### Amendment 26 (advisor, 2026-08-04) — intersect the trust mask with the silhouette. It is a correction, not a tune.
+>
+> **The andon caught a real pathway and the executor's self-overturn is the finding.** The case
+> for "harmless proxy" was good — keyed area 11.93% against the silhouette's 11.76%, a bbox-only
+> blowout, and a shadow outside the silhouette cannot be projected because texels are sampled
+> from geometry. Then the measurement: the keyed mask *also* feeds `distance_transform_edt`, the
+> shadow is **connected** to the figure, and **27.49% of the figure's texels get an edge distance
+> that changes by more than half a pixel, 21.24% by more than two, max 36.22.** The erosion
+> decides whether paint is trusted. **Matching on area while the operand that matters diverges**
+> is the same shape as half the errors already catalogued here.
+>
+> ### Ruled: intersect, and it is not tuning
+>
+> This repo already states the rule — *one mask cannot answer two questions: the mesh silhouette
+> answers **is there surface**, the twin's own mask answers **is the paint trustworthy**.* Paint
+> outside the silhouette is on **no surface at all**. Asking whether it is trustworthy is a
+> category error, and letting it set the boundary of the distance field corrupts the answer for
+> texels that do exist.
+>
+> **Would the rule have been the same whatever came out? Yes.** *Restrict the trust mask to
+> surface that exists* is derivable from the two-questions rule and could have been written
+> before any of this. **It should have been written when A2 landed** — A2 fixed the *surface*
+> question with geometry and left the *trust* question keying an unbounded region. One root
+> cause, two consumers, one repaired. Third time that pattern has cost this repo a halt.
+>
+> ### But it is its own measured change, not a rider on Arm B
+>
+> The executor is right that it moves `dist_in` at the rim for **every** twin and therefore
+> restates A2's 938,718. That number does not get quietly replaced.
+>
+> **Use the control just built.** The 2-camera run on the new twins and settings —
+> **1,050,368 / 43.7% of valid / 83.0% of reachable** — is a clean single-variable baseline.
+> Re-run exactly that with the intersection: one variable, no GPU, minutes.
+>
+> - **Small and in the expected direction** (more trusted paint at the rim, since erosion is no
+>   longer pushed deep by a phantom boundary) → adopt, restate A2 in the README with the reason,
+>   proceed to eight cameras.
+> - **Large, or the wrong direction** → halt and report. It would mean the shadow pathway was
+>   load-bearing in some way nobody has measured, which has happened before in this repo.
+>
+> ### The bbox andon must not become uncheckable
+>
+> **Intersecting makes the bbox match by construction — which would make the andon a check that
+> cannot fail**, and this repo forbids exactly that. So:
+>
+> - **Measure the bbox on the RAW keyed mask, before intersection**, and keep reporting it. It is
+>   now a *twin-quality* diagnostic: the twin painted a shadow, and that is worth knowing.
+> - **Move the halt to what the intersection does not foreclose.** The intersection kills
+>   "shadow contaminates the distance field." It does **not** kill "the twin is genuinely
+>   misregistered" — so halt on a registration quantity (silhouette IoU or centroid offset)
+>   rather than on bbox extent, which the fix now determines.
+>
+> That is Amendment 3's rule applied again: **put the andon on the direction the invariant does
+> not bound.**
+>
+> ### On the numbers
+>
+> 83.0% of reachable at two cameras confirms Amendment 9 — **the acceptance lever is spent.**
+> Whatever eight cameras buy will come from the *ceiling*, not from the acceptance rate. And the
+> executor is right that 43.7% against A2's 39.1% is **not** a camera-count comparison: A2 used
+> the old twins and corner-median keying. It is the new twins' two-camera baseline and the number
+> the eight-camera result gets read against.
+>
+> **No third roll, and view 6 is not dropped.** Dropping a camera is unrecoverable by
+> measurement; the intersection is recoverable by regression. Take the recoverable path.
+
 ## 5. What this does not settle
 
 Whether ~40–53% reference coverage is *enough* for the Director to accept the asset is not a
