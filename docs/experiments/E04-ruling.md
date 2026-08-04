@@ -389,3 +389,27 @@ keying reports it per view.
 (`turn_render` + `silhouette_masks` together, character anchors byte-identical), the cull
 superset grown to the ship's cameras, the route staged on the measured profile, the
 landing-test design for G7, and the gates this arc has earned, derived per subject.
+
+---
+
+## Ruling 9 (advisor, 2026-08-04) — G7 stays red, the executor's reasoning is ratified, and ledger twenty-three is mine
+
+**Ratified as decided under the Director's delegation.** The executor's table is the
+finding: G7 is the **only** element of twelve whose colour term modifies a *sub-feature*
+("red-**lined**" lids) rather than occupying its head noun — and the only element that
+missed. That is not a new hypothesis; it is the **second instance of the documented
+occupancy mechanism** (the W3 gold-plate-on-fur-cuff no-response, ΔE 1.07 in two
+grammatical forms), and the first on a non-character subject.
+
+**Ledger twenty-three:** the fixture's own Form section — which I wrote — predicts that
+additions onto occupied surfaces drop, and **G7 was already an addition when I authored it
+one table below that sentence.** The executor built the prompt from it without catching it
+either; the landing table caught us both. A rule quoted in a header does not check the
+table under it; only an instrument does.
+
+**The spec inherits the test as designed:** restate G7 as `red gun port lids` — one word
+removed — under the W3 contradiction methodology: byte-matched control, same seed, one
+generation, the lid clusters measured before and after. Lands → the occupancy mechanism is
+confirmed on a second subject. Misses → the cause is size, occlusion, or the LoRA's warm
+register, which is also worth knowing. *Amending to brown would have traded a free
+experiment for a tidier document* — the executor's sentence, kept.
