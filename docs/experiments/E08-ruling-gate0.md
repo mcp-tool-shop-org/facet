@@ -1063,6 +1063,58 @@ ceiling and ~79% is the ceiling at any count tested. The honest framing of E08's
 > session, after the vacuous dilation check and the invented precedent, and it is the habit that
 > makes the rest of the record worth trusting.
 
+> ### Amendment 16 (advisor, 2026-08-04) — my step-2 gate has a denominator of one
+>
+> **Caught before the number existed, which is what I asked for.** 14–15 of the 16 NAMED
+> elements already arrive **unprompted** — the belt medallion, the green skirt panels, the
+> ornate crossguard and the gold pommel are all present in an image whose prompt named none of
+> them. So "15/16 landed" cannot separate *the specification works* from *the LoRA, mesh and
+> control already produce this character.* **The honest unit is: of the elements that were
+> absent, how many arrived? — and that denominator is one, possibly two.**
+>
+> Step 2 still runs, because it tests two real things — regression across sixteen simultaneous
+> elements, and N11 under simultaneous specification — but **it is not the specification gate I
+> claimed it was**, and its limits go in the report rather than being discovered later.
+>
+> **N5 is the discriminator and the executor has the sign right:** if scrollwork appears where it
+> was absent, that **falsifies** co-location rather than confirming it.
+>
+> ### The test with a real denominator — and it is the pipeline question
+>
+> If 14–15 of 16 elements arrive without being named, the question is not *does naming work*. It
+> is **does naming matter at all** — and for a future sprite that is not this dwarf, whether the
+> LoRA, mesh and control will supply *this dwarf's* attributes regardless of what the prompt
+> says. That is the difference between a pipeline and a dwarf generator.
+>
+> **The contradiction test.** Name an element that **conflicts** with one arriving unprompted —
+> *silver pauldrons* where gold arrive unbidden, a *black* skirt where wine-red arrives — and
+> measure whether the prompt overrides the supplied attribute.
+>
+> - **The prompt wins →** identity is in the prompt, Amendment 12's architecture holds, and the
+>   route generalises to other characters.
+> - **The supplied attribute wins →** identity is in the LoRA and the mesh for those elements,
+>   the specification is decorative for them, and **the pipeline produces this dwarf in different
+>   clothes.** That would be the most important negative result in this repo, and it is cheap.
+>
+> Denominator equals however many elements are contradicted, by construction. **This outranks
+> Arm B**, which is eight expensive views of a question this answers for one.
+>
+> ### The blocker
+>
+> `CLAUDE.md`'s rule is *cap the consumer; never raise the ceiling*, and the executor was right
+> that the ceiling is not theirs to move — but it read the rule too narrowly. The launch flags
+> are one way to cap a consumer, not the only one, and reducing what a job stages is squarely
+> the sanctioned direction. **The ceiling stays at 31,200 MiB. Nothing about it is negotiable.**
+>
+> Order: try once on a **settled** instance first — the executor's own diagnosis is that the four
+> passes that succeeded today ran warm, and the failures competed with ComfyUI-Manager's
+> 167-item registry fetch. If it recurs, the rig has a **verified local knowledge base** for
+> exactly this (`E:\AI\readouts\model-knowledge\catalog\comfy.md`); consult it rather than
+> guessing at flags. One hypothesis worth testing there and **not acting on blind**:
+> `--disable-smart-memory` prevents ComfyUI unloading between nodes, so the 7,910 MB text
+> encoder may stay resident through sampling when it is no longer needed — which would make the
+> cap itself part of the 31 GB.
+
 ## 5. What this does not settle
 
 Whether ~40–53% reference coverage is *enough* for the Director to accept the asset is not a
