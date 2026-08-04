@@ -31,7 +31,7 @@ onto an occupied surface, and any future edit that becomes one is predicted to d
 | G3 | black tarred strakes along the hull | the horizontal wale bands |
 | G4 | weathered tan canvas sails | **deliberately warm-toned, not white** — see stressor S1 |
 | G5 | gilded scrollwork on the stern castle | carved relief is its own surface (the knee-plate precedent) |
-| G6 | a verdigris copper spire on the stern turret | the distinctive spired turret; verdigris is chroma the gate can hold |
+| G6 | a gilded spire on the stern turret | **⚠ AMENDED by the Director, 2026-08-04** ("I love the gold. I approve") — authored as *verdigris copper*; the styled pair arrived gold and he kept it. The spire joins the gold family (G1/G5/G12). The 4d landing table records the history: verdigris asked, gold arrived, Director ruled. |
 | G7 | red-lined gun port lids | the red band of the palette |
 | G8 | black iron cannon barrels | run out of the ports, per the clay |
 | G9 | dark tarred rigging and ratlines | the thin-structure stressor, named so it is not accidental |

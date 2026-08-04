@@ -314,3 +314,29 @@ stays verdigris as authored, and the E04 spec treats the miss as a measured fact
 **4d is CLEARED:** the landing table · bands from the fixture's materials cross-checked
 against the pair's measured colours · the backdrop re-derivation on realised values · the
 G6/G11 merge question · *suspend rather than invent* standing wherever the data is thin.
+
+---
+
+## Ruling 7 (advisor, 2026-08-04) — the Director approves the pair; G6 amends to gold; the overrule window closes
+
+**"I love the gold. I approve."** The styled target pair is **ratified as the ship's canon
+target** — frozen, versioned, specification source and visual target, never a projection
+reference, exactly as its sidecar declared at birth. **G6 amends in place** from verdigris
+copper to a gilded spire, joining the gold family.
+
+**The distinction that keeps this honest, stated so it cannot become a laundering
+precedent:** this is not a spec tuned until it passes. The measured fact is preserved —
+verdigris was asked, gold arrived, and the landing table records that history — and the
+amendment was made by the **canon's owner looking at the artifact**, which is his gate and
+nobody else's. A spec author softening a miss is forbidden; a Director ruling that the
+arrived material is the ship he wants is the system's whole point. The W3 precedent is N6:
+a term that misnames what canon actually wants gets struck by the owner, on sight.
+
+**Consequences for 4d, all simplifying:** the G6/G11 merge question is **mooted** —
+verdigris leaves the palette, sea-blue stands alone, and the forbidden hue span *recovers*
+most of what G11 spent, which strengthens the gate on exactly the subject where it carries
+the judgment. The landing table now scores the amended G6 (gilded spire: **landed**) while
+recording the original ask as the measured history. The backdrop re-derivation loses one
+mid-green material and should barely move.
+
+4d proceeds. After it: the E04 spec proper, from the advisor, with every number in hand.
