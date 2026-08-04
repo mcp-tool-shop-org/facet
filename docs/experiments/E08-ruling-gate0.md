@@ -956,6 +956,49 @@ ceiling and ~79% is the ceiling at any count tested. The honest framing of E08's
 > canon pair — under-filling the silhouette at 17.38% / 17.01% against 19.01% while showing a
 > body that is not the mesh's is exactly why.
 
+> ### Amendment 14 (Director, 2026-08-04) — W3 is a test character. Stop gating on its canon.
+>
+> **"This is a test character, so there is no canon. You should either make canon or stop gating
+> so much on a test character. Probably should make canon."** And: *"we need to focus on making
+> the pipeline for future sprites."*
+>
+> **The frame error is mine and it is the same one he raised earlier in the session.** I spent
+> his attention on which armour a test dwarf wears — three questions across two turns — when the
+> product is the pipeline and W3 is a fixture. Asking a Director to ratify canon that does not
+> exist is not caution; it is offloading a decision I should have made.
+>
+> **Canon is made, by the advisor, and it is written down:**
+> [canon/W3-IDENTITY.md](../../canon/W3-IDENTITY.md). Sixteen NAMED elements in the three
+> categories of Amendment 13, every one written as its own head noun so the spec is itself the
+> test of the grammar constraint. Any line is his to overrule in a sentence; none needs his
+> ratification to proceed.
+>
+> **The necklace call was left to me and is decided: the medallion is the element, the necklace
+> term goes.** A term that misnames an element and produces the right thing by accident is
+> exactly what the identity-in-the-prompt rule exists to kill.
+>
+> ### The gating rule, restated
+>
+> **The Director gates outcomes. The advisor authors fixtures.** For a test subject, canon is a
+> *test fixture* — it exists so "did the element land" has a ground truth, not because the
+> warrior matters — and authoring it is advisor work. His attention goes to: **does the mechanism
+> work, and is the finished asset better.** Amendment 10's "he gates each twin" stands for a
+> *shipping* character and is withdrawn for this one.
+>
+> **What actually transfers to future sprites** — the product, and the reason this line was worth
+> running: identity lives in the prompt, not the twin · elements must be head nouns · the twin's
+> only job is registration · surface comes from the raycast silhouette, never a keyed render ·
+> background estimation is a fitted border ring, never a corner median · every generation writes
+> a provenance sidecar · a recipe that does not reproduce its output is not a recipe. None of
+> that is about a dwarf.
+>
+> ### Next, and nothing here needs him
+>
+> 1. **N11** — the promoted forearm plate. One roll, prediction recorded, stopping rule stated.
+> 2. **The full-spec reproduction gate** — generate from N1–N16 on a clean control; every element
+>    present or halt. **A spec tuned until it passes is not a spec.**
+> 3. **Arm B** — eight views carrying the spec, drift measured against it rather than argued.
+
 ## 5. What this does not settle
 
 Whether ~40–53% reference coverage is *enough* for the Director to accept the asset is not a
