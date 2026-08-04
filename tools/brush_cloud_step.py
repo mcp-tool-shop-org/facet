@@ -36,9 +36,19 @@ Image.MAX_IMAGE_PIXELS = None
 # ⚠ BYTE-MATCHED to texpass_brush.py's defaults. Any divergence here is a silent second
 # variable in a run that is only supposed to carry one (the prompts).
 DEFAULTS = {"seed": 770700, "steps": 20, "cfg": 2.5, "lora_w": 0.75, "cn_strength": 1.0}
-# The cloud's own name for the imported LoRA, READ OFF the imported card in
-# E08-cloud-build-order.md, not predicted from the <owner>__<repo>__<file> pattern.
-CLOUD_LORA = "mikeyfrilot__saltroad-lora__saltroad_style_v2_lowlr_000001500.safetensors"
+# ⚠ CORRECTED (E08 Amendment 31). The cloud's name for the imported LoRA, enumerated in the
+# Model Library UI by the advisor. The previous value —
+# `mikeyfrilot__saltroad-lora__...` — is the REDUNDANT import that has since vanished; it is
+# the one 0b ran on, and stroke 1 was rejected with it at `not in (list of length 144)`.
+# The copy below is the ORIGINAL, imported 8/1/26, the one Amendment 21 found already present
+# before the mikeyfrilot delivery path was built on top of it.
+#
+# THE TRAP, banked: `search_models` and this node's own option list do NOT see account
+# imports — both return zero for "saltroad" while the card sits in the library. So "absent
+# from the node list" does NOT mean "absent from the library", and an API surface is not the
+# ground truth for an import. Enumerate imports in the browser.
+CLOUD_LORA = ("mcp-tool-shop__saltroad-style-lora__"
+              "saltroad_style_v2_lowlr_000001500.safetensors")
 
 
 def build_graph(render_name, mask_name, prompt, negative, seed=None):

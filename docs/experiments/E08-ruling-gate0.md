@@ -2112,6 +2112,71 @@ ceiling and ~79% is the ceiling at any count tested. The honest framing of E08's
 > external resource moving under a byte-correct recipe — found and fixed by enumeration in
 > the browser, which is where Amendment 21 said to look in the first place.
 
+> ### Amendment 32 (advisor, 2026-08-04) — stroke 7's commit is VOID, the gate moves inside the tool, and the pocket is Amendment 26's shadow at the brush site
+>
+> **The breach, named for both of us.** The executor chained `invar; commit` in one shell
+> call and PowerShell walked past the failing exit code — 47,020 texels committed after a
+> fired ANDON. The executor's construction executed the flaw; **my Amendment 30 spec placed
+> the gate outside the tool it guarded**, which made that flaw constructible. Ledger
+> sixteen, shared. The standing rule it buys, now in CLAUDE.md: **a gate that a scripting
+> accident can separate from the action it gates is not a gate — the check lives inside
+> the tool that performs the irreversible step.** No skip flag.
+>
+> What kept this recoverable: the executor caught it, halted stroke 8, left the state
+> untouched, preserved every input, and named the tempting post-hoc reading without acting
+> on it. Six prior gates were honoured; the breach was mechanical, self-caught, and
+> reported with the evidence intact. That is the difference between an incident and a
+> silent corruption.
+>
+> ### What the gate found is a known object
+>
+> A 17×15 px pocket of repainted backdrop at 84.5 levels, **inside the bbox, outside the
+> figure**, between the raised greatsword and the head — content the elevated camera sees
+> through a geometry gap. Key it (it differs from the corner grey by far more than 0.06)
+> and it joins `fm_e`; connected near the rim, it inflates `dist_e`; the erosion that
+> decides commit-trust weakens exactly at the sword/head gap. **This is the cast-shadow
+> pathway of Amendment 26, at `texpass_iter.py:240` — the sixth site's scheduled
+> modernisation, whose trigger condition just occurred live.** The fix is not a better key;
+> it is the same fix as A26: **intersect `fm_e` with the emit's own geometry hit mask
+> before the distance transform.** The emit *rendered* the figure — it knows where surface
+> is, exactly, by construction.
+>
+> ### Remediation — one pass, no new cloud calls except stroke 8
+>
+> 1. **Fix the tool, atomically.** In `texpass_iter` commit: (a) `fm_e ∧ hit` before
+>    `dist_e` (the hit mask saved by emit, or recomputed — emit is deterministic); (b) a
+>    new in-tool assert on the operand the bg estimator actually reads: **the 8×8 corners
+>    of the edited image must match the emitted render** (≲1 level). That is the direction
+>    the intersection does not foreclose, and it cannot be walked past because it lives in
+>    the tool. (c) The raw whole-image invariance measurement **demotes to a logged
+>    per-stroke diagnostic** — the A26/A27 pattern exactly: the intersection forecloses
+>    what it gated, and a halt on a foreclosed direction fires on correct work. Its verdict
+>    on stroke 7 *as committed* stands and is not being re-argued.
+> 2. **Void and replay.** Re-seed from `stage1_8cam.png`; replay commits 1–6 through the
+>    **fixed** tool. GATE, pre-registered: the six counts reproduce exactly
+>    (2,507 / 3,859 / 2,017 / 4,103 / 6,526 / 10,636 → holes 719,503) and the atlas is
+>    byte-identical to `atlas.prev.png`. The backdrop was flat on all six, so the
+>    intersection must be a no-op where the premise held — this replay is simultaneously
+>    the rollback, its verification, and the fix's anchor. Any digit differs → HALT.
+> 3. **Re-commit stroke 7 from its existing `inpainted.png`** through the fixed path — the
+>    generation was never the convicted component, the commit path was; no new spend.
+>    **Report the committed count against the voided 47,020**: the delta is the pocket's
+>    inflation, measured — what the guard now removes, in the open.
+> 4. **Stroke 8 runs** through the same path (its one new cloud call), then
+>    finalize → pack → renders → the Gate 1 sheet. Amendment 31's standing authorization
+>    continues unchanged; the halts that remain are in-tool asserts, irreversible
+>    surprises, and evidence contradicting the banked record.
+>
+> ### The ceiling restatement, recorded before finalize runs
+>
+> The executor's correction is accepted and pre-registered now so the sheet's numbers are
+> not post-hoc: `brush_reach` counted hole **texels** a camera can see; delivery is bounded
+> by hole **pixels** in a 752×1024 render. Six strokes delivered 29,648 texels — 4.0% of
+> holes, ~1.2% of valid — so the projected finished mix restates to roughly **68.8%
+> reference / ~1–2% brush / ~29–30% dilation**. The dilation flood's footprint grows
+> accordingly, and it is already the named post-Gate-1 headline. A reach ceiling is not a
+> delivery forecast; the record now says so where it first said otherwise.
+
 ## 5. What this does not settle
 
 Whether ~40–53% reference coverage is *enough* for the Director to accept the asset is not a

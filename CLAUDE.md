@@ -290,6 +290,14 @@ got 0.00%. It was reported as *untested* rather than as confirmation, which is e
 and it is the same family as the silhouette-IoU gate that returned 1.00000 on a holed mesh.
 Before trusting a 0, ask what a non-zero would have required.
 
+**A gate that a scripting accident can separate from the action it gates is not a gate.** An
+invariance ANDON fired on stroke 7 of a brush run and the commit ran anyway, because check and
+commit were chained in one PowerShell call that walked past the failing exit code — 47,020
+texels committed after a fired gate, and a pass-shaped log entry for a failed condition. Nobody
+decided to proceed; the construction was incapable of stopping. **The check lives inside the
+tool that performs the irreversible step**, with no skip flag (E08 Amendment 32). A shell chain
+is a transport, not a guard.
+
 **When a number will not move, check the baseline.** The most valuable measurement in this
 repo's history came from an executor who stopped chasing a stuck figure and asked whether
 the thing it was compared against was real. It was not.
