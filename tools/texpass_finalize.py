@@ -42,11 +42,20 @@ ap.add_argument("--prep", required=True)
 ap.add_argument("--out", required=True)
 ap.add_argument("--surface-aware", action="store_true",
                 help="E07 L1: nearest painted texel in 3D instead of an atlas-space flood")
-ap.add_argument("--back-facing-limit", type=float, default=0.20,
-                help="ANDON: halt if more than this share of lookups take colour from a "
-                     "back-facing source (n.n' < 0). This is a HALT, not a filter — a "
-                     "hemisphere restriction is a variant to be measured, not a fix to "
-                     "be assumed.")
+# The gate is on SOURCE DISTANCE, in median triangle edges — the failure mode itself.
+# It replaces a back-facing-normal threshold withdrawn at E07 Gate 0.5: normal
+# disagreement is a PROXY for "sourced from elsewhere on the figure", and the proxy
+# inverts. Measured on C1, the back-facing class is the CLOSEST class (0.77 edges vs
+# 1.16 for the agreeing class, 66.7% of it inside a single triangle), because a sheet
+# thinner than its own tessellation has its opposite face as the nearest surface — and
+# --thin-extent routes exactly that surface class here on purpose. Disagreement is
+# still reported. It is never a halt.
+ap.add_argument("--max-edge-median", type=float, default=3.0,
+                help="ANDON: halt if the median source distance exceeds this many median "
+                     "triangle edges")
+ap.add_argument("--beyond-edges", type=float, default=20.0)
+ap.add_argument("--max-frac-beyond", type=float, default=0.05,
+                help="ANDON: halt if more than this share of lookups exceed --beyond-edges")
 ap.add_argument("--json", help="write the lookup measurements here")
 args = ap.parse_args()
 
@@ -82,31 +91,47 @@ if args.surface_aware:
     pick = src_i[j]
     img.reshape(-1, 3)[tgt_i] = atlas.reshape(-1, 3)[pick]
 
-    # Report the operation's FAILURE mode, not its success mode. A crevice's opposing
-    # wall is a plausible source; the far side of a thin plate may not be.
+    # Report the operation's FAILURE mode, not its success mode: how far away, on the
+    # actual surface, the colour came from. The scale must come from THIS mesh — a
+    # hardcoded constant is the same family as the blade pixel-rectangle the loop was
+    # rewritten to remove, and it is load-bearing now that the gate is stated in edges.
+    import trimesh
+    _m = trimesh.load(os.path.join(args.prep, "prep_uv.glb"), force="mesh", process=False)
+    _v = np.asarray(_m.vertices, dtype=np.float64)
+    _f = np.asarray(_m.faces, dtype=np.int64)
+    _vz = np.stack([_v[:, 0], -_v[:, 2], _v[:, 1]], axis=1) / np.abs(_v).max() * 0.5
+    _t = _vz[_f]
+    edge = float(np.median(np.linalg.norm(
+        np.concatenate([_t[:, 1] - _t[:, 0], _t[:, 2] - _t[:, 1], _t[:, 0] - _t[:, 2]]),
+        axis=1)))
     dot = np.einsum("ij,ij->i", Nf[tgt_i], Nf[pick])
-    edge = 0.00290                       # median triangle edge, this mesh, E07 Gate 0
     over60 = float((dot < 0.5).mean())
     back = float((dot < 0.0).mean())
+    med_e = float(np.median(dist)) / edge
+    beyond = float((dist > args.beyond_edges * edge).mean())
     rep.update(
+        median_edge_len=round(edge, 6),
         dist_median=round(float(np.median(dist)), 6),
+        dist_median_edges=round(med_e, 3),
         dist_p95=round(float(np.percentile(dist, 95)), 6),
         dist_max=round(float(dist.max()), 6),
         dist_gt_5edge_pct=round(float((dist > 5 * edge).mean() * 100), 2),
-        dist_gt_20edge_pct=round(float((dist > 20 * edge).mean() * 100), 2),
+        dist_beyond_pct=round(beyond * 100, 3),
         normal_disagree_gt60_pct=round(over60 * 100, 2),
         normal_back_facing_pct=round(back * 100, 2))
-    print(f"[finalize]   source distance  median {np.median(dist):.5f}  "
-          f"p95 {np.percentile(dist,95):.5f}  max {dist.max():.5f}  "
-          f"(median edge {edge})")
-    print(f"[finalize]   beyond  5 edges {(dist>5*edge).mean()*100:5.2f}%   "
-          f"beyond 20 edges {(dist>20*edge).mean()*100:5.2f}%")
-    print(f"[finalize]   source normal disagrees >60deg {over60*100:5.2f}%   "
-          f"BACK-FACING (n.n'<0) {back*100:5.2f}%")
-    assert back <= args.back_facing_limit, (
-        f"ANDON: {back*100:.2f}% of lookups source from a back-facing normal, over the "
-        f"{args.back_facing_limit*100:.0f}% limit. Report it; do not add a hemisphere "
-        f"restriction here — that is a variant to be measured.")
+    print(f"[finalize]   median triangle edge {edge:.5f}  (measured on this mesh)")
+    print(f"[finalize]   source distance  median {np.median(dist):.5f} = "
+          f"{med_e:.2f} edges   p95 {np.percentile(dist,95):.5f}   max {dist.max():.5f}")
+    print(f"[finalize]   beyond 5 edges {(dist>5*edge).mean()*100:5.2f}%   "
+          f"beyond {args.beyond_edges:.0f} edges {beyond*100:5.3f}%")
+    print(f"[finalize]   normal disagrees >60deg {over60*100:5.2f}%   back-facing "
+          f"{back*100:5.2f}%   (REPORTED, not gated — E07 Gate 0.5)")
+    assert med_e <= args.max_edge_median, (
+        f"ANDON: median source distance {med_e:.2f} edges, over the "
+        f"{args.max_edge_median} limit — colour is coming from elsewhere on the figure.")
+    assert beyond <= args.max_frac_beyond, (
+        f"ANDON: {beyond*100:.2f}% of lookups source from beyond {args.beyond_edges:.0f} "
+        f"edges, over the {args.max_frac_beyond*100:.0f}% limit.")
     grown = valid.copy()                 # every valid texel now carries colour
     STEPS = 16                           # gutter only, for mips
 else:

@@ -47,6 +47,14 @@ ap.add_argument("--stage1", required=True)
 ap.add_argument("--order", required=True)
 ap.add_argument("--out", required=True)
 ap.add_argument("--no-level", action="store_true", help="replay unchanged, as a fidelity check")
+ap.add_argument("--anchor", choices=["contour", "accepted"], default="accepted",
+                help="where the membrane's Dirichlet condition sits. 'contour' = §7 step 2 "
+                     "as originally written, the job-mask contour. 'accepted' = E07 "
+                     "Amendment 2: the boundary of the ACCEPTED set, because commit takes "
+                     "a strict subset of the mask (hole & facing & visible & edge-dist), "
+                     "so the provenance seam sits at that frontier and not at the contour "
+                     "— anchoring at the contour lets the correction decay before it "
+                     "reaches the seam it was built to level.")
 ap.add_argument("--cap", type=float, default=0.15)
 ap.add_argument("--depth-tol", type=float, default=0.02,
                 help="membrane may not cross a depth jump larger than this (std frame)")
@@ -74,6 +82,7 @@ lo = np.array(meta["lo"]); hi = np.array(meta["hi"])
 m = trimesh.load(os.path.join(args.prep, "prep_uv.glb"), force="mesh", process=False)
 v = np.asarray(m.vertices, dtype=np.float64)
 f = np.asarray(m.faces, dtype=np.int64)
+uv = np.asarray(m.visual.uv, dtype=np.float64)
 vz = np.stack([v[:, 0], -v[:, 2], v[:, 1]], axis=1) / np.abs(v).max() * 0.5
 rs = o3d.t.geometry.RaycastingScene()
 rs.add_triangles(o3d.core.Tensor(vz.astype(np.float32)),
@@ -101,8 +110,9 @@ def bilin(img, x, y):
             + img[y0 + 1, x0] * (1 - fx) * fy + img[y0 + 1, x0 + 1] * fx * fy)
 
 
-def depth_of(cam, look, right, up):
-    """emit's own rays, recast. emit never saved t_hit; §7 step 4 needs it."""
+def view_maps(cam, look, right, up):
+    """emit's own rays, recast. emit saved neither t_hit nor the per-pixel texel, and
+    §7 step 4 needs the first while Amendment 2's anchor needs the second."""
     W, H = int(cam["W"]), int(cam["H"])
     bmid = np.array(cam["bmid"])
     xs = (np.arange(W) + 0.5) / W * cam["h_ext"] - cam["h_ext"] / 2
@@ -113,28 +123,40 @@ def depth_of(cam, look, right, up):
     ans = rs.cast_rays(o3d.core.Tensor(np.concatenate(
         [org, np.broadcast_to(look, org.shape)], axis=-1).reshape(-1, 6).astype(np.float32)))
     t = ans["t_hit"].numpy().reshape(H, W)
-    return t, np.isfinite(t)
+    hit = np.isfinite(t)
+    prim = ans["primitive_ids"].numpy().reshape(H, W)
+    buv = ans["primitive_uvs"].numpy().reshape(H, W, 2)
+    tex = np.zeros((H, W), dtype=np.int64)
+    if hit.any():
+        tr = f[prim[hit]]
+        wu, wv = buv[hit][:, 0:1], buv[hit][:, 1:2]
+        uvp = (1 - wu - wv) * uv[tr[:, 0]] + wu * uv[tr[:, 1]] + wv * uv[tr[:, 2]]
+        axp = np.clip((uvp[:, 0] * RES).astype(np.int64), 0, RES - 1)
+        ayp = np.clip(((1 - uvp[:, 1]) * RES).astype(np.int64), 0, RES - 1)
+        tex[hit] = ayp * RES + axp
+    return t, hit, tex
 
 
 DIRS = ((1, 0), (-1, 0), (0, 1), (0, -1))
 
 
-def level(render, inpainted, jm, hit, depth):
-    """§7 steps 2-6. Returns corrected image and per-stroke stats."""
-    dom = (jm > 0.5) & hit
+def level(render, inpainted, dom, out_ok, hit, depth):
+    """§7 steps 2-6. `dom` is the membrane's domain and `out_ok` the pixels whose level
+    it may be matched to — see --anchor. Returns the corrected image and stats."""
     st = {"mask_px": int(dom.sum())}
     if not dom.any():
         return inpainted, st
     dep = np.where(hit, depth, np.inf)
     # neighbour is usable if on the figure and not across a depth jump
-    nb_ok, nb_dom, nb_out = [], [], []
+    nb_dom, nb_out = [], []
     for dy, dx in DIRS:
         okd = np.roll(hit, (dy, dx), axis=(0, 1)) & \
             (np.abs(np.roll(dep, (dy, dx), axis=(0, 1)) - dep) < args.depth_tol)
-        nb_ok.append(okd)
         nb_dom.append(np.roll(dom, (dy, dx), axis=(0, 1)) & okd)
-        nb_out.append((~np.roll(dom, (dy, dx), axis=(0, 1))) & okd)
-    # Dirichlet band: masked pixels touching un-masked figure across a continuous surface
+        nb_out.append(np.roll(out_ok, (dy, dx), axis=(0, 1)) & okd & ~np.roll(dom, (dy, dx), axis=(0, 1)))
+    # Dirichlet band: domain pixels touching a pixel whose level we can actually match.
+    # Where the neighbour is still a hole there is no level to match, so that edge is
+    # left NATURAL rather than forced — forcing one would invent a target.
     acc = np.zeros(render.shape, np.float64)
     cnt = np.zeros(render.shape[:2], np.float64)
     for k, (dy, dx) in enumerate(DIRS):
@@ -161,10 +183,25 @@ def level(render, inpainted, jm, hit, depth):
         O = np.where(interior[..., None], upd, O)
     hitcap = dom & (np.abs(O).max(-1) >= args.cap - 1e-6)
     st["cap_hit_pct"] = round(float(hitcap.sum() / max(int(dom.sum()), 1) * 100), 2)
+    st["anchored_pct"] = round(float(bnd.sum() / max(int(dom.sum()), 1) * 100), 2)
     st["O_lum_median"] = round(float(np.median(np.abs(O[dom].mean(-1)))), 5)
     st["O_lum_p95"] = round(float(np.percentile(np.abs(O[dom].mean(-1)), 95)), 5)
+    # commit samples at sub-pixel (px, py), so bilinear taps can reach one pixel outside
+    # the domain. Smear O outward two pixels so the sample does not straddle a step of
+    # the correction field itself.
+    grown = dom.copy()
+    for _ in range(2):
+        a3 = np.zeros(render.shape, np.float64)
+        c3 = np.zeros(render.shape[:2], np.float64)
+        for dy, dx in DIRS:
+            w = np.roll(grown, (dy, dx), axis=(0, 1))
+            a3 += np.roll(O, (dy, dx), axis=(0, 1)) * w[..., None]
+            c3 += w
+        add = (~grown) & (c3 > 0)
+        O[add] = a3[add] / c3[add][..., None]
+        grown |= add
     corr = inpainted.copy()
-    corr[dom] = np.clip(inpainted[dom] + O[dom], 0.0, 1.0)
+    corr[grown] = np.clip(inpainted[grown] + O[grown], 0.0, 1.0)
     return corr.astype(np.float32), st
 
 
@@ -191,10 +228,9 @@ for si, keyname in enumerate(order, start=1):
                          dtype=np.float32) / 255
     look, right, up = basis(cam["yaw"], cam["el"])
     st = {}
-    if not args.no_level:
-        depth, hit = depth_of(cam, look, right, up)
-        edited, st = level(render, edited, jobmask, hit, depth)
-
+    # The filter chain runs on the ORIGINAL brush output, because that is what commit
+    # sees. Levelling afterwards therefore leaves the accepted set — and so the claim
+    # map — byte-identical to C1's, which isolates the correction as the only variable.
     hidx = np.where(holes.reshape(-1) & mask_np.reshape(-1))[0]
     P = (pos_e.reshape(-1, 3)[hidx].astype(np.float64) * (hi - lo) + lo) / meta["maxabs"] * 0.5
     N = nor_e.reshape(-1, 3)[hidx].astype(np.float64) * 2.0 - 1.0
@@ -217,7 +253,24 @@ for si, keyname in enumerate(order, start=1):
     fm = minimum_filter((np.abs(edited - bg).max(axis=-1) > 0.06).astype(np.float32), size=5)
     ok = bilin(distance_transform_edt(fm > 0.5).astype(np.float32), px, py) >= args.edge_dist
     hidx, px, py = hidx[ok], px[ok], py[ok]
-    col = bilin(edited, px, py).astype(np.float32)
+
+    if not args.no_level:
+        depth, hitv, texv = view_maps(cam, look, right, up)
+        if args.anchor == "accepted":
+            # the seam sits at the ACCEPTED frontier, not the mask contour
+            acc_f = np.zeros(RES * RES, dtype=bool)
+            acc_f[hidx] = True
+            dom = acc_f[texv] & hitv
+            # a level worth matching exists only where the surface is already coloured
+            sty_f = (~holes.reshape(-1)) & mask_np.reshape(-1)
+            out_ok = sty_f[texv] & hitv
+        else:
+            dom = (jobmask > 0.5) & hitv
+            out_ok = hitv & ~dom
+        edited, st = level(render, edited, dom, out_ok, hitv, depth)
+        col = bilin(edited, px, py).astype(np.float32)
+    else:
+        col = bilin(edited, px, py).astype(np.float32)
 
     a2 = atlas.reshape(-1, 3).copy()
     a2[hidx] = col
@@ -234,8 +287,9 @@ for si, keyname in enumerate(order, start=1):
     report["strokes"][keyname] = st
     print(f"[l2] stroke {si} {keyname}: claimed {len(hidx):,}"
           + ("" if args.no_level else
+             f"   dom {st['mask_px']:,}px  anchored {st['anchored_pct']:.1f}%"
              f"   |O| lum median {st['O_lum_median']:.4f} p95 {st['O_lum_p95']:.4f}"
-             f"   cap hit {st['cap_hit_pct']:.2f}%"), flush=True)
+             f"   cap {st['cap_hit_pct']:.2f}%"), flush=True)
 
 Image.fromarray((atlas * 255).round().astype(np.uint8)).save(
     os.path.join(args.out, "atlas.png"))
