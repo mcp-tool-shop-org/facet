@@ -194,28 +194,48 @@ Then the projection:
 - Read against **1,042,794 / 43.4% / 82.4%** (the R1 baseline — not R0's 43.7/83.0) and the
   **74.10%-of-valid** ceiling, which the flag does not touch (reachable moved 0). **The
   acceptance lever is spent — eight buys from the ceiling, not from acceptance. Do not grade
-  eight on an acceptance rate.**
+  eight on an acceptance rate.** *(⚠ Corrected by the Task 2 measurement, restated in
+  Amendment 28: acceptance rose 82.4% → 92.9% with no test changed — union acceptance is a
+  function of camera count. The instruction stands; the "spent at 83.0%" phrasing does not.)*
 - **Add the blade-band table**: per view, all eight cameras, candidate texels landing in the
   band the key excludes and how many are accepted (§9a's measurement generalised). This is
   reporting for the post-Gate-1 blade arm, not a change to make now.
 - CPU only. State which anchors you re-ran.
 
-## Task 3 — through to a finished asset. Waits on 2.
+## Task 3 — through to a finished asset. CLEARED by Amendment 28; step 0 in order.
 
-Project → eight strokes → finalize → pack → renders. The Director's standing verdict is *the
-asset is not close*, and nothing yet has put a better one in front of him. This is the step
-that does, or reports why not.
+Projection is done (`stage1_8cam.png`, 68.8% of valid). What remains: strokes → finalize →
+pack → renders → the Gate 1 sheet. The Director's standing verdict is *the asset is not
+close*, and nothing yet has put a better one in front of him. This is the step that does, or
+reports why not. **Read Amendment 28 in full first** — it carries the three rulings this
+section depends on.
 
-- **Strokes are generation → cloud.** Before building anything: **enumerate the resource** —
-  the restylize graph's models are on cloud by exact name, but the brush is a *different
-  graph* (inpainting). `dry_run`-validate the brush graph first (free — the habit Amendment 19
-  endorsed), `estimate_credits` before submitting, and halt on surprises rather than clicking
-  through them.
-- **Watchdog restart before any local render step** (see Environment).
-- Deliverable: **reference | asset | provenance | error at the Director's zoom, views 4–6
-  included** — where the asset dissolves and where a head sheet structurally cannot show
-  anything. **Build the sheet before the metrics.** Textures under `--flat`, geometry under
-  `--clay`.
+Step 0, in order — each is a gate:
+
+1. **The gained-texel background check** (A28 Ruling 2). The 9,053 texels the intersection
+   admitted on views 6/5/1 get A2's admitted-texel check — median ΔE against the view's
+   fitted background, fraction within ΔE 10 — with view 2's equivalent 2.75 px band as the
+   normative control. Clean → `stage1_8cam.png` is this task's input. Contaminated → **HALT**
+   (it would implicate the width-scaled erosion generally).
+2. **Stroke prompts to the fixture** (A28 Ruling 3). `texpass_brush.py`'s default prompt is
+   stale and carries the struck "gold necklace" — it does not run. Build a versioned stroke
+   prompt from W3's NAMED elements verbatim (N6 is the belt medallion; N14–N16 name the
+   greatsword, crossguard, pommel — the brush paints the 50,569 unreferenced blade texels, so
+   this is the blade's honest test), with per-view facing handling per the E01 rule, recorded
+   per stroke in sidecars.
+3. **First-stroke anchors.** (a) Outside-figure invariance: max |edited − emitted| outside
+   the dilated figure mask ≈ 0 — this is the licence for the commit guard's corner-median on
+   its flat synthetic backdrop (A28's owed `texpass_iter` ruling: guard unchanged for this
+   run; modernisation is a post-Gate-1 regression). Materially nonzero → **HALT**. (b) Cloud:
+   the brush is a *different graph* (inpainting) — enumerate what is already on cloud,
+   `dry_run` first (free), `estimate_credits` before submitting, halt on surprises.
+4. **Watchdog restart before any local render step** (see Environment).
+
+Then run it through. Deliverable: **reference | asset | provenance | error at the Director's
+zoom, views 4–6 included** — and **the blade's provenance called out explicitly**, so the
+unreferenced band is visible as provenance rather than discovered as a surprise. **Build the
+sheet before the metrics.** Textures under `--flat`, geometry under `--clay`. Report the
+finished asset's reference/diffusion/interpolation split beside E06's 28.4/37.7/33.9.
 
 ## Do not
 

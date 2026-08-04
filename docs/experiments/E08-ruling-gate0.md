@@ -1757,6 +1757,127 @@ ceiling and ~79% is the ceiling at any count tested. The honest framing of E08's
 >    which the flag does not touch (reachable moved 0) — with the blade-band table added to
 >    the report. The acceptance lever remains spent; eight buys from the ceiling.
 
+> ### Amendment 28 (advisor, 2026-08-04) — eight banked at 68.8%. Three rulings, and the owed brush ruling comes due.
+>
+> **Eight cameras: 1,653,659 / 68.8% of valid / 92.9% of reachable, reach exactly 1,780,546 —
+> two independently written instruments agreeing to the texel.** No gate fired; the armed halt
+> was exercised and held. Banked as the standing stage-1 state. B3's ~55% forecast undershot by
+> 13.8 points and said itself why. Task 3 is cleared, step 0 below.
+>
+> ### Ruling 1 — the acceptance-lever claim, restated in place
+>
+> The executor's decomposition is ratified: reach ×1.4071, acceptance ×1.1274 — a quarter of
+> eight's gain came from acceptance, **with no test changed**. The restatement: **"spent" was
+> and remains a claim about loosening per-view tests at fixed cameras** — the facing ladder and
+> edge distance, measured in this document — and that claim is untested by this run and stands.
+> What may no longer be said: that 83.0% is *a ceiling on acceptance*. Union acceptance is a
+> **function of camera count** (2.15× redundancy is where the rise lives), not a pipeline
+> property, and quoting any acceptance rate without its camera count is now an error in this
+> repo. The instruction that mattered — *do not grade eight on an acceptance rate* — survives
+> its own justification being restated, which is the right way round for once. Where Amendment
+> 26 and the Task 2 dispatch say "the acceptance lever is spent at 83.0%," read this amendment.
+>
+> And the falsified counterforce is a full result: the executor pre-registered that
+> newly-reachable rim texels would roughly cancel the redundancy effect, set 1,560,000 as its
+> own falsification line, and reported the measurement sailing past it. **The counterforce is
+> weak or absent: adding cameras is nearly pure gain on this mesh.** That is worth knowing and
+> nobody guessed it — both B3 and the executor's band were low.
+>
+> ### Ruling 2 — view 6's sign flip strengthens the adoption, and one check is owed before the atlas is banked
+>
+> The intersection tightens five views and loosens the halting one, because the shadow was
+> corrupting **two operands in opposite directions**: `dist_in` locally (holding erosion off
+> texels near the shadow) and `fig_w` globally (scaling erosion to **5.36 px on a 274-px-wide
+> figure** — the same rule gives view 2's identical-width profile 2.75). The +6,468 is the
+> removal of erosion scaled by a lie. Gains occur on exactly the three views where `ed` moved
+> and are **exactly zero** on the five where it is byte-identical — the R1 monotonicity
+> argument holding with its precondition finally visible. Amendment 27's evidence base did not
+> cover this case; the executor's Task 1 report flagged the silent second consumer in advance,
+> and it fired where predicted. **The adoption stands and is strengthened — but the standing
+> rule applies: when you widen an acceptance mask, test that you did not admit background.**
+> The 9,053 gained texels (8,920 / 87 / 46) get A2's admitted-texel check — median ΔE against
+> the view's fitted background, fraction within ΔE 10 — with view 2's equivalent 2.75 px band
+> as the normative control, before Task 3 consumes `stage1_8cam.png`. Clean → banked.
+> Contaminated → HALT: it would implicate the width-scaled erosion generally, not just here.
+>
+> Named while it is in front of us: **`--edge-absolute` scaling erosion by global figure width
+> is the global-constant-governs-local-feature pattern, fourth instance**, and A3's local
+> half-width cap already exists in the codebase as the alternative. A post-Gate-1 candidate
+> arm, alongside the blade. Also banked from §4: **`keyed_outside_px` does not predict
+> `dist_in` corruption (r = −0.073)** — what matters is whether a removed pixel was the
+> *nearest boundary* to real surface, so the count stays a twin-quality diagnostic and nothing
+> more. And the A2-era back twin clearing the registration halt by 0.0016 is recorded: legacy
+> anchors run under `--no-trust-intersect` where the halt does not govern, and a legacy twin
+> sitting at the line is consistent with the line being in the right place.
+>
+> ### Ruling 3 — no blade arm before Gate 1, and Task 3 now carries the blade's honest test
+>
+> Sequencing held from Amendment 27. The new fact — **50,569 texels with no reference at all,
+> at eight cameras, 44.28% of the band** — sharpens what Task 3 must show rather than changing
+> the order: those texels will be painted by the brush, and whether the brush paints steel or
+> flesh is precisely the E07 question under the current architecture. Which surfaces the
+> finding that makes this ruling concrete:
+>
+> **The brush prompt is stale, and it carries the struck term.** `texpass_brush.py`'s default
+> prompt says **"gold necklace"** — N6 struck it from the fixture ("a term that misnames an
+> element, and produces the right thing by accident, is the exact failure the
+> identity-in-the-prompt rule exists to kill") — and it names roughly half the fixture: no
+> bracers, no knee plates, no medallion, no skirt panels, no crossguard, no pommel, no
+> scrollwork. E07's flesh blade reached the Director **through this stage**. The architecture
+> ruling extends to the brush without modification: *a canon element not named in the prompt is
+> arriving by accident and will leave the same way* — and the brush is the stage that paints
+> everything the reference never reached. **Task 3 step 0: bring the stroke prompts to the
+> fixture** — the NAMED elements verbatim, per-view facing handling per the E01 rule, a
+> versioned prompt file, recorded per stroke in sidecars. This is stated plainly as a second
+> variable in the loop relative to E06's run: acceptable, because Task 3 is not a controlled
+> arm — it is the end-to-end deliverable, every other input has already moved, and running a
+> stroke that knowingly violates the fixture is not an option this repo has.
+>
+> ### The owed `texpass_iter` ruling — unchanged for Task 3, and licensed rather than assumed
+>
+> The commit guard's corner-median key stays for this run. The licence: its operand is not a
+> diffusion backdrop — `emit` composites the figure onto a **synthetic flat 0.42 grey**
+> (`texpass_iter.py:143`), and a flat field is the one case where the corner median and the
+> fitted ring are the same estimator; that is why corner-median was retired for twins and not
+> here. But the licence rests on the inpaint *compositing* — outside-mask pixels returning
+> unchanged — so it is anchored rather than assumed: **on the first stroke, measure
+> max |edited − emitted| outside the dilated figure mask. ≈0 → the licence holds for the run.
+> Materially nonzero → HALT** — the backdrop is being repainted and the guard's operand is no
+> longer flat. The guard's modernisation (fitted key + silhouette intersection, closing the
+> category error at this last route-active site) is a post-Gate-1 regression of its own, not a
+> mid-run change.
+>
+> ### The ledger, and one instrument endorsement
+>
+> **Amendment 27 §7 guarded the wrong operand.** I specified the sidecar check; the operand
+> that broke was the *key* — corner-median returning 60.4% of frame against a 19.01% truth,
+> 1,063,039 phantom styled texels before the executor caught it. The instrument had no bbox
+> check while the pipeline it measures has had one for six amendments; the executor's line —
+> **"verifying one operand says nothing about the other"** — is the standing form of the
+> bbox-check rule and this repo should quote it. Same failure shape as my registration
+> criterion and the step-2 denominator: a check whose scope assumed where the break would be.
+> Thirteenth ledger entry.
+>
+> Endorsed without reservation: keeping the instrument's key corner-median **because its anchor
+> is of that key**, now that both operands are guarded. An instrument that silently modernises
+> its own operand loses its anchor; one that guards it keeps history comparable and fails loud.
+>
+> ### Task 3 — cleared, step 0 in order
+>
+> 1. **The gained-texel background check** (Ruling 2). Clean → `stage1_8cam.png` is Task 3's
+>    input. Contaminated → HALT.
+> 2. **Stroke prompts to the fixture** (Ruling 3): versioned file, per-view facing, sidecars.
+>    The stale default with the struck term does not run.
+> 3. **First-stroke anchors**: the outside-figure invariance check (the corner-median licence),
+>    and the cloud graph `dry_run` + `estimate_credits` before any submission. Halt on
+>    surprises. Watchdog restart before any local render step.
+> 4. Then: project is done — strokes → finalize → pack → renders → **the Gate 1 sheet,
+>    reference | asset | provenance | error at the Director's zoom, views 4–6 included, with
+>    the blade's provenance called out explicitly** so the 50,569 unreferenced texels are
+>    visible as provenance, not discovered as a surprise. Build the sheet before the metrics.
+>
+> Gate 1 remains the Director's, and nothing in this amendment pre-empts it.
+
 ## 5. What this does not settle
 
 Whether ~40–53% reference coverage is *enough* for the Director to accept the asset is not a
