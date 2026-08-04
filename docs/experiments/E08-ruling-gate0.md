@@ -1390,6 +1390,78 @@ ceiling and ~79% is the ceiling at any count tested. The honest framing of E08's
 > him. Run it through: twins → project → eight strokes → finalize → pack → renders. The Gate 1
 > artifact is **reference | asset | provenance | error at his zoom, including views 4–6**, where
 > the asset dissolves and where the head sheet structurally cannot show anything.
+> ### Amendment 23 (advisor, 2026-08-04) — re-roll is legitimate here, and the 1-in-8 rate is the finding
+>
+> **The distinction the executor asked for, ruled.** What this repo forbids is **choosing a
+> decision rule after seeing the result** — retuning a pass condition, selecting among outputs to
+> make a number look better. Both corrupt the evidence.
+>
+> Rejecting an output that violates a **pre-registered specification** is not that. The spec was
+> written and committed before the run, blue appears nowhere in it, and the deviation is
+> objective: **seven views at exactly 0 px, one at 6.17% in a single connected blob.** That is
+> the specification doing the job it exists for.
+>
+> **The test that separates them: would the rule have been the same whatever came out?** Here,
+> yes — *reject a twin containing material not in the spec* could have been written before the
+> run, and should have been. **That it was not written down is my omission, not a licence to
+> improvise**, so it is written down now, before the re-roll rather than after.
+>
+> ### The acceptance rule, stated before the re-roll
+>
+> **A twin is rejected if it contains chroma-bearing colour outside the specification's palette**,
+> measured inside the figure mask. View 6 fails it: blue above the chroma floor in hue 240–320°,
+> 5,590 px, against zero in all seven others and zero in the spec.
+>
+> Bounded procedure, no selection anywhere in it:
+>
+> 1. **One re-roll of view 6, new seed, recorded.** Not "re-roll until clean."
+> 2. **The rejected twin stays on disk and in the report with its measurement.** It is evidence,
+>    not a mistake to be tidied away.
+> 3. **If the re-roll also fails, that is the result** — project seven and take the coverage cost.
+>    No third roll.
+>
+> Projecting all eight as-is is refused: it paints a garment the spec does not contain onto the
+> mesh, knowingly, which is the thing this whole line exists to stop.
+>
+> ### The finding, which the re-roll must not erase
+>
+> **One view in eight came back off-spec.** On this evidence the per-view off-spec rate is
+> ~12.5% — n=8, wide interval, and the number matters less than its existence. **Every future
+> character will hit this**, and view 2 proves it is not the prompt or the spec: same camera from
+> the other side, same terms, mirrored geometry, correct output. **It is a per-view roll.**
+>
+> A pipeline with a 1-in-8 per-view defect rate and no detector is a pipeline that ships wrong
+> garments whenever nobody is squinting. **And this is precisely the defect class E07 proved the
+> old metrics cannot see** — a large region of the wrong material, smooth inside itself,
+> contributing only its rim to any high-pass statistic. Unmissable at torso zoom, invisible in a
+> blotch count.
+>
+> ### The real deliverable: make the ad-hoc check a standing stage
+>
+> The executor built an off-spec detector to answer this question. **Generalise it and put it in
+> the route, before projection.** For every twin, inside the figure mask, flag chroma-bearing
+> colour outside the spec's declared palette; report per-view pixel count **and largest connected
+> component**, since *one garment* and *speckle* are different failures. It is cheap, objective,
+> and it is the first instrument in this repo aimed at the defect class that decided the
+> Director's rejection.
+>
+> **That gate is worth more than this asset.** It is what makes a specification enforceable
+> rather than aspirational, and it generalises to every subject — including E04's galleon, where
+> nobody will know by eye what the palette should be.
+>
+> ### Two results banked
+>
+> **B4 holds, and it simplifies the route.** The beard was deliberately left ungated on the rear
+> prompts, with a face on views 3/4/5 pre-registered as falsifying. It did not happen. **An
+> exact-silhouette control at IoU 1.000000 locks orientation without the prompt needing
+> filtering** — so E01's per-view prompt requirement was addressing a symptom of a control that
+> carried no contour. Measured once, on one arm; recorded as such, and not yet licence to drop
+> per-view prompts.
+>
+> **And the view-7 self-correction is the zoom rule arriving from the diagnostic side.** Judged a
+> rear view off the contact sheet, correct at proper zoom against its own clay. The rule was
+> written about judging *assets*; it applies identically to judging *instruments*.
+
 ## 5. What this does not settle
 
 Whether ~40–53% reference coverage is *enough* for the Director to accept the asset is not a
