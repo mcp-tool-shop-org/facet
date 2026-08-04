@@ -233,12 +233,23 @@ strokes, and between stage 1 and the first stroke, is an unlevelled tonal step. 
 replay found the forehead "blotch" on the current asset is exactly this: twin paint below
 meeting the overhead stroke above, two blotch pixels in the whole disc, a step rather than a
 defect in either source. The architecture called for Poisson seam levelling; it was
-implemented in projection and never carried into the loop.
+implemented in projection and never carried into the loop. **Located in code:** the levelling
+term is `project_twins.py:253-256` and `bake_hero_fuse.py:233-237` (`--seam-sigma 16.0`, its
+own docstring calling it *"the multi-band/Poisson role"*); in `texpass_iter.py`, `commit`
+writes `a2[hidx] = col` and `gaussian_filter` appears only in the selftest's fake inpaint.
 
 **Dilation still bleeds between unrelated islands.** Down from 75% of hole texels to 33.9%
 of the atlas, but dilation-filled texels remain **4.8× enriched** in visible blotches
 against a 5% base. Colour crosses the gutter from whichever island the packer placed next
-door, and atlas adjacency is not surface adjacency.
+door, and atlas adjacency is not surface adjacency. **Located in code, and the docstring is
+wrong:** `texpass_finalize.py` line 6 claims the flood is *"valid-island-constrained"*; line
+43 is `fill = ~grown & (cnt > 0)` with no `& valid`, so gutter texels are written on the
+first iteration and become sources on the second. `valid` appears only in the termination
+test — it decides when to stop, never where to write. 39.0% of islands hold no painted texel
+at all and carry 50.7% of the post-loop hole set, so of 813,773 dilated texels roughly
+**412,000 — ~17% of the valid atlas — can only have taken their colour from a different
+island**. How much actually crosses is [E07](docs/experiments/E07-the-atlas-is-not-a-neighbourhood.md)'s
+Gate 0; the code reading above is checked, the magnitude is not.
 
 **Chart fragmentation is the binding constraint on texel density.** Culling invisible
 surface removed 47% of faces but only 34% of charts — because invisible surface is
