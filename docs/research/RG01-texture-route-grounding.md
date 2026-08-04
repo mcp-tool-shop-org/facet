@@ -190,11 +190,53 @@ have ranked our options on a metric with no measured relationship to the Directo
 
 ---
 
-## Verification status
+## Verification status — ⚠ HALTED AND ESCALATED. The oracle was down, and we took it down.
 
-Pending. The locked path (`roleos verify-citations`) is unavailable on this rig — `roleos` is
-not installed — but `prism` is on PATH and Ollama carries mistral-small:24b, granite4.1:30b and
-gemma4:31b, which is the decorrelated non-Claude substrate the protocol's founding receipt
-used. The gate runs on that path. **Until it returns, no finding above connects to
-architecture**, and the E08 Gate 0 ruling was written to stand on our own measurements and
-source reading without them.
+**Run 1, 2026-08-05.** `roleos` is absent on this rig, so the locked path was unavailable;
+`prism` is on PATH with Ollama carrying mistral-small:24b, granite4.1:30b and gemma4:31b — the
+documented fallback substrate. Ran `prism verify --type citations --caller-family anthropic
+--provider ollama --gate` over all 32 citations. Verdict **revise**, exit 10, Ed25519-signed
+receipt `kid ed25519-e0963e93294fbb0d`, `reasoning_visibility_mode` stripped, verifier family
+`local` — so the family-different and reasoning-stripped requirements held for every lens that
+actually ran.
+
+```
+existence:  resolved 3 · metadata_mismatch 1 · UNRESOLVABLE 28
+verdicts:   accept 1 · revise 1 · escalate 30
+details:    arXiv oracle unreachable — ReadTimeout 24, HTTPStatusError 4
+            resolved but claim not in title+abstract          1  (c26)
+            resolved but no abstract available to ground       1  (c14)
+            resolved to a different title than cited: 'FLIP'   1  (c25)
+            source supports the claim                          1  (c27)
+FABRICATED: 0        REFUSED: 0
+```
+
+**28 of 32 were never checked.** The arXiv oracle was unreachable, which the protocol is
+explicit must be read as *neither* "citations are fine" *nor* "fabricated". The cause is almost
+certainly self-inflicted and is the founding receipt's HTTP-429 lesson at five times the
+scale: this rig had just run a 5-lane research swarm — 160 tool calls, most of them arXiv —
+and then asked the same IP to resolve 32 identifiers. **Lesson for the next dispatch: leave a
+cooldown between the research lanes and the citation gate, or route the oracle differently.**
+
+**What did clear.** The four DOI citations went through Crossref rather than arXiv and all four
+resolved:
+
+| id | source | outcome |
+|---|---|---|
+| **c27** Paravina 2015 | ΔE thresholds, DOI:10.1111/jerd.12149 | **ACCEPT — existence resolved, claim supported** (mistral-small:24b, pass, conf 0.90) |
+| c26 Abasi 2020 | HyAB above 10 units, DOI:10.1002/col.22451 | resolved, title exact; claim lives in the body not the abstract → RETRIEVE FULL TEXT |
+| c14 Soudarissanane 2011 | 60° incidence, DOI:10.1016/j.isprsjprs.2011.01.005 | resolved, title exact; no abstract available to ground against |
+| c25 FLIP 2020 | DOI:10.1145/3406183 | **metadata_mismatch** — Crossref titles it `FLIP`, I cited "FLIP: A Difference Evaluator for Alternating Images". Cosmetic; corrected in place above and eligible for the protocol's correct-once re-verify |
+
+**Consequence, enforced.** Exactly one finding — **26**, the ΔE threshold figures — is verified
+and may be load-bearing. **All 28 others remain non-load-bearing** and are removed from any
+architectural connection until a re-run resolves them. They are *not* dropped: the protocol
+drops only FABRICATED, and nothing was fabricated. This is the CANNOT_CONFIRM class, surfaced
+rather than silently kept.
+
+**Contrastive frame for the Director:** you may reasonably have expected the swarm's findings
+to be usable after the gate ran. They are not, and the reason is a rate-limited oracle rather
+than bad citations — so the correct response is to re-run the gate after a cooldown, not to
+discard the research. The one thing this does **not** block is
+[E08's Gate 0 ruling](../experiments/E08-ruling-gate0.md), which was deliberately written to
+stand on our own measurements and source reading with no citation load-bearing in it.
