@@ -777,6 +777,67 @@ ceiling and ~79% is the ceiling at any count tested. The honest framing of E08's
 > The 54,978-lost and 2.03% location measurements are held. Both were about A2R and A2R is
 > withdrawn. Do not run them.
 
+> ### Amendment 11 (advisor, 2026-08-04) — canon is prompt-expressible, and that changes what the ruling implies
+>
+> **All three ratified.** The freeze, the provenance mechanism, and the armour test. The
+> `.gitignore` exception is principled in the repo's own terms — its stated premise is "assets
+> are large and regenerable," and *regenerable* is measured false for exactly those two files.
+> The sidecar is the first provenance artifact this pipeline has ever produced.
+>
+> **The armour result is the best single finding of this session.** One phrase, control
+> byte-matched at 20,973 px so the term was the only difference, and the plates returned
+> correctly placed with the clean control's legibility intact. **It splits Amendment 8 exactly:
+> the surplus 23,000 px was noise for registration and signal for identity** — and the signal
+> is recoverable by other means. Canon can be stated in the prompt; the control is free to be
+> clean; **registration and character are not mutually exclusive.**
+>
+> **The executor's self-catch is worth more than the predictions were.** They argued the term
+> would fail because "heavy dark boots" was in the prompt and had been overridden — then
+> checked and found the boots are dark in *every* arm and were never overridden. **An invented
+> precedent, reasoned from as if measured.** That is the same failure as an inherited claim,
+> except self-inflicted within a single turn, and catching it before reporting is the behaviour
+> that makes this record trustworthy.
+>
+> ### Authorised: the bracer, same one-term fix
+>
+> Canon has a gold-trimmed leather bracer; both clean-control arms have a fur cuff; the front
+> prompt never names bracers though the palette spine does. Cheap, untried, and it is the
+> **second data point on whether canon is prompt-expressible in general** rather than lucky once.
+>
+> ### The proportion question is not a taste call, and it goes to the Director with new evidence
+>
+> Looking at the canon twin and the armour twin at full size: the difference is larger than
+> "stockier." The canon figure reads taller and narrower, with longer legs and a smaller head
+> against the body; the armour twin reads short-limbed and broad. Measured, the canon twin
+> paints **17.38%** of frame against a mesh silhouette of **19.01%**, where the clean-control
+> twins paint 18.95%.
+>
+> **The load-bearing point: the proportions came from the same defect as the missing knee
+> plates.** The canon twin's control was missing a quarter of the silhouette, so the model
+> painted freely — and what it painted free of was the mesh's own body. One consequence of that
+> defect has just been shown to be a prompt-fixable artifact. Whether the other is, is his call
+> and nobody else's, but he should make it knowing the two share a cause.
+>
+> Three readings, and they lead to different work:
+>
+> 1. **The proportions are canon.** Then the mesh is not the character's body, and that is a
+>    **geometry** finding — reconstruction or E03's head graft — not a texture one. It would
+>    reorder the queue.
+> 2. **The proportions were the artifact.** Then the armour twin plus a bracer term is the
+>    character rendered correctly on the correct body, and the canon PNG becomes a
+>    **specification** rather than the reference.
+> 3. **Neither cleanly** — he wants something the current route does not produce, which is worth
+>    knowing before Arm B generates six more.
+>
+> **Reading 2 would also dissolve the irreproducibility defect**, which is why it is worth
+> putting to him rather than assuming. A specification is reproducible where an artifact is not,
+> and Amendment 10's "a twin is two things" tension collapses: identity moves to the prompt, and
+> the twin only has to do the registration job. That is now a live hypothesis with one
+> confirmation, not a wish.
+>
+> **Arm B waits on his answer.** Generating six twins is the wrong move while it is unsettled
+> which body they should have.
+
 ## 5. What this does not settle
 
 Whether ~40–53% reference coverage is *enough* for the Director to accept the asset is not a
