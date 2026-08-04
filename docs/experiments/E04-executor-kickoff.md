@@ -130,14 +130,58 @@ gate carries the weight nobody's eye can: no one knows by sight what a galleon's
 should be.** Camera set, framing and thin-policy land in `profiles/ship.json` measured from
 the designated mesh. Then E04's spec proper.
 
+## Task 4 — the ship's measured values, its styled target, and its bands. DISPATCHED after designation (Rulings 3–4).
+
+The Director designated **00006**. The fixture is
+[GALLEON-IDENTITY.md](../../canon/GALLEON-IDENTITY.md) — read it *as corrected* (S1 was
+inverted and rewritten in place; S-backdrop is new). Strict order:
+
+**4a — measure `ship.json`'s suspended values from `galleon_00006_raw.glb`.** Framing
+(width-fit, margin measured not inherited — your Gate 0 driver already did this once);
+the declared **front** and `--yaw-offset` (rotate the camera, never the mesh); the camera
+set — eye-level yaws plus the elevation question the design note flags: **decks need
+looking into**, so derive candidate elevations from the mesh's deck visibility (what
+fraction of upward-facing surface each elevation reaches — measurable by raycast, no
+generation) and record the chosen set with its coverage numbers; `thin_extent` measured
+from the rigging's actual widths (G9 is the element — S2's numbers are the baseline).
+Every value lands in `ship.json` with its `why` and provenance, per the profile discipline.
+
+**4b — derive the backdrop** (S-backdrop): maximise the minimum distance from every
+declared material's expected colour, weighted toward the dark thin elements, avoiding
+G11's declared blue. Show the derivation as a table — every declared material, its
+distance to the chosen backdrop, the minimum highlighted — and the G9 enrichment numbers
+(5.68–10.77% thin vs 1.35–1.58% bulk on W3) as the baseline the choice must beat when
+twins exist. Pre-register the prediction before any generation.
+
+**4c — the styled target pair, on cloud.** Two views (front three-quarter and stern
+three-quarter — the stern castle and figurehead are the identity-dense ends), generated
+FROM the fixture prompt (all twelve G-elements, own noun phrases, the derived backdrop
+word) with the standing recipe discipline: workflow JSON saved before submission, seed
+and params recorded, `dry_run` + `estimate_credits` first, the LoRA by its live card name.
+**This pair is the ship's `canon/twin_*` analogue: a specification source and visual
+target, never a projection reference** — write that into its sidecar at birth. One
+generation per view; if an output violates the fixture (material not in the spec), the
+palette-gate re-roll precedent applies: one re-roll, new seed, rejected artifact stays in
+the record; a second failure is the result.
+
+**4d — derive the palette bands** from the fixture's named materials, cross-checked
+against the styled target pair (never against future twins — non-circularity, kept).
+Report the forbidden-span arithmetic (the ~120° estimate made real), whether G6 and G11's
+bands merge, and each band's chroma floor. **Suspend rather than invent** any threshold
+the data cannot support — report numerator and denominator and stop.
+
+**Then HALT.** The styled target pair goes to the Director beside the clay (his overrule
+window on the fixture made visual), and the E04 spec proper follows from the advisor with
+4a–4d's numbers in hand.
+
 ## Do not
 
 Run the seam-levelling fix, or any post-Gate-1 polish arm, unbidden · touch a
 character-profile value while building the ship profile (the point of the exercise) · arm
 any subject-calibrated threshold on the galleon from character-derived numbers — the palette
 bands, the IoU halt, the bbox tolerance are W3 data; derive per subject or suspend and
-report · run `gate_mesh.py` on a ship · scaffold past Gate 0 · write to the studio memory
-store · end a session the Director has not ended.
+report · run `gate_mesh.py` on a ship · scaffold past Gate 0 (Tasks 1–3) or past Task 4d ·
+write to the studio memory store · end a session the Director has not ended.
 
 ## Standards compliance (this dispatch)
 

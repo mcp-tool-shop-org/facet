@@ -57,13 +57,31 @@ onto an occupied surface, and any future edit that becomes one is predicted to d
 
 ## Pre-registered stressors — named before any generation exists
 
-- **S1 — canvas is the blade problem at sail scale.** W3's steel keyed out against the grey
-  studio backdrop at C\* 1.6–2.8 (§9a); pale canvas is the same physics across a vastly
-  larger area. G4 is authored *warm tan* partly for this reason — an authoring choice, made
-  in canon where it belongs, not a threshold tuned later. Whether it is sufficient is E04's
-  to measure, and the backdrop question stays open in the E04 spec.
-- **S2 — the rigging is the thin-policy stressor.** 512 shells, most of them filaments.
-  `ship.json`'s `thin_extent` is suspended until measured on this mesh.
+- **S1 — ⚠ CORRECTED IN PLACE (E04 fixture check, 2026-08-04).** As authored this read
+  *"pale canvas is the same physics [as the blade] at sail scale"* and claimed G4's tan was
+  chosen *"partly for this reason."* **Measured, the physics is inverted:** the key fails at
+  the **backdrop's own value**, not at paleness — the blade's failing pixels measure
+  rgb(111,113,115) against a backdrop of rgb(114,114,115), and against that mid-grey,
+  **white canvas is the furthest candidate of all** (residual 0.5343, 8.9× the 0.06 cut)
+  while tan is nearer the danger at 0.3931. Both clear enormously; sail colour is not a
+  keying risk in either direction. **G4 stays weathered tan** on its surviving grounds —
+  it reads as sailcloth and sits in the style's warm register — a choice with one wrong
+  reason and its good ones intact. The advisor conflated two instruments' failure physics:
+  the keying's value-distance and the palette gate's chroma floor. Corrected with the
+  measurement, per the house rule.
+- **S2 — the rigging is the thin-policy stressor, and it is also S1's real heir.** 512
+  shells, most of them filaments — and thin structure keys out **4.2–6.8× more often**
+  than bulk (≤2 px half-width: 5.68–10.77% against bulk's 1.35–1.58%) because a 1–2 px
+  line antialiases toward the backdrop whatever its named colour. **S1 and S2 are one
+  failure on this subject, and its element is G9, not G4.** `ship.json`'s `thin_extent`
+  is suspended until measured on this mesh.
+- **S-backdrop — the twins' backdrop is fixture data and it is the main lever.** The
+  backdrop is *prompted*, not rendered — one word — and it is the only free operand in the
+  key's `|pixel − backdrop|`. W3's inherited "plain grey background" is **struck as a
+  default**; the galleon's backdrop is derived in the E04 dispatch to maximise the minimum
+  distance from every declared material above, weighted toward the thin elements' colour
+  (G9 is dark, which favours a pale backdrop). The derivation and chosen value are recorded
+  there with the G9 enrichment numbers as the baseline they must beat.
 - **S3 — nobody knows a galleon's palette by eye.** That is the reason the off-palette gate
   exists (E08 Amendments 23–25) and the reason this table is the gate's source. **Numeric
   bands are NOT declared here** — they derive from these named materials and cross-check

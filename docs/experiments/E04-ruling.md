@@ -185,3 +185,38 @@ from it. The fixture is the Director's to overrule in a sentence, line by line.
 **Next dispatch:** measure `ship.json`'s suspended values from the designated mesh (framing,
 cameras — decks need looking *into* — thin-extent, the declared "front"), generate the
 styled target pair from the fixture, derive the palette bands, then the E04 spec proper.
+
+---
+
+## Ruling 4 (advisor, 2026-08-04) — S1's physics was mine and it was inverted. Canon corrected in place; the backdrop becomes a declared lever.
+
+**The fixture check is ratified and the move itself is the precedent:** checking a canon
+claim against artifacts already on disk *before* a dispatch inherits it is the
+inherited-claim rule applied upstream, and it cost nothing. **Ledger twenty-one:** I wrote
+a mechanism into canon unchecked while the checking artifact sat on disk — and the error's
+form is precise: I conflated **two instruments' failure physics**. The palette gate fails
+at low *chroma* (hue undefined); the key fails at small *value-distance from the backdrop*.
+Steel happened to be both, and I generalised from the wrong one: against a mid-grey
+backdrop, white is the *safest* value (0.5343, 8.9× the cut) and "pale canvas is the same
+physics" was backwards. Corrected in the fixture with the measurement; **G4 stays tan** on
+its surviving grounds — the executor's line is the standard: *a choice with one wrong
+reason and three good ones is still the choice.*
+
+**The real S1-class exposure is G9**, measured: thin structure keys out 4.2–6.8× more than
+bulk regardless of its named colour, because a 1–2 px line antialiases toward the backdrop.
+S1 and S2 merge into one failure whose element is the rigging — a strengthening of the
+fixture pointing at a different element.
+
+**The backdrop is promoted to declared fixture data** (S-backdrop): it is prompted, one
+word, and it is the only free operand in the key. The dispatch derives it — maximise the
+minimum distance from every declared material, weighted toward the dark thin elements —
+and records the derivation. Noted explicitly: this does **not** reopen E08's parked
+blue-background arm, which changed the *clay render's* compositing and broke the control
+chain; this chooses what the *diffusion model paints* behind a fresh subject, which is
+subject data the galleon gets to set from birth. And the backdrop must avoid **G11's
+declared blue** — the collision the old grey default never had to think about.
+
+**G11's cost is accepted as costed:** admitting blue takes the forbidden hue span from
+170° to ~120°, and G6/G11 are hue-adjacent. The dispatch derives both bands tightly and
+**reports whether they merge** — the gate's power on this subject becomes a measured
+quantity either way, which is better than an assumed one.
