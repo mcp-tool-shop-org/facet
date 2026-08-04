@@ -60,6 +60,11 @@ ap.add_argument("--edge-floor", type=float, default=2.5,
 ap.add_argument("--bias", type=float, default=3e-3)
 ap.add_argument("--noffs", type=float, default=1.5e-3)
 ap.add_argument("--aspect", default="752,1024")
+ap.add_argument("--mask-keyed", action="store_true",
+                help="answer 'is there surface here' with restylize_views' keyed clay "
+                     "mask instead of the raycast silhouette. Reproduces every arm "
+                     "before E08 Arm A byte-for-byte; measured to lose 34,970 px of a "
+                     "146,356 px silhouette on W3, interior rather than at the rim.")
 ap.add_argument("--hole-grey", type=float, default=0.42,
                 help="neutral clay value holes carry in the PREVIEW atlas")
 args = ap.parse_args()
@@ -146,40 +151,67 @@ reachable = np.zeros(NV, dtype=bool)
 
 for view in VIEWS:
     img = np.asarray(Image.open(view["path"]).convert("RGB"), dtype=np.float32) / 255.0
-    # Prefer the EXACT mask restylize_views.py saved beside the twin. Re-keying a
-    # painted twin heuristically is where background gets projected onto the mesh:
-    # on A0's twins the corner-median path keyed 30% of the bottom corners as
-    # figure, which a centred standing figure cannot reach (measured, E01).
     # TWO masks, two questions. Conflating them is what cost 480k texels:
     #   is there real surface here?   -> the MESH silhouette, NOT eroded
     #   is the paint here trustworthy? -> the TWIN's painted figure, eroded
-    # A visible mesh texel projects inside the mesh silhouette by definition, so
-    # eroding THAT mask rejects nothing but good texels — and it bites hardest at
-    # the silhouette, where the surface turns edge-on and a huge number of texels
-    # foreshorten into a thin band. The twin is painted fatter than the mesh
-    # (measured 15.8% of frame against 9.9%, IoU 0.777), so eroding the TWIN's
-    # mask never reaches the mesh boundary while still excluding background.
-    mpath = os.path.splitext(view["path"])[0] + "_mask.png"
+    #
+    # The first question is answered from GEOMETRY, by raycasting the view. It used to
+    # be answered by `figure_mask` thresholding the CLAY RENDER, saved beside the twin
+    # by restylize_views.py — a keyed render impersonating a silhouette. E01 had
+    # already established that a Workbench clay is flat grey on flat grey and that a
+    # threshold cannot find the figure in it; it fixed the CONTROL-IMAGE path by
+    # compositing onto contrast first, and left this consumer keying the same render.
+    # Measured on W3 (E08 Arm A): the saved mask held 111,602 px of a 146,356 px
+    # silhouette — IoU 0.76, 34,970 px of mesh missing, and the loss INTERIOR rather
+    # than a rim: a stripe down the whole blade, patches through pauldrons, chest,
+    # greaves and boots, following shading boundaries. It cost 257,511 texels of
+    # reference. Registration was ruled out at shift (0,0). Nothing caught it for four
+    # experiments because nothing ever compared the mask to the geometry.
+    # Geometry has no tolerance, no threshold, and no dependence on how the render was
+    # lit. --mask-keyed reproduces the historical path.
+    #
+    # ⚠ CORRECTED IN PLACE (E08 Arm A). This block used to justify eroding the twin's
+    # mask with: "The twin is painted fatter than the mesh (measured 15.8% of frame
+    # against 9.9%, IoU 0.777), so eroding the TWIN's mask never reaches the mesh
+    # boundary." Both numbers reproduce exactly — against the wrong objects. 15.81% is
+    # the ERODED TWIN figure and 9.94% is the SAVED KEYED MASK, so that was twin
+    # against mask, never twin against mesh. Against the true silhouette:
+    #   twin 17.43% of frame   vs   MESH 19.01%   IoU 0.911
+    # The MESH is fatter, and 12,625 px of it falls outside the twin's painted figure.
+    # Eroding the twin's mask therefore DOES reach the mesh boundary. The erosion is
+    # kept because E01's background-keying failure is real and is a separate question —
+    # it answers "is the paint trustworthy", which is the twin's own to answer — but it
+    # is no longer justified by a claim that the twin covers the mesh, because it does
+    # not.
     twin_fm = figure_mask(img)
-    if os.path.exists(mpath):
-        mesh_fm = (np.asarray(Image.open(mpath).convert("L"), dtype=np.float32)
-                   / 255.0 > 0.5).astype(np.float32)
-        # figure_mask eroded by minimum_filter when this was saved; undo it, or the
-        # AND term reintroduces a 2 px version of the same silhouette-band bug
-        mesh_fm = maximum_filter(mesh_fm, size=5)
-        print(f"[twins] {view['name']}: mesh mask {os.path.basename(mpath)} "
-              f"({mesh_fm.mean() * 100:.1f}% after un-erode), twin mask "
-              f"{twin_fm.mean() * 100:.1f}%", flush=True)
-    else:
-        mesh_fm = np.ones_like(twin_fm)
-        print(f"[twins] WARNING {view['name']}: no {os.path.basename(mpath)} — "
-              f"falling back to corner-median keying of the twin alone "
-              f"({twin_fm.mean() * 100:.1f}% figure). That path keys background "
-              f"gradients and cast shadows as figure; regenerate the twin with "
-              f"restylize_views.py.", flush=True)
     fm = twin_fm
     H, W = img.shape[:2]
     dtc = view["dtc"]
+    if args.mask_keyed:
+        mpath = os.path.splitext(view["path"])[0] + "_mask.png"
+        assert os.path.exists(mpath), f"ANDON: --mask-keyed but no {mpath}"
+        mesh_fm = maximum_filter(
+            (np.asarray(Image.open(mpath).convert("L"), dtype=np.float32)
+             / 255.0 > 0.5).astype(np.float32), size=5)
+        print(f"[twins] {view['name']}: HISTORICAL keyed mask "
+              f"({mesh_fm.mean() * 100:.1f}% of frame after un-erode)", flush=True)
+    else:
+        look = -dtc
+        rgt = view["right"]
+        upv = np.cross(rgt, look)
+        upv /= np.linalg.norm(upv) + 1e-12
+        gx_ = (np.arange(W) + 0.5) / W * h_ext - h_ext / 2
+        gy_ = v_ext / 2 - (np.arange(H) + 0.5) / H * v_ext
+        g1, g2 = np.meshgrid(gx_, gy_)
+        o2 = (bmid[None, None, :] + g1[..., None] * rgt[None, None, :]
+              + g2[..., None] * upv[None, None, :] - look[None, None, :] * 2.0)
+        mesh_fm = np.isfinite(rs.cast_rays(o3d.core.Tensor(np.concatenate(
+            [o2, np.broadcast_to(look, o2.shape)], axis=-1
+        ).reshape(-1, 6).astype(np.float32)))["t_hit"].numpy().reshape(H, W)
+        ).astype(np.float32)
+        print(f"[twins] {view['name']}: mesh silhouette from GEOMETRY "
+              f"({mesh_fm.mean() * 100:.1f}% of frame), twin paint "
+              f"{twin_fm.mean() * 100:.1f}%", flush=True)
     facing = (N @ dtc).astype(np.float32)
     fmin = np.where(headband, args.head_facing_min, args.facing_min)
     idx = np.where(facing > fmin)[0]
