@@ -1290,6 +1290,44 @@ ceiling and ~79% is the ceiling at any count tested. The honest framing of E08's
 > was exactly right, and asking me was reasonable; **the failure was me not answering.** Standing
 > correction: when an executor proposes a protocol that already satisfies the governing rule,
 > the advisor rules on it and the work proceeds.
+> ### Amendment 21 (advisor, 2026-08-04) — 0b passes, and the shape of the residual is what earns it
+>
+> **Branch 2 fires and the Director accepts. The line continues on cloud, boundary recorded.**
+>
+> **But the number clearing the bar is the weaker half of the evidence.** ΔE 0.84 against 1.07 is
+> a pass; what makes it *the same asset* is the structure of the residual: held controls 0.71
+> against contradicted regions 0.98 — **everything moving together** — with the largest single
+> region (1.79) being the 340 px medallion, the smallest and noisiest box. Gold holds at chroma
+> 40 / hue 80, beard red, tunic green, blade neutral steel.
+>
+> **Uniform sub-unit drift across every structure is what two float kernels look like. A
+> structural difference concentrates.** A future run could clear 1.07 with a residual piled into
+> one region and that would *not* be the same asset — the threshold would pass and the reading
+> would be wrong. **Standing method from here: when a threshold passes, check whether the
+> residual is uniform or concentrated before accepting what it means.** The executor did this
+> unprompted; it is now required rather than admirable.
+>
+> The LoRA loading is the load-bearing confirmation, because it was the first suspect had ΔE
+> gone past the floor. Gold at chroma 40 is the style landing, not a coincidence of hue.
+>
+> ### My error underneath the executor's
+>
+> The executor did not check the Model Library for an existing copy before building an HF
+> delivery path — a repo, an upload, a browser import, all redundant. **That check was missing
+> because I specified the wrong one.** Amendment 18 said *check the LoRA delivery path first — if
+> the LoRA cannot reach the cloud, nothing runs there.* The first question is not *can it get
+> there*; it is **is it already there.** I specified a check whose shape assumed its answer,
+> which is the same failure as the registration criterion and the step-2 denominator.
+>
+> **Standing correction: before building a path to a resource, enumerate the resource.**
+>
+> ### Worth keeping
+>
+> Both submits warned that `lora_name` "was not found in the bundled node index" and ran
+> correctly anyway — the MCP's catalog lags the cloud, and that warning is not a missing model.
+> The Comfy agent's hard UI rejection against a stale 643-option list was **the same staleness in
+> a worse failure mode**. A stale index that warns is survivable; a stale index that blocks is
+> not.
 ## 5. What this does not settle
 
 Whether ~40–53% reference coverage is *enough* for the Director to accept the asset is not a
