@@ -73,7 +73,13 @@ assert len(args.images) == len(args.masks), (
 PAL = json.load(open(args.palette, encoding="utf-8"))
 BANDS = [(b["name"], float(b["hue_deg"][0]), float(b["hue_deg"][1])) for b in PAL["allowed_bands"]]
 CMIN = float(PAL["min_chroma"])
-MAXPCT = float(PAL["gate"]["max_offpalette_pct"])
+# max_offpalette_pct may be null: WITHDRAWN 2026-08-04 because its stated derivation did not
+# describe it (it cited a 0 px baseline that came from a different, blue-only check) and because
+# its denominator moves 1.65x with camera angle while off-palette pixels scale with perimeter.
+# A null bound reports the percentage as a DIAGNOSTIC and gates on the blob alone. It is not
+# replaced with a looser number — withdrawing is not choosing a new threshold.
+_mp = PAL["gate"].get("max_offpalette_pct")
+MAXPCT = None if _mp is None else float(_mp)
 MAXBLOB = int(PAL["gate"]["max_offpalette_blob_px"])
 
 
@@ -93,8 +99,13 @@ def to_lab(rgb):
 
 print(f"[palette] {os.path.basename(args.palette)}: min_chroma {CMIN}  bands "
       f"{', '.join(f'{n} {lo:.0f}-{hi:.0f}deg' for n, lo, hi in BANDS)}", flush=True)
-print(f"[palette] gate: off-palette <= {MAXPCT}% of figure AND largest blob <= {MAXBLOB:,} px",
-      flush=True)
+if MAXPCT is None:
+    print(f"[palette] gate: largest blob <= {MAXBLOB:,} px. The percentage bound is WITHDRAWN "
+          f"(see the palette JSON) — % is reported as a diagnostic and gates nothing, so "
+          f"DIFFUSE off-palette contamination is currently unbounded.", flush=True)
+else:
+    print(f"[palette] gate: off-palette <= {MAXPCT}% of figure AND largest blob <= "
+          f"{MAXBLOB:,} px", flush=True)
 print(f"\n[palette] {'image':<22s} {'figure px':>10s} {'offpal':>9s} {'%':>7s} "
       f"{'blob':>8s}  verdict", flush=True)
 
@@ -120,7 +131,7 @@ for img_path, mask_path in zip(args.images, args.masks):
     lb, k = label(off)
     blob = int(np.bincount(lb.ravel())[1:].max()) if k else 0
 
-    ok = (pct <= MAXPCT) and (blob <= MAXBLOB)
+    ok = (blob <= MAXBLOB) and (MAXPCT is None or pct <= MAXPCT)
     stem = os.path.basename(img_path)
     print(f"[palette] {stem:<22s} {n_fig:>10,} {n_off:>9,} {pct:>6.2f}% {blob:>8,}  "
           f"{'ok' if ok else 'OFF-PALETTE'}", flush=True)

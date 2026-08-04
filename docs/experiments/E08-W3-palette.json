@@ -30,9 +30,21 @@
   "_what_this_gate_CANNOT_do": "It tests COLOUR, not placement. Gold on the boots would pass every band while being flatly wrong, and a correctly-coloured element in the wrong location is invisible to it. It is a palette gate, not a specification gate — it catches material that is not in the spec at all, which is exactly and only the failure it was built from. Do not let a green light here be read as 'the twin matches the spec'.",
 
   "gate": {
-    "max_offpalette_pct": 0.5,
+    "max_offpalette_pct": null,
     "max_offpalette_blob_px": 800,
+
     "_why_two_thresholds": "One garment and scattered speckle are different failures and a single total conflates them. View 6 was 6.17% with a 4,882 px blob; a rim of antialiasing at a material boundary would be a similar total spread over hundreds of tiny components. The blob bound is the one that catches an invented garment.",
-    "_thresholds_are_stated_before_the_re-roll": "Set from the seven clean views measuring exactly 0 px, so any non-zero result is already outside the observed distribution. 0.5% and 800 px are an order of magnitude above nothing and an order of magnitude below the failure. Not tuned to let anything through."
+
+    "_thresholds_are_stated_before_the_re-roll": "Set from the seven clean views measuring exactly 0 px, so any non-zero result is already outside the observed distribution. 0.5% and 800 px are an order of magnitude above nothing and an order of magnitude below the failure. Not tuned to let anything through.",
+
+    "⚠_max_offpalette_pct_WITHDRAWN": "Ruled 2026-08-04 (fc9a2e2), after it failed both re-rolls that the blob bound cleared. TWO independent reasons, and it is WITHDRAWN rather than re-derived — withdrawing is not choosing a new number, which is the move that would be forbidden.",
+
+    "_reason_1_its_stated_derivation_does_not_describe_it": "The line above claims it was set from 'seven clean views measuring exactly 0 px' and is 'an order of magnitude above nothing'. That 0 px came from an ad-hoc BLUE-ONLY check, not from this gate. This gate's clean baseline is 0.06%-0.33%, so 0.5% was 1.5x the highest clean view. A condition whose stated derivation does not describe it never had a valid derivation — it is not a tight threshold, it is not a threshold. Same disposition as project_twins' `assert seen.mean() > 0.30`, E07's <=3.25, and the stratum area-loss gate.",
+
+    "_reason_2_the_denominator_moves_with_the_camera": "Figure area swings 1.65x between a profile (90,553 px) and a rear three-quarter (149,780 px), while off-palette pixels are a BOUNDARY phenomenon scaling with perimeter. twin_6's 603 px sits beside the passing views' 462 and 401 and failed only on geometry. Fourth moving denominator in this repo.",
+
+    "_what_is_lost_named_rather_than_glossed": "The SPECKLE half of the gate goes with it. Distributed off-palette contamination is now unbounded, and twin_2 projected carrying 1,073 px — ~2.3x the passing views in ABSOLUTE terms with only a 402 px blob, so the excess is diffuse. That is recorded as uncharacterised, and Gate 1 judges it.",
+
+    "_replacement_is_specified_as_a_UNIT_not_a_number": "Normalise by PERIMETER, or report absolute count with figure area beside it. Its threshold must be derived from a clean baseline measured BEFORE the arm that tests it. DO NOT BUILD IT WHILE LOOKING AT RESULTS IT WOULD JUDGE — that is exactly how the withdrawn one went wrong."
   }
 }
