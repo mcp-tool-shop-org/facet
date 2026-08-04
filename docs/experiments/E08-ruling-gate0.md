@@ -2224,6 +2224,61 @@ ceiling and ~79% is the ceiling at any count tested. The honest framing of E08's
 > sheet.** The sequence table restates on the fixed-tool numbers; every "holes after"
 > downstream reads from 719,740. Amendment 31's standing authorization continues.
 
+> ### Amendment 34 (advisor, 2026-08-04) — the run is complete, my pocket diagnosis is falsified, and the sheet is in front of the Director
+>
+> **Task 3 is ratified mechanically.** Eight strokes, in-tool corner assert 8 of 8, every
+> recipe saved before submission, the weight-identity anchor pixel-identical across cloud
+> runs, stroke 7's re-emit byte-identical to the brush's actual inputs, nine cloud jobs at
+> zero credits, no local generation. The measured mix — **68.8% reference / 4.2% brush /
+> 27.0% dilation** against the rejected asset's 28.4 / 37.7 / 33.9 — is the record's number
+> now, not a projection. **Nothing in this amendment judges the asset. Gate 1 is the
+> Director's.**
+>
+> ### Amendment 32's diagnosis is corrected in place — ledger eighteen, mine
+>
+> A32 called the stroke-7 pocket *"Amendment 26's cast shadow at the brush site — repainted
+> backdrop keyed as figure."* Measured: **the pocket is 100% geometry hit and 100% inside
+> the job mask** — a hole on real surface the brush was instructed to paint, rendering at
+> exactly 107/255 because `--hole-grey` and emit's background fill are **the same 0.42 by
+> construction**. I diagnosed off the proxy's output and named it with narrative confidence
+> — "a known object" — without the one measurement that decided it, which took the executor
+> a single call once `hit.png` existed. The ANDON that fired was a false positive; the void
+> it triggered was still procedurally right (a fired pre-registered gate, and a real breach
+> beneath it), and its recovery cost is now measured: **79 texels.** A false alarm with a
+> cheap, verified recovery is the system working; the shell-chain breach stands as a fault
+> regardless of the alarm's validity.
+>
+> And the fix survives its falsified justification on its own evidence — 32/41/2/0/3/11/6 px
+> of genuine rim spill removed across all eight strokes, zero overlap with the pocket.
+> **"A guard whose stated reason is wrong may still be load-bearing" is now instanced in my
+> own amendment**, which is where it was always going to end up eventually.
+>
+> ### Two findings banked as standing
+>
+> **When two classes share an encoding, no test on the encoding can separate them.**
+> Unpainted surface and background are both 0.42 — one constant, two meanings — so every
+> colour test at that value conflates them forever. The corrected diagnostic reads the
+> property (`hit`), the fifth time this experiment has replaced a proxy with the property
+> it stood in for. Whether the constants should differ is a post-Gate-1 design note;
+> reading geometry makes it moot for every instrument that matters.
+>
+> **The blade's targeting data.** 47–61% dilation against the asset's 27%, 30–47% reference
+> where E07's blade carried none, visible as the orange stripe on every provenance panel.
+> The post-Gate-1 blade arm now knows exactly what it is buying and where.
+>
+> ### Endorsed by name
+>
+> The report discards its own invalid measurement (render-space colour-matching, caught by
+> classes summing to 3.5%) before it could reach the record; states the ΔE tables with
+> their confound and no threshold; surfaces the falsification of a banked amendment at the
+> top rather than the bottom; and logs six of its own faults. The sheet was built before
+> the metrics. **This is the executor discipline this repo was rebuilt to produce, on the
+> run where it mattered.**
+>
+> The README restates: the end-to-end gap is closed as a *fact* (an asset exists under the
+> corrected regime); whether it is *better* is unruled and stays that way until the
+> Director's eye says otherwise.
+
 ## 5. What this does not settle
 
 Whether ~40–53% reference coverage is *enough* for the Director to accept the asset is not a

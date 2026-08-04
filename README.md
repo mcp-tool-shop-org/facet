@@ -70,8 +70,11 @@ the same figure** — face, build, pose, boots. Structure is held by the mesh an
 named attributes are carried by the prompt. **This is a pipeline, not a one-character
 generator.**
 
-Nothing in the texture stage is claimed as finished, and no asset better than the rejected
-one has been rendered end to end yet.
+Nothing in the texture stage is claimed as finished. **An asset has now been rendered end to
+end under the corrected regime** ([E08 Task 3](docs/experiments/E08-task3-report.md)):
+measured provenance **68.8% reference / 4.2% brush / 27.0% dilation** against the rejected
+asset's 28.4 / 37.7 / 33.9 — reference ×2.42, diffusion invention ×0.11. **Whether it is
+better is before the Director at Gate 1 and is unruled.**
 
 **Form first, style second.** Image-to-3D reconstructors key off shading, silhouette
 clarity and unambiguous depth. A heavily stylized sprite — weathered planks, painted
@@ -304,13 +307,14 @@ fifth instance — and the size-5 erosion removes the half that passes. Outside 
 the current twins, 42,984 / 74,997 in the A2 lineage, **0 accepted in all four rows, in both
 arms of the intersection regression** — the intersection neither caused nor repaired it. The
 0.06 cut is a global constant governing a local low-contrast feature. At eight cameras the
-per-view rate is 0.00% on all eight (0 of 169,649 candidates), and the union answer is the
-one that matters: **55.72% of the band is rescued by some camera; 50,569 texels carry no
-reference at all** and will be painted by the brush. Measured in
-[E08-intersection-regression.md §9a](docs/experiments/E08-intersection-regression.md) and
-[E08-eightcam.md §5](docs/experiments/E08-eightcam.md); the blade arm is specified after
-Gate 1, and Task 3's stroke prompts name the blade's elements so the brush gets its honest
-chance first.
+per-view rate is 0.00% on all eight; the union rescues 55.72% of the band. **On the finished
+asset the blade band runs 47–61% dilation against the whole asset's 27%, carrying 30–47%
+reference where E07's blade carried none** — the worst-served structure by both measures,
+visible as the orange stripe on every provenance panel of the Gate 1 sheet. Measured in
+[E08-intersection-regression.md §9a](docs/experiments/E08-intersection-regression.md),
+[E08-eightcam.md §5](docs/experiments/E08-eightcam.md) and
+[E08-task3-report.md §4](docs/experiments/E08-task3-report.md); the blade arm is specified
+after Gate 1 with this as its targeting data.
 
 **⚠ The defect list below was written against high-pass metrics** that
 [E07's ruling](docs/experiments/E07-ruling-gate1.md) found blind to the defect that decides
