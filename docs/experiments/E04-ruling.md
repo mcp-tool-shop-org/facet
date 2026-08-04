@@ -220,3 +220,59 @@ declared blue** — the collision the old grey default never had to think about.
 170° to ~120°, and G6/G11 are hue-adjacent. The dispatch derives both bands tightly and
 **reports whether they merge** — the gate's power on this subject becomes a measured
 quantity either way, which is better than an assumed one.
+
+---
+
+## Ruling 5 (advisor, 2026-08-04) — 4a/4b ratified. The backdrop is WHITE, the fit-axis finding is the profile design working, and 4c is cleared with three pins.
+
+**Ratified in full**, and the method wins are named: the union rescoring (single-elevation
+scores answered a question nobody asked — the executor corrected its own operand before the
+numbers meant anything); the shell-topology criterion **falsified and reported as the full
+success it is** (the rigging lives in the main shell, attached to its masts); the antimode
+refused on the density plot (a 7% dip is a shoulder, not a cut — the E08 A4 rule holding on
+a new subject); and thin 0.010 adopted as **a judged trade with its cost curve published**,
+which is exactly how the character's own value was born. Three of five backdrop predictions
+falsified with one owned cause — *reasoned about the metric instead of the materials* — and
+for the record, the thin-weighting clause the derivation ignored was mine, and the
+measurement showed it moot.
+
+**The backdrop is `plain white`** — 2.5× the blade-killing quantity, with the unconstrained
+optimum (saturated blue) disqualified twice for reasons that were in the fixture before the
+derivation ran. Bank the caveat with it: the material colours are **estimates from the
+fixture's words**, so 4d re-runs the derivation against colours measured from the pair —
+and the loop is bounded now, before it exists: if the re-derivation dethrones white, that
+implicates the pair's own backdrop, so the pair re-generates once on the new answer and a
+second dethroning is a halt, not an iteration.
+
+**The `turn_render` finding is the profile design earning its keep** — `ortho_scale =
+size.z * 1.204` has no fit-axis knob, so width-fit *cannot be a profile value*, which per
+`profiles-design.md` means the height-fit was never a principle; it was W3's portrait
+assumption compiled into shared code. Recorded, not fixed, correctly: **the fix is deferred
+to the E04 spec proper as a named work item** — a fit-axis flag defaulting to the old
+behaviour, landed with byte-identity anchors on the character path, same shape as
+`--trust-intersect`. 4c does not wait for it: the Gate 0 driver already measures per-mesh
+frames.
+
+**Two expectation-setting numbers, banked before anyone is surprised by them.** Deck
+coverage plateaus near **53% at twelve cameras** — half this subject is unreachable from
+outside, so the ship's reference share will run structurally lower than the character's
+74.1% reach, with dilation and brush carrying more. That is geometry, not a pipeline
+regression, and the Gate 1 read must not treat it as one. And **bow/stern elevation beats
+beam** (49.58% vs 41.93%) — a subject-specific fact nothing in the character line
+predicted; 40° adopted as the measured peak over the inherited 55. Consequence flagged for
+the E04 spec: **`cull_unseen`'s production superset must be a superset of the ship's
+cameras** — the 24-yaw set predates elevated ±40 pairs, and E06's rule is that the
+visibility set covers every production camera, always.
+
+**A new instrument limitation, named:** `thin_extent` measures extent **along the view
+ray**, so a grazing hull rim and an edge-on sail register as thin — a conflation a
+greatsword never triggered, and the reason the character's 0.030 is visibly wrong here.
+Lives in `ship.json` beside the value; the structural-thickness replacement is an arm for
+another day, not a patch for this one.
+
+**4c is CLEARED with three pins:** (1) the pair is **canny-locked to the designated mesh's
+own renders** — the W3 canon-pair precedent; build the control from the Gate 0 driver's
+measured frames and the exact-silhouette machinery, never a keyed render; (2) the backdrop
+word is white per 4b; (3) the sidecar declares at birth: *specification source and visual
+target, never a projection reference.* Recipe discipline as dispatched — JSON before
+submission, `dry_run`, `estimate_credits`, the live LoRA card name, one re-roll bound.
