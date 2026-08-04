@@ -295,16 +295,38 @@ if args.sheet:
     print(f"\n[acc] wrote {args.sheet}")
     print(f"[acc]   per view: twin | mask (grey=kept, RED=lost to the opening, "
           f"blue=restored) | rejections (green=accepted, blue=EDGE, RED=MASK)")
+    # The MASK test's premise is that the saved mask IS the mesh silhouette. That is
+    # checkable against the silhouette itself, which the raycasting scene already
+    # built. (An earlier version of this check compared the saved mask against its own
+    # dilation, which cannot lose a pixel by construction and always returned 0 — a
+    # guard that could not see its own failure.)
+    print(f"\n[acc] is the saved mask actually the mesh silhouette?")
     for view in VIEWS:
-        s = st[view["name"]]
-        rawm, opened = s["raw_mask"], s["mesh_fm"] > 0.5
-        out.setdefault("opening_loss", {})[view["name"]] = {
-            "saved_mask_px": int(rawm.sum()),
-            "lost_to_opening_px": int((rawm & ~opened).sum()),
-            "pct": round(float((rawm & ~opened).sum() / max(int(rawm.sum()), 1) * 100), 2)}
-        print(f"[acc]   {view['name']}: saved mask {int(rawm.sum()):,}px, "
-              f"NOT restored by the un-erode {int((rawm & ~opened).sum()):,}px "
-              f"({(rawm & ~opened).sum()/max(int(rawm.sum()),1)*100:.2f}%)")
+        n = view["name"]
+        s = st[n]
+        dtc = view["dtc"]
+        look, rgt = -dtc, view["right"]
+        upv = np.cross(rgt, look); upv = upv / np.linalg.norm(upv)
+        Wi, Hi = int(AW), int(AH)
+        xs2 = (np.arange(Wi) + 0.5) / Wi * h_ext - h_ext / 2
+        ys2 = v_ext / 2 - (np.arange(Hi) + 0.5) / Hi * v_ext
+        g1, g2 = np.meshgrid(xs2, ys2)
+        o2 = (bmid[None, None, :] + g1[..., None] * rgt[None, None, :]
+              + g2[..., None] * upv[None, None, :] - look[None, None, :] * 2.0)
+        sil = np.isfinite(rs.cast_rays(o3d.core.Tensor(np.concatenate(
+            [o2, np.broadcast_to(look, o2.shape)], axis=-1
+        ).reshape(-1, 6).astype(np.float32)))["t_hit"].numpy().reshape(Hi, Wi))
+        used = s["mesh_fm"] > 0.5
+        out.setdefault("mask_vs_silhouette", {})[n] = {
+            "true_silhouette_px": int(sil.sum()),
+            "mask_used_px": int(used.sum()),
+            "mesh_outside_mask_px": int((sil & ~used).sum()),
+            "mask_outside_mesh_px": int((used & ~sil).sum()),
+            "iou": round(float((sil & used).sum() / max((sil | used).sum(), 1)), 4)}
+        print(f"[acc]   {n}: true silhouette {int(sil.sum()):>8,}px   mask used "
+              f"{int(used.sum()):>8,}px   IoU {(sil&used).sum()/max((sil|used).sum(),1):.4f}")
+        print(f"[acc]       mesh NOT in the mask {int((sil & ~used).sum()):>8,}px   "
+              f"mask not on the mesh {int((used & ~sil).sum()):>6,}px")
 
 if args.out_json:
     os.makedirs(os.path.dirname(os.path.abspath(args.out_json)), exist_ok=True)
