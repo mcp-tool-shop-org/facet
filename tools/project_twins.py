@@ -64,12 +64,21 @@ ap.add_argument("--edge-frac", type=float, default=1.0 / 3.0,
                 help="E08 A3 invariant: the edge erosion may never exceed this "
                      "fraction of a structure's OWN local half-width. For a bar "
                      "the area it removes equals this number exactly.")
-ap.add_argument("--edge-max-area-loss", type=float, default=0.40,
-                help="ANDON: halt if the erosion removes more than this share of "
-                     "any single structure's area. A bar eroded exactly at "
-                     "--edge-frac loses that fraction, so this sits above it to "
-                     "leave room for discretisation and ragged outlines while "
-                     "still catching the 51% the absolute path took off the blade.")
+# WITHDRAWN (E08 Amendment 3): --edge-max-area-loss halted on stratum area-loss, a
+# perimeter-to-area statistic that swings +/-10 points on shape alone. It fired on a
+# build whose invariant held exactly. The stratum table survives as a DIAGNOSTIC.
+ap.add_argument("--bg-de", type=float, default=10.0,
+                help="CIE76 dE below which a sampled colour counts as the twin's "
+                     "background. 10 is the external constant for 'plainly different "
+                     "colour', so under it means indistinguishable from background.")
+ap.add_argument("--bg-max-pct", type=float, default=2.0,
+                help="ANDON: halt if more than this share of the texels a relaxed "
+                     "erosion NEWLY admits sit within --bg-de of the twin's "
+                     "background. Chosen, and stated so it can be ruled on: A2's "
+                     "ratified relaxation measured 0.18% against 0.32% for the "
+                     "already-trusted set, so 2% is an order of magnitude above work "
+                     "already accepted, while E01's contamination (a third of a "
+                     "region keyed as figure) would exceed it outright.")
 ap.add_argument("--edge-min-struct", type=int, default=50,
                 help="structures smaller than this are keying specks, not parts")
 ap.add_argument("--edge-absolute", action="store_true",
@@ -130,6 +139,19 @@ def figure_mask(img, tol=0.06, erode=5):
     bg = np.median(c, axis=0)
     fm = (np.abs(img - bg).max(axis=-1) > tol).astype(np.float32)
     return minimum_filter(fm, size=erode)
+
+
+def srgb_to_lab(rgb):
+    """sRGB -> linear -> XYZ(D65) -> CIE Lab. dE below is CIE76."""
+    c = np.where(rgb <= 0.04045, rgb / 12.92, ((rgb + 0.055) / 1.055) ** 2.4)
+    M = np.array([[0.4124564, 0.3575761, 0.1804375],
+                  [0.2126729, 0.7151522, 0.0721750],
+                  [0.0193339, 0.1191920, 0.9503041]])
+    xyz = c @ M.T / np.array([0.95047, 1.0, 1.08883])
+    e, k = 216 / 24389, 24389 / 27
+    fx = np.where(xyz > e, np.cbrt(xyz), (k * xyz + 16) / 116)
+    return np.stack([116 * fx[..., 1] - 16, 500 * (fx[..., 0] - fx[..., 1]),
+                     200 * (fx[..., 1] - fx[..., 2])], axis=-1)
 
 
 def local_thickness(dist):
@@ -302,18 +324,20 @@ for view in VIEWS:
         print(f"[twins] {view['name']}: edge-dist = min({ed_body:.1f}px, "
               f"{args.edge_frac:.3f} x local half-width); median local cap {med:.1f}px "
               f"(figure {fig_w:.0f}px wide)", flush=True)
-    # Gate the FAILURE MODE, stratified by LOCAL HALF-WIDTH — not by connected
-    # component. A per-component gate was written first and REJECTED ON MEASUREMENT:
-    # the twin's whole front figure is ONE component of 121,709 px, because the blade
-    # touches the hand that holds it, so a blade losing half its area read as 12.3%
-    # overall. Connectivity cannot separate a blade from the body gripping it;
-    # thickness can, and thickness is what the invariant is stated in.
-    # Reported in both modes so the check is demonstrably able to fire; it HALTS only
-    # under the invariant, because --edge-absolute exists to reproduce arms predating
-    # it. The body distance is used throughout, being the stricter of the two.
+    # DIAGNOSTIC, required, and never a halt (E08 Amendment 3). Erosion cost by LOCAL
+    # HALF-WIDTH — the row that earned this arm: under the historical absolute distance
+    # the 1-2 / 2-4 / 4-8 px strata lose 100 / 100 / 77.6% against 4.4% at 32px+, and
+    # the blade lives in that 4-8 px stratum, three quarters of it removed by a guard
+    # built to delete a 1-2 px rim.
+    # It carried a halt for exactly one run and the halt was withdrawn: stratum
+    # area-loss is a perimeter-to-area statistic that swings +/-10 points on SHAPE
+    # alone, so it cannot carry one. A diagnostic and a gate are different objects.
+    # (Stratification by thickness replaced a per-connected-component version that was
+    # rejected on measurement — the twin's whole front figure is ONE component of
+    # 121,709 px because the blade touches the hand, so a blade losing three quarters
+    # of its area read as 12.3% overall.)
     fig = fm > 0.5
     kept = dist_in >= e_img
-    worst, worst_lab, worst_n = 0.0, "", 0
     print(f"[twins] {view['name']}: erosion cost by structure half-width —", flush=True)
     for a_, b_ in ((1, 2), (2, 4), (4, 8), (8, 16), (16, 32), (32, 1e9)):
         sel = fig & (thick >= a_) & (thick < b_)
@@ -324,21 +348,51 @@ for view in VIEWS:
         nm = f"{a_}-{'inf' if b_ > 1e8 else b_}px"
         print(f"[twins]     half-width {nm:<9s} {n:>8,}px  removed {lost*100:5.1f}%",
               flush=True)
-        if lost > worst:
-            worst, worst_lab, worst_n = lost, nm, n
+    d_s = bilinear(dist_in, px, py)
+    e_abs_s = np.where(headband[idx], ed_head, ed_body)
+    # IMPLEMENTATION ASSERTION, not a gate: e <= frac*R holds BY CONSTRUCTION, so this
+    # cannot fail on a correct build. It catches an operand-order slip or a bad
+    # half-width lookup. By this repo's own rule that makes it a unit test; it is not
+    # promoted to an andon, and halting on it fired on correct work once already.
     if not args.edge_absolute:
-        assert worst <= args.edge_max_area_loss, (
-            f"ANDON: the edge erosion removes {worst*100:.1f}% of the "
-            f"{worst_lab} half-width stratum ({worst_n:,}px), over the "
-            f"{args.edge_max_area_loss*100:.0f}% limit — that is deleting a structure, "
-            f"not its rim.")
-    elif worst > args.edge_max_area_loss:
-        print(f"[twins]     ^ WOULD HALT under the invariant: {worst*100:.1f}% of the "
-              f"{worst_lab} stratum, over {args.edge_max_area_loss*100:.0f}%", flush=True)
-    inm = (bilinear(dist_in, px, py) >= ed) & (bilinear(
-        mesh_fm[..., None], px, py)[:, 0] > 0.5)
+        R_s = bilinear(thick, px, py)
+        ok_inv = ed <= args.edge_frac * np.maximum(R_s, 1e-6) + 1e-4
+        assert ok_inv.all(), (
+            f"IMPLEMENTATION: e > {args.edge_frac:.4f} x local half-width for "
+            f"{int((~ok_inv).sum()):,} samples — the cap is not being applied")
+    inm = (d_s >= ed) & (bilinear(mesh_fm[..., None], px, py)[:, 0] > 0.5)
     idx, px, py = idx[inm], px[inm], py[inm]
     col = bilinear(img, px, py).astype(np.float32)
+
+    # ANDON, on the direction the invariant does NOT bound (E08 Amendment 3).
+    # e <= frac*R forecloses OVER-erosion by construction — which is exactly why a
+    # halt there fires on correct work. The live risk of a LOOSER acceptance is the
+    # opposite one: admitting the twin's BACKGROUND at its painted boundary, E01's
+    # white-fleck failure, about which the invariant says nothing.
+    # Probe: the texels the relaxation newly admits must not approach the background
+    # colour. Reported against the texels that would have been accepted anyway, so the
+    # comparison is against a set already trusted in the SAME image rather than an
+    # invented absolute.
+    bgc = np.median(np.concatenate([img[:8, :8].reshape(-1, 3),
+                                    img[:8, -8:].reshape(-1, 3)]), axis=0)
+    relaxed = d_s[inm] < e_abs_s[inm]
+    dE_bg = np.linalg.norm(srgb_to_lab(col) - srgb_to_lab(bgc[None, :]), axis=-1)
+    p_tr = float((dE_bg[~relaxed] < args.bg_de).mean() * 100) if (~relaxed).any() else 0.0
+    if relaxed.any():
+        p_rx = float((dE_bg[relaxed] < args.bg_de).mean() * 100)
+        print(f"[twins] {view['name']}: background probe — newly admitted "
+              f"{int(relaxed.sum()):,} texels, median dE {np.median(dE_bg[relaxed]):.1f} "
+              f"from background rgb {tuple(int(c*255) for c in bgc)}; "
+              f"within dE {args.bg_de:.0f} of it {p_rx:.2f}% "
+              f"(already-trusted texels: {p_tr:.2f}%)", flush=True)
+        assert p_rx <= args.bg_max_pct, (
+            f"ANDON: {p_rx:.2f}% of newly-admitted texels sit within dE {args.bg_de:.0f} "
+            f"of the twin's background, over the {args.bg_max_pct:.1f}% limit — the "
+            f"relaxed acceptance is projecting background onto the mesh.")
+    else:
+        print(f"[twins] {view['name']}: background probe — no relaxation to test "
+              f"(already-trusted texels within dE {args.bg_de:.0f} of background: "
+              f"{p_tr:.2f}%)", flush=True)
     w = np.power(facing[idx], args.power)
     sumW[idx] += w
     sumWC[idx] += col * w[:, None]

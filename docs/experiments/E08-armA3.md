@@ -1,9 +1,9 @@
-# E08 — Arm A3: the erosion invariant, HALTED at its own gate
+# E08 — Arm A3: the erosion invariant, and what the erosion was actually protecting
 
 **Spec:** [E08-cover-the-figure-with-reference.md](E08-cover-the-figure-with-reference.md) ·
-**Amendment 2:** [E08-ruling-gate0.md](E08-ruling-gate0.md) · **Arm A2:** [E08-armA2.md](E08-armA2.md)
+**Amendments 2–3:** [E08-ruling-gate0.md](E08-ruling-gate0.md) · **Arm A2:** [E08-armA2.md](E08-armA2.md)
 **Run:** 2026-08-03, executor session. **No diffusion, no GPU.** C1 read-only.
-**No A3 atlas was written** — the assert precedes the write.
+**No A3 atlas was written** — the andon precedes the write, twice.
 
 ---
 
@@ -12,93 +12,108 @@
 | path | result |
 |---|---|
 | `--mask-keyed --edge-absolute` | sha `b12917a2c7c14c4b` — **byte-identical to C1 stage 1** |
-| `--edge-absolute` (A2's config) | **938,718** styled — reproduces A2 exactly |
+| `--edge-absolute` | **938,718** styled — reproduces A2 exactly |
 
-Reproducing any pre-E08 arm now needs **both** flags, and that is in the `--edge-absolute`
-help text.
+## The build, and the invariant
 
-## The build
-
-The erosion is no longer an absolute distance scaled by the figure's *global* width. The
-invariant: **never remove more than a bounded fraction of a structure's own width.**
-`dist_in` already carries it — the maximal inscribed disc covering a pixel is that pixel's
-local half-width — so `e = min(ed_absolute, --edge-frac × R)` with `--edge-frac = 1/3`.
-
-**The invariant is satisfied exactly:**
+`e = min(ed_absolute, --edge-frac × local half-width)`, half-width from `dist_in`'s maximal
+inscribed disc, `--edge-frac = 1/3`.
 
 ```
-front   max e/R = 0.3333   bound 0.3333   violations 0
-back    max e/R = 0.3333   bound 0.3333   violations 0
+front  max e/R = 0.3333    back  0.3333    bound 0.3333    violations 0
 ```
 
-## The gate fires on the known-bad configuration
+Now an **implementation assertion**, labelled as one and not promoted: it cannot fail on a
+correct build, so by this repo's rule it is a unit test. It catches an operand-order slip or a
+bad half-width lookup, nothing else.
 
-Validated before being trusted, against the erosion that shipped — area removed per
-half-width stratum, front view:
+## The stratum table — diagnostic, required, never a halt
 
-| half-width | 1–2px | 2–4px | 4–8px | 8–16px | 16–32px | 32+px |
+Area removed by the erosion, per local half-width. This is the row that earned the arm:
+
+| half-width | 1–2px | 2–4px | **4–8px** | 8–16px | 16–32px | 32+px |
 |---|---|---|---|---|---|---|
-| area | 164 | 730 | 3,528 | 9,417 | 17,193 | 90,702 |
+| area (front) | 164 | 730 | 3,528 | 9,417 | 17,193 | 90,702 |
 | **shipped (absolute 3.8px)** | **100%** | **100%** | **77.6%** | 37.6% | 22.5% | 4.4% |
 | **A3 (invariant)** | **0%** | **0%** | **33.5%** | 33.7% | 22.5% | 4.4% |
 
-Monotone annihilation of thin structure by a distance chosen from the figure's global width
-— the diagnosis, measured. The blade sits in 4–8px: **77.6% of it removed** by a guard built
-to delete a 1–2px mixed rim.
+The blade lives in the 4–8px stratum: three quarters of it removed by a guard built to delete
+a 1–2px rim. The invariant fixes exactly that.
 
-## And then it fired on A3
+---
+
+## And then the new andon fired, on the direction the invariant does not bound
 
 ```
-AssertionError: ANDON: the edge erosion removes 43.8% of the 8-16px half-width stratum
-(4,821px), over the 40% limit — that is deleting a structure, not its rim.
+[twins] front: background probe — newly admitted 78,333 texels, median dE 4.9 from
+        background rgb (125,126,126); within dE 10 of it 75.13%
+        (already-trusted texels: 0.11%)
+AssertionError: ANDON: 75.13% of newly-admitted texels sit within dE 10 of the twin's
+background, over the 2.0% limit
 ```
 
-Reported and halted. No parameter changed, no re-run.
+**Amendment 3's placement was right and it caught a real defect on the first live run.**
 
-**The invariant is not violated; my threshold was mis-derived.** I set 0.40 from the bar
-relation — a bar of half-width `R` eroded by `e` loses exactly `e/R` of its area, so
-`--edge-frac = 1/3` should cost 33.3% — and added headroom for raggedness. The measured
-deviation from that idealisation runs in **both** directions and is larger than the headroom:
+### The probe is validated in both directions before the finding is claimed
 
-| stratum | area removed | bar prediction | excess |
-|---|---|---|---|
-| front 4–8px | 33.5% | 33.3% | +0.2 |
-| front 8–16px | 33.7% | 33.3% | +0.4 |
-| front 16–32px | 22.5% | 33.3% | **−10.8** |
-| back 4–8px | 29.8% | 33.3% | −3.6 |
-| **back 8–16px** | **43.8%** | 33.3% | **+10.4** |
-| back 16–32px | 20.6% | 33.3% | −12.7 |
+- **It fires on a deliberately loose build.** `--edge-frac 0.02` → 49.45% newly-admitted
+  within ΔE 10 of background, against 0.11% for the already-trusted set in the same image.
+- **It is not misfiring on grey subject matter.** A3's number came in *higher* than the loose
+  run — backwards — so my first hypothesis was that the probe was flagging the blade's own
+  steel, which is grey against a grey background. **That hypothesis is falsified.** The twin's
+  own paint, measured per region:
 
-A tapering or ragged structure has more perimeter per unit area than a bar, so more of it
-lies within `e` of an edge; a compact one has less. Stratum area-loss is a **shape**
-statistic, and it is not bounded by the invariant that governs `e`. Setting a threshold on it
-from the bar idealisation was the error — the fifth mis-specified pass condition in this
-repo, and it is the executor's this time.
+| region | median ΔE from background | within ΔE 10 |
+|---|---|---|
+| blade | **24.80** | 3.2% |
+| boots | 35.23 | 0.1% |
+| greave | 36.78 | 0.2% |
+| tunic | 42.43 | 0.0% |
+| beard | 47.51 | 0.0% |
 
-**Not retuned.** Picking a number now, after seeing 43.8%, is precisely the move the ledger
-exists to prevent.
+  Nothing the twin paints is near its background. The contamination is real.
 
-## A second self-correction inside this arm
+---
 
-The first version of this gate measured **per connected component**, as Amendment 2 worded
-it. It was rejected on measurement, not on taste: the twin's whole front figure is **one
-component of 121,709 px**, because the blade touches the hand gripping it, so the blade
-losing three-quarters of its area read as **12.3% overall**. Connectivity cannot separate a
-blade from the body holding it. Thickness can, and thickness is the unit the invariant is
-already stated in.
+## What the erosion was actually protecting against
 
-## What is measured, and what is not
+The twin's own keyed figure mask carries background colour — and it is concentrated, by two
+orders of magnitude, in exactly the strata the invariant preserves:
 
-Front-view coverage reached **633,518** styled texels under the invariant, against A2's
-**555,185** — but the run halted on the back view, so **there is no A3 total and no A3
-atlas**. That number is a partial, not a result.
+| half-width | 1–2px | 2–4px | 4–8px | 8–16px | 16–32px | 32+px |
+|---|---|---|---|---|---|---|
+| front, share near background | **21.3%** | **16.4%** | 5.0% | 2.0% | 0.3% | 0.1% |
+| back | **20.2%** | **15.5%** | 12.0% | 3.3% | 0.0% | 0.0% |
+
+Overall this is only **0.5%** of the front mask and 0.8% of the back — invisible in aggregate,
+and 200× enriched in the thinnest structures. It is E01's background-keying failure, alive in
+these twins: cast shadow, background gradient and antialiased fringe keyed as figure, and all
+of it thin.
+
+**So the absolute erosion was accidentally correct.** It removed 100% of the 1–2px and 2–4px
+strata — deleting the contaminated tendrils wholesale, along with the blade. Its *stated*
+justification was void (the mesh is fatter than the twin, Arm A). Its *effective* justification
+was this, and nobody had measured it.
+
+**The invariant preserves thin structure proportionally, which preserves the blade and the
+contamination together.** They live at the same scale, and the invariant is shape-blind: it
+cannot tell a blade from a shadow tendril, because half-width is the only thing it reads.
+
+---
 
 ## Open for the ruling
 
-1. **The threshold.** `e/R ≤ 1/3` holds by construction and is checkable for free. Whether a
-   *stratum area-loss* gate should exist at all — given it measures shape as much as
-   erosion — or whether the invariant check is the honest gate, is not mine to decide.
-2. **`--edge-frac` itself is untouched at 1/3** and was never the thing that fired.
+1. **A3 as specified cannot separate them.** Anything that keeps thin structure keeps thin
+   keying artifacts, unless something distinguishes the two. The background-ΔE probe *is*
+   such a discriminator and it is already computed per sample — but moving it from a gate into
+   the acceptance rule is a new design, not a re-run, and is not mine to take.
+2. **The `--bg-max-pct` quantity is mine and is stated so it can be ruled on.** 2.0%, chosen
+   as an order of magnitude above A2's ratified 0.18%. Nothing about this halt is marginal —
+   75.13% against 2% — so the threshold is not what decided it.
+3. **`--edge-frac` was never what fired** and stays at 1/3.
+
+Front coverage reached **633,518** under the invariant against A2's **555,185** before the
+halt. That is a partial and, given the contamination measured above, not a number to bank.
 
 Artifacts: `facet_E08/A3/repro.png` (byte-identical pre-E08 path), `a2repro.png` (A2's config
 through the new code). No `styled_stage1.png` — the arm halted.
