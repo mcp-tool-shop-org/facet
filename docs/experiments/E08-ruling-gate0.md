@@ -2066,6 +2066,52 @@ ceiling and ~79% is the ceiling at any count tested. The honest framing of E08's
 > **Cleared to run: eight strokes under the discipline above, then finalize → pack →
 > renders → the Gate 1 sheet.** Gate 1 remains the Director's.
 
+> ### Amendment 31 (advisor, 2026-08-04) — the LoRA moved cards, not worlds. Resume is one substitution, and the line runs to Gate 1 without me.
+>
+> **The advisor drove the browser and enumerated the Model Library directly.** The account's
+> Imported list holds four LoRAs, and the saltroad weights are present:
+>
+> ```
+> mcp-tool-shop__saltroad-style-lora__saltroad_style_v2_lowlr_000001500.safetensors   (8/1/26)
+> ```
+>
+> **This is the pre-existing copy Amendment 21 discovered** — imported three days before the
+> `mikeyfrilot` delivery path was redundantly built on top of it. The redundant import is the
+> one that vanished; the original stands. Three candidate causes for the vanishing were
+> named; none needs distinguishing, because nothing needs re-importing. **The Director's new
+> token is not needed for this resume** — it matters only in the fallback below.
+>
+> **A gotcha, banked:** `search_models` returned 0 for "saltroad" while the card sits in the
+> library — so the API surfaces (`search_models`, the node's option list) do **not** see
+> account imports, and never did; 0b ran with a name absent from that same list, warning
+> only. "Absent from the node list" ≠ "absent from the library." **Enumerate imports in the
+> browser; the library UI is the ground truth for them.** The stroke-1 rejection is then
+> explained: validation resolves imports server-side against the account's imported set, and
+> the deleted `mikeyfrilot` entry moved from accepted-with-warning to rejected.
+>
+> ### Resume protocol — no further advisor round-trip
+>
+> 1. **Weight-identity anchor first** (the mcp-tool-shop copy has never been run; 0b proved
+>    the *other* copy): re-run `E08-anchor-workflow-api.json` with node 5's `lora_name`
+>    substituted to the string above — the only change — and compare against the same local
+>    N11 output. **Reproduces the recorded cross-boundary residual class (uniform, ~ΔE 0.84,
+>    held < contra structure) → the weights are the same in effect; proceed.** Fails →
+>    HALT: the copies differ, and re-importing the proven `mikeyfrilot` copy with the new
+>    token becomes the path.
+> 2. Substitute the same string in `stroke_1_*_workflow.json` node 5, re-save, resubmit.
+>    Inputs are already uploaded; `emit` stands.
+> 3. **Run all eight strokes straight through**, then finalize → pack → renders → the Gate 1
+>    sheet. **Standing authorization for the remainder of Task 3: recoverable operational
+>    snags — upload retries, names read off cards, codec-shaped residuals — are logged and
+>    passed through, not escalated.** A halt is reserved for: a pre-registered gate firing
+>    without a pre-stated branch, an irreversible surprise (spend, deletion, publish), or
+>    evidence contradicting the banked record. Everything else keeps moving.
+>
+> The stopping cadence is owned: two stops bought real corrections, the ruling round-trips
+> were the discipline's overhead and are now pre-authorized away, and this stop was an
+> external resource moving under a byte-correct recipe — found and fixed by enumeration in
+> the browser, which is where Amendment 21 said to look in the first place.
+
 ## 5. What this does not settle
 
 Whether ~40–53% reference coverage is *enough* for the Director to accept the asset is not a
