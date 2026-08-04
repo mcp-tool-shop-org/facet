@@ -32,8 +32,16 @@ Image.MAX_IMAGE_PIXELS = None
 
 ap = argparse.ArgumentParser()
 ap.add_argument("--prep", required=True)
-ap.add_argument("--front", required=True)
-ap.add_argument("--back", required=True)
+ap.add_argument("--front", help="twin at yaw 0. Required unless --view is used.")
+ap.add_argument("--back", help="twin at yaw 180. Required unless --view is used.")
+ap.add_argument("--view", action="append", default=[], metavar="IDX=PATH",
+                help="N-view mode (E08 Arm B): a twin at view index IDX, repeatable. "
+                     "Yaw is IDX*--step, matching turn_render's orbit. Supplying any "
+                     "--view REPLACES the --front/--back pair. Two views was never a "
+                     "property of the projection — everything below VIEWS was already "
+                     "N-general — it was a property of this argument list.")
+ap.add_argument("--step", type=float, default=45.0,
+                help="degrees of yaw per view index; must match turn_render's --step")
 ap.add_argument("--out", required=True)
 ap.add_argument("--power", type=float, default=6.0)
 # 0.45, not 0.10: at 0.10 surfaces up to ~84 deg off-axis accepted STRETCHED twin
@@ -232,12 +240,60 @@ def bilinear(img, x, y):
     return a * (1 - fx) * (1 - fy) + b_ * fx * (1 - fy) + c * (1 - fx) * fy + d * fx * fy
 
 
-VIEWS = [
-    {"name": "front", "path": args.front, "dtc": np.array([0.0, -1.0, 0.0]),
-     "right": np.array([1.0, 0.0, 0.0])},
-    {"name": "back", "path": args.back, "dtc": np.array([0.0, 1.0, 0.0]),
-     "right": np.array([-1.0, 0.0, 0.0])},
-]
+def cam_axes(deg):
+    """Direction-to-camera and camera-right for a yaw, matching turn_render's orbit.
+
+    turn_render sets  cam.location = (mid.x + r*sin(th), mid.y - r*cos(th), mid.z)
+    with rotation_euler (90deg, 0, th), so dtc = (sin th, -cos th, 0) and the camera's
+    right is (cos th, sin th, 0). Verified against turn_render rather than assumed, and
+    independently against the shipped silhouette masks (silhouette_masks.py --anchor,
+    0 differing px at views 0 and 4).
+
+    ⚠ THE SNAP IS LOAD-BEARING, not tidiness. sin(pi) is 1.2246e-16, not 0, so computing
+    the back view's axes would perturb every ray by that much and the two-view default
+    would stop reproducing A2 exactly. Components within 1e-12 of 0 or +-1 are snapped to
+    the exact value, which makes yaw 0 and 180 bit-identical to the literals this
+    replaced. Multiples of 45 that are not multiples of 90 keep their irrational
+    components — nothing anchors them.
+    """
+    th = np.radians(deg)
+    def snap(a):
+        out = []
+        for x in a:
+            if abs(x) < 1e-12:
+                out.append(0.0)
+            elif abs(abs(x) - 1.0) < 1e-12:
+                out.append(float(round(x)))
+            else:
+                out.append(float(x))
+        return np.array(out)
+    return snap([np.sin(th), -np.cos(th), 0.0]), snap([np.cos(th), np.sin(th), 0.0])
+
+
+if args.view:
+    VIEWS = []
+    for spec in args.view:
+        k, _, p = spec.partition("=")
+        assert p, f"ANDON: --view wants IDX=PATH, got {spec!r}"
+        assert os.path.exists(p), f"ANDON: --view {k} path does not exist: {p}"
+        deg = int(k) * args.step
+        d, r = cam_axes(deg)
+        VIEWS.append({"name": f"y{deg:+06.1f}", "path": p, "dtc": d, "right": r})
+    assert len({v["name"] for v in VIEWS}) == len(VIEWS), (
+        "ANDON: duplicate view index in --view")
+    print(f"[twins] N-VIEW mode: {len(VIEWS)} cameras at "
+          f"{', '.join(v['name'] for v in VIEWS)}", flush=True)
+else:
+    assert args.front and args.back, (
+        "ANDON: supply --front and --back, or one or more --view IDX=PATH")
+    df, rf = cam_axes(0.0)
+    db, rb = cam_axes(180.0)
+    VIEWS = [
+        {"name": "front", "path": args.front, "dtc": df, "right": rf},
+        {"name": "back", "path": args.back, "dtc": db, "right": rb},
+    ]
+    assert np.array_equal(df, [0.0, -1.0, 0.0]) and np.array_equal(rf, [1.0, 0.0, 0.0])
+    assert np.array_equal(db, [0.0, 1.0, 0.0]) and np.array_equal(rb, [-1.0, 0.0, 0.0])
 up = np.array([0.0, 0.0, 1.0])
 
 best_w = np.zeros(NV, dtype=np.float32)
