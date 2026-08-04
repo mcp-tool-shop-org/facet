@@ -50,10 +50,11 @@ behaviour this repo runs on, not an obstacle to it.
 
 ## Environment — read before any tool call
 
-- **The VRAM watchdog is DOWN** (heartbeat stale since 2026-08-04 10:41). Tasks 1 and 2 are
-  CPU-only measurement and may proceed. **Before any local GPU step** (including Blender
-  renders in Task 3): `pwsh -NoProfile -File E:\AI\training\_watchdog_start.ps1`, and report
-  the restart in your log.
+- **Verify the VRAM watchdog before any local GPU step; restart only if stale.** *(⚠
+  Corrected by A30: the original "watchdog is DOWN since 10:41" was true at dispatch time
+  and stale by mid-afternoon — the executor measured it UP at 15:36. A status is a
+  measurement, not a fact that survives the afternoon.)* If stale:
+  `pwsh -NoProfile -File E:\AI\training\_watchdog_start.ps1`, and report either way.
 - **Generation runs on Comfy Cloud, never locally.** The ceiling stays at 31,200 MiB. A
   measured arm on the local rig is a number credited to the wrong cause.
 - Blender through **PowerShell** (Git Bash mangles paths) · `--views=-30,0,30` form for
@@ -228,13 +229,21 @@ Step 0, in order — each is a gate:
    greatsword, crossguard, pommel — the brush paints the 50,569 unreferenced blade texels, so
    this is the blade's honest test), with per-view facing handling per the E01 rule, recorded
    per stroke in sidecars.
-3. **First-stroke anchors.** (a) Outside-figure invariance: max |edited − emitted| outside
-   the dilated figure mask ≈ 0 — this is the licence for the commit guard's corner-median on
-   its flat synthetic backdrop (A28's owed `texpass_iter` ruling: guard unchanged for this
-   run; modernisation is a post-Gate-1 regression). Materially nonzero → **HALT**. (b) Cloud:
-   the brush is a *different graph* (inpainting) — enumerate what is already on cloud,
-   `dry_run` first (free), `estimate_credits` before submitting, halt on surprises.
-4. **Watchdog restart before any local render step** (see Environment).
+3. **The transport — RULED (Amendment 30): hand-drive the eight strokes through the MCP.**
+   Pre-flight is done (`dry_run` validated, 0 credits, all models present by exact name —
+   [E08-task3-step3-preflight.md](E08-task3-step3-preflight.md)). Per stroke, the sidecar
+   discipline that carries PIN_PER_STEP: the exact workflow JSON saved **before**
+   submission (params byte-matched to `texpass_brush.py`'s defaults — seed 770700, steps
+   20, cfg 2.5, lora-w 0.75, cn-strength 1.0; prompt from `E08-brush-prompts.json` v1.0.0
+   the only per-stroke variable; spiral order unchanged), plus job id, returned image, and
+   the `emit`/`commit` invocations in an ordered run log. The eight sidecars are the
+   regression fixtures for the post-Gate-1 cloud transport in `texpass_brush.py`.
+   **First-stroke invariance check with the shape reading (A30):** outside the figure,
+   uniform sub-unit residual = codec boundary, record and proceed (corner-median licence
+   intact); concentrated residual = repainted backdrop, **HALT**. The brush crosses the
+   hardware boundary un-anchored — recorded, acceptable because no cross-boundary
+   comparison is claimed.
+4. **Verify the watchdog before any local render step** (see Environment).
 
 Then run it through. Deliverable: **reference | asset | provenance | error at the Director's
 zoom, views 4–6 included** — and **the blade's provenance called out explicitly**, so the

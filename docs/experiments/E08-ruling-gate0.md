@@ -1980,6 +1980,92 @@ ceiling and ~79% is the ceiling at any count tested. The honest framing of E08's
 > file: "brown leather belt" as its own head noun) and the 0.42 flat-field confirmation. An
 > inherited claim is a hypothesis wearing a fact's clothes, including mine.
 
+> ### Amendment 30 (advisor, 2026-08-04) — hand-drive the strokes. The recipe is the workflow JSON, and the transport never carried it.
+>
+> **Ruled: option 1.** Eight strokes, `emit` → upload → `submit_workflow` → download →
+> `commit`, the write-head untouched. Option 3 stays refused without exception. Option 2 —
+> a cloud transport inside `texpass_brush.py` — is the durable fix and is **specified as
+> post-Gate-1 work with today's run as its test fixtures** (below), not as new code in a
+> route-active tool the night before the deliverable, and not as a credential the executor
+> would have to handle.
+>
+> ### Why this does not surrender PIN_PER_STEP — it relocates the pin to where it always was
+>
+> The executor's worry is the right worry stated against the wrong object. *A recipe that
+> does not reproduce its output is not a recipe* — but the recipe for a generative step is
+> **the submitted workflow JSON**: graph, model names, seed, sampler values, prompt, inputs.
+> The repo has already proved this once — `E08-anchor-workflow-api.json` **is** the 0b
+> anchor's recipe, and it reproduced at ΔE 0.84. `texpass_loop.ps1` never pinned the
+> generative step at all: it pinned a local *invocation*, and the parameters that matter
+> lived inside `texpass_brush.py`'s source. A per-stroke saved workflow JSON pins **more**
+> than the loop did, not less. The transport is a vehicle; vehicles are recorded, not pinned.
+>
+> **The discipline that makes it so, required per stroke:**
+>
+> 1. The exact workflow JSON **saved before submission** (`stroke_k_workflow.json`, the
+>    anchor-file pattern), parameters byte-matched to `texpass_brush.py`'s defaults — seed
+>    770700, steps 20, cfg 2.5, lora-w 0.75, cn-strength 1.0 — with the prompt from
+>    `E08-brush-prompts.json` v1.0.0 as the only per-stroke variable. Spiral order unchanged.
+> 2. Job id, returned image, and the `emit`/`commit` invocations recorded in an ordered run
+>    log. Replay = resubmit the eight JSONs in order through any transport.
+> 3. **These eight sidecars are option 2's regression fixtures**: when the cloud transport is
+>    added to `texpass_brush.py`, its proof is regenerating stroke 1's workflow JSON
+>    byte-identically. Today's hand-driving buys tomorrow's anchor set — the PIN_PER_STEP
+>    cost converts into the future tool's test suite.
+>
+> ### The hardware boundary, crossed un-anchored — recorded, and why that is acceptable here
+>
+> The brush graph has never run on cloud and no local brush output is being reproduced, so
+> this crossing has no 0b-style anchor. Acceptable because **no cross-boundary comparison is
+> claimed anywhere in Task 3** — the deliverable is judged by the Director's eye at Gate 1,
+> not against a local control. What gates the crossing instead is the first-stroke invariance
+> check, now with the Amendment 21 refinement it needs: read the residual's **shape**, not
+> just its size. Outside the figure, a **uniform sub-unit** residual is the codec boundary
+> (record it and proceed — it also leaves the corner-median licence intact, since the median
+> of a near-flat field is unmoved); a **concentrated** residual is a repainted backdrop —
+> HALT. A structural difference concentrates; two float kernels do not.
+>
+> ### Ratified from the pre-flight, and one strategic number named
+>
+> **Branch A, ratified.** 100% below the chroma floor, 100% on neutral material inboard, 98%
+> blade-adjacent, views 1/5 measured rather than waved through. And the corroboration nobody
+> arranged is the strongest kind this repo gets: the palette file set its floor at 12.0 days
+> earlier *specifically so the gate would not flag the sword at C\* 1.6–2.8*, and the
+> background probe's flagged set measures C\* median 2.8. **Two independent instruments
+> tripping on the same structure for the same physics — the structure is real and both
+> instruments are honest.** Sixth grey-on-grey instance, and the first one that vindicated
+> a gate instead of breaking one.
+>
+> **The prompt file, ratified** — 16/16 mechanically verified beats any eye-check, and the
+> deliberate byte-identical stroke order (one variable, prompts only) is exactly right.
+>
+> **The 26.3% bound and the provenance ceiling, ratified as pre-registered.** And the number
+> worth saying out loud: if the ceiling holds, **the largest provenance class after reference
+> is the dilation flood at 23.0%** — the flood the README already convicts of sourcing 74.9%
+> of its texels from other islands, median 61 edges away, with the surface-aware replacement
+> measured at 0.00253 (70× closer) and never built. Invention, E07's villain, projects to
+> ×0.22. **The post-Gate-1 queue now has magnitudes attached:** dilation flood ~23.0% of
+> valid · blade band ~2.1% · A3 cap and the stroke-camera set, smaller. Gate 1 rules on the
+> asset; these numbers rank the arms if it rules against.
+>
+> ### Ledger, entry fifteen
+>
+> Amendment 28's step 3 assumed a cloud path that was never in the code — and the evidence
+> was in my own context: I read `texpass_brush.py`'s argument block for the prompt census
+> and `--host 127.0.0.1:8188` sits **six lines above** the prompt I quoted. I specified the
+> destination without checking the vehicle, in the same file, on the same screen. The
+> executor's mid-check self-overturn on the ControlNet catalog — "decisive," retracted by a
+> direct query one minute later — is the pattern that catches this class; it is now the
+> standing expectation for *advisors* too: **a claim about what exists is checked by
+> enumeration in the same breath it is made.**
+>
+> The watchdog note in the dispatch was stale (measured UP, heartbeat live); corrected in
+> the kickoff to "verify, restart only if stale" — a status is a measurement, not a fact
+> that survives the afternoon.
+>
+> **Cleared to run: eight strokes under the discipline above, then finalize → pack →
+> renders → the Gate 1 sheet.** Gate 1 remains the Director's.
+
 ## 5. What this does not settle
 
 Whether ~40–53% reference coverage is *enough* for the Director to accept the asset is not a
