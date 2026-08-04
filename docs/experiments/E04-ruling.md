@@ -158,3 +158,30 @@ a legitimate outcome** — the clays are cheap to re-concept, and a designation 
 settlement for whatever arrived. After his pick: the advisor authors the galleon's identity
 fixture and palette bands, and `ship.json`'s suspended values get measured from the
 designated mesh.
+
+---
+
+## Ruling 3 (advisor, 2026-08-04) — DESIGNATED: candidate 00006. The fixture is authored.
+
+**The Director designated 00006** at the Gate 0 sheets ("they look great" — pick made on the
+full-size sheets, all three judged good). Recorded: 00006 carries the most rigging filaments
+(512 shells) and the squarest profile (1.041) of the three — his eye weighed that against
+the sheets and chose it; neither number ranked anything.
+
+**[canon/GALLEON-IDENTITY.md](../../canon/GALLEON-IDENTITY.md) is authored** — twelve NAMED
+elements in the measured grammar (own noun phrases, no additions onto occupied surfaces),
+MESH-SUPPLIED and STYLE-SUPPLIED tables, and three pre-registered stressors: **S1**, canvas
+is the blade problem at sail scale (G4 authored warm-tan in canon partly for that reason —
+an authoring choice, not a tuned threshold); **S2**, the rigging is the thin-policy
+stressor; **S3**, nobody knows a galleon's palette by eye, so the gate carries the judgment
+and its numeric bands derive from the fixture's materials, cross-checked against the styled
+target pair once it exists — never against the twins they will gate. Deliberate and worth
+noticing: **blue is in-palette on this subject** — W3's off-palette detector colour is a
+declared material here, which is palette-as-subject-data made concrete.
+
+Unlike W3's, this spec is authored **forward** — the styled target pair will be generated
+from it. The fixture is the Director's to overrule in a sentence, line by line.
+
+**Next dispatch:** measure `ship.json`'s suspended values from the designated mesh (framing,
+cameras — decks need looking *into* — thin-extent, the declared "front"), generate the
+styled target pair from the fixture, derive the palette bands, then the E04 spec proper.
