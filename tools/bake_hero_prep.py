@@ -19,6 +19,9 @@ Standards compliance: see bake_hero_fuse.py (one block for the 3-script stage).
           [--res 4096] [--crop 360,240,700,600] [--crop-res 1024] [--head-scale 3]
 """
 import argparse
+import sys as _sys, os as _os
+_sys.path.insert(0, _os.path.dirname(_os.path.abspath(__file__)))
+import subject_profile
 import hashlib
 import json
 import os
@@ -88,7 +91,7 @@ ap.add_argument("--visible-mask",
 ap.add_argument("--unseen-strip", type=float, default=24.0,
                 help="texel rows reserved at the top of the atlas for the shared unseen "
                      "patch, so it can never collide with a packed island")
-args = ap.parse_args(argv)
+args = ap.parse_args(subject_profile.bind(ap, "bake_hero_prep.py", argv))
 os.makedirs(args.outdir, exist_ok=True)
 CX0, CY0, CX1, CY1 = [float(v) for v in args.crop.split(",")]
 

@@ -46,6 +46,9 @@ Standards compliance:
     face-centroid checksum so a consumer can prove the mask still lines up with the mesh.
 """
 import argparse
+import sys as _sys, os as _os
+_sys.path.insert(0, _os.path.dirname(_os.path.abspath(__file__)))
+import subject_profile
 import hashlib
 import json
 import os
@@ -112,7 +115,7 @@ ap.add_argument("--max-missed-area", type=float, default=0.005,
                      "hole. 0.005 leaves more than an order of magnitude over the measured "
                      "residual, so a real regression still trips it.")
 ap.add_argument("--json")
-args = ap.parse_args()
+args = ap.parse_args(subject_profile.bind(ap, "cull_unseen.py", None))
 
 W = args.iou_res
 H = int(round(W * 1024 / 752))

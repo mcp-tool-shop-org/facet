@@ -1,0 +1,143 @@
+{
+  "name": "character",
+  "subject": "W3 - the bearded warrior. TRELLIS.2 1024_cascade from facet_E01/inputs/A0_source_clay.png, seed 42, welded, decimated to 287,200 faces, atlas 4096.",
+  "provenance": "Extracted 2026-08-04 (E04 Task 2) from the tools' own defaults, after the Director accepted this subject's asset at E08 Gate 1. Every value below IS the default the accepted asset was built with - this file is a relocation, proved by pixel-identity against stage1_8cam.png, not a re-tuning.",
+
+  "_how_to_read_this": "Each entry is {value, why, from}. `value` is what the tool receives; `why` is the argument that this quantity is a property of THIS SUBJECT rather than a principle; `from` names the experiment that measured or established it. The full classification - including every constant that stayed in the code, with the argument for why - is docs/experiments/E04-profile-extraction.md. A constant appearing in neither is a finding, not an oversight.",
+
+  "_the_burden_of_proof": "A value goes in the profile unless there is a stated reason it is subject-independent. That direction is deliberate: the design note's whole purpose is that if E04 needs to change something OUTSIDE this file, that is the signal something in the shared code was never a principle. Over-including here costs the ship a decision; under-including costs the character its accepted path.",
+
+  "_fixtures": {
+    "palette": {
+      "path": "docs/experiments/E08-W3-palette.json",
+      "why": "The declared material palette for this subject - hue bands, the min_chroma 12.0 floor and the 800 px blob bound. Already externalised as a versioned fixture before profiles existed; the profile POINTS at it rather than copying it, because two copies of a threshold is how a threshold drifts. Its bands are declared from the spec's sixteen named materials and cross-checked against a DIFFERENT image than the twins it gates, which is what keeps it from being a tautology.",
+      "from": "E08 Amendments 23-25; max_offpalette_pct WITHDRAWN 2026-08-04 (fc9a2e2)",
+      "ship_note": "A galleon needs its own file. Nobody knows by sight what a galleon's palette should be, which is exactly why this gate carries weight there that no eye can."
+    },
+    "brush_prompts": {
+      "path": "docs/experiments/E08-brush-prompts.json",
+      "why": "Per-view brush prompts keyed by job name, plus the _order array that sets the spiral. A shared prompt is what put a face on the back of a head in E01 and invented a corroded blade and a belt medallion in the first full loop. Pure subject content.",
+      "from": "E08 Task 3"
+    },
+    "twin_prompts": {
+      "path": "docs/experiments/E08-twin-prompts.json",
+      "why": "The per-view twin prompts. Identity belongs to the prompt, not to the twin - the single most load-bearing architectural fact this repo measured (prompt wins 8 of 8, median dE 46.3 against 6.2 on held controls). So the file that names this character IS this character.",
+      "from": "E08 Amendments 12/22"
+    }
+  },
+
+  "_gates": {
+    "mesh_gate": {
+      "value": "character",
+      "why": "gate_mesh.py's head-and-shoulder logic is meaningful on a humanoid and meaningless on anything else. This names which gate applies rather than assuming one does.",
+      "from": "E01"
+    },
+    "head_rect_metrics": {
+      "value": true,
+      "why": "mesh_stats' face-rect polygon density and curvature-variance columns are only interpretable where there is a face.",
+      "from": "E01"
+    }
+  },
+
+  "tools": {
+
+    "bake_hero_prep.py": {
+      "res": {"value": 4096, "why": "Atlas resolution is a texel budget for one subject at one production tier, not a property of the method. A galleon at the same texel density needs a different number because it has a different surface area.", "from": "E02"},
+      "crop": {"value": "360,240,700,600", "why": "THE FACE RECT, in front-view pixels. The single most subject-specific value in the pipeline: it says where this character's head is. It reaches five tools (prep's texel allocation, smart_decimate's polygon allocation, project_twins' head band, head_render's framing, mesh_stats' density column) and means nothing on a subject without a face.", "from": "E01"},
+      "crop-res": {"value": 1024, "why": "The coordinate frame the face rect is expressed in. Travels WITH the rect - a rect without its frame is not a rect. Not independently tunable.", "from": "E01"},
+      "head-scale": {"value": 3.0, "why": "Texel-density multiplier for the head band. The head holds 89.5% of UV area at this value. A ship has no head; a ship's equivalent is whatever carved region deserves the density.", "from": "E01/E02"},
+      "unseen-strip": {"value": 24.0, "why": "Width, in texels, of the border strip kept around visible charts when unseen faces are excluded. Sized against this atlas's chart statistics at this resolution.", "from": "E06"}
+    },
+
+    "smart_decimate.py": {
+      "_status": "DECLARED, NOT AS-RUN. The accepted asset does not pass through this tool - E06's recipe hands cull_unseen and bake_hero_prep the already-decimated W3_287k.glb directly. These constants are still subject data and still belong here, but no byte of the accepted asset depends on them, so `target` carries the tool's own default rather than any run's value.",
+      "target": {"value": 120000, "why": "Polygon budget for one subject at one production tier. A ship's silhouette needs its own number - and note the accepted asset was built on a 287k mesh, so this default has not been exercised on the route.", "from": "E01"},
+      "crop-res": {"value": 1024, "why": "Frame for --head-crop, which is the face rect. Travels with it.", "from": "E01"},
+      "pad-frac": {"value": 1.5, "why": "How far beyond the face rect the protected region extends. Sized to a head-and-neck on this figure.", "from": "E01"},
+      "body-weight": {"value": 0.8, "why": "Relative decimation weight for everything outside the face rect. A subject-shaped allocation: it presumes one privileged region and one everything-else.", "from": "E01"},
+      "factor": {"value": 3.0, "why": "Protection multiplier inside the face rect. Pure allocation policy for a subject with a face.", "from": "E01"}
+    },
+
+    "cull_unseen.py": {
+      "_production_is_NOT_here_deliberately": "--production defaults to a 24-yaw 15-degree sweep plus the elevated pair - a deliberately DENSER superset than any subject's actual camera set, because the visibility classifier must cover every camera that might later be added. Writing the character's ten cameras here would have narrowed a safety superset into a subject list and silently changed behaviour. It stays in the code; the subject's own camera set is profile data and lives in silhouette_masks/turn_render/the loop order.",
+      "min-seen": {"value": 0.30, "why": "ANDON floor on the fraction of faces any exterior camera sees. What fraction of a subject is interior surface is a fact about that subject - a standing figure hides beard undersides and finger gaps; a hull hides a whole below-decks.", "from": "E06"},
+      "max-seen": {"value": 0.90, "why": "ANDON ceiling on the same fraction, for the same reason in the other direction.", "from": "E06"}
+    },
+
+    "silhouette_masks.py": {
+      "tag": {"value": "w3clay", "why": "Filename stem for this subject's silhouettes. Names the subject.", "from": "E08"},
+      "views": {"value": "0,1,2,3,4,5,6,7", "why": "The camera set, as indices. Same subject decision as cull_unseen's production list.", "from": "E08"},
+      "step": {"value": 45.0, "why": "Degrees per view index. Eight directions is a turnaround convention for a character; a ship is not necessarily sampled evenly in yaw.", "from": "E01"},
+      "aspect": {"value": "752,1024", "why": "Portrait framing, fit to height. A galleon is wider than tall and needs landscape.", "from": "E01"}
+    },
+
+    "project_twins.py": {
+      "step": {"value": 45.0, "why": "Degrees per view index; the camera set again.", "from": "E01"},
+      "aspect": {"value": "752,1024", "why": "Portrait framing. The twins were generated at this aspect and the projection derives its horizontal extent from it, so the two must agree.", "from": "E01"},
+      "facing-min": {"value": 0.45, "why": "Body acceptance floor on normal-dot-view. Sixty-three degrees is defensible as an obliqueness limit in general, but THIS number was chosen on this figure and nothing in the record establishes it as subject-independent. Burden of proof says profile.", "from": "E02"},
+      "head-facing-min": {"value": 0.18, "why": "A LOOSER floor for the head band, added so the best-registered region does not go to the brush. Both the value and the very existence of a privileged region are subject facts - and this flag is why the crown is 89.2% stage-1 covered, which falsified an advisor prior that had not read it.", "from": "E08 Director rejection round 2; E04 Task 1"},
+      "edge-dist": {"value": 7.0, "why": "Body erosion of the twin's trust mask, in twin pixels at the reference width.", "from": "E02"},
+      "head-edge-dist": {"value": 3.0, "why": "The head band's smaller erosion. Privileged-region policy again.", "from": "E08"},
+      "edge-ref": {"value": 700.0, "why": "THE REFERENCE FIGURE WIDTH, in twin pixels, that --edge-dist was tuned against - A0's. Erosion is scaled by this figure's width over that reference, so the number is literally one character's measurement used as a denominator for every other. The most clearly subject-specific value in the erosion family.", "from": "E02; A0"},
+      "edge-floor": {"value": 2.5, "why": "Erosion never falls below this however narrow the figure. A floor in twin pixels, and twin pixels are a framing unit.", "from": "E08 A3"},
+      "edge-min-struct": {"value": 50, "why": "Minimum structure size, in texels, for the per-structure erosion accounting. Sized against this subject's structures.", "from": "E08 A3"},
+      "bg-de": {"value": 10.0, "why": "dE below which a newly-admitted texel counts as background-coloured. Measured against these twins' backdrop.", "from": "E08 A2 background probe"},
+      "bg-max-pct": {"value": 2.0, "why": "ANDON limit on the share of newly-admitted texels within bg-de of background. Bounded from this subject's measured distribution.", "from": "E08 A2"},
+      "bbox-tol": {"value": 0.25, "why": "Tolerance on keyed-twin bbox against the mesh silhouette. Explicitly W3 data, and already demoted from a halt to a diagnostic because figure area swings 1.65x with camera geometry on this very subject.", "from": "E08 A27"},
+      "reg-iou-min": {"value": 0.80, "why": "THE REGISTRATION HALT. Derived from both sides of a measured line on THIS subject's twins - adjudicated twins 0.8329-0.9533, measured failures at or below 0.578. A new subject has neither of those distributions, so it derives its own or suspends the halt and reports. It must not inherit this number.", "from": "E08 Amendment 27"},
+      "power": {"value": 6.0, "why": "Facing exponent for the blend weight. Sets how sharply the facing-weighted blend favours the best camera; the ownership argmax is invariant to it. Kept here rather than in code because it trades softness against ghosting and that trade is a subject/look decision, not a law.", "from": "E02"}
+    },
+
+    "texpass_iter.py": {
+      "facing-min": {"value": 0.25, "why": "Acceptance floor for committing brush output. Same argument as project_twins' floor, at the looser value the brush stage uses.", "from": "E06"},
+      "edge-dist": {"value": 4.0, "why": "Erosion of the brush output's keyed figure before commit, in job-image pixels - a framing unit.", "from": "E06"},
+      "mask-dilate": {"value": 9, "why": "Dilation radius, in job-image pixels, applied to the hole mask before it is handed to the brush. Scales with framing, which is subject data.", "from": "E06"},
+      "thin-extent": {"value": 0.03, "why": "Extent along the view ray below which a structure is withheld from diffusion and takes projected/dilated colour instead. SIZED TO THE GREATSWORD: the smallest value that fills the blade solid, where 0.020 leaves the fuller grooves open. Ratlines and shrouds are thinner than a blade, so a ship needs a far smaller number and probably a different policy.", "from": "E08 Task 3"}
+    },
+
+    "texpass_brush.py": {
+      "seed": {"value": 770700, "why": "Generation seed. Part of the recipe that made THIS asset reproducible.", "from": "E08 Task 3"},
+      "steps": {"value": 20, "why": "Sampler steps for the inpainting brush - a generation-recipe value, not a principle.", "from": "E08"},
+      "cfg": {"value": 2.5, "why": "Guidance for the brush.", "from": "E08"},
+      "lora-w": {"value": 0.75, "why": "Style LoRA weight. The LoRA is the house style for this subject line.", "from": "E08"},
+      "cn-strength": {"value": 1.0, "why": "ControlNet strength for the brush pass.", "from": "E08"},
+      "prompt": {"value": "a burly bald warrior with a long red beard, dark green knitted sleeveless tunic, polished gold pauldrons, gold necklace, dark red layered cloth skirt with a leather belt, heavy dark boots, holding a massive greatsword, plain grey background, visible brushstrokes, painterly worked surface", "why": "THIS CHARACTER'S IDENTITY, verbatim. In a repo whose central architectural result is that identity belongs to the prompt and the prompt wins 8 of 8 against mesh, LoRA and control, this is the most subject-specific string in the pipeline - and it was a hardcoded default in a shared tool. The route passes per-view prompts from a file and never reaches this fallback, so relocating it moves no byte; leaving it in code means a galleon run without --prompts silently asks for a bald warrior.", "from": "E08 Amendment 22"},
+      "negative": {"value": "watermark, text, logo, blurry, photo, deformed", "why": "The shared negative. Less subject-bound than the positive prompt but still a content decision rather than a principle, and it travels with it.", "from": "E08"}
+    },
+
+    "restylize_views.py": {
+      "seed": {"value": 770700, "why": "Twin generation seed.", "from": "E08"},
+      "steps": {"value": 20, "why": "Sampler steps for twin restylize.", "from": "E08"},
+      "cfg": {"value": 2.5, "why": "Guidance for twin restylize.", "from": "E08"},
+      "denoise": {"value": 0.92, "why": "Restylize denoise. Measured on this subject: at 0.92 and at 0.75 the back view still came back front-facing when the prompt asked for a face, which is why per-view prompts exist.", "from": "E08"},
+      "lora-w": {"value": 0.75, "why": "Style LoRA weight for twins.", "from": "E08"},
+      "cn-strength": {"value": 0.9, "why": "ControlNet strength for twins. Trades registration against style freedom; a ship's rigging may need a different point on that trade.", "from": "E08"},
+      "canny-low": {"value": 0.4, "why": "Canny low threshold on the constructed control image.", "from": "E08"},
+      "canny-high": {"value": 0.8, "why": "Canny high threshold on the constructed control image.", "from": "E08"},
+      "contour-width": {"value": 3, "why": "Width, in control-image pixels, of the silhouette contour unioned into the edge map. A framing-scaled quantity.", "from": "E08"},
+      "prompt": {"value": "a burly bald warrior with a long red beard, dark green knitted sleeveless tunic, polished gold pauldrons, gold necklace, dark red layered cloth skirt with a leather belt, heavy dark boots, holding a massive greatsword, plain grey background, visible brushstrokes, painterly worked surface", "why": "The same identity string, the same finding: this character, hardcoded as a default in the tool that generates twins for ANY subject. Same value, relocated.", "from": "E08 Amendment 22"},
+      "negative": {"value": "watermark, text, logo, blurry, photo, deformed", "why": "The shared negative, travelling with the positive prompt.", "from": "E08"}
+    },
+
+    "verify/turn_render.py": {
+      "views": {"value": "0,1,2,3,4,5,6,7", "why": "The turnaround camera set as indices. Eight evenly-spaced yaws is a character convention; a ship is not necessarily sampled evenly.", "from": "E01"},
+      "step": {"value": 45.0, "why": "Degrees per view index - the camera set.", "from": "E01"},
+      "w": {"value": 752, "why": "Render width. Portrait framing, fit to height.", "from": "E01"},
+      "h": {"value": 1024, "why": "Render height.", "from": "E01"}
+    },
+
+    "verify/head_render.py": {
+      "crop": {"value": "360,240,700,600", "why": "The face rect. Same value, same subject fact, as bake_hero_prep's.", "from": "E01"},
+      "crop-res": {"value": 1024, "why": "The frame the rect is in.", "from": "E01"},
+      "res": {"value": 1024, "why": "Head render resolution.", "from": "E01"},
+      "pad": {"value": 1.25, "why": "How much beyond the face rect the head camera frames. Sized to a head with headroom.", "from": "E01"},
+      "views": {"value": "-30,0,30", "why": "Head verification yaws - a face is judged from the front three-quarters. Meaningless on a subject with no face.", "from": "E01"}
+    },
+
+    "verify/mesh_stats.py": {
+      "crop": {"value": "360,240,700,600", "why": "The face rect, for the polygon-density and curvature columns.", "from": "E01"},
+      "crop-res": {"value": 1024, "why": "The frame the rect is in.", "from": "E01"},
+      "curv-radius-frac": {"value": 0.01, "why": "Curvature sampling radius as a fraction of the figure's extent. Sized to facial structure.", "from": "E01"}
+    }
+  }
+}

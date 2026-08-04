@@ -18,6 +18,9 @@ Consumes bake_hero_prep.py outputs (pos/nor/mask npy + meta.json + prep_uv.glb).
                    --out styled_partial.png [--power 4] [--hole-grey 0.42]
 """
 import argparse
+import sys as _sys, os as _os
+_sys.path.insert(0, _os.path.dirname(_os.path.abspath(__file__)))
+import subject_profile
 import json
 import os
 
@@ -151,7 +154,7 @@ ap.add_argument("--mask-keyed", action="store_true",
                      "146,356 px silhouette on W3, interior rather than at the rim.")
 ap.add_argument("--hole-grey", type=float, default=0.42,
                 help="neutral clay value holes carry in the PREVIEW atlas")
-args = ap.parse_args()
+args = ap.parse_args(subject_profile.bind(ap, "project_twins.py", None))
 AW, AH = [float(x) for x in args.aspect.split(",")]
 
 meta = json.load(open(os.path.join(args.prep, "meta.json")))
@@ -341,13 +344,18 @@ up = np.array([0.0, 0.0, 1.0])
 
 best_w = np.zeros(NV, dtype=np.float32)
 owner_c = np.zeros((NV, 3), dtype=np.float32)
+# WHICH view won, not just what colour it carried (E04 Ruling 2). The ownership partition
+# is computed here and was thrown away; E04 Task 1 had to reconstruct it from diag_8cam's
+# accepted sets to identify the crown seam, and could not obtain the blend at all. Both are
+# free at this point and both are now saved. Additive only - nothing below reads owner_i.
+owner_i = np.full(NV, -1, dtype=np.int8)
 sumW = np.zeros(NV, dtype=np.float32)
 sumWC = np.zeros((NV, 3), dtype=np.float32)
 
 reachable = np.zeros(NV, dtype=bool)
 DIAG = {}
 
-for view in VIEWS:
+for _view_i, view in enumerate(VIEWS):
     img = np.asarray(Image.open(view["path"]).convert("RGB"), dtype=np.float32) / 255.0
     # TWO masks, two questions. Conflating them is what cost 480k texels:
     #   is there real surface here?   -> the MESH silhouette, NOT eroded
@@ -686,6 +694,7 @@ for view in VIEWS:
     take = w > best_w[idx]
     best_w[idx[take]] = w[take]
     owner_c[idx[take]] = col[take]
+    owner_i[idx[take]] = _view_i
     print(f"[twins] {view['name']}: styled {len(idx):,} texels", flush=True)
 
 seen = best_w > 0
@@ -731,7 +740,25 @@ Image.fromarray((atlas * 255).round().astype(np.uint8)).save(args.out)
 Image.fromarray((hole * 255).astype(np.uint8)).save(
     args.out.replace(".png", "_holes.png"))
 np.save(args.out.replace(".png", "_styled_mask.npy"), covA > 0.5)
-print(f"[twins] wrote {args.out} + _holes.png + _styled_mask.npy — DONE", flush=True)
+
+# THE TWO SIDECARS (E04 Ruling 2). Both objects already exist above; both were discarded.
+#   _owner.npy  which VIEW won each texel, int8, -1 where nothing styled it. This is the
+#               partition the crown seam lives on, and E04 Task 1 had to rebuild it from
+#               diag_8cam's accepted sets to find that seam at all.
+#   _blend.png  B, the facing-weighted blend of every view that accepted the texel. The
+#               difference between it and the ownership map M is exactly what the sigma=16
+#               levelling corrects at low frequency - so "why did levelling not touch a
+#               dE 13 step" is answerable from disk instead of by re-deriving it.
+# Written AFTER the atlas, from copies, touching nothing the atlas is built from. An
+# additive sidecar that moves an atlas byte is not a sidecar; the E04 gate tests exactly
+# that by re-running the eight-camera anchor for pixel-identity.
+_owner_grid = np.full(RES * RES, -1, dtype=np.int8)
+_owner_grid[np.where(valid)[0]] = owner_i
+np.save(args.out.replace(".png", "_owner.npy"), _owner_grid.reshape(RES, RES))
+Image.fromarray((np.clip(B, 0, 1) * 255).round().astype(np.uint8)).save(
+    args.out.replace(".png", "_blend.png"))
+print(f"[twins] wrote {args.out} + _holes.png + _styled_mask.npy "
+      f"+ _owner.npy + _blend.png — DONE", flush=True)
 
 if args.diag_npz is not None:
     os.makedirs(os.path.dirname(os.path.abspath(args.diag_npz)), exist_ok=True)

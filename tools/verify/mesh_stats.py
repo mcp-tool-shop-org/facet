@@ -34,6 +34,9 @@ Conventions, all deliberate:
                 [--crop 360,240,700,600] [--crop-res 1024] [--bound 0.55]
 """
 import argparse
+import sys as _sys, os as _os
+_sys.path.insert(0, _os.path.dirname(_os.path.dirname(_os.path.abspath(__file__))))
+import subject_profile
 import json
 import os
 import sys
@@ -58,7 +61,7 @@ ap.add_argument("--curv-samples", type=int, default=4000,
                 help="max curvature probe points inside the rect; deterministic stride")
 ap.add_argument("--curv-radius-frac", type=float, default=0.01,
                 help="ball radius as a fraction of the std-frame bbox diagonal")
-args = ap.parse_args()
+args = ap.parse_args(subject_profile.bind(ap, "verify/mesh_stats.py", None))
 CX0, CY0, CX1, CY1 = [float(v) for v in args.crop.split(",")]
 labels = args.label or []
 if labels and len(labels) != len(args.glb):

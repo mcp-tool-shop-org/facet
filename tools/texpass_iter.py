@@ -22,6 +22,9 @@ Standards compliance: see bake_hero_fuse.py (same stage family).
 --state holds: atlas.png, holes.png, styled_mask.npy (project_twins output copied in).
 """
 import argparse
+import sys as _sys, os as _os
+_sys.path.insert(0, _os.path.dirname(_os.path.abspath(__file__)))
+import subject_profile
 import json
 import os
 import shutil
@@ -72,7 +75,7 @@ ap.add_argument("--thin-extent", type=float, default=0.0,
                      "seam-split (293,099 verts for 287,170 faces) so signed "
                      "distance at the figure's own bbox centre comes back POSITIVE. "
                      "Camera rays need neither a normal nor an interior.")
-args = ap.parse_args()
+args = ap.parse_args(subject_profile.bind(ap, "texpass_iter.py", None))
 
 S = args.state
 atlas = np.asarray(Image.open(os.path.join(S, "atlas.png")).convert("RGB"),

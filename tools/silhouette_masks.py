@@ -40,6 +40,9 @@ Standards compliance:
                       [--anchor 0=path/w3clay_0.png --anchor 4=path/w3clay_4.png]
 """
 import argparse
+import sys as _sys, os as _os
+_sys.path.insert(0, _os.path.dirname(_os.path.abspath(__file__)))
+import subject_profile
 import json
 import os
 
@@ -60,7 +63,7 @@ ap.add_argument("--anchor", action="append", default=[],
                 help="VIEW=PATH — assert the generated mask matches an existing one exactly. "
                      "Repeatable. This is the only thing standing between a wrong camera "
                      "convention and eight silently misregistered twins.")
-args = ap.parse_args()
+args = ap.parse_args(subject_profile.bind(ap, "silhouette_masks.py", None))
 
 AW, AH = (int(x) for x in args.aspect.split(","))
 os.makedirs(args.out, exist_ok=True)

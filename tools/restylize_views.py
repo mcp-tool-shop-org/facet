@@ -35,6 +35,9 @@ background never reaches the output.
                      [--seed 770700] [--prompt ...]
 """
 import argparse
+import sys as _sys, os as _os
+_sys.path.insert(0, _os.path.dirname(_os.path.abspath(__file__)))
+import subject_profile
 import json
 import os
 import time
@@ -91,7 +94,7 @@ ap.add_argument("--emit-only", action="store_true",
                      "stop WITHOUT submitting to ComfyUI. For the Comfy Cloud path (E08 "
                      "Amendment 18), where this rig cannot run the job but must still build "
                      "the control — keeping control construction in one place.")
-args = ap.parse_args()
+args = ap.parse_args(subject_profile.bind(ap, "restylize_views.py", None))
 BASE = f"http://{args.host}"
 BG = np.array([float(v) for v in args.bg.split(",")], dtype=np.float32)
 if BG.max() > 1.0:

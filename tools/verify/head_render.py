@@ -9,6 +9,9 @@ turn_render.py: camera-relative STUDIO light, Standard transform, exposure 0.85.
           [--views -30,0,30] [--crop 360,240,700,600] [--res 1024] [--pad 1.25]
 """
 import argparse
+import sys as _sys, os as _os
+_sys.path.insert(0, _os.path.dirname(_os.path.dirname(_os.path.abspath(__file__))))
+import subject_profile
 import math
 import sys
 
@@ -29,7 +32,7 @@ ap.add_argument("--pad", type=float, default=1.25)
 ap.add_argument("--flat", action="store_true")
 ap.add_argument("--clay", action="store_true",
                 help="uniform grey: judge GEOMETRY with no texture in the way")
-args = ap.parse_args(argv)
+args = ap.parse_args(subject_profile.bind(ap, "verify/head_render.py", argv))
 CX0, CY0, CX1, CY1 = [float(v) for v in args.crop.split(",")]
 
 bpy.ops.wm.read_factory_settings(use_empty=True)

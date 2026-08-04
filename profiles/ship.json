@@ -1,0 +1,70 @@
+{
+  "name": "ship",
+  "subject": "E04's galleon. Three clay concepts staged 2026-08-03 at E:/AI/training/facet_next/galleon_clay/galleon_clay_p1_{00004,00005,00006}.png. NOT YET DESIGNATED - which of the three is the ship is the Director's call at E04 Gate 0.",
+  "provenance": "DRAFT, written 2026-08-04 (E04 Task 2) from the stressor table in docs/profiles-design.md. Nothing here has textured anything. Values are marked measured / inherited-pending-review / SUSPENDED, and a SUSPENDED value must be derived on this subject before the stage that reads it runs.",
+
+  "_status": "DRAFT - DO NOT RUN A TEXTURE PASS FROM THIS FILE. Its purpose is to make explicit, before E04 starts, which character values a ship must NOT inherit. Several entries are deliberately absent rather than guessed; their absence is the finding the design note asked for.",
+
+  "_what_was_measured_and_what_could_not_be": {
+    "frame_aspect_MEASURED": "All three staged concepts are 1216 x 1024 = 1.188 W/H. That is a fact about the staged images and it is measured, not assumed.",
+    "subject_bbox_NOT_MEASURABLE_YET": "The subject's own aspect could not be measured from the concepts. A corner-median key over all four corners returns the FULL FRAME as the subject bbox on all three (fill 64.2% / 67.5% / 79.3%), because these are clay renders on a soft gradient with a cast shadow - the exact configuration this repo has recorded failing three times (E01's painted concept, the Workbench grey-on-grey render, the diffusion studio backdrop). Keying was not retried with a different threshold; where geometry can answer the question, geometry answers it. The subject aspect is therefore SUSPENDED until Task 3's reconstructed mesh exists, and is then read off the mesh bbox.",
+    "why_this_matters": "The design note's stressor table predicts fit_axis width and a landscape frame. The frame is landscape and that is confirmed. Whether the MESH is wider than tall - which is what fit_axis actually keys off - is not established by a landscape frame, and this file will not assert it."
+  },
+
+  "_fixtures": {
+    "palette": {
+      "path": null,
+      "status": "REQUIRED, NOT WRITTEN",
+      "why": "On this subject the off-palette gate carries weight nobody's eye can: no one knows by sight what a galleon's palette should be. It must be authored from the galleon's named materials and cross-checked against a DIFFERENT image than the twins it will gate, or it is a tautology. The character's W3 palette must never be pointed at a ship - its bands cover a red beard, gold pauldrons and a green knitted tunic.",
+      "owner": "the advisor, after the Director designates"
+    },
+    "twin_prompts": {"path": null, "status": "REQUIRED, NOT WRITTEN",
+      "why": "Identity belongs to the prompt. A ship's named elements - hull planking, ratlines, stern-castle carving, sail cloth - reach the image only if the prompt names them."},
+    "brush_prompts": {"path": null, "status": "REQUIRED, NOT WRITTEN", "why": "Per-view, same reason as the character's."}
+  },
+
+  "_gates": {
+    "mesh_gate": {
+      "value": "none",
+      "why": "gate_mesh.py's head/shoulder logic is meaningless on a ship. Recorded as an explicit 'none' rather than silently not running it, so a future session sees a decision instead of an omission.",
+      "from": "docs/profiles-design.md; E04 kickoff"
+    },
+    "head_rect_metrics": {
+      "value": false,
+      "why": "There is no face rect, so mesh_stats' face-rect density and curvature columns have no referent. mesh_stats still measures shell count and density, which it does identically on any mesh.",
+      "from": "E01"
+    },
+    "reg_iou_min": {
+      "value": null,
+      "status": "SUSPENDED",
+      "why": "The character's 0.80 was derived from BOTH SIDES of a measured line on W3's twins - adjudicated 0.8329-0.9533 against failures at or below 0.578. A galleon has neither distribution yet. Inheriting 0.80 would be inheriting one subject's spread as another's threshold, which is the exact error the withdrawn off-palette percentage made. Derive from this subject's own twins or run with the halt suspended and REPORT the IoU per view.",
+      "from": "E08 Amendment 27; CLAUDE.md 'suspend rather than invent one'"
+    },
+    "bbox_tol": {
+      "value": null,
+      "status": "SUSPENDED",
+      "why": "0.25 is W3 data, and it is already demoted to a diagnostic on the character because figure area swings 1.65x with camera geometry. A ship's swing between a bow-on view and a broadside is far larger than a human's between profile and three-quarter. Do not inherit.",
+      "from": "E08 Amendment 27"
+    }
+  },
+
+  "tools": {
+
+    "bake_hero_prep.py": {
+      "crop-res": {"value": 1024, "why": "Frame convention for whatever rect this subject privileges, if any. Carried so the unit is explicit even before a rect exists.", "from": "E01 convention"}
+    },
+
+    "silhouette_masks.py": {
+      "tag": {"value": "galleonclay", "why": "Filename stem for this subject's silhouettes.", "from": "E04 Task 2"}
+    },
+
+    "_ABSENT_ON_PURPOSE": {
+      "framing (aspect, render w/h, fit axis, the 1.204 margin)": "SUSPENDED. The staged frame is 1216x1024; the mesh's own extents decide fit_axis and the margin, and no mesh exists. Guessing here is how a character default reaches a ship.",
+      "allocation (crop rect, head-scale, target, body-weight, factor, pad-frac)": "SUSPENDED. Every one of these presumes a privileged region. A galleon may have one - the stern castle, where the carved detail is - but it has not been chosen, and 'anchor: none' is an equally legitimate answer that the design note lists first.",
+      "cameras (production set, step, elevated pair, spiral order)": "SUSPENDED, and it is a real design question rather than a transcription. Decks need looking INTO; the character's +55 elevated pair was chosen to see a crown and boot-tops. A ship may need a mast-head down-angle and a low bow-on that no character ever needed.",
+      "thin_policy (thin-extent)": "SUSPENDED, and this is the sharpest stressor in the whole file. 0.030 was the smallest value that fills a GREATSWORD solid. Ratlines, shrouds and stays are far thinner than a blade - visible in all three staged concepts as single-pixel lines - so the character value is not merely unportable, it is wrong by an order of magnitude in a direction that would hand the entire rigging to the diffusion brush. Measure the rigging's extent on the designated mesh before choosing.",
+      "acceptance (facing floors, edge-dist family, edge-ref, edge-floor)": "SUSPENDED. edge-ref 700.0 is literally one character's figure width in twin pixels used as a denominator. A ship's twin-pixel width is a different number and the erosion scales off it.",
+      "generation recipe (seed, steps, cfg, denoise, lora-w, cn-strength, canny)": "SUSPENDED pending E04's own anchor. The character's recipe was validated against the character's twins; a hull under a style LoRA trained on figures is an open question, not an inherited setting."
+    }
+  }
+}

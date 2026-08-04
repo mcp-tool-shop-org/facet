@@ -15,6 +15,9 @@ round on this asset (a self-check failed at 34/255 that should have passed at ~1
                                   [--w 752 --h 1024] [--flat] [--clay]
 """
 import argparse
+import sys as _sys, os as _os
+_sys.path.insert(0, _os.path.dirname(_os.path.dirname(_os.path.abspath(__file__))))
+import subject_profile
 import math
 import sys
 
@@ -55,7 +58,7 @@ ap.add_argument("--yaw-offset", type=float, default=0.0,
                 help="degrees added to every view's camera yaw. This is how a third-party mesh "
                      "in a foreign orientation is consumed IN PLACE: rotate the CAMERA, never "
                      "the mesh (mesh rotation via to_mesh() destroys authored vertex normals).")
-args = ap.parse_args(argv)
+args = ap.parse_args(subject_profile.bind(ap, "verify/turn_render.py", argv))
 
 bpy.ops.wm.read_factory_settings(use_empty=True)
 scene = bpy.context.scene

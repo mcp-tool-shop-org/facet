@@ -8,6 +8,9 @@ outside the job mask never reach the atlas even if the model drifts them).
                    [--lora-w 0.75] [--prompt ...] [--host 127.0.0.1:8188]
 """
 import argparse
+import sys as _sys, os as _os
+_sys.path.insert(0, _os.path.dirname(_os.path.abspath(__file__)))
+import subject_profile
 import json
 import os
 import time
@@ -29,7 +32,7 @@ ap.add_argument("--prompt", default=(
     "with a leather belt, heavy dark boots, holding a massive greatsword, plain "
     "grey background, visible brushstrokes, painterly worked surface"))
 ap.add_argument("--negative", default="watermark, text, logo, blurry, photo, deformed")
-args = ap.parse_args()
+args = ap.parse_args(subject_profile.bind(ap, "texpass_brush.py", None))
 BASE = f"http://{args.host}"
 
 

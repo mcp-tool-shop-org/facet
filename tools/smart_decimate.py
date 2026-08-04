@@ -27,6 +27,9 @@ above the crown, so a height band protects the blade and starves the face.
           [--weld-dist 1e-5 | --no-weld]
 """
 import argparse
+import sys as _sys, os as _os
+_sys.path.insert(0, _os.path.dirname(_os.path.abspath(__file__)))
+import subject_profile
 import json
 import os
 import sys
@@ -59,7 +62,7 @@ ap.add_argument("--weld-dist", type=float, default=1e-5,
 ap.add_argument("--no-weld", action="store_true",
                 help="reproduce the pre-2026-08-04 behaviour, which shredded")
 ap.add_argument("--report", default=None)
-args = ap.parse_args(argv)
+args = ap.parse_args(subject_profile.bind(ap, "smart_decimate.py", argv))
 CX0, CY0, CX1, CY1 = [float(v) for v in args.head_crop.split(",")]
 
 

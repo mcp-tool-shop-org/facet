@@ -52,6 +52,18 @@ Stage-1 ownership is reconstructed the same way — `w = facing^power` and `argm
 invariant under a monotone power, so the power never has to be guessed. It covers exactly
 1,653,659 texels, asserted equal to the stage-1 set.
 
+> **⚠ Corrected in place, 2026-08-04, by the ground truth this report caused to exist.** E04
+> Ruling 2 made `project_twins` save the ownership map it had been discarding. Run against
+> the real sidecar, **this reconstruction is wrong by exactly one texel of 2,402,810**
+> (0.0000416%) — index 1,786,017, which I gave to view 5 and the pipeline gives to view 4.
+> The cause, measured rather than asserted: at that texel `y+180` and `y+225` have facings
+> **0.862231076517** and **0.862231099180** in float64 — 2.3e-8 apart — and **both round to
+> the identical float32** `0.862231075764`, which is the precision `project_twins` actually
+> compares in. `take = w > best_w` is a strict inequality, so a tie keeps the earlier view.
+> The repo already had this lesson from a centroid checksum straddling a rounding boundary;
+> here it costs one texel and nothing in §3–§6 moves. Recorded because a reconstruction that
+> is 99.99996% right is still a reconstruction, and the sidecar now removes the need for one.
+
 **Luminance is sampled from the atlas at the hit texel, not from a Blender render.** E07
 recorded that its own denominator was 4.0 quanta of 1/765 under `exposure 0.85` and the
 Standard view transform. Sampling the atlas removes the tone curve and pairs every
