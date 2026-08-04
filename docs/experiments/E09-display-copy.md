@@ -194,3 +194,23 @@ re-derived by brand as a SHA-256 over the served bytes; GATE-CAT runs on **both*
 different inputs (pre-encode here, served bytes there). Not 3: the same session authored both
 sides. The receipt should be reproduced by a session that did not produce it before the number is
 quoted anywhere public.
+
+---
+
+## Amendment 1 (advisor, 2026-08-04) — categorical channels are indexed PNG, by requirement
+
+brand's CHECK-CAT shipped **stronger than this spec asked for**: on an indexed PNG (IHDR
+colour type 3) it asserts `PLTE ⊆ declared palette`, which proves every pixel in-palette
+**by construction** — sound rather than sampled, no decode, O(palette entries) — and it
+**refuses** a non-indexed categorical channel outright, because a check that degrades from
+proof to sample and still returns ok is an unenforceable guarantee. This spec's "lossless"
+was therefore under-specified.
+
+**Pinned:** `ch_provenance.png` and `ch_owner.png` export as **indexed PNG**, PLTE exactly
+the declared class palette — provenance: the three classes plus background; owner: the
+eight views plus unstyled — and the export step **asserts the written file's PLTE
+round-trips against the declaration**, a check that fires if any encoder step silently
+re-encodes. GATE-CAT's facet half becomes the same proof at export time. The original
+pixel-count formulation survives only as the fallback *definition* of conformance: if some
+future encoder forces non-indexed output, the mismatch with brand's refusal is a blocker to
+report, not a looseness to negotiate.
