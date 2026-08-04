@@ -52,6 +52,18 @@ ap.add_argument("--bias", type=float, default=3e-3)
 ap.add_argument("--noffs", type=float, default=1.5e-3)
 ap.add_argument("--aspect", default="752,1024")
 ap.add_argument("--expect-styled", type=int, default=681212)
+ap.add_argument("--trust-intersect", action="store_true",
+                help="E08 Amendment 26, mirrored from project_twins so the instrument "
+                     "and the pipeline share the operand: the TRUST mask (fm) is "
+                     "intersected with the UNDILATED sidecar silhouette before the "
+                     "distance transform and before fig_w. The size-5 maximum_filter "
+                     "below stays where it is — it is mask_ok's sampling tolerance, a "
+                     "different question. ⚠ With this on, --expect-styled cannot apply: "
+                     "the anchor pins the HISTORICAL acceptance, and this deliberately "
+                     "changes it. The assert is scoped to the flag being off rather "
+                     "than re-derived, since re-deriving an anchor while looking at the "
+                     "output it would judge is how the last three thresholds went "
+                     "wrong.")
 ap.add_argument("--sheet", help="look at what is being rejected, before theorising")
 ap.add_argument("--out-json")
 args = ap.parse_args()
@@ -114,11 +126,22 @@ VIEWS = [{"name": "front", "path": args.front, "dtc": np.array([0.0, -1.0, 0.0])
 st = {}
 for view in VIEWS:
     img = np.asarray(Image.open(view["path"]).convert("RGB"), dtype=np.float32) / 255.0
-    fm = figure_mask(img)
+    twin_fm = figure_mask(img)
     mp = os.path.splitext(view["path"])[0] + "_mask.png"
-    mesh_fm = maximum_filter(
-        (np.asarray(Image.open(mp).convert("L"), dtype=np.float32) / 255.0 > 0.5
-         ).astype(np.float32), size=5)
+    rawm = (np.asarray(Image.open(mp).convert("L"), dtype=np.float32) / 255.0 > 0.5)
+    mesh_fm = maximum_filter(rawm.astype(np.float32), size=5)
+    # THE TRUST OPERAND, mirrored from project_twins (E08 Amendment 26). Intersected with
+    # the UNDILATED sidecar, not with mesh_fm: the size-5 dilation is a sampling tolerance
+    # for mask_ok and would admit a 2px collar of non-surface back into the trust mask.
+    if args.trust_intersect:
+        fm = (twin_fm > 0.5) & rawm
+        print(f"[acc] {view['name']}: TRUST INTERSECT — keyed paint "
+              f"{int((twin_fm > 0.5).sum()):,}px -> trust {int(fm.sum()):,}px "
+              f"(outside the undilated silhouette: "
+              f"{int(((twin_fm > 0.5) & ~rawm).sum()):,}px)", flush=True)
+        fm = fm.astype(np.float32)
+    else:
+        fm = twin_fm
     H, W = img.shape[:2]
     dtc = view["dtc"]
     facing = (N @ dtc).astype(np.float64)
@@ -144,8 +167,7 @@ for view in VIEWS:
     mask_ok = bilinear(mesh_fm[..., None], px, py)[:, 0] > 0.5
     st[view["name"]] = {"facing": facing, "vis": vis, "edge": edge_ok, "mask": mask_ok,
                         "px": px, "py": py, "img": img, "mesh_fm": mesh_fm,
-                        "raw_mask": (np.asarray(Image.open(mp).convert("L"),
-                                                dtype=np.float32) / 255.0 > 0.5)}
+                        "raw_mask": rawm}
     print(f"[acc] {view['name']}: figure {fig_w:.0f}px wide, edge-dist "
           f"{max(args.edge_floor, args.edge_dist*esc):.1f}px body / "
           f"{max(args.edge_floor, args.head_edge_dist*esc):.1f}px head", flush=True)
@@ -199,11 +221,16 @@ print(f"[acc]   UNION: reachable {int(R.sum()):,}  styled {int(A.sum()):,}  "
       f"lost {int(lost.sum()):,} = {lost.sum()/max(int(R.sum()),1)*100:.1f}% of reachable")
 out["union_production"] = {"reachable": int(R.sum()), "styled": int(A.sum()),
                            "lost": int(lost.sum())}
-assert abs(int(A.sum()) - args.expect_styled) <= 2, (
-    f"ANDON: styled {int(A.sum()):,} does not reproduce E06's measured TWINS "
-    f"{args.expect_styled:,} — the replica of project_twins' acceptance is wrong")
-print(f"[acc]   anchor OK: styled reproduces E06's TWINS provenance "
-      f"({args.expect_styled:,})")
+if args.trust_intersect:
+    print(f"[acc]   anchor NOT APPLICABLE under --trust-intersect: it pins the "
+          f"HISTORICAL acceptance ({args.expect_styled:,}) and this run changes the "
+          f"trust operand on purpose. Delta {int(A.sum()) - args.expect_styled:+,}.")
+else:
+    assert abs(int(A.sum()) - args.expect_styled) <= 2, (
+        f"ANDON: styled {int(A.sum()):,} does not reproduce E06's measured TWINS "
+        f"{args.expect_styled:,} — the replica of project_twins' acceptance is wrong")
+    print(f"[acc]   anchor OK: styled reproduces E06's TWINS provenance "
+          f"({args.expect_styled:,})")
 
 # ---- counterfactual: drop one test at a time, production floors
 print(f"\n[acc] counterfactual coverage, production floors, one test removed at a time")

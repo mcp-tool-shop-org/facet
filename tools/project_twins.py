@@ -101,6 +101,24 @@ ap.add_argument("--bbox-tol", type=float, default=0.25,
                      "silhouette's by more than this in either dimension. Free, and it "
                      "tests the failure mode — a broken key overshot by 93% while every "
                      "correct twin measured within 1%.")
+ap.add_argument("--trust-intersect", action="store_true",
+                help="E08 Amendment 26: restrict the TRUST mask to surface that "
+                     "exists — fm becomes twin_fm AND mesh_fm before the distance "
+                     "transform. Paint outside the silhouette is on no surface at all, "
+                     "so asking whether it is trustworthy is a category error, and "
+                     "letting it set the boundary of the distance field corrupts the "
+                     "answer for texels that DO exist. Measured on the re-rolled "
+                     "twin_6, whose cast shadow is CONNECTED to the figure: 27.49% of "
+                     "the figure's texels get an edge distance changed by >0.5px, "
+                     "21.24% by >2px, max 36.22px. Default OFF so every prior arm "
+                     "reproduces. ⚠ Under --mask-keyed, mesh_fm is the size-5 DILATED "
+                     "sidecar, not the exact silhouette, so combining the two flags is "
+                     "NOT the exact-silhouette intersection.")
+ap.add_argument("--diag-npz",
+                help="dump per-view acceptance internals (candidate indices, sample "
+                     "edge distances and thresholds, the dist_in field, mesh_fm) so a "
+                     "gain/loss decomposition can be computed offline. Writes nothing "
+                     "back into the computation — R0 must reproduce with this set.")
 ap.add_argument("--mask-keyed", action="store_true",
                 help="answer 'is there surface here' with restylize_views' keyed clay "
                      "mask instead of the raycast silhouette. Reproduces every arm "
@@ -302,6 +320,7 @@ sumW = np.zeros(NV, dtype=np.float32)
 sumWC = np.zeros((NV, 3), dtype=np.float32)
 
 reachable = np.zeros(NV, dtype=bool)
+DIAG = {}
 
 for view in VIEWS:
     img = np.asarray(Image.open(view["path"]).convert("RGB"), dtype=np.float32) / 255.0
@@ -338,7 +357,6 @@ for view in VIEWS:
     # is no longer justified by a claim that the twin covers the mesh, because it does
     # not.
     twin_fm = figure_mask(img, corner_median=args.key_corner_median)
-    fm = twin_fm
     H, W = img.shape[:2]
     dtc = view["dtc"]
     if args.mask_keyed:
@@ -367,7 +385,28 @@ for view in VIEWS:
               f"({mesh_fm.mean() * 100:.1f}% of frame), twin paint "
               f"{twin_fm.mean() * 100:.1f}%", flush=True)
 
-    # ANDON on the keying's failure mode, which is FREE and caught it once already.
+    # THE TRUST MASK. One mask cannot answer two questions, and until E08 Amendment 26
+    # this one was asked a THIRD: "is the paint here trustworthy" was evaluated over a
+    # region that includes pixels sitting on NO SURFACE AT ALL. The re-rolled twin_6
+    # painted a cast shadow on the ground, CONNECTED to the figure, and the connection is
+    # what does the damage: `distance_transform_edt` measures distance to the mask's
+    # boundary, so a phantom boundary metres below the feet inflates the edge distance
+    # for every real texel near ground contact. Measured with the shadow removed by hand:
+    # 27.49% of the figure's texels move >0.5px, 21.24% >2px, max 36.22px.
+    # The intersection is a CORRECTION, not a tune — "restrict the trust mask to surface
+    # that exists" is derivable from the two-questions rule and should have been written
+    # when A2 landed. It is behind a flag anyway, because it moves dist_in at the rim for
+    # EVERY twin and therefore restates A2's number, which does not get replaced quietly.
+    if args.trust_intersect:
+        fm = ((twin_fm > 0.5) & (mesh_fm > 0.5)).astype(np.float32)
+    else:
+        fm = twin_fm
+
+    # THE RAW KEY'S OWN DIAGNOSTICS. Measured on twin_fm before any intersection, so
+    # they stay comparable across both settings of the flag and keep saying something the
+    # intersection cannot make true by construction. A twin that paints a shadow is worth
+    # knowing about even once the shadow can no longer reach the distance field.
+    #
     # A broken key does not fail subtly: it keys the backdrop, and the figure's bounding
     # box blows out to the frame. Measured — corner-median on a diffusion backdrop gave
     # 936 x 751 in a 752 px frame, a 93% overshoot, while every correctly keyed twin sat
@@ -379,10 +418,51 @@ for view in VIEWS:
     mh, mw = ys_m.max() - ys_m.min(), xs_m.max() - xs_m.min()
     print(f"[twins] {view['name']}: twin paint bbox {th} x {tw_}  "
           f"mesh silhouette bbox {mh} x {mw}", flush=True)
-    assert th <= mh * (1 + args.bbox_tol) and tw_ <= mw * (1 + args.bbox_tol), (
-        f"ANDON: {view['name']}: keyed twin bbox {th}x{tw_} exceeds the mesh "
-        f"silhouette's {mh}x{mw} by more than {args.bbox_tol*100:.0f}% — the key is "
-        f"finding the backdrop, not the figure.")
+    # keyed paint on no surface: the quantity the intersection removes, with its largest
+    # connected component, because ONE shadow and diffuse rim speckle are different
+    # failures and a total alone has to choose which one to miss.
+    tb, mb = twin_fm > 0.5, mesh_fm > 0.5
+    outside = tb & ~mb
+    n_out = int(outside.sum())
+    lab_o, n_lab = label(outside)
+    cc_out = int(np.bincount(lab_o.ravel())[1:].max()) if n_lab else 0
+    inter_n = int((tb & mb).sum())
+    iou_tm = float(inter_n / max(int((tb | mb).sum()), 1))
+    cy_t, cx_t = float(ys_t.mean()), float(xs_t.mean())
+    cy_m, cx_m = float(ys_m.mean()), float(xs_m.mean())
+    cdx, cdy = cx_t - cx_m, cy_t - cy_m
+    print(f"[twins] {view['name']}: registration — IoU(twin,mesh) {iou_tm:.4f}  "
+          f"centroid offset dx {cdx:+.1f} dy {cdy:+.1f} px "
+          f"(|d| {np.hypot(cdx, cdy):.1f})", flush=True)
+    # NAME THE OPERAND. Under --mask-keyed this is measured against the size-5 dilated
+    # SIDECAR, which on the E01-era twins holds 76,549px of a 146,356px silhouette — so
+    # calling it "outside the silhouette" there would be the wrong-object error this repo
+    # keeps paying for. The label says which mask the count is against.
+    ref_nm = "DILATED SIDECAR" if args.mask_keyed else "silhouette"
+    print(f"[twins] {view['name']}: keyed OUTSIDE the {ref_nm} {n_out:,}px  "
+          f"largest component {cc_out:,}px  "
+          f"({n_out / max(int(tb.sum()), 1) * 100:.2f}% of keyed paint)", flush=True)
+    # ⚠ THE BBOX HALT DEMOTES WHEN THE INTERSECTION IS ON (E08 Amendment 26). The
+    # intersection kills the pathway this andon was standing guard over — shadow paint can
+    # no longer reach the distance field — so halting on raw bbox extent would now stop
+    # correct work, the same error A3's area-loss gate made. It does NOT kill "the twin is
+    # genuinely misregistered"; that halt goes on a registration quantity, and the two
+    # printed above are its baseline. Arming it is the advisor's, from measured numbers.
+    #
+    # Stated precisely, because the amendment's parenthetical is not quite right: the raw
+    # bbox is measured on twin_fm, which the intersection does not touch, so this assert
+    # could still fire — it is not "passing by construction." The reason to demote is the
+    # first one, that the quantity no longer governs anything downstream.
+    bbox_ok = th <= mh * (1 + args.bbox_tol) and tw_ <= mw * (1 + args.bbox_tol)
+    bbox_msg = (f"{view['name']}: keyed twin bbox {th}x{tw_} exceeds the mesh "
+                f"silhouette's {mh}x{mw} by more than {args.bbox_tol*100:.0f}% — the key "
+                f"is finding the backdrop, not the figure.")
+    if args.trust_intersect:
+        if not bbox_ok:
+            print(f"[twins] WARNING (halt demoted, --trust-intersect): {bbox_msg}",
+                  flush=True)
+    else:
+        assert bbox_ok, f"ANDON: {bbox_msg}"
     facing = (N @ dtc).astype(np.float32)
     fmin = np.where(headband, args.head_facing_min, args.facing_min)
     idx = np.where(facing > fmin)[0]
@@ -420,8 +500,18 @@ for view in VIEWS:
     # The erosion is NOT deleted. Its stated justification is void (the mesh is fatter
     # than the twin — see above), but the white-fleck failure it was built for is real
     # and nothing else addresses it.
+    # fig_w is the SECOND consumer of the trust mask, and in --edge-absolute mode it is
+    # the one that spreads a local defect globally: esc scales ed_body/ed_head, so a
+    # shadow that widens the keyed figure by a few percent deepens the erosion over the
+    # WHOLE twin, not just near the shadow. Both widths are printed so the difference is
+    # visible rather than inferred.
     fx = np.where((fm > 0.5).any(axis=0))[0]
     fig_w = float(fx.max() - fx.min()) if len(fx) else float(W)
+    fx_raw = np.where(tb.any(axis=0))[0]
+    fig_w_raw = float(fx_raw.max() - fx_raw.min()) if len(fx_raw) else float(W)
+    print(f"[twins] {view['name']}: fig_w raw {fig_w_raw:.0f}px  used {fig_w:.0f}px  "
+          f"(trust mask {int((fm > 0.5).sum()):,}px of raw {int(tb.sum()):,}px)",
+          flush=True)
     esc = fig_w / args.edge_ref
     ed_body = max(args.edge_floor, args.edge_dist * esc)
     ed_head = max(args.edge_floor, args.head_edge_dist * esc)
@@ -476,6 +566,31 @@ for view in VIEWS:
             f"IMPLEMENTATION: e > {args.edge_frac:.4f} x local half-width for "
             f"{int((~ok_inv).sum()):,} samples — the cap is not being applied")
     inm = (d_s >= ed) & (bilinear(mesh_fm[..., None], px, py)[:, 0] > 0.5)
+    if args.diag_npz is not None:
+        # captured HERE because the next line rebinds idx/px/py. Nothing is read back
+        # into the computation — this exists so a gain/loss decomposition can be done
+        # offline against the other arm instead of re-deriving it from an atlas.
+        DIAG[view["name"]] = {
+            "cand_idx": idx.astype(np.int64),
+            "px": px.astype(np.float32),
+            "py": py.astype(np.float32),
+            "d_s": d_s.astype(np.float32),
+            "ed": np.asarray(ed, dtype=np.float32),
+            "thick_s": bilinear(thick, px, py).astype(np.float32),
+            "mask_ok": (bilinear(mesh_fm[..., None], px, py)[:, 0] > 0.5),
+            "accepted": inm.astype(bool),
+            "dist_in": dist_in,
+            "mesh_fm": (mesh_fm > 0.5),
+            "twin_fm": tb,
+            "fig_w": np.float32(fig_w),
+            "fig_w_raw": np.float32(fig_w_raw),
+            "bbox_twin": np.array([th, tw_], dtype=np.int64),
+            "bbox_mesh": np.array([mh, mw], dtype=np.int64),
+            "iou_tm": np.float32(iou_tm),
+            "centroid_off": np.array([cdx, cdy], dtype=np.float32),
+            "outside_px": np.int64(n_out),
+            "outside_cc": np.int64(cc_out),
+        }
     idx, px, py = idx[inm], px[inm], py[inm]
     col = bilinear(img, px, py).astype(np.float32)
 
@@ -560,3 +675,16 @@ Image.fromarray((hole * 255).astype(np.uint8)).save(
     args.out.replace(".png", "_holes.png"))
 np.save(args.out.replace(".png", "_styled_mask.npy"), covA > 0.5)
 print(f"[twins] wrote {args.out} + _holes.png + _styled_mask.npy — DONE", flush=True)
+
+if args.diag_npz is not None:
+    os.makedirs(os.path.dirname(os.path.abspath(args.diag_npz)), exist_ok=True)
+    flat = {"__views__": np.array([v["name"] for v in VIEWS]),
+            "__trust_intersect__": np.bool_(args.trust_intersect),
+            "__styled__": seen, "__reachable__": reachable,
+            "__valid__": np.int64(NV), "__variance__": np.float32(var),
+            "__holes__": np.int64(int(hole.sum()))}
+    for nm, d in DIAG.items():
+        for k, arr in d.items():
+            flat[f"{nm}/{k}"] = arr
+    np.savez_compressed(args.diag_npz, **flat)
+    print(f"[twins] wrote {args.diag_npz} (per-view acceptance internals)", flush=True)
