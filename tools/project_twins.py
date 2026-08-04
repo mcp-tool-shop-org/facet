@@ -84,6 +84,15 @@ ap.add_argument("--edge-min-struct", type=int, default=50,
 ap.add_argument("--edge-absolute", action="store_true",
                 help="historical absolute erosion, scaled by GLOBAL figure width. "
                      "Reproducing any arm before E08 needs --mask-keyed AND this.")
+ap.add_argument("--key-corner-median", action="store_true",
+                help="key the twin's paint mask off a single corner median, the "
+                     "historical path. Needed to reproduce any arm before E08, and "
+                     "measured to fail on any non-flat backdrop.")
+ap.add_argument("--bbox-tol", type=float, default=0.25,
+                help="ANDON: halt if the keyed twin figure's bbox exceeds the mesh "
+                     "silhouette's by more than this in either dimension. Free, and it "
+                     "tests the failure mode — a broken key overshot by 93% while every "
+                     "correct twin measured within 1%.")
 ap.add_argument("--mask-keyed", action="store_true",
                 help="answer 'is there surface here' with restylize_views' keyed clay "
                      "mask instead of the raycast silhouette. Reproduces every arm "
@@ -134,10 +143,43 @@ v_ext = (bhi[2] - blo[2]) * 1.204
 h_ext = v_ext * (AW / AH)
 
 
-def figure_mask(img, tol=0.06, erode=5):
-    c = np.concatenate([img[:8, :8].reshape(-1, 3), img[:8, -8:].reshape(-1, 3)])
-    bg = np.median(c, axis=0)
-    fm = (np.abs(img - bg).max(axis=-1) > tol).astype(np.float32)
+def figure_mask(img, tol=0.06, erode=5, corner_median=False):
+    """The twin's own painted figure — "is the paint trustworthy", the one question
+    geometry cannot answer, and the last duty this function still holds.
+
+    The background model is FITTED, not a corner median. Corner-median keying has now
+    failed three independent times in this project: on A0's painted twin it keyed 30%
+    of the bottom corners as figure (E01); on the grey-on-grey clay it lost 24% of the
+    silhouette (E08 Arm A); and on a diffusion backdrop it returned painted fractions
+    of 31-76% against a 19.01% truth, with figure bounding boxes 751 px wide in a 752 px
+    frame (E08 registration). Diffusion paints a lit studio gradient, so a single median
+    is the wrong model and every pixel far from a corner exceeds tolerance.
+
+    A per-channel quadratic surface, least-squares over a border ring the figure cannot
+    reach, REDUCES to the corner median when the background really is flat — measured:
+    the shipped twins move 17.43% -> 17.38% of frame. Nothing prior loses comparability.
+    --key-corner-median restores the historical path.
+    """
+    if corner_median:
+        c = np.concatenate([img[:8, :8].reshape(-1, 3), img[:8, -8:].reshape(-1, 3)])
+        bg = np.median(c, axis=0)
+        fm = (np.abs(img - bg).max(axis=-1) > tol).astype(np.float32)
+        return minimum_filter(fm, size=erode)
+    H, W = img.shape[:2]
+    yy, xx = np.mgrid[0:H, 0:W]
+    ring = np.zeros((H, W), dtype=bool)
+    b = 24
+    ring[:b, :] = ring[-b:, :] = ring[:, :b] = ring[:, -b:] = True
+    cols = [np.ones(H * W), xx.ravel() / W, yy.ravel() / H,
+            (xx.ravel() / W) ** 2, (yy.ravel() / H) ** 2,
+            (xx.ravel() / W) * (yy.ravel() / H)]
+    A = np.stack(cols, axis=1)
+    Xr = A.reshape(H, W, -1)[ring]
+    resid = np.zeros((H, W, 3), dtype=np.float32)
+    for c in range(3):
+        coef, *_ = np.linalg.lstsq(Xr, img[..., c][ring], rcond=None)
+        resid[..., c] = img[..., c] - (A @ coef).reshape(H, W)
+    fm = (np.abs(resid).max(axis=-1) > tol).astype(np.float32)
     return minimum_filter(fm, size=erode)
 
 
@@ -239,7 +281,7 @@ for view in VIEWS:
     # it answers "is the paint trustworthy", which is the twin's own to answer — but it
     # is no longer justified by a claim that the twin covers the mesh, because it does
     # not.
-    twin_fm = figure_mask(img)
+    twin_fm = figure_mask(img, corner_median=args.key_corner_median)
     fm = twin_fm
     H, W = img.shape[:2]
     dtc = view["dtc"]
@@ -268,6 +310,23 @@ for view in VIEWS:
         print(f"[twins] {view['name']}: mesh silhouette from GEOMETRY "
               f"({mesh_fm.mean() * 100:.1f}% of frame), twin paint "
               f"{twin_fm.mean() * 100:.1f}%", flush=True)
+
+    # ANDON on the keying's failure mode, which is FREE and caught it once already.
+    # A broken key does not fail subtly: it keys the backdrop, and the figure's bounding
+    # box blows out to the frame. Measured — corner-median on a diffusion backdrop gave
+    # 936 x 751 in a 752 px frame, a 93% overshoot, while every correctly keyed twin sat
+    # within ~1% of the mesh silhouette's own bbox.
+    ys_t, xs_t = np.where(twin_fm > 0.5)
+    ys_m, xs_m = np.where(mesh_fm > 0.5)
+    assert len(ys_t) and len(ys_m), f"ANDON: {view['name']}: empty twin or mesh mask"
+    th, tw_ = ys_t.max() - ys_t.min(), xs_t.max() - xs_t.min()
+    mh, mw = ys_m.max() - ys_m.min(), xs_m.max() - xs_m.min()
+    print(f"[twins] {view['name']}: twin paint bbox {th} x {tw_}  "
+          f"mesh silhouette bbox {mh} x {mw}", flush=True)
+    assert th <= mh * (1 + args.bbox_tol) and tw_ <= mw * (1 + args.bbox_tol), (
+        f"ANDON: {view['name']}: keyed twin bbox {th}x{tw_} exceeds the mesh "
+        f"silhouette's {mh}x{mw} by more than {args.bbox_tol*100:.0f}% — the key is "
+        f"finding the backdrop, not the figure.")
     facing = (N @ dtc).astype(np.float32)
     fmin = np.where(headband, args.head_facing_min, args.facing_min)
     idx = np.where(facing > fmin)[0]
