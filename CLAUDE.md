@@ -123,11 +123,15 @@ registered twin that is a different man is worse, not better. When the real ques
 this the right thing*, a measurable proxy is not a conservative substitute for asking; it is a
 different question with a number attached. Ask, and show the artifact at full size.
 
-**A twin is two things, and only one of them is regenerable.** It is a *mesh-bound projection
-source* — which must match this silhouette, and which E01 correctly says to regenerate per mesh
-— and it is a *canon identity reference*, which must be this man. Those were never separated,
-which is how "regenerate the twins" became routine and how a registration improvement replaced
-the character. **State which of the two an operation touches before running it.**
+**Twins belong to a mesh. Identity belongs to the prompt.** A twin has exactly one job — register
+to the silhouette it will be projected onto — and E01's "regenerate them for whatever you are
+about to texture" is right without qualification. Everything that makes the man *this man* is a
+named element in a versioned prompt. This was learned the hard way: a registration improvement
+silently replaced the character, because identity was riding in an artifact nobody had declared
+was carrying it. The proof that it can ride elsewhere is one phrase — naming the gold knee
+plates restored armour that had only ever reached the image through a *noisy ControlNet*,
+with the control byte-matched so the term was the only difference. **If a canon element is not
+named in the prompt, it is arriving by accident and will leave the same way.**
 
 **A recipe that does not reproduce its output is not a recipe.** The canon twin, rebuilt from
 the same clay, prompt, seed and control, does not come back (IoU 0.9040 against 0.9088) — its

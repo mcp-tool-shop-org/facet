@@ -70,6 +70,16 @@ arms and sword into empty space beside the mesh, collapsing styled coverage from
 22.7%. **Generate twins from the mesh you are about to texture**, every time. It is one
 job per view.
 
+**Identity belongs to the prompt, not to the twin.** The corollary cost a whole experiment. A
+twin generated against a control missing a quarter of the silhouette painted a taller, narrower
+man than the mesh *and* dropped the character's gold knee plates — and cleaning the control
+corrected the proportions while the plates stayed gone. Naming them brought them back: one
+phrase, with the control byte-matched at 20,973 px so the term was the only difference. The
+armour had only ever reached the image through **noise in a broken ControlNet**. So a twin has
+exactly one job — register to the mesh — and everything that makes the man *this man* is a named
+element in a versioned prompt. **A canon element not named in the prompt is arriving by accident
+and will leave the same way.**
+
 **Build the control image; don't hope Canny finds the silhouette.** A clay render is flat
 grey on flat grey, so Canny returns 0.84% edge pixels and almost no outer contour — the
 ControlNet constrains nothing and the model regenerates the character. Composite the

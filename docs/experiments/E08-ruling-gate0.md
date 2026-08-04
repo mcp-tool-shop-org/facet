@@ -838,6 +838,51 @@ ceiling and ~79% is the ceiling at any count tested. The honest framing of E08's
 > **Arm B waits on his answer.** Generating six twins is the wrong move while it is unsettled
 > which body they should have.
 
+> ### Amendment 12 (Director, 2026-08-04) — the proportions were the artifact. Identity moves to the prompt.
+>
+> **Ruled: use the mesh's body.** The taller, narrower figure was the model painting free of a
+> control missing a quarter of the silhouette — the same defect that lost the knee plates, and
+> the plates have already been shown to be prompt-recoverable.
+>
+> **This resolves the architecture, and it vindicates E01 rather than amending it.** E01's rule
+> — *twins belong to a mesh, not to a character; regenerate them for whatever you are about to
+> texture* — was right all along. Amendment 10 called it "false for identity"; the correct
+> statement is that **identity was never the twin's job to carry.** The complete rule:
+>
+> > **Twins belong to a mesh. Identity belongs to the prompt.**
+>
+> The tension I named in Amendment 10 does not need resolving — it dissolves. A twin has one
+> job: register to the mesh it will be projected onto. Everything that makes the man *this man*
+> is a named element in a versioned prompt.
+>
+> **And the highest-priority defect dissolves with it.** The canon twin's irreproducibility was
+> load-bearing only while the artifact *was* the reference. As a **specification source** it does
+> not need to be regenerable — a specification reproduces where an artifact does not. It stays
+> frozen and versioned, its role changed rather than its status: **the visual target the spec is
+> read off, and no longer the projection reference.** `canon/MANIFEST.md` must record that
+> change; it currently describes the file's provenance, not its demotion.
+>
+> ### Sequence, and the middle step is a gate rather than a formality
+>
+> **1. Extract the specification.** Enumerate the delta between what the prompt already names —
+> green tunic, gold pauldrons, gold necklace, red beard, dark red skirt, leather belt, heavy
+> dark boots — and what the canon twin actually shows. Two are known: **gold knee plates**
+> (proven) and the **gold-trimmed leather bracer** (authorised, not yet run). Propose the rest;
+> the Director ratifies the list, because it is canon.
+>
+> **2. Verify the specification reproduces — this is the gate.** Generate a twin from the full
+> spec on a clean control and check **every named element is present**. Reading 2's entire claim
+> is that a specification is reproducible where an artifact is not, and it is untested at more
+> than one term. **If the spec does not reproduce its own elements, this ruling's premise fails
+> and the artifact reading comes back.** Halt and report rather than adding terms until it
+> passes — a spec tuned until it works is not a spec.
+>
+> **3. Then Arm B.** Six further views, each carrying the ratified spec, each gated by the
+> Director at full size per Amendment 10. Not before step 2 clears.
+>
+> **The bracer test is now step 1's second data point rather than a curiosity** — it is the
+> evidence that prompt-expressible canon generalises past one lucky term.
+
 ## 5. What this does not settle
 
 Whether ~40–53% reference coverage is *enough* for the Director to accept the asset is not a
