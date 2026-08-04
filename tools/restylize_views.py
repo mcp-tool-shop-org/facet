@@ -50,6 +50,11 @@ from scipy.ndimage import minimum_filter
 ap = argparse.ArgumentParser()
 ap.add_argument("--inputs", nargs="+", required=True)
 ap.add_argument("--outdir", required=True)
+ap.add_argument("--masks", nargs="+", default=None,
+                help="figure mask per input, parallel to --inputs. Supply the exact "
+                     "mesh silhouette here; without it the mask is keyed off the "
+                     "render, which E08 measured losing 24%% of the silhouette on a "
+                     "grey-on-grey clay.")
 ap.add_argument("--host", default="127.0.0.1:8188")
 ap.add_argument("--seed", type=int, default=770700)
 ap.add_argument("--steps", type=int, default=20)
@@ -90,10 +95,23 @@ def figure_mask(img, tol, erode):
     return minimum_filter(fm, size=erode)
 
 
-def control_image(path):
-    """Composite for contrast, Canny, then OR in the mask's morphological gradient."""
+def control_image(path, mask_path=None):
+    """Composite for contrast, Canny, then OR in the mask's morphological gradient.
+
+    The mask answers "where is the figure". Keying the render for it is what E01 fixed
+    for the CANNY term (composite onto contrast first) and left in place here, and E08
+    measured the cost on W3: the keyed clay mask held 111,602 px of a 146,356 px
+    silhouette, IoU 0.76, losing a stripe down the whole blade. --masks supplies the
+    exact mesh silhouette instead, which makes the CONTOUR term identical for any two
+    renders of the same mesh from the same camera — the property this arm needs, and
+    the last place figure_mask still governed anything.
+    """
     rgb = np.asarray(Image.open(path).convert("RGB"), dtype=np.float32) / 255.0
-    fm = figure_mask(rgb, args.tol, args.erode)
+    if mask_path:
+        fm = (np.asarray(Image.open(mask_path).convert("L"), dtype=np.float32)
+              / 255.0 > 0.5).astype(np.float32)
+    else:
+        fm = figure_mask(rgb, args.tol, args.erode)
     comp = rgb * fm[..., None] + BG * (1.0 - fm[..., None])
     grey = (comp.mean(axis=-1) * 255).astype(np.uint8)
     edges = cv2.Canny(grey, int(args.canny_low * 255), int(args.canny_high * 255))
@@ -160,9 +178,14 @@ def graph(render_name, ctrl_name):
     }
 
 
-for path in args.inputs:
+if args.masks:
+    assert len(args.masks) == len(args.inputs), (
+        f"ANDON: {len(args.masks)} masks for {len(args.inputs)} inputs — --masks is "
+        f"parallel to --inputs")
+for _i, path in enumerate(args.inputs):
     stem = os.path.splitext(os.path.basename(path))[0]
-    ctrl, fm, n_edge, n_contour, n_ctrl = control_image(path)
+    ctrl, fm, n_edge, n_contour, n_ctrl = control_image(
+        path, args.masks[_i] if args.masks else None)
     ctrl_path = os.path.join(args.outdir, f"{stem}_control.png")
     Image.fromarray(ctrl).save(ctrl_path)
     # The exact figure mask, saved beside the twin. project_twins consumes this
