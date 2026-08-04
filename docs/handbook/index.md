@@ -134,32 +134,70 @@ Residual holes take a dilation fill.
 - **A gate must test the operation's failure mode.** Silhouette IoU returned a perfect
   1.00000 on a mesh with a hole punched clean through the torso, because the ray behind a
   removed face still hits geometry. Ask what a failure would look like, then check for that.
+- **Beside the reference, with provenance.** The cheapest diagnostic here is *reference |
+  asset | provenance | error* on one sheet. Four experiments ran without one; when it was
+  finally built, the whole thesis was readable off panel 2 in a sentence — the blade is flesh
+  where the reference is steel, and the provenance panel shows it carries no reference at all.
+- **Validate a metric against a rejected artifact before you build on it.** Four experiments
+  were graded on blotch counts, speckle, a step ratio and a flattening guard — **four of the
+  five are 5×5 high-pass statistics, and the fifth is indifferent to where a colour lands.**
+  The defect that decides acceptance is a *large region of the wrong material*, which is smooth
+  inside itself and contributes only its rim to every one of them. One change cut a source
+  error 70× and took speckle below the reference asset while a human saw no difference.
+- **When a threshold passes, look at the shape of the residual.** A cross-hardware anchor
+  cleared its bar at ΔE 0.84 — but what made it *the same asset* was that the residual was
+  uniform across every structure (controls 0.71, treated regions 0.98). A structural difference
+  concentrates. A run could clear the same bar with the residual piled into one region and the
+  reading would be wrong.
+- **Know your instrument's floor.** At denoise 0.92 the model repaints globally, so a held
+  control sits near ΔE 6, not 0. Attribution rests on the *ratio*. An element effect below the
+  floor is indistinguishable from global repaint — and a hue angle below a chroma floor is
+  undefined, not a rotation.
 
-## Cost
+## Where the work runs
 
-Per character, on an RTX 5090, all local:
+**Generation runs on Comfy Cloud; geometry and measurement run locally.** This is not a
+preference. The restylize graph stages 31,006 MiB of models — text encoder, UNet, ControlNet,
+VAE — against a 31,200 MiB watchdog ceiling on a 32,607 MiB card. The working set reached
+30,809 MiB with nothing left for activations, and **no reserve value fixes that**: peak was
+31.7–32.0 GB across three runs regardless of the reserve *or* the desktop baseline, because
+ComfyUI stages to fill whatever it sees free. Freeing 6.5 GB made the working set grow 6.1 GB.
+
+**Cross-boundary work needs an anchor.** Before moving a line to different hardware, reproduce
+a known output from its recorded parameters. Ours came back non-byte-identical at ΔE 0.84
+against a 1.07 no-response floor — accepted, with the boundary recorded in every later report.
 
 | stage | cost |
 |---|---|
-| reconstruction | ~20 s per arm |
-| weld + density allocation | seconds |
-| visibility classification | seconds |
-| twins (2 views) | ~2 min |
+| reconstruction | ~20 s per arm, local |
+| weld + density allocation | seconds, local |
+| visibility classification | seconds, local |
+| twins | ~1 min per view, cloud |
+| projection, finalize, pack, renders | ~2 min, local |
 | brush loop (8 strokes) | ~8 min |
-| finalize + pack + renders | ~2 min |
 
 ## Honest limits
 
+- **One twin in eight comes back off-spec** — a garment the specification does not contain,
+  from a per-view roll rather than a prompt error. The detector is cheap and belongs in the
+  route before projection; the eye is not a detector.
+- **A specification cannot add to an occupied surface.** Replacement lands, addition does not.
+  Specify a character whole; do not retrofit an element onto a finished generation.
+- **A colour term reads as a chroma instruction more reliably than a lightness one.** Asking
+  for *black* collapsed chroma as expected and raised lightness — desaturated mid-grey, not
+  black.
 - **Stroke seams are not levelled.** Projection has a low-frequency levelling term; the
   brush loop does not, so every stroke boundary is a tonal step.
-- **Dilation still bleeds between unrelated islands** — atlas adjacency is not surface
-  adjacency, and filled texels remain 4.8× enriched in visible blotches.
+- **Dilation bleeds between unrelated islands** unless the fill is surface-aware — atlas
+  adjacency is not surface adjacency. A nearest-painted-texel lookup in 3D sources from under
+  one triangle edge where the atlas flood sourced from 61.
 - **Chart fragmentation limits texel density.** Culling removed 47% of faces but only 34%
   of charts, because invisible surface is interleaved *within* charts rather than sitting in
   separate ones.
 - **Everything here is calibrated on humanoid characters.** Ships, monsters and props are
   untested; [the profile design](../profiles-design.md) exists so that testing them cannot
-  break the character path.
+  break the character path. The off-spec detector matters most there — nobody will know by eye
+  what a galleon's palette should be.
 
 ## Licence
 

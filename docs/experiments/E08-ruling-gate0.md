@@ -1462,6 +1462,54 @@ ceiling and ~79% is the ceiling at any count tested. The honest framing of E08's
 > rear view off the contact sheet, correct at proper zoom against its own clay. The rule was
 > written about judging *assets*; it applies identically to judging *instruments*.
 
+> ### Amendment 24 (advisor, 2026-08-04) — scope confirmed: two re-rolls. And the gate found what the author missed.
+>
+> **Two re-rolls, views 2 and 6.** The rule was stated before the gate ran — *reject a twin
+> containing material not in the spec* — and twin_2 fails it identically and by construction.
+> Applying a pre-registered rule to every case it covers is the rule working, not a widening.
+> **Asking rather than widening on your own authority was right; the answer is yes.** Same
+> bounded procedure: one re-roll each, new seed, both recorded, both gated; if either fails
+> again that is the result and six project.
+>
+> **The rate is 2 of 8, not 1 of 8.** The finding gets bigger, not smaller: **25% of views came
+> back carrying material the specification does not contain.** No pipeline ships on that without
+> a detector.
+>
+> ### The gate caught a defect its author had missed, and that is the whole point
+>
+> The hand-rolled check asked *is it blue* and found one view. The gate asks *is it outside the
+> declared palette* and found two — twin_2 carrying a 5,068 px olive-khaki mass on the lower leg
+> where the spec has gold knee plates and dark boots, seen at contact-sheet scale and dismissed
+> as "a lighter green patch."
+>
+> **A detector that only reproduces what its author already noticed is not an instrument.** That
+> is the strongest single line to come out of this session and it belongs in the standing rules.
+>
+> ### Three design choices that earned themselves immediately
+>
+> **The two-threshold design.** Clean views carry 5–104 px blobs — antialiasing at the
+> gold/green material boundary. The two failures carry 4,882 and 5,068. **A single total would
+> have had to choose between missing the garment and firing on every view**; total px *and*
+> largest connected component separates *one garment* from *speckle* by construction.
+>
+> **The chroma floor is load-bearing, not a knob.** W3's steel greatsword measures C\* 1.6–2.8 at
+> hue 266–268 — squarely inside the blue band. Without the floor the gate flags the sword on
+> every view. This is the same fact that made the contradiction test's hue-delta column
+> unreadable wherever chroma collapsed: **below a chroma floor, hue is not a colour, it is
+> noise.** One property, two instruments, both bitten.
+>
+> **The bands are non-circular by construction.** Declared from the spec's sixteen named
+> materials, then cross-checked against the SPEC arm's measured region colours — **a different
+> image than the ones being gated.** Deriving them from the clean twins would have made the gate
+> a tautology, and it is the kind of circularity that passes review because the numbers look
+> fine.
+>
+> ### The stated limitation is what makes it usable
+>
+> **It tests colour, not placement.** Gold on the boots passes every band while being flatly
+> wrong. Written down by the executor rather than discovered later — which is the difference
+> between a gate with a known blind spot and a gate that quietly certifies.
+
 ## 5. What this does not settle
 
 Whether ~40–53% reference coverage is *enough* for the Director to accept the asset is not a

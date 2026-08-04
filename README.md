@@ -32,8 +32,26 @@ reference asset while changing nothing to the eye.
 
 The structural fact underneath it: on the finished asset, **28.4% of texels come from the
 styled reference, 37.7% from diffusion invention and 33.9% from interpolation**. Every
-experiment so far improved *how the other 71.6% is filled*; none reduced it. Nothing in the
-texture stage is claimed as working.
+experiment up to that point improved *how the other 71.6% is filled*; none reduced it.
+
+**What [E08](docs/experiments/E08-ruling-gate0.md) then established — and this is the part
+that generalises.** The reference stage was carrying a defect nobody had measured: the mask
+telling the projector *where the surface is* was a keyed clay render missing **a quarter of
+the figure**, interior rather than at the rim. Replacing it with the exact raycast silhouette
+took reference coverage **28.4% → 39.1%** of valid texels, and **53.8% → 74.2%** of what two
+cameras can physically reach, strictly additive, with no diffusion and no GPU.
+
+**And the architecture is now measured rather than assumed. Twins register; the prompt
+carries identity.** Contradict the specification on eight elements — *silver* where gold
+arrives unbidden, *black* where wine-red arrives — and the prompt wins **8 of 8**: median ΔE
+**46.3** against **6.2** on five held controls, a **7.4×** separation. The LoRA, mesh and
+control did not hold the character's attributes against a conflicting spec. **And it is still
+the same figure** — face, build, pose, boots. Structure is held by the mesh and control;
+named attributes are carried by the prompt. **This is a pipeline, not a one-character
+generator.**
+
+Nothing in the texture stage is claimed as finished, and no asset better than the rejected
+one has been rendered end to end yet.
 
 **Form first, style second.** Image-to-3D reconstructors key off shading, silhouette
 clarity and unambiguous depth. A heavily stylized sprite — weathered planks, painted

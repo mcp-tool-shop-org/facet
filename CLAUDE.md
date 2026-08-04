@@ -115,6 +115,46 @@ background colour. A2 admitted 257,506 texels at median ΔE 38.31 from backgroun
 within ΔE 10 — cleaner than the set already trusted. That is what makes a widening adoptable
 rather than merely larger.
 
+**A detector that only reproduces what its author already noticed is not an instrument.** A
+hand-rolled check asked *is it blue* and found one bad twin. The same question asked properly —
+*is anything outside the declared palette* — found two, the second a 5,068 px olive-khaki mass
+that had been seen at contact-sheet scale and dismissed. Write the check against the
+**specification**, not against the defect you happen to have spotted.
+
+**Derive a gate's reference from something other than what it gates.** The palette bands came
+from the spec's named materials and were cross-checked against a *different image* than the
+twins being tested. Taking them from the clean twins would have made the gate a tautology that
+passes review because the numbers look fine.
+
+**Two thresholds separate one wrong garment from ordinary speckle.** Clean views carried 5–104
+px of off-palette pixels at material boundaries; the failures carried 4,882 and 5,068 in a
+single blob. Total count alone must choose between missing the garment and firing on
+everything — report the total *and* the largest connected component.
+
+**Below a chroma floor, hue is not a colour.** It is undefined, and it will read as a rotation.
+The same fact bit two instruments here: a contradiction test's hue column was meaningless
+wherever chroma collapsed, and an off-palette gate without a floor flags a steel sword
+(C\* 1.6–2.8 at hue 267) as blue on every view. Any hue number carries its chroma or it is not
+quoted.
+
+**Rejecting an output that violates a pre-registered specification is not selecting a result.**
+What is forbidden is choosing a *decision rule* after seeing the outcome. The test: would the
+rule have been the same whatever came out? *Reject a twin containing material not in the spec*
+passes that test — so re-rolling it is the specification working. Bound it anyway: one re-roll,
+new seed, the rejected artifact stays in the record with its measurement, and a second failure
+is the result rather than a third roll.
+
+**Specify from scratch; never patch.** A specification determines what *occupies* a surface and
+cannot add a second element to one already occupied. Asking for a gold plate onto an existing
+fur cuff produced **no response at all** — ΔE 1.07, in two different grammatical forms, where
+elements that *replaced* their surface's occupant landed in full.
+
+**Before building a path to a resource, enumerate the resource.** A whole delivery path was
+built — new repo, upload, browser import — for a model that was already present. The advisor
+specified "check whether it can get there" when the first question is "is it already there": a
+check whose shape assumed its answer, which is the recurring form of most advisor errors in
+this repo.
+
 **Canon is not a taste question to be routed around. It is a ground truth the Director holds,
 and no metric approximates it.** The advisor did this twice in two experiments: graded material
 identity with high-pass statistics, then graded *character* identity with silhouette IoU — and
@@ -327,9 +367,21 @@ assets    E:\AI\training\facet_E0*\  and  E:\AI\training\saltroad_bake_fix\
 **Run all Blender work through PowerShell** — Git Bash mangles the paths and every call
 fails with `Error: Please select a file`.
 
-**Launch ComfyUI capped:** `--reserve-vram 8.0 --disable-smart-memory`. A bare launch peaks
-at the VRAM watchdog's kill ceiling and gets terminated mid-run. This has happened twice.
-Cap the consumer; never raise the ceiling.
+**Generation runs on Comfy Cloud. Geometry and measurement run locally.** The restylize graph
+stages **31,006 MiB** of models against a **31,200 MiB** watchdog ceiling on a 32,607 MiB card;
+the working set reached 30,809 with nothing left for activations. **No reserve value fixes
+that** — peak was 31.7–32.0 GB across three runs regardless of the reserve *or* the desktop
+baseline, because ComfyUI stages to fill whatever it sees free. Freeing 6.5 GB by rebooting made
+the working set grow 6.1 GB, so the earlier passes succeeded *because* less VRAM was available.
+`--reserve-vram` and `--disable-smart-memory` are both falsified as levers here. **The ceiling
+is never raised.**
+
+**Moving a line to different hardware needs an anchor first.** Reproduce a known output from its
+recorded parameters before running anything measured. Ours came back non-byte-identical at
+ΔE 0.84 against a pre-registered 1.07 no-response floor — accepted, with the hardware boundary
+recorded in every later report. And read the *shape* of that residual, not just the number: it
+was uniform across every structure, which is what two float kernels look like. A structural
+difference concentrates.
 
 **argparse eats leading minus signs** — use `--views=-30,0,30`.
 
