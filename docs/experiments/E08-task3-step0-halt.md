@@ -158,3 +158,67 @@ made, so nothing was spent.
 
 **HALTED at step 1.** Nothing adopted, no threshold moved, no prompt written, no stroke run, no
 credits spent. The atlas is intact and the three questions above are the ruling's.
+
+---
+
+# RESOLVED — Amendment 29's branch is A. Appended 2026-08-04, after the ruling.
+
+[Amendment 29](E08-ruling-gate0.md) ruled CORNER governs (so the halt was right, at 7.534%
+against 2.0), withdrew the bound for rim-band widenings on three grounds, and pre-stated both
+branches. **The deciding measurement returns Branch A on all three views, and it is not close.**
+
+## The measurement
+
+A background-ΔE test cannot separate grey material from backdrop mix, and neither can chroma —
+the palette gate's floor of 12.0 exists *because* steel is neutral, so "below the floor" covers
+both identities identically. Two things do separate them, and
+[flagged_identity.py](../../tools/diagnostics/flagged_identity.py) measures both: **where the
+texel is**, and **what material sits 8 px+ inboard of it** (its nearest deep trust-mask pixel,
+found by one EDT returning indices — direction-free, so no normal can be picked badly).
+
+| set | n | own C\* | below floor | **on chromatic in-palette material** | **within 5 px of the §9a blade band** | height fraction |
+|---|---|---|---|---|---|---|
+| view 6, gained (all) | 8,920 | 5.2 | 70.2% | 30.0% | 43.7% | 0.526 |
+| **view 6, FITTED-flagged** | **200** | **0.4** | **100%** | **0.0%** | **98.0%** | 0.353 |
+| view 6, CORNER-flagged | 672 | **2.8** | 100% | 1.3% | 92.9% | 0.452 |
+| view 6, BOTH-flagged | 197 | 0.4 | 100% | 0.0% | 98.0% | 0.193 |
+| view 1, FITTED-flagged | 4 | 3.3 | 100% | **0.0%** | **100%** | 0.179 |
+| view 5, FITTED-flagged | 5 | 1.2 | 100% | **0.0%** | **100%** | 0.151 |
+
+**Every flagged texel on every view sits on neutral material, hugging the blade band.** Not one
+of the 209 FITTED-flagged sits on chromatic in-palette material — no gold, no green, no
+wine-red mixed toward the backdrop anywhere in the set. And the flagging is *selective*: the
+full gained band is only 43.7% blade-adjacent and 30% on chromatic material, so the ΔE test is
+picking out the blade rim specifically rather than the rim in general.
+
+**An independent corroboration nobody arranged.** The CORNER-flagged set measures **C\* median
+2.8**. The palette file, written before any of this and for a different purpose, states *"W3's
+steel blade measures C\* 1.6–2.8 at hue 266–268"* and puts the chroma floor at 12.0 precisely so
+the gate would not flag the sword. The flagged texels' chroma lands inside that pre-registered
+range to the decimal. **The background probe flagged the greatsword, for the same reason the
+palette gate had to be given a floor to stop it flagging the greatsword.** Two instruments,
+written days apart for different questions, failing on the same physics.
+
+Views 1 and 5 were checked rather than banked on the n-argument: 4 and 5 texels, 100% neutral,
+100% on neutral material, **100% within 5 px of the blade band**, height fractions 0.179 and
+0.151 — high on the raised blade. Same mechanism, measured, no special pleading needed.
+
+## Branch A, taken as pre-stated
+
+Amendment 29: *"predominantly in-palette grey materials at their own locations: the gate fired
+on the subject's own greyness. Bank all 8,920 … Task 3 proceeds on `stage1_8cam.png`
+unmodified."*
+
+**All 9,053 gained texels bank. `stage1_8cam.png` is Task 3's input, unmodified.** No texels
+withheld, no holes added, nothing regenerated. Recorded for the post-Gate-1 erosion arm: the
+209 FITTED-flagged texels are the first characterised rim set in this repo, and their identity
+is *steel blade rim*, not mix — which means they are **not** the clean-rim baseline that arm
+needs, because the blade is exactly the structure whose greyness confounds the measurement.
+
+**The blade's rim is now implicated twice from opposite directions.** §9a: the key *excludes*
+the blade band because its paint sits on the 0.06 threshold, so stage 1 paints none of it. Here:
+the paint immediately *inboard* of that band is neutral enough to trip a background test. Both
+are the same physical fact — grey steel on a grey backdrop — and the Gate 1 sheet calls out
+view 6's rim and the blade's provenance explicitly, per Amendments 28 and 29.
+
+Proceeding to step 2.
