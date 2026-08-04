@@ -696,6 +696,87 @@ ceiling and ~79% is the ceiling at any count tested. The honest framing of E08's
 > not a quality gate**: this is the reference the route will carry, does it read as the man he
 > designed. The finished-asset judgement stays where it belongs, at Gate 1.
 
+> ### Amendment 10 (advisor, 2026-08-04) — Director: the shipped twin is the character. My framing is withdrawn.
+>
+> **Ratified in full.** A2R is off-canon; the geometry-derived control is withdrawn as a
+> *twin-generation* path. A2 stands — it never touched the twins, only replaced the projection
+> stage's keyed clay mask with the exact mesh silhouette, so it is canon-safe by construction.
+> The fitted estimator and the bbox andon stay as no-ops that catch a failure which has now
+> happened three times.
+>
+> **Amendment 7 is falsified, and the falsified line is mine:** *"better registration is a
+> better reference by this repo's own established criterion, and no taste is required to say
+> so."* It is not a better reference. It is a different man.
+>
+> **Worse, I had already written the correct rule and then talked myself out of it.** Amendment
+> 4's halt said *an arm that improves keying by changing the reference has broken the thing it
+> was protecting.* Three amendments later I reframed that same result as a registration
+> question — because a measurement was available and I preferred having a number to asking the
+> only party who can answer.
+>
+> **The failure mode has a name and this is its second appearance in two experiments.**
+> E07 graded material identity with high-pass statistics; E08 graded character identity with
+> IoU. Both times the real question was *is this the right thing* and both times I substituted
+> a measurable proxy that was orthogonal to it. **Canon is not a taste question to be avoided —
+> it is a ground truth held by the Director, and it is not approximable by a metric.**
+>
+> ### The architectural correction: a twin is two things, and we only ever modelled one
+>
+> E01 established *twins belong to a mesh, not to a character* — regenerate them for whatever
+> you are about to texture. That is **true for registration and false for identity.** A twin is
+> simultaneously:
+>
+> - a **mesh-bound projection source**, which must match this silhouette, and
+> - a **canon identity reference**, which must be this man.
+>
+> Those were never separated, which is how "regenerate the twins" became a routine step and how
+> a registration improvement could quietly replace the character. Every future twin operation
+> must state which of the two it is touching.
+>
+> ### The canon twin's irreproducibility is now the repo's highest-priority defect
+>
+> The executor is right to flag it hardest. **The asset the whole route exists to carry is a
+> file we can copy and cannot recreate** — built identically it does not reproduce (IoU 0.9040
+> against 0.9088), and its parameters are not in the repo. That was an inconvenience while it
+> was one candidate among several. It is now the canon.
+>
+> **Ruled: stop treating it as derivable.** Freeze the twin pair as a **canon artifact**,
+> version it, and record its provenance as *incomplete* rather than implied — a recipe that
+> does not reproduce its output is not a recipe. Do not spend a seed sweep trying to recover
+> it: even a match could not be verified as *the* recipe, and the artifact is already in hand.
+> `restylize_views.py` still needs per-view prompts from a versioned file so this cannot recur
+> for the next character, and that is now a prerequisite rather than a filed nicety.
+>
+> ### Arm B is re-scoped, not cancelled
+>
+> It still holds the largest available change — ~55% coverage against 28.4% on A2's canon-safe
+> acceptance rate — and it still requires six new twins through a path that has now
+> demonstrated it can move the character. There is no metric that gates that, because the thing
+> being gated is canon.
+>
+> **So the Director gates them, one sheet, at full size, accept or reject per twin. Only
+> accepted twins project.** That is cheap in his time — he ruled within one exchange of seeing
+> these at full size — and it is the only ground truth available. It also fixes the process
+> failure the executor named: these were shown as downscaled contact-sheet columns, against
+> this repo's own rule about judging at the Director's zoom.
+>
+> ### Authorised, cheap, and never tried: name the armour
+>
+> The executor's observation is the best lead on the table. **The gold knee plates are not in
+> the prompt** — they came through from the mesh's own knee armour, via the control. So the
+> shipped twin's surplus 23,000 px of contour was **noise for registration and signal for
+> identity**, which are different properties I conflated in Amendment 8 when I called it "just
+> a defect."
+>
+> Asking for the armour explicitly pins it regardless of control strength, has never been
+> tried, and costs one twin. If it works, the identity/registration tension partly dissolves —
+> canon comes from the prompt where it can be stated, and the control is free to be clean.
+>
+> ### Held, correctly
+>
+> The 54,978-lost and 2.03% location measurements are held. Both were about A2R and A2R is
+> withdrawn. Do not run them.
+
 ## 5. What this does not settle
 
 Whether ~40–53% reference coverage is *enough* for the Director to accept the asset is not a

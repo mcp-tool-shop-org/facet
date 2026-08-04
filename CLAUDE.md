@@ -115,6 +115,27 @@ background colour. A2 admitted 257,506 texels at median ΔE 38.31 from backgroun
 within ΔE 10 — cleaner than the set already trusted. That is what makes a widening adoptable
 rather than merely larger.
 
+**Canon is not a taste question to be routed around. It is a ground truth the Director holds,
+and no metric approximates it.** The advisor did this twice in two experiments: graded material
+identity with high-pass statistics, then graded *character* identity with silhouette IoU — and
+pre-registered "better registration is a better reference, no taste required." A better-
+registered twin that is a different man is worse, not better. When the real question is *is
+this the right thing*, a measurable proxy is not a conservative substitute for asking; it is a
+different question with a number attached. Ask, and show the artifact at full size.
+
+**A twin is two things, and only one of them is regenerable.** It is a *mesh-bound projection
+source* — which must match this silhouette, and which E01 correctly says to regenerate per mesh
+— and it is a *canon identity reference*, which must be this man. Those were never separated,
+which is how "regenerate the twins" became routine and how a registration improvement replaced
+the character. **State which of the two an operation touches before running it.**
+
+**A recipe that does not reproduce its output is not a recipe.** The canon twin, rebuilt from
+the same clay, prompt, seed and control, does not come back (IoU 0.9040 against 0.9088) — its
+parameters were never in the repo. Freeze such an artifact as canon, version it, and record its
+provenance as *incomplete* rather than implied. Do not sweep for the recipe: a match cannot be
+verified as *the* recipe, and the artifact is already in hand. Then fix the generator so the
+next one is reproducible.
+
 **A component can be necessary without being contributory.** The fitted background estimator
 moves reference coverage by **−0.1 points** on its own and *enables* the +4.0 the new twins
 buy, because the old key reads their backdrop at 50.68% of frame against a 19.01% truth.
