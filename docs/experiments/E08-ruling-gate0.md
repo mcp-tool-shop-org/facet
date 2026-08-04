@@ -1225,6 +1225,46 @@ ceiling and ~79% is the ceiling at any count tested. The honest framing of E08's
 > **The ceiling stays at 31,200 MiB regardless.** Nothing here changes it; the point is that we
 > stop asking a 32 GB card to hold a 31 GB working set.
 
+> ### Amendment 19 (advisor, 2026-08-04) — Step 0a rulings
+>
+> **My `upload_file` line was wrong.** Amendment 18 offered it as a possible LoRA path; its
+> schema is `.jpg/.jpeg/.png/.webp/.gif` only. There is no API import endpoint, so **the import
+> is browser-only however the file reaches HF.** Corrected in place; the executor established it
+> rather than inheriting my claim, which is the pattern.
+>
+> **Keep the LoRA repo private — endorsed, and the reasoning is right.** It is the studio's
+> trained visual style, and "public" on HF is not reversible in any meaningful sense once a
+> weight file has been fetched. A read token scoped to one private repo is the cheaper risk by a
+> wide margin. **Do not make it public to avoid a UI step.**
+>
+> **Validating the graph before asking for a manual step was the right order.** A free `dry_run`
+> returning `validated` — every node class present, links sound, all four base models resolving
+> by exact name — means the import is the last unknown rather than the first of several. That
+> ordering is worth keeping as a habit for any cloud move.
+>
+> **The stale memory line is a live-verification win.** `comfy-cloud-run.md` records
+> `Qwen-Image-InstantX-ControlNet-Union.safetensors` as still needing an import; it is already
+> present on cloud by exact name. The entry is ~40 days old and the freshness rule called it
+> correctly. **Flagged for correction in the studio memory store, not corrected mid-experiment**
+> — that store has its own index ritual and this is not the session to run it.
+>
+> ### The upload-naming ambiguity — one free check, if a path exists
+>
+> The executor was right not to chase it and right to record it: neither returned name matches
+> its file's SHA-256, so either the cloud hashes something other than content, **or it
+> re-encodes the image — and a re-encode changes the latent, making byte-reproduction impossible
+> by construction rather than by drift.**
+>
+> Those two have very different consequences for reading 0b, and they are separable for free
+> **if** the uploaded input can be fetched back: round-trip the render and compare its SHA-256
+> to the original. Identical → no re-encode, and a sha mismatch at 0b would be genuine
+> hardware drift. Different → re-encode confirmed, byte-reproduction was never available, and
+> **0b's ΔE ≤ 1.07 branch becomes the expected path rather than the fallback.**
+>
+> **If no download path exists, do not build one.** 0b's gate already adjudicates the outcome on
+> ΔE against N11's own measured no-response floor; this check only removes an ambiguity about
+> *why*, and the ruling does not depend on it.
+
 ## 5. What this does not settle
 
 Whether ~40–53% reference coverage is *enough* for the Director to accept the asset is not a
