@@ -25,8 +25,8 @@ import numpy as np
 import open3d as o3d
 import trimesh
 from PIL import Image
-from scipy.ndimage import (distance_transform_edt, gaussian_filter, maximum_filter,
-                           minimum_filter)
+from scipy.ndimage import (distance_transform_edt, gaussian_filter, label,
+                           maximum_filter, minimum_filter)
 
 Image.MAX_IMAGE_PIXELS = None
 
@@ -60,6 +60,21 @@ ap.add_argument("--edge-floor", type=float, default=2.5,
 ap.add_argument("--bias", type=float, default=3e-3)
 ap.add_argument("--noffs", type=float, default=1.5e-3)
 ap.add_argument("--aspect", default="752,1024")
+ap.add_argument("--edge-frac", type=float, default=1.0 / 3.0,
+                help="E08 A3 invariant: the edge erosion may never exceed this "
+                     "fraction of a structure's OWN local half-width. For a bar "
+                     "the area it removes equals this number exactly.")
+ap.add_argument("--edge-max-area-loss", type=float, default=0.40,
+                help="ANDON: halt if the erosion removes more than this share of "
+                     "any single structure's area. A bar eroded exactly at "
+                     "--edge-frac loses that fraction, so this sits above it to "
+                     "leave room for discretisation and ragged outlines while "
+                     "still catching the 51% the absolute path took off the blade.")
+ap.add_argument("--edge-min-struct", type=int, default=50,
+                help="structures smaller than this are keying specks, not parts")
+ap.add_argument("--edge-absolute", action="store_true",
+                help="historical absolute erosion, scaled by GLOBAL figure width. "
+                     "Reproducing any arm before E08 needs --mask-keyed AND this.")
 ap.add_argument("--mask-keyed", action="store_true",
                 help="answer 'is there surface here' with restylize_views' keyed clay "
                      "mask instead of the raycast silhouette. Reproduces every arm "
@@ -115,6 +130,25 @@ def figure_mask(img, tol=0.06, erode=5):
     bg = np.median(c, axis=0)
     fm = (np.abs(img - bg).max(axis=-1) > tol).astype(np.float32)
     return minimum_filter(fm, size=erode)
+
+
+def local_thickness(dist):
+    """Half-width of the structure each pixel belongs to.
+
+    `dist` is the distance transform of the figure mask, so dist(c) is the radius of
+    the largest disc centred at c that fits inside the figure, and a pixel p belongs to
+    that disc when ||p - c|| <= dist(c). Taking the largest such disc over all c gives
+    the local thickness (Hildebrand & Ruegsegger). Evaluated with one EDT per integer
+    radius band rather than an explicit disc dilation, which would be O(r^2) per pixel.
+    """
+    R = np.zeros_like(dist, dtype=np.float32)
+    for r in range(int(np.ceil(dist.max())), 0, -1):
+        core = dist >= r
+        if not core.any():
+            continue
+        cover = distance_transform_edt(~core) <= r
+        R[cover & (R == 0)] = r
+    return R
 
 
 def bilinear(img, x, y):
@@ -231,19 +265,76 @@ for view in VIEWS:
     px = (xr / h_ext + 0.5) * W - 0.5
     py = (0.5 - zu / v_ext) * H - 0.5
     dist_in = distance_transform_edt(fm > 0.5).astype(np.float32)
-    # Erosion cost scales with perimeter-to-area, not width: 7 px off each side of
-    # a ~40 px arm removes a third of it, while the same 7 px barely dents a wide
-    # blobby silhouette. The defaults were tuned on A0's figure, so scale them by
-    # this figure's width against that reference.
+    # ⚠ REBUILT (E08 A3). This erosion used to be an ABSOLUTE distance, scaled by the
+    # figure's GLOBAL width and then applied to LOCAL structures. On W3 that took
+    # 3.8 px off each side of a ~15 px blade — 51% of its half-width — so the blade
+    # arrived at stage 2 as a hole for the brush to invent into, and reached the
+    # Director wearing skin tones. Third instance of one shape in this repo: the blade
+    # pixel-rectangle texpass_loop.ps1 was rewritten to remove, E01's 480k-texel
+    # silhouette-band erosion, and this.
+    #
+    # THE INVARIANT: never remove more than a bounded fraction of a structure's OWN
+    # width. `dist_in` already carries it — the maximal inscribed disc covering a pixel
+    # is the local half-width — so the bound needs no new input. For a bar of
+    # half-width R eroded by e the area removed is exactly e/R, which makes
+    # --edge-frac simultaneously the input bound and the area it costs; blobs, having
+    # lower perimeter-to-area, come in under it.
+    #
+    # The erosion is NOT deleted. Its stated justification is void (the mesh is fatter
+    # than the twin — see above), but the white-fleck failure it was built for is real
+    # and nothing else addresses it.
     fx = np.where((fm > 0.5).any(axis=0))[0]
     fig_w = float(fx.max() - fx.min()) if len(fx) else float(W)
     esc = fig_w / args.edge_ref
     ed_body = max(args.edge_floor, args.edge_dist * esc)
     ed_head = max(args.edge_floor, args.head_edge_dist * esc)
-    print(f"[twins] {view['name']}: figure {fig_w:.0f}px wide -> edge-dist "
-          f"{ed_body:.1f}px body / {ed_head:.1f}px head "
-          f"(unscaled {args.edge_dist:.1f}/{args.head_edge_dist:.1f})", flush=True)
-    ed = np.where(headband[idx], ed_head, ed_body)
+    thick = local_thickness(dist_in)          # the gate needs it in BOTH modes
+    if args.edge_absolute:
+        ed = np.where(headband[idx], ed_head, ed_body)
+        e_img = np.full_like(dist_in, ed_body)
+        print(f"[twins] {view['name']}: HISTORICAL absolute edge-dist {ed_body:.1f}px "
+              f"body / {ed_head:.1f}px head (figure {fig_w:.0f}px wide)", flush=True)
+    else:
+        cap = args.edge_frac * bilinear(thick, px, py)
+        ed = np.minimum(np.where(headband[idx], ed_head, ed_body), cap)
+        e_img = np.minimum(ed_body, args.edge_frac * thick)
+        med = float(np.median((args.edge_frac * thick)[fm > 0.5]))
+        print(f"[twins] {view['name']}: edge-dist = min({ed_body:.1f}px, "
+              f"{args.edge_frac:.3f} x local half-width); median local cap {med:.1f}px "
+              f"(figure {fig_w:.0f}px wide)", flush=True)
+    # Gate the FAILURE MODE, stratified by LOCAL HALF-WIDTH — not by connected
+    # component. A per-component gate was written first and REJECTED ON MEASUREMENT:
+    # the twin's whole front figure is ONE component of 121,709 px, because the blade
+    # touches the hand that holds it, so a blade losing half its area read as 12.3%
+    # overall. Connectivity cannot separate a blade from the body gripping it;
+    # thickness can, and thickness is what the invariant is stated in.
+    # Reported in both modes so the check is demonstrably able to fire; it HALTS only
+    # under the invariant, because --edge-absolute exists to reproduce arms predating
+    # it. The body distance is used throughout, being the stricter of the two.
+    fig = fm > 0.5
+    kept = dist_in >= e_img
+    worst, worst_lab, worst_n = 0.0, "", 0
+    print(f"[twins] {view['name']}: erosion cost by structure half-width —", flush=True)
+    for a_, b_ in ((1, 2), (2, 4), (4, 8), (8, 16), (16, 32), (32, 1e9)):
+        sel = fig & (thick >= a_) & (thick < b_)
+        n = int(sel.sum())
+        if n < args.edge_min_struct:
+            continue
+        lost = 1.0 - float((sel & kept).sum()) / n
+        nm = f"{a_}-{'inf' if b_ > 1e8 else b_}px"
+        print(f"[twins]     half-width {nm:<9s} {n:>8,}px  removed {lost*100:5.1f}%",
+              flush=True)
+        if lost > worst:
+            worst, worst_lab, worst_n = lost, nm, n
+    if not args.edge_absolute:
+        assert worst <= args.edge_max_area_loss, (
+            f"ANDON: the edge erosion removes {worst*100:.1f}% of the "
+            f"{worst_lab} half-width stratum ({worst_n:,}px), over the "
+            f"{args.edge_max_area_loss*100:.0f}% limit — that is deleting a structure, "
+            f"not its rim.")
+    elif worst > args.edge_max_area_loss:
+        print(f"[twins]     ^ WOULD HALT under the invariant: {worst*100:.1f}% of the "
+              f"{worst_lab} stratum, over {args.edge_max_area_loss*100:.0f}%", flush=True)
     inm = (bilinear(dist_in, px, py) >= ed) & (bilinear(
         mesh_fm[..., None], px, py)[:, 0] > 0.5)
     idx, px, py = idx[inm], px[inm], py[inm]
