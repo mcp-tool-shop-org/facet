@@ -62,24 +62,50 @@ that bleeds into the parts you can see. Exclude it and interpolation falls **68%
 **Exclude from the atlas; never delete from the mesh.** Deletion needs a perfect gate
 forever, and the obvious gate does not work — see *Judging* below.
 
-### 5 — Twins for *this* mesh
+### 5 — Twins register. The prompt carries identity.
+
+**This is the division the whole route turns on, and it took an experiment to find.**
 
 A styled twin is a restylize of a render of one specific mesh, so it carries that mesh's
 silhouette. Carry it to another mesh and it misregisters: a 38% narrower reconstruction of
-the same character dropped styled coverage from 62% to 22.7%.
+the same character dropped styled coverage from 62% to 22.7%. Twin generation is a
+**pipeline stage**, not an input.
 
-Twin generation is a **pipeline stage**, not an input. Render the target, restylize
-canny-locked, project.
+**A twin has exactly one job: register to the mesh.** Everything that makes the character
+*this character* is a named element in a versioned prompt.
 
-Two things make this work:
+That was learned the hard way. A twin generated against a control missing a quarter of the
+silhouette painted a taller, narrower body than the mesh *and* silently dropped the
+character's gold knee plates — armour that had only ever reached the image through **noise in
+a broken ControlNet**. Cleaning the control corrected the proportions and the plates stayed
+gone. Naming them brought them back: one phrase, with the control byte-matched, so the term
+was the only difference.
 
-- **Build the control image.** A clay render is flat grey on flat grey, so Canny finds
-  0.84% edge pixels and almost no outer contour — the ControlNet constrains nothing and the
-  model invents a character. Composite onto contrast *and* union the figure mask's
-  morphological gradient into the edge map: silhouette IoU 0.290 → **0.777**.
-- **Prompt per view.** A shared prompt asking for "a long red beard, gold necklace" is an
-  instruction to draw a face, and it will put one on the back of the head even with a
-  correct contour. The text overrides the control.
+**Measured, 8 elements against 5 held controls:** contradict the specification — *silver*
+where gold arrives unbidden, *black* where wine-red arrives — and the prompt wins **8 of 8**,
+median ΔE 46.3 against 6.2 on the held set, a **7.4×** separation. And it is still the same
+figure: face, build, pose, bald head, boots. **Structure is held by the mesh and the control;
+named attributes are carried by the prompt.**
+
+**A canon element not named in the prompt is arriving by accident and will leave the same
+way.**
+
+Three things make this work:
+
+- **Build the control image from geometry.** A clay render is flat grey on flat grey, so
+  Canny finds 0.84% edge pixels and almost no outer contour — the ControlNet constrains
+  nothing and the model invents a character. Use the **exact raycast silhouette**; do not key
+  the render. A keyed clay mask lost a quarter of the figure interior — a stripe down the
+  whole blade, patches through pauldrons and greaves — and the loss was invisible for four
+  experiments because nothing compared the mask to the geometry.
+- **Specify from scratch; never patch.** A specification determines what *occupies* each
+  surface. It cannot add a second element to a surface already occupied — a gold plate asked
+  for onto an existing fur cuff produced **no response at all** (ΔE 1.07), in two different
+  grammatical forms. Replacement lands; addition does not.
+- **Gate every twin against the spec before projecting it.** One view in eight came back with
+  a garment the specification does not contain — navy blue where the spec says bare arms, 5,590
+  px in a single connected blob, while the same camera from the other side rendered correctly.
+  That is a per-view roll, not a prompt error, and no eye should be the detector.
 
 ### 6 — Project, brush, fill
 

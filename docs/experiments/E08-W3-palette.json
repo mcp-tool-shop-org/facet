@@ -1,0 +1,38 @@
+{
+  "_purpose": "The declared palette for W3, for palette_gate.py. A specification names materials; this states what colours those materials can legally occupy, so 'the twin contains something not in the spec' becomes measurable instead of a matter of noticing.",
+
+  "_why_this_exists": "Arm B's view 6 came back with a navy blue sleeve on a tunic the specification calls SLEEVELESS. Seven views measured exactly 0 px of blue; view 6 measured 5,590 px, 6.17% of its figure, 4,882 of them in one connected blob. Nothing in the route would have caught it before projection — it would have been painted onto the mesh and found later, or not at all. This is the defect class E07 established the old metrics are blind to: a large region of the WRONG MATERIAL, smooth inside itself, contributing only its rim to any high-pass statistic.",
+
+  "_bands_are_declared_from_the_SPEC_not_measured_from_the_twins": "Deriving the allowed bands from the clean twins would be circular — they would pass by construction. These come from the sixteen named materials in E08-spec-prompt.json, and are then CHECKED against the measured region colours in E08-contradiction-dE.json (the SPEC arm), which is a different image than the ones being gated.",
+
+  "_the_chroma_floor_is_load_bearing": "Neutral colour has no meaningful hue — the angle is noise at low chroma, the same fact that made the contradiction test's Dh column unreadable on collapsed rows. W3's steel blade measures C* 1.6-2.8 at hue 266-268, which sits squarely in the BLUE band. Without a chroma floor the gate would flag the greatsword on every view. Anything at or below min_chroma is unconstrained.",
+
+  "min_chroma": 12.0,
+
+  "allowed_bands": [
+    {
+      "name": "warm",
+      "hue_deg": [0.0, 105.0],
+      "covers": "red beard, dark red skirt, gold pauldrons/medallion/knees/crossguard/pommel, brown leather belt and bracers, skin",
+      "measured_examples": "beard h46.6 | skirt h19.8 | pauldron h79.3 | medallion h79.4 | belt h87.6 | bracer h53.4 | scalp h48.3"
+    },
+    {
+      "name": "green",
+      "hue_deg": [125.0, 210.0],
+      "covers": "dark green knitted tunic, green cloth panels in the skirt",
+      "measured_examples": "tunic h174.1 | skirt panels h141.6",
+      "_margin_note": "the skirt panels sit at 141.6, so the lower edge is set at 125 rather than 130 to leave room; the band is not tight around a single measurement."
+    }
+  ],
+
+  "_forbidden_by_construction": "105-125 (yellow-green) and 210-360 (cyan, blue, violet, magenta) at any chroma above the floor. The blue sleeve measured hue 240-320.",
+
+  "_what_this_gate_CANNOT_do": "It tests COLOUR, not placement. Gold on the boots would pass every band while being flatly wrong, and a correctly-coloured element in the wrong location is invisible to it. It is a palette gate, not a specification gate — it catches material that is not in the spec at all, which is exactly and only the failure it was built from. Do not let a green light here be read as 'the twin matches the spec'.",
+
+  "gate": {
+    "max_offpalette_pct": 0.5,
+    "max_offpalette_blob_px": 800,
+    "_why_two_thresholds": "One garment and scattered speckle are different failures and a single total conflates them. View 6 was 6.17% with a 4,882 px blob; a rim of antialiasing at a material boundary would be a similar total spread over hundreds of tiny components. The blob bound is the one that catches an invented garment.",
+    "_thresholds_are_stated_before_the_re-roll": "Set from the seven clean views measuring exactly 0 px, so any non-zero result is already outside the observed distribution. 0.5% and 800 px are an order of magnitude above nothing and an order of magnitude below the failure. Not tuned to let anything through."
+  }
+}
