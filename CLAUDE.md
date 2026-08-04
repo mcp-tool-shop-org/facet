@@ -54,8 +54,12 @@ results, and the session that runs it does not decide their meaning.
    Guessing is not — check the advisor's own record below.
 2. **Correct in place, with the measurement that overturned the claim.** Never quietly
    delete a wrong statement; the correction is more useful than the original.
-3. **State pass conditions as absolutes, never as ratios.** Two pass conditions in this repo
-   were written on ratios whose denominators moved, and both produced misreadings.
+3. **Pick a pass-condition unit the experiment cannot move.** Three conditions in this repo
+   were mis-specified: two ratios whose denominators moved, then an absolute that broke
+   because the experiment *halved the denominator on purpose* — painting 907,825 of 1.7M
+   holes read as a "miss" against 923,466 of 3.5M. Ask what the intervention is designed to
+   change, then measure something orthogonal to it. Here the honest unit was **dilated texel
+   count** (2,551,893 → 813,773, a 68% fall), which cannot be gamed from either side.
 4. **Own errors in the commit message.** They are how the next session learns which parts of
    the record to distrust.
 5. **Do not end a session the Director has not ended.**
