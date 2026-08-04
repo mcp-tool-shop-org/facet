@@ -54,6 +54,15 @@ ap.add_argument("--exposure", type=float, default=0.85,
                      "the point -- but it lands ~1.75x below the old world-space-lit renders on "
                      "the FRONT view. 0.85 stops matches that reference on the front while "
                      "keeping the back views lit the same instead of dropping them into shadow.")
+ap.add_argument("--fit-axis", default="height", choices=["height", "width"],
+                help="which axis the ortho frame fits. height = the character convention "
+                     "(v_ext = bbox_z * margin). width = fit the widest horizontal extent, "
+                     "for subjects wider than tall. silhouette_masks.py takes the SAME flag "
+                     "and must be given the same value, or the mask and the render "
+                     "disagree — measured at 4.68% on the galleon's landscape frame.")
+ap.add_argument("--margin", type=float, default=1.204,
+                help="framing margin on the fitted axis. 1.204 is the character line's, "
+                     "measured against the renders it had to line up with.")
 ap.add_argument("--yaw-offset", type=float, default=0.0,
                 help="degrees added to every view's camera yaw. This is how a third-party mesh "
                      "in a foreign orientation is consumed IN PLACE: rotate the CAMERA, never "
@@ -84,7 +93,24 @@ cam_data.type = "ORTHO"
 # 1.204, not v21's 1.08. MEASURED against the renders this has to line up with: the
 # reference figure is 852 px tall in a 1024 px frame and v21's framing gives 950 px, so
 # the margin was calibrated to the existing set rather than guessed (1.08 * 950/852).
-cam_data.ortho_scale = size.z * 1.204
+# ⚠ FIT AXIS (E04 Step 0, Ruling 6). This line used to be `ortho_scale = size.z * 1.204`
+# with no way to say otherwise, and Blender maps ortho_scale to whichever render axis is
+# LARGER. On W3's 752x1024 portrait frame that is the vertical, so height-fit was correct by
+# accident and nobody had to think about it. On a landscape frame it silently becomes
+# WIDTH-fit at a height-derived scale — which is how the galleon's silhouette came out 4.68%
+# smaller than its own clay render (1.2097/1.1556), because silhouette_masks derives its
+# extent the other way. THE TWO TOOLS MUST MOVE TOGETHER OR LANDSCAPE SUBJECTS SILENTLY
+# MISREGISTER; silhouette_masks.py carries the identical block.
+#
+# sensor_fit is set EXPLICITLY rather than left on AUTO, so the axis is a stated decision
+# instead of a consequence of the resolution. With --fit-axis height (the default) on a
+# portrait frame that is what AUTO already chose, which is why the character anchors are
+# byte-identical.
+cam_data.sensor_fit = "VERTICAL" if args.fit_axis == "height" else "HORIZONTAL"
+if args.fit_axis == "height":
+    cam_data.ortho_scale = size.z * args.margin
+else:
+    cam_data.ortho_scale = max(size.x, size.y) * args.margin
 cam = bpy.data.objects.new("cam", cam_data)
 scene.collection.objects.link(cam)
 scene.camera = cam

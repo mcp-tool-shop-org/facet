@@ -59,6 +59,12 @@ ap.add_argument("--views", default="0,1,2,3,4,5,6,7")
 ap.add_argument("--step", type=float, default=45.0,
                 help="degrees of yaw per view index; must match turn_render's --step")
 ap.add_argument("--aspect", default="752,1024")
+ap.add_argument("--fit-axis", default="height", choices=["height", "width"],
+                help="MUST match turn_render.py's --fit-axis for the same subject. See the "
+                     "block at the framing site: they move together or the mask and the "
+                     "render disagree.")
+ap.add_argument("--margin", type=float, default=1.204,
+                help="framing margin on the fitted axis; must match turn_render's.")
 ap.add_argument("--anchor", action="append", default=[],
                 help="VIEW=PATH — assert the generated mask matches an existing one exactly. "
                      "Repeatable. This is the only thing standing between a wrong camera "
@@ -80,8 +86,18 @@ rs.add_triangles(o3d.core.Tensor(v.astype(np.float32)),
 
 blo, bhi = v.min(axis=0), v.max(axis=0)
 bmid = (blo + bhi) / 2
-v_ext = (bhi[2] - blo[2]) * 1.204
-h_ext = v_ext * (AW / AH)
+# ⚠ FIT AXIS (E04 Step 0, Ruling 6). THE IDENTICAL BLOCK LIVES IN turn_render.py AND THE
+# TWO MUST MOVE TOGETHER. This file derived h_ext from v_ext unconditionally while
+# turn_render let Blender map ortho_scale to the larger axis; on a portrait frame those
+# agree, on a landscape frame they differ by exactly (AW/AH) and the mask comes out
+# 4.68% smaller than the render it is supposed to describe. Measured on the galleon at
+# 1072x1024: silhouette bbox 717x850 against the clay's 751x892.
+if args.fit_axis == "height":
+    v_ext = (bhi[2] - blo[2]) * args.margin
+    h_ext = v_ext * (AW / AH)
+else:
+    h_ext = max(bhi[0] - blo[0], bhi[1] - blo[1]) * args.margin
+    v_ext = h_ext * (AH / AW)
 print(f"[sil] mesh {len(v):,} verts  {len(f):,} tris   v_ext {v_ext:.6f}  h_ext {h_ext:.6f}",
       flush=True)
 
