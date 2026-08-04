@@ -53,6 +53,24 @@ ratio here is a small-integer quotient and does not carry three digits. I will r
 numerator and denominator medians separately, per E07's own consequence note, so a ratio that
 moved because the denominator rose is visible as such.
 
+## Appended 2026-08-04, after the boundary measurement, BEFORE the source test
+
+The eight predictions above are settled and not edited. The measurement identified a
+mechanism none of them named - a stage-1 **inter-camera ownership seam inside the TWINS
+class** - so one further test is needed and its prediction is registered here before it
+runs, in a separate block with its own hash.
+
+`e04_seam_sources.py` asks both twins the same question at the same texels. Two outcomes:
+
+| # | prediction | falsifiable as stated |
+|---|---|---|
+| **S1** | **Source switch.** The two twins, sampled on the *same* texels, differ by roughly the seam's own dE (10-14), while each twin *individually* moves across the seam line by much less - I will call "much less" **under half** the between-twin dE. | fails if either twin moves across the line by more than half the between-twin figure |
+| **S2** | If instead each twin steps across the line by about the seam dE, the **scalp genuinely changes colour there** and the ownership boundary is a coincidence. That refutes the mechanism and I report it as such. | this is S1's negation, stated so the test can return it |
+
+I expect S1. I am not blind: I have seen the ownership panel and the ROI's two median
+colours. What I have not seen is either twin's colour on the *other* twin's side, which is
+the only quantity S1 and S2 disagree about.
+
 ## Locating the region is not measuring it
 
 I have to *find* the crown blotch before I can measure it, and that requires looking at a
