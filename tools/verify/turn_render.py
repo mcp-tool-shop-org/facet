@@ -41,6 +41,11 @@ ap.add_argument("--h", type=int, default=1024)
 ap.add_argument("--flat", action="store_true",
                 help="FLAT light + Standard view transform: render the texture VALUE, not a lit look")
 ap.add_argument("--clay", action="store_true", help="uniform grey: geometry only, no texture")
+ap.add_argument("--bg", default="0.181,0.181,0.188",
+                help="viewport background, linear RGB. The default is the measured "
+                     "reference grey; derive a replacement with "
+                     "tools/diagnostics/e08_bg_derive.py rather than choosing one.")
+
 ap.add_argument("--exposure", type=float, default=0.85,
                 help="stops. Camera-relative lighting lights every view IDENTICALLY, which is "
                      "the point -- but it lands ~1.75x below the old world-space-lit renders on "
@@ -94,7 +99,13 @@ sh.light = "FLAT" if args.flat else "STUDIO"
 # sits at 100. Calibrate on the thing that responds to the knob, not the thing beside it.
 scene.view_settings.view_transform = "Standard"
 scene.view_settings.exposure = args.exposure
-sh.background_color = (0.181, 0.181, 0.188)   # measured to land at the reference's 118/255
+# 0.181 measured to land at the reference's 118/255 — the DEFAULT, so every render
+# before E08 reproduces byte-for-byte. --bg exists because that grey sits INSIDE the
+# subject's own gamut: measured on W3, minimum dE from background to the nearest
+# painted material is 6.00, below the dE 10 "plainly different colour" line, which is
+# why no threshold separates figure from background there (E08 A4). A background
+# derived to maximise minimum distance to the subject's gamut reaches dE 123.31.
+sh.background_color = tuple(float(x) for x in args.bg.split(","))
 sh.color_type = "SINGLE" if args.clay else "TEXTURE"
 sh.show_cavity = False
 sh.background_type = "VIEWPORT"
