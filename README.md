@@ -70,11 +70,13 @@ the same figure** — face, build, pose, boots. Structure is held by the mesh an
 named attributes are carried by the prompt. **This is a pipeline, not a one-character
 generator.**
 
-Nothing in the texture stage is claimed as finished. **An asset has now been rendered end to
-end under the corrected regime** ([E08 Task 3](docs/experiments/E08-task3-report.md)):
-measured provenance **68.8% reference / 4.2% brush / 27.0% dilation** against the rejected
-asset's 28.4 / 37.7 / 33.9 — reference ×2.42, diffusion invention ×0.11. **Whether it is
-better is before the Director at Gate 1 and is unruled.**
+**The Director accepted the asset at Gate 1** (2026-08-04, ruled on the GLB at his own zoom
+— [E08 Amendment 35](docs/experiments/E08-ruling-gate0.md)). Measured provenance **68.8%
+reference / 4.2% brush / 27.0% dilation** against the rejected asset's 28.4 / 37.7 / 33.9 —
+reference ×2.42, diffusion invention ×0.11. One region named at his zoom: a hard-edged
+blotch on the crown, prior mechanism the documented unlevelled stroke seam (confirmation
+dispatched). The post-Gate-1 quality queue demotes to optional polish; **next is the subject
+profile extraction, then E04's galleon.**
 
 **Form first, style second.** Image-to-3D reconstructors key off shading, silhouette
 clarity and unambiguous depth. A heavily stylized sprite — weathered planks, painted

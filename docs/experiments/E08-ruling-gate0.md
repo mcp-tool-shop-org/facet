@@ -2279,6 +2279,45 @@ ceiling and ~79% is the ceiling at any count tested. The honest framing of E08's
 > corrected regime); whether it is *better* is unruled and stays that way until the
 > Director's eye says otherwise.
 
+> ### Amendment 35 (advisor, 2026-08-04) — GATE 1: ACCEPTED. One region named at the Director's zoom.
+>
+> **The Director's verdict, in his words: "Very good!!! I'm so happy right now."** Ruled on
+> the GLB itself, in Blender, at his own zoom — including the sword close-up, where the
+> blade that wore skin tones at E07 reads as steel with a gold crossguard. Section 5's open
+> question is answered: **68.8% reference is enough, on this asset, for this eye.** The
+> E08 line closes as the accepted character texture route: exact raycast silhouette ·
+> geometry-bounded trust at both stages · the palette gate · per-view fixture prompts ·
+> eight cameras · fixture-prompted strokes · the in-tool guards. The post-Gate-1 quality
+> queue (dilation flood 27%, blade band, A3's cap, the stroke-camera set) **demotes from
+> remediation to optional polish** — the verdict its arms were ranked against came back
+> positive.
+>
+> **And one region is named: a blotch on the side of the head**, crown and side above the
+> ear — patchy, hard-edged. Named at the zoom the rules require, which is Gate 1 working,
+> not Gate 1 reopening: the verdict stands, the region gets the treatment every named
+> region gets. **The prior, stated before measurement:** this is the signature of the
+> repo's documented **unlevelled stroke-seam defect** — E07's forehead blotch measured as a
+> provenance-boundary step of 9.5× ordinary texture variation with *two blotch pixels in
+> the whole disc*: a step between sources, not a defect in either. Stage 1 levels seams
+> (`project_twins.py`, σ=16); **the brush loop never did** (`texpass_iter` commit writes
+> raw), and the crown is where grazing stage-1 paint, both elevated strokes, and dilation
+> meet. Plausible alternates, so the check is not written to its own answer: per-island
+> tonal offsets (chart fragmentation), or dilation patches.
+>
+> **The dispatch, one measurement:** provenance crop at the named angle beside the asset
+> crop (the E07 Gate 0 boundary instrument): do the patch edges align with provenance /
+> island boundaries, and what is the boundary step against within-region variation? Aligned
+> and stepped → the known defect, and the fix is the already-specified levelling carried
+> into the loop — local image-space work, no generation, no GPU. Not aligned → report and
+> stop; the prior was wrong.
+>
+> **Sequence, with the Director's direction:** the galleon is next (`facet_next/
+> galleon_clay/`, three clay renders staged 2026-08-03), and per his own standing directive
+> the **subject profile extraction runs before E04 touches anything** — so the ship cannot
+> break the path his verdict just accepted. The blotch confirmation is minutes and runs
+> first; whether the levelling arm itself runs before the galleon or beside the profile
+> work is his call once the mechanism is confirmed.
+
 ## 5. What this does not settle
 
 Whether ~40–53% reference coverage is *enough* for the Director to accept the asset is not a
