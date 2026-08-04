@@ -268,8 +268,22 @@ def commit(edited_path, cam_path):
         # residual was a halt for exactly one stroke; the intersection below forecloses the
         # direction it watched, and a halt on a foreclosed direction fires on correct work
         # (A26/A27, third instance). Its verdict on stroke 7 AS COMMITTED stands unrevised.
-        obg = np.abs(emr - 0.42).max(axis=-1) < (1.5 / 255.0)
-        out_m = maximum_filter((~obg).astype(np.float32), size=9) < 0.5
+        # ⚠ THE OPERAND IS GEOMETRY, NOT COLOUR (corrected 2026-08-04, after it produced a
+        # FALSE ANDON that a chained shell then committed past). The first version defined
+        # "outside the figure" as `|render - 0.42| < 1.5/255` — colour as a proxy for
+        # absence of surface. But 0.42 is ALSO project_twins' --hole-grey, so an unpainted
+        # HOLE ON REAL SURFACE renders at exactly the background value and is
+        # indistinguishable from background by colour, by construction. Measured on
+        # stroke 7: 8,331 px the check called "outside the figure" are geometry hits, 7,832
+        # of them inside the job mask — i.e. holes the brush was explicitly told to paint.
+        # The 202 px blob it halted on was 100% hit and 100% masked: the brush doing its job.
+        # `hit` answers "is there surface" exactly, and emit saves it. Test the property,
+        # not a proxy for it.
+        out_m = np.ones(edited.shape[:2], dtype=bool)
+        hp0 = os.path.join(ep_dir, "hit.png")
+        if os.path.exists(hp0):
+            h0 = (np.asarray(Image.open(hp0).convert("L"), dtype=np.float32) / 255.0) > 0.5
+            out_m = maximum_filter(h0.astype(np.float32), size=9) < 0.5
         if out_m.any():
             r_out = np.abs(edited - emr).max(axis=-1)[out_m]
             print(f"[commit] diagnostic — outside-figure residual mean "
