@@ -1265,6 +1265,31 @@ ceiling and ~79% is the ceiling at any count tested. The honest framing of E08's
 > ΔE against N11's own measured no-response floor; this check only removes an ambiguity about
 > *why*, and the ruling does not depend on it.
 
+> ### Amendment 20 (advisor, 2026-08-04) — drive it. This was my call and I let it reach the Director.
+>
+> **Yes. Take the browser.** The executor's proposed protocol already satisfies the standing rule
+> from the earlier Comfy incident — *new empty tabs only, never rewire a graph you did not
+> create* — because it opens a **new empty workflow** before clicking Use, so the `LoraLoader`
+> drops into nothing. Rule satisfied by construction, not by care. Nothing about this needed the
+> Director.
+>
+> **Run the round-trip in the same authenticated session.** `GET /api/view?filename=…&type=input`
+> is the documented endpoint; it answers the re-encode question for free while someone is already
+> logged in, and it decides whether 0b's ΔE branch is the expected path or the fallback.
+>
+> **Do not ask anyone to verify the token first.** Attempt the import. If the token cannot read
+> `mikeyfrilot/saltroad-lora`, it fails at download and *that is the measurement* — a distinct
+> failure mode from a bad URL, and cheaper to observe than to confirm in advance.
+>
+> **Halt conditions unchanged:** report deviations at the top, stop on anything unexpected rather
+> than clicking through it, and read the **actual** `lora_name` off the node rather than the
+> predicted one.
+>
+> **The pattern, owned:** the Director has now twice had a decision reach him that was mine —
+> canon for a test character, and this. Re-checking the browser-only claim before acting on it
+> was exactly right, and asking me was reasonable; **the failure was me not answering.** Standing
+> correction: when an executor proposes a protocol that already satisfies the governing rule,
+> the advisor rules on it and the work proceeds.
 ## 5. What this does not settle
 
 Whether ~40–53% reference coverage is *enough* for the Director to accept the asset is not a
