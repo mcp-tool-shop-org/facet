@@ -1878,6 +1878,108 @@ ceiling and ~79% is the ceiling at any count tested. The honest framing of E08's
 >
 > Gate 1 remains the Director's, and nothing in this amendment pre-empts it.
 
+> ### Amendment 29 (advisor, 2026-08-04) — the halt was right, the bound is withdrawn for this operand, and what the flagged texels ARE decides the branch
+>
+> **Ruling on which reference governs: CORNER — and that same fact is what withdraws the
+> bound here.** The probe's operand is the top-corner median in its own source
+> (`project_twins.py:663`), and its 2.0% derivation quotes A2's 0.18% / 0.32% — corner
+> measurements. The bound is a CORNER instrument by construction and calibration; quoting it
+> against FITTED numbers would hold a threshold against an operand it was never derived on.
+> On its own terms, view 6 fired at **7.534% against 2.0 — decisively, not marginally** — and
+> the halt was right. FITTED stays reported beside it as the better physical model of the
+> thing contamination actually is: what mixes in at a grazing rim pixel is the *local*
+> backdrop, not the top corner.
+>
+> ### Withdrawn for rim-band widenings, on three measured grounds
+>
+> 1. **The estimator is retired on this backdrop class**, and it is least representative
+>    exactly where the gains sit — low and around the whole figure on a gradient backdrop.
+>    The 3.4× disagreement between the two references on the load-bearing view is that
+>    instability made visible.
+> 2. **The calibration set was interior-dominated.** Every rim band is 9.7–48.8× dirtier than
+>    its own interior — including the normative control's — so the derivation's "order of
+>    magnitude above work already accepted" describes interior headroom that rim operands do
+>    not have. (The control band still passes the absolute bound at 0.271% / 0.585%; this
+>    ground alone would not void it.)
+> 3. **The probe's own stated design cannot work on rims.** Its comment specifies the
+>    same-image comparison — *newly admitted vs already trusted, "rather than an invented
+>    absolute"* — which is A2's adoptability criterion, *cleaner than the set already
+>    trusted*. No rim widening can ever pass that: the accepted state of every view's rim,
+>    view 2's included, is many times its interior. **A condition that cannot pass is not a
+>    condition — the mirror of Amendment 27's condition that could not fail.** (Recorded in
+>    passing: the probe's comment praises the relative form while its `assert` enforces the
+>    absolute one. Its philosophy and its enforcement diverge, and neither was derived for
+>    rims.)
+>
+> The retune test, stated: the examination was outcome-triggered, as Amendment 25's was —
+> that is how mis-derived conditions get found. What is forbidden is choosing a replacement
+> number while looking, and **nothing replaces it today.** The bound remains in force for the
+> operand it was derived on — interior-dominated relaxations, where it is A3's probe doing
+> its real job (the 73.87% bare-default halt is that bound working). The rim replacement is
+> specified as a unit only: derive from the clean rim bands themselves — the eight views'
+> 2.74–5.36 px bands, measured before any arm they would gate.
+>
+> ### Withdrawal is not banking. One measurement decides the branch, and both branches are pre-stated.
+>
+> The flagged texels have two candidate identities, and the repo already measured why they
+> are hard to tell apart: **grey steel is background-like by construction** (§9a — blade
+> paint at median residual 0.0657 from the backdrop; C\* 1.6–2.8), and view 6 is a profile
+> where the sword is prominent. A background-ΔE test structurally cannot distinguish steel
+> paint from backdrop mix — the same family as *below a chroma floor, hue is not a colour*.
+>
+> **The measurement:** for view 6's flagged subsets (CORNER 672, FITTED 200, and their
+> overlap): (a) *location* — do they sit in/near the §9a blade band and the dark-boot
+> regions, or distributed along the rim; (b) *identity* — palette-band membership per the
+> pre-registered twin palette gate, chroma floor applied. Local, minutes, no GPU.
+>
+> **Branch A — predominantly in-palette grey materials at their own locations:** the gate
+> fired on the subject's own greyness. Bank all 8,920 (and views 1/5's handfuls — same
+> mechanism, below measurement floor per the executor's n-argument, no special pleading).
+> Task 3 proceeds on `stage1_8cam.png` unmodified; the Gate 1 sheet calls out view 6's rim
+> either way.
+>
+> **Branch B — predominantly off-palette backdrop-tone, distributed:** confirmed mix does
+> not get knowingly banked. Withhold the **FITTED-flagged** subsets (200 + 5 + 4 — the
+> physically-correct instrument defines the surgical set) from styled: they become holes and
+> the brush paints them under fixture prompts. Bank the remainder, record the counts, and
+> the datum is banked for the post-Gate-1 erosion arm as the first confirmed rim-mix
+> measurement.
+>
+> **Either way Task 3 proceeds after the measurement.** The branch decides the atlas state,
+> not whether the line continues. No further ruling round-trip is required.
+>
+> ### The two remaining questions, ruled
+>
+> **Is 2.242% over 8,920 texels contamination?** Wrong question as posed — it assumes the
+> flagged texels are one thing. The measurement above answers the right one. What can be said
+> now: 97.8% of the gained band is not background-like even under the firing instrument, the
+> band is exactly where the mechanism requires and nowhere else, and view 6's twin is
+> globally 23–36× more background-like than the control's *including undisputed interior* —
+> so the absolute excess is substantially a property of the twin, not of the widening.
+>
+> **A3's local half-width cap: post-Gate-1, unchanged** (Amendment 28 named it). At most 672
+> texels do not reorder the line, and the cap is a regime change that needs its own
+> regression against the freshly banked baselines. The executor's "both statements hold at
+> once" framing is endorsed and goes into that arm's file: the 5.36 px erosion was scaled by
+> a lie *and* was removing a dirtier-than-interior band — the accidental guard is being
+> replaced by an explicit instrument, which is the correct evolution and the reason the
+> replacement bound must come from clean rim measurements.
+>
+> ### Ledger, entry fourteen
+>
+> Amendment 28's step 1 shipped with **two unpinned parameters** — which background reference
+> governs, and which bound applies. The executor had to discover mid-check that both were
+> load-bearing, and asked instead of guessing; the asking is the mechanism working, the
+> under-specification is mine. Same class as the §7 wrong-operand guard: I specified the
+> check's shape without pinning its operands. Before a check ships in a dispatch, every
+> operand it reads gets named — estimator, denominator, bound, and what the bound was
+> derived on.
+>
+> Endorsed: checking both of my inherited claims against source before acting on them — the
+> 8-of-16 prompt census (with the N7-as-modifier catch, which goes into step 2's prompt
+> file: "brown leather belt" as its own head noun) and the 0.42 flat-field confirmation. An
+> inherited claim is a hypothesis wearing a fact's clothes, including mine.
+
 ## 5. What this does not settle
 
 Whether ~40–53% reference coverage is *enough* for the Director to accept the asset is not a

@@ -212,11 +212,16 @@ section depends on.
 
 Step 0, in order — each is a gate:
 
-1. **The gained-texel background check** (A28 Ruling 2). The 9,053 texels the intersection
-   admitted on views 6/5/1 get A2's admitted-texel check — median ΔE against the view's
-   fitted background, fraction within ΔE 10 — with view 2's equivalent 2.75 px band as the
-   normative control. Clean → `stage1_8cam.png` is this task's input. Contaminated → **HALT**
-   (it would implicate the width-scaled erosion generally).
+1. **The gained-texel background check** — RUN, FIRED, RULED (Amendment 29; the halt report
+   is [E08-task3-step0-halt.md](E08-task3-step0-halt.md)). The 2.0% bound is CORNER's and is
+   withdrawn for rim-band widenings; withdrawal is not banking. **What remains: the identity
+   measurement and its pre-stated branch.** For view 6's flagged subsets (CORNER 672,
+   FITTED 200): location (blade band / boots vs distributed rim) and palette-band membership
+   (twin palette gate, chroma floor). **Branch A** (in-palette grey materials at their own
+   locations) → bank all gains, atlas unmodified. **Branch B** (off-palette backdrop-tone,
+   distributed) → withhold the FITTED-flagged 200 + 5 + 4 as holes for the brush, bank the
+   rest, record. Either way proceed — no further ruling round-trip. The Gate 1 sheet calls
+   out view 6's rim in both branches.
 2. **Stroke prompts to the fixture** (A28 Ruling 3). `texpass_brush.py`'s default prompt is
    stale and carries the struck "gold necklace" — it does not run. Build a versioned stroke
    prompt from W3's NAMED elements verbatim (N6 is the belt medallion; N14–N16 name the
