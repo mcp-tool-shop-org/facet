@@ -417,7 +417,10 @@ the boundary.
   to texture.
 - **Build the control image; Canny cannot find a silhouette that is not there.**
 - **One mask cannot answer two questions** — the mesh silhouette answers *is there surface*,
-  the twin's own mask answers *is the paint trustworthy*.
+  the twin's own mask answers *is the paint trustworthy* — **and the trust question is only
+  askable where surface exists**: the trust mask is intersected with the silhouette before
+  the distance transform (E08 A27; unbounded, paint on no surface held erosion off 7,574
+  texels and corrupted a fifth to a quarter of every view's edge distances).
 - **Order strokes to spiral outward from already-painted regions**, or the brush composes a
   new character instead of continuing one.
 

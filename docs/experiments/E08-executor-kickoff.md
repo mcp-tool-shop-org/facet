@@ -163,19 +163,42 @@ transforms in this repo:
 | `texpass_iter.py:236–241` | ⚠ the brush commit guard keys the **brush output** with a **corner-median** (8×8 corners → median → 0.06 threshold) and feeds `distance_transform_edt`, unbounded by the silhouette. Corner-median keying is **retired after three failures** — this is a fourth live site, on a different image class (the brush's own composite). **Not touched in this run.** Confirm the enumeration in your report; the advisor rules when the brush stage is next touched. |
 | `diagnostics/commit_funnel.py:123` | diagnostic twin of the above; same note |
 | `diagnostics/texel_provenance.py:143`, `diagnostics/e07_l2_bound.py:254` | E07-era instruments — **do not modify**; they exist to reproduce E07's numbers |
+| `diagnostics/e08_bg_separation.py:104` | ⚠ found by the Task 1 report (missed by this dispatch's grep — advisor's miss, owned in Amendment 27): A4's separability instrument, corner-median key + unbounded EDT. A4 is withdrawn; the tool reproduces its record. **Fenced with the E07 instruments — do not modify.** |
 
-## Task 2 — eight cameras. Waits on the Task 1 ruling.
+## Task 2 — eight cameras. CLEARED by Amendment 27; step 0 first.
 
-- All eight twins project, including the re-rolled twin_2 and twin_6 (Amendments 25–26: no
-  third roll, view 6 is not dropped, twin_2 carries its flag to Gate 1).
-- **The registration halt is armed first** — the advisor sets it from Task 1's measured
-  baseline and it replaces the bbox assert as the halt. Raw bbox stays a printed diagnostic.
-- Read the result against **43.7% / 83.0%** (the 2-cam baseline on these twins) and the
-  **74.10%-of-valid** ceiling. **The acceptance lever is spent at 83.0% — eight buys from the
-  ceiling, not from acceptance. Do not grade eight on an acceptance rate.**
-- CPU only. Anchors from the N-view build still bind: `--mask-keyed` reproduces
-  `sha b12917a2c7c14c4b`; the two-view default lands A2's 938,718 **when run with the old
-  twins and flag off** — state which anchors you re-ran.
+Task 1 is ruled: **the intersection is ADOPTED as the route default** (Amendment 27 — read
+it in full before step 0; it also owns the direction clause as mis-derived, so do not treat
+"down" as a failed prediction). Step 0, in order:
+
+1. Flip `--trust-intersect` default **on**; add `--no-trust-intersect`; re-run the R0 recipe
+   once with the negation flag — must stay pixel-identical. The A2 and mask-keyed anchor
+   recipes gain the explicit negation flag in their recorded invocations. ⚠ Anchor language
+   corrected by the Task 1 report: A2's 938,718 needs `--edge-absolute --key-corner-median`
+   (the bare default halts at A3's pre-existing 73.87% background probe — known state of a
+   withdrawn arm, not a defect to fix).
+2. **Arm the registration halt** in `project_twins.py`, per view, active alongside the
+   intersection: **HALT if IoU(raw `twin_fm`, exact silhouette) < 0.80.** Derivation is in
+   Amendment 27 (adjudicated views 0.8329–0.9533; measured failures ≤ 0.578). It cannot fire
+   on the current eight — they are its calibration set; its jurisdiction is future twins.
+   IoU and centroid offset print every view; the raw bbox pair stays a printed diagnostic
+   with its assert demoted.
+3. `e08_acceptance`: when the flag is on, verify the sidecar against the live raycast
+   (0 differing px, `silhouette_agree.py` is the check) and halt otherwise; give the mask
+   stem an explicit argument so the instrument can point at the ARMB layout.
+
+Then the projection:
+
+- All eight twins, including the re-rolled twin_2 and twin_6 (Amendments 25–27: no third
+  roll, view 6 is not dropped, twin_2 carries its flag to Gate 1).
+- Read against **1,042,794 / 43.4% / 82.4%** (the R1 baseline — not R0's 43.7/83.0) and the
+  **74.10%-of-valid** ceiling, which the flag does not touch (reachable moved 0). **The
+  acceptance lever is spent — eight buys from the ceiling, not from acceptance. Do not grade
+  eight on an acceptance rate.**
+- **Add the blade-band table**: per view, all eight cameras, candidate texels landing in the
+  band the key excludes and how many are accepted (§9a's measurement generalised). This is
+  reporting for the post-Gate-1 blade arm, not a change to make now.
+- CPU only. State which anchors you re-ran.
 
 ## Task 3 — through to a finished asset. Waits on 2.
 

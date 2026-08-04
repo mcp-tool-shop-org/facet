@@ -1637,6 +1637,126 @@ ceiling and ~79% is the ceiling at any count tested. The honest framing of E08's
 > **No third roll, and view 6 is not dropped.** Dropping a camera is unrecoverable by
 > measurement; the intersection is recoverable by regression. Take the recoverable path.
 
+> ### Amendment 27 (advisor, 2026-08-04) — ADOPTED. The direction clause was never a condition, and it was mine.
+>
+> **The intersection is adopted as the route default.** −7,574 styled texels, 43.7% → 43.4%
+> of valid, 83.0% → 82.4% of reachable, gains **exactly zero**, zero losses in the two
+> thinnest half-width strata, and every lost sample within 5 px of removed off-surface paint,
+> median 2.0. **The standing two-camera baseline is now 1,042,794 / 43.4% of valid / 82.4% of
+> reachable** on the ARMB twins, and Task 2 reads eight cameras against it.
+>
+> ### Why adopting does not violate the rule as written
+>
+> Amendment 26 pre-registered *small and expected → adopt; large or wrong direction → halt*.
+> The result is small and in the "wrong" direction, and the executor halted, which was right.
+> The ruling on the halt: **the direction clause is void, and voiding it does not depend on
+> the outcome.** `distance_transform_edt` of a subset mask is pointwise ≤ the original; with
+> the `ed` arrays byte-identical (`fig_w` did not move on either view), the intersection can
+> only reject. The executor derived this **from the operator, not from data**, and
+> pre-registered it — hashed at `9d434a69…a5be` before any R1 artifact existed — so the
+> clause was falsified *before the result it would have judged*. A condition with one
+> possible outcome discriminates nothing; it was never a condition. What survives of the rule
+> — the magnitude clause and the duty to characterise what left — was applied: −0.6 points of
+> reachable, 0.72% of styled, and the losses are characterised to the pixel.
+>
+> The clause's stated *intent* is satisfied rather than dodged. It existed to catch "the
+> shadow pathway was load-bearing in some way nobody has measured." It **was** load-bearing —
+> it held erosion off 7,574 texels — and it is now measured completely: 100.0% of losses
+> within 5 px of a removed pixel, zero gains, zero pixels where `dist_in` rose. A texel
+> trusted only because paint on no surface set its edge distance was never legitimately
+> trusted. **A correction that costs coverage is still a correction.**
+>
+> ### The error, owned precisely
+>
+> I wrote *"more trusted paint at the rim, since erosion is no longer pushed deep by a
+> phantom boundary"* one paragraph after quoting the halt report's own mechanism — the shadow
+> ***inflates*** *the distance-to-edge*. Inflated distance is **less** erosion. I inverted
+> the sign of the mechanism I was citing, in the amendment that ruled on it. Two smaller ones
+> beside it: my *"intersection makes the bbox match by construction"* was wrong as I myself
+> specified it — the bbox is measured on the raw mask I required kept, so the assert could
+> still fire; the demotion stands on its other ground, now measured (the andon fired on the
+> narrowest view while passing the two dirtiest — it tests extent against the figure's own
+> width, not contamination). And my calibration note guessed views 0/4 carry less off-surface
+> paint than view 2; measured, they carry **more** (6,619 / 5,978 against 3,772). Add the two
+> consumers my grep missed (the stratum table at `project_twins.py:544`;
+> `e08_bg_separation.py:104`). Predicting is not the job; this is why.
+>
+> ### What the regression actually bought
+>
+> Not the −7,574. **The adopted baseline was already carrying the contamination class that
+> halted view 6** — 25.27% / 19.58% of silhouette pixels with materially wrong edge distances
+> under R0, max 17.7 px — and the bbox andon structurally could not see it on wide views.
+> The intersection repairs all eight views identically and by construction. And the executor's
+> hashed-prediction protocol — SHA-256 over the prediction file before the arm exists — makes
+> "blind" checkable rather than attested. **Standing method from here: when a prediction can
+> be hashed before the artifact exists, hash it.**
+>
+> ### The registration halt, armed
+>
+> Per view, in `project_twins.py`, active alongside the intersection:
+> **HALT if IoU(raw `twin_fm`, exact silhouette) < 0.80.**
+>
+> Derivation, from measurements on both sides of the line and neither from the arm it gates:
+> every adjudicated ARMB view measures 0.8329–0.9533 (worst is the shadowed profile, view 6);
+> every measured registration failure sits at or below 0.578 — the E01-era masks at 0.5230 /
+> 0.5780, the pre-A2 keyed mask at 0.523 raw. 0.80 clears the worst adjudicated view by
+> 0.033 and the nearest measured failure by 0.22. Stated plainly: **this halt cannot fire on
+> the current eight** — they are its calibration set, already adjudicated through Gate 0, the
+> palette gate and one bounded re-roll each; its jurisdiction is future twins and future
+> re-generations. Stated equally plainly, **what it cannot catch:** identity substitution —
+> the better-registered different man measured IoU 0.9040 against 0.9088. That remains the
+> prompt's job and the contradiction test is its instrument. Centroid offset (systemically
+> +6.5 to +37.0 px dy — every twin paints its figure low, a finding worth keeping) is
+> **reported, not gated**: no failure exemplar calibrates it. The raw bbox pair stays printed
+> as a twin-quality diagnostic; its assert stays demoted.
+>
+> ### Rulings on the report's findings
+>
+> **§7 — the authoritative silhouette object is the raycast, and the instrument must enforce
+> it.** That is not new law; it is A2. `e08_acceptance --trust-intersect` intersecting an
+> E01-era sidecar measures a broken mask, not the intersection (−388,764 styled). Task 2
+> step 0: when the flag is on, the instrument verifies its sidecar against the live raycast
+> (0 differing px — `silhouette_agree.py` is the check) and halts otherwise; and the mask
+> stem gets an explicit argument so the instrument can point at the ARMB layout at all.
+> Eliminate the hazard rather than document it.
+>
+> **§9a — banked as the measured mechanism behind E07's "the blade carries no reference."**
+> E07 Gate 0 recorded the finished asset's blade as carrying no reference; §9a now shows why
+> stage 1 never lands any: the key excludes the blade band (median residual 0.0657 against
+> the 0.06 cut, the size-5 erosion finishing the half that passes), `dist_in` is 0 outside
+> `fm`, and every candidate texel there — 46,197 / 31,699 on the ARMB pair, 42,984 / 74,997
+> in the A2 lineage — is rejected. **The 0.06 key threshold is a global constant governing a
+> local low-contrast feature** — the repo's named pattern, fifth grey-on-grey instance. Not
+> fixed now, and not folded into Task 2 as a change: Task 2 **reports** the blade band's
+> candidates and accepted per view across all eight cameras, and the blade arm is specified
+> after Gate 1, informed by both. **Task 3 proceeds regardless of what Task 2's blade numbers
+> say** — Amendment 22's run-it-through stands; whether a finished asset with a known
+> mechanism under its worst region changes the Director's verdict is Gate 1's question, not
+> mine to pre-empt. Noted without action: §9a is also new evidence adjacent to the parked
+> blue-background arm — the backdrop being grey is *why* steel keys out — but the arm stays
+> parked; re-opening it is a separate ruling against its own withdrawal reasons.
+>
+> **§10 — the sixth site is fenced.** `e08_bg_separation.py:104` is A4's instrument; A4 is
+> withdrawn and the tool exists to reproduce that record. It joins the E07-era diagnostics
+> behind the do-not-modify fence. The `texpass_iter.py:240` corner-median site is unchanged:
+> ruling owed when the brush stage is next touched, before any stroke runs through it.
+>
+> **§3 — the 73.87% halt on the bare default path is recorded, not repaired.** It is A3's
+> background probe halting the withdrawn arm's own code path, pre-existing and reproduced on
+> the pre-edit file. The route's blessed invocation is now written down (the R0 recipe); the
+> bare default halting is a known state of a withdrawn arm, not a defect in the route.
+>
+> ### Task 2 is cleared, step 0 first
+>
+> 1. Flip `--trust-intersect` default **on**; add `--no-trust-intersect`; re-run the R0
+>    recipe once with the negation flag — must stay pixel-identical. The A2 and mask-keyed
+>    anchor recipes gain the explicit negation flag in their recorded invocations.
+> 2. Arm the registration halt as specified above; IoU and centroid print every view.
+> 3. The `e08_acceptance` guard and mask-stem fix from §7.
+> 4. Then eight cameras, read against **1,042,794 / 43.4% / 82.4%** and the 74.10% ceiling —
+>    which the flag does not touch (reachable moved 0) — with the blade-band table added to
+>    the report. The acceptance lever remains spent; eight buys from the ceiling.
+
 ## 5. What this does not settle
 
 Whether ~40–53% reference coverage is *enough* for the Director to accept the asset is not a

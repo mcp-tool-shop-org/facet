@@ -41,6 +41,17 @@ the figure**, interior rather than at the rim. Replacing it with the exact rayca
 took reference coverage **28.4% → 39.1%** of valid texels, and **53.8% → 74.2%** of what two
 cameras can physically reach, strictly additive, with no diffusion and no GPU.
 
+**Restated after the intersection ([E08 Amendment 27](docs/experiments/E08-ruling-gate0.md)).**
+Those A2 figures were measured with the *trust* mask unbounded by the silhouette: paint on no
+surface — every twin carries 550–8,991 px of it, and it is connected to the figure — was
+setting the edge-distance field and holding erosion off the texels near it. On the current
+twins that contaminated 25.3% / 19.6% of the figure's edge distances. Intersecting the trust
+mask with the silhouette is now the route default, and its regression was strictly
+conservative: **gains exactly zero, zero losses in the two thinnest half-width strata, every
+lost texel within 5 px of paint that sat on no surface** (−7,574, measured in
+[E08-intersection-regression.md](docs/experiments/E08-intersection-regression.md)). The
+standing two-camera baseline is **1,042,794 styled — 43.4% of valid, 82.4% of reachable**.
+
 **And the architecture is now measured rather than assumed. Twins register; the prompt
 carries identity.** Contradict the specification on eight elements — *silver* where gold
 arrives unbidden, *black* where wine-red arrives — and the prompt wins **8 of 8**: median ΔE
@@ -160,7 +171,7 @@ and conclusions come last.
 | `render_geomaps.py` | position/normal conditioning maps via open3d raycasting | replaces nvdiffrast (non-commercial) at <1/255 MAE on all 6 views |
 | `ig2mv_licensefree.py` | six consistent views of one character in one pass | 24 s on an RTX 5090; nvdiffrast's module name is occupied by a tripwire stub that raises if any code path touches it |
 | `sr_views.py` | view-space upscale — spandrel (MIT) + RealESRGAN anime6B (BSD-3) | deterministic by construction; ×2 for views, ×4 for face crops |
-| `project_twins.py` | projects the styled twins onto the atlas, emits a hole map | 50–62% of the surface styled from two reference images |
+| `project_twins.py` | projects the styled twins onto the atlas, emits a hole map | N-view since `c469b36` (three anchors pixel-identical); trust mask ∧ exact silhouette by default (E08 A27); 2-camera baseline 43.4% of valid / 82.4% of reachable |
 | `texpass_iter.py` | emit/commit write-head for progressive texture fill | selftest: styled texels byte-identical (delta 0.000000), holes strictly shrink |
 | `texpass_brush.py` | drives local ComfyUI — Qwen + style LoRA + inpainting ControlNet | ~45 s per stroke |
 | `texpass_finalize.py` | dilation fill for residual holes | closed 868k texels with zero mean fallback |
@@ -267,16 +278,25 @@ the tolerance against the thing you are detecting (a one-face shuffle moves a ce
 
 ## Known defects, named
 
-**Two thirds of the asset is not the reference, and the two-view limit is a hardcoded list.**
-`restylize_views.py` takes `--inputs` as an arbitrary list — it loops, builds each render's
-own control image, restylizes canny-locked and saves the registered mask beside each, with no
-two-view assumption anywhere in it. `project_twins.py` hardcodes **two**, in the `VIEWS` list
-at lines 132–137, while its ownership machinery (`best_w` / `owner_c` / `sumW` / `sumWC` over
-`for view in VIEWS`) is already N-view shaped. `ig2mv_licensefree.py` makes **six consistent
-views in 24 s** and is already in the repo. Whether more reference views actually raise
-coverage is **unmeasured on a culled mesh** — E05's 41% exterior ceiling was measured before
-culling, and culling moved the equivalent brush number from 27% to 52.7%. That measurement is
-pure geometry and is what E07's ruling puts next.
+**Two thirds of the asset is not the reference.** ⚠ *Corrected in place: an earlier version
+of this entry said the two-view limit was a hardcoded list. It was, and it is fixed —*
+`project_twins.py` *takes N views since `c469b36`, with the two-view and mask-keyed anchors
+reproducing pixel-identically.* Eight exact-silhouette masks and eight palette-gated twins
+exist (`ARMB/`); the eight-camera projection is the live task. Eight cameras reach **74.10%
+of valid** texels, and the acceptance lever is spent at 82.4% of reachable — whatever eight
+buys comes from the ceiling, not from acceptance.
+
+**The blade band takes 0.00% of stage-1 reference — the measured mechanism behind E07's
+"the blade carries no reference."** The twin's key excludes the greatsword band in every
+measured view: its paint sits *on* the key's threshold (median residual 0.0657 / 0.0645
+against the 0.06 cut) because steel on a grey studio backdrop is grey-on-grey — the project's
+fifth instance — and the size-5 erosion removes the half that passes. Outside the trust mask
+`dist_in` is 0 by definition, so every candidate texel there is rejected: 46,197 / 31,699 on
+the current twins, 42,984 / 74,997 in the A2 lineage, **0 accepted in all four rows, in both
+arms of the intersection regression** — the intersection neither caused nor repaired it. The
+0.06 cut is a global constant governing a local low-contrast feature. Measured in
+[E08-intersection-regression.md §9a](docs/experiments/E08-intersection-regression.md); the
+blade arm is specified after Gate 1.
 
 **⚠ The defect list below was written against high-pass metrics** that
 [E07's ruling](docs/experiments/E07-ruling-gate1.md) found blind to the defect that decides
