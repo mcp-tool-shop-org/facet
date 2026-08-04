@@ -386,6 +386,64 @@ ceiling and ~79% is the ceiling at any count tested. The honest framing of E08's
 > **Front's 633,518 stays unbanked**, as the executor reported it. A partial from a halted run
 > is not a result.
 
+> ### Amendment 5 (advisor, 2026-08-05) — A4 withdrawn; the background arm is promoted
+>
+> **There is no bimodality, and the inference that there was one is mine.** I wrote "the gap
+> between ~10 and ~25 on this twin is the evidence." That gap was between two **summary
+> statistics** — region medians against the contaminated set's median — and distant medians do
+> not imply an antimode in the density between them. Measured, ΔE-from-background rises
+> monotonically from ~5 to 30 with no antimode anywhere, and the two views do not even agree on
+> a location: the back has a shallow dip at 11–14 that the front does not share.
+>
+> The precondition attached to A4 — *halt if there is no gap* — is what caught this, before a
+> build and before a GPU. Recorded because it is the counterexample to the six conditions that
+> did not work: it gated the arm's **premise** rather than its result.
+>
+> **Otsu's own output says it is the wrong tool**, and the executor read it correctly rather
+> than taking the number: cut 33.6, class means 25.8 / 41.6, rejecting 41,194 px at a median
+> depth of **8 px** — deep in the interior. With the contaminated class at 0.5% of the mask,
+> between-class variance finds the dominant split, which is dark paint against light paint.
+> **η = 0.661 looks healthy while partitioning the wrong thing.**
+>
+> **And colour is not a proxy for boundary either.** Only **47%** of sub-ΔE-12 pixels lie within
+> 2 px of the mask edge; the rest is interior paint that is simply dark or neutral. Restricting
+> to thin strata does not rescue it — 16–28% of those pixels are legitimate paint above ΔE 25,
+> the blade among them. **A4 is withdrawn**, not deferred: no placement of a threshold on this
+> distribution separates the two populations, because they are one population.
+>
+> ### The background arm is promoted, and it now has a measured mechanism
+>
+> The reason no gap exists is in the numbers: the background is mid-grey **(125,126,126)** and
+> the subject carries mid-grey steel, leather and shadowed cloth. **Same gamut.** A background
+> outside the subject's gamut would *create* the separation rather than threshold a
+> distribution that has none — which is this repo's stated preference for eliminating a risk
+> over gating it, and it is no longer speculative.
+>
+> **The colour is derived, not picked.** Compute the subject's gamut from the *existing* twin,
+> choose the background maximising minimum distance to it, and report that minimum. A number
+> chosen because it looked far enough is the seventh mis-specified condition.
+>
+> **Gate it on the risk I flagged, which is real and unmeasured.** The diffusion latent comes
+> from the untouched render, so the background reaches the twin and can change what it paints.
+> Pin everything else — same mesh, same seed, same prompt, same control construction — vary
+> only the render's background, and:
+>
+> 1. **Halt if the subject repaints.** Measure ΔE between the two twins *inside the exact mesh
+>    silhouette*. The twin is the reference for the whole route; an arm that improves keying by
+>    changing the reference has broken the thing it was protecting.
+> 2. **Halt if the separation does not appear.** Re-measure the ΔE-from-background density on
+>    the new twin and confirm an antimode exists. The arm's entire premise is that it creates
+>    one.
+> 3. **Require both views to agree on it.** Front/back disagreement is what killed A4's
+>    threshold; agreement is now a stated property, not an assumption.
+>
+> If the subject repaints, the arm fails and the honest position is that this twin's keying is
+> not separable — in which case the contaminated band goes to stage 2 as hole, which is what the
+> absolute erosion already does, at the blade's cost, and we would then know that cost is
+> necessary rather than accidental.
+>
+> **A2 stands. A3's invariant is kept and correct. Front's 633,518 stays unbanked.**
+
 ## 5. What this does not settle
 
 Whether ~40–53% reference coverage is *enough* for the Director to accept the asset is not a

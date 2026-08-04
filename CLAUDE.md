@@ -115,6 +115,21 @@ background colour. A2 admitted 257,506 texels at median ΔE 38.31 from backgroun
 within ΔE 10 — cleaner than the set already trusted. That is what makes a widening adoptable
 rather than merely larger.
 
+**Distant medians do not imply a gap between them.** An advisor read two summary statistics —
+region medians around 25 against a contaminated set's median of 4.9 — as evidence of a
+separable distribution, and specified a threshold "derived from the measured bimodality."
+Measured, the density rises monotonically from ~5 to 30 with **no antimode at all**, and the
+two views disagree about where a dip even is. Two populations with different medians overlap
+continuously unless you have looked at the density between them. Plot it before you claim a cut
+exists.
+
+**A threshold method reports its own confidence in the wrong partition.** Otsu returned
+η = 0.661 — a healthy-looking score — while cutting dark paint from light paint and rejecting
+41,194 px at a median depth of 8 px, deep in the figure's interior. The class we cared about
+was 0.5% of the data, and between-class variance finds the *dominant* split, not the one you
+want. When the target class is a small minority, a global thresholding method will confidently
+answer a different question.
+
 **A guard whose stated reason is wrong may still be load-bearing for a reason nobody wrote
 down.** The edge erosion justified itself with a comparison measured against the wrong objects
 — and was simultaneously removing background-contaminated tendrils from the twin's mask, which
