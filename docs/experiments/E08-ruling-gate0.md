@@ -1328,6 +1328,68 @@ ceiling and ~79% is the ceiling at any count tested. The honest framing of E08's
 > The Comfy agent's hard UI rejection against a stale 643-option list was **the same staleness in
 > a worse failure mode**. A stale index that warns is survivable; a stale index that blocks is
 > not.
+> ### Amendment 22 (advisor, 2026-08-04) — the prompt wins 8/8. The architecture is confirmed with a real denominator.
+>
+> **Ratified.** Whole figure ΔE **17.09** against a 1.07 no-response floor; contra median
+> **46.28** against held **6.23**, a **7.4×** separation with an internal control. Amendment 12's
+> division was a ruling on one Director judgement plus one term. It now has **eight elements and
+> a denominator that is not one.**
+>
+> **Both halves are on the sheet and both matter.** Every named colour and material became what
+> was asked for — the LoRA, mesh and control did *not* hold this dwarf's attributes against a
+> conflicting spec. **And it is still the same dwarf**: face, build, pose, bald head, bracers,
+> boots. Structure held by mesh and control, named attributes carried by the prompt. **This is a
+> pipeline, not a dwarf generator.**
+>
+> ### Three method points, all the executor's, all now standing
+>
+> **1. The uniformity check applied to the *control* class.** Held spans 5.06–6.91 — spread 1.85
+> across five regions, evenly distributed. A median of 6.23 built from one region at 20 and four
+> at 2 would have been a different fact wearing the same number. Applying it to the control
+> rather than the treatment is the sharper use and it is what makes the 7.4× ratio mean
+> attribution rather than coincidence.
+>
+> **2. The instrument has a floor, and it must be quoted with every future result.** Held is
+> **not zero** — denoise 0.92 repaints globally. So attribution rests on the *ratio*, not the
+> absolute, and **an element effect below roughly ΔE 6 is indistinguishable from global
+> repaint.** That bounds what any contradiction test can detect. Do not read a 4-point move as a
+> response.
+>
+> **3. A hue delta is meaningless below a chroma floor.** At C\* ≈ 2 the hue angle is undefined,
+> so pauldronR's "−164.8°" is an artifact of the collapse, not a rotation. The executor flagged
+> it rather than letting it into the table as a finding. **Any hue number quoted from this
+> pipeline carries its chroma or it does not get quoted.**
+>
+> ### The two that moved less cleanly — stated, not smoothed
+>
+> **The skirt is the most informative miss.** "Black" collapsed chroma as predicted (23.9 → 0.7)
+> but lightness **rose** (14.7 → 33.8) — desaturated mid-grey, not black. **The model reads a
+> colour term as a chroma instruction more reliably than as a lightness one.** That is actionable
+> for how specs are written: if you want dark, "black" may not get you dark.
+>
+> **The knee plates are the weakest metal** — C\* 8.2/8.6 against ~1.8 elsewhere, reading closer
+> to brown leather than silver. Two of eight moved less cleanly and one moved the wrong way on
+> lightness. That is the boundary of the finding and it belongs in it.
+>
+> ### The co-location correction was right, and it was made before the run
+>
+> Contradicting something already present is **replacement, not addition**. N9 responded at ΔE
+> 47.41 alongside the contra class; my original "N5/N9/N11 predicted to drop" would have been
+> wrong. Corrected pre-registration beats a clean-looking post-hoc reading.
+>
+> ### Arm B — and the contradiction result changes its shape
+>
+> **De-risked.** The standing worry was character drift across six new twins. The prompt
+> controls named attributes at 7.4×, so **per-view prompts carrying the full spec are the
+> mechanism for holding identity across views, not a hope.** Predict accordingly: named elements
+> should appear at front-view reliability on every view, and any drift should land in
+> *structure* — which is mesh- and control-held — rather than in named attributes.
+>
+> **And Arm B's deliverable is a finished asset, not a coverage number.** The Director's standing
+> verdict is *the asset is not close*, and nothing this session has put a better one in front of
+> him. Run it through: twins → project → eight strokes → finalize → pack → renders. The Gate 1
+> artifact is **reference | asset | provenance | error at his zoom, including views 4–6**, where
+> the asset dissolves and where the head sheet structurally cannot show anything.
 ## 5. What this does not settle
 
 Whether ~40–53% reference coverage is *enough* for the Director to accept the asset is not a
