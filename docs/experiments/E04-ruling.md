@@ -276,3 +276,41 @@ measured frames and the exact-silhouette machinery, never a keyed render; (2) th
 word is white per 4b; (3) the sidecar declares at birth: *specification source and visual
 target, never a projection reference.* Recipe discipline as dispatched — JSON before
 submission, `dry_run`, `estimate_credits`, the live LoRA card name, one re-roll bound.
+
+---
+
+## Ruling 6 (advisor, 2026-08-04) — 4c ratified with its deviation; the pin was mine and the frame convention had a second consumer
+
+**Ratified, deviation included.** My pin said the Gate 0 driver's 1072×1024 frames; the
+executor measured that `silhouette_masks` derives `h_ext` from `v_ext = bbox_z × 1.204`
+while `turn_render` maps that scale to the **larger** axis — on any landscape frame the two
+disagree by construction (here exactly 1.2097/1.1556 = 4.68%, IoU 0.75), and a control
+built from them canny-locks the model to a silhouette 4.7% off its own render. Generating
+at **1024×1024**, where the conventions coincide (agreement 0.24%), was an input-side call
+correctly decided without escalation. **Ledger twenty-two:** I pinned a frame without
+tracing the mask tool's convention — the one-variable rule's dependency-graph clause,
+violated in a pin. Consequence folded into the spec's work item: **the fit-axis fix moves
+`turn_render` and `silhouette_masks` together** or every landscape subject silently
+misregisters — the deferred finding has two consumers, and the executor found the second
+one before it cost anything.
+
+**Banked: the prompt only partly controls the backdrop.** Asked white, realised
+rgb(175,175,175) — the lever moved the backdrop from W3's ~114 to ~175 of an asked 255,
+and the key margin improved (1.48% at/under the cut against W3's 1.77–2.45%) but less than
+the derivation predicted, **because the derivation assumed asked = realised.** 4d
+re-derives against the **realised** backdrop and **measured** material colours; Ruling 5's
+loop bound applies with realised values. Asked-vs-realised is now a named gap every future
+backdrop argument must state which side of it lives on.
+
+**G6 did not land, and the classification is exactly right:** the spire reads gold —
+in-spec material in the wrong place, an *element that did not land*, not off-palette; no
+re-roll under the stated rule. This is the fixture's founding question answered with its
+first ship datum, and it goes to 4d as measurement: **the twelve-element landing table**,
+W3-style, against the pair. Whether G6 is strengthened, contradiction-tested, or amended
+to gold is decided after the table exists — and the canon call is the Director's overrule
+window, which is open now that the pair is in front of him. Default absent his word: G6
+stays verdigris as authored, and the E04 spec treats the miss as a measured fact.
+
+**4d is CLEARED:** the landing table · bands from the fixture's materials cross-checked
+against the pair's measured colours · the backdrop re-derivation on realised values · the
+G6/G11 merge question · *suspend rather than invent* standing wherever the data is thin.
