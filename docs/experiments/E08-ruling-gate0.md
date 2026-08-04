@@ -1181,6 +1181,50 @@ ceiling and ~79% is the ceiling at any count tested. The honest framing of E08's
 > N11, and no amount of contradiction data is worth measuring against a machine that is not the
 > one the baselines came from.
 
+> ### Amendment 18 (advisor, 2026-08-04) — the job does not fit, and local was never the default
+>
+> **The diagnosis, from E3.** The staged set is 7,910 + 19,483 + 3,372 + 241 = **31,006 MiB**
+> against a watchdog ceiling of **31,200 MiB** on a **32,607 MiB** card. Run 3's working set was
+> **30,809 MiB** — within ~200 MiB of everything resident at once. **There is no room left for
+> activations. This job cannot fit under the ceiling on this card, at these model sizes, at any
+> reserve.** It is not a tuning problem and the executor was right to stop walking the lever.
+>
+> **And the reserve flag is not binding.** Peak was 31.7–32.0 GB across all three runs —
+> independent of the reserve *and* of the baseline. Runs 1 and 2 only looked bounded because the
+> desktop held ~7 GB, so ~24 GB was all the card had left. **ComfyUI stages to fill what it
+> sees**: the reboot freed 6.5 GB and the working set grew 6.1 GB. That inverts the intuition —
+> the earlier passes succeeded *because* less VRAM was free.
+>
+> **Ruled: move to Comfy Cloud, and record that this was the studio's standing default all
+> along.** The `comfy-local` skill states it plainly — *local is the fallback; the studio default
+> for image generation is Comfy Cloud (RTX 6000 Pro, 96 GB)*. A session was spent fighting a
+> constraint we had already decided not to accept. **That is an advisor error of omission** and
+> it belongs in the ledger with the other six: I treated the local rig as the environment
+> instead of checking what the environment was supposed to be.
+>
+> ### Two things gate the move, and neither is optional
+>
+> **1. The first cloud run is an anchor reproduction, not the contradiction test.** Every number
+> in this line rests on byte-matched controls and reproducible anchors — that is what makes the
+> A2 / N11 / BG2 comparisons mean anything. Memory records Comfy Cloud as *seed-identical to the
+> local 5090*, **validated 2026-06-26** — roughly forty days old, which the freshness rule makes
+> advisory until re-measured. So: **re-run N11's twin on cloud from its sidecar** (every
+> parameter is recorded, the control is byte-matched at 20,973 px) and compare against the local
+> output.
+>
+> - **Reproduces** → the anchor holds, every prior arm stays comparable, and the whole line
+>   continues on cloud with 96 GB of headroom.
+> - **Does not reproduce** → we have found the comparison boundary before it silently invalidated
+>   an arm, and we decide explicitly what remains comparable. That is a result, not a setback.
+>
+> **2. Check the LoRA delivery path before anything else.** `saltroad_style_v2_lowlr_000001500`
+> is a local file. Memory records the cloud bridge's LoRA delivery as **HF-URL-only**, though the
+> plugin now exposes `upload_file`. **If the LoRA cannot reach the cloud, none of this runs
+> there** — that is a hard blocker and it costs one call to establish. Check it first.
+>
+> **The ceiling stays at 31,200 MiB regardless.** Nothing here changes it; the point is that we
+> stop asking a 32 GB card to hold a 31 GB working set.
+
 ## 5. What this does not settle
 
 Whether ~40–53% reference coverage is *enough* for the Director to accept the asset is not a
