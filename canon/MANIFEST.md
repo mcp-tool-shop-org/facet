@@ -8,6 +8,28 @@ Left was `twin_front.png`. → [E08-director-canon-ruling.md](../docs/experiment
 `.gitignore` rule, because that rule's stated premise — *"assets are large and regenerable"* —
 is measured false for these two files.
 
+---
+
+## ⚠ ROLE CHANGED, 2026-08-04 — this is a SPECIFICATION SOURCE, not the projection reference
+
+**Twins belong to a mesh. Identity belongs to the prompt.** E01 was right that a twin is
+mesh-bound and must be regenerated per mesh; it was never the twin's job to carry identity.
+The armour test proved it: the gold knee plates had only ever reached the image through **noise
+in a broken ControlNet**, and one named phrase brought them back with the control byte-matched.
+The Director further ruled that this pair's proportions — taller, narrower, longer-limbed than
+the mesh — are the **same artifact**, painted freely because the control was missing a quarter
+of the silhouette. → [E08-armour-test.md](../docs/experiments/E08-armour-test.md)
+
+**Consequence: this pair's irreproducibility is no longer load-bearing.** It was critical only
+while the artifact *was* the reference. As a source to read a specification off, it does not
+need to be regenerable — **a specification reproduces where an artifact does not.** It stays
+frozen and versioned; its role changed, not its status.
+
+**Do not project from these.** They register at IoU 0.9088 / 0.8900 against a mesh whose
+silhouette they under-fill (17.38% / 17.01% of frame against 19.01%), and the body they show is
+not the mesh's body. Read canon off them; project from twins generated against an exact
+silhouette control carrying the ratified spec.
+
 | file | bytes | sha256 |
 |---|---|---|
 | `twin_front.png` | 505,710 | `a6158790525d8ac16cc2cc7f70731c165c2e21c7d46f62e7a161e6ba32448953` |
