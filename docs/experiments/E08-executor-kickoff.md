@@ -91,6 +91,18 @@ supplied attribute. Control byte-matched; the contradicting terms the only varia
 Denominator equals however many elements you contradict — a real one, by construction.
 **Predictions blind, before you look.**
 
+**This is already pre-registered and committed** (`6d2853d`, deliberately landed *before* either
+image exists — that ordering is the whole evidential value, so do not restate or re-tune it):
+
+| file | what it fixes |
+|---|---|
+| `docs/experiments/E08-contradiction.json` | 8 contradicted elements **counted**; the 3 co-location cases substituted for prompt coherence and reported **outside** the denominator; 5 held elements as the internal control against a global repaint. Phrase count, order and structure identical to `E08-spec-prompt.json`, so the adjectives are the only variable. |
+| `docs/experiments/E08-contradiction-regions.json` | boxes placed and then tightened against zooms, **all before either image existed**, recorded in the file rather than in a shell history |
+| `tools/diagnostics/e08_contradiction.py` | every box **drawn and labelled** on the sheet, every row printing the base image's own median colour inside it — the direct answer to the forearm crop that caught the pauldron edge and inverted N11's reading. Plus a crop-free hue×chroma density panel, so the gold→silver question does not depend on a hand-placed box at all. |
+
+Whole-figure ΔE is reported first and **against N11's 1.07**, so *the supplied attribute won* is
+never confused with *the model did not read the phrase*.
+
 ### 2. Step 2 — the full-spec generation
 
 Still worth running, and **its limits are already known: it is not the specification gate the
@@ -110,23 +122,48 @@ Forward arithmetic: eight cameras reach 74.10% of valid; at A2's acceptance that
 reference coverage against the rejected asset's 28.4%. Worth a loop run — **after** the
 contradiction test, which answers for one view what Arm B would spend eight views assuming.
 
-## The environment blocker
+## The environment blocker — DIAGNOSED. Start at E3; do not re-run the dead hypotheses.
 
-The job dies at ~30% of sampling, three attempts, staging ≈31 GB against the watchdog's
-**31,200 MiB** ceiling, launched capped.
+A previous executor worked the ordered protocol and **falsified all of it**, including both
+advisor hypotheses. Full record in Amendment 17 and in
+`E:\AI\training\facet_E08\CONTRA\ENV-PREDICTIONS.md`. Do not repeat these:
 
-**The ceiling is not negotiable and is not yours or mine to move.** *Cap the consumer; never
-raise the ceiling.* But the launch flags are one way to cap a consumer, not the only one —
-reducing what a job stages is the sanctioned direction.
+- **Settled instance — dead.** Registry fetch fully drained 167/167 before submit; died at 6/20
+  anyway, the same point as three prior attempts.
+- **`--disable-smart-memory` — dead.** Same place, same phase, same height. The log shows the
+  text encoder is never released either way.
 
-1. **Try once on a settled instance.** The four passes that succeeded earlier ran warm; the
-   failures competed with ComfyUI-Manager's 167-item registry fetch at startup. Cheapest, no
-   changes.
-2. **If it recurs, consult the rig's verified KB** — `E:\AI\readouts\model-knowledge\catalog\comfy.md`
-   — rather than guessing at flags. Pull only the slice you need.
-3. **One hypothesis, untested, do not act on it blind:** `--disable-smart-memory` stops ComfyUI
-   unloading between nodes, so the 7,910 MB text encoder may stay resident through sampling when
-   it is no longer needed — which would make the cap itself part of the 31 GB.
+**The actual cause:** `--reserve-vram` reserves against the **card's total**, not against what is
+left after the desktop. ComfyUI's working set sat on its reserve-derived budget (24,225 and
+24,673 MiB against 24,415) in both runs, and the desktop's own 7.0–7.6 GB lives *inside* the
+reserve. The breach happens at 47–54 W, **inside model load, before compute starts.** It is a
+reserve problem, not a workload-size one.
+
+**⚠ The machine was rebooted, and that is a confound working against you.** The desktop baseline
+was 7,030–7,604 MiB when the failures were measured. **It is now ~1,150 MiB.** At that baseline
+the *old, measured-not-to-work* setting would complete — and the pass would be meaningless,
+credited to the wrong cause, and it would fail again the next time the desktop is warm.
+
+**So, ruled in advance (Amendment 17), not open for tuning:**
+
+1. **Launch at `--reserve-vram 10.0`** via `E:\AI\training\_comfyui_start.ps1 -ReserveVramGB 10.0`
+   — the rig's own launcher, which does *not* pass `--disable-smart-memory`. Sized against the
+   **worst observed baseline (7.6 GB)**, not today's lucky one: 22,367 + 7,600 = 29,967, still
+   1.2 GB under the ceiling. E4 predicts it is slower because something streams from system RAM;
+   that cost is accepted.
+2. **Record `nvidia-smi` used-MiB at the moment of launch, in your report.** Every prior
+   environment number here is un-attributable without it — that is how a 6.5 GB swing went
+   unnoticed.
+
+**The ceiling stays at 31,200 MiB. The watchdog stays untouched.** It was restarted 2026-08-04
+02:30 via `_watchdog_start.ps1` and verified live; if its heartbeat is stale, restart it with
+that script **before** any GPU job, never by weakening the bound.
+
+**E2 is the halt condition and the advisor has already ruled on it.** The reproduction anchor
+must return sha256 `d0220e244d5ad2015639153188c488e3f3d317933dbd54eb439724fe1f57f93d`. If it does
+not, **halt and report — do not proceed to the measured arms.** Every prior number in this line
+was taken on the old machine state; a non-reproducing anchor means SPEC and CONTRA are not
+comparable to BRACER, ARMOUR or N11.
 
 ## Do not
 

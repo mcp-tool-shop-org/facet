@@ -1115,6 +1115,72 @@ ceiling and ~79% is the ceiling at any count tested. The honest framing of E08's
 > encoder may stay resident through sampling when it is no longer needed — which would make the
 > cap itself part of the 31 GB.
 
+> ### Amendment 17 (advisor, 2026-08-04) — both environment hypotheses are dead, and the reboot is a confound
+>
+> The executor ran the ordered protocol and **falsified every hypothesis in it, including both of
+> mine.** Recorded here because the diagnosis is now the useful part, not the guesses.
+>
+> - **Settled instance — falsified.** ComfyUI relaunched, registry fetch fully drained 167/167
+>   before a prompt was submitted. The job died at **6/20**, the same point as the three prior
+>   attempts. The ComfyUI-Manager fetch was never the cause.
+> - **`--disable-smart-memory` — falsified.** Relaunched without it: same place, same phase, same
+>   height (31,703 MiB @ 47.6 W against 31,654 @ 54.5 W). The log shows `QwenImageTEModel_ 7910MB
+>   Staged` followed straight by `Requested to load QwenImageControlNetModel` **with no unload in
+>   between, either way.** My hypothesis and the executor's independent agreement with it were
+>   both wrong, and it cost one generation to find out — which is the right price.
+>
+> **The measurement that replaced them.** Subtract the desktop baseline from each peak and
+> ComfyUI's own working set was **24,225** and **24,673 MiB**, against a reserve-derived budget of
+> 32,607 − 8,192 = **24,415**. Both runs sat on their budget to within allocator noise.
+> `--reserve-vram` was doing exactly what it says — **and that is the problem: it reserves against
+> the card's total, not against what is left after the desktop.** The desktop's own 7.0–7.6 GB
+> lives *inside* the 8 GB reserve, and the ceiling sits 1,407 MiB below the card total. The breach
+> happened at 47–54 W, inside model load, before compute started; compute added ~175 MiB. By the
+> rig's own diagnostic that is a **reserve** problem, not a workload-size one.
+>
+> **`CLAUDE.md`'s launch line is wrong on both halves, and I wrote it.** *"Launch ComfyUI capped:
+> `--reserve-vram 8.0 --disable-smart-memory`"* — the flag works *against* the reserve it sits
+> beside, since evicting the text encoder is the mechanism `--reserve-vram` depends on; and 8.0 is
+> under the line the ceiling requires. The rig's own sanctioned launcher,
+> `E:\AI\training\_comfyui_start.ps1`, never passed `--disable-smart-memory` and says so in its
+> header. **An inherited claim is a hypothesis wearing a fact's clothes — including one the
+> advisor wrote into the standing constraints.** I am not correcting the line to a number yet: E3
+> has not run, and writing "10.0" before it is measured would be inventing the replacement.
+>
+> ### The reboot is a confound, and it points the wrong way
+>
+> The Director restarted the machine. **The desktop baseline was 7,030–7,604 MiB across the two
+> measured failures; it is now 1,150 MiB.** That is ~6.5 GB of headroom that appeared for a reason
+> having nothing to do with the fix.
+>
+> At the current baseline, reserve **8.0** would complete — 24,415 + 1,150 = 25,565, some 5.6 GB
+> clear of the ceiling. **So a run at the old setting would now pass, and the pass would mean
+> nothing.** It would be credited to a flag change already measured not to work, it would quietly
+> become doctrine, and the next run on a warm desktop would fail exactly as before. This is *"one
+> variable is a property of the dependency graph, not of the parameter you edited"* arriving from
+> outside the experiment entirely.
+>
+> **Two rulings, both fixed before any number exists:**
+>
+> 1. **E3 runs at `--reserve-vram 10.0` as pre-registered** — not at 8.0, and not at whatever the
+>    fresh baseline would now tolerate. The reserve is sized against the **worst observed baseline
+>    (7.6 GB)**, because a setting that only holds on a just-rebooted machine is not a setting.
+>    10.0 gives 22,367 + 7,600 = 29,967, still 1.2 GB under the ceiling. E4's cost — streaming from
+>    system RAM, slower — is accepted; RAM is at ~31% of 64 GB.
+> 2. **Record `nvidia-smi` used-MiB at the moment of launch, in the report.** Every prior
+>    environment number in this line is un-attributable without it, which is how a 6.5 GB swing
+>    went unnoticed until someone looked for it. It costs one line and it makes the next failure
+>    diagnosable.
+>
+> **E2 stands as the halt condition, and the reboot raises its value rather than lowering it.**
+> The anchor must return sha256
+> `d0220e244d5ad2015639153188c488e3f3d317933dbd54eb439724fe1f57f93d`. The executor flagged that
+> proceeding on a non-reproducing anchor would be an advisor call, so here it is in advance: **do
+> not proceed. Halt and report.** Every prior number in this line was taken on the old machine
+> state; if the anchor does not reproduce, SPEC and CONTRA are not comparable to BRACER, ARMOUR or
+> N11, and no amount of contradiction data is worth measuring against a machine that is not the
+> one the baselines came from.
+
 ## 5. What this does not settle
 
 Whether ~40–53% reference coverage is *enough* for the Director to accept the asset is not a
