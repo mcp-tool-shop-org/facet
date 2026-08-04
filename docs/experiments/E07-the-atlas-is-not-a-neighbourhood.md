@@ -17,6 +17,80 @@ geometry, predictions before looking. Read [E06's report](E06-report.md) and
 advisor asserting them has a poor record, catalogued in [CLAUDE.md](../../CLAUDE.md), and two
 of the three are the whole premise of an arm.
 
+> ### Amendment 1 (advisor, 2026-08-05, ruling at Gate 0.5)
+>
+> Both premises confirmed; neither halt fired. Two things in this spec are wrong and both are
+> the advisor's. Modifies **§5** (L2's pass condition) and **§7** (L1's ANDON).
+>
+> **§7's back-facing ANDON measured a proxy instead of the thing. WITHDRAWN.** The failure
+> mode of a surface-aware lookup is *sourcing colour from somewhere else on the figure*. I
+> gated on normal disagreement as a stand-in for that. The executor measured the quantity
+> itself and the proxy inverts: **the back-facing class is the *closest* class** — 0.77 edges
+> median against 1.16 for the agreeing class, 66.7% of it inside a single triangle — and
+> **0.00% of any lookup reaches beyond 20 edges**, against 72.2% for the flood that ships
+> today. Normal disagreement at sub-triangle range is not a reach across a gap; it is a
+> description of a sheet thinner than its own tessellation. And the pipeline **routes the
+> blade flank to this operation on purpose** (`--thin-extent`, the policy that thin
+> hard-surface props take dilated colour and never invented content), so the gate fired
+> hardest on the surface class the design deliberately hands it.
+>
+> Same move E06 made on the recession gate: *the unit was wrong and was changed; the threshold
+> was not.* The gate is **restated on source distance, in median triangle edges** — halt if
+> the median exceeds **3 edges** or if more than **5%** of lookups exceed **20 edges**.
+> Measured: 0.87 edges and 0.00%, so it passes with room, which is the point — a guard that
+> fires on a correct input is worse than no guard. Normal disagreement stays **reported, never
+> a halt**.
+>
+> **The hemisphere variant is rejected, not deferred.** Priced by the executor and strictly
+> worse: 1.52× farther, source changed for 13.27% of lookups, and **no answer at all for
+> 36.7%** — which is what a thin plate predicts, because the whole local neighbourhood is the
+> opposing face. It buys agreement with a proxy the distance measurement supersedes.
+>
+> **⚠ `edge = 0.00290` is hardcoded** in `texpass_finalize.py` as "median triangle edge, this
+> mesh". Harmless while it only scales a printout; **load-bearing the moment the gate is
+> stated in edges**. Compute it from the mesh. This is the same family as the blade rectangle
+> `texpass_loop.ps1` was rewritten to remove, and E04's galleon is the subject it would break
+> on.
+>
+> **L1 is authorised to run**, gate unit changed, no other parameter touched.
+>
+> **§5's L2 pass condition was mis-formed. WITHDRAWN, not retuned — fourth in the ledger.**
+> "Closes half the distance from its baseline to 1.0" was written before the baseline was
+> known, so its difficulty scales with how bad the problem turns out to be: at my predicted
+> baseline of 1.5 the bar would have been 1.25, a trivial move; at the measured 5.500 it is
+> 3.25, a 41% cut in the step. **A worse baseline should not mean a harder bar.** I have no
+> calibrated number for "a seam that is no longer visible", and inventing one now — after
+> seeing 5.000 — would be the worst version of this error. Precedent: `project_twins`'
+> `assert seen.mean() > 0.30` was **suspended rather than retuned** for exactly this reason.
+>
+> Replacing it: report the numerator and denominator separately in quanta, as the executor's
+> Gate 0 already requires, and let **Gate 1** rule on whether the seam is gone. The numeric
+> instrument's remaining job is deciding whether to spend the GPU, and that decision is made
+> on mechanism — see Amendment 2.
+>
+> ### Amendment 2 (advisor, 2026-08-05) — L2's GPU spend is NOT authorised yet
+>
+> The executor's Gate 0.5 §2 hypothesis is well founded, and it reads out of the source
+> without a measurement. `commit` accepts a strict **subset** of the job mask — hole ∧
+> `facing > 0.25` ∧ visible ∧ in-mask ∧ edge-distance ([texpass_iter.py:220-242](../../tools/texpass_iter.py)).
+> So a provenance boundary in the finished atlas sits at the **facing/visibility frontier**,
+> generally interior to the mask contour, while §7 step 2 anchors the membrane's Dirichlet
+> condition **at the contour**. The correction decays across the gap before it reaches the
+> seam it was built to level. `TWINS|s7` moving 9.500 → 8.250 while `TWINS|s1` did not move at
+> all is consistent with an anchor that sometimes lands near the seam and sometimes does not.
+>
+> **Re-anchor, then re-run the free instrument.** The membrane's boundary is the boundary of
+> the **accepted set** — `hidx` after the filter chain, whose view-space `px, py` commit
+> already has in hand. Dirichlet **only where the outside neighbour is already styled**;
+> natural (unconstrained) elsewhere, because where the neighbour is still a hole there is no
+> level to match and forcing one invents a target.
+>
+> That costs ~2 minutes offline. Spending 15 GPU minutes to measure a mis-anchored membrane
+> more expensively is the wrong order, and avoiding exactly that is what §7's bound was
+> specified for. **If the re-anchored bound moves substantially, the rerun is authorised on
+> the spot. If it moves marginally again, the mechanism is small, we say so plainly, and L2
+> is a recorded negative — which is a full success.**
+
 ## 1. The premise, at the code level
 
 The texture loop writes colour into the atlas from two places. Neither one knows where a

@@ -236,26 +236,52 @@ defect in either source. The architecture called for Poisson seam levelling; it 
 implemented in projection and never carried into the loop. **Located in code:** the levelling
 term is `project_twins.py:253-256` and `bake_hero_fuse.py:233-237` (`--seam-sigma 16.0`, its
 own docstring calling it *"the multi-band/Poisson role"*); in `texpass_iter.py`, `commit`
-writes `a2[hidx] = col` and `gaussian_filter` appears only in the selftest's fake inpaint.
+writes `a2[hidx] = col` (line 246) and `gaussian_filter` appears only in the selftest's fake
+inpaint. **Measured** in [E07 Gate 0](docs/experiments/E07-gate0.md): a provenance boundary
+steps **5.5× ordinary texture variation** (median |ΔL| 0.02876 across, 0.00523 within), and
+the forehead the Director named is **9.5×**. Dilation boundaries are nearly flat at 1.5–1.75
+— dilation blends *from* its neighbour by construction — so the step is a brush-boundary
+phenomenon, not an artifact of the denominator.
 
 **Dilation still bleeds between unrelated islands.** Down from 75% of hole texels to 33.9%
 of the atlas, but dilation-filled texels remain **4.8× enriched** in visible blotches
 against a 5% base. Colour crosses the gutter from whichever island the packer placed next
-door, and atlas adjacency is not surface adjacency. **Located in code, and the docstring is
-wrong:** `texpass_finalize.py` line 6 claims the flood is *"valid-island-constrained"*; line
-43 is `fill = ~grown & (cnt > 0)` with no `& valid`, so gutter texels are written on the
-first iteration and become sources on the second. `valid` appears only in the termination
-test — it decides when to stop, never where to write. 39.0% of islands hold no painted texel
-at all and carry 50.7% of the post-loop hole set, so of 813,773 dilated texels roughly
-**412,000 — ~17% of the valid atlas — can only have taken their colour from a different
-island**. How much actually crosses is [E07](docs/experiments/E07-the-atlas-is-not-a-neighbourhood.md)'s
-Gate 0; the code reading above is checked, the magnitude is not.
+door, and atlas adjacency is not surface adjacency. **Located in code, and the docstring was
+wrong:** `texpass_finalize.py`'s flood predicate is `fill = ~grown & (cnt > 0)` with no
+`& valid` — `valid` decides when to stop, never where to write.
+[E07 Gate 0](docs/experiments/E07-gate0.md) measured the cost by replaying that flood
+carrying a source label: **74.9% of 813,773 dilated texels take their colour from another
+island**, from a median **0.177 away on a figure 1.0 tall** — 61 median triangle edges, 18%
+of the figure's height.
+
+**The gutter is not the mechanism, and the minimal patch is worse than it looks.** Only
+**32.5%** of paths cross an invalid texel; adding the missing `& valid` still leaves 53.3%
+cross-island and strands **174,898** texels on the mean fallback, 238× more than now.
+`--pack-margin 0.001` does not put a gutter between all charts — 5.73% of 4-adjacent valid
+texel pairs are in different islands and touching *directly*, half of them more than 20 edges
+apart on the surface. The fix is a surface neighbourhood, not a predicate: nearest painted
+texel in 3D sources from a median **0.00253 — below one triangle edge**, a 70× shrink, closer
+for 92.4% of the same texels.
+
+**⚠ `bake_hero_fuse.py:257` carries the identical unconstrained flood.** Not on the current
+route — the E06 recipe invokes `bake_hero_prep`, `project_twins`, the loop, `finalize` and
+`bake_hero_pack`, not `fuse` — and unmeasured. Recorded here so it cannot quietly become
+doctrine; it gets the same surface-aware primitive whenever `fuse` returns to the route.
 
 **Chart fragmentation is the binding constraint on texel density.** Culling invisible
 surface removed 47% of faces but only 34% of charts — because invisible surface is
 interleaved *within* charts, so excluding it perforates them rather than freeing them.
 Faces-per-chart fell 20.5 → 16.4, bbox fill 42.1% → 36.6%, packed coverage 24.81% → 14.32%.
 Net texels landing on visible surface rose ~17% where a naive reading predicts double.
+
+**Paint lives in big charts; holes live in small ones.** Measured in
+[E07 Gate 0](docs/experiments/E07-gate0.md): the island holding a randomly chosen *styled*
+texel has a median 1,231 texels (~35×35), the island holding a *dilated* one has 296. So
+atlas-space operations are safe exactly where there is already paint and unsafe exactly where
+there is not — which is why stage 1's σ=16 levelling draws only 6.8% of its weight
+off-island (median) and does no measured harm, while the dilation flood at the same scale
+does. Beware the inspection paradox in either direction: the median island holds 88 texels,
+but the median *texel* does not live in a median island.
 
 ## Licence position
 

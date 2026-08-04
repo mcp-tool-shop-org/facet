@@ -54,12 +54,21 @@ results, and the session that runs it does not decide their meaning.
    Guessing is not — check the advisor's own record below.
 2. **Correct in place, with the measurement that overturned the claim.** Never quietly
    delete a wrong statement; the correction is more useful than the original.
-3. **Pick a pass-condition unit the experiment cannot move.** Three conditions in this repo
+3. **Pick a pass-condition unit the experiment cannot move.** Four conditions in this repo
    were mis-specified: two ratios whose denominators moved, then an absolute that broke
    because the experiment *halved the denominator on purpose* — painting 907,825 of 1.7M
    holes read as a "miss" against 923,466 of 3.5M. Ask what the intervention is designed to
    change, then measure something orthogonal to it. Here the honest unit was **dilated texel
    count** (2,551,893 → 813,773, a 68% fall), which cannot be gamed from either side.
+
+   The fourth was a different mistake and is worth its own line: **never define a pass
+   condition as a fraction of a quantity you have not measured yet.** E07 asked a ratio to
+   "close half the distance from its baseline to 1.0". At the predicted baseline of 1.5 that
+   is a trivial move; at the measured 5.5 it demands a 41% cut. The bar's difficulty scaled
+   with how bad the problem turned out to be, which is backwards. When no calibrated threshold
+   exists, **suspend rather than invent one** — `project_twins`' `assert seen.mean() > 0.30`
+   is the precedent — report the numerator and denominator separately, and let the Director's
+   eye rule. Retuning a condition after seeing the result is the one move that is always wrong.
 4. **Own errors in the commit message.** They are how the next session learns which parts of
    the record to distrust.
 5. **Do not end a session the Director has not ended.**
@@ -83,6 +92,17 @@ because the ray behind a removed face still hits geometry. IoU returned 1.00000 
 with a hole clean through it. The executor noticed the gate could not see its own failure,
 added a first-hit depth comparison, and it fired immediately. **Ask what the operation would
 look like if it went wrong, then check for that.**
+
+**And gate on the failure itself, not on a proxy for it.** The second version of that error is
+subtler and cost a halt in E07. A surface-aware lookup fails by *sourcing colour from
+somewhere else on the figure*; the gate was written on **normal disagreement**, a stand-in for
+it. The stand-in inverted — the back-facing sources were the *closest* ones, 0.77 triangle
+edges away, opposing faces of a sheet thinner than its own tessellation — while **no** lookup
+reached beyond 20 edges, against 72.2% for the flood it replaced. A proxy fires on whatever
+correlates with it, including the subject's own geometry. If the quantity you care about is
+measurable, gate on that quantity and leave the proxy as a reported diagnostic. Then check
+what the threshold's unit is pinned to: E07's replacement is stated in *triangle edges*, and
+`texpass_finalize.py` had that edge length hardcoded from one mesh.
 
 **Prefer eliminating a risk to gating it.** When the same cull was changed from *deleting*
 faces to *excluding them from the atlas*, the failure became impossible rather than
@@ -166,8 +186,14 @@ founding session the advisor was wrong about: the shell-soup premise, the clay p
 the double-subscribe diagnosis, `--no-head-scale`, the head-pixel multiplier, the halo
 hypothesis, `angle_limit` as a lever, deferring the blade fix, and two pass conditions.
 
+In E07 the advisor was wrong about two of its own gates, both written into the spec: the
+back-facing ANDON, which measured a proxy that inverted on this mesh and halted a correct
+arm, and a pass condition defined as a fraction of a baseline nobody had measured. Both were
+caught by an executor who ran them as written and reported the evidence rather than tuning
+past them. The spec's step ratio and its Gate 0 premise tests held up.
+
 The advisor was useful at: ruling once evidence was in, killing options with reasons,
-refusing to commission a metric where no honest one existed, and correcting the record in
-place.
+refusing to commission a metric where no honest one existed, bounding an expensive arm before
+spending it, and correcting the record in place.
 
 **Deciding is the job. Predicting is not.**
