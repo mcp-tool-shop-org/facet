@@ -244,6 +244,67 @@ ceiling and ~79% is the ceiling at any count tested. The honest framing of E08's
 > coverage rises 28.4% → 39.1%. Whether the defect goes with the coverage is unanswered.
 > Declining to claim more than the arm supports is the behaviour this repo exists to protect.
 
+> ### Amendment 3 (advisor, 2026-08-05) — the stratum gate is WITHDRAWN. It was my quantity.
+>
+> **The invariant holds exactly.** `e = min(absolute, ⅓ × local half-width)`, max `e/R` =
+> **0.3333** against a 0.3333 bound, **zero violations on both views**, both reproduction
+> anchors intact. The build is correct.
+>
+> **The gate fired on it anyway** — 43.8% of the back's 8–16 px stratum against a 40% limit —
+> and that is the condition this repo already names: *a guard that fires on a correct input is
+> worse than no guard.* **Withdrawn, not retuned.** Retuning a threshold after seeing 43.8%
+> would be the one move that is always wrong here.
+>
+> **The quantity is mine, not the executor's.** Amendment 2 said "per connected structure in
+> the twin mask, report the fraction of area the erosion removes, and halt if any structure
+> loses more than a stated share." The executor derived the 40% from the bar relation and owned
+> that; the deeper error is the quantity I named, and it is wrong in two independent ways:
+>
+> - **Unimplementable as worded.** "Per connected structure" does not partition a character —
+>   the whole front figure is **one component of 121,709 px** because the blade touches the
+>   hand, so a blade losing three quarters of its area reads as 12.3%. The executor rejected my
+>   wording on measurement and stratified by half-width instead. **That construction is
+>   ratified**; it is strictly better and it is what made the diagnosis visible.
+> - **It measures shape as much as erosion.** Stratum area-loss is a perimeter-to-area
+>   statistic — ragged and tapering structures shed more per unit area — and it is *not*
+>   bounded by the invariant that governs `e`. The deviation runs both ways and exceeds the
+>   headroom: front 16–32 px lands **10.8 points under** the bar idealisation, back 8–16 px
+>   **10.4 points over**. A quantity that swings ±10 points on shape alone cannot carry a halt.
+>
+> Sixth mis-specified condition in this repo, and this one is shared: the executor picked the
+> number, I picked the thing being measured.
+>
+> ### What replaces it
+>
+> **1. The stratum table is retained and REQUIRED — as a diagnostic, never a halt.** It is the
+> evidence that earned A3 and it belongs in every report of it:
+>
+> | half-width | 1–2px | 2–4px | **4–8px** | 8–16px | 16–32px | 32+px |
+> |---|---|---|---|---|---|---|
+> | shipped | **100%** | **100%** | **77.6%** | 37.6% | 22.5% | 4.4% |
+> | invariant | 0% | 0% | 33.5% | 33.7% | 22.5% | 4.4% |
+>
+> Monotone annihilation of thin structure by a distance chosen from the figure's global width.
+> The blade is that 4–8 px stratum, and **77.6% of it was removed by a guard built to delete a
+> 1–2 px rim.**
+>
+> **2. `e/R ≤ ⅓` is retained as an implementation assertion, labelled as such.** It verifies
+> the code computes what it claims — it can fail on an operand-order slip or a bad half-width
+> lookup — but it **cannot fail on a correct build**, so by this repo's own rule it is a unit
+> test, not an andon. Do not promote it.
+>
+> **3. The andon moves to the direction the invariant does not bound.** `e ≤ ⅓R` bounds
+> over-erosion *by construction*, which is why a halt there fires on correct work. A3's live
+> risk is the opposite one: **loosening an acceptance mask admits background grey at the twin's
+> painted boundary** — E01's measured white-fleck failure, which the invariant says nothing
+> about. The instrument already exists and is already standard: **the background-ΔE probe** the
+> executor built for A2. Halt if newly-admitted texels approach the twin's background colour.
+> Same check, same anchor, aimed at the failure that is actually unwatched.
+>
+> **A3 resumes under that gate.** `--edge-frac` was never what fired and stays at ⅓. Front
+> coverage of 633,518 against A2's 555,185 is a partial and stays unreported as a result until
+> the back view completes.
+
 ## 5. What this does not settle
 
 Whether ~40–53% reference coverage is *enough* for the Director to accept the asset is not a

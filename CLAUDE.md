@@ -115,6 +115,23 @@ background colour. A2 admitted 257,506 texels at median ΔE 38.31 from backgroun
 within ΔE 10 — cleaner than the set already trusted. That is what makes a widening adoptable
 rather than merely larger.
 
+**Put the andon on the direction the invariant does not bound.** When a change introduces an
+invariant, that invariant forecloses one failure direction *by construction* — so a halt aimed
+there fires on correct work while the live risk goes unwatched. A3 bounded over-erosion with
+`e ≤ ⅓ × local half-width` and was then gated on how much area the erosion removed: the
+invariant held exactly, zero violations, and the gate halted the build anyway. The unwatched
+direction was the opposite one — a looser mask admitting background at the reference's painted
+boundary — and the instrument for it already existed. Ask which way the change can still go
+wrong *after* the invariant, and gate that.
+
+**A diagnostic and a gate are different objects.** The same measurement can be the best
+evidence you have and an unusable halt. Stratum area-loss proved the shipped erosion was
+annihilating thin structure — 100% / 100% / 77.6% of the three thinnest strata, by a guard
+built to delete a 1–2 px rim — and it is required in every report of that arm. It cannot gate:
+it is a perimeter-to-area statistic that swings ±10 points on shape alone and is not bounded
+by the invariant it was meant to protect. Before promoting a number to a halt, ask what else
+moves it besides the thing you are watching.
+
 **A check that cannot fail is not a check.** An executor tested the erosion hypothesis by
 comparing the saved mask against its own dilation — an operation that cannot lose a pixel — and
 got 0.00%. It was reported as *untested* rather than as confirmation, which is exactly right,
