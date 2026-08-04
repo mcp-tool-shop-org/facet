@@ -19,6 +19,7 @@ Standards compliance: see bake_hero_fuse.py (one block for the 3-script stage).
           [--res 4096] [--crop 360,240,700,600] [--crop-res 1024] [--head-scale 3]
 """
 import argparse
+import hashlib
 import json
 import os
 import sys
@@ -73,6 +74,20 @@ ap.add_argument("--no-head-scale", action="store_true",
                      "density-allocated (smart_decimate has run). Both stages "
                      "allocate to the same face rect; composed, they double-subscribe.")
 ap.add_argument("--bound", type=float, default=0.55)
+ap.add_argument("--visible-mask",
+                help="bool .npy from cull_unseen.py, one entry per face. Only visible "
+                     "faces are unwrapped and packed; the rest collapse onto ONE shared "
+                     "patch in a reserved strip. E05 measured that 49%% of valid atlas "
+                     "texels are never visible from any of 46 exterior cameras, and for a "
+                     "prerendered deliverable that surface is paid for three times — "
+                     "texels in the atlas, a hole in the map, and a dilation that bleeds "
+                     "into whatever island the packer placed beside it. Excluding rather "
+                     "than DELETING is deliberate: the geometry is never modified, so the "
+                     "silhouette cannot change and a camera nobody anticipated sees a flat "
+                     "patch instead of straight through the body.")
+ap.add_argument("--unseen-strip", type=float, default=24.0,
+                help="texel rows reserved at the top of the atlas for the shared unseen "
+                     "patch, so it can never collide with a packed island")
 args = ap.parse_args(argv)
 os.makedirs(args.outdir, exist_ok=True)
 CX0, CY0, CX1, CY1 = [float(v) for v in args.crop.split(",")]
@@ -91,6 +106,54 @@ if len(meshes) > 1:
 obj = bpy.context.view_layer.objects.active
 bpy.ops.object.transform_apply(location=True, rotation=True, scale=True)
 me = obj.data
+
+# ---- visible-face mask, and PROOF it still lines up with this mesh ----
+# The mask is indexed by glTF face order. Blender preserves that order on import
+# (measured: max centroid deviation 5.6e-8 over 287,170 faces), but "measured once" is
+# not a guarantee across Blender versions or exporters, and a silently misaligned mask
+# would exclude the WRONG faces — a failure with no visible symptom until the atlas is
+# already wrong. So the mask carries a checksum of the face centroids it was built
+# against, and it is checked here.
+nf0 = len(me.polygons)
+_co = np.empty(len(me.vertices) * 3, dtype=np.float32)
+me.vertices.foreach_get("co", _co)
+_co = _co.reshape(-1, 3)
+_maxabs = float(np.abs(_co).max())
+_cent = np.empty(nf0 * 3, dtype=np.float32)
+me.polygons.foreach_get("center", _cent)
+_cent = (_cent.reshape(-1, 3) / _maxabs * 0.5).astype(np.float64)
+
+vis_face = np.ones(nf0, dtype=bool)
+if args.visible_mask:
+    vis_face = np.load(args.visible_mask)
+    assert vis_face.shape == (nf0,), (
+        f"ANDON: visible mask has {vis_face.shape} entries for {nf0:,} faces — it was "
+        f"built against a different mesh")
+    # Compare face centroids POSITIONALLY, not by hash. This mesh is read through
+    # Blender's float32 polygon.center where the mask was built from trimesh's float64
+    # vertices; the two agree to ~5e-8, which is geometrically nothing but straddles any
+    # rounding boundary, so an exact hash mismatches on a perfectly aligned mask. A mask
+    # shuffled by even one face moves a centroid by roughly an edge length (0.0029 median
+    # on W3), thousands of times the float noise, so a tolerance separates the two cases
+    # cleanly.
+    cpath = os.path.splitext(args.visible_mask)[0] + "_centroids.npy"
+    assert os.path.exists(cpath), (
+        f"ANDON: {os.path.basename(cpath)} is missing, so the mask cannot be proved to "
+        f"line up with this mesh. Re-run cull_unseen.py to emit it.")
+    ref = np.load(cpath).astype(np.float64)
+    assert ref.shape == _cent.shape, (
+        f"ANDON: centroid record is {ref.shape} against this mesh's {_cent.shape}")
+    dev = float(np.abs(ref - _cent).max())
+    assert dev < 1e-4, (
+        f"ANDON: face centroids deviate by up to {dev:.3e} from the mesh the mask was "
+        f"built against — far above float noise and comparable to the mesh's own edge "
+        f"length. The face order or the mesh changed, and the mask would exclude the "
+        f"wrong faces silently.")
+    print(f"[prep] visible mask lines up with this mesh (max centroid deviation "
+          f"{dev:.2e})", flush=True)
+    print(f"[prep] visible mask: {int(vis_face.sum()):,}/{nf0:,} faces "
+          f"({vis_face.mean()*100:.1f}%) will be unwrapped and packed; "
+          f"{int((~vis_face).sum()):,} collapse to one shared patch", flush=True)
 
 if not args.reunwrap:
     assert me.uv_layers, (
@@ -116,8 +179,11 @@ else:
     assert uv_bake is not None, \
         "ANDON: uv_bake creation failed (8-layer cap returns None)"
     me.uv_layers.active = uv_bake
+    # unwrap only what will be packed — an unseen face contributes nothing but
+    # fragmentation to the chart layout
+    me.polygons.foreach_set("select", vis_face.astype(np.int32))
     bpy.ops.object.mode_set(mode="EDIT")
-    bpy.ops.mesh.select_all(action="SELECT")
+    bpy.ops.mesh.select_mode(type="FACE")
     bpy.ops.uv.smart_project(angle_limit=args.angle_limit,
                              island_margin=args.island_margin)
     bpy.ops.object.mode_set(mode="OBJECT")
@@ -192,15 +258,22 @@ roots = np.array([find(i) for i in range(nf)], dtype=np.int64)
 head_roots = set(np.unique(roots[head_face]).tolist())
 in_head_island = np.isin(roots, np.fromiter(head_roots, dtype=np.int64))
 n_isl = len(np.unique(roots))
+n_isl_vis = len(np.unique(roots[vis_face]))
 print(f"[prep] islands total {n_isl:,} ({nf / max(n_isl, 1):.1f} faces/island); "
       f"head islands {len(head_roots):,} ({int(in_head_island.sum()):,} faces)",
       flush=True)
+print(f"[prep] islands holding VISIBLE faces {n_isl_vis:,} "
+      f"({int(vis_face.sum()) / max(n_isl_vis, 1):.1f} visible faces/island) — this is "
+      f"what actually gets packed", flush=True)
+
 
 def head_area_share(luv_flat):
-    """Fraction of total UV area held by head islands."""
+    """Fraction of UV area held by head islands, over VISIBLE faces only — unseen faces
+    collapse to a shared patch, so counting their area would understate the head."""
     uva_ = luv_flat.reshape(nf, 3, 2)
     a_ = 0.5 * np.abs((uva_[:, 1, 0] - uva_[:, 0, 0]) * (uva_[:, 2, 1] - uva_[:, 0, 1])
                       - (uva_[:, 2, 0] - uva_[:, 0, 0]) * (uva_[:, 1, 1] - uva_[:, 0, 1]))
+    a_ = a_ * vis_face
     return float(a_[in_head_island].sum() / max(a_.sum(), 1e-12))
 
 
@@ -228,12 +301,39 @@ else:
     me.update()
 
 scene.tool_settings.use_uv_select_sync = True
+me.polygons.foreach_set("select", vis_face.astype(np.int32))
 bpy.ops.object.mode_set(mode="EDIT")
-bpy.ops.mesh.select_all(action="SELECT")
+bpy.ops.mesh.select_mode(type="FACE")
 bpy.ops.uv.pack_islands(margin=args.pack_margin)
 bpy.ops.object.mode_set(mode="OBJECT")
 me = obj.data                      # stale again after the edit round trip
 uv_bake = me.uv_layers["uv_bake"]
+
+if args.visible_mask:
+    # Reserve a strip at the top of the atlas and park every unseen face on ONE shared
+    # patch inside it. Reserved rather than "somewhere in the corner" because pack_islands
+    # fills [0,1] and any fixed point would eventually land on a real island — the unseen
+    # faces would then sample a piece of the beard, which is the exact artifact class this
+    # experiment exists to remove. The patch is a real triangle, not a degenerate point, so
+    # the bake marks it valid and it carries a defined colour: a camera nobody anticipated
+    # sees a flat patch rather than an untextured void.
+    luv3 = np.empty(nl * 2, dtype=np.float32)
+    uv_bake.data.foreach_get("uv", luv3)
+    luv3 = luv3.reshape(-1, 2)
+    strip = args.unseen_strip / args.res
+    vis_loop = vis_face[loop_face]
+    luv3[vis_loop, 1] *= (1.0 - strip)
+    su, sz = 0.01, 10.0 / args.res
+    sv = 1.0 - strip + 6.0 / args.res
+    corners = np.array([[su, sv], [su + sz, sv], [su, sv + sz]], dtype=np.float32)
+    n_unseen = int((~vis_face).sum())
+    if n_unseen:
+        luv3[np.where(~vis_loop)[0]] = np.tile(corners, (n_unseen, 1))
+    uv_bake.data.foreach_set("uv", luv3.reshape(-1))
+    me.update()
+    print(f"[prep] {n_unseen:,} unseen faces parked on one {int(sz*args.res)}x"
+          f"{int(sz*args.res)}-texel patch; visible UVs compressed into the lower "
+          f"{(1-strip)*100:.2f}% of v", flush=True)
 
 # verify the x3 survived the pack: head UV-area share must beat face-count share
 luv2 = np.empty(nl * 2, dtype=np.float32)
@@ -244,8 +344,13 @@ assert tri, "ANDON: non-triangle faces after GLB import"
 uva = luv2.reshape(nf, 3, 2)
 area = 0.5 * np.abs((uva[:, 1, 0] - uva[:, 0, 0]) * (uva[:, 2, 1] - uva[:, 0, 1])
                     - (uva[:, 2, 0] - uva[:, 0, 0]) * (uva[:, 1, 1] - uva[:, 0, 1]))
+# every share below is over VISIBLE faces: the unseen ones share one patch, so their UV
+# area is a fixed constant that says nothing about allocation, and their 3D area would
+# make the head look starved when it is not
+area = area * vis_face
 share_area = float(area[in_head_island].sum() / max(area.sum(), 1e-12))
-share_count = float(in_head_island.sum() / nf)
+share_count = float((in_head_island & vis_face).sum() / max(int(vis_face.sum()), 1))
+print(f"[prep] packed UV area covers {area.sum()*100:.2f}% of the atlas", flush=True)
 print(f"[prep] head island UV-area share {share_area:.4f} vs face-count share "
       f"{share_count:.4f} (before scaling {share_area_pre:.4f})", flush=True)
 if args.no_head_scale:
@@ -259,7 +364,7 @@ if args.no_head_scale:
     me.loops.foreach_get("vertex_index", lidx)
     tri3 = co[lidx].reshape(nf, 3, 3)
     a3 = 0.5 * np.linalg.norm(np.cross(tri3[:, 1] - tri3[:, 0],
-                                       tri3[:, 2] - tri3[:, 0]), axis=1)
+                                       tri3[:, 2] - tri3[:, 0]), axis=1) * vis_face
     share_3d = float(a3[in_head_island].sum() / max(a3.sum(), 1e-12))
     print(f"[prep] head 3D-surface share {share_3d:.4f} — UV share must beat it "
           f"for the head to carry more texels per unit surface", flush=True)
