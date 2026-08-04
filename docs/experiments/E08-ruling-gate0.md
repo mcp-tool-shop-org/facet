@@ -568,6 +568,78 @@ ceiling and ~79% is the ceiling at any count tested. The honest framing of E08's
 > `figure_mask` is now retired from every path that governs anything — recorded, and it is the
 > quiet result of this whole sequence.
 
+> ### Amendment 8 (advisor, 2026-08-04) — the control is ADOPTED; blue is parked; my branches were mis-specified
+>
+> **My pre-registration was wrong in the way I had just written a rule against.** Amendment 7
+> branched on "BG2" as if it were one thing. It was two — a geometry-derived control and a blue
+> background — and *"one variable is a property of the dependency graph, not the parameter you
+> edited"* is a rule I added two amendments earlier and then violated in the next
+> pre-registration. The executor found the seam and split the result along it. That split is
+> ratified and it is the reading that stands.
+>
+> **The geometry-derived control is ADOPTED.** Grey against grey isolates it — same background,
+> same keying difficulty, control the only difference — and BG2-grey wins **5 of 6 cells**,
+> with painted fraction closest to the 19.01% truth on both views (18.95 / 19.93 against the
+> shipped twin's 17.38 / 17.01) and stability across all three tolerances. The pre-registered
+> bar was "registers better → adopted." It does, on the axis that isolates it.
+>
+> **The extra control was noise, and that question is closed.** BG1-grey carried 3.4× the
+> contour and registers *worse* on both views at every tolerance. Interior crease detail would
+> have registered at least as well. No second accidentally-load-bearing defect — just a defect.
+>
+> **Blue is PARKED, not rejected, and the reason has teeth.** The executor refused to quote a
+> number because IoU swings **0.61 → 0.92** on threshold alone, and declining to pick 20 because
+> it reads well is the behaviour this repo exists to protect. But the limitation is the finding:
+> the twin's **own painted mask** is the only remaining answer to *is the paint trustworthy* —
+> geometry answers *is there surface*, and `figure_mask` is now retired from that duty — and a
+> blue background makes that mask threshold-dependent. **An intervention that breaks an
+> instrument the route requires cannot be judged until the instrument is replaced.**
+>
+> A hypothesis for whoever revives it, recorded and untested: a strongly coloured background
+> produces coloured rim light *on the subject*, so the figure's own edge pixels go blue — which
+> is the contamination we were removing, returning in a new form.
+>
+> ### The instrument failure is the most reusable thing here
+>
+> `figure_mask`'s corner-median key returned painted fractions of **31–76% against a 19.01%
+> truth, with a 751 px bounding box in a 752 px frame.** Diffusion paints a lit studio gradient,
+> not the flat field the heuristic assumes. **This is the third independent failure of that same
+> construction** — A0's painted twin in E01, the grey-on-grey clay render in Arm A, and now the
+> generator's own backdrop.
+>
+> **The fitted-background estimator is adopted as the standard keying**: a quadratic over a
+> border ring, which reduces to the corner median on a flat background — which is why the
+> shipped twin barely moves and every prior number stays comparable. With mesh-silhouette duty
+> already retired to raycasting, the original heuristic is now gone from the pipeline entirely.
+>
+> **And the bbox sanity check becomes standard.** *A figure cannot be 751 px wide when the mesh
+> is 388.* It is free, it tests the instrument's failure mode rather than its success mode, and
+> it caught this before a single number was read into.
+>
+> ### Two consequences to carry forward
+>
+> **1. The new twins require the new keying.** BG2-grey twins carry diffusion-painted gradient
+> backgrounds; the old corner-median key fails on exactly those. Adopting the twins without
+> adopting the estimator in `project_twins` would reproduce this failure inside the projection
+> stage. They ship together.
+>
+> **2. The shipped reference cannot be regenerated.** BG1-grey is built exactly as the shipped
+> front twin was and does not reproduce it — 17.73 against 17.38%, IoU 0.9040 against 0.9088.
+> That elevates the provenance defect filed in Amendment 6 from *inconvenient* to *load-bearing*:
+> **every comparison against the shipped asset is a comparison against an artifact we cannot
+> recreate.** It is a further argument for adopting BG2-grey's twins as the reference baseline
+> going forward, since those are reproducible from a versioned recipe.
+>
+> ### Next, and it is free
+>
+> Re-run A2 with the BG2-grey twins and the fitted keying, and report reference coverage against
+> A2's 39.1%. **Does a better-registered twin buy more surface?** No GPU, no diffusion — the
+> twins exist. State the prediction first.
+>
+> The material differences — gold knee plates against fur wraps — belong to the *control* half
+> and BG2-grey already carries them at the reference background. They go to the Director as a
+> canon question when there is a finished asset to look at, not as a blocker now.
+
 ## 5. What this does not settle
 
 Whether ~40–53% reference coverage is *enough* for the Director to accept the asset is not a

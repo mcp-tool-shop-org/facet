@@ -115,6 +115,21 @@ background colour. A2 admitted 257,506 texels at median ΔE 38.31 from backgroun
 within ΔE 10 — cleaner than the set already trusted. That is what makes a widening adoptable
 rather than merely larger.
 
+**Corner-median keying has failed three times; it is retired.** A single background sample
+assumes a flat field, and nothing in this pipeline has one: painted concept art has a gradient
+and a cast shadow (E01, which keyed a third of the lower background as figure), a Workbench
+clay render is grey on grey (which lost a quarter of the silhouette), and a diffusion model
+paints a lit studio backdrop (which returned 31–76% painted against a 19.01% truth). Fit the
+background over a border ring instead — a quadratic reduces to the corner median on a flat
+field, so old numbers stay comparable. **Where geometry can answer the question, use geometry:**
+*is there surface here* is the raycast silhouette, exactly, and keying should never have been
+asked.
+
+**Bbox-check any keyed mask against the geometry before reading a number from it.** *A figure
+cannot be 751 px wide in a 752 px frame when the mesh is 388.* One comparison, free, and it
+tests the estimator's failure mode rather than its success mode — it caught a broken key before
+a single downstream figure was believed.
+
 **"One variable" is a property of the dependency graph, not of the parameter you edited.** The
 background arm changed one setting — the clay render's background colour — and thereby changed
 *two* inputs to the generator, because the control image is built from a mask keyed off that
