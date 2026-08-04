@@ -18,10 +18,22 @@ form-exaggerated clay concept ──► image-to-3D ──► weld ──► den
 ```
 
 **Where it stands.** Geometry is solved: reconstruction produces real facial structure
-given the right framing, and polygon budget allocation works. Texture is improving under
-measurement — interpolation is down **68%** and the current asset is *"a lot better"* by the
-Director's eye, with two named defects remaining (below). Nothing here is claimed as
-finished.
+given the right framing, and polygon budget allocation works.
+
+**Texture is not.** Four experiments improved measurable properties of the texture stage —
+the unwrap, the culled surface, the dilation source, the seam levelling — and at
+[E07's Gate 1](docs/experiments/E07-ruling-gate1.md) the Director ruled the asset **not
+close**. The cause is recorded there and it is a measurement failure, not a tuning one: every
+unit those experiments graded on is a **5×5 high-pass statistic**, and the defect that decides
+acceptance is a **large region of the wrong material** — a steel blade wearing skin tones, a
+boot carrying scattered gold and green. A region like that is smooth inside itself and
+registers only its rim. An arm cut dilation source distance **70×** and took speckle below the
+reference asset while changing nothing to the eye.
+
+The structural fact underneath it: on the finished asset, **28.4% of texels come from the
+styled reference, 37.7% from diffusion invention and 33.9% from interpolation**. Every
+experiment so far improved *how the other 71.6% is filled*; none reduced it. Nothing in the
+texture stage is claimed as working.
 
 **Form first, style second.** Image-to-3D reconstructors key off shading, silhouette
 clarity and unambiguous depth. A heavily stylized sprite — weathered planks, painted
@@ -226,6 +238,22 @@ the tolerance against the thing you are detecting (a one-face shuffle moves a ce
 ~0.0029; the noise floor is 5.96e-08).
 
 ## Known defects, named
+
+**Two thirds of the asset is not the reference, and the two-view limit is a hardcoded list.**
+`restylize_views.py` takes `--inputs` as an arbitrary list — it loops, builds each render's
+own control image, restylizes canny-locked and saves the registered mask beside each, with no
+two-view assumption anywhere in it. `project_twins.py` hardcodes **two**, in the `VIEWS` list
+at lines 132–137, while its ownership machinery (`best_w` / `owner_c` / `sumW` / `sumWC` over
+`for view in VIEWS`) is already N-view shaped. `ig2mv_licensefree.py` makes **six consistent
+views in 24 s** and is already in the repo. Whether more reference views actually raise
+coverage is **unmeasured on a culled mesh** — E05's 41% exterior ceiling was measured before
+culling, and culling moved the equivalent brush number from 27% to 52.7%. That measurement is
+pure geometry and is what E07's ruling puts next.
+
+**⚠ The defect list below was written against high-pass metrics** that
+[E07's ruling](docs/experiments/E07-ruling-gate1.md) found blind to the defect that decides
+acceptance. Each entry is still measured and still true; none of them is established as the
+thing that makes the asset unacceptable.
 
 **Stroke seams are not levelled.** Stage 1 applies a low-frequency Gaussian levelling
 across projection boundaries. **The brush loop has none** — so every boundary between two

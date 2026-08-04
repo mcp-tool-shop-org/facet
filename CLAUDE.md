@@ -86,6 +86,17 @@ the thing it was compared against was real. It was not.
 **Bound an expensive arm before spending it.** Compute the ceiling first. One executor
 priced a six-stroke experiment at +1.7 points before running it, and skipped it.
 
+**Validate a metric against a rejected artifact before building an experiment on it.** Take
+something the Director has already turned down, and the region he named, and confirm the
+number fires there. E07 graded four arms with blotch counts, speckle, a step ratio and a
+flattening guard — **four of the five are 5×5 high-pass statistics, and the fifth is
+indifferent to where a colour lands.** The defect that decides acceptance is a *large region
+of the wrong material*: a steel blade wearing skin, a boot wearing gold. Such a region is
+smooth inside itself and contributes only its rim to every one of those numbers. So an arm
+took source distance down 70×, mean fallback to zero and speckle below A0 — and the asset was
+unchanged to the eye. A metric that cannot separate an asset he rejected from one he accepted
+is not a metric. This cost four experiments; every gate error below cost one.
+
 **A gate must test the operation's failure mode, not its success mode.** A cull was gated on
 silhouette IoU — which is structurally blind to holes punched through *visible* surface,
 because the ray behind a removed face still hits geometry. IoU returned 1.00000 on a mesh
