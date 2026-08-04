@@ -1,0 +1,24 @@
+{
+  "_purpose": "Measurement regions for the contradiction test, in 752x1024 twin pixels. DEFINED BEFORE EITHER IMAGE EXISTS, from the BRACER twin, which shares the byte-matched control image (20,973 px; canny 15,325 + contour 9,958) and therefore the pose. A box placed on one twin from this control sits on the same structure in any other.",
+  "_placement": "First pass placed by eye on the full frame, then five boxes were tightened against 2-3x zooms (pauldron, medallion/skirt, crossguard, blade, knees) because they were catching adjacent structure. The tightening happened BEFORE either measured image existed and is recorded here rather than in a shell history.",
+  "_why_shown": "N11's gold-pixel count was thrown away because its crop caught the pauldron edge and inverted the truth. The fix is not a cleverer crop, it is SHOWING the crop: every box is drawn and labelled on the sheet, and every row reports the BASE image's own median colour inside the box so a reader can check the box is sitting on what it claims (e08_deltaE.py's pattern). Boxes are additionally intersected with the exact mesh silhouette, so background inside a box is excluded.",
+  "_class": "contra = counted in the denominator | coloc = substituted for prompt coherence, reported outside the denominator | held = not contradicted, internal control",
+  "regions": [
+    {"name": "N1 scalp",       "class": "held",   "box": [352, 348, 416, 384], "expect_base": "skin"},
+    {"name": "N2 beard",       "class": "contra", "box": [356, 424, 416, 496], "expect_base": "red hair",      "named": "white"},
+    {"name": "N3 tunic",       "class": "contra", "box": [334, 508, 444, 582], "expect_base": "dark green",    "named": "dark blue"},
+    {"name": "N4 pauldronR",   "class": "contra", "box": [462, 430, 525, 495], "expect_base": "gold",          "named": "silver"},
+    {"name": "N4 pauldronL",   "class": "contra", "box": [294, 415, 328, 480], "expect_base": "gold",          "named": "silver"},
+    {"name": "N6 medallion",   "class": "contra", "box": [367, 645, 384, 665], "expect_base": "gold",          "named": "silver"},
+    {"name": "N7 belt",        "class": "held",   "box": [304, 599, 442, 620], "expect_base": "brown leather"},
+    {"name": "N8 skirt red",   "class": "contra", "box": [352, 682, 400, 752], "expect_base": "dark red",      "named": "black"},
+    {"name": "N9 skirt green", "class": "coloc",  "box": [418, 645, 446, 715], "expect_base": "green",         "named": "grey"},
+    {"name": "N10 bracer",     "class": "held",   "box": [503, 560, 562, 612], "expect_base": "brown leather"},
+    {"name": "N12 kneeL",      "class": "contra", "box": [262, 768, 338, 830], "expect_base": "gold",          "named": "silver"},
+    {"name": "N12 kneeR",      "class": "contra", "box": [404, 770, 484, 832], "expect_base": "gold",          "named": "silver"},
+    {"name": "N13 bootR",      "class": "held",   "box": [436, 856, 508, 918], "expect_base": "dark"},
+    {"name": "N14 blade",      "class": "held",   "box": [222, 200, 268, 430], "expect_base": "neutral steel"},
+    {"name": "N15 crossguard", "class": "contra", "box": [196, 528, 268, 554], "expect_base": "gold",          "named": "silver"},
+    {"name": "N16 pommel",     "class": "contra", "box": [208, 698, 238, 728], "expect_base": "gold",          "named": "silver"}
+  ]
+}
