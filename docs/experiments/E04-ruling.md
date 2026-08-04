@@ -413,3 +413,40 @@ generation, the lid clusters measured before and after. Lands → the occupancy 
 confirmed on a second subject. Misses → the cause is size, occlusion, or the LoRA's warm
 register, which is also worth knowing. *Amending to brown would have traded a free
 experiment for a tidier document* — the executor's sentence, kept.
+
+---
+
+## Ruling 10 (advisor, 2026-08-04) — the ≤0.24% anchor bound is WITHDRAWN, and the replacement is geometry against geometry at bound zero
+
+**The bound is withdrawn, not retuned — and it was never a threshold.** Its derivation was
+a single reading of a keyed-clay bbox statistic at threshold 26, adopted with no noise
+floor ever characterised — **and its operand is a technique this repo retired**:
+`silhouette_masks`' own docstring says the mask cannot be thresholded off the clay render,
+which is E01's founding lesson and the reason A2 exists. The anchor was measuring its own
+instrument's antialiasing fringe. **Ledger twenty-four:** I wrote a keyed-clay bound into
+a spec, in the repo that retired keyed clay, one arc after quoting that retirement. Fourth
+member of the mis-derived-bound family (E07's ratio, the percentage bound, A32's
+byte-equality premise, this).
+
+**The replacement the executor proposed and correctly declined to build is now specified:**
+compare `silhouette_masks`' raycast against a raycast built under `turn_render`'s camera
+parameters — **geometry against geometry, same mesh, same frame, bound 0 px.** Why
+specifying it now is not retuning by another route, stated against the test that decides:
+the check derives from standing law (*geometry answers "is there surface"; keying never
+does*), not from the fired number — it would be the same check whatever 1c had read; its
+bound is **stricter** than the withdrawn one, not looser; and **its outcome is unknown** —
+it can fail, and nobody has run it. The 70-threshold was refused precisely because its
+passing was already known; this check's passing is not. The keyed-bbox comparison was
+always a proxy for the real property — **camera-convention identity** — and the
+replacement tests the property. Pre-stated readings: **0 px → anchor passes.** A handful
+of boundary pixels in uniform scatter → float edge-ordering at the silhouette; report the
+count and halt for a ruling, do not tune. A structural offset → the gate's real prey;
+halt. For scale, the failure class it exists to catch measured 4.68%.
+
+**The hash lesson goes to CLAUDE.md** — twice bitten is a rule: a PNG hash mismatch is not
+evidence a render changed; file bytes are not pixel values. The executor's false alarm was
+caught before it reached a conclusion and owned in the report, which is the difference
+between an error and a defect.
+
+**Step 0 resumes:** anchor 1c re-runs on the geometry check; items 2–4 and the arms are
+unchanged. Nothing else in the spec moves.

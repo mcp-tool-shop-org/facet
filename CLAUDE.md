@@ -87,6 +87,11 @@ render** still keys the figure mask, and it was silently losing a quarter of the
 a stripe down the whole blade, patches through pauldrons, chest and greaves. A root cause has
 as many sites as it has callers. Grep for them when you fix one.
 
+**A PNG hash mismatch is not evidence a render changed — file bytes are not pixel values.**
+Twice now a hash check has produced a false halt on pixel-identical renders (encoder
+metadata differs run to run). Compare pixels; reserve byte-hashes for artifacts whose bytes
+are the contract (E08 armB state; E04 step 0).
+
 **A number that reproduces exactly can still be measured against the wrong object.**
 `project_twins` justified eroding the twin's mask with "the twin is painted fatter than the
 mesh — 15.8% against 9.9%." Both figures reproduce to the digit. 15.81% is the *eroded twin*
