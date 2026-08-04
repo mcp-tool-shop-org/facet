@@ -115,6 +115,19 @@ background colour. A2 admitted 257,506 texels at median ΔE 38.31 from backgroun
 within ΔE 10 — cleaner than the set already trusted. That is what makes a widening adoptable
 rather than merely larger.
 
+**A component can be necessary without being contributory.** The fitted background estimator
+moves reference coverage by **−0.1 points** on its own and *enables* the +4.0 the new twins
+buy, because the old key reads their backdrop at 50.68% of frame against a 19.01% truth.
+Measured in isolation it looks like nothing and would have been retired; measured as a
+precondition it is load-bearing. Ablating a component tells you its marginal contribution, not
+whether the system works without it — decompose, but read the decomposition for *enablers* as
+well as for contributors.
+
+**A swap is not a gain until you have looked at what left.** An arm that is strictly additive
+can be judged on its total; one that trades cannot. A2R gained 148,693 texels and lost 54,978,
+and the net says nothing about whether what arrived is as trustworthy as what departed.
+Characterise the losses by location and quality before banking the net.
+
 **Corner-median keying has failed three times; it is retired.** A single background sample
 assumes a flat field, and nothing in this pipeline has one: painted concept art has a gradient
 and a cast shadow (E01, which keyed a third of the lower background as figure), a Workbench

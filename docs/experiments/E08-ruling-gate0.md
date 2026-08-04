@@ -640,6 +640,62 @@ ceiling and ~79% is the ceiling at any count tested. The honest framing of E08's
 > and BG2-grey already carries them at the reference background. They go to the Director as a
 > canon question when there is a finished asset to look at, not as a blocker now.
 
+> ### Amendment 9 (advisor, 2026-08-04) — the acceptance lever is nearly exhausted; Arm B is re-authorised
+>
+> **The decomposition is the result, and it is clean.** The estimator alone moves **−0.1
+> points**; the entire **+4.0** is the better-registered twin. That is the design working —
+> a quadratic border fit reduces to a corner median on a flat field, so nothing prior loses
+> comparability.
+>
+> **And it is the clearest case this repo has produced of a component that is necessary without
+> being contributory.** Corner-median keying reads BG2-grey's gradient backdrop at **50.68% of
+> frame** against a 19.01% truth, so without the estimator these twins are unusable. Measured in
+> isolation it contributes nothing and would have been retired; measured as a precondition it
+> enables everything. Recorded as a rule.
+>
+> **The acceptance lever is nearly spent.** My Gate 0 ruling put two cameras at perfect
+> acceptance at 52.66% of valid. A2R is at 43.0% — **81.6% of what two cameras can physically
+> reach**, up from 53.8% shipped. There is not much left on this axis.
+>
+> **So Arm B is re-authorised, and the forward arithmetic is now concrete rather than
+> speculative:** eight cameras reach **74.10%** of valid; at A2R's 81.6% acceptance that is
+> **~60.5% reference coverage**, against the rejected asset's 28.4%. **A 2.1× change in the
+> provenance mix** — which is the thesis, and the first number in this line large enough to
+> justify a loop run.
+>
+> ### Two things gate adoption, and both are free
+>
+> **1. Characterise the 54,978 lost.** A2 was strictly additive; A2R is not — 148,693 gained
+> against 54,978 lost, net +93,715. The executor flagged it rather than burying it under the
+> net, which is right, and the net is not the question. **A swap is a win only if what arrived
+> is at least as trustworthy as what left**, and nothing yet measures the departed set. Locate
+> it: which regions, and were those texels good reference or marginal? Different twin masks
+> produce different edge-distance fields, so the loss is probably at boundaries and thin
+> structure — which is where the blade lives, and that would matter.
+>
+> **2. Locate the 2.03%, do not threshold it.** Newly-styled texels sit at 2.03% within ΔE 10
+> of background against 0.26–0.28% for the trusted set — about 7× enriched, roughly **3,020
+> texels**, 0.29% of the final styled set. **Refusing to pick a threshold after seeing 2.03%
+> was correct** and the 2.0% erosion limit belongs to a different population; borrowing it would
+> be the seventh mis-specified condition. The answer is not a number, it is a location: if those
+> 3,020 sit on the blade or the face it matters, and if they are scattered along the silhouette
+> it does not. Same instrument, same cost.
+>
+> **The guards are ratified.** `reachable` holding at 1,265,391 *exactly* is the right control —
+> it takes no twin input, so any movement would have voided the comparison. And the bbox andon
+> reading 936×751 on a broken key is the check earning its place a second time.
+>
+> ### Before Arm B spends GPU, the Director sees the twins
+>
+> He has not seen them, the executor keeps saying so, and it is the right flag. **Gold knee
+> plates against fur wraps is a canon call he can make in seconds, and it gates real spend** —
+> if the new reference is wrong for the character, eight restylize passes and a loop run are
+> wasted on it.
+>
+> Put the four-panel twin sheet in front of him framed as **one question about the character,
+> not a quality gate**: this is the reference the route will carry, does it read as the man he
+> designed. The finished-asset judgement stays where it belongs, at Gate 1.
+
 ## 5. What this does not settle
 
 Whether ~40–53% reference coverage is *enough* for the Director to accept the asset is not a
