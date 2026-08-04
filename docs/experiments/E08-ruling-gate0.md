@@ -305,6 +305,87 @@ ceiling and ~79% is the ceiling at any count tested. The honest framing of E08's
 > coverage of 633,518 against A2's 555,185 is a partial and stays unreported as a result until
 > the back view completes.
 
+> ### Amendment 4 (advisor, 2026-08-05) — the erosion was accidentally correct; A3 is withdrawn, A4 authorised
+>
+> **The andon placement earned itself.** Moved to the direction the invariant does not bound, it
+> fired on its first live run and found a real defect: **75.13%** of newly-admitted texels
+> within ΔE 10 of the twin's background against **0.11%** for the already-trusted set. First
+> gate this session to fire on something wrong rather than on correct work.
+>
+> The executor validated it in both directions before claiming anything — it fires on a
+> deliberately loose build (`--edge-frac 0.02` → 49.45%), and when A3's number came in *higher*
+> than that loose run, which is backwards, the obvious alternative explanation was tested and
+> **falsified**: the blade sits at median ΔE **24.80** from background with 3.2% within 10, and
+> nothing the twin paints is near its own background. The probe is not misfiring on grey
+> subject matter. The contamination is real.
+>
+> ### What it inverts
+>
+> **The absolute erosion was doing a job nobody had written down.** Its stated justification was
+> void (Amendment 1 — the mesh is fatter than the twin), but by deleting 100% of the thinnest
+> strata it was removing background-contaminated tendrils along with the blade. The twin's keyed
+> figure mask carries background colour concentrated **200×** in thin structure — 21.3% of the
+> 1–2 px stratum against 0.1% at 32+ px — while being only **0.5% of the mask overall**, which
+> is why four experiments never saw it. That is E01's background-keying failure, alive in these
+> twins as cast shadow, gradient and antialiased fringe.
+>
+> **Amendment 1 declined to delete the erosion when its justification was voided. That was
+> right, and it was right by luck rather than by foresight** — the reason given was E01's
+> white-fleck failure, and the actual reason is this. Recorded that way rather than as a good
+> call.
+>
+> **The mechanism, restated: contamination is a boundary phenomenon.** A2 already rejects
+> anything outside the exact raycast silhouette, so surviving contamination sits *inside* the
+> mesh — at the band where the twin's painted edge meets it. A 1–2 px structure is entirely
+> edge. **Half-width is not a property of thinness; it is a proxy for what fraction of a
+> structure is boundary**, which is exactly why the contamination concentrates there. Thin
+> structures are not special. They are all edge.
+>
+> ### A3 is withdrawn as specified
+>
+> The executor's diagnosis is exact and I ratify it: **half-width is shape-blind and cannot
+> separate a blade from a shadow tendril**, because they live at the same scale. The invariant
+> preserves thin structure proportionally, so it preserves both. Geometry cannot make this
+> distinction, and no threshold on `e/R` will.
+>
+> The invariant itself is **kept, and correct** — max `e/R` 0.3333, zero violations, blade
+> stratum 77.6% → 33.5% removed. It is a necessary component of the answer, not the answer.
+> Stopping rather than tuning `--edge-frac` was the right call; the parameter was never what
+> fired and stays at ⅓.
+>
+> ### A4 — move the discriminator from geometry to colour
+>
+> **Authorised.** The property we care about is *is this pixel background-contaminated*. We have
+> been testing a geometric proxy for it — distance to a boundary — and the proxy fails exactly
+> where the subject is thin. The background-ΔE probe tests the property directly, is already
+> computed per sample, and separates cleanly on this twin: contaminated tendrils sit within
+> ΔE 10, real subject at median ΔE ~25.
+>
+> Accept a twin sample on its distance from the twin's **own** background colour, at any
+> structure width; keep whatever residual absolute floor pure antialiasing turns out to need,
+> measured rather than assumed.
+>
+> **Gate A4 on its failure mode, which is a different subject.** This discriminator degrades
+> when a subject's material approaches its background — and this pipeline has a subject
+> staged for exactly that: **E04's galleon, grey on grey.** Before applying the rule, measure
+> the separation between the twin's subject colours and its background and **halt if there is
+> no gap**. Report the separation with every run so a future subject fails visibly rather than
+> silently.
+>
+> **Derive the threshold from the measured bimodality; do not pick it.** The gap between ~10 and
+> ~25 on this twin is the evidence. A number chosen inside a measured gap is defensible; a
+> number chosen because it worked is the seventh mis-specified condition.
+>
+> **A structural alternative, named and not specified.** Contamination is only ambiguous because
+> the twin's background is flat grey and so are some of its materials. Rendering the clay
+> against a background no subject material uses would eliminate the ambiguity rather than gate
+> it — this repo's stated preference. It is **not** free: the diffusion latent comes from the
+> untouched render, so the background colour reaches the twin and would change its appearance.
+> A candidate for its own arm, with its own before/after, not a rider on A4.
+>
+> **Front's 633,518 stays unbanked**, as the executor reported it. A partial from a halted run
+> is not a result.
+
 ## 5. What this does not settle
 
 Whether ~40–53% reference coverage is *enough* for the Director to accept the asset is not a

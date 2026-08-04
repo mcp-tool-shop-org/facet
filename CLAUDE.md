@@ -115,6 +115,22 @@ background colour. A2 admitted 257,506 texels at median ΔE 38.31 from backgroun
 within ΔE 10 — cleaner than the set already trusted. That is what makes a widening adoptable
 rather than merely larger.
 
+**A guard whose stated reason is wrong may still be load-bearing for a reason nobody wrote
+down.** The edge erosion justified itself with a comparison measured against the wrong objects
+— and was simultaneously removing background-contaminated tendrils from the twin's mask, which
+nothing in the repo had noticed and no comment mentioned. Voiding a justification is not
+grounds for deleting a guard; it is grounds for **measuring what the guard actually removes**.
+Take it out in a run you are prepared to throw away, and look at what comes back.
+
+**Test the property, not a geometric proxy for it.** The question was *is this pixel
+background-contaminated*. The pipeline asked *is this pixel near a boundary*, which is a proxy
+that fails precisely where the subject is thin — a 1–2 px structure is entirely boundary, so
+half-width turns out to measure what fraction of a structure is edge rather than how thin it
+is. Contamination concentrated 200× in the thinnest strata while being 0.5% of the mask
+overall, invisible in aggregate for four experiments. When the property is directly
+measurable, measure it; a proxy inherits every failure mode of the thing it stands in for and
+adds its own.
+
 **Put the andon on the direction the invariant does not bound.** When a change introduces an
 invariant, that invariant forecloses one failure direction *by construction* — so a halt aimed
 there fires on correct work while the live risk goes unwatched. A3 bounded over-erosion with
