@@ -176,6 +176,13 @@ def emit(yaw, el, tag="job"):
     Image.fromarray((render * 255).round().astype(np.uint8)).save(
         os.path.join(outdir, "render.png"))
     Image.fromarray((hm * 255).astype(np.uint8)).save(os.path.join(outdir, "mask.png"))
+    # THE GEOMETRY HIT MASK (E08 Amendment 32). emit RENDERED the figure, so it knows
+    # exactly where surface is — no keying, no threshold, no dependence on how the brush
+    # lit anything. commit intersects the brush output's keyed mask with this before its
+    # distance transform, which is Amendment 26's fix at this site: paint on no surface
+    # cannot be asked whether it is trustworthy, and must not set the boundary of a
+    # distance field that decides trust for texels that DO exist.
+    Image.fromarray((hit * 255).astype(np.uint8)).save(os.path.join(outdir, "hit.png"))
     if args.thin_extent > 0.0:
         Image.fromarray((thin * 255).astype(np.uint8)).save(
             os.path.join(outdir, "thin.png"))
@@ -235,8 +242,64 @@ def commit(edited_path, cam_path):
     # first full loop). Same guard family as project_twins' stage-1 fix.
     c8 = np.concatenate([edited[:8, :8].reshape(-1, 3), edited[:8, -8:].reshape(-1, 3)])
     bg = np.median(c8, axis=0)
+    # ANDON, IN THE TOOL THAT PERFORMS THE IRREVERSIBLE STEP (E08 Amendment 32). The bg
+    # estimator above reads exactly these 8x8 corners; if the inpaint moved them, the
+    # estimator's operand is not the emitted backdrop and everything downstream keys off a
+    # colour the pipeline did not choose. This check CANNOT be walked past by a shell — it
+    # was a separate script once, a chained call skipped it after it fired, and 47,020
+    # texels committed behind a fired gate. A gate a scripting accident can separate from
+    # the action it gates is not a gate.
+    ep_dir = os.path.dirname(os.path.abspath(edited_path))
+    rpath = os.path.join(ep_dir, "render.png")
+    if os.path.exists(rpath):
+        emr = np.asarray(Image.open(rpath).convert("RGB"), dtype=np.float32) / 255.0
+        assert emr.shape == edited.shape, (
+            f"ANDON: edited {edited.shape} != emitted {emr.shape} — the brush resized the "
+            f"frame, so nothing maps back")
+        c8e = np.concatenate([emr[:8, :8].reshape(-1, 3), emr[:8, -8:].reshape(-1, 3)])
+        d_corner = float(np.abs(np.median(c8e, axis=0) - bg).max() * 255.0)
+        assert d_corner <= 1.0, (
+            f"ANDON: the 8x8 corner medians the background estimator reads moved "
+            f"{d_corner:.2f} levels between the emitted render and the brush output. The "
+            f"estimator's operand is no longer the emitted backdrop; its key, its erosion "
+            f"and every texel colour downstream are keyed off a colour the pipeline did "
+            f"not choose. HALT.")
+        # DEMOTED TO A DIAGNOSTIC (E08 Amendment 32). The whole-image outside-figure
+        # residual was a halt for exactly one stroke; the intersection below forecloses the
+        # direction it watched, and a halt on a foreclosed direction fires on correct work
+        # (A26/A27, third instance). Its verdict on stroke 7 AS COMMITTED stands unrevised.
+        obg = np.abs(emr - 0.42).max(axis=-1) < (1.5 / 255.0)
+        out_m = maximum_filter((~obg).astype(np.float32), size=9) < 0.5
+        if out_m.any():
+            r_out = np.abs(edited - emr).max(axis=-1)[out_m]
+            print(f"[commit] diagnostic — outside-figure residual mean "
+                  f"{r_out.mean() * 255:.3f} lv, max {r_out.max() * 255:.1f} lv, "
+                  f"over-4lv {int((r_out > 4 / 255).sum()):,} px  (NOT a halt)", flush=True)
     fm_e = minimum_filter(
         (np.abs(edited - bg).max(axis=-1) > 0.06).astype(np.float32), size=5)
+    # ⚠ THE A26 FIX AT THIS SITE (E08 Amendment 32, the sixth keyed-mask distance transform).
+    # Intersect the brush output's keyed figure with the GEOMETRY emit rendered. Measured
+    # trigger: stroke 7's elevated camera saw through the gap between the raised greatsword
+    # and the head, the inpaint filled that pocket at 84.5 levels, keying put it in `fm_e`,
+    # and connected near the rim it inflates dist_e — weakening the very erosion that
+    # decides commit-trust, exactly where the sword meets the head. Same object as the
+    # twin_6 cast shadow, same fix. Geometry has no threshold and no dependence on lighting.
+    hpath = os.path.join(ep_dir, "hit.png")
+    if os.path.exists(hpath):
+        hitm = (np.asarray(Image.open(hpath).convert("L"), dtype=np.float32) / 255.0) > 0.5
+        n0 = int((fm_e > 0.5).sum())
+        fm_e = ((fm_e > 0.5) & hitm).astype(np.float32)
+        n1 = int((fm_e > 0.5).sum())
+        # ASCII ONLY IN PRINTS. Fourth time this session a non-cp1252 glyph in a print has
+        # raised UnicodeEncodeError on a Windows console — and this one crashed commit
+        # mid-replay on all six strokes. The comment lives here as well as in the three
+        # diagnostics that hit it first, because a note in another file did not help.
+        print(f"[commit] trust mask AND geometry: {n0:,} -> {n1:,} px "
+              f"(-{n0 - n1:,} keyed on no surface)", flush=True)
+    else:
+        print(f"[commit] NOTE: no hit.png beside {os.path.basename(edited_path)} — this "
+              f"job predates Amendment 32's emit; the trust mask is NOT intersected",
+              flush=True)
     dist_e = distance_transform_edt(fm_e > 0.5).astype(np.float32)
     ok = bilin(dist_e, px, py) >= args.edge_dist
     hidx, px, py = hidx[ok], px[ok], py[ok]

@@ -2177,6 +2177,53 @@ ceiling and ~79% is the ceiling at any count tested. The honest framing of E08's
 > accordingly, and it is already the named post-Gate-1 headline. A reach ceiling is not a
 > delivery forecast; the record now says so where it first said otherwise.
 
+> ### Amendment 33 (advisor, 2026-08-04) — the replay stands as the baseline. The gate's premise was mine, and it was wrong the same way twice.
+>
+> **Ruled: reading 1. The fixed-tool replay — 719,740 holes, commits 2,352 / 3,781 / 2,013 /
+> 4,103 / 6,526 / 10,636-class per the restated table — is the of-record baseline.** The 237
+> texels the intersection removed were trusted only through keyed rim spill: paint pixels
+> sitting 1 px outside geometry — antialiased blend pixels, part backdrop by construction,
+> exactly the white-fleck class the guard exists for — holding `dist_e` up for texels
+> inboard. The guard's threshold did not change; **its operand was corrected**, and under
+> the corrected operand the guard's own unchanged rule rejects them. This is R1's adoption
+> logic verbatim: losses only (zero gains — the deltas are all non-positive and
+> 155 + 78 + 4 = 237 = the differing-texel count exactly, so nothing offset), fully
+> localized to the mechanism, direction consistent with every prior measurement of this
+> operand family. And it brings stage 2 into the regime stage 1 already lives in: trust
+> bounded by geometry, everywhere, one rule.
+>
+> **The byte-equality condition is withdrawn as mis-derived — ledger seventeen, mine.** I
+> reasoned *flat backdrop → the intersection must be a no-op*. Flatness governs whether the
+> background **estimator** is right; it says nothing about whether a threshold-plus-erosion
+> boundary lands on geometry's boundary. Those are different objects, and I have now
+> mis-predicted this same operand family twice (A26's direction clause, A32's no-op
+> premise) for the same underlying reason: **the distance transform's global sensitivity to
+> local boundary edits is counter-intuitive** — 32 px of mask move 155 texels — and I keep
+> predicting it instead of deciding on its measurements. What replaces byte-equality is
+> what the replay actually delivered, which is *stronger*: emits byte-identical (state
+> advancement proven independently of the finding), the delta characterized to closing
+> arithmetic, and every removed pixel at median 1.0 / max 1 px outside geometry.
+> Byte-equality would have proven the fix inert; this proves it active exactly where its
+> mechanism says and nowhere else.
+>
+> **Halting was still right.** The gate's premise was wrong; the gate's *authority* was not.
+> It surfaced a falsified advisor prediction with the evidence attached, which is its job.
+> Fault isolation is endorsed by name: the script crashes were fixed and the emits proven
+> byte-identical *before* the finding was claimed, so the 237 is unconfounded — and the
+> non-ASCII-in-`print` class (four this session) gets a structural end: **a post-Gate-1
+> one-liner lint, tools/*.py print statements are ASCII-only.** Comments elsewhere did not
+> help; a check will.
+>
+> **Reading 3 is banked, not chosen:** the 155-per-32 lever ratio is the `edge_dist = 4.0`
+> global constant showing its arm, recorded into the A3-cap arm's file alongside its other
+> instances. Not today.
+>
+> **Forward, unchanged from A32 with the baseline restated:** re-commit stroke 7 from its
+> existing generation through the fixed tool (report the count against the voided 47,020) →
+> stroke 8, the one remaining cloud call → finalize → pack → renders → **the Gate 1
+> sheet.** The sequence table restates on the fixed-tool numbers; every "holes after"
+> downstream reads from 719,740. Amendment 31's standing authorization continues.
+
 ## 5. What this does not settle
 
 Whether ~40–53% reference coverage is *enough* for the Director to accept the asset is not a
