@@ -92,3 +92,69 @@ softened. The null control published with the one place it does not collapse cle
 reporting"* — and the 0.003% numeric coincidence flagged so nobody builds on it. Six of
 nine predictions wrong, every one reported with its reason. **That is what a falsified
 prior is supposed to look like from the inside.**
+
+---
+
+## Ruling 2 (advisor, 2026-08-04) — Tasks 2 and 3 ratified. The profile-purity check is standing, the prompt finding is the headline, and the watchdog gap leaves this repo.
+
+**Both tasks are ratified.** Three byte-identity anchors at zero differing pixels — including
+an 8-camera invocation that had never been written down, reconstructed and verified against
+the banked atlas *before* any profile existed, which is the anchor-first discipline applied
+without being asked. 115 constants classified with none unplaced. Three galleons
+reconstructed at seed 42, measured identically, sheeted at full size, and the halt is at the
+designation gate where it belongs.
+
+### Ledger twenty — my gate was narrow, and the executor's near-miss walked through it
+
+The byte-identity gate I specified exercised **three tools of eleven**. The executor's
+`cull_unseen` error — writing the character's ten cameras over a deliberately denser 24-yaw
+safety superset — would have narrowed a margin into a subject list, **and my gate could not
+have fired**, because nothing in the dispatch re-runs that tool. Caught by reading, then
+made mechanical: `e04_profile_check.py` compares every profile value against its flag's
+source default across all tools at once. **Adopted as the standing profile-purity gate.**
+Byte-identity proves the anchored path did not move; the source-default comparison proves
+the *unanchored* paths did not either. Two gates, two failure modes, keep both.
+
+### The finding that justifies the whole extraction
+
+`restylize_views` and `texpass_brush` both defaulted `--prompt` to **this character's
+literal identity string** — in the repo whose central measured result is that identity
+belongs to the prompt. Harmless on the accepted route, which passes prompts from a file;
+**not harmless for a galleon run without `--prompts`**, which would have asked the cloud
+for a burly bald warrior with a long red beard. The exact accident class the architecture
+exists to kill, sitting in shared tools as a default, found by the discipline built to find
+it. Relocated same-value, so purity holds.
+
+Also ratified: the owner-map sidecar paying on its first day — Task 1's ownership
+reconstruction corrected in place by **one texel of 2,402,810** (a float64 tie that the
+tool's float32 comparison keeps with the earlier view). A correction that small, made that
+precisely, is the record working.
+
+### The watchdog finding is a real protection gap, and it is not facet's to fix
+
+**153 breach detections in five minutes, VRAM pinned at 31,851–31,903 MiB, zero kills** —
+the kill list is an allow-list of four interpreters, the holder wasn't on it, and the log
+never records *what* held the memory. Until that is fixed, the watchdog protects against
+exactly four processes and is blind spectacle against everything else (ollama's
+`llama-server` runs on this rig and is not listed). Spawned as its own task outside this
+repo: log per-process VRAM at every breach so the next burst names its culprit, and
+escalate loudly when an abort kills nothing. The allow-list's membership is the Director's
+design call, not mine — the task proposes options, the logging is unconditional.
+
+Recorded, not actioned mid-arc: `trellis2` reaches `sys.path` through a **retired repo's
+checkout** — a proper install into `trellis2-env` is a rig chore for a quiet moment, and
+the runner carries the `PYTHONPATH` with the reason meanwhile. And the backend record —
+`flash_attn` loaded where `sdpa` was requested — is endorsed as written: **what ran is what
+the log says**, and E02's recorded `sdpa` must not be read onto any of today's meshes.
+
+### The designation, cleared to the Director
+
+Three sheets go to him at full size with the measured differences beside them and **no
+ranking**: shells 237 / 274 / 512 (rigging returns as disconnected filaments; a downstream
+welding question, not a quality score), largest shell 88.0–92.9%, all three wider than tall
+(1.041–1.114 — the first measured support for `fit_axis: width`), and no shared bow
+orientation, so "front" is declared per candidate at designation. **Rejecting all three is
+a legitimate outcome** — the clays are cheap to re-concept, and a designation is not a
+settlement for whatever arrived. After his pick: the advisor authors the galleon's identity
+fixture and palette bands, and `ship.json`'s suspended values get measured from the
+designated mesh.
