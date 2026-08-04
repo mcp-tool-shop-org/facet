@@ -1,0 +1,174 @@
+{
+ "palette": "E:\\AI\\facet\\docs\\experiments\\E08-W3-palette.json",
+ "min_chroma": 12.0,
+ "bands": [
+  {
+   "name": "warm",
+   "lo": 0.0,
+   "hi": 105.0
+  },
+  {
+   "name": "green",
+   "lo": 125.0,
+   "hi": 210.0
+  }
+ ],
+ "gate": {
+  "max_pct": 0.5,
+  "max_blob_px": 800
+ },
+ "results": [
+  {
+   "image": "E:\\AI\\training\\facet_E08\\ARMB\\twins\\twin_0.png",
+   "figure_px": 146356,
+   "offpalette_px": 218,
+   "offpalette_pct": 0.149,
+   "largest_blob_px": 15,
+   "pass": true,
+   "dominant": {
+    "hue_lo": 110.0,
+    "hue_hi": 120.0,
+    "share_of_offpalette": 48.2,
+    "median_chroma": 12.9,
+    "median_rgb": [
+     34,
+     38,
+     19
+    ]
+   }
+  },
+  {
+   "image": "E:\\AI\\training\\facet_E08\\ARMB\\twins\\twin_1.png",
+   "figure_px": 149780,
+   "offpalette_px": 194,
+   "offpalette_pct": 0.1295,
+   "largest_blob_px": 10,
+   "pass": true,
+   "dominant": {
+    "hue_lo": 110.0,
+    "hue_hi": 120.0,
+    "share_of_offpalette": 44.3,
+    "median_chroma": 15.0,
+    "median_rgb": [
+     39,
+     45,
+     22
+    ]
+   }
+  },
+  {
+   "image": "E:\\AI\\training\\facet_E08\\ARMB\\twins\\twin_2.png",
+   "figure_px": 90553,
+   "offpalette_px": 1073,
+   "offpalette_pct": 1.1849,
+   "largest_blob_px": 402,
+   "pass": false,
+   "dominant": {
+    "hue_lo": 110.0,
+    "hue_hi": 120.0,
+    "share_of_offpalette": 43.0,
+    "median_chroma": 22.2,
+    "median_rgb": [
+     73,
+     82,
+     46
+    ]
+   }
+  },
+  {
+   "image": "E:\\AI\\training\\facet_E08\\ARMB\\twins\\twin_3.png",
+   "figure_px": 120439,
+   "offpalette_px": 401,
+   "offpalette_pct": 0.3329,
+   "largest_blob_px": 104,
+   "pass": true,
+   "dominant": {
+    "hue_lo": 100.0,
+    "hue_hi": 110.0,
+    "share_of_offpalette": 45.1,
+    "median_chroma": 19.7,
+    "median_rgb": [
+     59,
+     64,
+     32
+    ]
+   }
+  },
+  {
+   "image": "E:\\AI\\training\\facet_E08\\ARMB\\twins\\twin_4.png",
+   "figure_px": 146356,
+   "offpalette_px": 90,
+   "offpalette_pct": 0.0615,
+   "largest_blob_px": 5,
+   "pass": true,
+   "dominant": {
+    "hue_lo": 110.0,
+    "hue_hi": 120.0,
+    "share_of_offpalette": 40.0,
+    "median_chroma": 14.9,
+    "median_rgb": [
+     36,
+     40,
+     17
+    ]
+   }
+  },
+  {
+   "image": "E:\\AI\\training\\facet_E08\\ARMB\\twins\\twin_5.png",
+   "figure_px": 149780,
+   "offpalette_px": 462,
+   "offpalette_pct": 0.3085,
+   "largest_blob_px": 101,
+   "pass": true,
+   "dominant": {
+    "hue_lo": 350.0,
+    "hue_hi": 360.0,
+    "share_of_offpalette": 53.7,
+    "median_chroma": 14.9,
+    "median_rgb": [
+     50,
+     37,
+     32
+    ]
+   }
+  },
+  {
+   "image": "E:\\AI\\training\\facet_E08\\ARMB\\twins\\twin_6.png",
+   "figure_px": 90553,
+   "offpalette_px": 603,
+   "offpalette_pct": 0.6659,
+   "largest_blob_px": 345,
+   "pass": false,
+   "dominant": {
+    "hue_lo": 110.0,
+    "hue_hi": 120.0,
+    "share_of_offpalette": 39.5,
+    "median_chroma": 22.2,
+    "median_rgb": [
+     102,
+     116,
+     71
+    ]
+   }
+  },
+  {
+   "image": "E:\\AI\\training\\facet_E08\\ARMB\\twins\\twin_7.png",
+   "figure_px": 120439,
+   "offpalette_px": 121,
+   "offpalette_pct": 0.1005,
+   "largest_blob_px": 13,
+   "pass": true,
+   "dominant": {
+    "hue_lo": 110.0,
+    "hue_hi": 120.0,
+    "share_of_offpalette": 45.5,
+    "median_chroma": 16.0,
+    "median_rgb": [
+     42,
+     46,
+     23
+    ]
+   }
+  }
+ ]
+}
