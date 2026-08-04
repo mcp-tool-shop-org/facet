@@ -1,98 +1,199 @@
 {
-  "name": "ship",
-  "subject": "E04's galleon. DESIGNATED 2026-08-04: candidate 00006, mesh galleon_00006_raw.glb, TRELLIS.2 1024_cascade seed 42 from galleon_clay_p1_00006_.png. Identity fixture: canon/GALLEON-IDENTITY.md.",
-  "provenance": "Suspended values MEASURED from the designated mesh 2026-08-04 (E04 Task 4a) and the backdrop derived (Task 4b). Values still absent are absent on purpose - see _still_suspended. Nothing here has textured anything yet.",
-
-  "_status": "MEASURED, NOT YET EXERCISED. Every value below was derived from this mesh's own geometry or from the fixture, never inherited from the character. No twin, no atlas and no texture pass has run, so nothing here is validated by an outcome - only by its derivation.",
-
-  "_fixtures": {
-    "identity": {"path": "canon/GALLEON-IDENTITY.md",
-      "why": "The twelve named elements. Identity belongs to the prompt; this file IS the ship.",
-      "from": "E04 Ruling 3, S1 corrected in place by Ruling 4"},
-    "materials_estimated": {"path": "canon/galleon-materials-estimated.json",
-      "why": "Expected sRGB per named element, ESTIMATED from the fixture's words - not measured. Consumed by the backdrop derivation and superseded the moment the styled target pair exists.",
-      "from": "E04 Task 4b"},
-    "palette": {"path": null, "status": "REQUIRED, NOT WRITTEN",
-      "why": "Task 4d. Bands derive from the fixture's named materials and cross-check against the styled target pair, never against the twins they gate. The W3 palette must never be pointed at a ship."},
-    "twin_prompts": {"path": null, "status": "REQUIRED, NOT WRITTEN", "why": "Task 4c authors these from the fixture."},
-    "brush_prompts": {"path": null, "status": "REQUIRED, NOT WRITTEN", "why": "Per view, after the route runs."}
+ "name": "ship",
+ "subject": "E04's galleon. DESIGNATED 2026-08-04: candidate 00006, mesh galleon_00006_raw.glb, TRELLIS.2 1024_cascade seed 42 from galleon_clay_p1_00006_.png. Identity fixture: canon/GALLEON-IDENTITY.md.",
+ "provenance": "Suspended values MEASURED from the designated mesh 2026-08-04 (E04 Task 4a) and the backdrop derived (Task 4b). Values still absent are absent on purpose - see _still_suspended. Nothing here has textured anything yet.",
+ "_status": "MEASURED, NOT YET EXERCISED. Every value below was derived from this mesh's own geometry or from the fixture, never inherited from the character. No twin, no atlas and no texture pass has run, so nothing here is validated by an outcome - only by its derivation.",
+ "_fixtures": {
+  "identity": {
+   "path": "canon/GALLEON-IDENTITY.md",
+   "why": "The twelve named elements. Identity belongs to the prompt; this file IS the ship.",
+   "from": "E04 Ruling 3, S1 corrected in place by Ruling 4"
   },
-
-  "_gates": {
-    "mesh_gate": {"value": "none", "why": "gate_mesh.py's head/shoulder logic is meaningless on a ship. An explicit decision, not an omission.", "from": "profiles-design.md; E04 Gate 0"},
-    "head_rect_metrics": {"value": false, "why": "No face rect, so mesh_stats' density and curvature columns have no referent. It printed its front-view-rect warning on all three candidates, which is the character instrument correctly noticing it is not looking at a character.", "from": "E04 Gate 0"},
-    "reg_iou_min": {"value": null, "status": "SUSPENDED",
-      "why": "The character's 0.80 came from BOTH SIDES of a measured line on W3's twins (adjudicated 0.8329-0.9533 against failures <= 0.578). This subject has neither distribution until twins exist. Run with the halt suspended and REPORT the IoU per view; derive from this ship's own spread afterwards.",
-      "from": "E08 Amendment 27; CLAUDE.md 'suspend rather than invent one'"},
-    "bbox_tol": {"value": null, "status": "SUSPENDED",
-      "why": "0.25 is W3 data and is already only a diagnostic on the character, because figure area swings 1.65x with camera geometry there. A ship's swing between bow-on and broadside is larger still - measured on this mesh, the projected width goes 0.9987 broadside to 0.5121 bow-on, a 1.95x swing.",
-      "from": "E08 Amendment 27; E04 Task 4a"}
+  "materials_estimated": {
+   "path": "canon/galleon-materials-estimated.json",
+   "why": "Expected sRGB per named element, ESTIMATED from the fixture's words - not measured. Consumed by the backdrop derivation and superseded the moment the styled target pair exists.",
+   "from": "E04 Task 4b"
   },
-
-  "tools": {
-
-    "verify/turn_render.py": {
-      "w": {"value": 1066, "why": "MEASURED. The rotating silhouette's widest projected width is 0.9987 at yaw 0 and the height is 0.9598, so the frame aspect is 1.0405 and 1024 * 1.0405 = 1066. Checked rather than assumed: I expected a 45-degree view to be widest (a box presents its diagonal) and it is NOT - the hull tapers at both ends, so broadside is genuinely the widest and the bounding box understates by 0.00%.", "from": "E04 Task 4a"},
-      "h": {"value": 1024, "why": "Height reference; the aspect above is expressed against it.", "from": "E04 Task 4a"},
-      "views": {"value": "0,1,2,3,4,5,6,7", "why": "Eight eye-level yaws. Kept at eight because the elevated cameras are where this subject's coverage is bought, not the eye-level count - see cameras below.", "from": "E04 Task 4a"},
-      "step": {"value": 45.0, "why": "Degrees per view index.", "from": "E04 Task 4a"},
-      "yaw-offset": {"value": 0.0, "why": "MEASURED, and deliberately zero. The bow is the -x end (2,308 verts, beam 0.103 - a thin low bowsprit) and the stern is +x (12,748 verts, beam 0.170, carrying the spired turret), confirmed by eye on the clay renders where the turret sits image-right at yaw 0. So view 0 is the port broadside, view 2 is stern-on, view 6 is bow-on. Left at zero because the broadside is a ship's maximum-information view and rotating buys nothing measurable - and the camera is what would rotate, never the mesh (to_mesh() destroys authored vertex normals).", "from": "E04 Task 4a"}
-    },
-
-    "silhouette_masks.py": {
-      "tag": {"value": "galleonclay", "why": "Filename stem for this subject's silhouettes.", "from": "E04 Task 2"},
-      "views": {"value": "0,1,2,3,4,5,6,7", "why": "Matches the eye-level camera set.", "from": "E04 Task 4a"},
-      "step": {"value": 45.0, "why": "Degrees per view index.", "from": "E04 Task 4a"},
-      "aspect": {"value": "1066,1024", "why": "The measured frame aspect. Landscape, width-fit - the design note's predicted stressor, now a measurement.", "from": "E04 Task 4a"}
-    },
-
-    "project_twins.py": {
-      "step": {"value": 45.0, "why": "Degrees per view index.", "from": "E04 Task 4a"},
-      "aspect": {"value": "1066,1024", "why": "The twins are generated at this aspect and the projection derives its horizontal extent from it; the two must agree.", "from": "E04 Task 4a"}
-    },
-
-    "texpass_iter.py": {
-      "thin-extent": {"value": 0.010,
-        "why": "MEASURED on this mesh, by the same method the character's 0.030 came from - the smallest value that fills the thin structure solid, judged on the artifact. Three independent lines agree: (1) the extent DENSITY has its thin peak at 0.0015-0.0045, which at this render scale is 1.3-4 px, matching rigging diameters; (2) rendered thin-masks at 0.005 leave the rigging PATCHY and at 0.010 it is solid, because a rope crossing the ray obliquely presents more extent than its diameter; (3) the cross-view cost at 0.010 is 10.20% of visible area withheld on EVERY view, against 15.25% at the character's 0.030. NOT an antimode: the density falls steeply into a plateau rather than a valley, so this is a visual-solidity determination like W3's, not a discovered boundary. The cost curve is published in the report so it can be moved.",
-        "from": "E04 Task 4a"}
-    },
-
-    "restylize_views.py": {
-      "_backdrop_is_a_PROMPT_word_not_a_flag": "S-backdrop is delivered by the prompt text ('plain white background'), not by any argument here. --bg is the CLAY render's compositing colour for the control image, a different operand entirely - E08's parked blue-background arm changed that one and is not reopened.",
-      "aspect": {"value": "1066,1024", "why": "Twin generation aspect, matching the measured frame.", "from": "E04 Task 4a"}
-    }
+  "palette": {
+   "path": null,
+   "status": "REQUIRED, NOT WRITTEN",
+   "why": "Task 4d. Bands derive from the fixture's named materials and cross-check against the styled target pair, never against the twins they gate. The W3 palette must never be pointed at a ship."
   },
-
-  "cameras": {
-    "_measured_by_raycast_deck_coverage": "The design note flagged 'decks need looking into' as a real design question. Made a number: upward-facing surface is identified by normal (normal_z > 0.5) and each candidate set scored by what fraction of that surface's AREA it first-hits. Area, not face count - a deck is a few large triangles and the rigging is thousands of tiny ones, so counting would have measured the rigging and called it deck.",
-    "eye_level": {"value": [0, 45, 90, 135, 180, 225, 270, 315],
-      "why": "Eight yaws at elevation 0. On their own they reach only 30.17% of upward-facing area - a ship's decks are largely invisible from eye level, which is the measurement behind the design note's intuition.",
-      "from": "E04 Task 4a"},
-    "elevated": {"value": [[0, 40], [180, 40]],
-      "why": "MEASURED as a union, not per-elevation. Adding this bow/stern pair at 40 degrees takes deck coverage 30.17% -> 49.58%, the largest gain available from two cameras. Three findings decided it: (a) the pair is worth +19.41 points, far more than the character's elevated pair bought there; (b) bow/stern BEATS beam - the same pair at 90/270 reaches only 41.93%, because looking along the ship's length sees down the decks while looking across the beam is blocked by hull sides and sails; (c) elevation is nearly free between 30 and 55 (49.21 / 49.58 / 49.15) so 40 is chosen as the measured peak rather than by inheriting the character's 55.",
-      "from": "E04 Task 4a"},
-    "_considered_and_not_adopted": {
-      "quad at 40 (adds 90/270)": "53.21% deck, +3.63 over the pair, for two more cameras and two more brush strokes. Available if E04 wants it; the marginal camera buys a fifth of what the first pair did.",
-      "single top-down (0 @ 90)": "42.97% deck for ONE camera - the most efficient single addition measured, but it caps lower than the pair and sees only 12.85% of total surface.",
-      "character's 0/180 @ 55": "49.15% - within 0.43 points of the adopted pair. The character value is not WRONG here, it is simply not derived; 40 is."
-    },
-    "_ceiling_worth_knowing": "Deck coverage plateaus near 53% even at twelve cameras. Roughly half of this subject's upward-facing surface is not reachable from any exterior camera at these angles - it is under sails, yards and tops. That is a fact about the subject, and it means dilation and the brush will serve a large share of the deck however the camera set is chosen."
+  "twin_prompts": {
+   "path": null,
+   "status": "REQUIRED, NOT WRITTEN",
+   "why": "Task 4c authors these from the fixture."
   },
-
-  "backdrop": {
-    "value": "plain white background",
-    "rgb255_target": [255, 255, 255],
-    "why": "DERIVED (Task 4b), not inherited. The key is max-channel |pixel - backdrop| > 0.06 and the backdrop is the only free operand, so it is chosen to maximise the minimum distance to every declared material, weighted toward the thin elements that antialias toward it. White scores raw-min 0.4275 (nearest: G10 pale deck) and thin-min 0.7176, against W3's inherited mid grey at raw-min 0.1725 and thin-min 0.2588 - a 2.5x improvement on the quantity that killed the blade. The dark thin elements this is chosen for sit furthest of all: G3 tarred strakes 0.8902, G9 rigging 0.8510, G8 cannon 0.8275.",
-    "from": "E04 Task 4b",
-    "_the_metric_optimum_was_rejected_and_why": "Unconstrained, the metric picks saturated blue rgb(0,0,245) at weighted-min 0.3882 - it beats white by 8%, and it is disqualified twice over: the fixture requires avoiding G11's declared sea-blue, and a saturated backdrop bleeds into a diffusion image. The pre-registered tension (a metric-optimal backdrop being unusably coloured) dissolved rather than resolved: the practical answer is a plain neutral word.",
-    "_weakest_link_named": "The material colours are ESTIMATES from the fixture's words. Re-run e04_backdrop.py against measured colours once the styled target pair exists; if the pair disagrees, the pair wins."
-  },
-
-  "_still_suspended": {
-    "framing margin": "Derived as 1.2528 for a 1066x1024 frame (see the report), but NOT written into a tool: turn_render hardcodes ortho_scale = size_z * 1.204 with no fit-axis knob, so width-fit cannot be expressed as a profile value. Recorded as the design note's predicted finding - a change needed OUTSIDE the profile means something in the code was never a principle.",
-    "allocation": "No privileged region has been chosen. A galleon may deserve one at the stern castle where the carved detail is, or 'none' may be right. Not decided, not guessed.",
-    "generation recipe": "seed/steps/cfg/denoise/lora-w/cn-strength await E04's own anchor. Task 4c records what it uses.",
-    "acceptance": "facing floors and the edge-dist family, including edge-ref (700.0 is literally one character's figure width in twin pixels), await twins on this subject.",
-    "spiral order": "The brush stroke order depends on where stage 1 lands paint, which needs twins."
+  "brush_prompts": {
+   "path": null,
+   "status": "REQUIRED, NOT WRITTEN",
+   "why": "Per view, after the route runs."
   }
+ },
+ "_gates": {
+  "mesh_gate": {
+   "value": "none",
+   "why": "gate_mesh.py's head/shoulder logic is meaningless on a ship. An explicit decision, not an omission.",
+   "from": "profiles-design.md; E04 Gate 0"
+  },
+  "head_rect_metrics": {
+   "value": false,
+   "why": "No face rect, so mesh_stats' density and curvature columns have no referent. It printed its front-view-rect warning on all three candidates, which is the character instrument correctly noticing it is not looking at a character.",
+   "from": "E04 Gate 0"
+  },
+  "reg_iou_min": {
+   "value": null,
+   "status": "SUSPENDED",
+   "why": "The character's 0.80 came from BOTH SIDES of a measured line on W3's twins (adjudicated 0.8329-0.9533 against failures <= 0.578). This subject has neither distribution until twins exist. Run with the halt suspended and REPORT the IoU per view; derive from this ship's own spread afterwards.",
+   "from": "E08 Amendment 27; CLAUDE.md 'suspend rather than invent one'"
+  },
+  "bbox_tol": {
+   "value": null,
+   "status": "SUSPENDED",
+   "why": "0.25 is W3 data and is already only a diagnostic on the character, because figure area swings 1.65x with camera geometry there. A ship's swing between bow-on and broadside is larger still - measured on this mesh, the projected width goes 0.9987 broadside to 0.5121 bow-on, a 1.95x swing.",
+   "from": "E08 Amendment 27; E04 Task 4a"
+  }
+ },
+ "tools": {
+  "verify/turn_render.py": {
+   "w": {
+    "value": 1066,
+    "why": "MEASURED. The rotating silhouette's widest projected width is 0.9987 at yaw 0 and the height is 0.9598, so the frame aspect is 1.0405 and 1024 * 1.0405 = 1066. Checked rather than assumed: I expected a 45-degree view to be widest (a box presents its diagonal) and it is NOT - the hull tapers at both ends, so broadside is genuinely the widest and the bounding box understates by 0.00%.",
+    "from": "E04 Task 4a"
+   },
+   "h": {
+    "value": 1024,
+    "why": "Height reference; the aspect above is expressed against it.",
+    "from": "E04 Task 4a"
+   },
+   "views": {
+    "value": "0,1,2,3,4,5,6,7",
+    "why": "Eight eye-level yaws. Kept at eight because the elevated cameras are where this subject's coverage is bought, not the eye-level count - see cameras below.",
+    "from": "E04 Task 4a"
+   },
+   "step": {
+    "value": 45.0,
+    "why": "Degrees per view index.",
+    "from": "E04 Task 4a"
+   },
+   "yaw-offset": {
+    "value": 0.0,
+    "why": "MEASURED, and deliberately zero. The bow is the -x end (2,308 verts, beam 0.103 - a thin low bowsprit) and the stern is +x (12,748 verts, beam 0.170, carrying the spired turret), confirmed by eye on the clay renders where the turret sits image-right at yaw 0. So view 0 is the port broadside, view 2 is stern-on, view 6 is bow-on. Left at zero because the broadside is a ship's maximum-information view and rotating buys nothing measurable - and the camera is what would rotate, never the mesh (to_mesh() destroys authored vertex normals).",
+    "from": "E04 Task 4a"
+   }
+  },
+  "silhouette_masks.py": {
+   "tag": {
+    "value": "galleonclay",
+    "why": "Filename stem for this subject's silhouettes.",
+    "from": "E04 Task 2"
+   },
+   "views": {
+    "value": "0,1,2,3,4,5,6,7",
+    "why": "Matches the eye-level camera set.",
+    "from": "E04 Task 4a"
+   },
+   "step": {
+    "value": 45.0,
+    "why": "Degrees per view index.",
+    "from": "E04 Task 4a"
+   },
+   "aspect": {
+    "value": "1066,1024",
+    "why": "The measured frame aspect. Landscape, width-fit - the design note's predicted stressor, now a measurement.",
+    "from": "E04 Task 4a"
+   }
+  },
+  "project_twins.py": {
+   "step": {
+    "value": 45.0,
+    "why": "Degrees per view index.",
+    "from": "E04 Task 4a"
+   },
+   "aspect": {
+    "value": "1066,1024",
+    "why": "The twins are generated at this aspect and the projection derives its horizontal extent from it; the two must agree.",
+    "from": "E04 Task 4a"
+   }
+  },
+  "texpass_iter.py": {
+   "thin-extent": {
+    "value": 0.01,
+    "why": "MEASURED on this mesh, by the same method the character's 0.030 came from - the smallest value that fills the thin structure solid, judged on the artifact. Three independent lines agree: (1) the extent DENSITY has its thin peak at 0.0015-0.0045, which at this render scale is 1.3-4 px, matching rigging diameters; (2) rendered thin-masks at 0.005 leave the rigging PATCHY and at 0.010 it is solid, because a rope crossing the ray obliquely presents more extent than its diameter; (3) the cross-view cost at 0.010 is 10.20% of visible area withheld on EVERY view, against 15.25% at the character's 0.030. NOT an antimode: the density falls steeply into a plateau rather than a valley, so this is a visual-solidity determination like W3's, not a discovered boundary. The cost curve is published in the report so it can be moved.",
+    "from": "E04 Task 4a"
+   }
+  },
+  "restylize_views.py": {
+   "_backdrop_is_a_PROMPT_word_not_a_flag": "S-backdrop is delivered by the prompt text ('plain white background'), not by any argument here. --bg is the CLAY render's compositing colour for the control image, a different operand entirely - E08's parked blue-background arm changed that one and is not reopened.",
+   "aspect": {
+    "value": "1066,1024",
+    "why": "Twin generation aspect, matching the measured frame.",
+    "from": "E04 Task 4a"
+   }
+  },
+  "cull_unseen.py": {
+   "_why_this_is_here": "E06 rule: the exterior visibility superset must COVER every production camera. The code default is a 24-yaw 15deg sweep plus 0,55 and 180,55 - it does NOT contain the ship's elevated +40 bow/stern pair, so the ship supplies its own list. The character path is untouched: no code default changed, so its cull output is unchanged BY CONSTRUCTION rather than by re-measurement.",
+   "production": {
+    "value": "0,0;15,0;30,0;45,0;60,0;75,0;90,0;105,0;120,0;135,0;150,0;165,0;180,0;195,0;210,0;225,0;240,0;255,0;270,0;285,0;300,0;315,0;330,0;345,0;0,40;180,40;0,55;180,55",
+    "why": "The code default's 24-yaw sweep and both elevated pairs, PLUS the ship's adopted 0/180 @ 40. A superset, never a narrowing - the classification must cover cameras nobody has added yet, which is why my Task 2 draft was wrong to write the subject's ten cameras here.",
+    "from": "E04 Step 0 item 2; E06 superset rule"
+   }
+  }
+ },
+ "cameras": {
+  "_measured_by_raycast_deck_coverage": "The design note flagged 'decks need looking into' as a real design question. Made a number: upward-facing surface is identified by normal (normal_z > 0.5) and each candidate set scored by what fraction of that surface's AREA it first-hits. Area, not face count - a deck is a few large triangles and the rigging is thousands of tiny ones, so counting would have measured the rigging and called it deck.",
+  "eye_level": {
+   "value": [
+    0,
+    45,
+    90,
+    135,
+    180,
+    225,
+    270,
+    315
+   ],
+   "why": "Eight yaws at elevation 0. On their own they reach only 30.17% of upward-facing area - a ship's decks are largely invisible from eye level, which is the measurement behind the design note's intuition.",
+   "from": "E04 Task 4a"
+  },
+  "elevated": {
+   "value": [
+    [
+     0,
+     40
+    ],
+    [
+     180,
+     40
+    ]
+   ],
+   "why": "MEASURED as a union, not per-elevation. Adding this bow/stern pair at 40 degrees takes deck coverage 30.17% -> 49.58%, the largest gain available from two cameras. Three findings decided it: (a) the pair is worth +19.41 points, far more than the character's elevated pair bought there; (b) bow/stern BEATS beam - the same pair at 90/270 reaches only 41.93%, because looking along the ship's length sees down the decks while looking across the beam is blocked by hull sides and sails; (c) elevation is nearly free between 30 and 55 (49.21 / 49.58 / 49.15) so 40 is chosen as the measured peak rather than by inheriting the character's 55.",
+   "from": "E04 Task 4a"
+  },
+  "_considered_and_not_adopted": {
+   "quad at 40 (adds 90/270)": "53.21% deck, +3.63 over the pair, for two more cameras and two more brush strokes. Available if E04 wants it; the marginal camera buys a fifth of what the first pair did.",
+   "single top-down (0 @ 90)": "42.97% deck for ONE camera - the most efficient single addition measured, but it caps lower than the pair and sees only 12.85% of total surface.",
+   "character's 0/180 @ 55": "49.15% - within 0.43 points of the adopted pair. The character value is not WRONG here, it is simply not derived; 40 is."
+  },
+  "_ceiling_worth_knowing": "Deck coverage plateaus near 53% even at twelve cameras. Roughly half of this subject's upward-facing surface is not reachable from any exterior camera at these angles - it is under sails, yards and tops. That is a fact about the subject, and it means dilation and the brush will serve a large share of the deck however the camera set is chosen."
+ },
+ "backdrop": {
+  "value": "plain white background",
+  "rgb255_target": [
+   255,
+   255,
+   255
+  ],
+  "why": "DERIVED (Task 4b), not inherited. The key is max-channel |pixel - backdrop| > 0.06 and the backdrop is the only free operand, so it is chosen to maximise the minimum distance to every declared material, weighted toward the thin elements that antialias toward it. White scores raw-min 0.4275 (nearest: G10 pale deck) and thin-min 0.7176, against W3's inherited mid grey at raw-min 0.1725 and thin-min 0.2588 - a 2.5x improvement on the quantity that killed the blade. The dark thin elements this is chosen for sit furthest of all: G3 tarred strakes 0.8902, G9 rigging 0.8510, G8 cannon 0.8275.",
+  "from": "E04 Task 4b",
+  "_the_metric_optimum_was_rejected_and_why": "Unconstrained, the metric picks saturated blue rgb(0,0,245) at weighted-min 0.3882 - it beats white by 8%, and it is disqualified twice over: the fixture requires avoiding G11's declared sea-blue, and a saturated backdrop bleeds into a diffusion image. The pre-registered tension (a metric-optimal backdrop being unusably coloured) dissolved rather than resolved: the practical answer is a plain neutral word.",
+  "_weakest_link_named": "The material colours are ESTIMATES from the fixture's words. Re-run e04_backdrop.py against measured colours once the styled target pair exists; if the pair disagrees, the pair wins."
+ },
+ "_still_suspended": {
+  "framing margin": "Derived as 1.2528 for a 1066x1024 frame (see the report), but NOT written into a tool: turn_render hardcodes ortho_scale = size_z * 1.204 with no fit-axis knob, so width-fit cannot be expressed as a profile value. Recorded as the design note's predicted finding - a change needed OUTSIDE the profile means something in the code was never a principle.",
+  "allocation": "No privileged region has been chosen. A galleon may deserve one at the stern castle where the carved detail is, or 'none' may be right. Not decided, not guessed.",
+  "generation recipe": "seed/steps/cfg/denoise/lora-w/cn-strength await E04's own anchor. Task 4c records what it uses.",
+  "acceptance": "facing floors and the edge-dist family, including edge-ref (700.0 is literally one character's figure width in twin pixels), await twins on this subject.",
+  "spiral order": "The brush stroke order depends on where stage 1 lands paint, which needs twins."
+ }
 }

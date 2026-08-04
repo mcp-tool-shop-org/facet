@@ -37,7 +37,14 @@ from scipy.ndimage import (distance_transform_edt, gaussian_filter, maximum_filt
                            minimum_filter)
 
 Image.MAX_IMAGE_PIXELS = None
-W, H = 752, 1024
+# FRAME FROM THE PROFILE (E04 Step 0 item 3). This was `W, H = 752, 1024` — one subject's
+# portrait framing, hardcoded in a shared tool, which is the same class of thing the profile
+# exercise exists to flush out. --aspect defaults to those exact values, so an unprofiled run
+# is unchanged; the ship supplies 1066,1024 from profiles/ship.json.
+# ⚠ --fit-axis travels with it: emit derives v_ext/h_ext the way turn_render and
+# silhouette_masks do, and all three must agree or the job frame and the mask disagree
+# (Ruling 6, measured at 4.68% on a landscape frame).
+# (set after parse_args below — args does not exist yet at this point in the file)
 D = 2.0
 
 ap = argparse.ArgumentParser()
@@ -58,6 +65,12 @@ ap.add_argument("--edge-dist", type=float, default=4.0,
 ap.add_argument("--bias", type=float, default=3e-3)
 ap.add_argument("--noffs", type=float, default=1.5e-3)
 ap.add_argument("--mask-dilate", type=int, default=9)
+ap.add_argument("--aspect", default="752,1024",
+                help="emit's job frame. Was hardcoded; defaults to the character's values "
+                     "so an unprofiled run is unchanged. Must match the twins' aspect.")
+ap.add_argument("--fit-axis", default="height", choices=["height", "width"],
+                help="MUST match turn_render and silhouette_masks for the same subject.")
+ap.add_argument("--margin", type=float, default=1.204, help="framing margin; must match.")
 ap.add_argument("--thin-extent", type=float, default=0.0,
                 help="emit: withhold from diffusion any pixel whose figure extent "
                      "ALONG THE VIEW RAY is below this (std-frame units, figure "
@@ -76,6 +89,7 @@ ap.add_argument("--thin-extent", type=float, default=0.0,
                      "distance at the figure's own bbox centre comes back POSITIVE. "
                      "Camera rays need neither a normal nor an interior.")
 args = ap.parse_args(subject_profile.bind(ap, "texpass_iter.py", None))
+W, H = (int(x) for x in args.aspect.split(","))
 
 S = args.state
 atlas = np.asarray(Image.open(os.path.join(S, "atlas.png")).convert("RGB"),
@@ -129,8 +143,16 @@ def emit(yaw, el, tag="job"):
     v, f, uv, rs = load_scene()
     blo, bhi = v.min(axis=0), v.max(axis=0)
     bmid = (blo + bhi) / 2
-    v_ext = (bhi[2] - blo[2]) * 1.204
-    h_ext = v_ext * (W / H)
+    # THE THIRD COPY OF THE FIT-AXIS BLOCK. turn_render.py and silhouette_masks.py carry the
+    # other two and all three must agree; a job frame that disagrees with the mask puts the
+    # brush's output back onto the atlas through a different projection than the one that
+    # emitted it. Same convention, same defaults.
+    if args.fit_axis == "height":
+        v_ext = (bhi[2] - blo[2]) * args.margin
+        h_ext = v_ext * (W / H)
+    else:
+        h_ext = max(bhi[0] - blo[0], bhi[1] - blo[1]) * args.margin
+        v_ext = h_ext * (H / W)
     cd, look, right, up = basis(yaw, el)
     xs = (np.arange(W) + 0.5) / W * h_ext - h_ext / 2
     ys = v_ext / 2 - (np.arange(H) + 0.5) / H * v_ext
