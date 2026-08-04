@@ -70,7 +70,10 @@ trustworthy*).
 
 ## Your task, in priority order
 
-### 1. THE CONTRADICTION TEST — highest priority, and it outranks everything below
+**Step 0 below the tasks comes first.** Nothing here runs on the local rig — read it before you
+touch a GPU.
+
+### 1. THE CONTRADICTION TEST — highest priority once step 0 clears
 
 The previous executor measured that **14–15 of the 16 NAMED elements already arrive
 unprompted**. That makes a pass-rate gate near-vacuous, and it raises the question that
@@ -122,55 +125,68 @@ Forward arithmetic: eight cameras reach 74.10% of valid; at A2's acceptance that
 reference coverage against the rejected asset's 28.4%. Worth a loop run — **after** the
 contradiction test, which answers for one view what Arm B would spend eight views assuming.
 
-## The environment blocker — DIAGNOSED. Start at E3; do not re-run the dead hypotheses.
+## STEP 0 — Move to Comfy Cloud. This comes before everything above.
 
-A previous executor worked the ordered protocol and **falsified all of it**, including both
-advisor hypotheses. Full record in Amendment 17 and in
-`E:\AI\training\facet_E08\CONTRA\ENV-PREDICTIONS.md`. Do not repeat these:
+**The local rig cannot run this job, and the reserve protocol is retired.** E3 settled it
+(Amendment 18): the staged set is 7,910 + 19,483 + 3,372 + 241 = **31,006 MiB** against a
+**31,200 MiB** ceiling on a **32,607 MiB** card, and run 3's working set reached **30,809** —
+everything resident, nothing left for activations. **No reserve value fixes that.**
 
-- **Settled instance — dead.** Registry fetch fully drained 167/167 before submit; died at 6/20
-  anyway, the same point as three prior attempts.
-- **`--disable-smart-memory` — dead.** Same place, same phase, same height. The log shows the
-  text encoder is never released either way.
+The reserve lever is also **not binding**: peak was 31.7–32.0 GB across all three runs,
+independent of reserve *and* baseline. Runs 1 and 2 only looked bounded because the desktop held
+~7 GB. ComfyUI stages to fill what it sees — the reboot freed 6.5 GB and the working set grew
+6.1 GB. **The earlier passes succeeded because *less* VRAM was free.** Do not walk the reserve
+upward; that hypothesis is dead and each attempt costs a watchdog kill.
 
-**The actual cause:** `--reserve-vram` reserves against the **card's total**, not against what is
-left after the desktop. ComfyUI's working set sat on its reserve-derived budget (24,225 and
-24,673 MiB against 24,415) in both runs, and the desktop's own 7.0–7.6 GB lives *inside* the
-reserve. The breach happens at 47–54 W, **inside model load, before compute starts.** It is a
-reserve problem, not a workload-size one.
+**Retired, do not re-run:** settled instance · `--disable-smart-memory` · `--reserve-vram` at any
+value · the reboot-confound protocol. All falsified, record in Amendment 17 and E3's report.
 
-**⚠ The machine was rebooted, and that is a confound working against you.** The desktop baseline
-was 7,030–7,604 MiB when the failures were measured. **It is now ~1,150 MiB.** At that baseline
-the *old, measured-not-to-work* setting would complete — and the pass would be meaningless,
-credited to the wrong cause, and it would fail again the next time the desktop is warm.
+**Comfy Cloud is the studio's standing default** — the `comfy-local` skill states local is the
+*fallback* and Cloud (RTX 6000 Pro, **96 GB**) is the default for image generation. Invoke the
+`comfy-mcp` skill. Ninety-six gigabytes against a 31 GB working set is not a tuning margin.
 
-**So, ruled in advance (Amendment 17), not open for tuning:**
+### 0a. LoRA delivery — check this first, it is a hard blocker
 
-1. **Launch at `--reserve-vram 10.0`** via `E:\AI\training\_comfyui_start.ps1 -ReserveVramGB 10.0`
-   — the rig's own launcher, which does *not* pass `--disable-smart-memory`. Sized against the
-   **worst observed baseline (7.6 GB)**, not today's lucky one: 22,367 + 7,600 = 29,967, still
-   1.2 GB under the ceiling. E4 predicts it is slower because something streams from system RAM;
-   that cost is accepted.
-2. **Record `nvidia-smi` used-MiB at the moment of launch, in your report.** Every prior
-   environment number here is un-attributable without it — that is how a 6.5 GB swing went
-   unnoticed.
+`saltroad_style_v2_lowlr_000001500.safetensors` is a local file. Memory records the cloud
+bridge's LoRA delivery as **HF-URL-only**, though the plugin now exposes `upload_file`. **If the
+LoRA cannot reach the cloud, nothing below runs there.** One call to establish. Report it before
+spending anything else.
 
-**The ceiling stays at 31,200 MiB. The watchdog stays untouched.** It was restarted 2026-08-04
-02:30 via `_watchdog_start.ps1` and verified live; if its heartbeat is stale, restart it with
-that script **before** any GPU job, never by weakening the bound.
+### 0b. The anchor, and it is the halt
 
-**E2 is the halt condition and the advisor has already ruled on it.** The reproduction anchor
-must return sha256 `d0220e244d5ad2015639153188c488e3f3d317933dbd54eb439724fe1f57f93d`. If it does
-not, **halt and report — do not proceed to the measured arms.** Every prior number in this line
-was taken on the old machine state; a non-reproducing anchor means SPEC and CONTRA are not
-comparable to BRACER, ARMOUR or N11.
+**The first cloud run reproduces N11's twin — not the contradiction test.** Every number in this
+line rests on byte-matched controls; that is what makes A2 / N11 / BG2 comparable at all. Cloud
+is recorded as seed-identical to the local 5090, **validated 2026-06-26** — ~40 days old, which
+the freshness rule makes *advisory until re-measured*. N11's sidecar carries every parameter and
+its control is byte-matched at 20,973 px, so this is a clean reproduction.
+
+Pre-registered, so it cannot be argued after the fact:
+
+| outcome | reading |
+|---|---|
+| sha256 == `d0220e244d5ad2015639153188c488e3f3d317933dbd54eb439724fe1f57f93d` | **clean pass.** The anchor holds, every prior arm stays comparable, proceed to task 1 on cloud. |
+| sha differs, whole-figure median **ΔE ≤ 1.07** | **accept with the boundary recorded.** 1.07 is N11's own measured no-response floor — this pipeline's noise level, not a number invented here. Every later report states that arms span a hardware boundary. |
+| whole-figure median **ΔE > 1.07** | **HALT.** Cross-boundary comparisons are void. Report and stop. |
+
+**If it halts, the fallback is sound and not a dead end:** re-run the *anchors* on cloud —
+N11, BRACER, ARMOUR — so within-cloud comparisons are valid even though cross-boundary ones are
+not. That costs three generations and buys back the whole line. Do not attempt it without
+reporting the halt first.
+
+### 0c. If cloud is unavailable for a reason not listed above
+
+Report and stop. **Do not fall back to local for a measured arm.** The ceiling stays at 31,200
+MiB, the watchdog stays untouched, and a local run that happens to pass because the desktop is
+cold is a number credited to the wrong cause — which is exactly the confound that cost the
+previous session its E3.
 
 ## Do not
 
 Re-run N11 in any wording · re-open a withdrawn arm without new evidence · project from the
 canon pair · tune a threshold after seeing the number it would have to clear · treat 15/16 as a
 result · escalate canon questions about a test character to the Director — **the advisor authors
-fixtures, the Director gates outcomes.**
+fixtures, the Director gates outcomes** · walk `--reserve-vram` upward · run a measured arm
+locally · raise the watchdog ceiling.
 
 ## Calibration
 
