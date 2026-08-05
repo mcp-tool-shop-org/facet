@@ -1,144 +1,131 @@
 # Advisor kickoff
 
-Paste into a fresh advisor session. Written 2026-08-04 by the outgoing advisor. The executor's
-work is committed and its judgement has been consistently better than mine — read its reports
+Paste into a fresh advisor session. Written 2026-08-04 (late evening) by the outgoing
+advisor, at the close of the session that ran Gate 1 to acceptance and E04 through Step 0.
+The executors' judgement has been consistently better than mine — read their reports
 rather than re-deriving them.
-
----
 
 ## You are the advisor
 
 ```
 cd E:\AI\facet && git pull
-CLAUDE.md                              <- how to work here. Read first, follow exactly.
-README.md                              <- measured state of every tool
-docs/experiments/E08-ruling-gate0.md   <- THE LIVE DOCUMENT. 26 amendments. Start at the end.
-docs/experiments/E08-executor-kickoff.md
-canon/W3-IDENTITY.md                   <- the test fixture the pipeline is measured against
-docs/handbook/index.md                 <- the route as a guide
+CLAUDE.md                                   <- how to work here. Read first, follow exactly.
+README.md                                   <- measured state; leads with the Gate 1 verdict
+docs/experiments/E04-ruling.md              <- THE LIVE DOCUMENT. Rulings 1-12. Start at the end.
+docs/experiments/E04-the-galleon-through-the-route.md   <- the live spec
+docs/experiments/E04-executor-kickoff.md    <- the dispatch; "Session handoff" at the bottom
+profiles/ship.json · canon/GALLEON-IDENTITY.md          <- every galleon subject value
+docs/experiments/E08-ruling-gate0.md        <- the CLOSED character record, 35 amendments
 ```
 
-**Your job:** write specs, rule on reports, fold findings into the repo. **You do not execute,
-and you do not grade your own rulings.** Deciding is the job; predicting is not.
+Your job: write specs, rule on reports, fold findings into the repo. You do not execute,
+and you do not grade your own rulings. **Deciding is the job; predicting is not** — and
+this session proved the second clause fourteen times.
 
 ## Where the line stands
 
-**Architecture — established, not assumed.** *Twins belong to a mesh. Identity belongs to the
-prompt.* A twin has one job: register to the mesh it will be projected onto. Everything that
-makes the character *this character* is a named element in a versioned prompt. Measured by
-contradicting the spec on eight elements: **the prompt wins 8/8**, median ΔE 46.3 against 6.2
-on five held controls, a **7.4× separation**, while face, build and pose hold. **This is a
-pipeline, not a one-character generator.**
+**GATE 1: ACCEPTED** (2026-08-04, "Very good!!! I'm so happy right now," ruled on the GLB
+at his zoom). The character route is settled: exact raycast silhouette · trust ∧ geometry
+at both stages · the palette gate · per-view fixture prompts · the in-tool gates. Measured
+mix 68.8 / 4.2 / 27.0 against the rejected 28.4 / 37.7 / 33.9. The E08 record is closed.
 
-**Adopted:** the exact raycast silhouette for the projection surface (never a keyed render) ·
-fitted-border-ring background estimation (corner-median retired after three failures) · the
-bbox andon · per-view prompts and provenance sidecars · the off-palette gate with its two
-thresholds and chroma floor · Comfy Cloud for generation, anchored at ΔE 0.84 against a 1.07
-floor with the hardware boundary recorded.
+**E04 (the galleon) is mid-flight and healthy.** Designated mesh 00006 · ratified canon
+(G6 gold by the Director's eye; G7 red kept under his delegation as the occupancy test) ·
+the styled pair is frozen canon target · profile extracted (purity check
+`e04_profile_check.py` is a standing gate) · bands measured (warm 62–88 + blue suspended
+on a 3.69% denominator; forbidden span 288° vs W3's 170°) · backdrop `plain white` by
+Ruling 8's default, overrulable **only by a measurement** · Step 0's four anchors all pass.
 
-**Withdrawn, with reasons — do not revive without new evidence:** A2R (off-canon) · A3's
-erosion invariant as a *fix* (kept as a component) · A4 colour thresholding (no bimodality
-exists) · the blue-background arm (parked — it breaks the twin's own mask) · the off-palette
-**percentage** bound (void: its stated derivation described a different instrument, and its
-denominator moves 1.65× with camera angle).
+**Next: a fresh executor starts at Arm G7** (one byte-matched generation — does
+`red gun port lids` land where "red-lined" missed) **then Arm T** — ten twins running to
+the spec's twin-baseline halt. **That halt is your first scheduled ruling**: first-run
+gates are in measure-report-rule mode because W3's bounds are W3 data. What you will need
+in hand: the pair's key margin 1.48% (beats the accepted character's 1.77–2.45), the pale
+near-neutral cluster watch item (C* 2.2, below the chroma floor, tightest margin on the
+asset, reported per view), the spec-material rejection rule (one re-roll, E08 A23), and
+*suspend rather than invent* for every threshold with no baseline.
 
-**Not done, and say so plainly whenever it comes up: no asset better than the one the Director
-rejected has been rendered end to end.** Everything since has been instrument repair and
-architecture. That is the gap.
+**Pre-registered expectations, so numbers are not misread:** the ship's reference share
+runs structurally lower (53% deck plateau; compute and pre-register the exact reach
+ceiling before projection — H4). Owner seams are *expected* on hull and sails (Ruling 1:
+`argmax(facing)` seams are provenance-blind and live on the best-covered surface — the
+Gate 1 sheet is five columns now, owner included). An acceptance rate quoted without its
+camera count is not a number.
 
-## The live item, in order
+## The parallel threads
 
-1. **The intersection regression** ([Amendment 26](experiments/E08-ruling-gate0.md)). Intersect
-   the twin's trust mask with the mesh silhouette before the distance transform, and measure it
-   against the 2-camera control on the new twins — **1,050,368 / 43.7% of valid / 83.0% of
-   reachable**. One variable, no GPU. Small and in the expected direction → adopt, restate A2's
-   39.1% in the README with the reason, go to eight. Large or wrong direction → halt.
-   **Also required:** keep the raw bbox measured and reported so the andon does not become a
-   check that cannot fail, and move its halt onto registration, which the fix does not
-   foreclose.
-2. **Eight cameras.** The acceptance lever is spent at 83.0% of reachable, so whatever eight
-   buys comes from the ceiling (74.10% of valid), not from acceptance.
-3. **Run it through to a finished asset** — project, eight strokes, finalize, pack, renders —
-   and put **reference | asset | provenance | error** in front of the Director at his zoom,
-   **including views 4–6**, where the asset dissolves and where a head sheet structurally
-   cannot show anything.
+- **E09 / brand (the showcase).** brand's viewer is COMPLETE and proven end to end on a
+  cube fixture (steps 0–3: LFS ruled and measured at the 10 GiB free tier, walker +
+  `add-model` with CHECK-CAT as a PLTE *proof*, Astro route with live channel-flip
+  verified). Facet's E09 display-copy spec is committed with Amendment 1 (categorical
+  channels are **indexed PNG**, by requirement). Awaiting: E09's execution (the showcase
+  session may run it; **you rule on its report; the facet executor reproduces the
+  fidelity receipt** before any number goes public). The deployed-bytes leg-2 check runs
+  once at first real deploy. The cube fixture stays OUT of the production registry —
+  facet's display copy is the first real subject.
+- **Post-Gate-1 polish queue, all optional, with magnitudes:** dilation flood 27.0% of
+  valid (largest; the surface-aware primitive is measured at 70× closer) · owner seams
+  (the Director's named crown region; targeting ΔE 17.97 source disagreement) ·
+  stroke-seam levelling (TWINS|BRUSH 12.6–31.4) · blade band · A3's cap ·
+  `thin_extent`'s view-ray conflation. Do not open any unbidden.
+- **Infra:** the VRAM watchdog now logs per-process holders and writes NO_TARGET on
+  no-kill breaches (spawned task, landed; nvidia-smi reads [N/A] under WDDM — perf
+  counters are the source). TRELLIS reaches `sys.path` via a retired repo's checkout —
+  proper install is a queued rig chore.
 
-## What to distrust: my record
+## The outgoing advisor's ledger — fourteen entries this session, five forms
 
-I was wrong about, in one session:
+Watch for these in yourself; every one was caught by an executor checking rather than
+trusting:
 
-- the gate/ownership reorder (a no-op — the loop already arbitrates across independently gated views)
-- the stratum area-loss gate (fired on a correct build; the quantity was mine)
-- the back-facing ANDON (a proxy that inverted — the back-facing sources were the *closest*)
-- a pass condition set as a fraction of a baseline nobody had measured
-- a bimodality read off two summary medians, which the density did not contain
-- "better registration is a better reference, no taste required" — a better-registered twin was a different man
-- a grammar hypothesis where co-location fits the data
-- a step-2 gate whose denominator was one
-- "can the LoRA reach the cloud" when the first question was "is it already there"
-- treating the local rig as the environment instead of checking the studio's own default
-- branching on "BG2" as one variable when it was two — **violating a rule I had added two amendments earlier**
+1. **Mechanism asserted where a measurement sat on disk** — the S1 sail physics
+   (inverted: the key fails at the backdrop's own value, not paleness), the A32 pocket
+   ("a known object" that was the brush doing its job), the A26 direction clause.
+2. **Unread flags and defaults contradicting the claim** — `--head-facing-min` (the crown
+   prior), `--host 127.0.0.1` six lines above a prompt I quoted, the cull default's
+   contents, the retired LFS billing scheme.
+3. **Mis-derived bounds** — the keyed-clay 0.24% anchor (a bound on a retired
+   instrument), the background bound applied to rims, A32's byte-equality premise.
+   The house move is **withdraw, never retune**; it was used four more times today.
+4. **Checks specified on the wrong operand** — the sidecar guarded while the key broke;
+   a check with two unpinned parameters (reference, bound). Standing correction: every
+   operand a dispatched check reads gets named — estimator, denominator, bound, and what
+   the bound was derived on.
+5. **Repo hygiene** — `git add -A` swept another session's file into an unrelated commit.
+   Read `git status` names first, every time.
 
-**Every one was caught by an executor running the spec as written and reporting the evidence.**
-
-**The pattern, so you can watch for it in yourself:** I reach for a measurable proxy when the
-real question is *is this the right thing*, and I specify checks whose shape assumes their
-answer. Before writing a condition, ask what value it takes when the thing does nothing and
-when it works perfectly. If those are the same number, it is not measuring the thing.
-
-**What worked:** ruling once evidence was in · killing options with reasons · bounding an
-expensive arm before spending it · **withdrawing a mis-specified condition rather than
-retuning it** (four times — that is the move that keeps this record honest) · putting the andon
-on the direction an invariant does not bound · and the distinction that rejecting an output
-which violates a *pre-registered* specification is not selecting a result.
+**What worked, keep doing:** pre-stating both branches of a ruling so the executor never
+waits (A29/A31 pattern — it killed the round-trips the Director was rightly frustrated
+by); the standing authorization for recoverable snags; correcting canon and rulings in
+place with the measurement; deciding on the operative number over the proxy metric
+(Ruling 8's backdrop); priors carrying their evidence status — *measured / inferred /
+unread guess*; enumeration in the browser when API surfaces lie (the LoRA card);
+withdrawing bounds; and owning errors in commit messages, which is how the next session
+knows what to distrust.
 
 ## The Director
 
-**He gates outcomes. You author fixtures.** Whether the mechanism works and whether the
-finished asset is better are his. Which armour a test character wears is not — W3 is a test
-fixture, and asking him to ratify canon that does not exist spends the scarcest resource in the
-studio. He has pushed back on this twice; the second time was blunt and deserved.
+He gates outcomes and he is generous with delegation — G7 was decided *for* him under
+"decide on what serves the work," and he ratified it. He rules instantly and well on
+artifacts at his zoom (the gold spire, one sentence). He was blunt once today about
+stopping cadence, and he was right: the ruling round-trips were overhead — pre-state
+branches, authorize pass-through for recoverable snags, and save his eye for outcomes.
+Show him artifacts at full size, never contact sheets. When he rules, it stands.
 
-**Show him artifacts at full size, never a contact sheet.** He read the entire thesis off panel
-2 of a four-panel sheet in one sentence, after eight turns of numbers had not got there. When
-he rules, the ruling stands — his verdict on the twins overturned three amendments of mine in
-one exchange, and it was right.
+## The executors
 
-## The executor
-
-It halts at gates rather than improvising past them, refuses its own instruments when they
-cannot fail, states predictions blind and reports them falsified, and declines to call things
-that are not its call. **When it declines, that is signal.** It has overturned me on
-measurement more often than I have corrected it. Read its reports closely; do not second-guess
-its measurements without a measurement of your own.
-
-## Open threads
-
-- **RG01** (`docs/research/RG01-texture-route-grounding.md`) — 5 lanes, 29 findings on
-  multi-view consistency, inpainting conditioning, UV-space generation and metrics. **Never
-  cleared the citation gate**: arXiv rate-limited 28 of 32, self-inflicted by running the swarm
-  and the gate from the same IP within minutes. **Exactly one finding is verified.** Nothing
-  rests on it. If Arm B disappoints, re-run the gate through **Crossref DOIs** — Crossref went
-  four for four while arXiv timed out — and check the similarity guard, which caught Crossref
-  returning an SSIM conference cover page and a protein-pocket benchmark for two of the
-  citations.
-- **E09 — chart fragmentation.** Deprioritised, and the deprioritisation rests on a premise the
-  UV lane questioned: I called it density and softness, a different axis from wrong material.
-  The research (unverified) reframes it as lost 3D adjacency, which *is* the defect mechanism.
-  Re-examine before dismissing.
-- **E03 head graft, E04 galleon** — unblocked, ordering is the Director's. E04's inputs are
-  staged and its stressors recorded; the off-palette gate matters most there, because nobody
-  will know by eye what a galleon's palette should be.
-- **Subject profiles** ([docs/profiles-design.md](profiles-design.md)) — after the character
-  path settles, before any ship, so the ship cannot break it.
-- **`comfy-cloud-run.md` in the studio memory store is stale** — it says the InstantX ControlNet
-  needs importing; it is already on cloud by exact name. Flagged, not corrected; that store has
-  its own index ritual (`loadout-os refresh`) and mid-experiment is the wrong time.
+Two ran today, both exceptional. They hash predictions before artifacts exist (standing
+method), apply the retune test to themselves ("I know 70 passes because I ran the sweep,
+which is precisely why I must not adopt it"), check inherited claims — including yours —
+against source in the same breath, and halt at clean boundaries rather than starting runs
+they cannot see through. **When one declines to do something, that is signal.** Do not
+second-guess their measurements without a measurement of your own.
 
 ## Do not
 
-End a session the Director has not ended · write to the studio memory store mid-experiment ·
-retune a condition after seeing the result it must clear (**withdraw it instead**) · grade an
-arm on a unit it cannot move · treat a pass rate as a result when most of its elements arrive
-unprompted · project from `canon/twin_{front,back}.png` — they are a specification source and
-under-fill the silhouette · run a measured arm on the local rig · raise the watchdog ceiling.
+End a session the Director has not ended · write to the studio memory store mid-arc ·
+retune a condition after seeing its result (withdraw instead) · grade an arm on a unit it
+cannot move · predict distance-transform behaviour (twice wrong; decide on measurements) ·
+quote an acceptance rate without its camera count · reopen a withdrawn arm without new
+evidence · run a measured arm on the local rig · raise the watchdog ceiling · touch
+`E08-ruling-gate0.md` except to cite it — it is closed.
