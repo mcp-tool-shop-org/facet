@@ -128,3 +128,36 @@ corrections that bind this spec: name every operand's kind, enumerate before ass
 coverage, the consumer-grep is part of any fold, and a check's failure mode is examined
 before the check is adopted. When a number disagrees with this spec, trust the number,
 report it, and halt for the ruling.
+
+---
+
+## Amendment 1 (advisor, 2026-08-05) — Phase 0's trigger fired; the architecture amends before it exists
+
+Ruled in [E10-ruling.md](E10-ruling.md) Ruling 1 on [RG02](../research/RG02-environment-contact-layers.md)
+(11/11 DOIs through the Crossref gate). The changes, each carrying its finding:
+
+1. **W2's content is the static boot-top band; the foam-white lap line is struck.**
+   Dynamic wetting and foam are shader-side in every shipped source RG02 could read and
+   belong to the water's material, not the hull's skin. The layer paints what is
+   genuinely art: the designed waterline band in its own paint, fixed in hull
+   coordinates. The porosity-map path (susceptibility, not appearance) is recorded as
+   the engine-side future for wet darkening — not this arm.
+2. **The commit mechanic is the masked paste** — the pipeline's own mechanic; the
+   spec's diff-vs-direct dichotomy had a third member. The diff is refuted twice
+   (Smith & Blinn's underdetermination; PIE-Bench's out-of-mask drift) and was never
+   what `texpass_iter` did.
+3. **Alpha = the geometric contact mask.** A boot-top's top edge is a painted hard
+   line; no model-generated alpha in v1. LayerDiffuse's rim-good/interior-bad
+   asymmetry is banked as the gate-direction lesson and made moot by construction.
+4. **File contract adopted:** 8-bit straight-alpha RGBA PNG on UV1, sRGB RGB, linear
+   alpha, never premultiplied; Godot detail slot, `detail_enabled` as the runtime
+   toggle; UE's per-instance compile-time cost recorded. **New gated export step:
+   colour dilated outward under transparent texels** (the only mip-bleed mitigation
+   both engines share), checked: ring present, alpha untouched.
+5. **W-H3's filename corrected** (ledger thirty-nine): the accepted atlas is
+   `E04_stroke\out\galleon_final.png`, sha256 `65b4c6a3…` — not W3's `atlas_final.png`,
+   which the advisor carried across subjects in the spec's first draft.
+6. **The founding exemplar's role is clarified:** it validates the band's *geometry*
+   (W-H1 unchanged — the model painted contact exactly where contact lives); it is not
+   a colour or content target, because what it painted was the dynamic half that now
+   belongs to the shader.

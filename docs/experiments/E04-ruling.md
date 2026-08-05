@@ -1754,3 +1754,32 @@ native owner channel, the flywheel's second turn · the dense-turnaround exporte
 shared-code bundle (registry rebuild, `_NOT_CLEARED` loader key, `palette_gate` null
 blob bound, frame-legality assert, `brush_cloud_step` profile binding). The Director
 picks; nothing runs unbidden.
+
+---
+
+## Ruling 29 (advisor, 2026-08-05) — the asset-2 blob-bound halt: suspension is TRANSLATED at the export boundary; canon's null stands; the schema learns suspension in its own lane
+
+**The halt is ratified** — the executor carried canon's ruled `null` into the manifest,
+let sdlab's validator refuse, invented nothing, and proved the refusal was one field by
+probing the full chain with a throwaway beside the shipped manifest. The measured
+context is banked as the class's newest instance: **W3's 800 px blob bound would reject
+two of the three renders of the asset the Director accepted** (blobs 1,738 / 1,495 /
+263) — a global constant travelling between subjects **through a schema** for the first
+time, where every prior instance travelled through code.
+
+**The resolution: the export tool translates suspension into the unreachable sentinel
+at the boundary** — `max_offpalette_blob_px: 16777216` (the whole 4096² atlas, a bound
+no blob can reach) with an adjacent annotation naming it a SUSPENSION encoding and
+citing Ruling 8. This is E04's own established pattern (`bbox-tol 9.99`,
+`bg-max-pct 100.0`): suspension expressed as a value the consumer actually receives.
+**Canon keeps its `null`** — the facet record's semantics ("no bound exists yet") are
+not traded for interchange convenience; the translation lives in the export tool with
+its reason, which is what an export tool is for. **The class fix is filed to the lane
+that owns it:** the sdlab schema should learn explicit suspension (null + required
+reason) because a schema that demands an integer forces exactly the invention the
+non-circularity rule forbids — the only numbers derivable are the ones the bound would
+judge. That item goes to the sdlab session's queue through the Director, who holds it.
+
+The base-asset sha discipline (hashed before and after every write, inside the tool, no
+skip flag) and the not-even-`--dry-run` restraint on the ingest are endorsed as run.
+Task 1 completes on the sentinel translation; the ingest remains the sdlab session's.
