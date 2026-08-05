@@ -1,0 +1,21 @@
+{
+ "valid": 3111817,
+ "stage1": 1147959,
+ "brush": 213852,
+ "dilation": 1750006,
+ "per_stroke": {
+  "y+300_e+00": 26531,
+  "y+030_e+00": 22766,
+  "y+150_e+00": 17904,
+  "y+240_e+00": 24486,
+  "y+000_e+40": 63288,
+  "y+180_e+40": 58877
+ },
+ "replay_pixels_identical": true,
+ "replay_bytes_identical": true,
+ "mix_pct": {
+  "stage1": 36.89,
+  "brush": 6.87,
+  "dilation": 56.24
+ }
+}

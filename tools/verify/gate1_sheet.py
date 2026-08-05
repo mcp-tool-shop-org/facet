@@ -24,7 +24,30 @@ ap.add_argument("--twins", required=True)
 ap.add_argument("--asset", required=True)
 ap.add_argument("--prov", required=True)
 ap.add_argument("--masks", required=True, help="exact silhouettes, for the error denominator")
-ap.add_argument("--views", default="4,5,6")
+ap.add_argument("--views", default="4,5,6",
+                help="row keys substituted into the patterns below. Integers on the "
+                     "character path; any token works, so an elevated camera can be named "
+                     "as its job key (y+000_e+40).")
+# ---- FIVE COLUMNS (E04 Ruling 1: the owner channel is part of honest presentation).
+# Every argument below is additive with a default that reproduces the character path, so
+# an existing invocation is unchanged: no --owner means four columns exactly as before.
+ap.add_argument("--owner", help="renders of the OWNER map; adds the fifth column. Which "
+                                "camera won each texel - the channel provenance is blind "
+                                "to, and the one that makes an owner SEAM visible as a "
+                                "seam rather than as an unexplained step")
+ap.add_argument("--mask-tag", default="w3clay",
+                help="filename stem of the exact silhouettes. Was hardcoded to one "
+                     "subject's tag, which is the class of thing profiles exist to flush "
+                     "out; defaulted to that value so the character path is unchanged")
+ap.add_argument("--ref-pattern", default="twin_{k}.png")
+ap.add_argument("--asset-pattern", default="final_{k}.png")
+ap.add_argument("--prov-pattern", default="prov_{k}.png")
+ap.add_argument("--owner-pattern", default="owner_{k}.png")
+ap.add_argument("--no-error", action="store_true",
+                help="drop the error column AND the reference-derived statistics. For rows "
+                     "whose camera has no per-pixel reference - an elevated stroke camera "
+                     "has no twin, and a dE against a DIFFERENT camera is not an error, it "
+                     "is a number with no referent. Say so rather than computing it")
 ap.add_argument("--out", required=True)
 ap.add_argument("--crop", default=None, help="y0,y1,x0,x1 in the 752x1024 frame")
 ap.add_argument("--scale", type=float, default=1.0)
@@ -53,29 +76,37 @@ def heat(d, vmax=40.0):
     return (np.stack([r, g, b], axis=-1) * 255).astype(np.uint8)
 
 
-VIEWS = [int(v) for v in args.views.split(",")]
+VIEWS = args.views.split(",")
 rows = []
 stats = {}
+
+
+def rd(d, pat, k):
+    return np.asarray(Image.open(os.path.join(d, pat.format(k=k))).convert("RGB"),
+                      dtype=np.float32) / 255.0
+
+
 for k in VIEWS:
-    ref = np.asarray(Image.open(os.path.join(args.twins, f"twin_{k}.png")
-                                ).convert("RGB"), dtype=np.float32) / 255.0
-    ast = np.asarray(Image.open(os.path.join(args.asset, f"final_{k}.png")
-                                ).convert("RGB"), dtype=np.float32) / 255.0
-    prv = np.asarray(Image.open(os.path.join(args.prov, f"prov_{k}.png")
-                                ).convert("RGB"), dtype=np.float32) / 255.0
-    sil = np.asarray(Image.open(os.path.join(args.masks, f"w3clay_{k}.png")
-                                ).convert("L")) > 127
-    dE = np.linalg.norm(lab(ast) - lab(ref), axis=-1)
-    err = heat(dE)
-    err[~sil] = 20                      # outside the silhouette is not the asset's business
-    stats[str(k)] = {"figure_px": int(sil.sum()),
-                     "dE_median": round(float(np.median(dE[sil])), 2),
-                     "dE_mean": round(float(dE[sil].mean()), 2),
-                     "dE_p90": round(float(np.percentile(dE[sil], 90)), 2),
-                     "pct_over_10": round(float((dE[sil] > 10).mean() * 100), 1),
-                     "pct_over_23": round(float((dE[sil] > 23).mean() * 100), 1)}
+    ref = rd(args.twins, args.ref_pattern, k)
+    ast = rd(args.asset, args.asset_pattern, k)
+    prv = rd(args.prov, args.prov_pattern, k)
     panels = [(ref * 255).astype(np.uint8), (ast * 255).astype(np.uint8),
-              (prv * 255).astype(np.uint8), err]
+              (prv * 255).astype(np.uint8)]
+    if args.owner:
+        panels.append((rd(args.owner, args.owner_pattern, k) * 255).astype(np.uint8))
+    if not args.no_error:
+        sil = np.asarray(Image.open(os.path.join(
+            args.masks, f"{args.mask_tag}_{k}.png")).convert("L")) > 127
+        dE = np.linalg.norm(lab(ast) - lab(ref), axis=-1)
+        err = heat(dE)
+        err[~sil] = 20                  # outside the silhouette is not the asset's business
+        stats[str(k)] = {"figure_px": int(sil.sum()),
+                         "dE_median": round(float(np.median(dE[sil])), 2),
+                         "dE_mean": round(float(dE[sil].mean()), 2),
+                         "dE_p90": round(float(np.percentile(dE[sil], 90)), 2),
+                         "pct_over_10": round(float((dE[sil] > 10).mean() * 100), 1),
+                         "pct_over_23": round(float((dE[sil] > 23).mean() * 100), 1)}
+        panels.append(err)
     if args.crop:
         y0, y1, x0, x1 = [int(v) for v in args.crop.split(",")]
         panels = [p[y0:y1, x0:x1] for p in panels]
@@ -88,9 +119,19 @@ if args.scale != 1.0:
                                  Image.LANCZOS))
 os.makedirs(os.path.dirname(os.path.abspath(args.out)), exist_ok=True)
 Image.fromarray(sheet).save(args.out)
+cols = ["REFERENCE", "ASSET (flat)", "PROVENANCE"]
+if args.owner:
+    cols.append("OWNER")
+if not args.no_error:
+    cols.append("ERROR (dE heat)")
 print(f"[sheet] wrote {args.out}  {sheet.shape[1]}x{sheet.shape[0]}")
-print(f"[sheet] columns: REFERENCE (twin) | ASSET (--flat) | PROVENANCE | ERROR (dE heat)")
+print(f"[sheet] columns: {' | '.join(cols)}")
 print(f"[sheet] provenance: GREEN = reference/stage1 · BLUE = brush · ORANGE = dilation")
+if args.owner:
+    print(f"[sheet] owner: one colour per camera, GREY = dilation (no owner)")
+if args.no_error:
+    print(f"[sheet] NO ERROR COLUMN — these cameras have no per-pixel reference, and a dE "
+          f"against a different camera is not an error")
 print(f"[sheet] rows: views {', '.join(str(v) for v in VIEWS)}")
 for k, s in stats.items():
     print(f"[sheet]   view {k}: dE median {s['dE_median']:>5}  mean {s['dE_mean']:>5}  "
