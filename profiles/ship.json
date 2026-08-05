@@ -25,9 +25,10 @@
    "from": "E04 Arm T preparation; Ruling 13"
   },
   "brush_prompts": {
-   "path": null,
-   "status": "REQUIRED, NOT WRITTEN",
-   "why": "Per view, after the route runs."
+   "path": "docs/experiments/E04-brush-prompts.json",
+   "status": "WRITTEN",
+   "why": "One CONSTANT identity string per stroke, ruled by Ruling 23 on the twin file's own measured argument: this subject has no view-specific anatomy words, all twelve fixture elements are material terms, and material words stay byte-identical across views - so the correct application of the inherited per-view rule is one string. Transcribed from E04-twin-prompts.json by byte-comparing all eight stems, not retyped. Carries a key for every camera in cull_unseen.production (28), so a ruled set that differs from the derivation's proposal changes _order and no string. The negative is the ship's OWN SPENT value, not the character's brush negative - flagged in the file and in the derivation report for a one-line ruling, because W3's brush negative carries eight belt terms earned at that stage on that character.",
+   "from": "E04 Ruling 23; the stroke-camera derivation"
   }
  },
  "_not_on_route": {
@@ -224,7 +225,43 @@
    }
   },
   "texpass_brush.py": {
-   "_NOT_CLEARED": "FORBIDDEN on the ship until this block carries ruled values - Ruling 14, standing law. The tool's --prompt defaults to the literal W3 identity string (Ruling 2's named accident class); the ship's brush prompts are _fixtures.brush_prompts, still REQUIRED NOT WRITTEN, and stroke cameras derive from the hole map after projection. When the loader learns the reserved _NOT_CLEARED key (Ruling 14 work item b), this line becomes a mechanical ANDON; until then the coverage check and the stage-2 ruling enforce it."
+   "_the_block_was_NOT_CLEARED_and_this_is_the_lift": "Ruling 23 lifted it, and the lifecycle Ruling 22 ratified is why every key below carries a decision: removing the marker reverts these seven keys to UNDECIDED and --coverage fires. That firing is the procedure, not a defect - the ruling that clears a tool pays for the clearance by deciding its keys in the same commit. HISTORICAL TEXT: 'FORBIDDEN on the ship until this block carries ruled values - Ruling 14, standing law. The tool's --prompt defaults to the literal W3 identity string (Ruling 2's named accident class); the ship's brush prompts are _fixtures.brush_prompts, still REQUIRED NOT WRITTEN, and stroke cameras derive from the hole map after projection.'",
+   "_THE_FIVE_RECIPE_NUMBERS_BELOW_DO_NOT_REACH_THE_CLOUD_GRAPH": "FINDING, reported in the derivation report and not silently absorbed. Generation is cloud-only, so a ship stroke runs through brush_cloud_step.py, which posts nothing local; texpass_brush.py posts to 127.0.0.1:8188 and will not run on this subject. brush_cloud_step.py BINDS NO PROFILE - it carries its own DEFAULTS = {seed 770700, steps 20, cfg 2.5, lora_w 0.75, cn_strength 1.0} and a hardcoded CLOUD_LORA, and takes prompt and negative from the prompts file. So of the seven keys here, prompt and negative reach the graph through _fixtures.brush_prompts, and the five numbers reach it through that tool's own constants. They AGREE today because Ruling 23 set them to exactly those values - by coincidence of value, not by construction. This is armT-halt2 Finding B's mechanism at a fourth site, and --coverage cannot see it because brush_cloud_step.py has no block in character.json either.",
+   "seed": {
+    "value": 770700,
+    "why": "FIRST-RUN OPERATING POINT at the accepted character route's value (Ruling 23: they are what Gate 1 accepted; the per-stroke sidecars measure whether they carry). It is also this subject's own SPENT restylize seed, so the two lineages agree here.",
+    "from": "E04 Ruling 23"
+   },
+   "steps": {
+    "value": 20,
+    "why": "FIRST-RUN OPERATING POINT at the accepted character route's value (Ruling 23). Equals the ship's own spent restylize value.",
+    "from": "E04 Ruling 23"
+   },
+   "cfg": {
+    "value": 2.5,
+    "why": "FIRST-RUN OPERATING POINT at the accepted character route's value (Ruling 23). Equals the ship's own spent restylize value.",
+    "from": "E04 Ruling 23"
+   },
+   "lora-w": {
+    "value": 0.75,
+    "why": "FIRST-RUN OPERATING POINT at the accepted character route's value (Ruling 23). Equals the ship's own spent restylize value.",
+    "from": "E04 Ruling 23"
+   },
+   "cn-strength": {
+    "value": 1.0,
+    "why": "FIRST-RUN OPERATING POINT at the accepted character route's value (Ruling 23). NOTE THE DIFFERENCE FROM restylize_views.cn-strength 0.9, which is this subject's SPENT value at the twin stage: the brush's ControlNet is an inpainting ControlNet at denoise 1.0 inside the mask and the character route ran it at 1.0. Recorded so the two 'cn-strength' rows in this profile are not read as a transcription error.",
+    "from": "E04 Ruling 23"
+   },
+   "prompt": {
+    "value": "a gilded lion figurehead, warm oak-brown hull planking, black tarred strakes, weathered tan canvas sails, gilded scrollwork on the stern castle, a gilded spire on the stern turret, red gun port lids, black iron cannon barrels, dark tarred rigging and ratlines, pale scrubbed deck planking, a deep sea-blue frieze band along the bulwarks, gilded stern-gallery railings, plain white background, visible brushstrokes, painterly worked surface",
+    "why": "NEITHER SPENT NOR LIVE - the restylize_views.prompt form, ratified by Ruling 22 for exactly this situation. It cannot be SPENT (no stroke has run) and it cannot be LIVE (the code default is the literal W3 identity string, and writing that here would make another subject's identity a ship DECISION). The value is transcribed verbatim from _fixtures.brush_prompts, which is where the route actually reads it, so an invocation that forgets --prompt asks for this galleon instead of that warrior. Documents AND protects.",
+    "from": "E04 Ruling 23; the Ruling 22 form"
+   },
+   "negative": {
+    "value": "watermark, text, logo, blurry, photo, deformed",
+    "why": "THE SHIP'S OWN SPENT NEGATIVE - what the Director-ratified styled pair and all eight twins ran on - and NOT the accepted character route's brush negative, which is a DEVIATION from a literal reading of Ruling 23 and is flagged for a one-line ruling. Grounds: W3's brush negative is not W3's restylize negative; it carries eight belt terms ('braided belt, plaited belt, woven belt, rope belt, shoulder strap, chest strap, baldric, bandolier') that texpass_loop.ps1's header records as failure modes MEASURED at the brush stage on that character, and importing another subject's measurements is Ruling 2's named accident class. Nothing in this repo calls the negative a recipe key - 'recipe' names seed/steps/cfg/lora-w/cn-strength wherever it is used - and brush_cloud_step.py reads the negative from the prompts file beside the prompt, not from the recipe defaults. No stroke has run here, so this subject has earned no brush-stage terms yet; when it does they are added the way W3's were, with the measurement. Happens to equal the tool's own default.",
+    "from": "E04 Ruling 23, with the deviation flagged"
+   }
   },
   "texpass_iter.py": {
    "thin-extent": {
@@ -381,7 +418,7 @@
   "allocation": "DECIDED by Ruling 14: NONE - uniform allocation, expressed as tools.bake_hero_prep.head-scale = 1.0 with the crop rect explicit and inert. Grounds there; Director-overrulable in a sentence. HISTORICAL TEXT: 'No privileged region has been chosen. A galleon may deserve one at the stern castle where the carved detail is, or none may be right. Not decided, not guessed.' The decision is the null intervention, so a future privileged-region arm has this baseline to beat.",
   "generation recipe": "RESOLVED: the pair is the anchor (Ruling 6 ratified it; E04-twin-prompts.json records it: seed 770700 / 20 steps / cfg 2.5 / denoise 0.92 / cn 0.9 / shift 3.1 / LoRA @ 0.75). Kept here only as a pointer.",
   "acceptance": "PARTIALLY SUPERSEDED by Ruling 14, which corrected this entry's own implication: edge-ref 700.0 is the TUNING CONSTANT of a self-scaling ratio (erosion scales by figure_width/edge_ref per view - project_twins.py:65-68), NOT a per-subject value; replacing it would break the calibration it anchors. The facing floors and edge-dist family now sit in tools.project_twins as explicit FIRST-RUN OPERATING POINTS; whether they carry into projection is ruled at the twin-baseline halt on the per-view diagnostics. HISTORICAL TEXT: 'facing floors and the edge-dist family, including edge-ref (700.0 is literally one character's figure width in twin pixels), await twins on this subject.'",
-  "spiral order": "The brush stroke order depends on where stage 1 lands paint, which needs twins."
+  "spiral order": "DERIVED, AWAITING RULING 24 - not written into a tool value here, because the order lives in _fixtures.brush_prompts._order (texpass_loop.ps1 reads it from the prompts file, and there is no profile flag for it). Measured rather than asserted: for each candidate order, the fraction of a camera's visible surface already painted AT ITS TURN was simulated, and the four candidate orders scored on their WORST-anchored stroke - the quantity the rule protects, since E08's failure case was one camera opening at 95% hole. Proposed: the side ring sweep from the best-anchored camera with the deck pair LAST (min 74.90%, mean 81.65%), against the metric optimum's 75.34%/81.58% and 64.10% for any order that opens on the deck pair. THE HONEST HEADLINE IS THAT THE ORDER IS NEARLY INERT ON THIS SUBJECT: stage 1 painted all eight yaws, so every candidate camera opens between 64% and 88% anchored and none is near the character's 95%-hole disaster case. HISTORICAL TEXT: 'The brush stroke order depends on where stage 1 lands paint, which needs twins.'"
  },
  "_tools_not_on_route": {
   "verify/head_render.py": "No face rect on this subject. ship.json._gates.head_rect_metrics is already false — 'No face rect, so mesh_stats' density and curvature columns have no referent.' Ratified E04 Ruling 22 (coverage pass)",
