@@ -375,12 +375,43 @@ if args.no_head_scale:
         f"ANDON: --no-head-scale but the input puts no extra texels on the head — "
         f"head holds {share_area:.4f} of UV area for {share_3d:.4f} of surface "
         f"area; run smart_decimate first or drop --no-head-scale")
-else:
+elif args.head_scale > 1.0:
     # the scaling must have moved area toward the head, judged against this
     # input's own starting distribution rather than a fixed multiple of face count
     assert share_area > share_area_pre * 1.2, (
         f"ANDON: head islands did not keep their x{args.head_scale:g} scale through "
         f"pack_islands ({share_area_pre:.4f} -> {share_area:.4f})")
+elif args.head_scale == 1.0:
+    # ALLOCATION NONE (E04 Ruling 14, allocation ruled NONE for the galleon; guard
+    # specified in Ruling 15). A growth assert cannot be satisfied by the identity, and
+    # the original one was written as though head_scale were always > 1 — a character
+    # assumption that made a uniform atlas unexpressible and halted a correct bake
+    # (E04 Arm T, ANDON 1, measured 0.2432 -> 0.2432). THE GUARD VERIFIES WHAT WAS
+    # REQUESTED: at x1 the request is "change nothing", so what must hold is that the
+    # identity SURVIVED pack_islands.
+    #
+    # Stated exactly as ruled, and NOT pre-softened: the ruling says these are equal,
+    # the executor had only measured them equal to 4 decimal places, and the honest
+    # move is to assert the ruled condition and report the full-precision operands if
+    # it fires rather than choosing a tolerance nobody ruled. pack_islands may apply a
+    # global uniform scale (which cancels in a ratio) and stores float32 UVs, so if
+    # this ever fires on last-bit noise the numbers below are the evidence for a
+    # ruling on tolerance — they are not grounds for loosening it here.
+    assert share_area == share_area_pre, (
+        f"ANDON: head-scale 1.0 asks for the identity and pack_islands did not "
+        f"preserve it — share_area {share_area!r} vs share_area_pre "
+        f"{share_area_pre!r}, delta {share_area - share_area_pre!r}. HALT: report "
+        f"these digits, do not choose a tolerance.")
+    print(f"[prep] head-scale 1.0: identity survived pack_islands exactly "
+          f"({share_area!r}) — uniform atlas, no privileged region", flush=True)
+else:
+    # A shrink is not specified by any ruling. Refuse rather than invent a symmetric
+    # clause: an unspecified guard that silently passes is how a value gets treated as
+    # configured while checking nothing.
+    raise AssertionError(
+        f"ANDON: --head-scale {args.head_scale:g} < 1 is not specified. The growth "
+        f"clause applies above 1 and the identity clause at exactly 1; a de-allocating "
+        f"scale needs its own ruled condition before it can be verified.")
 
 # ---- EMIT bakes: encoded position, encoded normal, mask ----
 lo = co.min(axis=0)
