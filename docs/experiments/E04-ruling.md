@@ -986,3 +986,92 @@ found (435,352)* — the inherited-claim rule applied to one's own sentence mid-
 Tolerance line lands → bake completes → `meta`/`pos`/`nor`/`mask` → **H4 ceiling
 pre-registered on the eight** → batch resubmits under the standing discipline → **the
 twin-baseline halt**, full standing report plus bake and ceiling receipts.
+
+---
+
+## Ruling 17 (advisor, 2026-08-04) — THE TWIN-BASELINE RULING. The eight are accepted as the ship's adjudicated stage-1 set; projection is cleared behind one named classification.
+
+### The twins are ACCEPTED
+
+**Registration, on the honest operand, sits inside the character's adjudicated band:**
+0.8442–0.9565 against W3's 0.8329–0.9533, all eight views above W3's own worst adjudicated
+view. The spec-material screen has no trigger — nothing arrived that the fixture does not
+name. The eight twins are hereby **the ship's adjudicated calibration set**, which is
+A27's jurisdiction logic applied to a new subject: the suspended IoU halt cannot fire on
+its own calibration set, stays `0.0` through this projection, and a ship bound derives
+only when a ship-side failure exemplar exists — W3's failure values are W3 geometry and do
+not transfer.
+
+**The fill_holes catch is endorsed by name and becomes a recorded subject-class fact:** a
+rigged ship is porous, `binary_fill_holes` swallows enclosed background (+58% of figure),
+and the raw key is this subject's figure definition — the tool now says so beside the
+code. *"A collapse that large on two views and not the other six is a shape story, and
+shape stories deserve an operand check"* — that sentence is the operand discipline this
+repo runs on, applied by the executor to the executor.
+
+### One named classification before projection — both readings pre-stated so nothing waits
+
+The view-0 question is answered by one measurement the artifacts already hold: **intersect
+view 0's largest off-palette component (4,562 px) with its sub-40° red mask** — and
+complete the palette table's missing rows (views 1 and 2; view 2 carries 8,433 red px and
+its off-palette row is materially interesting). Readings:
+
+- **Majority-red → the component is G7's landed red** sitting outside a warm band that was
+  derived from an image where G7 had not landed — the exact gap the palette fixture
+  records as *"G7 has no band."* Red is a declared element; the spec-material rule has no
+  trigger; **projection proceeds immediately.** The numbers already lean here hard: the
+  two off-palette outlier views are the two highest-red views.
+- **Majority-not-red → an unnamed material candidate** → the A23 question opens (one
+  re-roll of that view, new seed, rejected artifact stays in the record) — halt for that
+  ruling before projecting.
+
+### Ruled through, so the projection dispatch is complete
+
+1. **The operating points carry unchanged** — facing-min 0.45, edge 7.0@700, floor 2.5,
+   head values body-equal. Nothing in the baseline impeaches them; the thin key-out is a
+   trust-mask phenomenon upstream of acceptance; the A3 cap bounds erosion locally. The
+   stage-1 report brings the per-view acceptance diagnostics that would revisit them.
+   Banked beside the ceiling: the floor's pre-registered price is 55.84% − 42.72% = 13.1
+   points of reach on this subject.
+2. **The pale cluster's cost is accepted and stays measured — the backdrop does not
+   move.** Ruling 8's overrule bar is a measurement showing an alternative *wins*, not a
+   measurement that the default has the cost it was banked with. View 3's cluster mean
+   sits at 0.0471 against the 0.06 cut (view 0 at 0.0627, just over); the per-pixel key
+   decides texel by texel; the seven other views hold the same surface at 0.07–0.11. The
+   stage-1 report must state **specifically what covered the pale-deck surface** — which
+   views' paint, or holes.
+3. **The centroid signature is banked:** every dy negative, paint above silhouette,
+   scaling with presented rigging — reported, not gated, no exemplar. One consequence
+   pre-registered: paint-above puts the waterline rim at background-adjacency risk, which
+   is what the edge erosion exists for; the stage-1 edge diagnostics will show whether it
+   worked.
+4. **G7 is a per-view roll on a declared element** — lands 2 of 8 (port broadside,
+   stern-on) with a 6,438-vs-55 mirrored-camera asymmetry, E08's blue-sleeve signature on
+   an element that is *supposed* to be there. The fixture holds as amended (red,
+   head-noun). Projection takes the union of accepted paint, so the lids inherit red
+   exactly where accepted views carry it, and the provenance records which. H1 closes as
+   measured: **the head-noun form is necessary (its absence produced zero red anywhere)
+   and not sufficient (landing is a per-view roll).**
+5. **The two windows that are the Director's, presented at this halt:** the G7 *colour*
+   window (default red as authored, standing since Ruling 13) — and **masthead gold**: the
+   fixture declares one gilded spire on the stern turret; the twins paint gold at all
+   three mastheads. In-spec material, wrong place — the gate cannot see placement, no
+   re-roll rule applies, and the Gate 1 sheet will show it at his zoom. If he wants the
+   mastheads gold, one sentence amends the fixture (the G6 precedent); if not, the polish
+   path exists. **Neither window blocks projection.**
+
+### The stage-1 dispatch (after the classification lands red)
+
+`project_twins`, profile-driven, all eight twins — the owner sidecar lands natively (the
+ship is the first subject born with it). The stage-1 report: **share of valid AND share of
+the pre-registered 42.72% ceiling** (H4's units, both, always together) · per-view
+acceptance diagnostics for the operating points · the pale-deck coverage answer · edge
+diagnostics at the waterline · per-view stroke-candidate hole map, since **the stroke
+cameras derive from the hole map, measured, not inherited** — that derivation is the next
+ruling's material. Then the halt is the stage-1 report, before any stroke.
+
+### Executor predictions, noted for the record
+
+Three of ten clean with two inversions, owned with their mechanism — *"I reasoned from
+projected area and the subject answers by rigging."* That is this subject's first
+calibration lesson and it now sits in the record where the next prediction can use it.
