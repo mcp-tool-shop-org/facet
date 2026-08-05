@@ -1635,3 +1635,63 @@ item.
 Land the operand fix → the E08 anchor passes → **commit stroke 1 from disk** → strokes
 2–6 under the corrected gate → finalize → pack → renders → **the five-column Gate 1
 sheet**. No ruling between here and the sheet unless a gate fires.
+
+---
+
+## Ruling 27 (advisor, 2026-08-05) — the stage-2 run is RATIFIED end to end. GATE 1 IS OPEN: the galleon goes to the Director's eye.
+
+### The run, ratified
+
+**The anchor did what anchors are for:** corrected `invar` passes all eight E08 accepted
+strokes — including stroke 7, the original false-ANDON stroke, now at **0 px** under the
+honest operand — and the corrected check was then **proven able to fail** before being
+trusted, which is the house discipline applied without being asked. Six strokes committed
+in order B, every gate green on the geometry operand (largest hot component 8–95 px
+against the 200 bound), pre-flight guard PASS per stroke, six submissions, **0 credits**
+— and one placeholder mask name caught on the *saved file* before submission, now
+foreclosed by a 64-hex assertion on input names. The E07 record read correctly at the
+finalize fork: **neither arm was adopted, so the accepted route is the default flood** —
+the surface-aware primitive stays in the post-Gate-1 queue where E07 left it.
+
+### The mix, read as pre-registered — and the model behaved as declared
+
+> **reference 36.89% · brush 6.87% · dilation 56.24%** — against the character's
+> 68.8 / 4.2 / 27.0, which is NOT the comparison; the ceiling is.
+
+Reference stands at **86.4% of this subject's 42.72% reach ceiling** (character: 92.8% of
+74.1%). Brush runs **1.6× the character's share**. Dilation carries the hull bottom, the
+occlusion-bound side remainder, and the rigging — every point of it priced on geometry
+before the first stroke flew (Rulings 23–24). Deck 24.99% → 41.76% against a modelled
+44.82; foot 19.44% → 24.41% against 26.37; **every actual sits below every modelled
+figure** — the derivation declared itself an upper bound twice and held everywhere, which
+is what makes its numbers usable for the next subject.
+
+### The instruments built for the sheet, endorsed
+
+Ownership reconstructed by **re-running the shipped commits to byte-identity** rather
+than reimplementing the filter chain — the replay that cannot diverge from itself was
+named as such and checked by bytes instead. `gate1_sheet` gained its fifth column
+**additively** with the character anchor byte-identical on the no-new-flags path, and
+flushed another hardcoded subject value on the way (`--mask-tag`, the profile class,
+recorded). `emit` as the deck-camera renderer is correct twice over: it is the only
+renderer that can reach the elevated cameras, and its raycast output has no lighting —
+**the flat readout CLAUDE.md requires for judging texture**. The beam-view twin
+comparison (ΔE median 7.43 / mean 11.32 / p90 26.24) is recorded beside the sheets,
+lower on every column than the accepted character's comparable views — reported, not
+judged.
+
+### GATE 1 IS OPEN
+
+The artifacts: `E:\AI\training\facet_next\E04_stroke\out\` — **`GATE1_sheet_beam.png`**,
+**`GATE1_sheet_deck.png`**, the per-column panels at all three ruled cameras, and
+**`galleon_final.glb`** (43 MB) for the Blender zoom that ruled E08. The verdict is the
+Director's, at his zoom, in a sentence. The reading frame, all pre-registered: provenance
+reads against the **42.72% ceiling**, never the character's raw mix · owner seams are
+**expected** on hull and sails, likeliest at view-7's boundaries (Ruling 20) · the
+dilation-heavy finish was priced on geometry (Ruling 24) · the executor points two
+regions without judging them — **the deck's brush-composed region where pale scrubbed
+decking should read, and the hull foot at 55% of the ship's average base coat** — and
+his two windows remain open for one sentence each: **masthead gold** (fixture says one
+spire; the twins painted three) and **G7's colour** (red as authored, landed 2-of-8 as a
+per-view roll). His word closes the arc; the hypothesis scoring and the E04 close follow
+it.
