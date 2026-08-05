@@ -32,6 +32,13 @@ import sys
 ap = argparse.ArgumentParser()
 ap.add_argument("--profile", required=True)
 ap.add_argument("--tools", default="tools")
+ap.add_argument("--coverage", metavar="REFERENCE_PROFILE",
+                help="ALSO check what is ABSENT. Diffs this profile against the reference's "
+                     "per-tool keys and requires an explicit decision for every key the "
+                     "reference has and this one does not — a value, a vacuous suspension, "
+                     "or `_not_on_route`. Silence is the failure this exists to catch: an "
+                     "absent key means the tool uses ITS OWN default, which on this route is "
+                     "the other subject's measurement. E04 Ruling 21.")
 ap.add_argument("--allow-differ", action="append", default=[],
                 help="tool:key that is INTENDED to differ from the source default; each "
                      "one must be argued in the E04 report")
@@ -137,5 +144,61 @@ if bad:
     print("[chk] NOT A PURE RELOCATION - %d mismatches:" % len(bad))
     for t, k, why in bad:
         print("[chk]   %-24s %-20s %s" % (t, k, why))
+
+# ---------------------------------------------------------------- COVERAGE
+# THE SECOND QUESTION, and the one that cost three halts in one arc. The check above
+# compares values that are PRESENT. It is structurally blind to values that are ABSENT —
+# and an absent key is not neutral: the tool falls back to its own default, which on this
+# route is the CHARACTER's measurement. Three instances in E04, the third one firing inside
+# project_twins and stopping the projection:
+#
+#   reg-iou-min / bbox-tol   suspended in ship.json's prose, armed at W3's 0.80 / 0.25
+#   texpass_brush --prompt   absent, defaults to W3's literal identity string
+#   bg-de / bg-max-pct       absent, defaulted to W3's 10.0 / 2.0 and HALTED view 0
+#
+# So: diff the subject profile against a reference profile's per-tool keys and require every
+# absent key to carry an EXPLICIT decision. Three forms count as decided, per E04 Ruling 21 —
+# a real value, a vacuous suspension (a value the tool receives that cannot fire, the
+# reg-iou-min 0.0 pattern), or `_not_on_route`. Silence does not count. That is the whole
+# point: the failure mode is a value nobody decided, not a value someone chose wrongly.
+#
+#   _not_on_route: {"key": "why"}          inside a tool block, per key
+#   _tools_not_on_route: {"tool": "why"}   at profile top level, for a whole tool
+if args.coverage:
+    ref = json.load(open(args.coverage, encoding="utf-8"))
+    tools_skip = prof.get("_tools_not_on_route", {})
+    undecided, decided = [], 0
+    for tool, rblock in ref["tools"].items():
+        sblock = prof["tools"].get(tool)
+        rkeys = [k for k in rblock if not k.startswith("_")]
+        if sblock is None:
+            if tool in tools_skip:
+                decided += len(rkeys)
+                print("[cov] %-24s WHOLE TOOL not on route: %s" % (tool, tools_skip[tool]))
+            else:
+                for k in rkeys:
+                    undecided.append((tool, k, "tool has no block in this profile"))
+            continue
+        skip = sblock.get("_not_on_route", {})
+        for k in rkeys:
+            if k in sblock:
+                decided += 1
+            elif k in skip:
+                decided += 1
+            else:
+                rv = rblock[k]
+                rv = rv.get("value") if isinstance(rv, dict) else rv
+                undecided.append((tool, k, "absent — reference carries %r" % (rv,)))
+    print("[cov] coverage against %s: %d reference keys decided, %d UNDECIDED"
+          % (os.path.basename(args.coverage), decided, len(undecided)))
+    if undecided:
+        print("[cov] every row below is a flag whose value this subject inherits from the "
+              "reference subject BY SILENCE:")
+        for t, k, why in undecided:
+            print("[cov]   %-24s %-20s %s" % (t, k, why))
+        sys.exit(1)
+    print("[cov] every reference key has an explicit decision in this profile.")
+
+if bad:
     sys.exit(1)
 print("[chk] PURE RELOCATION: every profile value equals its tool's own default.")
