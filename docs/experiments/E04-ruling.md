@@ -1258,3 +1258,74 @@ the set. The owner sidecar lands natively. The report: share of valid **and** of
 42.72% ceiling · per-view acceptance diagnostics · the pale-deck coverage answer · edge
 diagnostics at the waterline rim (the paint-above signature's named risk) · the hole map
 that seeds the stroke-camera derivation. **The next halt is the stage-1 report.**
+
+---
+
+## Ruling 21 (advisor, 2026-08-04) — the bg-admission bound is SUSPENDED mechanically; the coverage checker moves up to NOW; ledger thirty-five is mine and it is sharp
+
+### The ANDON fired correctly by its own terms, on a bound that does not describe this subject
+
+**Ratified as reported.** `--bg-max-pct 2.0` at `--bg-de 10.0` is W3 calibration data
+absent from the ship's block — **Finding B's class, third instance, first to fire** — and
+its structure was never going to survive this subject: the denominator is the
+edge-relaxation's newly-admitted set, which concentrates at rims *by construction*, and
+the quantity it counts is antialiased rim mixing, which scales with **perimeter** — on a
+subject whose 512 rigging shells give it a perimeter-to-area ratio nothing in the bound's
+calibration history resembles. The executor's measurement settles the population's
+identity: median depth 1.4–5.0 px from the boundary on every view, 0–17% deeper than
+20 px, already-trusted texels at **0.01%** within ΔE 10, newly-admitted median ΔE
+**31.5** — and the **Director-ratified canon pair itself measures 3.26% by the identical
+test**, inside the twins' 1.26–4.81% silhouette-fraction range. The twins are not
+anomalous against the artifact he approved. This is the perimeter-not-area lesson through
+a third door, exactly as named.
+
+### Ledger thirty-five — and the consequence is that the mechanical check stops being queued
+
+Ruling 14's *"the block grows to cover the family explicitly (all flags verified
+present)"* was enumerated **by hand from halt2's table** — and `--bg-de` / `--bg-max-pct`
+were sitting at lines 81–85 of the argparse grep I had already run in the same session.
+Same form as ledger thirty-two: the contradicting fact visible in my own tool output,
+unread. Hand enumeration missed two flags; the mechanical enumeration was specified in the
+same ruling and queued "before stage 2," and the third instance fired in the gap between
+queued and landed. **The consequence: `e04_profile_check.py --coverage` lands NOW, before
+projection re-runs** — diff the ship block against `character.json`'s per-tool keys, and
+**every absent key gets an explicit decision in one pass**: a value, a vacuous
+suspension, or a `_not_on_route` entry. No more whack-a-mole; the class closes, not the
+instance.
+
+### The bound: SUSPENDED, expressed mechanically, with its proper future form queued
+
+`ship.json`'s `project_twins` block gains, by this ruling: **`bg-de: 10.0`** — unchanged,
+because it is the *metric window*, and moving it would break comparability with A2's
+recorded 0.18% / 38.31 — and **`bg-max-pct: 100.0`** — vacuous, the reg-iou-min pattern:
+the diagnostic computes and prints per view, the halt cannot fire, and the ship derives a
+real bound from clean measured data after the atlas exists. **Choosing any number today —
+per-subject, perimeter-normalised, or interior-fraction — would be deriving a threshold
+while looking at the result it judges.** The gate's proper future form is recorded for
+that derivation: normalise the rim quantity by perimeter (the standing CLAUDE.md rule),
+and gate the **interior fraction** separately — the >20 px population is the real prey's
+home, with one known collision to check first: the pale deck (G10) is a *declared*
+material near the backdrop's value, so interior-near-backdrop is not automatically
+background there. The proxy's limits get stated before its bound exists, for once.
+
+**The protection story during suspension, so nobody mistakes this for running naked:**
+trust ∧ geometry stays armed at both stages · the edge erosion removes the bulk rim (the
+ratio semantics give ~10.6 px nominal on this subject's width) · A3's thin-strata
+protection is a **ruled trade whose cost this rim population is** — and the trade just
+validated spectacularly: **erosion removed 0.0% of the 1–2 px and 2–4 px strata on the
+subject whose declared stressor is thin structure**, against the retired erosion's
+100% / 100% / 77.6% annihilation on the character · the in-tool commit gates stay armed.
+The stage-1 report mandates the full per-view bg diagnostics — % within ΔE 10 under
+**both** denominators, median ΔE, the depth distribution, and the interior fraction with
+its pale-deck overlap checked.
+
+**Endorsed by name:** measuring what the 19.06% *is* before reporting it; the canon-pair
+comparison that placed the twins inside the approved artifact's own range; and touching
+nothing — not the bound, not the profile, not the tool — while the ruling was mine to
+make. The suggestion that the two flags join the profile explicitly even at tool values
+is ratified and generalised by the coverage pass above.
+
+### Sequence
+
+Coverage pass → every absent key decided explicitly in `ship.json` → purity re-check →
+**projection re-runs** → the stage-1 report, which remains the next halt.

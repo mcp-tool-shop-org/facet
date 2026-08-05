@@ -174,6 +174,16 @@
     "value": 7.0,
     "why": "EQUAL TO edge-dist - same inert-band reasoning as head-facing-min.",
     "from": "Ruling 14"
+   },
+   "bg-de": {
+    "value": 10.0,
+    "why": "THE METRIC WINDOW, unchanged on purpose - it defines 'near backdrop' for the admission diagnostic, and moving it would break comparability with A2's recorded clean baseline (0.18% within dE 10, median 38.31). Absent from this block until Ruling 21: the third Finding-B instance and the first to fire.",
+    "from": "E08 A2 (the check); Ruling 21 (made explicit)"
+   },
+   "bg-max-pct": {
+    "value": 100.0,
+    "why": "SUSPENSION, EXPRESSED - the reg-iou-min pattern. The tool default 2.0 is W3 calibration on a compact-perimeter subject; the quantity is antialiased rim mixing, which scales with PERIMETER, and this subject's 512 rigging shells put its perimeter-to-area outside the bound's calibration history. Measured before suspending: the rim population sits at median depth 1.4-5.0 px, already-trusted texels are 0.01% within dE 10, and the Director-ratified canon pair itself measures 3.26% by the identical test. At 100.0 the diagnostic computes and prints per view and the halt cannot fire. The future form is recorded in Ruling 21: perimeter-normalised bound + a separate interior-fraction gate, derived from clean data after the atlas exists - with the pale-deck (G10) collision checked first, since a declared material near the backdrop's value makes interior-near-backdrop not automatically background.",
+    "from": "E04 Ruling 21; E04-stage1-halt.md"
    }
   },
   "bake_hero_prep.py": {
