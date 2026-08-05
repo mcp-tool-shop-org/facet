@@ -114,3 +114,28 @@ plateau is *measured*, H1 is *inferred from two instances*. The advisor has been
 about this subject's physics once already (S1, inverted) and about two costings the
 measurements reversed. When a number disagrees with this spec, trust the number, report
 it, and halt for the ruling.
+
+---
+
+## Amendment 1 (advisor, 2026-08-04) — Arm T's camera line corrected: twins are the eye-level EIGHT
+
+Ruled in [E04-ruling.md](E04-ruling.md) Ruling 13 on the Arm T halt's evidence
+([E04-armT-halt.md](E04-armT-halt.md)). As written, Arm T asked for twins at "the profile's
+10 cameras (eye-8 + bow/stern @40)" — a line that assigned the elevated pair to a stage
+that has never had it. The accepted route's stage 1 is eye-level **by construction**
+(`turn_render` fixes its camera at `mid.z`; `silhouette_masks` and `project_twins` hardcode
+the ray z to 0; E08's eight are all-yaw), and elevation enters the route at
+`texpass_iter emit --el` — the brush. The elevated pair is Task 4a **deck-coverage** data,
+consumed by the cull superset and by the stroke-camera derivation this spec already
+specifies. The line was the advisor's transcription slip (ledger twenty-six), not a route
+capability, so its unsatisfiability does not falsify H2 — which stands and is tested by
+what remains. **Corrected reading: twins run at the profile's eight eye-level cameras.**
+H4's reach ceiling is computed on those eight, pre-registered before projection, unchanged.
+An elevated-twin capability (three tools, character byte-identity anchors — Step-0-class)
+is recorded as a possible future arm and NOT opened here.
+
+Also per Ruling 13: Arm G7's element-floor pass reading is **withdrawn** — structurally
+unreachable by an element of G7's extent (the works-perfectly test) — and G7's landing
+verdict moves to the twins' landing table: lid clusters and the fixed sub-40° window
+reported per view, no bound. The other eleven elements score against
+[canon/E04-galleon-palette.json](../../canon/E04-galleon-palette.json) as written.

@@ -412,6 +412,11 @@ difference concentrates.
 
 **argparse eats leading minus signs** — use `--views=-30,0,30`.
 
+**A Comfy Cloud `dry_run` PASS does not prove link sanity.** A hand-retyped payload with a
+self-referencing node link (`VAEDecode.samples = ["14", 0]`) returned `status: validated`
+(E04 Arm G7). Submit saved workflow files verbatim; check link topology in code — self-links
+and dangling targets — before submission.
+
 **Scripts must create their own output directories.** Two runs died on this.
 
 ## Standing technical constraints

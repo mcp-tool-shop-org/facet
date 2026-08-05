@@ -32,7 +32,7 @@ onto an occupied surface, and any future edit that becomes one is predicted to d
 | G4 | weathered tan canvas sails | **deliberately warm-toned, not white** — see stressor S1 |
 | G5 | gilded scrollwork on the stern castle | carved relief is its own surface (the knee-plate precedent) |
 | G6 | a gilded spire on the stern turret | **⚠ AMENDED by the Director, 2026-08-04** ("I love the gold. I approve") — authored as *verdigris copper*; the styled pair arrived gold and he kept it. The spire joins the gold family (G1/G5/G12). The 4d landing table records the history: verdigris asked, gold arrived, Director ruled. |
-| G7 | red-lined gun port lids | the red band of the palette |
+| G7 | red gun port lids | **⚠ AMENDED to the head-noun form, 2026-08-04** (Ruling 9's grammar, ruled before Arm G7 ran; the twins take this form under both pre-registered branches, and the fixture must match the prompt). History: authored `red-lined` — the only sub-feature modifier of twelve — missed on the pair (no red above the chroma floor, Ruling 8). One byte-matched generation with the head-noun form put red on 3–4 lids (h 66–70 → 41–45, C\* rising, ΔE 16.5–27.3 against a ship median of 0.87) — a real localised **response, not a landing**; the pair-derived floor was withdrawn in Ruling 13 as unreachable by an element this size, and the landing verdict moves to the twins' table. The Director's window on the colour stays open; default is red as authored. |
 | G8 | black iron cannon barrels | run out of the ports, per the clay |
 | G9 | dark tarred rigging and ratlines | the thin-structure stressor, named so it is not accidental |
 | G10 | pale scrubbed deck planking | lighter than G2, still warm |

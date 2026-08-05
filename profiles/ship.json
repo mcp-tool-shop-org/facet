@@ -15,14 +15,14 @@
    "from": "E04 Task 4b"
   },
   "palette": {
-   "path": null,
-   "status": "REQUIRED, NOT WRITTEN",
-   "why": "Task 4d. Bands derive from the fixture's named materials and cross-check against the styled target pair, never against the twins they gate. The W3 palette must never be pointed at a ship."
+   "path": "canon/E04-galleon-palette.json",
+   "why": "Task 4d's bands transcribed: warm 50-100 MEASURED, blue 273-301 SUSPENDED with its numerator and denominator, both gate bounds null per the spec, G7 recorded as a declared element with NO band. Authored by the Arm T session as a pure transcription; verified against Ruling 8 and the 4d report, ratified Ruling 13. The W3 palette must never be pointed at a ship.",
+   "from": "E04 Task 4d; Ruling 8; Ruling 13"
   },
   "twin_prompts": {
-   "path": null,
-   "status": "REQUIRED, NOT WRITTEN",
-   "why": "Task 4c authors these from the fixture."
+   "path": "docs/experiments/E04-twin-prompts.json",
+   "why": "Eight eye-level stems, one constant identity string - this subject has no view-specific anatomy words, so the inherited per-view rule correctly yields one string. Byte-faithful to the pair's saved workflow prompt except the two ruled deltas: G6 gilded (Ruling 7), G7 head-noun (Ruling 9). Verified against workflow_7_bow_three_quarter.json directly; ratified Ruling 13. Records the pair's recipe as the generation anchor.",
+   "from": "E04 Arm T preparation; Ruling 13"
   },
   "brush_prompts": {
    "path": null,
@@ -80,6 +80,16 @@
     "value": 0.0,
     "why": "MEASURED, and deliberately zero. The bow is the -x end (2,308 verts, beam 0.103 - a thin low bowsprit) and the stern is +x (12,748 verts, beam 0.170, carrying the spired turret), confirmed by eye on the clay renders where the turret sits image-right at yaw 0. So view 0 is the port broadside, view 2 is stern-on, view 6 is bow-on. Left at zero because the broadside is a ship's maximum-information view and rotating buys nothing measurable - and the camera is what would rotate, never the mesh (to_mesh() destroys authored vertex normals).",
     "from": "E04 Task 4a"
+   },
+   "fit-axis": {
+    "value": "width",
+    "why": "The mode Ruling 11 adjudicated: anchor 1c ran at --fit-axis width, and its 1 px of 321,219 on view 1 (0 on view 7) reproduces TO THE DIGIT on a fresh invocation (E04-armT-halt.md Finding 3). The code default height puts 2 px on view 7 against the anchor's standing bound of 0. NO margin entry ON PURPOSE: the adjudicated run used the code default 1.204; the 'derived margin 1.2528' in the old suspended note was never used by any ruled run.",
+    "from": "E04 Step 0 item 1 (the flag); Ruling 11 (the adjudication); Ruling 13 (the pin)"
+   },
+   "tag": {
+    "value": "galleonclay",
+    "why": "Filename stem; matches silhouette_masks' tag and E04-twin-prompts.json's keys, which key on input stems. Previously supplied per invocation; pinned so the prompt keys cannot drift.",
+    "from": "E04-armT-halt.md finding 4; Ruling 13"
    }
   },
   "silhouette_masks.py": {
@@ -102,6 +112,11 @@
     "value": "1066,1024",
     "why": "The measured frame aspect. Landscape, width-fit - the design note's predicted stressor, now a measurement.",
     "from": "E04 Task 4a"
+   },
+   "fit-axis": {
+    "value": "width",
+    "why": "Moves WITH turn_render's fit-axis or landscape subjects silently misregister - Ruling 6's two-consumer rule, expressed as one profile value per consumer. Same adjudicated mode, same deliberate absence of a margin entry.",
+    "from": "E04 Step 0 item 1; Ruling 11; Ruling 13"
    }
   },
   "project_twins.py": {
@@ -125,11 +140,7 @@
   },
   "restylize_views.py": {
    "_backdrop_is_a_PROMPT_word_not_a_flag": "S-backdrop is delivered by the prompt text ('plain white background'), not by any argument here. --bg is the CLAY render's compositing colour for the control image, a different operand entirely - E08's parked blue-background arm changed that one and is not reopened.",
-   "aspect": {
-    "value": "1066,1024",
-    "why": "Twin generation aspect, matching the measured frame.",
-    "from": "E04 Task 4a"
-   }
+   "_no_frame_values_ON_PURPOSE": "STRUCK by Ruling 13. Task 4a wrote aspect 1066,1024 here; the tool has no such flag and needs none - it reads the render and the mask at whatever size they arrive, so the frame reaches it through turn_render and silhouette_masks, which carry it above. The loader's unknown-key ANDON fired on exactly this key (E04-armT-halt.md Finding 2) - the guard working. A profile value that does not reach its tool reads as configuration and does nothing."
   },
   "cull_unseen.py": {
    "_why_this_is_here": "E06 rule: the exterior visibility superset must COVER every production camera. The code default is a 24-yaw 15deg sweep plus 0,55 and 180,55 - it does NOT contain the ship's elevated +40 bow/stern pair, so the ship supplies its own list. The character path is untouched: no code default changed, so its cull output is unchanged BY CONSTRUCTION rather than by re-measurement.",
@@ -141,6 +152,7 @@
   }
  },
  "cameras": {
+  "_stage_assignment_RULED": "Ruling 13: the eye-level eight are STAGE 1 - the twin cameras. The elevated pair is STAGE 2 data - stroke-camera candidates (texpass_iter emit --el) plus cull-superset coverage - exactly as on the character, whose stage 1 is eye-level BY CONSTRUCTION (turn_render camera at mid.z; silhouette_masks and project_twins ray z hardcoded 0; E08's eight all-yaw). No route tool can render, mask or project an elevated twin; that capability would be a Step-0-class arm of its own (three tools, character byte-identity anchors), recorded as available and NOT opened. The spec's 'ten cameras' twins line was the advisor's slip, corrected in its Amendment 1.",
   "_measured_by_raycast_deck_coverage": "The design note flagged 'decks need looking into' as a real design question. Made a number: upward-facing surface is identified by normal (normal_z > 0.5) and each candidate set scored by what fraction of that surface's AREA it first-hits. Area, not face count - a deck is a few large triangles and the rigging is thousands of tiny ones, so counting would have measured the rigging and called it deck.",
   "eye_level": {
    "value": [
@@ -190,7 +202,7 @@
   "_weakest_link_named": "The material colours are ESTIMATES from the fixture's words. Re-run e04_backdrop.py against measured colours once the styled target pair exists; if the pair disagrees, the pair wins."
  },
  "_still_suspended": {
-  "framing margin": "Derived as 1.2528 for a 1066x1024 frame (see the report), but NOT written into a tool: turn_render hardcodes ortho_scale = size_z * 1.204 with no fit-axis knob, so width-fit cannot be expressed as a profile value. Recorded as the design note's predicted finding - a change needed OUTSIDE the profile means something in the code was never a principle.",
+  "framing margin": "RESOLVED by Step 0 + Ruling 13; the historical text below went stale the day Step 0 landed --fit-axis and --margin, and is kept because corrections happen in place. fit-axis width is now pinned in the tools blocks above; NO margin value is pinned because the adjudicated anchor (Ruling 11) used the code default 1.204 - the 'derived 1.2528' was never used by any ruled run and is dropped. HISTORICAL TEXT (pre-Step-0): 'Derived as 1.2528 for a 1066x1024 frame, but NOT written into a tool: turn_render hardcodes ortho_scale = size_z * 1.204 with no fit-axis knob, so width-fit cannot be expressed as a profile value.' That was the design note's predicted finding and Step 0 was its fix.",
   "allocation": "No privileged region has been chosen. A galleon may deserve one at the stern castle where the carved detail is, or 'none' may be right. Not decided, not guessed.",
   "generation recipe": "seed/steps/cfg/denoise/lora-w/cn-strength await E04's own anchor. Task 4c records what it uses.",
   "acceptance": "facing floors and the edge-dist family, including edge-ref (700.0 is literally one character's figure width in twin pixels), await twins on this subject.",

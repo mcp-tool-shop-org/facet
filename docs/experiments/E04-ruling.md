@@ -510,3 +510,142 @@ mid-arc churn.
 **The context-boundary stop is endorsed by name**: a generation run you cannot see through
 is worse than a clean halt at a passed anchor set. Arms G7 and T go to a fresh session;
 the handoff is in the kickoff.
+
+---
+
+## Ruling 13 (advisor, 2026-08-04) — Arm G7 ratified with its floor WITHDRAWN; Arm T unblocked on all three questions; two of the three blockers were mine
+
+### Arm G7 — the third outcome is the finding, and the pass reading is withdrawn
+
+**The report is ratified in full** — the byte-match proven by content-addressed filenames
+rather than asserted, the two-field diff enumerated over every node input, the mis-specified
+secondary window reported as mis-specified with its own hue breakdown as the correction, and
+the disagreement between the two readings promoted to the headline. That is the standard.
+
+**The pre-registered pass reading is WITHDRAWN, not failed-and-excused — and the difference
+is load-bearing.** The branch I wrote asked red to clear "the pair's measured element floor"
+(1.42–1.56% of silhouette — the smallest share carrying a LANDED element). The lids' entire
+physical extent is ~0.4–0.5% of the silhouette: at a **perfect** landing the measurement
+cannot exceed ~0.5% and the reading returns FAIL. A condition that returns the same verdict
+when the arm does nothing and when it works perfectly is not measuring the arm — CLAUDE.md's
+works-perfectly test, which I did not run before writing the branch. **Ledger twenty-seven**,
+the mis-derived-bound family's fifth member. The floor stays in the landing table as the
+descriptive statistic it is; it stops being a pass condition for any element whose extent
+sits at or under it. No replacement bar is chosen — that would be retuning with the result
+on the table.
+
+**What the measurements establish, read without the withdrawn bar:** a real, element-local
+response — three-to-four lid components at ΔE 16.5–27.3 with hue rotating 66–70 → 41–45 and
+chroma *rising*, against a whole-ship median of 0.87, itself below the 1.07 no-response
+floor; and 352 → 1,169 px (3.3×) below hue 40° on a window fixed before the run — the
+non-circular number. Where `red-lined` produced nothing anywhere (4d measured no red above
+the chroma floor), `red gun port lids` put paint on exactly the named structures at a
+byte-matched control. **What they do not establish: a landing.** The nearest cluster stops
+at ΔE 28.3 from canonical red and the arrived hue sits outside every band. P1 and P3 are
+FALSE as pre-registered; the mechanism inference survives only in the weakened form the
+report's §9 states — *response, not landing*, size now the leading alternate. **G7's landing
+verdict moves to the twins' landing table**: lid clusters and the fixed sub-40° window
+reported per view, numerator and denominator, no bound — the same measure-report-rule mode
+as every first-run gate on this subject.
+
+One correction to the report's prose, so the record carries the ratio: 0.37–0.44% against a
+1.42–1.56% floor is **3.2–4.2×** under it, not "an order of magnitude." The report's own
+tables carry the right numbers; the headline sentence rounds up.
+
+Banked from the run: **a cloud `dry_run` PASS does not prove link sanity** — a
+self-referencing node link returned `status: validated`; submit saved workflow files
+verbatim and check topology in code (added to CLAUDE.md's environment section).
+
+**The fixture amends G7 to the head-noun form** — `red gun port lids` — under Ruling 9's
+grammar, which ruled the restatement correct *regardless* before this arm ran. The twins
+take it, the prompt file already carries it, and the fixture must match the prompt: the
+identity source and its transcription cannot be allowed to diverge. The COLOUR question —
+red as authored, the arrived h 41–45, or neither — is the Director's window, per the G6
+precedent; default absent his word is red as authored. The palette file's G7-has-no-band
+entry stands exactly as written: deriving a band from the arm's own result is the tautology
+the non-circularity rule forbids.
+
+### The three questions
+
+**1. EIGHT — the spec line was mine, and H2 stands.** Verified against source before ruling:
+`turn_render` fixes its camera at `mid.z` (:155–158), `silhouette_masks` and `project_twins`
+hardcode the ray z to 0 (:120, :316), E08's eight stage-1 cameras are all-yaw (the eightcam
+table), and elevation enters the route at `texpass_iter emit --el` — the brush. The accepted
+route's stage 1 is eye-level **by construction**; the elevated pair is Task 4a deck-coverage
+data whose consumers are the cull superset (Step 0 item 2, done) and the stroke-camera
+derivation the spec's own strokes bullet already specifies. My Arm T line assigned it to a
+stage that never had it — **ledger twenty-six**, the same family as twenty-five: enumerate
+before asserting; a spec line is not exempt. The spec is corrected in place (its Amendment
+1); a spec transcription error cannot falsify H2, which remains live and is tested by what
+remains. **The elevated-twin capability is recorded as a named possible arm** — Step-0-class,
+three tools, character byte-identity anchors, would raise stage 1's deck ceiling above the
+eye-level eight's 30.17% of upward-facing area — and is NOT opened; whether deck reference
+is bought at stage 1 or stage 2 is a question for after the baseline exists, and it is the
+Director's if it is anyone's. **H4's reach ceiling is computed on the eight eye-level
+cameras** and pre-registered before projection, per the spec.
+
+**2. STRUCK.** The `restylize_views` block loses its `aspect` key — the value never reached
+anything (zero frame references in the tool; the frame arrives through its inputs), and the
+loader's unknown-key ANDON fired exactly as designed. The block keeps its backdrop
+annotation and gains the strike note. **The executor's fourth question is answered YES and
+is standing law: `e04_profile_check.py` runs against EVERY profile before any arm consumes
+it** — for the character it proves pure relocation; for any other subject it proves every
+value reaches its tool, the same instrument answering a second question for free. **Ledger
+twenty-eight:** Ruling 12 ratified "PURE RELOCATION at 64 values" on a run I never pointed
+at the ship profile, and the dead key sat in `ship.json` from Task 4a until a tool loaded
+it — same class as ledger twenty: the gate existed and its scope was narrow. Pre-ruled so no
+halt round-trip is needed: until the checker learns two verdicts, its VALUE-DIFFERS rows on
+a non-character profile are the profile *working* — a ship differing from character defaults
+is the point; only a NO-SUCH-FLAG row is a defect. Teaching the checker that distinction
+(two verdict classes, exit codes to match, and the `cull_unseen` evaluability limit) is a
+queued diagnostic work item, not a route-tool change.
+
+**3. ADDED.** `fit-axis: width` lands on `turn_render` AND `silhouette_masks` in
+`ship.json` — the two consumers move together, Ruling 6's lesson expressed as one profile
+value per tool — with **no margin entry**: the adjudicated run used the code default 1.204,
+and the "derived margin 1.2528" in the suspended note was never used by any ruled run. The
+stale `_still_suspended` framing note is corrected in place with the measurement. The
+executor's width column reproducing Ruling 11's 1 px of 321,219 **to the digit** on a fresh
+invocation is a free replication of the adjudicated anchor — banked. So is the 0.046% mode
+difference: the frame was derived from the mesh's own aspect, so the two conventions nearly
+coincide on this subject and the 4.68% catastrophe is confirmed absent. The correction is
+convention identity, not repair — and 2 px is still not 0, which is why the pin goes in.
+
+Folded with the above: `turn_render` gains `tag: galleonclay` so the twin-prompt file's
+stem keys cannot drift (the halt report's fourth finding), and `_fixtures` now points at
+the two written files.
+
+### The two fixtures are RATIFIED
+
+Both verified before ratifying, per the inherited-claim rule. **The palette file**
+transcribes 4d/Ruling 8 faithfully — warm 50–100 over measured 62–88, blue 273–301
+SUSPENDED with its numerator and denominator, both gate bounds null, chroma floor 12.0
+carried as inherited, the ratified pair's own 1.622% off-band baseline recorded as
+context-not-threshold, and G7's bandlessness recorded rather than patched. One note for the
+record: the warm band's proposed edges widen slightly past the stated ±10° (exact would be
+52–98; blue's arithmetic is exact) — nothing rides on it while both bounds are null and the
+gate reports both ways; if a bound is ever derived, the edges re-derive with their margin
+stated, blue's path. **The twin-prompts file** is byte-faithful to the pair's saved
+workflow string except exactly the two ruled deltas (G6 per Ruling 7, G7 per Ruling 9) —
+verified directly against `workflow_7_bow_three_quarter.json` — and its one-constant-string
+argument is the per-view rule correctly applied to a subject with no anatomy words. The
+recipe it records is the pair's, which is the anchor `ship.json` was waiting for.
+
+### Arm T restarts — the sequence, both branches pre-stated
+
+1. `git pull` — this ruling's edits land together.
+2. `e04_profile_check.py --profile profiles/ship.json` — expected: the `restylize_views`
+   row gone; remaining rows VALUE-DIFFERS class or the known `cull_unseen` limit. A
+   NO-SUCH-FLAG row anywhere → HALT: my edit is wrong.
+3. `restylize_views` loads the ship profile clean. The ANDON fires → HALT.
+4. One profile-only framing verification at width-fit: views 1 and 7 geometry agreement —
+   expected 1 px / 0 px, the adjudicated instance. Any other digit → HALT per Ruling 11
+   ("the next nonzero halts again").
+5. Then the twins: **eight eye-level**, prompts from `E04-twin-prompts.json`, controls from
+   exact silhouettes at 1066×1024 width-fit, cloud discipline standing, every gate in
+   measure-report mode. Compute and pre-register H4's reach ceiling on the eight before
+   projection. G7's rows report lid clusters and the sub-40° fixed window per view; the
+   pale near-neutral cluster's key margin reports per view; blue reports both ways.
+   **The next scheduled ruling is the twin-baseline halt.**
+
+Clean through 2–4 → straight into 5, no further ruling needed before the baseline halt.
