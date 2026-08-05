@@ -38,6 +38,7 @@ onto an occupied surface, and any future edit that becomes one is predicted to d
 | G10 | pale scrubbed deck planking | lighter than G2, still warm |
 | G11 | a deep sea-blue frieze band along the bulwarks | **blue is IN-palette on this subject** — W3's off-palette detector colour is a declared material here, which is the palette-as-subject-data principle made concrete |
 | G12 | gilded stern-gallery railings | gold again; gold is the binding element across the scheme |
+| G13 | gilded masthead finials | **⚠ ADDED post-acceptance, 2026-08-05** (Ruling 28, under the Director's delegation at Gate 1 — "it looks good to me"). Never authored: the twins painted gold at all three mastheads unprompted, first observed on the 1064 frame-discovery batch, flagged through Rulings 17 and 27 as in-spec-material-wrong-place with the Director's window open, and accepted with the asset. Named because an element not named in the prompt is arriving by accident and will leave the same way — naming it is what makes it stay. Joins the gold family (G1/G5/G6/G12). |
 
 ## MESH-SUPPLIED — arrives through the control from geometry; record the dependency
 

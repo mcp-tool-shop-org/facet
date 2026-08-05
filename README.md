@@ -75,8 +75,22 @@ generator.**
 reference / 4.2% brush / 27.0% dilation** against the rejected asset's 28.4 / 37.7 / 33.9 —
 reference ×2.42, diffusion invention ×0.11. One region named at his zoom: a hard-edged
 blotch on the crown, prior mechanism the documented unlevelled stroke seam (confirmation
-dispatched). The post-Gate-1 quality queue demotes to optional polish; **next is the subject
-profile extraction, then E04's galleon.**
+dispatched). The post-Gate-1 quality queue demotes to optional polish.
+
+**And the route generalises — E04's galleon is the second accepted asset** (2026-08-05,
+"it looks good to me," ruled on the five-column sheets —
+[E04-ruling.md](docs/experiments/E04-ruling.md), 28 rulings). The ship ran the character's
+route end to end with every subject value drawn from `profiles/ship.json` and
+`canon/GALLEON-IDENTITY.md`: eight twins, six strokes, **zero credits across every
+generation in the arc**. Measured mix **36.89% reference / 6.87% brush / 56.24% dilation**
+— read against the subject's own pre-registered **42.72% stage-1 reach ceiling** (86.4% of
+reach, beside the character's 92.8% of 74.1%): a ship hides most of itself from eye level,
+and the difference is geometry, not regression. The spec's central hypothesis — *no
+shared-code edit needed* — was **falsified five times, and that was the payoff**: each
+falsification hardened the profile system (the coverage gate and its subject-flag registry
+law, the generator-legal frame constraint, two operand corrections found at fixes' second
+consumers). **Next: the E10 environment-contact layer spec, and the galleon into the sdlab
+asset lane as asset #2 — the first with a native per-texel owner channel.**
 
 **Form first, style second.** Image-to-3D reconstructors key off shading, silhouette
 clarity and unambiguous depth. A heavily stylized sprite — weathered planks, painted

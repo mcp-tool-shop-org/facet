@@ -1695,3 +1695,62 @@ his two windows remain open for one sentence each: **masthead gold** (fixture sa
 spire; the twins painted three) and **G7's colour** (red as authored, landed 2-of-8 as a
 per-view roll). His word closes the arc; the hypothesis scoring and the E04 close follow
 it.
+
+---
+
+## Ruling 28 (advisor, 2026-08-05) — GATE 1: ACCEPTED. The delegated windows are decided. E04 CLOSES.
+
+**The Director's verdict, in his words: "Dude, it looks good to me."** Ruled on the
+sheets at his eye. On the pointed regions and the open windows: *"I don't even know the
+areas of the ship that you're talking about. You're the advisor"* — the windows pass to
+me under his standing delegation, and they are decided here.
+
+### The delegated decisions
+
+1. **Masthead gold: RATIFIED INTO THE FIXTURE.** The accepted asset carries gold at all
+   three mastheads; the fixture declared one spire. An identity source that does not
+   describe the accepted artifact is the exact incoherence this repo exists to prevent —
+   *an element not named in the prompt is arriving by accident and will leave the same
+   way.* Naming it is what makes it stay. `GALLEON-IDENTITY.md` gains **G13, gilded
+   masthead finials**, with the full history in the row: never authored, arrived
+   unprompted, flagged through two rulings with the window open, accepted with the
+   asset, named under delegation.
+2. **G7: the window CLOSES on red as authored.** The head-noun form is in the fixture
+   since Ruling 13, the lids read plainly on the accepted broadside, and the per-view
+   roll is characterised in the record. Nothing moves.
+3. **The two pointed regions demote to the polish queue**, exactly as E08's queue
+   demoted at its Gate 1: the deck's brush-composed read and the hull foot's thin base
+   are optional polish on an accepted asset — the hull foot already has an owner in
+   E10's charter (the layer needs a base coat there; a foot-serving stroke arm is the
+   candidate if E10 wants it).
+
+### The hypotheses, scored at close
+
+| # | verdict | the number |
+|---|---|---|
+| H1 | **supported in weakened form** | the head-noun form is necessary (zero red anywhere without it) and not sufficient — landing is a per-view roll (6,438 vs 55 px on mirrored cameras); the element floor was withdrawn as structurally unreachable (Ruling 13) |
+| H2 | **FALSIFIED — the experiment's payoff** | five primary findings under the spec's own test: silent inheritance (four sites), elevation's stage boundary, allocation expressibility, frame legality, the invar operand. Each hardened the system: the coverage gate, the registry law, the classification-table sweep, the frame constraint in CLAUDE.md, two operand corrections at second consumers |
+| H3 | **unrefuted, instrumented, not numerically scored** | the owner sidecar is native and the sheet carries the owner column; the Director's eye named no seam at his zoom. The named-site measurement (view-7 boundaries, `e04_blotch`) remains runnable from artifacts on disk if the polish queue ever wants it |
+| H4 | **CONFIRMED** | ceiling pre-registered at 42.72%, achieved 86.4% of it, 6.4 points below the character on the only like-for-like ratio — and the ceiling cross-validated byte-equal from inside a second tool |
+| H5 | **CONFIRMED** | the landing table at the pair's own level — median 10–11 of 12 across eight twins on a subject with no face, the two shortfalls (G7's roll, the tar's band-edge realization) characterised to the pixel |
+
+### The arc, closed
+
+**Every generation in E04 cost zero credits** — the G7 arm, nine twins, six strokes, one
+re-roll. Two executor sessions ran it; both were exceptional, and the pattern that
+defined them is the pattern this repo was built to teach: *the selftest run because the
+header says so; the 1.29% chased because direction matters more than magnitude; the
+guard proven able to fail before being trusted; the halt taken with the artifact already
+in hand.* The advisor's ledger closed the arc at **thirty-eight entries**, fourteen of
+them this arc — and the honest summary of those fourteen is one sentence: every one was
+an operand, an enumeration, or a precision claim that a measurement was already sitting
+somewhere to check. **The record survives contact with itself. That is the whole
+method.**
+
+**What follows E04, queued and not opened:** the E10 spec (the Director's waterline
+layer, Ruling 19's charter) · the galleon into sdlab as **asset #2** — the first with a
+native owner channel, the flywheel's second turn · the dense-turnaround exporter spec
+(facet's debt to the asset lane) · both subjects' polish queues, all optional · the
+shared-code bundle (registry rebuild, `_NOT_CLEARED` loader key, `palette_gate` null
+blob bound, frame-legality assert, `brush_cloud_step` profile binding). The Director
+picks; nothing runs unbidden.
