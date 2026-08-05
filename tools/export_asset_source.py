@@ -232,6 +232,27 @@ def main():
     pal = json.load(open(J(REPO, "canon", "E04-galleon-palette.json"), encoding="utf-8"))
     prov_counts = json.load(open(J(STROKE, "out", "provenance.json"), encoding="utf-8"))
 
+    # ---- the suspension, TRANSLATED at the boundary (E04 Ruling 29) ------------------
+    # canon declares max_offpalette_blob_px: null - a SUSPENSION, not a missing value
+    # (Ruling 8: no baseline for this subject exists, and the only numbers derivable are
+    # the ones the bound would judge). The sdlab schema has no representation for that:
+    # it allows null for the percentage bound and demands an integer here, which forces
+    # exactly the invention the non-circularity rule forbids. So the export translates
+    # the suspension into an UNREACHABLE SENTINEL - the whole atlas, a bound no blob can
+    # reach - which is E04's own established pattern (bbox-tol 9.99, bg-max-pct 100.0):
+    # suspension expressed as a value the consumer actually receives. CANON KEEPS ITS
+    # NULL. The translation lives here, with its reason, which is what an export tool is
+    # for. If canon ever carries a derived integer, it passes through untouched.
+    atlas_meta = Image.open(J(STROKE, "out", "galleon_final.png"))
+    blob_sentinel = atlas_meta.width * atlas_meta.height
+    canon_blob = pal["gate"]["max_offpalette_blob_px"]
+    blob_suspended = canon_blob is None
+    blob_value = blob_sentinel if blob_suspended else int(canon_blob)
+    print("[gate] canon blob bound %s -> manifest %d (%s)"
+          % ("null (SUSPENDED)" if blob_suspended else str(canon_blob), blob_value,
+             "unreachable sentinel = %dx%d atlas" % (atlas_meta.width, atlas_meta.height)
+             if blob_suspended else "derived bound, passed through"))
+
     renders = []
     for c in CAMS:
         tag = "y%+04d_e%+03d" % (c["yaw"], c["el"])
@@ -284,8 +305,25 @@ def main():
                               for b in pal["allowed_bands"]],
             "gate": {
                 "max_offpalette_pct": pal["gate"]["max_offpalette_pct"],
-                "max_offpalette_blob_px": pal["gate"]["max_offpalette_blob_px"],
+                "max_offpalette_blob_px": blob_value,
             },
+            "_max_offpalette_blob_px_IS_A_SUSPENSION_ENCODING": (
+                "NOT A DERIVED BOUND AND NOT A THRESHOLD. canon/E04-galleon-palette.json "
+                "declares this null on purpose (E04 Ruling 8: this subject had no baseline "
+                "when its bands were derived, and 'suspend rather than invent' is the "
+                "house rule - the only numbers available to derive a bound from are the "
+                "results the bound would judge). The sdlab schema requires an integer "
+                "here while allowing null for max_offpalette_pct, so the export tool "
+                "TRANSLATES the suspension at the boundary into %d - the whole %dx%d "
+                "atlas, a value no connected component can reach - so the consumer "
+                "receives a bound that gates nothing and cannot be mistaken for a "
+                "measured threshold. This is E04's established pattern (bbox-tol 9.99, "
+                "bg-max-pct 100.0). Canon keeps its null; the translation lives in "
+                "tools/export_asset_source.py with its reason. Ruled in E04-ruling.md "
+                "Ruling 29. MEASURED CONTEXT, not a bound: the three renders below carry "
+                "largest off-palette components of 1,738 / 1,495 / 263 px; W3's 800 px "
+                "bound would reject two of the three renders of this accepted asset."
+                % (blob_value, atlas_meta.width, atlas_meta.height)),
             "_bands_note": (
                 "Transcribed from the canon fixture, which derives them from "
                 "GALLEON-IDENTITY.md's named materials measured on a DIFFERENT image than "
