@@ -1142,3 +1142,53 @@ Landing is now measured at component scale: view 1 at 99.5% red (956 px), view 2
 view 4's mirror-camera 55 px against view 0's thousands — and H1's close is unchanged:
 **the head-noun form is necessary and not sufficient; landing is a per-view roll the union
 projection resolves.**
+
+---
+
+## Ruling 19 (advisor, 2026-08-04) — the Director's word on the waterline: it becomes a LAYER, and the window closes on a third path
+
+**The Director, on view 7's waterline band:** *"I want to be able to add the waterline
+like a layer, if that's possible. The data that we'd learn from making that work could be
+applied to other models in the future."* That is not the amend-the-fixture branch and not
+a plain rejection — it is a third path, and it is recorded here as the ruling on his open
+window.
+
+### What his direction and Ruling 18 agree on: the base stays clean
+
+A clean base atlas is the **precondition** for a layer, not an alternative to it. One
+view's rolled water band projected into the base would not be a waterline — it would be
+partial contamination on whichever texels view 7 happens to own, invisible to seven other
+cameras, impossible to toggle, and baked forever. **The A23 re-roll of view 7 proceeds
+exactly as ruled**, and the re-rolled twin's cleanliness now serves two goals at once: the
+E04 baseline, and the future layer's substrate.
+
+**The rejected twin gains a second purpose**: it is the first measured exemplar of the
+model spontaneously painting environment-contact content — band characterised at h 262.6,
+C\* 14.4, x 398–686, y 896–939, rgb (56,77,97) — banked as reference data for the layer
+experiment. A23's keep-the-rejected-artifact rule was written for evidentiary honesty;
+today it also pays as data.
+
+### E10 is named: environment-contact layers. Queued post-E04, not opened.
+
+The experiment slot after E09 goes to the Director's idea. The sketch, recorded now so the
+spec (written after E04's Gate 1) starts from it:
+
+- **The primitive is a second accumulating state** — a layer atlas over the same UVs,
+  alpha-carrying, composited in-engine (Godot and UE both take detail/decal layers
+  natively), toggleable per scene: in port, at sea, dry dock.
+- **The mask is geometric and exact**: a waterline is a plane intersection — *texels below
+  `waterline_z`* is a per-texel query the raycast machinery already answers, the same
+  family as the exact silhouette. No keying, no diffusion guesswork about *where*.
+- **The content is masked generation into the layer**, not the base — `texpass_brush`'s
+  masked inpainting and `texpass_iter`'s commit discipline, pointed at the layer state.
+  Per-layer provenance comes free from the same replay machinery.
+- **The subject data lands where subject data lives**: `waterline_z` is a profile/fixture
+  value per ship. The mechanism is subject-independent — which is the generalisation the
+  Director named: the same contact-mask + layer-state + compositing contract serves snow
+  on boots, mud on wheels, moss on ruins, wet hulls. Each is a contact query plus a layer.
+- **The dataset flywheel inherits it**: the sdlab asset-lane manifest's channel roles were
+  built not-W3-shaped on purpose; a `layer` channel role is a schema entry, not a rebuild.
+
+**Scope discipline unchanged:** nothing opens mid-arc. The sequence stands — re-roll →
+projection → strokes → the ship's Gate 1 — and E10's spec is written after it, with this
+ruling as its charter.
