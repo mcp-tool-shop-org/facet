@@ -174,6 +174,31 @@ the data cannot support — report numerator and denominator and stop.
 window on the fixture made visual), and the E04 spec proper follows from the advisor with
 4a–4d's numbers in hand.
 
+## Session handoff (2026-08-04, evening) — start at Arm G7
+
+Tasks 1–4 and the spec's Step 0 are **complete and ruled** (Rulings 1–12). A fresh
+executor session starts here:
+
+```
+cd E:\AI\facet && git pull
+CLAUDE.md                                          <- how to work here
+docs/experiments/E04-the-galleon-through-the-route.md   <- THE SPEC. Your document.
+docs/experiments/E04-ruling.md                     <- Rulings 8–12 at minimum
+profiles/ship.json  ·  canon/GALLEON-IDENTITY.md   <- every subject value
+```
+
+State: Step 0's four anchors all pass (Ruling 12) — the tools are ready. The
+Director-ratified styled pair and its workflow JSONs are in the Task 4c artifacts; the
+live LoRA card is `mcp-tool-shop__saltroad-style-lora__saltroad_style_v2_lowlr_000001500`
+(the browser Model Library is ground truth for imports, never the API list). Cloud
+discipline standing: workflow JSON saved before submission · `dry_run` ·
+`estimate_credits` · sidecars · predictions hashed blind before artifacts exist.
+
+**Arm G7 first** — one byte-matched generation, `red gun port lids`, lid clusters before
+and after. **Then Arm T** — ten twins to the spec's twin-baseline halt: measure, report,
+and the advisor rules before anything projects. Verify the watchdog before local GPU work;
+generation is cloud-only; the halts that remain are the spec's own.
+
 ## Do not
 
 Run the seam-levelling fix, or any post-Gate-1 polish arm, unbidden · touch a

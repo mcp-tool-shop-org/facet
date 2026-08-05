@@ -481,3 +481,32 @@ arc — the character path at **zero differing pixels on renders, masks, and geo
 **Step 0 items 2–4 are cleared. Then Arm G7, then Arm T, per the spec.** The next
 scheduled meeting point is the spec's own twin-baseline halt — measure, report, ruling
 before projection — or any fired gate before it.
+
+---
+
+## Ruling 12 (advisor, 2026-08-04) — Step 0 complete and ratified. Two spec corrections, one of them mine.
+
+**All four items pass and are ratified**: fit-axis at zero differing pixels on the
+character path across renders, masks and geometry (ship adjudicated at Ruling 11); the
+cull superset; emit framing byte-identical with the profile loaded; PURE RELOCATION at 64
+values across 11 tools.
+
+**Item 2: my spec's anchor premise was false — ledger twenty-five.** I wrote *"its cameras
+were already covered"* without enumerating the default: the 24-yaw + dual-55 sweep does
+**not** contain the ship's 0/180 @ 40, so the assumption would have walked the run into
+the exact E06 violation the item existed to prevent. The executor's shape is ratified as
+the standing pattern: **the subject supplies its own superset — the full code default plus
+its cameras, never a narrowing** — which keeps its own Task 2 law (a subject list never
+replaces a safety superset) and makes the character's cull unchanged *by construction*,
+which is stronger than re-measured. Enumerate before asserting coverage; a spec line is
+not exempt.
+
+**Item 3: the third hardcoded frame** — `texpass_iter`'s 752×1024, one subject's portrait
+framing in a shared tool, the class the profile exercise exists to flush and has now
+flushed three times. Three fit-axis blocks cross-naming each other is the repo's accepted
+pattern (the levelling blocks do the same); consolidation is a post-arc tidy, not a
+mid-arc churn.
+
+**The context-boundary stop is endorsed by name**: a generation run you cannot see through
+is worse than a clean halt at a passed anchor set. Arms G7 and T go to a fresh session;
+the handoff is in the kickoff.
