@@ -501,3 +501,50 @@ edge treatment and the coat's register are the next arm's variables, with his wo
 the targeting data; **no, wrong idea** → the layer stays a proven mechanism awaiting a
 better element, and E10 closes on its architecture findings — which are already worth
 the arc.
+
+---
+
+## Ruling 10 (advisor, 2026-08-05) — the Director's verdict: IT DOES NOT READ. Two ledger entries are mine, and the second is the finding: the gate was aimed at an artifact that cannot pass it at perfection.
+
+**The Director, on the toggle: "How is that supposed to be a waterline? I'm confused
+right now, do you not see that?"** Recorded as the verdict it is. And on looking — for
+the first time, which is the first entry — the advisor agrees: the layer-on panel reads
+as a ship with a cream-painted bottom, fully visible, on grey. Not a floating ship.
+
+**Ledger forty-three: the advisor presented a gate artifact unviewed.** E07's founding
+lesson — *build the sheet before the metrics, and look* — violated at the advisor's own
+seat: the toggle went to the Director's eye carrying measurements (+33.4 L\*, all true)
+in place of a look. The Director's question — *"do you not see that?"* — had the honest
+answer *no, I had not looked.* The rule was always subject-independent; it is now
+seat-independent too.
+
+**Ledger forty-four, the works-perfectly test at ARM level: W-H4's artifact class
+cannot produce a floating ship at perfect execution.** A ship reads as floating when
+the water *hides* what sits below the line — that is what floating looks like. The
+coat-only toggle paints the below-water hull pale and **leaves it fully visible**: more
+of what should be hidden, highlighted. A perfect boot-top on a waterless render is a
+dry ship with a painted bottom. **RG02's Q3 had already assigned the water to the
+scene** — *the dynamic band is computed shader-side; the meeting line belongs to the
+water's material* — and the advisor pointed the float question at the hull-side half
+anyway, one ruling after ratifying that research.
+
+### The correction: the float question gets the artifact it actually needs
+
+**The sea-occlusion composite, dispatched now:** at the ortho beam view, the placed
+plane's projection is exact — every pixel below the waterline's projected row is
+underwater. A sea surface rendered (or composited) at `waterline_z`, occluding the hull
+below it, IS the "does she float" picture — **zero generation, minutes of work, and the
+contact machinery already built is precisely the engine contract**: `waterline_z` +
+the below-line predicate are what a game's water plane consumes to do this per-frame.
+The demo goes back to the Director's eye as the true W-H4 artifact.
+
+### What stands, unbowed by the miss
+
+Every mechanism finding survives untouched: base-invariance under live fire · the
+two-lane profile vocabulary · alpha-from-geometry and the export contract · the
+inpainting-continues / full-frame-introduces law with its 8-arm evidence · the placed
+`waterline_z` and the contact mask, which are exactly the scene-side inputs the true
+demo consumes. **The boot-top coat demotes to an optional hull detail** — real
+shipyard practice, visible in dry dock or heel, the Director's to want or not once
+the true float demo is in front of him; its one-view ragged state builds out only if
+wanted.
