@@ -103,6 +103,11 @@ g.add_argument("--out", required=True)
 g.add_argument("--render-name", default=None, help="cloud input name; defaults to local")
 g.add_argument("--mask-name", default=None)
 g.add_argument("--seed", type=int, default=None)
+g.add_argument("--profile", required=True,
+               help="REQUIRED, and there is deliberately no way to skip it (E04 Ruling 24). "
+                    "The subject profile whose texpass_brush.py block the values entering "
+                    "the graph are checked against. Required rather than optional because "
+                    "an optional guard is a skip flag with a different name.")
 
 v = sub.add_parser("invar")
 v.add_argument("--job", required=True)
@@ -122,12 +127,120 @@ lg.add_argument("--entry", required=True)
 
 args = ap.parse_args()
 
+def preflight(gr, P, key):
+    """E04 Ruling 24 — the coincidence becomes a CHECKED EQUALITY, inside the tool that acts.
+
+    DEFAULTS above hardcodes five recipe values and this tool binds no profile, so on any
+    subject whose profile decides those five keys they agree BY COINCIDENCE OF VALUE, not by
+    construction. A future ruling that moves a subject's brush recipe would edit a profile
+    this tool never reads. Until the class fix lands (brush_cloud_step binding the profile
+    properly - shared-code bundle, Step-0-class, character anchors), this asserts the
+    coincidence every time a graph is built, and HALTS rather than warning.
+
+    Two different questions, checked two different ways, because they have different
+    failure modes:
+
+      the five recipe numbers - checked by VALUE against the profile block. This is the
+        coincidence the ruling names.
+      prompt and negative    - checked by PROVENANCE: that --prompts IS the file the
+        profile's _fixtures.brush_prompts names, and that the strings entering the graph
+        are that file's, unmodified. Value equality would be the wrong check here: a
+        profile's prompt/negative copies DOCUMENT the fixture (ship.json says so in the
+        row itself) and on the character they deliberately differ from it - character.json
+        carries texpass_brush's stale default, which E08's fixture exists to supersede.
+        Asserting provenance is stronger than asserting equality anyway: it guarantees the
+        strings came from this subject's decided file rather than merely matching a copy.
+
+    Runs BEFORE the workflow JSON is written, so a failed pre-flight leaves no file that
+    could be submitted.
+    """
+    prof = json.load(open(args.profile, encoding="utf-8"))
+    blk = prof.get("tools", {}).get("texpass_brush.py")
+    assert isinstance(blk, dict), (
+        f"ANDON: {args.profile} has no tools['texpass_brush.py'] block, so there is nothing "
+        f"to check the graph against. A subject whose brush block is absent is running this "
+        f"tool's constants by silence, which is the failure this check exists to catch.")
+    assert "_NOT_CLEARED" not in blk, (
+        f"ANDON: {args.profile}'s texpass_brush.py block carries _NOT_CLEARED - the tool is "
+        f"FORBIDDEN on this subject until a ruling clears the block and decides its keys.")
+
+    def pv(k):
+        e = blk.get(k)
+        assert isinstance(e, dict) and "value" in e, (
+            f"ANDON: {args.profile} texpass_brush.py has no decided value for '{k}'")
+        return e["value"]
+
+    bad = []
+    # (a) the five hardcoded constants against the decided block - unconditional, and
+    #     independent of any per-invocation override, because THIS is the coincidence.
+    for pk, dk in (("seed", "seed"), ("steps", "steps"), ("cfg", "cfg"),
+                   ("lora-w", "lora_w"), ("cn-strength", "cn_strength")):
+        if DEFAULTS[dk] != pv(pk):
+            bad.append(f"DEFAULTS[{dk!r}] = {DEFAULTS[dk]!r} but the profile decides "
+                       f"{pk} = {pv(pk)!r}")
+    # (b) what actually landed in the graph nodes
+    entering = {"seed": gr["15"]["inputs"]["seed"], "steps": gr["15"]["inputs"]["steps"],
+                "cfg": gr["15"]["inputs"]["cfg"],
+                "lora-w": gr["5"]["inputs"]["strength_model"],
+                "cn-strength": gr["12"]["inputs"]["strength"]}
+    for k, got in entering.items():
+        if k == "seed" and args.seed is not None:
+            # an explicit --seed is a recorded per-invocation argument (the one-re-roll
+            # precedent, E08 A23), not an undeclared constant. It must land in the graph
+            # exactly as given, and the deviation from the decided value is printed loudly
+            # rather than hidden - but it does not silence check (a) above.
+            if got != args.seed:
+                bad.append(f"graph seed {got!r} is neither the profile's nor the explicit "
+                           f"--seed {args.seed!r}")
+            if got != pv("seed"):
+                print(f"[pre-flight] DEVIATION, EXPLICIT: seed {got} against the profile's "
+                      f"{pv('seed')}. Recorded per-invocation argument, not a constant.",
+                      flush=True)
+            continue
+        if got != pv(k):
+            bad.append(f"graph {k} = {got!r} but the profile decides {pv(k)!r}")
+    # (c) prompt and negative by PROVENANCE
+    fx = (prof.get("_fixtures", {}).get("brush_prompts", {}) or {}).get("path")
+    assert fx, (f"ANDON: {args.profile} names no _fixtures.brush_prompts.path, so the "
+                f"strings entering the graph have no declared source")
+    root = os.path.dirname(os.path.dirname(os.path.abspath(args.profile)))
+    want_fx = os.path.realpath(os.path.join(root, fx))
+    got_fx = os.path.realpath(os.path.abspath(args.prompts))
+    if want_fx != got_fx:
+        bad.append(f"--prompts is {got_fx} but the profile's _fixtures.brush_prompts names "
+                   f"{want_fx}")
+    if gr["7"]["inputs"]["text"] != P.get(key):
+        bad.append("the positive prompt in the graph is not the fixture's string for "
+                   + str(key))
+    if gr["8"]["inputs"]["text"] != P.get("_negative"):
+        bad.append("the negative in the graph is not the fixture's _negative")
+    if bad:
+        raise SystemExit(
+            "ANDON: pre-flight - the values entering this graph disagree with "
+            + os.path.basename(args.profile) + "'s decided texpass_brush block:\n  "
+            + "\n  ".join(bad)
+            + "\nNo workflow JSON was written. This check has no skip flag: it exists "
+              "because brush_cloud_step.py binds no profile, so agreement between its "
+              "constants and a subject's decided values is a coincidence until something "
+              "asserts it. HALT.")
+    same_p = blk.get("prompt", {}).get("value") == P.get(key)
+    same_n = blk.get("negative", {}).get("value") == P.get("_negative")
+    print(f"[pre-flight] PASS against {os.path.basename(args.profile)}: five recipe values "
+          f"equal the decided block; --prompts IS _fixtures.brush_prompts; the graph's "
+          f"strings are that file's.", flush=True)
+    print(f"[pre-flight]   the profile's documentation copies of prompt/negative "
+          f"{'both match' if same_p and same_n else 'do NOT both match'} the fixture "
+          f"(prompt {same_p}, negative {same_n}) - reported, not gated: the graph never "
+          f"reads them.", flush=True)
+
+
 if args.cmd == "graph":
     P = json.load(open(args.prompts, encoding="utf-8"))
     assert args.key in P, f"ANDON: no prompt for {args.key} in {args.prompts}"
     rn = args.render_name or "render.png"
     mn = args.mask_name or "mask.png"
     gr = build_graph(rn, mn, P[args.key], P["_negative"], args.seed)
+    preflight(gr, P, args.key)
     os.makedirs(os.path.dirname(os.path.abspath(args.out)), exist_ok=True)
     # sorted keys + fixed separators so a byte-comparison of two saved JSONs is meaningful
     with open(args.out, "w", encoding="utf-8", newline="\n") as fh:
