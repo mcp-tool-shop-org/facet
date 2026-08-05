@@ -170,3 +170,29 @@ it consumes — ledger thirty; the enumerate-the-resource lesson, again.
 geometry-agreement row **(0,1,0,0,0,2,0,0)** — all differing pixels boundary, none
 interior, centroids and bboxes unmoved; views 1 and 5 adjudicated individually (Rulings 11
 and 14), bound still 0, every future nonzero halts for its own ruling.
+
+---
+
+## Amendment 3 (advisor, 2026-08-04) — the frame is 1072×1024; the bake guard is a named work item; the batch regeneration is not a re-roll
+
+Ruled in [E04-ruling.md](E04-ruling.md) Ruling 15 on
+[E04-armT-halt3.md](E04-armT-halt3.md)'s two ANDONs.
+
+**The profile frame is re-ruled 1066 → 1072** (all three frame sites): 1066 is not a legal
+generator width — the Qwen VAE's /8 downsampling decodes it to 1064, which broke every
+twin↔silhouette pairing on arrival. 1072 is ÷16, is this subject's own Gate 0 frame
+(Ruling 6), and its 6 px over the derived aspect is margin slack, verified. New standing
+constraint in CLAUDE.md: derive the frame from the mesh, then round to the nearest
+generator-legal width. Every frame-bearing artifact regenerates at 1072; the eight-view
+geometry row re-runs and **replaces the Amendment-2 anchor row**; the 1064 batch stays in
+the record as the frame-discovery run. Regeneration passes the A23 selection test: the
+defect was caught by an ANDON before any content judgment, and nothing is selected. The
+blind predictions carry, **with G7-landed and masthead-gold demoted from blind to declared
+priors** — both were observed on the 1064 batch.
+
+**Allocation NONE proved unexpressible** — `bake_hero_prep`'s guard branches both require
+a privileged region (growth assert vs pre-allocated assert) — Finding-1-class #2,
+deepening H2's falsification. The scale-aware guard fix is specified in Ruling 15 §ANDON 1
+(character path unchanged by construction) and gates the bake, the H4 ceiling, and
+projection. The shared-code work-item bundle now: coverage mode · `_NOT_CLEARED` key ·
+`palette_gate` null blob bound · frame-legality assert · the bake guard (first).

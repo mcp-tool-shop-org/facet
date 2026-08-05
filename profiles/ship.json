@@ -62,9 +62,9 @@
  "tools": {
   "verify/turn_render.py": {
    "w": {
-    "value": 1066,
-    "why": "MEASURED. The rotating silhouette's widest projected width is 0.9987 at yaw 0 and the height is 0.9598, so the frame aspect is 1.0405 and 1024 * 1.0405 = 1066. Checked rather than assumed: I expected a 45-degree view to be widest (a box presents its diagonal) and it is NOT - the hull tapers at both ends, so broadside is genuinely the widest and the bounding box understates by 0.00%.",
-    "from": "E04 Task 4a"
+    "value": 1072,
+    "why": "RE-RULED from 1066 by Ruling 15 (ANDON 2): 1066 is not a legal generator width - the Qwen VAE downsamples by 8, so 1066 encodes to 133 latent columns and decodes to 1064, breaking every twin<->silhouette pairing. 1072 is divisible by 16, is this subject's own Gate 0 frame (Ruling 6), and the fit is verified: at margin 1.204 the extra 6 px is slack, not distortion. HISTORICAL DERIVATION (kept because it was correct as geometry): widest projected width 0.9987 at yaw 0, height 0.9598, aspect 1.0405, 1024 * 1.0405 = 1066; broadside genuinely widest, bbox understates by 0.00%. The standing rule leaving this arc: derive the frame from the mesh, then round to the nearest generator-legal width.",
+    "from": "E04 Task 4a (derivation); Ruling 15 (legality re-rule)"
    },
    "h": {
     "value": 1024,
@@ -114,9 +114,9 @@
     "from": "E04 Task 4a"
    },
    "aspect": {
-    "value": "1066,1024",
-    "why": "The measured frame aspect. Landscape, width-fit - the design note's predicted stressor, now a measurement.",
-    "from": "E04 Task 4a"
+    "value": "1072,1024",
+    "why": "The frame aspect - re-ruled with turn_render.w by Ruling 15 (generator legality; see the w entry for the full history). Landscape, width-fit - the design note's predicted stressor, now a measurement.",
+    "from": "E04 Task 4a; Ruling 15"
    },
    "fit-axis": {
     "value": "width",
@@ -131,9 +131,9 @@
     "from": "E04 Task 4a"
    },
    "aspect": {
-    "value": "1066,1024",
-    "why": "The twins are generated at this aspect and the projection derives its horizontal extent from it; the two must agree.",
-    "from": "E04 Task 4a"
+    "value": "1072,1024",
+    "why": "The twins are generated at this aspect and the projection derives its horizontal extent from it; the two must agree. Re-ruled with turn_render.w by Ruling 15.",
+    "from": "E04 Task 4a; Ruling 15"
    },
    "reg-iou-min": {
     "value": 0.0,
@@ -194,8 +194,8 @@
   "texpass_iter.py": {
    "thin-extent": {
     "value": 0.01,
-    "why": "MEASURED on this mesh, by the same method the character's 0.030 came from - the smallest value that fills the thin structure solid, judged on the artifact. Three independent lines agree: (1) the extent DENSITY has its thin peak at 0.0015-0.0045, which at this render scale is 1.3-4 px, matching rigging diameters; (2) rendered thin-masks at 0.005 leave the rigging PATCHY and at 0.010 it is solid, because a rope crossing the ray obliquely presents more extent than its diameter; (3) the cross-view cost at 0.010 is 10.20% of visible area withheld on EVERY view, against 15.25% at the character's 0.030. NOT an antimode: the density falls steeply into a plateau rather than a valley, so this is a visual-solidity determination like W3's, not a discovered boundary. The cost curve is published in the report so it can be moved.",
-    "from": "E04 Task 4a"
+    "why": "MEASURED on this mesh, by the same method the character's 0.030 came from - the smallest value that fills the thin structure solid, judged on the artifact. Three independent lines agree: (1) the extent DENSITY has its thin peak at 0.0015-0.0045, which at this render scale is 1.3-4 px, matching rigging diameters; (2) rendered thin-masks at 0.005 leave the rigging PATCHY and at 0.010 it is solid, because a rope crossing the ray obliquely presents more extent than its diameter; (3) the cross-view cost at 0.010 is 10.20% of visible area withheld on EVERY view, against 15.25% at the character's 0.030. NOT an antimode: the density falls steeply into a plateau rather than a valley, so this is a visual-solidity determination like W3's, not a discovered boundary. The cost curve is published in the report so it can be moved. Frame re-ruled 1066->1072 (Ruling 15): px scale shifts 0.56%, within this derivation's own slack - value unchanged.",
+    "from": "E04 Task 4a; Ruling 15 scale note"
    }
   },
   "restylize_views.py": {

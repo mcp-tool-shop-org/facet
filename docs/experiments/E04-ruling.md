@@ -786,3 +786,120 @@ projection, per the spec.
 **H-status after this ruling:** H1 weakened per Ruling 13 (response, not landing — twins
 re-measure). **H2 FALSIFIED** (Finding B — the primary finding). H3/H4/H5 unchanged,
 awaiting twins, ceiling, and landing table respectively.
+
+---
+
+## Ruling 15 (advisor, 2026-08-04) — the frame is re-ruled to 1072; the bake guard gets a scale-aware fix; the batch regenerates, and that is not a re-roll
+
+### ANDON 1 — allocation NONE is unexpressible: Finding-1-class #2, ratified, and the fix is specified
+
+**Ratified exactly as reported.** `bake_hero_prep:381` demands `share_area >
+share_area_pre * 1.2` — a growth assert that the identity can never satisfy (0.2432 →
+0.2432, exact); the `--no-head-scale` branch demands the input *already* privilege a
+region. **Both branches of the allocation machinery assume a privileged region exists** —
+the second structural character-assumption E04 has found in route code (elevation was the
+first), and H2's falsification deepens accordingly. The executor's refusal to try the
+other branch as an escape is the discipline working.
+
+**Ledger thirty-two.** Ruling 14 claimed the NONE expression needed *"zero code change"*
+with the contradicting assert sitting in the tool — my own grep of that file surfaced the
+scale-preservation ANDON's message text one line below the growth condition I never read.
+The pre-stated failure branch saved the run from a workaround, which is what pre-stating
+is for; the claim itself was checkable and unchecked.
+
+**The fix, specified for the executor:** the guard becomes **scale-aware**. At
+`head-scale 1.0` the requested transform is the identity, so the thing to verify is that
+the identity *survived* — `share_area == share_area_pre` within float tolerance (measured:
+exact) — and the growth clause applies only when growth was requested
+(`head_scale > 1.0`, existing condition byte-unchanged on that branch). The character path
+invokes at 3.0 and executes the identical code it always did — **unchanged by
+construction**, Ruling 12's standard. The `--no-head-scale` branch is untouched. Then the
+ship bake runs, `meta.json`/`pos`/`nor`/`mask` land, and `e08_ceiling` pre-registers H4's
+reach ceiling on the eight eye-level cameras before anything projects.
+
+### ANDON 2 — `w: 1066` is not a legal generator width. The frame is re-ruled: **1072**.
+
+**The mechanism is confirmed from the numbers:** the Qwen VAE downsamples by 8;
+1066/8 = 133.25 encodes to 133 latent columns and decodes to **1064** — every twin came
+back 1064×1024 against 1066-wide controls, and `palette_gate` correctly refused the
+pairing. W3's 752 and the pair's 1024 are both divisible by 8, which is why four
+experiments and the pair never met this; the pair dodged it *specifically* through Ruling
+6's 1024×1024 deviation. The 1066 was derived correctly from the mesh and the generator
+still cannot accept it — a constraint that lived inside the cloud VAE, met by the first
+landscape-frame subject. Not a ledger entry for anyone: nobody asserted legality; nobody
+had ever needed to.
+
+**The frame is 1072×1024, ruled on three grounds:** it is divisible by 16 (safe one level
+deeper than the VAE's /8, against stacks that patch at 16); it is **this subject's own
+Gate 0 frame** — the 1072×1024 the Gate 0 driver measured and used, precedent on-subject
+in my own Ruling 6 text; and the fit is verified — at margin 1.204 the fitted width covers
+1.2024 world units, vertical coverage at 1072 is 1.1486 against a mesh height of 0.9598,
+so the 6 px over the derived 1066 is slack, not distortion. 1064 is rejected: /8 only, no
+precedent, and 2 px *under* the derived aspect. The profile updates in place at all three
+frame sites with the derivation history kept; `thin-extent`'s px scale shifts 0.56%,
+within its own derivation's slack — value unchanged, noted beside it.
+
+**A new standing constraint leaves this arc for CLAUDE.md** (subject-independent physics,
+code-side per the profiles boundary): *generation frames must be generator-legal — derive
+from the mesh, then round to the nearest legal width; ÷8 is the Qwen VAE's floor, prefer
+÷16.* A frame-legality assert at the generation boundary joins the shared-code work-item
+bundle.
+
+### The batch regenerates at 1072 — and the A23 test says this is not a re-roll
+
+**Would the rule have been the same whatever came out? Yes:** the frame mismatch was
+caught by an ANDON on arrival, before any content judgment; the entire batch regenerates
+for a mechanical legality reason independent of what any twin looks like; nothing is
+selected. The 1064 batch **stays on disk as the frame-discovery record** (0 credits, so
+the cost of honesty is zero). The blind predictions at `b8245a7` carry to the 1072 batch
+**with two items honestly demoted from blind** — G7-landed-on-broadside and
+masthead-gold were *observed* on the 1064 batch, so for those two the 1072 run tests
+declared priors, not blind predictions; the demotion is recorded here so nobody later
+mistakes them for blind hits.
+
+**Consequences, enumerated:** every frame-bearing artifact regenerates at 1072 — clay
+renders, exact silhouettes, control images (local, minutes). The eight-view
+geometry-agreement row re-runs at the new frame and **replaces (0,1,0,0,0,2,0,0) as the
+subject's framing anchor state** — the 1066 row stays in the record as its frame's
+measurement; the bound stays 0; any nonzero halts for its own adjudication exactly as
+before. Then the batch resubmits under the standing discipline — workflows saved,
+link-checked in code, `dry_run`, `estimate_credits`.
+
+### Endorsed by name, and the small gaps banked
+
+**Withholding the registration numbers** — refusing to measure a frame-edge defect and
+call it registration — is the grade-what-it-can-move rule applied to a *measurement*, and
+it is exactly right. So is leaving crop-vs-rescale **unresolved** rather than forcing it
+from artifacts that cannot show it. So is the scratchpad-copy discipline on
+`palette_gate` — canon untouched, verdict column discarded, the vacuous bound proven
+vacuous. The tool gap it worked around is real: **`MAXBLOB` cannot express the spec's
+"no numeric pass bound"** — a null/report-only blob bound joins the work-item bundle.
+
+**The spec-material screen stands as run:** view 2's 5.61% off-band is diffuse (largest CC
+1,686 px against E08's invented-sleeve 4,882) — reported, not a garment, no re-roll
+trigger; view 4's zero blue-band pixels is a bankable oddity for the baseline report.
+**Masthead gold** is Ruling 6's in-spec-material-wrong-place class, correctly not
+re-rolled; the placement call is the Director's, and his window opens when the baseline
+report puts the twins in front of him. **G7 landing plainly on the broadside where the
+cluster instrument said NEAR on a three-quarter** is the strongest prior yet that the
+landing question is view-dependent — the landing table's per-view G7 rows are where it
+resolves.
+
+### The work-item bundle (all Step-0-class, character anchors, before their consumer needs them)
+
+1. `e04_profile_check.py --coverage` (Ruling 14).
+2. The `_NOT_CLEARED` loader key (Ruling 14).
+3. `palette_gate` null blob bound — report-only mode (this ruling).
+4. Frame-legality assert at the generation boundary (this ruling).
+5. `bake_hero_prep` scale-aware guard (this ruling — **first: it gates the bake, the
+   ceiling, and projection**).
+
+### The sequence from here
+
+1. Bake guard fix → ship bake → **H4 ceiling pre-registered on the eight**.
+2. Frame artifacts regenerate at 1072 → new eight-view anchor row (nonzero halts) →
+   purity check → batch resubmits.
+3. **The twin-baseline halt**: the full standing report — palette both ways, IoU +
+   centroid per view (now measurable against a legal frame), the watch items, the landing
+   table with G7's per-view rows, masthead-gold flagged for the Director — plus the bake
+   and ceiling receipts. I rule the projection parameter set there.

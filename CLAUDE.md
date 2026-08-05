@@ -441,6 +441,11 @@ the boundary.
   texels and corrupted a fifth to a quarter of every view's edge distances).
 - **Order strokes to spiral outward from already-painted regions**, or the brush composes a
   new character instead of continuing one.
+- **Generation frames must be generator-legal.** The Qwen VAE downsamples by 8: a width not
+  divisible by 8 decodes short (1066 → 1064, every twin 2 px off its control — E04 Ruling
+  15) and breaks every downstream pairing. W3's 752 and the pair's 1024 passed by luck.
+  Derive the frame from the mesh, then round to the nearest legal width; ÷8 is the floor,
+  prefer ÷16.
 
 ## The advisor's record, for calibration
 
