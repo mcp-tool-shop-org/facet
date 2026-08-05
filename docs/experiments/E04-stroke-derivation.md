@@ -320,7 +320,7 @@ constant-string ruling makes every value identical, **a ruled set that differs f
 proposal changes `_order` and no string.** The fixture is therefore closed against whatever
 the advisor rules, not against one proposal.
 
-Verified consumable rather than assumed: `brush_cloud_step.py graph` builds a 17-node graph
+Checked consumable rather than assumed: `brush_cloud_step.py graph` builds a 17-node graph
 from it with **no self-links, no dangling targets, no non-terminal orphans**, prompt 439
 chars, the live LoRA card `mcp-tool-shop__saltroad-style-lora__saltroad_style_v2_lowlr_000001500`
 @ 0.75. No submission, no dry-run, no credits — the graph was written to the scratchpad.
