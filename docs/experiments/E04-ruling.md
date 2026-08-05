@@ -1370,3 +1370,78 @@ in"* is this arc's Finding B stated as a design rule, and it goes in the record.
 **Sequence unchanged:** the executor lands all 41 under these rules in one commit →
 coverage exits 0 → purity re-check green → **projection re-runs** → the stage-1 report,
 still the next halt.
+
+---
+
+## Ruling 23 (advisor, 2026-08-04) — STAGE 1 RATIFIED. The stroke stage is dispatched: decks by the measured pair, sides by derivation, the bottom by decision, the prompts by the measured rule.
+
+### Ratified, with the arc's best number named
+
+**36.89% of valid · 86.4% of the pre-registered reach ceiling** — and the ceiling itself
+**cross-validated from the inside**: `project_twins` printed reachable/valid 42.7%
+against `e08_ceiling`'s pre-registered 42.72%, two tools, different days, same number.
+That is what pre-registration is for. **H4 confirms on the only like-with-like ratio**:
+character 92.8% of reach, ship 86.4% — 6.4 points, not 31.9; the rest is geometry the
+spec predicted before any twin existed. The bg suspension is vindicated in full (every
+view would have halted at 2.0; the highest fractions sit on the smallest denominators —
+a perimeter statistic in disguise, exactly as ruled; **trusted core 0.00–0.01%
+everywhere**). And the pale-deck question resolves the honest way: the deck is not
+mis-painted, it is **unpainted** — 24.99% styled against 40.05% — absence of coverage,
+exactly as `ship.json` predicted. *Whatever fixes the deck is a camera or a stroke, not
+a backdrop* — adopted as the closing line on the backdrop question.
+
+### The stroke dispatch, structured by the hole map's own decomposition
+
+**91% of holes are geometry, not misses** (1,782,458 beyond the ceiling; 181,400
+reachable-but-unpainted). The target is two coherent surfaces, and each gets its ruling:
+
+1. **Decks (upward-facing, 75.01% holed): the measured elevated pair is the stroke set,
+   no re-derivation needed.** Task 4a already measured it as the best two-camera deck
+   answer (30.17% → 49.58%, bow/stern beats beam, 40° the measured peak). Cite 4a; do
+   not re-derive what is already derived. **Pre-registered so Gate 1 reads honestly:**
+   the deck plateaus near 53% even at twelve cameras — after the pair's strokes, roughly
+   half the deck's holes remain and fall to dilation. That is the subject's geometry,
+   priced before the first stroke.
+2. **Sides (54.14% holed, and the 181,400 reachable-but-unpainted): derive the side
+   strokes from the hole map** the way 4a derived deck cameras — per candidate yaw,
+   raycast what fraction of side-class hole surface it first-hits, greedy by marginal
+   coverage, and **report the table with the proposed set**. The waterline rim (19.44%
+   styled, the least-covered region) is side-low surface — state specifically what the
+   proposed set buys it, since E10's layer needs a painted base there.
+3. **The hull bottom (downward-facing, 74.91% holed): NO strokes this arc — ruled, with
+   the reasoning on the record.** The ship floats: E10's charter already establishes the
+   below-waterline surface as underwater in every floating presentation, the 2.5D camera
+   never sees a floating hull's bottom, and no measured consumer exists for that paint.
+   Bottom holes fall to dilation from hull-adjacent paint — planking continuing planking.
+   *Bound an expensive arm before spending it*: bottom strokes would be spend on surface
+   with no viewer. *If a future scene beaches or dry-docks the ship, a below-arm runs
+   then, with its own cameras* — and the Director's one-sentence overrule window is open
+   as always.
+
+### The brush fixture, ruled by the measured rule
+
+**`brush_prompts` = the twin-prompts constant string, per stroke.** The twin file's own
+argument transfers whole: this subject has no view-specific anatomy words, material words
+stay byte-identical across views (E08 B4 held with the control locking orientation), so
+the correct application of the per-view rule is one constant string — for strokes exactly
+as for twins. The executor lands the file mechanically beside the camera derivation;
+`_fixtures.brush_prompts` closes.
+
+### Lifting `_NOT_CLEARED`, by its own lifecycle
+
+The stroke dispatch is the stage-2 ruling Ruling 22's lifecycle demands: lifting the
+block reverts `texpass_brush`'s keys to undecided and **coverage fires — that firing is
+the procedure, not a defect**. Each key gets its explicit decision in the same commit:
+the prompt from the brush fixture above; the recipe keys as **FIRST-RUN OPERATING
+POINTS** at the accepted character route's values (they are what Gate 1 accepted; the
+per-stroke sidecars measure whether they carry). Coverage back to 0, purity green, then
+strokes fly — cloud, per-stroke sidecars, in-tool gates unchanged.
+
+### The next halt
+
+The **stroke-camera derivation report**: the side-stroke table with marginal coverage,
+the proposed full stroke set and order (the spiral is subject data — derive it from
+where stage 1 left paint, per `_still_suspended`), the waterline-rim answer, and the
+lifted-block key decisions. I rule the set; then the strokes run to the finalize → pack
+→ **Gate 1 sheet** — five columns, both elevated cameras and a beam view, textures under
+`--flat`, full size, the Director's eye.
