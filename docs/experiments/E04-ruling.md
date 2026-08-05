@@ -1192,3 +1192,69 @@ spec (written after E04's Gate 1) starts from it:
 **Scope discipline unchanged:** nothing opens mid-arc. The sequence stands — re-roll →
 projection → strokes → the ship's Gate 1 — and E10's spec is written after it, with this
 ruling as its charter.
+
+---
+
+## Ruling 20 (advisor, 2026-08-04) — A23 closes NO; the re-rolled view 7 is ACCEPTED; the eight are complete and PROJECTION PROCEEDS
+
+### A23's arc, ratified end to end
+
+The waterline is **decisively gone** — 2,272 px → 0 in the exact band the rejected twin
+painted, not present at any scale — and the procedure ran to the letter: deterministic
+seed increment stated as arithmetic, the diff against the rejected run enumerated at two
+fields in code, 0 credits, **re-roll 1 of 1 spent**, the rejected artifact preserved with
+its sha and now serving as E10's founding exemplar. The exact-band check (chroma-bearing,
+hue 240–273, lower 7% of figure) is the decisive instrument — built from the rejected
+twin's own characterisation, answerable only by presence or absence.
+
+### The changed row: the class is settled, the magnitude has no rule to fire, and none is invented
+
+**The escalation was correct, and the reason was the right one line:** Ruling 17 accepted
+the eight *as measured*, and the set that was accepted is not the set that would be
+projected. That identity change is mine to rule on, not the executor's to wave through —
+"in family" was doing load-bearing work in my pre-stated branch precisely for this case.
+
+**The class question is settled by signature, ratified:** the replacement component
+(h 43.1, C\* 15.5, L\* 10.7, rgb 47,22,13) sits squarely inside the recorded tar class —
+views 4/6 measured h 42.3–44.5, C\* 13.7–15.8, L\* 8.5–12.4 — and nowhere near the
+waterline class (h 262.6, C\* 14.4, **L\* 31.7**). A **declared** material (G3/G9) whose
+realization sits at the warm band's 50° edge.
+
+**The magnitude (largest CC 10,866, tar-class off-palette 9,289, row 1.74% → 4.28%)
+fires nothing, and inventing a bound while looking at it is the forbidden move.** The
+palette bounds are null by the spec's own design; the two-threshold instrument's job is
+to flag a large component for *classification*, which happened, and the classification
+answers *declared*. Re-applying Ruling 17's actual acceptance criteria to the new row:
+registration **0.93017** (in the adjudicated range, unchanged to the third digit),
+spec-material screen clean, watch items measured. **The re-rolled view 7 is accepted; the
+eight are complete; projection proceeds under Ruling 17's dispatch.**
+
+### Three things banked so the downstream readings are honest
+
+1. **The band finding, queued for the re-derivation the suspension already names:** the
+   warm band's 50° lower edge undercovers the declared dark materials' realization range —
+   the pair's tar-brown measured h 64.4 (in-band), the twins' tar runs h 41–49 (out).
+   Three instances now: the pair's own 904 px hull shadow, views 4/6's speckle, and a full
+   strake at 9,289 px. The palette fixture's own path applies — *edges re-derive when the
+   ship's own twins exist* — and they now do, nine twins of data. Not re-derived here:
+   nothing gates on it this run.
+2. **Pre-registered for the Gate 1 reading — H3's named likely site:** view 7's tar runs
+   darker than its neighbours', so **owner-seam magnitude at view-7 ownership boundaries
+   on the hull** is expected. The native owner sidecar measures it; the sheet's owner
+   column shows it. If hull seams appear there, they were predicted here — and if the
+   Director's eye lands on them, the harmonisation arm in the polish queue is their
+   documented owner.
+3. **The roll-generalisation, with the executor's sentence kept:** G7's red (6,438 vs 55),
+   the waterline (2,272 vs 0), the tar realization (2,575 vs 9,289) — same prompt, same
+   control, seeds apart. *"Spontaneous contact is a roll, and anything that's a roll
+   can't be a feature until it's authored."* That is E10's charter in one line, and it is
+   also the standing argument for the owner-seam harmonisation arm: per-view rolls are
+   what tone harmonisation exists to reconcile.
+
+### The dispatch is live
+
+Stage-1 projection, Ruling 17's parameters, all nine artifacts in the record and eight in
+the set. The owner sidecar lands natively. The report: share of valid **and** of the
+42.72% ceiling · per-view acceptance diagnostics · the pale-deck coverage answer · edge
+diagnostics at the waterline rim (the paint-above signature's named risk) · the hole map
+that seeds the stroke-camera derivation. **The next halt is the stage-1 report.**
