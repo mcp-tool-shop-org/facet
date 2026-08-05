@@ -649,3 +649,140 @@ recipe it records is the pair's, which is the anchor `ship.json` was waiting for
    **The next scheduled ruling is the twin-baseline halt.**
 
 Clean through 2–4 → straight into 5, no further ruling needed before the baseline halt.
+
+---
+
+## Ruling 14 (advisor, 2026-08-04) — view 5 adjudicated PASS; the twins are CLEARED; H2 is FALSIFIED by Finding B, which is the experiment paying for itself; allocation is ruled NONE
+
+### A — view 5's 2 px: ADJUDICATED PASS, same reading as Ruling 11, bound unmoved
+
+**The evidence is Ruling 11's second reading on every axis:** all three differing pixels
+across all eight views are **on the silhouette boundary, none interior**; view 5's two are
+242 px apart — scatter, not a segment; centroid (0.0, 0.0017) where a structural offset
+must move it; hit bbox identical to mask bbox; the other non-90° pair (views 3/7) at 0;
+opposite-view mask areas identical, which is what an orthographic silhouette must do; and
+the character control's 0/0 (Ruling 11) still proves the instrument can return zero. The
+prey measured 4.68% with a 34×42 px bbox gap; this is 0.0006% with no gap. A ray resolving
+triangle-edge coincidences differently under two float orderings, on the yaw pair whose
+axes keep irrational components — the structure the executor noted constrains the cause
+without a chase, and the chase stays declined per Ruling 11.
+
+**The mechanics, restated so this cannot drift into a tolerance:** the bound stays **0**.
+This instance is adjudicated on its evidence; the next nonzero halts again and gets its own
+ruling. **The eight-view row (0,1,0,0,0,2,0,0) is banked as this subject's framing anchor
+state** — any future change to the framing path re-runs all eight and compares against the
+row, which is stronger than the two-view gate it grew from. The voluntary extension to all
+eight, and the boundary/interior classification that let the count speak, are endorsed by
+name.
+
+**The twins are CLEARED.** Nothing else gates them. Fly the batch.
+
+### B — suspension in prose does not disarm: H2 is FALSIFIED, and this is the finding the experiment exists to buy
+
+**The finding is ratified in full and it is a primary finding under the spec's own test.**
+`subject_profile.bind()` reads only `tools`; `_gates` and `_still_suspended` are prose; a
+silent profile resolves to the other subject's compiled assumptions, and both existing
+instruments — the unknown-key ANDON and the purity checker — look only at values that are
+*present*. The blind direction is real, it was live (`texpass_brush --prompt` still
+defaults to the W3 identity string; `project_twins` would have armed W3's 0.80 halt on a
+subject with no distribution), and closing it requires work outside the profile and the
+fixture. **H2 as written — "no shared-code edit needed beyond Step 0's named items" — is
+FALSE, and that is a full success:** the route's first non-character subject found the
+profile boundary incomplete in the absent-value direction. That sentence is what E04 was
+for.
+
+**Ledger twenty-nine.** Ruling 2 named this exact accident class — *"not harmless for a
+galleon run without `--prompts`"* — and I banked the sentence as a finding instead of
+commissioning its detector. I then adopted the purity gate and called it "two gates, two
+failure modes, keep both" — while both look the same direction. The executor found the gap
+by diffing the two profiles against the tools' own argument tables, which is the check I
+should have specified in Ruling 2.
+
+**One correction to `ship.json`'s own prose, made because I read the operand before ruling
+on it (the ledger-24 lesson applied):** the suspended-acceptance note calls `edge-ref
+700.0` *"literally one character's figure width in twin pixels"* — true, and its
+implication (re-derive per subject) inverts the semantics. The help text: erosion **is
+scaled by this figure's width over that reference** — `edge-dist 7.0` at `edge-ref 700` is
+a *ratio*, 1% of figure width, self-scaling per view against the subject's own measured
+width, bounded below by `edge-floor` and locally by the A3 invariant. **Replacing 700 with
+the ship's width would break the calibration it anchors.** The pair (7.0, 700) travels
+together as one tuning fact. Corrected in the profile with this ruling.
+
+**The remediation, ruled — and every projection-leg item is expressible as a profile value
+with zero route-code change:**
+
+1. **`project_twins` block grows to cover the family explicitly** (all flags verified
+   present): `reg-iou-min: 0.0` — suspension *expressed*: the assert goes vacuous, the IoU
+   still prints per view, the ship derives its own bound from its own spread after the
+   baseline. `bbox-tol: 9.99` — vacuous: the assert is A27-demoted anyway and the ship's
+   measured 1.95× area swing would fire the label on geometry, not defects.
+   `head-facing-min: 0.45`, `head-edge-dist: 7.0` — **equal to the body values, which makes
+   the head band inert**: a ship has no head, and the band machinery (crop rect from prep
+   meta) runs without granting any region looser acceptance. `facing-min: 0.45`,
+   `edge-dist: 7.0`, `edge-ref: 700.0`, `edge-floor: 2.5` — explicit **FIRST-RUN OPERATING
+   POINTS**, not ship-derived calibrations: the ratio semantics self-scale, the A3 cap
+   bounds erosion locally, and the baseline halt reports the per-view facing and edge
+   diagnostics that decide whether they carry into projection. Writing a value that equals
+   the default is the point: silence was the defect.
+2. **`bake_hero_prep` block** per C below.
+3. **`texpass_brush` gets no values yet and is FORBIDDEN on the ship until its block
+   carries ruled ones** — standing law from this ruling, enforced today by the coverage
+   check and by the stage-2 ruling that must precede any stroke; its prompts fixture is
+   still `REQUIRED, NOT WRITTEN`.
+4. **Two shared-code work items, Step-0-class, character anchors byte-identical, landed
+   before stage 2:** (a) `e04_profile_check.py --coverage` — diff a profile against the
+   reference profile's per-tool keys: every key the reference carries that the subject
+   neither carries nor lists in an explicit `_not_on_route`/decided-absence entry is
+   flagged. `character.json` **is** the registry of subject-classified flags — that is what
+   it was built to be. (b) the loader learns a reserved `_NOT_CLEARED` key: binding a tool
+   whose block carries it is an ANDON with the block's reason. Character path unchanged by
+   construction (its profile has no such key). Together they close both directions:
+   present-key-no-flag (existing ANDON) and subject-flag-no-key (coverage + tripwire).
+5. `smart_decimate`, `head_render`, `mesh_stats` land in the profile's explicit
+   not-on-route list — absence as a decision, recorded, which is what the executor's own
+   table already argued for two of them.
+
+### C — the bake: allocation is ruled NONE, expressed as `head-scale: 1.0`
+
+**Ledger thirty.** The spec staged projection and the H4 ceiling without staging the bake
+both consume — *"before building a path to a resource, enumerate the resource,"* E08's
+lesson, in my own spec one arc later. The allocation suspension made the bake un-runnable
+without a ruling and nothing in the spec surfaced that; the executor found it when the
+ceiling tool stopped on a missing `meta.json`.
+
+**The allocation decision, ruled under the Director's delegation and overrulable in a
+sentence: NONE — uniform texel allocation for the baseline.** Grounds: the character's
+privileged region was earned by a measurement (E01: facial structure is where acceptance
+is decided, 3.1–4.5× polygons on the head); no measurement supports any privileged region
+on this subject — the stern castle is a plausible guess, and the suspended note's own words
+are *"not decided, not guessed."* Uniform is the null intervention: it gives any future
+privileged-region arm the baseline it must beat, which a guessed region never could.
+
+**Expression, with zero code change:** `head-scale: 1.0` — the scaling line
+(`c + head_scale * (luv - c)`) is the identity at 1.0, so the head-band machinery runs
+inert; the crop rect stays at its default **explicitly**, recorded as inert-at-scale-1.
+Paired with B's equal-to-body head acceptance in projection, no region of the ship
+receives privileged treatment anywhere in the route. **Pre-stated readings for the bake
+run:** its ANDONs were written for characters (`n_head > 500`, the scale-preservation
+assert at ×1); if any fires on the ship mesh, that is a Finding-1-class expressibility
+limit — **report and halt, do not tune**. If the bake completes, `e08_ceiling` computes
+the H4 reach ceiling **on the eight eye-level cameras** and pre-registers it before any
+projection, per the spec.
+
+### The sequence from here
+
+1. **Twins fly now** — A is adjudicated, predictions are already blind at `b8245a7`.
+2. Bake with the ruled allocation → H4 ceiling pre-registered (local; watchdog check
+   applies).
+3. Profile edits land with this ruling; the purity check re-run on the grown blocks is
+   part of the executor's next verification (NO-SUCH-FLAG anywhere → halt, my edit).
+4. **The twin-baseline halt** — the standing report (palette both ways, IoU + centroid per
+   view, the pale-cluster and thin-enrichment watch items, the landing table with G7's lid
+   rows) **plus** the bake/ceiling receipts. I rule the projection parameter set there,
+   against the ship's own numbers.
+5. The two B work items (coverage mode, `_NOT_CLEARED` loader key) land before stage 2,
+   with character byte-identity anchors.
+
+**H-status after this ruling:** H1 weakened per Ruling 13 (response, not landing — twins
+re-measure). **H2 FALSIFIED** (Finding B — the primary finding). H3/H4/H5 unchanged,
+awaiting twins, ceiling, and landing table respectively.

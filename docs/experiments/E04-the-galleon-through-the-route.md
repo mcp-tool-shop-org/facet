@@ -139,3 +139,34 @@ unreachable by an element of G7's extent (the works-perfectly test) — and G7's
 verdict moves to the twins' landing table: lid clusters and the fixed sub-40° window
 reported per view, no bound. The other eleven elements score against
 [canon/E04-galleon-palette.json](../../canon/E04-galleon-palette.json) as written.
+
+---
+
+## Amendment 2 (advisor, 2026-08-04) — H2 is FALSIFIED by armT-halt2's Finding B; the bake is staged; allocation is ruled NONE
+
+Ruled in [E04-ruling.md](E04-ruling.md) Ruling 14 on
+[E04-armT-halt2.md](E04-armT-halt2.md)'s evidence.
+
+**H2's verdict: FALSIFIED — and the falsification is the experiment's payoff.** The profile
+loader binds only `tools` blocks; suspensions written in `_gates`/`_still_suspended` prose
+never reach the code, a tool with no block silently runs the character's compiled
+assumptions, and both existing guards (the unknown-key ANDON, the purity checker) look only
+at values that are *present*. Closing the absent-value direction requires shared code
+outside the profile and fixture — the spec's primary-finding test firing on the boundary
+system itself. Two work items are specified (Ruling 14 §B.4): the checker's `--coverage`
+mode diffing a subject profile against `character.json` (which *is* the registry of
+subject-classified flags), and a reserved `_NOT_CLEARED` loader key that turns a
+deliberately unfilled block into a mechanical ANDON. Both Step-0-class, character
+byte-identity anchors, landed before stage 2.
+
+**Arm T's flow gains its missing stage, which the spec should always have carried:**
+twins → **bake (`bake_hero_prep`, allocation per Ruling 14: NONE — `head-scale 1.0`,
+uniform)** → **H4 reach ceiling computed on the eight eye-level cameras and pre-registered**
+→ twin-baseline halt (now also ratifying the bake and ceiling receipts) → projection, with
+its parameter set ruled at that halt. The spec staged projection without staging the bake
+it consumes — ledger thirty; the enumerate-the-resource lesson, again.
+
+**Framing anchor state for this subject, banked by Ruling 14:** the eight-view
+geometry-agreement row **(0,1,0,0,0,2,0,0)** — all differing pixels boundary, none
+interior, centroids and bboxes unmoved; views 1 and 5 adjudicated individually (Rulings 11
+and 14), bound still 0, every future nonzero halts for its own ruling.

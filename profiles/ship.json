@@ -30,6 +30,11 @@
    "why": "Per view, after the route runs."
   }
  },
+ "_not_on_route": {
+  "smart_decimate.py": "Not invoked on the ship route (the E06 recipe: prep, project, loop, finalize, pack). Its W3 body-weight/pad-frac/crop-res defaults never execute. Recorded per Ruling 14 so absence is a decision the coverage check can see.",
+  "verify/head_render.py": "Head instruments are meaningless here - _gates.head_rect_metrics false. Absence is a decision (armT-halt2's own table).",
+  "verify/mesh_stats.py": "Ran at Gate 0 with its front-view-rect warning correctly firing; head-derived columns have no referent. Absence of a block is a decision."
+ },
  "_gates": {
   "mesh_gate": {
    "value": "none",
@@ -43,15 +48,15 @@
   },
   "reg_iou_min": {
    "value": null,
-   "status": "SUSPENDED",
-   "why": "The character's 0.80 came from BOTH SIDES of a measured line on W3's twins (adjudicated 0.8329-0.9533 against failures <= 0.578). This subject has neither distribution until twins exist. Run with the halt suspended and REPORT the IoU per view; derive from this ship's own spread afterwards.",
-   "from": "E08 Amendment 27; CLAUDE.md 'suspend rather than invent one'"
+   "status": "SUSPENDED - NOW EXPRESSED MECHANICALLY",
+   "why": "The character's 0.80 came from BOTH SIDES of a measured line on W3's twins (adjudicated 0.8329-0.9533 against failures <= 0.578). This subject has neither distribution until twins exist. Run with the halt suspended and REPORT the IoU per view; derive from this ship's own spread afterwards. NOTE (Ruling 14): this prose never reached the loader - armT-halt2 Finding B - so the suspension now lives as tools.project_twins.reg-iou-min = 0.0, which the tool actually receives.",
+   "from": "E08 Amendment 27; CLAUDE.md 'suspend rather than invent one'; Ruling 14"
   },
   "bbox_tol": {
    "value": null,
-   "status": "SUSPENDED",
-   "why": "0.25 is W3 data and is already only a diagnostic on the character, because figure area swings 1.65x with camera geometry there. A ship's swing between bow-on and broadside is larger still - measured on this mesh, the projected width goes 0.9987 broadside to 0.5121 bow-on, a 1.95x swing.",
-   "from": "E08 Amendment 27; E04 Task 4a"
+   "status": "SUSPENDED - NOW EXPRESSED MECHANICALLY",
+   "why": "0.25 is W3 data and is already only a diagnostic on the character, because figure area swings 1.65x with camera geometry there. A ship's swing between bow-on and broadside is larger still - measured on this mesh, the projected width goes 0.9987 broadside to 0.5121 bow-on, a 1.95x swing. NOTE (Ruling 14): expressed as tools.project_twins.bbox-tol = 9.99 (vacuous), for the same Finding-B reason.",
+   "from": "E08 Amendment 27; E04 Task 4a; Ruling 14"
   }
  },
  "tools": {
@@ -129,7 +134,62 @@
     "value": "1066,1024",
     "why": "The twins are generated at this aspect and the projection derives its horizontal extent from it; the two must agree.",
     "from": "E04 Task 4a"
+   },
+   "reg-iou-min": {
+    "value": 0.0,
+    "why": "SUSPENSION, EXPRESSED - Ruling 14 closing armT-halt2 Finding B. 0.0 makes the halt's assert vacuous while the per-view IoU still computes and prints, which is what _gates.reg_iou_min's prose always meant and the loader never saw. The character's 0.80 came from both sides of a measured line this subject does not have; the ship derives its own bound from its own spread after the twin baseline, or keeps reporting.",
+    "from": "E08 A27 (the halt); Ruling 14 (the suspension made mechanical)"
+   },
+   "bbox-tol": {
+    "value": 9.99,
+    "why": "Vacuous ON PURPOSE. The assert is A27-demoted to a diagnostic everywhere, and 0.25 is W3 data: this subject's projected-width swing is a measured 1.95x (broadside 0.9987 to bow-on 0.5121), so the label would fire on geometry, not defects. A ship-derived diagnostic value can be set after twins if wanted.",
+    "from": "E08 A27 (demotion); E04 Task 4a (the swing); Ruling 14"
+   },
+   "facing-min": {
+    "value": 0.45,
+    "why": "FIRST-RUN OPERATING POINT, not a ship-derived calibration - explicit because silence resolves to inheritance (armT-halt2 Finding B). The baseline halt reports per-view facing diagnostics; whether this floor carries into projection is ruled there.",
+    "from": "Ruling 14; baseline halt rules the carry"
+   },
+   "edge-dist": {
+    "value": 7.0,
+    "why": "FIRST-RUN OPERATING POINT. A ratio, not a length: erosion scales by the figure's per-view width over edge-ref, so 7.0-at-700 means 1% of figure width on any subject, bounded below by edge-floor and locally by the A3 edge-frac invariant. Explicit for the same Finding-B reason.",
+    "from": "Ruling 14; project_twins --edge-ref help text, read before ruling"
+   },
+   "edge-ref": {
+    "value": 700.0,
+    "why": "THE TUNING CONSTANT, deliberately NOT re-derived per subject - Ruling 14 correcting this profile's own earlier prose. 700 is the figure width edge-dist 7.0 was tuned against (A0's); the tool scales erosion by this_figure_width/edge_ref per view, so the ratio generalises by construction. Replacing 700 with the ship's width would silently break the calibration it anchors.",
+    "from": "project_twins.py:65-68; Ruling 14"
+   },
+   "edge-floor": {
+    "value": 2.5,
+    "why": "FIRST-RUN OPERATING POINT - the never-erode-less floor, subject-relative by nature. Explicit per Finding B.",
+    "from": "Ruling 14"
+   },
+   "head-facing-min": {
+    "value": 0.45,
+    "why": "EQUAL TO facing-min ON PURPOSE: a ship has no head, so the head band (crop rect from prep meta) must grant no looser acceptance than the body. Setting the head values equal makes the band machinery inert without a code change - the counterpart of the bake's head-scale 1.0.",
+    "from": "Ruling 14 closing armT-halt2 Finding B"
+   },
+   "head-edge-dist": {
+    "value": 7.0,
+    "why": "EQUAL TO edge-dist - same inert-band reasoning as head-facing-min.",
+    "from": "Ruling 14"
    }
+  },
+  "bake_hero_prep.py": {
+   "head-scale": {
+    "value": 1.0,
+    "why": "ALLOCATION: NONE, RULED - Ruling 14 deciding _still_suspended.allocation under the Director's delegation, overrulable in a sentence. The character's privileged region was earned by a measurement (E01: 3.1-4.5x polygons where acceptance is decided); no measurement supports any privileged region on this subject, and uniform is the null intervention every future privileged-region arm needs as its baseline. 1.0 is the identity in the scaling line (c + head_scale*(luv-c)), so the band machinery runs inert. PRE-STATED READING: the bake's ANDONs were written for characters (n_head > 500; the scale-preservation assert); if any fires on the ship mesh, that is a Finding-1-class expressibility limit - report and HALT, do not tune.",
+    "from": "E04 Ruling 14"
+   },
+   "crop": {
+    "value": "360,240,700,600",
+    "why": "The code default, EXPLICIT because silence resolves to inheritance (Finding B). Inert at head-scale 1.0: the rect defines a band that receives identity scaling here and body-equal acceptance in projection. It is W3's face rect by lineage and no ship meaning is claimed for it.",
+    "from": "Ruling 14"
+   }
+  },
+  "texpass_brush.py": {
+   "_NOT_CLEARED": "FORBIDDEN on the ship until this block carries ruled values - Ruling 14, standing law. The tool's --prompt defaults to the literal W3 identity string (Ruling 2's named accident class); the ship's brush prompts are _fixtures.brush_prompts, still REQUIRED NOT WRITTEN, and stroke cameras derive from the hole map after projection. When the loader learns the reserved _NOT_CLEARED key (Ruling 14 work item b), this line becomes a mechanical ANDON; until then the coverage check and the stage-2 ruling enforce it."
   },
   "texpass_iter.py": {
    "thin-extent": {
@@ -203,9 +263,9 @@
  },
  "_still_suspended": {
   "framing margin": "RESOLVED by Step 0 + Ruling 13; the historical text below went stale the day Step 0 landed --fit-axis and --margin, and is kept because corrections happen in place. fit-axis width is now pinned in the tools blocks above; NO margin value is pinned because the adjudicated anchor (Ruling 11) used the code default 1.204 - the 'derived 1.2528' was never used by any ruled run and is dropped. HISTORICAL TEXT (pre-Step-0): 'Derived as 1.2528 for a 1066x1024 frame, but NOT written into a tool: turn_render hardcodes ortho_scale = size_z * 1.204 with no fit-axis knob, so width-fit cannot be expressed as a profile value.' That was the design note's predicted finding and Step 0 was its fix.",
-  "allocation": "No privileged region has been chosen. A galleon may deserve one at the stern castle where the carved detail is, or 'none' may be right. Not decided, not guessed.",
-  "generation recipe": "seed/steps/cfg/denoise/lora-w/cn-strength await E04's own anchor. Task 4c records what it uses.",
-  "acceptance": "facing floors and the edge-dist family, including edge-ref (700.0 is literally one character's figure width in twin pixels), await twins on this subject.",
+  "allocation": "DECIDED by Ruling 14: NONE - uniform allocation, expressed as tools.bake_hero_prep.head-scale = 1.0 with the crop rect explicit and inert. Grounds there; Director-overrulable in a sentence. HISTORICAL TEXT: 'No privileged region has been chosen. A galleon may deserve one at the stern castle where the carved detail is, or none may be right. Not decided, not guessed.' The decision is the null intervention, so a future privileged-region arm has this baseline to beat.",
+  "generation recipe": "RESOLVED: the pair is the anchor (Ruling 6 ratified it; E04-twin-prompts.json records it: seed 770700 / 20 steps / cfg 2.5 / denoise 0.92 / cn 0.9 / shift 3.1 / LoRA @ 0.75). Kept here only as a pointer.",
+  "acceptance": "PARTIALLY SUPERSEDED by Ruling 14, which corrected this entry's own implication: edge-ref 700.0 is the TUNING CONSTANT of a self-scaling ratio (erosion scales by figure_width/edge_ref per view - project_twins.py:65-68), NOT a per-subject value; replacing it would break the calibration it anchors. The facing floors and edge-dist family now sit in tools.project_twins as explicit FIRST-RUN OPERATING POINTS; whether they carry into projection is ruled at the twin-baseline halt on the per-view diagnostics. HISTORICAL TEXT: 'facing floors and the edge-dist family, including edge-ref (700.0 is literally one character's figure width in twin pixels), await twins on this subject.'",
   "spiral order": "The brush stroke order depends on where stage 1 lands paint, which needs twins."
  }
 }
