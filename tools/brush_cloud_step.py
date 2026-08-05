@@ -99,6 +99,18 @@ g = sub.add_parser("graph")
 g.add_argument("--job", required=True)
 g.add_argument("--key", required=True)
 g.add_argument("--prompts", required=True)
+# E10 Ruling 6: the profile's vocabulary is two-lane. One subject can own two content
+# lanes - the base atlas and an environment-contact layer - and each declares its own
+# prompt fixture. The mapping lives HERE, fixed, so a lane cannot name an arbitrary key;
+# the check fires against the mapped key in BOTH lanes, with no skip flag in either.
+# Default `base` means the character and E04 paths are unchanged BY CONSTRUCTION: no
+# existing invocation passes --lane.
+g.add_argument("--lane", choices=["base", "layer"], default="base",
+               help="content lane. Selects the profile fixture key (base -> "
+                    "_fixtures.brush_prompts, layer -> _fixtures.layer_prompts) and is "
+                    "CORROBORATED against the job's state identity: a guard that infers "
+                    "its own jurisdiction can be steered, so the lane is a declared input "
+                    "cross-checked against data already in hand.")
 g.add_argument("--out", required=True)
 g.add_argument("--render-name", default=None, help="cloud input name; defaults to local")
 g.add_argument("--mask-name", default=None)
@@ -199,16 +211,38 @@ def preflight(gr, P, key):
             continue
         if got != pv(k):
             bad.append(f"graph {k} = {got!r} but the profile decides {pv(k)!r}")
-    # (c) prompt and negative by PROVENANCE
-    fx = (prof.get("_fixtures", {}).get("brush_prompts", {}) or {}).get("path")
-    assert fx, (f"ANDON: {args.profile} names no _fixtures.brush_prompts.path, so the "
-                f"strings entering the graph have no declared source")
+    # (c) prompt and negative by PROVENANCE, through the lane's declared fixture
+    # E10 Ruling 6. The mapping is fixed here so a lane cannot name an arbitrary key.
+    LANE_FIXTURE = {"base": "brush_prompts", "layer": "layer_prompts"}
+    lane = getattr(args, "lane", "base")
+    fxkey = LANE_FIXTURE[lane]
+
+    # CORROBORATION: the declared lane is cross-checked against the job's state identity.
+    # A layer state is seeded with layer_state.json beside it (e10_layer_seed.py); a base
+    # state has none. The lane is DECLARED rather than inferred - a guard that works out
+    # its own jurisdiction from the data can be steered by that data - and then the
+    # declaration is required to agree with what is already on disk.
+    jobdir = os.path.abspath(args.job)
+    state = os.path.dirname(jobdir)
+    marker = any(os.path.exists(os.path.join(d, "layer_state.json"))
+                 for d in (state, os.path.dirname(state)))
+    if lane == "layer" and not marker:
+        bad.append(f"--lane layer, but no layer_state.json beside the job's state "
+                   f"({state}). A layer stroke must run against a seeded layer state.")
+    if lane == "base" and marker:
+        bad.append(f"--lane base (the default), but the job's state ({state}) IS a seeded "
+                   f"layer state. A base stroke committed here would paint the layer's "
+                   f"atlas while claiming the base lane's fixture.")
+
+    fx = (prof.get("_fixtures", {}).get(fxkey, {}) or {}).get("path")
+    assert fx, (f"ANDON: {args.profile} names no _fixtures.{fxkey}.path, so the strings "
+                f"entering the graph have no declared source for lane {lane!r}")
     root = os.path.dirname(os.path.dirname(os.path.abspath(args.profile)))
     want_fx = os.path.realpath(os.path.join(root, fx))
     got_fx = os.path.realpath(os.path.abspath(args.prompts))
     if want_fx != got_fx:
-        bad.append(f"--prompts is {got_fx} but the profile's _fixtures.brush_prompts names "
-                   f"{want_fx}")
+        bad.append(f"--prompts is {got_fx} but lane {lane!r} maps to the profile's "
+                   f"_fixtures.{fxkey}, which names {want_fx}")
     if gr["7"]["inputs"]["text"] != P.get(key):
         bad.append("the positive prompt in the graph is not the fixture's string for "
                    + str(key))
@@ -226,8 +260,9 @@ def preflight(gr, P, key):
     same_p = blk.get("prompt", {}).get("value") == P.get(key)
     same_n = blk.get("negative", {}).get("value") == P.get("_negative")
     print(f"[pre-flight] PASS against {os.path.basename(args.profile)}: five recipe values "
-          f"equal the decided block; --prompts IS _fixtures.brush_prompts; the graph's "
-          f"strings are that file's.", flush=True)
+          f"equal the decided block; lane {lane!r} -> --prompts IS _fixtures.{fxkey} "
+          f"(corroborated against the job's state identity); the graph's strings are that "
+          f"file's.", flush=True)
     print(f"[pre-flight]   the profile's documentation copies of prompt/negative "
           f"{'both match' if same_p and same_n else 'do NOT both match'} the fixture "
           f"(prompt {same_p}, negative {same_n}) - reported, not gated: the graph never "

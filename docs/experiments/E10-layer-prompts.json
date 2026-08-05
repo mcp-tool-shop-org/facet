@@ -18,7 +18,9 @@
 
  "_order": ["y+000_e+00"],
 
- "_negative": "blurry, low quality, watermark, text, oversaturated, deformed",
+ "_negative_is_TRANSCRIBED_not_authored": "CORRECTED IN PLACE 2026-08-05, before the first submission. The first draft of this file carried an invented negative ('blurry, low quality, watermark, text, oversaturated, deformed') while the header above claimed L1 was the only variable. It was not: an authored negative is a second variable, and the claim would have been false in the one file whose whole job is to make the claim true. The value below is E04-brush-prompts.json's _negative, byte-for-byte - the ship's OWN spent value, the one all six accepted strokes flew under.",
+
+ "_negative": "watermark, text, logo, blurry, photo, deformed",
 
  "y+000_e+00": "a weathered tallow-white hull coat below the waterline, a gilded lion figurehead, warm oak-brown hull planking, black tarred strakes, weathered tan canvas sails, gilded scrollwork on the stern castle, a gilded spire on the stern turret, red gun port lids, black iron cannon barrels, dark tarred rigging and ratlines, pale scrubbed deck planking, a deep sea-blue frieze band along the bulwarks, gilded stern-gallery railings, plain white background, visible brushstrokes, painterly worked surface"
 }
