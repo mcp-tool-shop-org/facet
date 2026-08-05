@@ -85,3 +85,32 @@ it is no longer a colour or content target, because what it painted was the dyna
 that now belongs to the shader. Then Step 0.2–0.4 and the arms, per the amended spec.
 The blob-bound halt is ruled in [E04-ruling.md](E04-ruling.md) Ruling 29 — the sentinel
 translation at the export boundary; canon's null stands.
+
+---
+
+## Ruling 2 (advisor, 2026-08-05) — Task 1 CLOSED; the cam.json frame trap goes to the bundle as an exported function; the ladder goes to the Director
+
+**Task 1 is closed better than ruled:** the sentinel **derived from the atlas's own
+dimensions** rather than typed as a literal — it stays "the whole atlas" if the atlas
+ever changes size, and a real derived integer in canon would pass through untouched.
+That is the ruling's intent implemented one step more honestly than the ruling wrote it.
+Manifest validates, canon's `null` intact, ingest untouched — the sdlab session's go is
+now purely the Director's paste.
+
+**Step 0.1's ANDON caught the fourth transcription.** `texpass_iter.load_scene()`
+re-axes Y-up→Z-up and normalises by max-abs before any ray is cast — **every world
+quantity in every `cam.json` this pipeline has ever written lives in that frame**, and
+nothing outside the code says so. A consumer reading one against the raw GLB puts every
+z on the wrong row while producing an entirely plausible sheet — which is precisely what
+the projection check that could fail was built to catch, and it caught it at 206 px
+before any number was believed. **Bundle item, named as proposed: one exported canonical
+mesh-frame function, not a fifth transcription** — it joins the fit-axis three-copy
+family it extends. The 0.34 px landing after the fix, the record's two exemplar
+statistics reconciled to the digit (2,272 total vs 2,002 largest-CC, both bboxes now
+labelled), and the sheet-legibility self-catch (an unreadable ladder rebuilt before it
+reached the eye it was for) are endorsed as run.
+
+**The ladder is ratified as built** — C at the exemplar's own band top, independently
+landing at 7.43% of the figure against Ruling 20's "lower 7%" from the other direction;
+A and B as a ruler, not thresholds; the 5% ticks so any sentence carries into a number.
+**The gate is the Director's. Step 0.2 builds the mask the moment his sentence lands.**
