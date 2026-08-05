@@ -903,3 +903,86 @@ resolves.
    centroid per view (now measurable against a legal frame), the watch items, the landing
    table with G7's per-view rows, masthead-gold flagged for the Director — plus the bake
    and ceiling receipts. I rule the projection parameter set there.
+
+---
+
+## Ruling 16 (advisor, 2026-08-04) — the bake tolerance is ruled from both sides of the line; the 1072 row is adjudicated PASS with the reading extended; ledger thirty-three is precision laundering
+
+### Q1 — the identity tolerance: strict equality is WITHDRAWN as mis-derived; the replacement is relative 1e-6, sized against the detection target
+
+**Ledger thirty-three, a new form: precision laundering.** Ruling 15 wrote *"(measured:
+exact)"* from a 4-decimal printout **the executor had flagged as 4 dp at the time**, and
+paired it with *"within float tolerance"* while specifying no tolerance. A printed value is
+not the value — display precision is not measurement precision. The executor resolved the
+ambiguity in the only non-inventing direction — implement strict, report full precision,
+let the run decide — and that choice is endorsed by name: it is what made the premise's
+falsification clean instead of pre-softened.
+
+**The strict-equality condition is withdrawn, not retuned** — its stated derivation
+("measured: exact") does not describe the measurement, which is the Ruling 10 withdrawal
+test verbatim. And bit-equality was never the property: Blender stores UVs as float32,
+`pack_islands` multiplies every coordinate by a global scale that cancels in the share
+*ratio* but not in the last bits — the executor's own mechanism note. A guard demanding
+bit-equality of float32 sums through a float pipeline is the documented
+**fires-on-correct-input class, worse than no guard** (the centroid-checksum precedent,
+CLAUDE.md/README).
+
+**The replacement, derived from both sides of the line per that precedent** — noise
+measured, signal derived, tolerance between them:
+
+- **Noise side, measured:** delta 2.98e-08 absolute = exactly 2 float32 ULPs, relative
+  **1.2e-07**, on a run where the identity demonstrably survived (agreement to 7
+  significant figures).
+- **Signal side, derived from the guard's prey:** the smallest event that can *really*
+  move a share is one island's area — a median 88-texel island against the packed area is
+  ~**3e-5 relative** — and the failure this guard exists to catch (the requested
+  allocation not surviving packing) is **factor-level**, 10⁻¹ and up.
+- **The ruled line: `abs(share_area − share_area_pre) ≤ 1e-6 × share_area_pre`** — ~8×
+  above the measured noise, ≥30× below the smallest single-island event, five orders below
+  the prey. The same number would have been ruled whatever the run had printed, because
+  neither side of the derivation is the observed delta's to move: the noise side is ULP
+  arithmetic, the signal side is island geometry.
+
+The `< 1.0` branch raising as unspecified is endorsed — no symmetric clause gets invented
+unbidden. The diff shape (`else:` → `elif args.head_scale > 1.0:`, assert body absent from
+the diff) is the unchanged-by-construction standard, verified by the executor exactly as
+Ruling 12 defined it.
+
+### Q2 — the 1072 row (0,3,0,1,0,1,0,2): ADJUDICATED PASS, and reading two gains a named extension with its own discriminator
+
+**The boundary six take Ruling 11's reading two directly:** 7 px of 2,484,048 (0.00028%),
+all four axis views exactly 0 where `cam_axes`' snap applies, all four diagonals nonzero
+where irrational components live, centroids ≤0.0011 px, bboxes identical. The count
+growing 3 → 7 between frames is not a trend: each frame is its own float landscape, and
+each frame's row is its own anchor. The two cheap confirmations are banked — pixels square
+to 9 decimal places at 1072 (no anisotropy; the 6 px is margin), and the +0.56% scale
+shift reproducing the thin-extent figure from an independent direction.
+
+**The interior pixel is a mechanism Ruling 11 did not name, and the adjudication extends
+the reading rather than stretching it.** View 1 (435,352) sits in a 94.7%-filled region
+where **both implementations independently produce isolated 1-px tessellation pinholes**
+— 8 against 7 in a 13×13 window — and disagree about one. A pinhole rim is locally a
+surface/no-surface edge: the same float edge-ordering physics as the outer silhouette,
+relocated to an interior gap. **The extension, with its discriminator stated so it cannot
+become a tolerance:** an interior disagreement takes reading two **only where both
+implementations independently show pinholes in the same neighbourhood** — the gaps must be
+a measured property of the tessellation, not of one instrument. A hole one implementation
+shows in surface the other renders solid, with no pinhole cluster around it, fits no
+pre-registered reading and halts as its own investigation. The bound stays 0; the row is
+banked as the 1072 anchor state; the next nonzero halts.
+
+**One watch note, opened for no one:** the pinholes themselves are a tessellation property
+at render resolution, present in both instruments, harmless at 1-px scale — the controls
+already carried them and a ControlNet at 0.9 cannot resolve 1-px speckle. If a future
+subject's pinhole *counts* grow into perforation, the weld and tessellation are where to
+look — not the framing.
+
+**Also endorsed by name:** the per-pixel verification that overturned the executor's own
+assumed pinhole identity before it reached the report — *assumed (628,470), checked,
+found (435,352)* — the inherited-claim rule applied to one's own sentence mid-paragraph.
+
+### The sequence — unchanged from Ruling 15, now unblocked
+
+Tolerance line lands → bake completes → `meta`/`pos`/`nor`/`mask` → **H4 ceiling
+pre-registered on the eight** → batch resubmits under the standing discipline → **the
+twin-baseline halt**, full standing report plus bake and ceiling receipts.
