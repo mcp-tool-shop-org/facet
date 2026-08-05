@@ -1,0 +1,144 @@
+"""Emit E04-brush-prompts.json mechanically, so the fixture is REPRODUCIBLE.
+
+Keys come from ship.json's own cull_unseen.production superset; the identity string is
+transcribed from E04-twin-prompts.json by byte-comparing all eight stems rather than
+retyped; the negative is read out of ship.json's restylize_views block. _order is the
+RULED stroke set and sequence.
+
+In the repo rather than in a scratchpad because a recipe that does not reproduce its
+output is not a recipe - the canon twin cost this repo that lesson once already.
+
+  e04_make_brush_prompts.py          (run from the repo root; writes the fixture in place)
+"""
+import json
+import collections
+
+SHIP = "profiles/ship.json"
+TWINS = "docs/experiments/E04-twin-prompts.json"
+OUT = "docs/experiments/E04-brush-prompts.json"
+
+ship = json.load(open(SHIP, encoding="utf-8"))
+twin = json.load(open(TWINS, encoding="utf-8"))
+
+# the constant identity string: all eight twin stems must be byte-identical or the
+# "one constant string" ruling does not describe this file's source
+stems = [k for k in twin if k.startswith("galleonclay_")]
+vals = {twin[k] for k in stems}
+assert len(stems) == 8, "ANDON: expected 8 twin stems, got %d" % len(stems)
+assert len(vals) == 1, "ANDON: the twin stems are NOT one constant string (%d variants)" % len(vals)
+IDENT = vals.pop()
+
+# the negative the ship's own generations actually ran on - restylize_views.negative, SPENT
+NEG = ship["tools"]["restylize_views.py"]["negative"]["value"]
+assert NEG == "watermark, text, logo, blurry, photo, deformed", "ANDON: negative moved"
+
+cams = []
+for s in ship["tools"]["cull_unseen.py"]["production"]["value"].split(";"):
+    y, e = (int(float(x)) for x in s.split(","))
+    cams.append((y, e))
+assert len(cams) == len(set(cams)), "ANDON: duplicate camera in the production superset"
+
+
+def key(y, e):
+    return "y%+04d_e%+03d" % (y, e)
+
+
+# RULED - E04 Ruling 24: six strokes, the deck pair plus the derivation's proposed four,
+# order B (ring sweep from the best-anchored camera, deck pair last) restricted to the
+# ruled four. Anchoring AT TURN for this exact sequence, re-simulated rather than read off
+# the ten-stroke run: 80.8 / 76.7 / 76.3 / 83.8 / 71.7 / 76.1, MIN 71.72%, mean 77.57%.
+ORDER = [(300, 0), (30, 0), (150, 0), (240, 0), (0, 40), (180, 40)]
+for c in ORDER:
+    assert c in cams, "ANDON: proposed stroke %s is outside the production superset" % (c,)
+
+out = collections.OrderedDict()
+out["_version"] = "1.0.0"
+out["_authored"] = ("2026-08-05, executor session, E04 stage 2. Landed beside the "
+                    "stroke-camera derivation per Ruling 23; ship.json's "
+                    "_fixtures.brush_prompts closes on it.")
+out["_purpose"] = ("Per-stroke BRUSH prompts for the galleon, consumed by "
+                   "brush_cloud_step.py graph --prompts (which reads P[key] and "
+                   "P['_negative']) and by texpass_loop.ps1 (which reads _order). "
+                   "Replaces texpass_brush.py's --prompt default, which is the literal "
+                   "W3 identity string and must never run on this subject.")
+out["_the_ruled_rule"] = (
+    "E04 Ruling 23: brush_prompts = the twin-prompts CONSTANT STRING, per stroke. The "
+    "twin file's own argument transfers whole - this subject has no view-specific ANATOMY "
+    "words, all twelve fixture elements are material terms, and material words stay "
+    "byte-identical across views. So the correct application of the inherited per-view "
+    "rule is one constant string, for strokes exactly as for twins. Every key below "
+    "carries the SAME string, transcribed from E04-twin-prompts.json by byte-comparison "
+    "of all eight stems rather than retyped.")
+out["_no_orientation_phrase_and_why"] = (
+    "E08-brush-prompts.json gave each character stroke an orientation phrase ('seen from "
+    "the side, in profile') and gave its two +55 cameras 'from above'. This file has "
+    "none, including on the two elevated deck strokes, because the ship's TWINS carry no "
+    "orientation vocabulary at all - not one of the eight stems has such a phrase. "
+    "Introducing one at the brush stage would put a word in front of the model that no "
+    "generation on this subject has ever carried, which is a second variable in a stage "
+    "that already has the denoise-1.0 freedom. If a deck stroke composes something that "
+    "is not a deck seen from above, THAT is the evidence for adding the phrase, and it "
+    "would be added with the measurement.")
+out["_negative_is_the_SHIP'S_OWN_SPENT_value_NOT_the_character's_brush_negative"] = (
+    "FLAGGED FOR THE RULING - one line either way. Ruling 23 says the recipe keys take "
+    "'the accepted character route's values'. The character's BRUSH negative is not its "
+    "RESTYLIZE negative: it carries eight earned belt terms ('braided belt, plaited "
+    "belt, woven belt, rope belt, shoulder strap, chest strap, baldric, bandolier') that "
+    "texpass_loop.ps1's own header records as failure modes MEASURED at the brush stage "
+    "on W3. Those terms are that character's measurements, and Ruling 2 named importing "
+    "them as the accident class. Nothing in this repo calls the negative a recipe key - "
+    "'recipe' names seed/steps/cfg/lora-w/cn-strength everywhere it is used, and "
+    "brush_cloud_step.py reads the negative from THIS FILE beside the prompt, not from "
+    "the recipe defaults. So the value below is the ship's own SPENT negative - byte-"
+    "identical to what the styled pair and all eight twins ran on. No stroke has run on "
+    "this subject, so this subject has earned no brush-stage terms yet; when it does, "
+    "they are added the way W3's were, with the measurement.")
+out["_no_water_term_ON_PURPOSE"] = (
+    "The rejected twin 7 painted 2,002 px of implied water and Ruling 19 made the "
+    "waterline a LAYER (E10), not a prompt problem. Adding a 'water' or 'sea' negative "
+    "term now would be inventing a term from a rejected artifact before a single stroke "
+    "has run. Recorded as an observation; not acted on.")
+out["_every_string_is_identical_so_the_KEY_LIST_is_the_only_content"] = (
+    "A key exists here for every camera in ship.json's cull_unseen.production superset "
+    "(28), not only for the proposed ten. That is deliberate: brush_cloud_step.py "
+    "asserts 'no prompt for KEY' at graph time, and because the constant-string ruling "
+    "makes every value the same, a ruled set that differs from the proposal changes "
+    "_order and nothing else. The file is therefore closed against any ruling the "
+    "advisor makes on the set, rather than closed against one proposal.")
+out["_order_is_RULED"] = (
+    "E04 RULING 24: SIX strokes - the deck pair plus the derivation's proposed four, order "
+    "B. The four side cameras are the greedy's first four picks, which are two complete "
+    "MIRROR PAIRS (30,150) and (240,300); order B is the ring sweep from the best-anchored "
+    "camera with the deck pair last. Grounds on the record: the side class is "
+    "occlusion-bound - 64.28% of side-class holes are occluded from every one of 26 "
+    "candidates and none fails the facing test - so the reachable ceiling is 239,219 "
+    "texels, these four take 60.47% of it, and all sixteen remaining eye-level candidates "
+    "together would add at most 5.43 points. ANCHORING AT TURN for this exact six-stroke "
+    "sequence, re-simulated rather than read off the ten-stroke run: 80.8 / 76.7 / 76.3 / "
+    "83.8 / 71.7 / 76.1, MIN 71.72%, mean 77.57% - against 64.10% for any order that opens "
+    "on the deck pair, and against the character's 95%-hole disaster case. See "
+    "docs/experiments/E04-stroke-derivation.md.")
+out["_recipe"] = (
+    "seed 770700 - steps 20 - cfg 2.5 - lora-w 0.75 - cn-strength 1.0 - shift 3.1 - "
+    "euler/simple - LoRA mcp-tool-shop__saltroad-style-lora__"
+    "saltroad_style_v2_lowlr_000001500.safetensors. These are FIRST-RUN OPERATING POINTS "
+    "at the accepted character route's values per Ruling 23, and they are also "
+    "brush_cloud_step.py's own hardcoded DEFAULTS - which is the point of the finding in "
+    "the derivation report: that tool binds no profile, so the profile's copies of these "
+    "five numbers do not reach the graph. They agree today by coincidence of value, not "
+    "by construction.")
+out["_sidecars"] = ("brush_cloud_step.py graph writes the submitted workflow JSON per "
+                    "stroke before submission; that JSON is the recipe of record "
+                    "(E08 Amendment 30), and this file's _version is what it cites.")
+out["_order"] = [key(*c) for c in ORDER]
+out["_negative"] = NEG
+for y, e in sorted(cams, key=lambda c: (c[1], c[0])):
+    out[key(y, e)] = IDENT
+
+with open(OUT, "w", encoding="utf-8", newline="\n") as fh:
+    json.dump(out, fh, indent=1, ensure_ascii=False)
+    fh.write("\n")
+print("wrote %s: %d camera keys, order of %d, identity string %d chars"
+      % (OUT, len(cams), len(ORDER), len(IDENT)))
+print("identity:", IDENT[:90], "...")
+print("negative:", NEG)

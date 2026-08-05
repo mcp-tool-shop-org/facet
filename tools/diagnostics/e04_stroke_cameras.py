@@ -83,6 +83,11 @@ ap.add_argument("--profile", default="profiles/ship.json",
                 help="read cull_unseen.production from here so the superset membership "
                      "column is the profile's own list, not a transcription of it")
 ap.add_argument("--picks", type=int, default=8, help="how far to run the greedy ladder")
+ap.add_argument("--eval-order", default="",
+                help="evaluate the anchoring of ONE named order as well, e.g. a ruled set "
+                     "and sequence - 'yaw:el,yaw:el,...'. The report's order table is over "
+                     "the full proposal; a ruled prefix has its own numbers and they should "
+                     "be measured rather than read off the longer run.")
 args = ap.parse_args()
 os.makedirs(args.out, exist_ok=True)
 W, H = (int(x) for x in args.aspect.split(","))
@@ -536,6 +541,8 @@ while rem:
     acc |= stroke_reach(*best)[0]
 ORDERS["A greedy-anchor (pick the best-anchored remaining, each turn)"] = orderA
 
+if args.eval_order:
+    ORDERS["E RULED ORDER, as given: " + args.eval_order] = parse_cams(args.eval_order)
 orders_out = {}
 for nm, od in ORDERS.items():
     rows = anchor_run(od)
