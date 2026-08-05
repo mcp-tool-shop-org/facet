@@ -1,0 +1,63 @@
+{
+ "_purpose": "The declared palette for E04's galleon, for palette_gate.py. `ship.json` has carried `_fixtures.palette: {path: null, status: REQUIRED, NOT WRITTEN}` since Task 4a; this is that file. Nothing here is chosen: every band is transcribed from E04 Task 4d's measurement, ratified in Ruling 8.",
+
+ "_the_W3_palette_must_never_be_pointed_at_a_ship": "W3's bands cover a red beard, a green tunic and gold armour on human skin. This subject's bands cover oak, tar, canvas, gold and sea-blue. The two files exist so the gate is subject data rather than a global constant - which is the whole point of the profile exercise, and blue makes it concrete: blue is W3's off-palette DETECTOR colour and a DECLARED MATERIAL here (G11).",
+
+ "_bands_are_derived_from_the_FIXTURE_and_cross-checked_against_a_DIFFERENT_image_than_they_gate": "They come from GALLEON-IDENTITY.md's twelve named materials, measured on the Director-ratified styled target pair (E04_task4/pair/), which is NOT a twin and will never be projected. Deriving them from the twins they gate would be a tautology that passes review because the numbers look fine.",
+
+ "_the_chroma_floor_is_INHERITED_and_load_bearing": "12.0, taken unchanged from W3's fixture rather than re-derived on this subject - 4d used it as inherited and Ruling 8 ratified the bands measured with it. Below it hue is not a colour: it is undefined and reads as a rotation. W3's steel blade measures C* 1.6-2.8 at hue 266-268 and would be flagged blue on every view without the floor. On this subject the same fact protects the dark tarred wood, which sits at hue 40-50 with chroma barely over the floor.",
+
+ "min_chroma": 12.0,
+
+ "allowed_bands": [
+  {
+   "name": "warm",
+   "hue_deg": [50.0, 100.0],
+   "status": "MEASURED",
+   "measured_span_deg": [62.0, 88.0],
+   "rests_on": "8 clusters, 73.6% of the ship",
+   "covers": "G1 gilded lion figurehead, G2 warm oak-brown hull planking, G3 black tarred strakes, G4 weathered tan canvas sails, G5 gilded stern scrollwork, G6 gilded spire (Director-amended from verdigris, Ruling 7), G8 black iron cannon barrels, G9 dark tarred rigging, G10 pale scrubbed deck planking, G12 gilded stern-gallery railings",
+   "measured_examples": "gold h 91.8 C* 50.3 | oak h 84.4 | canvas h 88.3 | tar-brown h 64.4 | mid-hull h 71.1",
+   "_why_twelve_names_collapse_to_one_band": "Gold, oak, tan, deck and tar are one warm family. Twelve declared materials produced two hue groups, not twelve - which is why this subject's gate came out STRONGER than the character's, reversing the pre-measurement costing (E04 Task 4d section 3).",
+   "from": "E04 Task 4d; ratified Ruling 8"
+  },
+  {
+   "name": "blue",
+   "hue_deg": [273.0, 301.0],
+   "status": "SUSPENDED - NOT A DERIVED BAND",
+   "measured_span_deg": [283.0, 291.0],
+   "rests_on": "2 clusters totalling 3.69% of the ship (2.14% + 1.55%)",
+   "covers": "G11 a deep sea-blue frieze band along the bulwarks",
+   "_why_suspended": "3.69% of the silhouette is enough to say blue is present and where it sits; it is NOT enough to fix a band edge. The +-10 deg margin that produced 273-301 is a CONVENTION, not a measurement, and it is stated as one. Suspend rather than invent: the numerator and denominator are above, and the edges are re-derived when this ship's own twins exist - or the gate runs with blue wide and reports.",
+   "_how_a_run_must_report_it": "Report per-view off-palette totals BOTH ways - blue allowed and blue excluded - so a ruling can choose without anyone choosing while looking at the result. Neither reading is adopted here.",
+   "from": "E04 Task 4d; suspension ratified Ruling 8"
+  }
+ ],
+
+ "_forbidden_span": "288 deg = 80.0% of the hue circle (0-50, 100-273, 301-360) above the chroma floor, against W3's 170 deg = 47.2%. MEASURED, and it reverses two prior costings: the executor's Task-1 warning that admitting blue would cost the gate a third of its reach, and the advisor's Ruling 4 acceptance of that costing. The Director's G6 amendment removed verdigris and did half the work; the rest is that the ship's realised palette is far tighter than its twelve names suggest.",
+
+ "_G6_G11_merge_question_is_DISSOLVED": "It was asked because verdigris (green-cyan) could sit adjacent to sea-blue. G6 is gold now, so verdigris is not a declared material at all: measured, G6 sits at h 87 inside the warm band, 196 deg from G11's 283. No merge is possible.",
+
+ "⚠_G7_has_no_band": "G7 `red gun port lids` is a declared element whose realised colour sits OUTSIDE both bands. The bands were derived from an image in which G7 had not landed - 4d measured no red anywhere above the chroma floor. Arm G7's one byte-matched generation then put red on the lids at hue 41-45, C* 34-48, below the warm band's 50 edge, so this gate would count it off-palette. Recorded, NOT patched: widening the warm band to admit it would be deriving a band from the result it is meant to judge. The ruling on G7's fixture status decides this, and until then a run must report the red separately rather than have the gate silently swallow or condemn it.",
+
+ "_what_this_gate_CANNOT_do": "It tests COLOUR, not PLACEMENT. Gold on the deck passes every band while being flatly wrong. On this subject that limit bites harder than on the character: four declared elements share one gold cluster and three share one dark cluster, so 'in band' says a legal colour is present, not that the right element is in the right place. S3 is why the gate exists - nobody knows a galleon's palette by eye - and it is also why a green light here must not be read as 'the twin matches the spec'.",
+
+ "gate": {
+  "max_offpalette_pct": null,
+  "max_offpalette_blob_px": null,
+
+  "_both_bounds_are_null_ON_PURPOSE": "The E04 spec: per-view off-palette totals and largest CC are reported with NO numeric pass bound, because the W3 bounds are W3 data. W3's percentage bound is itself WITHDRAWN (its stated derivation did not describe it, and its denominator moves with the camera), and its 800 px blob bound was measured on one character's twins. This subject has no baseline until its own twins exist. Run with --report-only and report numerator and denominator.",
+
+  "_baseline_that_DOES_exist_and_is_not_a_bound": "The Director-ratified canon pair itself measures 5,168 off-band px = 1.622% of silhouette in 705 components, largest CC 904 px, on view 7 under these bands. The largest component is a dark hull shadow at h 45.9 / C* 13.1, not a garment. That is what a ratified image of this subject looks like through this gate - context for a ruling, not a threshold, and it comes from an image that is not a twin.",
+
+  "_replacement_unit_when_a_bound_is_eventually_derived": "Normalise by PERIMETER, or report absolute count with figure area beside it. Figure area on this subject swings 1.95x between broadside and bow-on - larger than the character's 1.65x - so a percentage-of-area bound would fail a clean profile and pass a dirty broadside. Derive from a clean baseline measured BEFORE the arm it judges, never while looking at results it would rule on."
+ },
+
+ "_provenance": {
+  "authored": "2026-08-04, E04 Arm T preparation",
+  "measured_by": "tools/diagnostics/e04_bands.py --clusters 14 --seed 770700 --chroma-floor 12.0",
+  "measured_on": "E04_task4/pair/target_{1_stern_three_quarter,7_bow_three_quarter}.png inside E04_task4/masks1024/galleonclay_{1,7}.png",
+  "report": "docs/experiments/E04-task4d-report.md",
+  "ratified": "docs/experiments/E04-ruling.md Ruling 8"
+ }
+}

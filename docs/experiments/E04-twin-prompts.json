@@ -1,0 +1,40 @@
+{
+  "_purpose": "Per-view prompts for the galleon's TWIN cameras, versioned, consumed by restylize_views.py --prompts. Keys are INPUT STEMS. `ship.json` has carried `_fixtures.twin_prompts: {path: null, status: REQUIRED, NOT WRITTEN}` since Task 4a; this is that file. It exists so this subject's twins are reproducible, which the character's canon pair never was - that pair's prompts were never written down and the artifact cannot be rebuilt.",
+
+  "_rule_inherited_from_E02_and_E08": "Describe what THAT camera can see and omit what it cannot. Palette and material words are IDENTITY and stay byte-identical across views; only anatomy and framing words change.",
+
+  "_why_every_view_here_is_IDENTICAL_and_that_is_the_rule_not_an_exception": "On a character the rule bites: a rear camera is never told about a beard, a face, or a belt medallion. This subject has no view-specific ANATOMY words at all - all twelve fixture elements are material terms, which the rule says stay byte-identical across views. So the correct application of the inherited rule is one constant identity string, not eight variants. Two measurements support leaving it ungated rather than hand-trimming per view: E08's B4 held (the ungated prompt put no face on the rear views, because an exact-silhouette control at IoU 1.000000 locks orientation without the prompt being filtered), and the styled target pair carried all twelve elements in BOTH a bow and a stern three-quarter and landed 11 of 12 in each. Hand-trimming would introduce eight hand-authored strings where the fixture is one.",
+
+  "_two_differences_from_the_pair's_prompt_string_and_their_authority": {
+    "G6": "`a verdigris copper spire on the stern turret` -> `a gilded spire on the stern turret`. The Director's amendment, Ruling 7 - he saw the pair, said 'I love the gold. I approve', and G6 joined the gold family. Canon; the fixture already reads this way.",
+    "G7": "`red-lined gun port lids` -> `red gun port lids`. The E04 spec's Arm G7, under Ruling 9: the head-noun form is the correct grammar under the standing occupancy rule and the twins take it REGARDLESS of how the arm measured. It measured a response and not a landing - see E04-g7-report.md - and that changes nothing here, because both pre-registered branches prescribe this same form."
+  },
+
+  "_backdrop": "`plain white background` - Ruling 8's stated default for the twins, fixed BEFORE any twin result exists so it cannot be chosen while looking at one. Its ask->realise transfer is the only one measured on this subject (asked 255, realised 173 on the pair) and its operative margin - the fraction of silhouette pixels at or under the key cut - measured 1.48% against the accepted character's 1.77-2.45%. Overrulable only by a measurement, never by a derivation.",
+
+  "_style_tail": "`visible brushstrokes, painterly worked surface` - the STYLE-SUPPLIED row of the fixture, byte-identical to the pair's, recorded so a model or LoRA change is noticed rather than absorbed.",
+
+  "_view_stems_are_provisional": "The eight keys below assume `turn_render --tag galleonclay`, matching `ship.json`'s silhouette_masks tag. `ship.json` does not carry a `tag` for turn_render, so the tag is supplied on the command line; if a run uses another tag these keys move with it.",
+
+  "_ten_cameras_vs_eight_keys": "The E04 spec asks for twins at the profile's TEN cameras - the eye-level eight plus the elevated bow/stern pair at 40 deg. Only the eight eye-level stems are here, because no route tool can render, mask or project an elevated twin: turn_render places its camera at mid.z with no elevation argument, silhouette_masks hardcodes the ray z-component to 0, and project_twins' cam_axes does the same. See E04-armT-halt.md. If elevated twins are ruled in, two stems join this file.",
+
+  "galleonclay_0": "a gilded lion figurehead, warm oak-brown hull planking, black tarred strakes, weathered tan canvas sails, gilded scrollwork on the stern castle, a gilded spire on the stern turret, red gun port lids, black iron cannon barrels, dark tarred rigging and ratlines, pale scrubbed deck planking, a deep sea-blue frieze band along the bulwarks, gilded stern-gallery railings, plain white background, visible brushstrokes, painterly worked surface",
+
+  "galleonclay_1": "a gilded lion figurehead, warm oak-brown hull planking, black tarred strakes, weathered tan canvas sails, gilded scrollwork on the stern castle, a gilded spire on the stern turret, red gun port lids, black iron cannon barrels, dark tarred rigging and ratlines, pale scrubbed deck planking, a deep sea-blue frieze band along the bulwarks, gilded stern-gallery railings, plain white background, visible brushstrokes, painterly worked surface",
+
+  "galleonclay_2": "a gilded lion figurehead, warm oak-brown hull planking, black tarred strakes, weathered tan canvas sails, gilded scrollwork on the stern castle, a gilded spire on the stern turret, red gun port lids, black iron cannon barrels, dark tarred rigging and ratlines, pale scrubbed deck planking, a deep sea-blue frieze band along the bulwarks, gilded stern-gallery railings, plain white background, visible brushstrokes, painterly worked surface",
+
+  "galleonclay_3": "a gilded lion figurehead, warm oak-brown hull planking, black tarred strakes, weathered tan canvas sails, gilded scrollwork on the stern castle, a gilded spire on the stern turret, red gun port lids, black iron cannon barrels, dark tarred rigging and ratlines, pale scrubbed deck planking, a deep sea-blue frieze band along the bulwarks, gilded stern-gallery railings, plain white background, visible brushstrokes, painterly worked surface",
+
+  "galleonclay_4": "a gilded lion figurehead, warm oak-brown hull planking, black tarred strakes, weathered tan canvas sails, gilded scrollwork on the stern castle, a gilded spire on the stern turret, red gun port lids, black iron cannon barrels, dark tarred rigging and ratlines, pale scrubbed deck planking, a deep sea-blue frieze band along the bulwarks, gilded stern-gallery railings, plain white background, visible brushstrokes, painterly worked surface",
+
+  "galleonclay_5": "a gilded lion figurehead, warm oak-brown hull planking, black tarred strakes, weathered tan canvas sails, gilded scrollwork on the stern castle, a gilded spire on the stern turret, red gun port lids, black iron cannon barrels, dark tarred rigging and ratlines, pale scrubbed deck planking, a deep sea-blue frieze band along the bulwarks, gilded stern-gallery railings, plain white background, visible brushstrokes, painterly worked surface",
+
+  "galleonclay_6": "a gilded lion figurehead, warm oak-brown hull planking, black tarred strakes, weathered tan canvas sails, gilded scrollwork on the stern castle, a gilded spire on the stern turret, red gun port lids, black iron cannon barrels, dark tarred rigging and ratlines, pale scrubbed deck planking, a deep sea-blue frieze band along the bulwarks, gilded stern-gallery railings, plain white background, visible brushstrokes, painterly worked surface",
+
+  "galleonclay_7": "a gilded lion figurehead, warm oak-brown hull planking, black tarred strakes, weathered tan canvas sails, gilded scrollwork on the stern castle, a gilded spire on the stern turret, red gun port lids, black iron cannon barrels, dark tarred rigging and ratlines, pale scrubbed deck planking, a deep sea-blue frieze band along the bulwarks, gilded stern-gallery railings, plain white background, visible brushstrokes, painterly worked surface",
+
+  "_negative": "watermark, text, logo, blurry, photo, deformed - restylize_views' default, byte-identical to the pair's.",
+
+  "_recipe_the_pair_used_and_the_twins_inherit_unless_a_ruling_moves_it": "seed 770700 - steps 20 - cfg 2.5 - denoise 0.92 - ControlNet strength 0.9 - shift 3.1 - euler/simple - LoRA mcp-tool-shop__saltroad-style-lora__saltroad_style_v2_lowlr_000001500.safetensors @ 0.75. `ship.json` _still_suspended lists the generation recipe as awaiting E04's own anchor; the pair is that anchor and this is what it ran."
+}
