@@ -327,3 +327,63 @@ Profile edit lands (this commit) → `--lane` lands with its two-lane check and 
 corroboration → pre-flight green on `--lane layer` → **W2 flies: one authored stroke,
 the beam, L1 as the only variable** → commit under restrict + base-guard → **W3's
 toggle sheets → the Director: does the ship float.**
+
+---
+
+## Ruling 7 (advisor, 2026-08-05) — the MECHANISM is confirmed under real fire; W-H2 is FALSE as run, the record predicted it, and ledger forty-one is mine. W2b is cleared now.
+
+### What the run proved — every infrastructure claim of E10, at once
+
+**W-H3 and the whole machine are CONFIRMED**: base `galleon_final.png` byte-identical
+through a real generative commit with the guard asserting *inside the tool* · `--restrict`
+exact (0 texels outside the contact mask) · alpha from geometry (moved 0 px) · the
+dilation ring flooded under transparent texels · the composite verified exact as `over` ·
+invar on the geometry operand at 5 px against the 200 bound · 0 credits, full transport
+discipline, the invented-negative caught and corrected to the spent string **before**
+anything flew (the one-variable rule applied to one's own fixture — endorsed by name).
+The toggle visibility numbers land exactly on Ruling 5's pre-registration. **The layer
+system works. What failed is one prompt's content, and the two must not be conflated.**
+
+### W-H2: FALSE as run — and ledger forty-one is the reason it was predictable
+
+The band came back **darker than the hull it painted over** (L\* 4.0 against the base's
+7.9, hue 55.8 — the tar family), and the chroma guard fired *right for the wrong reason*,
+exactly as the executor put it: 81.38% below the floor because the coat is nearly black,
+not because it is white. **The house grammar predicted this and neither the fixture's
+author nor the ruling that ratified the prompt carried the prediction into the arm — the
+author was me, twice.** A15's law: *a specification cannot add a second element to an
+occupied surface.* The render the model saw showed the band fully occupied by accepted
+dark planking; L1 was an **addition onto occupied surface** — the W3 fur-cuff's ΔE 1.07
+class, G7's class — and the sharpest fact is already in E04's record: **stroke 1 painted
+this exact region dark tarred planking with this exact ship string, and was accepted for
+it.** The string plus the context both name dark; L1 arrived as the thirteenth voice.
+**Ledger forty-one, the same form as ledger twenty-three one seat over**: the fixture's
+own Form section predicts additions drop, and L1 was an addition the moment the layer
+seeded from the painted base.
+
+### W2b, ruled and CLEARED — one variable, the lane's own rule applied
+
+**The layer lane's prompt fixture becomes L1 + the style tail + the backdrop — the
+incumbent ship materials are struck from the layer lane.** The per-view rule, applied at
+lane scope: *describe what THIS stroke paints* — and the layer paints one element. The
+lane split makes this principled rather than convenient: **each lane's prompt carries
+that lane's identity** — the ship's twelve elements ride the base lane, the coat rides
+the layer lane; the render and control carry the ship's context without the text
+re-arguing for the incumbents. One decided object changes (the lane's fixture, updated
+in place with the history); graph, seed discipline, mask, transport all held constant;
+0 credits.
+
+**Pre-registered readings:** the coat arrives (band L\* rises decisively above the
+base's 7.9, above-floor share flips majority, hue stays warm-pale) → W-H2 confirms on
+the second run and **W3's toggle goes to the Director**. Still dark → **W2c**: the band
+rendered as HOLE in the emit (unoccupied — the brush's entire successful history is
+painting absence), W2b's prompt held constant — the render-side lever, one variable
+again. If W2c also fails, halt: the arm has a real finding about masked inpainting over
+context, and it gets written up as one.
+
+### The Director's gate is deferred, not skipped
+
+The sheets exist and the measurement already answers them — there is nothing new for
+the ship to float on, and his eye is for outcomes, not for confirming a ΔE table. The
+toggle goes to him when a candidate coat exists. The executor's closing sentence is the
+right shape of a negative result and is kept: *reported, not diagnosed.*
