@@ -96,6 +96,11 @@
     "value": "galleonclay",
     "why": "Filename stem; matches silhouette_masks' tag and E04-twin-prompts.json's keys, which key on input stems. Previously supplied per invocation; pinned so the prompt keys cannot drift.",
     "from": "E04-armT-halt.md finding 4; Ruling 13"
+   },
+   "margin": {
+    "value": 1.204,
+    "why": "SPENT, and the FIFTH instance of the absent-key class - found by Ruling 25's sweep. _still_suspended.'framing margin' decided this in prose ('NO margin value is pinned because the adjudicated anchor (Ruling 11) used the code default 1.204') and prose never reaches the loader. margin is the third member of the framing family alongside aspect and fit-axis, and the tool's own header requires all three consumers to agree - the same requirement whose fit-axis half produced the clipped-frame halt one leg ago. Provenance: the adjudicated 1072 framing anchor, the Director-ratified styled pair, all eight twins, and the stroke-camera derivation all ran at 1.204. The 'derived 1.2528' was never used by any ruled run and stays dropped.",
+    "from": "E04 Ruling 11 (the adjudicated anchor); Ruling 25 (the sweep)"
    }
   },
   "silhouette_masks.py": {
@@ -121,8 +126,13 @@
    },
    "fit-axis": {
     "value": "width",
-    "why": "Moves WITH turn_render's fit-axis or landscape subjects silently misregister - Ruling 6's two-consumer rule, expressed as one profile value per consumer. Same adjudicated mode, same deliberate absence of a margin entry.",
-    "from": "E04 Step 0 item 1; Ruling 11; Ruling 13"
+    "why": "Moves WITH turn_render's fit-axis or landscape subjects silently misregister - Ruling 6's rule, expressed as one profile value per consumer. There are THREE consumers, not two (Ruling 25, ledger 37): texpass_iter is the third and was missing both this and aspect until the clipped-frame halt. Same adjudicated mode.",
+    "from": "E04 Step 0 item 1; Ruling 11; Ruling 13; Ruling 25"
+   },
+   "margin": {
+    "value": 1.204,
+    "why": "SPENT - the third member of the framing family, pinned on this consumer for the same reason aspect and fit-axis are. See verify/turn_render.py's margin entry for the full grounds; the value is the one every ruled run on this subject used.",
+    "from": "E04 Ruling 11; Ruling 25 (the sweep)"
    }
   },
   "project_twins.py": {
@@ -264,6 +274,15 @@
    }
   },
   "texpass_iter.py": {
+   "_not_on_route": {
+    "yaw": "SUPPLIED PER STROKE, never from this profile: the camera comes from _fixtures.brush_prompts._order, which texpass_loop.ps1 parses out of the job key and passes explicitly. No single profile value can be correct - pinning one would make an emit that forgot --yaw silently repeat one stroke instead of failing. Recorded here so the tool's own default (90.0, stern-on on this subject) cannot arrive by silence, which is the whole point of the sweep. FLAGGED: `_not_on_route` is the wrong NAME for this - the key IS exercised on every stroke - but it is the only one of Ruling 22's four forms whose operational meaning is 'decided, and the decision is that the profile supplies no value'. A fifth form for per-invocation selectors is the advisor's call, not mine; I am not inventing one.",
+    "el": "Same, and the same flag. Elevation comes from the job key: 0 for the four side strokes, 40 for the deck pair."
+   },
+   "margin": {
+    "value": 1.204,
+    "why": "SPENT - the third framing consumer's third framing key. The derivation that Ruling 24 rests on computed h_ext at exactly this margin, so pinning it here is what makes the emitted job frame the frame the stroke set was derived in.",
+    "from": "E04 Ruling 11; Ruling 25 (the sweep)"
+   },
    "aspect": {
     "value": "1072,1024",
     "why": "RULED by Ruling 25 after the stroke-frame halt: the tool's own header says turn_render, silhouette_masks and texpass_iter must agree on the frame, and this block carried neither frame key - the THIRD consumer, named at Ruling 12 item 3 and missed by Ruling 13's two-consumer pin (ledger thirty-seven). At the character default, four of six ruled cameras clip the ship, the deck pair worst at 5.87%/5.90%, all of it off the bow and stern where G1 and G5/G6/G12 live. The value is the same 1072,1024 decided twice already in this profile.",
@@ -297,6 +316,11 @@
   },
   "restylize_views.py": {
    "_backdrop_is_a_PROMPT_word_not_a_flag": "S-backdrop is delivered by the prompt text ('plain white background'), not by any argument here. --bg is the CLAY render's compositing colour for the control image, a different operand entirely - E08's parked blue-background arm changed that one and is not reopened.",
+   "bg": {
+    "value": "0,0,0",
+    "why": "SPENT, WITH A BYTE ANCHOR - and not the same operand as the backdrop. --bg is the colour the keyed CLAY figure is composited onto before Canny, which is E01's contrast fix; S-backdrop is a prompt word. Found undecided by Ruling 25's sweep, then anchored rather than asserted: rebuilding galleonclay_0's control with --emit-only, the profile loaded and NO --bg on the command line, reproduces controls/galleonclay_0_control.png and _mask.png BYTE-IDENTICALLY (39,825 and 18,596 bytes) - so 0,0,0 is what the eight twins were actually generated against. E08's parked blue-background arm changed this operand and is not reopened.",
+    "from": "E04 Ruling 25 (the sweep); anchored against the twins' own controls"
+   },
    "_no_frame_values_ON_PURPOSE": "STRUCK by Ruling 13. Task 4a wrote aspect 1066,1024 here; the tool has no such flag and needs none - it reads the render and the mask at whatever size they arrive, so the frame reaches it through turn_render and silhouette_masks, which carry it above. The loader's unknown-key ANDON fired on exactly this key (E04-armT-halt.md Finding 2) - the guard working. A profile value that does not reach its tool reads as configuration and does nothing.",
    "seed": {
     "value": 770700,
