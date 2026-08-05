@@ -569,9 +569,75 @@ for n in range(0, len(ladder) + 1):
           % (n, 2 + n, mix[-1]["reference_pct"], mix[-1]["brush_pct"],
              mix[-1]["dilation_pct"]), flush=True)
 
+# ------------------------------------------------- 8. WHY the ladder is flat: decompose
+# the residual. A flat ladder has two very different explanations - the remaining holes are
+# obliquity holes some better-angled camera would take (so more cameras help), or they are
+# occlusion/thin/edge holes no eye-level camera can take at all (so they cannot). Asserting
+# either without measuring it is exactly the move this repo keeps paying for, so the funnel
+# is unioned across EVERY candidate and the residual is attributed to the stage that
+# rejected it everywhere.
+print("\n[stroke] === 8. RESIDUAL side-class holes, attributed across ALL %d eye-level "
+      "candidates ===" % len(side_cams), flush=True)
+u_face = np.zeros(NV, dtype=bool)
+u_vis = np.zeros(NV, dtype=bool)
+u_thin = np.zeros(NV, dtype=bool)
+u_edge = np.zeros(NV, dtype=bool)
+for y, e in side_cams + deck_cams:
+    dtc, look, right, up = basis(y, e)
+    xs = (np.arange(W) + 0.5) / W * h_ext - h_ext / 2
+    ys = v_ext / 2 - (np.arange(H) + 0.5) / H * v_ext
+    gx, gy = np.meshgrid(xs, ys)
+    org = (bmid[None, None, :] + gx[..., None] * right[None, None, :]
+           + gy[..., None] * up[None, None, :] - look[None, None, :] * D)
+    aF = rs.cast_rays(o3d.core.Tensor(np.concatenate(
+        [org, np.broadcast_to(look, org.shape)], axis=-1).reshape(-1, 6).astype(np.float32)))
+    tF = aF["t_hit"].numpy().reshape(H, W)
+    hit = np.isfinite(tF)
+    aB = rs.cast_rays(o3d.core.Tensor(np.concatenate(
+        [org + look[None, None, :] * (2 * D), np.broadcast_to(-look, org.shape)],
+        axis=-1).reshape(-1, 6).astype(np.float32)))
+    tB = aB["t_hit"].numpy().reshape(H, W)
+    both = hit & np.isfinite(tB)
+    ext = np.full((H, W), np.inf, dtype=np.float64)
+    ext[both] = 2 * D - tF[both] - tB[both]
+    job = (hit & ~((ext < args.thin_extent) & hit)).astype(np.float32)
+    dist = distance_transform_edt(hit).astype(np.float32)
+    hidx = np.where(hole)[0]
+    i1 = hidx[(N[hidx] @ dtc) > args.facing_min]
+    u_face[i1] = True
+    org2 = (P[i1] + N[i1] * args.noffs + dtc[None, :] * args.bias).astype(np.float32)
+    t = rs.cast_rays(o3d.core.Tensor(np.concatenate(
+        [org2, np.broadcast_to(dtc.astype(np.float32), org2.shape)], axis=1)))
+    i2 = i1[~np.isfinite(t["t_hit"].numpy())]
+    u_vis[i2] = True
+    pxx = ((P[i2] - bmid) @ right / h_ext + 0.5) * W - 0.5
+    pyy = (0.5 - (P[i2] - bmid) @ up / v_ext) * H - 0.5
+    i3 = i2[bilin(job, pxx, pyy) > 0.5]
+    u_thin[i3] = True
+    pxx = ((P[i3] - bmid) @ right / h_ext + 0.5) * W - 0.5
+    pyy = (0.5 - (P[i3] - bmid) @ up / v_ext) * H - 0.5
+    u_edge[i3[bilin(dist, pxx, pyy) >= args.edge_dist]] = True
+SH = cls_side & hole
+attrib = [("never faces any candidate at %.2f" % args.facing_min, SH & ~u_face),
+          ("faces one, OCCLUDED on every one", SH & u_face & ~u_vis),
+          ("visible somewhere, THIN-WITHHELD on every one", SH & u_vis & ~u_thin),
+          ("survives thin, EDGE-TRIMMED on every one", SH & u_thin & ~u_edge),
+          ("REACHABLE by some candidate stroke", SH & u_edge)]
+resid = {}
+for nm, s in attrib:
+    resid[nm] = int(s.sum())
+    print("[stroke]   %-46s %9d  %6.2f%% of side holes"
+          % (nm, int(s.sum()), pct(s.sum(), SH.sum())), flush=True)
+got = int((SH & cov).sum())
+print("[stroke]   the proposed set closes %d = %.2f%% of side holes, against a %.2f%% "
+      "ceiling for ALL %d eye-level candidates together"
+      % (got, pct(got, SH.sum()), pct(int((SH & u_edge).sum()), SH.sum()),
+         len(side_cams)), flush=True)
+
 out = {"inherited_check": [{"name": n, "measured": g, "reported": w, "ok": g == w}
                            for n, g, w in INHERIT],
-       "orders": orders_out, "mix": mix,
+       "orders": orders_out, "mix": mix, "side_residual": resid,
+       "side_stroke_ceiling": int((SH & u_edge).sum()),
        "params": {"facing_min": args.facing_min, "thin_extent": args.thin_extent,
                   "edge_dist": args.edge_dist, "aspect": args.aspect,
                   "fit_axis": args.fit_axis, "margin": args.margin,
