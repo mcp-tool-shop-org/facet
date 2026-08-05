@@ -1569,3 +1569,69 @@ stroke → **the six strokes, order B** → finalize → pack → renders → **
 Gate 1 sheet**. No ruling between here and the sheet unless a gate fires. Everything
 Ruling 24 rests on stands — the derivation read its frame from arguments that defaulted
 correctly; the pipeline, not the derivation, carried the defect.
+
+---
+
+## Ruling 26 (advisor, 2026-08-05) — invar's operand becomes geometry at bounds untouched; stroke 1 is CLEARED to commit from the downloaded artifact; ledger thirty-eight
+
+### The ANDON fired on A32's documented-unsound operand, at its second consumer
+
+`brush_cloud_step.py:267` defines *outside the figure* as `|render − 107| < 1.5` —
+colour as a proxy for absence of surface — while `texpass_iter commit`'s A32-corrected
+block, thirty lines of comment included, says in its own words: *0.42 is also
+`--hole-grey`, so an unpainted hole on real surface is indistinguishable from background
+by colour, by construction… test the property, not a proxy for it.* **A32 fixed one
+consumer. `invar` kept the proxy, and it only executes when a stroke flies — this is the
+first stroke since.** The measured decomposition is decisive and it is the same shape as
+A32's own: the halting component is 93% ON geometry and 93% inside the job mask — dark
+tarred planking painted onto the hull's foot, the least-covered region on the subject,
+by the stroke dispatched to serve it. The brush doing its job, halted by a check calling
+real surface *background*.
+
+**Ledger thirty-eight.** *When you fix a root cause, find its other consumers* is
+CLAUDE.md's own rule, written from E01's keying lesson — and A32's fold, which was mine,
+did not run the grep. Second instance in two legs of a fix applied at some of its sites
+(Ruling 25's frame was the first). The bundle's registry item gains a sibling
+observation: the repo's correction discipline needs the consumer-grep to be part of the
+fold, not a virtue remembered afterwards.
+
+### The fix, ruled: geometry operand, bounds untouched
+
+`invar`'s *outside* becomes the dilated complement of `hit.png` — the same operand, the
+same dilation role, and the same reasoning as commit's corrected block; **a missing
+`hit.png` HALTS** (an invariance check with no geometry cannot test, and the existing
+`n_out` assert already embodies that philosophy). **`--tol 1.0` and `--conc-tol 4.0` do
+not move** — the executor's same-bounds demonstration (mean 0.216 → 0.020, max 106 → 11,
+largest component 1,515 → 40 px, HALT → PASS) is the proof the bounds were never the
+problem, and it was run as a diagnostic beside the fired gate rather than as a bypass of
+it, which is the difference the record keeps rewarding. **Anchor before the fix is
+trusted:** corrected `invar` runs over E08's recorded accepted stroke jobs — all must
+PASS; any firing on an accepted stroke is a finding and a halt, not a tuning input.
+
+### Stroke 1: CLEARED to commit from the downloaded artifact
+
+No regeneration and no re-roll — nothing here is a content failure. The artifact is
+seed-stamped with its saved workflow, the gate that fired was measuring with a broken
+operand, and the content is the dispatched paint on the dispatched surface. Commit runs
+under `texpass_iter`'s own in-tool gates as always.
+
+### The sweep and its findings, RATIFIED
+
+**80 subject-data flags on the route, 80 decided, exit 0** — the corrected registry law
+applied mechanically one leg after it was written. The `--margin 1.204` decision is
+ratified **with the supersession stated honestly**: Ruling 13's "no margin entry ON
+PURPOSE" was anti-invention (do not pin a *different* margin), not pro-silence; an
+explicit 1.204 is the same adjudicated value made visible, which is what the corrected
+law demands. The `--bg` decision is the sweep's best move — **SPENT with a byte anchor**,
+the twins' own control rebuilt identically rather than asserted equivalent. The
+`$null -eq $null` self-catch — a comparison printing BYTE-IDENTICAL for files that do
+not exist, found and fixed by its own author mid-sweep — is *a check that cannot fail is
+not a check* applied to one's own instrument, endorsed by name. The walker's N/A-rule
+proxy (argparse *action* standing in for *role*) goes to the bundle beside the registry
+item.
+
+### Sequence
+
+Land the operand fix → the E08 anchor passes → **commit stroke 1 from disk** → strokes
+2–6 under the corrected gate → finalize → pack → renders → **the five-column Gate 1
+sheet**. No ruling between here and the sheet unless a gate fires.
