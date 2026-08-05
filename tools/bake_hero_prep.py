@@ -390,20 +390,36 @@ elif args.head_scale == 1.0:
     # REQUESTED: at x1 the request is "change nothing", so what must hold is that the
     # identity SURVIVED pack_islands.
     #
-    # Stated exactly as ruled, and NOT pre-softened: the ruling says these are equal,
-    # the executor had only measured them equal to 4 decimal places, and the honest
-    # move is to assert the ruled condition and report the full-precision operands if
-    # it fires rather than choosing a tolerance nobody ruled. pack_islands may apply a
-    # global uniform scale (which cancels in a ratio) and stores float32 UVs, so if
-    # this ever fires on last-bit noise the numbers below are the evidence for a
-    # ruling on tolerance — they are not grounds for loosening it here.
-    assert share_area == share_area_pre, (
+    # TOLERANCE 1e-6 RELATIVE, ruled 2026-08-04 (E04 Ruling 16), derived from BOTH SIDES
+    # of the line in the centroid-checksum pattern — never from the delta it judges.
+    #
+    #   noise  1.2e-07 relative. Blender stores UVs as float32; pack_islands may apply a
+    #          global uniform scale, which cancels in a ratio but not in the last bits.
+    #          Measured once at exactly 2 float32 ULPs (2^-25 at this magnitude).
+    #   signal >= 3e-5 relative. One median island is the smallest event that can really
+    #          move a share, and the guard's actual prey — a scale silently not surviving
+    #          the pack — is factor-level, not last-bit.
+    #
+    # 1e-6 sits ~8x above the noise floor and >=30x below the smallest real signal. The
+    # same number follows from ULP arithmetic and island geometry whatever any run printed.
+    #
+    # An earlier version of this clause asserted STRICT equality, on a ruling that read
+    # "measured: exact" from a %.4f print of a float64 ratio. It fired at 2 ULPs. That
+    # condition is WITHDRAWN as mis-derived rather than retuned — the distinction that
+    # matters is that this bound comes from the two magnitudes above, not from the delta
+    # that overturned it.
+    _tol = 1e-6 * share_area_pre
+    _delta = abs(share_area - share_area_pre)
+    assert _delta <= _tol, (
         f"ANDON: head-scale 1.0 asks for the identity and pack_islands did not "
         f"preserve it — share_area {share_area!r} vs share_area_pre "
-        f"{share_area_pre!r}, delta {share_area - share_area_pre!r}. HALT: report "
-        f"these digits, do not choose a tolerance.")
-    print(f"[prep] head-scale 1.0: identity survived pack_islands exactly "
-          f"({share_area!r}) — uniform atlas, no privileged region", flush=True)
+        f"{share_area_pre!r}, delta {_delta!r} against tolerance {_tol!r} "
+        f"({_delta / max(share_area_pre, 1e-12):.3e} relative). HALT: report these "
+        f"digits, do not choose a tolerance.")
+    print(f"[prep] head-scale 1.0: identity survived pack_islands within tolerance "
+          f"({share_area_pre:.9f} -> {share_area:.9f}, "
+          f"{_delta / max(share_area_pre, 1e-12):.3e} relative against 1.0e-06) — "
+          f"uniform atlas, no privileged region", flush=True)
 else:
     # A shrink is not specified by any ruling. Refuse rather than invent a symmetric
     # clause: an unspecified guard that silently passes is how a value gets treated as
