@@ -174,7 +174,7 @@ the data cannot support — report numerator and denominator and stop.
 window on the fixture made visual), and the E04 spec proper follows from the advisor with
 4a–4d's numbers in hand.
 
-## Session handoff (2026-08-04, evening) — start at Arm G7
+## Session handoff (2026-08-04, evening) — start at Arm G7 ⚠ SUPERSEDED by Session handoff 2 below (Arms G7 and T are complete and ruled)
 
 Tasks 1–4 and the spec's Step 0 are **complete and ruled** (Rulings 1–12). A fresh
 executor session starts here:
@@ -228,3 +228,67 @@ E08 — halting at gates, refusing instruments that cannot fail, hashing predict
 artifacts exist, checking inherited claims against source in the same breath — is the
 standard. The last session's report falsified a banked amendment with one measurement and
 surfaced it at the top. Do that.
+
+---
+
+## Session handoff 2 (2026-08-04, late) — start at the STROKE-CAMERA DERIVATION
+
+Stage 1 is COMPLETE and RATIFIED (Ruling 23): **36.89% of valid = 86.4% of the
+pre-registered 42.72% ceiling**, atlas + native owner + blend sidecars written, coverage
+at 0 undecided, purity clean, eight adjudicated twins in the set and nine in the record.
+A fresh executor session starts here:
+
+```
+cd E:\AI\facet && git pull
+CLAUDE.md                                               <- how to work here
+docs/experiments/E04-the-galleon-through-the-route.md   <- THE SPEC, Amendments 1-3
+docs/experiments/E04-ruling.md                          <- Rulings 17-23 at minimum; 23 is YOUR DISPATCH
+profiles/ship.json                                      <- every value now DECIDED (64/0 coverage)
+docs/experiments/E04-stage1-report.md                   <- the hole map you derive from
+docs/experiments/E04-coverage-pass.md                   <- the decision forms and buckets
+```
+
+**Your task is Ruling 23's stroke dispatch, in order:**
+
+1. **Deck strokes = the measured elevated pair** (0/180 @ 40) — cite Task 4a, do not
+   re-derive. Pre-registered: the deck plateaus ~53%, so ~half its holes remain after the
+   pair and fall to dilation.
+2. **Side strokes: derive from the hole map 4a-style** — per candidate yaw, raycast the
+   side-class hole coverage, greedy by marginal gain. Report the table and your proposed
+   set, including **specifically what it buys the waterline rim** (19.44% styled — E10's
+   layer needs a painted base there).
+3. **NO hull-bottom strokes** — ruled (Ruling 23 §3, reasoning on the record); bottom
+   holes fall to dilation. The Director's window is open; yours is not.
+4. **The spiral order is subject data** — derive it from where stage 1 left paint
+   (`_still_suspended`'s own note).
+5. **`brush_prompts` = the twin constant string per stroke** (ruled; the twin file's
+   argument transfers whole). Land the fixture beside the derivation;
+   `_fixtures.brush_prompts` closes.
+6. **Lift `_NOT_CLEARED` per Ruling 22's lifecycle**: coverage firing on the reverted
+   `texpass_brush` keys IS the procedure — decide every key in the same commit (prompt
+   from the fixture; recipe keys as FIRST-RUN OPERATING POINTS at the accepted character
+   route's values), coverage back to 0, purity green.
+7. **HALT: the derivation report.** The advisor rules the stroke set before any stroke
+   flies. Then: strokes (cloud, per-stroke sidecars, in-tool gates unchanged) → finalize
+   → pack → renders → **the five-column Gate 1 sheet** (reference | asset | provenance |
+   owner | error), both elevated cameras and a beam view, textures under `--flat`, full
+   size, never a contact sheet.
+
+**Environment, standing:** verify the watchdog before any local GPU step and report
+either way · generation is cloud-only (workflow JSON saved before submission,
+link-checked in code — a `dry_run` PASS does not prove link sanity · `dry_run` ·
+`estimate_credits` · the LoRA by its live card name) · Blender through PowerShell ·
+ASCII-only prints · predictions hashed blind before artifacts exist where anything is
+measurable.
+
+**Pre-registered expectations, so numbers are not misread at the sheet:** the ship's
+provenance mix reads against the 42.72% ceiling, never against the character's 68.8/4.2/
+27.0 raw (Ruling 5: geometry is not a regression) · owner seams are EXPECTED on hull and
+sails, with a named likely site at view-7 boundaries (Ruling 20 — its tar runs darker; the
+owner channel shows it) · H3 measures with `e04_blotch.py`'s instrument on the two largest
+smooth surfaces · an acceptance rate quoted without its camera count is not a number.
+
+**Do not:** invent a bound for anything suspended (report numerator and denominator and
+halt) · run any polish arm unbidden · touch the character path · re-open the withdrawn
+bottom question · write to the studio memory store · end a session the Director has not
+ended.
