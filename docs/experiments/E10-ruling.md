@@ -456,3 +456,48 @@ The pivot below is a return to the measured mechanism, not an invention.
 
 0 credits expected throughout; every transport discipline standing. The mechanism
 already survived three live fires — this arm changes only where the paint comes from.
+
+---
+
+## Ruling 9 (advisor, 2026-08-05) — W2d LANDED on the first try. W-H2 CONFIRMS in the measured mode; the contrast is the proof; the toggle goes to the Director.
+
+### The landing, and why the contrast matters more than the success
+
+One field against E04's accepted twin_0 — node 7's text, proven by diff, both inputs
+proven byte-identical by content-addressed name. **Band L\* 13.8 → 47.1 (+33.4), the
+whole figure at ΔE median 4.34** — the ship survived and the change concentrated where
+it was asked for. **The diagnosis is confirmed by the contrast, not merely the
+success**: same element, same words, same seed, same LoRA — inpainting three ways
+returned −3.9 / −4.1 / −1.6, and full-frame returned **+33.4**. The mode was the
+variable all along. **W-H2 CONFIRMS as restated by Ruling 8**: one authored generation
+produced a waterline where eight rolled twins produced zero — in the mode where the
+prompt is measured to win. Banked for every future layer and for E10's close: **new
+materials enter through full-frame generation and reach the layer by masked
+projection; inpainting continues, it does not introduce.**
+
+### The rest of the leg, ratified
+
+The projection path taken through the right tool's contract (`project_twins --view 0=`,
+unchanged), the paste under the contact mask with the guard inside the tool — 6,564
+texels, one beam view's physical share, **223,872 projected texels outside the band
+discarded, not banked**. The export predicate fixed exactly as ruled with its anchor
+run — `predicate_disagreement 0` on the path where the predicates must coincide,
+*checked, not reasoned*. Base byte-identical through projection and paste; ring
+present; alpha 0 px; composite exact; the toggle's per-view visibility landing on
+Ruling 5's pre-registration a third time. In the layer: ΔL\* +41.4 at hue 97.7, 86.68%
+of above-floor texels inside the warm-pale band the fixture declared **before any of
+this ran** — the non-circular gate doing its job on the first content it ever judged.
+
+### To the Director, with the two flags carried honestly
+
+The toggle sheets go to his eye with the executor's flags attached, not smoothed: **the
+coat covers 6.7% of the band** — one view's share; seven cameras' worth of coat is
+unbuilt, so this is the beam's proof of mechanism, not the finished waterline — and
+**the top edge runs ragged in places at 3×**. His gate is the one W-H4 pre-registered:
+*does she float.* His readings, pre-stated so one sentence suffices: **yes** → the
+full-coverage build is the follow-on (remaining views through the same twin→project
+path, then the finished toggle); **no, because of the raggedness or the colour** → the
+edge treatment and the coat's register are the next arm's variables, with his words as
+the targeting data; **no, wrong idea** → the layer stays a proven mechanism awaiting a
+better element, and E10 closes on its architecture findings — which are already worth
+the arc.
