@@ -1075,3 +1075,70 @@ ruling's material. Then the halt is the stage-1 report, before any stroke.
 Three of ten clean with two inversions, owned with their mechanism — *"I reasoned from
 projected area and the subject answers by rigging."* That is this subject's first
 calibration lesson and it now sits in the record where the next prediction can use it.
+
+---
+
+## Ruling 18 (advisor, 2026-08-04) — the classifier is withdrawn and the question re-decided on pre-recorded signatures: view 0 is G7's red, and A23 FIRES on view 7's waterline band
+
+### Ledger thirty-four — I specified a classifier my own ruling had already falsified
+
+The majority-sub-40° operand was mine (Ruling 17), specified while Ruling 13's own text
+held *"the arrived hue sits at 41–45, outside every band."* A majority test on a window
+the declared population mostly exceeds returns **not-red at perfect presence** — the
+works-perfectly test, unrun again, ledger twenty-seven's exact family. The executor ran it
+as written, reported the edge effect as evidence rather than re-cutting, and the sentence
+that closes the loop is theirs: *"that the operand has a known edge effect on this
+component is evidence for the ruling, not licence for me."* Endorsed by name, alongside
+the chroma/lightness comparison nobody asked for — the discriminating evidence was built
+before the ruling needed it.
+
+**The operand is withdrawn as a classifier and retires to what it always was** — the
+fixed-window *trend* instrument, valid for before/after deltas, never for majority
+verdicts on populations that straddle its edge.
+
+### View 0: G7's landed red — re-decided on signatures that pre-date this halt, so the re-decision is not a retune
+
+The rule that replaces the withdrawn one uses no 40° cut and would have ruled identically
+whatever the sub-40 fraction read: **match the component against the two pre-recorded
+material signatures.** Arm G7's arrived red: h 41.1–44.9, C\* 34.3–48.1. The tar: h 40–50
+at C\* just over the 12.0 floor. View 0's component: **unimodal h 41→49, C\* 36.3, L\*
+26.1** — inside the arrived-red signature, 2.3× the tar's chroma, three times its
+lightness, and spatially a compact block on the hull (114×79 px) rather than an edge
+tracery. **It is the declared element sitting in the recorded band gap** ("G7 has no
+band"). No A23 trigger. View 2's completed row is the same story at scale — 7.46%
+off-palette at **87.7% red** on the view carrying the most red — and views 4/6's small
+majority-not-red components (132–362 px, C\* 13.7–15.8) are the declared tar at the
+band's 50° edge, boundary speckle, not candidates. **The table's four majority-not-red
+rows decompose into: one declared red split by a window, two declared tar at a band edge,
+and one real candidate.**
+
+### View 7: the A23 rule FIRES — one re-roll, new seed, the rejected twin stays in the record
+
+**The component is an unnamed material on the evidence:** a single coherent 2,002 px band
+spanning x 398–686 across the **bottom of the hull** (y 896–939 of a figure ending at
+939), median rgb (56,77,97), **h 262.6 at C\* 14.4** — chroma-bearing above the floor,
+outside the warm band, outside the suspended blue band even at its widened 273 edge (20°
+below the measured span), **0.0% red**, and absent from the canon pair (no such cluster
+anywhere in 4d's table). Positionally it is not G11 — the fixture puts the sea-blue frieze
+*along the bulwarks*, not at the waterline. Mechanism read, stated as inference and not
+fact: the model grounding the ship in implied water. Scenery baked into a hull texture is
+precisely what the projection must not inherit knowingly — E08 A23's own words.
+
+**The bounded procedure, verbatim from the precedent:** one re-roll of view 7, new seed,
+recorded; the rejected twin stays on disk and in the record with its measurement; a second
+failure is the result, not a third roll. The re-rolled view runs the **full baseline row**
+— registration IoU/centroid, palette both ways, landing, watch items — beside the old
+row. **Pre-stated readings so nothing waits:** clean row in family with the other seven →
+the eight are complete, **projection proceeds directly under Ruling 17, no further ruling
+needed before the stage-1 report.** The same class again → that is the result; halt, and
+the seven-vs-eight projection decision comes back to me with the measurement. The
+Director's overrule window stands as always — if he *wants* a waterline, one sentence
+amends the fixture and the re-roll is moot; default is the spec as authored.
+
+### The G7 record, updated with the classification's data
+
+Landing is now measured at component scale: view 1 at 99.5% red (956 px), view 2 at 87.7%
+(3,113 px), view 0's 4,562 px block confirmed red by signature. The per-view roll stands —
+view 4's mirror-camera 55 px against view 0's thousands — and H1's close is unchanged:
+**the head-noun form is necessary and not sufficient; landing is a per-view roll the union
+projection resolves.**
