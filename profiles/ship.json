@@ -24,6 +24,12 @@
    "why": "Eight eye-level stems, one constant identity string - this subject has no view-specific anatomy words, so the inherited per-view rule correctly yields one string. Byte-faithful to the pair's saved workflow prompt except the two ruled deltas: G6 gilded (Ruling 7), G7 head-noun (Ruling 9). Verified against workflow_7_bow_three_quarter.json directly; ratified Ruling 13. Records the pair's recipe as the generation anchor.",
    "from": "E04 Arm T preparation; Ruling 13"
   },
+  "layer_prompts": {
+   "path": "docs/experiments/E10-layer-prompts.json",
+   "status": "WRITTEN",
+   "why": "The LAYER lane's prompt fixture - E10 Ruling 6, which ruled the profile's vocabulary two-lane after the pre-flight correctly refused a generative step on an undeclared prompt file. One subject now owns two content lanes: the base atlas (brush_prompts, Ruling 23) and the environment-contact layer (this). The file carries L1 (the tallow-white coat, E10 Ruling 5) prepended to E04's ruled string so a layer run has ONE variable. brush_cloud_step's pre-flight maps lane->fixture explicitly (--lane, default base) and corroborates the declared lane against the job's state identity - no skip flag in either lane.",
+   "from": "E10 Ruling 6; E10-LAYER-IDENTITY.md"
+  },
   "brush_prompts": {
    "path": "docs/experiments/E04-brush-prompts.json",
    "status": "WRITTEN",

@@ -265,3 +265,65 @@ Layer-state seed (alpha from the contact mask at export, per Ruling 1 decision 3
 carried through painting) → the fixture file lands as authored above → **Arm W1**, the
 ≥90% prediction still blind → W2, one authored stroke, **beam view** (the visibility
 observation confirms the spec's own choice) → W3's toggle to the Director.
+
+---
+
+## Ruling 6 (advisor, 2026-08-05) — W-H1 CONFIRMED at 100.00% blind; the pre-flight found E10's primary finding: the profile was single-lane. The second lane is ruled in.
+
+### W-H1: CONFIRMED, and it is the experiment's foundational claim landing
+
+Pre-registered ≥90%, genuinely blind, measured: **100.00% of the exemplar's largest
+component, 99.96% of its total — one pixel of 2,272 outside.** Every pixel the model
+painted freehand — uninvited, on a rejected twin, killed by one seed increment — falls
+inside the band a plane through the Director's placed line cuts out of the geometry.
+**Contact is geometry's job**; the model's freehand water was evidence of *where*, and
+the plane recovers the where exactly. The anchor that makes the number meaningful is
+endorsed by name: emitted silhouettes byte-identical to the exact clay masks on all
+eight views, so exemplar and render are provably the same picture; mirror-pair extents
+agreeing to 5–7 px. The colour disclaimer stands as written — extent only, per decision
+6; nothing here endorses blue-grey.
+
+### Steps 0.3 and 0.4: ratified as landed
+
+Re-seed byte-identical, base sha unchanged. Both canon fixtures landed as authored —
+and **the palette fixture's chroma-floor note is endorsed as the W3-blade lesson
+pre-applied**: a tallow coat is low-chroma by construction, so runs report the
+below-floor share rather than letting the gate count a pale coat as off-palette. The
+staged W2 design — the layer rendering as the ship (atlas copied from the accepted
+base for context and registration) with the only paintable region the geometric band —
+is the right shape: the brush sees a ship, and geometry decides where paint may land.
+
+### The pre-flight halt: the guard is RIGHT, and the finding is E10's primary one
+
+The check refused a generative step on a prompt file the subject never declared — which
+is precisely what Ruling 24 built it for — and in refusing, it measured the boundary:
+**the profile's vocabulary was single-lane.** One `brush_prompts` slot per subject; E10
+introduces a second content lane over the same subject; the galleon now legitimately
+owns two prompt fixtures and the profile can name one. That is the
+DECOMPOSE_BY_SECRETS test firing one level up from where E04 fired it, and it is
+recorded as a primary finding, not a defect: the profile design predates the existence
+of layers. The executor's refusal to edit either the decided value or the no-skip
+gate's definition of legal *while holding a run they wanted to fly* is endorsed by
+name — that restraint is the whole reason the gate still means something.
+
+**The ruling:**
+
+1. **`_fixtures.layer_prompts` joins `ship.json`** (this ruling's commit): path
+   `docs/experiments/E10-layer-prompts.json`, with why and from. Two lanes, two
+   declared homes, one subject.
+2. **The pre-flight learns lanes EXPLICITLY, never by inference:** `brush_cloud_step`
+   gains `--lane {base,layer}`, **defaulting to base** — the character and E04 paths
+   are unchanged by construction. The lane→fixture mapping is fixed in the tool
+   (base → `brush_prompts`, layer → `layer_prompts`); the check fires against the
+   mapped key **always, no skip flag in either lane**. A guard that infers its own
+   jurisdiction from a path can be steered; the lane is a declared input.
+3. **The declaration is corroborated against the job**: the pre-flight asserts the job
+   directory's state identity matches the declared lane — the emit sidecar already
+   carries it, so a mis-declared lane halts on data in hand, not on trust.
+
+### Sequence
+
+Profile edit lands (this commit) → `--lane` lands with its two-lane check and the
+corroboration → pre-flight green on `--lane layer` → **W2 flies: one authored stroke,
+the beam, L1 as the only variable** → commit under restrict + base-guard → **W3's
+toggle sheets → the Director: does the ship float.**
