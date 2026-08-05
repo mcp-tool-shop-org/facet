@@ -262,10 +262,41 @@ elif args.cmd == "invar":
     assert em.shape == ed.shape, (
         f"ANDON: the returned image is {ed.shape}, emitted was {em.shape} — the cloud "
         f"re-sized it, so nothing downstream is comparable")
-    # the figure: emit composites the subject onto a synthetic flat 0.42 grey (=107/255),
-    # so "outside the figure" is where the emitted render is still that grey.
-    bg = np.abs(em - 107.0).max(axis=-1) < 1.5
-    outside = maximum_filter((~bg).astype(np.float32), size=args.dilate) < 0.5
+    # ⚠ THE OPERAND IS GEOMETRY, NOT COLOUR (E04 Ruling 26). This is E08 Amendment 32's fix
+    # at its SECOND CONSUMER, and it took a fired gate on E04's first stroke to find it.
+    #
+    # HISTORICAL TEXT, kept because corrections happen in place: "the figure: emit composites
+    # the subject onto a synthetic flat 0.42 grey (=107/255), so 'outside the figure' is
+    # where the emitted render is still that grey."  ->  bg = |em - 107| < 1.5.
+    #
+    # That is colour as a proxy for absence of surface, and 0.42 is ALSO project_twins'
+    # --hole-grey, so an unpainted HOLE ON REAL SURFACE renders at exactly the background
+    # value and is indistinguishable from background BY COLOUR, BY CONSTRUCTION. A32
+    # corrected this operand inside texpass_iter's commit and nobody grepped for the other
+    # consumer; this one only executes when a stroke flies, so it sat unfixed until the next
+    # stroke flew. Measured on E04 stroke 1: the check's "outside" set was 803,683 px of
+    # which 0.26% was real surface, but its HOT pixels were 89.1% ON GEOMETRY, and the
+    # 1,515 px component that halted the run was 93% on geometry and 93% inside the job mask
+    # - the brush painting the hull's foot, which is what it was dispatched to do. Same
+    # residual, same bounds, geometry operand: mean 0.216 -> 0.020 lv, largest component
+    # 1,515 -> 40 px, HALT -> PASS.
+    #
+    # THE BOUNDS DO NOT MOVE. They were never the problem, and the same-bounds comparison
+    # above is what proves it. Test the property, not a proxy for it.
+    hp = os.path.join(args.job, "hit.png")
+    if not os.path.exists(hp):
+        raise SystemExit(
+            f"ANDON: no hit.png in {args.job}. This check asks whether anything changed "
+            f"WHERE THERE IS NO SURFACE, and emit's geometry mask is the only thing that "
+            f"answers it - the colour it replaced cannot, because an unpainted hole renders "
+            f"at the background value by construction. An invariance check with no geometry "
+            f"cannot test, so it halts rather than falling back to the operand that was "
+            f"withdrawn. Re-emit the job with a post-A32 texpass_iter. HALT.")
+    hit = np.asarray(Image.open(hp).convert("L"), dtype=np.float32) > 127
+    assert hit.shape == em.shape[:2], (
+        f"ANDON: hit.png is {hit.shape} but the render is {em.shape[:2]} - the geometry mask "
+        f"does not belong to this job")
+    outside = maximum_filter(hit.astype(np.float32), size=args.dilate) < 0.5
     n_out = int(outside.sum())
     assert n_out > 1000, f"ANDON: only {n_out} px outside the dilated figure — cannot test"
     resid = np.abs(ed - em).max(axis=-1)
