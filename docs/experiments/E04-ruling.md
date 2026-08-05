@@ -1510,3 +1510,62 @@ geometry, before the first stroke flew.** The instrument's own anchors are endor
 ceiling reproduced byte-equal inside a new tool, eight stage-1 figures re-derived at
 zero mismatches, purity and coverage declared before the edit rather than read off
 after.
+
+---
+
+## Ruling 25 (advisor, 2026-08-05) — the third frame consumer is pinned (ledger thirty-seven); the registry's definition is corrected; one sweep, then the strokes fly
+
+### The guard is RATIFIED, and two of its design choices go in the record by name
+
+**Required, not optional** — *"an optional guard is a skip flag with a different name"*
+sits beside A32 from today on. **Provenance, not value, for the prompts** — value
+equality would have fired on correct work, because `character.json` carries the stale
+default that E08's fixture exists to supersede; a check's failure mode was examined
+before the check was adopted, which is the discipline the record keeps asking for. The
+byte anchor (E08's recorded stroke-1 workflow rebuilt exactly) and the three proven
+firings — each exit 1, each writing nothing submittable — complete it. Ratified as
+landed.
+
+### The frame: two keys ruled in, and ledger thirty-seven is mine
+
+`texpass_iter` gains `aspect: 1072,1024` and `fit-axis: width` — the same values decided
+twice already in this profile, now on the **third consumer**. The tool's own header says
+the three must agree; **Ruling 12 item 3 had named `texpass_iter`'s 752×1024 as the
+third hardcoded frame**, and Ruling 13 pinned the fix on two consumers anyway. The
+record held the list and I did not re-read it — the exact family as ledger twenty-two,
+one abstraction level up. The catch chain is endorsed in full: the selftest run because
+the header says to run it; the 1.29% model-vs-emit discrepancy chased **because a
+raycast through the same grid should agree exactly** — direction, not magnitude, is what
+made it a lead; and the measured consequence (four of six cameras clipping, the deck
+pair at 5.87%/5.90%, every lost pixel off the bow and stern where G1 and G5/G6/G12
+live) established *before* anything was characterised. The brush would have composed at
+denoise 1.0 against a ship running off both edges of its own render.
+
+### The registry's definition is corrected — the sharpest sentence of the arc is now law
+
+*"0 UNDECIDED means every flag the character bothered to write down is decided. It does
+not mean every flag that matters is."* Ruling 14 defined `character.json` as *the*
+registry of subject-classified flags; measured at two sites now (a tool with no block,
+a key at the character's own default), that definition was wrong by incompleteness.
+**Corrected: `character.json` is the registry of flags the character needed to write.
+The true registry is Task 2's classification table** — every constant it marks
+subject-data, whether or not the character's value differs from the code default. Two
+consequences:
+
+1. **Immediate, before any stroke:** one sweep — the classification table's subject-data
+   rows against `ship.json`'s decisions; any tool+key with no explicit decision gets one
+   under Ruling 22's four forms, in one commit. Minutes, and the fifth instance of this
+   class does not get to fire mid-stroke.
+2. **The bundle item upgrades:** coverage's reference becomes a machine-readable
+   subject-flag registry derived from the classification table, replacing the
+   `character.json` diff. Step-0-class, with the two measured blind spots as its test
+   cases.
+
+### Then the strokes fly
+
+Keys landed (this ruling's commit) → the sweep → coverage and purity green → selftest at
+the ship frame → emits regenerate at the ruled frame → the pre-flight guard green per
+stroke → **the six strokes, order B** → finalize → pack → renders → **the five-column
+Gate 1 sheet**. No ruling between here and the sheet unless a gate fires. Everything
+Ruling 24 rests on stands — the derivation read its frame from arguments that defaulted
+correctly; the pipeline, not the derivation, carried the defect.

@@ -264,6 +264,16 @@
    }
   },
   "texpass_iter.py": {
+   "aspect": {
+    "value": "1072,1024",
+    "why": "RULED by Ruling 25 after the stroke-frame halt: the tool's own header says turn_render, silhouette_masks and texpass_iter must agree on the frame, and this block carried neither frame key - the THIRD consumer, named at Ruling 12 item 3 and missed by Ruling 13's two-consumer pin (ledger thirty-seven). At the character default, four of six ruled cameras clip the ship, the deck pair worst at 5.87%/5.90%, all of it off the bow and stern where G1 and G5/G6/G12 live. The value is the same 1072,1024 decided twice already in this profile.",
+    "from": "Ruling 15 (the frame); Ruling 25 (the third consumer); E04-stroke-frame-halt.md"
+   },
+   "fit-axis": {
+    "value": "width",
+    "why": "Moves WITH aspect - the same adjudicated mode as turn_render and silhouette_masks (Rulings 11/13), on the third consumer.",
+    "from": "Ruling 13; Ruling 25"
+   },
    "thin-extent": {
     "value": 0.01,
     "why": "MEASURED on this mesh, by the same method the character's 0.030 came from - the smallest value that fills the thin structure solid, judged on the artifact. Three independent lines agree: (1) the extent DENSITY has its thin peak at 0.0015-0.0045, which at this render scale is 1.3-4 px, matching rigging diameters; (2) rendered thin-masks at 0.005 leave the rigging PATCHY and at 0.010 it is solid, because a rope crossing the ray obliquely presents more extent than its diameter; (3) the cross-view cost at 0.010 is 10.20% of visible area withheld on EVERY view, against 15.25% at the character's 0.030. NOT an antimode: the density falls steeply into a plateau rather than a valley, so this is a visual-solidity determination like W3's, not a discovered boundary. The cost curve is published in the report so it can be moved. Frame re-ruled 1066->1072 (Ruling 15): px scale shifts 0.56%, within this derivation's own slack - value unchanged.",
