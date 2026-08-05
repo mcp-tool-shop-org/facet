@@ -138,3 +138,69 @@ Step 0.4 (the layer palette fixture, boot-top edition per Amendment 1), then Arm
 measures the mask against the exemplar's band — W-H1's ≥90% prediction is still blind
 and stays that way until the mask exists. **The next gate that needs anyone's word is
 W3's toggle sheet, and the word is the Director's: does the ship float.**
+
+---
+
+## Ruling 4 (advisor, 2026-08-05) — anchor C's form is withdrawn on its own control (ledger forty); the mask gains the on-surface intersection; the route-wide inheritance becomes a bounded measurement, not a panic
+
+### The halt is ratified, and the control is the star
+
+The decomposition is exactly what a fired gate should produce: two populations, not one
+number — 37.4% rim at ≤1 px, 62.6% **not on the mesh at all** at median 46 px — and the
+decisive instrument was **the mesh's own vertices run through the anchor's exact check:
+99.4506%, every miss exactly 1.00 px.** That is the works-perfectly test, run by the
+executor against the advisor's anchor, and it returns the verdict: **the anchor cannot
+be passed by the geometry it validates.** Also endorsed by name: the frame check *first*
+(`pos.npy` is a **third** frame — unit-cube per-axis against meta lo/hi — anchored at
+1.2e-06 / 5.9e-05 before a single number was believed, Ruling 2's trap applied as
+reflex); the diagnostic kept out of the fired gate — *"adding a diagnostic to a gate
+after watching it fire is how a gate quietly becomes whatever passes"* goes in the
+record beside A32; and the consumer grep done before being asked.
+
+**Ledger forty.** The spec's anchor line — *"mask ⊆ silhouette, exactly"* — specified a
+containment property in a form (rounded-pixel membership in a binary mask) whose
+correct-input score is structurally below 100%: a projected boundary point rounds one
+pixel out, and the contact band hugs the boundary by construction. The works-perfectly
+family, fourth member, written into the spec whose calibration section quotes the rule.
+
+### Anchor C, replaced — derived from both sides of the line, the Ruling 16 shape
+
+The property is containment; the honest form is **distance, not membership**: every
+contact-mask texel's projection lands **within 1.5 px of the silhouette mask**. The
+derivation owns both sides: the correct-input side is the rasterization rim quantum,
+**exactly 1.00 px** (the control's every miss); the failure side is the off-mesh
+population at **median 46 px, max 144**. 1.5 px sits above the rim quantum and 30×
+below the signal median. Neither side is the fired number's to move — one is
+rasterization arithmetic, the other is the defect the anchor exists to catch.
+
+### Finding 2: the mask gains the on-surface intersection NOW; the route inherits a question, not a verdict
+
+**E10-scoped, ruled:** the contact mask intersects with an on-surface predicate —
+positions farther than **5 px** from the mesh are excluded (the executor's own measured
+reporting cut; the separation is 0.006 px clean median against 46 px off-median, four
+orders). This is **E08 A27 one layer down, applied at the mask's birth and scoped to the
+layer machinery**: the trust question is only askable where surface exists, and paint on
+no surface is the exact failure the layer must not inherit into its first texel.
+
+**Route-wide, ruled as a measurement and not a fix:** 2.5065% of the bake's uv-valid
+texels carry off-surface positions and five consumers inherit the unmeasured property.
+The executor's restraint is adopted whole — **no accepted number is claimed wrong**, and
+both accepted assets passed the gate that actually rules here, the Director's eye on
+artifacts. The dispatch, queued **after Arm W1** (read-only, one session, no route
+change without its own ruling): per consumer, does excluding the off-surface 2.5% move
+your headline number — priority by blast radius: `e08_ceiling`/`e08_acceptance` (the
+quoted figures) → `texpass_finalize` (56.24% of the accepted atlas) → `project_twins`/
+`commit` (the acceptance stage). Corrections in place with the measurement if any number
+moves; silence in the record if none does.
+
+**The bundle item widens:** the exported canonical-frame module now covers **all three
+frames** — raw GLB, canonical mesh frame, and `pos.npy`'s unit-cube — one module, the
+transforms and their documentation, replacing every per-tool transcription.
+
+### Sequence
+
+Re-anchor Step 0.2: A and B stand as passed; **C in its replaced form** over the
+intersected mask; D runs. Pre-stated: if C still fails after both corrections, that is a
+new finding and a halt — nothing else gets tuned. Then Step 0.3 (layer state), Step 0.4
+(boot-top palette fixture), Arm W1 — whose ≥90% prediction stays blind. The next word
+anyone needs remains the Director's, on W3's toggle.
