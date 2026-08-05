@@ -54,6 +54,18 @@ ap.add_argument("--prep", required=True)
 ap.add_argument("--glb", help="packed GLB with UVs (emit/selftest)")
 ap.add_argument("--yaw", type=float, default=90.0)
 ap.add_argument("--el", type=float, default=0.0)
+# ---- E10 Step 0.3: layer mode. Two optional flags, both no-ops when absent, so the
+# ---- character and ship base paths are untouched BY CONSTRUCTION (no base invocation
+# ---- passes them). commit already writes only inside --state, so a layer state is a
+# ---- different directory and the base atlas is never opened for writing at all; these
+# ---- flags add the restriction and the proof.
+ap.add_argument("--restrict", help="texel-space boolean .npy; commit only texels inside "
+                                   "it (E10: the geometric contact mask). The layer's "
+                                   "extent is geometry's answer, not the model's.")
+ap.add_argument("--base-guard", action="append", default=[],
+                help="PATH:SHA256 asserted before any write. Repeatable. E08 A32: the "
+                     "check lives inside the tool that performs the irreversible step, "
+                     "with no skip flag. A shell chain is a transport, not a guard.")
 ap.add_argument("--edited", help="inpainted render (commit)")
 ap.add_argument("--cam", help="cam.json from the matching emit (commit)")
 ap.add_argument("--facing-min", type=float, default=0.25,
@@ -219,7 +231,32 @@ def emit(yaw, el, tag="job"):
     return outdir
 
 
+def assert_base_guards():
+    """ANDON, in the tool that performs the irreversible step (E08 A32).
+
+    Every --base-guard PATH:SHA256 is verified before a single byte is written. Layer
+    work must leave the accepted base asset byte-identical; this proves it rather than
+    asserting it, and there is no flag that skips it.
+    """
+    import hashlib
+    for spec in args.base_guard:
+        path, _, want = spec.rpartition(":")
+        assert path and len(want) == 64, (
+            f"ANDON: --base-guard must be PATH:SHA256 (64 hex), got {spec!r}")
+        h = hashlib.sha256()
+        with open(path, "rb") as fh:
+            for chunk in iter(lambda: fh.read(1 << 20), b""):
+                h.update(chunk)
+        got = h.hexdigest()
+        assert got == want, (
+            f"ANDON: guarded file changed.\n  {path}\n  expected {want}\n  actual   {got}\n"
+            f"The accepted base asset is canon and is never opened for writing. HALT.")
+        print(f"[guard] {os.path.basename(path)} byte-identical ({want[:12]}...)",
+              flush=True)
+
+
 def commit(edited_path, cam_path):
+    assert_base_guards()
     cam = json.load(open(cam_path))
     edited = np.asarray(Image.open(edited_path).convert("RGB"),
                         dtype=np.float32) / 255.0
@@ -241,6 +278,15 @@ def commit(edited_path, cam_path):
     lo = np.array(meta["lo"])
     hi = np.array(meta["hi"])
     hole_flat = (holes.reshape(-1) > 0.5) & mask_np.reshape(-1)
+    if args.restrict:
+        # E10 Step 0.3: the layer commits only where geometry says contact happens.
+        rmask = np.load(args.restrict)
+        assert rmask.shape == mask_np.shape, (
+            f"ANDON: --restrict is {rmask.shape}, the atlas is {mask_np.shape}")
+        before = int(hole_flat.sum())
+        hole_flat &= rmask.reshape(-1).astype(bool)
+        print(f"[restrict] {os.path.basename(args.restrict)}: {before:,} -> "
+              f"{int(hole_flat.sum()):,} candidate texels", flush=True)
     hidx = np.where(hole_flat)[0]
     P = (pos_e.reshape(-1, 3)[hidx].astype(np.float64)
          * (hi - lo) + lo) / meta["maxabs"] * 0.5
