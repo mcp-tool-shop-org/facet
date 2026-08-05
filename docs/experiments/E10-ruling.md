@@ -114,3 +114,27 @@ reached the eye it was for) are endorsed as run.
 landing at 7.43% of the figure against Ruling 20's "lower 7%" from the other direction;
 A and B as a ruler, not thresholds; the 5% ticks so any sentence carries into a number.
 **The gate is the Director's. Step 0.2 builds the mask the moment his sentence lands.**
+
+---
+
+## Ruling 3 (advisor, 2026-08-05) — THE WATERLINE IS PLACED: C. Step 0.2 is cleared.
+
+**The Director's word: "I agree. C is the winner."** One sentence, exactly as the gate
+was designed — the ship sits deep, properly loaded, at the line the model itself painted
+when it did it uninvited.
+
+**`waterline_z = −0.43095`, and the frame is named in the same breath as the value** —
+the canonical mesh frame of `texpass_iter.load_scene()` (Y-up→Z-up re-axed, max-abs
+normalised), which is Ruling 2's trap applied as discipline on the first value written
+since it was named. Lands in `ship.json` with the full provenance: the Director's
+placement on the candidate sheet; candidate C derived from the founding exemplar's band
+top; cross-checked at 7.43% of the beam figure below it against Ruling 20's
+independently-measured "lower 7% of figure."
+
+**Step 0.2 is cleared:** the contact mask at the placed line, with the spec's anchors —
+byte-stable across two runs, mask ⊆ silhouette exactly. Then Step 0.3 (the layer state,
+base-invariance by construction against `galleon_final.png` at its recorded sha) and
+Step 0.4 (the layer palette fixture, boot-top edition per Amendment 1), then Arm W1
+measures the mask against the exemplar's band — W-H1's ≥90% prediction is still blind
+and stays that way until the mask exists. **The next gate that needs anyone's word is
+W3's toggle sheet, and the word is the Director's: does the ship float.**

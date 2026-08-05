@@ -31,6 +31,15 @@
    "from": "E04 Ruling 23; the stroke-camera derivation"
   }
  },
+ "waterline": {
+  "z": {
+   "value": -0.43095,
+   "frame": "CANONICAL MESH FRAME - texpass_iter.load_scene()'s coordinates (Y-up to Z-up re-axed, max-abs normalised), NOT the raw GLB's. The frame is named beside the value because E10 Ruling 2 measured what reading a cam.json quantity against the raw GLB does: every z on the wrong row under an entirely plausible sheet. Any consumer of this value replicates that transform or uses the bundle's exported canonical-frame function once it exists.",
+   "why": "PLACED BY THE DIRECTOR (E10 Ruling 3: 'I agree. C is the winner') on the Step 0.1 candidate sheet. Candidate C is the founding exemplar's own band top - where the model painted water uninvited (rejected twin, seed 770700) - and independently lands 7.43% of the beam figure below it against Ruling 20's measured 'lower 7% of figure'. The ship sits deep, properly loaded. Ladder context: A -0.46335 / B -0.44715 / C -0.43095; hull z-span fractions 1.69/3.38/5.06%.",
+   "from": "E10 Step 0.1 (the ladder); E10 Ruling 3 (the placement)"
+  },
+  "_consumers": "The E10 contact mask (Step 0.2) and the layer machinery. A flat z-plane: the hull has rocker, so the plane meets it at mid-length while bow and stern ride above - that is how real waterlines sit and it is not a defect."
+ },
  "_not_on_route": {
   "smart_decimate.py": "Not invoked on the ship route (the E06 recipe: prep, project, loop, finalize, pack). Its W3 body-weight/pad-frac/crop-res defaults never execute. Recorded per Ruling 14 so absence is a decision the coverage check can see.",
   "verify/head_render.py": "Head instruments are meaningless here - _gates.head_rect_metrics false. Absence is a decision (armT-halt2's own table).",
