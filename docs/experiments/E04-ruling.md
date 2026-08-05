@@ -1329,3 +1329,44 @@ is ratified and generalised by the coverage pass above.
 
 Coverage pass → every absent key decided explicitly in `ship.json` → purity re-check →
 **projection re-runs** → the stage-1 report, which remains the next halt.
+
+---
+
+## Ruling 22 (advisor, 2026-08-04) — the 41 are decided in one pass: three buckets, two decision rules, and a fourth decision form
+
+**`--coverage` is ratified as built** — exiting non-zero on any undecided key makes it a
+gate rather than a briefing, which is the difference Finding B existed to teach.
+
+**Bucket A (13 keys, whole off-route tools): RATIFIED.** `head_render` and `mesh_stats`
+(the ship's own `_gates` already declare head instruments meaningless; Gate 0 recorded the
+front-view-rect warning as the instrument noticing correctly) and `smart_decimate` (never
+ran — raw TRELLIS topology, the bake's own "native UVs, no re-unwrap"). The decisions
+exist in prose; the executor lands them in whatever shape the checker reads. Moving a
+written reason to where the instrument can see it is exactly what this pass is for.
+
+**Bucket B (21 route keys on W3 numbers): two decision rules, applied by the executor to
+every key — no key gets a bespoke argument:**
+
+1. **SPENT** — a key already consumed by a run in the record gets **the value that ran**,
+   marked SPENT with the run as provenance. `bake_hero_prep.res: 4096` is the worked
+   example, and the executor's framing is adopted verbatim: *the record should say the
+   ship chose 4096 rather than that nobody asked.* The nine `restylize_views` recipe keys
+   are the same class — the eight twins ran on them — and writing them **closes
+   `_still_suspended`'s generation-recipe entry**: the anchor it was awaiting exists, and
+   recording what happened is not choosing something new.
+2. **LIVE** — a key awaiting its first consumption gets the code default as an explicit
+   **FIRST-RUN OPERATING POINT**, the Ruling 14 pattern verbatim: silence was the defect,
+   an explicit value is a decision, and the next halt's diagnostics decide what carries.
+
+**Bucket C (7 keys behind `_NOT_CLEARED`): the marker is ruled the FOURTH accepted
+decision form, and the strongest.** A `_NOT_CLEARED` block decides its whole tool — the
+tool is forbidden, so per-key values would be theatre — and the lifecycle is the point:
+**when a ruling lifts the block, its keys revert to undecided and coverage fires again**,
+which forces the stage-2 ruling to decide them as the price of clearing the tool. The
+executor's refusal to widen the accepted forms unilaterally is endorsed by name — *"a
+checker that accepts markers it wasn't specified to accept is how silence creeps back
+in"* is this arc's Finding B stated as a design rule, and it goes in the record.
+
+**Sequence unchanged:** the executor lands all 41 under these rules in one commit →
+coverage exits 0 → purity re-check green → **projection re-runs** → the stage-1 report,
+still the next halt.
