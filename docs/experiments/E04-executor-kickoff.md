@@ -332,3 +332,47 @@ cloud-only under the full discipline (saved workflows, link-check in code, dry_r
 estimate_credits, the LoRA by its live card name) · Blender through PowerShell ·
 ASCII-only prints · the base asset (`galleon_final.glb`, `atlas_final.png`) is
 **accepted canon — never opened for writing, by anything, ever**.
+
+---
+
+## Session handoff 4 (2026-08-05) — E10: the SEA-OCCLUSION COMPOSITE. One task, zero generation.
+
+E10 stands at Ruling 10: W2d landed the coat in the measured mode (the
+inpainting-continues / full-frame-introduces law, banked), but **the Director ruled the
+coat-only toggle DOES NOT READ** — a ship floats when water *hides* what sits below the
+line, and the coat leaves it visible. Ruling 10 dispatched the true W-H4 artifact. A
+fresh executor session starts here:
+
+```
+cd E:\AI\facet && git pull
+CLAUDE.md                                   <- how to work here
+docs/experiments/E10-ruling.md              <- Rulings 8-10 at minimum; 10 is YOUR DISPATCH
+docs/experiments/E10-environment-contact-layers.md   <- the spec, Amendment 1
+profiles/ship.json                          <- waterline.z (CANONICAL FRAME - read its frame note)
+docs/experiments/E10-step0-2-halt.md        <- the three-frames trap; do not re-learn it
+```
+
+**The task — the sea-occlusion composite, entirely local, no generation, no GPU:**
+
+1. Render (or reuse) the beam view of the accepted asset — and the layer-on variant if
+   cheap, since the boot-top only reads *at* the line once water hides the rest.
+2. **A sea surface at `waterline.z` occludes the hull below it.** At the ortho beam the
+   plane's projection is exact — every pixel below the projected waterline row is
+   underwater. Verify the row against the Step 0.2 record's band-top rather than
+   re-deriving from scratch, and mind the frame: `waterline.z` lives in the canonical
+   mesh frame, `pos.npy` in the unit cube, the GLB in neither.
+3. **The sea colour derives from the fixture, not from taste**: G11's declared sea-blue
+   (measured span h 283–291 on the ratified pair) is the ship's own water family. A demo
+   choice, recorded in the report, not canon.
+4. Build the toggle pair: **dry (no sea) beside floating (sea at the line)** — full
+   size, the beam first; the deck views optional (the hull hides its own line from 40°,
+   pre-registered thrice).
+5. **HALT and report to the advisor — the sheet goes to the advisor's eye BEFORE the
+   Director's.** Ruling 10, ledger forty-three: nothing reaches his gate unviewed. The
+   advisor looks, then presents. His question stays the pre-registered one: *does she
+   float.*
+
+**Do not:** generate anything · open any base-asset file for writing · rebuild the
+boot-top coverage (demoted to optional pending his word) · touch the E04 line · end a
+session the Director has not ended. Watchdog check standing if anything local wants the
+GPU (this task should not).
