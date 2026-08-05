@@ -184,6 +184,16 @@
     "value": 100.0,
     "why": "SUSPENSION, EXPRESSED - the reg-iou-min pattern. The tool default 2.0 is W3 calibration on a compact-perimeter subject; the quantity is antialiased rim mixing, which scales with PERIMETER, and this subject's 512 rigging shells put its perimeter-to-area outside the bound's calibration history. Measured before suspending: the rim population sits at median depth 1.4-5.0 px, already-trusted texels are 0.01% within dE 10, and the Director-ratified canon pair itself measures 3.26% by the identical test. At 100.0 the diagnostic computes and prints per view and the halt cannot fire. The future form is recorded in Ruling 21: perimeter-normalised bound + a separate interior-fraction gate, derived from clean data after the atlas exists - with the pale-deck (G10) collision checked first, since a declared material near the backdrop's value makes interior-near-backdrop not automatically background.",
     "from": "E04 Ruling 21; E04-stage1-halt.md"
+   },
+   "power": {
+    "value": 6.0,
+    "why": "LIVE — the code default, adopted as this subject's explicit FIRST-RUN OPERATING POINT (the Ruling 14 pattern). Silence was the defect; an explicit value is a decision. The next halt's diagnostics decide what carries. the facing-weight exponent; present in the halted view-0 run, which wrote nothing.",
+    "from": "E04 Ruling 22 (coverage pass)"
+   },
+   "edge-min-struct": {
+    "value": 50,
+    "why": "LIVE — the code default, adopted as this subject's explicit FIRST-RUN OPERATING POINT (the Ruling 14 pattern). Silence was the defect; an explicit value is a decision. The next halt's diagnostics decide what carries. present in the halted view-0 run, which wrote nothing.",
+    "from": "E04 Ruling 22 (coverage pass)"
    }
   },
   "bake_hero_prep.py": {
@@ -196,6 +206,21 @@
     "value": "360,240,700,600",
     "why": "The code default, EXPLICIT because silence resolves to inheritance (Finding B). Inert at head-scale 1.0: the rect defines a band that receives identity scaling here and body-equal acceptance in projection. It is W3's face rect by lineage and no ship meaning is claimed for it.",
     "from": "Ruling 14"
+   },
+   "res": {
+    "value": 4096,
+    "why": "SPENT — this key was consumed by a recorded run on this subject and the value below is the value that ran. The ship chose it, rather than nobody asking. Provenance: the ship's prep bake, 2026-08-04; meta.json records res 4096.",
+    "from": "E04 Ruling 22 (coverage pass)"
+   },
+   "crop-res": {
+    "value": 1024,
+    "why": "SPENT — this key was consumed by a recorded run on this subject and the value below is the value that ran. The ship chose it, rather than nobody asking. Provenance: the ship's prep bake, 2026-08-04.",
+    "from": "E04 Ruling 22 (coverage pass)"
+   },
+   "unseen-strip": {
+    "value": 24.0,
+    "why": "SPENT — this key was consumed by a recorded run on this subject and the value below is the value that ran. The ship chose it, rather than nobody asking. Provenance: the ship's prep bake, 2026-08-04.",
+    "from": "E04 Ruling 22 (coverage pass)"
    }
   },
   "texpass_brush.py": {
@@ -206,11 +231,81 @@
     "value": 0.01,
     "why": "MEASURED on this mesh, by the same method the character's 0.030 came from - the smallest value that fills the thin structure solid, judged on the artifact. Three independent lines agree: (1) the extent DENSITY has its thin peak at 0.0015-0.0045, which at this render scale is 1.3-4 px, matching rigging diameters; (2) rendered thin-masks at 0.005 leave the rigging PATCHY and at 0.010 it is solid, because a rope crossing the ray obliquely presents more extent than its diameter; (3) the cross-view cost at 0.010 is 10.20% of visible area withheld on EVERY view, against 15.25% at the character's 0.030. NOT an antimode: the density falls steeply into a plateau rather than a valley, so this is a visual-solidity determination like W3's, not a discovered boundary. The cost curve is published in the report so it can be moved. Frame re-ruled 1066->1072 (Ruling 15): px scale shifts 0.56%, within this derivation's own slack - value unchanged.",
     "from": "E04 Task 4a; Ruling 15 scale note"
+   },
+   "facing-min": {
+    "value": 0.25,
+    "why": "LIVE — the code default, adopted as this subject's explicit FIRST-RUN OPERATING POINT (the Ruling 14 pattern). Silence was the defect; an explicit value is a decision. The next halt's diagnostics decide what carries. stage 2 has not run on this subject.",
+    "from": "E04 Ruling 22 (coverage pass)"
+   },
+   "edge-dist": {
+    "value": 4.0,
+    "why": "LIVE — the code default, adopted as this subject's explicit FIRST-RUN OPERATING POINT (the Ruling 14 pattern). Silence was the defect; an explicit value is a decision. The next halt's diagnostics decide what carries. stage 2 has not run on this subject.",
+    "from": "E04 Ruling 22 (coverage pass)"
+   },
+   "mask-dilate": {
+    "value": 9,
+    "why": "LIVE — the code default, adopted as this subject's explicit FIRST-RUN OPERATING POINT (the Ruling 14 pattern). Silence was the defect; an explicit value is a decision. The next halt's diagnostics decide what carries. stage 2 has not run on this subject.",
+    "from": "E04 Ruling 22 (coverage pass)"
    }
   },
   "restylize_views.py": {
    "_backdrop_is_a_PROMPT_word_not_a_flag": "S-backdrop is delivered by the prompt text ('plain white background'), not by any argument here. --bg is the CLAY render's compositing colour for the control image, a different operand entirely - E08's parked blue-background arm changed that one and is not reopened.",
-   "_no_frame_values_ON_PURPOSE": "STRUCK by Ruling 13. Task 4a wrote aspect 1066,1024 here; the tool has no such flag and needs none - it reads the render and the mask at whatever size they arrive, so the frame reaches it through turn_render and silhouette_masks, which carry it above. The loader's unknown-key ANDON fired on exactly this key (E04-armT-halt.md Finding 2) - the guard working. A profile value that does not reach its tool reads as configuration and does nothing."
+   "_no_frame_values_ON_PURPOSE": "STRUCK by Ruling 13. Task 4a wrote aspect 1066,1024 here; the tool has no such flag and needs none - it reads the render and the mask at whatever size they arrive, so the frame reaches it through turn_render and silhouette_masks, which carry it above. The loader's unknown-key ANDON fired on exactly this key (E04-armT-halt.md Finding 2) - the guard working. A profile value that does not reach its tool reads as configuration and does nothing.",
+   "seed": {
+    "value": 770700,
+    "why": "SPENT — this key was consumed by a recorded run on this subject and the value below is the value that ran. The ship chose it, rather than nobody asking. Provenance: the Director-ratified styled pair (Task 4c) and all eight twins, 2026-08-04. Closes _still_suspended's 'generation recipe' entry: the anchor it awaited exists.",
+    "from": "E04 Ruling 22 (coverage pass)"
+   },
+   "steps": {
+    "value": 20,
+    "why": "SPENT — this key was consumed by a recorded run on this subject and the value below is the value that ran. The ship chose it, rather than nobody asking. Provenance: the pair and all eight twins, 2026-08-04.",
+    "from": "E04 Ruling 22 (coverage pass)"
+   },
+   "cfg": {
+    "value": 2.5,
+    "why": "SPENT — this key was consumed by a recorded run on this subject and the value below is the value that ran. The ship chose it, rather than nobody asking. Provenance: the pair and all eight twins, 2026-08-04.",
+    "from": "E04 Ruling 22 (coverage pass)"
+   },
+   "denoise": {
+    "value": 0.92,
+    "why": "SPENT — this key was consumed by a recorded run on this subject and the value below is the value that ran. The ship chose it, rather than nobody asking. Provenance: the pair and all eight twins, 2026-08-04.",
+    "from": "E04 Ruling 22 (coverage pass)"
+   },
+   "lora-w": {
+    "value": 0.75,
+    "why": "SPENT — this key was consumed by a recorded run on this subject and the value below is the value that ran. The ship chose it, rather than nobody asking. Provenance: the pair and all eight twins, 2026-08-04.",
+    "from": "E04 Ruling 22 (coverage pass)"
+   },
+   "cn-strength": {
+    "value": 0.9,
+    "why": "SPENT — this key was consumed by a recorded run on this subject and the value below is the value that ran. The ship chose it, rather than nobody asking. Provenance: the pair and all eight twins, 2026-08-04.",
+    "from": "E04 Ruling 22 (coverage pass)"
+   },
+   "canny-low": {
+    "value": 0.4,
+    "why": "SPENT — this key was consumed by a recorded run on this subject and the value below is the value that ran. The ship chose it, rather than nobody asking. Provenance: control construction for the pair and all eight twins.",
+    "from": "E04 Ruling 22 (coverage pass)"
+   },
+   "canny-high": {
+    "value": 0.8,
+    "why": "SPENT — this key was consumed by a recorded run on this subject and the value below is the value that ran. The ship chose it, rather than nobody asking. Provenance: control construction for the pair and all eight twins.",
+    "from": "E04 Ruling 22 (coverage pass)"
+   },
+   "contour-width": {
+    "value": 3,
+    "why": "SPENT — this key was consumed by a recorded run on this subject and the value below is the value that ran. The ship chose it, rather than nobody asking. Provenance: control construction for the pair and all eight twins.",
+    "from": "E04 Ruling 22 (coverage pass)"
+   },
+   "negative": {
+    "value": "watermark, text, logo, blurry, photo, deformed",
+    "why": "SPENT — this key was consumed by a recorded run on this subject and the value below is the value that ran. The ship chose it, rather than nobody asking. Provenance: the pair and all eight twins, 2026-08-04.",
+    "from": "E04 Ruling 22 (coverage pass)"
+   },
+   "prompt": {
+    "value": "a gilded lion figurehead, warm oak-brown hull planking, black tarred strakes, weathered tan canvas sails, gilded scrollwork on the stern castle, a gilded spire on the stern turret, red gun port lids, black iron cannon barrels, dark tarred rigging and ratlines, pale scrubbed deck planking, a deep sea-blue frieze band along the bulwarks, gilded stern-gallery railings, plain white background, visible brushstrokes, painterly worked surface",
+    "why": "NEITHER SPENT NOR LIVE, and flagged as such. It never ran — every ship invocation passes --prompts from E04-twin-prompts.json, which supersedes it — so SPENT does not apply. And LIVE cannot apply: the code default is the LITERAL W3 IDENTITY STRING ('a burly bald warrior with a long red beard...'), which is Ruling 2's named accident class, and writing it here would make another subject's identity a ship DECISION. The value below is transcribed verbatim from the ratified E04-twin-prompts.json, so an invocation that forgets --prompts asks the cloud for this galleon instead of that warrior. Documents AND protects, where _not_on_route would only document. E04 Ruling 22 (coverage pass)",
+    "from": "E04 Ruling 22 (coverage pass)"
+   }
   },
   "cull_unseen.py": {
    "_why_this_is_here": "E06 rule: the exterior visibility superset must COVER every production camera. The code default is a 24-yaw 15deg sweep plus 0,55 and 180,55 - it does NOT contain the ship's elevated +40 bow/stern pair, so the ship supplies its own list. The character path is untouched: no code default changed, so its cull output is unchanged BY CONSTRUCTION rather than by re-measurement.",
@@ -218,6 +313,16 @@
     "value": "0,0;15,0;30,0;45,0;60,0;75,0;90,0;105,0;120,0;135,0;150,0;165,0;180,0;195,0;210,0;225,0;240,0;255,0;270,0;285,0;300,0;315,0;330,0;345,0;0,40;180,40;0,55;180,55",
     "why": "The code default's 24-yaw sweep and both elevated pairs, PLUS the ship's adopted 0/180 @ 40. A superset, never a narrowing - the classification must cover cameras nobody has added yet, which is why my Task 2 draft was wrong to write the subject's ten cameras here.",
     "from": "E04 Step 0 item 2; E06 superset rule"
+   },
+   "min-seen": {
+    "value": 0.3,
+    "why": "LIVE — the code default, adopted as this subject's explicit FIRST-RUN OPERATING POINT (the Ruling 14 pattern). Silence was the defect; an explicit value is a decision. The next halt's diagnostics decide what carries. cull_unseen has not run on this subject.",
+    "from": "E04 Ruling 22 (coverage pass)"
+   },
+   "max-seen": {
+    "value": 0.9,
+    "why": "LIVE — the code default, adopted as this subject's explicit FIRST-RUN OPERATING POINT (the Ruling 14 pattern). Silence was the defect; an explicit value is a decision. The next halt's diagnostics decide what carries. cull_unseen has not run on this subject.",
+    "from": "E04 Ruling 22 (coverage pass)"
    }
   }
  },
@@ -277,5 +382,10 @@
   "generation recipe": "RESOLVED: the pair is the anchor (Ruling 6 ratified it; E04-twin-prompts.json records it: seed 770700 / 20 steps / cfg 2.5 / denoise 0.92 / cn 0.9 / shift 3.1 / LoRA @ 0.75). Kept here only as a pointer.",
   "acceptance": "PARTIALLY SUPERSEDED by Ruling 14, which corrected this entry's own implication: edge-ref 700.0 is the TUNING CONSTANT of a self-scaling ratio (erosion scales by figure_width/edge_ref per view - project_twins.py:65-68), NOT a per-subject value; replacing it would break the calibration it anchors. The facing floors and edge-dist family now sit in tools.project_twins as explicit FIRST-RUN OPERATING POINTS; whether they carry into projection is ruled at the twin-baseline halt on the per-view diagnostics. HISTORICAL TEXT: 'facing floors and the edge-dist family, including edge-ref (700.0 is literally one character's figure width in twin pixels), await twins on this subject.'",
   "spiral order": "The brush stroke order depends on where stage 1 lands paint, which needs twins."
+ },
+ "_tools_not_on_route": {
+  "verify/head_render.py": "No face rect on this subject. ship.json._gates.head_rect_metrics is already false — 'No face rect, so mesh_stats' density and curvature columns have no referent.' Ratified E04 Ruling 22 (coverage pass)",
+  "verify/mesh_stats.py": "Same gate. E04 Gate 0 recorded its front-view-rect warning on all three candidates as the character instrument correctly noticing it is not looking at a character. It may still be RUN on a ship — shells and density measure any mesh identically — but it carries no ship-calibrated values. Ratified E04 Ruling 22 (coverage pass)",
+  "smart_decimate.py": "THE SHIP WAS NEVER DECIMATED. galleon_00006_raw.glb is the raw TRELLIS.2 output, and bake_hero_prep reported 'native UVs: using the atlas the mesh arrived with, no re-unwrap'. Not on this subject's route as run. Ratified E04 Ruling 22 (coverage pass)"
  }
 }

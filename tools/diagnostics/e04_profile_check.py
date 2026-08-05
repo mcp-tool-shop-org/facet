@@ -180,6 +180,16 @@ if args.coverage:
                     undecided.append((tool, k, "tool has no block in this profile"))
             continue
         skip = sblock.get("_not_on_route", {})
+        # `_NOT_CLEARED` is the FOURTH accepted form (E04 Ruling 22) and the STRONGEST: it
+        # decides a whole tool by forbidding its use, rather than excusing a key. The
+        # lifecycle is the point — when a ruling lifts the block, the marker goes, its keys
+        # revert to undecided, and coverage fires again, so the ruling that clears the tool
+        # must decide its keys as the price of clearing it.
+        if "_NOT_CLEARED" in sblock:
+            decided += len(rkeys)
+            print("[cov] %-24s NOT CLEARED (all %d keys): %s"
+                  % (tool, len(rkeys), str(sblock["_NOT_CLEARED"])[:96]))
+            continue
         for k in rkeys:
             if k in sblock:
                 decided += 1
