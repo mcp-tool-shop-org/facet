@@ -54,6 +54,16 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--out", default=os.path.join(STROKE, "e10_layer"))
     ap.add_argument("--force", action="store_true", help="re-seed an existing state")
+    # W2c (E10 Ruling 7's pre-registered branch). W2 and W2b both showed the brush a band
+    # already OCCUPIED by accepted dark planking, and both came back darker than the base
+    # (dL* -3.9, -4.1). The brush's entire successful history is painting ABSENCE: in all
+    # six accepted E04 strokes the region it was asked to fill was a hole. This paints the
+    # contact band with the hole colour so the model sees absence there.
+    # THE VALUE IS PRECEDENT, NOT A CHOICE: measured from the accepted stage-1 atlas, where
+    # 1,963,858 of 1,963,858 hole texels - 100.00% - are rgb(107,107,107).
+    ap.add_argument("--hole-fill", action="store_true",
+                    help="paint the contact band with the accepted runs' hole colour "
+                         "rgb(107,107,107) instead of leaving the base's planking there")
     args = ap.parse_args()
     J = os.path.join
     st = J(args.out, "state")
@@ -69,9 +79,22 @@ def main():
     contact = np.load(CONTACT)
     uv = np.asarray(np.load(J(PREP, "mask.npy"), mmap_mode="r")[..., 0]) > 0.5
 
-    shutil.copyfile(BASE_ATLAS, J(st, "atlas.png"))
-    Image.fromarray((contact * 255).astype(np.uint8)).save(J(st, "holes.png"))
-    np.save(J(st, "styled_mask.npy"), uv & ~contact)
+    HOLE_RGB = (107, 107, 107)
+
+    def write_state(d):
+        if args.hole_fill:
+            a = np.asarray(Image.open(BASE_ATLAS).convert("RGB")).copy()
+            a[contact] = HOLE_RGB
+            Image.fromarray(a).save(J(d, "atlas.png"))
+        else:
+            shutil.copyfile(BASE_ATLAS, J(d, "atlas.png"))
+        Image.fromarray((contact * 255).astype(np.uint8)).save(J(d, "holes.png"))
+        np.save(J(d, "styled_mask.npy"), uv & ~contact)
+
+    write_state(st)
+    if args.hole_fill:
+        print("[hole-fill] contact band painted rgb%s - the accepted runs' hole colour "
+              "(measured: 1,963,858 of 1,963,858 stage-1 hole texels, 100.00%%)" % (HOLE_RGB,))
 
     # ---- ANCHOR: the base is byte-identical after the seed ---------------------------
     base_sha_after = sha256(BASE_ATLAS)
@@ -84,9 +107,7 @@ def main():
     # layer state is not a function of (base, mask) and no later invariance claim holds.
     probe = J(args.out, "_probe")
     os.makedirs(probe, exist_ok=True)
-    shutil.copyfile(BASE_ATLAS, J(probe, "atlas.png"))
-    Image.fromarray((contact * 255).astype(np.uint8)).save(J(probe, "holes.png"))
-    np.save(J(probe, "styled_mask.npy"), uv & ~contact)
+    write_state(probe)
     same = all(sha256(J(st, f)) == sha256(J(probe, f))
                for f in ("atlas.png", "holes.png", "styled_mask.npy"))
     shutil.rmtree(probe)
