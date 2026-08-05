@@ -204,3 +204,64 @@ intersected mask; D runs. Pre-stated: if C still fails after both corrections, t
 new finding and a halt — nothing else gets tuned. Then Step 0.3 (layer state), Step 0.4
 (boot-top palette fixture), Arm W1 — whose ≥90% prediction stays blind. The next word
 anyone needs remains the Director's, on W3's toggle.
+
+---
+
+## Ruling 5 (advisor, 2026-08-05) — Steps 0.2 and 0.3 RATIFIED; the boot-top fixture is authored; the beam is pre-registered as the toggle's legible view
+
+### The re-anchor: ratified, with the two numbers that matter named
+
+**1.414 is adjudicated as arithmetic, not defect** — √2 is the Euclidean distance
+transform's diagonal-neighbour quantum, which is exactly why Ruling 4 set the bound at
+1.5: above the rim quantum, thirty times under the signal. And **the control-match is
+the correction's proof**: strictly-inside 99.4327% against the mesh's own vertices at
+99.4506% — *the mask scores what the geometry scores*, which the withdrawn form was
+structurally unable to report. Anchor D's first run (0 px outside the silhouette on all
+three cameras, band top within 1 px of the placed line, through an independent path) is
+the cross-check the family needed. 2,487 off-surface texels excluded at the birth of the
+mask — A27 one layer down, working.
+
+### Step 0.3: the best kind of invariant, and the proof that costs nothing was run anyway
+
+**Base-invariance turned out structural** — `commit` writes only into `--state`, so the
+accepted atlas is never opened for writing at all. That is CLAUDE.md's own preference
+order realised: *prefer eliminating a risk to gating it* — and the `--base-guard` then
+proves what the construction guarantees, no skip flag, demonstrated able to fail before
+being trusted. **The regression proof is the leg's best move**: all six shipped commits
+re-run through the *modified* tool, final atlas byte-identical, every per-stroke count
+equal, every sidecar and both base assets sha-identical. The change is neutral on the
+shipped path — proven, not asserted, which is what touching the tool that made both
+accepted assets required.
+
+### The boot-top fixture, authored (Step 0.4's content — the executor lands the file)
+
+One element, its own noun phrase, the Amendment-1 grammar:
+
+> **L1 — a weathered tallow-white hull coat below the waterline** — the period "white
+> stuff," its top edge forming the painted line at the placed waterline.
+
+Grounds: it is what the static half of a period waterline *is*; its pale warm register
+sits **inside the ship's existing warm band** (no new palette band needed — the layer
+fixture declares the warm band's pale end, report-only, bounds null per the standing
+pattern); and it **contrasts with the dark foot planking** (the re-roll's tar at h 43,
+L\* ~10), which is what makes W3's toggle legible — the experiment's own gate favours a
+coat the eye can see arrive and leave. The founding exemplar's blue-grey is explicitly
+NOT the target (Amendment 1: it painted the dynamic half). **The Director's one-sentence
+window is open as always** — if he wants tarred black below the line, or a black
+boot-top stripe above the coat, either is an authoring sentence; default is the
+tallow-white coat. W2's prompt takes the element phrase verbatim.
+
+### Pre-registered for W3, so a panel is not misread
+
+**The hull hides its own waterline from 40° of elevation** — the band renders 22,106 px
+from the beam and only 789 / 770 px from the deck pair. The beam view is where the
+toggle is legible and where the Director's eye should rule; the deck panels showing
+almost no band is geometry, not a layer failure, and it is priced here before any
+generation exists.
+
+### Sequence
+
+Layer-state seed (alpha from the contact mask at export, per Ruling 1 decision 3 — not
+carried through painting) → the fixture file lands as authored above → **Arm W1**, the
+≥90% prediction still blind → W2, one authored stroke, **beam view** (the visibility
+observation confirms the spec's own choice) → W3's toggle to the Director.
