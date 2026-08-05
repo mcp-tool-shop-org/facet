@@ -292,3 +292,43 @@ smooth surfaces · an acceptance rate quoted without its camera count is not a n
 halt) · run any polish arm unbidden · touch the character path · re-open the withdrawn
 bottom question · write to the studio memory store · end a session the Director has not
 ended.
+
+---
+
+## Session handoff 3 (2026-08-05) — E04 is CLOSED at Gate 1 ("it looks good to me", Ruling 28). Next: the asset-2 export, then E10.
+
+Two accepted assets exist. A fresh executor session starts here:
+
+```
+cd E:\AI\facet && git pull
+CLAUDE.md                                            <- how to work here
+docs/experiments/E10-environment-contact-layers.md   <- THE SPEC. Your document.
+docs/experiments/E04-ruling.md                       <- Rulings 19, 26-28 at minimum
+profiles/ship.json  ·  canon/GALLEON-IDENTITY.md     <- G13 added post-acceptance
+```
+
+**Task 1 — the galleon into the sdlab asset lane (small, first).** Build the
+`asset-source.json` manifest for the accepted galleon from the artifacts already on disk
+(`E:\AI\training\facet_next\E04_stroke\out\` + the E04_armT72 tree): mesh ref, atlas,
+provenance channel **converted to indexed PNG with a declared class palette** (the E09
+Amendment 1 discipline — the current provenance artifacts are truecolor), the native
+`_owner.npy` as the `view_owner` channel (the first asset that has it — it activates the
+owner-seam gate the sdlab schema reserved), renders + exact silhouettes, the palette
+fixture, and the acceptance provenance (Gate verdict, date, Ruling 28 link). The sdlab
+session ingests it; facet only exports. HALT after the manifest validates against the
+sdlab contract — the ingest itself belongs to the sdlab session.
+
+**Task 2 — E10, per the spec.** Phase 0 (three research questions, Crossref-first) →
+Step 0 (the Director places `waterline_z` on a candidate-line render — his one-sentence
+gate; the contact mask; the layer state with base-invariance BY CONSTRUCTION; the layer
+palette fixture) → Arm W1 (mask vs the founding exemplar, no generation) → Arm W2 (one
+authored stroke into the layer, beam view) → Arm W3 (the toggle sheet — **Gate 1 of E10
+is the Director's eye on layer-on/layer-off at full size**). Every halt is the spec's
+own; predictions blind where measurable; the founding exemplar (rejected view-7 twin,
+seed 770700) is validation data, never a target.
+
+**Standing:** watchdog verified before local GPU, report either way · generation
+cloud-only under the full discipline (saved workflows, link-check in code, dry_run,
+estimate_credits, the LoRA by its live card name) · Blender through PowerShell ·
+ASCII-only prints · the base asset (`galleon_final.glb`, `atlas_final.png`) is
+**accepted canon — never opened for writing, by anything, ever**.
