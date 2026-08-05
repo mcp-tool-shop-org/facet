@@ -1,0 +1,40 @@
+{
+ "_purpose": "The declared palette for E10's contact LAYER, for palette_gate.py. Authored forward like the galleon's, per E10 Ruling 5 and the E04 pattern verbatim: first-run baselines, bounds null, report-only. Nothing here has gated anything yet.",
+
+ "_this_is_not_the_ship_palette": "canon/E04-galleon-palette.json declares the SHIP. This declares the LAYER - a second surface over the same UVs. They are separate files for the same reason the ship's and the character's are: the gate is subject data, never a global constant. The layer's single element (L1) is a pale warm coat, so its band is the WARM BAND'S PALE END - a subset of the ship's warm band rather than a new band. No new hue territory is opened by the layer, which is one of Ruling 5's three grounds for choosing tallow-white.",
+
+ "_the_exemplar_is_NOT_the_seed": "E10's spec originally seeded this fixture from the founding exemplar's measured blue-grey (h 262.6, C* 14.4). Amendment 1 struck that: the exemplar painted the DYNAMIC half, which belongs to the shader. Seeding a boot-top's palette from implied water would be authoring the wrong element's colour. The exemplar validates the band's GEOMETRY (W-H1) and nothing else.",
+
+ "min_chroma": 12.0,
+
+ "_chroma_floor_is_INHERITED_and_load_bearing": "12.0, taken unchanged from the ship's fixture, which took it unchanged from W3's. Below it hue is not a colour - it is undefined and reads as a rotation. This matters MORE for this element than for any other in the arc: a weathered tallow-white coat is a low-chroma material by construction, so much of L1's realised surface is expected to sit BELOW the floor and therefore outside every band. That is the floor working, not the coat failing. A run must report the share of the band's texels that fall below the floor rather than counting them off-palette.",
+
+ "allowed_bands": [
+  {
+   "name": "warm-pale",
+   "hue_deg": [50.0, 100.0],
+   "status": "INHERITED, NOT MEASURED - no L1 surface exists yet",
+   "covers": "L1 a weathered tallow-white hull coat below the waterline",
+   "_why_the_ship_s_own_span": "Transcribed from E04-galleon-palette.json's warm band (measured span 62-88, declared 50-100, ratified Ruling 8) because Ruling 5's second ground for tallow-white is precisely that it needs no new band. If L1's realised hue lands outside 50-100 above the chroma floor, that is a FINDING about the element, not a reason to widen the band while looking at the result.",
+   "from": "E10 Ruling 5 (the element); E04 Task 4d + Ruling 8 (the span)"
+  }
+ ],
+
+ "gate": {
+  "max_offpalette_pct": null,
+  "max_offpalette_blob_px": null,
+
+  "_both_bounds_are_null_ON_PURPOSE": "The E04 pattern verbatim. No L1 surface has ever been generated, so no baseline for this element exists on this subject or any other. Suspend rather than invent: run with --report-only and report numerator and denominator. Deriving a bound now would derive it from the single result it would judge.",
+
+  "_when_a_bound_is_eventually_derived": "Normalise by PERIMETER, or report absolute count with the band's own area beside it. The layer's area swings far harder with camera than the ship's does - measured before any generation: the band renders 22,106 px from the beam and 789/770 px from the two deck cameras, a 28x swing, because the hull hides its own waterline from 40 degrees up (E10 Ruling 5, pre-registered for W3). A percentage-of-area bound on this element would be meaningless across views.",
+
+  "_the_export_boundary_translation": "If this palette reaches an sdlab asset manifest, the null blob bound translates at the export boundary into the unreachable sentinel, annotated as a suspension encoding - E04 Ruling 29's pattern. Canon keeps its null."
+ },
+
+ "_provenance": {
+  "authored": "2026-08-05, E10 Step 0.4",
+  "authored_by": "the advisor, in E10 Ruling 5; landed by the executor as authored",
+  "identity_fixture": "canon/E10-LAYER-IDENTITY.md",
+  "status": "AUTHORED FORWARD. Every value is inherited or declared; none is measured on an L1 surface, because none exists. The first W2 run produces this fixture's first baselines."
+ }
+}
