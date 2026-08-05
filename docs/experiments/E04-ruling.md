@@ -1445,3 +1445,68 @@ where stage 1 left paint, per `_still_suspended`), the waterline-rim answer, and
 lifted-block key decisions. I rule the set; then the strokes run to the finalize → pack
 → **Gate 1 sheet** — five columns, both elevated cameras and a beam view, textures under
 `--flat`, full size, the Director's eye.
+
+---
+
+## Ruling 24 (advisor, 2026-08-05) — the stroke set is RULED at six; the coincidence becomes a checked equality before anything flies; ledger thirty-six is an operand-kind error of mine
+
+### The set: SIX strokes — the deck pair plus the proposed four, order B
+
+**The funnel is the ruling's whole basis, and it was bought by a falsified prediction
+that named its own failure mode in advance** — that is the prediction discipline paying
+at full price, endorsed by name. The side class is **occlusion-bound** (64.28% of side
+holes occluded on every one of 26 candidates, zero never-facing), the reachable ceiling
+is 239,219 texels, the proposed four take 60.47% of it, and **all sixteen remaining
+candidates together add at most 5.43 points**. Four more strokes past the proposed set
+would buy ~1.4 points of valid across four more generations — on a subject where the
+per-view roll is measured three times over (G7's 6,438-vs-55, the waterline, the tar).
+The bound argues against the longer set and the ruling follows the bound. **Order B
+(ring sweep, deck pair last) is ratified as derived** — anchoring simulated at each
+stroke's turn across four candidate orders, which is what "the spiral is subject data"
+was supposed to mean.
+
+**Deck expectations re-registered on the measured number — and ledger thirty-six is
+mine:** Ruling 23's "roughly half the deck's holes remain" read Task 4a's *visibility
+coverage* (49.58%) as *committable share*; measured, the pair commits 200,660 texels and
+**73.56% of deck holes remain**. An operand-kind error — the exact class the executor
+self-corrected on thin-extent in the same report — and the correction generalises: **a
+pre-registered expectation names its operand kind like any other check.** The
+thin-extent correction is ratified the same way: 15.79–48.66% of per-stroke committable
+holes against the record's 10.20%-of-visible-area — both true, different denominators in
+kind; stroke planning uses the per-stroke figure from here.
+
+### The negative deviation: RATIFIED as flagged
+
+W3's brush negative carries eight belt terms — negatives *earned* from that character's
+observed brush defects, which makes them subject data. Importing them would arm
+character-derived values on the galleon, the standing prohibition. The ship's negative
+is its own spent value; **if the ship's strokes roll a recurring artifact class, its
+negative terms get measured then** — the W3 pattern applied per subject, not W3's
+answers.
+
+### Finding B, site four: the coincidence becomes a checked equality before any stroke flies
+
+`brush_cloud_step.py:38` hardcodes five recipe values and binds no profile; the ship's
+strokes run through it; the decided keys agree with it **by coincidence of value, not
+construction**. Before the first stroke: **a pre-flight assertion lands inside
+`brush_cloud_step`** (A32 — the check lives in the tool that acts): the values entering
+the graph are compared against the decided `texpass_brush` profile block, **HALT on any
+disagreement**, no skip flag. That closes the live risk at one-time cost. The class fix
+— `brush_cloud_step` binding the profile properly — joins the shared-code bundle
+(Step-0-class, character anchors), with the reason coverage was blind recorded beside
+it: **the coverage reference is `character.json`'s tool blocks, and a tool with no block
+there inherits the character's blind spots into the registry itself.**
+
+### Cleared to fly, with the sheet's reading pre-registered
+
+Strokes → finalize → pack → renders → **the five-column Gate 1 sheet**, no ruling
+between here and the sheet unless an in-tool gate fires (any firing halts as usual; the
+new pre-flight is one of them). Re-registered so the finished mix is read honestly: deck
+ends ~44.8% styled after the pair; the waterline rim sits near 55% of ship average
+(E10's base caution stands); dilation carries the hull bottom (444,364), the
+occlusion-bound side remainder (~616k), and the rigging — **the finished asset will run
+dilation-heavy relative to the character's 27.0%, and that number was priced here, on
+geometry, before the first stroke flew.** The instrument's own anchors are endorsed: the
+ceiling reproduced byte-equal inside a new tool, eight stage-1 figures re-derived at
+zero mismatches, purity and coverage declared before the edit rather than read off
+after.
