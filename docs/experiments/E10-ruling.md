@@ -548,3 +548,54 @@ demo consumes. **The boot-top coat demotes to an optional hull detail** — real
 shipyard practice, visible in dry dock or heel, the Director's to want or not once
 the true float demo is in front of him; its one-view ragged state builds out only if
 wanted.
+
+---
+
+## Ruling 11 (advisor, 2026-08-05) — the composite is RATIFIED and the advisor has looked at it; the product contract is stated in the Director's own terms; the coat's submersion is the spec correction it implies
+
+### The Director's question, answered as the ruling's first duty
+
+*"Should we be seeing the actual water? I thought we were just hiding the bit that
+would be in the water, not adding the water itself. How would this even work as a
+glb?"* — **his instinct is the architecture.** Nothing adds water to the asset, ever.
+The composite's blue is a stand-in for the game's own sea, drawn in a demo picture so
+an eye can judge the placed line. **The product contract, stated plainly: the GLB ships
+whole — bottom included, painted — plus one number, `waterline_z`, in the profile and
+the asset manifest.** The engine's water surface sits at that height and hides
+everything below it by ordinary depth testing, per scene, per frame, for free. The
+bottom stays in the GLB for the same reason E06 excluded faces from the atlas instead
+of deleting them: a dry dock, a beaching, a heavy heel — some camera may someday see
+it, and a scene's water must never be baked into an asset. Hiding is the scene's job;
+the asset's job is to carry the line.
+
+### The composite, ratified — and looked at, per ledger forty-three
+
+All four anchors hold, including the line row reproduced at 0.00 px across two tools
+and two sessions, and **the placed line's third independent confirmation** (7.43% of
+the beam figure below it, pixels agreeing with mesh z-fractions). P3's miss is
+recorded as the executor reported it — the fill used the measured value, not a
+corrected one. **The advisor's own read of the sheet, on the record:** she contacts
+the water continuously over 63.9% of her length; bow and stern ride above it as a real
+hull's overhangs do — the grey between them and the sea is *air above the waterplane*,
+correct at a view where the sea surface is edge-on and shows as a single row. The
+presentation is two flat fields — a naval-architecture diagram, stark by construction,
+recorded as a property; the in-engine version inherits waves, sky and perspective from
+the scene. Whether she floats is the Director's sentence, and this time the sheet
+reaches him with the advisor's eyes already on it.
+
+### The coat's submersion — the finding becomes the spec correction, parked with its owner
+
+**94.28% of the W2d coat sits underwater by construction**: the contact mask is
+`z ≤ waterline_z` and a band confined to it is submerged the moment water exists — a
+real boot-top *straddles* the line. Ruled: if the boot-top is ever built out, **its
+band is the placed line grown upward by a hull-derived height** (a fraction of
+freeboard, derived not guessed), its own small spec amendment at that time. The coat
+stays parked as an optional detail pending the Director's word after the float demo —
+nothing builds unbidden.
+
+### Infra, flagged to its owner
+
+The watchdog died by a **new mechanism** — the loop crashed on a file lock over its
+own heartbeat file — the third hard death of the arc. Flagged to the watchdog-robustness
+thread outside this repo (E04 Ruling 2's task owner); the standing restart authorization
+covers any session needing the GPU; this leg was CPU-only throughout.
