@@ -46,14 +46,29 @@ def main():
     contact = np.load(J(STROKE, "e10_contact", "contact_mask.npy"))
     seeded = np.asarray(np.load(J(LAYER, "state", "styled_mask.npy")))
 
-    # what the layer actually owns: inside the contact mask AND changed from the base
+    # WHAT THE LAYER OWNS (E10 Ruling 8, correcting this file's own defect).
+    # It was `contact & changed-vs-base`, which is right ONLY when the layer state was
+    # seeded as a copy of the base. Under W2c's hole-fill seed every contact texel differs
+    # from the base before a single one is painted, so that predicate would have exported
+    # 85,707 texels of flat rgb(107,107,107) fill as layer content - and the same mistake,
+    # made in the measurement, first read W2c as L* 45.2 / dL* +37.3, the fill masquerading
+    # as the paint. The owned set is what the COMMIT WROTE:
+    owned = contact & seeded
     changed = np.any(base != lay, axis=-1)
-    owned = contact & changed
+    # ANCHOR: on a base-copy seed the two predicates coincide by construction, because a
+    # texel is only unequal to the base if the commit wrote it. W2's path is already run,
+    # so the correction is checked against it rather than merely reasoned about.
+    coincide = int((owned ^ (contact & changed)).sum())
     rep["texels"] = {"contact": int(contact.sum()), "changed_vs_base": int(changed.sum()),
                      "owned_by_layer": int(owned.sum()),
-                     "changed_outside_contact": int((changed & ~contact).sum())}
-    print("[layer] contact %d | changed vs base %d | owned %d | changed OUTSIDE contact %d"
-          % (contact.sum(), changed.sum(), owned.sum(), (changed & ~contact).sum()))
+                     "changed_outside_contact": int((changed & ~contact).sum()),
+                     "predicate_disagreement": coincide}
+    print("[layer] contact %d | owned (contact AND committed) %d | changed-vs-base %d | "
+          "changed OUTSIDE contact %d" % (contact.sum(), owned.sum(), changed.sum(),
+                                          (changed & ~contact).sum()))
+    print("[layer] predicate check: old and new definitions disagree on %d texels %s"
+          % (coincide, "(base-copy seed: they must coincide)" if coincide == 0
+             else "(hole-fill seed: the old one would have exported the fill)"))
     # ANDON: the restrict flag promised nothing lands outside the contact mask
     if int((changed & ~contact).sum()) != 0:
         print("ANDON: the layer changed texels outside the contact mask. --restrict did "
