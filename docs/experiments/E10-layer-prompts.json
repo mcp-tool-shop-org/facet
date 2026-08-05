@@ -1,0 +1,24 @@
+{
+ "_version": "E10-W2-1",
+ "_authored": "2026-08-05, E10 Arm W2. The element phrase is verbatim from canon/E10-LAYER-IDENTITY.md L1, authored by the advisor in E10 Ruling 5.",
+
+ "_purpose": "One authored stroke into the LAYER state, beam camera. The masked region is the geometric contact band; what occupies it is L1.",
+
+ "_the_only_variable_is_L1": "The ship's element list, the style terms, the background term and the negative are TRANSCRIBED BYTE-FOR-BYTE from E04-brush-prompts.json's ruled string - the one all six accepted strokes flew under. L1 is prepended. That makes this a one-variable change against a ruled baseline: if the band comes back wearing something other than a tallow-white coat, the prompt is not the reason the ship around it still looks like the ship.",
+
+ "_why_the_ship_s_elements_stay_named": "The frame IS the ship - the layer state's atlas is a copy of the accepted base, so the model sees the whole vessel and only the band is masked. An element not named in the prompt arrives by accident and leaves the same way; dropping the twelve would be changing a second variable in the run that introduces the first.",
+
+ "_L1_is_FIRST_on_purpose": "The masked surface is unoccupied by construction (holes = the contact band), so L1 REPLACES its surface's occupant rather than being added onto one. Amendment 15's form that lands, applied deliberately: elements that replace an occupant land in full; elements asked onto an occupied surface produced no response at all (dE 1.07).",
+
+ "_no_water_term_and_now_it_is_RULED_rather_than_chosen": "E04 excluded water by choice. E10 Amendment 1 makes it a ruling: foam, spray, a lap line and any water surface are STRUCK - RG02 Q3 found every shipped source computes them shader-side, in the water's material, not on the hull's skin. The founding exemplar's blue-grey is explicitly not the target.",
+
+ "_recipe": "brush_cloud_step.py graph --job <layer job dir> --key y+000_e+00 --prompts docs/experiments/E10-layer-prompts.json --out <workflow>.json; defaults byte-matched to texpass_brush.py (seed 770700, steps 20, cfg 2.5, lora_w 0.75, cn_strength 1.0).",
+
+ "_commit_carries_two_flags_no_shell_can_skip": "--restrict (the contact mask: the layer commits only where geometry says contact happens) and --base-guard (the accepted atlas at its sha, asserted inside the tool before a byte is written).",
+
+ "_order": ["y+000_e+00"],
+
+ "_negative": "blurry, low quality, watermark, text, oversaturated, deformed",
+
+ "y+000_e+00": "a weathered tallow-white hull coat below the waterline, a gilded lion figurehead, warm oak-brown hull planking, black tarred strakes, weathered tan canvas sails, gilded scrollwork on the stern castle, a gilded spire on the stern turret, red gun port lids, black iron cannon barrels, dark tarred rigging and ratlines, pale scrubbed deck planking, a deep sea-blue frieze band along the bulwarks, gilded stern-gallery railings, plain white background, visible brushstrokes, painterly worked surface"
+}
