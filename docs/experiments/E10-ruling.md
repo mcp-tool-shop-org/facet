@@ -387,3 +387,72 @@ The sheets exist and the measurement already answers them — there is nothing n
 the ship to float on, and his eye is for outcomes, not for confirming a ΔE table. The
 toggle goes to him when a candidate coat exists. The executor's closing sentence is the
 right shape of a negative result and is kept: *reported, not diagnosed.*
+
+---
+
+## Ruling 8 (advisor, 2026-08-05) — three arms falsify W-H2 in brush mode with clean attribution; the finding is named; the next arm rides the mode the record already measured. Ledger forty-two is mine.
+
+### The ladder is ratified as the cleanest attribution work of either arc
+
+One variable per arm, **proven by field-level diff before submission** (W2→W2b: node
+7's text only; W2b→W2c: node 9's image only); the mask byte-identical across all three
+arms **proven by the content-addressed name**, not inferred; W2c's hole colour
+**measured, not chosen** — 1,963,858 of 1,963,858 accepted hole texels at
+rgb(107,107,107), so white would have steered toward the answer and grey is the
+precedent. And the self-caught measurement error is endorsed by name: the +37.3
+"triumph" that was **the fill, not the paint** — a denominator correct under base-copy
+seeding and silently wrong under hole-fill, caught before it was believed, with the same
+defect then **flagged in `e10_layer_export.py` and not patched** — *"a real tool defect
+belongs in a ruling, not a quiet edit at the end of a failing arm"* is exactly where
+that line belongs.
+
+**The export defect is ruled fixed here:** the owned set is `contact ∩ styled_mask` —
+what the commit actually wrote — never `changed vs base`. Anchor: W2's export re-run
+under the fixed predicate must reproduce its recorded output byte-identically (under
+base-copy seeding the two predicates coincide, so the fix is behaviour-preserving where
+it already ran and correct where it hasn't).
+
+### The finding, named — and it is a finding about objectives, not a defect
+
+| arm | prompt | context | painted L\* | ΔL\* |
+|---|---|---|---|---|
+| W2 | L1 + twelve | occupied | 4.0 | −3.9 |
+| W2b | L1 only | occupied | 3.9 | −4.1 |
+| W2c | L1 only | hole grey | 5.5 | −1.6 |
+
+Target: L\* in the seventies. Striking twelve competing elements moved 0.1; replacing
+occupied context with absence moved 1.6 — the largest lever, still the wrong direction.
+**The brush is built to continue an asset — anchoring, context, consistency are its
+design goals — and the layer's coat demands departure from context. Three arms measured
+the tool doing its designed job on the wrong objective.** The three mechanism candidates
+(surround conditioning, 2.3% frame share, the LoRA's dark register) stay recorded as
+untested: the next arm does not need the why, and diagnosing a mode we are leaving is
+spend without a consumer.
+
+### Ledger forty-two — the record held the answer while I specced the question
+
+**The repo already measured where new materials win: full-frame twin generation, where
+the prompt beat incumbent materials 8 of 8 at 7.4× separation** (the E08 contradiction
+test) — and where G7's red and G13's unprompted gold actually arrived. I routed the
+layer's content through the brush — the mode with zero such evidence and an opposite
+objective — for two rulings, with the contradiction result quoted in my own E04 close.
+The pivot below is a return to the measured mechanism, not an invention.
+
+### W2d, ruled and CLEARED: the layer's content comes from a twin, projected under the mask
+
+1. **One beam twin with L1 appended to the ship string** — own noun phrase, the standing
+   grammar, everything else byte-held to the twin recipe. The full-frame mode paints the
+   hull's foot *fresh*, so L1 competes as an occupant, not an addition.
+2. **Measure the landing first** — the band's colour in the twin, the existing table
+   machinery, before anything projects. Bounded: **two generation tries** (seed
+   increment second), then halt — a no-land after two is a finding about L1 as an
+   element, and the re-authoring window (tarred black coat, pale boot-top line — the
+   prior-compatible alternatives) is the Director's, presented with the evidence.
+3. **If landed: project the band only** — the projection machinery pointed at the layer
+   state under the contact-mask restriction, base untouched by construction, trust ∧
+   geometry as everywhere. Any expressibility gap this needs is a primary finding under
+   the standing test, reported not improvised.
+4. Then the fixed export → composite → **the toggle to the Director**.
+
+0 credits expected throughout; every transport discipline standing. The mechanism
+already survived three live fires — this arm changes only where the paint comes from.
