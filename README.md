@@ -73,7 +73,12 @@ generator.**
 **The Director accepted the asset at Gate 1** (2026-08-04, ruled on the GLB at his own zoom
 — [E08 Amendment 35](docs/experiments/E08-ruling-gate0.md)). Measured provenance **68.8%
 reference / 4.2% brush / 27.0% dilation** against the rejected asset's 28.4 / 37.7 / 33.9 —
-reference ×2.42, diffusion invention ×0.11. One region named at his zoom: a hard-edged
+reference ×2.42, diffusion invention ×0.11. *⚠ On-surface restatement, 2026-08-06
+([E10-offsurface-ruling.md](docs/experiments/E10-offsurface-ruling.md) Ruling 7): W3's bake
+carries 2.5840% off-surface texels; excluding them, reach reads 74.30, styled/valid 69.28,
+dilation 26.43 — the full table is in
+[the report](docs/experiments/E10-offsurface-r4ab-report.md). The on-surface family is the
+standing cross-asset family; as-recorded stays beside it.* One region named at his zoom: a hard-edged
 blotch on the crown, prior mechanism the documented unlevelled stroke seam (confirmation
 dispatched). The post-Gate-1 quality queue demotes to optional polish.
 
@@ -85,13 +90,16 @@ route end to end with every subject value drawn from `profiles/ship.json` and
 generation in the arc**. Measured mix **36.89% reference / 6.87% brush / 56.24% dilation**
 — read against the subject's own pre-registered **42.72% stage-1 reach ceiling** (86.4% of
 reach, beside the character's 92.8% of 74.1%): a ship hides most of itself from eye level,
-and the difference is geometry, not regression. *⚠ Restated 2026-08-05
-([E10-offsurface-ruling.md](docs/experiments/E10-offsurface-ruling.md)): 2.4967% of the
-bake's uv-valid texels carry positions not on the mesh (>1 px), and the population is
-disproportionately painted (stage-1 3.06% against dilation 2.15%), mechanism unmeasured. On
-the on-surface population the same quantities read 42.25 / 36.68 / 86.8 / 56.44 / 6.89. The
-as-recorded family remains the standing cross-asset headline until W3 carries the same
-measurement — different denominators do not compare.* The spec's central hypothesis — *no
+and the difference is geometry, not regression. *⚠ Restated 2026-08-05, standing family FLIPPED 2026-08-06
+([E10-offsurface-ruling.md](docs/experiments/E10-offsurface-ruling.md) Rulings 1 and 7):
+2.4967% of the bake's uv-valid texels carry positions not on the mesh (>1 px). On the
+on-surface population the same quantities read **42.25 / 36.68 / 86.8 / 56.44 / 6.89** —
+and with W3 now measured too (2.5840%, composition INVERTED: its off-surface population is
+paint-depleted where the galleon's is paint-enriched, so three of five W3 headlines move
+the opposite way), **the on-surface family is the standing cross-asset family**. The
+as-recorded numbers stay beside it everywhere, denominators named. The population itself is
+localized: 90.85% on the single outermost ring of the mask, largest blob 33 texels —
+measured and bounded, no route change warranted.* The spec's central hypothesis — *no
 shared-code edit needed* — was **falsified five times, and that was the payoff**: each
 falsification hardened the profile system (the coverage gate and its subject-flag registry
 law, the generator-legal frame constraint, two operand corrections found at fixes' second

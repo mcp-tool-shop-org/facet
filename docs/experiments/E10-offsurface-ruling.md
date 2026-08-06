@@ -86,6 +86,68 @@ tool is an offline diagnostic and nothing on the route consumes its replay.
   GPU leg, so nothing was exposed. The "13.6h" matches no on-disk timestamp and is
   recorded as the session-start hook's arithmetic, not a measurement.
 
+## Ruling 7 — both queued measurements ran; the standing family flips; the mechanism line closes (2026-08-06)
+
+Evidence: [E10-offsurface-r4ab-report.md](E10-offsurface-r4ab-report.md) (`1752b38`) —
+instrument re-anchored on the ship before first use (2.5065% exact, the Ruling 6c
+standard holding), every anchor exact, one anchor fired on the executor's own
+truncated operand and was fixed **at the operand, not the tolerance**.
+
+**7a — THE ON-SURFACE FAMILY IS NOW THE STANDING CROSS-ASSET FAMILY.** Ruling 2's
+condition is met: both accepted assets carry the measurement. The stronger ground is
+the one nobody predicted: **the composition INVERTS between subjects** — the
+galleon's off-surface population is enriched in painted texels (stage-1 3.06%, reach
+1.426×) while W3's is depleted (stage-1 1.94%, reach 0.899×, dilation 4.47%), so
+three of five W3 headlines move **opposite** to the galleon's (reach 74.10→74.30,
+styled/valid 68.82→69.28, dilation 26.95→26.43). The phantom 2.5% is not a constant
+bias — it is subject-dependent noise, which is precisely why the cleaned family is
+the only honest comparison basis. The as-recorded numbers stay in the record
+everywhere they appear, denominators named; nothing is deleted. The beast's route
+numbers will be born on-surface when its stages run (its birth rate 2.6430% is
+already on record; its consumer exclusions are unmeasured until it has consumers).
+
+**7b — the rate is a bake constant; the composition is not.** Three subjects, one
+instrument, 0.1463 points apart: ship 2.4967, W3 2.5840, beast 2.6430. The
+bake-artifact-class reading (Ruling 6b) is confirmed at the RATE level and refuted
+at the COMPOSITION level — carry the rate across subjects, never the composition.
+
+**7c — the mechanism line CLOSES as measured-and-bounded; no fix is dispatched.**
+The population is localized: **90.85% sits on the single outermost ring of the mask**
+(rate 9.62% on the ring against 0.18–0.44% interior; 91.32% of ring members >5 px;
+largest connected component 33 texels; zero islands above 50%; the mesh is closed so
+rim IS seam). The pre-registered null (flat, not zero) was stated first and the
+measurement is nothing like flat — the localization is real. `bake_hero_prep.py`'s
+code text is on record (read only after the numbers, as pre-registered:
+`bake.margin = 8` at :439; one pass writes `pos`, `nor` and `mask` at :493) and **no
+mechanism is ruled from it** — plausible is not measured. With the population
+bounded to a one-texel boundary ring, sub-point headline moves in subject-dependent
+directions, and no consumer reading exact rim positions, **no route change is
+warranted**. Re-open condition, named: a consumer that depends on exact positions at
+the mask's outermost ring. Every future subject carries its rate at birth
+(`e12_offsurface.py` at bake time) — the class is now bookkept, not mysterious.
+
+**7d — stroke-1 is susceptibility, not composition — banked.** It commits 29.3% rim
+against 23.6% bake-wide (1.37×) while its rim texels go off-surface at 27.2% against
+stroke 3's 0.86% (**31.7×**); interior flat ~0.3% for every stroke and view. A fact
+for any future per-view trust work; nothing consumes it today.
+
+**7e — small items, disposed.** The two W3 stroke splits that missed their anchors
+(+83/−39, net +44 = the recorded brush-class disagreement between
+`VOID_post_stroke7_atlas.png` and `state/atlas.prev.png`) are reported with no
+exclusion computed — correct treatment; stroke-level splits are diagnostic and the
+headline sweep is complete without them. And the executor's B-series picture
+(coherent blobs, whole bad charts, shallow-rim-deep-interior) died in every part and
+was reported as dead — the falsifications are the content.
+
+**7f — the CRLF hazard is queued to the standing errand batch** (with Ruling 6d's
+`_per_invocation` migration and 6e's `e08_ceiling` repairs): the repo has no
+`.gitattributes` and `core.autocrlf` is true, so every predictions hash reproduces
+in this working copy (the precedent's `cf16bb55` re-measured, still exact) and would
+NOT in a fresh clone. The executor's refusal to re-hash after seeing results was the
+only defensible move; the fix (a `.gitattributes` pinning text to LF, verified by a
+scratch-clone hash reproduction) waits for the batch because a live session shares
+this working copy and end-of-line renormalization under it would be instrument churn.
+
 ## Standards compliance (this ruling)
 
 | standard | score | evidence |

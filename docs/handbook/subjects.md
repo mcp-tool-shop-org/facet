@@ -17,9 +17,14 @@ values live in its own profile and fixture, never inherited unmeasured.
   acceptance is a function of camera count — quote it with the count).
 - The architecture result that generalises: **twins register; the prompt carries
   identity** — contradicted on eight elements, the prompt won 8/8 at 7.4× separation.
-- Open under its numbers: the off-surface rate of its bake is unmeasured (the galleon's
-  and dragon's are ~2.5–2.6%); the measurement is queued, Director-gated. Until it
-  runs, W3's headline family and the galleon's on-surface family do not compare.
+- ⚠ *Resolved 2026-08-06:* the off-surface measurement ran — **2.5840%**, and its
+  composition **inverts the galleon's** (paint-depleted where the galleon's is
+  paint-enriched), so three of five W3 headlines move the opposite way on exclusion
+  (reach 74.10→**74.30**, styled/valid 68.82→**69.28**, dilation 26.95→**26.43**).
+  **The on-surface family is now the standing cross-asset family**
+  ([E10-offsurface-ruling.md](../experiments/E10-offsurface-ruling.md) Ruling 7);
+  as-recorded stays beside it everywhere. *Historical: "the measurement is queued,
+  Director-gated" — fired 2026-08-06, both tasks.*
 
 ## The galleon (ACCEPTED, 2026-08-05)
 
@@ -73,12 +78,18 @@ values live in its own profile and fixture, never inherited unmeasured.
 |---|---|---|---|
 | welded shells | 40–191 | 237–512 | **9–12** |
 | widest-horizontal / height | ~0.46–0.72 | 1.04–1.11 | **1.61–1.74** |
-| reach ceiling (of valid) | 74.1% | 42.72% | **50.46%** |
-| off-surface at birth (>1 px) | *unmeasured, queued* | 2.5065% | 2.6430% |
-| accepted mix (ref/brush/dilation) | 68.8 / 4.2 / 27.0 | 36.89 / 6.87 / 56.24 | — |
+| reach ceiling (of valid, as recorded) | 74.1% | 42.72% | **50.46%** |
+| off-surface at birth (>1 px) | 2.5840% | 2.4967% (full bake) | 2.6430% |
+| off-surface composition | paint-**depleted** (stage-1 1.94%, reach 0.899×) | paint-**enriched** (stage-1 3.06%, reach 1.426×) | *no consumers yet* |
+| accepted mix, as recorded (ref/brush/dilation) | 68.8 / 4.2 / 27.0 | 36.89 / 6.87 / 56.24 | — |
+| on-surface restatement — **the standing family** | 74.30 reach / 69.28 styled / 26.43 dilation | 42.25 / 36.68 / 86.8 / 56.44 / 6.89 | *born on-surface when its stages run* |
 
-Two lessons live in this table. **Subject properties do not interpolate** — the
+Three lessons live in this table. **Subject properties do not interpolate** — the
 dragon's shells and reach landed outside any band the two priors suggest, in opposite
 directions, and the arc's standing rule is that a new subject class has no working
-prior. **Bake artifact classes do transfer** — the off-surface rate is a property of
-the bake, not the subject, and anchored across subjects correctly.
+prior. **Bake artifact classes transfer at the RATE and not the COMPOSITION** — the
+off-surface rate replicates within 0.15 points across three subjects, while its class
+composition inverts between the two measured ones; carry the rate, never the split.
+**And the population is bounded**: 90.85% of it is the mask's single outermost texel
+ring, largest blob 33 texels — measured, localized, no route change warranted
+([E10-offsurface-ruling.md](../experiments/E10-offsurface-ruling.md) Ruling 7c).
