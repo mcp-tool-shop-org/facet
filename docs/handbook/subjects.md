@@ -42,16 +42,19 @@ values live in its own profile and fixture, never inherited unmeasured.
 - ⚠ Restated 2026-08-05: 2.4967% of the bake's uv-valid texels carry positions off the
   mesh, and the population is disproportionately *painted*. On-surface the same
   quantities read 42.25 / 36.68 / 86.8 / 56.44 / 6.89
-  ([E10-offsurface-ruling.md](../experiments/E10-offsurface-ruling.md)). The
-  as-recorded family remains the standing cross-asset headline until W3 carries the
-  same measurement.
+  ([E10-offsurface-ruling.md](../experiments/E10-offsurface-ruling.md)). ⚠ *Resolved
+  2026-08-06: W3 now carries the same measurement, and **the on-surface family is the
+  standing cross-asset family** (Ruling 7) — the stronger ground being that the
+  composition inverts between subjects, so the phantom 2.5% is subject-dependent
+  noise, not a constant bias. Historical: "as-recorded remains standing until W3
+  carries the same measurement" — the condition fired the next day.*
 - Carries the **waterline as data** (E10): `waterline_z` in profile + manifest, the GLB
   whole, the scene's water doing the hiding. And the **native per-texel owner channel**
   — the first asset with one.
 
 ## The dragon (IN FLIGHT — designated 2026-08-05)
 
-- **Record:** [E12-ruling.md](../experiments/E12-ruling.md), Rulings 1–8 so far;
+- **Record:** [E12-ruling.md](../experiments/E12-ruling.md), Rulings 1–11 so far;
   [Gate 0 report](../experiments/E12-gate0-report.md). Fixture:
   [canon/DRAGON-IDENTITY.md](../../canon/DRAGON-IDENTITY.md) (eleven D-elements; the
   bone-ivory family is this scheme's gold). Profile: `profiles/beast.json`, 80/81 with
@@ -76,8 +79,23 @@ values live in its own profile and fixture, never inherited unmeasured.
   with **no LoRA** (the painterly saltroad register had arrived by inheritance), and
   the canny pair is being derived per-subject after the control was measured carrying
   a third of the clay's own relief. Studio plan:
-  [style-registers.md](../style-registers.md). Next: the re-pair (handoff 4), then
-  bands against the accepted pair, twins, and the route proper.
+  [style-registers.md](../style-registers.md).
+- **The re-pair (0 credits) CONFIRMED the register** — "a lot better" — and the
+  per-subject canny **0.05/0.10 is ratified into the profile**
+  ([Ruling 11](../experiments/E12-ruling.md)): on grey-on-grey clay HIGH is the
+  structure lever at ~10× low's effect, and the ruled pair carries 108,887 control px
+  on view 1 against the falsified 0.4/0.8's 50,631. **The pair is not yet accepted.**
+  Two named defects and the Director's own question gate it: the missing tongue goes
+  to geometry first (Gate 0 saw a tongue on 00001/00002 and not on 00003 — if the
+  mesh carries none, no prompt lands one); view 5's two material misses (pale-tan
+  haunch on D1's surface, bone-ivory membranes on D3's) spend the bounded re-roll,
+  seed the only delta; and his "could the face be more defined" reopened allocation
+  by Ruling 2's own clause — the ruled ladder is **resolution first** (a head-crop
+  companion generation at the measured head box — never a projection reference),
+  **geometry second on his sentence only** (a bust-crop re-reconstruction replaces
+  the designated mesh: a Ruling 1 re-open, not an arm). All three items are in
+  flight as handoff 5. Then: bands re-derived against the accepted pair + D8
+  closure, twins, and the route proper.
 
 ## The calibration table this page exists for
 

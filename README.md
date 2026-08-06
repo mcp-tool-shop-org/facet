@@ -137,7 +137,7 @@ exports** — every render ships with its exact silhouette so backgrounds are
 augmentation-side, and lighting would be a new renderer with its own anchors.
 
 **E12 — the beast arc — is IN FLIGHT** ([E12-ruling.md](docs/experiments/E12-ruling.md),
-Rulings 1–8 so far): the route's third subject class, a **winged dragon**, designated
+Rulings 1–11 so far): the route's third subject class, a **winged dragon**, designated
 from three reconstructed candidates on full-size sheets ("3 is the winner"). What Gate 0
 measured ([E12-gate0-report.md](docs/experiments/E12-gate0-report.md)) rewrites the
 priors: **9–12 welded shells against a character's 40–191 and the ship's 237–512** —
@@ -167,8 +167,20 @@ the studio plan is [docs/style-registers.md](docs/style-registers.md)), and the
 measured cause of the structural loss is the control: the profile's canny pair fires
 on 5.2%/2.1% of the figure interior where the same clay carries 15.8%/11.2% at lower
 thresholds — the relief never reached the ControlNet, and at denoise 0.92 the interior
-was the model's to invent. The re-pair runs with a per-subject-derived canny pair
-under the ruled register; every value the subject needs lives in
+was the model's to invent. The re-pair then ran under the ruled register with the canny
+pair derived per subject and ruled **0.05/0.10** — the control carries 2.15× the
+falsified pair's pixels — still at zero credits, and the Director's verdict is
+**register CONFIRMED, pair not yet accepted**
+([Ruling 11](docs/experiments/E12-ruling.md)): *"a lot better, but the tongue is
+missing and the face could be more defined."* His definition question reopened the
+allocation decision by Ruling 2's own re-open clause; the ruled ladder runs
+**resolution first** (a head-crop companion generation framed from the measured head
+box), **geometry second and only on his sentence** (a bust-crop re-reconstruction
+replaces the designated mesh — a Ruling 1 re-open, never a session's arm). Acceptance
+now gates on three items in flight as handoff 5: the tongue's geometry answer on the
+mesh (Gate 0 saw one on 00001/00002 and not on 00003), view 5's bounded re-roll (the
+pale-tan haunch and bone-ivory membranes are spec violations on named elements), and
+the companion. Every value the subject needs lives in
 `profiles/beast.json` and `canon/DRAGON-IDENTITY.md`, and the ones that arrived by
 inheritance are being falsified and replaced one measured step at a time — which is
 the profile system doing its job.
