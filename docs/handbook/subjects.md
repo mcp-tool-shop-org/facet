@@ -149,8 +149,21 @@ values live in its own profile and fixture, never inherited unmeasured.
   see a diffuse 121-component population). The gate runs **report-structured
   with null bounds** — the galleon's own published configuration — and the
   halt trigger is the E07-class signature (one coherent garment-scale
-  component) at the advisor's eye. Twins: handoff 8 continues → stage 1 vs
-  the 50.46% ceiling → sweep gate → strokes → **Gate 1 at his zoom**.
+  component) at the advisor's eye.
+- **The eight twins ran at 0 credits** ([Ruling 17](../experiments/E12-ruling.md)):
+  twins 1/5 **pixel-identical to the accepted pair** (0 of 1,835,008 differing —
+  the recipe reproduces its accepted artifact end to end); the resemblance
+  channel resolved by natural experiment (**the bleed rides the fangs term** —
+  foot ratios 0.39–0.77 with it, 0.02–0.11 without); the hue gate's cleanest
+  twin hid a 43,999 px flat-black foreleg (achromatic = invisible to a
+  chroma-floored gate by construction — the achromatic channel is now
+  permanent), resolved by the one bounded re-roll (seed defect; the
+  calibration opposite of the canon-caused D7 case). The Director's eye then
+  caught the **wing skeleton bone-ivory on the two wing-spread views**: D1's
+  surface by fixture assignment, never named in the prompt — named now
+  (`moss-green wing arms and finger struts`), views 0/4 regenerate under v6
+  (handoff 9) → stage 1 vs the 50.46% ceiling → sweep gate → strokes →
+  **Gate 1 at his zoom**.
 
 ## The calibration table this page exists for
 

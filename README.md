@@ -137,7 +137,7 @@ exports** — every render ships with its exact silhouette so backgrounds are
 augmentation-side, and lighting would be a new renderer with its own anchors.
 
 **E12 — the beast arc — is IN FLIGHT** ([E12-ruling.md](docs/experiments/E12-ruling.md),
-Rulings 1–16 so far): the route's third subject class, a **winged dragon**, designated
+Rulings 1–17 so far): the route's third subject class, a **winged dragon**, designated
 from three reconstructed candidates on full-size sheets ("3 is the winner"). What Gate 0
 measured ([E12-gate0-report.md](docs/experiments/E12-gate0-report.md)) rewrites the
 priors: **9–12 welded shells against a character's 40–191 and the ship's 237–512** —
@@ -224,9 +224,25 @@ seam stressor presenting as cool marginal-chroma crevice shadow (7,293 px in
 121 fragments tracing the throat seam, wing-body gap and spine bases; nothing
 like the E07 garment class, which is ONE coherent blob). The gate now runs
 report-structured with null bounds — the galleon's own configuration — and the
-E07-class signature at the advisor's eye is the halt trigger. Twins are
-generating (handoff 8 continues); then stage 1 against the banked 50.46%
-ceiling, strokes, and Gate 1.
+E07-class signature at the advisor's eye is the halt trigger. The eight twins
+then ran at 0 credits ([Ruling 17](docs/experiments/E12-ruling.md)) and banked
+three results: **the chain reproduces exactly** (twins 1 and 5 returned zero
+differing pixels of 1,835,008 against the accepted pair, from content-hash-
+identical inputs); **the resemblance channel is resolved by natural
+experiment** (ivory:charcoal foot ratios — fangs-term views 0.39–0.77,
+no-ivory views 0.05/0.11, the bone-ivory-without-fangs view at 0.02: the
+bleed rides the specific term, not family mass); and **the hue gate's cleanest
+twin hid the worst defect** — a 43,999 px flat-black foreleg invisible to a
+chroma-floored gate by construction, caught by the achromatic baseline, and
+resolved by the one bounded re-roll (a seed defect — the calibration opposite
+of the canon-caused D7 case, and the gate number *rose* as the defect left).
+The Director's eye then caught the wing skeleton painted bone-ivory on the
+two wing-spread views: the wing arms were D1's surface by fixture assignment
+but **never named in the prompt** — the founding law measured in both
+directions on one view (the named wing-claws stayed charcoal while the
+unnamed bones went white). `moss-green wing arms and finger struts` now
+stands in the entry; handoff 9 regenerates views 0 and 4 under v6 stems; then
+stage 1 against the banked 50.46% ceiling, strokes, and Gate 1.
 Every value the subject needs lives in
 `profiles/beast.json` and `canon/DRAGON-IDENTITY.md`, and the ones that arrived by
 inheritance are being falsified and replaced one measured step at a time — which is

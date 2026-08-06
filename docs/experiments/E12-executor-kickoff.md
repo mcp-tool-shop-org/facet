@@ -1047,6 +1047,127 @@ serve the eye and the eye rules.
 
 ---
 
+## Session handoff 9 (2026-08-06) — the wing-skeleton term: v6 stems, regenerate views 0 and 4. Comprehensive.
+
+Serves the holding handoff-8 session (git pull first) or a fresh one — it
+assumes nothing not written here or in the reading list.
+
+### Where this stands
+
+The twin run completed (`4864686`, Ruling 17): twins 1 and 5 pixel-identical
+to the accepted pair; the view-3 re-roll resolved its achromatic defect at
+seed 770701; the resemblance channel resolved (the bleed rides the fangs
+term). The Director's eye then found **the wing skeleton painted bone-ivory
+on the two wing-spread views (0 and 4)** while the same structures read green
+on every folded-wing view. Ruling 17e named the cause — the wing arms and
+fingers were D1's surface by fixture assignment but **no prompt term ever
+named them**, and the unclaimed bone-shaped structures took the horns' ivory
+on exactly the views that present them as a bat-wing skeleton — and the fix:
+**`moss-green wing arms and finger struts` now stands in the protective entry
+as its own noun phrase**, riding every view. This dispatch rebuilds the stems
+to v6 and regenerates ONLY views 0 and 4 under them.
+
+### You are the executor
+
+```
+cd E:\AI\facet && git pull
+CLAUDE.md                                  <- how to work here. Read first, follow exactly.
+docs/experiments/E12-ruling.md             <- Rulings 16-17. 17e is the term; this dispatch is its execution.
+profiles/beast.json                        <- the protective entry WITH the wing-skeleton term; twin_prompts: REBUILD TO v6
+canon/DRAGON-IDENTITY.md                   <- D1 annotated with the term addition
+docs/experiments/E12-twin-prompts.json     <- v5 on disk; you rebuild v6
+docs/experiments/E12-handoff8-report.md    <- the twin run's record; the gate + achromatic baselines you re-use
+E:\AI\training\facet_next\E12_twins\       <- masks, controls, twins; views 0/4's controls are REUSED as-is
+```
+
+Your rules (CLAUDE.md §executor): never judge whether output is good ·
+predictions blind before looking, blind status disclosed · stop at every
+gate · no memory-store writes · a negative result is a full success.
+
+### Environment, standing
+
+Watchdog verified before any local leg, report either way (restart standing;
+the ceiling is never raised). Cloud discipline in full (saved workflows ·
+topology guard · no-LoRA pre-flight · `dry_run` + `estimate_credits` per
+submission · content-hash uploads · sidecars at birth). ASCII prints ·
+output continues in `E:\AI\training\facet_next\E12_twins\` (new files
+suffixed `_v6`) · explicit git paths · touch nothing under E10/E11, either
+accepted asset, or 00001/00002.
+
+### Blind predictions, before anything runs
+
+Commit hashed, blind status disclosed, covering at minimum: does the wing
+skeleton land green on 0 and 4 under the named term · does anything REGRESS
+on those views (a changed prompt re-rolls every landing — the Ruling 12f
+law; score every element, not just the target) · do the membranes stay in
+13e's class · the gate + achromatic readings vs the handoff-8 baselines ·
+whether the crown-region ivory mass on view 4 (behind the horns) moves.
+
+### Task 1 — rebuild the prompts to v6
+
+The committed builder against the corrected entry. The new term rides
+**every view** (wings are visible from all eight yaws). Drop map unchanged
+(mouth off {3,4,5}, horn family off {3,5}); `headclay_0` rebuilds from the
+corrected entry with its recorded keeps/drops. Verify: subsequence-by-whole-
+comma-terms per stem; the eight v5 `dragonclay` stems differ from v6 by
+EXACTLY the one inserted term; version `E12-pair-6`; print per-view term
+counts.
+
+### Task 2 — regenerate views 0 and 4 only
+
+Controls and masks REUSED byte-identical from the twin run (the term change
+does not touch geometry); content-hash upload names confirm identity free.
+Seed 770700 (the operating point — same seed the defective twins ran, so the
+term is the only delta per view). One generation per view; each carries its
+own single bounded re-roll on spec-violation grounds only. Views
+1/2/3B/5/6/7 are NOT regenerated (Ruling 17e: 1 and 5 are pixel-identical to
+the accepted pair; the others carry no ruled defect).
+
+### Task 3 — gate, register, sheet
+
+Per new twin: the 16e gate + the 17d achromatic channel, both against the
+recorded baselines · registration diagnostics (suspended halt, printed
+IoU) · the same-view A|B sheet (v5 twin | v6 twin) full size plus the wing
+crops at 3× (arms, fingers, crown region on 4) · sidecars with full lineage
+(seed, stem version, superseded v5 twin named). **No verdicts.**
+
+### Then HALT
+
+Stage: both v6 twins + sidecars, A|B sheets + crops, gate/achromatic/
+registration tables, predictions scored, the v6 prompts diff. **To the
+advisor's eye first, then the Director's.** Stage 1 is handoff 10 and runs
+only after the advisor rules the completed twin set in.
+
+### Do not
+
+Regenerate any view but 0 and 4 · exceed one bounded re-roll per view ·
+touch the accepted-pair-identical twins 1 and 5 · arm any bound · edit any
+fixture or profile (advisor's writes) · write to the memory store · end a
+session the Director has not ended.
+
+### Standards compliance (this dispatch)
+
+| standard | score | evidence |
+|---|---|---|
+| PIN_PER_STEP | 2 | v6 versioned beside its builder with an exact-one-term diff assertion; controls/masks reused by content-hash identity; seeds pinned; predictions hashed blind first |
+| ANDON_AUTHORITY | 2 | Watchdog before local legs; both guards per submission; the exact-one-term diff is an ANDON (any other delta halts the rebuild); bounded re-rolls; halt to eyes |
+| NAMED_COMPENSATORS | 2 | Two generations + at most two re-rolls, estimate_credits first; v5 twins retained and named superseded in sidecars, never deleted; all writes suffixed _v6 |
+| DECOMPOSE_BY_SECRETS | 3 | The term is the only changed input, asserted in code; geometry inputs byte-identical by hash; the fix reaches the run only through the committed builder reading the committed profile |
+| UNCERTAINTY_GATED_HUMANS | 3 | The regeneration exists because the Director's eye gated the set; both outcome branches pre-registered in Ruling 17e; regression scoring pre-committed so a fixed wing cannot hide a broken flank |
+| EXTERNAL_VERIFIER | 2 | Two generations against one named spec change, judged by eyes; gate + achromatic channels run against baselines derived from artifacts this run did not produce. `skip:` on a second model per precedent |
+
+### Calibration
+
+A changed prompt re-rolls every landing — score the whole view, not the
+target. The works-perfectly test: state what the A|B sheet shows if the term
+does nothing (v5-identical landings modulo seed-invariant noise — but the
+seed is pinned, so a no-op term should reproduce v5 nearly exactly; any
+broad change IS the finding). And the handoff-8 standard stands: validate
+instruments against recorded baselines before new numbers, own errors in
+the report, halt with everything staged.
+
+---
+
 ### Standards compliance (handoff 2)
 
 | standard | score | evidence |

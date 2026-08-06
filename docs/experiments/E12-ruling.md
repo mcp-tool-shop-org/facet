@@ -1052,3 +1052,102 @@ halt to this seat's eye. The discriminating view-4 prediction (do the claws
 follow the fangs term or the family mass — the 13d resemblance test riding
 free on a view whose stem drops the mouth family) stays live and unspent.
 Nothing else in the dispatch changes.
+
+---
+
+## Ruling 17 — the twin run ruled: reproducibility banked, the resemblance channel resolved, the wing skeleton NAMED on the Director's eye; handoff 9 regenerates 0 and 4 (2026-08-06)
+
+Evidence: the handoff-8 completion report (`4864686`), the gate and achromatic
+tables, and this seat's eye on the twins — including views 2, 4, and 6 at full
+size against the Director's own four-view observation, which arrived with the
+halt: *"What's with the white bone on the back of the wings? It only shows up
+on 2 of the views."*
+
+**17a — the halt is ACCEPTED and the discipline is ratified.** Nine
+generations (eight twins + one bounded re-roll), 0 credits, every job clean,
+seven of eight allowances unspent. The `estimate_credits` deviation (3 of 8
+calls, the rest covered by an in-code proof that the eight graphs differ only
+in prompt, image names and output prefix across zero LoRA nodes) is ACCEPTED —
+a proof of structural identity is stronger evidence than five more identical
+round-trips. The executor's two self-corrections (the floating jaws retracted
+by measurement — flat backdrop at 2.0/255; the registration mechanism
+corrected) are the calibration section working.
+
+**17b — REPRODUCIBILITY IS BANKED, and it is the arc's quietest big result.**
+Views 1 and 5 were built from inputs whose content-hash names came back
+identical to the accepted pair's, and their twins returned **zero differing
+pixels of 1,835,008 each** — only PNG metadata differs. The house rule "a
+recipe that does not reproduce its output is not a recipe" has haunted this
+repo since W3's canon twin failed to come back (IoU 0.9040 vs 0.9088); **this
+subject's recipe reproduces its accepted artifact exactly**, end to end,
+through upload, cloud, and download. Twins 1 and 5 ARE the accepted pair.
+
+**17c — Ruling 13d's resemblance question is RESOLVED by natural experiment:
+the bleed rides the FANGS TERM, not the family mass.** The drop map ran the
+experiment for free — ivory:charcoal ratio in the geometry-derived foot
+region: fangs-term views 0.39–0.77; no-ivory views 0.05/0.11; **view 4
+(bone-ivory ×2, no fangs term) at 0.02, lowest of all eight**. No overlap
+between populations. The named cheapest-test arm is no longer needed for the
+claws; the mechanism is sharper than 13d stated: **a colour term reaches
+structures that resemble the SPECIFIC structure it names** — fangs→claws
+(pointed keratin), and now horns→wing-bones (17e).
+
+**17d — the achromatic inversion is BANKED as the gate's second measured
+blind spot, and the re-roll discriminated.** The twin the hue gate scored
+cleanest (view 3, 0.36%) carried the set's worst defect — a 43,999 px
+flat-black mass across the far foreleg and chest where clay and control both
+carry full form. Invisible to a hue gate by construction (near-black has no
+hue); caught by the executor's achromatic-baseline comparison against the
+pair (15.16%/12.54%, largest components 14,816/13,049) and the
+clay|control|twin sheet. The bounded re-roll (seed 770701, everything else
+pinned) resolved it — **the defect was the seed's**, the opposite pole from
+handoff 6's D7 case where the cause was canon and the re-roll was correctly
+withheld; the two cases together are the re-roll discipline's calibration
+pair. And the gate number ROSE to 11.11% as the defect left — a metric moving
+opposite to quality, recorded beside E07's lesson. **The achromatic channel
+(dark-mass total + largest component vs the pair baseline) joins the gate's
+report structure permanently.**
+
+**17e — THE DIRECTOR'S OBSERVATION, ANSWERED AND FIXED: the wing skeleton is
+NAMED.** Confirmed at this seat's eye: views 0 and 4 — the two wing-spread
+presentations — paint the entire wing arm and finger skeleton bone-ivory
+against the membranes, while views 1/2/5 keep the same structures green and
+view 6's paleness is band-shoulder membrane field, a different thing. The
+mechanism decomposes: the wing arms and fingers are D1's surface **by fixture
+assignment only — no prompt term has ever named them**; their green on the
+folded-wing views arrived from body context, and on the wing-spread views the
+unclaimed bone-shaped structures took the ivory of `bone-ivory curved horns`
+(the 17c resemblance channel, next structure over) amplified by the
+bat-anatomy prior the realistic register carries. The wing-claws on view 4
+stayed correctly charcoal while its arm bones went ivory — the claws are
+NAMED and the bones were not, which is the founding law measured in both
+directions on one view. **Fixed by naming**: `moss-green wing arms and finger
+struts` enters the protective entry as its own noun phrase (fixture D1
+annotated; profile transcribed; stems rebuild to v6), riding every view.
+**Handoff 9 regenerates views 0 and 4 ONLY** — views 1/2/3B/5/6/7 stand
+(1 and 5 are pixel-identical to the accepted pair, and regenerating a view
+with no defect would break that identity for nothing). Pre-registered
+branches: skeleton lands green → the twin set completes; ivory persists →
+that is the result and goes up as fixture/arm evidence with the anatomy-prior
+hypothesis attached.
+
+**17f — the view-6/2 mirror spread is BANKED as the ±10° convention's first
+measured cost** (82.6% of view 6's off-palette is band shoulder; its mirror
+reads 4.22%; a 6.6× spread across a mirror pair is a fact about the
+convention, not the twins), and **membrane cross-view variance is NAMED a
+stage-1 watch item**: each twin individually sits inside 13e's accepted
+lit-translucency class, but slate-vs-cream disagreement across views meets
+the atlas at projection, and the provenance channel plus Gate 1's zoom judge
+what it does there. No twin is churned for it.
+
+**17g — registration is recorded, not yet bounded**: 0.9687–0.9860 across
+the eight, halt suspended at 0.0 as ruled, the keyed-twin-larger-than-geometry
+mechanism (rim paint spill) noted as the reason the lowest IoU tracks the
+smallest silhouettes. A beast bound derives, if ever, from a ruling that
+wants one — the spread sits far above the character's 0.80 and nothing here
+needs a halt to fire.
+
+**17h — what waits**: handoff 9 (v6 rebuild + the 0/4 regeneration + sheets,
+halt to this seat's eye) → **stage 1** (handoff 10 — projection against the
+banked 50.46% ceiling) → the sweep gate → strokes → finalize → pack →
+**Gate 1 at his zoom.**
