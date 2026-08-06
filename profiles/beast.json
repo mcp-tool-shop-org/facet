@@ -8,6 +8,12 @@
    "path": "canon/DRAGON-IDENTITY.md",
    "why": "The eleven named elements. Identity belongs to the prompt; this file IS the dragon.",
    "from": "E12 Ruling 3; authored forward per the galleon precedent"
+  },
+  "twin_prompts": {
+   "path": "docs/experiments/E12-twin-prompts.json",
+   "status": "REBUILDING per Rulings 9c/9d - the first build (75b9a02-era) carried the with-clause opening and one constant string per view; the ruled form is the comma-list string with PER-VIEW stems (elements a view cannot see are dropped; default split D8/D9/D10/D11 off rear-family views, verified against each view's actual render before writing).",
+   "why": "Eight dragonclay stems, front-family views on the full string, rear-family on their stems. This subject is the first where the per-view rule BITES: six of eleven elements name head anatomy, and a term present in a view's prompt is an instruction to paint it (the W3 beard mechanism, measured). The ship's one-string form rested on 'no view-specific anatomy words' - a premise this subject fails.",
+   "from": "E12 Rulings 9c/9d; E04 Ruling 23 (the premise, not the conclusion); W3 per-view precedent"
   }
  },
  "_gates": {
@@ -311,9 +317,9 @@
     "from": "prior subjects' spent value"
    },
    "prompt": {
-    "value": "a winged dragon with deep moss-green scaled hide, pale bone-tan ventral plates, storm-grey wing membranes, bone-ivory curved horns, bone-ivory crown and cheek spikes, bone-ivory dorsal and tail spines, bone-ivory claws, ember-orange eyes, a dark wine-red tongue, pale ivory fangs and tooth rows, a dark slate mouth interior, plain lavender-grey background, visible brushstrokes, painterly worked surface",
-    "why": "NEITHER SPENT NOR LIVE - the protective transcription form (E04 Ruling 22): the code default is the literal W3 identity string, the named accident class, so an invocation that forgets --prompts asks for this dragon instead of that warrior. Transcribed from canon/DRAGON-IDENTITY.md's eleven elements plus the RULED backdrop word (E12 Ruling 8a - appended 2026-08-05 when the hue was ruled; the earlier note that no backdrop word rides here until derived is thereby resolved, exactly as that note promised). The twin-prompts file the route actually reads carries the same string.",
-    "from": "E12 Ruling 3; canon/DRAGON-IDENTITY.md; E12 Ruling 8a; E04 Ruling 22 form"
+    "value": "a winged dragon, deep moss-green scaled hide, pale bone-tan ventral plates, storm-grey wing membranes, bone-ivory curved horns, bone-ivory crown and cheek spikes, bone-ivory dorsal and tail spines, bone-ivory claws, ember-orange eyes, a dark wine-red tongue, pale ivory fangs and tooth rows, a dark slate mouth interior, plain lavender-grey background, visible brushstrokes, painterly worked surface",
+    "why": "NEITHER SPENT NOR LIVE - the protective transcription form (E04 Ruling 22): the code default is the literal W3 identity string, the named accident class, so an invocation that forgets --prompts asks for this dragon instead of that warrior. Transcribed from canon/DRAGON-IDENTITY.md's eleven elements plus the RULED backdrop word (E12 Ruling 8a). RESTRUCTURED 2026-08-05->06 by E12 Ruling 9c: the earlier opening 'a winged dragon with deep moss-green scaled hide' subordinated D1 in a with-clause against Amendment 13's measured grammar - the advisor transcribed W3's preamble shape where the galleon's pure element list is the proven form; every element now stands as its own noun phrase. THIS IS THE FULL (front-family) STRING: per E12 Ruling 9d the per-view stems in the twin-prompts file DROP elements a view cannot see (default: D8/D9/D10/D11 off the rear-family views - six of eleven elements name head anatomy on this subject, and the ship's one-string ruling rested on a premise this subject fails).",
+    "from": "E12 Ruling 3; canon/DRAGON-IDENTITY.md; E12 Ruling 8a; E12 Rulings 9c/9d; E04 Ruling 22 form"
    }
   },
   "cull_unseen.py": {

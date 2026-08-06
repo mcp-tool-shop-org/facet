@@ -376,3 +376,70 @@ rather than running it tired is the discipline working). One requirement is writ
 into it in bold because Ruling 4a armed the trap: **the pair's controls come from
 PROFILE-rendered clay views, never from the Gate 0 renders** — those ran
 fit-axis height and are not byte-anchors for anything the route does now.
+
+---
+
+## Ruling 9 — the ANCHOR 1c halt, the mirror fact, and the prompts file (2026-08-06)
+
+Evidence: [E12-task4-anchor-halt.md](E12-task4-anchor-halt.md) (`a299552`), the probe's
+two-construction table, and the rim overlay — looked at by this seat before ruling.
+Nothing was submitted; no credits were spent; the halt observed E04 Ruling 10's
+pre-registered second row exactly.
+
+**9a — the halt was correct, and the GATE's construction is corrected to the source's
+own arithmetic. The bound is untouched.** The probe isolates the mechanism: the gate's
+replica runs unnormalised (ray-back 3.005) where `silhouette_masks` normalises by
+0.998186307466 (ray-back 2.0) — a scale that cancels mathematically and not in
+float32, rounding one grazing rim pixel differently (636,498; centroid −0.0007 px;
+bboxes identical). **The standing rule already covers this and predates this result:
+an anchor is computed with the source's own arithmetic** (the E10 off-surface anchors
+were built exactly so, and its report's finding 3 is this same two-float-orderings
+class). Conforming the gate to that rule is an operand repair, not a retune — the
+retune test passes: the rule would have been the same whatever came out, and the
+executor's refusal to propose a bound while looking at the result was right. The
+bound stays **0**.
+
+Pre-stated branches for the re-run: corrected gate returns **0 px on every checked
+view of the beast → proceed to control construction**; anything else → halt again,
+evidence staged. **And the consumer-grep is part of the fix**: the same gate anchored
+the ship (its adjudicated record is 1 px view 1 / 0 px view 7 — plausibly this same
+float class). Re-run the corrected construction on the ship's anchor views too and
+report both subjects' digits; if the ship's change, the advisor annotates its record
+in place — nothing shifts silently.
+
+**9b — the mirror fact is banked.** An orthographic silhouette from `d` and from `−d`
+is the same ray set: **the eight eye-level cameras produce four distinct silhouettes,
+each twice and mirrored** (490,941 px both, bboxes exact mirror pairs; legible in
+`frame_00003.json`'s pairing 0=4, 1=5, 2=6, 3=7 all along). Subject-independent —
+true of every orthographic eye-level ring in this repo. First-hit coverage figures
+are unaffected (occlusion order differs front/back); **any future instrument that
+weights by per-view silhouette area would double-count** — the caveat rides here.
+
+**9c — the prompt restructures to the comma-list form, and the error was the
+advisor's.** The protective entry opened `a winged dragon with deep moss-green scaled
+hide…` — a with-clause that subordinates D1 instead of giving it its own noun phrase
+(Amendment 13's measured grammar). The galleon's string is a pure element list; the
+advisor transcribed W3's preamble shape instead. Corrected in `beast.json`: the
+subject stays as its own leading noun (`a winged dragon,`) and every element stands
+alone. The prompts file rebuilds byte-equal to the corrected entry.
+
+**9d — per-view stems are RULED for this subject, and the one-string instruction was
+the advisor importing a conclusion without its premise.** The ship's one-constant-
+string ruling (E04 Ruling 23) rested explicitly on *"this subject has no view-specific
+anatomy words."* The dragon has **six of eleven elements naming head anatomy**, and
+the executor's flag is the W3 beard mechanism read forward: a term present in a view's
+prompt is an instruction to paint it, and the text wins against the control. Ruled:
+**an element whose surface a view cannot see is dropped from that view's stem.**
+Default split — D8 eyes, D9 tongue, D10 fangs, D11 mouth interior drop from the
+rear-family views; D4 horns and D5 crown spikes stay everywhere (silhouette-visible
+from behind); D1–D3, D6, D7 everywhere. The executor verifies the split against each
+view's actual render before writing it (the renders exist; the table lands in the
+prompts file with a per-view visibility note). The pair runs view 1 on the full
+string, view 5 on its rear stem. *Ledger, the advisor's: handoff 3's "all eight stems
+byte-equal to the protective entry" imported the ship's one-string conclusion whose
+stated premise this subject fails — the same family as Ruling 4a's SPENT-sibling
+error: a conclusion carried without the condition it was derived under.*
+
+**9e — `_fixtures.twin_prompts` is added to `beast.json`** (profile writes are the
+advisor's), pointing at `E12-twin-prompts.json` with its status marked REBUILDING per
+9c/9d until the executor lands the ruled form.
