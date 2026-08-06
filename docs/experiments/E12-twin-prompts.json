@@ -1,34 +1,70 @@
 {
- "_version": "E12-pair-2",
- "_supersedes": "E12-pair-1 (75b9a02), which carried the with-clause opening and one constant string on all eight stems. Both were the advisor's errors, both owned in E12 Rulings 9c/9d, and neither was ever submitted - no generation ran against v1.",
- "_authored": "2026-08-06, E12 handoff 3 Task 4.0 rebuild, BEFORE any generation. Every stem is DERIVED from profiles/beast.json's restylize_views.prompt entry by deleting whole comma-terms - never retyped. Term order is the entry's throughout, and the builder asserted that each stem is an ordered subsequence of it and that the five full-string views are byte-equal.",
- "_the_rule_and_where_its_premise_failed": "Describe what THAT camera can see and omit what it cannot (E02/E08). E04-twin-prompts.json used ONE constant string on all eight of the ship's views, and its stated reason was 'this subject has no view-specific ANATOMY words at all - all twelve fixture elements are material terms'. TRUE OF THE SHIP, FALSE HERE: six of the beast's eleven elements name head anatomy (D4 horns, D5 crown and cheek spikes, D8 eyes, D9 tongue, D10 fangs and tooth rows, D11 mouth interior). E12 Ruling 9d rules the per-view form for this subject: an element whose surface a view cannot see is dropped from that view's stem, because a term present in a view's prompt is an instruction to paint it and the text wins against the control (the W3 beard mechanism).",
- "_HOW_THE_SPLIT_WAS_VERIFIED_and_where_it_differs_from_the_rulings_default": "Ruling 9d's default was 'D8/D9/D10/D11 drop from the rear-family views; D4 horns and D5 crown spikes stay EVERYWHERE (silhouette-visible from behind)'. Verified against all eight profile-rendered clay views with the head box drawn on each (HEADBOX_8.png) plus per-view first-hit measurement (e12_view_visibility.py). ONE DEVIATION, measured: at views 3 and 5 the head is not visible AT ALL - the near wing membrane occludes the entire skull, and the little first-hit surface falling inside the head box (0.81% of figure, against 5.35-12.79% on the head-bearing views) is WING passing through that region of space - exactly the 'a box is a region of space, not a segmentation' caveat Gate 0 attached to it. So D4 and D5 drop at 3 and 5 as well. The default's rationale HOLDS at view 4, the true rear view, where the horns and the crown/cheek frill are plainly visible from behind and nothing of the mouth or eyes is. Net: the mouth family drops at {3,4,5}; the horn family drops at {3,5}. The ivory colour family is still carried at 3 and 5 by D6 (dorsal and tail spines) and D7 (claws), both verified visible on every view.",
- "_per_view_visibility_table": {
-  "0": "yaw 0   FULL FACE - open jaw, tooth rows, brow/eye recess, horns, crown+cheek frill. head-box first-hit 7.38% of figure. all 11 elements",
-  "1": "yaw 45  THREE-QUARTER HEAD - jaw open, teeth, brow, horns, frill. 9.76%. all 11 elements. THE PAIR'S VIEW 1",
-  "2": "yaw 90  PROFILE HEAD - jaw wide open, tooth rows, brow, horns. 12.79%. all 11 elements",
-  "3": "yaw 135 NO HEAD - occluded entirely by the near wing membrane. 0.81%, and that is wing. drops D4 D5 D8 D9 D10 D11",
-  "4": "yaw 180 BACK OF SKULL - horns and crown/cheek frill from behind; no mouth, no eyes, no teeth. 5.35%. drops D8 D9 D10 D11",
-  "5": "yaw 225 NO HEAD - occluded entirely by the near wing membrane. 0.81%, and that is wing. drops D4 D5 D8 D9 D10 D11. THE PAIR'S VIEW 5",
-  "6": "yaw 270 PROFILE HEAD - jaw wide open, tooth rows, brow, horns. 12.79%. all 11 elements",
-  "7": "yaw 315 THREE-QUARTER HEAD from behind-side - jaw open with teeth, brow, horns, frill. 9.78%. all 11 elements",
-  "_D1_D2_D3_D6_D7": "verified visible on ALL EIGHT views by eye on the full-frame renders - hide, ventral plates, membranes, dorsal/tail spines and claws. Never dropped.",
-  "_the_mirror_fact_does_NOT_transfer_to_this_table": "Ruling 9b: opposed cameras share a silhouette. They do NOT share visibility - views 3 and 7 are a mirror pair and view 7 shows the whole head while view 3 shows none of it, because occlusion order differs. Measured 0.81% against 9.78%."
+ "_version": "E12-pair-3",
+ "_built_by": "tools/diagnostics/e12_make_twin_prompts.py",
+ "_derived_from": "beast.json tools['restylize_views.py'].prompt - stems are that string with whole comma-terms DELETED, never retyped. Term order is the entry's throughout.",
+ "_entry_verbatim": "a winged dragon, deep moss-green scaled hide, pale bone-tan ventral plates, storm-grey wing membranes, bone-ivory curved horns, bone-ivory crown and cheek spikes, bone-ivory dorsal and tail spines, bone-ivory claws, ember-orange eyes, a dark wine-red tongue, pale ivory fangs and tooth rows, a dark slate mouth interior, plain lavender-grey background, ultra-realistic, menacing, sharp scale relief, harsh directional light",
+ "_entry_terms": 17,
+ "_the_rule": "E12 Ruling 9d: an element whose surface a view cannot see is dropped from that view's stem - a term present in a view's prompt is an instruction to paint it, and the text wins against the control (the W3 beard mechanism, measured). Split deviation measured and ruled at E12 Ruling 10i.",
+ "_drop_map": {
+  "a dark slate mouth interior": [
+   "3",
+   "4",
+   "5"
+  ],
+  "a dark wine-red tongue": [
+   "3",
+   "4",
+   "5"
+  ],
+  "bone-ivory crown and cheek spikes": [
+   "3",
+   "5"
+  ],
+  "bone-ivory curved horns": [
+   "3",
+   "5"
+  ],
+  "ember-orange eyes": [
+   "3",
+   "4",
+   "5"
+  ],
+  "pale ivory fangs and tooth rows": [
+   "3",
+   "4",
+   "5"
+  ]
  },
- "_FINDING_the_free_standing_fang_shells_are_INTERIOR_geometry": "Measured this session, and it refines what D10 and S-filament say. The designated mesh's eight satellite shells (raw glb: 180/106/44/32/22/4/4/4 faces = 396, reproducing Gate 0's census exactly) are NOT free-standing surface: fired inward from just outside each shell along 26 directions, every direction on 7 of the 8 shells hits the MAIN shell first - only one 4-face fragment is reachable, from a single direction. Along the view-2 camera ray the crossing order through the largest fang is main -> FANG -> FANG -> main. Consistent with that, the satellites are 0 first-hit pixels on ALL EIGHT eye-level cameras. Confirmed on the raw glb as well as prep_uv.glb, so it is not a prep artifact. CONSEQUENCE, flagged not ruled: D10's VISIBLE geometry is the main-shell tooth rows, plainly visible at views 0/1/2/6/7 - the element lands, but DRAGON-IDENTITY's 'the free-standing fang shells are geometry; this element colours them' attributes it to shells no camera can reach. And S-filament's pre-registered 'losing a fang matters and goes to a ruling' would halt on geometry with no visible consequence at any gate, while cull_unseen would remove it by construction. The advisor's to re-read.",
- "_backdrop": "'plain lavender-grey background' - RULED, E12 Ruling 8a. Carried in every stem including the reduced ones; it is not an element of the subject and no view lacks a background.",
- "_style_tail": "'visible brushstrokes, painterly worked surface' - the STYLE-SUPPLIED row of canon/DRAGON-IDENTITY.md, byte-identical to the galleon pair's, in every stem.",
- "_stems_are_pinned_by_the_profile": "beast.json pins --tag 'dragonclay' on turn_render and silhouette_masks, so render filenames - and therefore restylize_views' PROMPTS keys - are 'dragonclay_N' by construction.",
- "dragonclay_0": "a winged dragon, deep moss-green scaled hide, pale bone-tan ventral plates, storm-grey wing membranes, bone-ivory curved horns, bone-ivory crown and cheek spikes, bone-ivory dorsal and tail spines, bone-ivory claws, ember-orange eyes, a dark wine-red tongue, pale ivory fangs and tooth rows, a dark slate mouth interior, plain lavender-grey background, visible brushstrokes, painterly worked surface",
- "dragonclay_1": "a winged dragon, deep moss-green scaled hide, pale bone-tan ventral plates, storm-grey wing membranes, bone-ivory curved horns, bone-ivory crown and cheek spikes, bone-ivory dorsal and tail spines, bone-ivory claws, ember-orange eyes, a dark wine-red tongue, pale ivory fangs and tooth rows, a dark slate mouth interior, plain lavender-grey background, visible brushstrokes, painterly worked surface",
- "dragonclay_2": "a winged dragon, deep moss-green scaled hide, pale bone-tan ventral plates, storm-grey wing membranes, bone-ivory curved horns, bone-ivory crown and cheek spikes, bone-ivory dorsal and tail spines, bone-ivory claws, ember-orange eyes, a dark wine-red tongue, pale ivory fangs and tooth rows, a dark slate mouth interior, plain lavender-grey background, visible brushstrokes, painterly worked surface",
- "dragonclay_3": "a winged dragon, deep moss-green scaled hide, pale bone-tan ventral plates, storm-grey wing membranes, bone-ivory dorsal and tail spines, bone-ivory claws, plain lavender-grey background, visible brushstrokes, painterly worked surface",
- "dragonclay_4": "a winged dragon, deep moss-green scaled hide, pale bone-tan ventral plates, storm-grey wing membranes, bone-ivory curved horns, bone-ivory crown and cheek spikes, bone-ivory dorsal and tail spines, bone-ivory claws, plain lavender-grey background, visible brushstrokes, painterly worked surface",
- "dragonclay_5": "a winged dragon, deep moss-green scaled hide, pale bone-tan ventral plates, storm-grey wing membranes, bone-ivory dorsal and tail spines, bone-ivory claws, plain lavender-grey background, visible brushstrokes, painterly worked surface",
- "dragonclay_6": "a winged dragon, deep moss-green scaled hide, pale bone-tan ventral plates, storm-grey wing membranes, bone-ivory curved horns, bone-ivory crown and cheek spikes, bone-ivory dorsal and tail spines, bone-ivory claws, ember-orange eyes, a dark wine-red tongue, pale ivory fangs and tooth rows, a dark slate mouth interior, plain lavender-grey background, visible brushstrokes, painterly worked surface",
- "dragonclay_7": "a winged dragon, deep moss-green scaled hide, pale bone-tan ventral plates, storm-grey wing membranes, bone-ivory curved horns, bone-ivory crown and cheek spikes, bone-ivory dorsal and tail spines, bone-ivory claws, ember-orange eyes, a dark wine-red tongue, pale ivory fangs and tooth rows, a dark slate mouth interior, plain lavender-grey background, visible brushstrokes, painterly worked surface",
+ "_assertions": "Each stem asserted an ordered SUBSEQUENCE of the entry's term list; each view with no drops asserted BYTE-EQUAL to the entry. Both enforced in the builder with no skip flag; a failure writes no file.",
+ "_supersedes": "E12-pair-2 (accd9e3), which was correct in structure but carried the SALTROAD painterly style tail ('visible brushstrokes, painterly worked surface'). E12 Ruling 10b ruled the style register subject data and rewrote the beast's to ultra-realistic with NO LoRA; beast.json's protective prompt entry was corrected in the same fold, and this rebuild re-derives every stem from the corrected entry mechanically. v2 was also hand-built - its claim that 'the builder asserted' the subsequence property had no committed builder behind it; this one does.",
+ "_split_provenance": "E12 Ruling 9d default (mouth family off the rear-family views; horn family everywhere) with the MEASURED deviation ruled at E12 Ruling 10i: views 3 and 5 hide the whole head behind the near wing membrane, so the horn family drops there too. Verified in the prior session against all eight profile-rendered clay views with the head box drawn (HEADBOX_8.png) plus per-view first-hit measurement (e12_view_visibility.py): head-box first-hit is 0.81% of figure at views 3 and 5 - and that is WING passing through the box's region of space - against 5.35-12.79% on the head-bearing views. Net: mouth family off {3,4,5}, horn family off {3,5}. The ivory colour family is still carried at 3 and 5 by D6 dorsal/tail spines and D7 claws.",
+ "_style_tail": "ultra-realistic, menacing, sharp scale relief, harsh directional light - the STYLE-SUPPLIED row of canon/DRAGON-IDENTITY.md as rewritten by E12 Ruling 10b. NO LoRA: lora-w 0.0 is not a weight of zero on a loaded card, it is no card, and the graph is built without the loader node.",
+ "_backdrop": "plain lavender-grey background - RULED, E12 Ruling 8a. Carried in every stem including the reduced ones; it is not an element of the subject and no view lacks a background.",
+ "dragonclay_0": "a winged dragon, deep moss-green scaled hide, pale bone-tan ventral plates, storm-grey wing membranes, bone-ivory curved horns, bone-ivory crown and cheek spikes, bone-ivory dorsal and tail spines, bone-ivory claws, ember-orange eyes, a dark wine-red tongue, pale ivory fangs and tooth rows, a dark slate mouth interior, plain lavender-grey background, ultra-realistic, menacing, sharp scale relief, harsh directional light",
+ "dragonclay_1": "a winged dragon, deep moss-green scaled hide, pale bone-tan ventral plates, storm-grey wing membranes, bone-ivory curved horns, bone-ivory crown and cheek spikes, bone-ivory dorsal and tail spines, bone-ivory claws, ember-orange eyes, a dark wine-red tongue, pale ivory fangs and tooth rows, a dark slate mouth interior, plain lavender-grey background, ultra-realistic, menacing, sharp scale relief, harsh directional light",
+ "dragonclay_2": "a winged dragon, deep moss-green scaled hide, pale bone-tan ventral plates, storm-grey wing membranes, bone-ivory curved horns, bone-ivory crown and cheek spikes, bone-ivory dorsal and tail spines, bone-ivory claws, ember-orange eyes, a dark wine-red tongue, pale ivory fangs and tooth rows, a dark slate mouth interior, plain lavender-grey background, ultra-realistic, menacing, sharp scale relief, harsh directional light",
+ "dragonclay_3": "a winged dragon, deep moss-green scaled hide, pale bone-tan ventral plates, storm-grey wing membranes, bone-ivory dorsal and tail spines, bone-ivory claws, plain lavender-grey background, ultra-realistic, menacing, sharp scale relief, harsh directional light",
+ "dragonclay_4": "a winged dragon, deep moss-green scaled hide, pale bone-tan ventral plates, storm-grey wing membranes, bone-ivory curved horns, bone-ivory crown and cheek spikes, bone-ivory dorsal and tail spines, bone-ivory claws, plain lavender-grey background, ultra-realistic, menacing, sharp scale relief, harsh directional light",
+ "dragonclay_5": "a winged dragon, deep moss-green scaled hide, pale bone-tan ventral plates, storm-grey wing membranes, bone-ivory dorsal and tail spines, bone-ivory claws, plain lavender-grey background, ultra-realistic, menacing, sharp scale relief, harsh directional light",
+ "dragonclay_6": "a winged dragon, deep moss-green scaled hide, pale bone-tan ventral plates, storm-grey wing membranes, bone-ivory curved horns, bone-ivory crown and cheek spikes, bone-ivory dorsal and tail spines, bone-ivory claws, ember-orange eyes, a dark wine-red tongue, pale ivory fangs and tooth rows, a dark slate mouth interior, plain lavender-grey background, ultra-realistic, menacing, sharp scale relief, harsh directional light",
+ "dragonclay_7": "a winged dragon, deep moss-green scaled hide, pale bone-tan ventral plates, storm-grey wing membranes, bone-ivory curved horns, bone-ivory crown and cheek spikes, bone-ivory dorsal and tail spines, bone-ivory claws, ember-orange eyes, a dark wine-red tongue, pale ivory fangs and tooth rows, a dark slate mouth interior, plain lavender-grey background, ultra-realistic, menacing, sharp scale relief, harsh directional light",
+ "_per_view_term_count": {
+  "0": 17,
+  "1": 17,
+  "2": 17,
+  "3": 11,
+  "4": 13,
+  "5": 11,
+  "6": 17,
+  "7": 17
+ },
+ "_full_string_views": [
+  "0",
+  "1",
+  "2",
+  "6",
+  "7"
+ ],
  "_negative": "watermark, text, logo, blurry, photo, deformed",
- "_negative_provenance": "beast.json restylize_views.negative, transcribed. An authored negative would be a second variable in the run that introduces the first (E10's layer-prompts correction, made in place before its first submission).",
- "_recipe": "beast.json restylize_views block, FIRST-RUN OPERATING POINTS: seed 770700 - steps 20 - cfg 2.5 - denoise 0.92 - ControlNet strength 0.9 - shift 3.1 - euler/simple - LoRA at 0.75. _still_suspended.generation_recipe_anchor converts these to SPENT with the pair as provenance once it is ruled."
+ "_negative_provenance": "beast.json tools['restylize_views.py'].negative, transcribed. An authored negative would be a second variable in the run that introduces the first."
 }

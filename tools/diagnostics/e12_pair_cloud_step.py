@@ -89,6 +89,18 @@ if args.key not in P:
 pos, neg = P[args.key], P["_negative"]
 seed = pv("seed") if args.seed is None else args.seed
 
+# ⚠ NO-LORA IS THE ABSENCE OF A NODE, NOT A WEIGHT OF ZERO (E12 Ruling 10b).
+# The Director's directive — "none at all is better than making the same texture for
+# everything" — is a decision about which model paints the subject, and `strength_model: 0.0`
+# on a loaded card does not express it: the card is still fetched, still merged, and any
+# future reader of the saved workflow sees a styled graph. `lora-w: 0.0` in the profile is the
+# mechanical expression of NONE, so this builder reads it and omits the loader entirely;
+# ModelSamplingAuraFlow then takes the UNET directly. The pre-flight below INVERTS for this
+# case and asserts no LoRA node is present, because the failure mode of a no-LoRA run is a
+# LoRA node surviving in the graph — gate the failure, not the success.
+LORA_W = pv("lora-w")
+USE_LORA = float(LORA_W) != 0.0
+
 graph = {
     "1": {"class_type": "UNETLoader", "inputs": {
         "unet_name": "qwen_image_fp8_e4m3fn.safetensors", "weight_dtype": "default"}},
@@ -98,9 +110,8 @@ graph = {
     "3": {"class_type": "VAELoader", "inputs": {"vae_name": "qwen_image_vae.safetensors"}},
     "4": {"class_type": "ControlNetLoader", "inputs": {
         "control_net_name": "Qwen-Image-InstantX-ControlNet-Union.safetensors"}},
-    "5": {"class_type": "LoraLoaderModelOnly", "inputs": {
-        "model": ["1", 0], "lora_name": CLOUD_LORA, "strength_model": pv("lora-w")}},
-    "6": {"class_type": "ModelSamplingAuraFlow", "inputs": {"model": ["5", 0], "shift": 3.1}},
+    "6": {"class_type": "ModelSamplingAuraFlow", "inputs": {
+        "model": ["5" if USE_LORA else "1", 0], "shift": 3.1}},
     "7": {"class_type": "CLIPTextEncode", "inputs": {"clip": ["2", 0], "text": pos}},
     "8": {"class_type": "CLIPTextEncode", "inputs": {"clip": ["2", 0], "text": neg}},
     # the latent comes from the UNTOUCHED render, so the composite bg never ships
@@ -120,10 +131,14 @@ graph = {
         "images": ["14", 0], "filename_prefix": args.prefix or ("dragon_target_" + args.key)}},
 }
 
+if USE_LORA:
+    graph["5"] = {"class_type": "LoraLoaderModelOnly", "inputs": {
+        "model": ["1", 0], "lora_name": CLOUD_LORA, "strength_model": LORA_W}}
+
 bad = []
 
 # (a) the six recipe values, by value against the decided block
-entering = {"lora-w": graph["5"]["inputs"]["strength_model"],
+entering = {"lora-w": (graph["5"]["inputs"]["strength_model"] if USE_LORA else 0.0),
             "cn-strength": graph["11"]["inputs"]["strength"],
             "steps": graph["13"]["inputs"]["steps"], "cfg": graph["13"]["inputs"]["cfg"],
             "denoise": graph["13"]["inputs"]["denoise"], "seed": graph["13"]["inputs"]["seed"]}
@@ -156,6 +171,24 @@ if graph["7"]["inputs"]["text"] != P.get(args.key):
     bad.append("the positive in the graph is not the fixture's string for " + args.key)
 if graph["8"]["inputs"]["text"] != P.get("_negative"):
     bad.append("the negative in the graph is not the fixture's _negative")
+
+# (b2) THE NO-LORA ASSERTION, written against the failure mode rather than the success mode.
+# A no-LoRA run fails by a LoRA node surviving in the graph — at any strength, under any
+# class name — so the check scans every node for the class family and for the recorded card
+# name anywhere in the inputs, rather than checking that node "5" is absent (which a renamed
+# node would walk straight past).
+if not USE_LORA:
+    for nid, node in graph.items():
+        if "lora" in node["class_type"].lower():
+            bad.append("NO-LORA VIOLATION: node %s is %s but the profile decides lora-w %r, "
+                       "which is NONE and not a weight (E12 Ruling 10b)"
+                       % (nid, node["class_type"], LORA_W))
+        for pin, val in node["inputs"].items():
+            if isinstance(val, str) and ("lora" in val.lower() or CLOUD_LORA in val):
+                bad.append("NO-LORA VIOLATION: node %s pin %r carries %r" % (nid, pin, val))
+else:
+    if not any("lora" in n["class_type"].lower() for n in graph.values()):
+        bad.append("lora-w is %r but no LoRA node is present in the graph" % LORA_W)
 
 # (c) LINK TOPOLOGY — the check a dry_run PASS was measured NOT to perform (E04 Arm G7)
 for nid, node in graph.items():
@@ -209,7 +242,9 @@ print("[graph] wrote %s" % args.out)
 print("[graph]   key %s  seed %s  steps %s  cfg %s  denoise %s  lora_w %s  cn %s"
       % (args.key, seed, pv("steps"), pv("cfg"), pv("denoise"), pv("lora-w"),
          pv("cn-strength")))
-print("[graph]   lora %s" % CLOUD_LORA)
+print("[graph]   lora %s" % (CLOUD_LORA if USE_LORA else
+                             "NONE - no loader node in the graph (E12 Ruling 10b); "
+                             "ModelSamplingAuraFlow reads the UNET directly"))
 print("[graph]   render=%s  control=%s" % (args.render_name, args.control_name))
 print("[graph]   prompt %d chars, %d terms" % (len(pos), len(pos.split(","))))
 sys.exit(0)
