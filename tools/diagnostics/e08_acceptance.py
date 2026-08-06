@@ -66,7 +66,7 @@ ap.add_argument("--trust-intersect", action="store_true",
                      "intersected with the UNDILATED sidecar silhouette before the "
                      "distance transform and before fig_w. The size-5 maximum_filter "
                      "below stays where it is — it is mask_ok's sampling tolerance, a "
-                     "different question. ⚠ With this on, --expect-styled cannot apply: "
+                     "different question. WARNING: With this on, --expect-styled cannot apply: "
                      "the anchor pins the HISTORICAL acceptance, and this deliberately "
                      "changes it. The assert is scoped to the flag being off rather "
                      "than re-derived, since re-deriving an anchor while looking at the "

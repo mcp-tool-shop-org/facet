@@ -50,7 +50,7 @@ ap.add_argument("--bg-de", type=float, default=10.0,
 ap.add_argument("--max-pct", type=float, default=2.0,
                 help="ANDON: the shipped --bg-max-pct from project_twins, declared and "
                      "reasoned in that source BEFORE this run — A2's ratified relaxation "
-                     "measured 0.18% against 0.32% for the already-trusted set, so 2% is "
+                     "measured 0.18%% against 0.32%% for the already-trusted set, so 2%% is "
                      "an order of magnitude above work already accepted. Not a number "
                      "chosen here.")
 ap.add_argument("--out-json")

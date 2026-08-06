@@ -59,7 +59,7 @@ ap.add_argument("--fit-axis", default="height", choices=["height", "width"],
                      "(v_ext = bbox_z * margin). width = fit the widest horizontal extent, "
                      "for subjects wider than tall. silhouette_masks.py takes the SAME flag "
                      "and must be given the same value, or the mask and the render "
-                     "disagree — measured at 4.68% on the galleon's landscape frame.")
+                     "disagree — measured at 4.68%% on the galleon's landscape frame.")
 ap.add_argument("--margin", type=float, default=1.204,
                 help="framing margin on the fitted axis. 1.204 is the character line's, "
                      "measured against the renders it had to line up with.")

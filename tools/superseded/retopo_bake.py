@@ -60,7 +60,7 @@ ap.add_argument("--repair", choices=["loose", "voxel", "none"], default="loose",
                 help="loose (default): remove debris shells only, keep the original "
                      "surface — decimation does not need manifold input (measured: the "
                      "08-01 decim files ran fine on the 900-shell soup; only QUADRIFLOW "
-                     "needs the manifold). voxel: full voxel-remesh rebuild — ⚠ measured "
+                     "needs the manifold). voxel: full voxel-remesh rebuild — WARNING: measured "
                      "2026-08-03 to stair-step the whole surface at reachable voxel "
                      "sizes; the head protection then preserves voxel junk. Use only "
                      "for a future quad pass, at a much finer --voxel-frac.")

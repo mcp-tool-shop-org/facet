@@ -86,8 +86,8 @@ ap.add_argument("--bg-max-pct", type=float, default=2.0,
                 help="ANDON: halt if more than this share of the texels a relaxed "
                      "erosion NEWLY admits sit within --bg-de of the twin's "
                      "background. Chosen, and stated so it can be ruled on: A2's "
-                     "ratified relaxation measured 0.18% against 0.32% for the "
-                     "already-trusted set, so 2% is an order of magnitude above work "
+                     "ratified relaxation measured 0.18%% against 0.32%% for the "
+                     "already-trusted set, so 2%% is an order of magnitude above work "
                      "already accepted, while E01's contamination (a third of a "
                      "region keyed as figure) would exceed it outright.")
 ap.add_argument("--edge-min-struct", type=int, default=50,
@@ -102,15 +102,15 @@ ap.add_argument("--key-corner-median", action="store_true",
 ap.add_argument("--bbox-tol", type=float, default=0.25,
                 help="ANDON: halt if the keyed twin figure's bbox exceeds the mesh "
                      "silhouette's by more than this in either dimension. Free, and it "
-                     "tests the failure mode — a broken key overshot by 93% while every "
-                     "correct twin measured within 1%.")
+                     "tests the failure mode — a broken key overshot by 93%% while every "
+                     "correct twin measured within 1%%.")
 ap.add_argument("--trust-intersect", action=argparse.BooleanOptionalAction, default=True,
                 help="ADOPTED AS THE ROUTE DEFAULT, E08 Amendment 27. "
                      "--no-trust-intersect restores the pre-adoption operand and is "
                      "required, alongside the other legacy flags, to reproduce any arm "
                      "before Amendment 27. Measured cost of adoption on the two-camera "
-                     "pair: -7,574 styled texels (1,050,368 -> 1,042,794), 43.7% -> "
-                     "43.4% of valid, 83.0% -> 82.4% of reachable, ZERO gains, ZERO "
+                     "pair: -7,574 styled texels (1,050,368 -> 1,042,794), 43.7%% -> "
+                     "43.4%% of valid, 83.0%% -> 82.4%% of reachable, ZERO gains, ZERO "
                      "losses in the two thinnest half-width strata, every loss within "
                      "5px of paint that sat on no surface. "
                      "E08 Amendment 26: restrict the TRUST mask to surface that "
@@ -119,9 +119,9 @@ ap.add_argument("--trust-intersect", action=argparse.BooleanOptionalAction, defa
                      "so asking whether it is trustworthy is a category error, and "
                      "letting it set the boundary of the distance field corrupts the "
                      "answer for texels that DO exist. Measured on the re-rolled "
-                     "twin_6, whose cast shadow is CONNECTED to the figure: 27.49% of "
+                     "twin_6, whose cast shadow is CONNECTED to the figure: 27.49%% of "
                      "the figure's texels get an edge distance changed by >0.5px, "
-                     "21.24% by >2px, max 36.22px. ⚠ Under --mask-keyed, mesh_fm is the "
+                     "21.24%% by >2px, max 36.22px. WARNING: Under --mask-keyed, mesh_fm is the "
                      "size-5 DILATED sidecar, not the exact silhouette, so combining "
                      "the two flags is NOT the exact-silhouette intersection.")
 ap.add_argument("--reg-iou-min", type=float, default=0.80,
@@ -138,7 +138,7 @@ ap.add_argument("--reg-iou-min", type=float, default=0.80,
                      "different man measured 0.9040 against 0.9088, which stays the "
                      "prompt's job. This REPLACES the bbox assert, which tested extent "
                      "against the figure's own width and so fired on the narrowest view "
-                     "while passing the two dirtiest. ⚠ Evaluated only where the exact "
+                     "while passing the two dirtiest. WARNING: Evaluated only where the exact "
                      "silhouette exists, i.e. NOT under --mask-keyed, where mesh_fm is "
                      "the dilated sidecar (which measures 0.6735 / 0.7001 and would "
                      "halt a legacy reproduction on the wrong operand).")

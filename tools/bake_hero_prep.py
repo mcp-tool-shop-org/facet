@@ -42,7 +42,7 @@ ap.add_argument("--crop-res", type=int, default=1024,
                 help="resolution the crop rect is expressed in")
 ap.add_argument("--angle-limit", type=float, default=1.15,
                 help="smart_project split angle in radians. Raising it to 1.5 was "
-                     "MEASURED to move island count by 0.8% and change nothing: "
+                     "MEASURED to move island count by 0.8%% and change nothing: "
                      "smart_project splits on UV DISTORTION as well as angle, and "
                      "decimation's long thin triangles distort whatever the "
                      "threshold. Kept as a flag; do not expect it to merge islands.")
