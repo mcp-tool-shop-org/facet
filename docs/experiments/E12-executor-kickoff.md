@@ -1168,6 +1168,118 @@ the report, halt with everything staged.
 
 ---
 
+## Session handoff 10 (2026-08-06) — the split term: v7 stems, regenerate view 4 only. Comprehensive.
+
+Serves the holding handoff-9 session (git pull first) or a fresh one — it
+assumes nothing not written here or in the reading list.
+
+### Where this stands
+
+Handoff 9 landed the wing-skeleton term in full on view 0 (−66.4%, every strut
+green — that twin STANDS) and half on view 4: the arms went green, the finger
+struts stayed cream (−29.3%) on the view that presents the wings as the
+archetypal bat skeleton. Ruling 18c read the split — the compound phrase's
+head noun bound, its second conjunct under-bound — and RULED the fix: the
+term splits into **`moss-green wing arms` + `moss-green wing finger struts`**,
+each its own noun phrase, every view. The Director ruled the crown question
+(18g: D5 stays ivory, judged at Gate 1 on the asset), so this dispatch's
+scope is the split term alone. **View 4 is the only regeneration.**
+
+### You are the executor
+
+```
+cd E:\AI\facet && git pull
+CLAUDE.md                                  <- how to work here. Read first, follow exactly.
+docs/experiments/E12-ruling.md             <- Rulings 17-18. 18c is this dispatch; 18g bounds it.
+profiles/beast.json                        <- the split-term entry; twin_prompts: REBUILD TO v7
+docs/experiments/E12-twin-prompts.json     <- v6 on disk; you rebuild v7
+docs/experiments/E12-handoff9-report.md    <- the v6 baselines every v7 number reads against
+E:\AI\training\facet_next\E12_twins\       <- masks, controls, twins; view 4's inputs REUSED as-is
+```
+
+Your rules (CLAUDE.md §executor): never judge whether output is good ·
+predictions blind before looking, blind status disclosed · stop at every
+gate · no memory-store writes · a negative result is a full success.
+
+### Environment, standing
+
+Watchdog verified before any local leg, report either way. Full cloud
+discipline (saved workflow · topology guard · no-LoRA pre-flight · `dry_run`
++ `estimate_credits` · content-hash uploads · sidecar at birth). ASCII
+prints · outputs suffixed `_v7` in the twins tree · explicit git paths ·
+touch nothing under E10/E11, either accepted asset, or 00001/00002.
+
+### Blind predictions, before anything runs
+
+Hashed, blind status disclosed, covering at minimum: do the struts land
+green under their own noun phrase on view 4 · does anything regress on the
+view (score every element — a changed prompt re-rolls every landing) · the
+gate + achromatic readings vs the v6 baselines (state the expected
+direction: if the struts go green, the gate number should RISE a third
+time — pre-register it so the inversion is confirmation, not surprise) ·
+whether view 0-class full binding or view-4-class partial binding is the
+outcome (the two prior points bound the prediction).
+
+### Task 1 — rebuild the prompts to v7
+
+The committed builder against the split-term entry. ANDON: each v7
+`dragonclay` stem differs from v6 by EXACTLY the one-term-to-two-terms
+substitution (remove both new terms and what remains is byte-equal to v5's
+stem minus nothing — assert the construction, not the intention); drop map
+unchanged; `headclay_0` rebuilds with its recorded keeps/drops; version
+`E12-pair-7`; per-view term counts printed.
+
+### Task 2 — regenerate view 4 only
+
+Inputs REUSED byte-identical (content-hash names confirm free). Seed
+770700 — the term split is the only delta against the v6 run. One
+generation; its single bounded re-roll available on spec-violation grounds
+only. No other view regenerates.
+
+### Task 3 — gate, register, sheet
+
+The 16e gate + 17d achromatic channel vs the recorded baselines ·
+registration diagnostics (suspended halt, printed) · the three-way sheet
+v5 | v6 | v7 full size plus the wing crops at 3× (left wing, right wing,
+struts) and the crown at 3× (18g's judge-at-asset means the crown is
+REPORTED here, not acted on) · sidecar with full lineage. **No verdicts.**
+
+### Then HALT
+
+Stage: the v7 twin + sidecar, the three-way sheet + crops, the tables, the
+predictions scored, the v7 prompts diff. **To the advisor's eye first, then
+the Director's.** On the advisor ruling the completed set in, stage 1 is
+handoff 11 (projection against the banked 50.46% ceiling).
+
+### Do not
+
+Regenerate any view but 4 · exceed its one bounded re-roll · touch twins
+0(v6)/1/2/3B/5/6/7 · act on the crown (18g: judged at Gate 1) · arm any
+bound · edit any fixture or profile · write to the memory store · end a
+session the Director has not ended.
+
+### Standards compliance (this dispatch)
+
+| standard | score | evidence |
+|---|---|---|
+| PIN_PER_STEP | 2 | v7 versioned with an exact-substitution ANDON against v6 read from git; inputs by content-hash identity; seed pinned; predictions hashed blind first |
+| ANDON_AUTHORITY | 2 | Watchdog before local legs; both guards per submission; the stem ANDON halts any unintended delta; one bounded re-roll; halt to eyes |
+| NAMED_COMPENSATORS | 2 | One generation + at most one re-roll, estimate_credits first; the v6 view-4 twin retained and named superseded; all writes suffixed _v7 |
+| DECOMPOSE_BY_SECRETS | 3 | The split is the only changed input, asserted in code; geometry inputs byte-identical; the fix reaches the run only through the committed builder |
+| UNCERTAINTY_GATED_HUMANS | 3 | Scope bounded by the Director's own 18g sentence; both 18c branches pre-registered; regression scoring pre-committed |
+| EXTERNAL_VERIFIER | 2 | One generation against one named change, judged by eyes against baselines this run did not produce. `skip:` per precedent |
+
+### Calibration
+
+The works-perfectly test, stated for this dispatch: if the split changes
+nothing, v7 reproduces the v6 view-4 twin near-exactly at the pinned seed —
+so ANY broad change is signal, and the struts are the register to read
+first. Score the whole view; the crown is reported, not judged; a negative
+result (struts still cream) is a full success and closes the
+positive-naming lever per 18c's pre-registered branch.
+
+---
+
 ### Standards compliance (handoff 2)
 
 | standard | score | evidence |

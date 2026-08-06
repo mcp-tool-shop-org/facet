@@ -1225,3 +1225,10 @@ and judge at the asset's Gate 1 zoom, or re-canon the frill's colour — the
 latter honestly costing a regeneration of every D5-carrying view, including
 superseding the crown on the pair-identical twins 1 and 5. Handoff 10's
 scope waits on that sentence.
+
+**18g-CLOSED (Director, 2026-08-06): "Keep ivory, judge on asset."** D5's
+canon stands unchanged; the merged-lobe read is judged at Gate 1's zoom on
+the textured asset, where the head-region levers (the band machinery, the
+allocation ladder's parked rungs) remain available if his eye wants them.
+Handoff 10's scope is therefore the 18c split-term fix alone: v7 stems,
+view 4 regenerates, everything else stands.

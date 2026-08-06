@@ -137,7 +137,7 @@ exports** — every render ships with its exact silhouette so backgrounds are
 augmentation-side, and lighting would be a new renderer with its own anchors.
 
 **E12 — the beast arc — is IN FLIGHT** ([E12-ruling.md](docs/experiments/E12-ruling.md),
-Rulings 1–17 so far): the route's third subject class, a **winged dragon**, designated
+Rulings 1–18 so far): the route's third subject class, a **winged dragon**, designated
 from three reconstructed candidates on full-size sheets ("3 is the winner"). What Gate 0
 measured ([E12-gate0-report.md](docs/experiments/E12-gate0-report.md)) rewrites the
 priors: **9–12 welded shells against a character's 40–191 and the ship's 237–512** —
@@ -241,8 +241,16 @@ two wing-spread views: the wing arms were D1's surface by fixture assignment
 but **never named in the prompt** — the founding law measured in both
 directions on one view (the named wing-claws stayed charcoal while the
 unnamed bones went white). `moss-green wing arms and finger struts` now
-stands in the entry; handoff 9 regenerates views 0 and 4 under v6 stems; then
-stage 1 against the banked 50.46% ceiling, strokes, and Gate 1.
+stands in the entry; handoff 9 landed it in full on view 0 and half on view 4
+([Ruling 18](docs/experiments/E12-ruling.md)) — the compound phrase's head noun
+bound and its second conjunct under-bound where the bat-anatomy prior pushes
+hardest, so the term splits into two phrases and view 4 alone regenerates
+(handoff 10). The same fold banked a first-of-its-kind operand lesson — a wide
+measurement box that would have *manufactured* a crown regression by measuring
+the wing fix entering its corners — and the Director's crown question was
+answered geometry-first: the mesh carries a modelled spike fan, no ears; the
+paint's merged-lobe ivory is judged at Gate 1 on the asset, by his sentence.
+Then stage 1 against the banked 50.46% ceiling, strokes, and Gate 1.
 Every value the subject needs lives in
 `profiles/beast.json` and `canon/DRAGON-IDENTITY.md`, and the ones that arrived by
 inheritance are being falsified and replaced one measured step at a time — which is
