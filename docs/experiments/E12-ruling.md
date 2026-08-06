@@ -144,3 +144,58 @@ bbox-check law working at the seat that needed it.
 **Release:** with these corrections committed, the holding session proceeds — the 4b
 errand first, then handoff 2 as dispatched, Task 1 onward. Nothing else in the dispatch
 changes; the sweep's UNDECIDED expectations and the styled-pair halt stand as written.
+
+---
+
+## Ruling 5 — the errand and Task 1, ruled (2026-08-05)
+
+Evidence: the errand commit (`bae9e4f`) and the Task 1 report (`8a6197f`).
+
+**5a — the errand is accepted, and the scanner is adopted as a gate.** Two classes, not
+one: six `%` sites (the dispatch knew four; the AST consumer-grep found the fifth, and a
+sixth that *cannot crash* — `bake_hero_prep --angle-limit`'s space-flagged `%a`
+conversion printing the action's internal dict into its own help, invisible to any
+hand-search and demonstrated before fixing) and four non-cp1252 glyph sites — the
+second class a violation of the repo's own ASCII-prints rule, found only because the
+acceptance matrix ran after the first class was clean. The escaping was proven confined
+by un-escaping and diffing byte-identical to HEAD. The scanner exits 1 on any site in
+either class and stays in `tools/diagnostics/` as a gate.
+
+**5b — the superseded-tree scope call is AFFIRMED.** The `⚠` fix inside
+`tools/superseded/` stands: that tree exists so anyone can run those tools and watch
+them fail the *documented* way, and a `--help` crash defeats exactly that purpose. The
+executor's reasoning is adopted verbatim as the rule for future maintenance of the tree:
+mechanical fixes that restore a superseded tool's ability to demonstrate its documented
+failure are in scope; anything touching the failure itself is not.
+
+**5c — `brush_cloud_step --lane`: a class finding, ruled as the documented-absence
+form on all three profiles.** The flag is unreachable from any profile —
+`brush_cloud_step` calls `subject_profile.bind()` zero times — so no profile can decide
+it with a value, on the beast, the ship (where it is the only open flag, and where an
+asset shipped with it open), or the character. The in-tool guard already exists and is
+the real control: E10 Ruling 6's pre-flight maps lane→fixture explicitly and
+corroborates the declared lane against the job's state identity, no skip flag. RULED:
+express the decision as documented absence — the `texpass_iter` per-job pattern — **in
+whatever form the sweep actually recognizes** (the executor has run the instrument;
+the advisor has not), applied to all three profiles in one commit, sweep re-run on all
+three, exit codes reported. The ship's recorded "64/0 coverage" is not falsified by
+this: `--lane` was born in E10, after that pass ran — a flag postdating its sweep is
+the freshness rule's territory, not an error in the record.
+
+**5d — folded in place by this ruling:** the dispatch's `texpass_brush`-as-UNDECIDED
+expectation corrected in the kickoff (the `_NOT_CLEARED` marker is a recognized
+decision form — the run proved the lifecycle works); `beast.json`'s thin_extent note
+sharpened with the executor's observation that the tool default is **0.0** — undecided
+runs the thin guard *disabled*, which is a stronger reason than the one the advisor
+wrote for why no arm precedes the measurement.
+
+**5e — `ig2mv_licensefree.py`'s import failure** (`ModuleNotFoundError: mvadapter`,
+before argparse exists) is recorded as a standing environment gap, not dispatched: the
+tool is not on the beast route (twins are cloud restylize), and its README evidence
+line is historical fact from when its environment existed. Fix when a route needs it.
+
+**Coverage verdict read as expected:** `NOT A PURE RELOCATION — 17 mismatches` is the
+correct verdict for a subject profile that is not `character.json`; relocation is the
+character's claim alone. The hand-check of the one non-evaluable row
+(`cull_unseen production`, 26 vs 26 byte-identical, no silent narrowing) is exactly the
+right treatment of a row a static checker skips.

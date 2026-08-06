@@ -224,7 +224,11 @@ subject facts, not defects to fix.
 `profiles/beast.json`. Report the UNDECIDED set — expected members: `texpass_iter`'s
 absent `thin-extent` (deliberate — it lands in Task 2), the `texpass_brush` block behind
 its `_NOT_CLEARED` marker (lifecycle, stays), and whatever the sweep finds that the
-advisor's draft missed, which is the sweep doing its job. **0 UNDECIDED gates ARMS, not
+advisor's draft missed, which is the sweep doing its job. *(⚠ Corrected by the run,
+2026-08-05 — E12 Ruling 5: `_NOT_CLEARED` is one of Ruling 22's recognized decision
+forms, so `texpass_brush`'s seven keys count DECIDED and never appear — the marker
+working, the dispatch's expectation wrong. The run's actual second member was
+`brush_cloud_step --lane`, unreachable from any profile.)* **0 UNDECIDED gates ARMS, not
 this dispatch** — your exit condition is the report, with every member dispositioned
 (lands-in-this-dispatch / lifecycle-blocked / finding-for-the-ruling).
 
