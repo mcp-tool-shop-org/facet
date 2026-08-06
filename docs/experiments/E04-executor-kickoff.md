@@ -376,3 +376,41 @@ docs/experiments/E10-step0-2-halt.md        <- the three-frames trap; do not re-
 boot-top coverage (demoted to optional pending his word) · touch the E04 line · end a
 session the Director has not ended. Watchdog check standing if anything local wants the
 GPU (this task should not).
+
+---
+
+## Session handoff 5 (2026-08-05) — the pos.npy MEASUREMENT, then E11's Step 0. Both read-only against accepted assets.
+
+E10 is CLOSED (Ruling 12 — "that looks about right," ruled against a real galleon).
+A fresh executor session starts here:
+
+```
+cd E:\AI\facet && git pull
+CLAUDE.md                                        <- how to work here
+docs/experiments/E10-ruling.md                   <- Ruling 4 (Task 1's dispatch) and Ruling 12 (the close)
+docs/experiments/E11-dense-turnaround-export.md  <- THE SPEC for Task 2
+docs/experiments/E10-step0-2-halt.md             <- the three-frames trap and the off-surface finding
+profiles/ship.json                               <- waterline, frames, everything decided
+```
+
+**Task 1 — the `pos.npy` off-surface consumer measurement (E10 Ruling 4's queued
+dispatch).** 2.5065% of the bake's uv-valid texels carry positions not on the mesh;
+five consumers inherit the unmeasured property. Read-only, one question per consumer:
+**does excluding the off-surface 2.5% move your headline number?** Priority by blast
+radius: `e08_ceiling` / `e08_acceptance` (the quoted figures) → `texpass_finalize`
+(56.24% of the accepted atlas) → `project_twins` / `commit`. Pre-registered readings:
+a number moves → report the delta, halt for the correction-in-place ruling; nothing
+moves → one paragraph in the record and silence thereafter. **No accepted number is
+presumed wrong; no route tool is edited.** Predictions blind before each consumer runs.
+
+**Task 2 — E11 Step 0 and Arm X1** per the spec: the one-view anchor first (beam,
+every channel against the recorded artifacts, HALT on any digit), then the galleon's
+full-superset export, then X2 (W3, owner honestly absent) and X3 (enumerate only).
+The lane's validator is the external gate; suspension translates at the boundary per
+Ruling 29; frames carry their names per the E10 traps.
+
+**Standing:** watchdog before any GPU render leg, report either way · no generation
+anywhere in this handoff · base assets never opened for writing · ASCII prints ·
+predictions hashed blind where anything is measurable · nothing reaches any eye
+unviewed by the seat that sends it · a negative result is a full success · do not end
+a session the Director has not ended.
