@@ -49,10 +49,17 @@ ap = argparse.ArgumentParser()
 ap.add_argument("--image", action="append", required=True, help="LABEL=PATH, repeatable")
 ap.add_argument("--mask", required=True, help="geometry silhouette for this view (L, >127 = on)")
 ap.add_argument("--region", action="append", required=True, help="x0,y0,x1,y1:name, repeatable")
-ap.add_argument("--family", default="pale", choices=["pale", "redpink"])
+ap.add_argument("--family", default="pale", choices=["pale", "redpink", "charcoal"])
 ap.add_argument("--l-min", type=float, default=62.0, help="pale: L* floor")
 ap.add_argument("--c-max", type=float, default=20.0, help="pale: C* ceiling")
 ap.add_argument("--c-min", type=float, default=12.0, help="redpink: C* floor")
+# CHARCOAL, added at handoff 11 for the mirror image of the defect Ruling 12e fixed. There, a
+# five-term pale-bone family painted skeleton down a green-declared body. Here the palette
+# correction put THREE charcoal terms in the string (neck spines, dorsal/tail spines, claws)
+# and the eye caught green-declared limbs arriving charcoal. Same instrument, other end of L*:
+# keyed on L* and C* JOINTLY with no hue quoted, because below a chroma floor hue is undefined.
+ap.add_argument("--l-max", type=float, default=38.0, help="charcoal: L* ceiling")
+ap.add_argument("--charcoal-c-max", type=float, default=15.0, help="charcoal: C* ceiling")
 ap.add_argument("--no-mask", action="store_true",
                 help="measure the raw box with NO silhouette restriction. Printed loudly, "
                      "because on this subject the backdrop sits inside the pale band.")
@@ -76,6 +83,11 @@ if args.family == "pale":
     print("[family] PALE-BONE: L* >= %.1f AND C* <= %.1f. Hue is NOT quoted - below a chroma "
           "floor hue is undefined, and this family is defined by low chroma." % (args.l_min,
                                                                                 args.c_max))
+elif args.family == "charcoal":
+    print("[family] CHARCOAL: L* <= %.1f AND C* <= %.1f. Hue is NOT quoted - same reason as "
+          "pale, at the other end of L*. Mirror of the Ruling 12e defect: there five pale-bone "
+          "terms painted skeleton onto green; the string now carries THREE charcoal terms."
+          % (args.l_max, args.charcoal_c_max))
 else:
     print("[family] RED/PINK: C* >= %.1f AND hue in [340,360) U [0,30) deg. Criterion "
           "transcribed from the handoff-5 report so the recurrence test runs the identical "
@@ -83,6 +95,8 @@ else:
 
 out = {"_family": args.family, "_mask": args.mask, "_masked": not args.no_mask,
        "_bands": ({"L_min": args.l_min, "C_max": args.c_max} if args.family == "pale"
+                  else {"L_max": args.l_max, "C_max": args.charcoal_c_max}
+                  if args.family == "charcoal"
                   else {"C_min": args.c_min, "hue_deg": "[340,360) U [0,30)"}),
        "_this_is_a_diagnostic_not_a_gate": "E12 Ruling 10d. No threshold here is a pass "
                                            "condition; the eye rules the E07 class.",
@@ -98,6 +112,8 @@ for label, path in IMAGES:
     C = np.hypot(A, B)
     if args.family == "pale":
         fam = (L >= args.l_min) & (C <= args.c_max)
+    elif args.family == "charcoal":
+        fam = (L <= args.l_max) & (C <= args.charcoal_c_max)
     else:
         h = np.degrees(np.arctan2(B, A)) % 360.0
         fam = (C >= args.c_min) & ((h >= 340.0) | (h < 30.0))
