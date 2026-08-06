@@ -137,10 +137,20 @@ values live in its own profile and fixture, never inherited unmeasured.
   collapse recurs; third subject, third time. **D8 CLOSED**: 193 px slit-pupil
   ember iris, one blob, in the head box, on an accepted artifact; the
   bust-companion contradiction stays parked with the allocation ladder.
-  Dispositions: D5/D7 canon unchanged, deviations recorded. Next: **twins**
-  (handoff 8 — the gate validates on the pair before gating anything) →
-  stage 1 vs the 50.46% ceiling → sweep gate → strokes → **Gate 1 at his
-  zoom**.
+  Dispositions: D5/D7 canon unchanged, deviations recorded.
+- **The gate's pair-validation halted itself before gating anything**
+  ([Ruling 16](../experiments/E12-ruling.md)): the pre-registered third branch
+  fired on **S-occlusion realised** — the fixture's seam stressor as cool
+  marginal-chroma crevice shadow (7,293 px, 121 fragments, largest 1,342;
+  hue ~234 at C\* 14.4, 87° from any band). Ruled: floor stays 12.0 (the
+  floor-14 trade deletes 6.6% of in-band mass), no band widens, no element is
+  added for a seam; the per-pixel gate and the cluster table are **different
+  instruments** (first measured disagreement — a 3,927 px cluster floor cannot
+  see a diffuse 121-component population). The gate runs **report-structured
+  with null bounds** — the galleon's own published configuration — and the
+  halt trigger is the E07-class signature (one coherent garment-scale
+  component) at the advisor's eye. Twins: handoff 8 continues → stage 1 vs
+  the 50.46% ceiling → sweep gate → strokes → **Gate 1 at his zoom**.
 
 ## The calibration table this page exists for
 

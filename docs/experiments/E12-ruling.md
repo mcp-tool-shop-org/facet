@@ -965,3 +965,90 @@ with the halt suspended at 0.0, one bounded re-roll per failing view under the
 palette-gate precedent. The recipe-anchor conversion promised at Ruling 14
 lands in `beast.json` this fold: the accepted pair is the subject's generation
 anchor and the restylize keys read SPENT with the pair as provenance.
+
+---
+
+## Ruling 16 — the gate's pair-validation halt ruled: S-occlusion is the third population, the gate runs report-structured with null bounds, handoff 8 continues (2026-08-06)
+
+Evidence: the handoff-8 halt report (`0dcc9aa`), its blind predictions
+(`8b80f7c`, blob `5098c8e`), `gate_validation/pair_validation_15c.json`, and
+this seat's eye on `VIEW1_elsewhere_overlay.png` and the 2× crop before ruling.
+No twin was generated; 0 credits; the halt observed 15c's third branch exactly.
+
+**16a — the halt is ACCEPTED and the construction discipline is ratified.** The
+geometry legs anchored clean (masks for all eight views, anchor 0 differing px
+at IoU 1.000000, frame agreement 0 px on all eight, controls reproducing views
+1 and 5 to the digit). The palette transcription (`canon/E12-beast-palette.json`,
+the galleon-pattern file) is ratified as the gate's input. The tool repair is
+ratified: `palette_gate.py` raised TypeError on a null blob bound — proven on
+the galleon's own published palette BEFORE the fix, repaired in the shape the
+null-percentage path already had, defect recorded in the tool, and checked in
+both directions (the galleon file runs; the same file with a bound armed still
+exits non-zero). The construction hazard is RECORDED: the tool arms every
+`allowed_bands` entry regardless of `status` — suspended entries must never be
+listed there; honoring `status` in-tool joins the standing errand batch.
+
+**16b — view 5 fired branch 2 as pre-registered, and the allowance is part of
+the gate.** 54.7% of view 5's off-palette mass is the membrane stratum; the
+realised-stratum allowance (273.4–293.4, pair-realised D3) applies as decided
+before the outcome existed — as an ANALYSIS ATTRIBUTION in the gate's report,
+never an `allowed_bands` entry (16a's hazard makes the distinction mechanical,
+not stylistic).
+
+**16c — view 1 fired branch 3, and the population has a name: S-OCCLUSION,
+REALISED.** 58.3% of view 1's off-palette mass — 7,293 px in 121 components,
+largest 1,342, median rgb(26,65,76), C\* 14.4, median hue 234, 87° from the
+nearest band edge — traces the throat/shoulder seam, wing-body gap,
+dorsal-ridge and tail-spine bases, and leg creases on both views. Confirmed at
+this seat's eye on the overlay: occlusion shadow that carries a hue, not
+invented material, and nothing like the E07 class (which is ONE coherent
+garment-scale component). The fixture pre-registered the stressor before any
+generation existed; its realised note lands in `DRAGON-IDENTITY.md` this fold.
+**The stressor system worked**: the first instrument to meet the seam read it
+as the known geometry, exactly as the pre-registration promised.
+
+**16d — the three costed diagnoses, ruled.** The chroma floor STAYS 12.0 — the
+floor-14 trade removes 43.7% of the seam while deleting 6.58% of the figure's
+own in-band mass, a bad lever, rejected on the executor's own costing (and the
+floor was never subject-derived; that fact is recorded, not acted on — no
+measurement here justifies a different value, the third subject to say so). No
+band widens — admitting hue 234 would open an 87°-wide hole in the forbidden
+span for a population the eye reads as shadow. No fixture element is added — a
+seam is not a paintable surface, and eleven elements name surfaces. **And the
+instrument fact is BANKED: the per-pixel gate and the cluster table are
+different instruments, and this is the first place they disagree** — a
+cluster analysis whose floor is 3,927 px is structurally blind to a diffuse
+121-component population, by construction, not by defect.
+
+**16e — THE GATE'S RULED CONSTRUCTION for this subject: report-structured,
+null bounds, the eye rules.** The gate runs on every twin with warm-olive as
+the only armed band and chroma floor 12.0, reporting per view: total
+off-palette px and percentage · largest connected component · the
+allowance-attributed fraction (the membrane stratum) · the hue histogram · and
+the overlay at any concentration. **No numeric auto-halt bound is armed** —
+the galleon's own published palette sets both bounds null ON PURPOSE, and
+that precedent is adopted deliberately: the two clean populations put any
+total-based bound on a moving denominator, and a blob bound would need a
+multiplier nobody can derive (suspend rather than invent, fourth application
+this arc). **The halt-and-re-roll trigger is the E07-class signature** — a
+single coherent off-palette component at the garment scale (measured
+precedents: 4,882 / 5,068 / 5,590 px) outside the two named populations —
+surfaced by the executor as crops + numbers, ruled at this seat's eye (10d:
+the structural channel at a style gate is the eye). **The clean baseline is
+recorded**: view 1 — 3.80% as constructed / 3.68% with attribution, blob
+2,724; view 5 — 8.19% as constructed / 3.71% with attribution, blob 3,968;
+the seam family ~7,293 px / 121 components across both views.
+
+**16f — the executor's P3b self-falsification is banked as a refinement of
+9b**: the eight eye-level silhouettes are FOUR MIRROR PAIRS AT FOUR SIZES —
+mirror-equal within a pair, unequal across pairs. The 9b mirror fact was
+right; the constant-area over-generalisation was the executor's own, caught by
+its own geometry leg and scored against itself. Any instrument normalising by
+per-view silhouette area now has both caveats on record.
+
+**16g — HANDOFF 8 CONTINUES.** Tasks 2 and 3 run under the ruled construction
+— eight twins, the gate as 16e states it, registration diagnostics, sheets,
+halt to this seat's eye. The discriminating view-4 prediction (do the claws
+follow the fangs term or the family mass — the 13d resemblance test riding
+free on a view whose stem drops the mouth family) stays live and unspent.
+Nothing else in the dispatch changes.

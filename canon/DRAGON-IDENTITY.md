@@ -91,11 +91,18 @@ the same texture on everything.*
   losing a micro-fragment is reported, not halted.
 - **S-scale-relief** *(unread guess, labeled as one)* — high-frequency overlapping plates
   may interact with the LoRA's register; the styled pair is the first evidence either way.
-- **S-occlusion** *(measured at Gate 0, designated-in)* — the throat/shoulder crevice and
+- **S-occlusion** *(measured at Gate 0, designated-in; REALISED on the accepted pair —
+  handoff 8 gate validation, E12 Ruling 16)* — the throat/shoulder crevice and
   the hard-stepped throat bands. Paint cannot fix it; pre-registered so the first person
   to see a dark seam there at a gate reads it as the known geometry, not a new texture
   defect. If it ever matters at the Director's zoom, the fix is geometry-side and is its
-  own arm.
+  own arm. *Realised form, measured: cool marginal-chroma crevice shadow — median hue
+  ~234, C\* ~14.4 (just above the gate's 12.0 floor), ~7,300 px in ~121 components
+  (largest 1,342) across both accepted views, tracing the throat/shoulder seam, wing-body
+  gap, dorsal-ridge and tail-spine bases, and leg creases. It is occlusion shadow that
+  happens to carry a hue, not material: no element names it, no band admits it, and the
+  gate REPORTS it rather than firing on it (Ruling 16e) — the stressor doing exactly what
+  its pre-registration promised.*
 - **S-backdrop** *(RESOLVED — derived at handoff 2 Task 3, hue ruled by E12 Ruling
   8a)* — the word is **`plain lavender-grey background`**: low-saturation blue-violet,
   the one hue family no declared material occupies, ruled over a metric-equal
