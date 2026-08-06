@@ -323,3 +323,56 @@ question stays open and belongs to the spec if it ever matters.
 valuable entries all falsifications; arc-wide 24 of 39. The record is working exactly
 as designed: the misses are located, owned, and each one narrowed the space the spec
 must design in.
+
+---
+
+## Ruling 8 — the backdrop hue, ruled; handoff 3 authored (2026-08-05)
+
+Evidence: the Task 3 report and derivation (`a3cc6f1`), halted at the hue per the
+executor's correct reading that choosing between metric-equal hues is an outcome call.
+
+**8a — BLUE-VIOLET, and the word is `plain lavender-grey background`.** The metric
+cannot separate the families (0.009 spread at sat 0.20) so the metric does not decide;
+these grounds do:
+
+1. **Blue-violet is the one hue family no declared material occupies** — the backdrop
+   lives in clean forbidden space, where the palette gate's forbidden-span arithmetic
+   gets its widest margin and any backdrop bleed into the subject is maximally
+   detectable as off-palette. This is G11's lesson run forward: the galleon avoided
+   blue because it DECLARED blue; the dragon declares none, so blue-violet is free.
+2. **A green backdrop behind a green-hided animal is what a metric is content with and
+   an eye may not be** — the executor's own sentence, adopted as a ground. Rim pixels
+   on moss-green hide antialiasing toward a green backdrop stay in-family, which is
+   exactly where the off-palette gate goes blind; and the Director's eye is the final
+   gate on every artifact this backdrop will sit behind.
+3. The score cost is 0.005 of 0.198 — 2.6%, negligible against both grounds.
+
+The word takes the house form (`plain <colour> background`, one colour term):
+**lavender-grey** names low-saturation blue-violet in vocabulary a diffusion model
+acts on reliably. The estimated triple rides in the materials JSON and the pair's
+sidecar; the pair supersedes the estimate the moment it exists, per the galleon rule.
+
+**8b — the W3-grey finding is banked, and it is the derivation's real payoff:** W3's
+inherited "plain grey background" scores **0.0506 on this subject — under the key's
+own 0.06 cut — bound by D3, the wing membranes.** That is the blade failure's shape
+pointed at the exact surface class this arc exists to test. The fixture's refusal to
+inherit either predecessor's backdrop is vindicated by measurement; the finding joins
+S-backdrop's record in the fixture.
+
+**8c — no D3 weight field.** D3 bound every optimum, so the derivation itself
+expresses the dispatch's concern and a weight would have changed nothing measured.
+The executor's refusal to overload the `thin` flag to manufacture a weight is
+affirmed — a field whose name lies is the `_not_on_route` lesson's cousin, and
+declining to invent it was right both times it happened this arc.
+
+**8d — the 6/6 calibration note is adopted as stated:** arithmetic on a
+just-authored table is not subject prediction, and the arc's calibration lesson
+(no working prior on this subject class) is unchanged by a clean scoreboard on the
+former.
+
+**8e — Session handoff 3 is authored** for a fresh executor (the deep session's
+capacity flag is honoured — halting before the arc's first credit-spending step
+rather than running it tired is the discipline working). One requirement is written
+into it in bold because Ruling 4a armed the trap: **the pair's controls come from
+PROFILE-rendered clay views, never from the Gate 0 renders** — those ran
+fit-axis height and are not byte-anchors for anything the route does now.

@@ -305,6 +305,61 @@ stroke · arm any threshold the data cannot support (suspend + report) · touch 
 E10/E11 lane, the 00001/00002 artifacts, or either accepted asset · scaffold past Task 5
 · write to the memory store · end a session the Director has not ended.
 
+---
+
+## Session handoff 3 (2026-08-05) — the STYLED TARGET PAIR, then the bands. Fresh session; Tasks 1–3 are banked.
+
+Handoff 2's Tasks 1–3 are complete and ruled: the sweep (`15232fe`, ship at 81/81),
+the measurement pass (`9b8f109`, `830c0e4` — ceiling 50.46% banked, elevated ruled
+NONE, thin_extent curve banked with its value deferred to the stroke-lane ruling), and
+the backdrop derivation (`a3cc6f1`, hue ruled by Ruling 8a). The prior session halted
+at the arc's first credit-spending step with its capacity honestly flagged — start
+fresh here:
+
+```
+cd E:\AI\facet && git pull
+CLAUDE.md                                  <- how to work here. Read first, follow exactly.
+docs/experiments/E12-ruling.md             <- Rulings 1-8. 7d ungates the pair; 8a rules the word.
+canon/DRAGON-IDENTITY.md                   <- the eleven elements; S-backdrop RESOLVED
+profiles/beast.json                        <- every value; backdrop + prompt now carry the ruled word
+canon/dragon-materials-estimated.json      <- the estimates the pair supersedes
+docs/experiments/E04-task4c-pair-sidecar.md    <- the sidecar precedent
+docs/experiments/E04-task4d-report.md          <- the bands precedent
+```
+
+**Task 4 — the styled target pair, on cloud.** Handoff 2's Task 4 text governs; these
+are the deltas and the trap:
+
+0. **Build the twin-prompts file first** (`dragonclay` stems, the fixture prompt with
+   the ruled `plain lavender-grey background` — byte-equal to `beast.json`'s
+   protective prompt entry).
+1. **⚠ THE PAIR'S CONTROLS COME FROM PROFILE-RENDERED CLAY VIEWS, NEVER FROM THE
+   GATE 0 RENDERS.** Ruling 4a armed this trap: Gate 0 rendered at code-default
+   fit-axis HEIGHT and is not a byte-anchor for anything the route does now. Render
+   views 1 and 5 under `--profile profiles/beast.json` (width-fit, 1792×1024,
+   margin 1.204), silhouettes likewise, controls built from those. Watchdog verified
+   before the Blender legs, report either way.
+2. Cloud under the full standing discipline (workflow JSON saved before submission ·
+   link topology checked in code · `dry_run` · `estimate_credits` · the LoRA by its
+   live card name from the browser Model Library). One generation per view; one
+   bounded re-roll, new seed, rejected artifact stays in the record; a second failure
+   is the result.
+3. **Sidecar at birth**: "specification source and visual target, never a projection
+   reference" + the ruled backdrop word + the estimated triple it supersedes + the
+   Ruling 8a reference.
+
+**Task 5 — the palette bands**, per handoff 2's Task 5 text unchanged (fixture
+materials × the pair, non-circular; the ivory-family merge question; chroma floors;
+no numeric gate on D8/D9; suspend rather than invent).
+
+**Then HALT.** The pair and the bands go to the ADVISOR's eye first, then the Director
+beside the clay — his overrule window on the whole authored identity, made visual.
+
+**Do not:** reuse any Gate 0 render as a control or anchor · exceed the bounded
+re-roll · decide the thin_extent value (stroke-lane ruling's property) · touch the
+E10/E11 lane, the 00001/00002 artifacts, or either accepted asset · write to the
+memory store · end a session the Director has not ended.
+
 ### Standards compliance (handoff 2)
 
 | standard | score | evidence |

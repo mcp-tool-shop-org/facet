@@ -86,13 +86,17 @@ such a surface, replace its owner on a named region instead.**
   to see a dark seam there at a gate reads it as the known geometry, not a new texture
   defect. If it ever matters at the Director's zoom, the fix is geometry-side and is its
   own arm.
-- **S-backdrop** *(suspended — derivation owned by the measurement dispatch)* — the
-  twins' backdrop is prompted, one word, the only free operand in the key's
-  `|pixel − backdrop|`. Derive it to maximise the minimum distance from every declared
-  material above, weighted toward D3 (the largest near-neutral surface) and the dark
-  elements (D9, D11) — the galleon's method, its metric-optimum-rejection rule included
-  (a saturated backdrop bleeds into a diffusion image). W3's grey and the galleon's white
-  are both candidates, neither inherited.
+- **S-backdrop** *(RESOLVED — derived at handoff 2 Task 3, hue ruled by E12 Ruling
+  8a)* — the word is **`plain lavender-grey background`**: low-saturation blue-violet,
+  the one hue family no declared material occupies, ruled over a metric-equal
+  desaturated green because a green backdrop behind a green-hided animal is what a
+  metric is content with and an eye may not be. **Banked from the derivation: W3's
+  inherited grey scores 0.0506 on this subject — under the key's own 0.06 cut — bound
+  by D3, the membranes.** The blade failure's shape, pointed at the surface class this
+  arc exists to test; neither predecessor's backdrop transfers. *Historical (the
+  suspension): derive to maximise the minimum distance from every declared material,
+  weighted toward D3 and the dark elements, saturated optima disqualified — the method
+  ran exactly so, and D3 bound every optimum without needing a weight.*
 - **S3, kept from the galleon** *(principle, proven there)* — nobody's eye knows what
   this dragon's palette "should" be, because it is authored here. The off-palette gate's
   bands derive from these named materials and cross-check against the styled target pair
