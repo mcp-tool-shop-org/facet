@@ -1,0 +1,366 @@
+{
+ "name": "beast",
+ "subject": "E12's dragon. DESIGNATED 2026-08-05: candidate 00003, mesh dragon_00003_raw.glb (986,825 faces, 9 welded shells, 99.96% largest), TRELLIS.2 1024_cascade seed 42 from dragon_clay_p1_00003_.png. Identity fixture: canon/DRAGON-IDENTITY.md. Ruling record: docs/experiments/E12-ruling.md.",
+ "provenance": "AUTHORED by the advisor post-designation (E12 Ruling 3). Gate 0's measured values land here with their derivations (frame_00003.json, the head-evidence JSONs); route constants land as explicit FIRST-RUN OPERATING POINTS because silence resolves to inheritance (armT-halt2 Finding B); values still absent are absent on purpose - see _still_suspended, owned by the Session-handoff-2 measurement dispatch. Nothing here has textured anything yet.",
+ "_status": "DRAFTED FROM GATE 0, NOT YET SWEPT. The registry sweep + coverage pass run in the measurement dispatch; 0 UNDECIDED is the gate any future ARM must pass, not this draft's exit condition. Every value below is derived from the designated mesh's own Gate 0 record, ruled in E12-ruling.md, or explicitly marked as a first-run operating point.",
+ "_fixtures": {
+  "identity": {
+   "path": "canon/DRAGON-IDENTITY.md",
+   "why": "The eleven named elements. Identity belongs to the prompt; this file IS the dragon.",
+   "from": "E12 Ruling 3; authored forward per the galleon precedent"
+  }
+ },
+ "_gates": {
+  "mesh_gate": {
+   "value": "none",
+   "why": "gate_mesh.py's head/shoulder logic is character-calibrated and has no beast referent. An explicit decision, not an omission - the ship precedent.",
+   "from": "E12 Gate 0 (did not run, per dispatch); ship.json precedent"
+  },
+  "head_rect_metrics": {
+   "value": false,
+   "why": "mesh_stats' face-rect columns are W3's rect and printed their front-view-rect warning on all three candidates. The beast's head evidence comes from its own instruments (e12_head_evidence.py, the measured world box in head_00003.json), not the character rect.",
+   "from": "E12 Gate 0 sections 3 and 5"
+  },
+  "reg_iou_min": {
+   "value": null,
+   "status": "SUSPENDED - EXPRESSED MECHANICALLY as tools.project_twins.reg-iou-min = 0.0",
+   "why": "The character's 0.80 came from both sides of a measured line on W3's twins; this subject has neither distribution until twins exist. The halt runs vacuous while per-view IoU still computes and prints; the beast derives its own bound from its own spread afterwards, or keeps reporting.",
+   "from": "E08 A27; ship.json Ruling 14 pattern"
+  },
+  "bbox_tol": {
+   "value": null,
+   "status": "SUSPENDED - EXPRESSED MECHANICALLY as tools.project_twins.bbox-tol = 9.99",
+   "why": "0.25 is W3 data and A27 demoted the assert to a diagnostic everywhere. A beast-derived diagnostic value can be set after twins if wanted.",
+   "from": "E08 A27; Ruling 14 pattern"
+  }
+ },
+ "tools": {
+  "verify/turn_render.py": {
+   "w": {
+    "value": 1792,
+    "why": "MEASURED at Gate 0 from the designated mesh: worst projected width over all eight rendered yaws is 1.744221 x height at view 0 (the axis formula and the per-yaw check agree on this candidate), 1024 x 1.7442 = 1786.1, rounded up to the /16-legal 1792 per the generator-legal law (derive from the mesh, round to the nearest legal width; /8 is the floor, /16 preferred). Chosen as if it will be kept: the ship's Gate 0 frame became its twin frame.",
+    "from": "E12 Gate 0 section 7; frame_00003.json"
+   },
+   "h": {
+    "value": 1024,
+    "why": "Height reference; the aspect is expressed against it.",
+    "from": "E12 Gate 0 section 7"
+   },
+   "views": {
+    "value": "0,1,2,3,4,5,6,7",
+    "why": "Eight eye-level yaws - stage 1 is eye-level by construction on every subject so far. Whether this subject buys elevated coverage is _still_suspended.cameras, measured not assumed.",
+    "from": "E12 Gate 0 (rendered set); ship precedent"
+   },
+   "step": {
+    "value": 45.0,
+    "why": "Degrees per view index.",
+    "from": "E12 Gate 0"
+   },
+   "yaw-offset": {
+    "value": 0.0,
+    "why": "MEASURED, and deliberately zero: view 0 is head-on - the Gate 0 head evidence read its view-0 box as world x,z under exactly this convention and the head crop's yaw-0 panel shows the face, confirmed by the advisor's eye at designation. The camera is what would rotate, never the mesh (to_mesh() destroys authored vertex normals).",
+    "from": "E12 Gate 0 section 5; head_00003.json"
+   },
+   "fit-axis": {
+    "value": "width",
+    "why": "All three candidates measured far wider than tall (designated: 1.7442); the frame is width-fit or landscape subjects silently misregister. Same adjudicated mode as the ship's, on this subject's own measurement.",
+    "from": "E12 Gate 0 sections 3 and 7"
+   },
+   "tag": {
+    "value": "dragonclay",
+    "why": "Filename stem; silhouette_masks and the future twin-prompt keys must match it. Pinned at draft so keys cannot drift.",
+    "from": "ship.json tag precedent (Ruling 13)"
+   },
+   "margin": {
+    "value": 1.204,
+    "why": "SPENT by Gate 0: every designated-mesh render the Director ruled on ran at the code default 1.204, and the 1792 frame carries horizontal margin 1.2080 at the worst view. The framing family (aspect, fit-axis, margin) is pinned on all three consumers from day one - Ruling 25's absent-key lesson pre-applied.",
+    "from": "E12 Gate 0 section 7; E04 Ruling 25"
+   }
+  },
+  "silhouette_masks.py": {
+   "tag": {
+    "value": "dragonclay",
+    "why": "Filename stem for this subject's silhouettes; matches turn_render.",
+    "from": "ship.json precedent"
+   },
+   "views": {
+    "value": "0,1,2,3,4,5,6,7",
+    "why": "Matches the eye-level camera set.",
+    "from": "E12 Gate 0"
+   },
+   "step": {
+    "value": 45.0,
+    "why": "Degrees per view index.",
+    "from": "E12 Gate 0"
+   },
+   "aspect": {
+    "value": "1792,1024",
+    "why": "The frame aspect - one value per consumer, moving together or landscape subjects silently misregister (Ruling 6/11/25 chain).",
+    "from": "E12 Gate 0 section 7; E04 Ruling 25"
+   },
+   "fit-axis": {
+    "value": "width",
+    "why": "Moves WITH turn_render's fit-axis - second of the three consumers.",
+    "from": "E04 Rulings 11/13/25; E12 Gate 0"
+   },
+   "margin": {
+    "value": 1.204,
+    "why": "Third member of the framing family on this consumer; the value every Gate 0 render used.",
+    "from": "E12 Gate 0; E04 Ruling 25"
+   }
+  },
+  "project_twins.py": {
+   "step": {
+    "value": 45.0,
+    "why": "Degrees per view index.",
+    "from": "E12 Gate 0"
+   },
+   "aspect": {
+    "value": "1792,1024",
+    "why": "The twins are generated at this aspect and the projection derives its horizontal extent from it; the two must agree.",
+    "from": "E12 Gate 0 section 7"
+   },
+   "reg-iou-min": {
+    "value": 0.0,
+    "why": "SUSPENSION, EXPRESSED - the halt's assert is vacuous while per-view IoU still computes and prints. The character's 0.80 came from both sides of a measured line this subject does not have; the beast derives its own bound from its own twins' spread, or keeps reporting.",
+    "from": "E08 A27; _gates.reg_iou_min; Ruling 14 pattern"
+   },
+   "bbox-tol": {
+    "value": 9.99,
+    "why": "Vacuous ON PURPOSE - A27 demoted the assert to a diagnostic; 0.25 is W3 data. A beast-derived diagnostic value can follow the twins.",
+    "from": "E08 A27; Ruling 14 pattern"
+   },
+   "facing-min": {
+    "value": 0.45,
+    "why": "FIRST-RUN OPERATING POINT at the accepted route's value, explicit because silence resolves to inheritance (Finding B). The twin-baseline halt's per-view diagnostics rule what carries.",
+    "from": "Ruling 14 pattern; accepted on both prior subjects"
+   },
+   "edge-dist": {
+    "value": 7.0,
+    "why": "FIRST-RUN OPERATING POINT. A ratio, not a length: erosion scales by figure width over edge-ref per view, bounded below by edge-floor and locally by the A3 edge-frac invariant. NOTE the membrane caveat: local half-width bounds the peel per structure (the global-constant/local-feature law); the thin cost curve (_still_suspended.thin_extent) reports what the mask withholds before any twin projects.",
+    "from": "Ruling 14 pattern; project_twins --edge-ref help; CLAUDE.md global-constant law"
+   },
+   "edge-ref": {
+    "value": 700.0,
+    "why": "THE TUNING CONSTANT, deliberately NOT re-derived per subject: 700 is the figure width edge-dist 7.0 was tuned against; the tool scales per view, so the ratio generalises by construction. Replacing it would silently break the calibration it anchors.",
+    "from": "project_twins.py:65-68; E04 Ruling 14"
+   },
+   "edge-floor": {
+    "value": 2.5,
+    "why": "FIRST-RUN OPERATING POINT - the never-erode-less floor.",
+    "from": "Ruling 14 pattern"
+   },
+   "head-facing-min": {
+    "value": 0.45,
+    "why": "EQUAL TO facing-min ON PURPOSE - E12 Ruling 2: ALLOCATION NONE. The designated head carries legible structure natively (10.497% of faces, 1.189x contrast, separated horns/teeth/eye on the designation crop); the E01 absent-structure defect is not observed, so no surface gets looser acceptance. The band machinery runs inert without a code change; Director-overrulable in a sentence, and the bust-crop lever plus this band are the named first arms if the painted head ever disappoints.",
+    "from": "E12 Ruling 2; E12 Gate 0 section 5"
+   },
+   "head-edge-dist": {
+    "value": 7.0,
+    "why": "EQUAL TO edge-dist - same inert-band reasoning as head-facing-min.",
+    "from": "E12 Ruling 2"
+   },
+   "bg-de": {
+    "value": 10.0,
+    "why": "THE METRIC WINDOW, unchanged on purpose - moving it breaks comparability with the recorded A2 baseline (0.18% within dE 10, median 38.31).",
+    "from": "E08 A2; E04 Ruling 21 precedent"
+   },
+   "bg-max-pct": {
+    "value": 100.0,
+    "why": "SUSPENSION, EXPRESSED - the tool default 2.0 is W3 calibration; the quantity is antialiased rim mixing, which scales with PERIMETER, and this subject's frills, spines and scalloped membrane rims put its perimeter-to-area outside the bound's calibration history exactly as the ship's rigging did. The diagnostic computes and prints per view; a perimeter-normalised bound can derive from clean data after the atlas exists.",
+    "from": "E04 Ruling 21; CLAUDE.md perimeter-not-area law"
+   },
+   "power": {
+    "value": 6.0,
+    "why": "FIRST-RUN OPERATING POINT at the code default - explicit so it is a decision, not silence.",
+    "from": "Ruling 14/22 pattern"
+   },
+   "edge-min-struct": {
+    "value": 50,
+    "why": "FIRST-RUN OPERATING POINT at the code default - explicit so it is a decision, not silence.",
+    "from": "Ruling 14/22 pattern"
+   }
+  },
+  "bake_hero_prep.py": {
+   "head-scale": {
+    "value": 1.0,
+    "why": "ALLOCATION: NONE, RULED - E12 Ruling 2 on Gate 0's commissioned evidence (head share 10.497%, contrast 1.189x, structure legible at the designation crop; the E01 defect not observed). 1.0 is the identity in the scaling line, so the band machinery runs inert. The null intervention is the baseline every future privileged-region arm needs. PRE-STATED READING: the bake's ANDONs were written for characters (n_head > 500; the scale-preservation assert); if any fires on this mesh it is an expressibility limit - report and HALT, do not tune.",
+    "from": "E12 Ruling 2"
+   },
+   "crop": {
+    "value": "360,240,700,600",
+    "why": "The code default, EXPLICIT because silence resolves to inheritance. Inert at head-scale 1.0; it is W3's face rect by lineage and no beast meaning is claimed for it - the beast's measured head box lives in head_00003.json if a future arm wants a real one.",
+    "from": "Ruling 14 pattern"
+   },
+   "res": {
+    "value": 4096,
+    "why": "FIRST-RUN OPERATING POINT at the accepted subjects' value; prep has not run on this subject.",
+    "from": "both prior subjects' prep bakes"
+   },
+   "crop-res": {
+    "value": 1024,
+    "why": "FIRST-RUN OPERATING POINT; inert alongside head-scale 1.0.",
+    "from": "prior subjects' value"
+   },
+   "unseen-strip": {
+    "value": 24.0,
+    "why": "FIRST-RUN OPERATING POINT at the accepted subjects' value.",
+    "from": "prior subjects' value"
+   }
+  },
+  "texpass_brush.py": {
+   "_NOT_CLEARED": "FORBIDDEN on the beast until this block carries ruled values - the ship's Ruling 14/22/23 lifecycle, inherited whole: the tool's --prompt defaults to the literal W3 identity string (the named accident class); the beast's brush prompts derive from the stroke-camera derivation AFTER stage 1's hole map exists, land as a _fixtures.brush_prompts file, and the ruling that clears this block pays for the clearance by deciding every key in the same commit (recipe keys as FIRST-RUN OPERATING POINTS at the accepted route's values unless that ruling says otherwise). Removing this marker without deciding the keys reverts them to UNDECIDED and the coverage check fires - that firing is the procedure, not a defect.",
+   "_THE_RECIPE_NUMBERS_DO_NOT_REACH_THE_CLOUD_GRAPH": "Inherited finding (E04 stroke derivation): generation is cloud-only, so a beast stroke runs through brush_cloud_step.py, which binds NO profile - it carries its own DEFAULTS (seed 770700, steps 20, cfg 2.5, lora_w 0.75, cn_strength 1.0) and a hardcoded CLOUD_LORA, reading prompt and negative from the prompts file. Agreement is by value, not construction; the stroke-clearing ruling re-verifies it."
+  },
+  "texpass_iter.py": {
+   "_not_on_route": {
+    "yaw": "SUPPLIED PER STROKE from the future brush-prompts _order, never from this profile - the ship's flagged form, kept: no single value can be correct, and pinning one would make an emit that forgot --yaw silently repeat a stroke. The tool default (90.0) must not arrive by silence.",
+    "el": "Same - elevation comes from the job key when strokes exist."
+   },
+   "margin": {
+    "value": 1.204,
+    "why": "Third framing consumer's margin - pinned at draft with the family (Ruling 25's third-consumer lesson, learned the hard way on the ship).",
+    "from": "E12 Gate 0; E04 Ruling 25"
+   },
+   "aspect": {
+    "value": "1792,1024",
+    "why": "The third consumer named at E04 Ruling 12 item 3 and missed until the stroke-frame halt there. Pinned from day one here.",
+    "from": "E04 Ruling 25; E12 Gate 0 section 7"
+   },
+   "fit-axis": {
+    "value": "width",
+    "why": "Moves WITH aspect on the third consumer.",
+    "from": "E04 Ruling 25"
+   },
+   "facing-min": {
+    "value": 0.25,
+    "why": "FIRST-RUN OPERATING POINT at the code default; stage 2 has not run on this subject.",
+    "from": "Ruling 22 pattern"
+   },
+   "edge-dist": {
+    "value": 4.0,
+    "why": "FIRST-RUN OPERATING POINT at the code default; stage 2 has not run on this subject.",
+    "from": "Ruling 22 pattern"
+   },
+   "mask-dilate": {
+    "value": 9,
+    "why": "FIRST-RUN OPERATING POINT at the code default; stage 2 has not run on this subject.",
+    "from": "Ruling 22 pattern"
+   }
+  },
+  "restylize_views.py": {
+   "_backdrop_is_a_PROMPT_word_not_a_flag": "S-backdrop is delivered by prompt text once derived (_still_suspended.backdrop); --bg is the CLAY render's compositing colour for the control image, a different operand entirely (E01's contrast fix).",
+   "bg": {
+    "value": "0,0,0",
+    "why": "FIRST-RUN OPERATING POINT at the value both accepted subjects' controls were built with (the ship byte-anchored it). The compositing colour for the keyed clay figure before Canny - not the backdrop word.",
+    "from": "E01 contrast fix; E04 Ruling 25 anchor"
+   },
+   "seed": {
+    "value": 770700,
+    "why": "FIRST-RUN OPERATING POINT at the accepted route's value; no beast generation has run. The styled target pair, once ruled, becomes this subject's own anchor.",
+    "from": "both prior subjects' spent value"
+   },
+   "steps": {
+    "value": 20,
+    "why": "FIRST-RUN OPERATING POINT at the accepted route's value.",
+    "from": "prior subjects' spent value"
+   },
+   "cfg": {
+    "value": 2.5,
+    "why": "FIRST-RUN OPERATING POINT at the accepted route's value.",
+    "from": "prior subjects' spent value"
+   },
+   "denoise": {
+    "value": 0.92,
+    "why": "FIRST-RUN OPERATING POINT at the accepted route's value.",
+    "from": "prior subjects' spent value"
+   },
+   "lora-w": {
+    "value": 0.75,
+    "why": "FIRST-RUN OPERATING POINT at the accepted route's value.",
+    "from": "prior subjects' spent value"
+   },
+   "cn-strength": {
+    "value": 0.9,
+    "why": "FIRST-RUN OPERATING POINT at the accepted route's twin-stage value (the brush stage runs 1.0 - different operand, per the ship's recorded distinction).",
+    "from": "prior subjects' spent value"
+   },
+   "canny-low": {
+    "value": 0.4,
+    "why": "FIRST-RUN OPERATING POINT at the accepted route's control-construction value.",
+    "from": "prior subjects' spent value"
+   },
+   "canny-high": {
+    "value": 0.8,
+    "why": "FIRST-RUN OPERATING POINT at the accepted route's control-construction value.",
+    "from": "prior subjects' spent value"
+   },
+   "contour-width": {
+    "value": 3,
+    "why": "FIRST-RUN OPERATING POINT at the accepted route's control-construction value.",
+    "from": "prior subjects' spent value"
+   },
+   "negative": {
+    "value": "watermark, text, logo, blurry, photo, deformed",
+    "why": "FIRST-RUN OPERATING POINT at the generic negative both accepted subjects generated on. The beast has earned no subject-specific negative terms yet; when it does they are added the way W3's were, with the measurement.",
+    "from": "prior subjects' spent value"
+   },
+   "prompt": {
+    "value": "a winged dragon with deep moss-green scaled hide, pale bone-tan ventral plates, storm-grey wing membranes, bone-ivory curved horns, bone-ivory crown and cheek spikes, bone-ivory dorsal and tail spines, bone-ivory claws, ember-orange eyes, a dark wine-red tongue, pale ivory fangs and tooth rows, a dark slate mouth interior, visible brushstrokes, painterly worked surface",
+    "why": "NEITHER SPENT NOR LIVE - the protective transcription form (E04 Ruling 22): the code default is the literal W3 identity string, the named accident class, so an invocation that forgets --prompts asks for this dragon instead of that warrior. Transcribed from canon/DRAGON-IDENTITY.md's eleven elements. NOTE: carries NO backdrop word yet - S-backdrop is underived, and inheriting W3's grey by silence is exactly the accident this form prevents. The twin-prompts file the route actually reads is built by the measurement dispatch WITH the derived backdrop word appended.",
+    "from": "E12 Ruling 3; canon/DRAGON-IDENTITY.md; E04 Ruling 22 form"
+   }
+  },
+  "cull_unseen.py": {
+   "_why_this_is_here": "E06 rule: the exterior visibility superset must COVER every production camera. The code default (24-yaw sweep + 0,55 + 180,55) covers the eye-level eight; if the elevated ruling (_still_suspended.cameras) adopts any camera outside it, this list is re-issued as the union in the same ruling - a superset, never a narrowing.",
+   "production": {
+    "value": "0,0;15,0;30,0;45,0;60,0;75,0;90,0;105,0;120,0;135,0;150,0;165,0;180,0;195,0;210,0;225,0;240,0;255,0;270,0;285,0;300,0;315,0;330,0;345,0;0,55;180,55",
+    "why": "The code default sweep, explicit so the coverage requirement is visible. Covers stage 1's eight eye-level yaws. PENDING the elevated ruling: any adopted elevated camera not in this list forces the union re-issue.",
+    "from": "E06 superset rule; cull_unseen code default"
+   },
+   "min-seen": {
+    "value": 0.3,
+    "why": "FIRST-RUN OPERATING POINT at the code default; cull has not run on this subject.",
+    "from": "Ruling 22 pattern"
+   },
+   "max-seen": {
+    "value": 0.9,
+    "why": "FIRST-RUN OPERATING POINT at the code default; cull has not run on this subject.",
+    "from": "Ruling 22 pattern"
+   }
+  }
+ },
+ "cameras": {
+  "_stage_assignment": "The eye-level eight are STAGE 1 - the twin cameras, eye-level by construction on every subject (no route tool can render, mask or project an elevated twin; that capability would be a Step-0-class arm, recorded as available and NOT opened - the ship's ruling, inherited).",
+  "eye_level": {
+   "value": [0, 45, 90, 135, 180, 225, 270, 315],
+   "why": "Eight yaws at elevation 0, the Gate 0 render set. What fraction of this subject's surface they reach is measured by the dispatch's ceiling pass, not assumed.",
+   "from": "E12 Gate 0"
+  },
+  "elevated": {
+   "value": null,
+   "status": "SUSPENDED - measured, not inherited",
+   "why": "The ship's 0/180@40 was DERIVED from deck-coverage raycasts, not inherited from the character's 55. This subject's up-facing surface is the spread wing TOPS and the back - large, and unreadable from eye level in the same way decks were. The dispatch measures up-facing area coverage per candidate set (pairs at 40 and 55, front/back vs beam, single top-down as the cheap reference) and the ruling adopts from the numbers. Any adoption re-issues cull_unseen.production as the union.",
+   "from": "E04 Task 4a method; E12 Session handoff 2"
+  }
+ },
+ "backdrop": {
+  "value": null,
+  "status": "SUSPENDED - S-backdrop, derivation owned by the measurement dispatch",
+  "why": "The backdrop is prompted, one word, the only free operand in the key's |pixel - backdrop| - and it is fixture data, not a default. Derive by the galleon's method: maximise the minimum distance from every declared material (canon/DRAGON-IDENTITY.md D1-D11, colours estimated to sRGB first), weighted toward D3 (storm-grey membranes, the largest near-neutral surface - the danger class on THIS subject) and the dark small elements; saturated optima disqualified (a saturated backdrop bleeds into a diffusion image). W3's grey and the galleon's white are candidates, neither inherited. Pre-register the prediction before any generation.",
+  "from": "canon/DRAGON-IDENTITY.md S-backdrop; E04 Task 4b method"
+ },
+ "_still_suspended": {
+  "thin_extent": "OWNED BY THE MEASUREMENT DISPATCH. Per-mesh by law; the ship's 0.01 is filament-derived and a membrane is not a filament. Measure the extent density on the designated mesh, publish the full cost curve (fraction of visible area withheld per view per candidate value), and report SEPARATELY what fraction of the membrane fields the mask withholds - a filament-tuned value could withhold a third of this subject. Also report the pinch-field's behaviour under the facing/visibility chain (the 7,138-edge region) as diagnostic evidence for the spec's arms. The texpass_iter block deliberately carries NO thin-extent key until this lands - the coverage check SHOULD flag it, and any arm before then is off-route by the sweep gate.",
+  "cameras_elevated": "The elevated pair question - see cameras.elevated. Raycast coverage of up-facing surface per candidate set, greedy by marginal gain, the ship's own method.",
+  "backdrop_derivation": "See backdrop block. Produces the materials-estimated JSON (galleon pattern), the derivation table with the minimum highlighted, and the chosen word - which then lands in the twin-prompts file, never silently into the prompt above.",
+  "palette_bands": "Derive from the fixture's named materials, cross-checked against the styled target pair once it exists - never against the twins they will gate (non-circularity). Report forbidden-span arithmetic, whether the ivory family's bands merge (D4/D5/D6/D7/D10 - the gold-family question in this scheme), and each band's chroma floor. D8/D9 are pre-registered as below any area floor (the G7 lesson): no numeric gate on eyes or tongue. Suspend rather than invent any threshold the data cannot support.",
+  "generation_recipe_anchor": "The restylize block's recipe keys are FIRST-RUN OPERATING POINTS until the styled target pair is generated and ruled; the pair then becomes this subject's own anchor (the ship's Ruling 6 pattern) and those keys convert to SPENT with the pair as provenance.",
+  "stroke_lane": "Spiral order, brush prompts and stroke cameras all derive from stage 1's hole map - the ship's Ruling 23 lifecycle. Nothing here until stage 1 has run and reported."
+ },
+ "_tools_not_on_route": {
+  "verify/head_render.py": "W3's head instrument; no beast referent. The beast's head renders came from e12_head_render.py with the measured box. Absence is a decision.",
+  "verify/mesh_stats.py": "Ran at Gate 0 with NO --profile (the byte-identity path) and its front-view-rect warning firing correctly; head-derived columns have no beast referent (_gates.head_rect_metrics). It may still be run - shells and extents measure any mesh identically - but it carries no beast-calibrated values.",
+  "smart_decimate.py": "Expected NOT on this subject's route: the ship ran raw TRELLIS output with native UVs end to end (bake_hero_prep 'native UVs: using the atlas the mesh arrived with'). If prep ever reports otherwise on this mesh, that is a finding for a ruling, not a silent decimation. Its W3 defaults never execute here."
+ }
+}

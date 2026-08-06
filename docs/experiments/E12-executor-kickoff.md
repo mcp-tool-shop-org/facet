@@ -195,3 +195,119 @@ passing over them, and check this dispatch's own inherited numbers — the clay
 descriptions, the VRAM precedent, the shell ranges — against source in the same breath
 you use them. A negative result, including three meshes not worth designating, is a full
 success and is reported as one.
+
+---
+
+## Session handoff 2 (2026-08-05) — the DESIGNATED MESH's measurement pass, 4a–4d analogue. Ends at the styled-pair halt.
+
+Gate 0 is CLOSED by designation: **00003 is the dragon** (E12 Ruling 1 — "3 is the
+winner, but they all look great"). The fixture and profile are authored (Ruling 3). A
+fresh executor session starts here:
+
+```
+cd E:\AI\facet && git pull
+CLAUDE.md                                  <- how to work here. Read first, follow exactly.
+docs/experiments/E12-ruling.md             <- Rulings 1-3. Ruling 2 is the allocation decision.
+canon/DRAGON-IDENTITY.md                   <- the eleven elements and the stressor table
+profiles/beast.json                        <- every decided value; _still_suspended is YOUR list
+docs/experiments/E12-gate0-report.md       <- the designated mesh's measured record
+docs/experiments/E04-task4ab-report.md     <- the method precedent for 4a/4b
+docs/experiments/E04-coverage-pass.md      <- the coverage forms and decision buckets
+```
+
+**The subject:** `E12_gate0/dragon_00003_raw.glb` — its Gate 0 numbers travel with it
+(9 shells, satellites = fangs, the 7,138-edge membrane pinch field, the throat crevice,
+frame 1792×1024). The crevice and pinch field are **designated-in** (Ruling 1): known
+subject facts, not defects to fix.
+
+**Task 1 — the sweep.** Run the registry sweep and coverage pass against
+`profiles/beast.json`. Report the UNDECIDED set — expected members: `texpass_iter`'s
+absent `thin-extent` (deliberate — it lands in Task 2), the `texpass_brush` block behind
+its `_NOT_CLEARED` marker (lifecycle, stays), and whatever the sweep finds that the
+advisor's draft missed, which is the sweep doing its job. **0 UNDECIDED gates ARMS, not
+this dispatch** — your exit condition is the report, with every member dispositioned
+(lands-in-this-dispatch / lifecycle-blocked / finding-for-the-ruling).
+
+**Task 2 — 4a analogue: measure the suspended values from the designated mesh.**
+Predictions blind before each measurement, hashed where anything is checkable.
+
+1. **Prep bake** at the profile's operating points (head-scale 1.0, res 4096 — the
+   Ruling 2 configuration). PRE-STATED READING (beast.json carries it): the bake's
+   ANDONs were written for characters; if one fires on this mesh it is an expressibility
+   limit — report and HALT, do not tune.
+2. **The reach ceiling, pre-registered before any projection** — `e08_ceiling` at the
+   profile's ruled floors on the eight eye-level cameras. The ship's 42.72% was
+   pre-registered exactly here and every downstream number was read against it. Report
+   reach/valid with both operands. **Also classify the bake's `pos.npy` off-surface rate**
+   (the E10 Ruling 4 instrument, >1 px threshold, report-only): the property is now a
+   known bake artifact class, and this subject's record carries it from birth instead of
+   discovering it after acceptance.
+3. **`thin_extent`, measured fresh** — extent density on this mesh, the full cost curve
+   (fraction of visible area withheld per view per candidate value), and **separately:
+   what fraction of the membrane fields each candidate withholds**. A filament-tuned
+   value could withhold a third of this subject; the membranes are slabs, not rigging.
+   Report the pinch-field's facing/visibility behaviour (the 7,138-edge region against a
+   clean membrane area of the same mesh) as diagnostic evidence for the spec's arms — no
+   gate arms on it.
+4. **The elevated-camera question, measured** — up-facing surface (normal_z > 0.5, area
+   not face count) first-hit coverage per candidate set: the eye-level eight alone;
+   +0/180 @ 40; +0/180 @ 55; +90/270 @ 40; single top-down as the cheap reference.
+   Greedy by marginal gain, the ship's own method. The wing tops and back are this
+   subject's decks. If the adopted set leaves the code-default cull superset, flag the
+   union re-issue in the report (beast.json's `production` note).
+
+**Task 3 — 4b analogue: the backdrop derivation.** Estimate sRGB per fixture element
+(D1–D11 → `canon/dragon-materials-estimated.json`, the galleon pattern — estimates from
+the words, superseded the moment the pair exists). Derive the backdrop: maximise the
+minimum distance from every declared material, weighted toward **D3 storm-grey
+membranes** (the largest near-neutral surface — this subject's danger class) and the
+dark small elements; saturated optima disqualified. Show the full table with the minimum
+highlighted. **Pre-register the prediction before deriving.** The chosen word goes into
+the twin-prompts file you build (fixture prompt + backdrop word, keyed on `dragonclay`
+stems) — never silently into the profile's protective prompt entry.
+
+**Task 4 — 4c analogue: the styled target pair, on cloud.** Two views from the fixture
+prompt with the derived backdrop word: **view 1 (head-side three-quarter — head, chest,
+wing leading edges) and view 5 (tail-side three-quarter — tail spines, wing backs,
+hindquarters)**, the identity-dense ends of this subject. Standing cloud discipline in
+full: workflow JSON saved before submission · link topology checked in code (a `dry_run`
+PASS does not prove link sanity) · `dry_run` · `estimate_credits` · the LoRA by its live
+card name (`mcp-tool-shop__saltroad-style-lora__saltroad_style_v2_lowlr_000001500`; the
+browser Model Library is ground truth) · frames generator-legal (1792 is ÷16) · sidecar
+at birth: **"specification source and visual target, never a projection reference."**
+One generation per view; the palette-gate re-roll precedent applies (one re-roll, new
+seed, rejected artifact stays in the record; a second failure is the result).
+
+**Task 5 — 4d analogue: the palette bands.** From the fixture's named materials,
+cross-checked against the styled pair — **never against future twins** (non-circularity).
+Report the forbidden-span arithmetic, whether the ivory family's bands merge (D4/D5/D6/
+D7/D10 — this scheme's gold-family question), and each band's chroma floor. **D8 eyes
+and D9 tongue are pre-registered as below any area floor — no numeric gate on either**
+(the G7 lesson). Suspend rather than invent any threshold the data cannot support;
+report numerator and denominator and stop.
+
+**Then HALT.** The pair and every derivation go to the ADVISOR's eye first, then the
+Director beside the clay — his fixture overrule window made visual. The E12 spec proper
+follows from the advisor with 4a–4d's numbers in hand.
+
+**Environment, standing:** watchdog verified before any local GPU leg, report either
+way (restart is standing authorization; the ceiling is never raised) · generation
+cloud-only · Blender through PowerShell · ASCII prints · scripts create their own output
+directories · predictions blind before artifacts exist · nothing reaches any eye unviewed
+by the seat that sends it.
+
+**Do not:** generate anything beyond the two pair views · project anything · run any
+stroke · arm any threshold the data cannot support (suspend + report) · touch the
+E10/E11 lane, the 00001/00002 artifacts, or either accepted asset · scaffold past Task 5
+· write to the memory store · end a session the Director has not ended.
+
+### Standards compliance (handoff 2)
+
+| standard | score | evidence |
+|---|---|---|
+| PIN_PER_STEP | 2 | Every measurement lands beside its derivation JSON; the pair's workflow JSONs saved pre-submission with seeds and params; predictions hashed blind where checkable |
+| ANDON_AUTHORITY | 2 | Prep-bake ANDONs pre-stated as halt-not-tune; the sweep's UNDECIDED report is the gate condition for future arms; the pair halt is the Director's fixture window; re-roll bounded at one |
+| NAMED_COMPENSATORS | 2 | Cloud spend bounded to two generations (+ at most one re-roll each) with estimate_credits first; all writes in new files/dirs; the one prompts-file write is new; nothing irreversible beyond spend |
+| DECOMPOSE_BY_SECRETS | 3 | Every subject value derives from this mesh or this fixture; the tuning constant (edge-ref) explicitly NOT re-derived; the backdrop word flows fixture → derivation → prompts file, never through code |
+| UNCERTAINTY_GATED_HUMANS | 3 | The styled-pair halt is the Director's overrule window on the whole authored identity, advisor's eye first; suspended thresholds go to him as numerator/denominator, not invented bounds |
+| EXTERNAL_VERIFIER | 2 | The ceiling instrument and the off-surface classifier check the bake from independent code paths; the pair is judged by eyes, not by the generator's own metrics. `skip:` on a second model for the geometry legs, per precedent |
