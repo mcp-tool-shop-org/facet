@@ -137,7 +137,7 @@ exports** — every render ships with its exact silhouette so backgrounds are
 augmentation-side, and lighting would be a new renderer with its own anchors.
 
 **E12 — the beast arc — is IN FLIGHT** ([E12-ruling.md](docs/experiments/E12-ruling.md),
-Rulings 1–12 so far): the route's third subject class, a **winged dragon**, designated
+Rulings 1–13 so far): the route's third subject class, a **winged dragon**, designated
 from three reconstructed candidates on full-size sheets ("3 is the winner"). What Gate 0
 measured ([E12-gate0-report.md](docs/experiments/E12-gate0-report.md)) rewrites the
 priors: **9–12 welded shells against a character's 40–191 and the ship's 237–512** —
@@ -194,7 +194,17 @@ pale-bone family — the word "bone" rode the prompt five times — rendering as
 register, a register-family interaction the painterly register never showed at the
 galleon's gold density. Canon corrected in place (D2 olive-tan, D6/D7 charcoal;
 ivory is now the head's family), and the regeneration is dispatched as a new
-decision bundle (handoff 6). Every value the subject needs lives in
+decision bundle (handoff 6). The bundle ran at 0 credits and **the bone reads leave
+at the worst seed** ([Ruling 13](docs/experiments/E12-ruling.md)): same seed, same
+control, prompt only — whole-figure pale-bone mass 28.71% → 7.69%, the rib element
+gone, blade rows charcoal, wing arms green. The regeneration also measured the arc's
+newest finding: **a colour term appears to reach structures that resemble the one it
+names** — `pale ivory fangs` lands on the claws over `charcoal claws` in the same
+string, on the view whose stem carries ivory words, while the stem without them
+takes charcoal claws at the same seed — so a prompt's colour-family mass bleeds by
+structural resemblance, not only by name (labelled hypothesis, two views, one
+subject; the drop map's job may be larger than visibility). The pair awaits the
+Director's sentence. Every value the subject needs lives in
 `profiles/beast.json` and `canon/DRAGON-IDENTITY.md`, and the ones that arrived by
 inheritance are being falsified and replaced one measured step at a time — which is
 the profile system doing its job.

@@ -728,3 +728,89 @@ source; its colours do not supersede the fixture.** D3 landing orange/rust on it
 session is recorded as a landing finding with the frame-vs-register confound named
 — no arm is commissioned, and the fixture's word stands. D5's split landing (crown
 ivory, cheeks green) is recorded the same way. Watched at handoff 6's outputs.
+
+*⚠ 12g cross-reference added 2026-08-06 (handoff 6 §5): D8's ember-orange eye
+landed on view 1 at pair scale in BOTH palette arms — the sparse-frame generation
+paints an eye where the bust-scale companion, at ~33× the pixels under a denser
+control, does not. Consistent with the inverted-confound hypothesis as stated:
+the pair's control leaves the model free to invent an eye; the companion's
+constrains it to the geometry, which carries none.*
+
+---
+
+## Ruling 13 — handoff 6 accepted: the bone reads leave at the worst seed; the resemblance finding is banked; the pair goes to the Director's sentence (2026-08-06)
+
+Evidence: the handoff-6 report (`6116983`), the blind predictions (`8d02517`, blob
+`e833abf`), and this seat's own eye on the staged artifacts — the same-seed A/B,
+the three-way progression, both feet crops, the full view-1 and view-5 outputs —
+before anything here was written.
+
+**13a — the halt is ACCEPTED as reported and the discipline is ratified.**
+0 credits, two generations, both bounded re-rolls unspent, the prompt proven the
+only changed input (two graph entries per view, pinned inputs confirmed identical
+BY NAME, all four uploads returning handoff 4's content-hash names), and the
+family instrument validated against two published figures before any new number
+was read from it. The three self-owned method corrections in §1 are the
+calibration section working. **Environment: the watchdog's FOURTH hard death is
+on the record** — last heartbeat 02:56:01, minutes after the handoff-5 session
+closed; mechanism unobserved; restarted by the executor at 15:42 under standing
+authorization and verified alive by this seat at 16:14 (heartbeat 0.9 s). The
+death-follows-session-close timing is noted for the environment record without a
+mechanism claim; the standing verify-before-any-GPU-leg rule already covers the
+exposure, and no local GPU work ran unprotected.
+
+**13b — the view-5 result is banked: the canon was the lever, proven at the seed
+that was worst.** Same seed, same control, prompt only: whole-figure pale-bone
+mass 28.71% → 7.69% (the seed move alone had bought 13.00%); tail underside
+21.73% → 2.60%; legs 10.23% → 3.17%; the white rib element gone; blade rows
+charcoal; wing arms and fingers in D1's green. The residual pale concentrates in
+the membrane's lit trailing half — a translucency read, not a bone read, per 13e.
+The Director's named defect does not survive the corrected canon at the seed
+that carried it.
+
+**13c — the executor's discretionary call is RATIFIED: not spending view 1's
+re-roll was right.** A re-roll tests whether a defect is the seed's; the
+cross-view control at a FIXED seed — same element, same recipe, ivory terms
+present on one stem and absent on the other — locates D7's cause in the canon
+text, not the seed. Ruling 12e's sentence applies unchanged. Both allowances
+remain unspent and available.
+
+**13d — THE RESEMBLANCE FINDING IS BANKED** (labelled hypothesis, two views of
+one subject): **a colour term appears to reach structures that resemble the one
+it names.** View 1's `pale ivory fangs and tooth rows` lands ivory on the CLAWS
+— pointed keratin — over `charcoal claws` in the same string (D7 moved 92% on
+the stem without ivory words, −6% on the stem with them); simultaneously D5's
+declared-ivory cheek fan took charcoal on the view that gained two charcoal
+terms. Same class as handoff 5's wing-rim serrations resolving as a mouth. The
+fixture consequence is real and NOT acted on yet: the 9d/10i drop map's job may
+be larger than visibility. **The named cheapest test doubles as the fix**: one
+generation of view 1 with the fangs term dropped — a new arm, specced only if
+the Director's sentence wants the claws corrected (D10's fangs are visible in
+view 1, so this trades a declared element's term against a bleed, and that
+trade is his call, not a session's).
+
+**13e — D3's gradient is ruled a JUDGEMENT ITEM, not a miss, pending his eye.**
+Slate-grey through the upper and leading fields, pale cream where the trailing
+half is lit — on both views, in both palette arms, and unlike either failure
+mode already ruled on (the old arm's bone-ivory, the companion's orange). A lit
+translucent membrane reading pale where light passes through it is physically
+coherent under the ruled register; whether it is the dragon he wants is his
+question, asked with the rest.
+
+**13f — the wing-rim artifact's non-recurrence is recorded** (0 px in box and
+frame; the instrument reproduced 0 and 273 on the published artifacts first).
+One occurrence in three generations of view 5; the control-cost hypothesis
+stays labelled and open, watched wherever the dense control runs.
+
+**13g — what goes to the Director, and the sequence behind his sentence.** The
+pair for acceptance is **view 1 v5 + view 5 v5**, presented with the same-seed
+A/B, the progression, and the deviations named plainly: view 1's ivory foot
+claws (D7, the 13d finding), view 1's charcoal cheek fan (D5 declared ivory —
+his window runs both directions: correct the landing, or re-canon D5 to what
+landed if his eye prefers it), and the membrane gradient (13e). His question is
+the dispatch's: **does this read as the dragon he wants.** On acceptance:
+handoff 4's Task 3 (bands re-derived against the accepted pair + D8 closure at
+pair scale), then twins, stage 1 against the banked 50.46% ceiling, the sweep
+gate, strokes, finalize, pack, Gate 1. If the claws gate acceptance: the 13d
+arm, one paste. The allocation ladder's geometry rung stays parked on his
+sentence, unchanged by any of this.

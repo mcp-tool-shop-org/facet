@@ -108,8 +108,19 @@ values live in its own profile and fixture, never inherited unmeasured.
   the realistic register, on both seeds
   ([Ruling 12](../experiments/E12-ruling.md)): canon corrected in place (D2
   olive-tan, D6/D7 charcoal; ivory now the head's family), regeneration dispatched
-  as a new decision bundle (handoff 6). Then: bands re-derived against the
-  accepted pair + D8 closure, twins, and the route proper.
+  as a new decision bundle (handoff 6).
+- **Handoff 6 ran at 0 credits and the bone reads leave at the worst seed**
+  ([Ruling 13](../experiments/E12-ruling.md)): same seed, same control, prompt
+  only — whole-figure pale-bone 28.71% → 7.69%, tail underside 21.73% → 2.60%,
+  the rib element gone; the seed move alone had bought only 13.00%. Banked
+  finding, labelled: **a colour term reaches structures that RESEMBLE what it
+  names** — `pale ivory fangs` painted view 1's claws ivory over `charcoal
+  claws` in the same string, while view 5's stem (zero ivory words) took
+  charcoal claws at the same seed; D5's cheek fan took charcoal the opposite
+  direction. The pair (view 1 v5 + view 5 v5) awaits the Director's sentence
+  with the deviations named (ivory foot claws · charcoal cheek fan · membrane
+  translucency gradient, ruled a judgement item). On acceptance: bands + D8
+  closure, twins, and the route proper.
 
 ## The calibration table this page exists for
 
