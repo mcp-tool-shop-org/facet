@@ -199,3 +199,65 @@ correct verdict for a subject profile that is not `character.json`; relocation i
 character's claim alone. The hand-check of the one non-evaluable row
 (`cull_unseen production`, 26 vs 26 byte-identical, no silent narrowing) is exactly the
 right treatment of a row a static checker skips.
+
+---
+
+## Ruling 6 — Task 2.1/2.2 banked; the fifth form minted; two instrument defects queued (2026-08-05)
+
+Evidence: the lane closure (`15232fe`), the blind predictions (`96b59c1`), the 2.1/2.2
+report (`9b8f109`).
+
+**6a — the ceiling is banked: 50.46% of valid (1,635,304 / 3,240,510) at the eight
+eye-level cameras** (52.39% at twelve). This is the subject's standing denominator —
+every downstream coverage figure on the beast reads against it, as the ship's read
+against 42.72. Pre-registered before any projection, per the dispatch.
+
+**6b — the calibration fact is banked for the spec's priors section:** reach on a
+winged quadruped is **not interpolable from a standing human and a hull** — 50.46
+landed 7.7 points above the ship and 23.6 below the character, after Gate 0's
+falsifications had already pushed the prediction the other way. The executor's reading
+is adopted: the lesson is not "anchor on the ship after all," it is that this subject
+class has no working prior in either direction, and the E12 spec's priors must say so
+rather than interpolate. (Q8 is the counter-case that proves the rule: the off-surface
+rate anchored on the ship correctly because it is a **bake artifact class, not a
+subject property** — and measured 2.6430% on the beast beside the ship's 2.5065%.)
+
+**6c — `e12_offsurface.py` is adopted; the validated-before-used pattern is the
+standard.** Carrying the bake half of a closed ruling's hardcoded instrument into a
+subject-flagged tool and reproducing the ruled ship number (2.5065%) before pointing it
+at the beast is exactly how an instrument earns trust here. The beast's birth rate
+(2.6430% > 1 px) enters the record beside the ship's — strengthening the
+bake-artifact-class reading that the Director-gated queue (W3's rate, then the
+mechanism) will test; his gate on both is unchanged.
+
+**6d — THE FIFTH FORM IS MINTED: `_per_invocation`.** Twice an executor has flagged
+that `_not_on_route` is the wrong *name* for a key exercised on every invocation, and
+twice correctly declined to invent the form. Deciding is the job: the form exists as of
+this ruling. Semantics: *decided — the profile supplies no value BY DESIGN, because the
+correct value varies per invocation and arrives from the job context; the entry
+documents where it arrives from and what the tool default would silently do if it ever
+arrived by silence.* Sites: `texpass_iter` yaw/el (ship + beast), `brush_cloud_step`
+lane (all three). **Migration is scheduled AFTER handoff 2 lands, as one errand** —
+recognizer in `e04_registry_sweep`, rename at all sites, sweep re-run on all three
+profiles with exit codes — because the sweep is an instrument in live use by the
+measuring session, and an instrument does not change under the session using it.
+
+**6e — two `e08_ceiling` print defects, recorded and queued, not fixed mid-use.**
+(i) The `SETTINGS` block hardcodes three captions and Ruling 2's equal floors make all
+three blocks evaluate identically — one measurement printed three times under two false
+captions; the E04 session record's flagged trap, fired by exactly this configuration.
+(ii) The `front-back OVERLAP` line cannot be non-zero — opposed cameras test `dot(n,d)`
+and `dot(n,−d)`, jointly passable only at a floor ≤ 0, measured zero at 0.45, 0.18
+**and 0.00** — a check that cannot fail, the house's named class. The computed reach is
+sound and the quoted numbers stand; the fix (honest captions, delete or repair the
+overlap line) is **queued to the same post-handoff errand as 6d**, same reasoning.
+Until then, any report quoting the tool's output cites this ruling beside it.
+
+**6f — accepted as logged:** the 11-face Blender/trimesh count discrepancy (0.001%,
+stated in the report rather than left to surface later — the h4 15-texel precedent's
+treatment); the ship's registry at **81/81 exit 0**, the first profile with every flag
+on an accepted route explicitly decided; W3's crop rect covering 56.88% of this figure
+(n_head 418,979) — confirming Ruling 2's inert band was load-bearing, since any active
+head-band behaviour would have made a most-of-the-animal band a huge wrong lever; and
+character.json's standing thin-extent mismatch (0.03 against a source default of 0.0 —
+the only profile that ever turned the guard on) flagged to Task 2.3's curve, endorsed.
