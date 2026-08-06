@@ -34,6 +34,17 @@ ap.add_argument("--out", required=True)
 ap.add_argument("--label", default="")
 ap.add_argument("--stats", help="mesh_stats JSON for this mesh; printed as a caption")
 ap.add_argument("--cols", type=int, default=4)
+# The caption used to state the SHIP's reason for not running gate_mesh.py as literal text.
+# E12 reconstructs dragons, where "meaningless on a ship" and "profiles/ship.json" are both
+# false, and a Director-facing designation sheet is the last place a wrong provenance
+# sentence should sit. The default is that sentence VERBATIM, so every historical
+# invocation reproduces the same pixels; only a caller that passes the flag changes.
+ap.add_argument("--gate-note",
+                default="gate_mesh.py was NOT run: its head/shoulder logic is meaningless "
+                        "on a ship, and profiles/ship.json records mesh_gate: none as a "
+                        "decision.",
+                help="the why-no-mesh-gate line printed under the stats caption; defaults "
+                     "to E04's ship wording so old invocations are unchanged")
 args = ap.parse_args()
 
 paths = sorted(glob.glob(os.path.join(args.renders, "%s_*.png" % args.tag)),
@@ -77,9 +88,7 @@ if args.stats and os.path.exists(args.stats):
     ext = r.get("extent") or r.get("extents")
     if ext:
         dr.text((10, cy + 18), "extent (Blender xyz) %s" % (ext,), fill=(210, 215, 225))
-dr.text((10, cy + 40),
-        "gate_mesh.py was NOT run: its head/shoulder logic is meaningless on a ship, and "
-        "profiles/ship.json records mesh_gate: none as a decision.", fill=(190, 170, 140))
+dr.text((10, cy + 40), args.gate_note, fill=(190, 170, 140))
 dr.text((10, cy + 58),
         "Designation is the Director's. This sheet ranks nothing.", fill=(190, 170, 140))
 os.makedirs(os.path.dirname(os.path.abspath(args.out)), exist_ok=True)
