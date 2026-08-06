@@ -409,34 +409,220 @@ not a target) · arm any structure metric as a gate (10d: the structural channel
 a style gate is the eye) · touch thin_extent, the E10/E11 lanes, or either accepted
 asset · exceed the bounded re-roll · end a session the Director has not ended.
 
-### Handoff 4 continuation (2026-08-06, post-Ruling 11) — three items before Task 3
+---
 
-The Director's verdict on the re-pair: register CONFIRMED ("a lot better"), not yet
-accepted — the tongue and the face's definition are the named defects
-([E12-ruling.md](E12-ruling.md) Ruling 11). In order:
+## Session handoff 5 (2026-08-06) — the tongue's geometry, the view-5 re-roll, and the head-crop companion. Comprehensive.
 
-1. **The tongue geometry check (11c).** Does `dragon_00003_raw.glb` carry tongue
-   geometry inside the cavity? Gate 0 confirmed a tongue on 00001/00002 and did not
-   on 00003. A crop into the open mouth on the mesh answers it. Report the fact;
-   the fixture consequence (D9/D11 cavity question) is the advisor's and the
-   Director's, not yours.
-2. **The view-5 re-roll (11d)** — the bounded single re-roll, new seed, nothing
-   else changed: the pale-tan hindquarter and ivory membranes are spec violations
-   on D1/D3 surfaces. The rejected view 5 stays in the record.
-3. **The head-crop companion (11b, resolution before geometry).** One bust-framed
-   styled generation at yaw 0: frame derived generator-legal (÷16) from the
-   measured head box (`head_00003.json`, padded as the Gate 0 crops were), clay
-   head render + control at the RULED canny pair, prompt = the head-family
-   elements + register + backdrop word (derive the stem from the protective entry
-   by the 9d deletion construction — body-only elements drop). One generation, its
-   own bounded re-roll, sidecar at birth ("head-region spec source and definition
-   gate; never a projection reference"). It answers whether the face's definition
-   was resolution-starved — and shows D8/D9/D10/D11 at judgeable scale for the
-   first time.
+*(An earlier, compressed form of this dispatch was rewritten in full on the
+Director's instruction — "make it comprehensive so that there's no room for
+misunderstanding." He is right: an executor session starts with no shared context,
+and a dispatch that presumes any is a dispatch that invites improvisation. The
+compressed form is superseded by this section.)*
 
-**Then HALT** — companion + re-rolled view 5 + tongue answer to the advisor's eye,
-then the Director's. Task 3 (bands + D8 closure) stays acceptance-gated behind that
-look. Watchdog standing before any local Blender leg; cloud discipline unchanged.
+Serves either the holding handoff-4 session (git pull first) or a fresh one — it
+assumes nothing not written here or in the reading list.
+
+### Where this stands
+
+The re-pair ran under the ruled register (ultra-realistic, NO LoRA, canny
+0.05/0.10) at 0 credits, and the Director's verdict is **register CONFIRMED, pair
+NOT YET ACCEPTED**: *"It looks a lot better, but the tongue is missing and the face
+could be more defined."* Ruling 11 turned that into three work items, and
+acceptance — and everything behind it (Task 3's bands re-derivation and the D8
+closure) — waits on all three plus the Director's eye. His question about the
+humanoid definition technique reopened the allocation question by Ruling 2's own
+re-open clause; the ladder is ruled (resolution first, geometry second, the second
+step his word only) and **item 3 below is the resolution rung**.
+
+### You are the executor
+
+```
+cd E:\AI\facet && git pull
+CLAUDE.md                                  <- how to work here. Read first, follow exactly.
+docs/experiments/E12-ruling.md             <- Rulings 9, 10, 11. Ruling 11 is THIS dispatch's charter.
+canon/DRAGON-IDENTITY.md                   <- the eleven elements; STYLE-SUPPLIED as rewritten by 10b
+profiles/beast.json                        <- canny 0.05/0.10 (11a), lora-w 0.0, the protective prompt entry
+docs/experiments/E12-twin-prompts.json     <- v3, the ruled per-view stems and the deletion construction
+E:\AI\training\facet_next\E12_gate0\head_00003.json    <- the measured head box + its frame convention
+E:\AI\training\facet_next\E12_gate0\boxed_00003\       <- the box drawn on all 8 views (checkability)
+docs/experiments/E12-gate0-report.md       <- sections 4-6: satellites are INTERIOR geometry; the mouth record
+```
+
+Your rules (CLAUDE.md §executor): never judge whether output is good · predictions
+blind before looking, blind status disclosed · stop at every gate · no memory-store
+writes · a negative result is a full success.
+
+### Environment, standing
+
+- **Watchdog verified before any local GPU/Blender leg, report either way** — a
+  status is a measurement, not a fact that survives the afternoon. Restart is
+  standing authorization (`pwsh -NoProfile -File E:\AI\training\_watchdog_start.ps1`);
+  the ceiling is never raised.
+- **Cloud discipline, in full:** the saved workflow JSON IS the submitted graph ·
+  in-code link-topology guard before submission (yours, self-tested in handoff 4 —
+  self-links, dangling targets, clean ANDON prints with no file written) · the
+  no-LoRA pre-flight scans every node for the loader class family AND the card
+  string (no-LoRA is the absence of a node, never a loaded card at weight zero) ·
+  `dry_run` then `estimate_credits` before any execution · uploads named by
+  content hash (a matching name is a free byte-identity confirmation) · sidecar at
+  birth for every generated artifact · **prints ASCII-only** · Blender through
+  PowerShell.
+- Output tree: continue the handoff-4 tree; new artifacts in clearly named
+  subdirectories (`tongue_check/`, `view5_reroll/`, `head_companion/`).
+- A concurrent lane may exist in this working copy — **read `git log` before any
+  push**, and touch nothing under the E10/E11 artifacts or either accepted asset.
+
+### Blind predictions, before anything runs
+
+Commit a predictions file BEFORE the first measurement, hashed, blind status
+stated, covering at minimum: T1 — tongue present / absent, and if present,
+reachable or interior; T2 — do the two named material misses resolve on a seed
+change alone; T3 — does the face read defined at bust resolution, and per-element
+landing expectations for D8 / D9 / D10 / D11 at that scale. Wrong predictions are
+full successes; they are calibration for the allocation ruling that follows.
+
+### Task 1 — the tongue: a geometry question, answered by geometry
+
+**The question, two parts:** does `dragon_00003_raw.glb` carry tongue geometry
+inside the mouth cavity — and if it does, is that geometry REACHABLE by any
+exterior camera, or is it interior-class like the fangs? (Ruling 10f measured 7 of
+8 satellite shells unreachable from all 26 directions; Gate 0 §6 confirmed a
+visible tongue on candidates 00001 and 00002 and **did not** on 00003.)
+
+**Mechanics are yours; the requirements are these:** the answer comes from the
+mesh, not from any render of a styled artifact — a crop-render into the open mouth
+(pick the yaw/elevation that actually sees the cavity; the jaw opens forward and
+down) and/or a raycast census of the cavity volume, whichever is decisive. Show
+the evidence (a labeled crop or the census numbers), and state the answer in one
+line.
+
+**Pre-registered branches — all three are reports, none is yours to act on:**
+- **Present and visible** → D9 stands; its landing is judged at the companion's
+  scale (Task 3), not before.
+- **Present but interior** → D9's declared surface is unreachable by construction,
+  the same class as the fangs; the fixture consequence (record D9 as
+  unrealizable-at-projection, or merge the cavity's elements) is the advisor's to
+  draft and the Director's window to rule.
+- **Absent** → same consequence path, with "no geometry" as the ground instead of
+  "unreachable geometry."
+
+**You edit no fixture and no profile in any branch.** Report the fact.
+
+### Task 2 — the view-5 re-roll: one seed, nothing else
+
+The pale-tan haunch/shoulder/hindquarter (D1's declared moss-green surface) and
+the bone-ivory membranes (D3's declared storm-grey) are spec violations on named
+elements — the palette-gate re-roll precedent applies (one re-roll, new seed, the
+rejected artifact stays in the record; a second failure is the result).
+
+- **The seed is the ONLY delta.** Same saved workflow JSON, same control, same
+  prompt stem, same everything; record both seeds in the sidecar. This SPENDS
+  view 5's single re-roll allowance; view 1's remains unspent.
+- Full pre-flight discipline applies (topology guard, no-LoRA scan, dry_run,
+  estimate_credits) even though the graph is unchanged — the guard runs because it
+  is cheap, not because change is expected.
+- **Deliverable:** a same-view sheet, old | new, full size, plus the two flagged
+  regions at 3× (haunch, membrane field). No score, no verdict — the E07 class is
+  judged by eye and the sheet serves the eye.
+- **Pre-registered branches:** misses resolve → view-5-v2 is the pair's candidate
+  rear view, acceptance judging proceeds on it; misses repeat → **that is the
+  result** — no third roll exists, and the finding (a register/element interaction
+  the seed does not reach) goes to the advisor as fixture/arm evidence.
+
+### Task 3 — the head-crop companion: the resolution rung of the allocation ladder
+
+**Purpose, stated so the artifact is read right:** the pair's face occupies ~3% of
+a full-figure frame — E01's framing physics applied to *generation*. This
+companion answers whether the face's softness is resolution starvation or a
+geometry limit, gives the head region a spec source, and shows D8/D9/D10/D11 at
+judgeable scale for the first time. It is **never a projection reference** — write
+that into its sidecar verbatim: *"head-region spec source and definition gate;
+never a projection reference"* + the Ruling 11b reference.
+
+**Frame:** derive from `head_00003.json`'s measured world box, padded **1.12**
+(Gate 0's own padding), projected under the profile's framing convention, then
+rounded **generator-legal on BOTH axes** (the VAE decodes ÷8; prefer ÷16 — the
+Gate 0 law, both dimensions this time because neither is the standing 1024).
+Record the derivation next to the frame as Gate 0 did.
+
+**Inputs:** a clay render of the head at that frame (the `e12_head_render.py`
+lineage is the precedent — same box, same convention), its figure mask (the crop
+of the full-frame exact silhouette, or a direct raycast at the crop frame —
+whichever you use, say so; the full-frame silhouette is already anchored, and a
+crop of anchored geometry needs no new gate — **invent no gate mid-dispatch**),
+and the control built exactly as the route builds it: ruled canny 0.05/0.10 on the
+clay render ∪ the figure mask's morphological gradient.
+
+**The stem:** derive from the protective prompt entry by the 9d **deletion
+construction** (whole comma-terms removed, subsequence assertion) — keep the
+elements VISIBLE in the crop, verified against the actual clay render (the
+`e12_view_visibility.py` instrument or eye-plus-record; expected keeps: D1 hide,
+D2 throat bands, D4 horns, D5 crown/cheek spikes, D8 eyes, D10 fangs/tooth rows,
+D11 mouth interior, D9 if Task 1 says visible; expected drops: D3 membranes IF the
+wing does not enter the crop — verify, Gate 0 noted membrane passing behind the
+skull on this mesh — D6 tail spines, D7 claws). Backdrop word and register terms
+stay. **The subject noun stays** (`a winged dragon,`) — identity rides the prompt —
+and the named risk is pre-registered: a full-figure noun in a bust frame invites a
+whole-body composition; the control is what holds composition (the measured
+architecture: structure from control, attributes from prompt). Report the standard
+per-view IoU diagnostic against the crop silhouette; the registration halt stays
+suspended (0.0) as everywhere on this subject.
+
+**Generation:** one, plus its own single bounded re-roll on spec-violation grounds
+only. Full cloud discipline. 0-credit expectation per the arc's record, verified
+by `estimate_credits` not assumed.
+
+**Pre-registered readings — the works-perfectly test for the ladder itself:**
+- **Face reads defined at bust resolution** → definition was resolution-starved at
+  pair scale; the geometry is sufficient; the asset-time answer is the band
+  machinery (texel allocation), armed by the advisor at texture stage. No mesh
+  change on the table.
+- **Face still soft at bust resolution** → the limit is the mesh's own head; the
+  bust-crop re-reconstruction question goes to the Director (it replaces the
+  designated mesh — a Ruling 1 re-open, his sentence, NOT a session's arm).
+- Either way: D8 (the Ruling 2 checkpoint), D9 (with Task 1's geometry answer),
+  D10, D11 landings reported at scale, no verdicts attached.
+
+### Then HALT
+
+Stage: the tongue evidence + answer, the view-5 old|new sheet + 3× crops, the
+companion + its sidecar + IoU diagnostic, the predictions file scored. **All of it
+to the advisor's eye first, then the Director's** (the looking rule,
+seat-independent). His questions are pre-stated: does view 5 now wear its declared
+materials; does the face define at resolution; what may the mouth hold. Task 3 of
+handoff 4 (bands re-derivation + D8 closure) remains acceptance-gated behind that
+look — run nothing past the halt.
+
+### Do not
+
+Run a third roll of anything · edit any fixture or profile (advisor's writes) ·
+invent a gate or bound mid-dispatch (report and halt instead) · arm any structure
+metric as a gate (Ruling 10d: the structural channel at a style gate is the eye) ·
+compare anything to the REJECTED first pair as a baseline (it is evidence, not a
+target) · touch thin_extent, the E10/E11 lanes, either accepted asset, or the
+00001/00002 artifacts · write to the memory store · end a session the Director has
+not ended.
+
+### Standards compliance (this dispatch)
+
+| standard | score | evidence |
+|---|---|---|
+| PIN_PER_STEP | 2 | Saved workflows are the submitted graphs; seeds recorded old and new; the companion's frame derivation recorded beside the frame; predictions hashed blind before any measurement |
+| ANDON_AUTHORITY | 2 | Watchdog before local legs; the topology and no-LoRA guards (both self-tested in handoff 4) run before every submission; the halt is the Director's eye with the advisor's before it; branches pre-registered so no outcome needs improvisation |
+| NAMED_COMPENSATORS | 2 | Cloud spend bounded (two generations + one companion re-roll max, estimate_credits first); all writes in new subdirectories of the handoff-4 tree; nothing pre-existing opened for writing; rejected artifacts retained, never deleted |
+| DECOMPOSE_BY_SECRETS | 3 | The seed is the only delta in T2; the companion derives every value from recorded artifacts (head box, ruled canny, protective entry) rather than re-deriving; fixture consequences are explicitly routed to the seats that own them |
+| UNCERTAINTY_GATED_HUMANS | 3 | All three outcomes halt to eyes, not scores; the allocation ladder's heavy rung is gated on the Director's sentence; the E07 class is presented at full size and 3× because no statistic can see it |
+| EXTERNAL_VERIFIER | 2 | The tongue answer is geometry against a styled claim; the re-roll sheet puts two generations against one spec; the companion is judged by the eye the numbers cannot replace. `skip:` on a second model, per the arc's precedent |
+
+### Calibration
+
+The float class is now twice-seen (9a, and handoff 4's bool→float64 promotion):
+before trusting any replica or anchor you build, check its arithmetic against the
+source's own, in the source's order. The works-perfectly test has earned its keep
+twice in two sessions (the iso-luminance artifact; the flat-not-zero null) — state
+what every new number returns when nothing is wrong, before reading it. And the
+last two sessions' best moments were refusals: no bound proposed while looking at
+a result, no third roll, no fixture edit from the executor's seat. Continue.
 
 ### Standards compliance (handoff 2)
 
