@@ -1280,6 +1280,124 @@ positive-naming lever per 18c's pre-registered branch.
 
 ---
 
+## Session handoff 11 (2026-08-06) — THE EXEMPLAR REBUILD (v8, all eight) + E13 Gate 0 (the projector's crop cameras, anchored). Comprehensive.
+
+Serves the holding handoff-10 session (git pull first) or a fresh one — it
+assumes nothing not written here or in the reading list.
+
+### Where this stands
+
+The Director's directive (Ruling 20): **these sprites are exemplars** — they
+feed the E11 training lane, define the method, and will be displayed — so the
+texture route runs over whole rather than patching the accumulated set. The
+canon is now occupancy-complete (Ruling 20c: the nape crest named its own
+term, D6 extended, D5's list explicit, the audit table in the fixture). The
+current v5/v6/v7 twins are the E12 measurement record — retained, superseded,
+never inputs here. E13 (the detail pass) is specced and amended; its Gate 0
+— the projector's crop-camera capability, anchored — is this dispatch's
+second leg because it is independent of generation and blocks stage 1.
+
+### You are the executor
+
+```
+cd E:\AI\facet && git pull
+CLAUDE.md                                  <- how to work here. Read first, follow exactly.
+docs/experiments/E12-ruling.md             <- Rulings 19-20. 20b is the directive; 20c the completed canon.
+docs/experiments/E13-detail-pass-spec.md   <- the spec + amendment. Gate 0 is YOUR Task 3.
+profiles/beast.json                        <- the v8-source entry; twin_prompts: REBUILD TO v8
+canon/DRAGON-IDENTITY.md                   <- occupancy-complete; the audit table
+docs/experiments/E12-handoff8-report.md    <- the gate/achromatic baselines and twin-run method
+E:\AI\training\facet_next\E12_twins\       <- masks + controls (REUSED - geometry unchanged)
+```
+
+Your rules (CLAUDE.md §executor) and the standing environment/cloud
+discipline are handoff 8's, unchanged (watchdog verified either way ·
+saved workflows · topology guard · no-LoRA pre-flight · dry_run +
+estimate_credits (the structural-identity proof pattern is ratified) ·
+content-hash uploads · sidecars at birth · ASCII prints · explicit git
+paths). Output tree: `E:\AI\training\facet_next\E13_twins\`.
+
+### Blind predictions, before anything runs
+
+Hashed, blind status disclosed, covering at minimum: per-view landings of
+the three NEW/CHANGED terms (neck spines charcoal at the nape? wing
+skeleton green on 0 AND 4 at this seed? spurs?) · whether 770700's
+term-resistance recurs on the wing struts (the 20a caveat — pre-register
+which views you expect to spend re-rolls on) · gate + achromatic
+expectations vs the handoff-8 baselines · registration range · the Gate 0
+anchor (must be exactly 0 differing pixels — state it).
+
+### Task 1 — v8 stems
+
+The committed builder against the occupancy-complete entry. ANDON: v8 vs v7
+differs by EXACTLY the one inserted term (`charcoal neck spines`) plus the
+audit's term substitution if any; subsequence assertions; drop map
+re-verified against the renders (the neck spines are silhouette-visible
+from every yaw — expect them everywhere); `headclay_0` rebuilds; version
+`E12-pair-8`; per-view counts printed.
+
+### Task 2 — the exemplar base coat: all eight views, fresh
+
+Controls and masks REUSED byte-identical (geometry unchanged; hash names
+confirm free). Seed 770700 per view (the operating point; the 20a caveat
+makes re-roll spends EXPECTED, not surprising — each view carries its one
+bounded re-roll on spec-visible grounds, the deterministic increment).
+The 16e gate + 17d achromatic channel per twin against the recorded
+baselines · registration diagnostics (suspended halt, printed) · per-view
+clay | control | twin sheets full size + an eight-view overview + crops at
+any firing. The exemplar bar means: **flag anything your eye catches even
+if no instrument does** — the record shows the eye leads the instruments
+on this subject.
+
+### Task 3 — E13 Gate 0: the projector learns crop cameras, and proves it changed nothing
+
+Extend `project_twins.py` with per-view crop-camera parameters
+(`--ortho-scale`, `--centre`, defaulting to the full-figure values the tool
+already derives). **The anchor (E13 Gate 0, blocks everything downstream):**
+re-run a RECORDED projection through the new parameter path at full-figure
+values and require **pixel-identical output** (the E08/E04 anchor
+discipline; bytes may differ, pixels may not). Any deviation halts E13 at
+zero spend and is a finding. No crop projection runs this session — the
+capability is proven, not used.
+
+### Then HALT
+
+Stage: the eight v8 twins + sidecars, sheets, gate/achromatic/registration
+tables, the Gate 0 anchor evidence, predictions scored. **To the advisor's
+eye first, then the Director's — his bar is the exemplar bar.** On his
+acceptance: the E13 crop twins (head region), stage 1 on the allocated
+atlas (A2's arithmetic lands with the crop dispatch), and the route.
+
+### Do not
+
+Exceed one bounded re-roll per view · project anything (Gate 0 proves, it
+does not use) · touch the E12 measurement-record twins, the accepted pair,
+E10/E11 artifacts, or 00001/00002 · arm any bound · edit any fixture or
+profile · write to the memory store · end a session the Director has not
+ended.
+
+### Standards compliance (this dispatch)
+
+| standard | score | evidence |
+|---|---|---|
+| PIN_PER_STEP | 2 | v8 versioned with an exact-delta ANDON; inputs by content-hash identity; seeds pinned; the anchor pins the tool extension to a recorded projection; predictions hashed blind first |
+| ANDON_AUTHORITY | 3 | Gate 0 halts E13 at zero spend on any pixel deviation; per-twin gates before any acceptance; bounded re-rolls; the eye explicitly deputised to flag past the instruments |
+| NAMED_COMPENSATORS | 2 | Eight generations + at most eight re-rolls, estimate_credits first; the tool extension is additive with defaults preserving old behaviour, proven by the anchor; all writes in a new tree |
+| DECOMPOSE_BY_SECRETS | 3 | The entry is v8's single source; capability (crop cameras) separated from policy (which crops, later) and from generation; the measurement record never feeds the exemplar run |
+| UNCERTAINTY_GATED_HUMANS | 3 | The halt is the Director's exemplar bar with the advisor's eye first; expected re-roll spends pre-registered so spending reads as process, not surprise |
+| EXTERNAL_VERIFIER | 2 | The anchor tests new code against old output; twins judged by eyes against a spec they did not generate. `skip:` per precedent |
+
+### Calibration
+
+The handoff-8/10 standard holds. Three subject cautions ride: term binding
+is seed-dependent (20a) — a resisted term at 770700 is a re-roll, not a
+naming failure; the eye leads the instruments here (three of four
+Director-caught defects were invisible to every armed number); and the
+exemplar bar is the acceptance bar — a twin that passes every gate and
+reads mushy at zoom is a flag, not a pass.
+
+---
+
 ### Standards compliance (handoff 2)
 
 | standard | score | evidence |
