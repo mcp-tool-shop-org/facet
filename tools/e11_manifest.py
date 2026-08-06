@@ -204,6 +204,11 @@ def main():
             "atlas": {"path": "atlas.png"},
         },
         "acceptance": staged["acceptance"],
+        # E11 Ruling 3: the verdict covers the ASSET; renders are derivations.
+        "renders_are": "post-verdict derivations of the accepted asset by the "
+                       "anchored emit path — the Gate-1 verdict covers the asset "
+                       "(mesh + atlas), and these renders derive from it by the "
+                       "route's own anchored readout (E11 Ruling 3).",
         "palette": staged["palette"],
         "channels": channels,
         "renders": renders,
