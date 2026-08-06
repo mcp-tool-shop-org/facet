@@ -23,16 +23,27 @@ yet — labeled as such, per the house evidence-status discipline.
 
 | letter | class | texture element (noun phrase) | relief signature (the clay stage) | bake identity (the later texture pass) | profile status |
 |---|---|---|---|---|---|
-| **F** | **Figure** — characters | gilded scrollwork armour | embossed scroll relief on a hammered field | warm burnished gold | LIVE — `character.json`; the gold family is the studio's proven binding material (W3's armour; the galleon's G1/G5/G6/G12/G13) |
+| **F** | **Figure** — characters | embossed scrollwork armour | baroque scroll filigree on a hammered field | warm burnished gold | LIVE — `character.json`; the gold family is the studio's proven binding material (W3's armour; the galleon's G1/G5/G6/G12/G13) |
 | **A** | **Architecture** — buildings, ruins | dressed stone masonry | cut ashlar blocks, mortar joints, chisel marks | pale warm limestone, matte | **FUTURE profile, pre-registered** — the class E10's law already names ("moss on ruins") |
 | **C** | **Creature** — beasts, monsters | overlapping scale plates | imbricated scallop relief | deep moss-green | LIVE — `beast.json`; inherits D1 verbatim |
-| **E** | **Environment** — flora, terrain | furrowed tree bark | deep vertical fissures, organic ridges | dark umber-brown | **FUTURE profile, pre-registered** |
+| **E** | **Environment** — terrain, flora, minerals | a faceted crystal | sharp angular planes, geometric cut faces | cool ice-blue crystal, glassy sheen | **FUTURE profile, pre-registered.** ⚠ *Corrected 2026-08-06 on the Director's eye at the v1 artifact: was "furrowed tree bark" — wood-family, adjacent to T's wood, and the two mushed. The crystal is the one relief family nothing else in the set occupies, it is genre-native (the JRPG tradition runs on crystals), and the logo of facet now contains a faceted letter* |
 | **T** | **Transport** — ships, vehicles | oak hull planking | plank courses, caulked seams, treenail pegs | warm oak-brown with black tarred seams | LIVE — `ship.json`; inherits G2/G3 verbatim |
 
-**Relief distinctness is the design constraint**: scrollwork / ashlar / scales / bark /
-planks are chosen to read as five different surfaces **in monochrome clay**, where
-colour cannot do the separating. Materials whose clay signature is weak (smooth steel,
-fine canvas weave) were considered and left out for exactly that reason.
+**Distinctness is a property of the MATERIAL FAMILY, not the relief pattern** —
+⚠ *learned at the v1 artifact, 2026-08-06.* The v1 set checked pairwise distinct in
+words (bark fissures vs plank courses) and failed in clay, because bark and planks are
+both **wood** and read as one family the moment they stand together; adjacency doubles
+the requirement. The ruled set — ornamental metalwork / cut stone / organic scale /
+geometric mineral / carpentered wood — carries five families, no two alike, no
+neighbours related. Materials whose clay signature is weak (smooth steel, fine canvas
+weave) remain excluded.
+
+**And the form stage carries no colour words.** ⚠ *Also learned at v1:* the prompt said
+"gold-scroll relief" and the model painted F gold while four letters stayed clay — a
+colour word in the clay stage is an instruction, and it was obeyed. Form first means
+the clay prompt names RELIEF ONLY; every colour lives in the bake column and arrives at
+the bake. This is the route's own discipline applied to its own logo, violated once by
+its own author, corrected here.
 
 ## Grammar rules, inherited from the subject fixtures
 
@@ -44,18 +55,26 @@ fine canvas weave) were considered and left out for exactly that reason.
 - The three LIVE identities inherit their colour registers from their subject canons and
   must track them: if `DRAGON-IDENTITY.md` D1 ever changes, the C letter changes with it.
 
-## The clay-stage prompt — v1, versioned here so the recipe travels with the identity
+## The clay-stage prompt — v2, versioned here so the recipe travels with the identity
 
 ```
 a sculpted clay logo maquette of the word "FACET", five massive dimensional capital
 letters standing in a row on a studio floor, form-exaggerated sculpt-like clay, matte
-warm-grey monochrome, each letter carved with a different surface texture: the letter F
-armoured in embossed gold-scroll relief, the letter A built from dressed stone masonry
-blocks with mortar joints, the letter C covered in overlapping dragon scale plates, the
-letter E carved as deeply furrowed tree bark, the letter T built from ship hull planking
-with caulked seams and treenail pegs, bold exaggerated planes, soft studio grey backdrop
-with a gentle gradient, soft ground shadow
+warm-grey monochrome throughout, every letter the same grey clay, each letter carved
+with a different surface relief: the letter F embossed with baroque scrollwork filigree,
+the letter A built from dressed stone masonry blocks with mortar joints, the letter C
+covered in overlapping dragon scale plates, the letter E cut as a faceted crystal with
+sharp angular planes, the letter T built from ship hull planking with caulked seams and
+treenail pegs, bold exaggerated planes, soft studio grey backdrop with a gentle
+gradient, soft ground shadow
 ```
+
+*v1 (superseded 2026-08-06, kept because rejected artifacts stay in the record): as
+above but with "armoured in embossed gold-scroll relief" for F and "carved as deeply
+furrowed tree bark" for E, and without "monochrome throughout, every letter the same
+grey clay." Rolled once; the Director's eye rejected the texture combination — the two
+wood textures adjacent read as one family, and the colour word painted F gold in an
+otherwise-clay set. Both corrections are in the table above.*
 
 **Generation notes:**
 
