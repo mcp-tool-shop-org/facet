@@ -261,3 +261,65 @@ on an accepted route explicitly decided; W3's crop rect covering 56.88% of this 
 head-band behaviour would have made a most-of-the-animal band a huge wrong lever; and
 character.json's standing thin-extent mismatch (0.03 against a source default of 0.0 —
 the only profile that ever turned the guard on) flagged to Task 2.3's curve, endorsed.
+
+---
+
+## Ruling 7 — Task 2.3/2.4 ruled: elevated is NONE; thin_extent stays undecided with its curve banked (2026-08-05)
+
+Evidence: the Task 2.3–2.4 report (`830c0e4`).
+
+**7a — ELEVATED CAMERAS: NONE.** The executor withheld a recommendation and said the
+numbers support suspending; the ruling goes one step further and **decides**, because
+the route loses nothing by it and the re-open point is already on the calendar. Grounds,
+folded into `cameras.elevated`:
+
+1. The best pair buys **+1.768 points against a ~50-point deficit** — an order of
+   magnitude below the +19.41 that earned the ship its pair; the ship's own decision
+   method returns "do not adopt" on these numbers.
+2. **The candidate ordering is not real**: the winner flips between @55 and @40 across
+   ray densities by 0.008 / 0.024 points, inside the measured sampling sensitivity —
+   and the flip decides whether the cull superset needs a union re-issue. The
+   executor's sentence is adopted as law: **a union re-issue must not be triggered by
+   a ray-density artifact.**
+3. The unreached half is **self-occluded** — under the folded wing, in the wing-body
+   gap, inside the mouth. That is `cull_unseen`'s territory by construction; no
+   exterior camera reaches it at any elevation.
+
+**Re-open condition, named:** the stroke-camera derivation, hole map in hand — if a
+large unpainted up-facing field would be served by an elevated stroke, that evidence
+re-opens the question at the ruling where stroke cameras are chosen anyway.
+`cull_unseen.production` stands as the code default, no union re-issue.
+
+**7b — a new law for the record, from the methodology catch:** **a first-hit coverage
+figure quoted without its ray density is not a number** — kin to the camera-count rule.
+39.3% → 48.1% → 49.6% across two quadruplings is not converged at the emit grid; the
+executor's "~50%" with convergence status stated is the quotable form, and testing the
+sampling before believing the greedy was the difference between this ruling and a
+superset re-issue triggered by noise.
+
+**7c — `thin_extent`: the curve is banked; the VALUE stays deliberately undecided.**
+The measured curve (ship's 0.01 = 14.9 px here, withholding 15.3% of the figure;
+character's 0.03 = 44.7 px, withholding **33.9% of the visible animal and 60.4% of the
+wing region**; knee 0.005–0.0075) rules OUT both inherited values — but the binding
+constraint is **Q12's falsification: the mask peaks at 1.78× membrane concentration
+because on a dragon most detail is thin.** No single global value separates membranes
+from tail spines, frill, claws and thin limbs — the global-constant/local-feature law
+arriving on schedule, measured before it cost anything. The value is therefore decided
+at the **stroke-lane ruling**, where the spec's arm design (possibly region-aware,
+using Task 2.3's wing boxes) and the ship's artifact-judged criterion can both be in
+the room. Until then the registry's 1 UNDECIDED is the expected state.
+
+**7d — the pair is explicitly ungated by 7c.** The styled target pair consumes no
+texpass machinery, and the ship's own pair ran pre-sweep; the 0-UNDECIDED gate binds
+the texture arms, stage 1 onward. Stated here so nobody improvises the interpretation
+in either direction later.
+
+**7e — Q13's clean negative is banked with its boundary:** the pinch-field wing and
+the control wing differ by 0.17 points at 0.03 — the pinch field is a topology defect,
+not a thin-mask behaviour difference — as a **whole-wing** comparison; the per-texel
+question stays open and belongs to the spec if it ever matters.
+
+**Scorecard noted:** 11 held / 6 falsified / 1 indeterminate of 18, the three most
+valuable entries all falsifications; arc-wide 24 of 39. The record is working exactly
+as designed: the misses are located, owned, and each one narrowed the space the spec
+must design in.
