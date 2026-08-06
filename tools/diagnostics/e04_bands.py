@@ -42,6 +42,16 @@ ap.add_argument("--clusters", type=int, default=14)
 ap.add_argument("--chroma-floor", type=float, default=12.0,
                 help="INHERITED from W3's palette fixture. Below it hue is undefined.")
 ap.add_argument("--seed", type=int, default=770700)
+# ⚠ GENERALISED 2026-08-06 (E12 Task 5). Two subject values were hardcoded in this tool's
+# body: the galleon's mask tag and its asked backdrop of white. Both DEFAULT to the galleon's
+# so its recorded run reproduces byte-for-byte on the same command line - the relocation
+# discipline. A subject constant living in a tool is the class profiles exist to remove.
+ap.add_argument("--tag", default="galleonclay",
+                help="silhouette mask filename stem; must match the subject's profile tag")
+ap.add_argument("--asked", default="255,255,255",
+                help="the backdrop that was ASKED FOR, as sRGB - what the prompt word named. "
+                     "The ask-vs-realise gap is the measurement; the galleon asked 255 and "
+                     "got 173, so this cannot be assumed equal to what is on the image.")
 args = ap.parse_args()
 os.makedirs(args.out, exist_ok=True)
 
@@ -70,7 +80,7 @@ for spec in args.views.split(","):
     k, tag = spec.split("=")
     im = np.asarray(Image.open(os.path.join(args.pair, "target_%s.png" % tag)
                                ).convert("RGB"), dtype=np.float32) / 255.0
-    sil = np.asarray(Image.open(os.path.join(args.masks, "galleonclay_%s.png" % k)
+    sil = np.asarray(Image.open(os.path.join(args.masks, "%s_%s.png" % (args.tag, k))
                                 ).convert("L")) > 127
     c8 = np.concatenate([im[:8, :8].reshape(-1, 3), im[:8, -8:].reshape(-1, 3)])
     bg_all.append(np.median(c8, axis=0))
@@ -79,8 +89,9 @@ for spec in args.views.split(","):
           % (k, sil.sum(), *[int(round(v * 255)) for v in bg_all[-1]]), flush=True)
 P = np.concatenate(px_all)
 BG = np.median(np.stack(bg_all), axis=0)
+ASKED = np.array([float(v) for v in args.asked.split(",")]) / 255.0
 out = {"realised_backdrop_rgb255": [int(round(v * 255)) for v in BG],
-       "asked_backdrop_rgb255": [255, 255, 255], "px": int(len(P))}
+       "asked_backdrop_rgb255": [int(round(v * 255)) for v in ASKED], "px": int(len(P))}
 
 # ---- cluster what is ACTUALLY there (k-means in Lab, fixed seed, no sklearn)
 X = lab(P)
@@ -172,7 +183,7 @@ def mind(bg, mat):
 
 
 print("\n[4d] BACKDROP, against MEASURED cluster colours (4b used expected ones):", flush=True)
-for nm, bg in (("realised on the pair", BG), ("asked (white)", np.array([1.0, 1.0, 1.0])),
+for nm, bg in (("realised on the pair", BG), ("asked (the prompt word)", ASKED),
                ("W3's inherited grey", np.array([106, 106, 107]) / 255.0)):
     print("[4d]   %-22s rgb(%3d,%3d,%3d)  min-dist to measured clusters %.4f  "
           "(to expected table %.4f)"
@@ -180,7 +191,8 @@ for nm, bg in (("realised on the pair", BG), ("asked (white)", np.array([1.0, 1.
 out["backdrop_check"] = {
     "realised": {"rgb255": [int(round(v * 255)) for v in BG],
                  "min_dist_measured": round(mind(BG, meas), 4)},
-    "asked_white": {"min_dist_measured": round(mind(np.ones(3), meas), 4)},
+    "asked": {"rgb255": [int(round(v * 255)) for v in ASKED],
+              "min_dist_measured": round(mind(ASKED, meas), 4)},
     "w3_grey": {"min_dist_measured": round(mind(np.array([106, 106, 107]) / 255.0, meas), 4)}}
 
 json.dump(out, open(os.path.join(args.out, "bands.json"), "w"), indent=1)
