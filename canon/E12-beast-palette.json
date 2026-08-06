@@ -1,0 +1,73 @@
+{
+ "_purpose": "The declared palette for E12's beast, for palette_gate.py. Nothing here is chosen: every band is transcribed from the handoff-7 measurement (docs/experiments/E12-handoff7-report.md), RULED in E12 Ruling 15b/15c. Authored by an executor session as a pure transcription - the same act, by the same rule, that produced canon/E04-galleon-palette.json in the Arm T session. profiles/beast.json is NOT edited here; wiring _fixtures.palette to this path is the advisor's write.",
+
+ "_the_W3_and_GALLEON_palettes_must_never_be_pointed_at_a_beast": "W3's bands cover a red beard, a green tunic and gold armour on human skin; the galleon's cover oak, tar, canvas, gold and sea-blue. This subject's cover moss-green hide, olive-tan ventral plates, an ivory head family, charcoal filaments and neutral membranes. Blue makes the divergence concrete a second time: blue is W3's off-palette DETECTOR colour, a DECLARED MATERIAL on the galleon (G11), and on this subject a REALISED STRATUM of an element declared neutral (D3).",
+
+ "_bands_are_derived_from_the_FIXTURE_and_cross-checked_against_a_DIFFERENT_image_than_they_gate": "They come from canon/DRAGON-IDENTITY.md's eleven named elements AS CORRECTED (E12 Ruling 12e), measured on the Director-ACCEPTED styled target pair (E12_repair/repaint_v2/, Ruling 14), which is NOT a twin and will never be projected - it is the subject's specification source. Deriving them from the twins they gate would be a tautology that passes review because the numbers look fine.",
+
+ "_the_chroma_floor_is_INHERITED_and_load_bearing": "12.0, taken unchanged from W3's fixture and kept through the galleon. Below it hue is not a colour: it is undefined and reads as a rotation. On THIS subject the floor is doing more work than on either predecessor - 40.25% of the accepted figure sits below it and carries no quotable hue at all, including all of D6 charcoal (C* 5.0), D11 slate (C* 6.5) and D3's own best landing (C* 1.3). Without the floor this gate would flag the spines, the mouth and most of the membranes on every view.",
+
+ "min_chroma": 12.0,
+
+ "allowed_bands": [
+  {
+   "name": "warm-olive",
+   "hue_deg": [85.4, 147.3],
+   "status": "ADOPTED - E12 Ruling 15b",
+   "measured_span_deg": [95.4, 137.3],
+   "rests_on": "7 clusters, 55.23% of the accepted figure",
+   "covers": "D1 deep moss-green scaled hide (4 clusters, h 119.0-137.3), D2 pale olive-tan ventral plates (2 clusters, h 95.4-101.5), and the merged D4/D5/D10 ivory family (1 cluster, h 96.4)",
+   "measured_examples": "hide h 119.0 C* 15.7 | hide-shadow h 124.9 C* 14.9 | hide-lit h 137.3 C* 28.1 | olive-tan h 95.4 C* 21.0 | ivory h 96.4 C* 21.6",
+   "_the_margin_is_a_CONVENTION": "+/-10 deg, inherited from the galleon's table and named as a convention rather than a measurement, exactly as that file names it.",
+   "_why_eleven_names_collapse_to_one_band": "Third subject, third time: a realised palette far tighter than its declared names suggest. Under a DIFFERENT register (no-LoRA ultra-realistic) and a CORRECTED palette the collapse recurred - one 41.9 deg group - which is what resolved H1/H4's register confound at Ruling 15f. The group's share fell 81.61% -> 55.23% entirely by migration BELOW the chroma floor, not by hue spread.",
+   "from": "handoff 7 report; E12 Ruling 15b"
+  }
+ ],
+
+ "⚠_WHY_THE_SUSPENDED_STRATUM_IS_NOT_IN_allowed_bands": "palette_gate.py consumes EVERY entry in `allowed_bands` and does not read the `status` field. A suspended band listed there would be silently ARMED, and the Ruling 15c branch - which decides whether the allowance applies by validating against the accepted pair - would be pre-empted by the file it is supposed to test. So the gate AS CONSTRUCTED is warm-olive alone, and the stratum below is recorded in a key the tool does not read. Applying the allowance is a deliberate act that produces a NAMED VARIANT palette, and both readings are reported.",
+
+ "_suspended_stratum_allowance_NOT_APPLIED_BY_THIS_FILE": [
+  {
+   "name": "blue-violet-realised-D3-stratum",
+   "hue_deg": [273.4, 293.4],
+   "status": "SUSPENDED - NOT A FIXTURE BAND. Applied ONLY under the Ruling 15c allowance branch, and only if the gate's pair-validation demands it.",
+   "measured_span_deg": [283.4, 283.4],
+   "rests_on": "1 cluster, 4.52% of the accepted figure - 8.19% of view 5, 0.85% of view 1",
+   "cluster": {"rgb255": [74, 79, 97], "L": 34.2, "C": 12.9, "h": 283.4},
+   "covers": "NOTHING DECLARED. By location it is a realised stratum of D3 (storm-grey wing membranes); its nearest declared element by colour is D11, the mouth interior, which is a placement impossibility since 71.7% of the cluster sits on view 5 - the view whose camera cannot see the head and whose stem drops the whole mouth family.",
+   "_why_suspended": "Three reasons, any one sufficient, all ratified at Ruling 15c: one cluster fixes no edge (the galleon suspended its blue on 2 clusters / 3.69%; the rejected beast pair suspended its wine on 1 cluster / 0.50%; this is the same shape); the nearest declared element is a placement impossibility; and by location it belongs to an element the fixture calls NEUTRAL, whose own best landing is a different cluster below the chroma floor.",
+   "_how_a_run_must_report_it": "BOTH ways - allowance applied and allowance withheld - so a ruling can choose without anyone choosing while looking at the result. Neither reading is adopted here.",
+   "_the_realised_backdrop_stays_outside_it": "h 297.8, which is 4.4 deg above this band's upper edge. Stated because Ruling 8a's original ground ('the one hue family no declared material occupies') is STALE - a realised D3 stratum now occupies blue-violet - and 15i corrected the premise in place while keeping the word. The backdrop's C* is 11.0, BELOW this file's own floor, so it is hue-neutral under the gate's own rule and the gate never measures it anyway (it masks to the geometry silhouette).",
+   "from": "handoff 7 report; suspension ratified E12 Ruling 15c"
+  }
+ ],
+
+ "_forbidden_span": "278.1 deg = 77.2% of the hue circle with the allowance applied (0-85.4, 147.3-273.4, 293.4-360); 298.1 deg = 82.8% with it withheld. Against W3's 170 deg = 47.2% and the galleon's 288 deg = 80.0%. The equality with the REJECTED beast pair's 278.1 deg is construction, not meaning: both are one ~42 deg group plus one single-cluster point band widened by the same +/-10 deg convention. The second band is a different colour on each pair - wine at 344.6 on the rejected, blue-violet at 283.4 on the accepted.",
+
+ "_the_ivory_family_merge_is_ANSWERED_YES": "D4 curved horns, D5 crown and cheek spikes, and D10 fangs and tooth rows all land in ONE cluster, rgb(224,212,169) at 3.69%, h 96.4, C* 21.6 - dE 8.6 / 8.6 / 11.6. One band, inside the warm-olive group. The rejected pair merged FIVE ivory elements; the correction cut the family from five terms to three and it still merges.",
+
+ "⚠_D3_has_NO_hue_band_and_this_is_a_measurement_not_an_omission": "D3's own best landing is the tightest in the entire table - dE 3.1 - and sits at C* 1.3, far below the floor. The membrane fields realise as at least four strata: rgb(156,162,142) C* 10.4 (lit trailing field), rgb(109,113,115) C* 1.3 (the storm-grey landing), rgb(42,45,53) C* 6.5 (deep shadow), rgb(74,79,97) C* 12.9 h 283.4 (the marginal blue-violet stratum above). Only the last is above the floor. The honest description is a LIGHTNESS RANGE, L* 18.2-65.7 at C* <= 12.9, and a hue band for D3 is not derivable from this data.",
+
+ "⚠_D8_and_D9_carry_NO_numeric_gate_EVER": "Pre-registered in canon/DRAGON-IDENTITY.md before any styled image existed (the G7 lesson) and unchanged through Ruling 15g/15h. D8 is CLOSED by eye at 193 px - a slit-pupil ember iris 20x below the cluster floor that measured it. D9 has no cluster on the accepted pair at all. Neither is a gate quantity; both are eye-judged.",
+
+ "_what_this_gate_CANNOT_do": "It tests COLOUR, not PLACEMENT, and on this subject that limit bites harder than on either predecessor - Ruling 15d banked it as an instrument law after it was measured twice here. The ivory cluster covers THREE declared elements plus a KNOWN PER-VIEW DEVIATION: view 1's foot claws landed ivory where D7 declares charcoal, they sit inside this file's warm-olive band at h 96.4, and this gate will pass them silently on every view. Both dark bands are colour matches to SHADOW (15j). A green light here says the twin contains no material the specification never named; it does NOT say the right element is on the right structure. The sheets serve the eye and the eye rules.",
+
+ "gate": {
+  "max_offpalette_pct": null,
+  "max_offpalette_blob_px": null,
+
+  "_both_bounds_are_null_ON_PURPOSE": "The galleon's spec, applied unchanged. W3's percentage bound is WITHDRAWN at the source (its stated derivation did not describe it, and its denominator moves with the camera); W3's 800 px blob bound was measured on one character's twins. This subject has NO clean twin baseline until the handoff-8 twins exist, and inventing one now - while looking at the artifacts it would judge - is the move this repo has paid for three times. Run with --report-only and report numerator and denominator.",
+
+  "_baseline_that_DOES_exist_and_is_not_a_bound": "The Director-ACCEPTED pair's own reading through these bands, measured at handoff 8 Task 1 BEFORE any twin existed, is recorded in the handoff-8 report both with and without the 15c allowance. That is what an accepted image of this subject looks like through this gate - context for a ruling, not a threshold, and it comes from images that are not twins.",
+
+  "_replacement_unit_when_a_bound_is_eventually_derived": "Normalise by PERIMETER, or report absolute count with figure area beside it. Figure area on this subject's eight views swings 1.43x (19.798% at the profile views to 28.373% at front and rear), so a percentage-of-area bound would read differently on a profile than on a front view of the same clean twin. Derive from a clean baseline measured BEFORE the arm it judges."
+ },
+
+ "_provenance": {
+  "authored": "2026-08-06, E12 handoff 8 Task 1, before any twin existed",
+  "measured_by": "tools/diagnostics/e04_bands.py --clusters 14 --seed 770700 --chroma-floor 12.0",
+  "measured_on": "E12_repair/repaint_v2/target_{1_head_seed770700_v5,5_tail_seed770700_v5}.png inside E12_repair/masks/dragonclay_{1,5}.png",
+  "report": "docs/experiments/E12-handoff7-report.md",
+  "ruled": "docs/experiments/E12-ruling.md Ruling 15b (adoption), 15c (suspension + the allowance branch)"
+ }
+}

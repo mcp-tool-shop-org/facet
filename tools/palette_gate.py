@@ -80,7 +80,18 @@ CMIN = float(PAL["min_chroma"])
 # replaced with a looser number — withdrawing is not choosing a new threshold.
 _mp = PAL["gate"].get("max_offpalette_pct")
 MAXPCT = None if _mp is None else float(_mp)
-MAXBLOB = int(PAL["gate"]["max_offpalette_blob_px"])
+# ⚠ THE BLOB BOUND MAY ALSO BE NULL, and until 2026-08-06 this line was `int(PAL[...])`, which
+# raised TypeError on None. THE DEFECT IS RECORDED RATHER THAN SILENTLY REPAIRED because of what
+# it means: `canon/E04-galleon-palette.json` sets BOTH bounds null *on purpose* — "this subject
+# has no baseline until its own twins exist" — so this tool could not read the very file its own
+# precedent wrote, and any subject arriving at the gate before its twins exist hit a traceback
+# instead of a measurement. Found by E12 handoff 8, pre-registered in that dispatch's blind
+# predictions before it was run, and proven by pointing this tool at the galleon's published
+# palette. The repair is the shape the MAXPCT path already had, not a new number: a null bound
+# REPORTS and gates nothing. Inventing a blob bound for a subject with no clean baseline is the
+# mis-specified-condition class this repo has paid for four times.
+_mb = PAL["gate"].get("max_offpalette_blob_px")
+MAXBLOB = None if _mb is None else int(_mb)
 
 
 def to_lab(rgb):
@@ -99,10 +110,20 @@ def to_lab(rgb):
 
 print(f"[palette] {os.path.basename(args.palette)}: min_chroma {CMIN}  bands "
       f"{', '.join(f'{n} {lo:.0f}-{hi:.0f}deg' for n, lo, hi in BANDS)}", flush=True)
-if MAXPCT is None:
+if MAXPCT is None and MAXBLOB is None:
+    print("[palette] gate: BOTH BOUNDS NULL — this run is a MEASUREMENT, not a gate. Nothing "
+          "here can fail, and a zero-failure line below means only that no bound was armed. "
+          "Report numerator and denominator; derive a bound later from a clean baseline "
+          "measured BEFORE the arm it judges.", flush=True)
+elif MAXPCT is None:
     print(f"[palette] gate: largest blob <= {MAXBLOB:,} px. The percentage bound is WITHDRAWN "
           f"(see the palette JSON) — % is reported as a diagnostic and gates nothing, so "
           f"DIFFUSE off-palette contamination is currently unbounded.", flush=True)
+elif MAXBLOB is None:
+    print(f"[palette] gate: off-palette <= {MAXPCT}% of figure. The blob bound is null — the "
+          f"largest component is reported as a diagnostic and gates nothing, so a single "
+          f"INVENTED GARMENT is currently unbounded (that is the failure this file was built "
+          f"from; see the header).", flush=True)
 else:
     print(f"[palette] gate: off-palette <= {MAXPCT}% of figure AND largest blob <= "
           f"{MAXBLOB:,} px", flush=True)
@@ -131,7 +152,7 @@ for img_path, mask_path in zip(args.images, args.masks):
     lb, k = label(off)
     blob = int(np.bincount(lb.ravel())[1:].max()) if k else 0
 
-    ok = (blob <= MAXBLOB) and (MAXPCT is None or pct <= MAXPCT)
+    ok = (MAXBLOB is None or blob <= MAXBLOB) and (MAXPCT is None or pct <= MAXPCT)
     stem = os.path.basename(img_path)
     print(f"[palette] {stem:<22s} {n_fig:>10,} {n_off:>9,} {pct:>6.2f}% {blob:>8,}  "
           f"{'ok' if ok else 'OFF-PALETTE'}", flush=True)
