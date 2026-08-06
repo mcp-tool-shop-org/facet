@@ -16,6 +16,13 @@ Consumes bake_hero_prep.py outputs (pos/nor/mask npy + meta.json + prep_uv.glb).
 
   project_twins.py --prep DIR --front twin_front.png --back twin_back.png
                    --out styled_partial.png [--power 4] [--hole-grey 0.42]
+
+CROP CAMERAS (E13, added on the Director's word — E12 Rulings 19b/20): the framing above is
+the DEFAULT, not the only one. `--ortho-scale IDX=V`, `--centre IDX=X,Y,Z` and
+`--crop-aspect IDX=W,H` override it per view, so a twin generated at a tight detail frame can
+be projected through the camera it was generated at. Every one defaults to the value this
+tool already derives, and the default path runs the identical expressions it always did —
+E13 Gate 0 is the anchor that proves it, at zero differing pixels on a recorded projection.
 """
 import argparse
 import sys as _sys, os as _os
@@ -154,6 +161,32 @@ ap.add_argument("--mask-keyed", action="store_true",
                      "146,356 px silhouette on W3, interior rather than at the rim.")
 ap.add_argument("--hole-grey", type=float, default=0.42,
                 help="neutral clay value holes carry in the PREVIEW atlas")
+# ── CROP CAMERAS (E13, opened on the Director's word at E12 Ruling 19b) ───────────────
+# This tool was FULL-FIGURE-ONLY by construction: one frame derived from the mesh bbox,
+# centred on the bbox mid, shared by every view. That is why a detail region gets whatever
+# share of the frame its size dictates — the head is ~1.6% of a full twin's pixels — and it
+# is the reason horns, crown and finger struts arrive as mush (Ruling 19a).
+#
+# These three are PER-VIEW OVERRIDES and nothing else. Each defaults to the value the tool
+# already derives, and the defaults are threaded through the SAME expressions the globals
+# were, so an invocation that passes none of them computes bit-identical arithmetic. That
+# identity is not asserted by argument — it is the E13 Gate 0 anchor, and it halts the
+# experiment at zero spend if a recorded projection moves by one pixel.
+#
+# ⚠ --crop-aspect is a THIRD parameter beyond the two the spec names, declared rather than
+# smuggled: a crop frame is generally not the route frame's aspect (the measured head-crop
+# companion is 1360x1360 against a 1792x1024 route frame), so ortho-scale and centre alone
+# cannot express a crop camera. Default = the global --aspect, so it changes nothing.
+ap.add_argument("--ortho-scale", action="append", default=[], metavar="IDX=V",
+                help="per-view VERTICAL world extent of the frame, replacing the "
+                     "bbox-derived one for that view only. Repeatable. Smaller = tighter "
+                     "crop. Default: the full-figure value.")
+ap.add_argument("--centre", action="append", default=[], metavar="IDX=X,Y,Z",
+                help="per-view camera centre in the std frame, replacing the bbox mid for "
+                     "that view only. Repeatable. Default: the full-figure bbox mid.")
+ap.add_argument("--crop-aspect", action="append", default=[], metavar="IDX=W,H",
+                help="per-view frame aspect, replacing --aspect for that view only. "
+                     "Repeatable. Default: --aspect.")
 args = ap.parse_args(subject_profile.bind(ap, "project_twins.py", None))
 AW, AH = [float(x) for x in args.aspect.split(",")]
 
@@ -195,6 +228,50 @@ bhi = v.max(axis=0)
 bmid = (blo + bhi) / 2
 v_ext = (bhi[2] - blo[2]) * 1.204
 h_ext = v_ext * (AW / AH)
+
+
+def _per_view(specs, name, cast):
+    """Parse repeatable IDX=VALUE overrides into {idx: value}. Empty in, empty out."""
+    out = {}
+    for spec in specs:
+        k, _, val = spec.partition("=")
+        assert val, f"ANDON: --{name} wants IDX=VALUE, got {spec!r}"
+        try:
+            i = int(k)
+        except ValueError:
+            raise SystemExit(f"ANDON: --{name} view index {k!r} is not an integer")
+        assert i not in out, f"ANDON: --{name} names view {i} twice"
+        out[i] = cast(val)
+    return out
+
+
+CROP_V = _per_view(args.ortho_scale, "ortho-scale", float)
+CROP_C = _per_view(args.centre, "centre",
+                   lambda s: np.array([float(x) for x in s.split(",")], dtype=np.float64))
+CROP_A = _per_view(args.crop_aspect, "crop-aspect",
+                   lambda s: tuple(float(x) for x in s.split(",")))
+for i, c in CROP_C.items():
+    assert c.shape == (3,), f"ANDON: --centre {i} wants X,Y,Z, got {c.tolist()}"
+for i, a in CROP_A.items():
+    assert len(a) == 2 and a[0] > 0 and a[1] > 0, f"ANDON: --crop-aspect {i} wants W,H"
+
+
+def view_frame(idx):
+    """This view's camera frame: (centre, vertical extent, horizontal extent).
+
+    ⚠ THE DEFAULT PATH IS THE OLD EXPRESSION, NOT A RECONSTRUCTION OF IT. With no override
+    for `idx` this returns the very objects the globals hold and recomputes h_ext with the
+    identical multiplication, so the arithmetic downstream is bit-for-bit what it was before
+    crop cameras existed. That is what E13 Gate 0 anchors, and the anchor is the reason this
+    function returns `h_ext` itself rather than `v * (AW / AH)` on the default branch.
+    """
+    ve = CROP_V.get(idx)
+    aw, ah = CROP_A.get(idx, (None, None))
+    if ve is None and aw is None:
+        return CROP_C.get(idx, bmid), v_ext, h_ext
+    ve = v_ext if ve is None else ve
+    aw, ah = (AW, AH) if aw is None else (aw, ah)
+    return CROP_C.get(idx, bmid), ve, ve * (aw / ah)
 
 
 def figure_mask(img, tol=0.06, erode=5, corner_median=False):
@@ -324,7 +401,8 @@ if args.view:
         assert os.path.exists(p), f"ANDON: --view {k} path does not exist: {p}"
         deg = int(k) * args.step
         d, r = cam_axes(deg)
-        VIEWS.append({"name": f"y{deg:+06.1f}", "path": p, "dtc": d, "right": r})
+        VIEWS.append({"name": f"y{deg:+06.1f}", "path": p, "dtc": d, "right": r,
+                      "frame": view_frame(int(k))})
     assert len({v["name"] for v in VIEWS}) == len(VIEWS), (
         "ANDON: duplicate view index in --view")
     print(f"[twins] N-VIEW mode: {len(VIEWS)} cameras at "
@@ -334,9 +412,13 @@ else:
         "ANDON: supply --front and --back, or one or more --view IDX=PATH")
     df, rf = cam_axes(0.0)
     db, rb = cam_axes(180.0)
+    # the legacy pair path hardcodes yaw 0 and 180, so its view INDICES are 0 and 180/step —
+    # named here only so a crop override can address them; nobody is expected to crop the pair
     VIEWS = [
-        {"name": "front", "path": args.front, "dtc": df, "right": rf},
-        {"name": "back", "path": args.back, "dtc": db, "right": rb},
+        {"name": "front", "path": args.front, "dtc": df, "right": rf,
+         "frame": view_frame(0)},
+        {"name": "back", "path": args.back, "dtc": db, "right": rb,
+         "frame": view_frame(int(round(180.0 / args.step)) if args.step else 4)},
     ]
     assert np.array_equal(df, [0.0, -1.0, 0.0]) and np.array_equal(rf, [1.0, 0.0, 0.0])
     assert np.array_equal(db, [0.0, 1.0, 0.0]) and np.array_equal(rb, [-1.0, 0.0, 0.0])
@@ -356,6 +438,13 @@ reachable = np.zeros(NV, dtype=bool)
 DIAG = {}
 
 for _view_i, view in enumerate(VIEWS):
+    # THIS view's camera frame. Identical to the globals unless a crop override named it.
+    cen, v_ext_i, h_ext_i = view["frame"]
+    if (v_ext_i, h_ext_i) != (v_ext, h_ext) or cen is not bmid:
+        print(f"[twins] {view['name']}: CROP CAMERA — centre {np.round(cen, 6).tolist()} "
+              f"extent {v_ext_i:.6f} x {h_ext_i:.6f} (full figure is {v_ext:.6f} x "
+              f"{h_ext:.6f}; {v_ext / max(v_ext_i, 1e-12):.2f}x the linear detail)",
+              flush=True)
     img = np.asarray(Image.open(view["path"]).convert("RGB"), dtype=np.float32) / 255.0
     # TWO masks, two questions. Conflating them is what cost 480k texels:
     #   is there real surface here?   -> the MESH silhouette, NOT eroded
@@ -405,10 +494,10 @@ for _view_i, view in enumerate(VIEWS):
         rgt = view["right"]
         upv = np.cross(rgt, look)
         upv /= np.linalg.norm(upv) + 1e-12
-        gx_ = (np.arange(W) + 0.5) / W * h_ext - h_ext / 2
-        gy_ = v_ext / 2 - (np.arange(H) + 0.5) / H * v_ext
+        gx_ = (np.arange(W) + 0.5) / W * h_ext_i - h_ext_i / 2
+        gy_ = v_ext_i / 2 - (np.arange(H) + 0.5) / H * v_ext_i
         g1, g2 = np.meshgrid(gx_, gy_)
-        o2 = (bmid[None, None, :] + g1[..., None] * rgt[None, None, :]
+        o2 = (cen[None, None, :] + g1[..., None] * rgt[None, None, :]
               + g2[..., None] * upv[None, None, :] - look[None, None, :] * 2.0)
         mesh_fm = np.isfinite(rs.cast_rays(o3d.core.Tensor(np.concatenate(
             [o2, np.broadcast_to(look, o2.shape)], axis=-1
@@ -542,10 +631,10 @@ for _view_i, view in enumerate(VIEWS):
     # valid texel including ones no camera can see, which made 100% impossible and
     # made A0's contaminated 62% look like headroom.
     reachable[idx] = True
-    xr = (P[idx] @ view["right"]) - (bmid @ view["right"])
-    zu = (P[idx] @ up) - (bmid @ up)
-    px = (xr / h_ext + 0.5) * W - 0.5
-    py = (0.5 - zu / v_ext) * H - 0.5
+    xr = (P[idx] @ view["right"]) - (cen @ view["right"])
+    zu = (P[idx] @ up) - (cen @ up)
+    px = (xr / h_ext_i + 0.5) * W - 0.5
+    py = (0.5 - zu / v_ext_i) * H - 0.5
     dist_in = distance_transform_edt(fm > 0.5).astype(np.float32)
     # ⚠ REBUILT (E08 A3). This erosion used to be an ABSOLUTE distance, scaled by the
     # figure's GLOBAL width and then applied to LOCAL structures. On W3 that took
