@@ -41,6 +41,11 @@ ap.add_argument("--views", default="0,1,2,3,4,5,6,7")
 ap.add_argument("--drop", action="append", default=[],
                 help="TERM:views - drop this exact comma-term from those view stems. "
                      "Repeatable. The term must appear in the entry verbatim.")
+ap.add_argument("--extra", action="append", default=[],
+                help="KEY=TERM|TERM|... - an additional stem under an arbitrary key, built "
+                     "by the SAME deletion construction from the SAME entry. For a companion "
+                     "frame whose visible elements differ from any turnaround view. Terms "
+                     "listed are the ones DROPPED; the subsequence assertion still applies.")
 ap.add_argument("--version", required=True)
 ap.add_argument("--supersedes", default="")
 ap.add_argument("--note", action="append", default=[], help="KEY=TEXT, recorded in the file")
@@ -121,6 +126,22 @@ for v in VIEWS:
         full_views.append(v)
     out["%s_%s" % (args.tag, v)] = s
     counts[v] = len(kept)
+
+for spec in args.extra:
+    key, _, dropped = spec.partition("=")
+    dl = [t for t in dropped.split("|") if t]
+    bad2 = [t for t in dl if t not in TERMS]
+    if bad2:
+        raise SystemExit("ANDON: --extra %s names term(s) that are not comma-terms of the "
+                         "profile entry: %s\nNo file was written." % (key, bad2))
+    kept = [t for t in TERMS if t not in dl]
+    if not subsequence(kept, TERMS):
+        raise SystemExit("ANDON: extra stem %s is not an ordered subsequence of the entry. "
+                         "No file written." % key)
+    out[key] = ", ".join(kept)
+    counts[key] = len(kept)
+    out.setdefault("_extra_stems", {})[key] = {"dropped": dl, "terms": len(kept)}
+    print("[prompts]   %-14s %2d terms   EXTRA (drops %s)" % (key, len(kept), "; ".join(dl)))
 
 out["_per_view_term_count"] = counts
 out["_full_string_views"] = full_views

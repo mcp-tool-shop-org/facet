@@ -46,6 +46,10 @@ ap.add_argument("--box", required=True,
 ap.add_argument("--views", default="0", help="camera yaw degrees; 0 = turn_render's view 0")
 ap.add_argument("--res", type=int, default=1024)
 ap.add_argument("--pad", type=float, default=1.20)
+ap.add_argument("--ortho-scale", type=float, default=None,
+                help="explicit ortho_scale, replacing the yaw-invariant span. For a "
+                     "single-yaw frame whose scale was derived elsewhere and pre-registered.")
+ap.add_argument("--res-y", type=int, default=None, help="vertical resolution; defaults to --res")
 ap.add_argument("--flat", action="store_true")
 ap.add_argument("--clay", action="store_true")
 ap.add_argument("--exposure", type=float, default=0.85)
@@ -79,6 +83,19 @@ for o in meshes:
 # any camera angle, so the head cannot walk out of frame at 45 degrees the way a max-of-axes
 # scale would let it.
 span = max(math.hypot(d.x, d.y), d.z) * args.pad
+if args.ortho_scale is not None:
+    # ⚠ A SINGLE-YAW OVERRIDE, and the reason it exists rather than a re-tuned --pad.
+    # The span above is the yaw-INVARIANT one: the horizontal diagonal bounds the box's
+    # projected width at any camera angle, which is right for a multi-yaw sheet and
+    # over-conservative for one view. E12 handoff 5's companion is a single yaw-0 frame whose
+    # ortho_scale was PRE-REGISTERED from the route's own rule (turn_render --fit-axis width:
+    # max(size.x, size.y) * margin) before the render existed. Reaching that number by
+    # solving for --pad would have printed a padding of 0.82 and read as under-padding; this
+    # flag states the substitution instead. Both values are printed so the swap is visible.
+    print("[headr] ORTHO OVERRIDE: %.6f supplied, replacing the yaw-invariant %.6f "
+          "(single-yaw frame; see the pre-registered derivation)"
+          % (args.ortho_scale, span), flush=True)
+    span = args.ortho_scale
 radius = max(mhi.x - mlo.x, mhi.y - mlo.y, mhi.z - mlo.z) * 4.0
 
 cam_data = bpy.data.cameras.new("cam")
@@ -90,7 +107,7 @@ scene.collection.objects.link(cam)
 scene.camera = cam
 
 scene.render.resolution_x = args.res
-scene.render.resolution_y = args.res
+scene.render.resolution_y = args.res_y or args.res
 scene.render.image_settings.file_format = "PNG"
 scene.render.engine = "BLENDER_WORKBENCH"
 sh = scene.display.shading
