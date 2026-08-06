@@ -1,11 +1,23 @@
 # The facet handbook
 
-A styled 2D concept goes in; a textured 3D character comes out. Everything runs on one
-local machine, and nothing in the chain carries a non-commercial licence.
+A styled 2D concept goes in; a textured 3D asset comes out. Everything runs on one
+local machine plus a metered cloud generation step, and nothing in the chain carries a
+non-commercial licence. **Three subject classes have been through the route: a
+character (accepted), a galleon (accepted), and a dragon (in flight)** — each with
+every subject value in its own profile and identity fixture, so no subject can break
+another's path.
 
 This handbook is the guide. [The README](../../README.md) is the measured state of every
 tool, and [docs/experiments](../experiments/) is the evidence — every claim here traces to
-a numbered experiment you can re-run.
+a numbered experiment you can re-run. If this handbook and a ruling ever disagree, **the
+ruling is right and this page has a bug**; corrections land in place, with the
+measurement. Maintenance rule (Director, 2026-08-05): the README and this handbook are
+updated **as the work moves**, at each ruling fold — translations are deferred until the
+repo gets its treatment.
+
+Companion pages: **[Subject profiles](profiles.md)** — the loader, the decision forms,
+the registry sweep · **[The subjects](subjects.md)** — the three subjects' numbers, with
+their denominators.
 
 ---
 
@@ -29,16 +41,24 @@ depth; weathered planks and painted grime read as *geometry* and muddy the form.
 Generate the **styled twin** at the same time, canny-locked to the same control. That twin
 is the colour and identity reference for the whole texture stage.
 
-### 2 — Frame the face, get a face
+### 2 — Frame the face, get a face — when the subject earns it
 
-Reconstruct a second time from a head-and-shoulders crop of the same clay.
-
-The generator caps input at 1024 px on the long side, so a full figure puts roughly **138
-px** on the head where a bust crop puts **439 px**. That is the entire difference between a
-continuous brow bar over a shallow recess, and separated eyelids with a brow furrow and
-modelled nostril cavities. Measured across two characters ([E01](../experiments/E01-facial-structure-ceiling.md)).
+On a character, reconstruct a second time from a head-and-shoulders crop of the same
+clay. The generator caps input at 1024 px on the long side, so a full figure puts
+roughly **138 px** on the head where a bust crop puts **439 px**. That is the entire
+difference between a continuous brow bar over a shallow recess, and separated eyelids
+with a brow furrow and modelled nostril cavities. Measured across two characters
+([E01](../experiments/E01-facial-structure-ceiling.md)).
 
 Reconstruction is *not* the ceiling on facial quality. Framing is.
+
+**But the crop is an allocation decision, not a universal stage** — it is made per
+subject, in the profile, from that subject's own head evidence. The ship ruled
+allocation NONE (nothing supported a privileged region); the dragon **also ruled NONE**
+([E12 Ruling 2](../experiments/E12-ruling.md)) because its head reconstructs with
+legible structure at full figure — separated horns, tooth rows, nostrils at 10.5% of
+faces — so the E01 defect the crop exists to fix was not observed. Neither prior
+subject's answer transfers; the measurement decides.
 
 ### 3 — Weld, then allocate density
 
@@ -169,12 +189,14 @@ against a 1.07 no-response floor — accepted, with the boundary recorded in eve
 
 | stage | cost |
 |---|---|
-| reconstruction | ~20 s per arm, local |
+| reconstruction (TRELLIS.2 `1024_cascade`) | 103–141 s per mesh, local, 3.4–5.6 GB peak VRAM — measured across six meshes on two subject classes |
 | weld + density allocation | seconds, local |
 | visibility classification | seconds, local |
-| twins | ~1 min per view, cloud |
+| prep bake (4096 atlas) | ~4–5 min, local |
+| twins | ~1 min per view, cloud — **zero credits across every E04 and E10 generation** |
 | projection, finalize, pack, renders | ~2 min, local |
-| brush loop (8 strokes) | ~8 min |
+| brush loop (per stroke) | ~1 min, cloud |
+| dense-turnaround export + lane validation | minutes, local CPU |
 
 ## Honest limits
 
@@ -194,10 +216,63 @@ against a 1.07 no-response floor — accepted, with the boundary recorded in eve
 - **Chart fragmentation limits texel density.** Culling removed 47% of faces but only 34%
   of charts, because invisible surface is interleaved *within* charts rather than sitting in
   separate ones.
-- **Everything here is calibrated on humanoid characters.** Ships, monsters and props are
-  untested; [the profile design](../profiles-design.md) exists so that testing them cannot
-  break the character path. The off-spec detector matters most there — nobody will know by eye
-  what a galleon's palette should be.
+- **⚠ Corrected in place, 2026-08-05 — the sentence below was written before E04 and
+  both its predictions landed.** *Original:* "Everything here is calibrated on humanoid
+  characters. Ships, monsters and props are untested; the profile design exists so that
+  testing them cannot break the character path. The off-spec detector matters most
+  there — nobody will know by eye what a galleon's palette should be." *Measured
+  since:* the **galleon went through the whole route and was accepted** with every
+  subject value drawn from `profiles/ship.json` and its fixture — the central
+  hypothesis (*no shared-code edit needed*) was falsified five times and each
+  falsification hardened the profile system rather than the subject breaking the
+  route; and the off-palette gate did exactly what the sentence predicted, catching a
+  garment no eye would have flagged on a subject nobody has priors for. The **dragon**
+  is in flight on the same template with its own profile and fixture. What remains
+  true: every new subject class arrives with **no working prior** — the beast's reach
+  landed interpolable from neither predecessor — so every value is measured on the
+  subject, never inherited ([the profile design](../profiles-design.md),
+  [Subject profiles](profiles.md)).
+
+## How a new subject enters the route
+
+The template that carried the galleon and now carries the dragon
+([E12's kickoff](../experiments/E12-executor-kickoff.md) is the worked current example):
+
+1. **Gate 0 — reconstruct every candidate, measure, sheet, and the Director
+   designates.** Three clays → three meshes → `mesh_stats` (no profile — the
+   byte-identity path) → full-size sheets beside the sources, ranking nothing.
+   Rejecting all candidates is a legitimate outcome. Subject-specific evidence the
+   later decisions will need (the beast's head-region measurement) is gathered here so
+   the designation is informed and the profile decides from data.
+2. **The identity fixture is authored forward** (`canon/<SUBJECT>-IDENTITY.md`): every
+   named element its own noun phrase, occupancy-complete, stressors pre-registered
+   with their evidence status. The styled target pair is generated FROM it — identity
+   enters through the prompt, or it is arriving by accident.
+3. **The profile is drafted** (`profiles/<subject>.json`): measured values with their
+   derivations, route constants as explicit first-run operating points, suspensions
+   expressed mechanically. See [Subject profiles](profiles.md).
+4. **The measurement pass** decides everything the draft suspended: the registry
+   sweep, the prep bake, the pre-registered reach ceiling, the thin-structure cost
+   curve, the camera question, the backdrop derivation — each measured on the
+   designated mesh, blind predictions first.
+5. **The styled target pair** (two identity-dense views, cloud, bounded re-roll) makes
+   the authored identity visual — the Director's overrule window on the whole fixture —
+   and the **palette bands** derive from the fixture's materials cross-checked against
+   the pair, never against the twins they will later gate.
+6. Then the route proper: twins → stage-1 projection → coverage-gated strokes →
+   finalize → pack → **Gate 1, the Director's eye on the five-column sheet.**
+
+## Accepted assets become training data
+
+The dense-turnaround exporter ([E11](../experiments/E11-ruling.md)) turns an accepted
+asset into a self-contained, sha-linked training tree: per-camera flat renders with
+**exact silhouettes**, born-indexed provenance class maps, per-texel owner slices where
+the asset has them, and the clay↔styled-twin pairs. The export is a **pure function**
+(byte-identical on re-run), the shared views are byte-anchored to the recorded sheets,
+and the sdlab lane's own validator ingests both existing subjects **without schema
+edits**. Flat-only is the honest export: backgrounds are augmentation-side (composite
+anything behind the exact silhouette), and lighting would be a new renderer with its
+own anchors.
 
 ## Licence
 

@@ -1,0 +1,72 @@
+# Subject profiles
+
+Every constant in this pipeline was originally calibrated on one standing human figure,
+and until the profile system existed nobody could say which constants were *principles*
+and which were **that warrior's measurements wearing a principle's clothes**. A profile
+(`profiles/character.json` · `ship.json` · `beast.json`) is where the second kind lives.
+The Director's charter for the system: *"create profiles so that we don't break the
+humanoid character pipeline to make the ship."* It worked — the record is the record.
+
+The classification that produced the system — every constant argued into one column or
+the other — is [E04-profile-extraction.md](../experiments/E04-profile-extraction.md);
+the boundary's design is [profiles-design.md](../profiles-design.md). This page is the
+operator's map. **If it disagrees with the loader's docstring or a ruling, those win.**
+
+## Loader semantics (`tools/subject_profile.py`)
+
+- `--profile <path>` is accepted by every route-active tool; the profile's values become
+  that tool's **defaults**, and an explicit command-line flag still wins — a recorded
+  invocation keeps meaning what it meant.
+- **No `--profile` means byte-identity**: nothing happens at all, every historical
+  command reproduces exactly. This is why Gate 0 runs unprofiled on a new subject.
+- **An unknown key raises, loudly.** A profile naming a flag its tool does not have is
+  the exact failure the system exists to prevent: a value that looks configured, reads
+  as authoritative, and does nothing.
+- **Every value carries `why` and `from`** — enforced by the loader, because a profile
+  is otherwise a perfect hiding place for unexplained magic numbers, which is precisely
+  how an earlier memory store became doctrine.
+
+## The decision forms
+
+Every flag on a route-active tool is decided in exactly one of these forms — the
+registry sweep (below) enforces it:
+
+| form | meaning |
+|---|---|
+| **MEASURED** | derived from this subject's own geometry or fixture, with the derivation cited |
+| **SPENT** | a recorded run on this subject consumed the key; the value is what ran. *A value cited as SPENT inherits its anchor only if every sibling of the anchored run is pinned to the anchored mode* — a partial-family pin quietly voids the anchor it cites (E12 Ruling 4a) |
+| **FIRST-RUN OPERATING POINT** (LIVE) | the accepted route's value adopted explicitly, because silence resolves to inheritance; the next halt's diagnostics rule what carries |
+| **SUSPENDED — EXPRESSED MECHANICALLY** | a halt or bound this subject cannot calibrate yet, expressed as a value the tool actually receives (a vacuous `0.0` / `9.99`) so the diagnostic still computes and prints while the halt cannot fire. Prose suspensions never reach the loader |
+| **`_not_on_route`** | decided: the profile supplies no value because the tool or key is not on this subject's route — absence as a decision the sweep can see |
+| **`_per_invocation`** | decided: the profile supplies no value BY DESIGN because the correct value varies per invocation and arrives from the job context (stroke yaw/elevation, the cloud brush's `--lane`). Minted E12 Ruling 6d after two executors correctly declined to misuse `_not_on_route`'s name for keys exercised on every run; **site migration is scheduled and not yet done** — until then those sites still wear the old name with the objection restated inside them |
+| **`_NOT_CLEARED`** | a lifecycle block: the tool is forbidden on this subject until a ruling clears it and pays for the clearance by deciding every key in the same commit. Removing the marker without deciding the keys makes the sweep fire — that firing is the procedure |
+
+## The instruments
+
+- **The registry sweep** (`e04_registry_sweep.py`) walks every route-active tool's
+  argparse surface against the profile and reports UNDECIDED flags. **0 UNDECIDED gates
+  the texture arms (stage 1 onward)** — not Gate 0, not the measurement pass, not the
+  styled pair (E12 Ruling 7d). The registry is the classification table: *0 UNDECIDED
+  means every flag the tools bothered to write down is decided; it does not mean every
+  flag that matters is.*
+- **The coverage pass** additionally checks `character.json`'s relocation claim
+  (profile values = code defaults, digit for digit). `NOT A PURE RELOCATION` on any
+  other subject's profile is the expected verdict, not a finding.
+
+## Registry state (2026-08-05)
+
+| profile | sweep | note |
+|---|---|---|
+| `ship.json` | **81/81, exit 0** | the first profile with every flag on an accepted route explicitly decided |
+| `beast.json` | 80/81 | the 1 is `thin-extent`, deliberately undecided until the stroke-lane ruling — the tool default is **0.0, guard disabled**, which is why no arm precedes the decision (E12 Rulings 5d/7c) |
+| `character.json` | 65/81 | that profile's silences-as-defaults predate the sweep; its relocation claim holds with one standing mismatch (`thin-extent` 0.03 vs source default 0.0 — the only profile that ever turned the guard on) |
+
+## The framing family
+
+`aspect`, `fit-axis` and `margin` move together across **three consumers**
+(`turn_render`, `silhouette_masks`, `texpass_iter`) or landscape subjects silently
+misregister — a lesson paid for twice on the ship (Rulings 6/11/15/25: a clipped frame
+found at the third consumer, and a generator-illegal width that broke every
+twin↔silhouette pairing — the Qwen VAE decodes ÷8, so **derive the frame from the mesh,
+then round to the nearest legal width, ÷16 preferred**). `beast.json` pins the family on
+all three consumers from day one.

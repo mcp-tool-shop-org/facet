@@ -107,9 +107,51 @@ layers fill by masked projection** — three inpaint attempts at ΔL\* −1.6 to
 one full-frame at **+33.4**, one field changed. The layer machinery (second accumulating
 state, two-lane profile vocabulary, base-invariance structural and proven under live
 fire, straight-alpha RGBA export contract) generalises by construction: snow on boots,
-mud on wheels, moss on ruins are the same contact query + layer + law. **Next: the
-galleon into the sdlab asset lane as asset #2 — the first with a native per-texel owner
-channel — and Ruling 4's `pos.npy` off-surface consumer measurement.**
+mud on wheels, moss on ruins are the same contact query + layer + law. Both queued
+items then ran the same evening — the `pos.npy` off-surface measurement (ruled; the
+restatement above, [E10-offsurface-ruling.md](docs/experiments/E10-offsurface-ruling.md))
+and the exporter, next.
+
+**E11 ran and was ruled the same day** ([E11-report.md](docs/experiments/E11-report.md),
+[E11-ruling.md](docs/experiments/E11-ruling.md)): **accepted assets become training
+data.** The dense-turnaround exporter is proven a pure function (two fresh emits
+byte-identical on every channel; the beam anchors byte-identical to the recorded
+sheets), and both subjects' dense trees — the galleon at 28 cameras with the **native
+per-texel owner channel** (the first asset that has one), W3 at 26 with owner honestly
+absent — validate through the sdlab lane's own codebase with **zero schema edits**. The
+lane's palette gate reproduced the staged manifest's blob digits (1738 / 1495 / 263 px)
+from freshly emitted renders through a different implementation. Ruled: the **emit
+render generation is the standing export and training input** (the recorded
+`renders_flat` are another generator's output no current invocation reproduces — frozen
+in the record, superseded for training); a Gate-1 verdict covers the **asset**, renders
+are post-verdict derivations by the anchored readout; **flat-only is what facet honestly
+exports** — every render ships with its exact silhouette so backgrounds are
+augmentation-side, and lighting would be a new renderer with its own anchors.
+
+**E12 — the beast arc — is IN FLIGHT** ([E12-ruling.md](docs/experiments/E12-ruling.md),
+Rulings 1–8 so far): the route's third subject class, a **winged dragon**, designated
+from three reconstructed candidates on full-size sheets ("3 is the winner"). What Gate 0
+measured ([E12-gate0-report.md](docs/experiments/E12-gate0-report.md)) rewrites the
+priors: **9–12 welded shells against a character's 40–191 and the ship's 237–512** —
+an order of magnitude more connected than anything this repo has reconstructed, every
+satellite located (fangs, plus four tail spines on one candidate) — and the **wing
+membranes come back as closed slabs that pinch, not sheets that hole** (0–1 boundary
+edges of zero length; what breaks watertightness is edges with >2 faces, confined to
+trailing rims on two candidates and running through the folded wing's field on the
+designated mesh). Reconstruction **does not preserve the concepts' poses**: three
+different stances all return as one symmetric wings-spread quadruped. The measurement
+pass banked the subject's ceiling (**50.46% of 3,240,510 valid texels at eight
+eye-level cameras**), ruled **elevated cameras NONE** (+1.77 points against a
+~50-point self-occluded deficit, with the candidate ordering flipping inside
+ray-sampling noise), and measured the thin-structure constraint the spec must design
+against: **the character's `thin_extent` would withhold a third of the visible animal
+and 60% of the wings, and no single global value separates membranes on a subject
+where most detail is thin** (mask peaks at 1.78× membrane concentration). The
+backdrop was derived, not inherited — and the derivation's payoff is that **W3's
+"plain grey background" scores under the key's own 0.06 cut on this subject, bound by
+the membranes**: the blade failure's shape pointed at the new surface class. The
+styled target pair is the next step; every value the subject needs so far lives in
+`profiles/beast.json` and `canon/DRAGON-IDENTITY.md`, none inherited unmeasured.
 
 **Form first, style second.** Image-to-3D reconstructors key off shading, silhouette
 clarity and unambiguous depth. A heavily stylized sprite — weathered planks, painted
@@ -286,7 +328,17 @@ halts if either fails, and `--no-weld` reproduces the old behaviour for comparis
 (character-only — its head/shoulder logic is meaningless on other subjects);
 `mesh_stats.py` measures any mesh identically — shell count, face-rect polygon
 density, and curvature variance inside the face rect — so two meshes made months
-apart by different tools are still comparable.
+apart by different tools are still comparable. `gate0_sheet.py` and `gate1_sheet.py`
+build the designation and acceptance sheets (full size, concept beside geometry,
+ranking nothing). The E12 arc added per-subject instruments under `tools/diagnostics/`
+— frame derivation asking every rendered yaw (`e12_frame.py`), head-region evidence
+with the box drawn back onto every view (`e12_head_evidence.py`), non-manifold-edge
+location (`e12_nonmanifold.py`), the thin-extent cost curve (`e12_thin_curve.py`),
+elevated-camera coverage (`e12_elevated.py`), the subject-flagged off-surface
+classifier validated against the ship's ruled number before first use
+(`e12_offsurface.py`), and a two-class argparse help linter that gates rather than
+informs (`e12_help_format_scan.py` — literal `%` and non-cp1252 glyphs; it found six
+sites where a hand-search knew four, one of which could not crash at all).
 
 ## Hard-won rules
 
