@@ -38,8 +38,8 @@
   "verify/turn_render.py": {
    "w": {
     "value": 1792,
-    "why": "MEASURED at Gate 0 from the designated mesh: worst projected width over all eight rendered yaws is 1.744221 x height at view 0 (the axis formula and the per-yaw check agree on this candidate), 1024 x 1.7442 = 1786.1, rounded up to the /16-legal 1792 per the generator-legal law (derive from the mesh, round to the nearest legal width; /8 is the floor, /16 preferred). Chosen as if it will be kept: the ship's Gate 0 frame became its twin frame.",
-    "from": "E12 Gate 0 section 7; frame_00003.json"
+    "why": "MEASURED at Gate 0 from the designated mesh: worst projected width over all eight rendered yaws is 1.744221 x height at view 0 (the axis formula and the per-yaw check agree on this candidate), 1024 x 1.7442 = 1786.1, rounded up to the /16-legal 1792 per the generator-legal law (derive from the mesh, round to the nearest legal width; /8 is the floor, /16 preferred). Chosen as if it will be kept: the ship's Gate 0 frame became its twin frame. CORRECTED 2026-08-05 (executor check on e2bb470, E12 Ruling 4a): that arithmetic is the Gate 0 DRIVER's, which rendered at the code-default fit-axis HEIGHT (no --fit-axis was passed); this profile adjudicates width. Measured consequence on view 0: 25.665% of pixels differ under the profile, max channel delta 159, figure 0.331% larger, no crop in either mode - so the Gate 0 renders are NOT byte-anchors for profile-rendered output, by construction. The 1792 frame contains the worst yaw under both modes.",
+    "from": "E12 Gate 0 section 7; frame_00003.json; E12 Ruling 4a"
    },
    "h": {
     "value": 1024,
@@ -63,8 +63,8 @@
    },
    "fit-axis": {
     "value": "width",
-    "why": "All three candidates measured far wider than tall (designated: 1.7442); the frame is width-fit or landscape subjects silently misregister. Same adjudicated mode as the ship's, on this subject's own measurement.",
-    "from": "E12 Gate 0 sections 3 and 7"
+    "why": "All three candidates measured far wider than tall (designated: 1.7442); the frame is width-fit or landscape subjects silently misregister. Same adjudicated mode as the ship's, on this subject's own measurement. NOTE (E12 Ruling 4a): Gate 0's designation renders ran the code-default HEIGHT - this pin deliberately changes the route's mode relative to them, because width is the semantic the frame derivation speaks (contain the widest projection with the margin) and the ship's accepted route ran the same mode. The anchor consequence is recorded on w and margin.",
+    "from": "E12 Gate 0 sections 3 and 7; E12 Ruling 4a"
    },
    "tag": {
     "value": "dragonclay",
@@ -73,8 +73,8 @@
    },
    "margin": {
     "value": 1.204,
-    "why": "SPENT by Gate 0: every designated-mesh render the Director ruled on ran at the code default 1.204, and the 1792 frame carries horizontal margin 1.2080 at the worst view. The framing family (aspect, fit-axis, margin) is pinned on all three consumers from day one - Ruling 25's absent-key lesson pre-applied.",
-    "from": "E12 Gate 0 section 7; E04 Ruling 25"
+    "why": "The margin VALUE Gate 0 rendered at, and the profile keeps it. CORRECTED 2026-08-05 (E12 Ruling 4a): an earlier why said 'SPENT by Gate 0' without noting those renders also ran the code-default fit-axis HEIGHT, which this profile overrides - a value cited as SPENT inherits its anchor only if every sibling the anchor ran under is pinned to the anchored mode, and fit-axis is not. So Gate 0 anchors the margin value alone, not the framing as a whole; profile-rendered margins measure 1.208 h / 1.204 v at the worst view, no crop. The framing family (aspect, fit-axis, margin) stays pinned together on all three consumers - Ruling 25's lesson.",
+    "from": "E12 Gate 0 section 7; E04 Ruling 25; E12 Ruling 4a"
    }
   },
   "silhouette_masks.py": {

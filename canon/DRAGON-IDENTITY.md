@@ -37,7 +37,7 @@ such a surface, replace its owner on a named region instead.**
 | D7 | bone-ivory claws | feet and the wing-claw spur at each wing's wrist |
 | D8 | ember-orange eyes | **pre-registered as below any area floor** (the G7 lesson: a pair-derived floor was unreachable by an element this size and was withdrawn). Landing verdict belongs to the twins' table, judged by eye at the head crop; no numeric gate may be armed on this element |
 | D9 | a dark wine-red tongue | the studio's wine-red register (W3's skirt); small element, same floor caveat as D8 |
-| D10 | pale ivory fangs and tooth rows | the free-standing fang shells are geometry (Gate 0 §4 located every satellite on them); this element colours them |
+| D10 | pale ivory fangs and tooth rows | the free-standing fang shells are geometry; this element colours them. *⚠ Corrected 2026-08-05 (E12 Ruling 4c): an earlier note said Gate 0 §4 "located every satellite on them" — on the designated mesh, **5 of 8 satellites (384 of 396 faces) are the fangs**; three 4-face micro-fragments sit off the wing/shoulder at x −0.237 / +0.096 / +0.102, y ≈ −0.10..−0.12* |
 | D11 | a dark slate mouth interior | the open cavity behind the teeth |
 
 ## MESH-SUPPLIED — arrives through the control from geometry; record the dependency
@@ -73,8 +73,12 @@ such a surface, replace its owner on a named region instead.**
   tuned on rigging could withhold a third of this subject.
 - **S-filament** *(inferred from the ship, unmeasured here)* — horns, spikes, spines,
   claws are filament-adjacent; A3's cap (0.0% thin-strata erosion) is the prior. The
-  fang shells are the smallest: satellite shells of 4–180 faces that must not be lost by
-  any weld, decimate or cull step — pre-registered as a check wherever those run.
+  designated mesh carries **eight satellite shells: five are the fangs (384 of 396
+  faces — D10's geometry), three are 4-face micro-fragments off the wing/shoulder**
+  *(⚠ corrected 2026-08-05, E12 Ruling 4c — an earlier draft called every satellite a
+  fang)*. Pre-registered check wherever weld, decimate or cull runs: **report the
+  satellite census before and after.** Losing a fang matters and goes to a ruling;
+  losing a micro-fragment is reported, not halted.
 - **S-scale-relief** *(unread guess, labeled as one)* — high-frequency overlapping plates
   may interact with the LoRA's register; the styled pair is the first evidence either way.
 - **S-occlusion** *(measured at Gate 0, designated-in)* — the throat/shoulder crevice and
