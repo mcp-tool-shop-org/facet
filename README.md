@@ -137,7 +137,7 @@ exports** — every render ships with its exact silhouette so backgrounds are
 augmentation-side, and lighting would be a new renderer with its own anchors.
 
 **E12 — the beast arc — is IN FLIGHT** ([E12-ruling.md](docs/experiments/E12-ruling.md),
-Rulings 1–14 so far): the route's third subject class, a **winged dragon**, designated
+Rulings 1–15 so far): the route's third subject class, a **winged dragon**, designated
 from three reconstructed candidates on full-size sheets ("3 is the winner"). What Gate 0
 measured ([E12-gate0-report.md](docs/experiments/E12-gate0-report.md)) rewrites the
 priors: **9–12 welded shells against a character's 40–191 and the ship's 237–512** —
@@ -207,9 +207,18 @@ subject; the drop map's job may be larger than visibility). **The pair is
 ACCEPTED** ([Ruling 14](docs/experiments/E12-ruling.md), "I accept. Very good!"
 — deviations accepted at the pair, dispositions landing with the bands
 measurement): the subject's specification source and visual target exists, the
-register row closes as *earned*, and the route proper is unblocked — bands + D8
-closure, then twins, stage 1 against the banked 50.46% ceiling, strokes, and
-Gate 1. Every value the subject needs lives in
+register row closes as *earned*, and the route proper is unblocked. The bands ran
+against the accepted pair ([Ruling 15](docs/experiments/E12-ruling.md)):
+**warm-olive 85.4–147.3 adopted** (7 clusters, 55.23% of figure), blue-violet
+honestly suspended on one cluster (a realised D3 stratum — which also caught
+Ruling 8a's "no declared material occupies blue-violet" premise stale; the word
+stands on the accepted pair's own anchor), the H1/H4 hue-collapse confound
+**resolved — the register was not the cause** (the collapse recurs at 41.9°,
+third subject, third time), and **D8 is CLOSED**: a 193 px ember-orange iris
+with a vertical slit pupil, one blob, inside the head box, on an artifact that
+stands. Next: twins (handoff 8, gate validated on the pair before it gates
+anything), stage 1 against the banked 50.46% ceiling, strokes, and Gate 1.
+Every value the subject needs lives in
 `profiles/beast.json` and `canon/DRAGON-IDENTITY.md`, and the ones that arrived by
 inheritance are being falsified and replaced one measured step at a time — which is
 the profile system doing its job.

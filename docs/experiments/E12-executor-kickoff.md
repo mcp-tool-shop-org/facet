@@ -900,6 +900,153 @@ disposition to the ruling. A negative result is a full success.
 
 ---
 
+## Session handoff 8 (2026-08-06) — THE TWINS: eight views, the gate validated on the pair first. Comprehensive.
+
+Serves the holding handoff-7 session (git pull first) or a fresh one — it assumes
+nothing not written here or in the reading list.
+
+### Where this stands
+
+The pair is ACCEPTED (Ruling 14) and is the subject's generation anchor (the
+recipe keys read SPENT, `beast.json _still_suspended.generation_recipe_anchor`).
+The bands are RULED (Ruling 15): **warm-olive 85.4–147.3 adopted; blue-violet
+suspended** with a pre-registered realised-stratum allowance (273.4–293.4,
+pair-realised D3, applied ONLY if the gate's pair-validation demands it); chroma
+floor 12.0; D3 is neutral strata, no hue band; D8/D9 below floors, eye-judged;
+dark bands match shadow (colour-not-placement). This dispatch generates the
+eight `dragonclay` twins the route projects from — **twins belong to THIS mesh**,
+their one job is registering to the silhouette they will be projected onto, and
+identity rides the stems (v5). Stage 1 is handoff 9, not yours.
+
+### You are the executor
+
+```
+cd E:\AI\facet && git pull
+CLAUDE.md                                  <- how to work here. Read first, follow exactly.
+docs/experiments/E12-ruling.md             <- Rulings 14-15. 15c is the gate's construction; 15k is this dispatch.
+profiles/beast.json                        <- bands ruled into _still_suspended.palette_bands; recipe SPENT-anchored
+docs/experiments/E12-twin-prompts.json     <- v5 (E12-pair-5): eight dragonclay stems, the ruled per-view drop map
+docs/experiments/E12-handoff7-report.md    <- the band table, the strata, the caveats your gate inherits
+E:\AI\training\facet_next\E12_pair\clay\   <- the profile-rendered clay views (the pair's controls came from these)
+E:\AI\training\facet_next\E12_repair\repaint_v2\   <- the ACCEPTED pair (the gate's calibration artifact)
+docs/experiments/E04-twin-run-report.md    <- the ship's twin-run precedent, if present; else the E04 ruling's twin sections
+```
+
+Your rules (CLAUDE.md §executor): never judge whether output is good ·
+predictions blind before looking, blind status disclosed · stop at every gate ·
+no memory-store writes · a negative result is a full success.
+
+### Environment, standing
+
+Watchdog verified before any local Blender/GPU leg, report either way (restart
+standing: `pwsh -NoProfile -File E:\AI\training\_watchdog_start.ps1`; the ceiling
+is never raised; its fourth death and 15:42 restart are Ruling 13a). Cloud
+discipline in full: saved workflow JSON is the submitted graph · in-code
+link-topology guard · the inverted no-LoRA pre-flight (no loader node ever) ·
+`dry_run` then `estimate_credits` before every execution · uploads named by
+content hash · sidecar at birth per twin · ASCII prints · Blender through
+PowerShell · output tree: `E:\AI\training\facet_next\E12_twins\` · explicit git
+paths only · touch nothing under E10/E11 artifacts, either accepted asset, or
+the 00001/00002 trees.
+
+### Blind predictions, before anything runs
+
+Commit hashed, blind status disclosed (state exactly what this seat has seen of
+the pair and the clay), covering at minimum: the gate's reading on the ACCEPTED
+pair per view (does the 15c allowance branch fire?) · per-view registration IoU
+range against the pair's precedent (view 1 styled-vs-geometry measured 0.9940;
+the twins' construction differs — predict a range, say why) · which stems risk
+resemblance-bleed misses (ivory terms ride views {0,1,2,6,7}) · expected
+off-palette totals and largest blobs on clean twins (handoff 7's speckle scale
+is the prior) · whether any view produces a garment-class invention (the
+one-in-eight prior from W3).
+
+### Task 1 — construct the gate; validate it on the pair BEFORE any twin exists
+
+Build the off-palette gate from the RULED bands (warm-olive allowed; chroma
+floor 12.0; report total px AND largest connected component per view — the
+two-threshold law). **Run it on both accepted-pair views first.**
+Pre-registered branches (Ruling 15c, decided before any outcome existed):
+
+- **Quiet on the pair** (speckle-scale totals, no large component) → the gate
+  stands as constructed; proceed.
+- **Fires on the membrane stratum** (the blue-violet family, view 5's 8.19%) →
+  apply the realised-stratum allowance 273.4–293.4, re-validate, report both
+  readings; the allowance is then part of the gate and is recorded as
+  pair-realised D3, never a fixture band.
+- **Fires anywhere else on the pair** → HALT with the evidence. The pair is
+  accepted; a gate that flags it is mis-constructed, and that is an instrument
+  finding for the advisor.
+
+The gate's clean-baseline numbers on the pair are part of the report whatever
+branch fires.
+
+### Task 2 — generate the eight twins
+
+Per view 0–7: control built by the route (`restylize_views.py` — the clay
+render composited per the profile's `bg`, ruled canny 0.05/0.10, silhouette
+gradient union; the profile supplies every recipe key, now SPENT-anchored),
+stem from `E12-twin-prompts.json` v5 by the view's key, **no LoRA node**, seed
+per the profile. One generation per view. `estimate_credits` before each
+(0-credit expectation, verified not assumed). Sidecar at birth per twin:
+provenance + "a twin has one job — register to the mesh; identity rides the
+prompt."
+
+### Task 3 — gate, register, sheet
+
+Per twin: the validated gate (total + largest blob; the palette-gate re-roll
+precedent applies PER VIEW — one bounded re-roll on a gate firing or a
+spec-visible miss, new seed, rejected artifact stays in the record, second
+failure is the result) · registration diagnostics against the exact raycast
+silhouette (per-view IoU printed; the halt stays suspended at `reg-iou-min
+0.0` on this subject — measure, report, the advisor rules whether a beast
+bound derives) · bbox diagnostics (vacuous tolerance, printed) · trust-mask ∧
+silhouette per the route default. Sheets: per view, clay | control | twin at
+full size, plus an 8-view overview, plus crops at any gate firing or
+registration outlier. **No verdicts.**
+
+### Then HALT
+
+Stage: eight twins + sidecars, the gate's pair-validation and per-twin
+readings, the registration table, the sheets, the predictions file scored.
+**All of it to the advisor's eye first, then the Director's.** Stage 1
+(projection against the banked 50.46% ceiling) is handoff 9 and runs only
+after the advisor rules the twins in.
+
+### Do not
+
+Project anything · run any stroke or texpass step · exceed one bounded re-roll
+per view · arm a registration bound (measure and report; the ruling derives or
+keeps reporting) · treat the pair as a projection reference (it is the SPEC;
+twins are the projection sources) · edit any fixture or profile (advisor's
+writes) · compare to the rejected artifacts except as named baselines · touch
+thin_extent, the E10/E11 lanes, either accepted asset, or the 00001/00002
+trees · write to the memory store · end a session the Director has not ended.
+
+### Standards compliance (this dispatch)
+
+| standard | score | evidence |
+|---|---|---|
+| PIN_PER_STEP | 2 | Saved workflows per view with content-hash input names; seeds and stems recorded per sidecar; predictions hashed blind before the gate exists; the gate's construction cites the ruled band values verbatim |
+| ANDON_AUTHORITY | 3 | The gate is validated on an accepted artifact BEFORE it gates anything (a gate that fires on the pair halts as mis-constructed); watchdog before local legs; topology + no-LoRA guards per submission; per-view re-rolls bounded at one; registration halt suspended-not-deleted, diagnostics always printed |
+| NAMED_COMPENSATORS | 2 | Spend bounded (eight generations + at most eight re-rolls, estimate_credits first, 0-credit expectation); all writes in a new tree; rejected twins retained in the record; nothing irreversible beyond cloud spend |
+| DECOMPOSE_BY_SECRETS | 3 | Twins derive from THIS mesh's clay and silhouettes; identity arrives only through the versioned stems; the gate derives from ruled bands + the pair, never from the twins it gates; every recipe value arrives from the SPENT-anchored profile |
+| UNCERTAINTY_GATED_HUMANS | 3 | The halt is the advisor's eye before projection; gate firings and registration outliers surface as evidence, not decisions; the 15c branches were pre-registered by the ruling before any outcome existed |
+| EXTERNAL_VERIFIER | 2 | The gate tests twins against a specification derived from an artifact the twins did not produce; registration is measured against geometry the generator does not control. `skip:` on a second model per the arc's precedent |
+
+### Calibration
+
+The handoff-6/7 standard holds: validate every instrument against a published
+figure before reading a new number; the works-perfectly test before trusting
+any zero; own method errors in the report. Two subject-specific cautions from
+the record: **a term can paint a surface it does not name** (Ruling 13d — watch
+the ivory-term views' claws and any structure that resembles a named one), and
+**the gate cannot see placement** (15d) — a twin can pass every band while
+carrying a within-band colour on the wrong structure, which is why the sheets
+serve the eye and the eye rules.
+
+---
+
 ### Standards compliance (handoff 2)
 
 | standard | score | evidence |

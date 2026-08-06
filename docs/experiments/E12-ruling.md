@@ -340,6 +340,12 @@ these grounds do:
    gets its widest margin and any backdrop bleed into the subject is maximally
    detectable as off-palette. This is G11's lesson run forward: the galleon avoided
    blue because it DECLARED blue; the dragon declares none, so blue-violet is free.
+   *⚠ Corrected 2026-08-06 (Ruling 15i, handoff 7 §7): stale on the accepted
+   artifact — a realised D3 membrane stratum occupies blue-violet (h 283.4, C\* 12.9,
+   4.52% of figure), and the realised backdrop sits 4.4° outside its would-be band
+   edge. The WORD stands on different ground: the Director accepted the realised
+   combination, the pair supersedes its own derivation, and the realised backdrop's
+   C\* 11.0 is below the gate's 12.0 floor — hue-neutral under the gate's own rule.*
 2. **A green backdrop behind a green-hided animal is what a metric is content with and
    an eye may not be** — the executor's own sentence, adopted as a ground. Rim pixels
    on moss-green hide antialiasing toward a green backdrop stay in-family, which is
@@ -503,7 +509,10 @@ forbidden span — all derived against a rejected artifact in a rejected registe
 The H1/H4 collapse (eleven declared materials realising as ONE 42° hue group on
 81.6% of the subject) is banked as a finding **with its register confounded**: it
 may be the saltroad register flattening the palette; re-measured at the accepted
-pair, whenever one exists. Non-circularity holds: bands re-derive from the fixture
+pair, whenever one exists. *⚠ Resolved 2026-08-06 (Ruling 15f, handoff 7 §3): the
+collapse RECURS under no-LoRA ultra-realistic — one 41.9° group, the share falling
+81.61% → 55.23% entirely by migration below the chroma floor, not by hue spread.
+The register was not the cause; third subject, third time.* Non-circularity holds: bands re-derive from the fixture
 against the NEW pair. The backdrop word stands (hue survived; realised separation
 0.2353 beats both asked 0.2000 and W3's grey — 8b corroborated a second way);
 its realisation re-measures under the new register.
@@ -850,3 +859,109 @@ both views, 0 credits across the entire pair lineage). Consequences:
   sheet, his zoom.** The allocation ladder's geometry rung stays parked (12g);
   the band machinery remains the asset-time additive arm if the painted head
   wants it at texture stage.
+
+---
+
+## Ruling 15 — the bands ruled; 8a corrected in place; D8 CLOSED; the twins are handoff 8 (2026-08-06)
+
+Evidence: the handoff-7 report (`c695ffc`), its blind predictions (`a22a949`, blob
+`a76a128`), `bands_v2/bands-proposed.json`, and this seat's eye on
+`D8_CLOSURE_eye_8x.png` and the accepted pair before ruling.
+
+**15a — the halt is ACCEPTED and the instrument-first discipline is ratified.**
+`e04_bands.py` reproduced the galleon's full published table and the rejected
+pair's before any new number was read — the validated-before-used pattern, third
+use. The record fix rides: the galleon's recorded run consumes
+`E04_task4/masks1024/`, not `masks/`; the published numbers were always the 1024
+ones and only the path was ambiguous.
+
+**15b — the warm-olive band is ADOPTED: 85.4–147.3** (measured 95.4–137.3, the
+±10° margin named as the galleon-table convention it is), resting on 7 clusters
+= 55.23% of the figure across D1, D2 and the ivory family. Transcribed into
+`profiles/beast.json` this fold.
+
+**15c — the blue-violet band's SUSPENSION is RATIFIED, and the gate's
+construction gets a pre-registered branch instead of a wall.** All three of the
+executor's reasons stand (one cluster fixes no edge; the nearest declared
+element is a placement impossibility; by location the cluster is a D3 membrane
+stratum). The stratum itself is **recorded as a realised D3 stratum of the
+accepted artifact** — the fixture's D3 realises as neutral strata (L\* 18.2–65.7
+at C\* ≤ 12.9) plus one marginal blue-violet stratum (h 283.4, C\* 12.9, 4.52%
+of figure, 8.19% of view 5). **Pre-registered NOW, before any twin exists:** the
+handoff-8 palette gate is constructed from the ruled bands and **validated
+against the accepted pair before gating any twin** (6c's pattern — the pair
+calibrates the gate; the gate never gates the pair). If the gate as constructed
+fires on the pair's own membrane stratum, the resolution is the
+**realised-stratum allowance**: 273.4–293.4 admitted as pair-realised D3 —
+NOT a fixture band — leaving the realised backdrop's h 297.8 outside it, and
+the validation re-runs. Any other firing on the pair is a halt. Deciding the
+rule before the outcome it judges exists is exactly what the retuning
+prohibition protects; this is that, done on schedule.
+
+**15d — D7's disposition: canon stays charcoal; the deviation stays the
+record's.** View 1's ivory claws are colour *inside an allowed band* on the
+wrong structure — the gate cannot see placement by construction (the galleon's
+caveat, now measured twice on this subject). **Banked as an instrument law: a
+pooled landing table cannot clear an element whose deviation is per-view** —
+the D7 row's `LANDED` rests entirely on view 5, and per-view reporting is the
+required form for any element with a known per-view deviation.
+
+**15e — D5's disposition: canon stays bone-ivory.** The cheek fan's landing is
+UNSTABLE across arms (green under the old palette, charcoal-brown under the
+new — it follows the prompt's family mass, not a fixed attractor), so
+re-canoning would chase a landing. The crown lands in the ivory cluster. The
+accepted pair's charcoal-brown fan stays a recorded accepted deviation; the
+Director's window stays open.
+
+**15f — H1/H4's register confound is RESOLVED: the register was not the
+cause.** Under no-LoRA ultra-realistic and a corrected palette the collapse
+recurs — one 41.9° hue group, its share falling 81.61% → 55.23% entirely by
+migration below the chroma floor (17.90% → 40.25%), not by hue spread. Third
+subject, third time: **a realised palette far tighter than its declared names
+suggest** is a property of the pipeline's realisations, not of any register.
+10e is annotated in place.
+
+**15g — D9's wine has no cluster on the accepted pair** (assigned dark-slate at
+ΔE 32.7). Pre-registered status unchanged: below any area floor, eye-judged;
+handoff 6 recorded the wine-dark cavity by eye at view 1. No action.
+
+**15h — D8 IS CLOSED.** Ruling 2's named checkpoint, opened on Gate 0 head
+evidence, held through 10g on a rejected artifact, closes on one that stands:
+**193 px at ΔE < 25, one blob, 22 × 15 px, 100% inside the head box — an
+ember-orange iris with a vertical slit pupil**, confirmed at this seat's eye at
+8×. The closure carries its three facts: the cluster table's NOT-FOUND is
+construction (its floor sits 20× above the eye's size, pre-registered in the
+fixture); the accepted eye is smaller than the rejected pair's (193 px vs 282);
+and **12g's contradiction stands unresolved** — a pair-scale eye at 193 px and
+a bust-scale absence at ~33× the pixels are both facts, reconciled by nothing
+yet, parked with the allocation ladder's geometry rung.
+
+**15i — Ruling 8a's premise is corrected in place; the WORD STANDS, anchored by
+the accepted pair.** "The one hue family no declared material occupies" is
+stale — a realised D3 stratum occupies blue-violet on the accepted artifact,
+and the realised backdrop sits 4.4° outside that stratum's would-be band edge.
+The word survives on different, stronger ground: **the Director accepted the
+realised combination**, the pair supersedes its own derivation exactly as it
+superseded the material estimates, and the realised backdrop's C\* 11.0 sits
+below the gate's 12.0 floor — hue-neutral under the gate's own rule. No new
+word; choosing one while looking at the artifact it would judge is the
+forbidden move, and the executor was right to refuse it. **8b is corroborated a
+third time and more strongly**: W3's inherited grey scores 0.0314 on the
+accepted pair — 1.9× UNDER the key's 0.06 cut, bound by D3's storm-grey landing
+at C\* 1.3, precisely the element the derivation said bound every optimum.
+
+**15j — the dark-rows caveat is BANKED**: both dark bands (charcoal, slate) are
+colour matches to *shadow* — D11's assigned cluster is 71.7% on the view that
+cannot see a head; D6/D7's covers far more area than spines and claws occupy.
+The executor's own pre-registered limit (charcoal/slate inseparable) was
+falsified by its measurement and replaced with this sharper caveat — scored
+wrong in its own §1, which is the discipline working. Colour-not-placement
+rides in the profile block beside the bands.
+
+**15k — HANDOFF 8 is the twins.** Eight `dragonclay` twins from stems v5 at the
+pair-anchored recipe, controls per the route, the palette gate constructed per
+15c and validated against the pair first, per-view registration diagnostics
+with the halt suspended at 0.0, one bounded re-roll per failing view under the
+palette-gate precedent. The recipe-anchor conversion promised at Ruling 14
+lands in `beast.json` this fold: the accepted pair is the subject's generation
+anchor and the restylize keys read SPENT with the pair as provenance.

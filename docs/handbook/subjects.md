@@ -123,9 +123,24 @@ values live in its own profile and fixture, never inherited unmeasured.
   prompts E12-pair-5, 0 credits across the entire pair lineage; the three named
   deviations accepted at the pair with fixture dispositions landing on the
   bands measurement. The register row closes as **earned** (ultra-realistic,
-  NO LoRA). Unblocked, in order: **bands + D8 closure** (handoff 7) → twins
-  (stems v5) → stage 1 against the banked 50.46% ceiling → sweep gate →
-  strokes → finalize → pack → **Gate 1 at his zoom**.
+  NO LoRA).
+- **The bands are RULED against the accepted pair**
+  ([Ruling 15](../experiments/E12-ruling.md)): warm-olive **85.4–147.3**
+  adopted (7 clusters, 55.23%); blue-violet suspended on one cluster — a
+  realised D3 stratum that also caught Ruling 8a's premise stale (the backdrop
+  word stands on the pair's own anchor; its realised C\* 11.0 sits under the
+  gate's 12.0 floor); D3 carries **no hue band** (neutral strata, tightest
+  landing in the table at C\* 1.3); chroma floor 12.0 inherited; both dark
+  bands are colour matches to **shadow** (colour-not-placement); a pooled
+  landing table cannot clear a per-view deviation (D7's `LANDED` rested on one
+  view). **H1/H4 resolved: the register was not the cause** — the 41.9°
+  collapse recurs; third subject, third time. **D8 CLOSED**: 193 px slit-pupil
+  ember iris, one blob, in the head box, on an accepted artifact; the
+  bust-companion contradiction stays parked with the allocation ladder.
+  Dispositions: D5/D7 canon unchanged, deviations recorded. Next: **twins**
+  (handoff 8 — the gate validates on the pair before gating anything) →
+  stage 1 vs the 50.46% ceiling → sweep gate → strokes → **Gate 1 at his
+  zoom**.
 
 ## The calibration table this page exists for
 
