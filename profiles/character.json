@@ -95,6 +95,12 @@
       "thin-extent": {"value": 0.03, "why": "Extent along the view ray below which a structure is withheld from diffusion and takes projected/dilated colour instead. SIZED TO THE GREATSWORD: the smallest value that fills the blade solid, where 0.020 leaves the fuller grooves open. Ratlines and shrouds are thinner than a blade, so a ship needs a far smaller number and probably a different policy.", "from": "E08 Task 3"}
     },
 
+    "brush_cloud_step.py": {
+      "_not_on_route": {
+        "lane": "SUPPLIED PER INVOCATION, never from this profile - and it CANNOT come from one: brush_cloud_step.py calls subject_profile.bind() ZERO times, so no block reaches its argparse. It takes --profile only to read _fixtures through subject_profile.value() (required, no skip, E04 Ruling 24). The tool default 'base' must not arrive by silence. THE REAL CONTROL IS IN-TOOL AND ALREADY EXISTS: E10 Ruling 6's pre-flight maps lane -> fixture key explicitly (base -> _fixtures.brush_prompts, layer -> _fixtures.layer_prompts) and CORROBORATES the declared lane against the job's state identity, with no skip flag in either lane. This subject ran the base lane throughout; --lane was born in E10, long after this profile's extraction, so this entry documents a flag the accepted asset never saw rather than restating one of its values. THIS IS NOT A VALUE and does not touch the relocation claim: subject_profile.bind() skips every key beginning with an underscore, so nothing reaches any tool and the pixel-identity gate is unaffected. FLAG: `_not_on_route` is the wrong NAME for a key exercised on every invocation, and is used because it is the only one of Ruling 22's four forms meaning 'decided, and the decision is that the profile supplies no value' that the sweep recognizes. E12 Ruling 5c."
+      }
+    },
+
     "texpass_brush.py": {
       "seed": {"value": 770700, "why": "Generation seed. Part of the recipe that made THIS asset reproducible.", "from": "E08 Task 3"},
       "steps": {"value": 20, "why": "Sampler steps for the inpainting brush - a generation-recipe value, not a principle.", "from": "E08"},
