@@ -158,8 +158,20 @@ where most detail is thin** (mask peaks at 1.78× membrane concentration). The
 backdrop was derived, not inherited — and the derivation's payoff is that **W3's
 "plain grey background" scores under the key's own 0.06 cut on this subject, bound by
 the membranes**: the blade failure's shape pointed at the new surface class. The
-styled target pair is the next step; every value the subject needs so far lives in
-`profiles/beast.json` and `canon/DRAGON-IDENTITY.md`, none inherited unmeasured.
+first styled pair ran at zero credits — and was **REJECTED at the Director's eye**
+([E12 Ruling 10](docs/experiments/E12-ruling.md)): a generic stock dragon wearing the
+right silhouette. The rejection bought two rules: **the style register is subject
+data** (the saltroad painterly register two subjects earned acceptance under had been
+*inherited* by a third it does not fit — the beast now runs ultra-realistic, no LoRA;
+the studio plan is [docs/style-registers.md](docs/style-registers.md)), and the
+measured cause of the structural loss is the control: the profile's canny pair fires
+on 5.2%/2.1% of the figure interior where the same clay carries 15.8%/11.2% at lower
+thresholds — the relief never reached the ControlNet, and at denoise 0.92 the interior
+was the model's to invent. The re-pair runs with a per-subject-derived canny pair
+under the ruled register; every value the subject needs lives in
+`profiles/beast.json` and `canon/DRAGON-IDENTITY.md`, and the ones that arrived by
+inheritance are being falsified and replaced one measured step at a time — which is
+the profile system doing its job.
 
 **Form first, style second.** Image-to-3D reconstructors key off shading, silhouette
 clarity and unambiguous depth. A heavily stylized sprite — weathered planks, painted

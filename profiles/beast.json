@@ -287,9 +287,9 @@
     "from": "prior subjects' spent value"
    },
    "lora-w": {
-    "value": 0.75,
-    "why": "FIRST-RUN OPERATING POINT at the accepted route's value.",
-    "from": "prior subjects' spent value"
+    "value": 0.0,
+    "why": "RULED, E12 Ruling 10b - the Director rejected the first styled pair ('a dragon should look ultra realistic and scary') and ruled the style register subject data: the beast runs NO LoRA. 0.0 is the mechanical expression; the register terms ride in the prompt tail (fixture STYLE-SUPPLIED, rewritten same fold). The saltroad card was a painterly character/prop register two subjects earned acceptance under - it was never a studio default, and 0.75 here was an inheritance nobody decided. HISTORICAL: 'FIRST-RUN OPERATING POINT at the accepted route's value' - the first run measured, and the value did not transfer.",
+    "from": "E12 Ruling 10b; the rejected pair (5a91646)"
    },
    "cn-strength": {
     "value": 0.9,
@@ -298,13 +298,13 @@
    },
    "canny-low": {
     "value": 0.4,
-    "why": "FIRST-RUN OPERATING POINT at the accepted route's control-construction value.",
-    "from": "prior subjects' spent value"
+    "why": "FALSIFIED FOR THIS SUBJECT, REPLACEMENT OWNED BY THE RE-PAIR ARM (E12 Ruling 10c) - at 0.4/0.8 the control carries 5.20%/2.13% of the figure interior where the same clay at 0.05/0.15 carries 15.80%/11.15% (3.0x/5.2x): the scale relief, frill and tooth rows are low-contrast grey-on-grey shading the pair never fires on, so the interior was the model's to invent. The value stands ONLY until the per-subject derivation lands (works-perfectly test first: what does a lower pair admit that is NOT relief). HISTORICAL: first-run operating point from the accepted route - measured, did not transfer.",
+    "from": "E12 Ruling 10c; the rejected pair's beast-only control measurement"
    },
    "canny-high": {
     "value": 0.8,
-    "why": "FIRST-RUN OPERATING POINT at the accepted route's control-construction value.",
-    "from": "prior subjects' spent value"
+    "why": "FALSIFIED FOR THIS SUBJECT, REPLACEMENT OWNED BY THE RE-PAIR ARM - moves with canny-low; see its entry.",
+    "from": "E12 Ruling 10c"
    },
    "contour-width": {
     "value": 3,
@@ -317,8 +317,8 @@
     "from": "prior subjects' spent value"
    },
    "prompt": {
-    "value": "a winged dragon, deep moss-green scaled hide, pale bone-tan ventral plates, storm-grey wing membranes, bone-ivory curved horns, bone-ivory crown and cheek spikes, bone-ivory dorsal and tail spines, bone-ivory claws, ember-orange eyes, a dark wine-red tongue, pale ivory fangs and tooth rows, a dark slate mouth interior, plain lavender-grey background, visible brushstrokes, painterly worked surface",
-    "why": "NEITHER SPENT NOR LIVE - the protective transcription form (E04 Ruling 22): the code default is the literal W3 identity string, the named accident class, so an invocation that forgets --prompts asks for this dragon instead of that warrior. Transcribed from canon/DRAGON-IDENTITY.md's eleven elements plus the RULED backdrop word (E12 Ruling 8a). RESTRUCTURED 2026-08-05->06 by E12 Ruling 9c: the earlier opening 'a winged dragon with deep moss-green scaled hide' subordinated D1 in a with-clause against Amendment 13's measured grammar - the advisor transcribed W3's preamble shape where the galleon's pure element list is the proven form; every element now stands as its own noun phrase. THIS IS THE FULL (front-family) STRING: per E12 Ruling 9d the per-view stems in the twin-prompts file DROP elements a view cannot see (default: D8/D9/D10/D11 off the rear-family views - six of eleven elements name head anatomy on this subject, and the ship's one-string ruling rested on a premise this subject fails).",
+    "value": "a winged dragon, deep moss-green scaled hide, pale bone-tan ventral plates, storm-grey wing membranes, bone-ivory curved horns, bone-ivory crown and cheek spikes, bone-ivory dorsal and tail spines, bone-ivory claws, ember-orange eyes, a dark wine-red tongue, pale ivory fangs and tooth rows, a dark slate mouth interior, plain lavender-grey background, ultra-realistic, menacing, sharp scale relief, harsh directional light",
+    "why": "NEITHER SPENT NOR LIVE - the protective transcription form (E04 Ruling 22): the code default is the literal W3 identity string, the named accident class, so an invocation that forgets --prompts asks for this dragon instead of that warrior. Transcribed from canon/DRAGON-IDENTITY.md's eleven elements plus the RULED backdrop word (E12 Ruling 8a). RESTRUCTURED by Ruling 9c (every element its own noun phrase); REGISTER SWAPPED by Ruling 10b: the painterly tail ('visible brushstrokes, painterly worked surface') was the saltroad register arriving by inheritance - replaced with the fixture's ruled ultra-realistic register terms after the Director rejected the first pair. THIS IS THE FULL (front-family) STRING: per Ruling 9d the per-view stems DROP elements a view cannot see (as verified: mouth family off {3,4,5}, horn family off {3,5}).",
     "from": "E12 Ruling 3; canon/DRAGON-IDENTITY.md; E12 Ruling 8a; E12 Rulings 9c/9d; E04 Ruling 22 form"
    }
   },

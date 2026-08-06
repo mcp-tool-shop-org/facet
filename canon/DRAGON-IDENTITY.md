@@ -51,11 +51,21 @@ such a surface, replace its owner on a named region instead.**
 | the scale relief | reconstructs as geometry, legible under `--clay` with no texture (Gate 0 §6) |
 | the throat/shoulder crevice and stepped throat bands | designated-in (Ruling 1); paint will render it as a dark seam, and no texture pass can restore geometry it does not have |
 
-## STYLE-SUPPLIED — arrives from the LoRA; record so a model change is noticed
+## STYLE-SUPPLIED — the subject's REGISTER; a per-subject decision, never an inheritance
+
+*⚠ Rewritten 2026-08-06 (E12 Ruling 10b, on the Director's rejection of the first
+styled pair). As authored this section inherited the saltroad painterly register
+("painterly worked surface, visible brushstrokes") from the two accepted subjects —
+a style decision nobody made for this subject, arriving by inheritance, which is the
+accident class the profile system exists to stop, one layer up. The Director's
+directive: a dragon reads **ultra-realistic and scary**, and no LoRA is better than
+the same texture on everything.*
 
 | element | note |
 |---|---|
-| painterly worked surface, visible brushstrokes | same source as W3 and the galleon; not yet separated from prompt terms |
+| **register: ultra-realistic, menacing** | the Director's words made prompt terms; the model's own realistic-creature prior is WANTED here, constrained by our geometry |
+| **LoRA: NONE** | ruled 10b; expressed mechanically as `beast.json` `lora-w: 0.0`. A future creature-register LoRA (see [style-registers.md](../docs/style-registers.md)) replaces this line when one exists and earns it |
+| sharp scale relief, harsh directional light | realism-register support terms; the pair re-measures whether they carry |
 
 ## Pre-registered stressors — named before any generation exists, evidence status labeled
 

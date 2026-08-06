@@ -70,7 +70,14 @@ values live in its own profile and fixture, never inherited unmeasured.
   animal and 60% of the wings**; no global value separates membranes on a subject
   where most detail is thin); backdrop ruled **`plain lavender-grey`** — W3's grey
   scores *under the key's own cut* here, bound by the membranes.
-- Next: the styled target pair (handoff 3), then bands, twins, and the route proper.
+- The first styled pair (0 credits) was **rejected at the Director's eye** — and the
+  rejection ruled the **style register subject data**
+  ([E12 Ruling 10](../experiments/E12-ruling.md)): the beast runs ultra-realistic
+  with **no LoRA** (the painterly saltroad register had arrived by inheritance), and
+  the canny pair is being derived per-subject after the control was measured carrying
+  a third of the clay's own relief. Studio plan:
+  [style-registers.md](../style-registers.md). Next: the re-pair (handoff 4), then
+  bands against the accepted pair, twins, and the route proper.
 
 ## The calibration table this page exists for
 

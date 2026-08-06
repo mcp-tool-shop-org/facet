@@ -360,6 +360,55 @@ re-roll · decide the thin_extent value (stroke-lane ruling's property) · touch
 E10/E11 lane, the 00001/00002 artifacts, or either accepted asset · write to the
 memory store · end a session the Director has not ended.
 
+---
+
+## Session handoff 4 (2026-08-06) — the RE-PAIR under the ruled register. The control must carry the relief.
+
+The first pair was REJECTED at the Director's eye (E12 Ruling 10: a generic stock
+dragon wearing the right silhouette). The style register is now subject data — the
+beast runs **ultra-realistic, NO LoRA** (fixture STYLE-SUPPLIED rewritten, `lora-w
+0.0`) — and the measured structural deficit owns your first task: at the profile's
+canny 0.4/0.8 the control carries 5.20%/2.13% of the figure interior against
+15.80%/11.15% at 0.05/0.15. A fresh session starts here:
+
+```
+cd E:\AI\facet && git pull
+CLAUDE.md                                  <- how to work here. Read first, follow exactly.
+docs/experiments/E12-ruling.md             <- Rulings 9-10. 10b is the register; 10c is your task.
+canon/DRAGON-IDENTITY.md                   <- STYLE-SUPPLIED rewritten; the eleven elements unchanged
+profiles/beast.json                        <- lora-w 0.0; prompt tail = the register; canny marked falsified
+docs/style-registers.md                    <- why the register changed
+docs/experiments/E12-task45-report.md      <- the rejected pair's record (5a91646) - baseline for NOTHING
+```
+
+**Task 1 — derive the beast's canny pair, measured.** Blind predictions first. Sweep
+the threshold pair on this subject's own profile-rendered clay views (both pair
+views at minimum), reporting per candidate: interior edge fraction, and **the
+works-perfectly test stated before reading anything** — what a lower pair admits
+that is NOT relief (Workbench shading noise, gradient banding on the backdrop,
+AA speckle; characterize the admitted set at 5× crops, the A2-check pattern). The
+0.05/0.15 point from the rejection measurement is a candidate, not an answer.
+Propose the pair with the curve; the advisor rules it into the profile.
+
+**Task 2 — rebuild the controls and re-pair.** Controls from the ruled pair +
+the standing silhouette-gradient union; same frames, same discipline as handoff 3
+(saved workflows, in-code topology check — your own guard, now self-tested —
+dry_run, estimate_credits, sidecar at birth). Prompt: the corrected protective
+entry with the register tail; per-view stems per the verified 9d split. **No LoRA
+node in the graph** — lora-w 0.0 is not a weight of zero on a loaded card, it is
+no card; build the graph without the loader. One generation per view, one bounded
+re-roll. **The pair goes to the advisor's eye, then the Director's** — his
+question is the register: does it read ultra-realistic and scary.
+
+**Task 3 — only if the pair is accepted:** re-derive the bands against it (the
+suspended Task-5 bands died with the rejected pair; non-circularity holds), and
+re-confirm D8 on the accepted artifact (Ruling 10g holds it passed-as-mechanism).
+
+**Do not:** compare anything to the rejected pair as a baseline (it is evidence,
+not a target) · arm any structure metric as a gate (10d: the structural channel at
+a style gate is the eye) · touch thin_extent, the E10/E11 lanes, or either accepted
+asset · exceed the bounded re-roll · end a session the Director has not ended.
+
 ### Standards compliance (handoff 2)
 
 | standard | score | evidence |

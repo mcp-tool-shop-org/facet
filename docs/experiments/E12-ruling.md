@@ -443,3 +443,103 @@ error: a conclusion carried without the condition it was derived under.*
 **9e — `_fixtures.twin_prompts` is added to `beast.json`** (profile writes are the
 advisor's), pointing at `E12-twin-prompts.json` with its status marked REBUILDING per
 9c/9d until the executor lands the ruled form.
+
+---
+
+## Ruling 10 — the pair is REJECTED; the style layer becomes a per-subject decision (2026-08-06)
+
+Evidence: the Tasks 4/5 report (`5a91646`), the Director's verdict on the pair at his
+own eye, and the executor's beast-only control measurement made after he asked the
+right question twice.
+
+**10a — the Director's gate, recorded in his words:** *"This dragon looks like
+shit... A dragon should look ultra realistic and scary."* The pair is REJECTED. It
+stays in the record as a rejected artifact with all its measurements — and its
+mechanism evidence survives its rejection (10g). The executor's own summary is
+adopted as the finding's plain form: a generic stock dragon wearing the right
+silhouette.
+
+**10b — THE STYLE DIRECTIVE, ruled into the system:** *"none at all is better than
+making the same texture for everything."* The saltroad LoRA is a **painterly
+character/prop register** that two subjects earned acceptance under; it was never a
+studio-wide default, and applying it to a creature that should read ultra-realistic
+was a style decision nobody made — it arrived by inheritance, the exact accident
+class the profile system exists to stop, one layer up. RULED: **the style register
+is subject data.** Every fixture carries a STYLE-SUPPLIED section that names its
+register and its LoRA (or names none); every profile's `lora-w` and style-tail terms
+are that decision expressed mechanically. **The beast's register: ultra-realistic,
+menacing — NO LoRA.** The fixture and `beast.json` are updated in this fold. The
+studio-level plan (inventory, consolidation, training roadmap) is authored at
+[docs/style-registers.md](../style-registers.md).
+
+**10c — the structural deficit is measured and owns the next arm.** The executor's
+beast-only numbers: the profile's canny pair (0.4/0.8 — a FIRST-RUN OPERATING POINT
+from the accepted route, never derived for this subject) fires on **5.20% / 2.13%**
+of the figure interior where the same clay at 0.05/0.15 yields **15.80% / 11.15%**
+(3.0× / 5.2×) — the scale relief, frill layering and tooth rows are in the render
+and never reach the control, because they are low-contrast shading on grey-on-grey
+clay. At denoise 0.92 the interior is the model's to invent, and it invented a
+generic dragon. The four-cause question (canny / denoise / LoRA / leading noun)
+does not need four arms: **the LoRA leaves by directive**, the leading noun's risk
+inverts under the new register (the model's realistic-dragon prior is now wanted,
+constrained by our geometry), denoise stays at 0.92 as the pre-registered second
+lever — so **the one measured arm is the canny pair, derived per-subject** with the
+works-perfectly test stated first (what does the lower pair admit that is NOT
+relief). The re-pair then runs as a DECISION bundle (new register + derived
+control), not an experiment against the rejected baseline — the rejected pair is
+not a baseline anything needs comparability with.
+
+**10d — every Task-5 instrument is a colour instrument, and the executor said so
+before anyone else did.** Landing 10/11, forbidden span 77.3%, and none of it could
+have caught a smooth generic dragon — E07's lesson surfaced by the seat running the
+instruments, against its own results. Banked: **the structural channel at a style
+gate is the eye, and the sheets must serve it** — no numeric structure gate is
+commissioned (edge-density retention measured 87.6%/102% on a pair the eye rejects;
+a 5×5 statistic cannot tell mesh relief from brushwork, measured twice now).
+
+**10e — the bands are SUSPENDED with the pair that sourced them.** The 10/11
+landing table, the warm-green 85.6–147.5 band, the suspended wine band, the 77.3%
+forbidden span — all derived against a rejected artifact in a rejected register.
+The H1/H4 collapse (eleven declared materials realising as ONE 42° hue group on
+81.6% of the subject) is banked as a finding **with its register confounded**: it
+may be the saltroad register flattening the palette; re-measured at the accepted
+pair, whenever one exists. Non-circularity holds: bands re-derive from the fixture
+against the NEW pair. The backdrop word stands (hue survived; realised separation
+0.2353 beats both asked 0.2000 and W3's grey — 8b corroborated a second way);
+its realisation re-measures under the new register.
+
+**10f — S-filament's fang rule is CORRECTED in place: the fang shells are interior
+geometry.** Seven of eight satellites unreachable from all 26 directions, zero
+first-hit pixels on all eight cameras, confirmed on the raw glb — D10's visible
+teeth are main-shell tooth rows, and the halt-as-written would have fired on
+geometry no gate can see while `cull_unseen` removes it by construction. The
+census stays a reported diagnostic; the halt clause is WITHDRAWN (a gate on
+invisible geometry fires on correct culls). D11's cavity note rides with it: the
+mouth interior painted wine, not slate — two declared elements sharing one cavity
+at generation scale — recorded, and deferred, because the cavity is largely the
+same interior geometry the cull will remove.
+
+**10g — Ruling 2's eye checkpoint reads PASSED-AS-MECHANISM.** The rejected pair
+still demonstrates the thing the checkpoint asked: ember-orange landed on the
+measured recess — 153–282 px, one blob, 100% inside the head rect, exactly where
+the geometry has an eye — below every area floor, judged by eye, as pre-registered.
+Rejection was for register, not for the eye. Allocation NONE stands unweakened;
+final closure re-confirms at the accepted pair.
+
+**10h — the 9a gate repair is RATIFIED across all three subjects** (0 px corrected
+everywhere; the legacy construction retained as a diagnostic reproduces every
+recorded digit including the galleon's adjudicated 1 px — the same float class,
+mechanism identified). The ship's anchor record is annotated in place by this fold.
+The executor's docstring honesty is noted with approval: the conformed gate can no
+longer catch a bug shared with the source's formula, and says what it still
+catches. And the topology guard's self-test — running it against E04 Arm G7's real
+payload and finding a crash in its own ANDON path before trusting it — is the
+guard-can-fail discipline done exactly right.
+
+**10i — the 9d split deviation is ACCEPTED as measured:** views 3/5 hide the whole
+head behind the near wing (the 0.81% inside the head box there is wing occupying
+the box's region of space — Gate 0's own caveat biting), so the mouth family drops
+at {3,4,5} and the horn family at {3,5}, against the default's "stay everywhere."
+The default's rationale held exactly where it was reasoned from (view 4, the true
+rear). Deriving stems by deleting whole comma-terms with subsequence assertions is
+the right construction and carries forward.

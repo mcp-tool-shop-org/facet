@@ -1,5 +1,15 @@
 # E04 Step 0 anchor 1c, on the replacement instrument — 1 px. HALT for a ruling.
 
+*⚠ Annotated 2026-08-06 (E12 Rulings 9a/10h): the mechanism behind this 1 px is now
+identified and repaired. The gate's replica ran three incidental operands different
+from `silhouette_masks`' own arithmetic (normalisation order, up-vector construction,
+ray-back constant) — a scale that cancels mathematically and not in float32, rounding
+one grazing rim pixel differently. Under the corrected gate (source's-own-arithmetic,
+the E10 anchor discipline) this view measures **0 px**; the retained legacy
+construction still reproduces the 1 px recorded below, byte-exact. The adjudicated
+pass stands as adjudicated; the float class is named. See
+[E12-ruling.md](E12-ruling.md) Rulings 9a and 10h.*
+
 **Executor session, 2026-08-04.** Built `tools/diagnostics/e04_frame_agree.py` as Ruling 10
 specified: `silhouette_masks`' raycast against a raycast cast under `turn_render`'s own camera
 parameters. Same mesh, same triangles, same frame — **geometry against geometry, no threshold
