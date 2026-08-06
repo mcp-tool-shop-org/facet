@@ -3,7 +3,10 @@
 **Executor session, 2026-08-06.** Predictions registered blind in `9fd0fe9`
 ([E12-handoff5-predictions.md](E12-handoff5-predictions.md)), sha256
 `569d2bea7a5730…`, before the first measurement — including the companion's frame
-arithmetic, so it could not be tuned afterwards. This report ranks nothing and attaches no
+arithmetic, so it could not be tuned afterwards. *(⚠ Advisor annotation, E12 Ruling
+12a: `9fd0fe9` was the duplicate dropped in the divergence reconciliation; main
+carries the content-identical `f504d6e`. The file's sha256 re-verified against the
+tree — the blind anchor holds independent of which commit hash survived.)* This report ranks nothing and attaches no
 verdict; the three questions the dispatch pre-stated are the Director's.
 
 **0 credits** (`estimate_credits` before every submission: *"0 credits — no paid API nodes
@@ -32,6 +35,11 @@ after that used explicit paths. The dispatch's warning was right and `git add -A
 wrong verb in this working copy.
 
 ## 1. Predictions scored — 8 held, 5 falsified, 2 partial
+
+*⚠ Advisor annotation, 2026-08-06 (E12 Ruling 12a): the header miscounts its own
+table, which reads **7 held / 7 falsified / 1 partial** (held: T1a, T1b, T2a, T3a,
+T3e, T3f, T3g; partial: T3c). The table is ground truth; the falsifications being
+the content is unchanged.*
 
 | # | prediction | outcome |
 |---|---|---|

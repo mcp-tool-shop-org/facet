@@ -624,6 +624,138 @@ what every new number returns when nothing is wrong, before reading it. And the
 last two sessions' best moments were refusals: no bound proposed while looking at
 a result, no third roll, no fixture edit from the executor's seat. Continue.
 
+---
+
+## Session handoff 6 (2026-08-06) — the regeneration under the corrected canon. A decision bundle, not a re-roll.
+
+Serves the holding handoff-5 session (git pull first) or a fresh one — it assumes
+nothing not written here or in the reading list.
+
+### Where this stands
+
+Handoff 5 completed all three tasks at 0 credits (`898dea0`) and the Director's eye
+came back with a verdict on the staged artifacts: *"What's up with the bones on the
+outside of the dragon's legs, bottom of the tail and arms?? This has to be ran
+again."* E12 Ruling 12 ruled the mechanism and the fix: the fixture had named five
+of eleven elements in the pale-bone family — the literal word "bone" rode the
+prompt five times — and the ultra-realistic register renders the word literally:
+D2's *bone-tan* on the tail's banded underside and D6's *bone-ivory* blade rows
+read as exposed skeleton, and the family pressure invented ivory ridge lines on
+the legs (the clay is SMOOTH there — paint, not geometry) and on D1's green wing
+fingers, **on both measured seeds**. A same-canon re-roll cannot remove it; the
+canon is corrected instead (Ruling 12e): **D2 → pale olive-tan · D6 → charcoal ·
+D7 → charcoal**; D4/D5/D10 keep ivory at the head. The register (CONFIRMED, 11a),
+the canny pair (0.05/0.10), the backdrop, the frames and the 9d/10i stem split are
+all unchanged. **This is the Ruling 10c precedent: a spec change makes a NEW
+decision bundle — allowances reset; nothing here is a third roll of anything.**
+
+### You are the executor
+
+```
+cd E:\AI\facet && git pull
+CLAUDE.md                                  <- how to work here. Read first, follow exactly.
+docs/experiments/E12-ruling.md             <- Rulings 11 and 12. 12e is the correction; 12f is THIS dispatch.
+canon/DRAGON-IDENTITY.md                   <- D2/D6/D7 corrected in place, old wording preserved
+profiles/beast.json                        <- the corrected protective entry; twin_prompts status = REBUILD TO v5
+docs/experiments/E12-twin-prompts.json     <- v4 on disk; you rebuild v5
+docs/experiments/E12-handoff5-report.md    <- what the last generations measured, incl. the wing-rim artifact
+```
+
+Your rules (CLAUDE.md §executor): never judge whether output is good · predictions
+blind before looking, blind status disclosed · stop at every gate · no memory-store
+writes · a negative result is a full success.
+
+### Environment, standing
+
+Watchdog verified before any local Blender/GPU leg, report either way (restart is
+standing authorization: `pwsh -NoProfile -File E:\AI\training\_watchdog_start.ps1`;
+the ceiling is never raised) · generation cloud-only, full discipline: saved
+workflow JSON is the submitted graph · in-code link-topology guard · the no-LoRA
+pre-flight (no loader node, never a card at weight 0) · `dry_run` then
+`estimate_credits` before any execution · uploads named by content hash · sidecar
+at birth · ASCII prints · Blender through PowerShell · output tree: a new
+`E:\AI\training\facet_next\E12_repair\repaint_v2\` subdirectory · **read `git log`
+before any push; commit with explicit paths only** (the handoff-5 finding) · touch
+nothing under E10/E11 artifacts, either accepted asset, or the 00001/00002 trees.
+
+### Blind predictions, before anything runs
+
+Commit a predictions file BEFORE the first rebuild or render, hashed, blind status
+stated (this dispatch's seat has seen both prior seeds' outputs — disclose exactly
+what, per the handoff-5 form), covering at minimum: do the leg/tail/arm bone reads
+leave under the corrected palette · do D1's haunch green and D3's membrane grey
+HOLD on the new prompt (a changed prompt re-rolls every landing — regression is a
+named branch, not a surprise) · does the wing-rim mouth artifact recur · where
+does charcoal land (D6 spines, D7 claws) and does it separate from storm-grey
+sheets and slate mouth at the eye's zoom.
+
+### Task 1 — rebuild the prompts file to v5
+
+`tools/diagnostics/e12_make_twin_prompts.py` against the corrected profile entry.
+The 9d/10i drop map is unchanged (mouth family off {3,4,5}, horn family off
+{3,5}); the headclay_0 key rebuilds from the corrected entry with its own
+recorded keeps/drops (15 of 17 terms, D6/D7 dropped). Verify: every stem is a
+subsequence-by-whole-comma-terms of the corrected entry; print the per-view term
+counts; the file carries version `E12-pair-5`.
+
+### Task 2 — regenerate views 1 and 5
+
+Controls are UNCHANGED — `E12_repair/pair/dragonclay_{1,5}_control.png` derive
+from clay + ruled canny + silhouette gradient only; the prompt change does not
+touch them. Reuse them; the content-hash upload names give you byte-identity
+confirmation free. Seed: **the profile's operating point (770700), both views** —
+the bundle is new, the sidecars record the full lineage (770700 rejected pair-v1
+register / 770700+770701 re-pair under old palette / this run). One generation per
+view, **one bounded re-roll each** on spec-violation grounds only, new seed =
+deterministic increment, rejected artifacts stay in the record.
+
+### Task 3 — the sheets, to eyes
+
+Full-size per view: clay | control | styled. The A/B/C progression sheet for view
+5 (770700-old-palette | 770701-old-palette | new) and the same regions at zoom
+that the Director named: **legs, tail underside, wing arms** at 3×, plus the
+wing-rim box at 7× (does the mouth artifact recur), plus HEAD_view1 at 3× and the
+membrane field at 3×. No score, no verdict — the E07 class is judged by eye and
+the sheets serve the eye.
+
+### Then HALT
+
+Stage: both outputs + sidecars, the sheets and crops, the predictions file scored,
+the v5 prompts diff. **All of it to the advisor's eye first, then the Director's.**
+His question is one sentence: does this read as the dragon he wants. Handoff 4's
+Task 3 (bands + D8 closure) remains acceptance-gated behind that look; the
+companion is NOT re-run (Ruling 12f); nothing past the halt runs.
+
+### Do not
+
+Run a third roll within this bundle's allowances · edit any fixture or profile
+(advisor's writes) · rebuild or reuse controls at any other canny values · invent
+a gate or bound mid-dispatch · arm any structure metric as a gate (Ruling 10d) ·
+compare anything to the REJECTED artifacts as baselines (they are evidence) ·
+touch thin_extent, the E10/E11 lanes, either accepted asset, or the 00001/00002
+artifacts · write to the memory store · end a session the Director has not ended.
+
+### Standards compliance (this dispatch)
+
+| standard | score | evidence |
+|---|---|---|
+| PIN_PER_STEP | 2 | Saved workflows are the submitted graphs; seeds and lineage recorded per sidecar; the v5 prompts file versioned beside its builder; predictions hashed blind before the rebuild |
+| ANDON_AUTHORITY | 2 | Watchdog before local legs; topology + no-LoRA guards before every submission; subsequence assertions on every stem; the halt is the Director's eye with the advisor's before it |
+| NAMED_COMPENSATORS | 2 | Spend bounded (two generations + two bounded re-rolls max, estimate_credits first); all writes in a new subdirectory; rejected artifacts retained; prompts v4 preserved in git history |
+| DECOMPOSE_BY_SECRETS | 3 | The prompt is the only changed input — controls, frames, canny, register, seeds all pinned to recorded values; the canon correction lives in the fixture and reaches the run only through the committed builder |
+| UNCERTAINTY_GATED_HUMANS | 3 | The bundle exists because the Director's eye gated the last one; his question is pre-stated; regression branches pre-registered so no outcome needs improvisation |
+| EXTERNAL_VERIFIER | 2 | Two generations against one corrected spec, judged by eyes the numbers cannot replace; `skip:` on a second model per the arc's precedent |
+
+### Calibration
+
+The handoff-5 seat's discipline is the standard: the works-perfectly test before
+reading any new number, refusals over improvisations, artifacts staged before the
+halt. One addition from Ruling 12: **a changed prompt re-rolls every landing** —
+treat every element as newly rolled, score the old holds as predictions, and
+report regressions as findings rather than surprises.
+
+---
+
 ### Standards compliance (handoff 2)
 
 | standard | score | evidence |

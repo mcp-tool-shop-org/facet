@@ -325,7 +325,12 @@ out of scope by the dispatch.
   all: overlapping plate relief on neck, chest, flank, limbs and tail on all three.
 - **Open jaws** — the mouth cavity reconstructs **open** on all three, with an upper and a
   lower tooth row and a tongue visible inside on 00001 and 00002. **The front fangs are
-  free-standing shells, not relief on the jaw**, on all three.
+  free-standing shells, not relief on the jaw**, on all three. *⚠ Annotated 2026-08-06
+  (E12 Ruling 12b, handoff-5 Task 1): this sentence is true as written, and the
+  omission-as-absence reading of it — "no tongue on 00003" — is falsified. The designated
+  mesh carries a large main-shell tongue, first-hit visible from the route's own eye-level
+  cameras; at this report's full-figure scale the mouth spans ~1.1–1.6% of frame and the
+  observation could not have resolved it either way.*
 
 ### One region worth the Director's eye on 00003
 

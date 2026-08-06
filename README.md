@@ -137,7 +137,7 @@ exports** — every render ships with its exact silhouette so backgrounds are
 augmentation-side, and lighting would be a new renderer with its own anchors.
 
 **E12 — the beast arc — is IN FLIGHT** ([E12-ruling.md](docs/experiments/E12-ruling.md),
-Rulings 1–11 so far): the route's third subject class, a **winged dragon**, designated
+Rulings 1–12 so far): the route's third subject class, a **winged dragon**, designated
 from three reconstructed candidates on full-size sheets ("3 is the winner"). What Gate 0
 measured ([E12-gate0-report.md](docs/experiments/E12-gate0-report.md)) rewrites the
 priors: **9–12 welded shells against a character's 40–191 and the ship's 237–512** —
@@ -180,7 +180,21 @@ replaces the designated mesh — a Ruling 1 re-open, never a session's arm). Acc
 now gates on three items in flight as handoff 5: the tongue's geometry answer on the
 mesh (Gate 0 saw one on 00001/00002 and not on 00003), view 5's bounded re-roll (the
 pale-tan haunch and bone-ivory membranes are spec violations on named elements), and
-the companion. Every value the subject needs lives in
+the companion. Handoff 5 ran all three at 0 credits
+([the report](docs/experiments/E12-handoff5-report.md)): **the mesh HAS a tongue** —
+main-shell geometry, route-visible; Gate 0's omission-read falsified in one render at
+mouth scale — both view-5 misses resolved on the seed alone, and the companion
+measured the ladder's resolution rung: muzzle plates, nostrils and tooth rows define
+at bust scale while **the eye is geometry-limited** (the clay carries brow plates, no
+lens recess; a denser control produced *less* eye than the sparse one — the control
+constraining invention rather than enabling it). The Director's eye then caught what
+both seeds carry ([Ruling 12](docs/experiments/E12-ruling.md)): the fixture's
+pale-bone family — the word "bone" rode the prompt five times — rendering as
+**exposed skeleton** on legs, tail underside and wing arms under the realistic
+register, a register-family interaction the painterly register never showed at the
+galleon's gold density. Canon corrected in place (D2 olive-tan, D6/D7 charcoal;
+ivory is now the head's family), and the regeneration is dispatched as a new
+decision bundle (handoff 6). Every value the subject needs lives in
 `profiles/beast.json` and `canon/DRAGON-IDENTITY.md`, and the ones that arrived by
 inheritance are being falsified and replaced one measured step at a time — which is
 the profile system doing its job.

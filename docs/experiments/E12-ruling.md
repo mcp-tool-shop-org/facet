@@ -623,3 +623,108 @@ spent so far.
 **11f — Task 3 (bands + D8 closure) stays acceptance-gated.** Acceptance now waits
 on: the view-5 re-roll, the head-crop companion, the tongue geometry answer, and
 the Director's eye on all three.
+
+---
+
+## Ruling 12 — the halt accepted; the bone-family canon corrected on the Director's verdict; handoff 6 is the regeneration (2026-08-06)
+
+Evidence: the handoff-5 report and sidecar (`898dea0`), every artifact the report
+names viewed at full size by this seat before ruling, and the Director's verdict on
+the staged artifacts, in his words: *"What's up with the bones on the outside of the
+dragon's legs, bottom of the tail and arms?? This has to be ran again. What kind of
+canon (prompt) makes this shitty of a dragon?"*
+
+**12a — the halt is ACCEPTED as reported and the discipline is ratified.** 0 credits,
+two generations, one re-roll of three allowances spent, every guard run before every
+submission, no fixture or profile edited from the executor's seat, and the
+`git add -A` incident handled exactly right (backed up, split out, verified
+byte-identical, explicit paths thereafter). Two annotations applied in place by this
+ruling: **(i)** the report's scoreboard header says 8 held / 5 falsified / 2 partial;
+its own table counts **7 held / 7 falsified / 1 partial** — the table is ground
+truth, and the falsifications being the content is unchanged. **(ii)** the report
+cites the predictions commit as `9fd0fe9`; that duplicate was dropped in the
+divergence reconciliation and main carries the content-identical `f504d6e` — the
+file's sha256 (`569d2bea…`) was re-verified against the tree by this seat, so the
+blind anchor holds independent of which commit hash survived.
+
+**12b — Ruling 11c resolves on its FIRST branch: the tongue is PRESENT and
+VISIBLE, and D9 stands.** Gate 0 §6's sentence stays true; the *omission-as-absence*
+reading of it is falsified — one render at mouth scale overturned an inherited
+claim that a full-figure render could never have tested (the mouth spans 1.1–1.6% of
+the route's frames). The "missing tongue" decomposes into scale (sub-resolvable at
+pair scale) plus mechanism (a large smooth low-contrast body gives the control its
+outline and nothing else; at denoise 0.92 the cavity was the model's to fill).
+
+**12c — the D9/D11 scale-swap is BANKED as the fixture fact that replaces 11c's
+question.** At pair scale D9's wine took the whole cavity and slate never appeared;
+at bust scale D11's slate took the tongue and wine never appeared. Two declared
+elements share one cavity and neither reliably owns its surface — Amendment 15's
+occupancy law, measured on two frames of one subject in one session. **No merge is
+ruled**: both elements stand, both stay below numeric floors (the G7 lesson), and
+the swap is recorded as landing behaviour judged at the Director's zoom. Re-open
+condition, named: if the accepted asset's mouth reads wrong at Gate 1, the merge
+question returns with this measurement in hand.
+
+**12d — the re-roll resolved both named misses; the Director's eye then rejected
+the candidate on a fact both seeds carry.** T2's first branch fired as
+pre-registered — seed 770701 wears D1's moss-green on haunch/shoulder/hindquarter
+and D3's storm-grey on the membranes — so view-5-v2 was the pair's candidate rear
+view, and acceptance judging on it is what produced his verdict (the gate working,
+not failing). The wing-rim mouth artifact (273 px of an undeclared red family
+where seed 770700 has 0) is recorded with the executor's labelled control-cost
+hypothesis; it is **watched at the next generation**, not hand-fixed, and its
+recurrence or absence under the corrected canon is evidence either way.
+
+**12e — THE CANON CORRECTION. The authoring error was the advisor's; the Director's
+sentence gates the outcome; the mechanism is measured.** The fixture named five of
+eleven elements in the pale-bone family and the literal word **"bone" rode the
+prompt five times**; the painterly register that survived that density on the
+galleon's gold does not exist here — the ruled ultra-realistic register renders the
+word literally. Measured decomposition, from the artifacts and the clay: **(1)**
+declared canon realised — D2's *pale bone-tan* on the tail's banded underside
+geometry and D6's *bone-ivory* on the blade rows read as an exposed skeleton;
+**(2)** family-pressure invention — the view-5 clay's legs are SMOOTH, so the ivory
+ridge lines down them (both seeds) are paint with no geometry and no declared
+element, and the wing fingers are D1's declared green painted ivory; **(3)** both
+seeds carry every part of it, so *"run it again"* under the same canon would repeat
+it — the seed is not the lever, the canon is. **Corrected in place** (old wording
+preserved in the fixture): **D2 → pale olive-tan ventral plates · D6 → charcoal
+dorsal and tail spines · D7 → charcoal claws.** D4 horns and D10 fangs keep ivory
+— they landed and read right at the head — and D5 keeps ivory with its green-cheek
+landing a watched miss. "Bone" now appears twice, both at the head; charcoal is a
+new family colliding with nothing (storm-grey is the sheets, slate is the mouth).
+The profile's protective entry is transcribed in this fold. **Overrule window: any
+of the three lines reverses on the Director's sentence.** And the register-family
+interaction — a colour-word density the painterly register tolerates and the
+realistic register renders anatomically — is flagged to
+[style-registers.md](../style-registers.md)'s table for every future
+realistic-register subject.
+
+**12f — HANDOFF 6 is the regeneration: a decision bundle, not a re-roll.** New
+canon palette under the same ruled register, canny (0.05/0.10), backdrop, frames
+and controls (the controls derive from clay + canny only — the prompt change does
+not touch them). Prompts rebuild to v5 with the committed builder; views 1 and 5
+regenerate at the profile's operating-point seed; **allowances reset with the
+bundle** (the Ruling 10c precedent: a spec change makes a new bundle, and the
+bounded re-roll binds within a fixed spec). One generation per view, one bounded
+re-roll each, full cloud discipline, sheets to this seat's eye then the Director's.
+The companion is NOT re-run: its definition answer is geometry-side and stands.
+
+**12g — the allocation ladder's resolution rung is MEASURED, and the answer is
+split by element.** Muzzle scale plates, nostril structure and tooth rows define at
+bust scale — for them, definition was resolution starvation and the geometry is
+sufficient. **The eye is geometry-limited**: it did not appear at ~11× the mouth's
+pixel area, and the clay at the socket shows overlapping brow plates with no lens
+recess — consistent with Ruling 4c's 7× reading. The executor's inverted confound is
+banked as a labelled hypothesis with its evidence: the denser control *constrained*
+invention where the pair's sparse control had left the model free to paint an eye.
+The ladder's geometry rung (bust-crop re-reconstruction — a Ruling 1 re-open)
+remains the Director's sentence alone and is NOT advanced by this ruling; the band
+machinery stays the asset-time additive arm.
+
+**12h — the companion is a definition gate and a head-region STRUCTURE spec
+source; its colours do not supersede the fixture.** D3 landing orange/rust on it
+(5.68% of figure) while the same element landed storm-grey on view 5 in the same
+session is recorded as a landing finding with the frame-vs-register confound named
+— no arm is commissioned, and the fixture's word stands. D5's split landing (crown
+ivory, cheeks green) is recorded the same way. Watched at handoff 6's outputs.

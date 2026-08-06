@@ -93,9 +93,23 @@ values live in its own profile and fixture, never inherited unmeasured.
   by Ruling 2's own clause — the ruled ladder is **resolution first** (a head-crop
   companion generation at the measured head box — never a projection reference),
   **geometry second on his sentence only** (a bust-crop re-reconstruction replaces
-  the designated mesh: a Ruling 1 re-open, not an arm). All three items are in
-  flight as handoff 5. Then: bands re-derived against the accepted pair + D8
-  closure, twins, and the route proper.
+  the designated mesh: a Ruling 1 re-open, not an arm).
+- **Handoff 5 ran all three at 0 credits**
+  ([report](../experiments/E12-handoff5-report.md)): **the mesh HAS a tongue** —
+  main-shell, route-visible; Gate 0's omission-read falsified in one render at
+  mouth scale — both view-5 misses resolved on the seed alone, and the resolution
+  rung split by element: muzzle plates, nostrils and tooth rows define at bust
+  scale; **the eye is geometry-limited** (brow plates, no lens recess on the clay;
+  the denser control produced *less* eye than the sparse one). New banked fact:
+  **D9/D11 swap surfaces with scale** — wine took the cavity at pair scale, slate
+  took the tongue at bust scale; neither reliably owns its surface. The Director's
+  eye then caught the fixture's pale-bone family — "bone" ×5 in the prompt —
+  rendering as **exposed skeleton** on legs, tail underside and wing arms under
+  the realistic register, on both seeds
+  ([Ruling 12](../experiments/E12-ruling.md)): canon corrected in place (D2
+  olive-tan, D6/D7 charcoal; ivory now the head's family), regeneration dispatched
+  as a new decision bundle (handoff 6). Then: bands re-derived against the
+  accepted pair + D8 closure, twins, and the route proper.
 
 ## The calibration table this page exists for
 
