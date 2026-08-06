@@ -1,0 +1,33 @@
+{
+ "_what": "W3 / ARMB's recorded headline numbers, as a versioned fixture, so the consumer sweep's anchors come from the record rather than from the tool that recomputes them. Every value below was measured by a session that did not produce this file.",
+ "_authored": "2026-08-06, the E10 Ruling 4(a) dispatch. Values transcribed from the cited documents, not recomputed.",
+
+ "label": "W3 / ARMB (the accepted character asset, E08 Gate 1)",
+
+ "valid": {"value": 2402810, "from": "E08-gate0.md line 29; E08-eightcam.md line 8"},
+ "reach": {"value": 1780546, "pct": "74.10", "from": "E08-gate0.md line 53 (production floors, 8 equatorial cameras); E08-eightcam.md line 9 - two independently written instruments agree to the texel"},
+ "stage1": {"value": 1653659, "pct": "68.8", "from": "E08-eightcam.md line 8"},
+ "brush": {"value": 101527, "pct": "4.2", "from": "E04-task1-report.md line 43"},
+ "dilation": {"value": 647624, "pct": "27.0", "from": "E04-task1-report.md line 44"},
+ "painted": {"value": 1755186, "from": "stage1 + brush, cross-checked: valid - dilation = 1,755,186"},
+ "styled_over_reachable_pct": {"value": "92.9", "from": "E08-eightcam.md line 8"},
+
+ "splits": [
+  {"label": "strokes 1-6", "anchor": 29332,
+   "from": "76,352 (BRUSH strokes 1-7, E04-task1-report.md line 41) minus 47,020 (stroke 7, ARMB/out/run_log.jsonl) - two records, cross-consistent",
+   "before": "E:/AI/training/facet_E08/ARMB/stage1_8cam.png",
+   "after": "E:/AI/training/facet_E08/ARMB/out/TARGET_pre_stroke7_atlas.png"},
+  {"label": "stroke 7 (y+000_e+55)", "anchor": 47020,
+   "from": "ARMB/out/run_log.jsonl - the commit that EXECUTED PAST A FIRED GATE (E08 Amendment 32's founding incident). The count is the run's own record",
+   "before": "E:/AI/training/facet_E08/ARMB/out/TARGET_pre_stroke7_atlas.png",
+   "after": "E:/AI/training/facet_E08/ARMB/out/VOID_post_stroke7_atlas.png"},
+  {"label": "stroke 8 (y+180_e+55)", "anchor": 25175,
+   "from": "E04-task1-report.md line 42 - and that report VALIDATED the atlas-diff method against this exact number",
+   "before": "E:/AI/training/facet_E08/ARMB/state/atlas.prev.png",
+   "after": "E:/AI/training/facet_E08/ARMB/state/atlas.png"}
+ ],
+
+ "_split_limit": "Only three splits are recoverable without a replay. texpass_iter's per-stroke claim was never saved for this subject, and the ARMB run has no state COPY to replay against - so strokes 1-6 cannot be separated from each other here. The galleon got six because e10_claim_replay.py could re-derive them from its saved job directories; ARMB's job directories hold only the two elevated strokes.",
+
+ "_ceiling_config": "PRODUCTION SPLIT, body 0.45 / head 0.18, head band from meta.json's crop rect at crop_res 1024 - W3's ruled configuration. This differs from the ship, whose ship.json pins head-facing-min EQUAL to facing-min on purpose (E04 Ruling 14: a ship has no head). Running W3 at the ship's uniform 0.45 would land on 68.52%, not 74.10% (E08-gate0.md line 36) - the anchor is what tells the two apart."
+}

@@ -1,0 +1,155 @@
+{
+ "anchors_fixture": "E:\\AI\\facet\\docs\\experiments\\E10-r4a-armb-anchors.json",
+ "label": "W3 / ARMB (the accepted character asset, E08 Gate 1)",
+ "prep": "E:\\AI\\training\\facet_E06\\C1\\prep",
+ "one_image_px_in_canonical_units": 0.0011689207737818849,
+ "valid": 2402810,
+ "full_bake": {
+  "off1": 62088,
+  "off1_pct": 2.584,
+  "off5": 54303,
+  "off5_pct": 2.26,
+  "max_px": 111.34045634030718,
+  "median_px": 1.8028102817105826e-05
+ },
+ "anchor_sample": {
+  "pct1": 2.5745,
+  "pct5": 2.249,
+  "median": 2.107342389479072e-08,
+  "max_px": 111.3404541015625
+ },
+ "ceiling": {
+  "as_recorded": {
+   "num": 1780546,
+   "den": 2402810,
+   "pct": 74.1027
+  },
+  "excluded": {
+   "num": 1739169,
+   "den": 2340722,
+   "pct": 74.3005
+  },
+  "num_off_surface": 41377,
+  "delta_pct_points": 0.1979,
+  "recorded_quote": "74.10",
+  "off_surface_reach_rate_pct": 66.6425
+ },
+ "acceptance_styled_over_valid": {
+  "as_recorded": {
+   "num": 1653659,
+   "den": 2402810,
+   "pct": 68.8219
+  },
+  "excluded": {
+   "num": 1621584,
+   "den": 2340722,
+   "pct": 69.2771
+  },
+  "num_off_surface": 32075,
+  "delta_pct_points": 0.4552,
+  "recorded_quote": "68.8"
+ },
+ "acceptance_styled_over_reachable": {
+  "as_recorded": {
+   "num": 1653659,
+   "den": 1780546,
+   "pct": 92.8737
+  },
+  "excluded": {
+   "num": 1621584,
+   "den": 1739169,
+   "pct": 93.239
+  },
+  "num_off_surface": 32075,
+  "delta_pct_points": 0.3653,
+  "recorded_quote": "92.9"
+ },
+ "finalize_dilation": {
+  "as_recorded": {
+   "num": 647624,
+   "den": 2402810,
+   "pct": 26.9528
+  },
+  "excluded": {
+   "num": 618675,
+   "den": 2340722,
+   "pct": 26.4309
+  },
+  "num_off_surface": 28949,
+  "delta_pct_points": -0.5218,
+  "recorded_quote": "27.0"
+ },
+ "twins_stage1": {
+  "as_recorded": {
+   "num": 1653659,
+   "den": 2402810,
+   "pct": 68.8219
+  },
+  "excluded": {
+   "num": 1621584,
+   "den": 2340722,
+   "pct": 69.2771
+  },
+  "num_off_surface": 32075,
+  "delta_pct_points": 0.4552,
+  "recorded_quote": "68.8"
+ },
+ "brush_total": {
+  "as_recorded": {
+   "num": 101527,
+   "den": 2402810,
+   "pct": 4.2253
+  },
+  "excluded": {
+   "num": 100463,
+   "den": 2340722,
+   "pct": 4.292
+  },
+  "num_off_surface": 1064,
+  "delta_pct_points": 0.0666,
+  "recorded_quote": "4.2"
+ },
+ "splits": {
+  "strokes 1-6": {
+   "replayed": 29415,
+   "recorded": 29332,
+   "anchored": false,
+   "note": "NOT anchored - exclusion not computed, nothing substituted"
+  },
+  "stroke 7 (y+000_e+55)": {
+   "replayed": 46981,
+   "recorded": 47020,
+   "anchored": false,
+   "note": "NOT anchored - exclusion not computed, nothing substituted"
+  },
+  "stroke 8 (y+180_e+55)": {
+   "anchored": true,
+   "recorded": 25175,
+   "excluded": 25171,
+   "off_surface": 4,
+   "off_pct_of_split": 0.0159
+  }
+ },
+ "off_surface_composition": {
+  "stage1": {
+   "texels": 32075,
+   "share_of_off_surface": 51.6605,
+   "off_surface_rate_within_class": 1.9396
+  },
+  "brush": {
+   "texels": 1064,
+   "share_of_off_surface": 1.7137,
+   "off_surface_rate_within_class": 1.048
+  },
+  "dilation": {
+   "texels": 28949,
+   "share_of_off_surface": 46.6258,
+   "off_surface_rate_within_class": 4.47
+  },
+  "reachable": {
+   "texels": 41377,
+   "share_of_off_surface": 66.6425,
+   "off_surface_rate_within_class": 2.3238
+  }
+ }
+}

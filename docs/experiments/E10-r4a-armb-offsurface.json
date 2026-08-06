@@ -1,0 +1,20 @@
+{
+ "label": "W3 / ARMB",
+ "prep": "E:\\AI\\training\\facet_E06\\C1\\prep",
+ "aspect": [
+  752,
+  1024
+ ],
+ "margin": 1.204,
+ "fit_axis": "width",
+ "v_ext": 1.19697487235265,
+ "one_px": 0.0011689207737818849,
+ "v_ext_derivation": "supplied by --v-ext",
+ "uv_valid_texels": 2402810,
+ "sampled": 200000,
+ "median_distance": 2.107342389479072e-08,
+ "median_distance_px": 1.8028102817105826e-05,
+ "pct_off_surface_gt_1px": 2.5745,
+ "pct_off_surface_gt_5px": 2.249,
+ "max_distance_px": 111.34045634030718
+}
