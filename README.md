@@ -89,8 +89,21 @@ and the difference is geometry, not regression. The spec's central hypothesis �
 shared-code edit needed* — was **falsified five times, and that was the payoff**: each
 falsification hardened the profile system (the coverage gate and its subject-flag registry
 law, the generator-legal frame constraint, two operand corrections found at fixes' second
-consumers). **Next: the E10 environment-contact layer spec, and the galleon into the sdlab
-asset lane as asset #2 — the first with a native per-texel owner channel.**
+consumers).
+
+**E10 then closed the same day** ([E10-ruling.md](docs/experiments/E10-ruling.md), 12
+rulings, four generations, zero credits): **environment-contact layers** — the Director's
+waterline, shipped as **data, not geometry**: the GLB stays whole, `waterline_z` rides in
+the profile and manifest (four independent confirmations of the placed line), and the
+scene's water hides the underwater body per frame. The arc's law, measured across eight
+arms: **inpainting continues an asset; full-frame generation introduces new material;
+layers fill by masked projection** — three inpaint attempts at ΔL\* −1.6 to −4.1 against
+one full-frame at **+33.4**, one field changed. The layer machinery (second accumulating
+state, two-lane profile vocabulary, base-invariance structural and proven under live
+fire, straight-alpha RGBA export contract) generalises by construction: snow on boots,
+mud on wheels, moss on ruins are the same contact query + layer + law. **Next: the
+galleon into the sdlab asset lane as asset #2 — the first with a native per-texel owner
+channel — and Ruling 4's `pos.npy` off-surface consumer measurement.**
 
 **Form first, style second.** Image-to-3D reconstructors key off shading, silhouette
 clarity and unambiguous depth. A heavily stylized sprite — weathered planks, painted

@@ -599,3 +599,50 @@ The watchdog died by a **new mechanism** — the loop crashed on a file lock ove
 own heartbeat file — the third hard death of the arc. Flagged to the watchdog-robustness
 thread outside this repo (E04 Ruling 2's task owner); the standing restart authorization
 covers any session needing the GPU; this leg was CPU-only throughout.
+
+---
+
+## Ruling 12 (advisor, 2026-08-05) — "THAT LOOKS ABOUT RIGHT." W-H4 confirms against a photograph of a real galleon. E10 CLOSES.
+
+**The Director ruled the float demo against a reference photograph of a real galleon
+under way** — his words: *"that looks about right."* The photo is the ruling's free
+cross-check: the real ship shows contact amidships, bow and stern riding above, and
+foam breaking at the line — the sitting-depth half is what E10 built, and the
+foam-and-wake half is exactly where RG02's research put it: the scene's water, computed
+per frame. The placed line now carries four confirmations — the exemplar's band, the
+mesh z-fraction, the pixel measurement, and the Director's eye against reality.
+
+### The hypotheses, scored at close
+
+| # | verdict | the number |
+|---|---|---|
+| W-H1 | **CONFIRMED, blind** | the geometric band contains 100.00% of the exemplar's largest component, 99.96% of its total — contact is geometry's job |
+| W-H2 | **falsified in brush mode, confirmed in twin mode — the law is the finding** | −3.9 / −4.1 / −1.6 across three inpaint arms; **+33.4** full-frame, one field changed. *Inpainting continues; full-frame introduces; layers fill by masked projection* |
+| W-H3 | **CONFIRMED under live fire** | base byte-identical through four generative commits and two projections, asserted inside the tools, zero violations |
+| W-H4 | **CONFIRMED in the Director's sentence** | "that looks about right," ruled against a real galleon |
+
+### What ships — the contract, in the Director's own terms
+
+The GLB, whole — bottom included, painted — plus **one number** (`waterline_z`, in the
+profile and the asset manifest) the scene's water consumes to hide the underwater body
+per frame. Optionally: the layer PNG (straight-alpha RGBA on UV1, the Q2 contract) for
+anything the hull wears at the line. Nothing about water ever enters the asset. **The
+generalisation the Director asked for on day one is banked as the pattern**: a contact
+query + a layer state + the introduce-by-full-frame/fill-by-projection law — snow on
+boots, mud on wheels, moss on ruins are the same three pieces with a different query.
+
+### Parked and queued at close, none opened
+
+The boot-top coat (if ever built: the band **straddles** the line by a hull-derived
+height — Ruling 11) · the deck-view occlusion's depth-test form (named, unbuilt) ·
+**Ruling 4's `pos.npy` off-surface consumer measurement — the next facet dispatch
+candidate** (read-only, queued since the mask's birth) · the shared-code bundle, now
+seven items · the sdlab asset-2 ingest, staged and validated, awaiting the Director's
+paste in that lane.
+
+**E10's cost: four generations, zero credits, one day.** The ledger closes the arc at
+forty-four entries — six of them E10's, and every one of the six was caught by an
+executor or a control before it cost an outcome. The arc began with the Director
+saying *"the data that we'd learn from making that work could be applied to other
+models in the future"* — that sentence is now a measured law, a schema, and a number
+riding in a manifest.
