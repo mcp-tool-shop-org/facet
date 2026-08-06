@@ -543,3 +543,83 @@ at {3,4,5} and the horn family at {3,5}, against the default's "stay everywhere.
 The default's rationale held exactly where it was reasoned from (view 4, the true
 rear). Deriving stems by deleting whole comma-terms with subsequence assertions is
 the right construction and carries forward.
+
+---
+
+## Ruling 11 — the re-pair verdict: REGISTER CONFIRMED; two named defects open the allocation ladder (2026-08-06)
+
+Evidence: the handoff-4 Tasks 1/2 report and sheets (advisor's eye on them first),
+and the Director's verdict: **"It looks a lot better, but the tongue is missing and
+the face could be more defined"** — with his direct question: are we using the
+humanoid small-polygons-where-we-want-definition technique on the dragon?
+
+**11a — the register is CONFIRMED and the canny ruling is ratified into the
+profile.** The no-LoRA ultra-realistic direction stands — the Director's "a lot
+better" is the register gate passing. The mid-arc canny ruling (**0.05 / 0.10**) is
+adopted: control 50,631 → **108,887** px on view 1 and 37,228 → **88,717** on view
+5, with the works-perfectly test having located the bottom rungs' iso-luminance
+artifact before any value was chosen, and the tool's own counts confirming the
+replica a third way. The pair is **NOT yet accepted**: two named defects (11c, 11d)
+and two executor-flagged material misses (11e) gate it.
+
+**11b — THE ALLOCATION QUESTION IS REOPENED, by Ruling 2's own condition, at the
+Director's eye.** The honest answer to his question is NO — the dragon runs uniform
+by Ruling 2 (allocation NONE, decided on Gate 0 head evidence), and "the painted
+head disappoints" is the exact re-open clause that ruling pre-registered. The
+ladder, ruled — cheap and additive before heavy and designation-level:
+
+1. **Resolution first.** Two different layers produce "definition," and neither
+   requires touching the mesh: at the PAIR, the face is ~3% of a full-figure
+   frame's pixels — E01's framing physics applied to generation, not
+   reconstruction — so the next dispatch adds a **head-crop companion generation**
+   (one bust-framed styled view at yaw 0, frame derived generator-legal from the
+   measured head box, head-family elements + register + backdrop, the ruled canny
+   pair). It gives the Director a face at judgeable resolution, gives the head
+   region a spec source, and answers whether definition was resolution-starved.
+   At the ASSET, the additive arm remains the band machinery (bake `head-scale` >
+   1.0 for texels, looser head bands at projection) — armed only if the accepted
+   pair's face still wants more at texture time.
+2. **Geometry second, on his word only.** If the companion's face disappoints WITH
+   resolution, the limit is the mesh's own head (the shallow eye recess is
+   geometry, and paint never restores structure) — then the bust-crop second
+   reconstruction becomes live, which **replaces the designated mesh and re-opens
+   Ruling 1**; that step is the Director's sentence, not an arm.
+
+**11c — the tongue: geometry is checked before any prompt surgery.** Gate 0
+recorded a visible tongue on 00001 and 00002 — **not on 00003**. If the designated
+mesh carries no tongue geometry, no prompt lands one (detail overlays mask; it
+never restores), and D9's realised form is the wine cavity wash both pairs painted
+— in which case the fixture question (merge D9/D11 into one wine-dark mouth
+interior, or keep both and record the cavity as one-element-wins) goes to the
+Director's canon window with the geometry fact in hand. The executor verifies the
+cavity geometry first (a crop into the mouth on the mesh), and the head-crop
+companion shows the mouth at a scale where D9/D10/D11 are actually judgeable —
+at pair scale the cavity is sub-resolvable and "missing" is not yet a landing
+verdict.
+
+**11d — view 5's material misses spend the bounded re-roll.** The hide's green
+absent on haunch, shoulder and near hindquarter (pale tan — the E07
+large-region-of-wrong-material class, presented at full size exactly as it should
+be) and the membranes reading bone-ivory rather than D3's storm-grey are spec
+violations on named elements' surfaces — the palette-gate re-roll precedent
+applies: **one re-roll of view 5, new seed, nothing else changed**; the rejected
+view stays in the record. If the misses repeat, that is the result, and it becomes
+fixture/arm evidence (including the live question of whether the realistic
+register's lighting language pales D3 — noted, not tuned). D11 reading wine twice,
+on two registers and two controls, rides into 11c's fixture question.
+
+**11e — ratified from the run:** the anchor that fired on first use was the float
+class's SECOND instance (bool→float64 promotion; conformed to the source's own
+arithmetic per 9a's rule, both digits reproduced exactly — the class is now named
+twice and the repair pattern is standing) · the W-band statistic's failure was
+caught by the executor's own eye and replaced by W-flat **with the failure recorded
+in the tool** — E07's lesson practiced on a brand-new instrument · no-LoRA is the
+absence of a node, enforced by an inverted pre-flight scanning every node for the
+class family and card name, corroborated by zero warnings on both dry_runs where
+the rejected run always warned · the prompts builder is now committed code (v2's
+claimed-but-uncommitted builder is corrected in the record) · 0 credits, 0 re-rolls
+spent so far.
+
+**11f — Task 3 (bands + D8 closure) stays acceptance-gated.** Acceptance now waits
+on: the view-5 re-roll, the head-crop companion, the tongue geometry answer, and
+the Director's eye on all three.

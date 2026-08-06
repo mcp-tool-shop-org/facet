@@ -409,6 +409,35 @@ not a target) · arm any structure metric as a gate (10d: the structural channel
 a style gate is the eye) · touch thin_extent, the E10/E11 lanes, or either accepted
 asset · exceed the bounded re-roll · end a session the Director has not ended.
 
+### Handoff 4 continuation (2026-08-06, post-Ruling 11) — three items before Task 3
+
+The Director's verdict on the re-pair: register CONFIRMED ("a lot better"), not yet
+accepted — the tongue and the face's definition are the named defects
+([E12-ruling.md](E12-ruling.md) Ruling 11). In order:
+
+1. **The tongue geometry check (11c).** Does `dragon_00003_raw.glb` carry tongue
+   geometry inside the cavity? Gate 0 confirmed a tongue on 00001/00002 and did not
+   on 00003. A crop into the open mouth on the mesh answers it. Report the fact;
+   the fixture consequence (D9/D11 cavity question) is the advisor's and the
+   Director's, not yours.
+2. **The view-5 re-roll (11d)** — the bounded single re-roll, new seed, nothing
+   else changed: the pale-tan hindquarter and ivory membranes are spec violations
+   on D1/D3 surfaces. The rejected view 5 stays in the record.
+3. **The head-crop companion (11b, resolution before geometry).** One bust-framed
+   styled generation at yaw 0: frame derived generator-legal (÷16) from the
+   measured head box (`head_00003.json`, padded as the Gate 0 crops were), clay
+   head render + control at the RULED canny pair, prompt = the head-family
+   elements + register + backdrop word (derive the stem from the protective entry
+   by the 9d deletion construction — body-only elements drop). One generation, its
+   own bounded re-roll, sidecar at birth ("head-region spec source and definition
+   gate; never a projection reference"). It answers whether the face's definition
+   was resolution-starved — and shows D8/D9/D10/D11 at judgeable scale for the
+   first time.
+
+**Then HALT** — companion + re-rolled view 5 + tongue answer to the advisor's eye,
+then the Director's. Task 3 (bands + D8 closure) stays acceptance-gated behind that
+look. Watchdog standing before any local Blender leg; cloud discipline unchanged.
+
 ### Standards compliance (handoff 2)
 
 | standard | score | evidence |

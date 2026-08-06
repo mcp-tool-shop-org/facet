@@ -297,14 +297,14 @@
     "from": "prior subjects' spent value"
    },
    "canny-low": {
-    "value": 0.4,
-    "why": "FALSIFIED FOR THIS SUBJECT, REPLACEMENT OWNED BY THE RE-PAIR ARM (E12 Ruling 10c) - at 0.4/0.8 the control carries 5.20%/2.13% of the figure interior where the same clay at 0.05/0.15 carries 15.80%/11.15% (3.0x/5.2x): the scale relief, frill and tooth rows are low-contrast grey-on-grey shading the pair never fires on, so the interior was the model's to invent. The value stands ONLY until the per-subject derivation lands (works-perfectly test first: what does a lower pair admit that is NOT relief). HISTORICAL: first-run operating point from the accepted route - measured, did not transfer.",
-    "from": "E12 Ruling 10c; the rejected pair's beast-only control measurement"
+    "value": 0.05,
+    "why": "MEASURED AND RULED for this subject (handoff 4 Task 1; ratified E12 Ruling 11a). The sweep's finding inverted the arm: on grey-on-grey clay HIGH is the structure lever (~10x low's effect) and LOW is the artifact control - the works-perfectly test located a population of wandering iso-luminance contours in the flat membrane field at the bottom rungs (caught by eye at 5x, then instrumented as W-flat with the original statistic's failure recorded in the tool). At the ruled 0.05/0.10 the control carries 108,887 px on view 1 (2.15x the falsified pair's 50,631) and 88,717 on view 5. HISTORY: 0.4/0.8 was the accepted route's value, falsified for this subject by Ruling 10c (5.20%/2.13% interior vs 15.80%/11.15% available - the relief never reached the ControlNet).",
+    "from": "handoff 4 Task 1 report; E12 Rulings 10c/11a"
    },
    "canny-high": {
-    "value": 0.8,
-    "why": "FALSIFIED FOR THIS SUBJECT, REPLACEMENT OWNED BY THE RE-PAIR ARM - moves with canny-low; see its entry.",
-    "from": "E12 Ruling 10c"
+    "value": 0.10,
+    "why": "MEASURED AND RULED with canny-low - the structure lever on this subject; see canny-low's entry.",
+    "from": "handoff 4 Task 1 report; E12 Ruling 11a"
    },
    "contour-width": {
     "value": 3,
