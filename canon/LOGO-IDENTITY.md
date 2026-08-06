@@ -94,7 +94,7 @@ otherwise-clay set. Both corrections are in the table above.*
   this table's identities, exactly as the route's brush masks per stroke — so a clay
   pick with one soft assignment is usable if its forms are good.
 
-## The v2 candidates — staged 2026-08-06, awaiting the Director's pick
+## The v2 candidates — staged 2026-08-06. ⭐ DESIGNATED: 00001 (Director, "00001 it is")
 
 Three rolls of the v2 prompt, staged at `E:\AI\training\facet_next\logo_clay\`:
 
@@ -117,8 +117,10 @@ reproducibility.
 
 ## The bake contract (later)
 
-The textured logo is produced FROM the chosen clay: canny-locked on the clay's own
-contours, masked per letter, each letter taking its bake identity from the table above —
+**The input is fixed: `facet_clay_p1_00001_.png`, sha256 `4c9685b9e901a69d`** — the
+Director's designation, 2026-08-06. The textured logo is produced FROM that clay:
+canny-locked on the clay's own contours, masked per letter, each letter taking its
+bake identity from the table above —
 the same mechanism the route uses on subjects (control from geometry, identity from the
 named element, style from the LoRA register: `visible brushstrokes, painterly worked
 surface`). If a palette check is ever wanted on the result, its bands derive from this
