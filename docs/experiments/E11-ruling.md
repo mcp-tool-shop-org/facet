@@ -125,6 +125,49 @@ belong in any backup that claims to cover the dataset. (This studio has lost
 unpushed artifacts to a drive event before; pointers inherit the pointee's
 fragility.)
 
+## Post-ingest addenda 2 (2026-08-06, on the lane's curation + schema commits)
+
+**The curation is executed as ruled** (lane commit `23da2be`): all 8 staged
+`w3_warrior` records → `rejected` with the exact supersession reason, asset paths
+moved, no pixels in history (every binary sha-pinned in receipts, regenerable from
+the source trees). One truth-in-labeling note carried: the lane CLI attributes the
+verdict to `human:mike` — its only reviewer identity — for what was a relayed
+advisor ruling; recorded, harmless, the lane may grow a reviewer field someday.
+
+**Schema 1.1.0 is authored lane-side (`9c8bc26`) and its three calls are ENDORSED
+from the facet side of the contract:**
+
+1. **1.1.0, not 2.0.0** — every addition optional, verified (not assumed) against
+   all three field manifests, where a major bump would have *refused the very
+   manifests Ruling 2 names as the training input*. This ruling's own "2.x"
+   shorthand is corrected by that: the label did not survive contact with the
+   change. The higher-minor-refusal gate is the right hazard close for a
+   provenance lane — a facet manifest declaring more than the running build can
+   see gets refused loudly, never silently thinned.
+2. **The non-square fixture (12×10)** — the axis proof is the load-bearing new
+   check and a square fixture cannot fail it. The check-that-cannot-fail law,
+   applied to a test fixture before it cost anyone anything.
+3. **The deliberately weak `json` proof** — parse, object, declared keys, nothing
+   more; asset semantics stay out of the lane because the seam is the design.
+   `categorical: true` on json refused on the same ground.
+
+The cross-codebase digit reproduction (1738 / 1495 / 263, now twice, from two
+different manifests) is banked with the lane's own honest caveat: implementation-
+diverse, not model-diverse.
+
+**Declared but not yet true — the gap is facet's to close, and it is QUEUED:** the
+54 committed records carry no identity block (their manifests are 1.0.0), so the
+stem-guess leakage fix exists in the schema and not yet in the data. **The errand:**
+`e11_manifest.py` gains `identity.subject_name` (values `galleon` and `w3` — the
+same subject value for any W3 asset id, per the lane's warning), both dense
+manifests re-emitted against their existing trees, lane re-ingest. Joins the
+standing errand batch (Ruling 6d/6e + the `.gitattributes` pin) that runs when the
+E12 handoff clears the working copy — **with a promote condition: if the Director
+wants to cut a training split before the batch runs, this item promotes to
+immediate**, because the split is where the leakage lives. The owner channel's
+consumption (seam exclusion) remains lane-side future work, correctly separated
+from its declaration.
+
 ## Standards compliance (this ruling)
 
 | standard | score | evidence |
