@@ -1,0 +1,23 @@
+{
+  "_what_this_is": "Expected sRGB for each of DRAGON-IDENTITY.md's eleven named elements, ESTIMATED FROM THE FIXTURE'S WORDS by the executor, 2026-08-05 (E12 handoff 2, Task 3). These are not measurements. No styled image of this dragon exists yet, so nothing here has been observed - it is the best reading of 'deep moss-green', 'storm-grey', 'bone-ivory', 'ember-orange' and so on, and it is the weakest link in the backdrop derivation that consumes it.",
+
+  "_how_it_must_be_corrected": "The fixture's non-circularity rule for the palette bands applies here too: once the styled target pair exists (Task 4), measure each element's ACTUAL colour on the pair and re-run the derivation against the measured table. If the pair disagrees with these estimates, the pair wins - it is an observation and this is a guess.",
+
+  "_thin_flag": "thin=true marks the elements that antialias toward the backdrop and therefore key out 4.2-6.8x more often than bulk (E04 fixture check). The flag is set STRICTLY BY THAT DEFINITION here: the filament family (D4-D7), the free-standing fang shells (D10, 4-252 faces each - E12 Gate 0 section 4), and the small elements seen through a gap (D8, D9, D11).",
+
+  "_D3_IS_DELIBERATELY_NOT_FLAGGED_THIN_AND_THIS_IS_THE_REASON": "The dispatch asks the derivation to weight toward D3, the storm-grey membranes, as 'the largest near-neutral surface - the danger class on THIS subject'. That is a REAL concern and a DIFFERENT mechanism from the one the thin flag names: D3's risk is that a neutral backdrop sits close in colour to a large surface, not that a small element antialiases into it. Task 2.3 did measure the membranes as this subject's thin structure - but in the EXTENT sense (front-to-back along a view ray, which governs diffusion withholding), not the image-space antialiasing sense the flag is about; face-on, a membrane's interior is a solid field of its own colour. Setting thin=true here would attach the right weight for a reason the flag's own name does not describe - the 'condition whose stated derivation does not describe it' failure this repo has already paid for once. So D3 carries weight 1, and its distance is reported explicitly in the Task 3 report whether or not it binds the minimum. If the ruling wants D3 weighted, that is a named decision and needs a field whose name says what it means.",
+
+  "materials": [
+    {"id": "D1",  "name": "deep moss-green scaled hide",        "rgb": [ 70,  88,  58], "thin": false},
+    {"id": "D2",  "name": "pale bone-tan ventral plates",       "rgb": [206, 188, 154], "thin": false},
+    {"id": "D3",  "name": "storm-grey wing membranes",          "rgb": [110, 114, 120], "thin": false},
+    {"id": "D4",  "name": "bone-ivory curved horns",            "rgb": [222, 212, 188], "thin": true},
+    {"id": "D5",  "name": "bone-ivory crown and cheek spikes",  "rgb": [222, 212, 188], "thin": true},
+    {"id": "D6",  "name": "bone-ivory dorsal and tail spines",  "rgb": [222, 212, 188], "thin": true},
+    {"id": "D7",  "name": "bone-ivory claws",                   "rgb": [222, 212, 188], "thin": true},
+    {"id": "D8",  "name": "ember-orange eyes",                  "rgb": [214,  96,  30], "thin": true},
+    {"id": "D9",  "name": "dark wine-red tongue",               "rgb": [ 92,  30,  36], "thin": true},
+    {"id": "D10", "name": "pale ivory fangs and tooth rows",    "rgb": [232, 226, 206], "thin": true},
+    {"id": "D11", "name": "dark slate mouth interior",          "rgb": [ 52,  56,  62], "thin": true}
+  ]
+}
