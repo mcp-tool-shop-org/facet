@@ -94,6 +94,27 @@ otherwise-clay set. Both corrections are in the table above.*
   this table's identities, exactly as the route's brush masks per stroke — so a clay
   pick with one soft assignment is usable if its forms are good.
 
+## The v2 candidates — staged 2026-08-06, awaiting the Director's pick
+
+Three rolls of the v2 prompt, staged at `E:\AI\training\facet_next\logo_clay\`:
+
+| candidate | sha256 (16) | character, as looked at by the advisor |
+|---|---|---|
+| `facet_clay_p1_00001_.png` | `4c9685b9e901a69d` | the most even row — balanced letter heights, tight kerning, crisp crystal E, rope-trim T; the cleanest *logo* read, and the one that will crop and shrink best |
+| `facet_clay_p1_00002_.png` | `19e3a462147f9287` | the most dramatic textures — largest scales, deepest crystal cuts, letters biggest in frame; a hero/banner read; the E's middle arm slightly compressed |
+| `facet_clay_p1_00003_.png` | `53fae969886d0bf6` | the most sculptural — deepest filigree on F, the C's scale crest flaring beyond the letter silhouette (characterful, less clean as a letterform), chunky bolted T |
+
+**The fixture verdict, all three: v2 HOLDS.** Both corrections landed — monochrome
+throughout (no colour leak on any letter) and the five families read distinct
+(metalwork-scroll / cut stone / scale / crystal / carpentry), with E-vs-T fully
+separated. The five-way letter↔texture binding held **5/5 on all three rolls** — the
+pre-registered drift stressor never fired on v2.
+
+**Provenance: incomplete, recorded rather than implied** (the house rule). The comfy
+export carried images only — no workflow JSON, so seed and sampler params are not on
+record; the text recipe is v2 above. The chosen artifact is frozen by hash, not by
+reproducibility.
+
 ## The bake contract (later)
 
 The textured logo is produced FROM the chosen clay: canny-locked on the clay's own
