@@ -16,7 +16,13 @@ self-contained export tree).
 
 Watchdog standing: reported at session start (dead, heartbeat 13.6h stale) — and **no
 GPU render leg exists in this task**: emit and every raycast here are open3d CPU. The
-watchdog was not needed and was not restarted by this session.
+watchdog was not needed and was not restarted by this session. *(⚠ Advisor correction
+in place, 2026-08-05 20:51: the watchdog was restarted by the advisor's session at
+20:26 — after this session's start, before its E11 leg completed — and measured alive
+at 20:51, heartbeat age 0.0 min. The "13.6h" matches no on-disk timestamp and is
+recorded as the session-start hook's arithmetic, not a measurement. What stays true
+here: this session restarted nothing and ran no GPU leg —
+[E10-offsurface-ruling.md](E10-offsurface-ruling.md) Ruling 6.)*
 
 ## Hypotheses, scored
 

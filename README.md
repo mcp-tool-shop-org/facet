@@ -85,7 +85,13 @@ route end to end with every subject value drawn from `profiles/ship.json` and
 generation in the arc**. Measured mix **36.89% reference / 6.87% brush / 56.24% dilation**
 — read against the subject's own pre-registered **42.72% stage-1 reach ceiling** (86.4% of
 reach, beside the character's 92.8% of 74.1%): a ship hides most of itself from eye level,
-and the difference is geometry, not regression. The spec's central hypothesis — *no
+and the difference is geometry, not regression. *⚠ Restated 2026-08-05
+([E10-offsurface-ruling.md](docs/experiments/E10-offsurface-ruling.md)): 2.4967% of the
+bake's uv-valid texels carry positions not on the mesh (>1 px), and the population is
+disproportionately painted (stage-1 3.06% against dilation 2.15%), mechanism unmeasured. On
+the on-surface population the same quantities read 42.25 / 36.68 / 86.8 / 56.44 / 6.89. The
+as-recorded family remains the standing cross-asset headline until W3 carries the same
+measurement — different denominators do not compare.* The spec's central hypothesis — *no
 shared-code edit needed* — was **falsified five times, and that was the payoff**: each
 falsification hardened the profile system (the coverage gate and its subject-flag registry
 law, the generator-legal frame constraint, two operand corrections found at fixes' second
@@ -221,7 +227,9 @@ and conclusions come last.
 | `resample_atlas.py` | nearest-surface texture transfer between topologies | replaces Blender's ray bake, which returned a black atlas when rays were cast from a seam-split mesh |
 | `restylize_views.py` | generates a mesh's own twins — builds the control image, saves the exact figure mask beside each twin | silhouette IoU **0.290 → 0.777**; per-view prompts take face detections on the rear view 1 → 0 |
 | `cull_unseen.py` | classifies faces by exterior visibility so the atlas can skip them | 47.6% of faces unseen by 46 cameras; interpolation down **68%**; gated on first-hit **depth**, not silhouette |
-| `texpass_provenance.py` | replays the commit chain offline to tell you, per texel, whether colour came from a twin, a specific stroke, or dilation | reproduces live commit counts to the texel; settled the blotch question without a GPU |
+| `texpass_provenance.py` | replays the commit chain offline to tell you, per texel, whether colour came from a twin, a specific stroke, or dilation | reproduces live commit counts to the texel; settled the blotch question without a GPU. ⚠ *Corrected 2026-08-05: the replay predates E08 A32 and over-claims +358 commits on the galleon (the missing `fm_e & hit` intersect — [report](docs/experiments/E10-offsurface-consumers-report.md)); the A32-faithful replay is `diagnostics/e10_claim_replay.py`; fix queued for the tool's next use* |
+| `e11_export_turnaround.py` | dense-turnaround export — emit-orchestrated flat renders + exact silhouettes + born-indexed class maps + owner slices, per camera, as a sha-linked self-contained tree | export proven a pure function; beam channels byte-anchored to the record; both subjects' trees validate through the sdlab lane 28/28 and 26/26 ([E11-report.md](docs/experiments/E11-report.md)) |
+| `e11_manifest.py` | the lane-contract manifest for an export tree | validated by the lane's own codebase on both subjects; the lane's palette gate reproduced the staged manifest's blob digits from fresh renders |
 
 ### `tools/` — unblocked, fix measured
 

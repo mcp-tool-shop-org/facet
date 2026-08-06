@@ -16,6 +16,13 @@ not ten). Acceptance thresholds from `profiles/ship.json`'s ruled `project_twins
 > **42.72% of valid texels** — 1,329,359 of 3,111,832 — is the most that stage 1 can reach on
 > this subject from the eight twin cameras at the ruled facing floor.
 
+*⚠ Annotated 2026-08-05 (E10 Ruling 4's measurement): the valid mask on disk measures
+**3,111,817** — as `provenance.json` and `offsurface.json` both record — against the
+3,111,832 quoted above. Both denominators yield 42.72% at 2 dp, so no quoted figure turns on
+the 15-texel difference; the cause is undiagnosed and stays that way unless a consumer ever
+depends on the exact count
+([E10-offsurface-ruling.md](E10-offsurface-ruling.md) Ruling 6).*
+
 **Stage-1 share cannot exceed this number.** Any measured share is a fraction of it, and the
 honest denominator for reading the finished asset is this ceiling, not 100%.
 
