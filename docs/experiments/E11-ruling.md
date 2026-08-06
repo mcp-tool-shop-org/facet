@@ -85,6 +85,46 @@ this ruling's push. The E12 lane discovered live in the same tree (blind predict
 committed before any dragon mesh exists — the discipline holding across three
 concurrent sessions) is untouched by this fold.
 
+## Post-ingest addenda (2026-08-06, on the lane session's ingest report)
+
+**Both dense trees are REGISTERED in the lane** — galleon `e04_galleon_dense` 28/28,
+W3 `w3_warrior_dense` 26/26, zero rejections, dry-run and live run digit-identical,
+receipts in the lane's project tree. **The external verifier reproduced a third
+time**: the galleon's blobs measured 1738 / 1495 / 263 px from the dense tree — the
+same digits Ruling 1 credits from the staged manifest, now through a third path.
+
+**Ruling 2 gains independent corroboration, measured at ingest:** W3's emit renders
+run *cooler* on the lane's palette gate than the recorded generation did — all 26
+dense views between 22 and 287 px against the 800 px bound, where the recorded
+`renders_flat` measured 266–447 on 2026-08-04. The generation chosen on
+reproducibility and geometry grounds is also the quieter one. Confirmation, not a
+new ground; recorded because it arrived from an instrument this ruling never
+consulted.
+
+**The supersession mechanism is RULED: curate-to-rejected, not delete.** The staged
+`w3_warrior` records (8) are curated to `rejected` with the supersession reason
+citing this ruling's Ruling 4 — reversible, reason-traced, and the frozen E08 record
+untouched. The lane session's hazard finding that forced the decision is banked as a
+schema class: **the split engine guesses subject identity from id stems**, and
+`w3_warrior` / `w3_warrior_dense` strip to different stems — the same warrior could
+have landed in train and test. The mechanism fix (`identity.subject_name` as a
+declared field, never a stem guess) is endorsed into the lane's schema-2.x scope
+alongside its own proposal (declared render-space roles for `owner_id_*.npy`,
+`admission_*.json`, `cam.json`). The lane owns the schema; facet's part is that its
+exports are the first content for every one of those sockets — including the owner
+channel, which the lane confirmed is carried, hashed, and consumed by nothing
+(`lib/` greps zero): the argument for 2.x, exactly as Ruling 6 anticipated.
+
+**⚠ A durability dependency is now load-bearing and is recorded here by name.** The
+lane ingests mesh, atlas and all texture-space channels as `materialized: false` —
+sha-verified pointers into facet's export trees. **The dataset's hold on those
+channels depends on these directories continuing to exist:**
+`E:\AI\training\facet_next\E04_stroke\export\turnaround\` and
+`E:\AI\training\facet_E08\ARMB\export\turnaround\`. They must not move, and they
+belong in any backup that claims to cover the dataset. (This studio has lost
+unpushed artifacts to a drive event before; pointers inherit the pointee's
+fragility.)
+
 ## Standards compliance (this ruling)
 
 | standard | score | evidence |

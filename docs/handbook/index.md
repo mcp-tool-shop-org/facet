@@ -270,9 +270,16 @@ asset into a self-contained, sha-linked training tree: per-camera flat renders w
 the asset has them, and the clay↔styled-twin pairs. The export is a **pure function**
 (byte-identical on re-run), the shared views are byte-anchored to the recorded sheets,
 and the sdlab lane's own validator ingests both existing subjects **without schema
-edits**. Flat-only is the honest export: backgrounds are augmentation-side (composite
-anything behind the exact silhouette), and lighting would be a new renderer with its
-own anchors.
+edits** — both dense trees are registered in the lane as of 2026-08-06 (28/28 and
+26/26, zero rejections). Flat-only is the honest export: backgrounds are
+augmentation-side (composite anything behind the exact silhouette), and lighting would
+be a new renderer with its own anchors.
+
+**⚠ Durability: the lane holds texture-space channels as sha-verified POINTERS**
+(`materialized: false`) into the export trees at
+`E:\AI\training\facet_next\E04_stroke\export\turnaround\` and
+`E:\AI\training\facet_E08\ARMB\export\turnaround\` — those directories are
+load-bearing for the dataset: do not move them, and back them up as part of it.
 
 ## Licence
 
