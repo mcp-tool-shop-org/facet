@@ -1151,3 +1151,77 @@ needs a halt to fire.
 halt to this seat's eye) → **stage 1** (handoff 10 — projection against the
 banked 50.46% ceiling) → the sweep gate → strokes → finalize → pack →
 **Gate 1 at his zoom.**
+
+---
+
+## Ruling 18 — handoff 9 ruled: view 0 fixed, view 4 partial and the term splits; the crown question goes to the Director with the geometry answer in hand (2026-08-06)
+
+Evidence: the handoff-9 report (`e9c4485`), its predictions (`02da393`), this
+seat's eye on `AB_view0_v5_v6.png`, `AB_V4_WING_L_3x.png` and the crown region
+of the view-4 clay at 4× — and the Director's two live observations: *"The
+back of the wings still show the white bone"* and the crown/ears question.
+
+**18a — the halt is ACCEPTED; the withheld re-roll is RATIFIED a second
+time.** Attribution was airtight (exact-one-term ANDON on all nine stems;
+seed pinned; two graph entries per view), 0 credits, both allowances
+unspent — and the executor's reasoning stands: a seed change cannot separate
+a presentation effect from a term effect, so spending one would have
+confounded the live question rather than answered it.
+
+**18b — view 0's landing is BANKED: the naming fix worked in full** — the
+skeleton gone, arms AND every finger strut moss-green, ivory mass −66.4%.
+And the gate's second metric-vs-quality inversion is recorded: the gate
+number ROSE on both views as the defect left, because bone-ivory sits INSIDE
+the adopted warm-olive band (h 96.4) while the hide's deeper greens land past
+its 147.3 edge — the ±10° convention's second measured cost, banked beside
+17f.
+
+**18c — view 4 is a PARTIAL, and the compound term splits.** The
+leading-edge arms took green; the finger struts stayed cream — on the view
+that presents the wings as the archetypal bat-skeleton, with two bone-ivory
+terms still in its stem. The mechanism read: the compound phrase's head noun
+(`wing arms`) bound and its second conjunct (`finger struts`) under-bound,
+exactly where the anatomy prior pushes hardest. RULED: the term splits into
+two noun phrases — **`moss-green wing arms` + `moss-green wing finger
+struts`** — v7 stems, view 4 regenerates (view 0's v6 twin STANDS — fixed;
+regenerating a good landing for stem uniformity is churn). Pre-registered
+branches: struts land green → the set completes; struts stay cream → the
+positive-naming lever is exhausted on this presentation, and the decision
+goes to the Director with two named options (a subject-level negative term
+earned the W3 way, or accepting cream struts as the rear presentation's
+realised form).
+
+**18d — the wide-box lesson is BANKED as an operand-law instance**: the
+crown check's wide box measured the wing-arm fix entering its corners and
+reported it as a crown regression (36.3% → 23.5%) while the crown-only box
+read 41.1% → 41.0% — unchanged to a tenth. First instance in this repo where
+the wrong box would have MANUFACTURED a regression rather than hidden one.
+The executor's tightening-before-believing was right.
+
+**18e — the keyed-IoU refinement is BANKED**: view 0's registration shifted
+−0.0205 while 95.3% of the newly-keyed pixels lie OUTSIDE the geometry and
+the bbox held to 1 px on three edges — the figure did not move; the
+generator painted more rim contrast. **A keyed-mask IoU measures paint
+placement as well as figure placement**; the executor's own ±0.005 inference
+rule is corrected in its report, and any future reader of keyed-IoU deltas
+inherits this caveat.
+
+**18f — view 0's warm-tan trailing membranes**: 13e's accepted
+lit-translucency class, routed to the Director's eye at the completed-set
+presentation, not churned.
+
+**18g — THE CROWN QUESTION, with the geometry answer in hand.** The
+Director's eye at the view-4 crown: *are those flaps ears or head, not
+horn?* Checked against the clay at 4× by this seat: **the geometry carries a
+fan of individually modelled tapered spikes flanking the skull, plus the two
+horns — no ear flaps exist on the mesh.** But his suspicion is half right,
+and it is the paint's half: the generator MERGED the spike fan into two
+smooth ear-like lobes and washed the skull surface BETWEEN the spikes in
+ivory — D5's word reaching head surface its geometry does not cover, the
+adjacent-surface cousin of the 17c resemblance channel. The canon's reading
+of the geometry is correct; the paint's reach is not. **The disposition is
+the Director's sentence** (framed to him with the trade stated): leave D5
+and judge at the asset's Gate 1 zoom, or re-canon the frill's colour — the
+latter honestly costing a regeneration of every D5-carrying view, including
+superseding the crown on the pair-identical twins 1 and 5. Handoff 10's
+scope waits on that sentence.
