@@ -137,7 +137,7 @@ exports** — every render ships with its exact silhouette so backgrounds are
 augmentation-side, and lighting would be a new renderer with its own anchors.
 
 **E12 — the beast arc — is IN FLIGHT** ([E12-ruling.md](docs/experiments/E12-ruling.md),
-Rulings 1–18 so far): the route's third subject class, a **winged dragon**, designated
+Rulings 1–19 so far): the route's third subject class, a **winged dragon**, designated
 from three reconstructed candidates on full-size sheets ("3 is the winner"). What Gate 0
 measured ([E12-gate0-report.md](docs/experiments/E12-gate0-report.md)) rewrites the
 priors: **9–12 welded shells against a character's 40–191 and the ship's 237–512** —
@@ -250,6 +250,14 @@ measurement box that would have *manufactured* a crown regression by measuring
 the wing fix entering its corners — and the Director's crown question was
 answered geometry-first: the mesh carries a modelled spike fan, no ears; the
 paint's merged-lobe ivory is judged at Gate 1 on the asset, by his sentence.
+The Director then directed the arc's next capability
+([Ruling 19](docs/experiments/E12-ruling.md)): **the bones get the face
+treatment** — the intricate structures diverge from the clay because a
+full-figure frame gives the whole head ~1.6% of its pixels, so
+[E13](docs/experiments/E13-detail-pass-spec.md) makes the companion's measured
+11.2× mechanism route-legal: crop-framed twins at the route's own yaws,
+projected FIRST so crisp paint owns the detail texels, anchored by a
+pixel-identity gate on the extended projector before anything is believed.
 Then stage 1 against the banked 50.46% ceiling, strokes, and Gate 1.
 Every value the subject needs lives in
 `profiles/beast.json` and `canon/DRAGON-IDENTITY.md`, and the ones that arrived by

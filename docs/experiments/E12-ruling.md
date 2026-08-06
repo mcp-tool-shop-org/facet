@@ -1232,3 +1232,56 @@ the textured asset, where the head-region levers (the band machinery, the
 allocation ladder's parked rungs) remain available if his eye wants them.
 Handoff 10's scope is therefore the 18c split-term fix alone: v7 stems,
 view 4 regenerates, everything else stands.
+
+---
+
+## Ruling 19 — THE DETAIL PASS IS DIRECTED: the bones get the face treatment (Director, 2026-08-06)
+
+**His words:** *"I'm not happy with how much these sprites are diverging from
+the clays in all of the details that matter most. We should be treating the
+bones like we do the humanoid's face, so that the intricate details don't get
+rendered into mush (like the horns)."*
+
+**19a — the direction is recorded, and the arc's own evidence supports it
+completely.** The divergence he names is measured: the full twin frame gives
+the whole head ~1.6% of its pixels, and the bust-scale companion proved the
+mechanism both ways — at 11.2× the mouth's pixel area, muzzle scale plates,
+nostril structure and tooth rows became legible for the first time (12g),
+while at twin scale the crown's modelled spike fan merges into lobes (18g)
+and the horns soften into approximation. **The geometry is not the problem**
+— the clay's horns, spikes and struts are crisp; the mush is generation-side
+resolution starvation, E01's face physics operating on this subject's
+detail structures. His framing is exactly the repo's own law: *frame the
+face, get a face* — and this subject's "face" is its bones.
+
+**19b — the plan, two proven mechanisms composed, decided with his window
+named.** (1) **Detail-region crop twins as projection sources** — the
+companion's construction (crop silhouette by direct raycast, crop control at
+the ruled canny, generator-legal crop frame) turned into route capability:
+crop-framed twins generated at the route's own yaws and projected FIRST, so
+their crisp paint owns the detail texels and the full-figure twins fill
+everything else (the never-overwrite invariant makes the composition free).
+The head region — horns, crown, frill, eyes, mouth — is the first target;
+its box is already measured (`head_00003.json`). (2) **Texel allocation** —
+the band machinery the allocation ladder armed at 11b: `bake_hero_prep
+head-scale > 1.0` so the crisp paint gets proportionally more atlas to live
+in; its value is measured in the spec, not guessed. **The capability this
+opens is Step-0-class** — `project_twins` is full-figure-only by
+construction (frame from bbox, centred on bbox mid) and gains crop-camera
+parameters — and it opens on the Director's word, anchored before first
+use: the extended tool must reproduce a known full-frame projection
+pixel-identical through the new parameter path at full-frame values before
+any crop projection is believed.
+
+**19c — the spec is E13** ([E13-detail-pass-spec.md](E13-detail-pass-spec.md)),
+written before the work per the house rule. Sequencing: handoff 10 (the
+view-4 strut fix) still completes the base-coat twin set — cheap and needed
+regardless — then E13's Gate 0 (the capability anchor) runs before stage 1,
+because crop projection precedes full-figure projection in the composed
+route. The 50.46% reach ceiling stands unchanged: crop cameras re-see
+surface the eye-level eight already reach; they change the paint's
+resolution, not the reachable set. The companion itself remains a spec
+source and is never projected (its sidecar's prohibition holds — it was
+generated at a non-route camera under that declaration; E13's crop twins
+are new artifacts, generated FOR projection under projection-source
+sidecars).
