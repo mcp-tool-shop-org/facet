@@ -1285,3 +1285,73 @@ source and is never projected (its sidecar's prohibition holds — it was
 generated at a non-route camera under that declaration; E13's crop twins
 are new artifacts, generated FOR projection under projection-source
 sidecars).
+
+---
+
+## Ruling 20 — THE EXEMPLAR DIRECTIVE: the dragon is done over under E13, and the occupancy audit closes the canon's gaps at once (2026-08-06)
+
+**His words, both messages:** *"When we implement E13 we should do the dragon
+over again. These sprites are meant to be exemplars, and not just some sprite
+to get through. It will inform the datasets, our methods and will be
+displayed to everyone."* And: *"The horns on his upper-spine (back of his
+neck) also don't look right."*
+
+**20a — handoff 10 is ACCEPTED and the REVERSAL is banked.** Seed 770700
+resisted the wing-strut term across THREE stems — unnamed, compound, split —
+moving 0.46% at the pinned seed while 82.23% of the image's pixels moved (the
+edit reached the sampler; the struts still resisted). Seed 770701 under v7
+bound them completely (wing-box ivory 15.4% → 6.0%, view 0's fixed level).
+**Seed-dependent term binding is now a measured phenomenon**, banked beside
+the resemblance channel. The re-roll spend is RATIFIED — the exact inverse of
+handoff 9's withholding, and both were right: there a seed change would have
+confounded the open question; here it WAS the open question. The honest
+attribution gap (v6-at-770701 never ran, so split-needed-the-seed vs
+any-stem-at-770701 is unresolved) is recorded and MOOTED by 20b. The
+vignette finding is banked with its new caveat: **the border-ring background
+fit assumes a flat-ENOUGH field** (46.5% of the re-roll's background past
+the key threshold against 0.5% precedent); its geometry-masked numbers
+stand, its keyed-IoU does not, and a graded-backdrop twin is flagged as a
+keying hazard at projection.
+
+**20b — THE EXEMPLAR DIRECTIVE is ruled into E13's scope: the texture route
+runs over WHOLE.** The current twin set (v5 ×6, v6, v7 + re-roll) becomes
+the **E12 measurement record** — superseded as production artifacts,
+retained in full, nothing deleted: it bought the palette correction, two
+naming laws, the seed-binding phenomenon, and every gate calibration. The
+exemplar set generates fresh under E13: **v8 stems from the completed canon,
+one coherent build** — no archaeology of patches — then the detail-pass
+crop twins, stage 1, and the route. The bar rides the spec in his words:
+exemplars that inform the datasets (the E11 lane), the methods, and public
+display. **Scope reading, correctable in his one sentence:** "do the dragon
+over" is read as the texture/generation route; the designated mesh (Ruling
+1) and the accepted pair (Ruling 14, the spec source and anchor) stand. If
+his sentence means the mesh too, that is the ladder's geometry rung — his
+word re-opens Ruling 1.
+
+**20c — the nape observation is CONFIRMED against the canon's own letter,
+and it generalised into the OCCUPANCY AUDIT, done once and completely.**
+D6's letter ran *"from shoulders to tail tip"*; D5's ring covers *"skull and
+jaw"*; the nape crest between them — real, modelled, and visibly
+**continuous with the dorsal ridge** in the profile clay — was UNNAMED, the
+third unclaimed surface his eye has found (wing arms, then struts, now
+nape), painted as crown-ivory vertebrae exactly as the founding law
+predicts. Rather than find the fourth at his eye, this seat audited every
+modelled structure against every element's letter across the front,
+profile, rear-crown and head clays at zoom. **Closed this fold:** the nape
+crest → D6, letter extended to *"the ridge from the nape to the tail
+tip"*, prompt term now **`charcoal dorsal, neck and tail spines`** · the
+paired **shoulder and hip spurs** (profile clay, free-standing lateral
+spikes) → D6's surface list with a watch note — small and family-adjacent,
+they earn their own prompt term only if the v8 set mislands them · the
+**brow horns** and **jaw barbels** → D5's surface list explicitly. The
+fixture carries the audit as its own section; the legs are re-confirmed
+smooth; no other unclaimed structure was found.
+
+**20d — E13 is AMENDED in place** (scope, prerequisite, seed caveat, bar):
+the base coat is the v8 regeneration, not the current mix; the canon
+completion is DONE as of this fold; the generation step carries the
+seed-binding caveat (770700's measured resistance — the per-view bounded
+re-roll is the lever, and no seed sweep exists); and **handoff 11 is E13
+Gate 0** — the projector's crop-camera extension with its pixel-identity
+anchor — which is capability work independent of generation and can run
+immediately.

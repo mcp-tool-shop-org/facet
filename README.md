@@ -137,7 +137,7 @@ exports** — every render ships with its exact silhouette so backgrounds are
 augmentation-side, and lighting would be a new renderer with its own anchors.
 
 **E12 — the beast arc — is IN FLIGHT** ([E12-ruling.md](docs/experiments/E12-ruling.md),
-Rulings 1–19 so far): the route's third subject class, a **winged dragon**, designated
+Rulings 1–20 so far): the route's third subject class, a **winged dragon**, designated
 from three reconstructed candidates on full-size sheets ("3 is the winner"). What Gate 0
 measured ([E12-gate0-report.md](docs/experiments/E12-gate0-report.md)) rewrites the
 priors: **9–12 welded shells against a character's 40–191 and the ship's 237–512** —
@@ -258,7 +258,20 @@ full-figure frame gives the whole head ~1.6% of its pixels, so
 11.2× mechanism route-legal: crop-framed twins at the route's own yaws,
 projected FIRST so crisp paint owns the detail texels, anchored by a
 pixel-identity gate on the extended projector before anything is believed.
-Then stage 1 against the banked 50.46% ceiling, strokes, and Gate 1.
+The Director then raised the bar to its real height
+([Ruling 20](docs/experiments/E12-ruling.md)): **these sprites are exemplars**
+— they feed the training datasets, define the method, and will be displayed —
+so E13 regenerates the texture route WHOLE from v8 stems rather than patching
+the accumulated set, and his third unnamed-surface catch (the nape crest,
+painted as crown-ivory vertebrae between D5's letter and D6's) triggered the
+**occupancy audit**: every modelled structure enumerated against every
+element's letter, done once — nape crest and spurs to D6, brow horns and jaw
+barbels explicit in D5, legs re-confirmed smooth, no other gap found. The
+current twins stand as the E12 measurement record (they bought two naming
+laws, the palette correction, and the measured phenomenon that **term binding
+is seed-dependent** — one seed resisted a term across three stems while its
+neighbour bound it). Then stage 1 against the banked 50.46% ceiling, strokes,
+and Gate 1.
 Every value the subject needs lives in
 `profiles/beast.json` and `canon/DRAGON-IDENTITY.md`, and the ones that arrived by
 inheritance are being falsified and replaced one measured step at a time — which is

@@ -1,5 +1,22 @@
 # E13 — the detail pass: crop twins as projection sources
 
+**⚠ AMENDED 2026-08-06, same day (E12 Ruling 20 — the exemplar directive).** The
+Director: *"When we implement E13 we should do the dragon over again. These sprites
+are meant to be exemplars, and not just some sprite to get through. It will inform
+the datasets, our methods and will be displayed to everyone."* Three scope changes,
+in place: **(1)** A0's base coat is no longer the current v5/v6/v7 twin mix — it is a
+**fresh, full eight-view regeneration from the v8 stems** (the occupancy-complete
+entry: wing skeleton named and split, neck spines named, every audit closure —
+Ruling 20c), one coherent build with no patch archaeology. The current twins become
+the E12 measurement record, retained in full. **(2)** The exemplar bar governs
+acceptance: these artifacts feed the E11 training lane, define the method, and will
+be displayed publicly — the Director's zoom judges accordingly. **(3)** The
+generation step inherits the seed-binding caveat (Ruling 20a: seed 770700 measurably
+resisted a prompt term across three stems where 770701 bound it; the per-view
+bounded re-roll is the lever, and no seed sweep exists). The canon-completion
+prerequisite is DONE as of Ruling 20c. Gate 0 (the capability anchor) is unchanged
+and runs first.
+
 **Spec, written before the work** (advisor, 2026-08-06, on the Director's direction —
 E12 Ruling 19). The beast's intricate structures — horns, crown and cheek frill, wing
 finger struts, fangs — diverge from the clay at twin scale because a full-figure frame

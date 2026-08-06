@@ -32,8 +32,8 @@ such a surface, replace its owner on a named region instead.**
 | D2 | pale olive-tan ventral plates | the banded underside: throat rings, chest plates, belly, tail underside. The stepped throat column (S-occlusion) is D2 surface. *⚠ Corrected 2026-08-06 (E12 Ruling 12e, the Director's verdict on the re-roll): was "pale bone-tan" — under the ultra-realistic register the word "bone" on the tail's banded underside rendered as exposed skeleton, on both measured seeds* |
 | D3 | storm-grey wing membranes | the sheet fields between the wing fingers, vein relief included. Deliberately cool and neutral against the warm hide — and deliberately NOT the studio-grey of a clay backdrop; the backdrop derivation (S-backdrop) must hold this element furthest of the large surfaces |
 | D4 | bone-ivory curved horns | the paired back-swept horns. *⚠ The family note is corrected 2026-08-06 (Ruling 12e): ivory was authored as "this scheme's binding family, as gold was the galleon's" — five of eleven elements — and under the realistic register that family mass painted skeleton down the body on both measured seeds. The ivory family is now the HEAD's (D4, D5, D10); the body wears green, olive-tan and charcoal. The galleon's gold survived at that density under the painterly register; the realistic register renders "bone" literally — a register-family interaction the studio's style plan should carry* |
-| D5 | bone-ivory crown and cheek spikes | the frill ring around skull and jaw; its spikes are individually modelled (no satellite shells on this mesh — Gate 0 §4) |
-| D6 | charcoal dorsal and tail spines | the ridge from shoulders to tail tip, paired blade rows at the tail. *⚠ Corrected 2026-08-06 (Ruling 12e): was "bone-ivory" — a pale segmented ridge running the whole back and tail read as an exposed spine under the realistic register, both seeds* |
+| D5 | bone-ivory crown and cheek spikes | the frill ring around skull and jaw; its spikes are individually modelled (no satellite shells on this mesh — Gate 0 §4). *⚠ List made explicit 2026-08-06 (Ruling 20c, the occupancy audit): the ring INCLUDES the paired brow horns above the eyes and the paired jaw barbels below the chin — both modelled, both this element's members, so neither is an unclaimed surface* |
+| D6 | charcoal neck spines + charcoal dorsal and tail spines (two prompt terms, one element — the D1 multi-term precedent) | the ridge from the NAPE to the tail tip — one continuous crest, as the profile clay shows — paired blade rows at the tail, and the paired shoulder and hip spurs. Terms are comma-free by the deletion-construction grammar: an internal comma would shatter a term at the stem builder. *⚠ Corrected 2026-08-06 (Ruling 12e): was "bone-ivory" — a pale segmented ridge running the whole back and tail read as an exposed spine under the realistic register, both seeds. ⚠ Extended 2026-08-06 (Ruling 20c, the Director's nape observation + the occupancy audit): the letter ran "from shoulders to tail tip", leaving the nape crest unnamed between D5's ring and D6's start — the third unclaimed surface, painted as crown-ivory vertebrae exactly as the founding law predicts. The prompt term now names the neck; the spurs ride the surface list with a watch note (they earn their own term only if the v8 set mislands them)* |
 | D7 | charcoal claws | feet and the wing-claw spur at each wing's wrist. *⚠ Corrected 2026-08-06 (Ruling 12e): was "bone-ivory" — same correction; dark claws also cut the prompt's pale-bone family mass from five terms to two, both at the head* |
 | D8 | ember-orange eyes | **pre-registered as below any area floor** (the G7 lesson: a pair-derived floor was unreachable by an element this size and was withdrawn). Landing verdict belongs to the twins' table, judged by eye at the head crop; no numeric gate may be armed on this element |
 | D9 | a dark wine-red tongue | the studio's wine-red register (W3's skirt); small element, same floor caveat as D8 |
@@ -91,6 +91,30 @@ the same texture on everything.*
   losing a micro-fragment is reported, not halted.
 - **S-scale-relief** *(unread guess, labeled as one)* — high-frequency overlapping plates
   may interact with the LoRA's register; the styled pair is the first evidence either way.
+## THE OCCUPANCY AUDIT (2026-08-06, E12 Ruling 20c — done once, completely)
+
+Three unclaimed surfaces had been found one at a time at the Director's eye (the wing
+arms, their finger struts, then the nape crest), each painted by accident exactly as
+the founding law predicts. Rather than find a fourth the same way, every modelled
+structure was enumerated against every element's letter — front, profile, rear-crown
+and head clays at zoom, by the advisor. The map, complete:
+
+| structure (modelled, from the clay) | owner |
+|---|---|
+| the two back-swept horns | D4 |
+| crown spikes · cheek/ear spike fan · **brow horns** · **jaw barbels** | D5 (list explicit as of this audit) |
+| **nape crest** (skull→shoulders — continuous with the dorsal ridge) · dorsal ridge · tail cone rows · tail-tip blade cluster · **shoulder + hip spurs** | D6 (letter extended this audit) |
+| wing arms · wing finger struts | D1, named in the prompt since Rulings 17e/18c |
+| wing membranes (sheet fields, vein relief) | D3 |
+| wing-claw spur at each wrist · foot claws | D7 |
+| throat rings, chest plates, belly bands, tail underside | D2 |
+| eyes · tongue · fangs and tooth rows · mouth interior | D8 · D9 · D10 · D11 |
+| legs and body hide (LEGS RE-CONFIRMED SMOOTH — no ridge geometry; any bone lines there are paint) | D1 |
+| throat/shoulder crevice · wing-body gap seams | S-occlusion (not paintable — a stressor, not a surface) |
+
+No other unclaimed structure was found. Every future element edit re-checks this
+table rather than discovering its gap at generation.
+
 - **S-occlusion** *(measured at Gate 0, designated-in; REALISED on the accepted pair —
   handoff 8 gate validation, E12 Ruling 16)* — the throat/shoulder crevice and
   the hard-stepped throat bands. Paint cannot fix it; pre-registered so the first person
