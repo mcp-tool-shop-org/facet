@@ -814,3 +814,39 @@ pair scale), then twins, stage 1 against the banked 50.46% ceiling, the sweep
 gate, strokes, finalize, pack, Gate 1. If the claws gate acceptance: the 13d
 arm, one paste. The allocation ladder's geometry rung stays parked on his
 sentence, unchanged by any of this.
+
+---
+
+## Ruling 14 — THE PAIR IS ACCEPTED (Director, 2026-08-06: "I accept. Very good!")
+
+Ruled on the staged artifacts at his eye — the same-seed A/B, both full views,
+and the feet crop — with the three deviations named in the presentation before
+the word. **The styled target pair is `target_1_head_seed770700_v5.png` +
+`target_5_tail_seed770700_v5.png`** (repaint_v2, sidecar `sidecar.json`, prompts
+`E12-pair-5`, canny 0.05/0.10, register ultra-realistic NO-LoRA, seed 770700
+both views, 0 credits across the entire pair lineage). Consequences:
+
+- **The pair is this subject's specification source and visual target — never a
+  projection reference** (its sidecar's own words). The estimated materials
+  (`dragon-materials-estimated.json`) are SUPERSEDED by the accepted pair per
+  the galleon rule; the bands derivation formalises the realised triples.
+- **The register row closes as EARNED**: ultra-realistic, NO LoRA — two subjects
+  earned saltroad, this one earned none-at-all
+  ([style-registers.md](../style-registers.md) row updated this fold).
+- **The three deviations are accepted AT THE PAIR; their fixture dispositions
+  land with the bands measurement**, not by inference from the acceptance: D7's
+  view-1 ivory claws and D5's charcoal cheek fan are measured per-element in the
+  bands task and ruled there (the 13d resemblance arm stays parked; his window
+  stays open on every line). D3's gradient is accepted as the lit-membrane read
+  per 13e.
+- **The recipe anchor converts**: the restylize block's operating points are now
+  anchored by the accepted pair (`_still_suspended.generation_recipe_anchor`'s
+  conversion condition met; the profile annotation rides with the bands fold to
+  keep this ruling's fold atomic).
+- **Unblocked, in order**: handoff 7 (bands + D8 closure, the ungated handoff-4
+  Task 3) → twins (eight, stems v5, registration measure-report-rule) → stage 1
+  against the banked 50.46% ceiling → the sweep gate (thin_extent at the
+  stroke-lane ruling) → strokes → finalize → pack → **Gate 1, five-column
+  sheet, his zoom.** The allocation ladder's geometry rung stays parked (12g);
+  the band machinery remains the asset-time additive arm if the painted head
+  wants it at texture stage.

@@ -23,7 +23,7 @@ implicit again.
 |---|---|---|---|
 | W3 (Figure) | painterly, visible brushstrokes | `saltroad_style_v2_lowlr_000001500` | earned — accepted asset |
 | galleon (Transport) | painterly, worked surface | saltroad, same card | earned — accepted asset |
-| dragon (Creature) | **ultra-realistic, menacing** | **NONE** (Ruling 10b) | ruled; the re-pair is its first evidence |
+| dragon (Creature) | **ultra-realistic, menacing** | **NONE** (Ruling 10b) | **earned — accepted pair** (Ruling 14, 2026-08-06; register confirmed at Ruling 11a, pair accepted after the Ruling 12e palette correction). ⚠ One register-interaction law from the arc: colour-word density the painterly register tolerates, the realistic register renders literally — "bone" ×5 painted a skeleton (Ruling 12e); a colour term can reach structures that *resemble* what it names (Ruling 13d, labelled) |
 | Architecture / Environment (future) | undecided | undecided | decided per subject when the classes open |
 
 The LOGO-IDENTITY scheme (Figure / Architecture / Creature / Environment / Transport)

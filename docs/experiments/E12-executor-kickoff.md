@@ -756,6 +756,150 @@ report regressions as findings rather than surprises.
 
 ---
 
+## Session handoff 7 (2026-08-06) — the palette bands against the ACCEPTED pair, and the D8 closure. Comprehensive.
+
+Serves the holding handoff-6 session (git pull first) or a fresh one — it assumes
+nothing not written here or in the reading list.
+
+### Where this stands
+
+**THE PAIR IS ACCEPTED** (E12 Ruling 14, the Director: "I accept. Very good!"):
+`repaint_v2/target_1_head_seed770700_v5.png` + `target_5_tail_seed770700_v5.png`,
+prompts `E12-pair-5`, canny 0.05/0.10, ultra-realistic NO-LoRA register, seed
+770700 both views, 0 credits. Acceptance unblocks handoff 4's Task 3, which is
+this dispatch. Three deviations were named at acceptance and are accepted AT THE
+PAIR, with fixture dispositions landing on THIS task's measurements: **view 1's
+foot claws landed ivory** (D7 declares charcoal — the Ruling 13d resemblance
+finding), **view 1's cheek/jaw spike fan landed charcoal-brown** (D5 declares
+bone-ivory; the crown spikes above it kept... measure, don't assume), and **the
+membranes grade** slate-to-pale (ruled a lit-translucency read, 13e). The
+suspended handoff-4/5 bands died with the rejected first pair (Ruling 10e);
+non-circularity holds — bands derive from the FIXTURE cross-checked against the
+ACCEPTED pair, never against the twins they will later gate.
+
+### You are the executor
+
+```
+cd E:\AI\facet && git pull
+CLAUDE.md                                  <- how to work here. Read first, follow exactly.
+docs/experiments/E12-ruling.md             <- Rulings 12-14. 14 is the acceptance; 13d/13e are the deviations.
+canon/DRAGON-IDENTITY.md                   <- the eleven elements AS CORRECTED (D2 olive-tan, D6/D7 charcoal)
+profiles/beast.json                        <- the corrected protective entry; _still_suspended.palette_bands
+E:\AI\training\facet_next\E12_repair\repaint_v2\   <- the accepted pair + sidecar + family instruments
+docs/experiments/E04-task4d-report.md      <- the bands precedent (the galleon's derivation form)
+docs/experiments/E12-task45-report.md      <- the REJECTED pair's suspended bands (context only, never a source)
+docs/experiments/E12-handoff6-report.md    <- the measured landings you will be banding
+```
+
+Your rules (CLAUDE.md §executor): never judge whether output is good ·
+predictions blind before looking, blind status disclosed · stop at every gate ·
+no memory-store writes · a negative result is a full success.
+
+### Environment, standing
+
+No generation and no GPU in this dispatch — it is colour arithmetic on artifacts
+already in hand (verify the watchdog anyway if any Blender/render leg becomes
+necessary, and report either way; its fourth death and 15:42 restart are Ruling
+13a). ASCII prints · scripts create their own output dirs · output tree:
+`E:\AI\training\facet_next\E12_repair\bands_v2\` · explicit git paths only ·
+touch nothing under E10/E11 artifacts, either accepted asset, or the
+00001/00002 trees.
+
+### Blind predictions, before anything runs
+
+Commit a predictions file BEFORE the first measurement, hashed, blind status
+stated (disclose exactly what this seat has already seen of the pair), covering
+at minimum: does the H1/H4 hue-collapse recur under the new register (the
+rejected pair realised eleven materials as ONE 42-degree hue group on 81.6% of
+the subject — Ruling 10e banked it register-confounded; this is the test) · the
+backdrop's realised separation vs the asked 0.2000 and the rejected pair's
+0.2353 · which fixture elements band cleanly vs land contested · where the
+ivory-family merge question (D4 / D5-crown / D10) lands · chroma-floor
+expectations for the dark elements (charcoal, slate, wine — below a chroma
+floor, hue is not a colour).
+
+### Task 1 — the palette bands, derived from the fixture against the accepted pair
+
+Per element D1–D11 of the CORRECTED fixture: locate the element's landed surface
+on whichever pair view carries it (say which view and where; the handoff-6
+family instruments and boxes are reusable), report the realised triple(s)
+(CIELAB D65, the house convention), and propose the band with its chroma floor.
+Requirements, each load-bearing:
+
+- **Non-circularity**: bands derive from fixture words cross-checked against the
+  PAIR. The twins they will later gate contribute nothing. The rejected pair
+  contributes nothing.
+- **Contested elements are REPORTED, not banded.** D7 (ivory on view 1, charcoal
+  on view 5 — same element, two landings) and D5 (cheek fan charcoal, crown
+  measure-first) get their per-view numbers and NO proposed band — the advisor
+  rules their dispositions and the ruling pays for the bands. Suspend rather
+  than invent; numerator and denominator; stop.
+- **D8 eyes and D9 tongue stay below any area floor — no numeric gate on
+  either** (the G7 lesson, pre-registered since handoff 2).
+- **The forbidden-span arithmetic** over the proposed bands, with the backdrop's
+  realised triple and its minimum distance to every band (the 8a/8b line
+  re-measured under the accepted register — the derivation promised this
+  re-measure at the accepted pair).
+- **The H1/H4 collapse re-measure**: hue-group census over the figure on both
+  views, the rejected pair's method, so the register confound resolves one way
+  or the other.
+- **Chroma floors quoted per band** — any hue number carries its chroma or it is
+  not quoted (two instruments have been bitten; the rule is standing).
+- **The membrane gradient is banded honestly or suspended**: D3 may need a
+  lightness RANGE (slate-to-cream) rather than a point band; if the data cannot
+  support one band, report the strata and suspend — the 13e ruling anticipated
+  exactly this.
+
+### Task 2 — the D8 closure, on the accepted artifact
+
+Ruling 2's named checkpoint, held open through 10g (passed-as-mechanism on a
+rejected artifact) — close it on the accepted one: the ember-orange landing on
+view 1, px count, largest blob, location against the head region, at zoom, eye
+judged. No floor, no gate — the closure is the record that the checkpoint's
+question (can the pipeline paint a convincing eye on the measured recess) is
+answered on an artifact that stands. Cross-reference the 12g annotation (the
+bust-scale companion did NOT paint one under the denser control) so the closure
+carries both facts.
+
+### Then HALT
+
+Stage: the per-element table (realised triples, proposed bands, chroma floors),
+the contested-element numbers with no bands, the forbidden-span arithmetic, the
+collapse census, the D8 closure evidence at zoom, the predictions file scored.
+**All of it to the advisor's eye first, then the Director's** if his window is
+wanted. The advisor rules the bands into the profile, rules D5/D7 dispositions,
+and only then do twins run (handoff 8 — not yours).
+
+### Do not
+
+Band a contested element · arm any threshold the data cannot support (suspend +
+report) · touch the twins question or generate anything · compare to the
+rejected pair except where a task names it as the confound baseline · edit any
+fixture or profile (advisor's writes) · write to the memory store · end a
+session the Director has not ended.
+
+### Standards compliance (this dispatch)
+
+| standard | score | evidence |
+|---|---|---|
+| PIN_PER_STEP | 2 | Predictions hashed blind before measurement; every triple carries its box, view and mask provenance; the instruments are the committed handoff-6 pair, re-validated against published figures before new numbers |
+| ANDON_AUTHORITY | 2 | Contested elements halt to the ruling rather than being banded; suspension is the specified response to unsupportable thresholds; the halt is the advisor's eye |
+| NAMED_COMPENSATORS | 2 | No generation, no spend, no irreversible step; all writes in a new subdirectory + one new report; nothing pre-existing opened for writing |
+| DECOMPOSE_BY_SECRETS | 3 | Bands derive fixture-side and are cross-checked pair-side, never twin-side; contested dispositions route to the seat that owns them; the register-confound test is separated from the banding it informs |
+| UNCERTAINTY_GATED_HUMANS | 3 | The advisor rules every band and both dispositions before any gate consumes them; D8/D9 stay eye-judged below floors; the Director's window is named |
+| EXTERNAL_VERIFIER | 2 | The pair was judged by the Director's eye, not by these instruments; the bands are cross-checked against an artifact the deriving code did not generate. `skip:` on a second model per the arc's precedent |
+
+### Calibration
+
+The handoff-6 seat's standard holds: validate every instrument against a
+published figure before reading a new number from it, own method errors in the
+report, and state what each measurement returns when nothing is wrong before
+reading it. One addition from Ruling 13: where fixture and accepted artifact
+disagree, the disagreement IS the deliverable — report it cleanly and leave the
+disposition to the ruling. A negative result is a full success.
+
+---
+
 ### Standards compliance (handoff 2)
 
 | standard | score | evidence |

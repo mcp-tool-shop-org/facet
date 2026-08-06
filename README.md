@@ -137,7 +137,7 @@ exports** — every render ships with its exact silhouette so backgrounds are
 augmentation-side, and lighting would be a new renderer with its own anchors.
 
 **E12 — the beast arc — is IN FLIGHT** ([E12-ruling.md](docs/experiments/E12-ruling.md),
-Rulings 1–13 so far): the route's third subject class, a **winged dragon**, designated
+Rulings 1–14 so far): the route's third subject class, a **winged dragon**, designated
 from three reconstructed candidates on full-size sheets ("3 is the winner"). What Gate 0
 measured ([E12-gate0-report.md](docs/experiments/E12-gate0-report.md)) rewrites the
 priors: **9–12 welded shells against a character's 40–191 and the ship's 237–512** —
@@ -203,8 +203,13 @@ names** — `pale ivory fangs` lands on the claws over `charcoal claws` in the s
 string, on the view whose stem carries ivory words, while the stem without them
 takes charcoal claws at the same seed — so a prompt's colour-family mass bleeds by
 structural resemblance, not only by name (labelled hypothesis, two views, one
-subject; the drop map's job may be larger than visibility). The pair awaits the
-Director's sentence. Every value the subject needs lives in
+subject; the drop map's job may be larger than visibility). **The pair is
+ACCEPTED** ([Ruling 14](docs/experiments/E12-ruling.md), "I accept. Very good!"
+— deviations accepted at the pair, dispositions landing with the bands
+measurement): the subject's specification source and visual target exists, the
+register row closes as *earned*, and the route proper is unblocked — bands + D8
+closure, then twins, stage 1 against the banked 50.46% ceiling, strokes, and
+Gate 1. Every value the subject needs lives in
 `profiles/beast.json` and `canon/DRAGON-IDENTITY.md`, and the ones that arrived by
 inheritance are being falsified and replaced one measured step at a time — which is
 the profile system doing its job.

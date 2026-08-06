@@ -117,10 +117,15 @@ values live in its own profile and fixture, never inherited unmeasured.
   names** — `pale ivory fangs` painted view 1's claws ivory over `charcoal
   claws` in the same string, while view 5's stem (zero ivory words) took
   charcoal claws at the same seed; D5's cheek fan took charcoal the opposite
-  direction. The pair (view 1 v5 + view 5 v5) awaits the Director's sentence
-  with the deviations named (ivory foot claws · charcoal cheek fan · membrane
-  translucency gradient, ruled a judgement item). On acceptance: bands + D8
-  closure, twins, and the route proper.
+  direction.
+- **THE PAIR IS ACCEPTED** ([Ruling 14](../experiments/E12-ruling.md),
+  2026-08-06: "I accept. Very good!") — view 1 v5 + view 5 v5, seed 770700,
+  prompts E12-pair-5, 0 credits across the entire pair lineage; the three named
+  deviations accepted at the pair with fixture dispositions landing on the
+  bands measurement. The register row closes as **earned** (ultra-realistic,
+  NO LoRA). Unblocked, in order: **bands + D8 closure** (handoff 7) → twins
+  (stems v5) → stage 1 against the banked 50.46% ceiling → sweep gate →
+  strokes → finalize → pack → **Gate 1 at his zoom**.
 
 ## The calibration table this page exists for
 
