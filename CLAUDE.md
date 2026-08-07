@@ -429,7 +429,13 @@ the boundary.
   decimation on the result tears holes because per-triangle shells have no neighbours.
 - **No volumetric predicate on an exported mesh.** It is not a solid — signed distance at the
   centre of a standing figure's chest reads *outside*. Containment, thickness and
-  inside/outside must run on the welded mesh, before export.
+  inside/outside must run on the welded mesh, before export. **And even welded, the mesh is
+  not solid**: every TRELLIS.2 `1024_cascade` reconstruction on this route is a hollow
+  double-walled shell — walls ~two voxels around an empty cavity, measured three independent
+  ways with the accepted dragon and galleon as controls (E14 Ruling 3). The figure's interior
+  is cavity and reads *outside* by parity; a volumetric consumer must address the outer wall
+  specifically. The route itself never meets the inner wall — invisible surface, culled by
+  construction.
 - **A ray along the surface normal measures the tessellation, not the geometry.**
 - **Twins belong to a mesh, not to a character.** Regenerate them for whatever you are about
   to texture.
