@@ -290,7 +290,8 @@ def owner_atlas_vs_sidecar(claim_flat, owner_flat, valid_flat):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--step0", action="store_true", help="one-view anchor; HALT on any digit")
-    ap.add_argument("--arm", choices=["X1", "X2"], help="X1: galleon superset; X2: W3 dense")
+    ap.add_argument("--arm", choices=["X1", "X2", "X3"],
+                    help="X1: galleon superset; X2: W3 dense; X3: dragon dense")
     ap.add_argument("--claim", help="anchored claim.npy (per-stroke replay; X1/step0)")
     ap.add_argument("--glb", default=J(PREP, "prep_uv.glb"),
                     help="the GLB emit renders with; the Step-0 byte anchor is what "
@@ -300,6 +301,10 @@ def main():
 
     if args.arm == "X2":
         return arm_x2(args)
+    if args.arm == "X3":
+        if args.out == J(STROKE, "export", "turnaround"):
+            args.out = J(r"E:\AI\training\facet_next\E13_stroke", "export", "turnaround")
+        return arm_dragon(args)
 
     assert args.claim, "ANDON: --claim is required for the galleon legs"
     claim = np.load(args.claim).reshape(-1)
@@ -441,6 +446,176 @@ def arm_x2(args):
                "renders": renders},
               open(J(out_root, "x2_run.json"), "w"), indent=1)
     print(f"[X2] wrote {J(out_root, 'x2_run.json')}")
+    return 0
+
+
+# ─── X3: the dragon (E12/E13), dataset asset #3 ──────────────────────────────
+# Third subject, third owner configuration. The galleon carried BOTH a numeric
+# owner sidecar and a rendered owner display atlas; W3 carried NEITHER. This
+# subject carries the NUMERIC channel and no display atlas — none was ever built
+# for it, and synthesizing one here would be inventing a channel rather than
+# exporting one (the X2 clause, applied to the half that is missing).
+#
+# The claim map derives from colours with no replay: the provenance atlas is an
+# exact 4-colour class map whose counts reproduce the ruled mix to the texel
+# (reference 1,430,687 / brush 99,643 / dilation 1,710,180 = valid 3,240,510,
+# E12 Ruling 27e). Verified in code below, not asserted.
+#
+# The camera set is READ FROM THE PROFILE at runtime (X1's mechanism), never
+# transcribed. The anchors are stronger here than on either predecessor: the
+# eight route yaws have RECORDED renders on both channels — the Gate-1 sheets'
+# own columns, emitted through this same path by run/render_final.ps1 — so 16
+# cameras anchor byte-for-byte against artifacts this session did not produce.
+
+DRAGON_PREP = r"E:\AI\training\facet_next\E12_prep"
+DRAGON_RUN = r"E:\AI\training\facet_next\E13_stroke\run"
+DRAGON_STAGE1 = r"E:\AI\training\facet_next\E13_stage1"
+DRAGON_PROFILE = os.path.join(FACET, "profiles", "beast.json")
+DRAGON_PALETTE = [("background", (16, 16, 18)), ("reference", (118, 146, 110)),
+                  ("brush", (240, 176, 48)), ("dilation", (150, 90, 150))]
+# The ruled mix (E12 Ruling 27e / run_log.jsonl "mix"), checked against the atlas.
+DRAGON_MIX = {"reference": 1430687, "brush": 99643, "dilation": 1710180}
+
+
+def dragon_claim_from_colors():
+    """Exact 4-colour class map -> claim (0 reference, 1 brush, 255 dilation)."""
+    pa = np.asarray(Image.open(J(DRAGON_RUN, "prov_final_atlas.png")).convert("RGB"))
+    flat = pa.reshape(-1, 3)
+    claim = np.full(flat.shape[0], -1, dtype=np.int16)
+    sel = {name: np.all(flat == rgb, axis=1) for name, rgb in DRAGON_PALETTE}
+    n_other = flat.shape[0] - int(sum(s.sum() for s in sel.values()))
+    assert n_other == 0, f"ANDON: {n_other:,} pixels outside the 4 declared class colours"
+    for name, want in DRAGON_MIX.items():
+        got = int(sel[name].sum())
+        assert got == want, (
+            f"ANDON: provenance atlas has {got:,} {name} texels; the ruled mix "
+            f"(E12 Ruling 27e) says {want:,}")
+    claim[sel["reference"]] = 0
+    claim[sel["brush"]] = 1
+    claim[sel["dilation"]] = 255
+    print(f"[X3] claim map from the exact 4-colour atlas; class counts reproduce "
+          f"the ruled mix to the texel")
+    return claim, pa
+
+
+def arm_dragon(args):
+    out_root = args.out
+    os.makedirs(out_root, exist_ok=True)
+    print(f"[X3] dragon dense export -> {out_root}")
+
+    claim, pa = dragon_claim_from_colors()
+    owner = np.load(J(DRAGON_STAGE1, "A0_stage1_owner.npy")).reshape(-1)
+
+    # the owner sidecar must agree with the claim map: every stage-1 texel owned,
+    # and nothing outside stage 1 claiming an owner. The galleon's Step-0 check,
+    # minus the display-atlas half it has no atlas for.
+    st1 = claim == 0
+    unowned = int((st1 & (owner < 0)).sum())
+    assert unowned == 0, (
+        f"ANDON: {unowned:,} stage-1 texels carry sidecar owner -1 — the sidecar "
+        f"disagrees with the claim map")
+    stray = int((~st1 & (owner >= 0)).sum())
+    assert stray == 0, (
+        f"ANDON: {stray:,} texels outside stage 1 carry an owner id")
+    print(f"[X3] owner sidecar agrees with the claim map: "
+          f"{int(st1.sum()):,} stage-1 texels all owned, "
+          f"owner ids present {sorted(int(x) for x in np.unique(owner[st1]))}")
+
+    # X-H3's lossless leg: truecolor provenance atlas -> indexed, pixel-identical.
+    idx = np.zeros(pa.shape[:2], dtype=np.uint8)
+    for i, (_, rgb) in enumerate(DRAGON_PALETTE):
+        idx[np.all(pa == rgb, axis=-1)] = i
+    ipath = J(out_root, "provenance_atlas_indexed.png")
+    write_indexed_png(ipath, idx, DRAGON_PALETTE)
+    back = np.asarray(Image.open(ipath).convert("RGB"))
+    assert np.array_equal(back, pa), "ANDON: indexed conversion is not lossless"
+    print(f"[X3] X-H3 lossless conversion PROVEN: indexed atlas pixel-identical "
+          f"to the truecolor source through PLTE round-trip")
+
+    # fresh emit states, copied out of the read-only run tree (Ruling 28: the
+    # accepted asset and everything under run/ is citable-only).
+    src_state = {"asset": J(DRAGON_RUN, "state_final"),
+                 "prov": J(DRAGON_RUN, "state_prov")}
+    states = {}
+    for ch, src in src_state.items():
+        st = J(out_root, "_state", ch)
+        os.makedirs(st, exist_ok=True)
+        for f in ("atlas.png", "holes.png", "styled_mask.npy"):
+            shutil.copyfile(J(src, f), J(st, f))
+        states[ch] = st
+    glb = J(DRAGON_PREP, "prep_uv.glb")
+
+    # the camera superset, READ from the profile — never transcribed.
+    prof = json.load(open(DRAGON_PROFILE, encoding="utf-8"))
+    prod = prof["tools"]["cull_unseen.py"]["production"]["value"]
+    cams, seen = [], set()
+    for spec in prod.split(";"):
+        y, e = (float(x) for x in spec.split(","))
+        if (y, e) not in seen:
+            seen.add((y, e))
+            cams.append((y, e))
+    print(f"[X3] camera superset derived from profiles/beast.json: {len(cams)} cameras "
+          f"x {len(states)} channels")
+
+    caster = IdCaster(prep=DRAGON_PREP)
+    anchors = []
+    renders = []
+    for (y, e) in cams:
+        vid = key_of(y, e)
+        dest = J(out_root, "views", vid)
+        os.makedirs(dest, exist_ok=True)
+        for ch in states:
+            jb = run_emit(states[ch], y, e, glb, prep=DRAGON_PREP, profile=DRAGON_PROFILE)
+            shutil.copyfile(J(jb, "render.png"), J(dest, f"{ch}.png"))
+            if ch == "asset":
+                shutil.copyfile(J(jb, "hit.png"), J(dest, "silhouette.png"))
+                shutil.copyfile(J(jb, "cam.json"), J(dest, "cam.json"))
+            # RECORDED-ARTIFACT ANCHOR: the eight route yaws were rendered through
+            # this same path for the Gate-1 sheets. Byte-identity or it is reported.
+            tag = {"asset": "final", "prov": "prov"}[ch]
+            rec = J(DRAGON_RUN, f"FINAL_{tag}_y{int(y)}.png")
+            if e == 0 and float(y).is_integer() and os.path.exists(rec):
+                same = bytes_equal(J(dest, f"{ch}.png"), rec)
+                anchors.append({"view": vid, "channel": ch,
+                                "recorded": os.path.basename(rec), "byte_identical": same})
+                if not same:
+                    print(f"[X3] ANCHOR MISMATCH {vid} {ch} vs {os.path.basename(rec)}")
+        cam = json.load(open(J(dest, "cam.json")))
+        adm = view_products(caster, cam, claim, owner, dest, vid, palette=DRAGON_PALETTE)
+        renders.append({"id": vid, "yaw": y, "el": e,
+                        "admission": adm["class_share_pct"]})
+        print(f"[X3] {vid}: reference {adm['class_share_pct']['reference']:.2f}%  "
+              f"brush {adm['class_share_pct']['brush']:.2f}%  "
+              f"dilation {adm['class_share_pct']['dilation']:.2f}%  "
+              f"figure {adm['figure_px']:,}px", flush=True)
+
+    n_anch = sum(1 for a in anchors if a["byte_identical"])
+    print(f"[X3] recorded-artifact anchors: {n_anch}/{len(anchors)} byte-identical")
+
+    # X-H1 purity spot check: a SECOND fresh state, a different directory, one
+    # camera. (Comparing a file to itself would return identical however the
+    # export behaved — the two files below are produced independently.)
+    st2 = J(out_root, "_state", "asset_rerun")
+    os.makedirs(st2, exist_ok=True)
+    for f in ("atlas.png", "holes.png", "styled_mask.npy"):
+        shutil.copyfile(J(src_state["asset"], f), J(st2, f))
+    jb2 = run_emit(st2, 0.0, 0.0, glb, prep=DRAGON_PREP, profile=DRAGON_PROFILE)
+    pure = bytes_equal(J(out_root, "views", key_of(0, 0), "asset.png"),
+                       J(jb2, "render.png"))
+    print(f"[X3] X-H1 spot check (independent fresh state, yaw 0): byte-identical {pure}")
+    if not pure:
+        print("[X3] HALT — the export is not a pure function on this subject.")
+        return 1
+
+    json.dump({"cameras": len(cams), "channels": sorted(states),
+               "owner_channel": "numeric present (view_owner.npy + per-view "
+                                "owner_id/loss_mask); no display atlas exists for "
+                                "this subject and none was synthesized",
+               "recorded_anchors": anchors,
+               "purity_spot_check_byte_identical": bool(pure),
+               "renders": renders},
+              open(J(out_root, "x3_run.json"), "w"), indent=1)
+    print(f"[X3] wrote {J(out_root, 'x3_run.json')}")
     return 0
 
 
