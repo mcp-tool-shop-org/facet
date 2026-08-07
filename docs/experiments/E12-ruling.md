@@ -2057,3 +2057,21 @@ record, and its dataset presence. What remains open rides other lanes:
 E15 (in flight), the parked arms (the head rect, the register-LoRA
 finalization, both at the Director's timing), the standing errand batch,
 and E14 behind E15 per his sequencing word.
+
+**30f (appended same day) — both dispositions EXECUTED and verified
+lane-side** (lane commits `c73e6ff` + `843e25f` on `feat/asset-lane-skeleton`
+— the branch stays unmerged, the merge story stays the Director's, per
+standing). The durability section landed with the table **verified rather
+than transcribed**: all 14 pointers across the three receipts resolve on
+disk with matching shas — 212.4 MB (galleon 5 / 80.8, W3 4 / 44.6 with the
+owner channel honestly absent, dragon 5 / 87.0). Two lane additions are
+RATIFIED as improvements on the brief: each asset's `ingest-receipt.json`
+is the authority for its own pointer list, and **a pointer whose bytes
+silently changed is a worse failure than one whose file is gone** — neither
+is detected until something reads it. The lane's invocation-artifact
+self-catch (a 1/1-fail report checked before being believed, corrected to
+101/101 and 895/895 full-suite with THE DRAGON SHAPE passing) is the
+check-before-reporting discipline working on its own alarm. Final dataset
+state: three assets, 80 records; **the dragon's 26 are the only records
+that carry `subject_name` from birth** — the errand's demand signal now
+visible in the data itself.
