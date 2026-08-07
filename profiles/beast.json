@@ -116,6 +116,11 @@
    }
   },
   "project_twins.py": {
+   "fit-axis": {
+    "value": "width",
+    "why": "ADOPTED E12 Ruling 24a - the FOURTH framing-family consumer (turn_render, silhouette_masks, texpass_iter, now the projector). The tool historically derived its frame height-fit internally; handoff 13's read-before-run found it, and the width-fit derivation reproduces the recorded silhouette masks at IoU 1.000000 where height-fit measures 0.986006 - geometry, not preference. A0L (height-fit) is retained in the E13 record as the alternative's measured cost floor.",
+    "from": "E12 Ruling 24a; handoff 13 report section 2"
+   },
    "step": {
     "value": 45.0,
     "why": "Degrees per view index.",
