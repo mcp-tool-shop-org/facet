@@ -1635,3 +1635,83 @@ artifact-judged criterion in the room, clears the `texpass_brush`
 lifecycle block, and the elevated-camera re-open condition (Ruling 7)
 gets its named check against the hole map. Then strokes → finalize →
 pack → **Gate 1 at the exemplar bar.**
+
+---
+
+## Ruling 25 — THE STROKE-LANE RULING: thin_extent = 0.005, the lifecycle clears, elevated closes for good, and handoff 15 is the run to Gate 1 (2026-08-07)
+
+Evidence: the handoff-14 report (`504240f`), the blind predictions
+(`27adee3`, blob `507d792`), and this seat's eye on the forbidden-set
+ladder and the hole-class sheet before ruling. The arc's one deliberately
+undecided value is decided here, with the artifact crops in the room —
+exactly as Ruling 7c deferred it.
+
+**25a — the halt is ACCEPTED.** The decomposition closes with no remainder
+(204,617 brush + 1,605,206 dilation = 1,809,823) with reach RECOMPUTED
+from geometry and matching the banked ceiling to the texel — the
+denominator checked rather than inherited. The executor's self-catch is
+the house class done right: its first elevated check could not fail
+(`seen(0.25) ⊇ seen(0.45)` returns 100% by construction) and was replaced
+in place with one that can — before any number was read from it.
+
+**25b — RULING 7's RE-OPEN CLOSES, permanently for this subject.** The
+named condition fired its check with the hole map in hand: the largest
+up-facing coherent field is 2,108 texels against the 20,000 falsifier
+pre-registered blind; elevated cameras would materially serve 3.13–8.67%
+of the brush set in components of at most 1,217. The falsifier named in
+advance — a big eroded up-facing wing span — does not exist. Eye-level
+stroke cameras suffice; the elevated question is closed through Gate 1.
+
+**25c — THIN_EXTENT IS RULED: 0.005, global.** The artifact criterion
+decides it, and the eye and the curve agree: at 0.005 the forbidden set
+is a hairline rim around the silhouette plus junction speckle — the
+guard doing precisely the job it exists for, at 3.70% of the brush set —
+while at 0.0075 the forbidden set becomes the membrane FIELDS themselves
+(26.52%), and wing-only 0.01 forbids 42.47% of the wing brush: the
+brush's own closable territory, visibly, in the ladder. The knee the
+banked curve measured (0.005–0.0075) is the same fact numerically. No
+region-aware machinery is commissioned — the measured brush set is rim
+on THICK structure (the executor's four-prediction-killing finding), so
+the global floor value protects the thin minority at hairline cost.
+**The registry's last UNDECIDED closes**; the value is transcribed to
+`texpass_iter.thin-extent` this fold, and handoff 15's step 0 re-runs
+the sweep to certify **0 UNDECIDED — the gate the texture arms have
+waited on since handoff 2.**
+
+**25d — the stroke set is RATIFIED: four strokes, spiral order
+292.5 → 337.5 → 180 → 45** (painted-adjacency 92.34% down to 81.87%,
+every stroke anchored in paint), closing 71.60% of the brush's
+territory, with the remainders pre-registered before any stroke runs:
+58,111 to dilation at four strokes, 19,846 closable by no eye-level
+camera at all. Greedy quoted with ray density per the 7b law.
+
+**25e — the `brush_cloud_step` capability gap is RATIFIED as found and
+its fix is handoff 15's step 0.** Verified by BUILDING the graph: the
+tool inserts the hardcoded saltroad LoRA loader unconditionally, three
+layers deep, with no flag to remove it — Ruling 10b's register (no card,
+ever) cannot be expressed. The fix: a no-LoRA graph path that omits the
+loader when the register says NONE (`ModelSamplingAuraFlow` reads the
+UNET directly), guarded by the same inverted pre-flight class restylize
+carries, **anchored before use: the ship's recorded stroke graph must
+rebuild byte-identical with the card present** — the accepted route's
+path does not move.
+
+**25f — `_NOT_CLEARED` CLEARS, every key decided in this ruling:** the
+brush prompts are the DRAFT ratified (`E13-brush-DRAFT-1` → live; the
+committed builder, the four stroke keys, subsequence assertions, recipe
+keys correctly excluded); the recipe keys land as FIRST-RUN OPERATING
+POINTS at the accepted route's values (seed 770700, steps 20, cfg 2.5,
+cn_strength 1.0) EXCEPT lora, which is NONE by register via the step-0
+capability; the agreement-by-value trap
+(`_THE_RECIPE_NUMBERS_DO_NOT_REACH_THE_CLOUD_GRAPH`) is re-verified at
+run time per stroke, not assumed. The profile transcription rides this
+fold; the block's marker is replaced by the decided keys.
+
+**25g — HANDOFF 15 is the run to the gate:** step 0 (the no-LoRA
+capability + its byte-identity anchor + the registry sweep at 0
+UNDECIDED) → the four strokes on cloud in spiral order (full discipline,
+gate + achromatic per stroke, the invariance check inside the tool per
+E08 A32) → finalize (dilation with the surface-aware caveats recorded)
+→ pack → the emit renders → **the five-column sheet** (reference | asset
+| provenance | error | clay, the house form) → HALT to this seat's eye →
+**the Director's Gate 1, at the exemplar bar.**
