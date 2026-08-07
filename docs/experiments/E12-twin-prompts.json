@@ -1,5 +1,5 @@
 {
- "_version": "E12-pair-9",
+ "_version": "E12-pair-10",
  "_built_by": "tools/diagnostics/e12_make_twin_prompts.py",
  "_derived_from": "beast.json tools['restylize_views.py'].prompt - stems are that string with whole comma-terms DELETED, never retyped. Term order is the entry's throughout.",
  "_entry_verbatim": "a winged dragon, deep moss-green scaled hide, moss-green wing arms, moss-green wing finger struts, pale olive-tan ventral plates, leathery storm-grey wing membranes, bone-ivory curved horns, bone-ivory crown and cheek spikes, charcoal neck spines, charcoal dorsal and tail spines, charcoal claws, ember-orange eyes, a dark wine-red tongue, pale ivory fangs and tooth rows, a dark slate mouth interior, plain lavender-grey background, ultra-realistic, menacing, sharp scale relief, harsh directional light",
@@ -36,16 +36,18 @@
   ]
  },
  "_assertions": "Each stem asserted an ordered SUBSEQUENCE of the entry's term list; each view with no drops asserted BYTE-EQUAL to the entry. Both enforced in the builder with no skip flag; a failure writes no file.",
- "_supersedes": "E12-pair-8 (483f44d). ONE TERM SUBSTITUTED IN PLACE (E12 Ruling 22b, the Director's pre-stage-1 membrane iteration): `storm-grey wing membranes` becomes `leathery storm-grey wing membranes` at index 5. The ruled HUE FAMILY is unchanged - grey stays neutral, so the bands ruling and the backdrop arithmetic are untouched - and one opacity/material cue is added against the measured translucency prior. Nothing else moved: no term inserted, removed or reordered, the drop map is byte-identical, and every per-view term count is IDENTICAL to v8's rather than one greater, because this is the arc's first substitution rather than an insertion.",
- "_membrane_iteration": "E12 Ruling 22b, on the Director's sentence after the v8 exemplar set: the membranes iterate ONCE before stage 1, because the base coat is their only paint source. THE MECHANISM THE WORD TARGETS: D3 has drifted across four generations - ivory under family pressure (12e), a slate-to-cream lit gradient, orange at bust frame, warm tan and yellow-green across the v8 set - and that is the realistic register's TRANSLUCENCY prior, backlit membrane tissue rendering as warm glow. A colour word alone does not contest a MATERIAL prior, so leathery adds the opacity cue while storm-grey keeps the ruled hue family. MEASURED BEFORE THE CHANGE, on geometry-derived wing boxes masked to the exact silhouette: median C* 15.2-26.0 at hue 87.6-130.3 across the eight, share under the C* 12.0 floor 2.9-31.9%. Storm-grey is a neutral; none of them is one.",
- "_scope": "E12 Ruling 22c. SEVEN views regenerate under v9: 0,1,2,3,5,6,7. VIEW 4 IS EXCLUDED and is NOT regenerated - the Director's sentence chose view 4-A (seed 770700) at Ruling 22a for its true nape, and regenerating it would discard the artifact he just chose; its membranes are also the set's least-warm (median C* 15.2, achromatic 4.48%, the low outlier). The v9 stem for view 4 exists in this file for completeness and provenance; it is not submitted.",
- "_seed_view_map": "E12 Ruling 21c, banked and carried into this round's expectations. Seed 770700 on view 4 resists two different terms; seed 770700 on view 3 carries a DETERMINISTIC flat-black limb across independent stem generations (41,985 px at v8 against handoff 8's 43,999 px at v5, cured at 770701 both times). View 3's bounded re-roll is therefore PRE-REGISTERED as expected process for this round rather than a surprise.",
- "_neck_spine_term": "E12 Ruling 20c, carried forward unchanged from v8. The nape crest is D6's and named; its per-view visibility was verified at handoff 11 against the renders (first-hit 0.611-2.280% of figure, floor on view 0, against D6's already-accepted dorsal term at 0.043% on that same view).",
- "_wing_terms": "E12 Rulings 17e and 18c, carried forward unchanged. The wing arms and finger struts are D1's surface, each its own noun phrase. Note the interaction this round must watch: the membrane term and the strut terms name ADJACENT surfaces, so a change to one is exactly the kind of edit that re-rolls the other's landing.",
- "_palette_correction": "E12 Ruling 12e, carried forward unchanged. D2 pale olive-tan, D6/D7 charcoal; 'bone' appears twice and 'ivory' three times, all at the head.",
- "_companion_stem": "headclay_0 is the handoff-5 head-crop companion at yaw 0, frame 1360x1360, ortho_scale 0.223104. It KEEPS the strengthened membrane term (both wings enter the crop at the left and right edges) and its recorded drops are unchanged. NOT SUBMITTED at handoff 12; the stem exists so the cloud guard's provenance check keeps working without a skip flag.",
- "_style_tail": "ultra-realistic, menacing, sharp scale relief, harsh directional light - canon/DRAGON-IDENTITY.md STYLE-SUPPLIED as rewritten by E12 Ruling 10b and CONFIRMED by the Director at Ruling 11a. NO LoRA; lora-w 0.0 is not a weight of zero on a loaded card, it is no card, and the graph is built without the loader.",
- "_backdrop": "plain lavender-grey background - RULED, E12 Ruling 8a; premise corrected in place at Ruling 15i with the WORD standing, anchored by the accepted pair. 22b explicitly leaves the backdrop arithmetic untouched.",
+ "_supersedes": "E12-pair-9 (149bcfa). THE PROFILE ENTRY IS UNCHANGED - no term inserted, removed, reordered or substituted, and the six per-view drops are byte-identical, so all eight dragonclay stems and the headclay_0 companion stem are byte-equal to v9's. TWO STEMS ADDED: headcrop_0 and headcrop_1, the E13 A1 head-crop twins at yaws 0 and 45 (E12 Ruling 23e; E13 spec arm A1). Their drops are MEASURED per crop by raycast at the crop camera rather than inherited from the companion, whose tighter single-yaw frame gave different answers.",
+ "_e13_crop_stems": "E13 spec arm A1, dispatched at E12 Ruling 23e. headcrop_0 (yaw 0) and headcrop_1 (yaw 45) are CROP-FRAMED twins at 1360x1360, ortho_scale 0.305005 - e12_head_render.py's yaw-INVARIANT span (max(hypot(dx,dy), dz) x pad 1.12) on the measured head box from E12_gate0/head_00003.json. NOT the companion's 0.223104: that was an explicit single-yaw override and at 45 degrees the box's horizontal span is 0.2722, so 0.2231 would crop the head. One scale for both yaws. Resolution against the 1792x1024 route frame: 3.00x linear, 9.02x area, measured on head-box first-hit pixels (346,184 crop px against 38,365 route px at yaw 0). UNLIKE the companion these are declared PROJECTION SOURCES and are generated at the route's own yaws.",
+ "_e13_crop_drops": "MEASURED per crop by first-hit raycast at the crop camera, as a share of that crop's own figure, against handoff 11's accepted precedent floor (D6's dorsal term at 0.043% on route view 0, KEPT). crop0: tail quarter (y>0.25) 6,607 px = 0.672% -> charcoal dorsal and tail spines KEPT; feet (z<-0.15) 0 px, lowest in-frame hit z -0.0423 against a mesh floor of -0.2878 -> charcoal claws DROPPED. crop1: tail 0 px AND dorsal band 0 px -> charcoal dorsal and tail spines DROPPED; feet 0 px -> charcoal claws DROPPED. Nape crest 12.231% / 7.240% on the two crops, so charcoal neck spines stays on both and was verified rather than assumed (the dispatch asked for exactly that). D3's membranes enter both crops - 29.47% / 47.70% of each figure lies outside the head box in x - so the term stays, as it did on the companion.",
+ "_companion_stem": "headclay_0 is UNCHANGED from v9 and still forbidden as a projection source by its own sidecar (Ruling 11b). Its drops stay as recorded at its own frame; the new crop drops differ because the frame differs, and that difference is the point of the note above. Not submitted this round.",
+ "_membrane_iteration": "E12 Ruling 22b, CLOSED at Ruling 23f: the word lever is exhausted by its own pre-registered band and WARM MEMBRANES ARE ACCEPTED for the base coat. The term leathery storm-grey wing membranes stays exactly as v9 wrote it; the texture-stage deterministic hue correction on geometrically-identifiable membrane texels remains the named bounded escape if Gate 1 wants it.",
+ "_harmonization": "ADOPTED at E12 Ruling 23f. Projection consumes the harmonized set - v9 x6 + view 3's 770701 cure + view 4-A - all toward reference view 1, operands in E13_twins/harmonize/operands.json, raw twins retained beside. The crop twins are harmonized by the same identity-tested transfer toward the same reference.",
+ "_seed_view_map": "E12 Ruling 21c. Seed 770700 resists two terms on view 4 and carries a deterministic flat-black limb on view 3 (three independent stem generations: 43,999 / 41,985 / 42,567 px, cured at 770701 all three times). Neither yaw 0 nor yaw 45 is in that map across four stem generations, so a crop re-roll is NOT pre-registered as expected here - it would be new information.",
+ "_neck_spine_term": "E12 Ruling 20c, carried forward unchanged.",
+ "_wing_terms": "E12 Rulings 17e and 18c, carried forward unchanged.",
+ "_palette_correction": "E12 Ruling 12e, carried forward unchanged.",
+ "_style_tail": "ultra-realistic, menacing, sharp scale relief, harsh directional light - canon/DRAGON-IDENTITY.md STYLE-SUPPLIED per Ruling 10b, confirmed at 11a. NO LoRA; the graph is built without the loader.",
+ "_backdrop": "plain lavender-grey background - RULED, E12 Ruling 8a.",
  "dragonclay_0": "a winged dragon, deep moss-green scaled hide, moss-green wing arms, moss-green wing finger struts, pale olive-tan ventral plates, leathery storm-grey wing membranes, bone-ivory curved horns, bone-ivory crown and cheek spikes, charcoal neck spines, charcoal dorsal and tail spines, charcoal claws, ember-orange eyes, a dark wine-red tongue, pale ivory fangs and tooth rows, a dark slate mouth interior, plain lavender-grey background, ultra-realistic, menacing, sharp scale relief, harsh directional light",
  "dragonclay_1": "a winged dragon, deep moss-green scaled hide, moss-green wing arms, moss-green wing finger struts, pale olive-tan ventral plates, leathery storm-grey wing membranes, bone-ivory curved horns, bone-ivory crown and cheek spikes, charcoal neck spines, charcoal dorsal and tail spines, charcoal claws, ember-orange eyes, a dark wine-red tongue, pale ivory fangs and tooth rows, a dark slate mouth interior, plain lavender-grey background, ultra-realistic, menacing, sharp scale relief, harsh directional light",
  "dragonclay_2": "a winged dragon, deep moss-green scaled hide, moss-green wing arms, moss-green wing finger struts, pale olive-tan ventral plates, leathery storm-grey wing membranes, bone-ivory curved horns, bone-ivory crown and cheek spikes, charcoal neck spines, charcoal dorsal and tail spines, charcoal claws, ember-orange eyes, a dark wine-red tongue, pale ivory fangs and tooth rows, a dark slate mouth interior, plain lavender-grey background, ultra-realistic, menacing, sharp scale relief, harsh directional light",
@@ -62,8 +64,23 @@
     "charcoal claws"
    ],
    "terms": 18
+  },
+  "headcrop_0": {
+   "dropped": [
+    "charcoal claws"
+   ],
+   "terms": 19
+  },
+  "headcrop_1": {
+   "dropped": [
+    "charcoal claws",
+    "charcoal dorsal and tail spines"
+   ],
+   "terms": 18
   }
  },
+ "headcrop_0": "a winged dragon, deep moss-green scaled hide, moss-green wing arms, moss-green wing finger struts, pale olive-tan ventral plates, leathery storm-grey wing membranes, bone-ivory curved horns, bone-ivory crown and cheek spikes, charcoal neck spines, charcoal dorsal and tail spines, ember-orange eyes, a dark wine-red tongue, pale ivory fangs and tooth rows, a dark slate mouth interior, plain lavender-grey background, ultra-realistic, menacing, sharp scale relief, harsh directional light",
+ "headcrop_1": "a winged dragon, deep moss-green scaled hide, moss-green wing arms, moss-green wing finger struts, pale olive-tan ventral plates, leathery storm-grey wing membranes, bone-ivory curved horns, bone-ivory crown and cheek spikes, charcoal neck spines, ember-orange eyes, a dark wine-red tongue, pale ivory fangs and tooth rows, a dark slate mouth interior, plain lavender-grey background, ultra-realistic, menacing, sharp scale relief, harsh directional light",
  "_per_view_term_count": {
   "0": 20,
   "1": 20,
@@ -73,7 +90,9 @@
   "5": 14,
   "6": 20,
   "7": 20,
-  "headclay_0": 18
+  "headclay_0": 18,
+  "headcrop_0": 19,
+  "headcrop_1": 18
  },
  "_full_string_views": [
   "0",

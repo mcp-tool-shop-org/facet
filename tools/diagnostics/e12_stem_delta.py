@@ -54,6 +54,18 @@ ap.add_argument("--substituted", action="append", default=[], metavar="OLD=>NEW"
 ap.add_argument("--allow-dropmap-change", action="store_true",
                 help="permit the drop map to differ, printing the diff. Ruling 9d can REQUIRE "
                      "a new drop; that is a decision, so it is a declared argument.")
+# NEW STEM KEYS, added at handoff 13. E13 A1 adds head-crop stems (`headcrop_0`, `headcrop_1`)
+# alongside the eight turnaround stems and the companion — a stem key the predecessor does not
+# have. The key-set check below is right to halt on that by default: a stem appearing or
+# vanishing is exactly the class of silent change this tool exists to catch. So it is a
+# DECLARED argument in the same shape as --allow-dropmap-change: each new key must be NAMED,
+# every shared stem is still asserted byte-equal, and a key that DISAPPEARS is still a halt
+# with no flag at all. Naming a key that is not actually new is itself an error.
+ap.add_argument("--allow-new-stem", action="append", default=[], metavar="KEY",
+                help="permit exactly this NEW stem key, which the old file does not carry. "
+                     "Repeatable. A new stem is a decision (E13 A1's crop stems), so it is "
+                     "declared per key rather than waved through as a set difference. Every "
+                     "shared stem is still asserted byte-equal and no key may vanish.")
 args = ap.parse_args()
 
 O = json.load(open(args.old, encoding="utf-8"))
@@ -69,9 +81,21 @@ def stems(d):
 
 
 so, sn = stems(O), stems(N)
-if set(so) != set(sn):
-    bad.append("stem key sets differ: only-old %s  only-new %s"
-               % (sorted(set(so) - set(sn)), sorted(set(sn) - set(so))))
+_gone = sorted(set(so) - set(sn))
+_new = sorted(set(sn) - set(so))
+_declared = sorted(set(args.allow_new_stem))
+if _gone:
+    bad.append("stem key(s) VANISHED from the new file: %s — there is no flag for this" % _gone)
+for k in _declared:
+    if k not in _new:
+        bad.append("--allow-new-stem %r names a key that is not new (old file already has it, "
+                   "or the new file does not)" % k)
+_undeclared = [k for k in _new if k not in _declared]
+if _undeclared:
+    bad.append("stem key(s) appeared undeclared: %s — name each with --allow-new-stem or the "
+               "builder added a stem nobody decided on" % _undeclared)
+elif _new:
+    print("[delta] NEW stem key(s), declared: %s" % _new, flush=True)
 
 eo = [t.strip() for t in O["_entry_verbatim"].split(",")]
 en = [t.strip() for t in N["_entry_verbatim"].split(",")]
