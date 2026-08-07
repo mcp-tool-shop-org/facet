@@ -297,6 +297,14 @@ Every value the subject needs lives in
 inheritance are being falsified and replaced one measured step at a time — which is
 the profile system doing its job.
 
+**E14 — the prop arc — is STAGED**
+([E14-executor-kickoff.md](docs/experiments/E14-executor-kickoff.md)): the route's
+fourth subject class (`prop`, ruled 2026-08-07), three longsword clay candidates
+staged and viewed at full size, Gate 0 dispatched — three TRELLIS reconstructions,
+designation at the Director's eye. The first subject whose dominant surface is a
+near-2D thin slab at figure scale; the E07 blade lessons (steel's chroma floor,
+grey-on-grey keying) are the spec's named priors, on home ground at last.
+
 **Form first, style second.** Image-to-3D reconstructors key off shading, silhouette
 clarity and unambiguous depth. A heavily stylized sprite — weathered planks, painted
 grime, fine rigging — fights the reconstructor, which reads surface noise as geometry

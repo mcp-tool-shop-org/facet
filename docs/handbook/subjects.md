@@ -1,6 +1,6 @@
 # The subjects
 
-Three subject classes, one route. Every number below carries its denominator — a
+Four subject classes, one route. Every number below carries its denominator — a
 coverage figure quoted without one is not a number in this repo — and every subject's
 values live in its own profile and fixture, never inherited unmeasured.
 
@@ -178,6 +178,42 @@ values live in its own profile and fixture, never inherited unmeasured.
   view 1) is adopted as projection's input. Stage 1 + the E13 head-crop
   pass dispatched (handoff 13) with a pre-registered A0/A1 comparison →
   sweep gate → strokes → **Gate 1 at the exemplar bar**.
+- **Stage 1 is BANKED and the crop pass ruled**
+  ([Rulings 24–25](../experiments/E12-ruling.md)): **A0 = 1,430,687 styled texels =
+  44.2% of valid = 87.5% of the pre-registered 50.46% ceiling** (between the ship's
+  86.4% and the character's 92.8%), born on-surface. The E13 crop pass was **not
+  adopted** — crop-owned regions read off-register on the judging sheets (the third
+  measured instance of **frame-changes-register**: companion orange → crop gloss →
+  crop scarlet) — while its **capability is banked permanently** (crop-camera
+  projection at zero changed pixels; the frame-bounds and width-fit fixes;
+  reference-conditioning is the named future lever). A2's finding: the 4096 atlas
+  under-resolves the head at BOTH frames (11.07× against the crop paint); the real
+  lever is a **per-subject head rect in the bake** — specced, waiting on the
+  Director's timing, and it re-anchors the ceiling if armed. The stroke lane:
+  **thin_extent 0.005 global on the artifact criterion** (the arc's last UNDECIDED
+  closes), elevated cameras closed against their pre-registered falsifier, four
+  strokes in spiral order closing 71.60% of 204,617 reachable holes. The registry
+  sweep then caught the advisor clearing a block in prose
+  ([Ruling 26](../experiments/E12-ruling.md)) — **a ruling that decides values pays
+  for them in registry entries** — both transcriptions landed, the sweep re-ran to
+  **0 UNDECIDED** (83/83 decided), and the strokes are released. **Handoff 15 runs:
+  strokes → finalize → pack → the five-column sheet → Gate 1 at the exemplar bar.**
+
+## The longsword (STAGED — class ruled 2026-08-07)
+
+- **The route's fourth subject class: `prop`** (ruled at the 2026-08-07 relief —
+  profiles name classes, fixtures name subjects: character / ship / beast / prop).
+  Three clay candidates staged at `E:\AI\training\facet_next\longsword_clay\` and
+  viewed at full size by the advisor; **Gate 0 dispatched**
+  ([E14-executor-kickoff.md](../experiments/E14-executor-kickoff.md)) — three TRELLIS
+  reconstructions, designation at the Director's eye. Fixture, profile and register
+  all follow designation; the occupancy audit runs at fixture authoring, day one.
+- What the class brings that no prior subject carried: the dominant surface is a
+  **near-2D thin slab at figure scale** (the E12 membranes were the subject's
+  stressor; here the sheet IS the subject), high bilateral symmetry, hard planar
+  facets (the gem pommel), a helical grip wrap — and steel, the measured grey-on-grey
+  class from E07's blade lessons, finally on home ground (texture-stage priors,
+  recorded for the spec).
 
 ## The calibration table this page exists for
 
