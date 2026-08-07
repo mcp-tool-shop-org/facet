@@ -168,6 +168,81 @@ immediate**, because the split is where the leakage lives. The owner channel's
 consumption (seam exclusion) remains lane-side future work, correctly separated
 from its declaration.
 
+## Post-ingest addenda 3 (2026-08-07, on the lane's schema-1.2.0 session)
+
+**Schema 1.2.0 is authored lane-side and its additions are ENDORSED from the facet
+side of the contract** — the same law that endorsed 1.1.0: every addition optional,
+verified against the existing field manifests (all validate unchanged, which is why
+minor and not major), refusal loud rather than silent. Three E12 rulings now ride
+the lane mechanically:
+
+1. **`asset.style`** (E12 Ruling 10b — the register is subject data): register terms
+   plus an explicit LoRA declaration. The lane's refusals are endorsed by name: a
+   `style` block with no `lora` key is REFUSED rather than read as no-LoRA — the
+   silence-resolves-to-inheritance law expressed at the lane boundary; `"none"`
+   alongside a card name is refused as self-contradiction; and `card` is a live
+   card-name string, not a foreign key, so the style-registers consolidation
+   registry can be built later without a schema change.
+2. **`asset.tone_transform`** (Rulings 22e/23c/23f — the harmonization): kind,
+   space, scope, a reference that MUST resolve to a manifest render id (dangling
+   provenance refused), and the operands sidecar MATERIALIZED — the one channel
+   materialized where mesh and atlas ride as pointers, because the operands are the
+   only record of what the transform did to the colours this lane measures. The
+   lane states aloud that it verifies neither application nor reversibility — the
+   seam staying the design, as 1.1.0's deliberately weak `json` proof did.
+3. **`renders[].generation`** (Rulings 20a/21c + 24b): per-image frame (a CLOSED
+   `full | crop` enum — frame-changes-register ×3 made free text ungroupable), seed
+   as a digit-string, stem, `reroll_of`. Notices (`gap` vs `info`), never gates —
+   Ruling 2 above named the 1.0.0 manifests the training input, so refusing them
+   was never on the table; refusing to be quiet is the right close.
+
+**Two lane-side corrections are RULED INTO this record:**
+
+- **The stem-guess hazard's framing NARROWS, on the lane's own measurement.**
+  Addenda 2's "the same warrior could have landed in train and test" is contained
+  at the snapshot boundary: the 8 retired records carry `judgment.status:
+  "rejected"` and `createSplit` builds only from snapshot entries gated on judgment
+  status — the superseded generation cannot reach a split. What stays open is
+  sharper: **all 54 live records resolve subject family by stem-guess**, and
+  retirement-by-curation does not generalise to two concurrent live exports of one
+  subject. The errand (`identity.subject_name` in `e11_manifest.py`; both dense
+  manifests re-emitted; lane re-ingest) is UNCHANGED — `splits/` is still empty,
+  the window is open, and the promote-on-split condition stands.
+- **The stem count: both numbers live in this record, on different bases.** Ruling
+  20a counts THREE stems at handoff 10 (unnamed, compound, split); Ruling 21c then
+  records "the struts' fourth stem" at handoff 11. The lane's correction (three,
+  citing 20a/23d) and its brief's four are the same facts counted from different
+  handoffs; nothing downstream turns on it — per-image seed provenance is
+  warranted under either count.
+
+**The dragon's export requirements are RECORDED for the on-acceptance dispatch**
+(dataset asset #3, native owner channel — on the Director's Gate 1 word and not
+before):
+
+- `asset.style`: register ultra-realistic + menacing, `lora: {"declared": "none"}`
+  (Ruling 10b; the register row EARNED at E12 Ruling 14).
+- `asset.tone_transform`: lab-stats-transfer, CIELAB, figure-mask, reversible
+  true, the recorded per-view harmonization operands MATERIALIZED, and
+  **`reference` resolved to the view-1 camera's emit-render id** — from the
+  recorded frame derivation, resolved at dispatch time, never asserted from
+  memory. That is the reference VIEWPOINT under the lane's stated semantics,
+  which check resolution and containment, not application.
+- `renders[].generation`: **absent on every emit render, deliberately** — emit
+  renders are deterministic derivations of the accepted asset (Ruling 2), not
+  generated images; an optional block that does not apply is left out, not filled
+  in. The twins' generation provenance (per-view seeds including view 3's 770701
+  cure, stems v8/v9, the re-rolls) lives in their sidecars in this repo. **Whether
+  the twin set ALSO enters the lane as a declared generated-image ingest — fully
+  declarable under 1.2.0 — is a dataset-composition question and it is the
+  Director's, at the ingest paste.** The default is emit-renders-only, per
+  Ruling 2.
+
+**Noted, no action:** the lane session read the dragon at handoff 15's step-0 halt
+(8 UNDECIDED); by this addendum's writing the strokes have run and Gate 1's sheets
+are being emitted — the lane's statement was true at its reading, and the export
+waits on the verdict exactly as it concluded. The LoRA card registry stays a
+separate deliverable at its sdlab home (style-registers.md), unblocked by design.
+
 ## Standards compliance (this ruling)
 
 | standard | score | evidence |
