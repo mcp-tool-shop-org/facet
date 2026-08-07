@@ -74,19 +74,49 @@ DB_REL = "docs/index/facet.db"
 # insert order is a property of this file rather than of a filesystem.
 # ---------------------------------------------------------------------------
 
-# arc -> ruling document carrying `## Ruling N` headers
-NUMBERED_RULING_FILES = [
-    ("E04", "docs/experiments/E04-ruling.md"),
-    ("E10", "docs/experiments/E10-ruling.md"),
-    ("E10-offsurface", "docs/experiments/E10-offsurface-ruling.md"),
-    ("E11", "docs/experiments/E11-ruling.md"),
-    ("E12", "docs/experiments/E12-ruling.md"),
-]
+# RULING DOCUMENTS ARE DISCOVERED, NOT LISTED (E15 Ruling 8b).
+#
+# This was a hardcoded list, and it was written before `E15-ruling.md` existed — so
+# that document's rulings were invisible to the index, and INVISIBLE TO THE GATE TOO,
+# because `verify`'s count checks grepped the same list. The gate could test that no
+# listed file lost a ruling; it could not test that a file was missing from the list.
+# The repo's own law — a gate must test the operation's failure mode, not its success
+# mode — landing on the instrument built to enforce it.
+#
+# The list was explicit for determinism ("insert order is a property of this file
+# rather than of a filesystem"). A SORTED glob satisfies that identically: the order
+# is a pure function of the filenames, which are in git. The trade was made in one
+# direction without measuring the cost; this is the cost, paid back.
+#
+# `verify` prints what this discovers, so the glob's own misses are visible rather
+# than assumed — a discovery rule that cannot be audited is the same defect wearing a
+# different hat.
+RULING_DOC_RE = re.compile(r"^E\d\d-.*ruling.*\.md$")
 
-# arc -> document carrying `> ### Amendment N (author, date)` headers
-AMENDMENT_FILES = [
-    ("E08", "docs/experiments/E08-ruling-gate0.md"),
-]
+
+def ruling_documents():
+    """(arc, path) for every ruling document, sorted. Arc derived from the filename.
+
+    THE ARC LABEL IS DERIVED BY STRIPPING FROM `ruling` ONWARD, not from the leading
+    E-number, and that is load-bearing rather than fussy: `E10-offsurface-ruling.md`
+    must stay its own arc. Keyed on the E-number alone it would merge into `E10`, and
+    twelve rulings and seven rulings would collide on numbers 1–7 — a primary-key
+    failure, not a quiet miscount. This derivation reproduces every label the
+    hardcoded list carried, byte for byte.
+
+    Files matching the pattern that carry no numbered content — the E01/E02/E06/E07
+    gate-1 rulings, `E08-director-canon-ruling.md` — parse to zero rows harmlessly and
+    keep their prose indexing, because prose exclusion is decided by what a file
+    actually yielded, not by whether it matched a name.
+    """
+    out = []
+    d = os.path.join(REPO, "docs", "experiments")
+    for fn in sorted(os.listdir(d)):
+        if not RULING_DOC_RE.match(fn):
+            continue
+        arc = re.split(r"-?ruling", fn, maxsplit=1)[0].rstrip("-")
+        out.append((arc, "docs/experiments/" + fn))
+    return out
 
 # ruling-class documents that carry NO numbered rulings — topical `##` sections
 # only. They enter the index as prose sections, and that asymmetry is a reported
@@ -264,12 +294,17 @@ SUPERSEDE_TITLE_RE = re.compile(
 
 
 def parse_rulings():
-    """Numbered rulings, their lettered sub-rulings, amendments and addenda."""
+    """Numbered rulings, their lettered sub-rulings, amendments and addenda.
+
+    Every discovered document is offered to all three conventions. Only E08 carries
+    `> ### Amendment N (`, only E11 carries `## Post-ingest addenda`, and the patterns
+    are specific enough that offering them everywhere costs nothing and means a
+    convention appearing in a new document is picked up rather than missed.
+    """
     rows = []
-    for arc, rel in NUMBERED_RULING_FILES:
+    for arc, rel in ruling_documents():
         rows.extend(_parse_numbered(arc, rel, RULING_HDR, "ruling", "Ruling"))
         rows.extend(_parse_numbered(arc, rel, ADDENDA_HDR, "addendum", "Post-ingest addenda"))
-    for arc, rel in AMENDMENT_FILES:
         rows.extend(_parse_amendments(arc, rel))
     rows.sort(key=lambda r: (r["arc"], r["sort_num"], r["sort_letter"], r["kind"]))
     return rows
@@ -883,7 +918,7 @@ def parse_phenomena(rulings):
     return rows
 
 
-def parse_prose():
+def parse_prose(structured_files=None):
     """Every prose section of the record that no structured table already owns.
 
     The reports, predictions, halts, specs and kickoffs are where the MEASUREMENTS
@@ -898,8 +933,12 @@ def parse_prose():
     from prose wholesale and reached through its amendment rows.
     """
     owned_hdr = (RULING_HDR, ADDENDA_HDR, HANDOFF_HDR)
-    structured = {rel for _, rel in NUMBERED_RULING_FILES}
-    structured |= {rel for _, rel in AMENDMENT_FILES}
+    # EXCLUSION IS DECIDED BY WHAT A FILE YIELDED, not by whether its name matched
+    # the discovery pattern. The glob matches five documents that carry no numbered
+    # rulings — the E01/E02/E06/E07 gate-1 rulings and the Director's canon ruling —
+    # and excluding those on a name match would delete their prose rows outright,
+    # a regression the ruling counts could not show.
+    structured = set(structured_files or ())
     files = list(PROSE_FILES)
     files += [rel for _, rel in TOPICAL_RULING_FILES]
     files += [rel for _, rel in HANDOFF_FILES]
@@ -1035,7 +1074,7 @@ def build(db_path, quiet=False):
     decisions = parse_decisions()
     artifacts = parse_artifacts(rulings)
     phenomena = parse_phenomena(rulings)
-    prose = parse_prose()
+    prose = parse_prose({r['file'] for r in rulings})
 
     d = os.path.dirname(db_path)
     if d and not os.path.isdir(d):
@@ -1229,6 +1268,10 @@ COUNT_CHECKS = [
      r"^## Post-ingest addenda", "rulings", "arc='E11' AND kind='addendum'"),
     ("E08 amendments", "docs/experiments/E08-ruling-gate0.md",
      r"^> ### (?:⚠\s*)?Amendment (\d+) \(", "rulings", "arc='E08' AND kind='amendment'"),
+    ("E15 numbered rulings", "docs/experiments/E15-ruling.md", r"^## Ruling (\d+)\b",
+     "rulings", "arc='E15' AND kind='ruling'"),
+    ("E15 lettered sub-rulings", "docs/experiments/E15-ruling.md",
+     r"^\*\*\d+[a-z] +[—–-]", "rulings", "arc='E15' AND kind='sub-ruling'"),
     ("E12 handoffs", "docs/experiments/E12-executor-kickoff.md",
      r"^## Session handoff", "handoffs", "arc='E12'"),
     ("E04 handoffs", "docs/experiments/E04-executor-kickoff.md",
@@ -1626,6 +1669,25 @@ def verify(db_path, top_n=3):
 
     con = sqlite3.connect(db_path)
 
+    # ---- the discovered corpus, printed so the glob's misses are visible ------
+    # A discovery rule nobody can audit is the hardcoded list's defect wearing a
+    # different hat. This prints what the pattern found and what each file yielded,
+    # so a ruling document that stops matching — or one that never did — is visible
+    # in the transcript rather than inferred from a count that looks plausible.
+    print("\n[corpus] ruling documents discovered by the sorted glob")
+    docs = ruling_documents()
+    for arc, rel in docs:
+        n = con.execute("SELECT COUNT(*) FROM rulings WHERE file=?", (rel,)).fetchone()[0]
+        print("  %-46s arc %-18s %s"
+              % (rel.replace("docs/experiments/", ""), arc,
+                 "%d rows" % n if n else "0 rows — prose only"))
+    print("  %d documents matched %s" % (len(docs), RULING_DOC_RE.pattern))
+    indexed = {r[0] for r in con.execute("SELECT DISTINCT file FROM rulings")}
+    orphans = sorted(indexed - {rel for _, rel in docs})
+    if orphans:
+        print("  ROWS FROM UNDISCOVERED FILES: %s" % orphans)
+        fails.append("rulings from files the glob does not discover: %s" % orphans)
+
     # ---- leg 2: counts against the record's own numbering --------------------
     print("\n[leg 2] counts — the verifier's own grep against the DB")
     for name, rel, pattern, table, where in COUNT_CHECKS:
@@ -1644,7 +1706,7 @@ def verify(db_path, top_n=3):
     # advisor rules on it; this gate does not re-derive itself around it.)
     seq = [("E12", "ruling", 1, 28), ("E04", "ruling", 1, 28),
            ("E08", "amendment", 1, 35), ("E11", "ruling", 1, 7),
-           ("E10", "ruling", 1, 12)]
+           ("E10", "ruling", 1, 12), ("E15", "ruling", 1, 8)]
     for arc, kind, lo, hi in seq:
         gaps = _sequence_gaps(con, arc, kind, lo, hi)
         print("  %-28s %s %d-%d gaps: %s"
