@@ -2001,3 +2001,59 @@ ingest, and the dragon becomes **dataset asset #3** — the first born
 declaring its register, its tone transform, its derivation kind and its
 subject name. E15 continues in its own lane; E14 waits behind it, per the
 Director's sequencing word.
+
+---
+
+## Ruling 30 — the live ingest confirmed: DATASET ASSET #3 IS LIVE; two lane-side dispositions ruled (2026-08-07)
+
+Evidence: the lane session's live-ingest report, relayed — every confirmation
+checked against a record that predates the run (the committed handoff-16
+report §4.4, facet-side shas, the prior subjects' record states).
+
+**30a — all three confirmations HOLD and are accepted.** Live digits
+reproduce the dry run digit-for-digit (26 registered / 0 rejected / 0
+skipped; the two `info` notices; **zero gaps**; off-palette 1.90–9.19%,
+blobs 985–15,333, quietest y180 / loudest y270 — the same digits, from a
+written record the run could not have graded itself against); the manifest
+sha re-hashed at the ingest boundary matches facet's
+(`7ea3771013f1ee43…`); `tone_transform_operands.json` is **MATERIALIZED**
+(sha `1f2b8b6a7205a895…` matching facet's byte-for-byte, all eight views,
+`_assembled_from` naming both sources) — the only texture channel that
+survives independently of the tree, exactly the 1.2.0 rule; and five
+sha-verified pointers resolve into the export tree (87 MB held by
+reference), confirmed beside both prior members of the must-not-move list.
+
+**30b — the record shape is noted with approval**: `generation: null` with
+`render_derivation` beside it saying WHY it is null — declared-null and
+omitted-null distinguishable on every record, which is the whole 1.3.0
+argument landed in data; `reference_is_self: true` on the y045 record —
+the transfer's identity property visible at the record level; all 26
+`judgment: null`, uncurated as intended. **And the pair channel carried
+the twins in from day one**: the 16 twin/clay pair files rode
+`renders[].pair` on the eight 45° views — the ruled home turned out to be
+the present home, not merely the future one; what stays deliberately
+unbuilt is the richer `{path, generation}` pair form, and the twins'
+generation provenance stays in this repo's sidecars until that threshold.
+
+**30c — the must-not-move list LANDS LANE-SIDE: ruled yes.** The lane's
+flag is correct and the fix is obvious once said: the durability
+dependency was recorded only in this repo — the side that OWNS the files —
+and not on the side whose POINTERS break. `docs/asset-lane-design.md`
+gains the list: all three trees, the rule (pointers inherit the pointee's
+fragility), and the backup clause (the trees belong in any backup that
+claims to cover the dataset). A dependency that only the healthy side
+knows about is not a recorded dependency.
+
+**30d — the ingest COMMITS AND PUSHES: ruled yes.** The 29 JSON files (26
+records + manifest copy + receipt + operands sidecar) are the prior dense
+ingest's exact shape (`23da2be`), and the Director's standing push rule
+(2026-08-06) says finished lane commits never stay single-copy. The
+commit message cites Ruling 29g and the receipt.
+
+**30e — the beast arc's on-acceptance items are COMPLETE**: export ✓
+(Ruling 29), ingest ✓ (this ruling). The E12/E13 arc holds THREE
+now-inseparable results — the accepted asset, its complete measured
+record, and its dataset presence. What remains open rides other lanes:
+E15 (in flight), the parked arms (the head rect, the register-LoRA
+finalization, both at the Director's timing), the standing errand batch,
+and E14 behind E15 per his sequencing word.

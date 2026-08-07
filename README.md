@@ -136,9 +136,10 @@ are post-verdict derivations by the anchored readout; **flat-only is what facet 
 exports** — every render ships with its exact silhouette so backgrounds are
 augmentation-side, and lighting would be a new renderer with its own anchors.
 
-**E12 — the beast arc — is IN FLIGHT** ([E12-ruling.md](docs/experiments/E12-ruling.md),
-Rulings 1–26 so far): the route's third subject class, a **winged dragon**, designated
-from three reconstructed candidates on full-size sheets ("3 is the winner"). What Gate 0
+**E12 — the beast arc — ran designation to acceptance in three days**
+([E12-ruling.md](docs/experiments/E12-ruling.md), Rulings 1–30): the route's third
+subject class, a **winged dragon**, designated from three reconstructed candidates
+on full-size sheets ("3 is the winner"). What Gate 0
 measured ([E12-gate0-report.md](docs/experiments/E12-gate0-report.md)) rewrites the
 priors: **9–12 welded shells against a character's 40–191 and the ship's 237–512** —
 an order of magnitude more connected than anything this repo has reconstructed, every
