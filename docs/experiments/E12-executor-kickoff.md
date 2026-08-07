@@ -1643,6 +1643,143 @@ stage-1 numbers are born on-surface (the subject's off-surface rate is
 
 ---
 
+## Session handoff 14 (2026-08-06) — THE STROKE LANE OPENS: cameras, order and prompts from the hole map; thin_extent's ruling inputs. Comprehensive.
+
+Serves the holding handoff-13 session (git pull first) or a fresh one — it
+assumes nothing not written here or in the reading list.
+
+### Where this stands
+
+Stage 1 is RULED (Ruling 24: **A0 stands** — 1,430,687 styled = 44.2% of
+valid = 87.5% of the 50.46% ceiling; the crop pass not adopted; its
+capability banked). The brush's whole territory is now measurable:
+**204,617 reachable-but-unstyled texels** (1,635,304 reach − 1,430,687
+styled) — the strokes' ceiling is +6.3 points of valid, and everything
+unreachable beyond it belongs to dilation at finalize. This dispatch
+derives everything the stroke-lane RULING needs: the cameras, the spiral
+order, the brush prompts draft, and thin_extent's decision inputs — the
+arc's one deliberately UNDECIDED value (Ruling 7c), deferred to exactly
+this ruling since the measurement pass. **No stroke runs in this
+dispatch**; the ruling clears the lifecycle first (the `texpass_brush
+_NOT_CLEARED` block pays for its clearance by deciding every key in one
+commit — the ship's Ruling 23 lifecycle, inherited whole).
+
+### You are the executor
+
+```
+cd E:\AI\facet && git pull
+CLAUDE.md                                  <- how to work here. Read first, follow exactly.
+docs/experiments/E12-ruling.md             <- Rulings 7 (elevated re-open + 7c), 24 (A0, the hole map). Your charter.
+profiles/beast.json                        <- _still_suspended.thin_extent + stroke_lane; texpass_brush's block
+E:\AI\training\facet_next\E13_stage1\      <- A0's state, hole map, provenance (the ruled stage 1)
+E:\AI\training\facet_next\E12_repair\...   <- handoff 2 Task 2.3's thin curve + wing boxes (the banked inputs)
+docs/experiments/E04-ruling.md             <- Ruling 23's stroke lifecycle (the ship's precedent, worked once)
+docs/experiments/E12-twin-prompts.json     <- v9; the brush stems derive by the same deletion construction
+```
+
+Your rules (CLAUDE.md §executor) and the standing environment are
+unchanged (watchdog before any Blender leg, report either way; ASCII;
+explicit git paths; output `E13_stroke/`). **Nothing in this dispatch
+generates or spends** — it is raycast, hole-map arithmetic and
+derivations. Blind predictions first, hashed, blind status disclosed:
+where the reachable holes concentrate (membranes? seams? under-wing?) ·
+whether any up-facing hole field is large enough to fire Ruling 7's
+elevated re-open · the greedy set's size (the ship's precedent) · what
+each thin_extent candidate withholds FROM THE BRUSH's own territory ·
+whether the spiral order has a clean anchor (the most-painted adjacency).
+
+### Task 1 — characterise the hole map before deriving anything from it
+
+Decompose A0's 1,809,823 holes: reachable-but-unstyled (204,617 — the
+brush's set) vs eye-level-unreachable (dilation's set), and locate the
+brush's set — per region (the handoff-11 region tooling reuses), per
+surface orientation (up-facing area specifically, for the Ruling 7
+check), connected-component structure (a few large fields vs speckle),
+and per view (which existing camera sees each hole best). **The Ruling 7
+re-open check is explicit**: if a large unpainted up-facing field would
+be served by an elevated stroke camera, that evidence goes to the ruling
+with numbers — the re-open was pre-registered for exactly this moment;
+absence of such a field closes it the other way, also with numbers.
+
+### Task 2 — the stroke cameras and the spiral order
+
+The ship's method: a candidate camera set (the eight route yaws at
+minimum; elevated candidates ONLY if Task 1's check fires), greedy by
+marginal coverage of the BRUSH's hole set, quoted with ray density per
+the 7b law, stopping when marginal gain falls below the ship's precedent
+floor. Then the spiral order — strokes ordered outward from
+already-painted adjacency (the standing law: the brush composes a new
+character if opened at a hole-dominated frame; the anchor stroke starts
+where paint already surrounds the hole). Deliverable: the ordered stroke
+list with per-stroke expected hole coverage and painted-adjacency
+fraction.
+
+### Task 3 — thin_extent's decision inputs, assembled for the ruling
+
+The banked curve (Task 2.3) told the figure-level cost; the ruling needs
+the BRUSH-level cost: per candidate value {0.0 · 0.005 · 0.0075 · 0.01 ·
+region-aware per the wing boxes}, what fraction of the brush's 204,617
+does the mask withhold, what fraction of the MEMBRANE holes specifically,
+and what does the withheld set look like (the artifact-judged criterion —
+crops of what each value would forbid the brush from touching, at 2×).
+**Propose nothing; assemble.** The ruling decides with the wing boxes and
+the ship's criterion in the room, per Ruling 7c's deferral.
+
+### Task 4 — the brush prompts draft
+
+Per stroke camera: the stem by the same deletion construction from the v9
+entry (visibility verified against that camera's actual render — the
+committed tooling), the backdrop word, the register tail; keyed per
+stroke in a draft `_fixtures.brush_prompts` file marked DRAFT-FOR-RULING.
+The recipe keys (seed, steps, cfg, cn_strength, the hardcoded CLOUD_LORA
+check — no-LoRA must hold in `brush_cloud_step`'s graph the same way it
+held in restylize) are ENUMERATED with their tool defaults beside the
+accepted route's values, so the clearing ruling decides every key in one
+commit with the agreement-by-value trap (`_THE_RECIPE_NUMBERS_DO_NOT_
+REACH_THE_CLOUD_GRAPH`) re-verified rather than assumed.
+
+### Then HALT
+
+Stage: the hole characterisation with the Ruling 7 check answered both
+ways, the ordered stroke set with its derivation, thin_extent's assembled
+inputs with the forbidden-set crops, the prompts draft, predictions
+scored. **To the advisor's eye first** — the ruling that follows decides
+thin_extent, clears the brush lifecycle, ratifies cameras and order, and
+dispatches the strokes. Then the Director's eye rides the stroke run's
+halt, not this one, unless the elevated re-open fires — that question is
+his if it lives.
+
+### Do not
+
+Run any stroke or brush step · generate anything · decide thin_extent
+(assemble only) · clear or edit the `_NOT_CLEARED` block (the ruling
+pays for that) · re-open elevated cameras yourself (report the check;
+the ruling rules) · arm any bound · edit any fixture or profile · write
+to the memory store · end a session the Director has not ended.
+
+### Standards compliance (this dispatch)
+
+| standard | score | evidence |
+|---|---|---|
+| PIN_PER_STEP | 2 | Every derivation lands beside its inputs' hashes; the greedy quoted with ray density; predictions hashed blind first; the prompts draft carries per-stem provenance |
+| ANDON_AUTHORITY | 3 | The Ruling 7 re-open check is answered with numbers in both directions; thin_extent explicitly assemble-not-decide; the lifecycle block stays until the ruling pays for it; halt to the advisor before any stroke exists |
+| NAMED_COMPENSATORS | 3 | Nothing generated, spent or irreversible; all writes in a new tree + one draft file marked DRAFT; A0's state opened read-only |
+| DECOMPOSE_BY_SECRETS | 3 | Cameras derive from the hole map, prompts from the entry, thin candidates from the banked curve — three derivations, three sources, none reaching into another's; the recipe-agreement trap re-verified at the boundary it lives on |
+| UNCERTAINTY_GATED_HUMANS | 3 | The one deliberately undecided value goes to the ruling with artifact crops, not a recommendation; the elevated question routes to the Director only if the evidence fires it |
+| EXTERNAL_VERIFIER | 2 | The hole map is stage 1's output checked by the ceiling instrument's independent reach; the greedy's coverage claims are re-countable from the staged rasters. `skip:` per precedent |
+
+### Calibration
+
+The handoff-13 standard holds: read the tool before running it, check
+the baseline before declaring a halt, pre-register the does-nothing band
+for every new number. One lane-specific caution from the ship: the
+brush at full denoise composes a NEW subject wherever the mask is
+hole-dominated — the spiral order is a correctness constraint, not a
+preference, and the painted-adjacency fraction per stroke is the number
+that guards it.
+
+---
+
 ### Standards compliance (handoff 2)
 
 | standard | score | evidence |
