@@ -1547,3 +1547,15 @@ cure is adopted as view 3's exemplar artifact again.
 twins with A2's texel-allocation arithmetic, then stage 1 projects the
 ruled set against the banked 50.46% ceiling. The route from there:
 sweep gate, strokes, finalize, pack, **Gate 1 at the exemplar bar.**
+
+**23f — CLOSED on his two sentences (2026-08-06): warm membranes ACCEPTED
+for the base coat** (the texture-stage hue correction stays the named
+bounded escape if Gate 1 wants it) **and the HARMONIZATION IS ADOPTED** —
+projection consumes the harmonized set: v9 ×6 + view 3's 770701 cure +
+view 4-A, all toward reference view 1, raw twins retained beside. The
+reference-conditioning arm stays specced and unopened. Handoff 13 is the
+route resuming: the E13 head-crop twins (harmonized by the same
+identity-tested transfer), A2's texel-allocation arithmetic under a
+pre-registered decision rule, and stage 1 — the A0 baseline projection and
+the composed crop-first projection both run, so the detail pass's payoff
+is judged against evidence rather than asserted.
