@@ -120,3 +120,39 @@ inherited — this is decided on the designated mesh's own numbers:
 **Director-overrulable in a sentence**, as always. The re-open condition is the
 E12 pattern's: if the painted hilt disappoints at a gate, the evidence returns
 here with the ladder's cheap rungs first.
+
+---
+
+## Ruling 5 — THE REGISTER (Director, 2026-08-07: "Ultra-realistic, no LoRA") and the authorship act
+
+**5a — the register is RECORDED, decided day one per the style-registers law.**
+Ultra-realistic, LoRA NONE — the dragon's register chosen fresh for this subject,
+not inherited from it; the style-registers table row updates from `undecided` to
+this sentence. Both generation stages already carry guarded no-LoRA paths
+(restylize since E12 handoff 4; the brush since E13 handoff 15 step 0).
+
+**5b — `canon/LONGSWORD-IDENTITY.md` is AUTHORED** (2026-08-07, this seat):
+**five named elements** — the compact case, the fewest the route has carried —
+in the noun-phrase grammar, **authored under the ruled register deliberately**
+(every colour word names a material that IS its colour: steel, blackened iron,
+gold, oxblood leather, garnet — the Ruling 12e lesson applied at birth, not
+after a rejection). **The occupancy audit is in the fixture from day one**: every
+modelled structure from the Gate 0 artifacts mapped to exactly one owner, the
+collar rings on L3's surface list with the D6-spur watch-note pattern, the
+hollow interior recorded as never-paintable. Stressors pre-registered with
+evidence status: **S-steel is the subject's point** (the five-times-measured
+grey-on-grey class on home ground; blue-violet pre-registered as the unoccupied
+family for the backdrop derivation, to be checked not assumed), S-thin carries
+the box-section fact, S-wrap carries the pinch census, S-hilt-scale carries the
+E12 head physics transposed with crop generation already foreclosed
+(frame-changes-register ×3).
+
+**5c — next, in order**: `profiles/prop.json` authored in the ship's grammar
+(Gate 0 values with provenance, the framing family from `frame_00001.json`,
+route constants as FIRST-RUN OPERATING POINTS, Ruling 4's allocation NONE,
+`mesh_gate: none`, `lora-w 0.0`, `_still_suspended` naming what the measurement
+dispatch owns) → **handoff 2 dispatched: the measurement pass** (registry sweep,
+prep bake with pre-stated ANDON reading, the reach ceiling pre-registered before
+any projection, the off-surface birth rate, the fresh thin-extent curve with the
+box-section caveat, the backdrop derivation) ending at the styled-pair halt —
+the advisor's eye, then the Director beside the clay.
