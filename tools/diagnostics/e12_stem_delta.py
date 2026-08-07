@@ -42,6 +42,15 @@ ap.add_argument("--new", required=True)
 ap.add_argument("--inserted", action="append", default=[],
                 help="a comma-term the NEW entry gained. Repeatable. Removing all of them "
                      "from a new stem must leave the old stem byte-equal.")
+# SUBSTITUTION, added at handoff 12. v6/v7/v8 were all INSERTIONS; Ruling 22b strengthens an
+# existing term in place instead (`storm-grey wing membranes` -> `leathery storm-grey wing
+# membranes`), which the insertion assertion cannot express: the term count does not change and
+# neither term is new-or-gone on its own. The assertion is the same shape — substitute NEW back
+# to OLD in each new stem and the old stem must come back byte-equal — and it is checked
+# ALONGSIDE the insertion rule, not instead of it, so a mixed round is expressible.
+ap.add_argument("--substituted", action="append", default=[], metavar="OLD=>NEW",
+                help="a comma-term the NEW entry REPLACED in place. Repeatable. Mapping NEW "
+                     "back to OLD in a new stem must leave the old stem byte-equal.")
 ap.add_argument("--allow-dropmap-change", action="store_true",
                 help="permit the drop map to differ, printing the diff. Ruling 9d can REQUIRE "
                      "a new drop; that is a decision, so it is a declared argument.")
@@ -66,18 +75,41 @@ if set(so) != set(sn):
 
 eo = [t.strip() for t in O["_entry_verbatim"].split(",")]
 en = [t.strip() for t in N["_entry_verbatim"].split(",")]
+SUB = {}
+for spec in args.substituted:
+    old, sep, new = spec.partition("=>")
+    if not sep:
+        bad.append("--substituted wants OLD=>NEW, got %r" % spec)
+        continue
+    old, new = old.strip(), new.strip()
+    if old not in eo:
+        bad.append("--substituted OLD %r is not a comma-term of the OLD entry" % old)
+    if new not in en:
+        bad.append("--substituted NEW %r is not a comma-term of the NEW entry" % new)
+    if old in en:
+        bad.append("--substituted OLD %r still appears in the NEW entry, so it was not "
+                   "replaced" % old)
+    SUB[new] = old
+
+
+def unsub(terms):
+    """Map the NEW terms back to their OLD spellings, so the comparison is against the old."""
+    return [SUB.get(t, t) for t in terms]
+
+
 for t in args.inserted:
     if t in eo:
         bad.append("--inserted %r is already a term of the OLD entry, so it is not an insertion"
                    % t)
     if t not in en:
         bad.append("--inserted %r is not a comma-term of the NEW entry" % t)
-stripped_entry = [t for t in en if t not in args.inserted]
+stripped_entry = unsub([t for t in en if t not in args.inserted])
 if stripped_entry != eo:
-    bad.append("the NEW entry minus the inserted term(s) is not the OLD entry:\n      old %s\n"
-               "      got %s" % (eo, stripped_entry))
-print("[delta] entry %d -> %d terms; inserted %s"
-      % (len(eo), len(en), ", ".join(repr(t) for t in args.inserted) or "NOTHING"), flush=True)
+    bad.append("the NEW entry minus the inserted term(s), with substitutions reversed, is not "
+               "the OLD entry:\n      old %s\n      got %s" % (eo, stripped_entry))
+print("[delta] entry %d -> %d terms; inserted %s; substituted %s"
+      % (len(eo), len(en), ", ".join(repr(t) for t in args.inserted) or "NOTHING",
+         "; ".join("%r -> %r" % (o, n) for n, o in SUB.items()) or "NOTHING"), flush=True)
 
 do, dn = O.get("_drop_map", {}), N.get("_drop_map", {})
 if do != dn:
@@ -94,15 +126,19 @@ else:
 for k in sorted(set(so) & set(sn)):
     to = [t.strip() for t in so[k].split(",")]
     tn = [t.strip() for t in sn[k].split(",")]
-    hits = {t: tn.count(t) for t in args.inserted}
+    hits = {t: tn.count(t) for t in list(args.inserted) + list(SUB)}
     for t, c in hits.items():
         if c > 1:
             bad.append("stem %s carries %r %d times" % (k, t, c))
-    stripped = [t for t in tn if t not in args.inserted]
+    for new, old in SUB.items():
+        if old in tn:
+            bad.append("stem %s still carries the OLD spelling %r" % (k, old))
+    stripped = unsub([t for t in tn if t not in args.inserted])
     if stripped != to:
-        bad.append("stem %s: NEW minus inserted != OLD\n      old %s\n      got %s"
-                   % (k, to, stripped))
-    where = ", ".join("%r at %d" % (t, tn.index(t)) for t in args.inserted if t in tn) or "-"
+        bad.append("stem %s: NEW minus inserted, substitutions reversed, != OLD\n      old %s\n"
+                   "      got %s" % (k, to, stripped))
+    where = ", ".join("%r at %d" % (t, tn.index(t))
+                      for t in list(args.inserted) + list(SUB) if t in tn) or "-"
     print("[delta]   %-14s %2d -> %2d terms   %s" % (k, len(to), len(tn), where), flush=True)
 
 if bad:
