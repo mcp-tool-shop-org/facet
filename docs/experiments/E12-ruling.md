@@ -1894,3 +1894,19 @@ items named first; **no region was named back.** Consequences:
   then the sdlab ingest paste; **then the context-architecture P1 kickoff
   fires** (his sequencing word's named trigger — the beast profile is
   complete — is met), **and E14 launches after the index lands.**
+
+**28a — the acceptance's forward clause, his refined sentence with a frontal
+close-up (same day):** *"It's not perfect but it's far beyond a pass. The
+improvements will be made when we've trained LoRAs on the appropriate textures
+to really finalize this."* Recorded as ruled: **the asset's finalization arm is
+NAMED — a register-LoRA retexture** — and it opens only when a
+creature-register card exists, which requires exactly the dataset this
+acceptance feeds. That is [style-registers.md](../style-registers.md)'s
+earn-by-drift loop, now Director-invoked as the finalization path rather than
+a contingency: the accepted dragon trains the card that later lifts it.
+Nothing about the acceptance weakens; the known items (the head rect, the
+crevice fill, the membrane tone) ride into that arm's scope when it opens,
+alongside whatever the trained register changes. He launched both dispatched
+sessions himself the same hour — handoff 16 and E15 in flight concurrently,
+his word overriding the serial recommendation, the cross-lane guards in both
+dispatches live.

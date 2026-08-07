@@ -65,6 +65,12 @@ training, and the accepted creature assets are its dataset. The same logic serve
 each future class: **no LoRA until the register drifts; train on accepted assets when
 it does.** Nothing trains on rejected artifacts.
 
+**Director-invoked 2026-08-07, at the dragon's Gate 1 acceptance** (E12 Ruling 28a):
+*"The improvements will be made when we've trained LoRAs on the appropriate textures
+to really finalize this."* The realistic-creature training path is no longer a
+contingency — it is the **named finalization arm for the accepted dragon**, waiting
+on dataset maturity; asset #3's dense export and ingest are its first deposit.
+
 ## What this changes in facet immediately
 
 - `canon/DRAGON-IDENTITY.md` STYLE-SUPPLIED rewritten (register terms, LoRA NONE).
