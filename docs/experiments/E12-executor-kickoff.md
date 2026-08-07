@@ -1780,6 +1780,138 @@ that guards it.
 
 ---
 
+## Session handoff 15 (2026-08-07) — THE RUN TO GATE 1: the no-LoRA brush capability, the 0-UNDECIDED sweep, four strokes, finalize, pack, the five-column sheet. Comprehensive.
+
+Serves the holding handoff-14 session (git pull first) or a fresh one — it
+assumes nothing not written here or in the reading list.
+
+### Where this stands
+
+The stroke-lane ruling is in (Ruling 25): **thin_extent = 0.005 global**
+(transcribed to the profile), **the brush lifecycle CLEARED with every key
+decided** (prompts = the ratified draft; recipe keys at the accepted
+route's values; lora = NONE BY REGISTER pending your step 0), **four
+strokes in spiral order 292.5 → 337.5 → 180 → 45** ratified from the hole
+map, and **Ruling 7's elevated re-open closed for good** against its
+pre-registered falsifier. The brush's ceiling is pre-registered: 204,617
+reachable holes, 71.60% closable at four strokes, 58,111 to dilation,
+19,846 unreachable by any eye-level camera. This dispatch runs the route's
+final texture legs and stages Gate 1's sheet.
+
+### You are the executor
+
+```
+cd E:\AI\facet && git pull
+CLAUDE.md                                  <- how to work here. Read first, follow exactly.
+docs/experiments/E12-ruling.md             <- Rulings 24-25. 25e is your step 0; 25g is this dispatch.
+profiles/beast.json                        <- thin-extent 0.005 live; texpass_brush CLEARED with the keys
+docs/experiments/E12-handoff14-report.md   <- the stroke set, order, adjacency, remainders
+E:\AI\training\facet_next\E13_stroke\      <- the derivations + the prompts draft you promote
+E:\AI\training\facet_next\E13_stage1\      <- A0's accumulating state (stage 1, ruled)
+docs/experiments/E04-ruling.md             <- the ship's stroke-run + finalize + pack precedent
+```
+
+Your rules (CLAUDE.md §executor) and the standing environment are
+unchanged: watchdog verified before every local leg, report either way ·
+full cloud discipline per submission · ASCII prints · explicit git paths ·
+output `E13_stroke/run/`. Blind predictions first, hashed, blind status
+disclosed: per-stroke closure vs the greedy's pre-registered expectations ·
+whether the brush's full-denoise output holds the register (the crop-pass
+gloss precedent is the named risk — pre-register what off-register brush
+paint would look like and which stroke is most exposed) · gate/achromatic
+expectations per stroke · finalize's dilation total vs the pre-registered
+58,111 + residuals · the final mix prediction (styled/brush/dilation of
+valid — the ship ran 36.89/6.87/56.24; the character 68.8/4.2/27.0; this
+subject's stage 1 is 44.2% styled — state a range and the reasoning).
+
+### Task 0 — the no-LoRA brush capability, anchored (Ruling 25e)
+
+`brush_cloud_step.py` gains the no-LoRA graph path: when the register
+says NONE, the graph builds WITHOUT the loader node and
+`ModelSamplingAuraFlow` reads the UNET directly; the inverted pre-flight
+(the restylize class — scan every node for the loader family and the card
+string) guards every submission. **The anchor, before anything runs: the
+ship's recorded stroke graph rebuilds BYTE-IDENTICAL with the card
+present** — the accepted route's path must not move; any delta halts.
+Then: the registry sweep re-runs on `beast.json` — expected result **0
+UNDECIDED**, the gate the texture arms have waited on; quote the count
+and exit code. Any UNDECIDED halts (that firing is the procedure).
+
+### Task 1 — the four strokes, spiral order, full discipline
+
+Per stroke (292.5 → 337.5 → 180 → 45): emit at the profile's ruled values
+(thin-extent 0.005 now live — quote what the mask withholds per stroke
+against the ladder's expectation) · the stroke through the new no-LoRA
+path, one generation per stroke (the palette-gate re-roll precedent: one
+bounded re-roll per stroke on a gate firing or spec-visible miss, new
+seed, rejected artifact retained) · commit through the tool's in-tool
+invariance check (E08 A32 — the check lives inside the irreversible step;
+no shell chaining) · per-stroke: the 16e gate + 17d achromatic against
+the stroke's own frame, closure count vs the greedy's expectation,
+painted-adjacency verified before the brush opens (the spiral law is a
+correctness constraint), and the same-frame clay | pre | post sheet.
+
+### Task 2 — finalize, pack, renders
+
+`texpass_finalize` (dilation; quote filled vs the pre-registered 58,111 +
+what the four strokes left; the surface-aware caveats are recorded
+diagnostics, not gates) · `bake_hero_pack` · the emit renders at the
+eight route yaws plus the provenance channels · the final mix quoted
+with denominators: styled / brush / dilation of valid, on-surface family
+per the standing rule (the subject's numbers are born on-surface).
+
+### Task 3 — THE FIVE-COLUMN SHEET
+
+The house form, per view at the Director's zoom: **reference (the
+accepted pair view where one exists, else the harmonized twin) | asset
+(flat render) | provenance | error | clay.** Full size, all eight yaws,
+plus the head at 3× and any region a gate or your eye flagged. This is
+Gate 1's judging artifact; build it before the numbers are polished, not
+after.
+
+### Then HALT
+
+Stage: the sweep's 0-UNDECIDED certificate, the anchor evidence, four
+stroke sheets + gates, finalize/pack numbers with denominators, the
+eight-view five-column sheet, the head crops, predictions scored. **To
+the advisor's eye first, then the Director's — Gate 1, at the exemplar
+bar.** Nothing past the halt runs; the E11 export lane and any dataset
+ingest wait on his verdict.
+
+### Do not
+
+Run a stroke whose anchor adjacency check fails (halt instead) · exceed
+one bounded re-roll per stroke · touch thin-extent or any ruled value ·
+skip the in-tool invariance check or chain it through a shell · edit any
+fixture or profile · write to the memory store · end a session the
+Director has not ended.
+
+### Standards compliance (this dispatch)
+
+| standard | score | evidence |
+|---|---|---|
+| PIN_PER_STEP | 3 | The anchor pins the tool change to the ship's recorded graph; every stroke's workflow saved with content-hash inputs; the sweep certificate quoted; predictions hashed blind first |
+| ANDON_AUTHORITY | 3 | The byte-identity anchor and the 0-UNDECIDED sweep both block the strokes; the invariance check lives inside the commit tool (A32); adjacency verified before each brush opens; bounded re-rolls; halt to eyes |
+| NAMED_COMPENSATORS | 3 | The accumulating state is copied before the stroke run (stage 1's A0 state is never consumed in place); every stroke's pre-state retained; 0-credit expectation verified per submission; rejected artifacts kept |
+| DECOMPOSE_BY_SECRETS | 3 | The capability (no-LoRA path) is separated from the run and anchored on the OTHER subject's graph; prompts, order and values all arrive from ruled artifacts through committed tools |
+| UNCERTAINTY_GATED_HUMANS | 3 | The halt is Gate 1 at the Director's zoom with the advisor's eye first; the register risk on brush paint is pre-registered with its own look; the mix prediction is stated before the numbers exist |
+| EXTERNAL_VERIFIER | 2 | The gate and achromatic channels check every stroke against a spec the brush did not write; provenance replays audit the commits; the final verdict is the Director's eye. `skip:` per precedent |
+
+### Calibration
+
+The handoff-14 standard holds. Three named risks for this run: the brush
+at full denoise composes a NEW subject wherever adjacency is weak — the
+92.34→81.87% anchors are the guard, verify before opening; the crop
+pass measured that BUST-frame generation drifts register — the strokes
+run at route frames, but pre-register what drift would look like anyway
+and check the first stroke's output before running the remaining three;
+and the final mix must be quoted against THIS subject's pre-registered
+ceiling (87.5% of 50.46% at stage 1), never against another subject's
+raw mix — a beast hides half of itself from eye level, and the
+difference is geometry, not regression.
+
+---
+
 ### Standards compliance (handoff 2)
 
 | standard | score | evidence |

@@ -1,0 +1,53 @@
+{
+ "_version": "E13-brush-1",
+ "_built_by": "tools/diagnostics/e12_make_twin_prompts.py",
+ "_derived_from": "beast.json tools['restylize_views.py'].prompt - stems are that string with whole comma-terms DELETED, never retyped. Term order is the entry's throughout.",
+ "_entry_verbatim": "a winged dragon, deep moss-green scaled hide, moss-green wing arms, moss-green wing finger struts, pale olive-tan ventral plates, leathery storm-grey wing membranes, bone-ivory curved horns, bone-ivory crown and cheek spikes, charcoal neck spines, charcoal dorsal and tail spines, charcoal claws, ember-orange eyes, a dark wine-red tongue, pale ivory fangs and tooth rows, a dark slate mouth interior, plain lavender-grey background, ultra-realistic, menacing, sharp scale relief, harsh directional light",
+ "_entry_terms": 20,
+ "_the_rule": "E12 Ruling 9d: an element whose surface a view cannot see is dropped from that view's stem - a term present in a view's prompt is an instruction to paint it, and the text wins against the control (the W3 beard mechanism, measured). Split deviation measured and ruled at E12 Ruling 10i.",
+ "_drop_map": {},
+ "_assertions": "Each stem asserted an ordered SUBSEQUENCE of the entry's term list; each view with no drops asserted BYTE-EQUAL to the entry. Both enforced in the builder with no skip flag; a failure writes no file.",
+ "_supersedes": "NOTHING. This is a DRAFT assembled for the stroke-lane ruling (E12 Ruling 24f) and it is NOT a fixture: profiles/beast.json's _fixtures carries no brush_prompts key and this dispatch does not add one. texpass_brush.py's _NOT_CLEARED block still stands; the ruling that clears it decides every recipe key in the same commit and may adopt, amend or discard these strings.",
+ "_STATUS": "RATIFIED by E12 Ruling 25f (2026-08-07) from DRAFT-1, byte-equal stems; the recipe keys are decided in profiles/beast.json texpass_brush._CLEARED_BY_RULING_25, never here. Prior status: DRAFT-FOR-RULING. Not a fixture, not referenced by any profile, consumed by nothing. E12 Ruling 24f dispatched the derivation; the clearing ruling decides.",
+ "_cameras": "Derived at handoff 14 Task 2 from A0's hole map by greedy marginal closure - yaws 337.5, 180.0, 45.0, 292.5, in that greedy order. The SPIRAL ORDER is different and is the one that ships: 292.5, 337.5, 180.0, 45.0, best-anchored first, painted-adjacency 92.34 / 87.93 / 87.72 / 81.87 percent. Order is a correctness constraint, not a preference - the brush composes a NEW character wherever the job mask is hole-dominated.",
+ "_per_stroke_stems": "MEASURED, not inherited. E04 Ruling 23's one-constant-string rests on 'no view-specific anatomy words', which this subject fails by construction (Ruling 9d). Mouth-cavity first-hit as a share of each stroke camera's own figure: 45.0 2.897%, 180.0 0.144%, 292.5 2.971%, 337.5 2.478%. Yaw 180 is a route view whose VERIFIED stem (dragonclay_4) already drops the mouth family, so it calibrates the cut rather than being decided here. Crown/horn 3.5-4.2%, feet 13.6-28.8%, tail 8.8-10.0% on all four, so the horn family, claws and dorsal/tail spines stay everywhere.",
+ "_recipe_keys_ARE_NOT_DECIDED_HERE": "Enumerated for the clearing ruling in the handoff-14 report section 5, with each tool default beside the accepted route's value. THE TRAP RE-VERIFIED BY EXECUTION, not by reading: brush_cloud_step.py binds NO profile, carries DEFAULTS {seed 770700, steps 20, cfg 2.5, lora_w 0.75, cn_strength 1.0}, and build_graph inserts node 5 LoraLoaderModelOnly with the HARDCODED saltroad card UNCONDITIONALLY - ModelSamplingAuraFlow reads ['5',0], not the UNET. The beast's ruled lora-w is 0.0 and Ruling 10b's own words are that 0.0 'is not a weight of zero on a loaded card, it is no card, and the graph is built without the loader'. Today the pre-flight halts first on _NOT_CLEARED (no decided value); after clearing at 0.0 its unconditional check (a) halts on DEFAULTS[lora_w]=0.75 against the profile's 0.0; and there is no --lora-w flag to satisfy it. This is a capability gap, not a value to choose.",
+ "_backdrop": "plain lavender-grey background - RULED, E12 Ruling 8a. Carried into every stroke stem by the same deletion construction that carries it into the twins.",
+ "_style_tail": "ultra-realistic, menacing, sharp scale relief, harsh directional light - canon/DRAGON-IDENTITY.md STYLE-SUPPLIED per Ruling 10b.",
+ "_negative": "watermark, text, logo, blurry, photo, deformed",
+ "y+045_e+00": "a winged dragon, deep moss-green scaled hide, moss-green wing arms, moss-green wing finger struts, pale olive-tan ventral plates, leathery storm-grey wing membranes, bone-ivory curved horns, bone-ivory crown and cheek spikes, charcoal neck spines, charcoal dorsal and tail spines, charcoal claws, ember-orange eyes, a dark wine-red tongue, pale ivory fangs and tooth rows, a dark slate mouth interior, plain lavender-grey background, ultra-realistic, menacing, sharp scale relief, harsh directional light",
+ "_extra_stems": {
+  "y+045_e+00": {
+   "dropped": [],
+   "terms": 20
+  },
+  "y+180_e+00": {
+   "dropped": [
+    "a dark slate mouth interior",
+    "a dark wine-red tongue",
+    "ember-orange eyes",
+    "pale ivory fangs and tooth rows"
+   ],
+   "terms": 16
+  },
+  "y+292_e+00": {
+   "dropped": [],
+   "terms": 20
+  },
+  "y+337_e+00": {
+   "dropped": [],
+   "terms": 20
+  }
+ },
+ "y+180_e+00": "a winged dragon, deep moss-green scaled hide, moss-green wing arms, moss-green wing finger struts, pale olive-tan ventral plates, leathery storm-grey wing membranes, bone-ivory curved horns, bone-ivory crown and cheek spikes, charcoal neck spines, charcoal dorsal and tail spines, charcoal claws, plain lavender-grey background, ultra-realistic, menacing, sharp scale relief, harsh directional light",
+ "y+292_e+00": "a winged dragon, deep moss-green scaled hide, moss-green wing arms, moss-green wing finger struts, pale olive-tan ventral plates, leathery storm-grey wing membranes, bone-ivory curved horns, bone-ivory crown and cheek spikes, charcoal neck spines, charcoal dorsal and tail spines, charcoal claws, ember-orange eyes, a dark wine-red tongue, pale ivory fangs and tooth rows, a dark slate mouth interior, plain lavender-grey background, ultra-realistic, menacing, sharp scale relief, harsh directional light",
+ "y+337_e+00": "a winged dragon, deep moss-green scaled hide, moss-green wing arms, moss-green wing finger struts, pale olive-tan ventral plates, leathery storm-grey wing membranes, bone-ivory curved horns, bone-ivory crown and cheek spikes, charcoal neck spines, charcoal dorsal and tail spines, charcoal claws, ember-orange eyes, a dark wine-red tongue, pale ivory fangs and tooth rows, a dark slate mouth interior, plain lavender-grey background, ultra-realistic, menacing, sharp scale relief, harsh directional light",
+ "_per_view_term_count": {
+  "y+045_e+00": 20,
+  "y+180_e+00": 16,
+  "y+292_e+00": 20,
+  "y+337_e+00": 20
+ },
+ "_full_string_views": [],
+ "_negative_provenance": "beast.json tools['restylize_views.py'].negative, transcribed. An authored negative would be a second variable in the run that introduces the first."
+}
