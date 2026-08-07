@@ -182,3 +182,36 @@ eye.
 | DECOMPOSE_BY_SECRETS | 3 | the sweep reads the index's measurements rather than re-deriving them; flag counts explicitly refused as another instrument's numbers |
 | UNCERTAINTY_GATED_HUMANS | 3 | the healthy-zero prediction is falsifiable; every stale row is the advisor's to rule, never the tool's to fix |
 | EXTERNAL_VERIFIER | 2 | the sweep checks prose against measurements derived from the record by independent greps; `skip:` on a second model per the arc's precedent |
+
+---
+
+## Session handoff 3 (2026-08-07) — the discovery fix: E15 Ruling 8b, exactly and only
+
+For the same steward session. The read-only constraint on the build path is
+LIFTED for this one change; everything else in handoff 2's constraints stands.
+
+**The change** (ruled at [E15-ruling.md](E15-ruling.md) Ruling 8b):
+
+1. `NUMBERED_RULING_FILES` becomes a **sorted glob** over the ruling-document
+   naming convention — state the pattern in the code with its reasoning, and
+   confirm it discovers exactly the current six plus `E15-ruling.md` (a
+   pattern-matched file with no numbered rulings, like
+   `E08-director-canon-ruling.md`, parses to zero rows harmlessly — say so).
+2. `verify` **prints the discovered list** — a glob's own misses become
+   visible rather than assumed.
+3. **E15 joins the count leg**: its own grep, sequence check, and the
+   completeness-line convention (bound as of this dispatch: rulings 1–8).
+4. Full gate re-run + `claims` re-run. Expected: the four legs pass with
+   E15's rulings now counted; the seeded set holds (report any rank
+   movement — the corpus grows by E15's ruling rows); **claims still reads
+   0 STALE** — the 285-hazard row was reworded out of the family at
+   `docs/experiments/README.md` this fold, and your re-run is its test.
+5. The DB changes by construction (new rows). **Commit it with the fold — and
+   the exception is RULED here, not assumed**: Ruling 4's session-boundary
+   cadence gains its one exception — when a builder change alters what the DB
+   contains, the committed DB moves with the builder, because otherwise HEAD
+   carries a builder and a DB that disagree, which is the two-authorities
+   hazard in miniature.
+
+Blind predictions first (row deltas; whether any seeded rank moves). HALT
+with the gate transcript. This closes the steward's arc.

@@ -102,6 +102,51 @@ boundary §5 predicts, recorded here so a loose phrasing's result is never read
 as the index failing. The index serves the record's own vocabulary best,
 which is the correct bias for a legal record.
 
+## Ruling 8 — handoff 2 ruled: 0 STALE banked, the discovery defect is the finding, its fix is handoff 3 (2026-08-07)
+
+Evidence: the handoff-2 report (`6a46621`), its blind predictions (`3730add`),
+and the verb run at this seat — the same 18 rows, 0 STALE, exit 0.
+
+**8a — the halt is ACCEPTED; both healthy-zero predictions confirmed.** The
+range-vs-cardinal distinction is ratified as the sweep's load-bearing semantics
+(a range asserts a MAX, a cardinal a COUNT — E12 numbers its handoffs to 16 and
+carries 15; conflating the two manufactures a stale row out of a correct
+document). The steward's self-caught detector defect — *a range is a count-claim
+only if it starts at 1* — took 37 unparseable rows to 4 with every survivor
+real, and the AMBIGUOUS handling of `+ the close` is right: picking a reading
+would invent a claim to check.
+
+**8b — THE DISCOVERY DEFECT IS THE REAL FINDING, and its fix is RULED.**
+[E15-ruling.md](E15-ruling.md) carries this arc's rulings and not one is in the
+index: `NUMBERED_RULING_FILES` is hardcoded, written before this document
+existed, and the verify gate greps the same list — so it tests that no listed
+file loses a ruling and **cannot test that a file is missing from the list**.
+The failure-mode law, landing on the instrument built to enforce it. The fix,
+for handoff 3 and nothing else: **a sorted glob over the ruling-document naming
+convention** (equally deterministic, cannot silently omit), the **discovered
+file list printed in verify's own output** (the glob's misses become visible
+rather than assumed — the same hazard one level up, closed by printing), and
+**E15 added to the count leg** with its own grep, sequence check and
+completeness line.
+
+**8c — the `285 rulings` hazard is CLOSED PROSE-SIDE, this fold.** The
+experiments-table row quoted the index's own total inside E15's row in the
+`N rulings` phrasing family — a false STALE waiting for 8b to land, flagged by
+the steward before it could fire. Reworded out of the family; the sweep's
+inability to distinguish attribution is a recorded boundary, not something to
+engineer around.
+
+**8d — the "Amendment" overload is RECORDED as a record property.** E08's
+numbered series and per-spec appended amendments share one noun; no family
+parses the latter, correctly — a family would silently mis-attribute spec
+amendments to E08's series. Unparseable-with-reason is the honest state.
+
+**8e — banked**: two defined families with no live site stay defined and
+printed · flag counts stay refused in code as another instrument's numbers ·
+`docs/profiles-design.md` is the one unclassified file, printed as such · the
+E14 lane's untracked diagnostic noted by the steward is that lane's business,
+untouched.
+
 ## Standards compliance (this ruling)
 
 | standard | score | evidence |
