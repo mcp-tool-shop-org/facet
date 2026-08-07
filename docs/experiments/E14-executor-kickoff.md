@@ -248,3 +248,141 @@ environment findings rather than passing over them, and check this dispatch's ow
 inherited numbers — the clay descriptions, the VRAM precedent, the shell ranges —
 against source in the same breath you use them. A negative result, including three
 meshes not worth designating, is a full success and is reported as one.
+
+---
+
+## Session handoff 2 (2026-08-07) — the DESIGNATED MESH's measurement pass. Ends at the styled-pair halt. Comprehensive.
+
+Gate 0 is CLOSED by designation: **00001 is the longsword** (E14 Ruling 1, "00001
+is my favorite"). The register is ruled day one (Ruling 5a: **ultra-realistic, no
+LoRA** — his sentence). The fixture and profile are authored (Ruling 5b/5c). A
+fresh executor session starts here:
+
+```
+cd E:\AI\facet && git pull
+python tools/facet_index.py build       <- the E15 ritual: query the tip, not the last commit
+CLAUDE.md                               <- how to work here. Read first, follow exactly.
+docs/experiments/E14-ruling.md          <- Rulings 1-5. Ruling 4 is allocation; Ruling 3 is the hollow finding.
+canon/LONGSWORD-IDENTITY.md             <- the five elements, the occupancy audit, the stressor table
+profiles/prop.json                      <- every decided value; _still_suspended is YOUR list
+docs/experiments/E14-gate0-report.md    <- the designated mesh's measured record
+docs/experiments/E12-executor-kickoff.md   <- Session handoff 2 there is the METHOD PRECEDENT
+                                            (the beast's measurement pass); this dispatch is
+                                            its analogue and cites rather than restates
+```
+
+**The subject:** `E14_gate0/longsword_00001_raw.glb` — its Gate 0 numbers travel
+with it (1 welded shell, zero boundary edges, 121 non-manifold edges with the wrap
+as the pinch locus, hollow box-section blade, frame 240×1024 height-fit). The
+softer pommel apex and lumpier wrap are **designated-in** (Ruling 1): known subject
+facts, not defects to fix.
+
+**Your rules and environment are unchanged** (CLAUDE.md §executor; watchdog
+verified before any GPU leg, report either way; generation cloud-only with
+`estimate_credits` per submission; ASCII prints; explicit git paths; output
+`E:\AI\training\facet_next\E14_prep\`). Blind predictions first, hashed, blind
+status disclosed — per task below.
+
+### Task 1 — the sweep
+
+Registry sweep + coverage pass against `profiles/prop.json`. Report the UNDECIDED
+set with every member dispositioned (lands-in-this-dispatch /
+lifecycle-blocked / finding-for-the-ruling). **Expected members, pre-stated**:
+`texpass_iter.thin-extent` (deliberate — its curve is Task 2, its value is a later
+ruling), `restylize_views.canny-low`/`canny-high` (deliberate — the per-subject
+derivation is Task 3, the 10c/11a law), and whatever the sweep finds that this
+draft missed, which is the sweep doing its job. The `_NOT_CLEARED` brush marker
+and the `_not_on_route` forms count DECIDED (the recognized forms). **0 UNDECIDED
+gates ARMS, not this dispatch** — your exit condition is the report.
+
+### Task 2 — measure the suspended values from the designated mesh
+
+1. **Prep bake** at the profile's operating points (head-scale 1.0, res 4096).
+   PRE-STATED READING: the bake's ANDONs were written for characters; if one fires
+   on this mesh it is an expressibility limit — report and HALT, do not tune.
+2. **The reach ceiling, pre-registered before any projection** — `e08_ceiling` at
+   the profile's floors on the eight eye-level cameras (quote Ruling 6e's caption
+   caveat beside any output of that tool — its repair is still in the errand
+   batch). Report reach/valid with both operands. **Also classify the bake's
+   `pos.npy` off-surface rate** (`e12_offsurface`, the validated instrument,
+   report-only): the rate has replicated 2.50–2.64% across three subjects; a
+   fourth point tests the bake-artifact-class reading either way.
+3. **`thin_extent`, measured fresh** — the full cost curve (fraction of visible
+   figure withheld per candidate value), and **separately: what fraction of the
+   BLADE each candidate withholds** — the blade is this subject's membrane-analog
+   and its whole point. The box-section caveat is in the profile's suspension
+   note: the probe reads outer-to-outer (~0.021), not walls. No gate arms on any
+   of it; the value is decided at its own ruling.
+4. **The elevated-camera question, measured** — up-facing surface (normal_z >
+   0.5, area not face count) first-hit coverage per candidate set, greedy by
+   marginal gain, **ray density quoted** (the 7b law). The prior to bet on or
+   against is in `cameras.elevated`: the z-max slab measured 0.10% of surface at
+   Gate 0, so NONE is likely — and the beast's lesson is that this class has no
+   working prior until measured.
+5. **The mirror check, cheap and new** — this subject is bilaterally symmetric:
+   report per-view silhouette areas across the eight (the E12 9b/16f caveats
+   predict near-equality within AND across mirror pairs here). One table; any
+   instrument that later normalises by view area inherits it.
+
+### Task 3 — the two derivations, in order
+
+1. **The canny pair, derived per subject** (the 10c/11a law — the accepted
+   route's 0.4/0.8 was falsified on grey-on-grey clay, and this clay is the same
+   class): the rung ladder on the designated clay's own renders, **works-perfectly
+   test FIRST** (what does the lower pair admit that is NOT relief — the beast's
+   ladder found wandering iso-luminance contours in flat fields at the bottom
+   rungs; this subject's flat fields are the blade faces). Report control px per
+   rung per view with crops. **The pair is proposed with the evidence and RULED
+   by the advisor before any generation consumes it** — the beast's executor
+   halted exactly there and was right to.
+2. **The backdrop derivation** (the S3 method): maximise the minimum distance
+   from every declared material, saturated optima disqualified, weighted toward
+   L1 — **S-steel holds the risk: the result cannot be any grey**, and the
+   fixture's blue-violet-unoccupied expectation is CHECKED at derivation, not
+   assumed (the 8a/15i lesson). Report the optimum table; **the WORD is chosen
+   at the ruling**, never by the metric alone.
+
+### Task 4 — the styled target pair, after the two rulings land
+
+Twin-prompts file built by the committed builder from the fixture + the ruled
+backdrop word (the one-string-vs-per-view check runs against the actual renders
+at build time — this subject may be the first since the ship to pass the
+one-string premise; verify, don't import). Controls from PROFILE-rendered clay
+views (never Gate 0 renders — the 4a law). **Views 0 and 1** (face-on carries
+all five elements; the three-quarter adds depth cues; on a bilaterally symmetric
+subject the rear family mirrors the front and buys no identity — state the check
+that confirmed it). Full cloud discipline, `estimate_credits`, one generation
+per view, one bounded re-roll each, the no-LoRA pre-flight on every submission.
+**HALT with the pair staged: the advisor's eye first, then the Director beside
+the clay** — his fixture overrule window made visual, the register's first test
+on steel.
+
+### Do not
+
+Generate before Task 3's two rulings land (the halt after Task 3 is a REAL halt
+— the advisor rules the canny pair and the backdrop word, then Task 4 runs) ·
+run any measured arm locally (TRELLIS excepted, none needed here) · touch
+thin-extent's value or arm any gate on Task 2's curves · edit any fixture or
+profile · write to the memory store · end a session the Director has not ended.
+
+### Standards compliance (this dispatch)
+
+| standard | score | evidence |
+|---|---|---|
+| PIN_PER_STEP | 2 | Every measurement lands beside its derivation JSON; predictions hashed blind where checkable; the pair's workflows saved pre-submission with seeds and params |
+| ANDON_AUTHORITY | 3 | Prep-bake ANDONs pre-stated as halt-not-tune; the sweep's UNDECIDED report is the gate condition for future arms; TWO mid-dispatch halts to the advisor (canny pair, backdrop word) before any credit-bearing step; the pair halt is the Director's window |
+| NAMED_COMPENSATORS | 2 | Cloud spend bounded to two generations (+ at most one re-roll each) with estimate_credits first; all writes in new files/dirs under E14_prep; nothing irreversible beyond spend |
+| DECOMPOSE_BY_SECRETS | 3 | Every subject value derives from this mesh or this fixture; the tuning constant (edge-ref) explicitly NOT re-derived; the backdrop word flows fixture → derivation → ruling → prompts file, never through code |
+| UNCERTAINTY_GATED_HUMANS | 3 | The styled-pair halt is the Director's overrule window on the whole authored identity, advisor's eye first; both derivations go to rulings as evidence, not as decisions |
+| EXTERNAL_VERIFIER | 2 | The ceiling instrument and the off-surface classifier check the bake from independent code paths; the pair is judged by eyes, not by the generator's metrics. `skip:` on a second model for the geometry legs, per precedent |
+
+### Calibration
+
+The handoff-16 and E14-Gate-0 standard holds. Named risks: **S-steel is live at
+every step** — the clay is grey-on-grey (the canny ladder's home case), the
+backdrop derivation must escape grey entirely, and at generation the register's
+realism prior meets near-achromatic steel for the first time (pre-register what
+a register drift would look like on metal before the pair runs). The hilt at ~7%
+of frame pixels is S-hilt-scale — if the pair's hilt reads soft, that is the
+E12 head physics arriving on schedule, recorded not tuned. And the mirror facts
+mean view-pair comparisons are cheap corroboration everywhere — use them.

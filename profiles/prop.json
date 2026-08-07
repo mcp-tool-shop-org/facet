@@ -1,0 +1,380 @@
+{
+ "name": "prop",
+ "subject": "E14's longsword. DESIGNATED 2026-08-07: candidate 00001, mesh longsword_00001_raw.glb (999,474 faces, 1 welded shell at 1.000000, zero boundary edges, 121 non-manifold edges), TRELLIS.2 1024_cascade seed 42 from longsword_clay_p1_00001_.png. Identity fixture: canon/LONGSWORD-IDENTITY.md. Ruling record: docs/experiments/E14-ruling.md.",
+ "provenance": "AUTHORED by the advisor post-designation (E14 Ruling 5c). Gate 0's measured values land here with their derivations (frame_00001.json, hilt_00001.json, topo_00001.json); route constants land as explicit FIRST-RUN OPERATING POINTS because silence resolves to inheritance (armT-halt2 Finding B); values still absent are absent on purpose - see _still_suspended, owned by the Session-handoff-2 measurement dispatch. Nothing here has textured anything yet.",
+ "_status": "DRAFTED FROM GATE 0, NOT YET SWEPT. The registry sweep + coverage pass run in the measurement dispatch; 0 UNDECIDED is the gate any future ARM must pass, not this draft's exit condition. Every value below is derived from the designated mesh's own Gate 0 record, ruled in E14-ruling.md, or explicitly marked as a first-run operating point.",
+ "_fixtures": {
+  "identity": {
+   "path": "canon/LONGSWORD-IDENTITY.md",
+   "why": "The five named elements - the compact case. Identity belongs to the prompt; this file IS the longsword.",
+   "from": "E14 Ruling 5b; authored forward per the galleon precedent, under the ruled register per the dragon's 12e lesson"
+  },
+  "twin_prompts": {
+   "path": "docs/experiments/E14-twin-prompts.json",
+   "status": "TO BE BUILT by the committed builder from the fixture's five elements + the backdrop word once derived (_still_suspended.backdrop_derivation). PER-VIEW NOTE: this subject appears to PASS the ship's one-string premise ('no view-specific anatomy words' - E04 Ruling 23) for the first time since the ship: all five elements are visible from every yaw on a bilaterally symmetric prop (edge-on views see slivers of everything, not nothing of something). The executor VERIFIES that against each view's actual render before writing one string - the premise is checked per subject, never imported (the E12 Ruling 9d lesson: the beast failed it six elements deep).",
+   "why": "The twin stems. Keys must match the tag.",
+   "from": "E14 Ruling 5c; E04 Ruling 23 premise-not-conclusion"
+  }
+ },
+ "_gates": {
+  "mesh_gate": {
+   "value": "none",
+   "why": "gate_mesh.py's head/shoulder logic is character-calibrated and has no prop referent. An explicit decision, not an omission - the ship precedent, third application.",
+   "from": "E14 Gate 0 (did not run, per dispatch); ship.json precedent"
+  },
+  "head_rect_metrics": {
+   "value": false,
+   "why": "mesh_stats' face-rect columns are W3's rect - and on this subject class the tool's own front-view-rect warning DOES NOT FIRE (a tip-standing prop passes the 'vertical extent is largest' proxy; rect_frac_of_figure read 1.90, a rect larger than the figure). The exclusion rests on this decision, not on the tool noticing - E14 Ruling 2d; the warning repair is in the errand batch.",
+   "from": "E14 Gate 0 section 3; E14 Ruling 2d"
+  },
+  "reg_iou_min": {
+   "value": null,
+   "status": "SUSPENDED - EXPRESSED MECHANICALLY as tools.project_twins.reg-iou-min = 0.0",
+   "why": "The character's 0.80 came from both sides of a measured line on W3's twins; this subject has no distribution until twins exist. The halt runs vacuous while per-view IoU still computes and prints.",
+   "from": "E08 A27; ship/beast pattern"
+  },
+  "bbox_tol": {
+   "value": null,
+   "status": "SUSPENDED - EXPRESSED MECHANICALLY as tools.project_twins.bbox-tol = 9.99",
+   "why": "0.25 is W3 data and A27 demoted the assert to a diagnostic everywhere.",
+   "from": "E08 A27; ship/beast pattern"
+  }
+ },
+ "tools": {
+  "verify/turn_render.py": {
+   "w": {
+    "value": 240,
+    "why": "MEASURED at Gate 0 from the designated mesh: worst projected width over all eight rendered yaws is 0.225769 x height at view 0 (the axis formula and the per-yaw check agree to six decimals on this subject - the quillon span lies on one horizontal axis and the shallow depth axis cannot make a 45-degree view wider; E14 Gate 0 section 10), raw 231.19 px at h=1024, rounded UP to the /16-legal 240 per the generator-legal law. Chosen as if it will be kept (the ship's Gate 0 frame became its twin frame). THE FRAME FLAG rides here (E14 Ruling 2e): at this frame the blade carries roughly 60-110 px of generator width and the hilt roughly 7% of frame pixels - S-hilt-scale in the fixture pre-registers the consequence, and the measured levers if it bites are bake-side (the A2 rect arm), never a crop generation (frame-changes-register x3).",
+    "from": "E14 Gate 0 section 10; frame_00001.json; E14 Ruling 2e"
+   },
+   "h": {
+    "value": 1024,
+    "why": "Height reference; the fit axis on this subject (see fit-axis).",
+    "from": "E14 Gate 0 section 10"
+   },
+   "views": {
+    "value": "0,1,2,3,4,5,6,7",
+    "why": "Eight eye-level yaws - stage 1 is eye-level by construction on every subject so far. Whether this subject buys elevated coverage is _still_suspended.cameras_elevated, measured not assumed.",
+    "from": "E14 Gate 0 (rendered set); ship/beast precedent"
+   },
+   "step": {
+    "value": 45.0,
+    "why": "Degrees per view index.",
+    "from": "E14 Gate 0"
+   },
+   "yaw-offset": {
+    "value": 0.0,
+    "why": "MEASURED, and deliberately zero: view 0 is the face-on presentation - the frame derivation's worst view reads world x (the quillon span) at view 0, and the Gate 0 sheets show the full guard face there, confirmed by the advisor's eye at designation. The camera rotates, never the mesh.",
+    "from": "E14 Gate 0 section 10; frame_00001.json"
+   },
+   "fit-axis": {
+    "value": "height",
+    "why": "MEASURED - THE ROUTE'S FIRST PORTRAIT SUBJECT (widest-horizontal/height 0.2258 against the character's 0.46-0.72, the ship's 1.04-1.11, the beast's 1.61-1.74). The frame derivation ran margin on the HEIGHT axis (coverage_world.h = 1.2064 = 1.002 extent x 1.204) with width derived and rounded; turn_render's portrait path was source-checked at Gate 0 (sensor_fit VERTICAL under --fit-axis height, report section 11). NOTE: the beast pinned width and E12 Ruling 24a adopted width on the projector - those are THAT subject's family values, not universals; the framing family {aspect, fit-axis, margin} pins together PER SUBJECT across all four consumers, and this subject's axis is height.",
+    "from": "E14 Gate 0 sections 3, 10, 11; frame_00001.json; E04 Ruling 25's family law"
+   },
+   "tag": {
+    "value": "swordclay",
+    "why": "Filename stem; silhouette_masks and the twin-prompt keys must match it. Pinned at draft so keys cannot drift.",
+    "from": "ship.json tag precedent"
+   },
+   "margin": {
+    "value": 1.204,
+    "why": "The framing family's margin, applied on the fit axis (height): coverage_world.h 1.206415 = extent 1.002006 x 1.204, measured in the Gate 0 derivation. The realised HORIZONTAL margin at the worst view is 1.2499 - a consequence of rounding the derived width up to 240, recorded so the two numbers are not read as a contradiction (frame_00001.json carries both).",
+    "from": "E14 Gate 0 section 10; frame_00001.json; E04 Ruling 25"
+   }
+  },
+  "silhouette_masks.py": {
+   "tag": {
+    "value": "swordclay",
+    "why": "Filename stem for this subject's silhouettes; matches turn_render.",
+    "from": "ship.json precedent"
+   },
+   "views": {
+    "value": "0,1,2,3,4,5,6,7",
+    "why": "Matches the eye-level camera set.",
+    "from": "E14 Gate 0"
+   },
+   "step": {
+    "value": 45.0,
+    "why": "Degrees per view index.",
+    "from": "E14 Gate 0"
+   },
+   "aspect": {
+    "value": "240,1024",
+    "why": "The frame aspect - one value per consumer, moving together (the Ruling 6/11/25 chain).",
+    "from": "E14 Gate 0 section 10; E04 Ruling 25"
+   },
+   "fit-axis": {
+    "value": "height",
+    "why": "Moves WITH turn_render's fit-axis - second of the four consumers; this subject's family value (see turn_render.fit-axis).",
+    "from": "E04 Rulings 11/13/25; E14 Gate 0"
+   },
+   "margin": {
+    "value": 1.204,
+    "why": "Third member of the framing family on this consumer.",
+    "from": "E14 Gate 0; E04 Ruling 25"
+   }
+  },
+  "project_twins.py": {
+   "fit-axis": {
+    "value": "height",
+    "why": "The framing family on its FOURTH consumer (E12 Ruling 24a exposed the slot; 26a completed the pin). The beast's adopted value was width BECAUSE that subject is landscape - the family pins per subject, and this subject is portrait. The projector's width-fit derivation reproducing the beast's masks at IoU 1.000000 was a fact about agreement with THAT frame derivation; this subject's masks derive height-fit, and the projector must agree with THEM. The measurement dispatch's sweep certifies the family's coherence before anything projects.",
+    "from": "E12 Rulings 24a/26a; E14 Gate 0 section 10; E04 Ruling 25's family law"
+   },
+   "margin": {
+    "value": 1.204,
+    "why": "The framing family's value on the fourth consumer, pinned at draft - never by silence (the 26a lesson).",
+    "from": "E12 Ruling 26a; E04 Ruling 25; E14 Gate 0"
+   },
+   "step": {
+    "value": 45.0,
+    "why": "Degrees per view index.",
+    "from": "E14 Gate 0"
+   },
+   "aspect": {
+    "value": "240,1024",
+    "why": "The twins are generated at this aspect and the projection derives its extent from it; the two must agree.",
+    "from": "E14 Gate 0 section 10"
+   },
+   "reg-iou-min": {
+    "value": 0.0,
+    "why": "SUSPENSION, EXPRESSED - the halt's assert vacuous while per-view IoU computes and prints; this subject derives its own bound from its own twins' spread, or keeps reporting.",
+    "from": "E08 A27; _gates.reg_iou_min"
+   },
+   "bbox-tol": {
+    "value": 9.99,
+    "why": "Vacuous ON PURPOSE - A27 demoted the assert to a diagnostic; 0.25 is W3 data.",
+    "from": "E08 A27"
+   },
+   "facing-min": {
+    "value": 0.45,
+    "why": "FIRST-RUN OPERATING POINT at the accepted route's value, explicit because silence resolves to inheritance (Finding B).",
+    "from": "accepted on all three prior subjects"
+   },
+   "edge-dist": {
+    "value": 7.0,
+    "why": "FIRST-RUN OPERATING POINT. A ratio scaled per view by figure width over edge-ref, bounded below by edge-floor and locally by the A3 invariant. THE BLADE CAVEAT rides here: at ~60-110 px of blade width the local half-width bound is what protects a thin structure from a global peel (the global-constant/local-feature law, measured on the E07 blade at exactly this class) - the thin cost curve reports what the mask withholds before any twin projects.",
+    "from": "ship/beast pattern; CLAUDE.md global-constant law"
+   },
+   "edge-ref": {
+    "value": 700.0,
+    "why": "THE TUNING CONSTANT, deliberately NOT re-derived per subject: 700 is the figure width edge-dist 7.0 was tuned against; the tool scales per view, so the ratio generalises by construction.",
+    "from": "project_twins.py:65-68; E04 Ruling 14"
+   },
+   "edge-floor": {
+    "value": 2.5,
+    "why": "FIRST-RUN OPERATING POINT - the never-erode-less floor.",
+    "from": "ship/beast pattern"
+   },
+   "head-facing-min": {
+    "value": 0.45,
+    "why": "EQUAL TO facing-min ON PURPOSE - E14 Ruling 4: ALLOCATION NONE, on the mesh's own evidence (hilt density contrast 1.135x, the lowest the route has measured; the pinch prior says a crop reconstruction buys pinches, not polygons). The band machinery runs inert; Director-overrulable in a sentence.",
+    "from": "E14 Ruling 4"
+   },
+   "head-edge-dist": {
+    "value": 7.0,
+    "why": "EQUAL TO edge-dist - same inert-band reasoning.",
+    "from": "E14 Ruling 4"
+   },
+   "bg-de": {
+    "value": 10.0,
+    "why": "THE METRIC WINDOW, unchanged on purpose - comparability with the recorded A2 baseline.",
+    "from": "E08 A2; E04 Ruling 21 precedent"
+   },
+   "bg-max-pct": {
+    "value": 100.0,
+    "why": "SUSPENSION, EXPRESSED - the quantity is antialiased rim mixing, which scales with PERIMETER, and a thin blade is proportionally MORE perimeter than any prior subject (the suspension's reasoning bites hardest here). The diagnostic computes and prints per view; a perimeter-normalised bound can derive from clean data after the atlas exists.",
+    "from": "E04 Ruling 21; CLAUDE.md perimeter-not-area law"
+   },
+   "power": {
+    "value": 6.0,
+    "why": "FIRST-RUN OPERATING POINT at the code default - explicit so it is a decision, not silence.",
+    "from": "ship/beast pattern"
+   },
+   "edge-min-struct": {
+    "value": 50,
+    "why": "FIRST-RUN OPERATING POINT at the code default - explicit so it is a decision, not silence.",
+    "from": "ship/beast pattern"
+   }
+  },
+  "bake_hero_prep.py": {
+   "head-scale": {
+    "value": 1.0,
+    "why": "ALLOCATION: NONE, RULED - E14 Ruling 4. 1.0 is the identity in the scaling line, so the band machinery runs inert. PRE-STATED READING: the bake's ANDONs were written for characters (n_head > 500; the scale-preservation assert); if any fires on this mesh it is an expressibility limit - report and HALT, do not tune.",
+    "from": "E14 Ruling 4"
+   },
+   "crop": {
+    "value": "360,240,700,600",
+    "why": "The code default, EXPLICIT because silence resolves to inheritance. Inert at head-scale 1.0; it is W3's face rect by lineage and no prop meaning is claimed for it - the measured hilt box lives in hilt_00001.json if a future arm wants a real one.",
+    "from": "ship/beast pattern"
+   },
+   "res": {
+    "value": 4096,
+    "why": "FIRST-RUN OPERATING POINT at the accepted subjects' value; prep has not run on this subject.",
+    "from": "all three prior subjects' prep bakes"
+   },
+   "crop-res": {
+    "value": 1024,
+    "why": "FIRST-RUN OPERATING POINT; inert alongside head-scale 1.0.",
+    "from": "prior subjects' value"
+   },
+   "unseen-strip": {
+    "value": 24.0,
+    "why": "FIRST-RUN OPERATING POINT at the accepted subjects' value.",
+    "from": "prior subjects' value"
+   }
+  },
+  "brush_cloud_step.py": {
+   "_not_on_route": {
+    "lane": "SUPPLIED PER INVOCATION, never from this profile - brush_cloud_step.py calls subject_profile.bind() ZERO times; the in-tool E10 Ruling 6 pre-flight maps lane -> fixture key and corroborates against the job's state identity, no skip flag. On the prop no lane runs until the stroke lifecycle clears (texpass_brush._NOT_CLEARED). The _per_invocation rename (E12 Ruling 6d's minted fifth form) remains in the standing errand batch; this entry uses the recognized form until that migration runs on all profiles together.",
+    "from": "E12 Rulings 5c/6d; ship/beast form"
+   }
+  },
+  "texpass_brush.py": {
+   "_NOT_CLEARED": "FORBIDDEN on the prop until this block carries ruled values - the ship's Ruling 14/22/23 lifecycle, inherited whole, held by the beast from handoff 2 to its stroke-lane ruling exactly as designed. The stroke set, spiral order, prompts and recipe keys all derive from stage 1's hole map at this subject's own stroke-lane ruling; nothing here until stage 1 has run and reported.",
+   "_THE_RECIPE_NUMBERS_DO_NOT_REACH_THE_CLOUD_GRAPH": "Inherited finding (E04 stroke derivation): generation is cloud-only through brush_cloud_step.py, which binds NO profile - it carries its own DEFAULTS and reads prompt/negative from the prompts file. Agreement is by value, not construction; the stroke-clearing ruling re-verifies it per stroke. The no-LoRA graph path exists since E13 handoff 15 step 0, anchored on the ship's recorded graphs."
+  },
+  "texpass_iter.py": {
+   "_not_on_route": {
+    "yaw": "SUPPLIED PER STROKE from the future brush-prompts _order, never from this profile - no single value can be correct, and the tool default (90.0) must not arrive by silence.",
+    "el": "Same - elevation comes from the job key when strokes exist."
+   },
+   "margin": {
+    "value": 1.204,
+    "why": "The framing family on the third consumer, pinned at draft.",
+    "from": "E14 Gate 0; E04 Ruling 25"
+   },
+   "aspect": {
+    "value": "240,1024",
+    "why": "The third consumer, pinned from day one (the E04 Ruling 12 lesson).",
+    "from": "E04 Ruling 25; E14 Gate 0 section 10"
+   },
+   "fit-axis": {
+    "value": "height",
+    "why": "Moves WITH aspect on the third consumer; this subject's family value.",
+    "from": "E04 Ruling 25; E14 Gate 0"
+   },
+   "facing-min": {
+    "value": 0.25,
+    "why": "FIRST-RUN OPERATING POINT at the code default; stage 2 has not run on this subject.",
+    "from": "ship/beast pattern"
+   },
+   "edge-dist": {
+    "value": 4.0,
+    "why": "FIRST-RUN OPERATING POINT at the code default; stage 2 has not run on this subject.",
+    "from": "ship/beast pattern"
+   },
+   "mask-dilate": {
+    "value": 9,
+    "why": "FIRST-RUN OPERATING POINT at the code default; stage 2 has not run on this subject.",
+    "from": "ship/beast pattern"
+   }
+  },
+  "restylize_views.py": {
+   "_backdrop_is_a_PROMPT_word_not_a_flag": "S-backdrop is delivered by prompt text once derived (_still_suspended.backdrop_derivation); --bg is the CLAY render's compositing colour for the control image, a different operand entirely (E01's contrast fix).",
+   "bg": {
+    "value": "0,0,0",
+    "why": "FIRST-RUN OPERATING POINT at the value all accepted subjects' controls were built with.",
+    "from": "E01 contrast fix; E04 Ruling 25 anchor"
+   },
+   "seed": {
+    "value": 770700,
+    "why": "FIRST-RUN OPERATING POINT at the accepted route's value; no prop generation has run. The styled target pair, once ruled, becomes this subject's own anchor. The 21c seed-view caveat rides: term resistance at this seed is a re-roll, not a naming failure.",
+    "from": "prior subjects' spent value; E12 Ruling 21c"
+   },
+   "steps": {
+    "value": 20,
+    "why": "FIRST-RUN OPERATING POINT at the accepted route's value.",
+    "from": "prior subjects' spent value"
+   },
+   "cfg": {
+    "value": 2.5,
+    "why": "FIRST-RUN OPERATING POINT at the accepted route's value.",
+    "from": "prior subjects' spent value"
+   },
+   "denoise": {
+    "value": 0.92,
+    "why": "FIRST-RUN OPERATING POINT at the accepted route's value.",
+    "from": "prior subjects' spent value"
+   },
+   "lora-w": {
+    "value": 0.0,
+    "why": "RULED DAY ONE - E14 Ruling 5a, the Director's sentence at designation ('Ultra-realistic, no LoRA'), decided fresh per the style-registers law rather than inherited from the beast's identical value. The register terms ride in the prompt tail (fixture STYLE-SUPPLIED). The no-LoRA restylize path exists since E12 handoff 4, guarded by the inverted pre-flight.",
+    "from": "E14 Ruling 5a; docs/style-registers.md"
+   },
+   "cn-strength": {
+    "value": 0.9,
+    "why": "FIRST-RUN OPERATING POINT at the accepted route's twin-stage value (the brush stage runs 1.0 - different operand).",
+    "from": "prior subjects' spent value"
+   },
+   "contour-width": {
+    "value": 3,
+    "why": "FIRST-RUN OPERATING POINT at the accepted route's control-construction value.",
+    "from": "prior subjects' spent value"
+   },
+   "negative": {
+    "value": "watermark, text, logo, blurry, photo, deformed",
+    "why": "FIRST-RUN OPERATING POINT at the generic negative all accepted subjects generated on; subject-specific terms are earned with measurements, the W3 way.",
+    "from": "prior subjects' spent value"
+   },
+   "prompt": {
+    "value": "a longsword, a battle-worn steel blade with a raised central ridge, a blackened iron crossguard, a gold diamond boss at the crossing, an oxblood leather grip wrap, a dark garnet gem pommel, ultra-realistic, worn metal, harsh directional light",
+    "why": "PROTECTIVE TRANSCRIPTION (the E04 Ruling 22 class): the code default is the literal W3 identity string, the named accident class. Transcribed from canon/LONGSWORD-IDENTITY.md's five elements in the comma-list form (every element its own noun phrase - the Ruling 9c grammar), with the ruled register tail. THE BACKDROP WORD IS ABSENT ON PURPOSE: it joins this string when the derivation rules it (_still_suspended.backdrop_derivation) - the beast's entry followed the same sequence. AUTHORED UNDER THE REGISTER from birth (the 12e lesson): every colour word names a material that IS its colour; no family word rides more surfaces than it owns; gold appears once.",
+    "from": "E14 Ruling 5b; canon/LONGSWORD-IDENTITY.md; E04 Ruling 22 form; E12 Rulings 9c/12e"
+   }
+  },
+  "cull_unseen.py": {
+   "_why_this_is_here": "E06 rule: the exterior visibility superset must COVER every production camera. The code default (24-yaw sweep + 0,55 + 180,55) covers the eye-level eight; if the elevated question (_still_suspended.cameras_elevated) ever adopts a camera outside it, the list re-issues as the union in the same ruling - a superset, never a narrowing.",
+   "production": {
+    "value": "0,0;15,0;30,0;45,0;60,0;75,0;90,0;105,0;120,0;135,0;150,0;165,0;180,0;195,0;210,0;225,0;240,0;255,0;270,0;285,0;300,0;315,0;330,0;345,0;0,55;180,55",
+    "why": "The code default sweep, explicit so the coverage requirement is visible. Covers stage 1's eight eye-level yaws. PENDING the elevated measurement: any adopted elevated camera not in this list forces the union re-issue.",
+    "from": "E06 superset rule; cull_unseen code default"
+   },
+   "min-seen": {
+    "value": 0.3,
+    "why": "FIRST-RUN OPERATING POINT at the code default; cull has not run on this subject.",
+    "from": "ship/beast pattern"
+   },
+   "max-seen": {
+    "value": 0.9,
+    "why": "FIRST-RUN OPERATING POINT at the code default; cull has not run on this subject.",
+    "from": "ship/beast pattern"
+   }
+  }
+ },
+ "cameras": {
+  "_stage_assignment": "The eye-level eight are STAGE 1 - the twin cameras, eye-level by construction on every subject (an elevated twin would be a Step-0-class capability, recorded as available and NOT opened - the ship's ruling, inherited).",
+  "eye_level": {
+   "value": [0, 45, 90, 135, 180, 225, 270, 315],
+   "why": "Eight yaws at elevation 0, the Gate 0 render set. What fraction of this subject's surface they reach is measured by the dispatch's ceiling pass, not assumed. THE MIRROR CAVEAT bites hardest here: a bilaterally symmetric subject's mirror-pair views (0/4, 1/5, 2/6, 3/7) produce near-identical silhouettes as PAIRS AND across pairs - any instrument normalising by per-view silhouette area inherits both E12 9b/16f caveats amplified.",
+   "from": "E14 Gate 0; E12 Rulings 9b/16f"
+  },
+  "elevated": {
+   "value": [],
+   "status": "SUSPENDED - the dispatch measures up-facing coverage per candidate set, the ship/beast method, greedy by marginal gain with ray density quoted (the 7b law)",
+   "why": "Not assumed in either direction. The prior to bet on or against: a tip-standing sword presents almost no up-facing area (quillon tops, the pommel's flat top facet - the z-max slab measured 0.10% of surface at Gate 0), so NONE is likely - but the beast's lesson is that this subject class has no working prior until measured.",
+   "from": "E12 Ruling 7 method; E14 Gate 0 section 8"
+  }
+ },
+ "backdrop": {
+  "value": null,
+  "status": "SUSPENDED - owned by the measurement dispatch (S-backdrop)",
+  "why": "Derived per subject, never inherited - and on this subject the derivation IS the point: S-steel means the backdrop must hold L1 (near-achromatic steel) furthest of all elements, and CANNOT be any grey (the five-times-measured trap: W3's 'plain grey background' scored under the key's own cut on the beast, and steel-on-grey is the E07 blade failure's exact mechanism). Declared hue occupancy at authoring: steel/iron achromatic, gold warm yellow, oxblood + garnet wine-red - BLUE-VIOLET PRE-REGISTERED AS UNOCCUPIED, an expectation the derivation CHECKS rather than assumes (the 8a/15i lesson: occupancy claims go stale; the beast's did within a day of the pair existing).",
+  "from": "canon/LONGSWORD-IDENTITY.md S-backdrop and S-steel; E12 Rulings 8a/15i"
+ },
+ "_still_suspended": {
+  "thin_extent": "OWNED BY THE MEASUREMENT DISPATCH: the fresh cost curve (fraction of visible figure withheld per candidate value, and separately WHAT FRACTION OF THE BLADE each candidate withholds - the blade is this subject's membrane-analog and its whole point). THE BOX-SECTION CAVEAT rides the curve: the blade is hollow (E14 Ruling 3) - total outer thickness ~0.0208 at mid-blade around a cavity - and the two-sided extent probe reads OUTER-TO-OUTER (~0.021), not wall thickness (~0.002), so the curve is honest about apparent thinness and silent about the walls; stated so nobody discovers it mid-experiment. NO inherited value transfers (character 0.03 figure-derived / ship 0.01 filament / beast 0.005 wing-artifact-criterion). The VALUE is decided at this subject's own ruling with the curve and artifact crops in the room - the beast's deferral pattern, which held. Until then texpass_iter's key is deliberately absent: undecided runs the guard DISABLED (tool default 0.0), the beast's own mid-arc state.",
+  "cameras_elevated": "OWNED BY THE MEASUREMENT DISPATCH: up-facing coverage per candidate set, greedy by marginal gain, ray density quoted (the 7b law - a first-hit figure without its ray density is not a number). See cameras.elevated for the prior.",
+  "backdrop_derivation": "OWNED BY THE MEASUREMENT DISPATCH: the S3 method - maximise the minimum distance from every declared material, saturated optima disqualified, weighted toward L1 (S-steel holds the risk) - then the WORD is chosen at a ruling, never by the metric alone (the 8a lesson: the metric could not separate hue families on the beast and the eye ruled). The blue-violet expectation is checked at derivation.",
+  "canny_pair": "OWNED BY THE MEASUREMENT DISPATCH - THE LAW IS PER-SUBJECT DERIVATION (E12 Rulings 10c/11a: the accepted route's 0.4/0.8 was falsified on grey-on-grey clay, and THIS clay is the same class): run the rung ladder on the designated clay's own renders, works-perfectly test FIRST (what does the lower pair admit that is NOT relief - the beast's ladder found wandering iso-luminance contours in flat fields at the bottom rungs, caught by eye then instrumented), report control px per rung per view, and the pair is RULED before the styled pair generates. The restylize keys are deliberately absent until then - the sweep counting them UNDECIDED is the expected state, exactly as the beast's thin-extent was.",
+  "palette_bands": "Derive from the fixture's named materials AFTER the styled target pair exists, cross-checked against the pair - never against the twins they will gate (non-circularity, kept). PRE-REGISTERED HAZARD, named at authoring: L1 steel and L2 iron are BOTH below any chroma floor by construction - they cannot carry hue bands at all, and their separation is by VALUE (the achromatic channel, 17d's permanent member, is the instrument that sees them; the hue gate is blind to this subject's two largest elements BY DESIGN). The band candidates are gold (warm) and the wine family (oxblood + garnet, likely one merged band - the D4/D5/D10 merge precedent). Suspend rather than invent; the dark-rows shadow caveat (15j) will bite on blackened iron exactly as it bit on charcoal.",
+  "generation_recipe_anchor": "FIRST-RUN OPERATING POINTS until the styled target pair is generated and RULED; the pair then becomes this subject's own anchor and the restylize keys read SPENT with it as provenance (the ship's Ruling 6 pattern, held on the beast).",
+  "stroke_lane": "Spiral order, brush prompts and stroke cameras all derive from stage 1's hole map - the ship's Ruling 23 lifecycle, held by the beast. Nothing here until stage 1 has run and reported.",
+  "twin_prompts_build": "The committed builder runs AFTER the backdrop word is ruled (the string is incomplete without it); the one-string-vs-per-view check runs against the actual renders at build time (see _fixtures.twin_prompts)."
+ },
+ "_tools_not_on_route": {
+  "verify/head_render.py": "W3's head instrument; no prop referent. Hilt evidence came from the Gate 0 landmark method and lives in hilt_00001.json.",
+  "verify/mesh_stats.py": "Ran at Gate 0 with NO --profile (the byte-identity path) - and its front-view-rect warning DID NOT FIRE on this class (E14 Ruling 2d; the character proxy passes on a tip-standing prop). It may still be run - shells and extents measure any mesh identically - but its head-derived columns have no prop referent and the silent-warning finding is why _gates.head_rect_metrics exists.",
+  "smart_decimate.py": "Expected NOT on this subject's route: the ship and beast ran raw TRELLIS output with native UVs end to end. If prep reports otherwise on this mesh, that is a finding for a ruling, not a silent decimation. NOTE S-wrap if it ever runs: the shell census and wrap-band non-manifold count report before and after (the fixture's stressor)."
+ }
+}
