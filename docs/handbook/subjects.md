@@ -216,36 +216,48 @@ values live in its own profile and fixture, never inherited unmeasured.
   manifest under the lane's 1.3.0), the ingest paste, then the
   [E15 context index](../experiments/E15-context-index-kickoff.md), then E14.
 
-## The longsword (STAGED, DEFERRED — class ruled 2026-08-07)
+## The longsword (DESIGNATED 2026-08-07 — measurement pass dispatched)
 
-- **The route's fourth subject class: `prop`** (ruled at the 2026-08-07 relief —
-  profiles name classes, fixtures name subjects: character / ship / beast / prop).
-  Three clay candidates staged at `E:\AI\training\facet_next\longsword_clay\` and
-  viewed at full size by the advisor; **Gate 0 dispatch written and DEFERRED by the
-  Director's sequencing word** (2026-08-07: the context-architecture index builds
-  first, once the beast profile completes, so data does not accumulate ahead of the
-  index) — three TRELLIS reconstructions, designation at the Director's eye
-  ([E14-executor-kickoff.md](../experiments/E14-executor-kickoff.md)). Fixture,
-  profile and register all follow designation; the occupancy audit runs at fixture
-  authoring, day one.
-- What the class brings that no prior subject carried: the dominant surface is a
-  **near-2D thin slab at figure scale** (the E12 membranes were the subject's
-  stressor; here the sheet IS the subject), high bilateral symmetry, hard planar
-  facets (the gem pommel), a helical grip wrap — and steel, the measured grey-on-grey
-  class from E07's blade lessons, finally on home ground (texture-stage priors,
-  recorded for the spec).
+- **Record:** [E14-ruling.md](../experiments/E14-ruling.md), Rulings 1–5;
+  [Gate 0 report](../experiments/E14-gate0-report.md). Fixture:
+  [canon/LONGSWORD-IDENTITY.md](../../canon/LONGSWORD-IDENTITY.md) (five L-elements —
+  the compact case; occupancy audit at authoring, day one). Profile:
+  `profiles/prop.json` — drafted from Gate 0, not yet swept; canny pair, backdrop
+  and thin-extent deliberately suspended to the measurement dispatch.
+- **Designated: candidate 00001** ("00001 is my favorite") — 1 welded shell at
+  1.000000, **zero boundary edges** (the cleanest topology the route has recorded,
+  on all three candidates), 121 non-manifold edges with the grip wrap as the pinch
+  locus. The softer pommel apex and lumpier wrap are designated-in as subject facts.
+- **Register ruled day one, chosen fresh** (Director: "Ultra-realistic, no LoRA")
+  — the style-registers law executed at designation for the first time; the fixture
+  was authored *under* the register (every colour word names a material that IS its
+  colour), applying the dragon's 12e lesson at birth instead of after a rejection.
+- Gate 0's class headlines: **the route's first portrait subject**
+  (widest-horizontal/height 0.2258 — the framing family pins HEIGHT here, per
+  subject, where the beast pinned width); **THE HOLLOW FINDING** — every
+  reconstruction the route has made is a double-walled shell, walls ~two voxels,
+  measured with the accepted dragon and galleon as controls (route-wide,
+  [E14 Ruling 3](../experiments/E14-ruling.md), CLAUDE.md constraint extended);
+  and the **pinch prior** — fine relief becomes non-manifold pinching at constant
+  density, not denser mesh, so allocation ruled NONE on the lowest density
+  contrast the route has measured (1.135×).
+- **In flight:** handoff 2 — the measurement pass (sweep, prep bake, pre-registered
+  reach ceiling, fresh thin curve with the blade reported separately, the elevated
+  question, then TWO advisor rulings — the per-subject canny pair and the backdrop
+  word, S-steel constraining both — before the styled target pair generates at
+  views 0 and 1). Steel's first meeting with the realism register.
 
 ## The calibration table this page exists for
 
-| quantity | character | galleon | dragon |
-|---|---|---|---|
-| welded shells | 40–191 | 237–512 | **9–12** |
-| widest-horizontal / height | ~0.46–0.72 | 1.04–1.11 | **1.61–1.74** |
-| reach ceiling (of valid, as recorded) | 74.1% | 42.72% | **50.46%** |
-| off-surface at birth (>1 px) | 2.5840% | 2.4967% (full bake) | 2.6430% |
-| off-surface composition | paint-**depleted** (stage-1 1.94%, reach 0.899×) | paint-**enriched** (stage-1 3.06%, reach 1.426×) | *no consumers yet* |
-| accepted mix, as recorded (ref/brush/dilation) | 68.8 / 4.2 / 27.0 | 36.89 / 6.87 / 56.24 | **44.15 / 3.07 / 52.78** |
-| on-surface restatement — **the standing family** | 74.30 reach / 69.28 styled / 26.43 dilation | 42.25 / 36.68 / 86.8 / 56.44 / 6.89 | born on-surface; **87.49 / 2.86 / 9.65 of reachable** |
+| quantity | character | galleon | dragon | longsword |
+|---|---|---|---|---|
+| welded shells | 40–191 | 237–512 | **9–12** | **1–331** (00002's 331 = inner-wall fragments, not detail) |
+| widest-horizontal / height | ~0.46–0.72 | 1.04–1.11 | **1.61–1.74** | **0.226–0.358** (first portrait) |
+| reach ceiling (of valid, as recorded) | 74.1% | 42.72% | **50.46%** | *dispatch owns it* |
+| off-surface at birth (>1 px) | 2.5840% | 2.4967% (full bake) | 2.6430% | *dispatch owns it* |
+| off-surface composition | paint-**depleted** (stage-1 1.94%, reach 0.899×) | paint-**enriched** (stage-1 3.06%, reach 1.426×) | *no consumers yet* | — |
+| accepted mix, as recorded (ref/brush/dilation) | 68.8 / 4.2 / 27.0 | 36.89 / 6.87 / 56.24 | **44.15 / 3.07 / 52.78** | — |
+| on-surface restatement — **the standing family** | 74.30 reach / 69.28 styled / 26.43 dilation | 42.25 / 36.68 / 86.8 / 56.44 / 6.89 | born on-surface; **87.49 / 2.86 / 9.65 of reachable** | — |
 
 Three lessons live in this table. **Subject properties do not interpolate** — the
 dragon's shells and reach landed outside any band the two priors suggest, in opposite

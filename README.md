@@ -317,17 +317,43 @@ dataset asset #3, the first manifest under the lane's 1.3.0 contract), the
 ingest, then the [E15 context index](docs/experiments/E15-context-index-kickoff.md),
 then E14.
 
-**E14 — the prop arc — is STAGED and DEFERRED**
-([E14-executor-kickoff.md](docs/experiments/E14-executor-kickoff.md)): the route's
-fourth subject class (`prop`, ruled 2026-08-07), three longsword clay candidates
-staged and viewed at full size, Gate 0 dispatch written — three TRELLIS
-reconstructions, designation at the Director's eye. **Launch is sequenced by the
-Director's word (2026-08-07): the context-architecture index
-([docs/context-architecture.md](docs/context-architecture.md)) is built first, once
-the beast profile completes, so the record's data does not accumulate ahead of the
-index that serves it.** The first subject whose dominant surface is a near-2D thin
-slab at figure scale; the E07 blade lessons (steel's chroma floor, grey-on-grey
-keying) are the spec's named priors, on home ground at last.
+**E14 — the prop arc — is IN FLIGHT: designated same day, measurement pass
+dispatched** ([E14-ruling.md](docs/experiments/E14-ruling.md), Rulings 1–5): the
+route's fourth subject class and its **first portrait subject**
+(widest-horizontal/height 0.2258 — the framing family pins HEIGHT here, per subject,
+where the beast pinned width). Gate 0 reconstructed all three longsword clays with
+the **cleanest topology the route has recorded** (zero boundary edges on all three)
+and produced a route-wide headline while chasing a sword anomaly: **every
+reconstruction this route has made — the accepted dragon and galleon as controls —
+is a hollow double-walled shell**, walls almost exactly two voxels of the 1024³
+grid, invisible for eleven experiments because the route only touches visible
+surface ([Ruling 3](docs/experiments/E14-ruling.md); the CLAUDE.md standing
+constraint now carries it). The pinch prior joined it: **fine relief becomes
+non-manifold pinching at constant density, not denser mesh** — the pinch locus is
+the grip wrap, not the cutting edges, and allocation ruled NONE on the lowest
+density contrast the route has measured (1.135×). **Designated: 00001** ("00001 is
+my favorite"); **register ruled day one, chosen fresh** ("Ultra-realistic, no
+LoRA") — the fixture ([LONGSWORD-IDENTITY.md](canon/LONGSWORD-IDENTITY.md), five
+elements, occupancy audit at authoring) was authored *under* the register, applying
+the dragon's palette lesson at birth. `profiles/prop.json` is drafted with the
+canny pair, backdrop and thin-extent deliberately suspended to the measurement
+dispatch — **S-steel is the subject's declared point**: the five-times-measured
+grey-on-grey class, at home, with two advisor rulings gating any generation.
+
+**E15 — the context index — is LIVE and ruled**
+([E15-ruling.md](docs/experiments/E15-ruling.md), 9 rulings):
+`tools/facet_index.py` (build / verify / q / claims) generates
+`docs/index/facet.db` — SQLite + FTS5 over the whole record, **ruling documents
+discovered by sorted glob with an inverse guard**, verified on four legs
+(byte-identical determinism across interpreters, counts against independent greps,
+zero dangling pointers over 1,000+ rows, a 14-question seeded gate) at **two
+seats' hands**. The verifier found E04's true ruling count (29, where the prose
+said 28 at three sites) by counting the record itself, and its own two self-caught
+defects minted a law: **a status is read from a convention's position, never
+matched in narrative prose**. The standing ritual: every advisor fold ends
+`build` + `verify`; the DB commits at session boundaries; kickoffs carry one build
+line after `git pull`. A session queries instead of reading — forty lines instead
+of six hundred.
 
 **Form first, style second.** Image-to-3D reconstructors key off shading, silhouette
 clarity and unambiguous depth. A heavily stylized sprite — weathered planks, painted

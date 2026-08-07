@@ -3,7 +3,8 @@
 Every constant in this pipeline was originally calibrated on one standing human figure,
 and until the profile system existed nobody could say which constants were *principles*
 and which were **that warrior's measurements wearing a principle's clothes**. A profile
-(`profiles/character.json` · `ship.json` · `beast.json`) is where the second kind lives.
+(`profiles/character.json` · `ship.json` · `beast.json` · `prop.json`) is where the
+second kind lives.
 The Director's charter for the system: *"create profiles so that we don't break the
 humanoid character pipeline to make the ship."* It worked — the record is the record.
 
@@ -53,20 +54,24 @@ registry sweep (below) enforces it:
   (profile values = code defaults, digit for digit). `NOT A PURE RELOCATION` on any
   other subject's profile is the expected verdict, not a finding.
 
-## Registry state (2026-08-05)
+## Registry state (2026-08-07)
 
 | profile | sweep | note |
 |---|---|---|
 | `ship.json` | **81/81, exit 0** | the first profile with every flag on an accepted route explicitly decided |
-| `beast.json` | 80/81 | the 1 is `thin-extent`, deliberately undecided until the stroke-lane ruling — the tool default is **0.0, guard disabled**, which is why no arm precedes the decision (E12 Rulings 5d/7c) |
+| `beast.json` | **83/83, exit 0** | certified at E13 handoff 15 step 0 — the gate the texture arms waited on since handoff 2, passed after Ruling 26's transcriptions (*the count read 80/81 mid-arc; flags grew as the arc added registry slots*) |
 | `character.json` | 65/81 | that profile's silences-as-defaults predate the sweep; its relocation claim holds with one standing mismatch (`thin-extent` 0.03 vs source default 0.0 — the only profile that ever turned the guard on) |
+| `prop.json` | drafted, NOT YET SWEPT | the handoff-2 dispatch owns the sweep; expected deliberate UNDECIDEDs pre-stated there: `thin-extent` and the canny pair (both owned by measurements, the beast's deferral pattern) |
 
 ## The framing family
 
-`aspect`, `fit-axis` and `margin` move together across **three consumers**
-(`turn_render`, `silhouette_masks`, `texpass_iter`) or landscape subjects silently
-misregister — a lesson paid for twice on the ship (Rulings 6/11/15/25: a clipped frame
-found at the third consumer, and a generator-illegal width that broke every
-twin↔silhouette pairing — the Qwen VAE decodes ÷8, so **derive the frame from the mesh,
-then round to the nearest legal width, ÷16 preferred**). `beast.json` pins the family on
-all three consumers from day one.
+`aspect`, `fit-axis` and `margin` move together across **four consumers**
+(`turn_render`, `silhouette_masks`, `texpass_iter`, and `project_twins` since E12
+Rulings 24a/26a exposed and completed its slots) or subjects silently misregister — a
+lesson paid for twice on the ship (Rulings 6/11/15/25: a clipped frame found at the
+third consumer, and a generator-illegal width that broke every twin↔silhouette pairing
+— the Qwen VAE decodes ÷8, so **derive the frame from the mesh, then round to the
+nearest legal width, ÷16 preferred**). **And the family pins PER SUBJECT**: the beast's
+fit axis is width (landscape, 1.74), the prop's is **height** (the route's first
+portrait subject, 0.226) — importing one subject's family value onto another
+misregisters every mask, which is why `prop.json`'s entries say so explicitly.

@@ -2,10 +2,11 @@
 
 A styled 2D concept goes in; a textured 3D asset comes out. Everything runs on one
 local machine plus a metered cloud generation step, and nothing in the chain carries a
-non-commercial licence. **Three subject classes have been through the route: a
-character (accepted), a galleon (accepted), and a dragon (in flight)** — each with
-every subject value in its own profile and identity fixture, so no subject can break
-another's path.
+non-commercial licence. **Four subject classes have entered the route: a character
+(accepted), a galleon (accepted), a dragon (ACCEPTED 2026-08-07 — the third accepted
+asset, zero credits across its entire arc), and a longsword (designated, its
+measurement pass dispatched)** — each with every subject value in its own profile and
+identity fixture, so no subject can break another's path.
 
 This handbook is the guide. [The README](../../README.md) is the measured state of every
 tool, and [docs/experiments](../experiments/) is the evidence — every claim here traces to
@@ -193,7 +194,7 @@ against a 1.07 no-response floor — accepted, with the boundary recorded in eve
 | weld + density allocation | seconds, local |
 | visibility classification | seconds, local |
 | prep bake (4096 atlas) | ~4–5 min, local |
-| twins | ~1 min per view, cloud — **zero credits across every E04 and E10 generation** |
+| twins | ~1 min per view, cloud — **zero credits across every E04, E10 and E12/E13 generation** |
 | projection, finalize, pack, renders | ~2 min, local |
 | brush loop (per stroke) | ~1 min, cloud |
 | dense-turnaround export + lane validation | minutes, local CPU |
@@ -269,17 +270,22 @@ asset into a self-contained, sha-linked training tree: per-camera flat renders w
 **exact silhouettes**, born-indexed provenance class maps, per-texel owner slices where
 the asset has them, and the clay↔styled-twin pairs. The export is a **pure function**
 (byte-identical on re-run), the shared views are byte-anchored to the recorded sheets,
-and the sdlab lane's own validator ingests both existing subjects **without schema
-edits** — both dense trees are registered in the lane as of 2026-08-06 (28/28 and
-26/26, zero rejections). Flat-only is the honest export: backgrounds are
-augmentation-side (composite anything behind the exact silhouette), and lighting would
-be a new renderer with its own anchors.
+and the sdlab lane's own validator ingests every subject **without schema edits** —
+**three dense trees are registered in the lane** (galleon 28/28, W3 26/26, and the
+dragon 26/26 as of 2026-08-07: **dataset asset #3**, the first manifest born declaring
+its subject name, style register, tone-transform provenance and derivation kind under
+the lane's 1.3.0 contract, ingested live at zero gap notices). Flat-only is the honest
+export: backgrounds are augmentation-side (composite anything behind the exact
+silhouette), and lighting would be a new renderer with its own anchors.
 
 **⚠ Durability: the lane holds texture-space channels as sha-verified POINTERS**
 (`materialized: false`) into the export trees at
-`E:\AI\training\facet_next\E04_stroke\export\turnaround\` and
-`E:\AI\training\facet_E08\ARMB\export\turnaround\` — those directories are
-load-bearing for the dataset: do not move them, and back them up as part of it.
+`E:\AI\training\facet_next\E04_stroke\export\turnaround\`,
+`E:\AI\training\facet_E08\ARMB\export\turnaround\` and
+`E:\AI\training\facet_next\E13_stroke\export\turnaround\` — those directories are
+load-bearing for the dataset: do not move them, and back them up as part of it. (The
+list is now recorded on the lane's own side too — a dependency only the healthy side
+knows about is not a recorded dependency.)
 
 ## Licence
 
