@@ -124,3 +124,61 @@ special-cases one document to pass verify is the failure mode this repo exists t
 prevent. Negative results — conventions that cannot be parsed, questions FTS
 cannot serve — are full successes, reported as the boundary of what P1 honestly
 delivers.
+
+---
+
+## Session handoff 2 (2026-08-07) — the stale-claim sweep: a report-only verb
+
+For the P1 steward session (it has full context; citations replace restatement).
+Ruled in by the advisor on the steward's own proposal, after the class fired
+three times in one night: E04's "28 rulings" at three sites (E15 Ruling 5), the
+verifier's own completeness line (`6962946`), and the handbook's four stale
+lines including one self-contradiction inside a single file (`2b8a9b9`).
+
+### The deliverable
+
+`python tools/facet_index.py claims` — a **separate verb, report-only, never a
+gate**. The four ratified verify legs stay byte-exact as ruled (E15 Ruling 3);
+this does not join them. The diagnostic-vs-gate law is the grounds: a
+prose-claims sweep swings on phrasing and document class, which is exactly what
+must not decide an exit code. Its output is for the advisor's eye; stale sites
+are RULING items, never edits from that seat.
+
+### What it checks
+
+Every count-claim in **current-state documents** against the measured tables:
+per-arc ruling counts, handoff counts, the experiment count. The
+historical/current classification is the steward's own from tonight, applied
+mechanically and printed with each row: a kickoff or spec states its counts
+as-of-writing (historical-correct); a current-state document (README, handbook,
+experiments table, style-registers, context-architecture, CLAUDE.md, the
+advisor kickoff ABOVE its supersession banner) must match the measurement.
+Output per site: `file:line · claims · measured · classification`. The healthy
+state is zero stale rows.
+
+**Out of scope, stated**: flag-count claims ("83/83 decided") — those are the
+registry sweep's numbers, not the index's; a checker asserting them from the
+wrong instrument would be the second-authority hazard again. Phrasings the
+sweep cannot parse are REPORTED as unparseable, not guessed.
+
+### Constraints
+
+Read-only over the record and the DB — the build path and the committed DB are
+untouched (byte-identity before/after asserted in the report). The regex lesson
+from tonight rides the spec: the window must span markdown links
+(`[E12-ruling.md]`), and every phrasing family found gets a test row. Blind
+predictions first (how many stale sites remain on the current record — the
+advisor believes zero after `2b8a9b9`; a non-zero result is a finding, not a
+failure). HALT with the sweep's output on the current record, to the advisor's
+eye.
+
+### Standards compliance (this handoff)
+
+| standard | score | evidence |
+|---|---|---|
+| PIN_PER_STEP | 2 | the verb is committed code; its classification rules are printed with every row; predictions registered blind |
+| ANDON_AUTHORITY | 2 | report-only BY RULING — the diagnostic-vs-gate law applied at authoring time, not discovered later; stale sites route to the advisor |
+| NAMED_COMPENSATORS | 3 | read-only everywhere; the DB byte-identity asserted; undo is reverting one tool commit |
+| DECOMPOSE_BY_SECRETS | 3 | the sweep reads the index's measurements rather than re-deriving them; flag counts explicitly refused as another instrument's numbers |
+| UNCERTAINTY_GATED_HUMANS | 3 | the healthy-zero prediction is falsifiable; every stale row is the advisor's to rule, never the tool's to fix |
+| EXTERNAL_VERIFIER | 2 | the sweep checks prose against measurements derived from the record by independent greps; `skip:` on a second model per the arc's precedent |
