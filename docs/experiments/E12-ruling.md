@@ -1355,3 +1355,71 @@ re-roll is the lever, and no seed sweep exists); and **handoff 11 is E13
 Gate 0** — the projector's crop-camera extension with its pixel-identity
 anchor — which is capability work independent of generation and can run
 immediately.
+
+---
+
+## Ruling 21 — the exemplar rebuild ruled: Gate 0 ratified at zero pixels, view 3's cure adopted, view 4 to the Director with a recommendation (2026-08-06)
+
+Evidence: the handoff-11 report (`482a680`), the blind predictions
+(`4723129`, blob `427182f3`), and this seat's eye on the view-4 A/B, the
+view-3 A/B, the head A/B and the region crops before ruling.
+
+**21a — the halt is ACCEPTED and the session's discipline is the arc's
+standard.** Ten generations at 0 credits, six allowances unspent, sixteen
+reused inputs proven byte-identical by content hash, the sidecar written at
+birth, and two self-caught errors overturned by the executor's own
+measurements — including the view-6 floating-jaw illusion, now the
+IDENTICAL false positive from two independent executors on one view, banked
+as a perceptual caveat for that view's contact-scale reads. **The three
+committed instruments are RATIFIED** (`e12_stem_delta.py`,
+`e12_region_crops.py`, `e12_twin_readout.py`) — three prior reports rested
+on throwaway scripts; that gap is closed.
+
+**21b — E13 GATE 0 IS RATIFIED: the projector's crop-camera capability
+exists and provably changed nothing.** Zero of 16,777,216 elements
+differing on every artifact, in two directions, with the baseline
+established BEFORE the change and the new parameter path exercised
+explicitly at full-figure values on all eight views. The third parameter
+(`--crop-aspect`) was declared, reasoned, and is accepted — a 1360×1360
+crop against a 1792×1024 route frame is not expressible without it. E13 is
+unblocked at zero spend; nothing has been projected.
+
+**21c — the seed×view map is BANKED as a measured phenomenon with three
+entries**: view 4 at 770700 resists two different terms (the struts' fourth
+stem; the neck term binding 12.75% against 770701's 41.86%); view 3 at
+770700 carries a deterministic flat-black limb across independent stem
+generations (41,985 px against handoff 8's 43,999, cured at 770701 both
+times); and 770701 binds and cures both while introducing its own trades.
+The bounded re-roll is confirmed as the right lever for this class — a
+resisted term at the operating point is a re-roll, not a naming failure.
+
+**21d — VIEW 3's re-roll (770701) is ADOPTED as the exemplar view 3.**
+Verified at this seat's eye: the far foreleg carries green scaled hide with
+legible form where the retained seed painted a void. Second reproduction of
+the cure.
+
+**21e — VIEW 4 goes to the Director with this seat's RECOMMENDATION: keep
+A (770700).** Grounds, stated so a sentence can reverse them: A's nape is a
+row of discrete charcoal cones matching the clay's modelled spikes — the
+exact thing his Ruling 20 sentence asked for — where B's is the vertebral
+slab class he rejected, in charcoal; and B carries a graded backdrop, which
+is a mechanical keying hazard at projection, not a taste item. A's cost —
+cream rear-facing finger struts — is bounded at projection (view 0's green
+strut fronts take the front-facing texels) and is exactly the class E13's
+wing-crop extension can repaint at source if his eye wants it. Both
+artifacts stand in the record whichever he chooses.
+
+**21f — the standing flags ride to his eye at the exemplar bar, named
+plainly**: the crown reads charcoal where D5 declares ivory (the accepted
+dark-mane look, 18g's judge-at-the-asset stands, and the head-crop pass
+will repaint that region at bust resolution regardless); **the membranes
+read warm tan against D3's storm-grey on most views — and the base coat is
+their only paint source**, so if his bar wants them corrected it happens
+before stage 1, not after; and the three-charcoal-terms chroma finding (the
+dark family going neutral, the mirror shape of 12e's five bone terms) is
+watched, one session's measurement being no canon change.
+
+**21g — on his acceptance**: handoff 12 dispatches the E13 head-crop twins
+(with A2's texel-allocation arithmetic) and stage 1 follows on the
+completed set. The route from there is unchanged: sweep gate, strokes,
+finalize, pack, **Gate 1 at his zoom — the exemplar bar.**
