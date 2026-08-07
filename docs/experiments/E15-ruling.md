@@ -147,6 +147,58 @@ printed · flag counts stay refused in code as another instrument's numbers ·
 E14 lane's untracked diagnostic noted by the steward is that lane's business,
 untouched.
 
+## Ruling 9 — handoff 3 ruled: discovery lands with its inverse guard, the mention-vs-use boundary is named, the steward's arc is COMPLETE (2026-08-07)
+
+Evidence: the handoff-3 report (`3cd3c4f`), its blind predictions (`ea356d5`),
+and the gate at 1,093 rows.
+
+**9a — the halt is ACCEPTED and the fix is ratified ABOVE its dispatch.** The
+sorted glob discovers 12 documents and verify prints them; **the inverse guard
+the executor added unbidden — any ruling row from a file the glob does not
+discover fails the run — is the check the old construction could not express**,
+and it is exactly the failure-mode law applied forward. The arc-label subtlety
+(strip from `ruling` onward, never the E-number — else E10-offsurface's twelve
+rulings collide with E10's seven on numbers 1–7) held with every existing label
+byte-identical; prose exclusion decides by yield, not name, so the five
+zero-ruling documents keep their prose. 285 → 298 ruling rows; the DB moved
+with the builder under Ruling 8's exception; no seeded rank moved.
+
+**9b — the 1 STALE is a false positive with two owners, and both halves are
+disposed.** The sweep fired on my own parenthetical QUOTING the removed phrase
+— the note documenting the hazard reproduced the hazard, the same class as the
+handoff-1 report minting a phantom artifact by citing one. The prose half was
+this seat's error and is fixed this fold (the parenthetical now describes the
+hazard without quoting a family-matching phrase). The sweep half —
+**mention-vs-use: a text sweep cannot tell a phrase used from a phrase
+mentioned** — is NAMED as the sweep's next improvement and deliberately NOT
+built now: the one live instance is removed by the prose fix, the collision
+surface with the correction discipline's quotations is measured-narrow, and a
+classifier rule added while looking at the row it would clear earns its place
+only when the class fires on text that should stay quoted. `claims` is
+report-only by ruling, so an improvement then is instrument development, not
+retuning — stated now so the distinction is already decided when it matters.
+
+**9c — the steward's calibration failure is accepted in the form it chose,
+and this seat shares it.** It predicted 0 STALE from the dispatch's sentence
+("the row was reworded out of the family") instead of checking the reword —
+the inherited-claim class, self-identified, in the one place a prediction must
+be one's own. The dispatch's sentence was mine, and the quotation that broke
+it was mine too; the executor's re-run doing its job on both of us is the
+external-verifier pattern working across seats.
+
+**9d — banked**: `parse_prose` already skipped `## Ruling N` sections via
+`owned_hdr`, so the exclusion's measured marginal effect is −2 prose rows, not
+the predicted −6 to −14 — priced before anyone proposes removing that
+mechanism · UNPARSEABLE 4 → 3 · E15's completeness line sits quiet at the 1–8
+bound (this ruling and the next take it above; the line will say so, which is
+the convention working).
+
+**9e — THE STEWARD'S ARC IS COMPLETE**: P1 built and accepted at two seats,
+the completeness-line repair, the claims verb at 0 STALE, and the discovery
+fix with its inverse guard — four deliverables, every defect self-caught or
+caught by its own instruments, nothing touched outside its lanes. The session
+ends on the Director's word, as always; this ruling closes its work.
+
 ## Standards compliance (this ruling)
 
 | standard | score | evidence |
