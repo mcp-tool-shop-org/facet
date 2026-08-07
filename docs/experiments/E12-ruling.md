@@ -1715,3 +1715,39 @@ E08 A32) → finalize (dilation with the surface-aware caveats recorded)
 → pack → the emit renders → **the five-column sheet** (reference | asset
 | provenance | error | clay, the house form) → HALT to this seat's eye →
 **the Director's Gate 1, at the exemplar bar.**
+
+---
+
+## Ruling 26 — the handoff-15 halt ruled: both transcription errors were the advisor's, both are fixed, the strokes are released (2026-08-07)
+
+Evidence: the handoff-15 halt (`f2847a4`), its blind predictions
+(`1304b9f`, blob `38775ea`), and the sweep's own output quoted in the halt.
+
+**26a — the gate fired correctly, on this seat's work, twice over.** Ruling
+25f "cleared" the brush block by replacing the marker with a narrative
+string that QUOTED every decision and transcribed none — **a block cleared
+in prose is not a block cleared in the registry**, and the executor's P1b
+branch named the form in advance. And Ruling 24a pinned only `fit-axis` on
+the projector when handoff 13's `--margin` flag had opened a second slot —
+the framing family half-pinned on the exact consumer whose framing was the
+finding. Two independent guards caught it (the sweep, and the tool's own
+lane pre-flight from inside the irreversible step, which wrote no file).
+Both transcriptions land this fold: seven `{"value":…}` entries in
+`texpass_brush` (prompt and negative in the protective class; seed, steps,
+cfg, cn-strength at the route's values; lora-w 0.0 = no card) and `margin
+1.204` on `project_twins`. **The ledger takes the form, named: a ruling
+that decides values pays for them in registry entries, not in prose — the
+sweep reads structure, and structure is what survives a session.**
+
+**26b — the capability is RATIFIED as delivered**: the anchor passed on
+all six recorded ship graphs (byte-identical as parsed graphs, the card
+path unmoved), the no-LoRA branch differs by exactly node 5, the weight
+now flows from the profile instead of DEFAULTS (the class fix the tool's
+docstring has requested since E04 Ruling 24), and both guards were proven
+to fire before anything was trusted. The executor's halt discipline —
+capability delivered because it was ordered before the gate, then full
+stop — is exactly right.
+
+**26c — RELEASED**: with the transcriptions committed, the executor
+re-runs the sweep (expected 0 UNDECIDED, quoted with exit code) and
+proceeds to Tasks 1–3 as dispatched. Gate 1's sheet is the next halt.

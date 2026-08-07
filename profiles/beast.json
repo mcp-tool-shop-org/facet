@@ -126,6 +126,11 @@
     "why": "ADOPTED E12 Ruling 24a - the FOURTH framing-family consumer (turn_render, silhouette_masks, texpass_iter, now the projector). The tool historically derived its frame height-fit internally; handoff 13's read-before-run found it, and the width-fit derivation reproduces the recorded silhouette masks at IoU 1.000000 where height-fit measures 0.986006 - geometry, not preference. A0L (height-fit) is retained in the E13 record as the alternative's measured cost floor.",
     "from": "E12 Ruling 24a; handoff 13 report section 2"
    },
+   "margin": {
+    "value": 1.204,
+    "why": "The framing family's value on its FOURTH consumer, completing the pin Ruling 24a left half-done: handoff 13 exposed --margin as a flag (a registry slot that had not existed) and only fit-axis was transcribed - the family half-pinned on the exact consumer whose framing was the finding. The default was the right number and nothing that ran was wrong; a value arriving by silence is what the registry exists to prevent (Ruling 26a, the sweep's eighth UNDECIDED).",
+    "from": "E12 Ruling 26a; E04 Ruling 25's family law; the handoff-15 halt"
+   },
    "step": {
     "value": 45.0,
     "why": "Degrees per view index.",
@@ -230,6 +235,41 @@
    }
   },
   "texpass_brush.py": {
+   "prompt": {
+    "value": "docs/experiments/E13-brush-prompts.json",
+    "why": "PROTECTIVE TRANSCRIPTION (the E04 Ruling 22 class): the tool default is the literal W3 identity string, the named accident class. The per-stroke stems live in the ratified prompts file; brush_cloud_step resolves them through _fixtures.brush_prompts by lane. Transcribed at Ruling 26a after the sweep caught Ruling 25f clearing this block in prose - a block cleared in prose is not a block cleared in the registry.",
+    "from": "E12 Rulings 25f/26a; E13-brush-prompts.json"
+   },
+   "negative": {
+    "value": "watermark, text, logo, blurry, photo, deformed",
+    "why": "FIRST-RUN OPERATING POINT at the route's standing negative, protective-transcription class - explicit so silence cannot resolve to W3's.",
+    "from": "E12 Ruling 26a; the restylize block's precedent"
+   },
+   "seed": {
+    "value": 770700,
+    "why": "FIRST-RUN OPERATING POINT at the accepted route's value (Ruling 25f). The 21c seed-view map rides as caveat: term resistance at this seed is a re-roll, not a naming failure.",
+    "from": "E12 Rulings 25f/26a"
+   },
+   "steps": {
+    "value": 20,
+    "why": "FIRST-RUN OPERATING POINT at the accepted route's value (Ruling 25f).",
+    "from": "E12 Rulings 25f/26a"
+   },
+   "cfg": {
+    "value": 2.5,
+    "why": "FIRST-RUN OPERATING POINT at the accepted route's value (Ruling 25f).",
+    "from": "E12 Rulings 25f/26a"
+   },
+   "cn-strength": {
+    "value": 1.0,
+    "why": "FIRST-RUN OPERATING POINT at the accepted route's brush-stage value (Ruling 25f) - the twin stage runs 0.9, a different operand per the ship's recorded distinction.",
+    "from": "E12 Rulings 25f/26a"
+   },
+   "lora-w": {
+    "value": 0.0,
+    "why": "NONE BY REGISTER (Ruling 10b) - 0.0 means NO CARD: the handoff-15 step-0 capability builds the graph without the loader node (anchored byte-identical on the ship's six recorded graphs with the card present; the no-LoRA branch's symmetric difference is exactly node 5), and the weight now flows from this profile instead of the tool's DEFAULTS - the class fix the tool's docstring requested since E04 Ruling 24. The inverted pre-flight scans every node for the loader family and card string.",
+    "from": "E12 Rulings 10b/25e/26a; handoff 15 Task 0"
+   },
    "_CLEARED_BY_RULING_25": "The stroke-lane ruling (E12 Ruling 25f, 2026-08-07) paid for this clearance by deciding every key in one commit: prompts = docs/experiments/E13-brush-prompts.json (the ratified DRAFT-1 - four stroke keys y+045/y+180/y+292/y+337, committed builder, subsequence assertions); stroke set + spiral order = 292.5 -> 337.5 -> 180 -> 45 (Ruling 25d, painted-adjacency 92.34-81.87%); recipe keys FIRST-RUN OPERATING POINTS at the accepted route's values (seed 770700, steps 20, cfg 2.5, cn_strength 1.0); lora = NONE BY REGISTER via the handoff-15 step-0 capability (brush_cloud_step gains the no-LoRA graph path, anchored byte-identical on the ship's recorded graph with the card present - Ruling 25e; the hardcoded-loader gap was three layers deep and verified by building). The agreement-by-value trap below is re-verified per stroke at run time, never assumed. HISTORICAL marker preserved: '_NOT_CLEARED: FORBIDDEN on the beast until this block carries ruled values - the ship's Ruling 14/22/23 lifecycle, inherited whole.' It held from handoff 2 to the stroke-lane ruling, exactly as designed.",
    "_THE_RECIPE_NUMBERS_DO_NOT_REACH_THE_CLOUD_GRAPH": "Inherited finding (E04 stroke derivation): generation is cloud-only, so a beast stroke runs through brush_cloud_step.py, which binds NO profile - it carries its own DEFAULTS (seed 770700, steps 20, cfg 2.5, lora_w 0.75, cn_strength 1.0) and a hardcoded CLOUD_LORA, reading prompt and negative from the prompts file. Agreement is by value, not construction; the stroke-clearing ruling re-verifies it."
   },
