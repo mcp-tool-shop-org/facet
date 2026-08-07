@@ -1910,3 +1910,94 @@ alongside whatever the trained register changes. He launched both dispatched
 sessions himself the same hour — handoff 16 and E15 in flight concurrently,
 his word overriding the serial recommendation, the cross-lane guards in both
 dispatches live.
+
+---
+
+## Ruling 29 — handoff 16 ruled: the export is accepted, the operands assembly is the declaration, two dispatch errors were the advisor's; THE INGEST IS GREENLIT (2026-08-07)
+
+Evidence: the handoff-16 report (`f882631`), its blind predictions (`0ac88fa`,
+blob `e79c51a`), and this seat's own read of the manifest's four declaration
+blocks (subject_name, style, tone_transform, render_derivation — every addenda-4
+value present exactly, schema 1.3.0, zero `generation` blocks) before ruling.
+
+**29a — the halt is ACCEPTED.** No generation, no GPU, 0 credits; the read-only
+claim checked by mtime after the run and empty; the lane repo untouched before
+and after; the watchdog reported at both ends of the session. The plumbing
+committed ALONE (`0966e1a`) so the anchor baseline was measurable before any
+declaration existed — construction worth naming.
+
+**29b — the dispatch's anchor baseline was WRONG, the executor caught it before
+touching anything, and the two-anchor replacement is RATIFIED.** `renders_are`
+entered the tool after the galleon's tree was emitted (E11 Ruling 3's parked
+wording field), so HEAD already could not reproduce the committed manifest —
+by ruling, not by drift. The replacement pair is stronger than what was
+ordered: (a) HEAD-plus-plumbing differs from BOTH prior subjects' committed
+manifests by exactly `['renders_are']` with zero changed shared keys — the
+deviation is the ruling's; (b) the declaration-capable tool is byte-identical
+to the plumbing-only tool when a subject declares nothing — the capability
+that changes nothing when unused. **The ledger takes the advisor's entry: an
+anchor ordered against a baseline a ruling had already moved — the 4a family
+again, a baseline cited without checking what the record did to it since.**
+
+**29c — THE OPERANDS ASSEMBLY IS RULED: the executor's construction is the
+declaration.** The dispatch and addenda 4 said "the recorded operands file,"
+singular — **the advisor's second under-specification this handoff**: the
+ruled projection input drew from TWO files (seven views from
+`operands.json`; view 3 from `operands_v3r.json`, the 770701 cure harmonized
+in a second pass per 23f), and `operands.json`'s own v3 row describes the
+SUPERSEDED artifact. Declaring that file alone would have been a false
+provenance claim — worse than a gap, exactly as the report says. The
+assembly is adopted on its construction: exactly the eight rows A0 consumed,
+verbatim, each tagged with its source file and key, three assertions per row
+(recorded key exists · named PNG on disk · PNG sha equals the row's own
+`sha256_out` — the operands describe the projected file, not a namesake),
+both sources retained unchanged beside it. The identity-property
+confirmation (reference row correction `[0,0,0]`, sha equal to the raw
+twin) arrived from a file this session did not write — the right kind of
+corroboration. Flagging rather than resolving was correct per the seam; the
+resolution is now ruled.
+
+**29d — three constructions RATIFIED**: the owner channel's third
+configuration (numeric + per-view products ride; the `owner_view` display
+channel is honestly omitted — no display atlas was ever built for this
+subject, and synthesizing one is inventing a channel, the X2 clause applied)
+· the palette suspension's boundary translation (blob bound → the
+whole-atlas sentinel 16,777,216, unreachable and unmistakable, halting if
+canon ever grows a real bound — the E04 Ruling 29 pattern's third
+application) · the suspended blue-violet stratum NOT exported as an allowed
+band (a suspended band in a consumed list is a silently armed band — 16a's
+hazard, applied at a second boundary).
+
+**29e — banked**: the lane read the manifest at **zero gap notices, first
+run** (26 registered / 0 rejected, dry; notices exactly the two `info` lines
+THE DRAGON SHAPE asserts, and the lane's own test suite 34/0 read-only — the
+contract did not drift) · **16 of 16 recorded-artifact anchors
+byte-identical** — the strongest anchor set any export has carried, against
+the very renders the Director's verdict was read off — with the claim map
+reproducing Ruling 27e's mix TO THE TEXEL and the owner sidecar agreeing
+exactly · the per-view class table (eye-level reference 84.49–90.94%, the
+two elevated cameras 69.96/81.92%), quoted with the executor's own framing
+that its mean sitting beside 27e's 87.49% is a coincidence of construction,
+not a second measurement · **and P6's falsification as a named calibration
+lesson: a camera's visible-figure share is not readable off an atlas
+share** — the atlas's dilation half is undersides, interiors and crevice,
+not the wing tops an elevated camera looks at; the executor's three-way
+wrongness analysis is adopted verbatim.
+
+**29f — dispositions**: `renders[].tone_transform` stays omitted (optional,
+accurate but redundant beside the asset-level block; emitting it now is
+churn) · `renders_are` on the prior subjects rides the standing errand
+exactly as E11 Ruling 3 parked it · the export tree **joins the
+must-not-move list** as its third member, with the operands sidecar the one
+channel that MATERIALIZES at ingest and so survives the tree · the
+`_state` scratch (99.3 MB, galleon-consistent) is recorded, not fixed ·
+the executor's owned word-slip in a commit message is noted and closed —
+the report's own correction is the discipline.
+
+**29g — THE INGEST IS GREENLIT.** The Director's lane-side paste is the
+next act; the live run should reproduce the dry run's digits (26/0, two
+info notices, zero gaps), the operands materialization is confirmed at
+ingest, and the dragon becomes **dataset asset #3** — the first born
+declaring its register, its tone transform, its derivation kind and its
+subject name. E15 continues in its own lane; E14 waits behind it, per the
+Director's sequencing word.
