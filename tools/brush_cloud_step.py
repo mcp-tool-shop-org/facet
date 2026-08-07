@@ -51,11 +51,47 @@ CLOUD_LORA = ("mcp-tool-shop__saltroad-style-lora__"
               "saltroad_style_v2_lowlr_000001500.safetensors")
 
 
-def build_graph(render_name, mask_name, prompt, negative, seed=None):
-    """texpass_brush.py's graph, node for node, with cloud model names."""
+def build_graph(render_name, mask_name, prompt, negative, seed=None, lora_w=None):
+    """texpass_brush.py's graph, node for node, with cloud model names.
+
+    ⚠ THE NO-LoRA PATH (E12 Ruling 25e, handoff 15 step 0). This function used to insert node
+    5 — `LoraLoaderModelOnly` with the hardcoded saltroad card — UNCONDITIONALLY, with node 6
+    reading `["5", 0]`. On a subject whose register is NO CARD that is not expressible at any
+    weight: E12 Ruling 10b's ruled wording is that 0.0 "is not a weight of zero on a loaded
+    card, it is no card, and the graph is built without the loader", which is how
+    `e12_pair_cloud_step` builds the twins. The gap was three layers deep and was found by
+    BUILDING the graph, not by reading it (handoff 14 §5).
+
+    `lora_w` now comes from the SUBJECT'S PROFILE rather than from DEFAULTS — the caller reads
+    the decided `texpass_brush.lora-w` and passes it. That converts one of the five
+    coincidences-of-value into agreement by construction, which is the class fix this file's
+    own docstring has been asking for; the pre-flight below is amended to match, and it gains
+    a STRUCTURAL assertion the value check cannot make: the loader node exists if and only if
+    the decided weight is positive.
+
+    At a positive weight the graph is byte-for-byte what it always was — 17 nodes, node 5 at
+    that weight, node 6 reading ["5", 0]. That identity is not asserted by argument: it is the
+    handoff-15 anchor, which rebuilds the ship's recorded stroke graph and compares.
+    """
     d = dict(DEFAULTS)
     if seed is not None:
         d["seed"] = seed
+    if lora_w is not None:
+        d["lora_w"] = lora_w
+    if d["lora_w"] == 0.0:
+        g = _graph_common(render_name, mask_name, prompt, negative, d)
+        # no loader: ModelSamplingAuraFlow reads the UNET directly, exactly as the twins' path
+        g["6"]["inputs"]["model"] = ["1", 0]
+        return g
+    g = _graph_common(render_name, mask_name, prompt, negative, d)
+    g["5"] = {"class_type": "LoraLoaderModelOnly", "inputs": {
+        "model": ["1", 0], "lora_name": CLOUD_LORA, "strength_model": d["lora_w"]}}
+    g["6"]["inputs"]["model"] = ["5", 0]
+    return g
+
+
+def _graph_common(render_name, mask_name, prompt, negative, d):
+    """Every node except the loader and the one link that depends on it."""
     return {
         "1": {"class_type": "UNETLoader", "inputs": {
             "unet_name": "qwen_image_fp8_e4m3fn.safetensors", "weight_dtype": "default"}},
@@ -65,11 +101,8 @@ def build_graph(render_name, mask_name, prompt, negative, seed=None):
         "3": {"class_type": "VAELoader", "inputs": {"vae_name": "qwen_image_vae.safetensors"}},
         "4": {"class_type": "ControlNetLoader", "inputs": {
             "control_net_name": "Qwen-Image-InstantX-ControlNet-Inpainting.safetensors"}},
-        "5": {"class_type": "LoraLoaderModelOnly", "inputs": {
-            "model": ["1", 0], "lora_name": CLOUD_LORA,
-            "strength_model": d["lora_w"]}},
         "6": {"class_type": "ModelSamplingAuraFlow", "inputs": {
-            "model": ["5", 0], "shift": 3.1}},
+            "model": None, "shift": 3.1}},
         "7": {"class_type": "CLIPTextEncode", "inputs": {"clip": ["2", 0], "text": prompt}},
         "8": {"class_type": "CLIPTextEncode", "inputs": {"clip": ["2", 0], "text": negative}},
         "9": {"class_type": "LoadImage", "inputs": {"image": render_name}},
@@ -183,18 +216,54 @@ def preflight(gr, P, key):
         return e["value"]
 
     bad = []
-    # (a) the five hardcoded constants against the decided block - unconditional, and
+    # (a) the hardcoded constants against the decided block - unconditional, and
     #     independent of any per-invocation override, because THIS is the coincidence.
+    #
+    # ⚠ lora-w LEFT THIS LIST at Ruling 25e, and the reason is that it is no longer a
+    # coincidence. build_graph now takes the weight FROM THIS PROFILE (below) rather than
+    # from DEFAULTS, so comparing DEFAULTS['lora_w'] against the decided value would be
+    # comparing a number that no longer reaches the graph - the check would fire on a
+    # correct build, which is the class of error this repo keeps paying for. What replaces
+    # it is stronger than a value comparison and appears as (b2): the loader NODE exists if
+    # and only if the decided weight is positive, asserted structurally over every node.
     for pk, dk in (("seed", "seed"), ("steps", "steps"), ("cfg", "cfg"),
-                   ("lora-w", "lora_w"), ("cn-strength", "cn_strength")):
+                   ("cn-strength", "cn_strength")):
         if DEFAULTS[dk] != pv(pk):
             bad.append(f"DEFAULTS[{dk!r}] = {DEFAULTS[dk]!r} but the profile decides "
                        f"{pk} = {pv(pk)!r}")
     # (b) what actually landed in the graph nodes
     entering = {"seed": gr["15"]["inputs"]["seed"], "steps": gr["15"]["inputs"]["steps"],
                 "cfg": gr["15"]["inputs"]["cfg"],
-                "lora-w": gr["5"]["inputs"]["strength_model"],
                 "cn-strength": gr["12"]["inputs"]["strength"]}
+    if "5" in gr:
+        entering["lora-w"] = gr["5"]["inputs"]["strength_model"]
+
+    # (b2) THE INVERTED SCAN, the restylize class (E12 Ruling 10b / 25e). When the register
+    # says NO CARD, "lora-w is 0.0" is not the claim being made - the claim is that no loader
+    # node and no card string exist ANYWHERE in the graph. Asserted by walking every node,
+    # because a weight check reads one field and a smuggled loader is a different field.
+    _lw = pv("lora-w")
+    _loaders = [k for k, n in gr.items() if "lora" in str(n.get("class_type", "")).lower()]
+    _cards = [k for k, n in gr.items()
+              if any("lora" in str(v).lower() or "saltroad" in str(v).lower()
+                     for v in n.get("inputs", {}).values())]
+    if _lw == 0.0:
+        if _loaders or _cards:
+            bad.append(f"the register is NONE (lora-w 0.0) but the graph carries loader "
+                       f"node(s) {_loaders} and card reference(s) {_cards} - 0.0 is not a "
+                       f"weight of zero on a loaded card, it is NO CARD (Ruling 10b)")
+        if gr["6"]["inputs"]["model"] != ["1", 0]:
+            bad.append(f"the register is NONE but ModelSamplingAuraFlow reads "
+                       f"{gr['6']['inputs']['model']!r} instead of the UNET ['1', 0]")
+    else:
+        if not _loaders:
+            bad.append(f"the profile decides lora-w {_lw!r} but the graph carries NO loader "
+                       f"node - the weight would be silently inert")
+        if gr["6"]["inputs"]["model"] != ["5", 0]:
+            bad.append(f"lora-w {_lw!r} is positive but ModelSamplingAuraFlow reads "
+                       f"{gr['6']['inputs']['model']!r} instead of the loader ['5', 0]")
+    print(f"[pre-flight] register scan: decided lora-w {_lw!r}; loader nodes {_loaders or 'NONE'}; "
+          f"card references {_cards or 'NONE'}; {len(gr)} nodes", flush=True)
     for k, got in entering.items():
         if k == "seed" and args.seed is not None:
             # an explicit --seed is a recorded per-invocation argument (the one-re-roll
@@ -274,7 +343,18 @@ if args.cmd == "graph":
     assert args.key in P, f"ANDON: no prompt for {args.key} in {args.prompts}"
     rn = args.render_name or "render.png"
     mn = args.mask_name or "mask.png"
-    gr = build_graph(rn, mn, P[args.key], P["_negative"], args.seed)
+    # THE REGISTER COMES FROM THE PROFILE, not from DEFAULTS (Ruling 25e). This is the one
+    # key that stops being a coincidence-of-value and becomes agreement by construction; the
+    # pre-flight's (a) drops it and its (b2) asserts the structure instead. A profile with no
+    # decided lora-w raises there, which is the lifecycle working.
+    _prof = json.load(open(args.profile, encoding="utf-8"))
+    _blk = _prof.get("tools", {}).get("texpass_brush.py", {})
+    _lwe = _blk.get("lora-w") if isinstance(_blk, dict) else None
+    assert isinstance(_lwe, dict) and "value" in _lwe, (
+        f"ANDON: {args.profile} texpass_brush.py has no decided value for 'lora-w', so the "
+        f"register is undeclared and the graph cannot be built either way. A ruling decides "
+        f"it; this tool does not guess.")
+    gr = build_graph(rn, mn, P[args.key], P["_negative"], args.seed, lora_w=_lwe["value"])
     preflight(gr, P, args.key)
     os.makedirs(os.path.dirname(os.path.abspath(args.out)), exist_ok=True)
     # sorted keys + fixed separators so a byte-comparison of two saved JSONs is meaningful
@@ -282,10 +362,12 @@ if args.cmd == "graph":
         json.dump(gr, fh, indent=1, sort_keys=True)
         fh.write("\n")
     print(f"[graph] wrote {args.out}")
+    _reg = (f"lora_w {gr['5']['inputs']['strength_model']}" if "5" in gr
+            else "lora NONE - no loader node in the graph (Ruling 10b/25e); "
+                 "ModelSamplingAuraFlow reads the UNET directly")
     print(f"[graph]   key {args.key}  seed {gr['15']['inputs']['seed']}  "
           f"steps {gr['15']['inputs']['steps']}  cfg {gr['15']['inputs']['cfg']}  "
-          f"lora_w {gr['5']['inputs']['strength_model']}  "
-          f"cn {gr['12']['inputs']['strength']}")
+          f"{_reg}  cn {gr['12']['inputs']['strength']}")
     print(f"[graph]   inputs render={rn}  mask={mn}")
     print(f"[graph]   prompt chars {len(P[args.key])}")
 
