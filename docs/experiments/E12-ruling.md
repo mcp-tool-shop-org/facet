@@ -1841,7 +1841,8 @@ specced and waiting on the Director's timing, its re-anchoring cost
 restated from 24d) and the membranes are the most-changed region, which is
 where the strokes were sent.
 
-**27g — GATE 1 GOES TO THE DIRECTOR**, three items named before his eye:
+**27g — GATE 1 GOES TO THE DIRECTOR**, three items named before his eye
+*(superseded same day by Ruling 28 — the verdict came back)*:
 **(1)** head and frill legibility at 3× — the resolution limit compounded
 by 27d's gap fill; the specced levers if his eye wants them are the A2
 head rect (primary, re-anchors the record) and a targeted stroke re-open;
@@ -1855,3 +1856,41 @@ the exemplar bar.** On acceptance: the E11 dense export (dataset asset #3,
 native owner channel, the 1.2.0 declarations per E11 addenda 3) and the
 sdlab ingest paste — then the context-architecture P1 kickoff fires per his
 sequencing word, and E14 after it.
+
+---
+
+## Ruling 28 — GATE 1: THE ASSET IS ACCEPTED (Director, 2026-08-07: "Fantastic!! This is really good!")
+
+Ruled on `dragon_hero.glb` at his own zoom in Blender, three views returned with
+the verdict — three-quarter front, left profile, and a top-down rear over the
+wings. That last view is mostly surface **no eye-level camera reaches**: paint
+that could only have come from the dilation fill, passing his eye exactly where
+it is most exposed. The verdict followed Ruling 27's presentation with the three
+items named first; **no region was named back.** Consequences:
+
+- **The dragon is the route's THIRD ACCEPTED ASSET, and the beast profile is
+  COMPLETE end to end**: designation → occupancy-complete fixture → accepted
+  pair → twins that reproduce their accepted artifact pixel-exactly →
+  harmonization → stage 1 → four strokes → finalize → pack → **Gate 1 at the
+  exemplar bar. Zero credits across the entire arc.** The accepted-asset
+  ledger: W3 68.8 / 4.2 / 27.0 of valid · galleon 36.89 / 6.87 / 56.24 ·
+  dragon 44.15 / 3.07 / 52.78 of valid = **87.49 / 2.86 / 9.65 of reachable**.
+- **The three named items close as ACCEPTED AT THE ASSET, dispositions
+  recorded**: the head/frill softness (A2's per-subject head-rect arm stays
+  specced and PARKED at his timing, unchanged by acceptance; it re-anchors the
+  record if ever armed) · the dark crevice fill (27d's signature stays
+  pre-registered for every future brush run; the fill stands as the
+  S-occlusion read) · the membrane tone spread (17f's watch item closes for
+  this asset). **His window stays open on every line** — a sentence re-opens
+  any of them as a post-acceptance polish arm, the W3 precedent.
+- **The mesh, atlas, GLB, twins and the E12/E13 record are now citable-only**
+  — the accepted-asset protection, exactly as W3 and the galleon.
+- **The exemplar directive is SERVED**: the record is the method, the export
+  feeds the datasets, and the packed GLB at his zoom is the display artifact.
+- **The on-acceptance items FIRE, in his ruled order**: handoff 16 — the E11
+  dense export, dataset asset #3, the first manifest born declaring
+  `identity.subject_name`, `style`, `tone_transform` and `render_derivation`
+  under the lane's 1.3.0 (E11 addenda 4 carries the exact requirements) —
+  then the sdlab ingest paste; **then the context-architecture P1 kickoff
+  fires** (his sequencing word's named trigger — the beast profile is
+  complete — is met), **and E14 launches after the index lands.**

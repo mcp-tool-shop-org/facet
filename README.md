@@ -297,6 +297,24 @@ Every value the subject needs lives in
 inheritance are being falsified and replaced one measured step at a time — which is
 the profile system doing its job.
 
+**GATE 1: ACCEPTED — the dragon is the route's THIRD accepted asset** (2026-08-07,
+"Fantastic!! This is really good!", ruled on the GLB at the Director's own zoom —
+[Ruling 28](docs/experiments/E12-ruling.md)). The run to the gate: the sweep's
+0-UNDECIDED certificate (83/83, the gate armed since handoff 2), four no-LoRA
+strokes committing 99,643 texels at zero re-rolls, finalize sourcing a median
+**0.92 triangle edges** with zero mean-fallback texels, pack to `dragon_hero.glb`
+— **zero credits across the entire arc**. Mix **44.15% reference / 3.07% brush /
+52.78% dilation of valid = 87.49 / 2.86 / 9.65 of the reachable set**: the animal
+hides 49.54% of itself from every eye-level camera, so of the surface a viewer
+can actually see, 87.49% is the accepted pair's own paint. The run also named the
+**fifth brush signature** (dark desaturated crevice fill — 2.39× the near-black
+at 0.44× the chroma of the paint it continues), measured, shown, and
+pre-registered for every future brush run; the per-subject head-rect allocation
+arm stays specced at the Director's timing. Next: the dense export (handoff 16 —
+dataset asset #3, the first manifest under the lane's 1.3.0 contract), the
+ingest, then the [E15 context index](docs/experiments/E15-context-index-kickoff.md),
+then E14.
+
 **E14 — the prop arc — is STAGED and DEFERRED**
 ([E14-executor-kickoff.md](docs/experiments/E14-executor-kickoff.md)): the route's
 fourth subject class (`prop`, ruled 2026-08-07), three longsword clay candidates

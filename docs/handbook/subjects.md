@@ -52,7 +52,7 @@ values live in its own profile and fixture, never inherited unmeasured.
   whole, the scene's water doing the hiding. And the **native per-texel owner channel**
   — the first asset with one.
 
-## The dragon (IN FLIGHT — designated 2026-08-05)
+## The dragon (ACCEPTED, 2026-08-07 — designated 2026-08-05)
 
 - **Record:** [E12-ruling.md](../experiments/E12-ruling.md), Rulings 1–11 so far;
   [Gate 0 report](../experiments/E12-gate0-report.md). Fixture:
@@ -198,6 +198,17 @@ values live in its own profile and fixture, never inherited unmeasured.
   for them in registry entries** — both transcriptions landed, the sweep re-ran to
   **0 UNDECIDED** (83/83 decided), and the strokes are released. **Handoff 15 runs:
   strokes → finalize → pack → the five-column sheet → Gate 1 at the exemplar bar.**
+- **ACCEPTED at Gate 1** (2026-08-07, "Fantastic!! This is really good!" —
+  [Ruling 28](../experiments/E12-ruling.md), on the GLB at the Director's own
+  zoom, including a top-down rear whose surface only the dilation fill could
+  have painted): four no-LoRA strokes (99,643 texels, zero re-rolls, **zero
+  credits across the entire arc**), the **fifth brush signature** measured and
+  named forward (dark desaturated crevice fill), mix **44.15 / 3.07 / 52.78 of
+  valid = 87.49 / 2.86 / 9.65 of reachable**. The three items named at the gate
+  closed accepted-at-the-asset; the head-rect allocation arm stays parked at
+  his timing. Next: the dense export (handoff 16 — dataset asset #3, the first
+  manifest under the lane's 1.3.0), the ingest paste, then the
+  [E15 context index](../experiments/E15-context-index-kickoff.md), then E14.
 
 ## The longsword (STAGED, DEFERRED — class ruled 2026-08-07)
 
@@ -227,8 +238,8 @@ values live in its own profile and fixture, never inherited unmeasured.
 | reach ceiling (of valid, as recorded) | 74.1% | 42.72% | **50.46%** |
 | off-surface at birth (>1 px) | 2.5840% | 2.4967% (full bake) | 2.6430% |
 | off-surface composition | paint-**depleted** (stage-1 1.94%, reach 0.899×) | paint-**enriched** (stage-1 3.06%, reach 1.426×) | *no consumers yet* |
-| accepted mix, as recorded (ref/brush/dilation) | 68.8 / 4.2 / 27.0 | 36.89 / 6.87 / 56.24 | — |
-| on-surface restatement — **the standing family** | 74.30 reach / 69.28 styled / 26.43 dilation | 42.25 / 36.68 / 86.8 / 56.44 / 6.89 | *born on-surface when its stages run* |
+| accepted mix, as recorded (ref/brush/dilation) | 68.8 / 4.2 / 27.0 | 36.89 / 6.87 / 56.24 | **44.15 / 3.07 / 52.78** |
+| on-surface restatement — **the standing family** | 74.30 reach / 69.28 styled / 26.43 dilation | 42.25 / 36.68 / 86.8 / 56.44 / 6.89 | born on-surface; **87.49 / 2.86 / 9.65 of reachable** |
 
 Three lessons live in this table. **Subject properties do not interpolate** — the
 dragon's shells and reach landed outside any band the two priors suggest, in opposite

@@ -243,6 +243,67 @@ are being emitted — the lane's statement was true at its reading, and the expo
 waits on the verdict exactly as it concluded. The LoRA card registry stays a
 separate deliverable at its sdlab home (style-registers.md), unblocked by design.
 
+## Post-ingest addenda 4 (2026-08-07, on the lane's 1.3.0 and Gate 1's acceptance)
+
+**The 1.2.0 endorsement caught a real defect, the lane verified it against this
+record, and 1.3.0 closes it: ENDORSED** (lane commit `9870163`). Addenda 3's
+requirement that emit renders carry no `generation` block exposed that the lane's
+`ASSET_GENERATION_PROVENANCE_ABSENT` gap notice would fire on **every render of a
+correctly-formed dragon export** — and a notice channel that cries wolf on correct
+data stops being read, taking `ASSET_SUBJECT_NAME_ABSENT` (the standing errand's
+only automated alarm) down with it. 1.3.0's `asset.render_derivation {kind,
+generated, record}` distinguishes declared-null from omitted-null — the
+`style.lora.declared` pattern applied to its second case — and under
+`generated: false` a per-render `generation` block is **REFUSED as a category
+error**: a deterministic derivation has no seed, and declaring one attributes a
+seed to an image no seed produced. Undeclared keeps 1.2.0's behaviour, because
+saying nothing is not saying "these are derivations." The bump-not-amend
+reasoning is endorsed: 1.2.0 is cited by name in this record, and a changed
+contract is a new truth, not an overwrite — the lane's own law applied to its
+own versions.
+
+**THE DRAGON SHAPE acceptance test is the contract made mechanical, and it is
+endorsed as this contract's standing external verifier**: a manifest built
+lane-side to addenda 3/4's exact requirements asserts **zero gap notices**, so
+drift between what facet was told and what the lane accepts fails a test
+instead of failing a dispatch.
+
+**The lane's withdrawn stem correction is accepted in the form it chose** —
+WITHDRAWN, not deleted, after verifying 21c itself: both counts right on
+different bases, the same resolution addenda 3 recorded. A wrong correction
+left standing would have propagated as the lane's authority on a fact the lane
+does not own; the withdrawal-with-reason is the corrections discipline working
+across repos.
+
+**The dragon's export requirements are AMENDED — this list supersedes addenda
+3's where they differ:**
+
+- **`identity.subject_name: "dragon"` PROMOTES into the fresh manifest.** The
+  field and its gap alarm exist lane-side; a manifest born declaring it never
+  joins the guess-resolved population. (The galleon/W3 re-emits remain the
+  standing errand, unchanged, window open.)
+- **`asset.render_derivation: {kind: "emit", generated: false, record: <E11
+  Ruling 2>}`** — and consequently NO per-render `generation` blocks, now
+  refused rather than merely absent.
+- As addenda 3 for the rest: `asset.style` (register ultra-realistic +
+  menacing, `lora {declared: "none"}`) · `asset.tone_transform`
+  (lab-stats-transfer, CIELAB, figure-mask, reversible, operands materialized,
+  **reference = the view-1 camera's emit-render id — view 1 is yaw 45 per
+  Ruling 14's own view labels and the Gate-1 sheets; the executor re-verifies
+  against the recorded frame JSON before emitting**).
+
+**The twin-set question is RULED: the lane's recommendation is adopted —
+emit-renders-only stands, and `renders[].pair` is the twins' future home.**
+The structural grounds are better than the caution addenda 3 defaulted on: the
+twins are the SAME subject (a separate ingest reopens the exact
+two-families-one-subject condition the errand exists to close); they are
+per-view images entering a pool premised on view-consistency by construction;
+and Rulings 20b/24b superseded the artifacts a separate ingest would admit.
+The re-open condition is named (the conditioning-pair threshold) and the
+richer `{path, generation}` pair form is recorded lane-side and deliberately
+unbuilt — the twins' provenance lives in this repo's sidecars until that
+threshold is met. The Director's window stays open at the paste.
+
 ## Standards compliance (this ruling)
 
 | standard | score | evidence |

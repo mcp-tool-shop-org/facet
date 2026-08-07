@@ -1922,3 +1922,141 @@ difference is geometry, not regression.
 | DECOMPOSE_BY_SECRETS | 3 | Every subject value derives from this mesh or this fixture; the tuning constant (edge-ref) explicitly NOT re-derived; the backdrop word flows fixture → derivation → prompts file, never through code |
 | UNCERTAINTY_GATED_HUMANS | 3 | The styled-pair halt is the Director's overrule window on the whole authored identity, advisor's eye first; suspended thresholds go to him as numerator/denominator, not invented bounds |
 | EXTERNAL_VERIFIER | 2 | The ceiling instrument and the off-surface classifier check the bake from independent code paths; the pair is judged by eyes, not by the generator's own metrics. `skip:` on a second model for the geometry legs, per precedent |
+
+---
+
+## Session handoff 16 (2026-08-07) — the E11 dense export: the ACCEPTED dragon becomes dataset asset #3. Comprehensive.
+
+**Gate 1 is ACCEPTED** (E12 Ruling 28, "Fantastic!! This is really good!"). The
+export lane's verdict-wait is over. This dispatch produces the dragon's dense
+turnaround tree and its manifest — **the first manifest born under the lane's
+1.3.0 contract**, declaring what every earlier manifest could not. It does NOT
+ingest: the ingest is the Director's lane-side paste, after this halt.
+
+### You are the executor
+
+```
+cd E:\AI\facet && git pull
+CLAUDE.md                                  <- how to work here. Read first, follow exactly.
+docs/experiments/E11-report.md             <- the exporter proven a pure function; the mechanism
+docs/experiments/E11-ruling.md             <- Rulings 1-7 AND ADDENDA 3-4: the manifest
+                                              requirements live in addenda 4. Read all of it.
+docs/experiments/E12-ruling.md             <- Rulings 27-28 (the accepted asset and its protections)
+profiles/beast.json                        <- the register/lora values the style block declares
+canon/DRAGON-IDENTITY.md                   <- the subject; identity.subject_name = "dragon"
+E:\AI\training\facet_next\E13_stroke\run\  <- the packed asset (dragon_hero.glb), the texpass
+                                              state, run_log.jsonl - READ-ONLY inputs, all of it
+E:\AI\training\facet_next\E13_twins\       <- the harmonization operands (the recorded per-view
+                                              transfer JSONs) - locate, quote the exact path
+```
+
+Your rules are unchanged (CLAUDE.md §executor). **The accepted asset is
+citable-only** (Ruling 28): `dragon_hero.glb`, the atlas, the twins and every
+E12/E13 artifact are read-only inputs — nothing in this dispatch modifies any
+of them. Blind predictions first, hashed, blind status disclosed: the camera
+count the exporter derives · whether the capability anchor holds byte-identical
+· whether the lane's validator passes the new manifest with zero gap notices ·
+the owner channel's presence (this subject has a native one, the galleon
+precedent).
+
+### Task 0 — environment + read the tools before running them
+
+Watchdog verified, report either way. **Read `e11_export_turnaround.py` and
+`e11_manifest.py` before invoking either** — two latent projector defects were
+found by exactly this discipline (Ruling 24a), and the manifest tool is about
+to grow fields. Report where each new declared value will flow from BEFORE
+writing code.
+
+### Task 1 — the manifest capability, anchored before use
+
+`e11_manifest.py` gains the four declaration blocks of the lane's 1.3.0
+contract (E11 addenda 4): `identity.subject_name` · `asset.style` ·
+`asset.tone_transform` · `asset.render_derivation`. All four are OPTIONAL
+inputs to the tool — absent means absent, never defaulted.
+
+**The anchor, before anything is believed** (the Gate-0-class pattern):
+regenerate the GALLEON's existing dense manifest with the new code and no new
+declarations — it must come back **byte-identical** to the committed one. The
+capability that changes nothing when unused is the capability that can be
+trusted when used. Any delta halts.
+
+### Task 2 — the dense export
+
+Run the exporter on the accepted asset by **its own recorded mechanism** — the
+camera-set derivation, channel list and tree layout come from the tool and the
+E11 report, not from this dispatch (quote what it derives; the galleon ran 28
+cameras, W3 26 — this subject's count is the tool's answer, predicted blind).
+Output: `E:\AI\training\facet_next\E13_stroke\export\turnaround\`. The subject
+has a **native per-texel owner channel** — confirm it rides the tree the way
+the galleon's does. Spot re-emit one camera and compare byte-identical (the
+cheap purity corroboration; the full proof is E11's and is not re-run).
+
+### Task 3 — the manifest, declared
+
+Emit the dragon's manifest with, exactly (addenda 4's list, values quoted with
+their sources in the report):
+
+- `identity.subject_name: "dragon"`
+- `asset.style`: register terms `ultra-realistic, menacing` + `lora
+  {declared: "none"}` — from `beast.json` / the fixture's STYLE-SUPPLIED
+  section, cited.
+- `asset.tone_transform`: kind `lab-stats-transfer`, space CIELAB, scope
+  figure-mask, reversible true, `operands` = the recorded per-view
+  harmonization operands file (path + sha; the lane materializes it at
+  ingest), `reference` = **the view-1 camera's emit-render id. Derive it:
+  view 1 = yaw 45 per Ruling 14's view labels — verify against
+  `frame_00003.json`'s own yaw table before emitting, and quote both.**
+- `asset.render_derivation: {kind: "emit", generated: false, record: "E11
+  Ruling 2"}` — and consequently **no `renders[].generation` blocks
+  anywhere** (under 1.3.0 they are refused as a category error on a
+  `generated: false` manifest; their absence here is a declaration, not a
+  gap).
+- `renders_are`: the post-verdict-derivations wording (E11 Ruling 3's
+  promised field, landing on its first new emission).
+
+**Validate through the lane's own codebase** (`E:\AI\style-dataset-lab`,
+read-only): schema validation at 1.3.0 plus a dry-run/validation pass that
+quotes the notice list — **expected: zero `gap` notices** (the lane's THE
+DRAGON SHAPE test is built from this exact shape; a gap notice here means the
+contract drifted and is a halt, not a fix-up). Do NOT ingest, do NOT commit
+anything in the lane repo, do NOT re-emit the galleon or W3 manifests beyond
+Task 1's read-only anchor comparison (their re-emit is the standing errand,
+not this dispatch).
+
+### Then HALT
+
+Stage: the anchor evidence, the export tree with its camera count and channel
+inventory, the manifest with every declared value and its source, the lane
+validation output with the notice list, predictions scored. Report at
+`docs/experiments/E12-handoff16-report.md`. **The durability line rides the
+report**: the new tree joins the must-not-move list beside E04's and E08's
+(the lane will hold sha-verified pointers into it). To the advisor's eye,
+then the Director's ingest paste.
+
+### Do not
+
+Modify any accepted artifact or anything under `E13_stroke/run/` ·
+ingest lane-side or write to the lane repo · re-emit prior subjects'
+manifests (Task 1's anchor comparison writes to a scratch path, never over
+the committed file) · invent a manifest field addenda 4 does not name ·
+write to the memory store · end a session the Director has not ended.
+
+### Standards compliance (this dispatch)
+
+| standard | score | evidence |
+|---|---|---|
+| PIN_PER_STEP | 3 | The capability is anchored byte-identical on the prior subject's committed manifest before first use; every declared value lands with its named source; the export tree is sha-linked by the exporter's own manifest mechanism; predictions hashed blind |
+| ANDON_AUTHORITY | 3 | The anchor delta halts; a lane gap notice halts (contract drift, never patched executor-side); the halt is to eyes before any ingest exists |
+| NAMED_COMPENSATORS | 3 | Read-only inputs throughout; the anchor comparison writes to scratch; nothing irreversible in scope — the ingest (the one consequential act) is explicitly NOT this session's |
+| DECOMPOSE_BY_SECRETS | 3 | Facet declares, the lane verifies — the seam held: the manifest asserts provenance facts from facet's record; the lane's validator judges shape with facet absent |
+| UNCERTAINTY_GATED_HUMANS | 3 | The ingest stays the Director's paste; the reference-id derivation is verified against the recorded frame table, not asserted; the halt stages everything for two sets of eyes |
+| EXTERNAL_VERIFIER | 3 | The lane's 1.3.0 validator and THE DRAGON SHAPE test are a different codebase judging this output; the cross-codebase digit precedent (1738/1495/263, three reproductions) is the standing bar for what "validates" means here |
+
+### Calibration
+
+The handoff-15 standard holds: check this dispatch's inherited numbers against
+source in the same breath you use them (the yaw-45 = view-1 claim included —
+that is why the frame JSON verification is a step, not a footnote). A clean
+zero-gap validation on the first try is the EXPECTED outcome, not a suspicious
+one — the lane built its acceptance test from this exact shape; if it fails,
+halt with the notice list rather than adapting the manifest to quiet it.
