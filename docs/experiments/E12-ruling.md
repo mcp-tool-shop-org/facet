@@ -1751,3 +1751,107 @@ stop — is exactly right.
 **26c — RELEASED**: with the transcriptions committed, the executor
 re-runs the sweep (expected 0 UNDECIDED, quoted with exit code) and
 proceeds to Tasks 1–3 as dispatched. Gate 1's sheet is the next halt.
+
+---
+
+## Ruling 27 — the handoff-15 halt ruled: the run is accepted, the fifth signature is named forward, the mix is banked with both denominators; Gate 1 goes to the Director (2026-08-07)
+
+Evidence: the handoff-15 report (`96e7d7d`), its blind predictions (`1304b9f`,
+blob `38775ea`), `E13_stroke/run/run_log.jsonl` and the certificates beside it,
+and this seat's eye on **all eight five-column sheets, both head crops at 3×,
+and the stroke-1 pre/post comparison** before anything here was written.
+
+**27a — the halt is ACCEPTED and the discipline is ratified.** 0 credits, four
+generations, zero re-rolls; the sweep certificate at **0 UNDECIDED (83/83,
+exit 0)** — the gate the texture arms have waited on since handoff 2, passed;
+the register scan printed per stroke (`loader nodes NONE; card references
+NONE; 16 nodes` — no saltroad card touched this subject); and stage 1's atlas
+never opened for writing — **verified at this seat's own hand: the
+accumulating state's atlas hashes 050F29FA after all four commits**, and
+every stage-1 file's mtime predates the first stroke. Both decompositions
+close to the texel: 99,643 + 1,710,180 = 1,809,823 holes, and the reachable
+column sums to 1,635,304 exactly.
+
+**27b — the false halt's repair is RATIFIED: the anchor conformed to the
+simulation's own operand — the 9a law's next application.** `mask.png` is the
+hole map dilated 2.40×, so `hit & ~job-mask` subtracts a collar of genuinely
+painted surface by construction. The executor measured three operands on the
+same job, gated on the simulation's (87.96 against 92.34), reported the
+others UNGATED (no bound for them exists in the record, and inventing one
+while looking at the number it would judge is the move that is always wrong),
+and corrected the tool in place with the measurement. Final anchors
+**87.96 / 93.24 / 92.02 / 95.03**, 0 px in components touching no paint on
+all four — and the spiral law showed up in a number: the stroke
+pre-registered most exposed (yaw 45, simulated 81.87) measured BEST (95.03),
+because three strokes had already painted the rim it opens against.
+
+**27c — closure is falsified low and ACCEPTED as measured: 48.70% against
+the pre-registered 71.60%.** The cause is located and is not the brush:
+commit re-applies its facing/visibility/edge tests to bilinear samples of a
+raster the brush repainted, where the simulation modelled them on texels.
+The remainder went to dilation, which sourced a **median 0.92 triangle
+edges** with 0.021% beyond 20 and zero mean-fallback texels — the
+surface-aware fill at its best recorded behaviour. **No further strokes are
+commissioned, with the bound stated before any spend**: 104,974 brush
+texels remain, 19,846 of them closable by no eye-level camera at all, and at
+the measured 0.57–0.80 realisation a second four-stroke round would land
+roughly 20–40k texels — one to two points of the reachable surface. The
+stroke lane re-opens only on a Gate-1-named region, with this arithmetic in
+hand.
+
+**27d — THE FIFTH SIGNATURE IS NAMED FORWARD: dark desaturated crevice
+fill.** Measured (brush paint vs the stage-1 paint it continues: 2.39× the
+near-black mass at 0.44× the chroma), confirmed at this seat's eye, and
+decomposed by location: **in crevice interiors it is S-occlusion's
+paint-side realisation** — the fixture pre-registered that paint renders the
+crevice as a dark seam, and coherent shadow is not a family violation on a
+subject whose dark materials are declared; **between thin structures it is a
+legibility cost** — the stroke-1 comparison shows frill spikes individually
+legible before the stroke and merged toward a near-black field after,
+concentrated exactly where the head's resolution limit already sits. The
+signature **joins the pre-registered drift list for every future brush
+run**, judged by eye, with no numeric gate armed (a bound chosen now would
+be chosen while looking at it). The executor's honesty about the stop
+decision — that a pre-registered "dark fill" would have made continuing
+harder — is noted with approval and is exactly why the registration happens
+now, in advance of the next run.
+
+**27e — the mix is BANKED with both denominators, and the geometry is not
+read as regression: 44.15 / 3.07 / 52.78 of valid · 87.49 / 2.86 / 9.65 of
+the reachable set.** Reference-of-reachable sits mid-family (the ship ran
+86.4% of its ceiling, the character 92.8%; this subject's stage-1 87.49%
+carries through unchanged because strokes add brush, not reference). P5c's
+falsification is the arc's framing vindicated: the provenance panels are
+GREEN because, of the surface anyone can see, 87.49% is the accepted pair's
+own paint — dilation is half the *atlas* only because the animal hides
+49.54% of itself from every eye-level camera.
+
+**27f — banked from the run**: thin-extent 0.005 live for the first time,
+withholding 2.5–4.2% per stroke, inside the ladder's band — Ruling 25c's
+value behaving exactly as ruled · the whole-frame gates decided nothing and
+were pre-registered as unable to (the brush is 1–3% of any frame) · the
+per-view drop rule bit correctly on the stroke lane (yaw 180 ran 16 of 20
+terms — the mouth family dropped at the one stroke camera that cannot see a
+mouth) · the emit-frame caveat on `e12_twin_readout`'s key-health column
+(an emit frame's backdrop is hole-grey, not lavender; the column is not the
+twins' quantity there and is not quoted as it) · P6a/P6b held: the head
+reads softest at 3× (A2's banked 0.815 texels per full-figure head pixel,
+untouched by this run — the per-subject head-rect allocation arm stays
+specced and waiting on the Director's timing, its re-anchoring cost
+restated from 24d) and the membranes are the most-changed region, which is
+where the strokes were sent.
+
+**27g — GATE 1 GOES TO THE DIRECTOR**, three items named before his eye:
+**(1)** head and frill legibility at 3× — the resolution limit compounded
+by 27d's gap fill; the specced levers if his eye wants them are the A2
+head rect (primary, re-anchors the record) and a targeted stroke re-open;
+**(2)** the dark crevice fill — his legibility call; charcoal and slate are
+declared materials; **(3)** the membranes' cross-view tone spread — 17f's
+watch item; at this seat's eye the sheets show tonal variance across views
+but no hard ownership seam at sheet scale. The artifacts: the eight
+five-column sheets, the head at 3× at yaws 0 and 45, the stroke-1 pre/post.
+His question is the dispatch's: **does this read as the dragon he wants, at
+the exemplar bar.** On acceptance: the E11 dense export (dataset asset #3,
+native owner channel, the 1.2.0 declarations per E11 addenda 3) and the
+sdlab ingest paste — then the context-architecture P1 kickoff fires per his
+sequencing word, and E14 after it.
