@@ -56,11 +56,15 @@ values live in its own profile and fixture, never inherited unmeasured.
 
 ## The dragon (ACCEPTED, 2026-08-07 — designated 2026-08-05)
 
-- **Record:** [E12-ruling.md](../experiments/E12-ruling.md), Rulings 1–11 so far;
-  [Gate 0 report](../experiments/E12-gate0-report.md). Fixture:
-  [canon/DRAGON-IDENTITY.md](../../canon/DRAGON-IDENTITY.md) (eleven D-elements; the
-  bone-ivory family is this scheme's gold). Profile: `profiles/beast.json`, 80/81 with
-  the one open flag deliberate.
+- **Record:** [E12-ruling.md](../experiments/E12-ruling.md), Rulings 1–30 + the
+  Gate-1 acceptance; [Gate 0 report](../experiments/E12-gate0-report.md). Fixture:
+  [canon/DRAGON-IDENTITY.md](../../canon/DRAGON-IDENTITY.md) (eleven D-elements;
+  ivory is the HEAD's family since the Ruling 12e palette correction — this line
+  read "the bone-ivory family is this scheme's gold" until then). Profile:
+  `profiles/beast.json` — **83/83 subject-data flags decided, 0 UNDECIDED**
+  (certified at handoff 15; this line read "80/81 with the one open flag
+  deliberate" mid-arc — stale twice over in one file, caught by the E15 steward's
+  class sweep).
 - **Designated: candidate 00003** ("3 is the winner, but they all look great"), with
   the throat crevice and the folded-membrane pinch field designated-in as named
   subject facts.

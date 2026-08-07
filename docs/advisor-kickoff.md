@@ -1,5 +1,19 @@
 # Advisor kickoff
 
+**⚠ SUPERSEDED IN SUBSTANCE — 2026-08-07 overnight, by the seat this kickoff
+seated.** The night it was written, the arc it describes CLOSED: **Gate 1
+ACCEPTED** (E12 Ruling 28, "Fantastic!! This is really good!"), the dense export
+and live ingest landed (Rulings 29–30 — the dragon is dataset asset #3), the E15
+context index was built, verified at two seats and ruled, and **E14 unlocked**.
+The live-state authorities are [README.md](../README.md),
+[E12-ruling.md](experiments/E12-ruling.md) Rulings 27–30,
+[E15-ruling.md](experiments/E15-ruling.md), and the index itself — a fresh
+advisor's second command after `git pull` is now
+`python tools/facet_index.py build`, then **query instead of re-reading** (E15
+Ruling 4). Everything below is HISTORICAL from here down — its counts ("Rulings
+1–26", "handoff 15 is live") are as-of-writing, per the kickoff convention. The
+comprehensive rewrite is the next relief's, per the standing pattern.
+
 Paste into a fresh advisor session. Written 2026-08-07 by the outgoing advisor, at the
 close of the arc that took the dragon from a rejected first pair to the run at Gate 1:
 the exemplar directive, the occupancy audit, three naming laws, the harmonization pass,
