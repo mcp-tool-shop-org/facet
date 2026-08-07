@@ -1514,6 +1514,135 @@ than felt.
 
 ---
 
+## Session handoff 13 (2026-08-06) — E13's head-crop twins, A2's arithmetic, and STAGE 1. Comprehensive.
+
+Serves the holding handoff-12 session (git pull first) or a fresh one — it
+assumes nothing not written here or in the reading list.
+
+### Where this stands
+
+The base coat is RULED (Ruling 23f): **warm membranes accepted · the
+harmonization ADOPTED** — projection consumes the harmonized set (v9 ×6 +
+view 3's 770701 cure + view 4-A, all toward reference view 1, operands in
+`harmonize/operands.json`, raw twins retained). E13 Gate 0 passed (the
+projector's crop-camera path proven at 0 differing pixels). This dispatch
+runs the E13 head-crop pass and stage 1 — the route's projection stage —
+with the A0/A1 comparison the spec pre-registered, so the Director judges
+the detail pass's payoff against evidence.
+
+### You are the executor
+
+```
+cd E:\AI\facet && git pull
+CLAUDE.md                                  <- how to work here. Read first, follow exactly.
+docs/experiments/E13-detail-pass-spec.md   <- THE SPEC. A1/A2, the gates, H3's branches. This dispatch executes it.
+docs/experiments/E12-ruling.md             <- Rulings 21-23. 23f is the ruled input set.
+profiles/beast.json                        <- every value; the prep bake exists (handoff 2, head-scale 1.0)
+docs/experiments/E12-twin-prompts.json     <- v9; crop stems derive per crop with recorded keeps/drops
+E:\AI\training\facet_next\E13_twins\       <- the ruled set + harmonize/ + your committed instruments
+E:\AI\training\facet_next\E12_prep\        <- prep_uv.glb + the existing 4096 atlas state
+E:\AI\training\facet_next\E12_gate0\head_00003.json    <- the head box; the companion's frame derivation precedent
+docs/experiments/E12-companion-sidecar.md  <- the crop construction, worked once
+```
+
+Your rules (CLAUDE.md §executor), the standing environment and full cloud
+discipline are handoff 11's, unchanged. Output: `E13_twins/crops/` for the
+crop pass, `E13_stage1/` for projection. Blind predictions first, hashed,
+blind status disclosed: A2's ratio (state the expected direction) · crop
+twin landings at bust scale (D8/D10/D5 per the companion's precedent) ·
+whether crop-twin generation hits the 21c seed-resistance class · stage-1
+styled/valid against the 50.46% ceiling (the ship ran 86.4% of its
+ceiling; the character 92.8% — state a range and say why) · H3's branch.
+
+### Task 1 — A2's arithmetic, under the pre-registered rule
+
+Measure: head-region atlas texels (the head box's faces → their UV area at
+the existing 4096 bake) against the crop twins' pixels landing on them.
+**The decision rule, registered here before the number exists**: if the
+atlas under-resolves the crop paint (texels-per-crop-pixel < 1.0),
+head-scale arms at the value that brings the ratio to ~1.0, **capped at
+2.0**, and the prep re-bake runs before stage 1 (the bake's own ANDONs are
+the expressibility halt — report and stop if one fires); if the ratio is
+already ≥ 1.0, no re-bake, stated with the number. Either way the
+arithmetic and the decision print together.
+
+### Task 2 — the head-crop twins (E13 A1)
+
+Yaws **0 and 45**, the companion's construction at the route's cameras:
+crop frame from `head_00003.json` padded 1.12 (the recorded derivation),
+crop silhouette by direct raycast, control at ruled canny 0.05/0.10, crop
+stems derived per crop from the v9 entry with visibility verified against
+the crop renders (recorded keeps/drops per the companion precedent; the
+neck-spine term stays if the crest enters the crop — verify, don't
+assume). Operating seed; one bounded re-roll each (the 21c resistance
+class is pre-registered as possible). Per crop twin: the 16e gate + 17d
+achromatic + registration at the crop frame (IoU printed; the companion's
+0.9940 is the precedent) · **harmonized toward reference view 1 by the
+committed transfer** (identity test re-run first; operands recorded) ·
+sidecar at birth: projection-source declaration + full lineage.
+
+### Task 3 — STAGE 1, twice: the A0 baseline and the composed run
+
+Both on the Task-1 atlas (re-baked or not, per the rule):
+
+1. **A0 — baseline**: project the eight harmonized full-figure twins,
+   standard path, recorded invocation.
+2. **A1 — composed**: fresh accumulating state; project the harmonized
+   CROP twins FIRST through the proven crop-camera parameters, then the
+   eight harmonized full twins. The never-overwrite invariant composes
+   them; the crop paint owns what it reaches.
+
+Requirements: **the reach-invariance check** — the ceiling instrument
+re-runs and must return 50.46% of 3,240,510 unchanged; any delta HALTS
+(wrong camera geometry, not new reach) · styled/valid and
+styled/reachable for both runs, read against the ceiling · per-view
+acceptance diagnostics · the hole map, saved (the stroke lane derives
+from it later) · provenance channels for both runs · **the judging
+artifact**: the spec's three-column sheet per head region — clay |
+A0 render | A1 render — at the Director's zoom, plus full-figure flat
+renders of both runs, plus the provenance panels. No verdicts.
+
+### Then HALT
+
+Stage: A2's arithmetic and decision, both crop twins + sidecars + their
+gates, both stage-1 runs' numbers against the ceiling, the hole map, the
+three-column sheets and flat renders. **To the advisor's eye first, then
+the Director's** — his pre-stated questions: does the detail pass visibly
+beat the baseline at his zoom (H3), and do the stage-1 numbers stand
+against the ceiling. Strokes remain gated behind the sweep (thin_extent
+lands at the stroke-lane ruling); nothing past the halt runs.
+
+### Do not
+
+Project the spec-source companion (its sidecar forbids it) · run any
+stroke or texpass_brush step · decide thin_extent · exceed one bounded
+re-roll per crop view · adopt A1 over A0 (the ruling adopts; you stage
+both) · arm any bound · edit any fixture or profile · write to the memory
+store · end a session the Director has not ended.
+
+### Standards compliance (this dispatch)
+
+| standard | score | evidence |
+|---|---|---|
+| PIN_PER_STEP | 3 | Both projection invocations recorded; the A2 rule registered before its number; crop frames from recorded derivations; harmonization operands recorded; predictions hashed blind first |
+| ANDON_AUTHORITY | 3 | The reach-invariance check halts on any ceiling delta; the bake's ANDONs are the A2 expressibility halt; identity test before the transfer touches anything; both cloud guards per submission; the halt is eyes on evidence with A0 beside A1 |
+| NAMED_COMPENSATORS | 3 | A1 runs on a fresh accumulating state so A0 is never consumed; raw twins and both runs retained; 0-credit expectation verified per submission; the atlas re-bake (if armed) is a new tree, the old bake retained |
+| DECOMPOSE_BY_SECRETS | 3 | Capability (crop cameras) exercised under policy (head region, two yaws) decided by ruling; A2's allocation separated from A1's generation; the crop stems derive from the committed entry through the committed builder |
+| UNCERTAINTY_GATED_HUMANS | 3 | H3's payoff is the Director's zoom on a pre-registered three-column sheet with the baseline beside it; A2 runs under a rule registered before measurement; both re-rolls bounded and pre-registered |
+| EXTERNAL_VERIFIER | 2 | The ceiling instrument independently checks the projector's geometry; provenance channels audit both runs; the payoff is judged by the eye against the baseline. `skip:` per precedent |
+
+### Calibration
+
+The handoff-12 standard holds: pre-register the does-nothing band for
+every new number, validate instruments by identity before use, own errors
+in the report. Two route cautions: the crop projection is the arc's FIRST
+— read the provenance channel before believing coverage moved, and the
+three-column sheet is the deliverable his sentence rules on; and the
+stage-1 numbers are born on-surface (the subject's off-surface rate is
+2.6430% from birth — quote denominators).
+
+---
+
 ### Standards compliance (handoff 2)
 
 | standard | score | evidence |

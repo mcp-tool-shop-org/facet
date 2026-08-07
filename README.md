@@ -137,7 +137,7 @@ exports** — every render ships with its exact silhouette so backgrounds are
 augmentation-side, and lighting would be a new renderer with its own anchors.
 
 **E12 — the beast arc — is IN FLIGHT** ([E12-ruling.md](docs/experiments/E12-ruling.md),
-Rulings 1–20 so far): the route's third subject class, a **winged dragon**, designated
+Rulings 1–23 so far): the route's third subject class, a **winged dragon**, designated
 from three reconstructed candidates on full-size sheets ("3 is the winner"). What Gate 0
 measured ([E12-gate0-report.md](docs/experiments/E12-gate0-report.md)) rewrites the
 priors: **9–12 welded shells against a character's 40–191 and the ship's 237–512** —
@@ -270,8 +270,18 @@ barbels explicit in D5, legs re-confirmed smooth, no other gap found. The
 current twins stand as the E12 measurement record (they bought two naming
 laws, the palette correction, and the measured phenomenon that **term binding
 is seed-dependent** — one seed resisted a term across three stems while its
-neighbour bound it). Then stage 1 against the banked 50.46% ceiling, strokes,
-and Gate 1.
+neighbour bound it). The exemplar rebuild then ran (Rulings 21–23): **E13's
+Gate 0 passed at zero differing pixels** (the projector speaks crop cameras
+and provably changed nothing), the Director chose view 4's true-nape artifact,
+the membrane word had its one measured iteration and **falsified itself
+against its own pre-registered band** (`leathery` improved opacity while
+naming a warm material — a single term cannot deliver opaque-and-cool), warm
+membranes were accepted, and his "not very consistent" call — made, it turned
+out, on the set's two measured tonal extremes, 7.8 L\* apart — ruled in the
+**harmonization pass**: an identity-tested, operands-recorded Lab transfer
+toward one reference view, now adopted as projection's input. Stage 1 is
+dispatched with the E13 head-crop pass and a pre-registered A0/A1 comparison,
+against the banked 50.46% ceiling; then strokes and Gate 1.
 Every value the subject needs lives in
 `profiles/beast.json` and `canon/DRAGON-IDENTITY.md`, and the ones that arrived by
 inheritance are being falsified and replaced one measured step at a time — which is

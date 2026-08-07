@@ -160,10 +160,24 @@ values live in its own profile and fixture, never inherited unmeasured.
   permanent), resolved by the one bounded re-roll (seed defect; the
   calibration opposite of the canon-caused D7 case). The Director's eye then
   caught the **wing skeleton bone-ivory on the two wing-spread views**: D1's
-  surface by fixture assignment, never named in the prompt — named now
-  (`moss-green wing arms and finger struts`), views 0/4 regenerate under v6
-  (handoff 9) → stage 1 vs the 50.46% ceiling → sweep gate → strokes →
-  **Gate 1 at his zoom**.
+  surface by fixture assignment, never named in the prompt — named now, and
+  the naming saga that followed (compound term half-binding, the split, the
+  measured discovery that **term binding is seed-dependent**) is Rulings
+  17–20.
+- **The exemplar arc** ([Rulings 20–23](../experiments/E12-ruling.md)): the
+  Director raised the bar — these sprites inform the datasets and will be
+  displayed — so the set regenerated whole from the occupancy-complete canon
+  (his nape catch triggered the full audit: every modelled structure → one
+  owner, table in the fixture). **E13 Gate 0 passed at 0 differing pixels**
+  (crop-camera projection capability proven). The membrane word had its one
+  iteration and falsified itself against its own pre-registered band
+  (opacity improved, warmth stayed — a term cannot deliver opaque-and-cool);
+  warm membranes accepted. His "not very consistent" was measured exact:
+  the two views he named are the set's tonal extremes, 7.8 L\* apart — the
+  **harmonization pass** (identity-tested Lab transfer toward reference
+  view 1) is adopted as projection's input. Stage 1 + the E13 head-crop
+  pass dispatched (handoff 13) with a pre-registered A0/A1 comparison →
+  sweep gate → strokes → **Gate 1 at the exemplar bar**.
 
 ## The calibration table this page exists for
 
