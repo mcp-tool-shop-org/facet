@@ -1291,6 +1291,235 @@ def fts_or(phrase):
     return " OR ".join('"%s"' % w for w in fts_terms(phrase))
 
 
+# ---------------------------------------------------------------------------
+# claims — the stale-claim sweep. REPORT-ONLY BY RULING, never a gate.
+#
+# The diagnostic-vs-gate law is the grounds (E15 handoff 2): this sweep swings on
+# phrasing and on document class, and neither may decide an exit code. It exits 0
+# whatever it finds. Stale sites are the advisor's to rule, never this seat's to fix.
+#
+# It reads the INDEX's measurements rather than re-deriving them from the record —
+# the index already did that derivation under the four ratified verify legs, and a
+# second derivation here would be a second authority.
+# ---------------------------------------------------------------------------
+
+# Documents that state their counts AS OF NOW and must match the measurement.
+CURRENT_STATE = {
+    "README.md",
+    "CLAUDE.md",
+    "docs/context-architecture.md",
+    "docs/style-registers.md",
+    "docs/experiments/README.md",
+}
+CURRENT_STATE_DIRS = ("docs/handbook/",)
+# A kickoff or spec states its counts as of writing, and is correct as written.
+HISTORICAL_DIRS = ("docs/experiments/", "docs/research/")
+BANNERED = "docs/advisor-kickoff.md"     # current-state ABOVE its supersession banner
+BANNER_RE = re.compile(r"SUPERSEDED")
+
+
+def _banner_line(rel):
+    """1-based line of the first supersession banner, or None."""
+    for i, ln in enumerate(lines_of(rel), 1):
+        if BANNER_RE.search(ln):
+            return i
+    return None
+
+
+def classify_document(rel, line):
+    """(class, why) for a claim at `rel:line`. Printed with every row."""
+    if rel == BANNERED:
+        b = _banner_line(rel)
+        if b is None:
+            return "current-state", "the advisor kickoff, no supersession banner found"
+        if line < b:
+            return "current-state", "advisor kickoff, above the banner at L%d" % b
+        return "historical", "advisor kickoff, below the banner at L%d" % b
+    if rel in CURRENT_STATE or rel.startswith(CURRENT_STATE_DIRS):
+        return "current-state", "on the dispatch's current-state list"
+    if rel.startswith(HISTORICAL_DIRS):
+        return "historical", "a kickoff / spec / report — states its counts as of writing"
+    return "unclassified", "on neither list — reported, not assigned"
+
+
+# The claim families, each written from a phrasing the record actually uses. A
+# RANGE claim asserts the highest number; a CARDINAL claim asserts how many exist.
+# They are different assertions and are compared against different measurements —
+# E12 carries handoffs numbered to 16 but only 15 of them, because handoff 1 was
+# never labelled, so conflating the two would manufacture a stale row.
+CLAIM_FAMILIES = [
+    ("rulings range", "ruling", "max",
+     re.compile(r"\bRulings?\s+1\s*[–—-]\s*(\d+)")),
+    ("rulings cardinal", "ruling", "count",
+     re.compile(r"\b(\d+)\s+rulings\b")),
+    ("amendments cardinal", "amendment", "count",
+     re.compile(r"\b(\d+)\s+amendments\b")),
+    ("addenda cardinal", "addendum", "count",
+     re.compile(r"\b(\d+)\s+addenda\b")),
+    ("handoffs range", "handoff", "max",
+     re.compile(r"\bhandoffs?\s+1\s*[–—-]\s*(\d+)")),
+    ("handoffs cardinal", "handoff", "count",
+     re.compile(r"\b(\d+)\s+handoffs\b")),
+    ("experiment span", "experiment", "max",
+     re.compile(r"\bE01\s*[–—-]\s*E?(\d+)")),
+]
+
+# Modifiers that make a count-claim ambiguous rather than wrong. `29 rulings + the
+# close` may assert 29 or 30 depending on what "the close" is counted as; choosing a
+# reading would be inventing a claim to check.
+AMBIGUOUS_SUFFIX = re.compile(r"\+\s*the\s+close|\bso far\b|\bat least\b|\bor so\b")
+
+# Anything count-claim-SHAPED. What this matches and no family parses is reported as
+# unparseable rather than guessed at.
+#
+# A RANGE IS ONLY A COUNT-CLAIM IF IT STARTS AT 1. `Rulings 1–30` asserts that thirty
+# exist; `Rulings 21–23` names three of them and asserts nothing about the total. An
+# earlier version of this pattern did not make that distinction and reported 35 such
+# references as unparseable — noise that would have buried the two rows that matter.
+CLAIM_SHAPED = re.compile(
+    r"\b\d+\s+(?:rulings|amendments|addenda|handoffs|experiments)\b"
+    r"|\b(?:Rulings?|Amendments?|Handoffs?|Addenda)\s+1\s*[–—-]\s*\d+"
+    r"|\bE01\s*[–—-]\s*E?\d\d\b", re.IGNORECASE)
+
+ARC_RE = re.compile(r"\bE(\d\d)\b")
+
+
+def measurements(con):
+    """Every count this sweep can check, read from the index."""
+    m = {}
+    for kind in ("ruling", "amendment", "addendum"):
+        for arc, n, mx in con.execute(
+                "SELECT arc, COUNT(*), MAX(CAST(replace(number,'A','') AS INTEGER)) "
+                "FROM rulings WHERE kind=? GROUP BY arc", (kind,)):
+            m[(arc, kind)] = {"count": n, "max": mx}
+    for arc, n, mx in con.execute(
+            "SELECT arc, COUNT(*), MAX(number) FROM handoffs GROUP BY arc"):
+        m[(arc, "handoff")] = {"count": n, "max": mx}
+    n, mx = con.execute(
+        "SELECT COUNT(*), MAX(CAST(substr(id,2) AS INTEGER)) FROM experiments").fetchone()
+    m[("*", "experiment")] = {"count": n, "max": mx}
+    return m
+
+
+def claims(db_path):
+    con = sqlite3.connect(db_path)
+    meas = measurements(con)
+    rows, unparseable, families_seen = [], [], {}
+
+    for rel in record_markdown():
+        # E15's own documents QUOTE these counts as data — the seeded key, the
+        # predictions, this report. Sweeping them would flag the sweep's own subject
+        # matter, which is the self-reference property already recorded in §5.
+        if os.path.basename(rel).startswith("E15-"):
+            continue
+        for i, ln in enumerate(lines_of(rel), 1):
+            consumed = []
+            for fam, kind, unit, rx in CLAIM_FAMILIES:
+                for m in rx.finditer(ln):
+                    consumed.append((m.start(), m.end()))
+                    families_seen.setdefault(fam, []).append("%s:%d" % (rel, i))
+                    claimed = int(m.group(1))
+                    if kind == "experiment":
+                        arc = "*"
+                    else:
+                        # the arc governing this claim: the nearest E-number at or
+                        # before the match, which is how the record writes it —
+                        # `[E12-ruling.md](…), Rulings 1–30`. The window must span a
+                        # markdown link, so the search is over the raw prefix and
+                        # not over a dot-free window.
+                        pre = ARC_RE.findall(ln[:m.end()])
+                        if pre:
+                            arc = "E" + pre[-1]
+                        else:
+                            # A document named for an arc governs the claims it makes
+                            # without naming one: E04's kickoff writing "(Rulings
+                            # 1–12)" is claiming about E04. Falling back to the
+                            # filename is the record's own convention, not a guess.
+                            fn = ARC_RE.match(os.path.basename(rel))
+                            arc = "E" + fn.group(1) if fn else None
+                    if arc is None:
+                        unparseable.append((rel, i, m.group(0),
+                                            "no arc attributable on this line"))
+                        continue
+                    key = (arc, kind)
+                    if key not in meas:
+                        unparseable.append((rel, i, m.group(0),
+                                            "no measurement for %s %s" % (arc, kind)))
+                        continue
+                    real = meas[key][unit]
+                    cls, why = classify_document(rel, i)
+                    tail = ln[m.end():m.end() + 40]
+                    amb = bool(AMBIGUOUS_SUFFIX.search(tail))
+                    if amb:
+                        verdict = "AMBIGUOUS"
+                    elif claimed == real:
+                        verdict = "ok"
+                    elif cls == "current-state":
+                        verdict = "STALE"
+                    else:
+                        verdict = "as-of-writing"
+                    rows.append(dict(file=rel, line=i, fam=fam, arc=arc, kind=kind,
+                                     unit=unit, claimed=claimed, measured=real,
+                                     cls=cls, why=why, verdict=verdict,
+                                     text=m.group(0).strip(),
+                                     tail=tail.strip()[:34]))
+            for m in CLAIM_SHAPED.finditer(ln):
+                if any(s <= m.start() < e for s, e in consumed):
+                    continue
+                unparseable.append((rel, i, m.group(0).strip(),
+                                    "count-claim-shaped; no family parses it"))
+
+    print("=" * 78)
+    print("facet_index claims — the stale-claim sweep (REPORT-ONLY; always exits 0)")
+    print("=" * 78)
+    print("\nMeasured, from the index:")
+    for (arc, kind) in sorted(meas, key=lambda k: (k[0], k[1])):
+        v = meas[(arc, kind)]
+        print("   %-16s %-10s count %-4s max %s" % (arc, kind, v["count"], v["max"]))
+
+    order = {"STALE": 0, "AMBIGUOUS": 1, "ok": 2, "as-of-writing": 3}
+    rows.sort(key=lambda r: (order.get(r["verdict"], 9), r["file"], r["line"]))
+    # file:line goes LAST so a long path is never truncated — the whole point of the
+    # row is that a human can open the site it names.
+    print("\n%-14s %-14s %-11s %-11s %s"
+          % ("verdict", "class", "claims", "measured", "file:line"))
+    print("-" * 78)
+    for r in rows:
+        print("%-14s %-14s %-11s %-11s %s:%d"
+              % (r["verdict"], r["cls"],
+                 "%s %d" % (r["unit"], r["claimed"]),
+                 "%s %s" % (r["unit"], r["measured"]),
+                 r["file"], r["line"]))
+        print("%-14s   %s · %s · %s" % ("", r["fam"], r["arc"], r["why"]))
+
+    stale = [r for r in rows if r["verdict"] == "STALE"]
+    amb = [r for r in rows if r["verdict"] == "AMBIGUOUS"]
+    print("\n" + "-" * 78)
+    print("STALE (current-state documents disagreeing with the record): %d" % len(stale))
+    for r in stale:
+        print("   %s:%d  claims %s %d, record has %s %d  [%s]"
+              % (r["file"], r["line"], r["unit"], r["claimed"],
+                 r["unit"], r["measured"], r["fam"]))
+    print("\nAMBIGUOUS (a modifier makes the assertion unresolvable): %d" % len(amb))
+    for r in amb:
+        print("   %s:%d  \"%s %s\"  — reported, not resolved to a number"
+              % (r["file"], r["line"], r["text"], r["tail"]))
+    print("\nUNPARSEABLE (count-claim-shaped, no family): %d" % len(unparseable))
+    for rel, i, txt, why in unparseable:
+        print("   %s:%d  \"%s\"  — %s" % (rel, i, txt, why))
+
+    print("\nPhrasing families found on the record: %d" % len(families_seen))
+    for fam in sorted(families_seen):
+        sites = families_seen[fam]
+        print("   %-20s %2d site(s)   e.g. %s" % (fam, len(sites), sites[0]))
+    missing = [f[0] for f in CLAIM_FAMILIES if f[0] not in families_seen]
+    if missing:
+        print("   families with no site on the current record: %s" % ", ".join(missing))
+
+    print("\nHealthy state is zero STALE rows. This verb never gates: exit 0.")
+    return 0
+
+
 def query(con, phrase, limit=8):
     """Two-stage retrieval: exact phrase first, then bm25 scaled by term coverage.
 
@@ -1523,7 +1752,7 @@ def verify(db_path, top_n=3):
 def main(argv=None):
     ap = argparse.ArgumentParser(
         description="the derived SQLite+FTS5 index over the facet record")
-    ap.add_argument("verb", choices=["build", "verify", "q"])
+    ap.add_argument("verb", choices=["build", "verify", "q", "claims"])
     ap.add_argument("term", nargs="?", default=None, help="query term for `q`")
     ap.add_argument("--db", default=os.path.join(REPO, DB_REL))
     ap.add_argument("--limit", type=int, default=8)
@@ -1535,6 +1764,8 @@ def main(argv=None):
         return 0
     if args.verb == "verify":
         return verify(args.db)
+    if args.verb == "claims":
+        return claims(args.db)
     if not args.term:
         print("q needs a term", file=sys.stderr)
         return 2
