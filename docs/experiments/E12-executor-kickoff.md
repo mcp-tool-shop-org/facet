@@ -1398,6 +1398,122 @@ reads mushy at zoom is a flag, not a pass.
 
 ---
 
+## Session handoff 12 (2026-08-06) — the membrane iteration (v9, seven views) + the harmonization instrument. Comprehensive.
+
+Serves the holding handoff-11 session (git pull first) or a fresh one — it
+assumes nothing not written here or in the reading list.
+
+### Where this stands
+
+The Director ruled three things on the exemplar set (Rulings 21–22): **view
+4-A stands** (the true nape; B stays in the record), **the membranes
+iterate once before stage 1** (his sentence — the base coat is their only
+paint source), and **cross-view tone consistency is now a named
+requirement** ("Not very consistent," views 4|5 — the honest cost of
+per-view generation, generalising 17f's watch item from membranes to the
+hide). The term is ruled: `leathery storm-grey wing membranes` (22b — the
+opacity cue against the measured translucency prior; hue family
+unchanged). The tonal answer is ruled as a measured arm: **the
+harmonization pass** (22e — deterministic Lab colour-statistics transfer
+inside the figure mask toward reference view 1, applied per view before
+projection; semantic work stays with the term, tonal work with the
+transfer).
+
+### You are the executor
+
+```
+cd E:\AI\facet && git pull
+CLAUDE.md                                  <- how to work here. Read first, follow exactly.
+docs/experiments/E12-ruling.md             <- Rulings 21-22. 22b/22c/22e are this dispatch.
+profiles/beast.json                        <- the leathery entry; twin_prompts: REBUILD TO v9
+canon/DRAGON-IDENTITY.md                   <- D3's term strengthened, mechanism noted
+docs/experiments/E12-handoff11-report.md   <- the v8 baselines every v9 number reads against
+E:\AI\training\facet_next\E13_twins\       <- v8 twins + your committed instruments (reused)
+```
+
+Your rules (CLAUDE.md §executor), the standing environment and the full
+cloud discipline are handoff 11's, unchanged. Output: same tree, `_v9`
+suffixes; the harmonization work under `harmonize/`.
+
+### Blind predictions, before anything runs
+
+Hashed, blind status disclosed, covering at minimum: does `leathery` move
+the membranes toward neutral grey (per-view membrane-box chroma/hue vs the
+v8 readings — state expected direction and rough magnitude) · which views
+spend re-rolls (the 21c map: view 3's black limb is EXPECTED at the
+operating point) · does any regression appear on the six other changed
+views (a changed prompt re-rolls every landing) · harmonization: the
+identity test on view 1 (must be exact), and the expected direction of the
+figure-mask Lab deltas per view.
+
+### Task 1 — v9 stems
+
+The committed builder + `e12_stem_delta.py` ANDON: v9 differs from v8 by
+EXACTLY the one-term substitution, all stems, drop map unchanged,
+`headclay_0` rebuilt, version `E12-pair-9`, counts printed.
+
+### Task 2 — regenerate views 0, 1, 2, 3, 5, 6, 7
+
+**View 4 is NOT regenerated** (22c — his sentence chose 4-A; regenerating
+it would discard the choice). Inputs reused byte-identical (hash-confirmed
+free). Operating-point seed per view; one bounded re-roll each on
+spec-visible grounds (view 3's is pre-registered as expected). Per twin:
+the 16e gate + 17d achromatic channel + registration via your committed
+readout, against the v8 baselines · membrane-box chroma/hue per view (the
+question his sentence asked) · per-view clay | control | twin rows and an
+eight-row overview (v9 ×7 + v8-A view 4 — the set as it would stand).
+
+### Task 3 — the harmonization instrument, built and validated, NOT adopted
+
+`e13_harmonize.py` (committed, not throwaway): per-view Lab
+colour-statistics transfer inside the exact figure mask toward **reference
+view 1's v9 twin**, output beside the raw twin, never replacing it.
+Requirements: **identity on the reference** (view 1 harmonized toward
+itself is byte-identical — the works-perfectly test); the transfer's
+operands recorded per view (mean/σ per channel, before and after); a
+per-view **raw | harmonized** A/B sheet at full size plus the 4|5-class
+pairs the Director's observation was made on; the membrane and hide boxes
+re-measured on the harmonized outputs so the tonal move is a number as
+well as a look. **Adoption is a ruling, not this session's call** — stage
+nothing into the projection inputs.
+
+### Then HALT
+
+Stage: the seven v9 twins + sidecars + re-roll artifacts, the completed-set
+overview, the gate/achromatic/registration/membrane tables, the
+harmonization A/Bs with their operands, predictions scored. **To the
+advisor's eye first, then the Director's** — his two questions are
+pre-stated: are the membranes storm-grey now, and does the harmonized set
+read as ONE dragon.
+
+### Do not
+
+Regenerate view 4 · exceed one bounded re-roll per view · adopt
+harmonization into any projection input · project anything · arm any bound
+· edit any fixture or profile · write to the memory store · end a session
+the Director has not ended.
+
+### Standards compliance (this dispatch)
+
+| standard | score | evidence |
+|---|---|---|
+| PIN_PER_STEP | 2 | v9 exact-delta ANDON against git; inputs by content hash; seeds pinned with expected deviations pre-registered; harmonization operands recorded per view; predictions hashed blind first |
+| ANDON_AUTHORITY | 3 | The stem ANDON; both cloud guards per submission; the identity test gates the harmonization instrument before any number is read from it; bounded re-rolls with the expected spend named in advance; halt to eyes |
+| NAMED_COMPENSATORS | 3 | 0-credit expectation verified per submission; harmonized outputs land BESIDE raw twins, never replacing them, adoption explicitly reserved to a ruling; view 4-A untouched; all prior artifacts retained |
+| DECOMPOSE_BY_SECRETS | 3 | The term change is semantic, the transfer is tonal, and the dispatch keeps them in separate tasks with separate measurements; the reference view is named by ruling, not chosen by the session |
+| UNCERTAINTY_GATED_HUMANS | 3 | The round exists on the Director's two sentences; his acceptance questions are pre-stated; the consistency judgement is his eye on the A/B sheets, not a statistic |
+| EXTERNAL_VERIFIER | 2 | Twins judged against a spec they did not generate; the transfer validated by an identity test its own code cannot fake; `skip:` per precedent |
+
+### Calibration
+
+The handoff-11 standard holds. The set's acceptance question is now
+CROSS-VIEW: after the per-view checks, put the seven v9 twins and view 4-A
+side by side and flag tonal disagreement the way the Director's eye would —
+the raw|harmonized sheets exist to make that comparison decidable rather
+than felt.
+
+---
+
 ### Standards compliance (handoff 2)
 
 | standard | score | evidence |

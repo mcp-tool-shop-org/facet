@@ -1423,3 +1423,68 @@ watched, one session's measurement being no canon change.
 (with A2's texel-allocation arithmetic) and stage 1 follows on the
 completed set. The route from there is unchanged: sweep gate, strokes,
 finalize, pack, **Gate 1 at his zoom — the exemplar bar.**
+
+---
+
+## Ruling 22 — his two sentences: view 4-A stands; the membranes iterate once before stage 1, and the word is `leathery` (2026-08-06)
+
+**22a — VIEW 4-A IS THE EXEMPLAR VIEW 4** (Director's sentence, on the 21e
+recommendation): the true nape outweighs the cream rear struts, and B's
+graded backdrop was a mechanical strike besides. B stays in the record. The
+struts remain a candidate for an E13 wing-crop repaint at source if his eye
+wants it after the head pass proves.
+
+**22b — THE MEMBRANE ITERATION (his sentence: once, before stage 1), and
+the word targets the measured mechanism.** D3's realised drift across four
+generations — ivory under family pressure, slate-to-cream lit gradient,
+orange at bust frame, warm tan/yellow-green across the v8 set — points at
+the realistic register's translucency prior: backlit membrane tissue
+renders as warm glow, and a colour word alone does not contest a MATERIAL
+prior. The term becomes **`leathery storm-grey wing membranes`** — the
+ruled hue family unchanged (grey stays neutral; the bands ruling and the
+backdrop arithmetic are untouched), one opacity/material cue added against
+the named prior. Fixture and profile transcribed this fold; stems rebuild
+to v9.
+
+**22c — the iteration's scope: seven views; view 4-A is EXCLUDED.**
+Regenerating view 4 would discard the artifact his sentence just chose, and
+its membranes are the set's least-warm (achromatic 4.48%, the low outlier).
+Views 0/1/2/3/5/6/7 regenerate under v9 at the operating point with the
+standing bounded re-roll each — the seed×view map (21c) makes re-roll
+spends on view 3 EXPECTED (770700's deterministic black limb; two
+reproductions) and pre-registers them as process. The v9 round halts to
+this seat's eye, then his — the membrane question is the one his sentence
+opened, and it is the acceptance question for the round.
+
+**22d — after the v9 round passes his bar**: handoff 13 = the E13 head-crop
+twins + A2's texel-allocation arithmetic + stage 1 on the completed base
+coat. The exemplar set at that point: v9 ×7 + v8-A view 4, every artifact's
+lineage in its sidecar.
+
+**22e — HIS THIRD OBSERVATION, mid-fold: "Not very consistent" (views 4
+and 5 side by side — membrane faces and hide shade disagreeing across
+views).** Recorded with the honest mechanism: each twin is an independent
+diffusion sample, and nothing in the route enforces cross-view TONE — the
+shared prompt bounds the palette semantically, the shared seed correlates
+nothing across different camera crops, and consistency has always been the
+ATLAS's job (per-texel ownership, then stage-1 seam levelling), which
+resolves disagreement into patchwork risk at ownership boundaries — 17f's
+watch item, now generalised by his eye from membranes to the hide itself.
+**Ruled into handoff 12 as a measured arm: the HARMONIZATION pass** — a
+deterministic per-view colour-statistics transfer (Lab, inside the figure
+mask, toward a named reference view) applied to the twin set BEFORE
+projection. It is cheap, reversible, generation-free, and exactly
+measurable; its works-perfectly test is identity on the reference view
+itself; its judging artifact is a per-view raw | harmonized sheet at his
+zoom beside the reference. **Reference view: 1** (the accepted register's
+direct descendant, the identity-dense head view). Its limit is stated now:
+a statistics transfer unifies TONE; it cannot move an element to a
+different colour family — the leathery term (22b) does the semantic work,
+harmonization does the tonal work, and the two compose. **The escalation
+arm, specced not run**: reference-image conditioning in the cloud graph
+(conditioning every view's generation on one styled reference) — a
+Step-0-class capability held for the case where measured harmonization
+undershoots his bar. And the long arc is named: the creature-register LoRA
+trained on exemplar assets through the E11 lane (style-registers.md) is the
+studio-level answer to cross-asset consistency, and it is exactly what "it
+will inform the datasets" builds toward.
