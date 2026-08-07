@@ -1559,3 +1559,79 @@ identity-tested transfer), A2's texel-allocation arithmetic under a
 pre-registered decision rule, and stage 1 — the A0 baseline projection and
 the composed crop-first projection both run, so the detail pass's payoff
 is judged against evidence rather than asserted.
+
+---
+
+## Ruling 24 — handoff 13 ruled: A0 IS STAGE 1; the detail pass's capability is banked and its generation half is the finding; allocation is the named next head lever (2026-08-06)
+
+Evidence: the handoff-13 report (`2c6ae54`), the blind predictions
+(`3d0347d`, blob `d2b102f`), `a2/DECISION.md`, and this seat's eye on both
+judging sheets (`HEAD_y0_3x.png`, `HEAD_y45_3x.png`) before ruling.
+
+**24a — the halt is ACCEPTED; the projector's two fixes are RATIFIED; and
+`--fit-axis width` is ADOPTED for `project_twins`**, pinned in the profile
+as the framing family's FOURTH consumer — the width-fit derivation
+reproduces the recorded silhouette masks at IoU 1.000000 where the tool's
+height-fit measured 0.986006, so this is geometry, not preference; A0L
+stays in the record as the measured floor of the alternative's cost (0.8%
+symmetric difference, a floor because coverage cannot see displacement).
+The frame-bounds test is the bigger save: inert on all eight full-figure
+anchor views, it rejected three quarters of each CROP camera's candidates
+— texels that would have been painted with clamped border content and won
+their ties. Both fixes proven inert on the recorded anchor at 0 differing
+elements. The 52.72% ceiling scare resolved by checking the baseline (the
+tool's W3-default head floor against the profile's ruled 0.45) is the
+check-the-baseline discipline doing exactly its job.
+
+**24b — H3 IS RULED AT THIS SEAT'S EYE, his window open: A0 STANDS AS
+STAGE 1. The crop pass is not adopted.** On both sheets the crop-owned
+regions read off-register against the body they sit on — glossier,
+CG-smooth, palette-drifted (slate crown and rust frill streak at yaw 0;
+the twice-failed scarlet mass and a broken throat column at yaw 45; a
+dimmer eye and a visible ownership seam on both) — the exact failure the
+executor's exemplar-bar flag named: a head that does not match its own
+body. The +18,060 strictly-additive texels and the ownership shift (24.2%
+of the head box) do not buy that back. **The pre-registered negative
+branch fires with its consequence: texel allocation becomes the primary
+head lever.** What the detail pass BANKED permanently: the crop-camera
+capability (Gate 0 at zero pixels, twice), the frame-bounds and framing
+fixes, and the third measured instance of the FRAME-CHANGES-REGISTER
+phenomenon (companion orange → crop gloss → crop1 scarlet) — bust-frame
+generation drifts register under this model and recipe, and
+reference-image conditioning remains its named future lever. The crop
+twins and the spent re-roll stay in the record as E13 measurement
+artifacts; nothing they painted is adopted.
+
+**24c — the scarlet second failure stood as the result**, per the rule —
+ratified. No third roll existed and none was asked for.
+
+**24d — A2's finding is BANKED as a measured capability gap.** The 4096
+atlas under-resolves the head at BOTH frames — 0.815 texels per
+full-figure head pixel, 0.0903 per crop pixel, an 11.07× shortfall
+against the crop paint — and the only scaling lever in the bake is W3's
+front-view rect, 4.3× the head box with 76.7% of its area not head, whose
+growth ANDON passes at every scale and therefore guards nothing here (the
+collision pre-registered as P1e before the number existed). **The real
+lever is a per-subject head rect** (the measured `head_00003.json` box)
+read by the bake — Ruling 11b's additive arm, waiting on a small
+capability build with its own anchor (rect present at scale 1.0 =
+byte-identical bake). **Timing is the Director's, with the cost stated
+honestly**: a re-bake moves the valid-texel denominator, re-anchoring the
+banked 50.46% ceiling and every downstream number, and anything projected
+or stroked before it would re-run. This seat's recommendation: judge the
+A0 head at Gate 1's zoom first — the arm is specced, waiting, and loses
+nothing by patience.
+
+**24e — stage 1 is BANKED: A0 = 1,430,687 styled texels = 44.2% of valid
+= 87.5% of the pre-registered 50.46% reach ceiling** (between the ship's
+86.4% and the character's 92.8%, as the executor's own prior reasoned),
+born on-surface, holes 1,809,823 saved as the stroke lane's input. Reach
+1,635,304 invariant across all three runs.
+
+**24f — next: the stroke lane opens.** Handoff 14 derives the stroke
+cameras from A0's hole map (the ship's Ruling 23 lifecycle), brings
+`thin_extent` to its long-deferred ruling with the wing boxes and the
+artifact-judged criterion in the room, clears the `texpass_brush`
+lifecycle block, and the elevated-camera re-open condition (Ruling 7)
+gets its named check against the hole map. Then strokes → finalize →
+pack → **Gate 1 at the exemplar bar.**
