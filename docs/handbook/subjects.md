@@ -199,15 +199,18 @@ values live in its own profile and fixture, never inherited unmeasured.
   **0 UNDECIDED** (83/83 decided), and the strokes are released. **Handoff 15 runs:
   strokes → finalize → pack → the five-column sheet → Gate 1 at the exemplar bar.**
 
-## The longsword (STAGED — class ruled 2026-08-07)
+## The longsword (STAGED, DEFERRED — class ruled 2026-08-07)
 
 - **The route's fourth subject class: `prop`** (ruled at the 2026-08-07 relief —
   profiles name classes, fixtures name subjects: character / ship / beast / prop).
   Three clay candidates staged at `E:\AI\training\facet_next\longsword_clay\` and
-  viewed at full size by the advisor; **Gate 0 dispatched**
-  ([E14-executor-kickoff.md](../experiments/E14-executor-kickoff.md)) — three TRELLIS
-  reconstructions, designation at the Director's eye. Fixture, profile and register
-  all follow designation; the occupancy audit runs at fixture authoring, day one.
+  viewed at full size by the advisor; **Gate 0 dispatch written and DEFERRED by the
+  Director's sequencing word** (2026-08-07: the context-architecture index builds
+  first, once the beast profile completes, so data does not accumulate ahead of the
+  index) — three TRELLIS reconstructions, designation at the Director's eye
+  ([E14-executor-kickoff.md](../experiments/E14-executor-kickoff.md)). Fixture,
+  profile and register all follow designation; the occupancy audit runs at fixture
+  authoring, day one.
 - What the class brings that no prior subject carried: the dominant surface is a
   **near-2D thin slab at figure scale** (the E12 membranes were the subject's
   stressor; here the sheet IS the subject), high bilateral symmetry, hard planar

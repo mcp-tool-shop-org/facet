@@ -1,5 +1,15 @@
 # E14 — executor kickoff: the prop at Gate 0
 
+**⚠ DEFERRED BY THE DIRECTOR'S SEQUENCING WORD (2026-08-07, hours after authoring —
+supersedes this dispatch's launch and concurrency rulings):** *"Let's wait until the
+database is developed before we move on to another profile, so that the data doesn't
+accumulate too much. We'll fire the database kickoff once the beast profile is
+complete."* This dispatch does NOT launch until, in order: **(1)** the beast profile
+completes (E12/E13 Gate 1 ruled, its on-acceptance items landed), **(2)** the
+context-architecture P1 index is built and verify-gated
+([context-architecture.md](../context-architecture.md)). The clays stay staged; the
+dispatch body below is unchanged and launches as written when its turn comes.
+
 Paste this into a fresh executor session. Written by the advisor, 2026-08-07, at the
 incoming seat's first fold, while the E12/E13 handoff-15 session runs the dragon's
 strokes toward Gate 1. This dispatch is **Gate 0 only**: three longsword clays become

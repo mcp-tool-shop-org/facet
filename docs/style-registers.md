@@ -24,7 +24,7 @@ implicit again.
 | W3 (Figure) | painterly, visible brushstrokes | `saltroad_style_v2_lowlr_000001500` | earned — accepted asset |
 | galleon (Transport) | painterly, worked surface | saltroad, same card | earned — accepted asset |
 | dragon (Creature) | **ultra-realistic, menacing** | **NONE** (Ruling 10b) | **earned — accepted pair** (Ruling 14, 2026-08-06; register confirmed at Ruling 11a, pair accepted after the Ruling 12e palette correction). ⚠ One register-interaction law from the arc: colour-word density the painterly register tolerates, the realistic register renders literally — "bone" ×5 painted a skeleton (Ruling 12e); a colour term can reach structures that *resemble* what it names (Ruling 13d, labelled) |
-| longsword (Prop — handheld) | undecided | undecided | class RULED 2026-08-07 (relief); three clays staged; Gate 0 next |
+| longsword (Prop — handheld) | undecided | undecided | class RULED 2026-08-07 (relief); three clays staged; Gate 0 dispatch written (E14), DEFERRED behind the context index by the Director's sequencing word (2026-08-07) |
 | **Environment / terrain** (future) | undecided | undecided | tree, rock formation, crystal cluster, ruin — natural; the class the faceted-crystal E gestured at (Director, 2026-08-07) |
 | **Architecture / structure** (future) | undecided | undecided | castle, tower, shrine, gate — BUILT vs natural, FIXED/LARGE vs handheld (Director, 2026-08-07) |
 | **Creature-companion / mount** (future) | undecided | undecided | chocobo-type bird, slime, familiar — **a different class from the beast BY REGISTER** (tamer, not menacing): the register-is-subject-data law expressed at the taxonomy level (Director, 2026-08-07) |
