@@ -84,7 +84,8 @@ dispatched). The post-Gate-1 quality queue demotes to optional polish.
 
 **And the route generalises — E04's galleon is the second accepted asset** (2026-08-05,
 "it looks good to me," ruled on the five-column sheets —
-[E04-ruling.md](docs/experiments/E04-ruling.md), 28 rulings). The ship ran the character's
+[E04-ruling.md](docs/experiments/E04-ruling.md), 29 rulings — *the count read "28" here
+until E15's verifier counted the record itself*). The ship ran the character's
 route end to end with every subject value drawn from `profiles/ship.json` and
 `canon/GALLEON-IDENTITY.md`: eight twins, six strokes, **zero credits across every
 generation in the arc**. Measured mix **36.89% reference / 6.87% brush / 56.24% dilation**

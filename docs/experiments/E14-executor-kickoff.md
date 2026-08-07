@@ -10,6 +10,13 @@ context-architecture P1 index is built and verify-gated
 ([context-architecture.md](../context-architecture.md)). The clays stay staged; the
 dispatch body below is unchanged and launches as written when its turn comes.
 
+**⚡ BOTH CONDITIONS MET, 2026-08-07** ([E15-ruling.md](E15-ruling.md) Ruling 1):
+the beast profile completed at E12 Ruling 28 (Gate 1 accepted; export and ingest
+landed at Rulings 29–30), and the P1 index is built and verify-gated at two
+seats' hands. **This dispatch is LAUNCHABLE on the Director's paste.** One line
+joins the executor's first commands, per the E15 ritual:
+`python tools/facet_index.py build` after `git pull`.
+
 Paste this into a fresh executor session. Written by the advisor, 2026-08-07, at the
 incoming seat's first fold, while the E12/E13 handoff-15 session runs the dragon's
 strokes toward Gate 1. This dispatch is **Gate 0 only**: three longsword clays become

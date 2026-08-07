@@ -58,16 +58,29 @@ six hundred it would have skimmed.
 
 ## Phases
 
-1. **P1 — build it against the existing record** (one executor session, specced
-   before work per the house rule; infra-class, no generation): schema, builder,
-   verifier, the seeded question set drawn from real questions this arc actually
-   asked ("what did we rule about canny", "which seed resists terms", "what is the
-   backdrop word and why").
+1. **P1 — build it against the existing record** — ✅ **DONE 2026-08-07**
+   ([E15-report.md](experiments/E15-report.md),
+   [E15-ruling.md](experiments/E15-ruling.md)): `tools/facet_index.py`
+   (build/verify/q) + `docs/index/facet.db`. All four verify legs pass at two
+   seats' hands — byte-identity across interpreters, zero dangling over 1,079
+   rows, counts against independent greps, 14/14 seeded. The honest boundary is
+   E15-report §5; it is P2's worklist.
 2. **P2 — slim the entry documents against it**: the kickoff and CLAUDE.md shed
-   inlined state that the index now answers; measure the shed (lines before/after).
-3. **P3 — the standing ritual**: fold = write the record → `build` → `verify` →
-   push. The index is a derived artifact forever; the day it is hand-edited it is
-   wrong by definition.
+   inlined state that the index now answers; measure the shed (lines
+   before/after). QUEUED — advisor-led, the Director's timing. Also reduces the
+   measured self-reference (the E15 kickoff outranks answers for its own
+   question labels).
+3. **P3 — the standing ritual** — ⚖ **RULED 2026-08-07** (E15-ruling Ruling 4):
+   **every advisor fold ends `build` + `verify`** — the seeded gate re-runs
+   every fold, because it is measured growth-sensitive (a question that passed
+   at 2,444 FTS rows missed at 2,475) · **the DB file commits at SESSION
+   boundaries**, not every fold — the measured cost (~5.9 MB of
+   poorly-delta-ing binary per build) against tonight's fold cadence decides
+   the trade; staleness is bounded at one session and freshness is one
+   deterministic `build` away · **kickoffs carry
+   `python tools/facet_index.py build` right after `git pull`**. The index is a
+   derived artifact forever; the day it is hand-edited it is wrong by
+   definition.
 
 ## What this does not change
 

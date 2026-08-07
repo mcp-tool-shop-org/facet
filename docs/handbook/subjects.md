@@ -28,7 +28,9 @@ values live in its own profile and fixture, never inherited unmeasured.
 
 ## The galleon (ACCEPTED, 2026-08-05)
 
-- **Record:** [E04-ruling.md](../experiments/E04-ruling.md), 28 rulings + the close.
+- **Record:** [E04-ruling.md](../experiments/E04-ruling.md), 29 rulings + the close
+  (*the count read "28" until E15's verifier counted the record itself — Ruling 29 is
+  the asset-2 blob-bound halt*).
   Fixture: [canon/GALLEON-IDENTITY.md](../../canon/GALLEON-IDENTITY.md) (thirteen
   G-elements — G13 arrived unprompted at the mastheads and was named post-acceptance,
   because an element not named in the prompt will leave the same way it arrived).
