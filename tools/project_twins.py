@@ -187,6 +187,35 @@ ap.add_argument("--centre", action="append", default=[], metavar="IDX=X,Y,Z",
 ap.add_argument("--crop-aspect", action="append", default=[], metavar="IDX=W,H",
                 help="per-view frame aspect, replacing --aspect for that view only. "
                      "Repeatable. Default: --aspect.")
+# ── THE FRAMING FAMILY, on the FOURTH consumer (E13 handoff 13) ───────────────────────
+# E04 Ruling 25 pinned aspect + fit-axis + margin together on three consumers —
+# turn_render, silhouette_masks, texpass_iter — because a subject rendered at one framing
+# and consumed at another silently misregisters. This tool is a fourth consumer and it was
+# never pinned: it derived `v_ext = bbox_z * 1.204` with the margin as a literal and no way
+# to say fit-axis at all, which is turn_render's HEIGHT mode written out longhand.
+#
+# On W3 that was right, and every anchor in the repo was measured under it. On this
+# subject it is wrong: profiles/beast.json pins `turn_render --fit-axis width`, so the
+# twins were rendered at ortho_scale = max(size.x, size.y) * margin. MEASURED against the
+# recorded silhouette masks (e13_a2_allocation.py, handoff 13):
+#     width-fit derivation   bbox [152,85,1639,938]  520,644 px  IoU 1.000000
+#     this tool's derivation bbox [154,87,1637,936]  517,340 px  IoU 0.986006
+# 1.003313 of the render's frame, so every sample sits up to 0.33% of its distance from
+# frame centre too far in — 2 px at the figure's own bbox edge on view 0.
+#
+# DEFAULTS ARE THE OLD LITERALS, so the default path computes the same expression it always
+# did and every pre-E13 anchor reproduces. That identity is not asserted by argument: it is
+# the E13 Gate 0 anchor, re-run after this change.
+ap.add_argument("--fit-axis", default="height", choices=["height", "width"],
+                help="which axis the frame is fitted to, matching turn_render's flag of "
+                     "the same name. height (the default and every pre-E13 anchor's "
+                     "value): v_ext = bbox_z * margin. width: h_ext = max(bbox_x, bbox_y) "
+                     "* margin. MOVES WITH --aspect and --margin or the twins "
+                     "misregister.")
+ap.add_argument("--margin", type=float, default=1.204,
+                help="framing margin on the fitted axis. Was a literal in the frame "
+                     "derivation; exposed so the framing family can be pinned per subject "
+                     "the way it is on the other three consumers.")
 args = ap.parse_args(subject_profile.bind(ap, "project_twins.py", None))
 AW, AH = [float(x) for x in args.aspect.split(",")]
 
@@ -226,8 +255,16 @@ rs.add_triangles(o3d.core.Tensor(v.astype(np.float32)),
 blo = v.min(axis=0)
 bhi = v.max(axis=0)
 bmid = (blo + bhi) / 2
-v_ext = (bhi[2] - blo[2]) * 1.204
-h_ext = v_ext * (AW / AH)
+if args.fit_axis == "height":
+    # THE PRE-E13 EXPRESSION, unchanged — `args.margin` defaults to the literal 1.204 this
+    # line used to carry, so the arithmetic is bit-for-bit what every anchor measured.
+    v_ext = (bhi[2] - blo[2]) * args.margin
+    h_ext = v_ext * (AW / AH)
+else:
+    h_ext = max(bhi[0] - blo[0], bhi[1] - blo[1]) * args.margin
+    v_ext = h_ext * (AH / AW)
+print(f"[twins] frame: --fit-axis {args.fit_axis} margin {args.margin:g} aspect "
+      f"{AW:g},{AH:g}  ->  h_ext {h_ext:.6f}  v_ext {v_ext:.6f}", flush=True)
 
 
 def _per_view(specs, name, cast):
@@ -635,6 +672,31 @@ for _view_i, view in enumerate(VIEWS):
     zu = (P[idx] @ up) - (cen @ up)
     px = (xr / h_ext_i + 0.5) * W - 0.5
     py = (0.5 - zu / v_ext_i) * H - 0.5
+    # ⚠ THE FRAME-BOUNDS TEST (E13 handoff 13). `bilinear` CLAMPS x and y into the image
+    # (:351-352), so a texel whose projection falls OUTSIDE this view's frame is not
+    # rejected — it is sampled at the frame's border and can be accepted with whatever
+    # colour sits there. On the full-figure path that is inert by construction: the frame
+    # is derived from the mesh bbox with a 1.204 margin, so the figure is inset ~8% on both
+    # axes and no candidate is anywhere near an edge. That is why four experiments never
+    # saw it, and why the count below is 0 on every full-figure view.
+    #
+    # A CROP CAMERA BREAKS THE ASSUMPTION OUTRIGHT. A head crop's frame holds the head; the
+    # whole body below the neck projects past the bottom edge and clamps onto the border
+    # row — which is where the NECK's own paint sits. Those texels carry the same facing
+    # weight as the full twin at that yaw (facing depends on the direction, not the frame),
+    # and if the crop is projected first the strict `>` keeps them. The result would be the
+    # neck's colour smeared down the chest, owned by the crop and invisible in every
+    # coverage number.
+    #
+    # The bound is the frame's own physical extent — the ray through this texel either
+    # passes through the image rectangle or it does not. Reported, always, because the
+    # count IS the evidence that a crop camera needed it.
+    in_frame = ((px >= -0.5) & (px <= W - 0.5) & (py >= -0.5) & (py <= H - 0.5))
+    n_off = int((~in_frame).sum())
+    if n_off:
+        print(f"[twins] {view['name']}: {n_off:,} of {len(idx):,} candidate texels project "
+              f"OUTSIDE this frame and are rejected (bilinear would have clamped them onto "
+              f"the border)", flush=True)
     dist_in = distance_transform_edt(fm > 0.5).astype(np.float32)
     # ⚠ REBUILT (E08 A3). This erosion used to be an ABSOLUTE distance, scaled by the
     # figure's GLOBAL width and then applied to LOCAL structures. On W3 that took
@@ -719,7 +781,7 @@ for _view_i, view in enumerate(VIEWS):
         assert ok_inv.all(), (
             f"IMPLEMENTATION: e > {args.edge_frac:.4f} x local half-width for "
             f"{int((~ok_inv).sum()):,} samples — the cap is not being applied")
-    inm = (d_s >= ed) & (bilinear(mesh_fm[..., None], px, py)[:, 0] > 0.5)
+    inm = in_frame & (d_s >= ed) & (bilinear(mesh_fm[..., None], px, py)[:, 0] > 0.5)
     if args.diag_npz is not None:
         # captured HERE because the next line rebinds idx/px/py. Nothing is read back
         # into the computation — this exists so a gain/loss decomposition can be done
@@ -732,6 +794,7 @@ for _view_i, view in enumerate(VIEWS):
             "ed": np.asarray(ed, dtype=np.float32),
             "thick_s": bilinear(thick, px, py).astype(np.float32),
             "mask_ok": (bilinear(mesh_fm[..., None], px, py)[:, 0] > 0.5),
+            "in_frame": in_frame,
             "accepted": inm.astype(bool),
             "dist_in": dist_in,
             "mesh_fm": (mesh_fm > 0.5),
