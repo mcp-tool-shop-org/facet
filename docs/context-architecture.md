@@ -1,0 +1,76 @@
+# Context architecture — the index that lets the repo grow
+
+**The Director's charge (2026-08-07):** organize the record so the repo keeps growing
+without taxing a session's context. **The ruling: SQLite + FTS5, one file in-repo,
+GENERATED from the markdown record by a committed tool and never hand-edited.** The
+markdown stays canonical — corrections in place, prose holdings, the evidence trail —
+and the database is a derived, regenerable index over it. A session queries instead of
+reading; what it reads after the query is the forty lines the query pointed at, not the
+six hundred it would have skimmed.
+
+## Why this type, and not the alternatives
+
+- **The studio already runs this pattern three times**: `repo-knowledge` (FTS5 over
+  repo facts), `readouts/model-knowledge/models.db` (SQLite + views + FTS, 119 models,
+  retrieval-verified), and the sdlab lane's record store. Proven habits, zero new
+  infrastructure, no service, no GPU.
+- **Deterministic retrieval.** An FTS query returns exact rows carrying exact
+  `file:anchor` pointers. The record's value is precision citation — "Ruling 15c
+  pre-registered the allowance branch" — and embeddings retrieve approximately, which
+  is the wrong property for a legal record. (Vector search is out of scope; revisit
+  only if FTS measurably misses in practice.)
+- **One file, versioned, in-repo.** Any session — advisor, executor, a fresh relief —
+  reaches it in one Bash call. It travels with `git pull` like everything else.
+- **The failure mode is drift, and the design closes it**: the automation-contract
+  pattern (generated files are never hand-edited; the generator is committed; every
+  fold regenerates; a verifier gates). A DB that could disagree with the record would
+  be a second authority — forbidden by construction.
+
+## The schema — the record's actual ontology
+
+| table | rows are | key columns |
+|---|---|---|
+| `rulings` | every numbered ruling and sub-ruling | arc, number, date, one-line holding, file, anchor, supersedes / superseded_by |
+| `laws` | the CLAUDE.md / kickoff law corpus | statement, what it was paid for by, file, anchor |
+| `experiments` | E01… | question, status, verdict, spec file, report file |
+| `handoffs` | every executor dispatch + halt | number, date, commits, one-line outcome |
+| `artifacts` | meshes, pairs, twins, sheets, atlases | path, sha, kind, status (accepted / rejected / superseded / measurement-record), provenance ruling |
+| `phenomena` | the named measured effects | name, statement, instances with files (resemblance channel, seed-dependent binding, frame-changes-register, byte-vs-pixel, prose-is-not-registry…) |
+| `decisions` | an INDEX over the profiles' registry | subject, tool, key, value, status, ruling — **the profile stays canonical**; this table only makes it searchable |
+| `fts` | full-text over all prose columns | — |
+
+## The tool and the ritual
+
+- `tools/facet_index.py build` — parses the record by its own regular conventions
+  (numbered ruling headers, law blocks, handoff sections, report headers) into the DB.
+  Idempotent; a rebuild from an unchanged record is byte-identical.
+- `tools/facet_index.py verify` — the external-verifier pattern: row counts against
+  the record's own counts, zero dangling file/anchor pointers, and a seeded
+  question set (N questions whose answers are known lines in the record — the index
+  must return the right pointer for every one). A build that fails verify does not
+  commit.
+- **The ritual**: every advisor fold ends `build` + `verify` (the loadout-refresh
+  pattern), so the index is never stale by more than the fold that is being written.
+- **The context protocol**: kickoffs and CLAUDE.md stop inlining state. CLAUDE.md
+  keeps the laws of working; profiles keep the values (they already do); the kickoff
+  keeps the live-session pointer and the reading list — and everything else is
+  `python tools/facet_index.py q "<term>"`.
+
+## Phases
+
+1. **P1 — build it against the existing record** (one executor session, specced
+   before work per the house rule; infra-class, no generation): schema, builder,
+   verifier, the seeded question set drawn from real questions this arc actually
+   asked ("what did we rule about canny", "which seed resists terms", "what is the
+   backdrop word and why").
+2. **P2 — slim the entry documents against it**: the kickoff and CLAUDE.md shed
+   inlined state that the index now answers; measure the shed (lines before/after).
+3. **P3 — the standing ritual**: fold = write the record → `build` → `verify` →
+   push. The index is a derived artifact forever; the day it is hand-edited it is
+   wrong by definition.
+
+## What this does not change
+
+The markdown record's authority · corrections-in-place · the profiles as the value
+registry · the experiments discipline · anything about how artifacts are judged. The
+index is a map of the record, never the record — same law as the handbook.

@@ -137,7 +137,7 @@ exports** — every render ships with its exact silhouette so backgrounds are
 augmentation-side, and lighting would be a new renderer with its own anchors.
 
 **E12 — the beast arc — is IN FLIGHT** ([E12-ruling.md](docs/experiments/E12-ruling.md),
-Rulings 1–23 so far): the route's third subject class, a **winged dragon**, designated
+Rulings 1–26 so far): the route's third subject class, a **winged dragon**, designated
 from three reconstructed candidates on full-size sheets ("3 is the winner"). What Gate 0
 measured ([E12-gate0-report.md](docs/experiments/E12-gate0-report.md)) rewrites the
 priors: **9–12 welded shells against a character's 40–191 and the ship's 237–512** —
@@ -279,9 +279,19 @@ naming a warm material — a single term cannot deliver opaque-and-cool), warm
 membranes were accepted, and his "not very consistent" call — made, it turned
 out, on the set's two measured tonal extremes, 7.8 L\* apart — ruled in the
 **harmonization pass**: an identity-tested, operands-recorded Lab transfer
-toward one reference view, now adopted as projection's input. Stage 1 is
-dispatched with the E13 head-crop pass and a pre-registered A0/A1 comparison,
-against the banked 50.46% ceiling; then strokes and Gate 1.
+toward one reference view, now adopted as projection's input. Stage 1 then ran and was
+ruled ([Ruling 24](docs/experiments/E12-ruling.md)): **A0 stands at 87.5% of the
+50.46% ceiling**; the E13 crop pass was not adopted (its paint drifts register at
+bust frames — third measured instance) while its *capability* is banked permanently
+(crop-camera projection proven at zero changed pixels, plus two latent projector
+defects found by reading the tool before running it). The stroke lane is ruled
+([Ruling 25](docs/experiments/E12-ruling.md)): `thin_extent` 0.005 on the artifact
+criterion — the arc's last deliberately-undecided value — elevated cameras closed
+against their pre-registered falsifier, four strokes in spiral order, and the brush
+gains its no-LoRA path anchored byte-identical on the accepted route's graphs. The
+registry then caught the advisor clearing a block *in prose* — **a ruling that
+decides values pays for them in registry entries** ([Ruling 26](docs/experiments/E12-ruling.md))
+— and the strokes are released toward **Gate 1 at the exemplar bar**.
 Every value the subject needs lives in
 `profiles/beast.json` and `canon/DRAGON-IDENTITY.md`, and the ones that arrived by
 inheritance are being falsified and replaced one measured step at a time — which is
