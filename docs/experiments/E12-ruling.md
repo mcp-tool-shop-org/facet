@@ -1488,3 +1488,62 @@ undershoots his bar. And the long arc is named: the creature-register LoRA
 trained on exemplar assets through the E11 lane (style-registers.md) is the
 studio-level answer to cross-asset consistency, and it is exactly what "it
 will inform the datasets" builds toward.
+
+---
+
+## Ruling 23 — handoff 12 ruled: the word lever is exhausted by its own band, the harmonization is adoptable, the membranes go to his sentence with the facts (2026-08-06)
+
+Evidence: the handoff-12 report (`e4dc5ec`), the blind predictions
+(`2924a09`, blob `a91ba51e`), and this seat's eye on the membrane crop and
+the 4|5 raw-vs-harmonized sheet before ruling.
+
+**23a — the halt is ACCEPTED; the falsification is a full success of the
+pre-registration discipline.** The round's own hypothesis died against the
+band its author registered before running it (membrane chroma moved 0.94
+mean against a 2.0 does-nothing band, and ROSE on four of seven) — while
+78–100% of pixels moved, so the edit reached the sampler and the negative
+is real, not a delivery failure. The mechanism is the finding: **`leathery`
+contested the translucency prior exactly as aimed (opacity improved, the
+washed backlit look receded) while naming a material — tanned hide — that
+is itself warm**, so the term's two halves pull against each other on hue.
+The hue family held (≤9.7°), which is 22b's constraint working. The
+byte-vs-pixel self-catch (the identity guard firing on a pixel-perfect
+pass because PIL re-encoding changed FILE bytes) is the repo's rule's third
+instance, banked, this time caught by its own author before it cost
+anything.
+
+**23b — THE WORD LEVER IS EXHAUSTED, by his own sentence's bound.** One
+iteration was his ruling; it ran; its own pre-registered band falsified
+it, and the mechanism says why no single term fixes this: opacity cues
+name materials, and opaque membrane materials are warm. The remaining
+levers, costed for his sentence: **accept warm membranes** (the
+lit-membrane read he accepted at 13e, now opacity-improved by v9 — this
+seat's recommendation, with the texture-stage deterministic correction
+named as the bounded escape: membrane texels are geometrically
+identifiable in UV space, and a measured hue rotation on that set
+post-stage-1 is a speccable arm if Gate 1 wants it) · **the escalation
+arm** (reference-image conditioning, Step-0-class, specced not run) ·
+nothing else is on the table without unbounded word-tuning, which is the
+trap the arc exists to avoid.
+
+**23c — THE HARMONIZATION IS ADOPTABLE, and this seat recommends
+adoption.** The identity test holds at 0 of 1,835,008 through the full
+arithmetic path; the operands are recorded per view; the transfer is
+reversible and generation-free; and at this seat's eye the 4|5 harmonized
+pair — the exact pair his "not very consistent" was called on — reads as
+one animal, with view 4-A's nape cones untouched (a tone map moves no
+structure). The instrument also quantified his eye: seven views in a 4.4
+L* band, view 4 sitting 7.8 L* above it — his call was made on the set's
+two measured extremes. **On his word, projection consumes the harmonized
+set** (v9 ×6 harmonized + view 3's 770701 cure harmonized + view 4-A
+harmonized), raw twins retained beside.
+
+**23d — view 3's black limb is a THIRD-time reproduction** (43,999 /
+41,985 / 42,567 px across three independent stem versions at 770700, cured
+at 770701 all three times) — the seed×view map's strongest entry, and the
+cure is adopted as view 3's exemplar artifact again.
+
+**23e — on his two answers**: handoff 13 dispatches the E13 head-crop
+twins with A2's texel-allocation arithmetic, then stage 1 projects the
+ruled set against the banked 50.46% ceiling. The route from there:
+sweep gate, strokes, finalize, pack, **Gate 1 at the exemplar bar.**
