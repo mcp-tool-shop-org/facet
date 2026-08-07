@@ -1424,8 +1424,15 @@ def verify(db_path, top_n=3):
             fails.append("%s %s sequence gaps %s" % (arc, kind, gaps))
         above = [n for n in _sequence_numbers(con, arc, kind) if n > hi]
         if above:
-            print("  %-28s ABOVE the dispatched bound of %d: %s  <- record carries "
-                  "more than the prose claims" % ("  ↑ completeness", hi, above))
+            # States ONLY what it measured. An earlier version added "<- record
+            # carries more than the prose claims", which was true when written and
+            # false eight hours later: E15 Ruling 5 corrected E04's count to 29 at
+            # three sites, and the line went on asserting the prose was stale. A
+            # verifier that editorialises about a document it does not read will
+            # eventually lie to every session that runs it.
+            print("  %-28s ABOVE the dispatched bound of %d: %s  <- measured; the "
+                  "bound stays as dispatched (E15 Ruling 3c)"
+                  % ("  ↑ completeness", hi, above))
 
     hg = sorted(r[0] for r in con.execute(
         "SELECT number FROM handoffs WHERE arc='E12'").fetchall())
