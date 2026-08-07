@@ -113,6 +113,13 @@ def safe_id(job_key):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--subject", choices=list(SUBJECTS), required=True)
+    ap.add_argument("--out", help="write the manifest here instead of into the tree. "
+                                  "The anchor comparison uses this so a prior subject's "
+                                  "committed manifest is never opened for writing.")
+    ap.add_argument("--no-copy", action="store_true",
+                    help="do not write into the tree: VERIFY each declared copy already "
+                         "there against its source by sha256 instead. Read-only mode for "
+                         "re-emitting an existing subject's manifest.")
     args = ap.parse_args()
     S = SUBJECTS[args.subject]
     tree = S["tree"]
@@ -122,7 +129,15 @@ def main():
     ledger = {}
     for name, src in S["copies"].items():
         dst = J(tree, name)
-        if os.path.abspath(src) != os.path.abspath(dst):
+        if args.no_copy:
+            # read-only: the copy must already be there and must match its source.
+            assert os.path.exists(dst), f"ANDON: --no-copy but {dst} is missing"
+            got = sha256(dst)
+            if os.path.abspath(src) != os.path.abspath(dst):
+                assert sha256(src) == got, \
+                    f"ANDON: {dst} no longer matches its source {src}"
+            ledger[name] = got
+        elif os.path.abspath(src) != os.path.abspath(dst):
             want = sha256(src)
             shutil.copyfile(src, dst)
             got = sha256(dst)
@@ -214,7 +229,8 @@ def main():
         "renders": renders,
         "captions": staged["captions"],
     }
-    out = J(tree, "asset-source.json")
+    out = args.out or J(tree, "asset-source.json")
+    os.makedirs(os.path.dirname(os.path.abspath(out)), exist_ok=True)
     with open(out, "w", encoding="utf-8") as fh:
         json.dump(manifest, fh, indent=1)
     print(f"[manifest] wrote {out}  ({len(renders)} renders, "
