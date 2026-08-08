@@ -5,10 +5,9 @@ sidebar:
   order: 1
 ---
 
-facet is a **research repository**, not a package. There is nothing to install and no
-entry point — every tool is a script you invoke against paths you type. That shapes
-this page: it tells you what to have on the machine and what order to run things in,
-rather than giving you an `npm install` line that would not be true.
+Every tool in facet is a script you invoke directly, against paths you type. So this
+page covers what to have on the machine and the order the stages run in — that is the
+whole of the setup.
 
 ## What you need
 

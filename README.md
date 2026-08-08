@@ -149,12 +149,10 @@ EU, UK and South Korea), **MVPaint** and **TEXGen** (no licence at all), and
 
 ## Trust and threat model
 
-facet is a **research repository**, not a published package: nothing here is on npm
-or PyPI, there is no installer and no entry point, and every tool is invoked as
-`python tools/<name>.py` against paths you type. So the honest question is not *what
-permissions does this app request* but *what do these scripts do to your machine*.
-Measured, with the sweeps re-runnable — the full policy is in
-[SECURITY.md](SECURITY.md):
+facet runs entirely on your own machine — every tool is a script you invoke against
+paths you type, so the useful question is not *what permissions does this app request*
+but *what do these scripts do to your machine*. Answered by measurement, with every
+sweep re-runnable; the full policy is in [SECURITY.md](SECURITY.md):
 
 - **Data touched:** meshes, textures, images and JSON on local disk, at paths you
   pass on the command line. Plus `docs/index/facet.db`, which is *derived* — it holds

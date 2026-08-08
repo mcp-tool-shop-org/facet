@@ -2,15 +2,14 @@
 
 ## What facet is, for the purposes of this policy
 
-facet is a **research repository**: a set of local Python instruments that turn a
-styled 2D concept into a textured 3D character, plus the measured record of every
-experiment that built them. It is **not a published package**. Nothing here is on
-npm or PyPI, there is no installer, no service, and no entry point — every tool is
-invoked as `python tools/<name>.py` against paths the operator types.
+facet is a set of local Python instruments that turn a styled 2D concept into a
+textured 3D asset, plus the measured record of every experiment that built them.
+Every tool is invoked as `python tools/<name>.py` against paths the operator types,
+and nothing in the chain runs off this machine.
 
 That shapes the whole policy below: the attack surface is the surface of *running
-someone else's scripts on your own machine against your own files*, and this
-document's job is to say exactly what those scripts do.
+these scripts on your own machine against your own files*, and this document's job
+is to say exactly what they do.
 
 ## Supported versions
 
@@ -18,9 +17,9 @@ document's job is to say exactly what those scripts do.
 |---------|-----------|
 | `main` | Yes — the record is the product; `main` is the only supported state |
 
-There are no releases to support yet. A `v1.0.0` tag is proposed at the close of
-the E19 treatment (see [CHANGELOG.md](CHANGELOG.md)); until the Director fires it,
-`main` is the whole story.
+`main` carries the current state of every instrument and the evidence behind it.
+`v1.0.0` is cut at the close of the E19 treatment — see [CHANGELOG.md](CHANGELOG.md)
+for what it marks.
 
 ## Reporting a vulnerability
 

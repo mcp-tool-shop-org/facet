@@ -5,12 +5,11 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/),
 and this project adheres to [Semantic Versioning](https://semver.org/).
 
-**A note on what a version means here.** facet publishes nothing — no npm package,
-no PyPI package, no installer, no manifest with a version field. A version in this
-file is a claim about **the state of the record**: which experiments are closed,
-which assets the Director has accepted, and what the tools measurably do at that
-commit. Every entry below points at the ruling that established it, so a reader can
-check the claim rather than trust it.
+**A note on what a version means here.** A version in this file is a claim about
+**the state of the record**: which experiments are closed, which assets the Director
+has accepted, and what the tools measurably do at that commit. The tag carries it —
+there is no manifest to bump. Every entry below points at the ruling that established
+it, so a reader can check the claim rather than trust it.
 
 ## [Unreleased]
 
@@ -87,8 +86,6 @@ bump, so this version exists as a tag and this heading and nothing else.
 - That the texture stage is finished. The blade band, the unlevelled stroke seams and
   the cross-island dilation bleed are named, measured and open — see **Known defects,
   named** in the README, which the treatment left standing word for word.
-- That anything here is packaged, installable, or supported as a product. Nothing
-  publishes until the ruled extraction gate.
 - That any claim in this repo is safe to inherit unchecked. Six inherited claims were
   falsified in the founding session alone; the corrections are kept in place beside
   the measurements that overturned them, which is the point.
