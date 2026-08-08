@@ -139,8 +139,8 @@ next session read as established fact. Nothing in that loop was checkable.
   is not an archive — anyone can run those tools and watch them fail the same way.
 - **A negative result is a full success**, reported and closed rather than tuned toward a
   number.
-- **Tests ride the commit that touches the code** — 275 passing at two seats' hands, with
-  paths-gated CI on the 267 hermetic ones.
+- **Tests ride the commit that touches the code** — 370 passing at two seats' hands, with
+  paths-gated CI on the 362 hermetic ones.
 - **The record is queryable.** A SQLite + FTS5 index over the whole trail, verified on
   four legs. It found a ruling count the prose had wrong at three sites, by counting the
   record itself.
@@ -212,9 +212,15 @@ than a traceback ([E21](docs/experiments/E21-cli-contract-report.md)).
 facet installs `raise`s; a bare `assert` is a statement `python -O` removes silently,
 and 87 of this repo's gates were removable by an environment variable until E22
 converted them. Measured before and after on the same gate, in four interpreter modes.
-**191 gates in the unpublished research tools are still asserts** — named here rather
-than omitted, scoped by [E22 Ruling 4](docs/experiments/E22-ruling.md), and none of them
-is in a command facet installs.
+**And since [E23](docs/experiments/E23-route-gates-report.md), neither are the gates on
+the route that produced the four accepted assets** — its **57 sites across twelve
+tools**, converted as a pure move on files no test had ever executed, each one now
+refusing under `-O` and `PYTHONOPTIMIZE=1` as well as under a normal interpreter.
+**134 gates in the remaining research tools are still asserts** — named here rather than
+omitted, scoped by [E22 Ruling 4](docs/experiments/E22-ruling.md), and none of them is
+in a command facet installs: 132 are measurement instruments under `diagnostics/`, one
+is a render check, and `superseded/`'s one is **never** converted, because those tools
+are kept so anyone can run them and watch them fail the same way.
 
 **Support status:** this repo is developed in the open, at one rig, by one director
 and a rotating pair of advisor and executor sessions. `main` is the only supported
@@ -232,8 +238,8 @@ Developed against an RTX 5090; VRAM headroom matters more than raw speed.
 CI runs the hermetic subset of the suite on **ubuntu-latest / Python 3.12** with
 pinned installs (`.github/workflows/ci.yml`); the artifacts tier needs the recorded
 trees under `E:\AI\training`, which are not in git, so CI deselects them by design.
-Locally, `python -m pytest` runs all **275** tests and `python -m pytest -m "not artifacts"`
-runs the **267** CI reproduces.
+Locally, `python -m pytest` runs all **370** tests and `python -m pytest -m "not artifacts"`
+runs the **362** CI reproduces.
 
 ---
 

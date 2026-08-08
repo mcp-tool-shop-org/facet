@@ -66,7 +66,14 @@ def tool(rel):
 # T22's stdio subprocess cannot start without it, and an interpreter missing it
 # would produce the same partial-green misreading Ruling 2 closed. The pin lives
 # in .github/workflows/ci.yml beside the rest.
-REQUIRED_CHILD_MODULES = ("numpy", "scipy", "PIL", "trimesh", "open3d", "mcp")
+# `cv2` joined this table with E23's T31 (2026-08-08), for exactly the reason the
+# table exists. T31 is the first test in this repo's history to invoke any of the
+# twelve route tools, and tools/restylize_views.py imports cv2 at MODULE level -
+# so an interpreter without it produces the partial-green misreading Ruling 2
+# closed, one module short. Measured over all twelve: cv2 is the ONLY third-party
+# module-level import outside this table, apart from bpy and mathutils, which
+# belong to the two Blender scripts nothing here runs.
+REQUIRED_CHILD_MODULES = ("numpy", "scipy", "PIL", "trimesh", "open3d", "mcp", "cv2")
 
 _PROBE_SRC = (
     "import importlib, sys\n"

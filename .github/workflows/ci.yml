@@ -44,11 +44,19 @@ jobs:
       # that needs it. tools/record_mcp.py imports it at module level, so it is
       # in conftest's measured interpreter table beside open3d - a runner
       # without it produces the partial-green misreading E17 Ruling 2 closed.
+      # opencv-python-headless (E23): tools/restylize_views.py imports cv2 at
+      # MODULE level, and E23's T31 is the first test in this repo's history to
+      # invoke any of the twelve route tools - so this runner had never needed
+      # it. Found by CI failing, not by reading: the rig carries
+      # opencv-python 4.13.0.92, and this is the headless twin of that exact
+      # version because the runner has no display. Same rule as mcp above -
+      # pinned in the same commit as the first test that needs it.
       - name: install pinned test deps
         run: |
           python -m pip install --upgrade pip
           python -m pip install pytest==9.1.1 numpy==2.4.6 scipy==1.17.1 \
-            pillow==12.2.0 trimesh==4.12.2 open3d==0.19.0 mcp==2.0.0
+            pillow==12.2.0 trimesh==4.12.2 open3d==0.19.0 mcp==2.0.0 \
+            opencv-python-headless==4.13.0.92
       - name: hermetic set
         run: python -m pytest -m "not artifacts"
 

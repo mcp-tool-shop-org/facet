@@ -31,6 +31,9 @@ advisor rules at `E23-ruling.md`.
 - **F5 — I caused a fold-marked test failure** by writing this report while the suite
   was running. The dispatch's run-then-rerun remedy cleared it; the lesson is that the
   concurrent writer the fold-race warning describes can be *this* session.
+- **F6 — CI went red**, because `restylize_views` imports `cv2` at module level and no
+  test had ever invoked one of the twelve, so CI's pin never needed it. **The dispatch's
+  own premise produced its first casualty within an hour of being tested.**
 
 ---
 
@@ -366,7 +369,58 @@ written as though the other writer is another session. It is just as easily *thi
 one. Docs are part of the corpus; a report written during a suite run is a concurrent
 fold.
 
-### F6 — 20 of the 57 have no write later in their own scope
+### F6 — CI WENT RED, AND THE CAUSE IS THAT NOTHING HAD EVER RUN THESE TOOLS
+
+**Gate 4 fired.** Run [`31282508427`](https://github.com/mcp-tool-shop-org/facet/actions/runs/31282508427)
+on `b032d63`: `hermetic set: failure`, both dependency scanners skipped. Reported here
+with its evidence rather than quietly re-pushed.
+
+```
+File "/home/runner/work/facet/facet/tools/restylize_views.py", line 48, in <module>
+    import cv2
+ModuleNotFoundError: No module named 'cv2'
+```
+
+**The conversion is not the cause and the local suite was not wrong.** `restylize_views`
+has always imported `cv2` at module level; the rig's interpreter has it, CI's pinned
+install never did, and **no test had ever invoked any of the twelve**, so the gap could
+not surface until T31 existed. The dispatch's central premise — *twelve files no test
+has ever executed* — produced its own first casualty within an hour of being tested.
+
+It is also the exact misreading T18 exists to close, one module short: conftest probes
+`numpy scipy PIL trimesh open3d mcp`, all of which CI has, so the session started
+cleanly and then a tool failed at import.
+
+**Measured before repairing, because a root cause has as many sites as it has callers** —
+module-level third-party imports across all twelve, against what conftest probes:
+
+```
+union of module-level third-party imports:  PIL bpy cv2 mathutils numpy open3d scipy trimesh
+  already probed:                           PIL numpy open3d scipy trimesh
+  local sibling module:                     subject_profile
+  NOT probed, not local, not bpy:           cv2  ·  mathutils
+```
+
+**`cv2` is the only real gap.** `mathutils` ships with Blender and is imported only by
+`bake_hero_prep`, one of the two scripts nothing here runs.
+
+**The repair follows a pattern already written into `ci.yml`'s own comment** for `mcp` —
+*"pinned here in the same commit as the first test that needs it"*: `cv2` joins
+`REQUIRED_CHILD_MODULES`, and `opencv-python-headless==4.13.0.92` joins the pinned
+install — the headless twin of the rig's own `opencv-python 4.13.0.92`, because the
+runner has no display.
+
+**Why this is not tuning past a gate.** The two alternatives were to drop
+`restylize_views` from the smoke set or to skip its cases when `cv2` is absent. Both
+reduce coverage *because the check failed*, which is the move this repo distrusts.
+Adding the module makes the environment honest about what these tools need, and T18's
+own docstring already states the rule it follows: the table holds *"the third-party
+modules this suite's tools import at MODULE level, so a tool cannot be invoked at all
+without them."* T31 makes the twelve into this suite's tools. **The advisor may still
+rule the other way**; what an executor should not do is quietly narrow a test to make a
+red gate green.
+
+### F7 — 20 of the 57 have no write later in their own scope
 
 E22's F1b walk, re-run over the 57. **DIAGNOSTIC ONLY** — E22 Ruling 11 upheld it as a
 diagnostic and forbade it gating anything, and that holds here.
@@ -410,10 +464,15 @@ MANIFEST HELD - no file in the recorded trees moved
 T31's own emptiness assertions are what make that testable rather than asserted, and
 they are the reason F2 was found at all.
 
-*One note on E22's figure: it recorded 16.3 GB against this run's 17.07 GB for the
-same 7,312 files. The file count and the 0/0/0 recheck are the load-bearing halves;
-the byte total is a units difference (15.90 GiB) and there is no E22 manifest left to
-diff against — theirs lived in a session scratchpad.*
+*One discrepancy against E22, stated rather than explained away: E22 recorded
+**16.3 GB** for the same 7,312 files; this run measures **17,072,807,610 bytes**
+(17.07 GB decimal, 15.90 GiB). **Neither unit reconciles the two** — 16.3 GiB would be
+17.50e9 and 16.3 GB would be 16.3e9, so the gap is ~0.4–0.8e9 either way and I cannot
+attribute it. What I can say: **the file count reproduces exactly at 7,312**, and my
+own baseline was taken before anything in this session ran and held at 0 added / 0
+removed / 0 changed across three checks. E22's manifest lived in that session's
+scratchpad and is gone, so there is nothing to diff against and the cause is not
+determinable from here. Flagged as an open discrepancy, not as a units note.*
 
 ---
 
@@ -424,7 +483,7 @@ diff against — theirs lived in a session scratchpad.*
 | **1. suite green before and after, full artifacts tier** | **275 → 370**, 0 failed, 0 skipped, artifacts live. Hermetic tier as CI runs it: **362 passed, 8 deselected** — on the **second** run, after a fold-marked failure I caused myself by editing docs mid-run (**F5**, with the dispatch's own run-then-rerun remedy applied) | **PASS** |
 | **2. whole-file AST equality for each of the twelve** | **12 of 12 IDENTICAL** to the rule applied at `48fa733`; comment tokens **0 changed**; per-site **57/57**; **0 reverted** | **PASS** |
 | **3. no edit outside the twelve under `tools/`** | `git diff --name-only -- tools/` returns exactly the twelve; nothing in `canon/`, `profiles/`, the citable trees, the seeded set or a closed ruling. Everything else edited is `tests/` or a doc, itemised below | **PASS** |
-| **4. CI green, both dependency scanners** | run [`31281846551`](https://github.com/mcp-tool-shop-org/facet/actions/runs/31281846551) — see below | **PASS** |
+| **4. CI green, both dependency scanners** | **FIRED on the first push** — run [`31282508427`](https://github.com/mcp-tool-shop-org/facet/actions/runs/31282508427) on `b032d63`, `hermetic set: failure`, scanners skipped. Cause measured and repaired in **F6**; re-run below | **FIRED, then PASS** |
 | **5. the tree manifest holds** | 7,312 files, **three checks, 0 added / 0 removed / 0 changed** | **PASS** |
 
 **Files edited outside `tools/`, every one:**
@@ -435,6 +494,14 @@ diff against — theirs lived in a session scratchpad.*
 | `docs/experiments/E23-predictions.md` | committed first, at `48fa733` |
 | `docs/experiments/E23-route-gates-report.md` | this file |
 | `CHANGELOG.md` | **`[Unreleased]` only**, following E22's precedent. E22's own paragraph is **annotated, not rewritten** — its 191 was accurate when written |
+| `README.md` | three numbers this arc falsified on the repo's own stated truth surface: **191 → 134** gates still asserts, and the test counts **275 → 370** / **267 → 362** in two places. Declared rather than slipped in |
+| `.github/workflows/ci.yml` | **F6** — `opencv-python-headless==4.13.0.92` added to the pinned install. **This makes P13 a miss and I am scoring it as one** |
+| `tests/conftest.py` | **F6** — `cv2` added to `REQUIRED_CHILD_MODULES`, with the measurement over all twelve in the comment |
+
+**Reported, not fixed:** `README.md` says *"Twenty-two experiments are in the record"*
+in two places; the index counts **23**, and it did so at this session's first build —
+the drift arrived with E23's kickoff commit (`8f17765`), one commit before this arc. Not
+mine to correct, and named so it is not lost.
 
 **Not edited, and named:** `SHIP_GATE.md` — no line of it makes a claim this arc
 changes. `tests/test_t30_gates_survive_optimize.py` — its structural check is
@@ -471,8 +538,8 @@ for the reason stated there.
 | P10 | 1 file · 5–10 functions · 30–60 cases · total 300–345 | **SPLIT** — 1 file (**hit**), 8 functions (**hit**), **95 cases** (**miss**, above), total **370** (**miss**, above) |
 | P11 | the `SystemExit` trio is `brush_cloud_step` 4, `e13_harmonize` 3, `restylize_views` 3 | **HIT** — exactly, 10 sites |
 | P12 | manifest ≥ 7,312 files, 0/0/0 on all three runs | **HIT** — 7,312, three times |
-| P13 | CI green, no workflow edit | **HIT** |
-| P14 | 3–6 findings, ≥1 about reachability or depth | **HIT** — 6 findings, and F1 is exactly a reachability finding |
+| P13 | CI green, **no workflow edit** | **MISS.** CI went red on the first push and the repair required a workflow edit — **F6**. The prediction assumed CI's environment already covered the twelve; nothing had ever asked it to, which is this arc's whole premise turned on its author |
+| P14 | **3–6 findings**, ≥1 about reachability or depth | **SPLIT** — the qualitative half **hit** (F1 is exactly a reachability finding), the count **missed**: **7**, one above the band. Two of the seven (F5, F6) are defects in how this session ran rather than in the twelve, and I did not predict finding any of those |
 | P15 | the **baseline** smoke passes 30/30 before conversion | **HIT** — which is what makes the after-run a before/after |
 
 ### The instructive miss — the F1b prediction
@@ -537,6 +604,13 @@ reasoning's unit was a file.
    the concurrent writer can be the running session itself? Writing a report during a
    suite run is the ordinary shape of an executor's last hour, and the current wording
    points only at *another* session.
+7. **F6** — the repair adds a dependency to CI rather than narrowing a test, for the
+   reason stated there. Is that the right direction, given that CI now installs a
+   package needed by **one unpublished research tool** and not by anything facet ships?
+   The alternative — a `cv2`-gated skip on three of T31's cases — keeps CI's install
+   minimal and buys it with a hole in exactly the coverage this arc exists to create.
+8. Whether `README.md`'s **"twenty-two experiments"** (two places, now 23) should be
+   folded now or left for the next arc. It drifted at `8f17765`, not here.
 
 ---
 
@@ -556,6 +630,7 @@ probe_fire.py                                        16 of 57 fire in all three 
 shadow_check.py                                      F1, over every block shape
 what_is_left.py                                      F2, exactly what the two leave behind
 smoke.py                                             py_compile 12/12, --help 30/30
+module_imports.py                                    F6, module-level imports of all twelve
 ```
 
 Instruments live in the session scratchpad, not the repo: they are one-shot checks that
