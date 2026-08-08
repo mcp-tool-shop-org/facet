@@ -4,10 +4,17 @@
 [E20-gate-halt.md](E20-gate-halt.md); both parked conditions met (E18 halted and
 was ruled; `tests/fixtures/` authorship ruled to E18 by E20-ruling 2).
 
-**End state: 202 tests passing, 140.67 s full / 47.01 s hermetic** (the tier CI
+**End state: 202 tests passing, 141.54 s full / 47.01 s hermetic** (the tier CI
 runs — 194 passed, 8 artifacts deselected). E20 added **110 tests in three new
-files**, 11.64 s on their own. No failures, no re-run needed, so
-E18-ruling 2l's run-then-rerun disposition was not exercised.
+files**, 11.64 s on their own.
+
+> ⏱ **§9 corrects this section, and it must be read with it.** A sentence here
+> originally said "no failures, no re-run needed, so E18-ruling 2l's
+> run-then-rerun disposition was not exercised." Both halves turned out to be
+> wrong within minutes of writing them: 2l **was** exercised and worked, and one
+> test is **red at the halt** for a reason that is not E20's to fix. The
+> measurements are in §9 rather than edited into this paragraph, because which
+> claim was made first is the part that matters.
 
 | | before E20 | after |
 |---|---|---|
@@ -322,5 +329,82 @@ In the order it is cheapest to pay:
 4. **Seam 2** → U4 at unit level.
 5. **U6's can-fail program**, prioritized by §4: the e11 pair first (63 sites, 1
    fired), then `project_twins` (19, 0).
+
+---
+
+## 9. ADDENDUM — the fold race fired twice, and one test is RED at the halt
+
+Written after §1–§8 were committed. §1's original "no failures, no re-run needed"
+was true of the run it described and false ten minutes later, because the corpus
+kept moving: **E19 was ruled (`d7ac8c7`) and E20's own ruling is being written
+right now** — `docs/experiments/E20-ruling.md` is ` M` in the tree as this is
+typed.
+
+### 9.1 Ruling 2l exercised, and it worked
+
+A full-suite run immediately after committing §1–§8 returned **2 failed, 200
+passed**: `test_t20_verify_then_build_in_one_process` and
+`test_t20_build_runs_verify_and_writes_the_certificate` — both E18's, both
+certificate tests, against a corpus that was being written underneath them.
+Re-run alone per **E18-ruling 2l** (run-then-rerun, no isolation machinery):
+**2 passed in 10.53 s.** The next full run came back **202 passed in 141.54 s**.
+
+So 2l's disposition is now exercised at a second seat and it resolved the race in
+one re-run, which is what it predicts. Recorded because the ruling was written
+from one observation.
+
+### 9.2 T05 is RED, and it is the instrument working
+
+`test_t05_current_corpus_zero_stale` fails **persistently** — alone as well as in
+the suite — so it is not the race. Diagnosed rather than re-run:
+
+```
+STALE  current-state  max 4  max 12  docs/advisor-kickoff.md:91
+         rulings range - E20 - the advisor kickoff, no supersession banner found
+STALE (current-state documents disagreeing with the record): 1
+   docs/advisor-kickoff.md:91  claims max 4, record has max 12  [rulings range]
+```
+
+**`docs/advisor-kickoff.md:91` states E20's rulings as a range ending at 4. The
+record now carries 12**, because the advisor's in-flight `E20-ruling.md` has grown
+past the number the kickoff claimed. `docs/advisor-kickoff.md` is on the sweep's
+current-state list, so the claim is read as an assertion about now and it is
+wrong about now.
+
+Three things follow, and none of them is a fix by this session:
+
+1. **The sweep found a real stale claim in a current-state document. That is
+   precisely its job**, and it found it within minutes of the claim going stale.
+   The same row appears at `E20-ruling.md:103` and is correctly classified
+   *historical* ("states its counts as of writing") — so the classification split
+   is working too.
+2. **Stale rows are not E20's to fix.** The tool's own docstring: "Stale rows are
+   the advisor's to rule, never this tool's to fix: it has no write path to a
+   markdown file." `docs/advisor-kickoff.md` is also outside E20's lane. **Flagged,
+   not edited** — the same disposition E19 took on the files in E18's lane.
+3. **An earlier measurement in this report said 0 STALE and was honestly
+   obtained.** The direct `claims` run against the tracked DB returned `STALE: 0`
+   — because that DB was built *before* the ruling grew. The fresh scratch build
+   the test uses sees the current corpus and returns 1. Both numbers are correct
+   for the corpus they were measured against, which is exactly why the index
+   carries a corpus id and a certificate.
+
+### 9.3 What the halt state actually is
+
+| run | result |
+|---|---|
+| full suite, quiet tree | **202 passed**, 141.54 s |
+| full suite, during the fold | 2 failed / 200 passed → **both passed on re-run** (2l) |
+| hermetic, after the ruling grew | **1 failed / 193 passed / 8 deselected**, 45.90 s |
+| the one failure | T05, on a stale claim in `docs/advisor-kickoff.md:91`, outside E20's lane |
+
+**All 110 E20 tests pass in every one of those runs.** The red test is E17's,
+firing on a document neither E20 nor E18 owns, about a ruling that did not exist
+when this session started.
+
+The index pair (`facet.db` + `facet.db.cert.json`) is uncommitted per E18-ruling
+2's amended cadence and is now itself behind the corpus — expected at a live
+boundary, and the certificate's corpus id is what makes that legible rather than
+silent.
 
 **HALT.** The advisor rules at `E20-ruling.md`.
