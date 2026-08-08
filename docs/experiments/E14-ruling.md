@@ -2066,3 +2066,106 @@ parked** (16c — his sentence has not named it) and **the errand
 window arrives after the export session** per 30b's own sequencing
 word. The advisor's eye on the halt, then his ingest paste.
 
+## Ruling 33 — the dense export RATIFIED at zero gap notices; both flagged constructions ruled; dataset asset #4 goes to the Director's ingest paste (2026-08-08)
+
+Evidence — what this seat OPENED: the handoff-10 report in full
+([E14-handoff10-report.md](E14-handoff10-report.md), `e653b3e`), its
+predictions (`34c9fc1`, committed before the export ran), and the
+plumbing commit's isolation (`4411f4c` alone, so the anchor baseline
+preceded every declaration).
+
+**33a — the export and manifest are RATIFIED.** 26 cameras derived
+from the profile at runtime, 53 emits all profile-bound at the
+asserted 240×1024 (the 29c trap held out); 457 files / 191.5 MB;
+16/16 recorded-artifact anchors byte-identical against artifacts this
+run did not produce; the purity spot check byte-identical from
+independently constructed states; **the capability anchor held
+byte-identical TWICE** — before the subject existed and again after
+the whole subject plus a refactor landed — reproducing handoff 16's
+recorded sha from a different session; the six-class provenance
+palette (a route first: the garnet re-projection and the collar repair
+as their own classes) reproduces Ruling 31b's mix to the digit and
+passed the lane's PLTE proof first run; **the lane's dry-run: 26
+registered, 0 rejected, ZERO gap notices, exactly the dragon's two
+info notices; 101/101 lane acceptance tests read-only; the lane repo
+untouched**; 708 protected files snapshotted and re-compared — 0 new,
+0 changed, 0 re-stamped. Zero credits, no GPU, two minutes.
+
+**33b — the ledger, this seat, fourth entry of the arc: the anchor
+path as dispatched would have written into the dragon's committed
+tree.** `build_tone_operands` ran unconditionally and writes three
+files inside the subject's own tree; `--no-copy` did not cover it and
+`--out` did not redirect it — so the dispatch's FIRST ordered step
+would have re-stamped a citable-only tree the lane holds sha-pointers
+into. The bytes would likely have been identical, which is exactly
+why it matters: identical-bytes-different-mtime is the shape of a
+silent write. The executor registered the defect as a prediction
+BEFORE writing the remedy, committed the remedy ALONE so the baseline
+stayed measurable, then ran — the discipline at its best form.
+Beside the path sketch (28b-ii), the count-predicate (28b-i) and the
+stale caveat (31c): four dispatch errors, one arc, every one caught
+by an executor verifying dispatch text against source. **Dispatch
+text is hypothesis** — the calibration line this arc has now paid for
+four times.
+
+**33c — the owner-sidecar construction is RATIFIED: stage 1b's array
+is the declared `view_owner.npy`.** It passes the route's own ANDON —
+owns exactly the 1,656,847 reference texels including the repair's
+1,436, zero unowned, zero outside — while the re-projection's sidecar
+fails both directions (211 unowned, 1,585 outside), and the mechanism
+is Ruling 27b's class one layer over, now named route-wide: **a
+restricted write needs a restricted SIDECAR** — the corrected
+projection's atlas write was masked to the territory and its owner
+record beside it never was, so it carries the unrestricted run's
+stray-key drift. The declared array describes the partition the
+accepted asset actually carries, which is what an owner channel is
+for. The composite (stage 1b everywhere, re-projection ids on the
+stone) was rightly NOT built — the X2 clause: export a channel or
+omit it, never synthesize one. The alternative's path and its 2.0%
+stone-territory disagreement ride in the report and `x4_run.json`;
+its file (`garnet/reproj_corrected/atlas_owner.npy`) is a named
+dependency of any future composite ruling and lives under the arc's
+preserved tree. **The positional-id trap is banked with the channel**:
+owner ids 0–5 map to views 0/1/3/4/5/7 — id 2 is view 3, never the
+excluded view 2 — verified against stage 1b's legend counts, six
+exact matches, and the mapping rides in the manifest note.
+
+**33d — the tone-transform declaration and the pair construction are
+RATIFIED, and the pair rule is named route-wide.** The declaration:
+`hue-rotation`, CIELAB, masked scope stated as the free string it is,
+reversible with the property checked (C\* and L identical in every
+operand row), reference derived through the id construction after the
+frame table verified the view — and the FOUR applied views separated
+from the two computed-but-never-projected controls
+(`_computed_not_applied`), the near-miss that would have attributed a
+transform to views 0/4 caught by reading the re-projection report's
+own §2 rather than trusting a directory listing. Declaring beats
+silence: no gap code exists for an absent tone transform, and an
+undeclared upstream tone map is precisely the covariate the lane's
+block was built to name. The pairs: **six, not eight, and the twin
+side is the accepted twins AS GENERATED** — the rule that decides it,
+adopted for every future subject: *the pair's twin side is the
+projection's actual input set; a transform's outputs ride with the
+transform's declaration.* On the dragon the harmonized set fed all
+the paint, so its pairs carry the harmonized images; here the
+rotation fed 1.854% of the atlas and its four outputs ride in
+`_operands_sources/`. The per-render boolean stays un-emitted
+(handoff 16's same disposition; the scope string carries it).
+
+**33e — P10b's lesson is banked in the executor's own words**: the
+elevated cameras' 3.5-point reference drop lands in the DILATION
+column (8.65/9.11% against eye-level's 1.96–3.52) because a sword
+seen from 55° returns the crossguard's upper faces and the blade's
+flat — exactly the surfaces the eye-level ring reached least.
+**Reason about which texels were reachable, not which elements are
+visible** — handoff 16's P6 error from the other direction, now
+named from both sides.
+
+**33f — DATASET ASSET #4 GOES TO THE DIRECTOR'S INGEST PASTE.** The
+dry-run's digits — 26 registered, 0 rejected, two info notices — are
+what the live run should reproduce; the export tree joins the
+must-not-move list beside E04's, E08's and E13's. On the ingest: the
+errand window opens (ten items queued), the MCP-tool speccing
+unlocks per the banked studio plan (the spec-after-Gate-1 condition
+is met), and the activated state stays parked at his sentence.
+

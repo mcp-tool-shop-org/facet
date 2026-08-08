@@ -405,8 +405,13 @@ STRUCTURAL in surface-aware mode (a check that cannot fail is not a check —
 the distance distribution is that mode's real gate, and it passed). Final mix
 **45.25% reference / 2.07% brush / 52.68% dilation of valid** — and of the
 surface a viewer actually sees, **88.71% is the accepted pair's own paint**.
-The Director accepted the finished sword at his own zoom. Next: the E11 dense
-export (dataset asset #4), the lane ingest, then the errand batch — the
+The Director accepted the finished sword at his own zoom. **The dense export
+ran the same day** ([Ruling 33](docs/experiments/E14-ruling.md)): 26 cameras,
+a six-class provenance palette (the garnet re-projection and collar repair as
+their own classes — a route first), the manifest's tone transform declared as
+a masked hue rotation with every operand sourced, **zero gap notices from the
+sdlab lane's validator on the first run** — dataset asset #4, staged for the
+Director's ingest paste. Then the errand batch and the MCP-tool specs; the
 activated state (Ruling 16c) stays parked at his sentence.
 
 **E15 — the context index — is LIVE and ruled**
