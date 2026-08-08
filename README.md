@@ -376,8 +376,20 @@ generation path: **the garnet re-projection** (hue/chroma transfer of the
 four drifted twins' stone regions toward the identity's stone, L preserved,
 re-projected into the demoted territory — the twins' own committed texels,
 100% by construction, zero generation), the misbind made impossible rather
-than watched. Then strokes 1–8 hole-fill only under per-stroke eye gates,
-HALT 2, and finalize, pack, Gate 1 beside the clay.
+than watched. **The re-projection ran pixel-gate-clean and the stone is
+garnet** (hue 308.6 → 22.5, the 305°-apart ownership partition now 6.6°, L
+preserved to 0.088 per texel); one mask-boundary defect (1,436 collar-gold
+texels rotated green) was located to the texel and restored from the
+pre-stroke state under an asserted count. **All eight strokes then
+committed** — 75,890 texels at zero credits, zero re-rolls, both edge-on
+strokes clean on the 20b misbind watch at 4× against the clay — and the
+probe's "achievable set" was falsified as a bound by its own pre-registered
+falsifier: the lane committed **109.6%** of it, because each stroke's commit
+enlarges the next stroke's keyed context (**a static probe of a sequential
+process is a snapshot, not a bound** — Ruling 29f). The asset stands at
+**47.32% styled of valid** with the stone and repair untouched by any
+stroke, staged at HALT 2 for the Director. Then finalize, pack, Gate 1
+beside the clay.
 
 **E15 — the context index — is LIVE and ruled**
 ([E15-ruling.md](docs/experiments/E15-ruling.md), 9 rulings):

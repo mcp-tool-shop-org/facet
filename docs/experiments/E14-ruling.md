@@ -1605,7 +1605,15 @@ an UPPER BOUND, not a forecast** — the denominator law arriving one
 layer further in (after reach-vs-territory and territory-vs-achievable,
 now achievable-vs-committed). HALT 2 reads coverage against this
 calibration, pre-stated here; handoff 8 quotes probe-vs-actual per
-stroke — seven free calibration points on the ratio.
+stroke — seven free calibration points on the ratio. *⚠ Falsified
+2026-08-08 by its own pre-registered falsifier (Ruling 29f): strokes 7
+and 8 EXCEEDED their probe columns (1.036×, 1.408×) and the lane
+committed 109.6% of the "achievable set." The "upper bound" held only
+for sparse-context frames — the probe's error CHANGES SIGN with
+painted-context density, because each stroke's commit enlarges the next
+stroke's keyed context. A static probe of a sequential process is a
+snapshot, not a bound. The single-point 1.75× was real and
+insufficient; this correction is the record.*
 
 **27e — stroke 1's commit is ACCEPTED**: 4,344 texels at yaw 0, job
 mask back to 8,742 +0/−0 against pre-demotion (the stone out exactly as
@@ -1710,4 +1718,125 @@ with location; correctly not chased.
 strokes exactly as dispatched (nothing else in handoff 8 changes; the
 blind predictions already stand). Zero credits still; the re-roll
 budgets untouched; HALT 2 as dispatched.
+
+## Ruling 29 — HALT 2: the lane is complete and the advisor's sheet-walk is taken; the probe's bound corrected in place; the asset goes to the Director (2026-08-08)
+
+Evidence — what this seat OPENED: the handoff-8 report in full
+([E14-handoff8-report.md](E14-handoff8-report.md), `c3a6b14`), and the
+walk set at magnification before anything below:
+`HALT2_walkset_1_views.png` (eight views, four panels each),
+`HALT2_walkset_2_crops.png` (the stone at 6× from three yaws, the
+crossing at 4× from four, the ribbon at 4× both faces before|after),
+`GATE8_y270.png` (the worst fifth-signature firing, with the ribbon at
+8×) and `GATE5_y315.png` (the diagonal firing, with the mid-blade at
+5×).
+
+**29a — THE WALK, in plain words first.** The asset reads as one sword
+from every yaw: garnet stone, gold collar and rings, oxblood wrap, dark
+faceted guard with its bright boss, dark battle-worn blade. The stone
+is garnet at 6× from every angle and the collar junction below it reads
+clean gold — the repair took, no green anywhere. **The ribbon — the
+lane's whole reason — is CLOSED**: both edge-on faces carry continuous
+dark steel with a centreline highlight where BEFORE shows pale mottled
+partial paint, black gaps and violet streaks. The guard's edge-on faces
+are the clay's plain faceted block — no figurative form, no skull, no
+misplaced crossguard: **20b clean at this seat's eye on both edge-ons**,
+confirming the executor's read on the lane's two highest-risk strokes.
+The fifth-signature darkening is real and located: at 5× on the
+diagonal it sits in the fuller's crease lines, where the clay carries
+real crease geometry, and reads as worn-steel seam character on a
+subject whose accepted steel is already dark (L\* 21–24, Ruling 14); at
+8× on the edge-on the fill is darker than a "context" that was itself
+pale partial rim-paint, not the blade's true tone. Named honestly for
+the Director's eye: faint violet edge-streaks ride the blade flanks and
+the crossing's shoulders (the deep-share class — 79.0% blade, 20.3%
+crossing, unchanged in total across the lane); scattered dark
+hole-speckle remains across guard and blade awaiting finalize's
+dilation; nothing anywhere reads as a wrong material or a wrong form.
+
+**29b — step 0 is RATIFIED**: all three counts asserted before any
+write (P 1,431 / O 1,086 / union 1,436), clause O re-verified identical
+on the live atlas in-tool, the compensator exercised on scratch first
+with the real run reproducing the scratch hash exactly, colour-only
+invariance held (holes and styled byte-identical), and the line gone at
+6× in all eight views with the junction's forbidden counts roughly
+halved and the remainder the 28e forbidden-BEFORE class.
+
+**29c — the anchor's catch is BANKED and the guard is queued**:
+**omitting `--profile` silently emits a 752-wide frame** — the tool
+default is W3's width — producing no error, just a differently-framed
+job that would commit through a different projection than it emitted.
+The anchor practice (re-emit a recorded job and byte-compare before a
+resumed lane strokes) is ADOPTED as standing for any lane resuming
+across sessions. The errand batch gains: `texpass_iter emit` must
+require an explicit frame or profile, or refuse loudly when unprofiled.
+
+**29d — the seven strokes are ACCEPTED**: 71,546 texels (75,890 with
+stroke 1), the ruled order held, the invariance ANDON 7/7 at ≤2 px hot
+components, zero credits quoted seven times, the drop map landing (10
+terms at the edge-ons, 11 elsewhere), red zero on crossing and blade on
+every stroke, and **the stone and the repair untouched — 0 of 71,546,
+measured**. No re-roll spent anywhere; every budget intact.
+
+**29e — the fifth-signature dispositions are RECORDED, and the
+Director's mid-lane call held.** His word at stroke 5's gate — commit
+and flag, re-roll unspent — is the record; the retrospective evidence
+says it was right: the class is the model's crevice prior (a re-roll at
+any seed resamples it), E12 Ruling 27d deliberately armed no numeric
+gate on it, and the dragon carried the same named class through an
+accepted Gate 1. This seat's dispatch wording ("less-or-equal is
+clean") pointed a numeric reading at an eye-class watch and created the
+ambiguity the executor had to escalate — the wording was mine; ledger.
+The watch's true form, re-stated: **the relational grid REPORTS; the
+eye DECIDES; no arithmetic clears or fails this class** — and the
+executor's threshold-free grid (the relation across twenty cuts, with
+per-structure decomposition before any reading) is ADOPTED as the
+watch's standing reporting form. Stroke 1's 29.1/31.8 is recorded as
+instrument-unpinned and not comparable — any such figure quotes its
+cut or it is not a number. The class rides to Gate 1 at the Director's
+eye, exactly as it did on the dragon.
+
+**29f — Ruling 27d's "upper bound" is FALSIFIED by its own
+pre-registered falsifier, and corrected in place.** Strokes 7 and 8
+exceeded their probe columns (1.036×, 1.408×); the eight strokes
+committed **75,890 = 109.6% of the 69,239 "achievable set"**; the
+ratio spans 0.277–1.408 and its error CHANGES SIGN with painted-context
+density. The mechanism: **each stroke's commit enlarges the next
+stroke's keyed context** — the probe fake-inpainted every camera
+against the sparse pre-lane state, while the real edge-ons ran against
+a blade six strokes denser, whose keyed figure is correspondingly
+larger. The honest statement, adopted route-wide: **a static probe of a
+sequential process is a snapshot, not a bound** — the achievable set
+was a per-camera measurement of one state of a path-dependent quantity;
+the moving-denominator family gains its between-strokes member. And the
+mechanism's positive face is banked with it: the spiral order was
+doubly right — the lane's largest strokes ran last with maximal
+context and committed MORE than any static estimate said they could.
+
+**29g — the erode-2 discrepancy is recorded as an instrument-pinning
+lesson.** The re-projection report's 26.92% interior share does not
+reproduce under the handoff-8 erosion (8.07% on the same pre-lane
+state); on one consistent instrument the interior share RISES across
+the lane (8.07% → 16.29%), the only direction mask growth allows —
+which is exactly why the executor checked. Cross-session interior
+figures are NOT comparable unless the erosion is pinned (kernel,
+iterations, mask); **the band's absolute count is the comparable
+number, and it is unchanged: 19,530, the seven strokes adding exactly
+zero.** The direction-of-change check — verify an inherited figure
+when it moves a direction the mechanism forbids — is the
+inherited-claim law's sharpest cheap form; named for reuse.
+
+**29h — where the asset stands, staged for the Director.** Styled
+**1,732,737 = 47.32% of valid** (from 45.25% at the banked A0); the
+lane's paint is rim-and-ribbon by construction (median island 1 texel,
+erode-2 residue 8.7%) — exactly the class 24c assigns to finalize's
+near-source dilation; **off-surface 0 texels**; the palette gate's
+totals sit above the clean-view speckle range with a largest blob two
+orders below the failure class, report-only as ruled. **This seat's
+sheet-walk is taken; the stroked asset now goes to the Director's eye**
+— the walk set is staged at `run/gates/HALT2_walkset_{1,2}*.png` with
+the per-stroke gates beside it. On his word: the finalize / pack /
+Gate 1 dispatch (handoff 9) drafts — finalize's dilation closes the
+remaining holes from the strokes' own near paint, pack produces the
+GLB, and Gate 1 is the finished sword beside his clay.
 
