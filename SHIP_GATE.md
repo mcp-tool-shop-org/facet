@@ -66,8 +66,8 @@ is unwritten quietly becomes doctrine — the failure mode this repo exists to a
 
 ## E. Identity (soft gate — does not block ship)
 
-- [ ] `[all]` Logo in README header
-- [ ] `[all]` Translations (polyglot-mcp, 8 languages)
+- [x] `[all]` Logo in README header (2026-08-08) — `docs/brand/facet-logo.png`, centred at width 400. Built from the four accepted assets by `docs/brand/make_logo.py`, deterministic, each subject cut from its export's exact silhouette and traced to its ruling in [docs/brand/README.md](docs/brand/README.md). The brand-repo copy is **staged, not fired** — an unjudged mark should not land in the org's indexed asset registry
+- [ ] `[all]` **STAGED, not skipped** — translations run locally via `translate-all.mjs` on TranslateGemma, and the standing rule is that an executor session defers: **the advisor runs them at the fold**, before any tag or release, per the release-ordering law. This is the one line the treatment leaves bare on purpose; it is a soft-gate item and does not block
 - [ ] `[org]` Landing page (@mcptoolshop/site-theme)
 - [ ] `[all]` GitHub repo metadata: description, homepage, topics
 

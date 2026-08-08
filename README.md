@@ -1,4 +1,20 @@
-# facet
+<p align="center">
+  <img src="docs/brand/facet-logo.png" alt="facet" width="400">
+</p>
+
+<p align="center">
+  <a href="https://github.com/mcp-tool-shop-org/facet/actions/workflows/ci.yml"><img src="https://github.com/mcp-tool-shop-org/facet/actions/workflows/ci.yml/badge.svg" alt="CI"></a>
+  <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue" alt="MIT License"></a>
+  <a href="docs/experiments/"><img src="https://img.shields.io/badge/record-spec%20%E2%86%92%20report%20%E2%86%92%20ruling-8a6f3f" alt="The record"></a>
+</p>
+
+<p align="center">
+  <em>The four assets above are this repo's own output — one per subject class,
+  every one accepted at the Director's zoom, at zero credits.<br>
+  <a href="docs/brand/README.md">Provenance for each, with its ruling.</a></em>
+</p>
+
+---
 
 Turning a styled 2D concept into a textured 3D character — with the style applied
 **on the asset** in texture space, not painted per view. Runs entirely on local
@@ -822,3 +838,9 @@ pinned installs (`.github/workflows/ci.yml`); the artifacts tier needs the recor
 trees under `E:\AI\training`, which are not in git, so CI deselects them by design.
 Locally, `python -m pytest` runs all **32** tests and `python -m pytest -m "not artifacts"`
 runs the **24** CI reproduces.
+
+---
+
+<p align="center">
+  Built by <a href="https://mcp-tool-shop.github.io/">MCP Tool Shop</a>
+</p>
