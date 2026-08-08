@@ -639,3 +639,94 @@ dispatch — it is the measurement succeeding at falsifying the ruling**, which
 is worth more than a lucky pass. Say which happened plainly. The gold watch's
 per-view numbers are the evidence either way; the eye confirms at the 4×
 crops. Zero credits expected; quote it anyway.
+
+---
+
+## Session handoff 5 (2026-08-07) — STAGE 1: the seven twins project. Ends at the stage-1 halt.
+
+**Authorised by [E14-ruling.md](E14-ruling.md) Ruling 19f** — the set is
+ruled for stage 1: **seven twins** (views 0 and 4 at 770700; 1/3/5/6/7 at
+770701), **view 2 EXCLUDED** per Ruling 18c. Everything projects at the
+profile's ruled values; nothing generates, nothing spends. A fresh executor
+session starts here:
+
+```
+cd E:\AI\facet && git pull
+python tools/facet_index.py build          <- the E15 ritual
+CLAUDE.md                                  <- read first, follow exactly
+docs/experiments/E14-ruling.md             <- Rulings 17-19. 19f is your authorisation;
+                                              19b's gem readout and 19e's bbox law are yours
+profiles/prop.json                         <- project_twins' ruled values; the framing family
+docs/experiments/E14-handoff4-report.md    <- the set's record and the seed split
+docs/experiments/E12-executor-kickoff.md   <- the beast's stage-1 handoff is the METHOD
+                                              PRECEDENT; cite, don't restate
+```
+
+**Your rules and environment are unchanged** (CLAUDE.md §executor). No
+generation, no credits; projection and measurement are local CPU. If any
+Blender leg becomes necessary, the watchdog is verified before it, reported
+either way. Output: `E:\AI\training\facet_next\E14_prep\stage1\`. **Blind
+predictions first, committed before the ceiling runs**: the seven-camera
+ceiling's landing relative to 51.33%, styled/valid, the gem region's blended
+composition, per-view acceptance ordering.
+
+### The task, in pinned order
+
+1. **Pre-register the SEVEN-camera reach ceiling BEFORE any projection** (the
+   moving-denominator law): first-hit reach at the profile's floors over
+   cameras 0/45/135/180/225/270/315 — the shipped `e08_ceiling` if it takes a
+   camera list, else `e14_atlas_anatomy`'s reachability path (it reproduced
+   N8 exactly; state which ran). Ray bias stays the shipped default for
+   comparability, with Ruling 10b's caveat quoted beside the number. Report
+   it WITH the eight-camera 51.33% (the route-comparable) and the delta.
+2. **Project the seven twins** through `project_twins.py` at the profile's
+   ruled values, views pinned per-invocation to `0,1,3,4,5,6,7` (the
+   explicit-deviation line printed — the profile's views key stays the
+   render/mask consumers'). Per-view registration diagnostics print as they
+   run; the A3 invariant's per-structure erosion reporting stays on.
+3. **The stage-1 report**: styled/valid against BOTH ceilings (the E12 24e
+   form — banked, not gated); the on-surface family per Ruling 9 (island
+   count 46,496 and erode-2 residue beside any off-surface rate); per-view
+   marginal contributions in turnaround order; dilation and edge diagnostics
+   per the route's standard; **the GEM-REGION READOUT** (Ruling 19b: the gem
+   texels' post-projection hue composition — garnet vs drifted shares, with
+   an atlas-space crop and a rendered crop for the eye); the deep-share
+   diagnostic's atlas-side analogue if the tooling permits, else stated as
+   not-run.
+4. **Sheets**: the atlas under FLAT light (the Workbench-STUDIO trap is the
+   founding lesson); reference | rendered-asset panels at views 0, 1 and 6;
+   the gem crop at 4×. Full size, never a contact sheet alone.
+5. **HALT — stage 1 staged** for the advisor's eye, then the Director's.
+   **No pass condition exists**: the ceilings are comparables, the eye is
+   the gate.
+
+### Do not
+
+Generate anything · re-roll anything · include view 2's twin in any
+projection input (its camera may still appear in reach arithmetic as the
+excluded delta, labelled) · arm any gate or derive any bound · run strokes,
+finalize, or touch `thin_extent`'s value (stage 2's, still deferred) · edit
+any fixture, profile, or the palette · write to the memory store · end a
+session the Director has not ended.
+
+### Standards compliance (this dispatch)
+
+| standard | score | evidence |
+|---|---|---|
+| PIN_PER_STEP | 3 | The ceiling pre-registered before projection in its own commit; every invocation logged with its printed diagnostics; the seven-view list an explicit per-invocation argument, never a profile edit |
+| ANDON_AUTHORITY | 3 | The stage-1 halt is the gate; the A3 invariant and bbox diagnostics print live; any tool ANDON is a halt-not-tune per standing rule |
+| NAMED_COMPENSATORS | 3 | No spend, no generation; new files only under E14_prep/stage1; projection is repeatable from committed inputs |
+| DECOMPOSE_BY_SECRETS | 3 | The denominator derived for THIS run's camera set rather than inherited from the eight-camera number; per-view contributions reported so no aggregate hides a view's failure |
+| UNCERTAINTY_GATED_HUMANS | 3 | No pass condition invented — the E12 24e form; the gem readout goes to the eye with crops; the halt is the advisor's then the Director's |
+| EXTERNAL_VERIFIER | 2 | The ceiling and the projector compute reach on independent code paths (their N8 agreement is on record); the gem readout uses the band instruments, not the projector's own numbers. `skip:` on a second model, per precedent |
+
+### Calibration
+
+The route's first prop projection. Named risks: the blade's thin strata are
+where erosion physics bite (the A3 invariant reports per structure — read
+it); view 2's absence will show as a reach hole at yaw 90 (expected,
+priced at ~2.8 points, labelled not discovered); the gem region is SMALL —
+if the readout's denominators are tiny, say so plainly rather than quoting
+ratios alone (the D8 lesson lives here too). The 51.33% is the comparable,
+not the target: a stage-1 number is what it is, and the beast banked 87.5%
+of ITS ceiling on the way to acceptance.

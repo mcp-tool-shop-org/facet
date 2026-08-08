@@ -734,3 +734,75 @@ every failure is preserved, located, and priced.
 **18f — HANDOFF 4 IS AUTHORISED**: the diagonal re-roll pass, four
 submissions at 770701, then the finished set to this seat's eye and the
 Director's. Dispatched below in the kickoff document.
+
+## Ruling 19 — the set is RULED for stage 1; the gem drift is a seed fact; stage 1 is authorised (2026-08-07)
+
+Evidence: the handoff-4 report (`2440e67`), its blind predictions and
+pre-submission halt-clause reading (`86dfda5`, `283a20d`), and this seat's
+eye on the rebuilt strip, the L5 8× gem strip and the 6× guard crop before
+this ruling.
+
+**19a — the branch resolved to the first exit and the set's composition is
+RULED: seven twins for stage 1** — views 0 and 4 at 770700, views 1/3/5/6/7
+at 770701, view 2 EXCLUDED per 18c. All four re-rolls landed iron at exactly
+zero gold pixels on L2, and the zero was validated against the four replaced
+artifacts on the same code path (93.3–96.0% there) — a 0 with a demonstrated
+non-zero, the check-that-can-fail law honoured. Registration on the re-rolls:
+IoU 0.9269–0.9557, bbox 1.00× on all four. This seat's eye on the rebuilt
+strip: the set reads as one sword from eight angles. Ruling 18b's seed
+hypothesis survived its test, with the executor's 1b confound note (the
+clearing evidence was v1 stems; this run was v2) carried into the record —
+the conclusion now rests on five 770701 artifacts, not one.
+
+**19b — the gem drift is RULED a seed-borne subject fact, and the mixed set
+stands.** The pattern is total: six 770700 artifacts of this hilt are
+garnet, five 770701 artifacts are drifted (lavender+magenta share 42.8–51.7%
+against 0.5–4.5%), no exceptions — **including the accepted pair's own view
+1, which carried the drift when the Director accepted it**. The set's L5
+non-uniformity between view groups is therefore a property of its own
+accepted specification source, and no legal roll exists to cure it: the
+re-roll budget is spent and a third seed would be seed-shopping past a
+pre-stated bound. What the blend does to the PROJECTED gem is measured, not
+predicted: **stage 1 carries a GEM-REGION READOUT** (the gem texels'
+post-projection hue composition, with a crop for the eye), and the brush
+stage is the named repair owner if the blended gem fails the eye at the
+gate. The L5 term-strengthening question ("dark red garnet" naming the hue
+family explicitly) is PARKED as fixture territory for any future generation
+moment — a term change repaints nothing already rolled.
+
+**19c — the rim band's second blindness is priced into the palette file**:
+deep-lavender may be a drifted DECLARED MATERIAL, not only backdrop bleed —
+64.5% / 61.5% of v1's and v5's deep-lavender population sits inside the gem
+region. The depth diagnostic caught it unaided — its second catch in two
+runs; 17c's paired-instrument design is vindicated twice on its first day.
+Annotation lands in the palette's deep-share note.
+
+**19d — the 770701 style family is recorded**: scrolled guard relief, cusped
+quillon ends, and (this seat's eye at 8×) ring embossing that flirts with
+lettering — paint, not geometry; registration holds, so projection lands it
+as surface detail and the Gate-1 eye judges the asset. The executor's
+in-place correction of their own §5 after a 6× re-read — a conclusion
+written off a downscaled strip, overturned at the Director's zoom — is the
+looking rule enforced on one's own work, adopted with the report.
+
+**19e — the IoU bound stays underived, and now BY MEASUREMENT.** The
+accepted population spans 0.7824–0.9557; the rejected artifacts measured
+0.50, 0.50 and **0.886** — the populations OVERLAP (a rejected roll
+out-scores an accepted twin), so an IoU halt would have passed a phantom
+and failed a clean face-on. On this subject registration failure is a
+**bbox phenomenon, not an IoU phenomenon**: the purpose-built tool's
+bbox-SUSPECT check separated every failure from every acceptance cleanly.
+`reg-iou-min` stays 0.0 (reporting); the bbox check is the working
+instrument, banked route-level for thin subjects.
+
+**19f — STAGE 1 IS AUTHORISED — handoff 5.** Step order pinned: the
+SEVEN-camera reach ceiling is pre-registered BEFORE any projection (the
+moving-denominator law — view 2's camera is out, so the eight-camera 51.33%
+is the route-comparable but not this run's denominator), then the seven
+twins project at the profile's ruled values, then the stage-1 report:
+styled/valid against BOTH ceilings, the on-surface family with island count
+and erode-2 residue (Ruling 9's form), per-view marginal contributions, the
+gem-region readout, and the atlas under FLAT light beside the reference.
+**No pass condition is invented — the ceilings are comparables and the eye
+is the gate** (the E12 24e form). HALT with stage 1 staged for this seat's
+eye, then the Director's.

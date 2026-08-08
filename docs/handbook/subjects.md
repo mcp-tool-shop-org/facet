@@ -293,10 +293,23 @@ values live in its own profile and fixture, never inherited unmeasured.
   measured: 2.8 points; the brush stage owns the hole). The depth diagnostic's
   first run caught both corrupted views independently; zero credits across ten
   submissions.
-- **In flight: handoff 4** — the diagonal re-roll pass at the pair's proven
-  770701, four submissions, binary branch (set completes at seven twins, or any
-  sprawl is THE RESULT and the recipe question opens). Then the set's acceptance,
-  then stage 1 against the pre-registered **51.33%** ceiling.
+- **The re-roll pass resolved to the clean exit** (handoff 4 →
+  [Ruling 19](../experiments/E14-ruling.md)): all four diagonals landed iron at
+  770701 — **exactly zero gold pixels** against 93–96% at 770700, the zero
+  validated against the replaced artifacts on the same code path. The seed's
+  price: **the L5 gem drifts magenta at 770701** (six 770700 artifacts garnet,
+  five 770701 drifted, no exceptions — the accepted pair's own view 1 included),
+  so the seven-twin set is L5-non-uniform between view groups; stage 1 carries a
+  gem-region readout and the brush stage owns the repair if the blend fails the
+  eye. Also banked: registration failure on this subject is a **bbox
+  phenomenon, not an IoU phenomenon** (the populations overlap; a rejected roll
+  out-scored an accepted twin), and the depth diagnostic's blindness has two
+  faces (drifted material, not just backdrop bleed — second catch in two runs).
+- **In flight: handoff 5 — STAGE 1** — the seven-camera ceiling pre-registered
+  first, then the seven twins project; styled/valid against both ceilings (the
+  eight-camera **51.33%** stays the route-comparable), the on-surface family
+  with island count, the gem readout, the atlas under flat light. No pass
+  condition — the eye is the gate.
 
 ## The calibration table this page exists for
 
