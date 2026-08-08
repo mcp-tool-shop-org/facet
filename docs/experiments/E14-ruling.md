@@ -891,6 +891,18 @@ staged. (iii) The strip presented to the Director contained an excluded
 twin's panel unlabelled — from here the standing practice: **any presented
 sheet or strip labels excluded artifacts as excluded, in the image**.
 
+*⚠ A fourth entry, 2026-08-08, its own form: the Director sent a screenshot
+of exactly the problem — the guard at mid-grip — and this seat read the
+image as a POINTER to a known artifact ("view 2, already understood")
+rather than as evidence, answered about a different defect in the same
+image, and had to be told in words what the screenshot already showed.
+Recognition substituted for reading, on the highest-priority artifact class
+there is: an image the Director personally points with. Standing practice:
+**any image the Director sends is walked FIRST — described structure by
+structure in plain words at the top of the reply, before anything else is
+said** — so that what he pointed at is found independently or the mismatch
+surfaces at once.*
+
 **20e — what stands unchanged**: the diagonals' iron guards, the gem-drift
 ruling (19b), the bbox-not-IoU finding (19e), the rim band's two-faced
 blindness (19c), and zero credits spent. The set that projects is six twins
