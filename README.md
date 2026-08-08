@@ -28,6 +28,23 @@ a surface-aware dilation.
 
 Named for both halves of the problem: the polygons, and the face they have to hold.
 
+## Install
+
+The route itself is a set of local scripts you invoke against paths you type — clone
+the repo and read [getting started](https://mcp-tool-shop-org.github.io/facet/handbook/getting-started/).
+
+**The record index ships as a package**, so an assistant can query the evidence trail
+instead of reading it:
+
+```bash
+npx @mcptoolshop/facet          # zero-prerequisite; verified binary, no Python needed
+pipx install facet-mcp          # or the Python package directly
+```
+
+Two commands come with it — `facet-mcp`, the stdio MCP server (six tools, with the
+four-leg verify as a refusing health surface), and `facet-index` (`build` / `verify` /
+`q` / `claims`). Point either at an index with `--db` or `$FACET_INDEX_DB`.
+
 ## Where it stands
 
 **Four accepted assets, across four subject classes, at zero credits.** Each was ruled

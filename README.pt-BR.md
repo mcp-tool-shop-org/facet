@@ -20,26 +20,40 @@
 
 ---
 
-O estilo é aplicado **no objeto**, no espaço da textura — não é pintado para cada perspectiva e depois combinado. Forneça ao programa um modelo conceitual em argila com formas exageradas e ele retornará uma malha texturizada cuja cor foi obtida a partir de uma referência estilizada *dessa* malha, com tudo o que a referência não conseguia visualizar preenchido por um pincel de retoque mascarado e uma dilatação consciente da superfície.
+O estilo é aplicado **no ativo**, no espaço da textura — não é pintado para cada visualização e, posteriormente, combinado. Forneça à sequência um conceito de argila com formas exageradas e ela retornará uma malha texturizada cuja cor foi obtida a partir de uma referência estilizada *dessa* malha, com tudo o que a referência não podia ver preenchido por um pincel de retoque mascarado e uma dilatação consciente da superfície.
 
-O nome faz referência a ambos os aspetos do problema: os polígonos e a superfície que eles devem preencher.
+Nomeado para ambas as partes do problema: os polígonos e a face que eles devem representar.
 
-## Qual é a situação atual?
+## Instalar
 
-**Quatro trabalhos aceitos, abrangendo quatro áreas de estudo diferentes, sem qualquer requisito de créditos.** Cada um foi avaliado pelo diretor, individualmente – seja no formato digital (GLB) ou em folhas impressas em tamanho real –, e não com base num critério que estabelecesse um limite mínimo.
+A própria sequência é um conjunto de scripts locais que você invoca em caminhos que digita — clone o repositório e leia [o guia de início](https://mcp-tool-shop-org.github.io/facet/handbook/getting-started/).
 
-| assunto; tema; matéria | classe | aceito(a) / aprovado(a) | referência / pincel / dilatação |
+**O índice de registro é fornecido como um pacote**, para que um assistente possa consultar o histórico das evidências em vez de lê-lo:
+
+```bash
+npx @mcptoolshop/facet          # zero-prerequisite; verified binary, no Python needed
+pipx install facet-mcp          # or the Python package directly
+```
+
+Dois comandos são incluídos — `facet-mcp`, o servidor MCP stdio (seis ferramentas, com a verificação de quatro pontos como uma superfície de saúde que rejeita) e `facet-index` (`build` / `verify` / `q` / `claims`). Aponte qualquer um para um índice com `--db` ou `$FACET_INDEX_DB`.
+
+## Onde ele se encontra
+
+**Quatro ativos aceitos, em quatro classes de objetos, sem custo.** Cada um foi avaliado pelo Diretor em seu próprio nível de zoom — no GLB ou em folhas de tamanho normal — não por uma métrica que atinja um limite.
+
+| objeto | classe | aceito | referência / pincel / dilatação |
 |---|---|---|---|
 | **Character (W3)** | humanoide | [2026-08-04](docs/experiments/E08-ruling-gate0.md) | 68.8 / 4.2 / 27.0 |
-| **Galleon** | veículo, cabos finos (de um navio) | [2026-08-05](docs/experiments/E04-ruling.md) | 36.89 / 6.87 / 56.24 |
-| **Dragon** | fera, membranas das asas | [2026-08-07](docs/experiments/E12-ruling.md) | 44.15 / 3.07 / 52.78 |
-| **Longsword** | objeto de cena, quase bidimensional, em tons de cinza. | [2026-08-08](docs/experiments/E14-ruling.md) | 45.25 / 2.07 / 52.68 |
+| **Galleon** | veículo, rigging fino | [2026-08-05](docs/experiments/E04-ruling.md) | 36.89 / 6.87 / 56.24 |
+| **Dragon** | animal, membranas das asas | [2026-08-07](docs/experiments/E12-ruling.md) | 44.15 / 3.07 / 52.78 |
+| **Longsword** | adereço, quase 2D, cinza sobre cinza | [2026-08-08](docs/experiments/E14-ruling.md) | 45.25 / 2.07 / 52.68 |
 
-As amostras são de texels válidos e **não podem ser comparadas entre diferentes objetos** — um navio esconde a maior parte de si mesmo a partir do nível dos olhos e um animal esconde metade do corpo. Analise cada um em relação ao seu limite de alcance pré-definido, no qual atingem uma percentagem de **86–93%**: a diferença entre as linhas é geométrica, não estatística. [Números completos, com os seus denominadores](docs/handbook/subjects.md).
+As partes são de texels válidos e **não são comparáveis entre os objetos** — um navio esconde a maior parte de si mesmo do nível dos olhos e um animal esconde metade. Avalie cada um em relação ao seu próprio limite de alcance pré-registrado, no qual eles atingem **86–93%**: a diferença entre as linhas é geometria, não regressão. [Números completos, com seus
+denominadores](docs/handbook/subjects.md).
 
-**É um processo, não um gerador de imagens com apenas um parâmetro.** Ao contradizer a especificação em oito elementos nomeados, o modelo obtém **8 de 8** pontos – a diferença média ΔE é de 46,3, contra 6,2 nos cinco exemplos de referência –, enquanto a imagem mantém a mesma aparência. A estrutura é mantida pela malha e pelo controle; os atributos nomeados são determinados pelo comando.
+**É uma sequência de processamento, não um gerador de um único caractere.** Contradiga a especificação em oito elementos nomeados e o prompt vence **8 de 8** — ΔE mediano de 46,3 contra 6,2 em cinco controles mantidos — enquanto a figura permanece a mesma. A estrutura é mantida pela malha e pelo controle; os atributos nomeados acompanham o prompt.
 
-## O percurso/a rota
+## A sequência
 
 ```
 form-exaggerated clay concept ──► image-to-3D ──► weld ──► density allocation
@@ -50,111 +64,78 @@ form-exaggerated clay concept ──► image-to-3D ──► weld ──► den
        twins, generated from THIS mesh ──► project ──► brush the holes ──► fill
 ```
 
-Passo a passo, com a explicação de cada um: **[o manual](docs/handbook/index.md)**.
+Etapa por etapa, com a justificativa para cada uma: **[o guia](docs/handbook/index.md)**.
 
-## O que faz com que funcione?
+## O que faz funcionar
 
-Seis descobertas, cada uma das quais exigiu a realização de um experimento e cada uma das quais tem implicações que vão além do objeto de estudo que as gerou. [A versão completa, com as medições](docs/findings.md).
+Seis descobertas, cada uma das quais custou um experimento e cada uma das quais se generaliza além do objeto que a produziu. [A versão completa, com as
+medidas](docs/findings.md).
 
-- **Priorize a forma, depois o estilo.** Os programas de reconstrução interpretam o ruído da superfície como geometria. Uma argila limpa, com aparência escultórica e planos deliberadamente exagerados, resulta numa topologia melhor do que um sprite estilizado; o modelo estilizado é gerado em paralelo e serve como referência de cor.
-- **Defina o contorno do rosto, crie um rosto.** Um recorte no formato de busto coloca **3,1–4,5 vezes** mais polígonos na cabeça, e a diferença é estrutural – pálpebras separadas, uma ruga na testa, cavidades nasais modeladas –, não apenas um desfoque mais nítido.
-- **Os modelos gêmeos pertencem a uma malha, não a um personagem.** Reutilize um modelo gêmeo em várias malhas e a cobertura diminui de **62% para 22,7%**, porque os braços se projetam no espaço vazio ao lado do modelo. Gere modelos gêmeos a partir da malha que você está prestes a texturizar, sempre.
-- **A identidade pertence à instrução.** Um elemento canônico não mencionado na instrução aparece por acidente e desaparecerá da mesma forma – medido quando as placas douradas nos joelhos acabaram aparecendo na imagem apenas através do ruído numa versão corrompida do ControlNet.
-- **Consulte a geometria, não um limite.** Substituir uma máscara com o contorno exato obtido por traçado de raio moveu a cobertura da referência de **28,4% para 39,1%** de texels válidos – estritamente aditivo, sem difusão, sem uso da GPU. O método de seleção baseado na mediana dos cantos falhou três vezes aqui e foi descontinuado.
-- **Elimine o que nenhuma câmera pode ver, do atlas e nunca da malha.** 49% dos texels do atlas são invisíveis vistos de fora; excluir essas faces reduz a interpolação em **68%**. Excluir, em vez de apagar, torna a falha impossível, em vez de apenas detectável.
+- **Forma primeiro, estilo depois.** Os reconstrutores interpretam o ruído da superfície como geometria. Uma argila limpa, semelhante a uma escultura, com planos deliberadamente exagerados, resulta em uma topologia melhor do que um sprite estilizado; o gêmeo estilizado é gerado simultaneamente e se torna a referência de cor.
+- **Enquadre o rosto, obtenha um rosto.** Um recorte de busto coloca **3,1–4,5 vezes** mais polígonos na cabeça, e a diferença é estrutural — pálpebras separadas, uma ruga na testa, cavidades das narinas modeladas — não um desfoque mais nítido.
+- **Os gêmeos pertencem a uma malha, não a um personagem.** Reutilize um gêmeo em várias malhas e a cobertura entra em colapso de **62% para 22,7%**, porque os braços se projetam no espaço vazio ao lado do modelo. Gere gêmeos a partir da malha que você está prestes a texturizar, sempre.
+- **A identidade pertence ao prompt.** Um elemento canônico não nomeado no prompt está chegando por acidente e sairá da mesma forma — medido quando as placas de joelho douradas acabaram atingindo a imagem apenas através do ruído em um ControlNet quebrado.
+- **Pergunte à geometria, não a um limite.** Substituir uma máscara com chave pela silhueta exata do raycast moveu a cobertura da referência de **28,4% para 39,1%** de texels válidos — estritamente aditivo, sem difusão, sem GPU. O keying de canto-mediana falhou três vezes aqui e foi descontinuado.
+- **Remova o que nenhuma câmera pode ver, do atlas e nunca da malha.** 49% dos texels do atlas são invisíveis do lado de fora; excluir esses faces reduz a interpolação em **68%**. Excluir em vez de apagar torna a falha impossível, em vez de apenas detectável.
 
-## O que ainda não foi resolvido?
+## O que não está resolvido
 
-Identificados e descritos, na página principal em vez de numa nota de rodapé. [Todos eles estão localizados no código](docs/known-defects.md).
+Nomeado e medido, na página inicial, em vez de em uma nota de rodapé. [Todos eles, localizados no
+código](docs/known-defects.md).
 
-- **A faixa da lâmina representa 0,00% da referência do estágio 1** em todas as oito câmaras — o aço sobre um fundo cinzento está exatamente no limite definido. A união recupera 55,72%.
-- **As bordas dos traços não estão niveladas.** Um limite de proveniência apresenta uma variação **5,5 vezes** maior do que a textura normal; a região designada pelo diretor apresenta uma variação **9,5 vezes** maior.
-- **A dilatação causa sangramento entre ilhas do atlas não relacionadas** — 74,9% dos texels dilatados obtêm sua cor de outra ilha, a uma distância média de 0,177 em uma figura com altura de 1,0.
-- **Cada reconstrução nesta rota é uma estrutura oca de parede dupla**, com paredes de aproximadamente dois voxels. Nenhum predicado volumétrico é válido para ela.
+- **A faixa da lâmina ocupa 0,00% da referência da etapa 1** em todas as oito câmeras — o aço sobre um fundo cinza está exatamente no próprio limite da chave. A união resgata 55,72%.
+- **As costuras do traço não são niveladas.** Um limite de proveniência apresenta uma variação de textura **5,5 vezes** maior; a região que o Diretor nomeou apresenta uma variação **9,5 vezes** maior.
+- **A dilatação vaza entre ilhas de atlas não relacionadas** — 74,9% dos texels dilatados obtêm sua cor de outra ilha, de uma mediana de 0,177 de distância em uma figura com altura 1,0.
+- **Cada reconstrução nesta sequência é uma casca oca de parede dupla**, paredes com cerca de dois voxels. Nenhum predicado volumétrico é válido em um deles.
 
-## Como este repositório é gerenciado/mantido
+## Como este repositório é executado
 
-A disciplina é tão importante quanto o processo em si, e existe por uma razão: numa fase anterior, foram realizadas dez sessões nas quais cada participante avaliou o seu próprio trabalho e redigiu conclusões que foram lidas na sessão seguinte como se fossem factos estabelecidos. Nada nesse ciclo podia ser verificado.
+A disciplina é tão importante quanto a própria sequência de processamento, e ela existe por um motivo: uma sequência anterior realizou dez sessões que avaliaram seu próprio resultado e escreveram conclusões que a sessão seguinte leu como fato estabelecido. Nada naquele ciclo era verificável.
 
-- **Definir antes do trabalho, relatar depois, decidir por último** — e a sessão que planeja um experimento nunca avalia os seus próprios resultados. Vinte experimentos estão em [o registro](docs/experiments/).
-- **As correções são aplicadas no local, ao lado da medição que as refutou**, nunca como exclusões discretas. Seis alegações herdadas foram consideradas falsas apenas na sessão inicial, e todas as seis ainda podem ser lidas ao lado do que as substituiu.
-- **Os resultados negativos permanecem no repositório com a sua justificativa.** [`tools/superseded/`](docs/tools.md) não é um arquivo — qualquer pessoa pode executar essas ferramentas e observar o seu fracasso da mesma forma.
-- **Um resultado negativo é um sucesso completo**, relatado e encerrado, em vez de ajustado para atingir um número específico.
-- **Os testes acompanham o commit que modifica o código** — 218 aprovados por duas pessoas, com CI restrito a caminhos nos 210 experimentos herméticos.
-- **O registro pode ser consultado.** Um índice SQLite + FTS5 sobre todo o histórico, verificado em quatro pontos. Ele encontrou uma contagem que o texto havia indicado incorretamente em três locais, contando o próprio registro.
+- **Definir antes do trabalho, relatar depois, decisão final** — e a sessão que projeta um experimento nunca avalia seus próprios resultados. Vinte experimentos estão em [o registro](docs/experiments/).
+- **Correções são aplicadas no local, ao lado da medição que as refutou**, nunca como exclusões silenciosas. Seis alegações herdadas foram consideradas falsas apenas na sessão inicial, e todas as seis ainda podem ser lidas ao lado do que as substituiu.
+- **Falhas permanecem no repositório com sua razão.** [`tools/superseded/`](docs/tools.md) não é um arquivo — qualquer pessoa pode executar essas ferramentas e observar suas falhas da mesma forma.
+- **Um resultado negativo é um sucesso total**, relatado e encerrado, em vez de ajustado para um número específico.
+- **Testes acompanham o commit que afeta o código** — 218 aprovados por duas pessoas, com CI baseado em caminhos nos 210 testes herméticos.
+- **O registro pode ser consultado.** Um índice SQLite + FTS5 sobre todo o histórico, verificado em quatro etapas. Ele encontrou uma contagem de decisão que a prosa havia apresentado incorretamente em três locais, contando o próprio registro.
 
-## Onde tudo acontece
+## Onde tudo está
 
 | | |
 |---|---|
-| **[O manual](docs/handbook/index.md)** | o guia – o percurso dividido em etapas, os temas abordados, o sistema de classificação. |
-| **[O registro](docs/experiments/)** | vinte experimentos: especificação, relatório, avaliação e cada previsão declarada antes da medição |
-| **[O que a rota aprendeu](docs/findings.md)** | as descobertas duradouras e as regras arduamente conquistadas, na íntegra |
+| **[O manual](docs/handbook/index.md)** | o guia — o roteiro passo a passo, os tópicos, o sistema de perfil |
+| **[O registro](docs/experiments/)** | vinte experimentos: especificação, relatório, decisão e cada previsão declarada antes da medição |
+| **[O que o roteiro aprendeu](docs/findings.md)** | as descobertas duradouras e as regras conquistadas com dificuldade, na íntegra |
 | **[Status de cada ferramenta](docs/tools.md)** | o que funciona, o que está obsoleto e a evidência para cada um |
 | **[Defeitos conhecidos](docs/known-defects.md)** | tudo o que não foi resolvido, medido e localizado no código |
-| **[O processo, como aconteceu](docs/arc-history.md)** | o histórico cronológico, com as correções preservadas |
+| **[O arco, como aconteceu](docs/arc-history.md)** | o histórico cronológico, com as correções intactas |
 | **[CLAUDE.md](CLAUDE.md)** | como trabalhar aqui — os papéis, as regras e o custo de cada um |
 
 ## Posição da licença
 
-Cada etapa é executada localmente e está em conformidade com os requisitos comerciais: SDXL (OpenRAIL++), MV-Adapter (código aberto),
-open3d (Apache-2.0), spandrel (MIT), RealESRGAN anime6B (BSD-3), Blender, numpy, scipy,
-trimesh.
+Cada etapa é executada localmente e está em conformidade com as licenças: SDXL (OpenRAIL++), MV-Adapter (aberto), open3d (Apache-2.0), spandrel (MIT), RealESRGAN anime6B (BSD-3), Blender, numpy, scipy, trimesh.
 
-Excluído deliberadamente, com a justificativa: **nvdiffrast** (não comercial — imposto aqui
-por um mecanismo de segurança estrutural, não por atestado), **Hunyuan3D-Paint** (licença inválida na
-UE, Reino Unido e Coreia do Sul), **MVPaint** e **TEXGen** (nenhuma licença) e
-**UltraSharp / SUPIR / StableSR** (ampliadores não comerciais).
+Excluído deliberadamente, com a razão: **nvdiffrast** (não comercial — imposto aqui por um gatilho estrutural, não por atestado), **Hunyuan3D-Paint** (licença inválida na UE, Reino Unido e Coreia do Sul), **MVPaint** e **TEXGen** (nenhuma licença) e **UltraSharp / SUPIR / StableSR** (ampliadores não comerciais).
 
 ## Modelo de confiança e ameaças
 
-o facet é executado inteiramente na sua própria máquina — cada ferramenta é um script que você executa em relação a
-caminhos que você digita, portanto, a pergunta útil não é *quais permissões este aplicativo solicita*, mas
-*o que esses scripts fazem com sua máquina*. Respondido por meio de medição, com cada execução repetível; a política completa está em [SECURITY.md](SECURITY.md):
+o facet é executado inteiramente em sua própria máquina — cada ferramenta é um script que você invoca em caminhos que digita, portanto, a pergunta útil não é *quais permissões este aplicativo solicita*, mas *o que esses scripts fazem com sua máquina*. Respondido por meio de medição, com cada execução podendo ser repetida; a política completa está em [SECURITY.md](SECURITY.md):
 
-- **Dados acessados:** malhas, texturas, imagens e JSON no disco local, nos caminhos que você
-fornece na linha de comando. Além disso, `docs/index/facet.db`, que é *derivado* — ele contém
-nada que já não fosse um arquivo neste repositório, e `facet_index.py build`
-o regenera do zero.
-- **Dados NÃO acessados:** nenhum dado de credencial, nunca. Nada aqui lê, armazena ou transmite
-um token, chave ou senha, e nenhum está presente na árvore — verificado para
-chaves com prefixo de provedor, GitHub PATs, tokens Slack, IDs de chaves AWS, blocos de chave privada,
-tokens de portador e atribuições inline `api_key`/`password`, **zero correspondências**, nenhum
-arquivo semelhante a uma credencial rastreado.
-- **Nenhuma telemetria.** Nenhuma coletada, nenhuma enviada. Não há opção de desativar porque não há
-nada para desativar.
-- **Saída de rede:** duas das trinta e quatro ferramentas abrem um socket — `restylize_views.py`
-e `texpass_brush.py` — e ambas chamam uma API HTTP do ComfyUI em `--host`, **padrão
-`127.0.0.1:8188`**. Nada mais em `tools/` faz uma chamada de rede.
-- **Permissões:** usuário comum. Sem elevação, sem instalação de serviço, sem gravações nas configurações do sistema
-ou no registro.
+- **Dados acessados:** malhas, texturas, imagens e JSON no disco local, nos caminhos que você passa na linha de comando. Além disso, `docs/index/facet.db`, que é *derivado* — ele não contém nada que já não fosse um arquivo neste repositório, e `facet_index.py build` o regenera do zero.
+- **Dados NÃO acessados:** nenhum dado de credencial, nunca. Nada aqui lê, armazena ou transmite um token, chave ou senha, e nenhum está presente na árvore — verificado em busca de chaves com prefixo de provedor, GitHub PATs, tokens Slack, IDs de chave AWS, blocos de chave privada, tokens de portador e atribuições `api_key`/`password` inline, **zero correspondências**, nenhum arquivo com formato de credencial rastreado.
+- **Nenhuma telemetria.** Nenhuma coletada, nenhuma enviada. Não há opção de desativar porque não há nada para desativar.
+- **Egressos de rede:** duas das trinta e quatro ferramentas abrem um socket — `restylize_views.py` e `texpass_brush.py` — e ambas chamam uma API HTTP do ComfyUI em `--host`, **padrão `127.0.0.1:8188`**. Nada mais em `tools/` faz uma chamada de rede.
+- **Permissões:** usuário comum. Sem elevação, sem instalação de serviço, sem gravações nas configurações do sistema ou no registro.
 
-Três pontos críticos são divulgados em vez de serem omitidos, porque uma nota de segurança que
-apenas lista garantias não é um modelo de ameaças: **as operações de arquivo não estão isoladas**
-(uma ferramenta grava onde seus argumentos indicam); **caminhos locais absolutos estão incorporados em muitas
-ferramentas e documentos** — 114 ocorrências em 26 arquivos, não segredos, mas uma divulgação do layout de uma
-máquina, e a razão pela qual a maioria das ferramentas não será executada sem modificações em outro lugar; e
-**falhas inesperadas aparecem como rastreamentos do Python**, sem um filtro `--debug` e sem um
-formato de erro estruturado. As interrupções deliberadas são mensagens `ANDON:` que carregam a medição
-que as acionou. Esse é o contrato do instrumento de pesquisa, e
-[SHIP_GATE.md](SHIP_GATE.md) registra exatamente quando ele deixa de ser bom o suficiente.
+Três pontos críticos são divulgados em vez de omitidos, porque uma nota de segurança que lista apenas garantias não é um modelo de ameaças: **as operações de arquivo não são executadas em sandbox** (uma ferramenta grava onde seus argumentos indicam); **caminhos locais absolutos estão incorporados em muitas ferramentas e documentos** — 114 ocorrências em 26 arquivos, não segredos, mas uma divulgação do layout de uma máquina e a razão pela qual a maioria das ferramentas não será executada sem modificações em outro lugar; e **falhas inesperadas aparecem como rastreamentos do Python**, sem um filtro `--debug` e sem um formato de erro estruturado. As interrupções deliberadas são mensagens `ANDON:` que carregam a medição que as acionou. Esse é o contrato do instrumento de pesquisa, e [SHIP_GATE.md](SHIP_GATE.md) registra exatamente quando ele deixa de ser bom o suficiente.
 
-**Status de suporte:** este repositório é desenvolvido em código aberto, em uma única máquina, por um único diretor
-e um par rotativo de sessões de consultor e executor. `main` é o único estado suportado. Não há canal de lançamento, nenhuma política de retrocompatibilidade e nenhum SLA — em vez disso, existe
-o registro: cada afirmação está ao lado do código que a produz, e
-[docs/experiments](docs/experiments/) contém as especificações, o relatório e a avaliação para
-cada um.
+**Status de suporte:** este repositório é desenvolvido em código aberto, em uma única configuração, por um diretor e um par rotativo de sessões de consultor e executor. `main` é o único estado suportado. Não há canal de lançamento, nenhuma política de retrocompatibilidade e nenhum SLA — em vez disso, existe o registro: cada alegação está ao lado do código que a produz, e [docs/experiments](docs/experiments/) contém a especificação, o relatório e a decisão para cada uma.
 
 ## Requisitos
 
-Blender 5.x, Python 3.11+ com `numpy`, `scipy`, `trimesh`, `open3d`, `Pillow`,
-`spandrel`, `torch`. Uma instalação local do ComfyUI é necessária apenas para o pincel de retoque.
-Desenvolvido em uma RTX 5090; a capacidade da VRAM é mais importante do que a velocidade bruta.
+Blender 5.x, Python 3.11+ com `numpy`, `scipy`, `trimesh`, `open3d`, `Pillow`, `spandrel`, `torch`. Uma instalação local do ComfyUI é necessária apenas para o pincel de retoque. Desenvolvido em uma RTX 5090; a capacidade da VRAM é mais importante do que a velocidade bruta.
 
-O CI executa o subconjunto hermético do conjunto no **ubuntu-latest / Python 3.12** com
-instalações fixas (`.github/workflows/ci.yml`); a camada de artefatos precisa das árvores registradas em `E:\AI\training`, que não estão no git, portanto, o CI as exclui por design.
-Localmente, `python -m pytest` executa todos os **218** testes e `python -m pytest -m "not artifacts"`
-executa os **210** que o CI reproduz.
+O CI executa o subconjunto hermético do conjunto no **ubuntu-latest / Python 3.12** com instalações fixas (`.github/workflows/ci.yml`); a camada de artefatos precisa das árvores registradas em `E:\AI\training`, que não estão no git, portanto, o CI as desativa por design. Localmente, `python -m pytest` executa todos os **218** testes e `python -m pytest -m "not artifacts"` executa os **210** testes reproduzidos pelo CI.
 
 ---
 
