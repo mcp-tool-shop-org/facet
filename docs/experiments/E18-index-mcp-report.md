@@ -592,3 +592,41 @@ working copy, which is §6's finding and flag 9's cause.
 | DECOMPOSE_BY_SECRETS | 3 | conventions stay in `facet_index`, the seeded key stays in the corpus's own tool, the wire shape lives in the server; §6's config machinery is deliberately unbuilt at the extraction seam; `mcp_support.py` keeps the SDK out of `conftest` so an absent SDK cannot kill collection for tests that do not need it |
 | UNCERTAINTY_GATED_HUMANS | 2 | twelve open calls are listed in §9 with their reasoning rather than folded in silently, and every one is one sentence to overrule. Scored 2, not 3: nothing in this session PAUSED for a human — it decided and reported, which is right for an executor seat but is not the standard's strongest form. **skip: none** |
 | EXTERNAL_VERIFIER | 3 | the server grades nothing of its own — the verdict is `facet_index`'s four legs, whose leg-2 greps are written independently of the parser and whose seeded key lives outside the server; the read-only property is checked by an AST walk rather than promised; the fixture's twin runs the tool's own selftest; the connection leak was found by the dogfood, i.e. by a consumer, not by the code's author |
+
+---
+
+## 12. Closing ritual, and one correction to the commit above it (2026-08-08)
+
+**The report's own commit message says the verify was "read in its own call
+before this commit." It was read AFTER.** Corrected here rather than amended
+away, because the ordering is the point of the sentence.
+
+The closing ritual was then run through the server itself - 
+ecord_build, the
+E15 ritual as one act, dogfooding the deliverable for the session's own last
+act:
+
+`
+state           : PASSED
+determinism leg : byte-identity
+legs            : {"0_discovery": "PASSED", "1_determinism": "PASSED",
+                   "2_counts": "PASSED", "3_pointers": "PASSED",
+                   "4_seeded": "PASSED"}
+failures        : []
+andon           : []
+counts          : {"rulings": 534, "laws": 71, "experiments": 20,
+                   "handoffs": 31, "artifacts": 674, "phenomena": 27,
+                   "decisions": 225, "prose_sections": 2041, "fts": 3623}
+corpus files    : 235
+certificate     : docs/index/facet.db.cert.json
+  | determinism leg that held: byte-identity
+  | VERIFY PASSED - all four legs
+`
+
+The counts moved between section 8's dogfood (231 corpus files) and this run
+(235) because three sessions were writing to this working copy throughout -
+which is section 6's finding, not a discrepancy.
+
+**docs/index/facet.db.cert.json now exists beside the tracked DB, and both are
+uncommitted** per the session-boundary cadence. They must be committed together:
+a DB that travels without its certificate refuses, by design.
