@@ -13,29 +13,9 @@ it, so a reader can check the claim rather than trust it.
 
 ## [Unreleased]
 
-### Added
-
-- **Presentation surface** (E19 treatment): a landing page, a six-page Starlight
-  handbook rendered from the canonical `docs/handbook/`, the clay wordmark logo,
-  `SECURITY.md` with a measured threat model, `SHIP_GATE.md`, `SCORECARD.md`, and
-  this file.
-- **A repo-knowledge entry** — thesis, architecture, conventions, environment traps,
-  drift risks and three mapped relationships.
-
-### Changed
-
-- **The README is a front door, not a changelog** (at the Director's word). It went
-  from 867 lines to 208 by **relocating** — never deleting — the chronological arc
-  narrative to [docs/arc-history.md](docs/arc-history.md), the durable findings and
-  hard-won rules to [docs/findings.md](docs/findings.md), the tool status tables to
-  [docs/tools.md](docs/tools.md), and the defect list to
-  [docs/known-defects.md](docs/known-defects.md).
-
-  **Nothing measured was lost, and that is audited rather than asserted:** every
-  non-blank line of the old README was diffed against the union of its new homes.
-  Three lines differ, and all three are the marketing tagline, deliberately rewritten.
-  All six ⚠ annotations survive. Corrections stay in place beside the measurements
-  that overturned them, exactly as before — they just live one click deeper.
+Nothing. The three entries that sat here through both prior tags were **misfiled** and
+have been moved into `[0.1.0]`, which is where they shipped — the correction and the
+measurement that established it are recorded in that entry.
 
 ## [0.2.0] — 2026-08-08
 
@@ -155,6 +135,37 @@ extraction gate is open, three testability seams are dispatched and untaken, and
 repo's own highest-value question (P5 — `fit_background` at frame-edge figures) has
 never been looked at. A 1.0.0 would assert a stability this route has not earned yet.
 What the four accepted assets earn is a *first* release, not a stable one.
+
+### ⚑ Corrected 2026-08-08 at the v0.2.0 seat — these three entries were filed under `[Unreleased]`
+
+They shipped here, in this release, and sat under `[Unreleased]` through **two tags**
+before anyone read the section against the tag below it. **The measurement:**
+`git show v0.1.0:CHANGELOG.md` puts the `[Unreleased]` heading at line 14 and
+`[0.1.0]` at line 40 — so the block was already misfiled *at the moment the tag was
+cut*, and this entry's own opening line says the release was "cut at the close of the
+E19 treatment," which is exactly the work the block describes. Moved rather than
+rewritten; nothing in the wording below is changed. They are restored here because a
+released version states what it shipped, and this one was understating itself while a
+front-door document told readers a live landing page was unreleased.
+
+- **Presentation surface** (E19 treatment): a landing page, a six-page Starlight
+  handbook rendered from the canonical `docs/handbook/`, the clay wordmark logo,
+  `SECURITY.md` with a measured threat model, `SHIP_GATE.md`, `SCORECARD.md`, and
+  this file.
+- **A repo-knowledge entry** — thesis, architecture, conventions, environment traps,
+  drift risks and three mapped relationships.
+- **The README is a front door, not a changelog** (at the Director's word). It went
+  from 867 lines to 208 by **relocating** — never deleting — the chronological arc
+  narrative to [docs/arc-history.md](docs/arc-history.md), the durable findings and
+  hard-won rules to [docs/findings.md](docs/findings.md), the tool status tables to
+  [docs/tools.md](docs/tools.md), and the defect list to
+  [docs/known-defects.md](docs/known-defects.md).
+
+  **Nothing measured was lost, and that is audited rather than asserted:** every
+  non-blank line of the old README was diffed against the union of its new homes.
+  Three lines differ, and all three are the marketing tagline, deliberately rewritten.
+  All six ⚠ annotations survive. Corrections stay in place beside the measurements
+  that overturned them, exactly as before — they just live one click deeper.
 
 ### What v0.1.0 asserts
 
