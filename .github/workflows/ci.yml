@@ -13,6 +13,14 @@ on:
       - "pytest.ini"
       - ".mcp.json"
       - ".github/workflows/**"
+      # the extraction's packaging surface (2026-08-08). T27 asserts that the
+      # version in pyproject.toml, package.json, bin/facet.js and record_mcp.py
+      # all agree, because bin/facet.js installs an EXACT pinned version from
+      # PyPI. Without these paths a one-line version bump in package.json alone
+      # would skip CI and the drift would surface at a user's `npx`, not here.
+      - "pyproject.toml"
+      - "package.json"
+      - "bin/**"
   workflow_dispatch:
 
 concurrency:

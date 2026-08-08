@@ -106,10 +106,17 @@ DB_DEFAULT = os.path.join(REPO, facet_index.DB_REL)
 CERT_SUFFIX = ".cert.json"
 CERT_SCHEMA = "facet-record-index-certificate/1"
 
-# No version is claimed beyond a placeholder: this server publishes nothing and
-# has no package. A real version attaches on the day extraction happens (spec
-# section 12 / the placement memo's gated trigger), not before.
-SERVER_VERSION = "0.0.0"
+# EXTRACTION HAPPENED (2026-08-08, at the Director's word), so the real version
+# attached exactly as this comment said it would. The line above used to read
+# "no version is claimed beyond a placeholder: this server publishes nothing and
+# has no package" - true until the day it wasn't.
+#
+# This constant is one of FOUR that must agree: pyproject.toml, package.json,
+# bin/facet.js and here. T27 pins the agreement and release.yml refuses to
+# publish on a mismatch, because bin/facet.js installs an EXACT pinned version
+# from PyPI - a drift here ships a wrapper that fetches a package that does not
+# exist.
+SERVER_VERSION = "0.1.0"
 
 # The env var exists so tests and scratch runs bind a copy instead of the
 # tracked artifact. It selects WHICH derived DB, never which corpus.

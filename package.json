@@ -1,0 +1,41 @@
+{
+  "name": "@mcptoolshop/facet",
+  "version": "0.1.0",
+  "description": "Query a governed decision record instead of reading it — npx wrapper that bootstraps facet-mcp, the four-leg-verified SQLite+FTS5 record index served over MCP.",
+  "type": "commonjs",
+  "license": "MIT",
+  "engines": {
+    "node": ">=18"
+  },
+  "bin": {
+    "facet": "bin/facet.js"
+  },
+  "files": [
+    "bin/",
+    "README.md",
+    "LICENSE"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mcp-tool-shop-org/facet.git"
+  },
+  "homepage": "https://mcp-tool-shop-org.github.io/facet/",
+  "bugs": {
+    "url": "https://github.com/mcp-tool-shop-org/facet/issues"
+  },
+  "author": "mcp-tool-shop",
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "sqlite",
+    "fts5",
+    "decision-record",
+    "provenance",
+    "3d",
+    "texturing"
+  ],
+  "publishConfig": {
+    "access": "public",
+    "provenance": true
+  }
+}

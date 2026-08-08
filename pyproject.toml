@@ -1,0 +1,50 @@
+[build-system]
+requires = ["setuptools>=77", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "facet-mcp"
+version = "0.1.0"
+description = "Query a governed decision record instead of reading it — facet's four-leg-verified SQLite+FTS5 index, served over MCP."
+requires-python = ">=3.11"
+license = "MIT"
+license-files = ["LICENSE"]
+authors = [
+    { name = "mcp-tool-shop", email = "64996768+mcp-tool-shop@users.noreply.github.com" },
+]
+keywords = ["mcp", "model-context-protocol", "sqlite", "fts5", "provenance", "decision-record", "index"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Software Development :: Documentation",
+    "Topic :: Text Processing :: Indexing",
+]
+dependencies = [
+    "mcp>=2.0.0",
+]
+
+[project.urls]
+Homepage = "https://mcp-tool-shop-org.github.io/facet/"
+Handbook = "https://mcp-tool-shop-org.github.io/facet/handbook/"
+Source = "https://github.com/mcp-tool-shop-org/facet"
+Issues = "https://github.com/mcp-tool-shop-org/facet/issues"
+Changelog = "https://github.com/mcp-tool-shop-org/facet/blob/main/CHANGELOG.md"
+
+# Two commands, both already written and both already under test:
+#   facet-mcp    the stdio MCP server (six tools, the four-leg verify as a
+#                REFUSING health surface)  -> record_mcp.main
+#   facet-index  the index itself: build / verify / q / claims -> facet_index.main
+[project.scripts]
+facet-mcp = "record_mcp:main"
+facet-index = "facet_index:main"
+
+# The two modules ship AS THEY ARE, from tools/, as top-level modules. This is
+# deliberate and it is the whole reason extraction costs nothing here: making
+# tools/ a package would rewrite the `python tools/<name>.py` invocation that
+# every recorded command in this repo's record uses, and those commands are
+# citable evidence. py-modules + package-dir moves nothing.
+[tool.setuptools]
+package-dir = { "" = "tools" }
+py-modules = ["facet_index", "record_mcp"]

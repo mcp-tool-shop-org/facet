@@ -58,3 +58,12 @@ site/node_modules/
 .polyglot-cache.json
 # the site's own images are tracked despite the *.png rule above
 !site/src/assets/**
+
+# python packaging artifacts (the extraction, 2026-08-08). `python -m build`
+# and any editable install drop these into the tree; tools/facet_mcp.egg-info
+# leaked into `git status` once before this rule existed.
+dist/
+build/
+*.egg-info/
+tools/*.egg-info/
+.dist-check/
