@@ -393,6 +393,68 @@ label, floors and aliases, and the consumer selects on the floors it ran.
 **Prediction: HELD** — captions and a warning cannot move a reach number, and
 both of 6e's claims were re-measured rather than inherited.
 
+### E16-7 — `e12_elevated` ray-grid floor (Ruling 10a) · ANCHOR HELD, and it found two more things
+
+**Finding.** The tool took its ray grid from `--aspect`, i.e. from a *generation*
+frame, which knows the subject's silhouette and nothing about its tessellation.
+On the sword's 240-px frame the grid ran 3.71× coarser than the mean face and
+up-facing reach came back **13.851%** against a converged **53.920%** — wrong by
+3.9×, because faces below a ray cell are hit only by luck and this subject's
+up-facing faces are exactly the small horizontal steps.
+
+**Reproducing the record needed a correction first.** The recorded ladder is not
+reproducible from the invocation as quoted in handoff 2 — at the tool's default
+`--fit-axis width` the sword's 240×1024 frame gives ratio 3.440× and **15.013%**.
+The recorded run used **`--fit-axis height`** (the prop's pinned framing value),
+which gives ratio 3.708× and **13.851%** exactly. The before-anchor is only valid
+once that is right.
+
+**Repair.** `--aspect` keeps its meaning as the frame's *shape*; what it stops
+deciding is the *resolution*. The extent along the fit axis is independent of the
+pixel counts, and the cell is square in both modes, so the grid is solved
+directly for `--rays-per-face` (default **10**, the density of the recorded
+converged run at 9.71). The ratio and rays-per-mean-face are printed on every
+run, derived or not, and `--exact-grid` restores the literal reading so recorded
+runs stay reproducible.
+
+**ANCHOR — reproduce the converged 53.92% at the repaired default.**
+
+| run | frame | ratio | rays/face | eye-level eight reach |
+|---|---|---|---|---|
+| recorded coarse, via `--exact-grid` | 240×1024 | 3.708× | 0.27 | **13.851%** — exact |
+| **repaired default** | 1462×6236 | 0.100× | 10.00 | **53.967%** |
+| recorded converged | 1440×6144 | 0.10× | 9.71 | 53.920% |
+
+**+0.047 points against the record** — inside ray-sampling noise, and the
+round-1 winner's cumulative reproduces to 55.635% against 55.639%. Cost: 37× the
+rays, **6.8× the wall time — 2.5 s → 17 s**, not a burden.
+
+**Finding 1 — 53.920% is not converged, and the record's "converged" label is
+not supported by its own ladder.** Laddering past the anchor:
+
+| rays/face | 0.27 | 4.32 | 9.71 | **10.00** | 20.00 | 40.00 |
+|---|---|---|---|---|---|---|
+| reach | 13.851% | 51.526% | 53.920% | **53.967%** | 54.600% | 54.849% |
+
+Still climbing at 40 rays/face. The floor at ratio ≤ 1 buys "not wrong by 3.9×",
+not convergence — so the tool now prints that distinction rather than letting the
+next session read 10 rays/face as converged, which is the error the record made.
+
+**Finding 2 — the greedy winner is noise-dominated, and it flips.** At 10
+rays/face round 1 picks `0/180 @ 40`; at 20 and 40 it picks `90/270 @ 55`. The
+candidates are tied far inside the density drift — at 40 rays/face the four
+elevated pairs land at 55.650 / 55.632 / 55.637 / **55.651**, so the winner beats
+the runner-up by **0.001 points** while density alone moves the field by 0.6.
+The tool reports a WINNER from a field it cannot separate. Nothing was changed
+for this: the greedy selection is the ship's own method and is cited in closed
+rulings. **Reported for the advisor** — on this subject the honest output is
+"four candidates tied at ~55.65%, pick on other grounds", and the E06 superset
+check inherits the instability (the flagged pair changes with the winner).
+
+**Prediction: HELD on both halves** — within ±0.5 points (0.047), and the ray
+count rose an order of magnitude (37×). The wall-time half was directionally
+right but overstated: 17 s absolute is cheap.
+
 ---
 
 ## 2. A session-level finding: the working tree is shared
