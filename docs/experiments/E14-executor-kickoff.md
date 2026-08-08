@@ -642,64 +642,7 @@ crops. Zero credits expected; quote it anyway.
 
 ---
 
-## Session handoff 5b (2026-08-08) — the COMPLIANT re-projection: six twins. Surgical.
-
-**Authorised by [E14-ruling.md](E14-ruling.md) Ruling 21c.** The seven-twin
-stage-1 run (handoff 5) launched before Ruling 20's amendment and is the
-measured COMPARISON; the banked A0 must be the RULED set — **six twins,
-view 6's face-dome paint out**. Local CPU only; no generation, no credits.
-A fresh executor session starts here:
-
-```
-cd E:\AI\facet && git pull
-python tools/facet_index.py build          <- the E15 ritual
-CLAUDE.md                                  <- read first, follow exactly
-docs/experiments/E14-ruling.md             <- Rulings 20-21; 21c is your authorisation
-docs/experiments/E14-handoff5-report.md    <- the seven-run you are diffing against
-```
-
-**Blind predictions first** (the six-camera ceiling's landing; v6's exact
-exclusive cost; the crossing's styled % without v6; the diff's largest
-region). Then in pinned order:
-
-1. **Pre-register the SIX-camera ceiling** (cameras 0/45/135/180/225/315)
-   through the anatomy path, after reproducing the seven-run's 1,877,487
-   anchor. Quote all three: N6, N7, the 51.33% route-comparable. **N7 − N6
-   is v6's exact exclusive price** — Ruling 21b's correction of 20c's ~4.4,
-   measured.
-2. **Project the six twins** (`--view` × 6, view 6's twin NOT an input),
-   same profile values, out to `stage1/stage1b_atlas.png` — a NEW file; the
-   seven-run atlas is a record and is not overwritten.
-3. **Re-run the readouts**: coverage vs all three ceilings; the gem readout
-   (the stone's numbers shift with v6's texels gone — 19b's readout re-run
-   verbatim); the crossing census; the brush-territory sizing.
-4. **THE DIFF**: per-texel ownership diff seven-run vs six-run — where did
-   v6's 145,185 committed texels go (re-owned by which views vs newly
-   unstyled), and the crossing's before/after at 4× with the change stated
-   in plain words. This characterises exactly what the excluded artifact
-   was contributing.
-5. **Sheets**: the walk set — reference | asset | provenance per view, the
-   gem at 6×, the crossing at 4× — **excluded artifacts labelled AS
-   EXCLUDED in-image** (Ruling 20d). HALT with stage 1b staged for the
-   advisor's sheet-walk, then the Director.
-
-**Do not**: generate · re-roll · include view 2 or view 6 in any projection
-input · overwrite any seven-run artifact · arm any gate · run strokes or
-finalize · edit fixtures, profiles, or the palette · write to the memory
-store · end a session the Director has not ended.
-
-| standard | score | evidence |
-|---|---|---|
-| PIN_PER_STEP | 3 | The ceiling pre-registered in its own commit before projection; new files only; the diff lands beside both atlases |
-| ANDON_AUTHORITY | 3 | The halt is the gate; the anchor reproduction before any new number |
-| NAMED_COMPENSATORS | 3 | No spend; nothing overwritten; the seven-run preserved as the comparison |
-| DECOMPOSE_BY_SECRETS | 3 | The six-camera denominator derived for this set; v6's price measured, not inherited from a ladder column |
-| UNCERTAINTY_GATED_HUMANS | 3 | No pass condition; the gem re-readout and crossing diff go to eyes |
-| EXTERNAL_VERIFIER | 2 | Anchor reproduction against the seven-run's three-path number; the diff is its own check — ownership must repartition exactly. `skip:` on a second model, per precedent |
-
-Calibration: one input leaves; everything else is pinned. The finding to
-report plainly is what v6 was actually worth — its exclusive texels, the
-crossing's drop, and where the brush's territory grew.
+## Session handoff 5 (2026-08-07) — STAGE 1: the twins project. Ends at the stage-1 halt.
 
 **⚠ AMENDED BEFORE LAUNCH (2026-08-08, [Ruling 20](E14-ruling.md)) — SIX
 twins, not seven.** The Director's eye caught what Ruling 19 missed: view
@@ -797,3 +740,64 @@ if the readout's denominators are tiny, say so plainly rather than quoting
 ratios alone (the D8 lesson lives here too). The 51.33% is the comparable,
 not the target: a stage-1 number is what it is, and the beast banked 87.5%
 of ITS ceiling on the way to acceptance.
+
+---
+
+## Session handoff 6 (2026-08-08) — the COMPLIANT re-projection: six twins. Surgical.
+
+**Authorised by [E14-ruling.md](E14-ruling.md) Ruling 21c.** The seven-twin
+stage-1 run (handoff 5) launched before Ruling 20's amendment and is the
+measured COMPARISON; the banked A0 must be the RULED set — **six twins,
+view 6's face-dome paint out**. Local CPU only; no generation, no credits.
+A fresh executor session starts here:
+
+```
+cd E:\AI\facet && git pull
+python tools/facet_index.py build          <- the E15 ritual
+CLAUDE.md                                  <- read first, follow exactly
+docs/experiments/E14-ruling.md             <- Rulings 20-21; 21c is your authorisation
+docs/experiments/E14-handoff5-report.md    <- the seven-run you are diffing against
+```
+
+**Blind predictions first** (the six-camera ceiling's landing; v6's exact
+exclusive cost; the crossing's styled % without v6; the diff's largest
+region). Then in pinned order:
+
+1. **Pre-register the SIX-camera ceiling** (cameras 0/45/135/180/225/315)
+   through the anatomy path, after reproducing the seven-run's 1,877,487
+   anchor. Quote all three: N6, N7, the 51.33% route-comparable. **N7 − N6
+   is v6's exact exclusive price** — Ruling 21b's correction of 20c's ~4.4,
+   measured.
+2. **Project the six twins** (`--view` × 6, view 6's twin NOT an input),
+   same profile values, out to `stage1/stage1b_atlas.png` — a NEW file; the
+   seven-run atlas is a record and is not overwritten.
+3. **Re-run the readouts**: coverage vs all three ceilings; the gem readout
+   (the stone's numbers shift with v6's texels gone — 19b's readout re-run
+   verbatim); the crossing census; the brush-territory sizing.
+4. **THE DIFF**: per-texel ownership diff seven-run vs six-run — where did
+   v6's 145,185 committed texels go (re-owned by which views vs newly
+   unstyled), and the crossing's before/after at 4× with the change stated
+   in plain words. This characterises exactly what the excluded artifact
+   was contributing.
+5. **Sheets**: the walk set — reference | asset | provenance per view, the
+   gem at 6×, the crossing at 4× — **excluded artifacts labelled AS
+   EXCLUDED in-image** (Ruling 20d). HALT with stage 1b staged for the
+   advisor's sheet-walk, then the Director.
+
+**Do not**: generate · re-roll · include view 2 or view 6 in any projection
+input · overwrite any seven-run artifact · arm any gate · run strokes or
+finalize · edit fixtures, profiles, or the palette · write to the memory
+store · end a session the Director has not ended.
+
+| standard | score | evidence |
+|---|---|---|
+| PIN_PER_STEP | 3 | The ceiling pre-registered in its own commit before projection; new files only; the diff lands beside both atlases |
+| ANDON_AUTHORITY | 3 | The halt is the gate; the anchor reproduction before any new number |
+| NAMED_COMPENSATORS | 3 | No spend; nothing overwritten; the seven-run preserved as the comparison |
+| DECOMPOSE_BY_SECRETS | 3 | The six-camera denominator derived for this set; v6's price measured, not inherited from a ladder column |
+| UNCERTAINTY_GATED_HUMANS | 3 | No pass condition; the gem re-readout and crossing diff go to eyes |
+| EXTERNAL_VERIFIER | 2 | Anchor reproduction against the seven-run's three-path number; the diff is its own check — ownership must repartition exactly. `skip:` on a second model, per precedent |
+
+Calibration: one input leaves; everything else is pinned. The finding to
+report plainly is what v6 was actually worth — its exclusive texels, the
+crossing's drop, and where the brush's territory grew.

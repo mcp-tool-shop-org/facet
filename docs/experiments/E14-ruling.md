@@ -903,6 +903,11 @@ structure in plain words at the top of the reply, before anything else is
 said** — so that what he pointed at is found independently or the mismatch
 surfaces at once.*
 
+**20e — what stands unchanged**: the diagonals' iron guards, the gem-drift
+ruling (19b), the bbox-not-IoU finding (19e), the rim band's two-faced
+blindness (19c), and zero credits spent. The set that projects is six twins
+that look like the sword.
+
 ## Ruling 21 — stage 1 ruled: the prices corrected, the compliant re-projection ordered, the gem to the Director's window (2026-08-08)
 
 Evidence: the handoff-5 report (`05b087d`), its blind predictions
@@ -935,7 +940,7 @@ the re-projection below. Both wrong prices were this seat's — quoted from a
 column without asking what the column measured — beside the executor's own
 P1 admission (named the anchoring bias, then anchored anyway). Ledger.
 
-**21c — THE COMPLIANT RE-PROJECTION IS ORDERED (handoff 5b): six twins.**
+**21c — THE COMPLIANT RE-PROJECTION IS ORDERED (handoff 6): six twins.**
 This seat's walk of view 6's sheet confirms the excluded artifact's paint
 is in this atlas: the guard's yaw-270 face carries the face-dome's curling
 hooks and gold-heavy mass where the clay has a plain faceted block. An A0
@@ -975,7 +980,19 @@ printing the whole cross-section profile, wrong number kept in the report)
 and the P1 self-scoring. The calibration lesson is 21b's twin: naming a
 bias is not removing it from an estimate.
 
-**20e — what stands unchanged**: the diagonals' iron guards, the gem-drift
-ruling (19b), the bbox-not-IoU finding (19e), the rim band's two-faced
-blindness (19c), and zero credits spent. The set that projects is six twins
-that look like the sword.
+**21g — the gate fired on this ruling's own fold and the commit walked past
+it; owned and repaired (2026-08-08).** The E14 count legs — added to the
+verifier hours earlier — FIRED on this very fold: Ruling 21's insertion
+point split Ruling 20 and stranded 20e under the wrong section header; the
+handoff-6 dispatch's edit consumed handoff 5's header without re-emitting
+it; and the dispatch carried a non-numeric id ("5b") the parser rightly
+refused. All three defects were this seat's, and the commit (`c340466`)
+pushed anyway because the verify and the commit shared one semicolon-chained
+shell call that walked past the failing exit code — **the E08 Amendment 32
+class, reproduced at the advisor's own seat.** The gate did its job; the
+transport defeated it. Repaired in this fold: 20e home under Ruling 20,
+handoff 5's header restored over its own body, the dispatch renumbered to
+the convention (handoff 6). Standing practice, no exceptions: **a fold's
+verify and its commit never share a call — the verify runs first, PASSED is
+read, and only then does the commit issue.**
+

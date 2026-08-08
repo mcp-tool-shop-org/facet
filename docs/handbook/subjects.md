@@ -329,7 +329,7 @@ values live in its own profile and fixture, never inherited unmeasured.
   corner-median reference is the retired keying method's last live consumer
   (errand batch); the brush's territory is 148,470 reachable-unstyled texels =
   4.05 points.
-- **In flight: handoff 5b — the compliant re-projection** (six twins, view 6's
+- **In flight: handoff 6 — the compliant re-projection** (six twins, view 6's
   face-dome paint out; the seven-run preserved as the comparison): six-camera
   ceiling pre-registered, the ownership diff characterises exactly what v6
   contributed, sheets with excluded artifacts labelled in-image. Then the
