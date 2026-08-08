@@ -1,7 +1,7 @@
 {
   "name": "@mcptoolshop/facet",
   "version": "0.1.0",
-  "description": "Query a governed decision record instead of reading it — npx wrapper that bootstraps facet-mcp, the four-leg-verified SQLite+FTS5 record index served over MCP.",
+  "description": "Query a governed decision record instead of reading it — zero-prerequisite npx install (verified binary launcher) for facet's four-leg-verified SQLite+FTS5 record index, served over MCP.",
   "type": "commonjs",
   "license": "MIT",
   "engines": {
@@ -15,6 +15,9 @@
     "README.md",
     "LICENSE"
   ],
+  "dependencies": {
+    "@mcptoolshop/npm-launcher": "^1.1.0"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/mcp-tool-shop-org/facet.git"
