@@ -1558,6 +1558,7 @@ def measurements(con):
 def claims(db_path):
     con = sqlite3.connect(db_path)
     meas = measurements(con)
+    con.close()          # every measurement is read above; see verify's note
     rows, unparseable, families_seen = [], [], {}
 
     for rel in record_markdown():
@@ -1941,6 +1942,18 @@ def verify(db_path, top_n=3):
                 print("        got %d. %s:%s [%s]" % (rank, f, a, tbl))
             fails.append("seeded question MISS: %s" % question)
     print("  %d / %d" % (hits, len(SEEDED)))
+
+    # CLOSE THE HANDLE (E18 D4, found by the live dogfood). This connection was
+    # left open at both exits. Harmless in the CLI - the process ends a
+    # millisecond later - but the MCP server is a LONG-LIVED process that calls
+    # verify and then build in the same interpreter, and `build` starts with
+    # os.remove(db_path). On Windows a removal fails while any handle is open,
+    # so `record_build` after `record_verify` died with
+    # PermissionError WinError 32 and the server reported INTERNAL. The defect
+    # was invisible for as long as every caller exited after one verb; the
+    # first composition surfaced it. Same fix in `claims`, which leaked the
+    # same way - a root cause has as many sites as it has callers.
+    con.close()
 
     print("\n" + "=" * 78)
     print("determinism leg that held: %s" % det_leg)

@@ -209,6 +209,41 @@ def test_t20_a_failed_verify_still_writes_the_db_and_a_failed_certificate(
 
 
 @pytest.mark.fold
+def test_t20_verify_then_build_in_one_process(tmp_path, monkeypatch, built_db):
+    """The composition the CLI could never exercise, and the defect it hid.
+
+    Found by E18's LIVE dogfood, not by this suite: `facet_index.verify` and
+    `facet_index.claims` each opened a sqlite connection and never closed it.
+    Harmless in a CLI that exits a millisecond later - fatal in a long-lived
+    server, because `build` begins with `os.remove(db_path)` and Windows
+    refuses to remove a file any handle still holds. record_build after
+    record_verify died with PermissionError WinError 32 and surfaced as
+    INTERNAL.
+
+    So this runs the sequence in ONE interpreter, which is what a mounted
+    session does all day: verify, claims, build, verify. A leaked handle fails
+    it on Windows immediately; on a POSIX runner the removal succeeds anyway,
+    so the assertion there is that the sequence completes and stays PASSED.
+    """
+    import shutil
+
+    from mcp_support import bind_db
+
+    db = os.path.join(str(tmp_path), "facet.db")
+    shutil.copyfile(str(built_db), db)
+    bind_db(monkeypatch, db)
+
+    first = record_mcp.record_verify()
+    assert first["state"] == "PASSED", first
+    claims_out = record_mcp.record_claims()
+    assert claims_out["exit_code"] == 0
+    rebuilt = record_mcp.record_build()          # os.remove(db) happens here
+    assert rebuilt["state"] == "PASSED", rebuilt
+    again = record_mcp.record_verify()
+    assert again["state"] == "PASSED", again
+
+
+@pytest.mark.fold
 def test_t20_build_runs_verify_and_writes_the_certificate(tmp_path, monkeypatch):
     """The E15 ritual is build + verify as ONE act (Ruling 4.1). This is the one
     test that runs the real thing end to end - three builds and four legs."""
