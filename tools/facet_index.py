@@ -132,6 +132,12 @@ TOPICAL_RULING_FILES = [
 HANDOFF_FILES = [
     ("E04", "docs/experiments/E04-executor-kickoff.md"),
     ("E12", "docs/experiments/E12-executor-kickoff.md"),
+    # E14 joined 2026-08-07 (the housekeeping fold): its two session handoffs were
+    # invisible to the handoffs table because this list is LISTED, not discovered —
+    # the same class E15 handoff 3 fixed for ruling documents. The glob-discovery
+    # upgrade for kickoffs (with the inverse guard and a printed list) is a named
+    # errand-batch member; until it lands, every new arc's kickoff is added HERE.
+    ("E14", "docs/experiments/E14-executor-kickoff.md"),
 ]
 
 LAW_FILES = ["CLAUDE.md"]
@@ -1241,6 +1247,34 @@ SEEDED = [
      [("docs/experiments/E04-ruling.md", "Ruling 27"),
       ("README.md", "The route"),
       ("docs/handbook/subjects.md", "The galleon (ACCEPTED, 2026-08-05)")]),
+    # E14 seeds, added 2026-08-07: every phrase ran report-only through q FIRST and
+    # its target ranked <= 3 BEFORE the row entered the gate — seeds are ruled in
+    # from measured ranks, never added and then tuned until green.
+    # WITHDRAWN same fold: "the rings term" (target Ruling 13) — measured rank 2,
+    # then MISSED at the gate minutes later: the live handoff-3 lane had committed
+    # fresh rings-term content (its blind predictions + the handoff row itself)
+    # that legitimately outranks a generic phrase. Withdrawn rather than
+    # re-crafted, per this block's own rule; a Ruling-13 seed can be re-derived
+    # with distinctive language once the arc is quiet. The gate firing on a
+    # measurement made minutes earlier is the leg working, not a defect.
+    ("the hollow finding",
+     "the hollow finding",
+     ("docs/experiments/E14-ruling.md", "Ruling 3")),
+    ("the sword's canny pair",
+     "the sword's canny pair",
+     ("docs/experiments/E14-ruling.md", "Ruling 6")),
+    ("the backdrop word for the sword",
+     "the ruled backdrop word plain lavender",
+     ("docs/experiments/E14-ruling.md", "Ruling 7")),
+    ("why the off-surface class broke",
+     "off-surface margin statistic not a bake constant",
+     ("docs/experiments/E14-ruling.md", "Ruling 9")),
+    ("the prop's ceiling mechanism",
+     "ceiling topology fact not camera count",
+     ("docs/experiments/E14-ruling.md", "Ruling 10b")),
+    ("the activated state",
+     "the activated state",
+     ("docs/experiments/E14-ruling.md", "Ruling 16c")),
 ]
 
 # counts the verifier re-derives from the record itself, with its own patterns —
@@ -1276,6 +1310,14 @@ COUNT_CHECKS = [
      r"^## Session handoff", "handoffs", "arc='E12'"),
     ("E04 handoffs", "docs/experiments/E04-executor-kickoff.md",
      r"^## Session handoff", "handoffs", "arc='E04'"),
+    # E14 legs added 2026-08-07 while E14 is the LIVE arc — the gate had count legs
+    # only for closed arcs, which is backwards: the live record is the one drifting.
+    ("E14 numbered rulings", "docs/experiments/E14-ruling.md", r"^## Ruling (\d+)\b",
+     "rulings", "arc='E14' AND kind='ruling'"),
+    ("E14 lettered sub-rulings", "docs/experiments/E14-ruling.md",
+     r"^\*\*\d+[a-z] +[—–-]", "rulings", "arc='E14' AND kind='sub-ruling'"),
+    ("E14 handoffs", "docs/experiments/E14-executor-kickoff.md",
+     r"^## Session handoff", "handoffs", "arc='E14'"),
 ]
 
 
@@ -1706,7 +1748,11 @@ def verify(db_path, top_n=3):
     # advisor rules on it; this gate does not re-derive itself around it.)
     seq = [("E12", "ruling", 1, 28), ("E04", "ruling", 1, 28),
            ("E08", "amendment", 1, 35), ("E11", "ruling", 1, 7),
-           ("E10", "ruling", 1, 12), ("E15", "ruling", 1, 8)]
+           ("E10", "ruling", 1, 12), ("E15", "ruling", 1, 8),
+           # E14's bound is 1-16 as of the 2026-08-07 housekeeping fold (Ruling 16
+           # the latest); the arc is LIVE, so later rulings print as completeness
+           # notes above the bound — the designed behaviour, not a widening.
+           ("E14", "ruling", 1, 16)]
     for arc, kind, lo, hi in seq:
         gaps = _sequence_gaps(con, arc, kind, lo, hi)
         print("  %-28s %s %d-%d gaps: %s"
