@@ -1,0 +1,46 @@
+{
+ "_version": "1",
+ "_built_by": "tools/diagnostics/e12_make_twin_prompts.py",
+ "_derived_from": "prop.json tools['restylize_views.py'].prompt - stems are that string with whole comma-terms DELETED, never retyped. Term order is the entry's throughout.",
+ "_entry_verbatim": "a longsword, a battle-worn steel blade with a raised central ridge, a blackened iron crossguard, a gold diamond boss at the crossing, an oxblood leather grip wrap, a dark garnet gem pommel, plain lavender background, ultra-realistic, worn metal, harsh directional light",
+ "_entry_terms": 10,
+ "_the_rule": "E12 Ruling 9d: an element whose surface a view cannot see is dropped from that view's stem - a term present in a view's prompt is an instruction to paint it, and the text wins against the control (the W3 beard mechanism, measured). Split deviation measured and ruled at E12 Ruling 10i.",
+ "_drop_map": {
+  "a gold diamond boss at the crossing": [
+   "2",
+   "6"
+  ]
+ },
+ "_assertions": "Each stem asserted an ordered SUBSEQUENCE of the entry's term list; each view with no drops asserted BYTE-EQUAL to the entry. Both enforced in the builder with no skip flag; a failure writes no file.",
+ "_one_string_check": "CHECKED against the eight PROFILE renders at 3x (hilt band) and the crossing at 8x, this session, not imported. Four of five elements read on every yaw - L1 blade, L2 crossguard (quillon ends on 2/6), L4 wrap, L5 gem (a faceted polyhedron reads from every yaw). L3's NAMED structure, the diamond boss, presents NO paintable surface on views 2 and 6: it is a plate on the guard FACE and edge-on it is subsumed into the guard's own silhouette. So the ship's one-string premise FAILS on this subject - narrowly, one element, two views - and the profile's expectation of 'slivers of everything' is right for four elements and wrong for the fifth. Verified per view, per E04 Ruling 23 premise-not-conclusion and the E12 Ruling 9d lesson.",
+ "_gate0_flag": "The carried Gate-0 flag said views 2/6 render the gem AND boss at near-nothing. Verified: the BOSS is absent on 2/6; the GEM is present on all eight and is one of the clearest elements edge-on. The flag was half right and the half that was wrong would have dropped a term that IS visible - which is why it was verified rather than imported.",
+ "_L3_family": "L3's surface list also carries the pommel collar and mid-grip rings, which ARE visible on views 2/6. The DROP removes the term naming the boss, not the gold family; the rings ride the D6-spur watch-note pattern and earn their own term only if the pair mislands them.",
+ "swordclay_0": "a longsword, a battle-worn steel blade with a raised central ridge, a blackened iron crossguard, a gold diamond boss at the crossing, an oxblood leather grip wrap, a dark garnet gem pommel, plain lavender background, ultra-realistic, worn metal, harsh directional light",
+ "swordclay_1": "a longsword, a battle-worn steel blade with a raised central ridge, a blackened iron crossguard, a gold diamond boss at the crossing, an oxblood leather grip wrap, a dark garnet gem pommel, plain lavender background, ultra-realistic, worn metal, harsh directional light",
+ "swordclay_2": "a longsword, a battle-worn steel blade with a raised central ridge, a blackened iron crossguard, an oxblood leather grip wrap, a dark garnet gem pommel, plain lavender background, ultra-realistic, worn metal, harsh directional light",
+ "swordclay_3": "a longsword, a battle-worn steel blade with a raised central ridge, a blackened iron crossguard, a gold diamond boss at the crossing, an oxblood leather grip wrap, a dark garnet gem pommel, plain lavender background, ultra-realistic, worn metal, harsh directional light",
+ "swordclay_4": "a longsword, a battle-worn steel blade with a raised central ridge, a blackened iron crossguard, a gold diamond boss at the crossing, an oxblood leather grip wrap, a dark garnet gem pommel, plain lavender background, ultra-realistic, worn metal, harsh directional light",
+ "swordclay_5": "a longsword, a battle-worn steel blade with a raised central ridge, a blackened iron crossguard, a gold diamond boss at the crossing, an oxblood leather grip wrap, a dark garnet gem pommel, plain lavender background, ultra-realistic, worn metal, harsh directional light",
+ "swordclay_6": "a longsword, a battle-worn steel blade with a raised central ridge, a blackened iron crossguard, an oxblood leather grip wrap, a dark garnet gem pommel, plain lavender background, ultra-realistic, worn metal, harsh directional light",
+ "swordclay_7": "a longsword, a battle-worn steel blade with a raised central ridge, a blackened iron crossguard, a gold diamond boss at the crossing, an oxblood leather grip wrap, a dark garnet gem pommel, plain lavender background, ultra-realistic, worn metal, harsh directional light",
+ "_per_view_term_count": {
+  "0": 10,
+  "1": 10,
+  "2": 9,
+  "3": 10,
+  "4": 10,
+  "5": 10,
+  "6": 9,
+  "7": 10
+ },
+ "_full_string_views": [
+  "0",
+  "1",
+  "3",
+  "4",
+  "5",
+  "7"
+ ],
+ "_negative": "watermark, text, logo, blurry, photo, deformed",
+ "_negative_provenance": "prop.json tools['restylize_views.py'].negative, transcribed. An authored negative would be a second variable in the run that introduces the first."
+}
