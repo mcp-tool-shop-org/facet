@@ -75,7 +75,9 @@ rep = {"mode": "surface_aware" if args.surface_aware else "atlas_flood",
 
 if args.surface_aware:
     from scipy.spatial import cKDTree
-    assert have.any(), "ANDON: nothing is painted — nowhere to source colour from"
+    if not (have.any()):
+        raise AssertionError(
+            "ANDON: nothing is painted — nowhere to source colour from")
     meta = json.load(open(os.path.join(args.prep, "meta.json")))
     lo = np.array(meta["lo"])
     hi = np.array(meta["hi"])
@@ -126,12 +128,14 @@ if args.surface_aware:
           f"beyond {args.beyond_edges:.0f} edges {beyond*100:5.3f}%")
     print(f"[finalize]   normal disagrees >60deg {over60*100:5.2f}%   back-facing "
           f"{back*100:5.2f}%   (REPORTED, not gated — E07 Gate 0.5)")
-    assert med_e <= args.max_edge_median, (
-        f"ANDON: median source distance {med_e:.2f} edges, over the "
-        f"{args.max_edge_median} limit — colour is coming from elsewhere on the figure.")
-    assert beyond <= args.max_frac_beyond, (
-        f"ANDON: {beyond*100:.2f}% of lookups source from beyond {args.beyond_edges:.0f} "
-        f"edges, over the {args.max_frac_beyond*100:.0f}% limit.")
+    if not (med_e <= args.max_edge_median):
+        raise AssertionError(
+            f"ANDON: median source distance {med_e:.2f} edges, over the "
+            f"{args.max_edge_median} limit — colour is coming from elsewhere on the figure.")
+    if not (beyond <= args.max_frac_beyond):
+        raise AssertionError(
+            f"ANDON: {beyond*100:.2f}% of lookups source from beyond {args.beyond_edges:.0f} "
+            f"edges, over the {args.max_frac_beyond*100:.0f}% limit.")
     grown = valid.copy()                 # every valid texel now carries colour
     STEPS = 16                           # gutter only, for mips
 else:
@@ -173,7 +177,8 @@ else:
     print(f"[finalize] done, {left:,} texels took mean fallback", flush=True)
 var = float(img[valid].var())
 rep["atlas_variance"] = round(var, 5)
-assert var > 0.001, "ANDON: final atlas uniform"
+if not (var > 0.001):
+    raise AssertionError("ANDON: final atlas uniform")
 os.makedirs(os.path.dirname(os.path.abspath(args.out)), exist_ok=True)
 Image.fromarray((img * 255).round().astype(np.uint8)).save(args.out)
 if args.json:

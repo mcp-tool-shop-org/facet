@@ -93,11 +93,10 @@ DB_REL = "docs/index/facet.db"
 # So the surface was inverted at BOTH ends against this registry - 2 for the
 # user, 1 for the runtime - and THREE distinct outcome classes shared exit 1.
 #
-# This block moves the two classes the registry names unambiguously. It leaves
-# the other two EXACTLY where it found them: what a fired gate deserves, and
-# what a failed leg deserves, are E21's open questions 1 and 2, and they are the
-# advisor's to rule. An executor that picked a number for them would be deciding
-# what a result means, which is not this seat's job.
+# E21 moved the two classes the registry named unambiguously and left the other
+# two where it found them, because what a fired gate deserves and what a failed
+# leg deserves were that arc's open questions 1 and 2. E21 Ruling 4 ruled both,
+# and E22 carries the ruling: they share ONE code, below.
 
 EXIT_OK = 0
 EXIT_USER = 1          # the operator's invocation was wrong
@@ -109,10 +108,19 @@ EXIT_RUNTIME = 2       # the tool broke on something it did not expect
 # populated by inventing a path for it to describe.
 EXIT_PARTIAL = 3
 
-# UNCHANGED, NOT CHOSEN. A fired ANDON exits what it exited before this arc,
-# because its code is E21 question 1. Named as a constant only so the value has
-# one site and the report can point at it; nothing here argues that 1 is right.
-EXIT_ANDON_UNRULED = 1
+# THE TOOL RAN CORRECTLY AND IS TELLING YOU NOT TO PROCEED (E21 Ruling 4).
+#
+# Two outcomes take it: a failing `verify`, and a fired ANDON. Before E22 both
+# sat on 1 beside a mistyped flag, so a caller could not tell "fix your command"
+# from "do not trust this index" - that was the defect; the integer is
+# secondary. 0/1/2 are the standard's, 3 stays reserved and unused, and 4 is
+# domain space the standard leaves open.
+#
+# ONE CODE, NOT TWO, and deliberately: both mean the tool worked, the answer is
+# no, do not proceed. No caller has been shown to need the distinction and the
+# message already carries it. Splitting 4 later is additive and cheap; merging
+# two codes later is not.
+EXIT_REFUSED = 4
 
 
 def prog_name():
@@ -206,18 +214,21 @@ def run_contract(fn, argv=None):
         sys.stderr.write("\n%s: interrupted\n" % prog_name())
         return EXIT_RUNTIME
     except AssertionError as exc:
-        # A FIRED GATE. This module carries exactly one bare `assert` and it is
-        # the inverse discovery guard, whose message opens with "ANDON:".
-        # Two E21 findings attach here and neither is fixed in this arc:
-        #   - the code is unruled (question 1), so it is left unchanged
-        #   - a bare `assert` is stripped by PYTHONOPTIMIZE=1, which an
-        #     installed command's environment can carry. Measured: the guard
-        #     goes silent and the build exits 0.
+        # A FIRED GATE. This module carries exactly one such gate - the inverse
+        # discovery guard, whose message opens with "ANDON:" - and since E22 it
+        # RAISES rather than asserting. Both E21 findings that used to sit here
+        # are closed:
+        #   - the code is ruled (E21 Ruling 4): a refusal is EXIT_REFUSED
+        #   - the gate is no longer an `assert`, so PYTHONOPTIMIZE=1 no longer
+        #     deletes it. E22 measured the old behaviour before repairing it:
+        #     under -O the guard went silent and the build exited 0.
+        # AssertionError stays the type BECAUSE this handler keys on it; the
+        # conversion was a pure move and this line is why it had to be.
         _report_failure(
             "GATE_FIRED", exc, debug,
             "this is a gate refusing, not a defect in the tool. Fix what it "
             "names; there is no flag that skips it")
-        return EXIT_ANDON_UNRULED
+        return EXIT_REFUSED
     except Exception as exc:                                  # noqa: BLE001
         _report_failure(
             "RUNTIME_ERROR", exc, debug,
@@ -340,11 +351,12 @@ def assert_no_undiscovered_handoffs(discovered):
             if HANDOFF_HDR.match(ln):
                 stray.append("%s :: %s" % (rel, ln.rstrip()[:70]))
                 break
-    assert not stray, (
-        "ANDON: %d file(s) carry a session-handoff header that the kickoff glob "
-        "(%s) does not reach, so their dispatches would be invisible to the "
-        "handoffs table and to verify's counts:\n  %s"
-        % (len(stray), KICKOFF_DOC_RE.pattern, "\n  ".join(stray)))
+    if stray:
+        raise AssertionError(
+            "ANDON: %d file(s) carry a session-handoff header that the kickoff glob "
+            "(%s) does not reach, so their dispatches would be invisible to the "
+            "handoffs table and to verify's counts:\n  %s"
+            % (len(stray), KICKOFF_DOC_RE.pattern, "\n  ".join(stray)))
 
 LAW_FILES = ["CLAUDE.md"]
 
@@ -2118,9 +2130,15 @@ def verify(db_path, top_n=3):
         print("VERIFY FAILED - %d" % len(fails))
         for f in fails:
             print("  X %s" % f)
-        return 1
+        # E21 Ruling 4: a failing verify is a REFUSAL, not a user error and not
+        # a crash. This value is also written into the certificate's
+        # `verify_exit_code`, so it is a persisted artifact's field and not only
+        # a shell's $?; record_mcp.parse_verify keys on `rc != 0`, measured in
+        # E22 before this moved, so the health state machine is indifferent to
+        # which non-zero it is.
+        return EXIT_REFUSED
     print("VERIFY PASSED - all four legs")
-    return 0
+    return EXIT_OK
 
 
 # ---------------------------------------------------------------------------
@@ -2177,11 +2195,12 @@ def _main(argv=None):
         build(args.db)
         return EXIT_OK
     if args.verb == "verify":
-        # UNCHANGED by E21. verify's return value is not only this process's
-        # exit code: record_mcp calls verify() IN-PROCESS and writes the value
-        # into `verify_exit_code` of the schema-versioned certificate, where
-        # record_health serves it. Moving it is E21 question 2 and it moves a
-        # persisted artifact's field, not just a shell's $?.
+        # MOVED BY E22, under E21 Ruling 4: a failing leg returns EXIT_REFUSED,
+        # not the 1 it shared with a mistyped flag. This return value is not
+        # only this process's exit code - record_mcp calls verify() IN-PROCESS
+        # and writes it into `verify_exit_code` of the schema-versioned
+        # certificate, where record_health serves it - so the move lands in a
+        # persisted artifact's field as well as in a shell's $?.
         return verify(args.db)
     if args.verb == "claims":
         # UNCHANGED, and ruled: E15 Ruling 9b binds `claims` to never return a

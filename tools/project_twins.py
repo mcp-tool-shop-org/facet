@@ -273,12 +273,14 @@ def _per_view(specs, name, cast):
     out = {}
     for spec in specs:
         k, _, val = spec.partition("=")
-        assert val, f"ANDON: --{name} wants IDX=VALUE, got {spec!r}"
+        if not (val):
+            raise AssertionError(f"ANDON: --{name} wants IDX=VALUE, got {spec!r}")
         try:
             i = int(k)
         except ValueError:
             raise SystemExit(f"ANDON: --{name} view index {k!r} is not an integer")
-        assert i not in out, f"ANDON: --{name} names view {i} twice"
+        if not (i not in out):
+            raise AssertionError(f"ANDON: --{name} names view {i} twice")
         out[i] = cast(val)
     return out
 
@@ -289,9 +291,11 @@ CROP_C = _per_view(args.centre, "centre",
 CROP_A = _per_view(args.crop_aspect, "crop-aspect",
                    lambda s: tuple(float(x) for x in s.split(",")))
 for i, c in CROP_C.items():
-    assert c.shape == (3,), f"ANDON: --centre {i} wants X,Y,Z, got {c.tolist()}"
+    if not (c.shape == (3,)):
+        raise AssertionError(f"ANDON: --centre {i} wants X,Y,Z, got {c.tolist()}")
 for i, a in CROP_A.items():
-    assert len(a) == 2 and a[0] > 0 and a[1] > 0, f"ANDON: --crop-aspect {i} wants W,H"
+    if not (len(a) == 2 and a[0] > 0 and a[1] > 0):
+        raise AssertionError(f"ANDON: --crop-aspect {i} wants W,H")
 
 
 def view_frame(idx):
@@ -443,19 +447,22 @@ if args.view:
     VIEWS = []
     for spec in args.view:
         k, _, p = spec.partition("=")
-        assert p, f"ANDON: --view wants IDX=PATH, got {spec!r}"
-        assert os.path.exists(p), f"ANDON: --view {k} path does not exist: {p}"
+        if not (p):
+            raise AssertionError(f"ANDON: --view wants IDX=PATH, got {spec!r}")
+        if not (os.path.exists(p)):
+            raise AssertionError(f"ANDON: --view {k} path does not exist: {p}")
         deg = int(k) * args.step
         d, r = cam_axes(deg)
         VIEWS.append({"name": f"y{deg:+06.1f}", "path": p, "dtc": d, "right": r,
                       "frame": view_frame(int(k))})
-    assert len({v["name"] for v in VIEWS}) == len(VIEWS), (
-        "ANDON: duplicate view index in --view")
+    if not (len({v["name"] for v in VIEWS}) == len(VIEWS)):
+        raise AssertionError("ANDON: duplicate view index in --view")
     print(f"[twins] N-VIEW mode: {len(VIEWS)} cameras at "
           f"{', '.join(v['name'] for v in VIEWS)}", flush=True)
 else:
-    assert args.front and args.back, (
-        "ANDON: supply --front and --back, or one or more --view IDX=PATH")
+    if not (args.front and args.back):
+        raise AssertionError(
+            "ANDON: supply --front and --back, or one or more --view IDX=PATH")
     df, rf = cam_axes(0.0)
     db, rb = cam_axes(180.0)
     # the legacy pair path hardcodes yaw 0 and 180, so its view INDICES are 0 and 180/step —
@@ -529,7 +536,8 @@ for _view_i, view in enumerate(VIEWS):
     dtc = view["dtc"]
     if args.mask_keyed:
         mpath = os.path.splitext(view["path"])[0] + "_mask.png"
-        assert os.path.exists(mpath), f"ANDON: --mask-keyed but no {mpath}"
+        if not (os.path.exists(mpath)):
+            raise AssertionError(f"ANDON: --mask-keyed but no {mpath}")
         mesh_fm = maximum_filter(
             (np.asarray(Image.open(mpath).convert("L"), dtype=np.float32)
              / 255.0 > 0.5).astype(np.float32), size=5)
@@ -581,7 +589,8 @@ for _view_i, view in enumerate(VIEWS):
     # within ~1% of the mesh silhouette's own bbox.
     ys_t, xs_t = np.where(twin_fm > 0.5)
     ys_m, xs_m = np.where(mesh_fm > 0.5)
-    assert len(ys_t) and len(ys_m), f"ANDON: {view['name']}: empty twin or mesh mask"
+    if not (len(ys_t) and len(ys_m)):
+        raise AssertionError(f"ANDON: {view['name']}: empty twin or mesh mask")
     th, tw_ = ys_t.max() - ys_t.min(), xs_t.max() - xs_t.min()
     mh, mw = ys_m.max() - ys_m.min(), xs_m.max() - xs_m.min()
     print(f"[twins] {view['name']}: twin paint bbox {th} x {tw_}  "
@@ -620,12 +629,13 @@ for _view_i, view in enumerate(VIEWS):
               f"{iou_tm:.4f} above is against that sidecar and is NOT the gated "
               f"quantity.", flush=True)
     else:
-        assert iou_tm >= args.reg_iou_min, (
-            f"ANDON: {view['name']}: IoU(raw twin paint, exact silhouette) {iou_tm:.4f} "
-            f"is below {args.reg_iou_min:.2f} — the twin is registered to the wrong "
-            f"place. Every adjudicated view measures 0.8329 or better; every measured "
-            f"registration failure sits at or below 0.578. Regenerate the twin against "
-            f"this mesh's control; do not tune this threshold.")
+        if not (iou_tm >= args.reg_iou_min):
+            raise AssertionError(
+                f"ANDON: {view['name']}: IoU(raw twin paint, exact silhouette) {iou_tm:.4f} "
+                f"is below {args.reg_iou_min:.2f} — the twin is registered to the wrong "
+                f"place. Every adjudicated view measures 0.8329 or better; every measured "
+                f"registration failure sits at or below 0.578. Regenerate the twin against "
+                f"this mesh's control; do not tune this threshold.")
     # NAME THE OPERAND. Under --mask-keyed this is measured against the size-5 dilated
     # SIDECAR, which on the E01-era twins holds 76,549px of a 146,356px silhouette — so
     # calling it "outside the silhouette" there would be the wrong-object error this repo
@@ -851,10 +861,11 @@ for _view_i, view in enumerate(VIEWS):
               f"(median ref rgb {tuple(int(c*255) for c in _bgmed)}); "
               f"within dE {args.bg_de:.0f} of it {p_rx:.2f}% "
               f"(already-trusted texels: {p_tr:.2f}%)", flush=True)
-        assert p_rx <= args.bg_max_pct, (
-            f"ANDON: {p_rx:.2f}% of newly-admitted texels sit within dE {args.bg_de:.0f} "
-            f"of the twin's background, over the {args.bg_max_pct:.1f}% limit — the "
-            f"relaxed acceptance is projecting background onto the mesh.")
+        if not (p_rx <= args.bg_max_pct):
+            raise AssertionError(
+                f"ANDON: {p_rx:.2f}% of newly-admitted texels sit within dE {args.bg_de:.0f} "
+                f"of the twin's background, over the {args.bg_max_pct:.1f}% limit — the "
+                f"relaxed acceptance is projecting background onto the mesh.")
     else:
         print(f"[twins] {view['name']}: background probe — no relaxation to test "
               f"(already-trusted texels within dE {args.bg_de:.0f} of background: "
@@ -882,8 +893,10 @@ print(f"[twins] reachable/valid  {reachable.sum():,}/{NV:,} = "
 # on that measurement A0 styled 81-100% of a 61.5% ceiling, which is impossible.
 # No calibrated threshold exists for the new ratio yet, so this gate only catches
 # the degenerate cases rather than inventing another number to inherit.
-assert reachable.sum() > 0, "ANDON: no texel is reachable — registration broken"
-assert seen.sum() > 0, "ANDON: nothing styled at all"
+if not (reachable.sum() > 0):
+    raise AssertionError("ANDON: no texel is reachable — registration broken")
+if not (seen.sum() > 0):
+    raise AssertionError("ANDON: nothing styled at all")
 
 def scatter(vals, dim):
     a = np.zeros((RES * RES, dim), dtype=np.float32)
@@ -905,7 +918,8 @@ atlas = styled.copy()
 atlas[hole] = args.hole_grey
 var = float(atlas[validA].var())
 print(f"[twins] atlas variance {var:.5f}  holes {int(hole.sum()):,}", flush=True)
-assert var > 0.001, "ANDON: atlas uniform"
+if not (var > 0.001):
+    raise AssertionError("ANDON: atlas uniform")
 
 Image.fromarray((atlas * 255).round().astype(np.uint8)).save(args.out)
 Image.fromarray((hole * 255).astype(np.uint8)).save(

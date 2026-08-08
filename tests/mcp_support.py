@@ -20,6 +20,7 @@ from conftest import REPO, TOOLS
 if str(TOOLS) not in sys.path:
     sys.path.insert(0, str(TOOLS))
 
+import facet_index                                   # noqa: E402
 import record_mcp                                    # noqa: E402
 from mcp import Client                               # noqa: E402
 
@@ -34,9 +35,14 @@ PASSED_PARSE = {
     "failures": [],
     "unattributed": [],
     "andon": [],
-    "exit_code": 0,
+    "exit_code": facet_index.EXIT_OK,
 }
 
+# E21 F3 found this constant hardcoded and unasserted: nothing compared it
+# against a live failing run, so it could encode a wrong value indefinitely.
+# E22 moves it to 4 with the ruling (E21 Ruling 4) and BINDS it to the tool's
+# own constant rather than re-hardcoding the new number, because a literal here
+# is a fixture that can silently disagree with the command it stands in for.
 FAILED_PARSE = {
     "state": "FAILED",
     "legs": dict(PASSED_PARSE["legs"], **{"3_pointers": "FAILED"}),
@@ -44,7 +50,7 @@ FAILED_PARSE = {
     "failures": ["rulings: 4 dangling pointers"],
     "unattributed": [],
     "andon": [],
-    "exit_code": 1,
+    "exit_code": facet_index.EXIT_REFUSED,
 }
 
 SYNTHETIC_TRANSCRIPT = "[synthetic] this transcript was authored by the test\n"

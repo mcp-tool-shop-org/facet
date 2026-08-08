@@ -279,16 +279,18 @@ def assert_base_guards():
     import hashlib
     for spec in args.base_guard:
         path, _, want = spec.rpartition(":")
-        assert path and len(want) == 64, (
-            f"ANDON: --base-guard must be PATH:SHA256 (64 hex), got {spec!r}")
+        if not (path and len(want) == 64):
+            raise AssertionError(
+                f"ANDON: --base-guard must be PATH:SHA256 (64 hex), got {spec!r}")
         h = hashlib.sha256()
         with open(path, "rb") as fh:
             for chunk in iter(lambda: fh.read(1 << 20), b""):
                 h.update(chunk)
         got = h.hexdigest()
-        assert got == want, (
-            f"ANDON: guarded file changed.\n  {path}\n  expected {want}\n  actual   {got}\n"
-            f"The accepted base asset is canon and is never opened for writing. HALT.")
+        if not (got == want):
+            raise AssertionError(
+                f"ANDON: guarded file changed.\n  {path}\n  expected {want}\n  actual   {got}\n"
+                f"The accepted base asset is canon and is never opened for writing. HALT.")
         print(f"[guard] {os.path.basename(path)} byte-identical ({want[:12]}...)",
               flush=True)
 
@@ -319,8 +321,9 @@ def commit(edited_path, cam_path):
     if args.restrict:
         # E10 Step 0.3: the layer commits only where geometry says contact happens.
         rmask = np.load(args.restrict)
-        assert rmask.shape == mask_np.shape, (
-            f"ANDON: --restrict is {rmask.shape}, the atlas is {mask_np.shape}")
+        if not (rmask.shape == mask_np.shape):
+            raise AssertionError(
+                f"ANDON: --restrict is {rmask.shape}, the atlas is {mask_np.shape}")
         before = int(hole_flat.sum())
         hole_flat &= rmask.reshape(-1).astype(bool)
         print(f"[restrict] {os.path.basename(args.restrict)}: {before:,} -> "
@@ -362,17 +365,19 @@ def commit(edited_path, cam_path):
     rpath = os.path.join(ep_dir, "render.png")
     if os.path.exists(rpath):
         emr = np.asarray(Image.open(rpath).convert("RGB"), dtype=np.float32) / 255.0
-        assert emr.shape == edited.shape, (
-            f"ANDON: edited {edited.shape} != emitted {emr.shape} — the brush resized the "
-            f"frame, so nothing maps back")
+        if not (emr.shape == edited.shape):
+            raise AssertionError(
+                f"ANDON: edited {edited.shape} != emitted {emr.shape} — the brush resized the "
+                f"frame, so nothing maps back")
         c8e = np.concatenate([emr[:8, :8].reshape(-1, 3), emr[:8, -8:].reshape(-1, 3)])
         d_corner = float(np.abs(np.median(c8e, axis=0) - bg).max() * 255.0)
-        assert d_corner <= 1.0, (
-            f"ANDON: the 8x8 corner medians the background estimator reads moved "
-            f"{d_corner:.2f} levels between the emitted render and the brush output. The "
-            f"estimator's operand is no longer the emitted backdrop; its key, its erosion "
-            f"and every texel colour downstream are keyed off a colour the pipeline did "
-            f"not choose. HALT.")
+        if not (d_corner <= 1.0):
+            raise AssertionError(
+                f"ANDON: the 8x8 corner medians the background estimator reads moved "
+                f"{d_corner:.2f} levels between the emitted render and the brush output. The "
+                f"estimator's operand is no longer the emitted backdrop; its key, its erosion "
+                f"and every texel colour downstream are keyed off a colour the pipeline did "
+                f"not choose. HALT.")
         # DEMOTED TO A DIAGNOSTIC (E08 Amendment 32). The whole-image outside-figure
         # residual was a halt for exactly one stroke; the intersection below forecloses the
         # direction it watched, and a halt on a foreclosed direction fires on correct work
@@ -484,7 +489,8 @@ def commit(edited_path, cam_path):
     s2 = styled.reshape(-1).copy()
     s2[hidx] = True
     protected = styled.reshape(-1)
-    assert not protected[hidx].any(), "ANDON: commit tried to touch styled texels"
+    if protected[hidx].any():
+        raise AssertionError("ANDON: commit tried to touch styled texels")
     shutil.copy(os.path.join(S, "atlas.png"), os.path.join(S, "atlas.prev.png"))
     Image.fromarray((a2.reshape(RES, RES, 3) * 255).round().astype(np.uint8)).save(
         os.path.join(S, "atlas.png"))
@@ -494,7 +500,8 @@ def commit(edited_path, cam_path):
     after = int((h2 > 0.5).sum())
     print(f"[commit] wrote {len(hidx):,} texels; holes {before:,} -> {after:,}",
           flush=True)
-    assert after < before or len(hidx) == 0, "ANDON: holes did not shrink"
+    if not (after < before or len(hidx) == 0):
+        raise AssertionError("ANDON: holes did not shrink")
     return len(hidx)
 
 
@@ -520,5 +527,6 @@ else:
     diff = np.abs(a_new - pre_atlas)[pre_styled].max() if pre_styled.any() else 0
     print(f"[selftest] styled-texel max delta {diff:.6f} (must be ~0), "
           f"committed {n:,}", flush=True)
-    assert diff < 1e-3, "ANDON: selftest — styled texels were modified"
+    if not (diff < 1e-3):
+        raise AssertionError("ANDON: selftest — styled texels were modified")
     print("[selftest] PASS — write-head is lossless on styled texels", flush=True)

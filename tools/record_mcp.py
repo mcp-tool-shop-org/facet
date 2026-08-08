@@ -186,7 +186,8 @@ class RecordError(Exception):
     """A refusal with the studio's shape. Raised, never returned as a flag."""
 
     def __init__(self, code, message, hint, retryable=False):
-        assert code in CODES, "unnamed error code: %s" % code
+        if not (code in CODES):
+            raise AssertionError("unnamed error code: %s" % code)
         self.code = code
         self.message = message
         self.hint = hint

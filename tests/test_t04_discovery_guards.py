@@ -41,7 +41,9 @@ def test_t04_ruling_doc_miss_fails_verify(facet_index_mod, built_db, monkeypatch
     monkeypatch.setattr(m, "ruling_documents", lambda: dropped)
     rc = m.verify(str(built_db))
     out = capsys.readouterr().out
-    assert rc == 1, "verify returned %d on a synthetic undiscovered-file miss" % rc
+    assert rc == m.EXIT_REFUSED, (
+        "verify returned %d on a synthetic undiscovered-file miss, want %d "
+        "(E21 Ruling 4: a failing verify is a refusal)" % (rc, m.EXIT_REFUSED))
     assert "ROWS FROM UNDISCOVERED FILES" in out
     assert "E14-ruling.md" in out, "the miss report does not name the dropped file"
 

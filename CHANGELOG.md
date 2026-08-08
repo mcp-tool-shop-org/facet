@@ -13,9 +13,42 @@ it, so a reader can check the claim rather than trust it.
 
 ## [Unreleased]
 
-Nothing. The three entries that sat here through both prior tags were **misfiled** and
-have been moved into `[0.1.0]`, which is where they shipped — the correction and the
-measurement that established it are recorded in that entry.
+**A gate is never a bare `assert`.** [E22](docs/experiments/E22-gates-report.md)
+converted the **88 ruled ANDON gate sites** in five write-path tools plus the two
+published console scripts from `assert` to `raise AssertionError`, because `assert`
+is a statement the interpreter is licensed to delete: `python -O` and
+`PYTHONOPTIMIZE=1` removed them silently and execution continued past them. Measured
+before the repair, on the pinned interpreter: the gate never spoke, the write
+proceeded, the process exited `0`. That is strictly worse than the shell chain
+[E08 Amendment 32] was written for — the chain at least let the ANDON print.
+
+Every conversion is a **pure move**, and that is proved rather than asserted: the AST
+of each of the seven files is identical to the negation rule applied to the same file
+at the prior commit, over the whole module, and their comment tokens are unchanged.
+The three named anchors reproduce — T7's byte-identical atlas replay (its sidecar json
+too), the twin-projection anchor, and T26's three fired ANDONs. **No conversion was
+reverted.**
+
+**Exit code `4 = REFUSED` lands**, carrying [E21 Ruling 4]: a failing `verify` leg and
+a fired ANDON both leave it, off the `1` they shared with a mistyped flag. `verify`'s
+value is also the certificate's `verify_exit_code`, and `record_mcp.parse_verify` keys
+on `rc != 0` rather than `rc == 1` — verified before the value moved — so the health
+state machine is indifferent to which non-zero it is. The test fixture that carried
+this as a hardcoded `1` now reads the tool's own constant.
+
+**T30 rides the commit** — 27 cases, 14 functions — asserting that each converted gate
+refuses under a normal interpreter **and** under `-O` **and** under
+`PYTHONOPTIMIZE=1`, that the write-path gates leave nothing behind when they fire, and
+that the `-O` legs are not vacuous (proved on a throwaway script, never on a facet
+gate). **No test asserts that `PYTHONOPTIMIZE=1` disables a gate**; that would anchor
+the defect. Suite 248 → 275.
+
+**What this does NOT do, measured and reported rather than implied:** E22 converted
+the 88 sites its scope ruled. A census taken at the same time found **278 of the 294
+asserts in `tools/` carry the ANDON token**, not the 87 the dispatch inherited — so
+**192 ANDON-carrying gates outside the five named tools are still bare asserts**, and
+**175 of them sit before a write in their own scope**. Those are a finding for the
+advisor, not a scope extension taken by an executor.
 
 ## [0.2.0] — 2026-08-08
 

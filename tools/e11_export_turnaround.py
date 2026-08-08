@@ -184,12 +184,14 @@ def write_indexed_png(path, class_map, palette=None):
     im.save(path, optimize=False)
     # prove the write: reread, palette prefix == declared, pixels identical
     back = Image.open(path)
-    assert back.mode == "P", "ANDON: indexed write came back non-indexed"
+    if not (back.mode == "P"):
+        raise AssertionError("ANDON: indexed write came back non-indexed")
     plte = back.getpalette()[:len(palette) * 3]
     want = [c for _, rgb in palette for c in rgb]
-    assert plte == want, f"ANDON: {path} PLTE != declared palette"
-    assert np.array_equal(np.asarray(back), class_map), \
-        f"ANDON: {path} pixels changed through the indexed write"
+    if not (plte == want):
+        raise AssertionError(f"ANDON: {path} PLTE != declared palette")
+    if not (np.array_equal(np.asarray(back), class_map)):
+        raise AssertionError(f"ANDON: {path} pixels changed through the indexed write")
 
 
 def view_products(caster, cam, claim_flat, owner_flat, out_dir, view_id, palette=None,
@@ -275,24 +277,28 @@ def owner_atlas_vs_sidecar(claim_flat, owner_flat, valid_flat):
         if not sel.any():
             continue
         cols = np.unique(oa[sel], axis=0)
-        assert len(cols) == 1, (
-            f"ANDON: owner atlas has {len(cols)} colours for sidecar view {v} "
-            f"on stage-1 texels — not a pure function of the sidecar")
+        if not (len(cols) == 1):
+            raise AssertionError(
+                f"ANDON: owner atlas has {len(cols)} colours for sidecar view {v} "
+                f"on stage-1 texels — not a pure function of the sidecar")
         tables[f"view_{v}"] = [int(c) for c in cols[0]]
     bad = valid_flat & (claim_flat == 0) & (owner_flat < 0)
-    assert not bad.any(), (
-        f"ANDON: {int(bad.sum()):,} stage-1 texels carry sidecar owner -1 — "
-        f"the sidecar disagrees with the claim map")
+    if bad.any():
+        raise AssertionError(
+            f"ANDON: {int(bad.sum()):,} stage-1 texels carry sidecar owner -1 — "
+            f"the sidecar disagrees with the claim map")
     for k in range(1, 7):
         sel = valid_flat & (claim_flat == k)
         if not sel.any():
             continue
         cols = np.unique(oa[sel], axis=0)
-        assert len(cols) == 1, f"ANDON: stroke {k} renders {len(cols)} colours"
+        if not (len(cols) == 1):
+            raise AssertionError(f"ANDON: stroke {k} renders {len(cols)} colours")
         tables[f"stroke_{k}"] = [int(c) for c in cols[0]]
     sel = valid_flat & (claim_flat == 255)
     cols = np.unique(oa[sel], axis=0)
-    assert len(cols) == 1, f"ANDON: dilation renders {len(cols)} colours"
+    if not (len(cols) == 1):
+        raise AssertionError(f"ANDON: dilation renders {len(cols)} colours")
     tables["dilation"] = [int(c) for c in cols[0]]
     return tables
 
@@ -321,7 +327,8 @@ def main():
             args.out = J(r"E:\AI\training\facet_next\E14_strokes", "export", "turnaround")
         return arm_longsword(args)
 
-    assert args.claim, "ANDON: --claim is required for the galleon legs"
+    if not (args.claim):
+        raise AssertionError("ANDON: --claim is required for the galleon legs")
     claim = np.load(args.claim).reshape(-1)
     owner = np.load(J(STROKE, "export", "view_owner.npy")).reshape(-1)
     valid = np.load(J(PREP, "mask.npy"))[..., 0].reshape(-1) > 0.5
@@ -357,7 +364,9 @@ def w3_claim_from_colors():
     dil = np.all(flat == W3_PALETTE[3][1], axis=1)
     bg = np.all(flat == W3_PALETTE[0][1], axis=1)
     n_other = flat.shape[0] - int(ref.sum() + bru.sum() + dil.sum() + bg.sum())
-    assert n_other == 0, f"ANDON: {n_other:,} pixels outside the 4 measured class colours"
+    if not (n_other == 0):
+        raise AssertionError(
+            f"ANDON: {n_other:,} pixels outside the 4 measured class colours")
     claim[ref] = 0
     claim[bru] = 1
     claim[dil] = 255
@@ -379,7 +388,8 @@ def arm_x2(args):
     ipath = J(out_root, "provenance_atlas_indexed.png")
     write_indexed_png(ipath, idx, W3_PALETTE)
     back = np.asarray(Image.open(ipath).convert("RGB"))
-    assert np.array_equal(back, pa), "ANDON: indexed conversion is not lossless"
+    if not (np.array_equal(back, pa)):
+        raise AssertionError("ANDON: indexed conversion is not lossless")
     print(f"[X2] X-H3 lossless conversion PROVEN: {ipath} pixel-identical to the "
           f"truecolor source through PLTE round-trip")
 
@@ -499,12 +509,15 @@ def dragon_claim_from_colors():
     claim = np.full(flat.shape[0], -1, dtype=np.int16)
     sel = {name: np.all(flat == rgb, axis=1) for name, rgb in DRAGON_PALETTE}
     n_other = flat.shape[0] - int(sum(s.sum() for s in sel.values()))
-    assert n_other == 0, f"ANDON: {n_other:,} pixels outside the 4 declared class colours"
+    if not (n_other == 0):
+        raise AssertionError(
+            f"ANDON: {n_other:,} pixels outside the 4 declared class colours")
     for name, want in DRAGON_MIX.items():
         got = int(sel[name].sum())
-        assert got == want, (
-            f"ANDON: provenance atlas has {got:,} {name} texels; the ruled mix "
-            f"(E12 Ruling 27e) says {want:,}")
+        if not (got == want):
+            raise AssertionError(
+                f"ANDON: provenance atlas has {got:,} {name} texels; the ruled mix "
+                f"(E12 Ruling 27e) says {want:,}")
     claim[sel["reference"]] = 0
     claim[sel["brush"]] = 1
     claim[sel["dilation"]] = 255
@@ -526,12 +539,14 @@ def arm_dragon(args):
     # minus the display-atlas half it has no atlas for.
     st1 = claim == 0
     unowned = int((st1 & (owner < 0)).sum())
-    assert unowned == 0, (
-        f"ANDON: {unowned:,} stage-1 texels carry sidecar owner -1 — the sidecar "
-        f"disagrees with the claim map")
+    if not (unowned == 0):
+        raise AssertionError(
+            f"ANDON: {unowned:,} stage-1 texels carry sidecar owner -1 — the sidecar "
+            f"disagrees with the claim map")
     stray = int((~st1 & (owner >= 0)).sum())
-    assert stray == 0, (
-        f"ANDON: {stray:,} texels outside stage 1 carry an owner id")
+    if not (stray == 0):
+        raise AssertionError(
+            f"ANDON: {stray:,} texels outside stage 1 carry an owner id")
     print(f"[X3] owner sidecar agrees with the claim map: "
           f"{int(st1.sum()):,} stage-1 texels all owned, "
           f"owner ids present {sorted(int(x) for x in np.unique(owner[st1]))}")
@@ -543,7 +558,8 @@ def arm_dragon(args):
     ipath = J(out_root, "provenance_atlas_indexed.png")
     write_indexed_png(ipath, idx, DRAGON_PALETTE)
     back = np.asarray(Image.open(ipath).convert("RGB"))
-    assert np.array_equal(back, pa), "ANDON: indexed conversion is not lossless"
+    if not (np.array_equal(back, pa)):
+        raise AssertionError("ANDON: indexed conversion is not lossless")
     print(f"[X3] X-H3 lossless conversion PROVEN: indexed atlas pixel-identical "
           f"to the truecolor source through PLTE round-trip")
 
@@ -680,14 +696,19 @@ def longsword_class_from_colors():
     flat = pa.reshape(-1, 3)
     sel = {name: np.all(flat == rgb, axis=1) for name, rgb in LS_PALETTE}
     n_other = flat.shape[0] - int(sum(s.sum() for s in sel.values()))
-    assert n_other == 0, f"ANDON: {n_other:,} texels outside the 6 declared class colours"
+    if not (n_other == 0):
+        raise AssertionError(
+            f"ANDON: {n_other:,} texels outside the 6 declared class colours")
     for name, want in LS_MIX.items():
         got = int(sel[name].sum())
-        assert got == want, (
-            f"ANDON: provenance atlas has {got:,} {name} texels; the record "
-            f"(run/final/provenance_legend.json, E14 Ruling 31b) says {want:,}")
+        if not (got == want):
+            raise AssertionError(
+                f"ANDON: provenance atlas has {got:,} {name} texels; the record "
+                f"(run/final/provenance_legend.json, E14 Ruling 31b) says {want:,}")
     valid = int(sum(sel[n].sum() for n in LS_MIX))
-    assert valid == LS_VALID, f"ANDON: classes partition {valid:,} texels, not {LS_VALID:,}"
+    if not (valid == LS_VALID):
+        raise AssertionError(
+            f"ANDON: classes partition {valid:,} texels, not {LS_VALID:,}")
     cls = np.zeros(flat.shape[0], dtype=np.uint8)
     for i, (name, _rgb) in enumerate(LS_PALETTE):
         if i:
@@ -724,13 +745,17 @@ def arm_longsword(args):
               f"owned outside reference {owner_report[tag]['owned_outside_reference']:,}")
     # the dragon's ANDON, on the array this subject declares
     unowned = owner_report["stage1b"]["reference_unowned"]
-    assert unowned == 0, (
-        f"ANDON: {unowned:,} reference texels carry sidecar owner -1 — the sidecar "
-        f"disagrees with the class map")
+    if not (unowned == 0):
+        raise AssertionError(
+            f"ANDON: {unowned:,} reference texels carry sidecar owner -1 — the sidecar "
+            f"disagrees with the class map")
     stray = owner_report["stage1b"]["owned_outside_reference"]
-    assert stray == 0, f"ANDON: {stray:,} texels outside the reference class carry an owner id"
-    assert owner_report["stage1b"]["ids"] == list(range(len(LS_OWNER_VIEWS))), \
-        f"ANDON: owner ids {owner_report['stage1b']['ids']} are not 0..{len(LS_OWNER_VIEWS)-1}"
+    if not (stray == 0):
+        raise AssertionError(
+            f"ANDON: {stray:,} texels outside the reference class carry an owner id")
+    if not (owner_report["stage1b"]["ids"] == list(range(len(LS_OWNER_VIEWS)))):
+        raise AssertionError(
+            f"ANDON: owner ids {owner_report['stage1b']['ids']} are not 0..{len(LS_OWNER_VIEWS)-1}")
 
     # the id -> view mapping VERIFIED against stage 1b's own committed counts,
     # never assumed: a consumer reading owner id 2 as "view 2" would read the
@@ -739,10 +764,11 @@ def arm_longsword(args):
     for k, view in enumerate(LS_OWNER_VIEWS):
         got = int((owner == k).sum())
         want = int(legend["committed"][str(view)])
-        assert got == want, (
-            f"ANDON: owner id {k} covers {got:,} texels; stage 1b's legend records "
-            f"{want:,} committed for view {view} — the id->view mapping is not "
-            f"positional as assumed")
+        if not (got == want):
+            raise AssertionError(
+                f"ANDON: owner id {k} covers {got:,} texels; stage 1b's legend records "
+                f"{want:,} committed for view {view} — the id->view mapping is not "
+                f"positional as assumed")
     print(f"[X4] owner id -> view mapping VERIFIED positionally against stage 1b's "
           f"legend: {dict(enumerate(LS_OWNER_VIEWS))}, every count exact; "
           f"{n_ref:,} reference texels all owned")
@@ -754,7 +780,8 @@ def arm_longsword(args):
     ipath = J(out_root, "provenance_atlas_indexed.png")
     write_indexed_png(ipath, idx, LS_PALETTE)
     back = np.asarray(Image.open(ipath).convert("RGB"))
-    assert np.array_equal(back, pa), "ANDON: indexed conversion is not lossless"
+    if not (np.array_equal(back, pa)):
+        raise AssertionError("ANDON: indexed conversion is not lossless")
     print(f"[X4] X-H3 lossless conversion: indexed 6-class atlas pixel-identical to "
           f"the truecolor source through PLTE round-trip")
 
@@ -791,9 +818,10 @@ def arm_longsword(args):
             jb = run_emit(states[ch], y, e, glb, prep=LS_PREP, profile=LS_PROFILE)
             cj = json.load(open(J(jb, "cam.json")))
             frames.add((cj["W"], cj["H"]))
-            assert (cj["W"], cj["H"]) == LS_FRAME, (
-                f"ANDON: {vid} {ch} emitted a {cj['W']}x{cj['H']} frame, not "
-                f"{LS_FRAME[0]}x{LS_FRAME[1]} — Ruling 29c's unprofiled-emit trap")
+            if not ((cj["W"], cj["H"]) == LS_FRAME):
+                raise AssertionError(
+                    f"ANDON: {vid} {ch} emitted a {cj['W']}x{cj['H']} frame, not "
+                    f"{LS_FRAME[0]}x{LS_FRAME[1]} — Ruling 29c's unprofiled-emit trap")
             shutil.copyfile(J(jb, "render.png"), J(dest, f"{ch}.png"))
             if ch == "asset":
                 shutil.copyfile(J(jb, "hit.png"), J(dest, "silhouette.png"))

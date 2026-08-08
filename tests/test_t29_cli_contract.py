@@ -20,16 +20,23 @@ runs the ok-class and the failure-class through the same helper and asserts they
 disagree. If the tool started exiting the same value for everything, the pairs
 break, not just the halves.
 
-WHAT IS DELIBERATELY NOT PINNED. Two outcome classes are E21's open questions
-and belong to the advisor:
+WHAT THIS FILE DELIBERATELY DOES NOT PIN. Two outcome classes were E21's open
+questions when it was written:
 
   * what a fired ANDON exits (question 1)
   * what a failing `verify` leg exits (question 2)
 
-So this file asserts of those only what is RULED - that the gate still fires and
-still refuses (E08 Amendment 32), and that a failing verify still reports its
-failures and does not report success. It does NOT assert their integers. Pinning
-an unruled number would anchor it, which is the assertion law's whole point.
+So this file asserts of those only that the gate still fires and still refuses
+(E08 Amendment 32), and that a failing verify still reports its failures and
+does not report success. It does NOT assert their integers, because pinning an
+unruled number would anchor it.
+
+BOTH ARE NOW RULED - E21 Ruling 4 gave them one shared code, `EXIT_REFUSED`, and
+E22 carried it. The integers are pinned in tests/test_t30, which is also where
+the -O legs live. Nothing here changed: these `!= OK` assertions were correct
+before the ruling and stay correct after it, and leaving them alone keeps a
+second, weaker witness to the same behaviour that does not depend on the
+constant's value.
 
 Everything printed here is ASCII (the repo's law).
 """

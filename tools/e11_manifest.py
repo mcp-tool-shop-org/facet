@@ -149,9 +149,10 @@ def dragon_palette():
     src = J(FACET_REPO, "canon", "E12-beast-palette.json")
     c = json.load(open(src, encoding="utf-8"))
     gate = c["gate"]
-    assert gate["max_offpalette_blob_px"] is None, (
-        "ANDON: canon now carries a measured blob bound — the suspension "
-        "translation below would silently overwrite it")
+    if not (gate["max_offpalette_blob_px"] is None):
+        raise AssertionError(
+            "ANDON: canon now carries a measured blob bound — the suspension "
+            "translation below would silently overwrite it")
     return {
         "source": "E:/AI/facet/canon/E12-beast-palette.json",
         "min_chroma": c["min_chroma"],
@@ -201,27 +202,34 @@ def build_tone_operands(tree, no_copy=False):
         srcs[name] = {"path": f"_operands_sources/{name}", "sha256": sha256(J(hz, name)),
                       "content": json.load(open(J(hz, name), encoding="utf-8"))}
     refs = {n: s["content"]["_reference"]["sha256"] for n, s in srcs.items()}
-    assert len(set(refs.values())) == 1, \
-        f"ANDON: the two operands files name different reference twins: {refs}"
+    if not (len(set(refs.values())) == 1):
+        raise AssertionError(
+            f"ANDON: the two operands files name different reference twins: {refs}")
 
     for view, fname, key, png in DRAGON_HARM:
         row = srcs[fname]["content"]["views"].get(key)
-        assert row is not None, f"ANDON: {fname} has no row '{key}'"
+        if not (row is not None):
+            raise AssertionError(f"ANDON: {fname} has no row '{key}'")
         p = J(hz, png)
-        assert os.path.exists(p), f"ANDON: harmonized source {p} is missing"
+        if not (os.path.exists(p)):
+            raise AssertionError(f"ANDON: harmonized source {p} is missing")
         got = sha256(p)
-        assert got == row["sha256_out"], (
-            f"ANDON: {png} hashes {got[:12]} but row {key} of {fname} records "
-            f"{row['sha256_out'][:12]} — the operands do not describe this file")
-        assert os.path.basename(row["output"].replace("\\", "/")) == png, \
-            f"ANDON: row {key} names output {row['output']}, not {png}"
+        if not (got == row["sha256_out"]):
+            raise AssertionError(
+                f"ANDON: {png} hashes {got[:12]} but row {key} of {fname} records "
+                f"{row['sha256_out'][:12]} — the operands do not describe this file")
+        if not (os.path.basename(row["output"].replace("\\", "/")) == png):
+            raise AssertionError(
+                f"ANDON: row {key} names output {row['output']}, not {png}")
         rows[f"view_{view}"] = dict(row, _source_file=fname, _source_key=key)
 
     ref_row = rows[f"view_{DRAGON_REF_VIEW}"]
-    assert ref_row["is_reference"] is True, \
-        f"ANDON: view {DRAGON_REF_VIEW} is not flagged is_reference in its own row"
-    assert ref_row["sha256_out"] == list(refs.values())[0], \
-        "ANDON: the reference row's output does not hash to the declared reference twin"
+    if not (ref_row["is_reference"] is True):
+        raise AssertionError(
+            f"ANDON: view {DRAGON_REF_VIEW} is not flagged is_reference in its own row")
+    if not (ref_row["sha256_out"] == list(refs.values())[0]):
+        raise AssertionError(
+            "ANDON: the reference row's output does not hash to the declared reference twin")
 
     out = {
         "_what":
@@ -247,10 +255,13 @@ def build_tone_operands(tree, no_copy=False):
     if no_copy:
         for name in srcs:
             p = J(dest_dir, name)
-            assert os.path.exists(p), f"ANDON: --no-copy but {p} is missing"
-            assert sha256(p) == srcs[name]["sha256"], \
-                f"ANDON: {p} no longer matches its source {J(hz, name)}"
-        assert os.path.exists(path), f"ANDON: --no-copy but {path} is missing"
+            if not (os.path.exists(p)):
+                raise AssertionError(f"ANDON: --no-copy but {p} is missing")
+            if not (sha256(p) == srcs[name]["sha256"]):
+                raise AssertionError(
+                    f"ANDON: {p} no longer matches its source {J(hz, name)}")
+        if not (os.path.exists(path)):
+            raise AssertionError(f"ANDON: --no-copy but {path} is missing")
         have = open(path, encoding="utf-8").read()
         if have != json.dumps(out, indent=1):
             raise SystemExit(
@@ -263,8 +274,8 @@ def build_tone_operands(tree, no_copy=False):
     os.makedirs(dest_dir, exist_ok=True)
     for name in srcs:
         shutil.copyfile(J(hz, name), J(dest_dir, name))
-        assert sha256(J(dest_dir, name)) == srcs[name]["sha256"], \
-            f"ANDON: copy of {name} changed bytes"
+        if not (sha256(J(dest_dir, name)) == srcs[name]["sha256"]):
+            raise AssertionError(f"ANDON: copy of {name} changed bytes")
     with open(path, "w", encoding="utf-8") as fh:
         json.dump(out, fh, indent=1)
     print(f"[manifest] tone operands assembled: {len(rows)} views from "
@@ -406,11 +417,14 @@ def longsword_palette():
     src = J(FACET_REPO, "canon", "E14-longsword-palette.json")
     c = json.load(open(src, encoding="utf-8"))
     gate = c["gate"]
-    assert gate["max_offpalette_blob_px"] is None and gate["max_offpalette_pct"] is None, (
-        "ANDON: canon now carries a measured bound — the suspension translation "
-        "below would silently overwrite it")
+    if not (gate["max_offpalette_blob_px"] is None and gate["max_offpalette_pct"] is None):
+        raise AssertionError(
+            "ANDON: canon now carries a measured bound — the suspension translation "
+            "below would silently overwrite it")
     lav = [b for b in c["allowed_bands"] if b["name"] == "lavender-rim"]
-    assert len(lav) == 1, "ANDON: the lavender-rim admission is not in canon's allowed_bands"
+    if not (len(lav) == 1):
+        raise AssertionError(
+            "ANDON: the lavender-rim admission is not in canon's allowed_bands")
     return {
         "source": "E:/AI/facet/canon/E14-longsword-palette.json",
         "min_chroma": c["min_chroma"],
@@ -468,25 +482,33 @@ def build_ls_tone_operands(tree, no_copy=False):
     for view in LS_VIEWS:
         key = f"T3|{view}"
         row = ops["T3_hue_rotation"].get(key)
-        assert row is not None, f"ANDON: garnet_operands_final.json has no row '{key}'"
-        assert row["view"] == view, f"ANDON: row {key} carries view {row['view']}"
-        assert view in rot_by_view, f"ANDON: T3_rotations.npy has no row for view {view}"
-        assert abs(row["rotation_deg"] - rot_by_view[view]) < 1e-9, (
-            f"ANDON: view {view} rotation is {row['rotation_deg']} in the operands JSON "
-            f"and {rot_by_view[view]} in T3_rotations.npy — two records of one operand "
-            f"disagree")
-        assert row["C_before"] == row["C_after"] and row["L_before"] == row["L_after"], (
-            f"ANDON: view {view} moved C* or L ({row['C_before']}->{row['C_after']}, "
-            f"{row['L_before']}->{row['L_after']}) — the transform is not the "
-            f"hue-only rotation the manifest declares")
+        if not (row is not None):
+            raise AssertionError(
+                f"ANDON: garnet_operands_final.json has no row '{key}'")
+        if not (row["view"] == view):
+            raise AssertionError(f"ANDON: row {key} carries view {row['view']}")
+        if not (view in rot_by_view):
+            raise AssertionError(f"ANDON: T3_rotations.npy has no row for view {view}")
+        if not (abs(row["rotation_deg"] - rot_by_view[view]) < 1e-9):
+            raise AssertionError(
+                f"ANDON: view {view} rotation is {row['rotation_deg']} in the operands JSON "
+                f"and {rot_by_view[view]} in T3_rotations.npy — two records of one operand "
+                f"disagree")
+        if not (row["C_before"] == row["C_after"] and row["L_before"] == row["L_after"]):
+            raise AssertionError(
+                f"ANDON: view {view} moved C* or L ({row['C_before']}->{row['C_after']}, "
+                f"{row['L_before']}->{row['L_after']}) — the transform is not the "
+                f"hue-only rotation the manifest declares")
         tagged = dict(row, _source_file="garnet_operands_final.json", _source_key=key)
         if view in LS_ROTATED:
-            assert abs(row["rotation_deg"] - LS_ROTATED[view]) < 1e-9, (
-                f"ANDON: view {view} rotation {row['rotation_deg']} is not the ruled "
-                f"{LS_ROTATED[view]} (E14 Ruling 26c/5)")
+            if not (abs(row["rotation_deg"] - LS_ROTATED[view]) < 1e-9):
+                raise AssertionError(
+                    f"ANDON: view {view} rotation {row['rotation_deg']} is not the ruled "
+                    f"{LS_ROTATED[view]} (E14 Ruling 26c/5)")
             png = f"TWIN_swordclay_{view}_garnet.png"
             p = J(LS_GARNET, "corrected", png)
-            assert os.path.exists(p), f"ANDON: corrected twin {p} is missing"
+            if not (os.path.exists(p)):
+                raise AssertionError(f"ANDON: corrected twin {p} is missing")
             tagged.update(_applied=True, _projection_source=f"_operands_sources/{png}",
                           _projection_source_sha256=sha256(p))
             rows[f"view_{view}"] = tagged
@@ -500,19 +522,22 @@ def build_ls_tone_operands(tree, no_copy=False):
                 "re-projection consumed the ORIGINAL files for these two views "
                 "(E14-handoff7-garnet-reprojection-report.md section 2)."))
             controls[f"view_{view}"] = tagged
-    assert sorted(rows) == [f"view_{v}" for v in sorted(LS_ROTATED)], \
-        f"ANDON: applied set is {sorted(rows)}, not the four ruled views"
+    if not (sorted(rows) == [f"view_{v}" for v in sorted(LS_ROTATED)]):
+        raise AssertionError(
+            f"ANDON: applied set is {sorted(rows)}, not the four ruled views")
     worst_control = max(controls[k]["median_dE_stone"] for k in controls)
     best_applied = min(rows[k]["median_dE_stone"] for k in rows)
-    assert worst_control < best_applied, (
-        f"ANDON: a not-applied control moved the stone more ({worst_control}) than the "
-        f"smallest applied rotation ({best_applied}) — 'near-no-op' is not what these "
-        f"rows describe")
+    if not (worst_control < best_applied):
+        raise AssertionError(
+            f"ANDON: a not-applied control moved the stone more ({worst_control}) than the "
+            f"smallest applied rotation ({best_applied}) — 'near-no-op' is not what these "
+            f"rows describe")
 
     ref = dict(ops["reference"], view_index=LS_REF_VIEW)
-    assert os.path.basename(ref["path"].replace("\\", "/")) == \
-        f"PAIR_swordclay_{LS_REF_VIEW}.png", \
-        f"ANDON: the reference path {ref['path']} is not the pair's view {LS_REF_VIEW}"
+    if not (os.path.basename(ref["path"].replace("\\", "/")) == \
+        f"PAIR_swordclay_{LS_REF_VIEW}.png"):
+        raise AssertionError(
+            f"ANDON: the reference path {ref['path']} is not the pair's view {LS_REF_VIEW}")
 
     sources = {"garnet_operands_final.json": J(LS_GARNET, "garnet_operands_final.json"),
                "T3_rotations.npy": J(LS_GARNET, "T3_rotations.npy"),
@@ -559,18 +584,22 @@ def build_ls_tone_operands(tree, no_copy=False):
     if no_copy:
         for name in sources:
             p = J(dest_dir, name)
-            assert os.path.exists(p), f"ANDON: --no-copy but {p} is missing"
-            assert sha256(p) == shas[name], f"ANDON: {p} no longer matches its source"
-        assert os.path.exists(path), f"ANDON: --no-copy but {path} is missing"
-        assert open(path, encoding="utf-8").read() == json.dumps(out, indent=1), \
-            f"ANDON: {path} differs from what this tool would assemble"
+            if not (os.path.exists(p)):
+                raise AssertionError(f"ANDON: --no-copy but {p} is missing")
+            if not (sha256(p) == shas[name]):
+                raise AssertionError(f"ANDON: {p} no longer matches its source")
+        if not (os.path.exists(path)):
+            raise AssertionError(f"ANDON: --no-copy but {path} is missing")
+        if not (open(path, encoding="utf-8").read() == json.dumps(out, indent=1)):
+            raise AssertionError(
+                f"ANDON: {path} differs from what this tool would assemble")
         print(f"[manifest] tone operands VERIFIED in place (read-only)")
         return "tone_transform_operands.json"
     os.makedirs(dest_dir, exist_ok=True)
     for name, p in sources.items():
         shutil.copyfile(p, J(dest_dir, name))
-        assert sha256(J(dest_dir, name)) == shas[name], \
-            f"ANDON: copy of {name} changed bytes"
+        if not (sha256(J(dest_dir, name)) == shas[name]):
+            raise AssertionError(f"ANDON: copy of {name} changed bytes")
     with open(path, "w", encoding="utf-8") as fh:
         json.dump(out, fh, indent=1)
     print(f"[manifest] tone operands assembled: {len(rows)} APPLIED rotations "
@@ -716,11 +745,13 @@ def verify_ref_view(table_path, ref_view):
         row = views[str(ref_view)]
         yaw = float(row["yaw"] if isinstance(row, dict) else row)
     else:
-        assert ref_view in views, f"ANDON: {table_path} records no view {ref_view}"
+        if not (ref_view in views):
+            raise AssertionError(f"ANDON: {table_path} records no view {ref_view}")
         yaw = ref_view * step
-    assert abs(yaw - ref_view * step) < 1e-9, (
-        f"ANDON: {table_path} puts view {ref_view} at yaw {yaw}, not {ref_view*step} "
-        f"(step {step}) — do not re-derive, halt")
+    if not (abs(yaw - ref_view * step) < 1e-9):
+        raise AssertionError(
+            f"ANDON: {table_path} puts view {ref_view} at yaw {yaw}, not {ref_view*step} "
+            f"(step {step}) — do not re-derive, halt")
     print(f"[manifest] reference view {ref_view} = yaw {yaw:g}, verified against "
           f"{os.path.basename(table_path)} (step {step:g})")
     return yaw
@@ -754,17 +785,20 @@ def main():
         dst = J(tree, name)
         if args.no_copy:
             # read-only: the copy must already be there and must match its source.
-            assert os.path.exists(dst), f"ANDON: --no-copy but {dst} is missing"
+            if not (os.path.exists(dst)):
+                raise AssertionError(f"ANDON: --no-copy but {dst} is missing")
             got = sha256(dst)
             if os.path.abspath(src) != os.path.abspath(dst):
-                assert sha256(src) == got, \
-                    f"ANDON: {dst} no longer matches its source {src}"
+                if not (sha256(src) == got):
+                    raise AssertionError(
+                        f"ANDON: {dst} no longer matches its source {src}")
             ledger[name] = got
         elif os.path.abspath(src) != os.path.abspath(dst):
             want = sha256(src)
             shutil.copyfile(src, dst)
             got = sha256(dst)
-            assert want == got, f"ANDON: copy of {src} changed bytes"
+            if not (want == got):
+                raise AssertionError(f"ANDON: copy of {src} changed bytes")
             ledger[name] = got
         else:
             ledger[name] = sha256(dst)
@@ -849,9 +883,10 @@ def main():
         ref_yaw = verify_ref_view(S["ref_view_table"], S["ref_view"])
         ref_vid = f"y+{int(round(ref_yaw)):03d}_e+00"
         tt["reference"] = safe_id(ref_vid)
-        assert tt["reference"] in {r["id"] for r in renders}, (
-            f"ANDON: the tone transform's reference {tt['reference']} is not a render "
-            f"id this manifest declares — dangling provenance")
+        if not (tt["reference"] in {r["id"] for r in renders}):
+            raise AssertionError(
+                f"ANDON: the tone transform's reference {tt['reference']} is not a render "
+                f"id this manifest declares — dangling provenance")
         tt["operands"] = S["tone_ops_fn"](tree, no_copy=args.no_copy)
         asset["tone_transform"] = tt
     if S.get("render_derivation"):
