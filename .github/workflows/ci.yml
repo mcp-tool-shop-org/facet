@@ -10,6 +10,7 @@ on:
     paths:
       - "tools/**"
       - "tests/**"
+      - "pytest.ini"
       - ".github/workflows/**"
   workflow_dispatch:
 
