@@ -352,10 +352,22 @@ marginal is a property of an ordering, not of a camera** (a carried price overst
 43.8×), and **a reach price is not a paint price** (7.4× apart on the thin subject —
 erosion and trust bind where the subject is thin). **The gem is GARNET at the
 Director's one-word ruling** — the fixture holds, the artifact bends to the
-identity — and **handoff 7, the stroke lane, is dispatched**: the blade's edge-on
-centreline ribbon, the guard seam, and the garnet repaint (5.76 points of
-territory), two advisor halts, the long-deferred `thin_extent` decided at the
-stroke-lane ruling. Then finalize, pack, and Gate 1 beside the clay.
+identity — and **the stroke lane is RULED at HALT 1**
+([Ruling 24](docs/experiments/E14-ruling.md)): handoff 7's derivation ran the
+write-head against itself (46 probes, 46 invariance-ANDON passes) and measured
+the lane's honest denominator — **the achievable set is 69,239 texels = 1.891
+points against the banked 210,907-texel territory**, the price law's third
+instance (a territory is a reach number; an achievable set is a write-head
+number; the blade closes 14.9% of its territory by design, the rim assigned to
+finalize dilation from the strokes' own paint). The ruling: **eight strokes,
+one per camera, hole-fill and the garnet repaint merged** (the demotion — a
+recorded state operation with a named compensator — makes the drifted stone
+ordinary holes; A32 untouched), spiral order with the two edge-on hazard
+strokes last, `thin_extent` **decided at 0.0** (the 10d inversion is total —
+the strokes the guard would protect are the ones it disarms), stroke stems
+strengthening the gem's term to *deep red garnet* against the violet context
+(the fixture's word unchanged). Then strokes under per-stroke eye gates,
+HALT 2, and finalize, pack, Gate 1 beside the clay.
 
 **E15 — the context index — is LIVE and ruled**
 ([E15-ruling.md](docs/experiments/E15-ruling.md), 9 rulings):

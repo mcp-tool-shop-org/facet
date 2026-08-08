@@ -1091,3 +1091,185 @@ re-rolls on the eye clause only. HALT 2 with the stroked asset staged for
 this seat's sheet-walk, then the Director. Finalize, pack and Gate 1 are
 the next dispatch after that halt.
 
+## Ruling 24 — the stroke-lane ruling at HALT 1: eight strokes, one per camera; the guard ruled OFF; the lane judged on the write-head's own set (2026-08-08)
+
+Evidence — what this seat OPENED: the handoff-7 report in full (`417fe09`), the
+blind predictions (`a75d5cf` — the A32 conflict disclosed there as found by
+reading the tool, before the derivation), `probe/partition.json` and
+`probe/funnel.json` re-read at this seat and matching the report to the digit
+(the funnel preserving the broken >100% by_band exactly as the report says it
+was caught, the corrected partition beside it), and the three staged sheets
+walked at full size BEFORE any number below was consulted:
+`HALT1_candidate_frames.png`, `HALT1_yaw270_4x.png` at 4×,
+`HALT1_garnet_6x.png` at 6×.
+
+**24a — THE WALK, in plain words first.** The frames sheet: one sword at every
+yaw — steel blade with its ridge, iron guard, gold boss and rings, oxblood
+wrap, the stone; the two no-twin cameras outlined red and labelled in-image
+(the 20d practice landing). The job masks are rim-and-ribbon: face-ons and
+diagonals carry thin boundary edging plus the stone's cap and the collar
+lines; the edge-ons carry the blade itself as one continuous ribbon. Nothing
+figurative anywhere; the guard's edge-on face is a plain faceted block — the
+excluded twin's mass confirmed gone at 4×. The yaw-270 sheet: the mask is a
+single interior ribbon inside the geometry's sliver, the guard fragments a
+separate component above a junction gap; the flanking context is real steel
+with faint pale smears mid-blade and a hint of cool cast in the upper blade —
+the fifth-signature and deep-share watches stay live at every gate. The
+garnet 6×: the projected stone is ONE coherent violet amethyst against the
+fixture panel's deep red garnet — the defect is colour and colour only;
+facets, bezel, collar and wrap are all right; the demoted panel keeps the
+violet as shape context and the mask covers the stone as one blob. Mismatch
+stated plainly: the stone is the wrong colour everywhere it is drifted-owned,
+and nothing else on any sheet is wrong.
+
+**24b — the lane is judged on the write-head's own set; the denominator law
+gains its third instance, named.** Achievable = **69,239 texels = 1.891
+points** (the standalone-commit union at facing 0.25, eight cameras); the
+banked 210,907 / 5.76 points stays the record's ceiling context. **A
+territory is a reach number; an achievable set is a write-head number** —
+after the camera (21b) and the twin (22b), the same law measured at the
+brush. The blade closes **14.9% of its territory BY DESIGN** — pre-stated
+here so HALT 2 reads it as designed, not discovered; coverage restates
+against BOTH denominators there. One operand question to the Task 2 report,
+not a halt: 69,239 (standalone union, `funnel.json`) against 68,814 (chained
+union, §3a) — 0.6% apart, both measured; state both operands where first
+quoted.
+
+**24c — the write-head values STAND at the first-run operating points; the
+sweep is banked; the A3 port is an errand, not the lane's lever.** Grounds:
+(i) **the widening law is unpaid** — the +61% alternative (edge-dist 1 +
+mask-dilate 15) admits 42,230 texels at 1 px from the keyed figure boundary,
+and the route's own standard for widening any acceptance mask is the
+admission test (A2's form: the newly-admitted class measured against the
+render's background) — which has not run. One side of the bracket is
+measured (starvation, the 0→1 cliff at 51%); the other (rim contamination,
+on the subject whose whole risk surface is grey-on-grey) is not. Half a
+derivation does not move a value two accepted assets spent. (ii) **the
+marginal texels close by dilation from the strokes' own paint** — what
+edge-dist 4 withholds on the ribbon sits within ~3 px of texels the ruled
+strokes commit, so finalize's nearest-painted-in-3D sources them at
+sub-triangle-edge distance: the dragon-finalize regime (median 0.92 edges,
+zero fallback), not the E08 cross-island regime. The ribbon's rim is
+assigned to dilation BY DESIGN — stated for HALT 2's provenance read.
+(iii) **the A3-port finding is ADOPTED and queued** — `texpass_iter` is the
+A3 fix's missing consumer, found by the executor four experiments late (the
+E01 law working); but the local-half-width bound at the ribbon's ~7.5 px
+half-width yields ~2.3–2.5 px effective — worth roughly +14% at yaw 270,
+not +61% — because the ribbon dies at ANY nonzero peel, which no local
+formula fixes. The port is a correctness repair wanting its own anchored
+regression at the tool's timing; it joins the errand batch.
+
+**24d — `thin_extent` is RULED: 0.0 — the guard is OFF on this subject.**
+Decided at the stage it serves, with the 10d curve in the room, as 10d
+deferred it. The inversion is total (P5 held, and the plate mechanism
+explains it): ray extent reads WIDTH edge-on (~0.15–0.2 — every candidate
+≤ 0.021 costs ≤ 0.3% of the stroke) and THICKNESS face-on (0.021 — the
+whole blade is "thin" face-on: 0.005 already costs 12.6% of a 7,591-texel
+stroke, 0.01 costs 39.4%, the blade's own 0.021 costs 82.1%). **The strokes
+the guard would protect are the ones it disarms.** The far-face threat class
+is held off by `facing-min` on this geometry; the live protections are the
+in-tool invariance ANDON and the per-stroke eye gates. RE-OPEN CONDITION:
+far-face contamination found at HALT 2's walk re-opens the value on that
+artifact's criterion — the beast's pattern. The key enters `texpass_iter`'s
+block as an EXPLICIT 0.0 (silence resolves to inheritance): DECIDED-disabled,
+not undecided-disabled.
+
+**24e — the stroke set is EIGHT strokes, one per camera, hole-fill and the
+garnet repaint MERGED per stroke; the spiral order STANDS:
+0 → 180 → 45 → 225 → 315 → 135 → 90 → 270.** The merge: after the demotion
+the stone's drifted territory is ordinary holes; a stroke's job mask is its
+frame's current holes; the stems already name everything the frame contains;
+commit is one pass either way — so the separate repaint class (§6's I–P)
+collapses into the camera strokes and the lane is **8 submissions, not
+14–16**; the spend halves. The order: on a subject already ≥ 56% painted in
+every candidate frame, adjacency transfer between strokes is small and
+mostly camera-local, so the coverage union is order-independent and the
+spiral-vs-coverage tension (§3b) costs nothing to resolve in the law's
+favour. The order's real freight is RISK CADENCE: the two 20b-hazard
+edge-on strokes run LAST, each with the most painted context it will ever
+have, after six low-risk gates have calibrated the eye — and a second
+failure anywhere halts the lane with the safe paint already banked. The
+misbind signature is pre-stated per the report: a crossguard-like or
+figurative form in the ribbon near the guard, or the guard's edge-on face
+growing a face or skull motif — judged at 4× on the crossing crop before
+the next stroke launches.
+
+**24f — the garnet demotion is ADOPTED as a recorded state operation.** Full
+mask — **67,904 drifted-owned stone texels** from the ownership partition,
+never from colour; the executor's floor-restriction argument is right (a
+chromatic subset leaves the dark facets violet and the eye reads the whole
+stone). Run ONCE, before stroke 1, as its own auditable operation
+(`tools/diagnostics/` home, the 2a practice): state channels only —
+`holes = 1, styled = False` on exactly the ruled mask — with its own
+invariance printed (atlas bytes byte-identical before/after; exactly the
+mask's state changed) and its NAMED COMPENSATOR: restore the demoted mask's
+state from `state0/` (deterministic, the op's own inverse). The commit ANDON
+is untouched and unweakened — **this is A32 working, not worked around**.
+The banked A0's styled count dips to 1,588,943 by construction and recovers
+as strokes land (94.6% measured); HALT 2 restates coverage with the dip
+stated, not discovered.
+
+**24g — the 19b term: the stroke stems carry `a deep red garnet gem
+pommel`; the fixture's L5 is UNCHANGED.** The evidence both ways, then the
+grounds: the term did not fail on the twins — byte-identical stems landed
+305° apart by seed alone, 19b's own numbers on the projected asset — but a
+stroke faces what no twin ever did: the violet it must replace is its
+strongest local signal (§5d's counter-reading, adopted as the stronger one
+for a stroke). The 12e grammar holds — red IS garnet's colour, the term
+names a material that is its colour; the E12 resemblance finding prices the
+bleed risk at the term's own structural target; and a term change repaints
+nothing already rolled, so this moment is the cheap one. THE WATCH IS ARMED
+WITH IT: **red arriving on any surface outside L5 at any eye gate is the
+signature** — the gold watch's analogue, live at every stroke. Stems rebuild
+as v3 for the stroke lane, drop map unchanged (boss off 90/270, rings
+nowhere). The fixture's word — *a dark garnet gem pommel* — remains the
+identity, annotated with a pointer to this ruling; the Director's window on
+the term is open in a sentence, as on every term.
+
+**24h — seeds: strokes at 770700; the re-roll seed is 770702, NOT the +1
+convention.** 770700 is the garnet seed and the pair's primary. 770701 is
+pre-convicted on the stone — five drifted artifacts, no exceptions — and
+every candidate frame carries the stone, so spending the one bounded
+re-roll at a seed the record convicts on the region under repair would be
+spending it against the record. One bounded re-roll per stroke, on the eye
+clause only; a second failure is the result. The 770700 diagonal-sprawl
+record (18a) is priced, not re-seeded: the strokes inpaint bounded masks
+into an iron-guard context, not full frames onto bare clay, and the 12e
+gold watch is live at every diagonal's crossing crop.
+
+**24i — stroke 1 (yaw 0) is the term's LIVE TEST, pre-registered.** Its
+generation repaints the stone's whole visible face while its commit banks
+only 11.2% — the test reads the GENERATION at 6× against the fixture panel;
+the commit banks the band; stated so the number is not read as the test's
+weakness. THE BRANCH: if the gem region misbinds twice at stroke 1, HALT —
+the term question returns to this ruling's table with both artifacts, the
+demotion's compensator standing ready. Nothing improvises past it.
+
+**24j — the crop-frame dispatch item is WITHDRAWN.** The dispatch asked for
+a per-stroke crop frame no consumer takes — `emit` cannot crop; frame
+resolution is falsified as the lever by measurement (16× the pixels buys
+4.4%); and the fixture forbids crop generation outright. The strokes run at
+the profile frame 240×1024. The item was this seat's dispatch error;
+ledger.
+
+**24k — the executor's session, accounted.** The impossible-percentage
+catch (934.9% on the collar — the fifth moving-denominator instance, caught
+by its own impossibility before any number left the script, and preserved
+in `funnel.json` beside the corrected partition); the A32 conflict
+disclosed in the predictions commit as found-before; the P8 substitution
+error pre-named and then dodged by running the tool instead of modelling
+it; 46 probes, 46 invariance-ANDON passes at delta 0.000000. The
+self-scored miss — *"I reasoned about where a surface is and predicted how
+much of a frame it occupies"* — enters the calibration ledger in the
+executor's own words, beside its two firings (the anchor call and the
+garnet camera count). The standard holds.
+
+**TASK 2 IS GO** on this ruling's values: demotion first, eight strokes in
+the ruled order at the ruled recipe (steps 20 · cfg 2.5 · cn-strength 1.0 ·
+denoise 1.0 latent-masked · lora-w 0.0 re-verified BY VALUE per stroke ·
+seed 770700 · re-roll 770702 on the eye clause only), stroke stems v3,
+`estimate_credits` per submission quoted either way, per-stroke eye gates
+with the fifth-signature, 20b, 12e-gold, red-outside-L5 and deep-share
+watches, every rejection preserved under name. HALT 2 with the stroked
+asset staged for this seat's sheet-walk, then the Director.
+

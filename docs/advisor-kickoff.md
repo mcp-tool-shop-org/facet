@@ -173,7 +173,10 @@ occupancy map) OPENS ON HIS SENTENCE, never before. Queued at named conditions:
 the errand batch — e08_ceiling caption + bias-vs-wall-floor warning (wanted
 before any future ceiling quote) · e12_elevated ray-grid floor · mesh_stats
 silent-warning repair · the bg-probe's corner-median reference (the retired
-method's LAST live consumer, found six experiments late) · kickoff-glob discovery
+method's LAST live consumer, found six experiments late) · **texpass_iter
+edge-dist A3-port** (the A3 fix's missing consumer, found at handoff 7 §2d —
+the local-half-width bound, a correctness repair with its own anchored
+regression; NOT the stroke lane's lever, ruled 24c) · kickoff-glob discovery
 for HANDOFF_FILES · _per_invocation migration (all profiles together, wants no
 live dispatch) · .gitattributes LF pin (the CRLF warnings on every commit; wants
 the quiet tree) · e11 galleon/W3 re-emit (promotes if a training split is cut) —

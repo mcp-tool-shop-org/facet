@@ -236,7 +236,53 @@
    }
   },
   "texpass_brush.py": {
-   "_NOT_CLEARED": "FORBIDDEN on the prop until this block carries ruled values - the ship's Ruling 14/22/23 lifecycle, inherited whole, held by the beast from handoff 2 to its stroke-lane ruling exactly as designed. The stroke set, spiral order, prompts and recipe keys all derive from stage 1's hole map at this subject's own stroke-lane ruling; nothing here until stage 1 has run and reported.",
+   "_CLEARED": "RULED at E14 Ruling 24 (2026-08-08), the ship's lifecycle third execution - the block held from handoff 2 to the stroke-lane ruling exactly as designed (_NOT_CLEARED until 2026-08-08; the history is this sentence). The lane: EIGHT strokes, one per camera, hole-fill and the garnet repaint MERGED per stroke (Ruling 24e - after the demotion the stone's drifted territory is ordinary holes, a stroke's mask is its frame's current holes, the stems name everything the frame contains; 8 submissions, not the separate-class 14-16). Judged on the write-head's own achievable set, 69,239 texels = 1.891 points (Ruling 24b; the banked 210,907 territory is the ceiling context; the blade closes 14.9% of its territory BY DESIGN and the ribbon's rim goes to finalize dilation from the strokes' own paint - sub-triangle-edge sources, the dragon-finalize regime).",
+   "order": {
+    "value": "0,180,45,225,315,135,90,270",
+    "why": "RULED - E14 Ruling 24e. The spiral law read directly on a mostly-painted subject (every frame >= 56% painted): outward from the most-painted frames. The union is order-independent, so the order's freight is RISK CADENCE: the two 20b-hazard edge-on strokes run LAST with the most context they will ever have, after six low-risk eye gates; a second failure anywhere halts with the safe paint banked. Misbind signature pre-stated: a crossguard-like or figurative form in the ribbon near the guard, or the guard's edge-on face growing a face/skull motif - 4x on the crossing crop before the next stroke launches.",
+    "from": "E14 Ruling 24e; E14-handoff7-report.md section 3b"
+   },
+   "demotion": {
+    "value": "garnet repaint mask, 67904 texels, ONCE before stroke 1",
+    "why": "RULED - E14 Ruling 24f. A recorded state operation (tools/diagnostics/ home): holes=1, styled=False on exactly the ruled mask (the drifted-owned ownership partition, never colour; full mask, not the chromatic subset - the eye reads the whole stone), atlas bytes byte-identical before/after (the colour stays as shape context), own invariance printed. NAMED COMPENSATOR: restore the demoted mask's state from state0/. The commit ANDON untouched and unweakened - E08 A32 working, not worked around. The A0's styled count dips to 1,588,943 by construction; 94.6% measured recovery across the eight strokes.",
+    "from": "E14 Ruling 24f; E14-handoff7-report.md section 5"
+   },
+   "seed": {
+    "value": 770700,
+    "why": "RULED - E14 Ruling 24h: the garnet seed, the pair's primary. RE-ROLL SEED IS 770702, NOT the +1 convention - 770701 is pre-convicted on the stone (five drifted artifacts, no exceptions) and every frame carries the stone. One bounded re-roll per stroke on the eye clause only; a second failure is the result. The 770700 diagonal-sprawl record (18a) is priced, not re-seeded: strokes inpaint bounded masks into an iron-guard context; the 12e gold watch is live at every diagonal's crossing crop.",
+    "from": "E14 Rulings 24h/18a/19b"
+   },
+   "steps": {
+    "value": 20,
+    "why": "The pair-anchored recipe at the brush stage.",
+    "from": "E14 Ruling 24; generation_recipe_anchor"
+   },
+   "cfg": {
+    "value": 2.5,
+    "why": "The pair-anchored recipe at the brush stage.",
+    "from": "E14 Ruling 24; generation_recipe_anchor"
+   },
+   "cn-strength": {
+    "value": 1.0,
+    "why": "The brush stage's value (the twin stage runs 0.9 - different operand, the profile's own note).",
+    "from": "E14 Ruling 24; accepted-route brush value"
+   },
+   "denoise": {
+    "value": 1.0,
+    "why": "Latent-masked - only the hole synthesises.",
+    "from": "E14 Ruling 24; accepted-route brush value"
+   },
+   "lora-w": {
+    "value": 0.0,
+    "why": "L5a's register (ultra-realistic, no LoRA) at the brush stage - re-verified BY VALUE per stroke, because brush_cloud_step binds no profile; the inverted pre-flight on every submission.",
+    "from": "E14 Rulings 5a/24; E13 handoff 15 step 0 no-LoRA graph path"
+   },
+   "prompts": {
+    "value": "stroke stems v3",
+    "why": "RULED - E14 Ruling 24g: the view stems with L5's term strengthened to 'a deep red garnet gem pommel' for the stroke lane ONLY (the fixture's L5 word is UNCHANGED - the identity is the Director's). Grounds: the term did not fail on twins (byte-identical stems, 305 deg apart by seed) but a stroke faces adversarial violet context no twin ever did; 12e grammar holds (red IS garnet's colour). THE RED WATCH armed with it: red on any surface outside L5 at any eye gate is the signature (the gold watch's analogue). Drop map unchanged: boss off 90/270, rings nowhere. STROKE 1 (yaw 0) IS THE TERM'S LIVE TEST (Ruling 24i): the generation repaints the stone's whole visible face while commit banks 11.2% - the test reads the generation at 6x; if the gem misbinds twice at stroke 1, HALT - the term question returns to the ruling with both artifacts.",
+    "from": "E14 Rulings 24g/24i/19b; E12 Ruling 12e"
+   },
+   "thin_extent_note": "The write-head guard is RULED OFF for this lane - see texpass_iter.thin-extent (E14 Ruling 24d).",
    "_THE_RECIPE_NUMBERS_DO_NOT_REACH_THE_CLOUD_GRAPH": "Inherited finding (E04 stroke derivation): generation is cloud-only through brush_cloud_step.py, which binds NO profile - it carries its own DEFAULTS and reads prompt/negative from the prompts file. Agreement is by value, not construction; the stroke-clearing ruling re-verifies it per stroke. The no-LoRA graph path exists since E13 handoff 15 step 0, anchored on the ship's recorded graphs."
   },
   "texpass_iter.py": {
@@ -261,18 +307,23 @@
    },
    "facing-min": {
     "value": 0.25,
-    "why": "FIRST-RUN OPERATING POINT at the code default; stage 2 has not run on this subject.",
-    "from": "ship/beast pattern"
+    "why": "RULED TO STAND at E14 Ruling 24c (was a first-run operating point; the handoff-7 sweep measured it non-binding: 0.10 -> 28,708 vs 0.25 -> 27,010 at yaw 270). Note the funnel fact it creates: commit's 0.25 and the ceiling's 0.45 floors mean neither the territory nor the achievable set contains the other - the partition is three-way, never a fraction (the fifth moving-denominator instance was caught here).",
+    "from": "E14 Ruling 24c; E14-handoff7-report.md sections 2a/2d"
    },
    "edge-dist": {
     "value": 4.0,
-    "why": "FIRST-RUN OPERATING POINT at the code default; stage 2 has not run on this subject.",
-    "from": "ship/beast pattern"
+    "why": "RULED TO STAND at E14 Ruling 24c - the binding constraint, kept at the value two accepted assets spent. The sweep is banked (0 -> 66,235 / 1 -> 32,318 / 4 -> 27,010 at yaw 270; the 0->1 cliff costs 51% because a ~15 px edge-on blade is entirely boundary). The +61% alternative (1 + dilate 15) is DECLINED: the widening law's admission test has not run on the newly-admitted 1-px-from-boundary class, and the withheld rim closes by finalize dilation from the strokes' own paint at sub-triangle-edge distance. THE A3-PORT FINDING RIDES HERE (the missing consumer, found four experiments late): the local-half-width bound is a correctness repair in the errand batch with its own anchors - not the lane's lever (~+14% at the ribbon, which dies at ANY nonzero peel).",
+    "from": "E14 Ruling 24c; E14-handoff7-report.md section 2d; CLAUDE.md global-constant law"
    },
    "mask-dilate": {
     "value": 9,
-    "why": "FIRST-RUN OPERATING POINT at the code default; stage 2 has not run on this subject.",
-    "from": "ship/beast pattern"
+    "why": "RULED TO STAND at E14 Ruling 24c (swept: 5 -> 21,963 / 9 -> 27,010 / 15 -> 31,305 at yaw 270; moves only with edge-dist, and that pair is declined together - see edge-dist).",
+    "from": "E14 Ruling 24c; E14-handoff7-report.md section 2d"
+   },
+   "thin-extent": {
+    "value": 0.0,
+    "why": "RULED - E14 Ruling 24d: the guard is OFF on this subject, DECIDED-disabled (not undecided-disabled), explicit because silence resolves to inheritance. The 10d inversion is total, mechanism the plate: extent reads WIDTH edge-on (~0.15-0.2; every candidate <= 0.021 costs <= 0.3% of the stroke) and THICKNESS face-on (the whole blade is thin face-on: 0.005 costs 12.6%, 0.01 costs 39.4%, the blade's own 0.021 costs 82.1% of a 7,591-texel stroke). The strokes the guard would protect are the ones it disarms. The far-face threat is held off by facing-min on this geometry; live protections are the in-tool invariance ANDON and the per-stroke eye gates. RE-OPEN: far-face contamination at HALT 2's walk re-opens the value on that artifact's criterion (the beast's pattern).",
+    "from": "E14 Rulings 24d/10d; E14-handoff7-report.md section 4; probe/thin sweep"
    }
   },
   "restylize_views.py": {
@@ -378,13 +429,13 @@
   "from": "E14 Rulings 7/14; E14-handoff2-report.md section 3.2; E14-task4-report.md section 6; E14_prep/backdrop/ + pair/readout_*.json; E12 Rulings 8a/8b/15i"
  },
  "_still_suspended": {
-  "thin_extent": "CURVE MEASURED (E14 handoff 2 section 2.3, thin_curve.json + blade_region.json; banked at E14 Ruling 10d); THE VALUE REMAINS DEFERRED to its own ruling at the stage the guard serves - the beast's deferral pattern. What the curve says: the transition centres on the blade's own measured 0.021 outer thickness (two independent code paths agreeing); the character's 0.03 deletes 88.37% of the blade face-on and 59.011% of the whole figure; the withheld fraction INVERTS by view (edge-on dominant below ~0.0075, face-on above), so no pooled number can judge a candidate on this subject. The box-section caveat held as stated at draft: nothing responds to the ~0.00196 wall (0.002 withholds 0.591% of the blade, flat - the probe reads outer-to-outer). The blade region was landmark-derived (shoulder at 69.46% of height) and drawn back onto every view, checked by eye. NO inherited value transfers (character 0.03 figure-derived / ship 0.01 filament / beast 0.005 wing-artifact-criterion). Until the value's ruling texpass_iter's key stays deliberately absent: undecided runs the guard DISABLED (tool default 0.0), the beast's own mid-arc state.",
+  "thin_extent": "RESOLVED: RULED 0.0 at E14 Ruling 24d - the stage the guard serves arrived (the stroke lane) and the value was decided there with the 10d curve in the room, measured at the brush by the handoff-7 sweep (the inversion total: edge-on <= 0.3% at every candidate, face-on 12.6-82.1% - the strokes the guard would protect are the ones it disarms). See texpass_iter.thin-extent for the decided entry, its grounds and the re-open condition. The 10d curve's history (deferral, the box-section caveat, the landmark-derived blade region, no-inheritance) is preserved at Ruling 10d and handoff 2 section 2.3.",
   "cameras_elevated": "RESOLVED: measured at E14 handoff 2 section 2.4 (converged ray density, the sharpened 7b law) and ruled NONE at E14 Ruling 8 - see cameras.elevated for the decided entry and its grounds; the down-facing population is banked at Ruling 8b.",
   "backdrop_derivation": "RESOLVED: derived at E14 handoff 2 section 3.2 (9c913f5) - the S3 method, saturated optimum disqualified, occupancy CHECKED with the chroma floor applied first, the L1 sensitivity swept - and the word chosen at E14 Ruling 7 ('plain lavender background', hue family blue-violet). See the backdrop block. The 15i occupancy re-check rides with the styled pair.",
   "canny_pair": "RESOLVED: derived at E14 handoff 2 section 3.1 (the rung ladder on the designated clay's own renders, works-perfectly test FIRST, replica anchored 8/8 on the tool's own printed digits, no skip flag) and ruled 0.10/0.25 at E14 Ruling 6 - the keys now carry values in restylize_views.py above. The per-subject law held its second grey-on-grey case: the beast ruled 0.05/0.10, this subject 0.10/0.25 - two subjects of the class, two ruled pairs.",
   "palette_bands": "Derive from the fixture's named materials AFTER the styled target pair exists, cross-checked against the pair - never against the twins they will gate (non-circularity, kept). PRE-REGISTERED HAZARD, named at authoring: L1 steel and L2 iron are BOTH below any chroma floor by construction - they cannot carry hue bands at all, and their separation is by VALUE (the achromatic channel, 17d's permanent member, is the instrument that sees them; the hue gate is blind to this subject's two largest elements BY DESIGN). The band candidates are gold (warm) and the wine family (oxblood + garnet, likely one merged band - the D4/D5/D10 merge precedent). Suspend rather than invent; the dark-rows shadow caveat (15j) will bite on blackened iron exactly as it bit on charcoal.",
   "generation_recipe_anchor": "CONVERTED (E14 Ruling 16b, the Director's acceptance 2026-08-07: 'I agree with view 0 being the best. I love it. You have my acceptance.'): THE ACCEPTED PAIR IS THIS SUBJECT'S GENERATION ANCHOR - view 0 at seed 770700 (the pair's primary), view 1 at seed 770701 (the bounded re-roll; 770700's view-1 roll rejected against the occupancy audit and preserved), graphs saved pre-submission at E14_prep/cloud/pair_view*.json, stems = docs/experiments/E14-twin-prompts.json v1, canny 0.10/0.25, steps 20 / cfg 2.5 / denoise 0.92 / cn-strength 0.9, lora NONE. The restylize keys read SPENT with the pair as provenance (the ship's Ruling 6 pattern, third execution). Any future generation reproducing this subject's identity anchors here.",
-  "stroke_lane": "Spiral order, brush prompts and stroke cameras all derive from stage 1's hole map - the ship's Ruling 23 lifecycle, held by the beast. Nothing here until stage 1 has run and reported.",
+  "stroke_lane": "RESOLVED: RULED at E14 Ruling 24 (2026-08-08) - derived from stage 1b's hole map by handoff 7 Task 1 (the write-head measuring itself, 46/46 ANDON passes) and ruled at HALT 1: eight strokes, one per camera, hole-fill and garnet repaint merged, spiral order 0-180-45-225-315-135-90-270, the demotion as a recorded state op with a named compensator, stems v3, thin-extent 0.0. See texpass_brush.py's cleared block for every ruled value.",
   "twin_prompts_build": "EXECUTED at Task 4 (v1, c7dc53e) - the one-string premise failed narrowly and per-view stems are adopted with one drop (boss off 2/6; E14 Ruling 15a). See _fixtures.twin_prompts for the full verdict. The v2 rebuild at the twin dispatch carries Ruling 13's rings term if it survives the Director's window."
  },
  "_tools_not_on_route": {
