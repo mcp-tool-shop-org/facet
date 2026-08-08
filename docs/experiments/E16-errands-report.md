@@ -40,7 +40,56 @@ rebuilt DB rides with errand 1, whose subject is the index tool.
 
 ## 1. Per-errand results
 
-*(filled in as each errand lands — one errand, one commit, one anchor)*
+**Summary — one errand, one commit, one anchor.** Ten repairs landed; **one
+halted with nothing changed** because its anchor was falsified.
+
+| # | finding | change | anchor | commit |
+|---|---|---|---|---|
+| 1 | Ruling 31f — verify's `↑` crashes under cp1252 | 17 print literals folded to ASCII (AST-scoped) + stdout errors relaxed | **HELD** — 19/19 under BOTH encodings; DB byte-identical both ways | `2a86329` |
+| 2 | CRLF warning on every commit | `.gitattributes`, LF pinned both sides, renormalized | **HELD** — status quiet, zero content staged, verify PASSED | `76d3c1f` |
+| 3 | Ruling 31d.1 — the fallback count is structural in surface-aware mode | print branches; flood path verbatim | **HELD** — `atlas_final.png` `a0f51101…` on both sides, = the recorded artifact | `0e60e45` |
+| 4 | Ruling 29c — unprofiled `emit` guesses a 752-wide frame | `emit` refuses without `--profile`/`--aspect`; 2 callers gain explicit frames | **HELD** — recorded yaw-0 job byte-identical both sides; unprofiled exits 1, writes nothing | `c8c31ee` |
+| 5 | Ruling 2d — `mesh_stats`' warning fires on a proxy | **none — HALTED** | ⚠ **FAILED** — the dispatch's two clauses contradict on the data | `d0cada0` |
+| 6 | Rulings 6e/10b — false captions, a check that cannot fail, unwarned bias | captions built from the values; overlap line honest; wall-floor warning; `settings_index` | **HELD** — all 19 values identical; N8 = 51.33% exact | `0defa32` |
+| 7 | Ruling 10a — ray grid taken from a generation frame | grid derived from rays-per-mean-face; ratio printed; `--exact-grid` | **HELD** — 53.967% vs the recorded 53.920% | `95f8c1f` |
+| 8 | Ruling 21e — the retired corner median's last live consumer | fitted border-ring surface sampled per texel; one `fit_background` | **HELD** — all five projection outputs byte-identical | `3d5b65e` |
+| 9 | the kickoff list is LISTED, not discovered | sorted glob + inverse guard + printed list | **HELD** — claims sweep byte-identical; 2 hidden rows recovered | `72b955c` |
+| 10 | Ruling 24c — the A3 fix's missing consumer | `--edge-mode local`, default `global`; `local_thickness` shared | **HELD** — stroke 1 = 4,344 texels, four outputs byte-identical | `006d3bd` |
+| 11 | Ruling 6d — the fifth form is minted | 7 sites renamed; both readers; E16-10's debt repaid | **HELD** — 0 STALE, 0 new UNDECIDED, verify PASSED | `c284693` |
+
+**Predictions scored — 11 committed blind, before any tool was read into.**
+
+| # | outcome | note |
+|---|---|---|
+| 1 | **HELD** | and the sharper half carried it: the literal fix alone was *not* sufficient — 17 cp1252-fatal cells live in the DB |
+| 2 | **HELD** | renormalize staged zero content; the index was already LF |
+| 3 | **HELD** | byte-identical, and against the recorded artifact rather than itself |
+| 4 | **HELD** | I predicted ≥1 live caller lacked `--profile`; there were two |
+| 5 | **HELD** | I predicted I could not vouch for galleon/beast — both moved, and in the *opposite* direction to the one I was watching |
+| 6 | **HELD** | captions cannot move a reach number |
+| 7 | **HELD** | ±0.5 points predicted, 0.047 measured; ray count up 37×. Wall-time claim overstated — 17 s is cheap |
+| 8 | **SPLIT** | direction right (6 of 7 fell); magnitude wrong (1.65× not 2–4×); and I missed the one view that *rose* — the most informative result |
+| 9 | **FALSIFIED** | I said the list was complete. It was not — and I had pre-written that the delta would be the finding, so the glob was not trimmed to match |
+| 10 | **HELD** | byte-identical at the default |
+| 11 | **HELD** | the reader that mattered was the registry, catching flags I added an errand earlier |
+
+**Nine held, one split, one falsified.** The two that did not hold are the two
+that taught something, which is the point of predicting before looking.
+
+**Four dispatch corrections, each found by checking the text against source
+rather than building on it** — the arc's own standing lesson, paid a fifth time:
+
+1. **E16-4** — the flag is `--aspect`, not `--frame`.
+2. **E16-6** — `51.005%` is not an `e08_ceiling` output; it is a different
+   camera *set* from a different tool. Two "N6"s, conflated.
+3. **E16-7** — the recorded ladder needs `--fit-axis height`; at the tool's
+   default the sword's frame gives 15.013%, not the recorded 13.851%.
+4. **E16-8** — the probe is *not* report-only; it carries an ANDON, armed at 2.0
+   on `character.json`.
+
+---
+
+## 1b. Per-errand detail
 
 ### E16-1 — `facet_index.py` verify ASCII repair (Ruling 31f) · ANCHOR HELD
 
@@ -739,3 +788,34 @@ dispatch's named trap is fixing something no ruling queued. The eleven run as
 dispatched; this is reported as a twelfth with a diagnosis ready — the repair is
 per-process-unique temp paths, and its anchor is two concurrent verifies both
 returning byte-identity.
+
+---
+
+## 3. What the advisor is left to rule on
+
+Nothing here was decided by this session.
+
+1. **E16-5, the halt.** Three candidate conditions for `mesh_stats`' warning,
+   with the measurement that separates them, and the prior question of whether a
+   character-shaped warning should carry a subject class at all.
+2. **The twelfth errand** — leg 1's fixed temp paths racing under concurrency
+   (Ruling 35 flagged it to this lane after the dispatch was written).
+3. **`texpass_iter.edge-frac` classification** — declared as a profile value in
+   E16-11; on `project_twins` the same flag is CODE in the classification table's
+   section 6. Moving it is a table edit an executor should not make.
+4. **`finalize.json`'s `mean_fallback: 0`** — the print was repaired in E16-3;
+   the JSON field still carries the structural zero unlabelled, and a JSON field
+   is how a number gets quoted into three subjects' reports.
+5. **`e12_elevated`'s greedy winner** — the four elevated candidates are tied to
+   within 0.001 points while ray density alone moves the field by 0.6, and the
+   winner flips with density. The tool reports a WINNER from a field it cannot
+   separate; nothing was changed, because the greedy method is cited in closed
+   rulings.
+6. **`53.920%` is not converged** — it rises to 54.849% at 40 rays/face. The
+   record's "converged" label is not supported by its own ladder.
+7. **`character.json`'s `bg-max-pct 2.0`** — the only profile arming the
+   background probe, and E16-8 moved the quantity it gates. On the sword every
+   view reads 6–60% both before and after, 3–30× over that bound. W3's prep tree
+   has no `meta.json` on this rig, so it was not measurable here.
+8. **`ship.json`'s duplicate off-route declaration** — the same three tools
+   listed twice, once under a name the sweep does not read at top level.
