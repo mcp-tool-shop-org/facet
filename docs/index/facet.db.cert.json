@@ -2,10 +2,10 @@
  "andon": [],
  "corpus": {
   "files": 239,
-  "id": "0a422990f01e067e4d29f88d01721ca7a5fb317f646ddd1bbc73d4f50605377e",
+  "id": "575bac316045b0b9c4cfc527003ac36711b0434cd6d5c234a7c91b7148ab0925",
   "manifest": {
    "CLAUDE.md": "e284369e64f398a3013f76e76b2ae7300720fa2a2acedc7296451bac0ff4e073",
-   "README.md": "5b316041a67c7d7dedb0e660084d6ed23857f32ec2f82881aea362433db94d5a",
+   "README.md": "e11ffb3f63b782ed4b00b99a3b6ba40f5ff10553560f30589a3ff7c99404a8bf",
    "docs/advisor-kickoff.md": "ad1a4b854263194415068c02b4d30dcfabea1de64169863807a97b23ed1e65d9",
    "docs/arc-history.md": "5b2876b3fed7be95a6efc984f5e5a00b7c1675b10a169ee43803b50e091b48a8",
    "docs/brand/README.md": "81f425b6a101135b43463b35468f08a2db37af39c856c01f7fbdb6ce66598226",
@@ -259,7 +259,7 @@
  "db": {
   "bytes": 9060352,
   "path": "docs/index/facet.db",
-  "sha256": "b8875511a1022d10c52fa783ea0207849c81c31d5095226926eb86911c653c85"
+  "sha256": "96e0a3a7890c72028c6bc3e1a2dc438da02f59d070728bd784c7f22bbae67e79"
  },
  "determinism_leg": "byte-identity",
  "failures": [],
@@ -393,7 +393,7 @@
  ],
  "unattributed_failures": [],
  "verb": "record_build",
- "verified_utc": "2026-08-08T18:14:58Z",
+ "verified_utc": "2026-08-08T18:40:36Z",
  "verify_exit_code": 0,
  "written_by": "tools/record_mcp.py"
 }
