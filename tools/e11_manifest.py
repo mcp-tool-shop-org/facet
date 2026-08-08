@@ -177,7 +177,7 @@ def dragon_palette():
     }
 
 
-def build_tone_operands(tree):
+def build_tone_operands(tree, no_copy=False):
     """Assemble the per-view harmonization operands the RULED projection consumed.
 
     Two recorded files, eight rows, every row carried VERBATIM from its source and
@@ -185,7 +185,14 @@ def build_tone_operands(tree):
     names is on disk; and that PNG's sha256 equals the row's own sha256_out — so the
     operands demonstrably describe the file that was projected, not a namesake.
     Both source files are also copied into the tree undeclared, so a ruling that
-    prefers a different declaration has them in hand with no re-run."""
+    prefers a different declaration has them in hand with no re-run.
+
+    no_copy=True is the READ-ONLY mode the anchor comparison needs (E14 handoff 10
+    P2b): a prior subject's committed tree must not be opened for writing to
+    re-emit its manifest, and this function otherwise writes three files into it
+    unconditionally. In that mode nothing is written — the sidecar and both sources
+    already on disk are VERIFIED instead, which is strictly more checking than the
+    write path does."""
     hz = J(DRAGON_TWINS, "harmonize")
     srcs, rows = {}, {}
     for name in ("operands.json", "operands_v3r.json"):
@@ -234,12 +241,28 @@ def build_tone_operands(tree):
         "views": rows,
     }
     dest_dir = J(tree, "_operands_sources")
+    path = J(tree, "tone_transform_operands.json")
+    if no_copy:
+        for name in srcs:
+            p = J(dest_dir, name)
+            assert os.path.exists(p), f"ANDON: --no-copy but {p} is missing"
+            assert sha256(p) == srcs[name]["sha256"], \
+                f"ANDON: {p} no longer matches its source {J(hz, name)}"
+        assert os.path.exists(path), f"ANDON: --no-copy but {path} is missing"
+        have = open(path, encoding="utf-8").read()
+        if have != json.dumps(out, indent=1):
+            raise SystemExit(
+                f"ANDON: {path} differs from what this tool would assemble — "
+                f"the operands sidecar in the tree is not this code's output")
+        print(f"[manifest] tone operands VERIFIED in place (read-only): "
+              f"{len(rows)} views, sidecar content identical, "
+              f"{len(srcs)} sources sha-matched; nothing written")
+        return "tone_transform_operands.json"
     os.makedirs(dest_dir, exist_ok=True)
     for name in srcs:
         shutil.copyfile(J(hz, name), J(dest_dir, name))
         assert sha256(J(dest_dir, name)) == srcs[name]["sha256"], \
             f"ANDON: copy of {name} changed bytes"
-    path = J(tree, "tone_transform_operands.json")
     with open(path, "w", encoding="utf-8") as fh:
         json.dump(out, fh, indent=1)
     print(f"[manifest] tone operands assembled: {len(rows)} views from "
@@ -473,7 +496,7 @@ def main():
         # typed as a literal.
         ref_vid = f"y+{DRAGON_REF_VIEW * 45:03d}_e+00"
         tt["reference"] = safe_id(ref_vid)
-        tt["operands"] = build_tone_operands(tree)
+        tt["operands"] = build_tone_operands(tree, no_copy=args.no_copy)
         asset["tone_transform"] = tt
     if S.get("render_derivation"):
         asset["render_derivation"] = S["render_derivation"]
