@@ -39,13 +39,32 @@ def test_t03_unprofiled_emit_refuses(tmp_path):
 def test_t03_control_explicit_aspect_passes_the_guard(tmp_path):
     """The can-fail proof: with --aspect explicit the guard stands down, and
     the same dummy paths now fail DOWNSTREAM (loading state) without the
-    ANDON text - so the guard, not an import error, produced T3's refusal."""
+    ANDON text - so the guard, not an import error, produced T3's refusal.
+
+    HARDENED at T18, having been measured passing for the wrong reason: under
+    an interpreter without open3d this control PASSED, because a
+    ModuleNotFoundError satisfies both "exits non-zero" and "carries no ANDON
+    text" - a check that cannot fail, sitting inside the control that exists
+    to prove another check CAN. It was the eighth open3d-touching test in the
+    7-failed/20-passed run and the reason that count is 7 and not 8. T18's
+    session refusal makes the state unreachable; this asserts the reason
+    directly as well, because the repo's rule is to fix a root cause at every
+    consumer rather than only where it was noticed.
+    """
     state = tmp_path / "no_such_state"
     prep = tmp_path / "no_such_prep"
     rc, out, err = run_py(
         "texpass_iter.py",
         ["emit", "--state", state, "--prep", prep, "--aspect", "752,1024"])
     assert rc != 0  # dummy paths cannot load
-    assert "E14 Ruling 29c" not in (out + err), (
+    text = out + err
+    assert "E14 Ruling 29c" not in text, (
         "the guard fired despite an explicit --aspect - the legacy path is gone:\n%s"
-        % (out + err))
+        % text)
+    assert "ModuleNotFoundError" not in text and "ImportError" not in text, (
+        "this control passed on an import failure, not on the guard standing "
+        "down - the environment cannot drive the tool (see T18):\n%s" % text)
+    # it must have got far enough to fail on the ABSENT INPUTS, which is the
+    # only failure that proves the guard let it through
+    assert "FileNotFoundError" in text or "No such file" in text, (
+        "expected a missing-input failure downstream of the guard:\n%s" % text)

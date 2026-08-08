@@ -37,6 +37,94 @@ def tool(rel):
     return str(TOOLS / rel)
 
 
+# ---------------------------------------------------------------------------
+# T18 - the interpreter pre-check (E17 Ruling 2)
+# ---------------------------------------------------------------------------
+# The trap, measured at TWO seats on 2026-08-08: run under an interpreter
+# without open3d and this suite returns "7 failed, 20 passed" with import
+# tracebacks - which reads as a suite defect rather than an environment one.
+# The ruling seat lost a diagnosis to it (its first hypothesis, an encoding
+# delta, was stated, tested and FALSIFIED before the ModuleNotFoundError in
+# T3's own failure text named the true mechanism).
+#
+# MEASURED, not assumed - the third-party modules this suite's tools import at
+# MODULE level, so a tool cannot be invoked at all without them:
+#     texpass_iter      numpy scipy PIL trimesh open3d   (T2, T3, T11)
+#     project_twins     numpy scipy PIL trimesh open3d   (T10)
+#     e08_ceiling       numpy         trimesh open3d     (T8)
+#     e12_elevated      numpy         trimesh open3d     (T9)
+#     mesh_stats        numpy scipy   trimesh            (T12)
+#     texpass_finalize  numpy     PIL                    (T7)
+#     facet_index, e04_registry_sweep   stdlib only      (T1, T4, T5, T13, T16)
+# The stdlib-only pair is exactly why a wrong interpreter reads as a PARTIAL
+# green instead of an obvious environment error - the twenty that pass are the
+# ones that never needed the environment.
+REQUIRED_CHILD_MODULES = ("numpy", "scipy", "PIL", "trimesh", "open3d")
+
+_PROBE_SRC = (
+    "import importlib, sys\n"
+    "miss = []\n"
+    "for m in sys.argv[1:]:\n"
+    "    try:\n"
+    "        importlib.import_module(m)\n"
+    "    except Exception:\n"
+    "        miss.append(m)\n"
+    "sys.stdout.write(' '.join(miss))\n"
+)
+
+
+def probe_child_modules(interpreter, modules=REQUIRED_CHILD_MODULES):
+    """Which of `modules` the child interpreter cannot import, in order.
+
+    A REAL import, not importlib.util.find_spec: a present-but-broken install
+    (a DLL that will not load) produces the same trap as an absent one, and
+    find_spec would call it present. Measured cost on the rig: ~1.2 s once per
+    session, against a 93 s suite.
+
+    `interpreter` is sys.executable in the only caller, so it is by definition
+    launchable; an OSError is still handled rather than left to surface as a
+    harness crash during the check that exists to prevent confusing crashes.
+    """
+    try:
+        p = subprocess.run([str(interpreter), "-c", _PROBE_SRC, *modules],
+                           capture_output=True, timeout=600)
+    except OSError:
+        return tuple(modules)
+    return tuple(p.stdout.decode("ascii", errors="replace").split())
+
+
+def interpreter_refusal(interpreter, missing):
+    """The one loud line the wrong-interpreter run gets instead of N failures."""
+    return (
+        "ANDON: this interpreter cannot import %s, so the tools this suite "
+        "tests cannot run at all.\n"
+        "  interpreter: %s\n"
+        "  The repo's environment law (CLAUDE.md, Environment) names ONE python:\n"
+        "    E:\\AI-Models\\trellis2-env\\Scripts\\python.exe -m pytest\n"
+        "  CI installs the same modules by pin (.github/workflows/ci.yml).\n"
+        "  Refusing instead of running, because a wrong interpreter does not\n"
+        "  fail cleanly here: the stdlib-only tools (facet_index,\n"
+        "  e04_registry_sweep) keep passing while everything that touches a\n"
+        "  mesh fails with import tracebacks - 7 failed / 20 passed, measured\n"
+        "  at two seats. That reads as a suite defect instead of an\n"
+        "  environment one. [E17 Ruling 2]"
+        % (", ".join(missing), interpreter))
+
+
+def pytest_sessionstart(session):
+    """Assert the child interpreter's capability ONCE, before anything runs.
+
+    Deliberately strict - it refuses the whole session rather than only the
+    tests that need a mesh library. Under a wrong interpreter every result is
+    suspect: the twenty that would still pass are the ones that never exercise
+    the environment, and "20 passed" is precisely the misreading this closes.
+    """
+    missing = probe_child_modules(sys.executable)
+    if missing:
+        pytest.exit(interpreter_refusal(sys.executable, missing),
+                    returncode=pytest.ExitCode.USAGE_ERROR)
+
+
 def run_py(script_rel, args, env_extra=None, cwd=None, timeout=3600, encoding=None):
     """Run a repo tool with the suite's own interpreter; decode output explicitly.
 
