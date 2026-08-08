@@ -41,6 +41,15 @@ def test_t01_build_and_verify(built_db):
     # visible rather than inferred from a count that looks plausible
     assert "[corpus] ruling documents discovered by the sorted glob" in out
     assert "[corpus] kickoff documents discovered by the sorted glob" in out
+    # T15 (E17 amendment): the E16 arc's count legs are present and passing.
+    # The COUNT itself is not pinned here - verify's own grep==db comparison
+    # is the invariant; this asserts the legs exist and hold.
+    import re
+    for leg in ("E16 numbered rulings", "E16 lettered sub-rulings"):
+        assert re.search(re.escape(leg) + r"\s+grep\s+\d+\s+db\s+\d+\s+ok", out), (
+            "count leg %r missing or not ok in verify output" % leg)
+    assert re.search(r"E16 sequence\s+ruling 1-7 gaps: none", out), (
+        "E16 sequence check missing or gapped")
     # reported, not asserted: which determinism leg held (the .dump fallback is
     # pre-registered and legal; byte-identity is what this rig has measured)
     det = [ln for ln in out.splitlines() if ln.startswith("determinism leg that held:")]

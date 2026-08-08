@@ -1367,6 +1367,16 @@ COUNT_CHECKS = [
      r"^\*\*\d+[a-z] +[—–-]", "rulings", "arc='E14' AND kind='sub-ruling'"),
     ("E14 handoffs", "docs/experiments/E14-executor-kickoff.md",
      r"^## Session handoff", "handoffs", "arc='E14'"),
+    # E16 legs added 2026-08-08 (E17 T15, the E15 Ruling 8b pattern): the ruling
+    # landed this same day and its rows enter the gate the day they exist. E17's
+    # own legs deliberately do NOT: no E17-ruling.md exists yet and its kickoff
+    # carries no handoff headers, so an E17 leg today would grep a file that is
+    # not there — a check that cannot fail. Those legs belong to the window
+    # where the E17 ruling lands.
+    ("E16 numbered rulings", "docs/experiments/E16-ruling.md", r"^## Ruling (\d+)\b",
+     "rulings", "arc='E16' AND kind='ruling'"),
+    ("E16 lettered sub-rulings", "docs/experiments/E16-ruling.md",
+     r"^\*\*\d+[a-z] +[—–-]", "rulings", "arc='E16' AND kind='sub-ruling'"),
 ]
 
 
@@ -1827,7 +1837,9 @@ def verify(db_path, top_n=3):
            # E14's bound is 1-16 as of the 2026-08-07 housekeeping fold (Ruling 16
            # the latest); the arc is LIVE, so later rulings print as completeness
            # notes above the bound — the designed behaviour, not a widening.
-           ("E14", "ruling", 1, 16)]
+           ("E14", "ruling", 1, 16),
+           # E16 closed at Ruling 7 (E16-ruling.md, 2026-08-08); bound as ruled.
+           ("E16", "ruling", 1, 7)]
     for arc, kind, lo, hi in seq:
         gaps = _sequence_gaps(con, arc, kind, lo, hi)
         print("  %-28s %s %d-%d gaps: %s"
