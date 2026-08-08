@@ -28,7 +28,25 @@ strict, hue inclusive on both edges. This reading was fixed before the count was
 the alternative (no floor) is not run and not compared, because choosing between them by
 which one returns 1,086 would be tuning a mask against the number it is asserted to hit.
 
-  ASSERT THE COUNT IS EXACTLY 1,086. A different count is a HALT, not a tune (Ruling 27c).
+AMENDED 2026-08-08 at E14 RULING 28d, in place, with the reason. As first written this file
+asserted 1,086 against the predicate above and HALTED at 1,431 - correctly: Ruling 27c had
+attached an OUTCOME set's count to three DESCRIPTIVE legs, and a set's description is not its
+generator. Read as a generator the legs admit 350 more (the shallow end of the same rotated
+gold arc) and exclude 5 (sub-floor at stage 1b, so the gold leg cannot see them). Ruling 28d
+rules the mask to be THE UNION of both clauses:
+
+  clause P (the predicate)  territory AND z <= bottom+0.010 AND stage-1b gold above the floor
+  clause O (the outcome)    territory AND forbidden AFTER the re-projection AND NOT before
+  THE MASK = P OR O         1,431 + 5 disjoint = 1,436
+
+Clause O is licensed as a LOCATED-DEFECT predicate on a known, deterministic prior state: the
+tautology trap needs a selection tuned against results, and this set was fully determined by a
+recorded operation before anyone looked at it. Its operand is the post-re-projection atlas,
+supplied by --after; the tool additionally re-computes O on the LIVE atlas and asserts the two
+agree, which proves in-tool - not in a report - that stroke 1 is orthogonal to this repair.
+
+  ASSERT ALL THREE COUNTS: P = 1,431, O = 1,086, UNION = 1,436.
+  Any other number is a HALT, not a tune (Ruling 28d; the assert stays absolute per 28b).
 
 WHAT IT WRITES. Atlas colour only, restored from state0/. The holes and styled channels are
 asserted BYTE-IDENTICAL after the write - this op is the demotion's mirror image, which
@@ -40,8 +58,8 @@ declared - `--verify-undo` runs repair then undo on a scratch copy and asserts a
 state files come back byte-identical, before the real op is offered (the practice Ruling 24l
 entered as the one to repeat).
 
-  e14_repair_collar.py --state DIR --state0 DIR --prep DIR --territory MASK.npy
-                       [--expect 1086] [--undo] [--verify-undo] [--dry-run]
+  e14_repair_collar.py --state DIR --state0 DIR --prep DIR --territory MASK.npy --after ATLAS
+                       [--undo] [--verify-undo] [--dry-run]
 
 Standards compliance: PIN_PER_STEP - the mask is re-derived from named inputs, the landmark
 is re-walked rather than pasted, state0's SHA is asserted against the works-perfectly gate's
@@ -65,7 +83,13 @@ ap.add_argument("--state", required=True, help="the run state this op edits (the
 ap.add_argument("--state0", required=True, help="the pristine stage-1b state (the source of truth)")
 ap.add_argument("--prep", required=True)
 ap.add_argument("--territory", required=True, help="the re-projection's territory mask .npy")
-ap.add_argument("--expect", type=int, default=1086, help="the count Ruling 27c names")
+ap.add_argument("--after", required=True,
+                help="the POST-RE-PROJECTION atlas - clause O's 'forbidden after' operand. "
+                     "Required rather than defaulted: the set is defined against a named "
+                     "state, and letting it default would let a later state redefine it.")
+ap.add_argument("--expect-p", type=int, default=1431, help="clause P's count (Ruling 28d)")
+ap.add_argument("--expect-o", type=int, default=1086, help="clause O's count (Ruling 28d)")
+ap.add_argument("--expect", type=int, default=1436, help="THE UNION's count (Ruling 28d)")
 ap.add_argument("--stage1b-sha", default="69f61f32a3e2281aff653fb2",
                 help="the works-perfectly gate's recorded stage-1b atlas SHA-256 prefix")
 ap.add_argument("--undo", action="store_true", help="THE NAMED COMPENSATOR")
@@ -76,6 +100,7 @@ args = ap.parse_args()
 J = os.path.join
 
 GOLD_LO, GOLD_HI = 42.0, 104.0          # canon/E14-longsword-palette.json, band "gold"
+FORB_LO, FORB_HI = 104.0, 290.0         # the same file's forbidden span, clause O's band
 CMIN = 12.0                             # the same file's min_chroma
 Z_MARGIN = 0.010                        # Ruling 27c's "within 0.010 of the bottom edge"
 
@@ -139,33 +164,65 @@ while i + 1 < len(exts) and exts[i + 1] <= exts[i]:
 Z_BOT = zs[i]
 assert abs(Z_BOT - 0.4340) < 1e-6, f"ANDON: the stone landmark reads {Z_BOT}, not 0.4340"
 
-# stage-1b colour on the valid texels, for the provenance leg
-a0 = np.asarray(Image.open(a0p).convert("RGB"), dtype=np.float32) / 255.0
-lab0 = to_lab(a0.reshape(-1, 3)[vidx].astype(np.float64))
-C0 = np.hypot(lab0[:, 1], lab0[:, 2])
-H0 = np.degrees(np.arctan2(lab0[:, 2], lab0[:, 1])) % 360.0
+def lch_of(path):
+    a = np.asarray(Image.open(path).convert("RGB"), dtype=np.float64) / 255.0
+    lab = to_lab(a.reshape(-1, 3)[vidx])
+    return (np.hypot(lab[:, 1], lab[:, 2]),
+            np.degrees(np.arctan2(lab[:, 2], lab[:, 1])) % 360.0)
+
+
+C0, H0 = lch_of(a0p)                      # stage 1b - clause P's provenance, clause O's BEFORE
+C1, H1 = lch_of(args.after)               # post re-projection - clause O's AFTER
+CL, HL = lch_of(J(args.state, "atlas.png"))   # the LIVE state, for the orthogonality check
 
 leg_terr = terr_v
 leg_edge = P[:, 2] <= Z_BOT + Z_MARGIN
 leg_gold = (C0 > CMIN) & (H0 >= GOLD_LO) & (H0 <= GOLD_HI)
-sel = leg_terr & leg_edge & leg_gold
-N = int(sel.sum())
-flat = vidx[sel]
+
+
+def forbidden(C, H):
+    return (C > CMIN) & (H >= FORB_LO) & (H <= FORB_HI)
+
+
+clause_p = leg_terr & leg_edge & leg_gold
+clause_o = leg_terr & forbidden(C1, H1) & ~forbidden(C0, H0)
+union = clause_p | clause_o
+NP, NO, N = int(clause_p.sum()), int(clause_o.sum()), int(union.sum())
+only_o = clause_o & ~clause_p
+flat = vidx[union]
 
 print(f"[repair] landmark re-walked: the stone's bottom edge z = {Z_BOT:.4f} (asserted)")
-print(f"[repair] predicate legs, each on the {len(vidx):,} valid texels:")
+print(f"[repair] legs, each on the {len(vidx):,} valid texels:")
 print(f"[repair]   territory                        {int(leg_terr.sum()):,}")
 print(f"[repair]   z <= {Z_BOT:.4f} + {Z_MARGIN}                {int(leg_edge.sum()):,}")
 print(f"[repair]   stage-1b gold {GOLD_LO:g}-{GOLD_HI:g} above C* {CMIN:g}     {int(leg_gold.sum()):,}")
 print(f"[repair]   territory AND edge                {int((leg_terr & leg_edge).sum()):,}")
-print(f"[repair] THE MASK (all three legs)          {N:,}")
-assert N == args.expect, (
-    f"ANDON: the ruled predicate yields {N:,} texels, but Ruling 27c names {args.expect:,}. "
-    f"The mask this op would edit is not the mask the ruling adopted. A different count is a "
-    f"HALT, not a tune. HALT.")
-print(f"[repair] ASSERTED against Ruling 27c: exactly {args.expect:,} texels")
-print(f"[repair] their stage-1b hue: median {np.median(H0[sel]):.1f}  "
-      f"C* median {np.median(C0[sel]):.1f}   z range {P[sel, 2].min():.4f}-{P[sel, 2].max():.4f}")
+print(f"[repair] CLAUSE P  territory AND edge AND stage-1b gold      {NP:,}")
+print(f"[repair] CLAUSE O  territory AND forbidden-after AND NOT before  {NO:,}")
+print(f"[repair]   of clause O, outside clause P                     {int(only_o.sum()):,}")
+print(f"[repair] THE RULED MASK  P OR O                              {N:,}")
+for got, want, nm in ((NP, args.expect_p, "clause P"), (NO, args.expect_o, "clause O"),
+                      (N, args.expect, "the union")):
+    assert got == want, (
+        f"ANDON: {nm} yields {got:,} texels, but Ruling 28d names {want:,}. The mask this op "
+        f"would edit is not the mask the ruling adopted. A different count is a HALT, not a "
+        f"tune. HALT.")
+assert N == NP + int(only_o.sum()), "ANDON: the union is not P plus the O-only remainder"
+print(f"[repair] ASSERTED against Ruling 28d: P {args.expect_p:,} / O {args.expect_o:,} / "
+      f"union {args.expect:,}; the {int(only_o.sum())} O-only texels are disjoint from P")
+
+# ORTHOGONALITY, asserted in the tool rather than claimed in a report: clause O re-computed
+# on the LIVE atlas must give the SAME set. If a stroke had touched this territory the two
+# would differ, and the repair would be editing paint that a commit had already banked.
+clause_o_live = leg_terr & forbidden(CL, HL) & ~forbidden(C0, H0)
+assert np.array_equal(clause_o, clause_o_live), (
+    "ANDON: clause O computed on the LIVE atlas differs from clause O on the "
+    "post-re-projection atlas - a stroke has touched the repair territory. HALT.")
+print(f"[repair] ASSERTED: clause O is identical on the LIVE atlas - no committed stroke "
+      f"touches this repair's texels")
+print(f"[repair] the union's stage-1b hue: median {np.median(H0[union]):.1f}  "
+      f"C* median {np.median(C0[union]):.1f}   "
+      f"z range {P[union, 2].min():.4f}-{P[union, 2].max():.4f}")
 
 
 def apply_repair(state, tag="repair"):
@@ -200,11 +257,15 @@ def apply_repair(state, tag="repair"):
     print(f"[{tag}] ASSERTED: colour changed inside the ruled mask ONLY; "
           f"holes.png and styled_mask.npy BYTE-IDENTICAL (a colour-only operation)")
     print(f"[{tag}] atlas sha256  {sha_a_before[:24]}  ->  {sha_a_after[:24]}")
-    return {"op": tag, "ruling": "E14 Ruling 27c", "mask_texels": N,
+    return {"op": tag, "ruling": "E14 Ruling 28d", "mask_texels": N,
+            "clause_P": NP, "clause_O": NO, "O_only": int(only_o.sum()),
             "predicate": {"territory": os.path.abspath(args.territory),
                           "z_bottom": float(Z_BOT), "z_margin": Z_MARGIN,
-                          "gold_band": [GOLD_LO, GOLD_HI], "chroma_floor": CMIN,
-                          "hue_source": "state0/atlas.png (the stage-1b atlas)"},
+                          "gold_band": [GOLD_LO, GOLD_HI],
+                          "forbidden_band": [FORB_LO, FORB_HI], "chroma_floor": CMIN,
+                          "before_state": "state0/atlas.png (the stage-1b atlas)",
+                          "after_state": os.path.abspath(args.after),
+                          "clause_O_identical_on_live": True},
             "legs": {"territory": int(leg_terr.sum()), "edge": int(leg_edge.sum()),
                      "gold_at_1b": int(leg_gold.sum()),
                      "territory_and_edge": int((leg_terr & leg_edge).sum())},

@@ -1,0 +1,59 @@
+{
+ "_purpose": "The longsword's STRUCTURE PARTITION in mesh z, derived once from the mesh's own width profile so that every per-stroke watch is located to a structure the geometry defines rather than to a row band. Row bands contaminated a colour measurement twice on this route (handoff 5's landmark walked past the collar to the grip neck; Ruling 25b's gem band contained the gold collar), and the standing cut since 25b is to isolate a structure by its own footprint.",
+ "_derivation": "tools/diagnostics/e14_stroke_watch.py's own camera is not involved: the bands come from walking prep_uv.glb's vertices in 0.006 z slices and reading the x-extent of each slice. Every boundary below is placed at a LOCAL MINIMUM of that curve, and the curve's measured values on both sides are quoted in each entry so the placement can be checked without re-running the walk. The mesh is normalised the way every consumer on this route normalises it: v = [x, -z, y] / max(|v|) * 0.5, giving a z span of exactly -0.5000 to 0.5000.",
+ "_the_stone_boundary_is_not_derived_here": "z = 0.4340 is the landmark e14_demote_garnet.py and e14_repair_collar.py both re-walk and ASSERT (Ruling 24f). It is transcribed, not re-derived, so the three files cannot drift apart.",
+ "_units": "mesh z after the standard normalisation; the pommel is at +z and the blade tip at -z.",
+ "from": "E14 handoff 8; profile walk at 0.006 resolution over prep_uv.glb",
+ "structures": [
+  {
+   "name": "L5_stone",
+   "z_lo": 0.434,
+   "z_hi": 0.5001,
+   "why": "the garnet gem pommel. Lower bound = the ruled landmark (Ruling 24f). The x-extent rises from 0.0173 at the top to a peak 0.0588 at z 0.4610 and falls to a local minimum 0.0356 at z 0.4370 - the stone's waist against the collar.",
+   "covers": "L5 the dark garnet gem pommel"
+  },
+  {
+   "name": "L3_collar",
+   "z_lo": 0.416,
+   "z_hi": 0.434,
+   "why": "the gold collar under the stone: a distinct bulge, x-extent 0.0399 / 0.0401 / 0.0399 across z 0.4310-0.4190, against 0.0356 above it and 0.0261 below it at z 0.4130. Boundary placed at the minimum on the grip side.",
+   "covers": "L3 gold collar rings (the upper collar)"
+  },
+  {
+   "name": "L4_grip_upper",
+   "z_lo": 0.356,
+   "z_hi": 0.416,
+   "why": "the leather grip above the mid ring: x-extent climbing slowly 0.0261 -> 0.0349 with no bulge, from z 0.4130 down to 0.3590.",
+   "covers": "L4 oxblood leather grip wrap"
+  },
+  {
+   "name": "L3_mid_ring",
+   "z_lo": 0.338,
+   "z_hi": 0.356,
+   "why": "the gold mid ring: x-extent 0.0413 / 0.0421 / 0.0415 across z 0.3530-0.3410 against 0.0349 above and 0.0316 below. Both boundaries at the curve's minima.",
+   "covers": "L3 gold collar rings (the mid ring)"
+  },
+  {
+   "name": "L4_grip_lower",
+   "z_lo": 0.272,
+   "z_hi": 0.338,
+   "why": "the leather grip below the mid ring: flat at x 0.032-0.033 from z 0.3350 to 0.2750, then the guard's shoulder at 0.2690.",
+   "covers": "L4 oxblood leather grip wrap"
+  },
+  {
+   "name": "L2_crossing",
+   "z_lo": 0.206,
+   "z_hi": 0.272,
+   "why": "the blackened iron crossguard with the gold boss at its centre - the only place on the sword where the x-extent leaves the hilt's scale: 0.0427 at z 0.2690 then 0.1825 / 0.1940 / 0.2058 / 0.2183 / 0.2254 to a peak 0.2258 at z 0.2330, falling to 0.1718 at 0.2090 and collapsing to 0.0760 at 0.2030.",
+   "covers": "L2 blackened iron crossguard, L3 the gold diamond boss"
+  },
+  {
+   "name": "L1_blade",
+   "z_lo": -0.5001,
+   "z_hi": 0.206,
+   "why": "everything below the guard's collapse: x 0.0760 at z 0.2030 widening to 0.1262 at z 0.1730 (the blade's shoulder) and tapering from there to the tip. The y-extent halves across this boundary too (0.063 at the guard against 0.025-0.032 on the blade), which is the blade being the thin structure the whole route's edge-on discipline is about.",
+   "covers": "L1 the battle-worn steel blade"
+  }
+ ],
+ "_placement": "docs/experiments/, NOT canon/. This is a derived measurement input an executor built, not a fixture: canon/ rows are the advisor fold (the handoff-8 dispatch forbids an executor editing any fixture, profile or the palette). The precedent is E14-brush-prompts.json, which lived here before a ruling gave it a _fixtures row. If a ruling wants this in canon with a pointer, that is the advisor fold, not this file."
+}
