@@ -1,7 +1,11 @@
 # E14 handoff 7 — the STROKE LANE, Task 1: the derivation. HALT 1.
 
 **Executor session, 2026-08-08.** Authorised by [E14-ruling.md](E14-ruling.md) Ruling 23b.
-Predictions committed blind in `c04a629`, before any probe ran.
+Predictions committed blind in `a75d5cf`, before any probe ran. *(Corrected in place: this
+line first read `c04a629`, the hash the predictions carried in my working tree. The advisor's
+relief fold landed between the two commits and the rebase moved mine; `c04a629` is now the
+relief commit, so the original line pointed at the wrong object. Ruling 24's evidence line
+cites `a75d5cf`, which is the correct one.)*
 
 **Nothing is adopted here. Nothing generated, no credits, no profile edit** — Task 1 is
 raycast, write-head probes and derivation. `texpass_brush`'s `_NOT_CLEARED` block is

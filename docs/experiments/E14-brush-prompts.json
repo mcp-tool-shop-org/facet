@@ -1,0 +1,92 @@
+{
+ "_version": "E14-brush-3",
+ "_built_by": "tools/diagnostics/e14_make_brush_prompts.py",
+ "_ruled_by": "E14 Ruling 24g (the term) + Ruling 24e (the order) + Ruling 15a (the drop map)",
+ "_derived_from": "prop.json tools['restylize_views.py'].prompt - stems are that string with whole comma-terms DELETED, never retyped, EXCEPT the one ruled substitution below, which is asserted to be exactly one term.",
+ "_entry_verbatim_twins": "a longsword, a battle-worn steel blade with a raised central ridge, a blackened iron crossguard, a gold diamond boss at the crossing, gold collar rings, an oxblood leather grip wrap, a dark garnet gem pommel, plain lavender background, ultra-realistic, worn metal, harsh directional light",
+ "_entry_verbatim_v3": "a longsword, a battle-worn steel blade with a raised central ridge, a blackened iron crossguard, a gold diamond boss at the crossing, gold collar rings, an oxblood leather grip wrap, a deep red garnet gem pommel, plain lavender background, ultra-realistic, worn metal, harsh directional light",
+ "_the_substitution": {
+  "from": "a dark garnet gem pommel",
+  "to": "a deep red garnet gem pommel",
+  "ruled_by": "E14 Ruling 24g",
+  "why": "The term did not fail on the twins - byte-identical stems landed 305 deg apart by seed alone - but a stroke faces what no twin ever did: the violet it must replace is its strongest local signal. 12e grammar holds: red IS garnet's colour. THE FIXTURE'S L5 WORD IS UNCHANGED; this is the stroke lane's string, not the identity.",
+  "watch": "RED OUTSIDE L5 is the signature, armed with the term - the gold watch's analogue, judged by eye at every stroke gate (Ruling 24g)."
+ },
+ "_the_rule": "E12 Ruling 9d: an element whose surface a view cannot see is dropped from that view's stem - a term present in a view's prompt is an instruction to paint it, and the text wins against the control (the W3 beard mechanism, measured). Split deviation measured and ruled at E12 Ruling 10i.",
+ "_drop_map": {
+  "a gold diamond boss at the crossing": [
+   "y+090_e+00",
+   "y+270_e+00"
+  ]
+ },
+ "_assertions": "The substitution is asserted to touch EXACTLY ONE comma-term. Each stem is asserted an ordered SUBSEQUENCE of the v3 entry's term list; each key with no drops is asserted BYTE-EQUAL to the v3 entry. All enforced here with no skip flag; a failure writes no file.",
+ "_order": "y+000_e+00,y+180_e+00,y+045_e+00,y+225_e+00,y+315_e+00,y+135_e+00,y+090_e+00,y+270_e+00",
+ "_order_why": "RULED - E14 Ruling 24e. Spiral outward from the most-painted frames; the union is order-independent so the order's freight is RISK CADENCE - the two 20b-hazard edge-on strokes run LAST.",
+ "_negative": "watermark, text, logo, blurry, photo, deformed",
+ "_negative_provenance": "prop.json tools['restylize_views.py'].negative, transcribed. An authored negative would be a second variable in the run that introduces the first.",
+ "_status": "BUILT for the stroke lane under Ruling 24. Consumed by brush_cloud_step's lane 'base' pre-flight, which checks these strings BY PROVENANCE against the profile's _fixtures.brush_prompts pointer.",
+ "y+000_e+00": "a longsword, a battle-worn steel blade with a raised central ridge, a blackened iron crossguard, a gold diamond boss at the crossing, gold collar rings, an oxblood leather grip wrap, a deep red garnet gem pommel, plain lavender background, ultra-realistic, worn metal, harsh directional light",
+ "y+180_e+00": "a longsword, a battle-worn steel blade with a raised central ridge, a blackened iron crossguard, a gold diamond boss at the crossing, gold collar rings, an oxblood leather grip wrap, a deep red garnet gem pommel, plain lavender background, ultra-realistic, worn metal, harsh directional light",
+ "y+045_e+00": "a longsword, a battle-worn steel blade with a raised central ridge, a blackened iron crossguard, a gold diamond boss at the crossing, gold collar rings, an oxblood leather grip wrap, a deep red garnet gem pommel, plain lavender background, ultra-realistic, worn metal, harsh directional light",
+ "y+225_e+00": "a longsword, a battle-worn steel blade with a raised central ridge, a blackened iron crossguard, a gold diamond boss at the crossing, gold collar rings, an oxblood leather grip wrap, a deep red garnet gem pommel, plain lavender background, ultra-realistic, worn metal, harsh directional light",
+ "y+315_e+00": "a longsword, a battle-worn steel blade with a raised central ridge, a blackened iron crossguard, a gold diamond boss at the crossing, gold collar rings, an oxblood leather grip wrap, a deep red garnet gem pommel, plain lavender background, ultra-realistic, worn metal, harsh directional light",
+ "y+135_e+00": "a longsword, a battle-worn steel blade with a raised central ridge, a blackened iron crossguard, a gold diamond boss at the crossing, gold collar rings, an oxblood leather grip wrap, a deep red garnet gem pommel, plain lavender background, ultra-realistic, worn metal, harsh directional light",
+ "y+090_e+00": "a longsword, a battle-worn steel blade with a raised central ridge, a blackened iron crossguard, gold collar rings, an oxblood leather grip wrap, a deep red garnet gem pommel, plain lavender background, ultra-realistic, worn metal, harsh directional light",
+ "y+270_e+00": "a longsword, a battle-worn steel blade with a raised central ridge, a blackened iron crossguard, gold collar rings, an oxblood leather grip wrap, a deep red garnet gem pommel, plain lavender background, ultra-realistic, worn metal, harsh directional light",
+ "_per_key_term_count": {
+  "y+000_e+00": 11,
+  "y+180_e+00": 11,
+  "y+045_e+00": 11,
+  "y+225_e+00": 11,
+  "y+315_e+00": 11,
+  "y+135_e+00": 11,
+  "y+090_e+00": 10,
+  "y+270_e+00": 10
+ },
+ "_full_string_keys": [
+  "y+000_e+00",
+  "y+180_e+00",
+  "y+045_e+00",
+  "y+225_e+00",
+  "y+315_e+00",
+  "y+135_e+00"
+ ],
+ "_extra_stems": {
+  "y+000_e+00": {
+   "dropped": [],
+   "terms": 11
+  },
+  "y+180_e+00": {
+   "dropped": [],
+   "terms": 11
+  },
+  "y+045_e+00": {
+   "dropped": [],
+   "terms": 11
+  },
+  "y+225_e+00": {
+   "dropped": [],
+   "terms": 11
+  },
+  "y+315_e+00": {
+   "dropped": [],
+   "terms": 11
+  },
+  "y+135_e+00": {
+   "dropped": [],
+   "terms": 11
+  },
+  "y+090_e+00": {
+   "dropped": [
+    "a gold diamond boss at the crossing"
+   ],
+   "terms": 10
+  },
+  "y+270_e+00": {
+   "dropped": [
+    "a gold diamond boss at the crossing"
+   ],
+   "terms": 10
+  }
+ }
+}
