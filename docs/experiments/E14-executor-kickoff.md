@@ -801,3 +801,121 @@ store · end a session the Director has not ended.
 Calibration: one input leaves; everything else is pinned. The finding to
 report plainly is what v6 was actually worth — its exclusive texels, the
 crossing's drop, and where the brush's territory grew.
+
+---
+
+## Session handoff 7 (2026-08-08) — the STROKE LANE. Two advisor halts. Ends with the stroked asset staged.
+
+**Authorised by [E14-ruling.md](E14-ruling.md) Ruling 23** — the Director's
+gem word is GARNET (the fixture holds; the stone's drifted colour is stroke
+territory), and the ship's `_NOT_CLEARED` lifecycle opens for its third
+subject: nothing in `texpass_brush`'s block carries a value until HALT 1's
+stroke-lane ruling. A fresh executor session starts here:
+
+```
+cd E:\AI\facet && git pull
+python tools/facet_index.py build          <- the E15 ritual
+CLAUDE.md                                  <- read first, follow exactly
+docs/experiments/E14-ruling.md             <- Rulings 17-23. 23b is your authorisation;
+                                              20b is the misbinding hazard you carry
+canon/LONGSWORD-IDENTITY.md                <- L5 GARNET HOLDS - the identity you paint toward
+profiles/prop.json                         <- texpass_brush is _NOT_CLEARED until HALT 1;
+                                              texpass_iter's thin-extent is decided AT HALT 1
+docs/experiments/E14-handoff6-report.md    <- the banked A0 and the hole map's shape
+E14_prep/stage1/stage1b_holes_by_structure.json + stage1b_followups.json
+docs/experiments/E12-executor-kickoff.md   <- the beast's stroke lane is the METHOD
+                                              PRECEDENT; cite, don't restate
+```
+
+**Your rules and environment are unchanged** (CLAUDE.md §executor).
+Generation cloud-only through `brush_cloud_step.py` (binds NO profile — its
+agreement with the ruled recipe is BY VALUE, re-verified per stroke; the
+no-LoRA graph path since E13, the inverted pre-flight on every submission);
+`estimate_credits` per submission, quoted either way; the invariance ANDON
+lives IN the tool and no shell chain gates a commit (E08 A32; Ruling 21g).
+Output: `E:\AI\training\facet_next\E14_strokes\`. **Blind predictions
+first, committed before the derivation runs.**
+
+### Task 1 — derive the stroke lane from the hole map, then HALT 1
+
+From `stage1b`'s hole map and the banked territory (5.76 points +
+the garnet repaint), derive and PROPOSE — adopt nothing:
+
+1. **The stroke set**: candidate strokes covering, at minimum — the blade's
+   edge-on centreline ribbon (both faces of it), the unclosed v5/v7 guard
+   seam and crossing holes, and **the garnet repaint** (the stone's
+   drifted territory — the one stroke class painting OVER styled texels;
+   its mask derives from the 19b readout's drifted-ownership partition,
+   printed). Per stroke: the hole/target mask, the camera (yaw/el from the
+   job key, per-stroke), the crop frame (generator-legal ÷16), and the
+   spiral order FROM ALREADY-PAINTED REGIONS — the composes-a-new-character
+   law is the reason and is cited on the ordering itself.
+2. **The stroke prompts**: derived from the fixture per stroke (the stems
+   name what the stroke's frame contains — the per-view drop discipline
+   applies at stroke scale). **THE 19b QUESTION IS POSED WITH EVIDENCE**:
+   whether the stone's stroke names the hue explicitly ("deep red garnet")
+   — bring the pair's and twins' measured hue behaviour to the ruling; the
+   12e law decides the grammar there.
+3. **The recipe keys**: proposed per the E13 precedent (cn-strength 1.0 at
+   the brush stage per the profile's note; steps/cfg/denoise/seed per
+   stroke), with `thin_extent`'s candidate value STATED against the 10d
+   curve (the guard serves stage 2; the value is ruled at HALT 1 with the
+   curve and the blade's per-view inversion in the room — a pooled number
+   cannot judge it).
+4. **The edge-on hazard, pre-registered per stroke**: any stroke whose
+   frame is edge-on or near-edge-on carries Ruling 20b's misbinding risk —
+   state per stroke what constraint its control actually carries (the
+   painted neighbourhood is stronger context than the twins had; say how
+   much of each frame is already-painted vs hole), and pre-state what a
+   misbind would look like there.
+5. **HALT 1 — the stroke-lane ruling**: the set, order, prompts, cameras,
+   recipe keys and thin-extent value go to the advisor with the masks and
+   frames staged as images. `texpass_brush`'s `_NOT_CLEARED` block earns
+   its ruled values there; nothing generates before the ruling lands.
+
+### Task 2 — the strokes, after the ruling
+
+One stroke at a time, in the ruled spiral order: graph saved and
+pre-flighted before submission (`estimate_credits` each), the stroke
+applied through the tool's own invariance ANDON (byte-level: texels
+outside the stroke's ruled mask do not change — the tool halts itself, no
+skip flag), the fifth-signature watch (dark desaturated crevice fill) and
+the 20b watch judged BY EYE at 4× per stroke before the next launches,
+one bounded re-roll per stroke on the eye clause only, every rejected
+stroke preserved under name. **HALT 2 — the stroked asset staged**: the
+walk set (reference | before | after | provenance per stroke region, the
+stone at 6× beside the fixture's word, the ribbon at 4×), excluded and
+rejected artifacts labelled in-image, the gate report-only in the admitted
+configuration with the deep-share diagnostic, coverage restated against
+the banked A0. The advisor's sheet-walk first, then the Director.
+Finalize, pack and Gate 1 are the NEXT dispatch.
+
+### Do not
+
+Generate before HALT 1's ruling lands · run any stroke out of the ruled
+order · touch texels outside a stroke's ruled mask (the in-tool ANDON is
+the guard; a fired ANDON is a report, not a retry) · re-roll on any
+authority but the eye clause, once · arm any gate · run finalize or pack ·
+edit any fixture, profile, or the palette (HALT 1's ruling makes the
+profile edits — the advisor's fold, not yours) · write to the memory
+store · end a session the Director has not ended.
+
+### Standards compliance (this dispatch)
+
+| standard | score | evidence |
+|---|---|---|
+| PIN_PER_STEP | 3 | Every stroke's mask, frame, camera, prompt, seed and graph land beside its artifacts before submission; the derivation's masks staged as images at HALT 1; per-stroke logs |
+| ANDON_AUTHORITY | 3 | TWO advisor halts; the invariance ANDON in-tool with no skip flag (A32); per-stroke eye gates before the next stroke launches; a fired ANDON halts the lane |
+| NAMED_COMPENSATORS | 2 | Cloud spend bounded to the ruled stroke count + one bounded re-roll each, estimate_credits quoted; every rejected stroke preserved; the pre-stroke atlas is never overwritten — each stroke writes forward |
+| DECOMPOSE_BY_SECRETS | 3 | Strokes derive from THIS subject's hole map and fixture; the brush tool binds no profile and agreement is re-verified by value per stroke; the garnet mask derives from the measured ownership partition, not from colour |
+| UNCERTAINTY_GATED_HUMANS | 3 | The stroke-lane ruling gates all generation; per-stroke eye gates; the stone judged at 6× beside the fixture's word; HALT 2 ends at the Director |
+| EXTERNAL_VERIFIER | 2 | The invariance ANDON checks the tool from inside; the gate and deep-share diagnostic check colour from independent code; the walk sheets check identity by eye. `skip:` on a second model, per precedent |
+
+### Calibration
+
+The route's first prop strokes, and the first stroke class that paints
+OVER styled texels (the garnet repaint) — say plainly per stroke what was
+hole-fill and what was repaint. The edge-on strokes are where 20b lives:
+the painted neighbourhood is your constraint advantage over the twins;
+quantify it per frame rather than assuming it. A stroke that fails twice
+is the result. Zero credits expected; quote it anyway.

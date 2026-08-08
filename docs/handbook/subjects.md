@@ -340,10 +340,19 @@ values live in its own profile and fixture, never inherited unmeasured.
   thin), and the two edge-on cameras failed by different mechanisms (angular
   vs occlusion). The brush's territory is the blade's edge-on centreline
   ribbon + the guard seam: **5.76 points**.
-- **At the Director's window:** the gem (violet at 70.51% lav+mag after the
-  re-projection — accept the violet, hold the garnet by brush, or defer to
-  Gate 1). **Next: handoff 7 — the stroke lane**, drafted after his gem word
-  (the stroke set derives from the hole map and the verdict together).
+- **The gem is GARNET** (Director, 2026-08-08, one word —
+  [Ruling 23](../experiments/E14-ruling.md)): the fixture holds; the stone's
+  drifted colour joins the brush as a named stroke class (the garnet repaint,
+  ~70% of the stone's above-floor colour, the garnet core kept). The 19b
+  term question ("deep red garnet"?) goes to the stroke-prompt derivation
+  with the 12e law in the room.
+- **In flight: handoff 7 — the stroke lane** (the ship's `_NOT_CLEARED`
+  lifecycle, third execution): the stroke set, spiral order, prompts,
+  cameras, recipe keys and the long-deferred `thin_extent` value are all
+  ruled at HALT 1 from the hole map; then strokes one at a time under the
+  in-tool invariance ANDON with per-stroke eye gates, the fifth-signature
+  and 20b misbinding watches live. HALT 2 stages the stroked asset; then
+  finalize, pack, and **Gate 1 — the finished sword beside the clay**.
 
 ## The calibration table this page exists for
 

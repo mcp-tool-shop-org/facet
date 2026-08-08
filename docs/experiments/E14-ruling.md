@@ -1057,3 +1057,37 @@ fold.** The stroke-lane dispatch (handoff 7) drafts after the Director's
 gem word — the stroke set derives from the hole map AND his verdict,
 since a garnet-by-brush ruling adds the stone to the stroke territory.
 
+## Ruling 23 — THE GEM IS GARNET (Director, 2026-08-08, one word); the stroke lane is authorised (handoff 7)
+
+**23a — "Garnet."** The fixture's L5 holds unchanged — *a dark garnet gem
+pommel* is the identity, and the Director held it against the projection's
+drift. Identity belongs to the prompt and the fixture; the artifact bends
+to it, not it to the artifact. Consequences: **the stone joins the brush
+territory as a named stroke class** — the garnet repaint, roughly seventy
+percent of the stone's above-floor colour (the drifted-view territory; the
+garnet core stays) — alongside the reachable-unstyled holes. The 19b term
+question (whether the stroke prompt names the hue explicitly — "deep red
+garnet" — where the pair's prompt said only "dark garnet") goes to the
+stroke-prompt derivation at the stroke-lane ruling, with the 12e law in
+the room: a colour word names a material that IS its colour, and "garnet"
+alone left room the drift moved into.
+
+**23b — HANDOFF 7 IS AUTHORISED: the stroke lane.** The ship's
+`_NOT_CLEARED` lifecycle governs, third execution: the stroke set, spiral
+order, prompts, per-stroke cameras and recipe keys all derive from stage
+1b's hole map at this subject's own stroke-lane ruling — HALT 1 of the
+dispatch, this seat's ruling, where `texpass_brush`'s block earns its
+values and **`thin_extent`'s deferred value is decided with the 10d curve
+in the room** (the stage the guard serves has arrived). The territory, as
+banked: the blade's full-length edge-on centreline ribbon, the unclosed
+v5/v7 guard seam, the crossing's reachable holes, and the garnet repaint.
+Pre-registered into every stroke: the fifth brush signature (dark
+desaturated crevice fill, judged by eye), the Ruling 20b misbinding
+hazard on any edge-on stroke (the ring's edge seeded a guard once
+already; a stroke's control near the rings carries the same resemblance),
+the spiral-outward law, the in-tool invariance ANDON (E08 A32 — no shell
+chain gates a commit), `estimate_credits` per submission, bounded
+re-rolls on the eye clause only. HALT 2 with the stroked asset staged for
+this seat's sheet-walk, then the Director. Finalize, pack and Gate 1 are
+the next dispatch after that halt.
+
