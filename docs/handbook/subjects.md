@@ -275,8 +275,19 @@ values live in its own profile and fixture, never inherited unmeasured.
   authored state (glowing gem, forge-hot steel, no flames) as the E10 waterline
   layer mechanism with the contact query swapped for the occupancy map; opens on
   his sentence after the base state's Gate 1.
-- **Next, in order:** palette bands (from fixture materials, cross-checked against
-  the pair), twins, stage 1 against the pre-registered **51.33%** ceiling.
+- **The bands are RULED** ([Ruling 17](../experiments/E14-ruling.md)): floor 12.0 —
+  an inherited number *vindicated* at the measured knee (the chroma density is
+  monotone; no antimode exists, and the executor refused to dress one up); wine
+  332–32 merged (forced by continuous support — the 60° span is the gem's
+  instability made numeric) + gold 42–104; the lavender-rim band **admitted as a
+  rim-admission, not a material** (placement-proven: 93.1% of it within 2 px of
+  the boundary), with a standing depth diagnostic; the gate **report-only** — its
+  only known-bad artifact fails by occupancy, which colour-not-placement cannot
+  see, so it has no validation target on this subject (demonstrated, banked).
+- **In flight: the twin set** (handoff 3 Task 2) — stems v2, eight twins at the
+  pair-anchored recipe, re-roll authority on the eye clause alone, the gold and
+  gem watches live at the hilt crops. Then the twin-set ruling, then stage 1
+  against the pre-registered **51.33%** ceiling.
 
 ## The calibration table this page exists for
 

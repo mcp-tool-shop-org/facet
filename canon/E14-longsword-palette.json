@@ -1,5 +1,5 @@
 {
- "_purpose": "The declared palette for E14's longsword, for palette_gate.py. Derived at handoff 3 Task 1 from canon/LONGSWORD-IDENTITY.md's five named elements (six terms after Ruling 13), measured on the DIRECTOR-ACCEPTED styled target pair (E14 Ruling 16a) - never on the twins this gate will judge. PROPOSED, NOT ADOPTED: the bands and the per-band disposition are the advisor's ruling at HALT 1.",
+ "_purpose": "The declared palette for E14's longsword, for palette_gate.py. Derived at handoff 3 Task 1 from canon/LONGSWORD-IDENTITY.md's five named elements (six terms after Ruling 13), measured on the DIRECTOR-ACCEPTED styled target pair (E14 Ruling 16a) - never on the twins this gate will judge. RULED at E14 Ruling 17 (2026-08-07): floor 12.0 adopted (17a, inherited-and-vindicated at the knee); band edges at the rule as stated, 1% of own-peak (17b); the lavender-rim band ADMITTED AS A RIM-ADMISSION, not a material, with the standing depth diagnostic (17c); the gate REPORT-ONLY on every band for the twin set, both bounds null (17d).",
 
  "_bands_are_derived_from_the_FIXTURE_and_cross-checked_against_a_DIFFERENT_IMAGE_than_they_gate": "They come from the accepted pair (E14_prep/pair/PAIR_swordclay_{0,1}.png inside the exact raycast silhouettes), which is a specification source and visual target and will never be projected. Deriving them from the twins they gate would be a tautology that passes review because the numbers look fine. The superseded estimates file (canon/longsword-materials-estimated.json) was NOT used - Ruling 14b superseded it at the Director's acceptance.",
 
@@ -31,19 +31,19 @@
    "measured_span_deg": [42.0, 104.0],
    "rests_on": "3,137 body px = 33.4% of all above-floor body pixels; only 55 rim px, the cleanest band of the three",
    "covers": "L3 gold diamond boss at the crossing, gold collar rings (Ruling 13's term)",
-   "_the_trough_between_gold_and_wine_is_REAL_but_shallow": "Unlike the chroma case, hue DOES have an antimode here: body density falls to 3-4 px per 2-degree bin at hue 37-41, against wine's peak of 755 and gold's of 436 - a ~1% valley. The 1% trim rule reaches down into its shoulders (42) and leaves only 34-40 forbidden between the two bands. At the 2% rule gold starts at 58 and the trough opens to 24 degrees. THE RULING CHOOSES; this file records the rule as stated and its sensitivity.",
+   "_the_trough_between_gold_and_wine_is_REAL_but_shallow": "Unlike the chroma case, hue DOES have an antimode here: body density falls to 3-4 px per 2-degree bin at hue 37-41, against wine's peak of 755 and gold's of 436 - a ~1% valley. The 1% trim rule reaches down into its shoulders (42) and leaves only 34-40 forbidden between the two bands. At the 2% rule gold starts at 58 and the trough opens to 24 degrees. RULED at 17b: the pre-stated 1% rule stands, on grounds independent of these edges (no pathology; report-only makes permissiveness free while narrow bands would put false counts on legitimate tails - the 5a direction; switching after seeing both outputs would choose a convention by its results). The 2/5/10% sensitivity stays tabled as disclosure.",
    "from": "E14 handoff 3 Task 1"
   },
   {
    "name": "lavender-rim",
    "hue_deg": [292.0, 314.0],
-   "status": "SUSPENDED - NOT A MATERIAL BAND. RUN THE GATE BOTH WAYS.",
+   "status": "ADMITTED AS A RIM-ADMISSION - E14 Ruling 17c. NOT A MATERIAL: the band absolves antialiased boundary mixing so the gate's numbers mean something on accepted work; the blindness it buys (interior backdrop-family arrivals) is watched by the STANDING DEPTH DIAGNOSTIC, not by hue.",
    "measured_peak_hue": 303.0,
    "rests_on": "2,366 RIM px against 183 BODY px - 92.8% rim",
    "covers": "NOTHING DECLARED. This is backdrop bleed, not a material.",
    "_what_this_band_actually_is": "palette_gate.py measures only INSIDE the exact silhouette, so the realised backdrop cannot enter as background - it enters as ANTIALIASED RIM PIXELS carrying backdrop colour. On the beast the backdrop sat below the chroma floor and never reached the hue gate (the 15i mechanism); this subject's realised backdrop is at C* 32.6-37.1, far above any floor, so its rim mixing is a real above-floor hue population inside the figure. THE PLACEMENT TEST SETTLED IT: hue cannot tell rim mixing from a material, so depth was measured directly - the 290-310 population is 93.1% within 2 px of the silhouette boundary (median depth 1.00 px), against wine at 8.0% and gold at 0.3% (median depths 7.99 and 16.29 px). Declared materials live deep inside the figure; this population lives on its edge.",
    "_the_295_vs_305_question_ANSWERED_and_not_as_expected": "The dispatch named this the derivation's hardest cut and the executor predicted no clean antimode and a suspension. There IS no antimode in hue - the figure density rises monotonically from 4 px at hue 292 to 459 px at 305 and falls away, one population - but the cut turns out not to need one. L1's ~295 cast sits at C* 2.93-5.39, BELOW the 12.0 floor, so it never reaches the hue gate at all. The two are separated by CHROMA and by PLACEMENT, not by hue. The predicted suspension is therefore for a different reason than predicted: not 'no boundary exists' but 'this is not a material and a material band should not pretend it is one'.",
-   "_how_a_run_must_report_it": "Report per-view off-palette totals BOTH ways - lavender-rim allowed and lavender-rim excluded - so a ruling can choose without anyone choosing while looking at the result. Neither reading is adopted here. The galleon's blue band set this precedent and it is followed exactly.",
+   "_how_a_run_must_report_it": "RESOLVED at Ruling 17c (the both-ways suspension served its purpose and closes): runs report the ADMITTED configuration, and beside every twin's totals the band's DEEP SHARE (depth > 2 px) with its row spread. The pair's baseline class: 144 deep px = 0.160% of figure, unconcentrated (rows 0.13-0.91). A deep, CONCENTRATED lavender population on any twin is a finding for the eye regardless of any total.",
    "_the_perimeter_law_bites_hardest_here": "This population scales with PERIMETER, and this subject is the route's thinnest: area/perimeter is 20.88 (view 0) and 17.78 (view 1) against a figure area that swings 2.061x between views (Ruling 10c). Any bound on it must be normalised by perimeter or reported absolute with the perimeter beside it - never as a percentage of area.",
    "from": "E14 handoff 3 Task 1; placement test in band_density.json"
   }
@@ -61,6 +61,8 @@
 
   "_both_bounds_are_null_ON_PURPOSE": "This subject has no clean baseline until its own twins exist - the galleon's exact position, and the reason its palette set both bounds null. Deriving a bound from the pair would be deriving it from two images, and arming it against twins generated afterwards would be arming a threshold on a baseline measured after the arm it judges. Run with --report-only; report numerator and denominator, total AND largest connected component (the two-thresholds law). The twin set's own spread is where a bound can honestly come from, at the twin-set ruling.",
 
+  "_disposition_RULED": "REPORT-ONLY on every band for the twin set (E14 Ruling 17d). The gate cannot be validated on this subject - its only known-bad artifact fails by OCCUPANCY, which colour-not-placement is structurally blind to (rejected 160 px vs accepted 106/142 with the rim admitted; rejected RANKED CLEANER without it). Arming an instrument never shown to fire on a real defect of this subject is the E07 class. Twin re-roll authority rests entirely on the dispatch's eye clause (the pre-registered fixture-violation test, the one that caught the pair's actual failure). Any arming happens at the twin-set ruling or later, with sixteen artifacts in the room instead of three.",
+
   "_baseline_that_DOES_exist_and_is_not_a_bound": "See the handoff-3 report's validation table: what the Director-accepted pair measures through this gate, both ways on the lavender band. That is what an accepted image of this subject looks like through it - context for a ruling, not a threshold."
  },
 
@@ -69,6 +71,6 @@
   "derived_by": "tools/diagnostics/e04_bands.py (clusters, landing) + e14_band_density.py (chroma density, hue density, placement test) + e14_band_edges.py (edges by the stated rule, with sensitivity)",
   "measured_on": "E14_prep/pair/PAIR_swordclay_{0,1}.png inside E14_prep/masks/swordclay_{0,1}.png",
   "identity": "canon/LONGSWORD-IDENTITY.md",
-  "status": "PROPOSED at HALT 1. Not ruled. Not armed."
+  "status": "RULED at E14 Ruling 17 (2026-08-07). Report-only; bounds null until the twin-set ruling; the lavender-rim admission carries the standing depth diagnostic."
  }
 }

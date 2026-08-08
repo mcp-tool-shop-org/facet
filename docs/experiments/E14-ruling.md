@@ -582,3 +582,88 @@ real since it's more of an after-effect"*). Recorded with its grounding:
 **Opens on his sentence, after the base state's Gate 1** — the layer needs an
 accepted base to compose over, which is W-H3's own premise. Parked here so it
 cannot be lost.
+
+## Ruling 17 — the bands RULED; the gate report-only; Task 2 is GO (2026-08-07)
+
+Evidence: the handoff-3 Task 1 report (`6c22130`), the blind predictions
+(`2ce9f64`, scored in place), the proposed palette, and this seat's eye on the
+no-lavender overlay before ruling — the magenta tracing is a continuous
+one-to-two-pixel shell around the entire silhouette, pommel to tip,
+unambiguously the rim and not a region.
+
+**17a — the chroma floor is 12.0, ADOPTED with its provenance stated
+honestly**: an inherited number VINDICATED at the measured knee (the decay
+flattens into the tail at C\* 11.5–13), not a new derivation — there is no
+antimode; the density over 89,876 figure pixels is monotone, and the
+executor's refusal to report the antimode-search's 13.8 as a valley (the
+flattest point of a decay) is the distant-medians law applied to their own
+instrument mid-session. L1's cast falling below the floor (2.93 / 5.39) is a
+result, as required. The F1/F3 falsification is adopted into the record with
+its own sentence — the conclusion survived by luck, and saying so is the
+calibration the record wants. Comparability with every prior subject's floor
+comes free.
+
+**17b — the band set is ADOPTED at the rule as stated (1% of own-peak)**:
+wine **332–32** merged — the merge FORCED by continuous support, the 60° span
+being the gem's instability made numeric — and gold **42–104**, with the
+real-but-shallow trough (3–4 px against peaks of 755/436 at hue 37–41)
+recorded. Forbidden span 216° = 60.0% of the circle; the green–cyan–blue arc
+carries zero body pixels. **The trim convention stands at the pre-stated rule,
+on grounds independent of these particular edges**: the rule was fixed before
+it ran and produced no pathology (contiguous, non-overlapping, no band
+absorbing another's peak); with the gate report-only (17d), the wider bands'
+permissiveness costs nothing while narrower bands would put false off-palette
+counts on legitimate material tails — the exact failure direction §5a just
+measured on an accepted artifact; and switching to 2% after seeing both
+outputs would be choosing a convention by its results. The 2/5/10%
+sensitivity stays tabled as disclosure.
+
+**17c — the lavender-rim band is ADMITTED AS A RIM-ADMISSION — explicitly not
+a material, and named so in the palette.** Grounds: the placement proof
+(93.1% of the 290–310 population within 2 px of the silhouette boundary,
+median depth 1.00 px, against wine 8.0% and gold 0.3%) plus this seat's eye
+on the overlay. Excluding it puts a garment-shaped number — 1,771 px in an
+820-px component, the navy-sleeve shape at a fifth the magnitude — on a
+Director-accepted artifact: a gate that fails accepted work on a structural
+rim is measuring the backdrop's chroma, not the figure's palette. The
+erosion alternative is REJECTED by name: a fixed peel against this subject's
+54-px sliver views is the global-constant/local-feature law's home case.
+**The blindness this admission buys is priced and watched**: the hue count
+can no longer see interior backdrop-family arrivals, so the DEPTH DIAGNOSTIC
+becomes standing — every twin's gate report carries the lavender band's deep
+share (> 2 px) beside its totals, with the pair's own deep remnant (144 px =
+0.160%, unconcentrated, rows 0.13–0.91) as the recorded baseline class. A
+deep, concentrated lavender population on any twin is a finding for the eye
+regardless of any total. The both-ways reporting requirement resolves with
+the suspension.
+
+**17d — the gate is REPORT-ONLY on every band for the twin set; both bounds
+stay null.** The gate cannot be validated on this subject: its only
+known-bad artifact fails by occupancy, which colour-not-placement is
+structurally blind to — and the measured numbers say it plainly (rejected
+160 px against accepted 106/142 with the rim admitted; rejected RANKED
+CLEANER than accepted without it). Arming an instrument never shown to fire
+on a real defect of this subject is the E07 class, measured live. Twin
+re-roll authority rests entirely on the dispatch's eye clause — the
+pre-registered fixture-violation test, the one that caught the pair's actual
+failure. The twin set's own spread is the calibration data; any arming
+happens at the twin-set ruling or later, with sixteen artifacts in the room
+instead of three.
+
+**17e — banked**: (i) **the validation-target phenomenon, route-level** — a
+subject whose only produced failure mode is occupancy-class offers the
+palette gate no validation target; the gate's colour-not-placement scope
+limit is now demonstrated on artifacts, not just documented in a docstring.
+(ii) **L5's instability is numeric** — ~72° between the pair's views (medians
+16.0 / 303.9; the view-1 gem's body pixels at 325–345) — a WATCH at the twin
+set: if the twins widen the gem's spread beyond the band, that is
+fixture-question territory, the rings precedent. (iii) W4's half-failure
+recorded as scored: the gem-drift-equals-backdrop-bleed hypothesis did not
+survive its own placement test.
+
+**17f — TASK 2 IS GO** per the dispatch as written: stems v2, the canny
+anchor row as byte-level pre-flight, eight twins at the pair-anchored recipe,
+one bounded re-roll per view on the eye clause alone, the gate report-only
+per twin in the admitted configuration with the deep-share diagnostic beside
+it, the 12e gold watch and the L5 watch live at the 4× hilt crops. HALT 2
+with the twin set staged — this seat's eye first, then the Director.
