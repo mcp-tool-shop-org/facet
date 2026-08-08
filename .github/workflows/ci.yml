@@ -1,0 +1,38 @@
+# The repo's FIRST workflow (E17). Studio Actions rules binding:
+# ubuntu only, paths-gated, workflow_dispatch fallback, required concurrency
+# block, pinned minimal installs, and the HERMETIC set only - the artifacts
+# tier needs the recorded trees under E:\AI\training, which are not in git and
+# not here; those tests skip by design, so CI deselects them outright.
+name: ci
+
+on:
+  push:
+    paths:
+      - "tools/**"
+      - "tests/**"
+      - ".github/workflows/**"
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  hermetic:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      # 3.12, not the rig's 3.13: open3d (imported at texpass_iter's module
+      # level, so T3's guard test needs it importable) publishes wheels for
+      # 3.12 at the pinned release; the rig runs a local 0.19 build. Versions
+      # below are the trellis2-env's own, recorded in the E17 report.
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: install pinned test deps
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install pytest==9.1.1 numpy==2.4.6 scipy==1.17.1 \
+            pillow==12.2.0 trimesh==4.12.2 open3d==0.19.0
+      - name: hermetic set
+        run: python -m pytest -m "not artifacts"
