@@ -317,7 +317,12 @@ dataset asset #3, the first manifest under the lane's 1.3.0 contract), the
 ingest, then the [E15 context index](docs/experiments/E15-context-index-kickoff.md),
 then E14.
 
-**E14 — the prop arc — is at its STROKE LANE, the last stage before Gate 1**
+**GATE 1: ACCEPTED — the longsword is the route's FOURTH accepted asset**
+(2026-08-08, "Fantastic! I accept", ruled on `longsword_hero.glb` at the
+Director's own zoom — [Ruling 32](docs/experiments/E14-ruling.md)): the fourth
+subject class at **zero credits across the entire arc**, the identity held at
+five fixture elements, and the drifted stone returned to garnet by arithmetic
+rather than regeneration. **The E14 arc, designation to acceptance:**
 ([E14-ruling.md](docs/experiments/E14-ruling.md), Rulings 1–23, zero credits
 across the whole arc): the route's fourth subject class and its **first portrait
 subject** (widest-horizontal/height 0.2258 — the framing family pins HEIGHT here,
@@ -400,7 +405,9 @@ STRUCTURAL in surface-aware mode (a check that cannot fail is not a check —
 the distance distribution is that mode's real gate, and it passed). Final mix
 **45.25% reference / 2.07% brush / 52.68% dilation of valid** — and of the
 surface a viewer actually sees, **88.71% is the accepted pair's own paint**.
-`longsword_hero.glb` is staged at Gate 1 beside the clay.
+The Director accepted the finished sword at his own zoom. Next: the E11 dense
+export (dataset asset #4), the lane ingest, then the errand batch — the
+activated state (Ruling 16c) stays parked at his sentence.
 
 **E15 — the context index — is LIVE and ruled**
 ([E15-ruling.md](docs/experiments/E15-ruling.md), 9 rulings):

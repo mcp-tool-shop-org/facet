@@ -216,18 +216,32 @@ values live in its own profile and fixture, never inherited unmeasured.
   manifest under the lane's 1.3.0), the ingest paste, then the
   [E15 context index](../experiments/E15-context-index-kickoff.md), then E14.
 
-## The longsword (DESIGNATED 2026-08-07 — measured; styled pair in flight)
+## The longsword (ACCEPTED, 2026-08-08 — designated 2026-08-07)
 
-- **Record:** [E14-ruling.md](../experiments/E14-ruling.md), Rulings 1–11;
+- **GATE 1: ACCEPTED** ("Fantastic! I accept", ruled on `longsword_hero.glb` at the
+  Director's own zoom — [Ruling 32](../experiments/E14-ruling.md)). The route's
+  **fourth accepted asset and fourth subject class** (character, ship, beast, prop),
+  at **zero credits across the entire arc**. Final mix **45.25% reference / 2.07%
+  brush / 52.68% dilation of valid** — within 1.1 points of the dragon on every
+  class — and **88.71% of the rendered visible surface is the accepted pair's own
+  paint**. The stone that drifted was returned to the identity by arithmetic (the
+  garnet re-projection, Rulings 25–26 — a hue rotation of the four drifted twins'
+  stone regions, L preserved, zero generation), the one mask-boundary defect
+  repaired on an asserted-count union (Ruling 28), all eight strokes committed with
+  both edge-ons clean on the 20b misbind watch (Ruling 29), finalize's fill
+  replayed byte-for-byte (Ruling 31). Every E14 artifact is citable-only.
+- **Record:** [E14-ruling.md](../experiments/E14-ruling.md), Rulings 1–32;
   [Gate 0 report](../experiments/E14-gate0-report.md);
   [handoff-2 report](../experiments/E14-handoff2-report.md) +
-  [Task-1 sweep](../experiments/E14-task1-sweep.md). Fixture:
+  [Task-1 sweep](../experiments/E14-task1-sweep.md);
+  [handoff-9 report](../experiments/E14-handoff9-report.md) (finalize/pack/Gate-1
+  staging). Fixture:
   [canon/LONGSWORD-IDENTITY.md](../../canon/LONGSWORD-IDENTITY.md) (five L-elements —
   the compact case; occupancy audit at authoring, day one). Profile:
   `profiles/prop.json` — swept at handoff 2 (3 UNDECIDED, the pre-stated three); the
   canny pair (**0.10/0.25**, Ruling 6) and the backdrop (**`plain lavender
-  background`**, Ruling 7) ruled per subject; thin-extent's curve measured, value
-  deferred by design (Ruling 10d).
+  background`**, Ruling 7) ruled per subject; thin-extent decided **0.0** at the
+  stroke-lane ruling (Ruling 24d); finalize SPENT at Ruling 31g.
 - **Designated: candidate 00001** ("00001 is my favorite") — 1 welded shell at
   1.000000, **zero boundary edges** (the cleanest topology the route has recorded,
   on all three candidates), 121 non-manifold edges with the grip wrap as the pinch

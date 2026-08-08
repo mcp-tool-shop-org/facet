@@ -2015,3 +2015,54 @@ acceptance, the post-Gate-1 queue opens on his sentences (the E11
 dense export, the lane ingest, the activated state) and the errand
 window arrives. **The Director rules beside the clay.**
 
+## Ruling 32 — GATE 1: ACCEPTED (Director, 2026-08-08, "Fantastic! I accept") — THE LONGSWORD IS THE ROUTE'S FOURTH ACCEPTED ASSET; the dataset session fires on his word (2026-08-08)
+
+Evidence: **his three Blender screenshots, walked first at this seat
+per the standing practice** — (i) the hero diagonal: the whole sword
+coherent under viewport light, the dark blade with ridge and fuller
+lines full length, pale wear mid-blade, the tip clean, the guard's
+faceted arms with the boss bright, oxblood coils, both gold rings, the
+garnet catching red at the apex; (ii) near edge-on from the pommel
+down — **the ribbon the whole stroke lane existed for, continuous
+steel to the tip at his own zoom**, no gaps, no grey stripe, the worn
+highlight riding the edge; (iii) the hilt from above: the stone's
+facets, the worn-gold collar with dark crevices, the coil relief
+legible, the mid-ring, the guard's faceted back with the boss's gold
+at center — the fixture's five elements at his own camera. His words:
+**"Fantastic! I accept."**
+
+**32a — consequences, the dragon's Ruling 28 pattern.** The longsword
+is the route's **FOURTH accepted asset** — W3, the galleon, the
+dragon, the longsword — and the fourth subject CLASS: character, ship,
+beast, prop. `longsword_hero.glb`, its atlas, the twins, the corrected
+twins, the pair, and every E14 artifact are **citable-only** from this
+ruling. The style-registers row for the prop closes as **earned**
+(ultra-realistic, no LoRA — ruled day one, held through generation,
+strokes and finalize). The arc's price: **zero credits, start to
+finish** — designation, measurement, pair, twins, stage 1, the
+re-projection, eight strokes, finalize, pack. The fixture held at
+five elements; identity rode the prompt; the one artifact that drifted
+(the stone) was returned to the identity by arithmetic, not
+regeneration.
+
+**32b — the post-Gate-1 queue opens per his sentence**: "update the
+readme, handbook and database. And then fire a dataset session." The
+README, handbook and DB are updated and committed in this fold (the
+DB at his explicit word — the session-boundary cadence's named
+exception). **HANDOFF 10 IS DISPATCHED: the E11 dense export — the
+accepted longsword becomes dataset asset #4** — per handoff 16's
+proven form: the manifest capability anchored byte-identical on a
+prior subject's committed manifest before use, the export by the
+tool's own mechanism, the manifest declared from the record with every
+value sourced, validated through the sdlab lane's own codebase
+read-only, zero-gap expected, the ingest remaining the Director's
+lane-side paste. The subject's own declaration questions are posed to
+the halt, not forced: the stone's hue rotation is a recorded
+tone-class operation on four twins (whether 1.3.0's `tone_transform`
+carries a masked hue rotation is the contract's answer, not the
+executor's improvisation), and the owner channel's presence is the
+exporter's answer, predicted blind. **The activated state stays
+parked** (16c — his sentence has not named it) and **the errand
+window arrives after the export session** per 30b's own sequencing
+word. The advisor's eye on the halt, then his ingest paste.
+

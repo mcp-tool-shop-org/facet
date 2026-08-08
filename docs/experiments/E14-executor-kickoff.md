@@ -1231,3 +1231,130 @@ its strokes put paint near everything — this lane's rim-and-ribbon
 paint is the same design; if the numbers come back far from that
 class, that is a finding to report plainly, not to explain away. A
 negative result is a full success.
+
+---
+
+## Session handoff 10 (2026-08-08) — the E11 dense export: the ACCEPTED longsword becomes dataset asset #4. Comprehensive.
+
+**Gate 1 is ACCEPTED** ([E14-ruling.md](E14-ruling.md) Ruling 32,
+"Fantastic! I accept"). This dispatch produces the longsword's dense
+turnaround tree and its manifest, per **handoff 16's proven form**
+([E12-executor-kickoff.md](E12-executor-kickoff.md) Session handoff 16 —
+the METHOD PRECEDENT; this dispatch cites it and states only the
+subject's deltas). It does NOT ingest: the ingest is the Director's
+lane-side paste, after this halt. A fresh executor session starts here:
+
+```
+cd E:\AI\facet && git pull
+python tools/facet_index.py build          <- the E15 ritual (the seeded set is 19)
+CLAUDE.md                                  <- read first, follow exactly
+docs/experiments/E12-executor-kickoff.md   <- Session handoff 16 = THE METHOD. Read it
+                                              fully; everything below is its deltas.
+docs/experiments/E12-handoff16-report.md   <- the dragon's export record (what a clean
+                                              zero-gap run looks like)
+docs/experiments/E11-ruling.md             <- Rulings 1-7 + addenda: the manifest law
+docs/experiments/E14-ruling.md             <- Rulings 24-32; 32b is your authorisation;
+                                              25/26 are the stone's provenance record
+profiles/prop.json                         <- the register/lora values the style block
+                                              declares; texpass_finalize's spent block
+canon/LONGSWORD-IDENTITY.md                <- identity.subject_name = "longsword"
+E:\AI\training\facet_next\E14_strokes\run\final\   <- the packed asset (longsword_hero.glb,
+                                              sha ab62bb4bd753f2cef4db74d0), atlas_final,
+                                              the state chain - READ-ONLY inputs, all of it
+E:\AI\training\facet_next\E14_strokes\garnet\      <- the re-projection operands
+                                              (garnet_operands_final.json, T3_rotations.npy)
+                                              - READ-ONLY; locate, quote exact paths
+```
+
+**Your rules are unchanged** (CLAUDE.md §executor). **The accepted asset
+is citable-only** (Ruling 32a): the GLB, the atlas, the twins, the
+corrected twins, the pair and every E14 artifact are read-only inputs —
+nothing in this dispatch modifies any of them. Blind predictions first,
+committed, blind status disclosed: the camera count the exporter derives
+· whether the manifest-capability anchor holds byte-identical · whether
+the lane's validator passes with zero gap notices · the owner channel's
+presence and what it carries on this subject.
+
+### The subject's deltas from handoff 16 — everything else is the precedent verbatim
+
+1. **`identity.subject_name: "longsword"`** (the fixture; the profile's
+   name is the class, `prop` — the manifest declares the SUBJECT).
+2. **`asset.style`**: register terms from `prop.json`'s prompt tail
+   (`ultra-realistic, worn metal, harsh directional light`) + `lora
+   {declared: "none"}` — from the fixture's STYLE-SUPPLIED section and
+   `lora-w 0.0`, cited.
+3. **`asset.tone_transform` is THIS SUBJECT'S OPEN QUESTION, posed to
+   the halt rather than forced.** The dragon declared a whole-figure Lab
+   harmonization. The longsword had NO harmonization — what it has is
+   **the garnet re-projection** (Rulings 25–26): a per-view HUE ROTATION
+   (L and C\* preserved) applied to the STONE REGIONS of four twins
+   before re-projection, operands recorded
+   (`garnet_operands_final.json` + `T3_rotations.npy`, reference = the
+   pair view-0 stone). Read the 1.3.0 contract's `tone_transform` schema
+   FIRST: if a masked, per-view hue rotation fits its fields honestly
+   (kind / space / scope / reversible / operands / reference), declare
+   it with every value sourced; if the contract has no honest slot for
+   a masked rotation, **declare nothing and bring the gap to the halt
+   as a finding** — a contract question is the lane's to answer, never
+   improvised executor-side. State which reading you took and why
+   BEFORE emitting.
+4. **`asset.render_derivation`**: `{kind: "emit", generated: false}` —
+   the E11 form; no `renders[].generation` blocks anywhere.
+5. **The owner channel**: stage 1b carries a real ownership record (the
+   partition Rulings 19b/25 are built on). Whether the exporter emits a
+   native per-texel owner channel on this subject is ITS answer —
+   predict it blind, report what rides the tree.
+6. **The anchor subject**: regenerate the DRAGON's committed dense
+   manifest with the current code and no new declarations — byte-
+   identical or halt (the dragon is now the nearest committed manifest;
+   the galleon remains a second anchor if the first is ambiguous).
+7. **Output**: `E:\AI\training\facet_next\E14_strokes\export\turnaround\`.
+   The frame trap stands: **`--profile` bound on every emit** (Ruling
+   29c), the 240×1024 frame asserted.
+
+**Validate through the lane's own codebase** (`E:\AI\style-dataset-lab`,
+READ-ONLY — the lane repo takes no writes from facet seats): schema
+validation at the lane's current contract plus the dry-run pass quoting
+the notice list — **expected: zero gap notices**; a gap notice is a
+halt with the list, never a manifest adapted to quiet it.
+
+### Then HALT
+
+Stage: the anchor evidence, the export tree with its camera count and
+channel inventory, the manifest with every declared value and its
+source, the lane validation output, predictions scored. Report at
+`docs/experiments/E14-handoff10-report.md`. The durability line rides
+the report: the new tree joins the must-not-move list beside E04's,
+E08's and E13's. **To the advisor's eye, then the Director's ingest
+paste.**
+
+### Do not
+
+Modify any accepted artifact or anything under `run/final/` or
+`garnet/` · ingest lane-side or write to the lane repo · re-emit prior
+subjects' manifests beyond the anchor's scratch comparison · invent a
+manifest field the contract does not name · run any errand-batch item
+(the window opens AFTER this session — Ruling 32b) · write to the
+memory store · end a session the Director has not ended.
+
+### Standards compliance (this dispatch)
+
+| standard | score | evidence |
+|---|---|---|
+| PIN_PER_STEP | 3 | The capability anchored byte-identical on the dragon's committed manifest before use; every declared value lands with its named source; the tree sha-linked by the exporter's own mechanism; predictions committed blind |
+| ANDON_AUTHORITY | 3 | The anchor delta halts; a lane gap notice halts (contract drift, never patched executor-side); the tone_transform question is posed, not forced; the halt is to eyes before any ingest exists |
+| NAMED_COMPENSATORS | 3 | Read-only inputs throughout; the anchor comparison writes to scratch; nothing irreversible — the ingest is explicitly NOT this session's |
+| DECOMPOSE_BY_SECRETS | 3 | Facet declares, the lane verifies — the seam held; the stone's provenance declared from facet's record, judged by the lane's validator with facet absent |
+| UNCERTAINTY_GATED_HUMANS | 3 | The ingest stays the Director's paste; the contract question goes to the halt with both readings; everything staged for two sets of eyes |
+| EXTERNAL_VERIFIER | 3 | The lane's validator and its acceptance tests are a different codebase judging this output — the standing cross-codebase bar |
+
+### Calibration
+
+The handoff-16 standard holds: check this dispatch's inherited claims
+against source in the same breath you use them — including the paths
+and SHAs above (the handoff-8 path sketch and the handoff-9 stale
+caveat are this arc's own reminders that dispatch text is hypothesis).
+A clean zero-gap validation on the first try is the EXPECTED outcome;
+if it fails, halt with the notice list. The tone_transform question is
+the one place this subject is genuinely new — a suspension with the
+contract's text quoted is a full success there.
