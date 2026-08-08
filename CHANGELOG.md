@@ -46,9 +46,16 @@ the defect. Suite 248 → 275.
 **What this does NOT do, measured and reported rather than implied:** E22 converted
 the 88 sites its scope ruled. A census taken at the same time found **278 of the 294
 asserts in `tools/` carry the ANDON token**, not the 87 the dispatch inherited — so
-**192 ANDON-carrying gates outside the five named tools are still bare asserts**, and
-**175 of them sit before a write in their own scope**. Those are a finding for the
-advisor, not a scope extension taken by an executor.
+**191 ANDON-carrying gates across 56 files are still bare asserts**, and **175 of them
+sit before a write in their own scope**. Those are a finding for the advisor, not a
+scope extension taken by an executor.
+
+*⚑ This line read "192 … outside the five named tools" and was corrected at
+[E22 Ruling 4](docs/experiments/E22-ruling.md). 192 counts `facet_index.py:343`, which
+was in scope and was converted; the count of gates that are **still asserts** is 191
+across 56 files (278 − 87). The slip is the same shape as the one this arc caught in
+its own dispatch — a subtotal read as a total — and it landed in the number that scopes
+the next arc.*
 
 ## [0.2.0] — 2026-08-08
 

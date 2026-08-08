@@ -323,6 +323,36 @@ decided to proceed; the construction was incapable of stopping. **The check live
 tool that performs the irreversible step**, with no skip flag (E08 Amendment 32). A shell chain
 is a transport, not a guard.
 
+**And a gate is never a bare `assert`.** `assert` is a developer's sanity check that the
+interpreter is licensed to delete: `python -O` and `PYTHONOPTIMIZE=1` remove it silently and
+execution continues past it. Measured on one gate at both trees — before the repair it FIRED
+normally and was SILENT under `-O`, under `PYTHONOPTIMIZE=1`, and under both; after, it fires
+in all four. **87 of this repo's ANDONs were removable by an environment variable**, including
+every one in the write-head, which is strictly worse than the shell chain above: the chain at
+least let the ANDON print, while under `-O` the gate never speaks, the write proceeds and the
+process exits `0`. A check that decides whether an irreversible step proceeds must `raise` —
+the separator does not have to be a shell chain to be a separator, and an env var is a cheaper
+accident than one. E21 Ruling 2 wrote this law; **E22 converted the ruled 88 sites and E22
+Ruling 9 is the fold that finally put it here, several folds late — a law that lives only
+inside a ruling document is the failure the record was built to escape.**
+
+The carve-out is real and is part of the law (E22 Ruling 3): a check labelled
+`IMPLEMENTATION:` rather than `ANDON:` may stay an `assert` — two such sites sit in converted
+write-path tools and each carries a comment declining andon status *because halting there fired
+on correct work once already*. **The token is an author's declaration, not a marker someone
+forgot to type.** A gate whose author never declared it is a documentation defect at that site,
+repaired by writing the token — not a reason to widen the rule to every assert.
+
+**Check that the population is real before you predict its density.** A dispatch computed its
+out-of-scope class as *total minus a five-tool subtotal* and named the difference "~207
+developer sanity checks"; measured, that class is **16**, and the other 191 are declared gates.
+An executor then predicted how many members of that phantom class guarded a write, took an
+untutored 8–12, **halved it on this repo's own "densities run 2× high" lesson**, and measured
+175. The calibration ritual moved the answer away from the truth and made the move look like
+discipline. A quantity predicted about a mis-specified population cannot be right. **Two arcs
+running, the scope number has been the defect rather than the work** — derive a scope by
+measuring it, never by subtracting one.
+
 **When a number will not move, check the baseline.** The most valuable measurement in this
 repo's history came from an executor who stopped chasing a stuck figure and asked whether
 the thing it was compared against was real. It was not.

@@ -130,7 +130,7 @@ earlier arc ran ten sessions that each judged their own output and wrote conclus
 next session read as established fact. Nothing in that loop was checkable.
 
 - **Spec before the work, report after, ruling last** — and the session that designs an
-  experiment never grades its own results. Twenty-one experiments are in
+  experiment never grades its own results. Twenty-two experiments are in
   [the record](docs/experiments/).
 - **Corrections land in place, beside the measurement that overturned them**, never as
   quiet deletions. Six inherited claims were falsified in the founding session alone, and
@@ -139,8 +139,8 @@ next session read as established fact. Nothing in that loop was checkable.
   is not an archive — anyone can run those tools and watch them fail the same way.
 - **A negative result is a full success**, reported and closed rather than tuned toward a
   number.
-- **Tests ride the commit that touches the code** — 248 passing at two seats' hands, with
-  paths-gated CI on the 240 hermetic ones.
+- **Tests ride the commit that touches the code** — 275 passing at two seats' hands, with
+  paths-gated CI on the 267 hermetic ones.
 - **The record is queryable.** A SQLite + FTS5 index over the whole trail, verified on
   four legs. It found a ruling count the prose had wrong at three sites, by counting the
   record itself.
@@ -150,7 +150,7 @@ next session read as established fact. Nothing in that loop was checkable.
 | | |
 |---|---|
 | **[The handbook](docs/handbook/index.md)** | the guide — the route stage by stage, the subjects, the profile system |
-| **[The record](docs/experiments/)** | twenty-one experiments: spec, report, ruling, and every prediction stated before the measurement |
+| **[The record](docs/experiments/)** | twenty-two experiments: spec, report, ruling, and every prediction stated before the measurement |
 | **[What the route learned](docs/findings.md)** | the durable findings and the hard-won rules, in full |
 | **[Status of every tool](docs/tools.md)** | what works, what is superseded, and the evidence for each |
 | **[Known defects](docs/known-defects.md)** | everything not solved, measured and located in code |
@@ -202,8 +202,19 @@ scripts**, with no `--debug` gate. Deliberate halts are `ANDON:` messages carryi
 measurement that fired them. That is the research-instrument contract, and
 [SHIP_GATE.md](SHIP_GATE.md) records exactly when it stops being good enough — which for
 the two commands facet *installs* it did, at 0.2.0: `facet-index` and `facet-mcp` return
-`0` ok / `1` user error / `2` runtime error, and refuse with a structured failure naming
-the next step rather than a traceback ([E21](docs/experiments/E21-cli-contract-report.md)).
+`0` ok / `1` user error / `2` runtime error — and, since
+[E22](docs/experiments/E22-ruling.md), **`4` REFUSED** for a fired gate or a failing
+`verify` leg, which is the tool working and telling you not to proceed rather than a
+runtime error. All of them refuse with a structured failure naming the next step rather
+than a traceback ([E21](docs/experiments/E21-cli-contract-report.md)).
+
+**And the gates in those two commands are no longer deletable.** Every ANDON in what
+facet installs `raise`s; a bare `assert` is a statement `python -O` removes silently,
+and 87 of this repo's gates were removable by an environment variable until E22
+converted them. Measured before and after on the same gate, in four interpreter modes.
+**191 gates in the unpublished research tools are still asserts** — named here rather
+than omitted, scoped by [E22 Ruling 4](docs/experiments/E22-ruling.md), and none of them
+is in a command facet installs.
 
 **Support status:** this repo is developed in the open, at one rig, by one director
 and a rotating pair of advisor and executor sessions. `main` is the only supported
@@ -221,8 +232,8 @@ Developed against an RTX 5090; VRAM headroom matters more than raw speed.
 CI runs the hermetic subset of the suite on **ubuntu-latest / Python 3.12** with
 pinned installs (`.github/workflows/ci.yml`); the artifacts tier needs the recorded
 trees under `E:\AI\training`, which are not in git, so CI deselects them by design.
-Locally, `python -m pytest` runs all **248** tests and `python -m pytest -m "not artifacts"`
-runs the **240** CI reproduces.
+Locally, `python -m pytest` runs all **275** tests and `python -m pytest -m "not artifacts"`
+runs the **267** CI reproduces.
 
 ---
 
