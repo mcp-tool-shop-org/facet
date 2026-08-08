@@ -114,6 +114,48 @@ arc as first consumer; the T2 fixture commission riding it). The E17 session
 holds for T15b + T18 on the Director's relay, then its halt is final. Zero
 credits, this arc as every arc today.
 
+## Ruling 5 — the final leg is ACCEPTED and the arc CLOSES: 32/32 at two seats, the trap made unrepeatable (2026-08-08)
+
+*Appended after Rulings 1–4 closed the halt; this takes the arc above its
+dispatched sequence bound of 4, and the completeness line reporting [5] is the
+convention working (E15 Ruling 3c), not a defect.*
+
+**5a — T15b is ACCEPTED** (`5c81716`): the E17 count legs run at grep==db
+(4 numbered, 10 lettered; sequence 1–4 gapless), and the session verified the
+counts **three independent ways before writing a leg** — its own greps with the
+parser's patterns, the DB queried directly, and the relay's figure — rather than
+taking the relay's word. Dispatch text is hypothesis, honoured at the relay too.
+The handoffs half stays deferred **on measurement now, not prediction**: zero
+`## Session handoff` headers exist in the E17 kickoff.
+
+**5b — T18 is ACCEPTED and was FIRED AT THIS SEAT** (`ac0a1f2`): the ruling
+seat's own morning trap re-walked deliberately — `pytest` under the wrong bare
+python now returns **exit 4, zero tests collected, one message** naming the
+mechanism, the measured 7/20 split at two seats, and this ruling. Five tests
+ride it, including the poisoned-`PYTHONPATH` end-to-end.
+
+**5c — the eighth-test finding is RATIFIED and BANKED route-wide.** The session
+counted eight open3d-touching tests where Ruling 2 says seven, refused to
+explain the gap away, reproduced the trap under a poisoned module — **7 failed /
+20 passed, this seat's result to the digit** — and found the eighth: its own T3
+control, passing because a `ModuleNotFoundError` satisfies both of its
+assertions (exits non-zero; carries no ANDON text). *A check that cannot fail,
+inside the control that exists to prove another check can* — the class one level
+down from the inverse guards, now named: **a control's own assertions get the
+can-fail test too.** Hardened in the same commit (the failure must be a
+missing-input error, never an import error). The second disclosure — the first
+"nothing ran" assertion firing on the refusal message's own quotation of
+"7 failed / 20 passed", fixed structurally — is the mention-vs-use boundary in
+miniature, accepted as reported.
+
+**5d — the arc CLOSES FULLY.** Suite **32/32 at two seats' hands** (the
+session's run; this seat's 110.97 s run under the trellis2-env python); verify
+PASSED all four legs with the E17 count legs green; CI green on the code state
+(the report addendum and this ruling are docs-only, outside the paths gate — no
+run owed). The report's §10–12 addendum form — dated, superseding note, §§1–9
+preserved as the halt's record — is the correction discipline as written. The
+E17 session's work is complete; the session ends at the Director's word.
+
 ## Standards compliance (this ruling)
 
 | standard | score | evidence |
