@@ -1,0 +1,21 @@
+{
+  "_what_this_is": "Expected sRGB for each of LONGSWORD-IDENTITY.md's five named elements, ESTIMATED FROM THE FIXTURE'S WORDS by the executor, 2026-08-07 (E14 handoff 2, Task 3.2). These are not measurements. No styled image of this longsword exists yet, so nothing here has been observed - it is the best reading of 'battle-worn steel', 'blackened iron', 'gold', 'oxblood leather' and 'dark garnet', and it is the weakest link in the backdrop derivation that consumes it.",
+
+  "_how_it_must_be_corrected": "The fixture's non-circularity rule for the palette bands applies here too: once the styled target pair exists (Task 4), measure each element's ACTUAL colour on the pair and re-run the derivation against the measured table. If the pair disagrees with these estimates, the pair wins - it is an observation and this is a guess.",
+
+  "_the_one_estimate_that_is_not_purely_a_guess": "L1's slight cool cast is not invented. The repo has MEASURED this material class: steel on the W3 route read C* 1.6-2.8 at hue 267 (CLAUDE.md's chroma-floor law, from the E07/E08 record). L1 below is set at chroma ~2.6 in that direction, which is the measured class rather than a taste call. It remains an estimate of THIS sword - the class fact fixes the direction, not the value.",
+
+  "_thin_flag": "thin=true marks the elements that antialias toward the backdrop and therefore key out 4.2-6.8x more often than bulk (E04 fixture check). The flag is set STRICTLY BY THAT DEFINITION here: L3's gold boss and collar rings and L5's gem are the small elements at this subject's route frame - the fixture already records L5 as 'below any area floor by construction at route frames'. L2's quillon arms span 216 of 240 frame px and are not filament; L4's wrap is a cylinder of comparable width. Neither is flagged.",
+
+  "_L1_IS_DELIBERATELY_NOT_FLAGGED_THIN_AND_THIS_IS_THE_REASON": "The dispatch asks the derivation to weight toward L1, because S-steel holds this subject's risk and 'the backdrop must hold L1 furthest of all elements'. That is a REAL concern and a DIFFERENT mechanism from the one the thin flag names: L1's risk is that a near-achromatic backdrop sits close in colour to the largest surface on the subject, not that a small element antialiases into it. This is the beast's D3 decision, same shape and same reason - setting thin=true here would attach the right weight for a reason the flag's own name does not describe, which is the 'condition whose stated derivation does not describe it' failure this repo has already paid for. So L1 carries weight 1, and its distance is reported explicitly at every optimum whether or not it binds the minimum. If the ruling wants L1 weighted, that is a named decision needing a field whose name says what it means.",
+
+  "_AND_A_SECOND_L1_FACT_THE_FLAG_CANNOT_EXPRESS": "L1 is genuinely thin in the flag's own antialiasing sense on TWO of the eight views. Edge-on (views 2 and 6) the blade renders as a sliver a few pixels wide, so most of its pixels there ARE boundary pixels - exactly the mechanism the flag names. But the flag is per-element and this property is per-view, and flagging L1 would apply an edge-on fact to the face-on views where the blade is a 60-110 px solid field of its own colour. Recorded here rather than encoded, because a per-view thin flag does not exist and inventing one to carry this would be the same overload in a new costume.",
+
+  "materials": [
+    {"id": "L1", "name": "battle-worn steel blade",   "rgb": [150, 153, 158], "thin": false},
+    {"id": "L2", "name": "blackened iron crossguard", "rgb": [ 46,  46,  48], "thin": false},
+    {"id": "L3", "name": "gold diamond boss",         "rgb": [201, 160,  74], "thin": true},
+    {"id": "L4", "name": "oxblood leather grip wrap", "rgb": [101,  36,  38], "thin": false},
+    {"id": "L5", "name": "dark garnet gem pommel",    "rgb": [114,  21,  33], "thin": true}
+  ]
+}
