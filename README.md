@@ -1,17 +1,11 @@
 <p align="center">
-  <img src="docs/brand/facet-logo.png" alt="facet" width="400">
+  <img src="https://raw.githubusercontent.com/mcp-tool-shop-org/brand/main/logos/facet/readme.png" alt="facet" width="400">
 </p>
 
 <p align="center">
   <a href="https://github.com/mcp-tool-shop-org/facet/actions/workflows/ci.yml"><img src="https://github.com/mcp-tool-shop-org/facet/actions/workflows/ci.yml/badge.svg" alt="CI"></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue" alt="MIT License"></a>
   <a href="docs/experiments/"><img src="https://img.shields.io/badge/record-spec%20%E2%86%92%20report%20%E2%86%92%20ruling-8a6f3f" alt="The record"></a>
-</p>
-
-<p align="center">
-  <em>The four assets above are this repo's own output — one per subject class,
-  every one accepted at the Director's zoom, at zero credits.<br>
-  <a href="docs/brand/README.md">Provenance for each, with its ruling.</a></em>
 </p>
 
 ---
