@@ -1273,3 +1273,52 @@ with the fifth-signature, 20b, 12e-gold, red-outside-L5 and deep-share
 watches, every rejection preserved under name. HALT 2 with the stroked
 asset staged for this seat's sheet-walk, then the Director.
 
+**24l — the pre-flight fired on this ruling's own fold: the registry
+payment was one row short; paid, and the lane resumes (2026-08-08).**
+Evidence: the Task-2 halt report
+([E14-handoff7-task2-halt.md](E14-handoff7-task2-halt.md), `df1ccaa`) and
+this seat's own eye on `E14-brush-prompts.json` — the one substitution
+verified exactly as ruled, term counts 11×6 / 10×2, drop map unchanged,
+the order 24e's, the negative transcribed.
+
+Ruling 24 cleared `texpass_brush` and decided `prompts: "stroke stems v3"`
+— **a name with no resolvable source**: the `_fixtures.brush_prompts` row
+that `ship.json` and `beast.json` both carry was not added, and
+`brush_cloud_step`'s E10-Ruling-6 provenance guard halted before stroke 1's
+graph was written — exactly as the beast's fixture note predicts (*"the
+pointer must exist here or that guard halts, which is the guard working"*).
+The gap was this seat's, and the 26a law sharpens one level down: **a value
+pointing at a name is not a value pointing at a file — a registry entry is
+paid when the guard can resolve it.** Paid this fold: the fixture row lands
+pointing at `docs/experiments/E14-brush-prompts.json`; the block's
+`prompts` value becomes the path itself; and the block gains the
+protective-transcription `negative` the beast's form carries and this
+fold's first pass skipped. Ledger, beside 24j.
+
+Accepted as delivered, each item verified at this seat: the stems v3
+(opened, above); **the demotion with its compensator exercised BEFORE the
+operation it protects** — demote → undo → SHA-256 byte-identical on all
+three state files, on scratch, before the real op was offered — which is
+the named-compensator standard at its strongest measured form and enters
+the record as the practice to repeat; the demotion's numbers exact to 24f
+(styled 1,656,847 → 1,588,943, holes +67,904, atlas bytes identical,
+changes proven subsets of the ruled mask, `texpass_iter`'s commit ANDON
+byte-unchanged); the frame-side landing (stroke 1's job mask +1,420 px,
+**100.0% inside the gem band**, bbox rows 97–139 — the ownership mask as
+tight in the frame as in the atlas); and the §4b probe measuring the gap
+to exactly one line (every other pre-flight leg passing on a
+scratchpad-only copy carrying just that row: five recipe values, the
+inverted no-LoRA scan — 16 nodes, no loader, no card reference,
+`ModelSamplingAuraFlow` reading the UNET direct — lane corroboration,
+prompt/negative provenance; the probe graph named `PROBE_ONLY`, never
+submittable). The demotion STAYS APPLIED — its state is new, no accepted
+artifact depends on it, and re-running a correctly-executed ruled
+operation would be redundant; `state0/` is pristine and remains the
+compensator's source. The executor's in-place correction of the handoff-7
+report's predictions hash (`c04a629` → `a75d5cf`; the relief fold's rebase
+moved it) is RATIFIED — corrected with the reason, never silently, which
+is the correction discipline as written.
+
+**The lane resumes at stroke 1's graph build.** Zero credits still; the
+banked A0 untouched; every watch as armed at 24g–24i.
+
