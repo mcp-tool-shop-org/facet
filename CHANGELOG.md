@@ -71,17 +71,17 @@ What the four accepted assets earn is a *first* release, not a stable one.
   (byte-identical determinism across interpreters, counts against independent greps,
   zero dangling pointers, a seeded question gate)
   ([E15-ruling.md](docs/experiments/E15-ruling.md)).
-- **211 tests, 211 passing at two seats' hands** — 203 hermetic + 8 artifacts — plus the
+- **213 tests, 213 passing at two seats' hands** — 205 hermetic + 8 artifacts — plus the
   repo's first CI workflow, paths-gated and pinned
   (the harness at [E17 Ruling 5](docs/experiments/E17-ruling.md), which closed that arc
   at 32; [E18](docs/experiments/E18-ruling.md) rode 60 more in on the commits that built
   the record-index MCP; [E20](docs/experiments/E20-ruling.md) is adding the unit tier).
   Counted at this commit rather than inherited: `pytest --collect-only` over the
-  committed `tests/` returns 211, and 203 with `-m "not artifacts"`. **The lineage is
-  27 → 32 → 92 → 202 → 211 in a single day** — E20 closed and was ruled, then the
-  extraction's own T27 added nine more. Re-counted at the tagging commit before the tag
-  was cut, per [E19 Ruling 7](docs/experiments/E19-ruling.md); that gate has now fired
-  four times and caught a stale number every time.
+  committed `tests/` returns 213, and 205 with `-m "not artifacts"`. **The lineage is
+  27 → 32 → 92 → 202 → 213 in a single day** — E20 closed and was ruled, then the
+  extraction's own T27 added eleven more. Re-counted at the tagging commit before the
+  tag was cut, per [E19 Ruling 7](docs/experiments/E19-ruling.md); that gate fired five
+  times and caught a stale number on every one of them.
 - The claims sweep (`facet_index.py claims`) reads **0 STALE** against the record.
 
 **Four dense assets are in the training dataset**, 114 records across five ingests

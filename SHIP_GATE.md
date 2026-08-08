@@ -5,9 +5,19 @@
 
 **Tags:** `[all]` every repo · `[npm]` `[pypi]` `[vsix]` `[desktop]` `[container]` published artifacts · `[mcp]` MCP servers · `[cli]` CLI tools
 
-**Detected tags for this repo: `[all]`** — `shipcheck init` v1.0.7, 2026-08-08.
-No `[npm]`, no `[pypi]`, no `[cli]`, no `[mcp]`: facet carries no dependency
-manifest, no entry point and no published artifact of any kind.
+**Detected tags at the treatment's audit: `[all]`** — `shipcheck init` v1.0.7,
+2026-08-08. At that moment facet carried no dependency manifest, no entry point and
+no published artifact of any kind.
+
+> ⚠ **THAT TAG SET IS NOW OUT OF DATE, and this line says so rather than quietly
+> reading as current.** The Director fired the extraction gate the same day:
+> `pyproject.toml` and `package.json` both exist, so a fresh `shipcheck init` will
+> detect **`[pypi]`** and **`[npm]`** and turn on gate families that are SKIP-ed
+> below with *"nothing publishes until the extraction gate"* as their written
+> re-open condition. **The 100% pass rate recorded here is true for the
+> pre-extraction tag set only.** A re-audit is owed at the next fold — it is the
+> gate that remembers what was forgotten, which is exactly why the SKIPs carry
+> conditions instead of just reasons.
 
 **How to read the SKIPs below.** Most of them share one reason and it is a ruled
 one: **facet publishes nothing until the extraction gate.** The four MCP tools
@@ -54,7 +64,7 @@ is unwritten quietly becomes doctrine — the failure mode this repo exists to a
 
 ## D. Shipping Hygiene
 
-- [x] `[all]` `verify` script exists (test + build + smoke in one command) (2026-08-08) — `python -m pytest` runs the full **211-test** suite; `python -m pytest -m "not artifacts"` runs the **203** hermetic tests CI reproduces. There is no build step because nothing is built. The artifacts tier is the smoke layer — it replays recorded trees and anchors. Configured in `pytest.ini`, gated in `.github/workflows/ci.yml`, established in [E17 Ruling 5](docs/experiments/E17-ruling.md) and extended by [E18](docs/experiments/E18-ruling.md). *Re-counted 2026-08-08 at the E19 ruling: this line read 32/24, true when written and stale the same day when E18 landed 60 tests in the parallel lane. It was then corrected to 92/84 and went stale **again within the ruling session** when E20 committed its unit tier, and **a fourth time** when the extraction's T27 added nine. Lineage 27 → 32 → 92 → 202 → 211 in one day. Re-counted at the tagging commit per [E19 Ruling 7](docs/experiments/E19-ruling.md) — the gate fired four times and caught a stale number on every one of them.*
+- [x] `[all]` `verify` script exists (test + build + smoke in one command) (2026-08-08) — `python -m pytest` runs the full **213-test** suite; `python -m pytest -m "not artifacts"` runs the **205** hermetic tests CI reproduces. There is no build step because nothing is built. The artifacts tier is the smoke layer — it replays recorded trees and anchors. Configured in `pytest.ini`, gated in `.github/workflows/ci.yml`, established in [E17 Ruling 5](docs/experiments/E17-ruling.md) and extended by [E18](docs/experiments/E18-ruling.md). *Re-counted 2026-08-08 at the E19 ruling: this line read 32/24, true when written and stale the same day when E18 landed 60 tests in the parallel lane. It was then corrected to 92/84 and went stale **again within the ruling session** when E20 committed its unit tier, and **twice more** as the extraction's own T27 grew to eleven tests. Lineage 27 → 32 → 92 → 202 → 213 in one day. Re-counted at the tagging commit per [E19 Ruling 7](docs/experiments/E19-ruling.md) — **the gate fired five times and caught a stale number on every one of them**, which is the strongest argument in the record for want 2: a live-moving quantity on a presentation surface needs a gate, not a habit.*
 - [ ] `[all]` SKIP: **no manifest carries a version**, so there is nothing to match a tag against. facet has no `package.json`, `pyproject.toml` or equivalent. `v0.1.0` lives as a git tag plus the CHANGELOG heading and nowhere else — CHANGELOG.md states this explicitly rather than implying a package exists. ⚑ **Note (2026-08-08): the npm name `@mcptoolshop/facet` is reserved by a `0.0.0` placeholder published from a sibling directory OUTSIDE this repo**, deliberately, so facet's root stays manifest-free and this SKIP does not re-open on a name reservation. Re-opens at extraction, when an extracted tool gains a real manifest.
 - [ ] `[all]` SKIP: facet declares **no dependency manifest**, so there is no dependency graph for a scanner to read. Its runtime deps are documented prose in the README and pinned inline in `ci.yml`'s install step. ⚑ **Flagged for the ruling, not decided here:** if the ruling wants D3 executed rather than skipped, the cheapest honest form is a `pip-audit` step over the versions `ci.yml` already pins — that is one step in **E18's lane**, so it is named here and not edited.
 - [ ] `[all]` SKIP: no automated dependency-update mechanism, by two independent reasons — the org's own GitHub Actions rule (*"Do NOT add dependabot.yml unless explicitly requested"*), and no manifest for dependabot to track even if it were requested.

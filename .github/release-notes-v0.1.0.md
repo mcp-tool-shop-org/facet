@@ -46,7 +46,7 @@ Structure is held by the mesh and the control; named attributes ride the prompt.
 
 ## The record is the product as much as the pipeline is
 
-- **211 tests** at two seats' hands, 203 of them hermetic and reproduced by paths-gated
+- **213 tests** at two seats' hands, 205 of them hermetic and reproduced by paths-gated
   CI on every push.
 - **A four-leg-verified SQLite + FTS5 index** over the whole evidence trail: byte-identical
   determinism across interpreters, counts checked against independently written greps,
