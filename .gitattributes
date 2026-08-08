@@ -1,0 +1,36 @@
+# Line endings, pinned.
+#
+# This repo had no .gitattributes and ran on `core.autocrlf=true`, so every
+# commit printed "LF will be replaced by CRLF the next time Git touches it" —
+# the tools here write LF, and git wanted CRLF back in the working tree. A
+# warning that fires on every commit is a warning nobody reads, and this repo
+# leans on byte-comparisons: a line-ending policy that depends on one machine's
+# git config is a silent way for two sessions to disagree about a file's bytes.
+#
+# Pinned to LF on BOTH sides — index and working tree. Measured before pinning:
+# the working tree was already 214 of 215 markdown and 148 of 148 python files
+# LF, so this ratifies what the record already is rather than rewriting it. The
+# 17 stragglers (15 json, docs/experiments/README.md, .gitignore) were converted
+# in this commit, and the index DB was rebuilt across the conversion to check
+# the parse is not line-ending sensitive: byte-identical, 6b879d3c…, so nothing
+# derived moves.
+#
+# Order matters here: later rules win, so the binary marks must follow the
+# catch-all.
+
+* text=auto eol=lf
+
+*.py    text eol=lf
+*.md    text eol=lf
+*.json  text eol=lf
+*.jsonl text eol=lf
+*.sh    text eol=lf
+*.ps1   text eol=lf
+
+# Binary — never touched by the eol filter, never diffed as text. `.db` is the
+# derived index, `.npy`/`.glb` are not tracked today but are the route's own
+# artifact types and will be.
+*.db    binary
+*.png   binary
+*.npy   binary
+*.glb   binary

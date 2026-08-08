@@ -101,19 +101,117 @@ HEAD's tool run from inside `tools/` so `REPO` resolves the same way:
 | build to a **fresh** path, current corpus | `bb1d7962…` | `bb1d7962…` |
 | build to the **in-repo** path, current corpus | `37ed03b3…` | `37ed03b3…` |
 
-**Byproduct finding, reported not fixed — the DB's bytes depend on the target
-file's prior content, not only on the record.** A build into a path that does
-not exist yields one page layout (`bb1d7962…`); a build overwriting an existing
-DB yields another (`37ed03b3…`) and is stable from then on. Both are logically
-identical and each is internally deterministic. The consequence for this batch:
-*"the DB byte-identical" is only meaningful when the two sides share the same
-target-file history* — comparing a fresh build against the in-repo DB compares
-two different objects. **Leg 1 is not exposed**: it builds two fresh temps
-(`.det_a`/`.det_b`) and carries a pre-registered `.dump` fallback, so it is
-already fresh-vs-fresh. I also planted stale temps to simulate a crash between
-leg 1's build and its cleanup, expecting a spurious byte-identity failure —
-**that speculation was wrong**: leg 1 still reported BYTE-IDENTICAL and cleaned
-up, because both temps inherit the same prior content. Measured, not assumed.
+**Byproduct finding — WITHDRAWN, corrected in place during E16-2 with the
+measurement that overturned it.** I first read three distinct DB shas for what I
+believed was one unchanged corpus (`04d76d3…`, `bb1d7962…`, `37ed03b3…`) and
+concluded that a build's bytes depend on whether the target file pre-existed —
+fresh path vs in-place overwrite. **That conclusion was wrong**, and the
+controlled re-tests are in [E16-2](#e16-2--gitattributes-lf-pin--anchor-held):
+fresh, overwrite, overwrite-again and overwrite-a-differently-sized-prior-DB all
+return the same sha. The real cause is [§2](#2-a-session-level-finding-the-working-tree-is-shared):
+a **concurrent session** is writing into this working tree, and `docs/specs/`
+enters the index — so the corpus *was* changing between my readings. The claim
+reproduced three times and was still invalid, which is this repo's own law
+firing on me: *reproducibility is not validity — check what the operands are.*
+
+What survives the withdrawal, because it was measured directly rather than
+inferred: **leg 1 is not exposed to any of this** — it builds two fresh temps
+(`.det_a`/`.det_b`) inside one process and carries a pre-registered `.dump`
+fallback. I also planted stale temps to simulate a crash between leg 1's build
+and its cleanup, expecting a spurious byte-identity failure; **that speculation
+was also wrong** — leg 1 still reported BYTE-IDENTICAL and cleaned up.
 
 **Prediction: HELD** (the sharper half — literal-only would be insufficient —
 was the load-bearing part, and the 17 fatal DB cells are the evidence).
+
+### E16-2 — `.gitattributes` LF pin · ANCHOR HELD
+
+**Finding.** No `.gitattributes` at all, `core.autocrlf=true`, and a
+"LF will be replaced by CRLF" warning on every commit.
+
+**Measured before pinning, because the index parses these files.** The working
+tree was *already* LF almost everywhere — 214 of 215 markdown, 148 of 148
+python, both scripts, the jsonl, LICENSE. Only **17 text files** carried CRLF
+(15 json, `docs/experiments/README.md`, `.gitignore`). So the pin ratifies what
+the record already is rather than rewriting it.
+
+**The check that had to come first.** `facet_index` parses this markdown, so a
+worktree line-ending change could have moved the DB. Isolated before writing
+`.gitattributes` — build to a fresh path, convert the 17 files, build to another
+fresh path: **`6b879d3c…` both sides, byte-identical**. The parse is
+line-ending insensitive.
+
+**The file.** `* text=auto eol=lf` pins BOTH sides — index and working tree —
+with per-type lines for `py/md/json/jsonl/sh/ps1` and `db/png/npy/glb` marked
+binary *after* the catch-all, because later rules win. `.ps1` and `.sh` were
+already LF in the tree and run that way, so pinning them preserves the status
+quo rather than betting on it.
+
+**ANCHOR.**
+
+| check | result |
+|---|---|
+| `git status` after an identical-bytes touch-and-restore of README.md | **quiet** |
+| `git add --renormalize .` content changes staged | **zero** — the index was already LF |
+| `git add --renormalize .` vs the concurrent session's untracked files | left alone (only tracked files are renormalized) |
+| build after renormalization | 655 artifacts / 483 rulings / 3411 fts, clean |
+| verify after renormalization | **PASSED all four legs, 19/19**, leg 1 byte-identity |
+
+**Prediction: HELD** — renormalize staged zero content changes, exactly because
+the index side was already LF; the binary marks moved no bytes.
+
+**One thing worth recording beyond the anchor.** Writing CRLF into README.md
+still shows ` M ` in `git status`, which looks like the pin failing. It is not:
+`git diff --numstat` is empty and the would-be blob (`a2feb044…`) is identical
+to the index blob — the ` M ` is stat-dirtiness, cleared the next time git
+touches the file. The warning direction has flipped from "LF will be replaced by
+CRLF" to "CRLF will be replaced by LF", which is the pin doing its job: the
+repo's canonical form is now LF and git normalises toward it.
+
+---
+
+## 2. A session-level finding: the working tree is shared
+
+**This repo currently has a second session writing into it** — the MCP
+spec-session opened by the same `cff21e9` dispatch. Its files appeared under
+`docs/specs/` while this batch was running (`comfy-preflight-spec.md` was not
+there at my first `git status` and was at my second), and **`docs/specs/` enters
+the index** (1 `artifacts` row, 1 `fts` row measured). It also rebuilds
+`docs/index/facet.db`, which is a tracked file we both write.
+
+That is what produced the three unreconcilable DB shas in E16-1, and it cost a
+withdrawn finding. Three working rules adopted for the rest of the batch, and
+recommended to the advisor as standing practice whenever two windows share a
+tree:
+
+1. **No in-repo DB sha is an anchor.** Every DB comparison in this batch builds
+   to fresh scratch paths, which is what made the E16-1 tool-neutrality result
+   trustworthy while the in-repo readings were not.
+2. **Never `git add -A` / `git add .`** — explicit paths only, so the other
+   session's work is never swept into an errand commit. (`--renormalize .` was
+   checked against this specifically and only touches tracked files.)
+3. **`docs/index/facet.db` stays out of errand commits** and is rebuilt once at
+   the end of the batch, since both sessions regenerate it.
+
+Verified before it was asserted: `build --db <other-path>` does **not** write
+the default DB — the tool respects its declared target, so the drift is the
+other session, not a silent write. The other session is also **committing to
+`main`**: `E14 Ruling 34` (the ingest landed) and `E14 Ruling 35` (the polish
+arc chartered) interleaved between my errand commits while this batch ran.
+
+**The advisor reached the same class from the other side, independently.**
+Ruling 35 records: *"concurrent verifies in one working copy race on
+`facet.db.det_a` — observed live this fold when my verify collided with E16-1's
+own; retried clean, flagged for the errand lane."* Leg 1's temp paths are fixed
+(`db_path + ".det_a"` / `".det_b"`, `facet_index.py:1681–1682`), so two verifies
+in one working copy write the same two files and can read each other's bytes.
+That is a live defect in the determinism leg under concurrency, and it is a
+second plausible contributor to E16-1's unreconcilable shas alongside the moving
+corpus.
+
+**Not taken into this batch, and flagged for the advisor's ruling.** It was
+queued by a ruling that landed *after* this dispatch was written, and the
+dispatch's named trap is fixing something no ruling queued. The eleven run as
+dispatched; this is reported as a twelfth with a diagnosis ready — the repair is
+per-process-unique temp paths, and its anchor is two concurrent verifies both
+returning byte-identity.
