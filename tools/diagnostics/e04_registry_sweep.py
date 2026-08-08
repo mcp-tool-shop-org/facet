@@ -73,7 +73,16 @@ CODE_ROWS = {
         "edge-frac": "A3's invariant - erosion may never exceed a third of a structure's "
                      "own local half-width. A derived law, not a tuned number",
         "hole-grey": "design collision with emit's background fill, recorded and unchanged"},
-    "texpass_iter.py": {"bias": "ray-offset epsilon", "noffs": "ray-offset epsilon"},
+    "texpass_iter.py": {
+        "bias": "ray-offset epsilon", "noffs": "ray-offset epsilon",
+        # E16 Ruling 4a: the same invariant, the same class, copied with its
+        # consumer (E16-10 moved local_thickness to mask_geometry so both tools
+        # run ONE implementation; the classification travels with it). edge-mode
+        # stays SUBJECT-DATA: a route OPTS IN to the local bound with evidence,
+        # and a mode must never arrive by silence.
+        "edge-frac": "A3's invariant - erosion may never exceed a third of a "
+                     "structure's own local half-width. A derived law, not a "
+                     "tuned number"},
     "texpass_finalize.py": {
         "max-edge-median": "stated in MEDIAN TRIANGLE EDGES, measured from this mesh at run "
                            "time - the unit normalises the subject away",
