@@ -682,9 +682,14 @@ All four diagonals (1/3/5/7): **gold across L2's entire crossguard, 93–96%**
 — the occupancy violation, view-systematic at this seed, 0.0% on both
 face-ons. Edge-on view 6: the re-roll is ACCEPTED (IoU 0.93, bbox 1.07×;
 compact and registered; the ornamental crossing recorded as odd but inside
-the silhouette). Edge-on view 2: **a second failure at reduced magnitude**
-(the phantom face-on guard persists, bbox 2.69×) — per the dispatch that is
-the result, and both rejected artifacts are preserved.
+the silhouette). *⚠ Overturned 2026-08-08 (Ruling 20a, the Director's eye
+leading): "odd" was a face-bearing mass judged from a downscaled strip —
+the contact-sheet error by name. At 4× the crossing is a helmet/face dome,
+the v2 death's-head's quieter sibling; the acceptance rested on
+registration numbers and is withdrawn on identity.* Edge-on view 2: **a
+second failure at reduced magnitude** (the phantom face-on guard persists,
+bbox 2.69×) — per the dispatch that is the result, and both rejected
+artifacts are preserved.
 
 **18b — the gold pattern is ruled SEED-CONDITIONAL on the pair's own
 evidence, and the diagonals re-roll ONCE each at 770701.** The pair's record
@@ -711,7 +716,11 @@ exists for exactly this hole. "Can a subject this thin be twinned at 90/270
 from a 5,580-px control at all?" — measured answer: **marginally and
 unreliably** (one clean in four rolls across the two views); the route's
 mechanism for unreliable coverage is the brush, not more rolls. Banked
-route-level for every future thin subject.
+route-level for every future thin subject. *⚠ Hardened 2026-08-08 (Ruling
+20b): the count was wrong — v6's re-roll was registration-clean, not
+identity-clean (the face mass, 20a). The honest count is ZERO identity-clean
+edge-on rolls in four. The answer is not "marginally": on this route, at
+this control density, edge-on twinning of a thin subject FAILS.*
 
 **18d — the IoU bound stays underived** until the final set exists; it
 derives from the clean set's spread at the set's acceptance, per the
@@ -740,7 +749,11 @@ Director's. Dispatched below in the kickoff document.
 Evidence: the handoff-4 report (`2440e67`), its blind predictions and
 pre-submission halt-clause reading (`86dfda5`, `283a20d`), and this seat's
 eye on the rebuilt strip, the L5 8× gem strip and the 6× guard crop before
-this ruling.
+this ruling. *⚠ Corrected 2026-08-08 (Ruling 20d): this evidence line
+overstated — the 6× guard crop was NOT opened at this ruling; the strip and
+gem strip were. The guard crop was first opened at Ruling 20, after the
+Director's eye caught what this ruling missed. An evidence line lists what
+was looked at, not what was staged.*
 
 **19a — the branch resolved to the first exit and the set's composition is
 RULED: seven twins for stage 1** — views 0 and 4 at 770700, views 1/3/5/6/7
@@ -805,4 +818,59 @@ and erode-2 residue (Ruling 9's form), per-view marginal contributions, the
 gem-region readout, and the atlas under FLAT light beside the reference.
 **No pass condition is invented — the ceilings are comparables and the eye
 is the gate** (the E12 24e form). HALT with stage 1 staged for this seat's
-eye, then the Director's.
+eye, then the Director's. *⚠ Amended by Ruling 20: SIX twins, not seven —
+view 6 excluded on identity; the ceiling leg computes the six-camera reach.*
+
+## Ruling 20 — the Director's eye overturns 18a: view 6 is EXCLUDED; the record's misses are owned (2026-08-08)
+
+Evidence: the Director's zoom on the strip ("How are you not noticing
+this??") — his eye leading the instruments, as designed — then this seat's
+eye, finally at the right magnification: `TWIN_SHEET_6_HILT.png` at 4× and
+`GUARD_form_6x.png`, read against the clay reference.
+
+**20a — view 6's twin is EXCLUDED on IDENTITY, this seat's 18a acceptance
+overturned.** The crossing is not "odd" — it is a **face-bearing domed
+mass** (ear-like side loops, a face structure below) where the clay shows a
+plain faceted guard block: the v2 death's-head's quieter sibling, the same
+invented figurative motif. It registered (bbox 1.07×, IoU 0.93) because the
+mass is compact — **registration measures WHERE paint sits, not WHAT it
+is**, and 18a accepted on registration numbers plus a downscaled strip: the
+contact-sheet error, committed by the seat whose job is to catch it. The
+fixture's law governs: an element nobody named arrived by accident, on L2's
+declared surface, and it does not enter the atlas. The re-roll budget is
+spent; no legal roll exists; exclusion is the only lawful disposition.
+
+**20b — the edge-on finding HARDENS: zero identity-clean rolls in four.**
+Two phantoms, one death's-head, one face-helmet. The mechanism is now
+legible across the whole set: **the 770701 style family's ornament
+amplitude scales inversely with constraint density** — engraved scrollwork
+on the well-constrained diagonals (surface-level, guard-shaped, boss
+intact), figurative invention on the edge-on blobs where the control
+carries almost nothing. Edge-on twinning of a thin subject on this route
+FAILS as a class; the edge-on surfaces (blade edges end-on, both guard
+ends, ~7 points of valid across the two cameras) belong to the brush stage
+by construction, not to rolls. Banked route-wide.
+
+**20c — STAGE 1 runs with SIX twins**: views 0 and 4 at 770700, views
+1/3/5/7 at 770701. Handoff 5 is amended in place before launch: the
+ceiling leg pre-registers the SIX-camera reach (the eight-camera 51.33%
+stays the route-comparable; both excluded cameras' marginals — yaw 90
+~2.8 points, yaw 270 ~4.4 points — are quoted as the labelled delta). All
+six carriers hold the five-element identity at this seat's eye; the
+diagonals' scrollwork rides to the Gate-1 eye as recorded surface variance.
+
+**20d — the ledger, this seat, three entries, the worst first**: (i) at
+HALT 2 this seat SAW a face-like mass on view 2's hilt crop, kept it in
+working notes, and surfaced it in no ruling and no message — the eye caught
+it and the report dropped it, which is the exact failure the looking rule
+exists to prevent, found by the Director instead. (ii) Ruling 19's evidence
+line claimed the 6× guard crop had been viewed; it had not (corrected in
+place at 19). An evidence line lists what was looked at, not what was
+staged. (iii) The strip presented to the Director contained an excluded
+twin's panel unlabelled — from here the standing practice: **any presented
+sheet or strip labels excluded artifacts as excluded, in the image**.
+
+**20e — what stands unchanged**: the diagonals' iron guards, the gem-drift
+ruling (19b), the bbox-not-IoU finding (19e), the rim band's two-faced
+blindness (19c), and zero credits spent. The set that projects is six twins
+that look like the sword.

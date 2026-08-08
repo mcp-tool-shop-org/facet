@@ -642,13 +642,23 @@ crops. Zero credits expected; quote it anyway.
 
 ---
 
-## Session handoff 5 (2026-08-07) — STAGE 1: the seven twins project. Ends at the stage-1 halt.
+## Session handoff 5 (2026-08-07) — STAGE 1: the twins project. Ends at the stage-1 halt.
 
-**Authorised by [E14-ruling.md](E14-ruling.md) Ruling 19f** — the set is
-ruled for stage 1: **seven twins** (views 0 and 4 at 770700; 1/3/5/6/7 at
-770701), **view 2 EXCLUDED** per Ruling 18c. Everything projects at the
-profile's ruled values; nothing generates, nothing spends. A fresh executor
-session starts here:
+**⚠ AMENDED BEFORE LAUNCH (2026-08-08, [Ruling 20](E14-ruling.md)) — SIX
+twins, not seven.** The Director's eye caught what Ruling 19 missed: view
+6's re-roll carries a face-bearing mass at the crossing (the v2
+death's-head's sibling) and is EXCLUDED on identity. Everywhere this
+dispatch says seven, read SIX: **views 0 and 4 at 770700; views 1/3/5/7 at
+770701; views 2 AND 6 excluded** (Rulings 18c and 20a). The projection view
+list is `0,1,3,4,5,7`. The ceiling leg pre-registers the **SIX-camera**
+reach, quoting the eight-camera 51.33% as the route-comparable and both
+excluded cameras' marginals (~2.8 and ~4.4 points) as the labelled delta.
+Any sheet or strip you build labels excluded artifacts AS EXCLUDED, in the
+image (Ruling 20d's standing practice).
+
+**Authorised by [E14-ruling.md](E14-ruling.md) Ruling 19f as amended by
+Ruling 20c.** Everything projects at the profile's ruled values; nothing
+generates, nothing spends. A fresh executor session starts here:
 
 ```
 cd E:\AI\facet && git pull

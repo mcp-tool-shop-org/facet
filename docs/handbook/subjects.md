@@ -305,11 +305,21 @@ values live in its own profile and fixture, never inherited unmeasured.
   phenomenon, not an IoU phenomenon** (the populations overlap; a rejected roll
   out-scored an accepted twin), and the depth diagnostic's blindness has two
   faces (drifted material, not just backdrop bleed — second catch in two runs).
-- **In flight: handoff 5 — STAGE 1** — the seven-camera ceiling pre-registered
-  first, then the seven twins project; styled/valid against both ceilings (the
-  eight-camera **51.33%** stays the route-comparable), the on-surface family
-  with island count, the gem readout, the atlas under flat light. No pass
-  condition — the eye is the gate.
+- **The Director's eye overturned an acceptance**
+  ([Ruling 20](../experiments/E14-ruling.md), 2026-08-08): view 6's re-roll
+  carries a **face-bearing mass** at the crossing — the excluded view 2's
+  death's-head has a quieter sibling, and the advisor had accepted it on
+  registration numbers and a downscaled strip (the contact-sheet error, owned
+  in the ledger with two more misses). **Both edge-on views are now excluded**;
+  the edge-on finding hardened to **zero identity-clean rolls in four** —
+  ornament amplitude scales inversely with constraint density, and at edge-on
+  constraint it goes figurative. The edge-on surfaces belong to the brush stage
+  by construction. Registration measures WHERE paint sits, not WHAT it is.
+- **In flight: handoff 5 — STAGE 1, amended to SIX twins** (0/4 at 770700,
+  1/3/5/7 at 770701) — the six-camera ceiling pre-registered first, then
+  projection; styled/valid against both ceilings (the eight-camera **51.33%**
+  stays the route-comparable), the on-surface family with island count, the gem
+  readout, the atlas under flat light. No pass condition — the eye is the gate.
 
 ## The calibration table this page exists for
 
