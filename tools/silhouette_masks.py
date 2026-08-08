@@ -104,7 +104,8 @@ print(f"[sil] mesh {len(v):,} verts  {len(f):,} tris   v_ext {v_ext:.6f}  h_ext 
 anchors = {}
 for a in args.anchor:
     k, _, p = a.partition("=")
-    assert p, f"ANDON: --anchor wants VIEW=PATH, got {a!r}"
+    if not (p):
+        raise AssertionError(f"ANDON: --anchor wants VIEW=PATH, got {a!r}")
     anchors[int(k)] = p
 
 H, W = AH, AW
@@ -131,9 +132,10 @@ for idx in [int(x) for x in args.views.split(",")]:
 
     # ANDON: a silhouette that is empty or fills the frame is not a silhouette.
     pct = float(hit.mean() * 100)
-    assert 0.5 < pct < 60.0, (
-        f"ANDON: view {idx} silhouette is {pct:.2f}% of frame — empty or runaway, "
-        f"the camera convention or the mesh is wrong.")
+    if not (0.5 < pct < 60.0):
+        raise AssertionError(
+            f"ANDON: view {idx} silhouette is {pct:.2f}% of frame — empty or runaway, "
+            f"the camera convention or the mesh is wrong.")
     ys, xs = np.nonzero(hit)
     bw, bh = int(xs.max() - xs.min() + 1), int(ys.max() - ys.min() + 1)
 
@@ -146,8 +148,9 @@ for idx in [int(x) for x in args.views.split(",")]:
 
     if idx in anchors:
         ref = np.asarray(Image.open(anchors[idx]).convert("L")) > 127
-        assert ref.shape == hit.shape, (
-            f"ANDON: view {idx} anchor is {ref.shape}, generated is {hit.shape}")
+        if not (ref.shape == hit.shape):
+            raise AssertionError(
+                f"ANDON: view {idx} anchor is {ref.shape}, generated is {hit.shape}")
         diff = int((ref != hit).sum())
         agree = 100.0 * (1 - diff / ref.size)
         inter = int((ref & hit).sum())
@@ -157,10 +160,11 @@ for idx in [int(x) for x in args.views.split(",")]:
               f"{os.path.basename(anchors[idx])}", flush=True)
         report["views"][str(idx)]["anchor_diff_px"] = diff
         report["views"][str(idx)]["anchor_iou"] = round(inter / union, 6)
-        assert diff == 0, (
-            f"ANDON: view {idx} does not reproduce its anchor — {diff:,} differing px, "
-            f"IoU {inter / union:.6f}. The camera convention is wrong; every twin built "
-            f"on these masks would be misregistered. Fix before generating anything.")
+        if not (diff == 0):
+            raise AssertionError(
+                f"ANDON: view {idx} does not reproduce its anchor — {diff:,} differing px, "
+                f"IoU {inter / union:.6f}. The camera convention is wrong; every twin built "
+                f"on these masks would be misregistered. Fix before generating anything.")
 
 with open(os.path.join(args.out, "silhouettes.json"), "w") as fh:
     json.dump(report, fh, indent=1)

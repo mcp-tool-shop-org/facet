@@ -269,12 +269,14 @@ for r in range(args.rings):
           f"({seen.mean()*100:.1f}%)", flush=True)
 
 frac = float(seen.mean())
-assert frac >= args.min_seen, (
-    f"ANDON: only {frac*100:.1f}% of faces are seen, below --min-seen "
-    f"{args.min_seen*100:.0f}%. Check the ray offsets and the camera set.")
-assert frac <= args.max_seen, (
-    f"ANDON: {frac*100:.1f}% of faces are seen, above --max-seen {args.max_seen*100:.0f}%. "
-    f"The visibility test is not discriminating and the classification is doing nothing.")
+if not (frac >= args.min_seen):
+    raise AssertionError(
+        f"ANDON: only {frac*100:.1f}% of faces are seen, below --min-seen "
+        f"{args.min_seen*100:.0f}%. Check the ray offsets and the camera set.")
+if not (frac <= args.max_seen):
+    raise AssertionError(
+        f"ANDON: {frac*100:.1f}% of faces are seen, above --max-seen {args.max_seen*100:.0f}%. "
+        f"The visibility test is not discriminating and the classification is doing nothing.")
 
 # ---- Gate: build the mesh this classification WOULD have deleted, purely to test the
 # classifier. Nothing here is exported. Under UV-exclude a recession cannot reach the
@@ -388,10 +390,11 @@ print(f"[cull] face-centroid sha1 {cksum}", flush=True)
 print(f"[cull] wrote {args.out} ({int(seen.sum()):,} visible / {int(nf-seen.sum()):,} "
       f"unseen) + {sidecar} — geometry untouched", flush=True)
 
-assert missed_area <= args.max_missed_area, (
-    f"ANDON: faces holding {missed_area*100:.4f}% of visible surface area are a first hit "
-    f"from a gate camera yet classified unseen, over the {args.max_missed_area*100:.2f}% "
-    f"limit. Under UV-exclude each costs a flat patch of its own area rather than a hole, "
-    f"but at this scale the visibility test is missing real surface. Fix the camera set or "
-    f"the sampling — do not raise the limit.")
+if not (missed_area <= args.max_missed_area):
+    raise AssertionError(
+        f"ANDON: faces holding {missed_area*100:.4f}% of visible surface area are a first hit "
+        f"from a gate camera yet classified unseen, over the {args.max_missed_area*100:.2f}% "
+        f"limit. Under UV-exclude each costs a flat patch of its own area rather than a hole, "
+        f"but at this scale the visibility test is missing real surface. Fix the camera set or "
+        f"the sampling — do not raise the limit.")
 print("[cull] DONE", flush=True)

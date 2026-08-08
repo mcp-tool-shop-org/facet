@@ -72,7 +72,8 @@ N = nor_e.reshape(-1, 3)[valid].astype(np.float64) * 2.0 - 1.0
 N /= np.linalg.norm(N, axis=1, keepdims=True) + 1e-12
 NV = P.shape[0]
 print(f"[fuse] atlas {RES}  valid texels {NV:,} ({NV/(RES*RES)*100:.1f}%)", flush=True)
-assert NV > RES * RES * 0.05, "ANDON: almost no valid texels — mask bake failed"
+if not (NV > RES * RES * 0.05):
+    raise AssertionError("ANDON: almost no valid texels — mask bake failed")
 
 # raycast scene in the std frame (identical construction to render_geomaps.py)
 m = trimesh.load(os.path.join(args.prep, "prep_uv.glb"), force="mesh", process=False)
@@ -212,10 +213,12 @@ print(f"[fuse] coverage {cov.sum():,}/{NV:,} = {cov.mean()*100:.1f}%  "
 # 0.75, not 0.80: the figure-mask erosion legitimately costs ~2-3pp of silhouette-band
 # coverage (those texels dilation-fill from figure colours instead of bleeding grey).
 # The assert exists to catch CATASTROPHIC visibility failure (~0.3-0.5 coverage).
-assert cov.mean() > 0.75, "ANDON: >25% of surface texels saw no view — visibility broken"
+if not (cov.mean() > 0.75):
+    raise AssertionError("ANDON: >25% of surface texels saw no view — visibility broken")
 hist = {int(k): int((owner == k).sum()) for k in range(-1, 7)}
 print(f"[fuse] final owner histogram {hist}", flush=True)
-assert hist[6] > 10_000, "ANDON: face view owns almost nothing — boost/rect wiring broken"
+if not (hist[6] > 10_000):
+    raise AssertionError("ANDON: face view owns almost nothing — boost/rect wiring broken")
 
 # ---- assemble atlas-space arrays ----
 def scatter(vals, dim):
@@ -264,7 +267,8 @@ if left:
 
 var = float(img4[valid.reshape(RES, RES)].var())
 print(f"[fuse] atlas variance {var:.5f}", flush=True)
-assert var > 0.001, "ANDON: atlas is uniform — fusion failed"
+if not (var > 0.001):
+    raise AssertionError("ANDON: atlas is uniform — fusion failed")
 
 Image.fromarray((img4 * 255).round().astype(np.uint8)).save(args.out)
 

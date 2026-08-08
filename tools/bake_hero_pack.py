@@ -23,13 +23,16 @@ bpy.ops.wm.read_factory_settings(use_empty=True)
 scene = bpy.context.scene
 bpy.ops.import_scene.gltf(filepath=args.prep_glb)
 meshes = [o for o in scene.objects if o.type == "MESH"]
-assert len(meshes) == 1, f"ANDON: expected 1 mesh, got {len(meshes)}"
+if not (len(meshes) == 1):
+    raise AssertionError(f"ANDON: expected 1 mesh, got {len(meshes)}")
 obj = meshes[0]
-assert obj.data.uv_layers, "ANDON: prep GLB carries no UVs"
+if not (obj.data.uv_layers):
+    raise AssertionError("ANDON: prep GLB carries no UVs")
 
 img = bpy.data.images.load(os.path.abspath(args.atlas))
 img.pack()
-assert img.packed_file is not None, "ANDON: atlas failed to pack"
+if not (img.packed_file is not None):
+    raise AssertionError("ANDON: atlas failed to pack")
 
 mat = bpy.data.materials.new("hero")
 mat.use_nodes = True
@@ -54,5 +57,6 @@ obj.select_set(True)
 bpy.context.view_layer.objects.active = obj
 bpy.ops.export_scene.gltf(filepath=outp, use_selection=True, export_format="GLB")
 sz = os.path.getsize(outp)
-assert sz > os.path.getsize(args.atlas) * 0.5, "ANDON: GLB too small — texture dropped"
+if not (sz > os.path.getsize(args.atlas) * 0.5):
+    raise AssertionError("ANDON: GLB too small — texture dropped")
 print(f"[pack] wrote {outp} ({sz//1024} KB) — DONE", flush=True)

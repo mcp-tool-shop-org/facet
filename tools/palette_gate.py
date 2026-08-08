@@ -66,9 +66,10 @@ ap.add_argument("--report-only", action="store_true",
                 help="measure and report without a non-zero exit; the gate becomes a diagnostic")
 args = ap.parse_args()
 
-assert len(args.images) == len(args.masks), (
-    f"ANDON: {len(args.masks)} masks for {len(args.images)} images — --masks is parallel "
-    f"to --images")
+if not (len(args.images) == len(args.masks)):
+    raise AssertionError(
+        f"ANDON: {len(args.masks)} masks for {len(args.images)} images — --masks is parallel "
+        f"to --images")
 
 PAL = json.load(open(args.palette, encoding="utf-8"))
 BANDS = [(b["name"], float(b["hue_deg"][0]), float(b["hue_deg"][1])) for b in PAL["allowed_bands"]]
@@ -134,8 +135,9 @@ rows, failed = [], []
 for img_path, mask_path in zip(args.images, args.masks):
     rgb = np.asarray(Image.open(img_path).convert("RGB"), dtype=np.float32) / 255.0
     fm = np.asarray(Image.open(mask_path).convert("L"), dtype=np.float32) / 255.0 > 0.5
-    assert fm.shape == rgb.shape[:2], (
-        f"ANDON: mask {fm.shape} vs image {rgb.shape[:2]} for {img_path}")
+    if not (fm.shape == rgb.shape[:2]):
+        raise AssertionError(
+            f"ANDON: mask {fm.shape} vs image {rgb.shape[:2]} for {img_path}")
 
     lab = to_lab(rgb)
     C = np.hypot(lab[..., 1], lab[..., 2])

@@ -44,7 +44,8 @@ m = trimesh.load(args.dense_glb, force="mesh", process=False)
 V = np.asarray(m.vertices, dtype=np.float64)
 F = np.asarray(m.faces, dtype=np.int64)
 UV = np.asarray(m.visual.uv, dtype=np.float64)
-assert UV.shape[0] == V.shape[0], "ANDON: dense mesh UVs missing/mismatched"
+if not (UV.shape[0] == V.shape[0]):
+    raise AssertionError("ANDON: dense mesh UVs missing/mismatched")
 print(f"[resample] dense source: {F.shape[0]:,} faces with UVs", flush=True)
 
 scene = o3d.t.geometry.RaycastingScene()
@@ -91,6 +92,7 @@ img = work.round().astype(np.uint8)
 
 nonblack = float((img.max(axis=2) > 8).mean())
 print(f"[resample] non-black texels {nonblack:.1%}", flush=True)
-assert nonblack > 0.25, "ANDON: transferred atlas is mostly black"
+if not (nonblack > 0.25):
+    raise AssertionError("ANDON: transferred atlas is mostly black")
 Image.fromarray(img).save(args.out)
 print(f"[resample] wrote {args.out}", flush=True)

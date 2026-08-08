@@ -99,7 +99,8 @@ bpy.ops.wm.read_factory_settings(use_empty=True)
 scene = bpy.context.scene
 bpy.ops.import_scene.gltf(filepath=args.glb)
 meshes = [o for o in scene.objects if o.type == "MESH"]
-assert meshes, "ANDON: no mesh in GLB"
+if not (meshes):
+    raise AssertionError("ANDON: no mesh in GLB")
 bpy.ops.object.select_all(action="DESELECT")
 for o in meshes:
     o.select_set(True)
@@ -129,9 +130,10 @@ _cent = (_cent.reshape(-1, 3) / _maxabs * 0.5).astype(np.float64)
 vis_face = np.ones(nf0, dtype=bool)
 if args.visible_mask:
     vis_face = np.load(args.visible_mask)
-    assert vis_face.shape == (nf0,), (
-        f"ANDON: visible mask has {vis_face.shape} entries for {nf0:,} faces — it was "
-        f"built against a different mesh")
+    if not (vis_face.shape == (nf0,)):
+        raise AssertionError(
+            f"ANDON: visible mask has {vis_face.shape} entries for {nf0:,} faces — it was "
+            f"built against a different mesh")
     # Compare face centroids POSITIONALLY, not by hash. This mesh is read through
     # Blender's float32 polygon.center where the mask was built from trimesh's float64
     # vertices; the two agree to ~5e-8, which is geometrically nothing but straddles any
@@ -140,18 +142,21 @@ if args.visible_mask:
     # on W3), thousands of times the float noise, so a tolerance separates the two cases
     # cleanly.
     cpath = os.path.splitext(args.visible_mask)[0] + "_centroids.npy"
-    assert os.path.exists(cpath), (
-        f"ANDON: {os.path.basename(cpath)} is missing, so the mask cannot be proved to "
-        f"line up with this mesh. Re-run cull_unseen.py to emit it.")
+    if not (os.path.exists(cpath)):
+        raise AssertionError(
+            f"ANDON: {os.path.basename(cpath)} is missing, so the mask cannot be proved to "
+            f"line up with this mesh. Re-run cull_unseen.py to emit it.")
     ref = np.load(cpath).astype(np.float64)
-    assert ref.shape == _cent.shape, (
-        f"ANDON: centroid record is {ref.shape} against this mesh's {_cent.shape}")
+    if not (ref.shape == _cent.shape):
+        raise AssertionError(
+            f"ANDON: centroid record is {ref.shape} against this mesh's {_cent.shape}")
     dev = float(np.abs(ref - _cent).max())
-    assert dev < 1e-4, (
-        f"ANDON: face centroids deviate by up to {dev:.3e} from the mesh the mask was "
-        f"built against — far above float noise and comparable to the mesh's own edge "
-        f"length. The face order or the mesh changed, and the mask would exclude the "
-        f"wrong faces silently.")
+    if not (dev < 1e-4):
+        raise AssertionError(
+            f"ANDON: face centroids deviate by up to {dev:.3e} from the mesh the mask was "
+            f"built against — far above float noise and comparable to the mesh's own edge "
+            f"length. The face order or the mesh changed, and the mask would exclude the "
+            f"wrong faces silently.")
     print(f"[prep] visible mask lines up with this mesh (max centroid deviation "
           f"{dev:.2e})", flush=True)
     print(f"[prep] visible mask: {int(vis_face.sum()):,}/{nf0:,} faces "
@@ -159,11 +164,12 @@ if args.visible_mask:
           f"{int((~vis_face).sum()):,} collapse to one shared patch", flush=True)
 
 if not args.reunwrap:
-    assert me.uv_layers, (
-        "ANDON: the input GLB carries no UV layer, so there is no native atlas to "
-        "keep. Either the mesh lost its UVs upstream (smart_decimate carries them "
-        "through the cut — check there first), or this input genuinely needs an "
-        "unwrap, in which case pass --reunwrap deliberately.")
+    if not (me.uv_layers):
+        raise AssertionError(
+            "ANDON: the input GLB carries no UV layer, so there is no native atlas to "
+            "keep. Either the mesh lost its UVs upstream (smart_decimate carries them "
+            "through the cut — check there first), or this input genuinely needs an "
+            "unwrap, in which case pass --reunwrap deliberately.")
     me.uv_layers[0].name = "uv_bake"
     while len(me.uv_layers) > 1:
         for lay in me.uv_layers:
@@ -179,8 +185,9 @@ else:
     while me.uv_layers:
         me.uv_layers.remove(me.uv_layers[0])
     uv_bake = me.uv_layers.new(name="uv_bake")
-    assert uv_bake is not None, \
-        "ANDON: uv_bake creation failed (8-layer cap returns None)"
+    if not (uv_bake is not None):
+        raise AssertionError(
+            "ANDON: uv_bake creation failed (8-layer cap returns None)")
     me.uv_layers.active = uv_bake
     # unwrap only what will be packed — an unseen face contributes nothing but
     # fragmentation to the chart layout
@@ -213,15 +220,17 @@ py = (b - std[:, 2]) / (2 * b) * args.crop_res
 head_face = (px >= CX0) & (px <= CX1) & (py >= CY0) & (py <= CY1)
 n_head = int(head_face.sum())
 print(f"[prep] head-band faces: {n_head:,}/{nf:,}", flush=True)
-assert n_head > 500, "ANDON: head band nearly empty — crop rect or projection is wrong"
+if not (n_head > 500):
+    raise AssertionError("ANDON: head band nearly empty — crop rect or projection is wrong")
 
 # ---- UV island partition via union-find on welded UV corners ----
 nl = len(me.loops)
 luv = np.empty(nl * 2, dtype=np.float32)
 uv_bake.data.foreach_get("uv", luv)
 luv = luv.reshape(-1, 2)
-assert float(luv.var()) > 1e-6, \
-    "ANDON: UVs are uniform — smart_project produced nothing or the read is stale"
+if not (float(luv.var()) > 1e-6):
+    raise AssertionError(
+        "ANDON: UVs are uniform — smart_project produced nothing or the read is stale")
 lvert = np.empty(nl, dtype=np.int64)
 me.loops.foreach_get("vertex_index", lvert)
 lstart = np.empty(nf, dtype=np.int64)
@@ -343,7 +352,8 @@ luv2 = np.empty(nl * 2, dtype=np.float32)
 uv_bake.data.foreach_get("uv", luv2)
 luv2 = luv2.reshape(-1, 2)
 tri = ltot.max() == 3
-assert tri, "ANDON: non-triangle faces after GLB import"
+if not (tri):
+    raise AssertionError("ANDON: non-triangle faces after GLB import")
 uva = luv2.reshape(nf, 3, 2)
 area = 0.5 * np.abs((uva[:, 1, 0] - uva[:, 0, 0]) * (uva[:, 2, 1] - uva[:, 0, 1])
                     - (uva[:, 2, 0] - uva[:, 0, 0]) * (uva[:, 1, 1] - uva[:, 0, 1]))
@@ -371,16 +381,18 @@ if args.no_head_scale:
     share_3d = float(a3[in_head_island].sum() / max(a3.sum(), 1e-12))
     print(f"[prep] head 3D-surface share {share_3d:.4f} — UV share must beat it "
           f"for the head to carry more texels per unit surface", flush=True)
-    assert share_area > share_3d, (
-        f"ANDON: --no-head-scale but the input puts no extra texels on the head — "
-        f"head holds {share_area:.4f} of UV area for {share_3d:.4f} of surface "
-        f"area; run smart_decimate first or drop --no-head-scale")
+    if not (share_area > share_3d):
+        raise AssertionError(
+            f"ANDON: --no-head-scale but the input puts no extra texels on the head — "
+            f"head holds {share_area:.4f} of UV area for {share_3d:.4f} of surface "
+            f"area; run smart_decimate first or drop --no-head-scale")
 elif args.head_scale > 1.0:
     # the scaling must have moved area toward the head, judged against this
     # input's own starting distribution rather than a fixed multiple of face count
-    assert share_area > share_area_pre * 1.2, (
-        f"ANDON: head islands did not keep their x{args.head_scale:g} scale through "
-        f"pack_islands ({share_area_pre:.4f} -> {share_area:.4f})")
+    if not (share_area > share_area_pre * 1.2):
+        raise AssertionError(
+            f"ANDON: head islands did not keep their x{args.head_scale:g} scale through "
+            f"pack_islands ({share_area_pre:.4f} -> {share_area:.4f})")
 elif args.head_scale == 1.0:
     # ALLOCATION NONE (E04 Ruling 14, allocation ruled NONE for the galleon; guard
     # specified in Ruling 15). A growth assert cannot be satisfied by the identity, and
@@ -410,12 +422,13 @@ elif args.head_scale == 1.0:
     # that overturned it.
     _tol = 1e-6 * share_area_pre
     _delta = abs(share_area - share_area_pre)
-    assert _delta <= _tol, (
-        f"ANDON: head-scale 1.0 asks for the identity and pack_islands did not "
-        f"preserve it — share_area {share_area!r} vs share_area_pre "
-        f"{share_area_pre!r}, delta {_delta!r} against tolerance {_tol!r} "
-        f"({_delta / max(share_area_pre, 1e-12):.3e} relative). HALT: report these "
-        f"digits, do not choose a tolerance.")
+    if not (_delta <= _tol):
+        raise AssertionError(
+            f"ANDON: head-scale 1.0 asks for the identity and pack_islands did not "
+            f"preserve it — share_area {share_area!r} vs share_area_pre "
+            f"{share_area_pre!r}, delta {_delta!r} against tolerance {_tol!r} "
+            f"({_delta / max(share_area_pre, 1e-12):.3e} relative). HALT: report these "
+            f"digits, do not choose a tolerance.")
     print(f"[prep] head-scale 1.0: identity survived pack_islands within tolerance "
           f"({share_area_pre:.9f} -> {share_area:.9f}, "
           f"{_delta / max(share_area_pre, 1e-12):.3e} relative against 1.0e-06) — "
@@ -485,7 +498,8 @@ def bake_pass(kind):
     bpy.ops.object.bake(type="EMIT")
     px_ = np.array(bake_img.pixels[:], dtype=np.float32).reshape(args.res, args.res, 4)
     px_ = np.flipud(px_)[..., :3]          # save TOP-origin
-    assert float(px_.var()) > 1e-8 or kind == "mask", f"ANDON: {kind} bake is uniform"
+    if not (float(px_.var()) > 1e-8 or kind == "mask"):
+        raise AssertionError(f"ANDON: {kind} bake is uniform")
     np.save(os.path.join(args.outdir, f"{kind}.npy"), px_)
     print(f"[prep] baked {kind}  var={float(px_.var()):.6f}", flush=True)
 
@@ -509,5 +523,6 @@ bpy.ops.export_scene.gltf(filepath=out_glb, use_selection=True, export_format="G
 # floor sized to catch an EMPTY export, not a small mesh (char2 is 4.9k faces and
 # its legitimate GLB is ~300KB; the warrior's is 30MB — mesh-relative is meaningless
 # here, the bake-variance asserts above are the real defect gates)
-assert os.path.getsize(out_glb) > 100_000, "ANDON: prep_uv.glb suspiciously small"
+if not (os.path.getsize(out_glb) > 100_000):
+    raise AssertionError("ANDON: prep_uv.glb suspiciously small")
 print(f"[prep] wrote {out_glb} ({os.path.getsize(out_glb)//1024} KB) — DONE", flush=True)

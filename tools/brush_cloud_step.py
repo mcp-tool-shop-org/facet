@@ -201,18 +201,21 @@ def preflight(gr, P, key):
     """
     prof = json.load(open(args.profile, encoding="utf-8"))
     blk = prof.get("tools", {}).get("texpass_brush.py")
-    assert isinstance(blk, dict), (
-        f"ANDON: {args.profile} has no tools['texpass_brush.py'] block, so there is nothing "
-        f"to check the graph against. A subject whose brush block is absent is running this "
-        f"tool's constants by silence, which is the failure this check exists to catch.")
-    assert "_NOT_CLEARED" not in blk, (
-        f"ANDON: {args.profile}'s texpass_brush.py block carries _NOT_CLEARED - the tool is "
-        f"FORBIDDEN on this subject until a ruling clears the block and decides its keys.")
+    if not (isinstance(blk, dict)):
+        raise AssertionError(
+            f"ANDON: {args.profile} has no tools['texpass_brush.py'] block, so there is nothing "
+            f"to check the graph against. A subject whose brush block is absent is running this "
+            f"tool's constants by silence, which is the failure this check exists to catch.")
+    if not ("_NOT_CLEARED" not in blk):
+        raise AssertionError(
+            f"ANDON: {args.profile}'s texpass_brush.py block carries _NOT_CLEARED - the tool is "
+            f"FORBIDDEN on this subject until a ruling clears the block and decides its keys.")
 
     def pv(k):
         e = blk.get(k)
-        assert isinstance(e, dict) and "value" in e, (
-            f"ANDON: {args.profile} texpass_brush.py has no decided value for '{k}'")
+        if not (isinstance(e, dict) and "value" in e):
+            raise AssertionError(
+                f"ANDON: {args.profile} texpass_brush.py has no decided value for '{k}'")
         return e["value"]
 
     bad = []
@@ -304,8 +307,9 @@ def preflight(gr, P, key):
                    f"atlas while claiming the base lane's fixture.")
 
     fx = (prof.get("_fixtures", {}).get(fxkey, {}) or {}).get("path")
-    assert fx, (f"ANDON: {args.profile} names no _fixtures.{fxkey}.path, so the strings "
-                f"entering the graph have no declared source for lane {lane!r}")
+    if not (fx):
+        raise AssertionError(f"ANDON: {args.profile} names no _fixtures.{fxkey}.path, so the strings "
+                    f"entering the graph have no declared source for lane {lane!r}")
     root = os.path.dirname(os.path.dirname(os.path.abspath(args.profile)))
     want_fx = os.path.realpath(os.path.join(root, fx))
     got_fx = os.path.realpath(os.path.abspath(args.prompts))
@@ -340,7 +344,8 @@ def preflight(gr, P, key):
 
 if args.cmd == "graph":
     P = json.load(open(args.prompts, encoding="utf-8"))
-    assert args.key in P, f"ANDON: no prompt for {args.key} in {args.prompts}"
+    if not (args.key in P):
+        raise AssertionError(f"ANDON: no prompt for {args.key} in {args.prompts}")
     rn = args.render_name or "render.png"
     mn = args.mask_name or "mask.png"
     # THE REGISTER COMES FROM THE PROFILE, not from DEFAULTS (Ruling 25e). This is the one
@@ -350,10 +355,11 @@ if args.cmd == "graph":
     _prof = json.load(open(args.profile, encoding="utf-8"))
     _blk = _prof.get("tools", {}).get("texpass_brush.py", {})
     _lwe = _blk.get("lora-w") if isinstance(_blk, dict) else None
-    assert isinstance(_lwe, dict) and "value" in _lwe, (
-        f"ANDON: {args.profile} texpass_brush.py has no decided value for 'lora-w', so the "
-        f"register is undeclared and the graph cannot be built either way. A ruling decides "
-        f"it; this tool does not guess.")
+    if not (isinstance(_lwe, dict) and "value" in _lwe):
+        raise AssertionError(
+            f"ANDON: {args.profile} texpass_brush.py has no decided value for 'lora-w', so the "
+            f"register is undeclared and the graph cannot be built either way. A ruling decides "
+            f"it; this tool does not guess.")
     gr = build_graph(rn, mn, P[args.key], P["_negative"], args.seed, lora_w=_lwe["value"])
     preflight(gr, P, args.key)
     os.makedirs(os.path.dirname(os.path.abspath(args.out)), exist_ok=True)
@@ -376,9 +382,10 @@ elif args.cmd == "invar":
                     dtype=np.float32)
     ed = np.asarray(Image.open(os.path.join(args.job, "inpainted.png")).convert("RGB"),
                     dtype=np.float32)
-    assert em.shape == ed.shape, (
-        f"ANDON: the returned image is {ed.shape}, emitted was {em.shape} — the cloud "
-        f"re-sized it, so nothing downstream is comparable")
+    if not (em.shape == ed.shape):
+        raise AssertionError(
+            f"ANDON: the returned image is {ed.shape}, emitted was {em.shape} — the cloud "
+            f"re-sized it, so nothing downstream is comparable")
     # ⚠ THE OPERAND IS GEOMETRY, NOT COLOUR (E04 Ruling 26). This is E08 Amendment 32's fix
     # at its SECOND CONSUMER, and it took a fired gate on E04's first stroke to find it.
     #
@@ -410,12 +417,14 @@ elif args.cmd == "invar":
             f"cannot test, so it halts rather than falling back to the operand that was "
             f"withdrawn. Re-emit the job with a post-A32 texpass_iter. HALT.")
     hit = np.asarray(Image.open(hp).convert("L"), dtype=np.float32) > 127
-    assert hit.shape == em.shape[:2], (
-        f"ANDON: hit.png is {hit.shape} but the render is {em.shape[:2]} - the geometry mask "
-        f"does not belong to this job")
+    if not (hit.shape == em.shape[:2]):
+        raise AssertionError(
+            f"ANDON: hit.png is {hit.shape} but the render is {em.shape[:2]} - the geometry mask "
+            f"does not belong to this job")
     outside = maximum_filter(hit.astype(np.float32), size=args.dilate) < 0.5
     n_out = int(outside.sum())
-    assert n_out > 1000, f"ANDON: only {n_out} px outside the dilated figure — cannot test"
+    if not (n_out > 1000):
+        raise AssertionError(f"ANDON: only {n_out} px outside the dilated figure — cannot test")
     resid = np.abs(ed - em).max(axis=-1)
     ro = resid[outside]
     mean_r, max_r = float(ro.mean()), float(ro.max())

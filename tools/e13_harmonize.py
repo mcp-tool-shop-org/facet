@@ -82,14 +82,17 @@ def kv(specs, what):
     out = {}
     for s in specs:
         k, _, p = s.partition("=")
-        assert p, f"ANDON: --{what} wants LABEL=PATH, got {s!r}"
-        assert os.path.exists(p), f"ANDON: --{what} {k}: no such file {p}"
+        if not (p):
+            raise AssertionError(f"ANDON: --{what} wants LABEL=PATH, got {s!r}")
+        if not (os.path.exists(p)):
+            raise AssertionError(f"ANDON: --{what} {k}: no such file {p}")
         out[k] = p
     return out
 
 
 REF_LAB, _, REF_PATH = args.reference.partition("=")
-assert REF_PATH and os.path.exists(REF_PATH), f"ANDON: --reference path missing: {REF_PATH!r}"
+if not (REF_PATH and os.path.exists(REF_PATH)):
+    raise AssertionError(f"ANDON: --reference path missing: {REF_PATH!r}")
 IM, MK = kv(args.image, "image"), kv(args.mask, "mask")
 if set(IM) != set(MK):
     raise SystemExit("ANDON: labels differ — images %s masks %s" % (sorted(IM), sorted(MK)))
@@ -136,7 +139,8 @@ def sha(p):
 
 ref_rgb = np.asarray(Image.open(REF_PATH).convert("RGB"), np.float64) / 255.0
 ref_m = np.asarray(Image.open(args.ref_mask).convert("L")) > 127
-assert ref_m.shape == ref_rgb.shape[:2], "ANDON: reference mask/image shape mismatch"
+if not (ref_m.shape == ref_rgb.shape[:2]):
+    raise AssertionError("ANDON: reference mask/image shape mismatch")
 ref_lab = srgb_to_lab(ref_rgb)
 r_mu, r_sd = moments(ref_lab, ref_m)
 print("[harmonize] reference %s (%s): mask %d px  mean L*a*b* %s  sigma %s"
@@ -155,7 +159,8 @@ for lab_name in sorted(IM, key=lambda s: (len(s), s)):
     src_path = IM[lab_name]
     rgb = np.asarray(Image.open(src_path).convert("RGB"), np.float64) / 255.0
     m = np.asarray(Image.open(MK[lab_name]).convert("L")) > 127
-    assert m.shape == rgb.shape[:2], f"ANDON: {lab_name} mask/image shape mismatch"
+    if not (m.shape == rgb.shape[:2]):
+        raise AssertionError(f"ANDON: {lab_name} mask/image shape mismatch")
     out_path = os.path.join(args.outdir, os.path.splitext(os.path.basename(src_path))[0]
                             + "_harm.png")
 

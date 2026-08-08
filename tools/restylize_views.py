@@ -194,9 +194,10 @@ def graph(render_name, ctrl_name, pos, neg):
 
 
 if args.masks:
-    assert len(args.masks) == len(args.inputs), (
-        f"ANDON: {len(args.masks)} masks for {len(args.inputs)} inputs — --masks is "
-        f"parallel to --inputs")
+    if not (len(args.masks) == len(args.inputs)):
+        raise AssertionError(
+            f"ANDON: {len(args.masks)} masks for {len(args.inputs)} inputs — --masks is "
+            f"parallel to --inputs")
 PROMPTS = json.load(open(args.prompts, encoding="utf-8")) if args.prompts else {}
 for _i, path in enumerate(args.inputs):
     stem = os.path.splitext(os.path.basename(path))[0]

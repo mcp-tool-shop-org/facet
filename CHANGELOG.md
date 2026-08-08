@@ -57,6 +57,43 @@ across 56 files (278 − 87). The slip is the same shape as the one this arc cau
 its own dispatch — a subtotal read as a total — and it landed in the number that scopes
 the next arc.*
 
+*⚑ **The 191 is now 134**, by [E23](docs/experiments/E23-route-gates-report.md) below.
+E22's statement was accurate when written and is left standing.*
+
+**The route's 57 gates follow, on twelve files no test had ever executed.**
+[E23](docs/experiments/E23-route-gates-report.md) converted the **57 ANDON gate sites
+in the twelve `tools/` top-level scripts** that produced the four accepted assets —
+[E22 Ruling 4](docs/experiments/E22-ruling.md)'s route split — leaving **134** ANDON
+asserts elsewhere (132 in `diagnostics/`, 1 in `verify/`, and `superseded/`'s one,
+which is **never** converted because those tools are kept so they fail the same way).
+The enumeration was re-measured before the work rather than inherited, and every
+per-file cell of the dispatch's table reproduced.
+
+**Pure move again, and this time the AST proof carried the whole load.** E22 had T7's
+byte-identity replay and T26's fired ANDONs underneath it; **zero of these twelve files
+were reached by any test**, so the only verifier was whole-file AST equality against
+the negation rule applied at the prior commit — **12 of 12 identical, 0 comment tokens
+changed, 57/57 per-site, no file reverted.**
+
+**T31 rides the commit — 95 cases, 8 functions.** All twelve still compile; the ten
+non-Blender tools reach argparse and write nothing under a normal interpreter, `-O` and
+`PYTHONOPTIMIZE=1`; no ANDON gate in the twelve is an `assert`, by AST, with a can-fail
+leg; and the **sixteen gates reachable on synthetic input refuse in all three modes**,
+each matched against its own message rather than on a bare non-zero exit. The two
+Blender scripts (`bake_hero_prep`, `bake_hero_pack`, 19 sites) get compile and AST only
+— they `import bpy`, and that reason is itself asserted rather than left as prose.
+Suite 275 → 370.
+
+**Reported, not acted on:** `brush_cloud_step:204` cannot fire — `:353` tests the same
+precondition harder and stands in front of it on the only path that calls `preflight`,
+measured across every block shape. `silhouette_masks` and `restylize_views` create
+their empty output directory *before* their gate fires. `bake_hero_prep` already
+carried one ANDON that raised, which reconciles E22 Ruling 5's repo-wide
+`AssertionError 88` as 87 conversions plus that site. And three of the twelve carry
+`SystemExit` ANDONs alongside `AssertionError` ones (`brush_cloud_step` 4,
+`e13_harmonize` 3, `restylize_views` 3) — [E22 Ruling 5](docs/experiments/E22-ruling.md)
+ruled those stay, so the collision is recorded and not resolved.
+
 ## [0.2.0] — 2026-08-08
 
 **The operator contract of the two installed commands.** A behaviour change to a

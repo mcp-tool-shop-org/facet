@@ -87,12 +87,14 @@ def npy_header(path):
         hlen = struct.unpack("<H" if major == 1 else "<I",
                              f.read(2 if major == 1 else 4))[0]
         d = ast.literal_eval(f.read(hlen).decode("latin1"))
-    assert magic == b"\x93NUMPY", "ANDON: %s is not an npy" % path
+    if not (magic == b"\x93NUMPY"):
+        raise AssertionError("ANDON: %s is not an npy" % path)
     return d["descr"], list(d["shape"])
 
 
 def png_chunks(buf):
-    assert buf[:8] == b"\x89PNG\r\n\x1a\n", "ANDON: not a png"
+    if not (buf[:8] == b"\x89PNG\r\n\x1a\n"):
+        raise AssertionError("ANDON: not a png")
     i, out = 8, []
     while i < len(buf):
         (ln,) = struct.unpack(">I", buf[i:i + 4])

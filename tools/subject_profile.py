@@ -57,8 +57,9 @@ def _read(path):
         return _LOADED[path]
     with open(path, encoding="utf-8") as fh:
         prof = json.load(fh)
-    assert "name" in prof and "tools" in prof, (
-        "ANDON: %s is not a subject profile - it needs 'name' and 'tools'" % path)
+    if not ("name" in prof and "tools" in prof):
+        raise AssertionError(
+            "ANDON: %s is not a subject profile - it needs 'name' and 'tools'" % path)
     _LOADED[path] = prof
     return prof
 
@@ -76,7 +77,8 @@ def bind(ap, tool, argv=None):
     while i < len(argv):
         a = argv[i]
         if a == "--profile":
-            assert i + 1 < len(argv), "ANDON: --profile needs a path"
+            if not (i + 1 < len(argv)):
+                raise AssertionError("ANDON: --profile needs a path")
             path = argv[i + 1]
             i += 2
             continue
@@ -110,20 +112,24 @@ def bind(ap, tool, argv=None):
         if key.startswith("_"):
             continue
         dest = key.replace("-", "_")
-        assert dest in known, (
-            "ANDON: profile %s names '%s' for %s, which has no such argument. A profile "
-            "value that does not reach its tool reads as configuration and does nothing - "
-            "that is the failure this system exists to prevent."
-            % (os.path.basename(path), key, tool))
-        assert isinstance(entry, dict) and "value" in entry, (
-            "ANDON: profile %s entry '%s' must be an object with 'value'" % (path, key))
-        assert entry.get("why"), (
-            "ANDON: profile %s entry '%s' carries no 'why'. Every tuned value states why "
-            "it holds that value, or the profile becomes the hiding place the old memory "
-            "store was." % (os.path.basename(path), key))
-        assert entry.get("from"), (
-            "ANDON: profile %s entry '%s' carries no 'from' - which experiment measured it"
-            % (os.path.basename(path), key))
+        if not (dest in known):
+            raise AssertionError(
+                "ANDON: profile %s names '%s' for %s, which has no such argument. A profile "
+                "value that does not reach its tool reads as configuration and does nothing - "
+                "that is the failure this system exists to prevent."
+                % (os.path.basename(path), key, tool))
+        if not (isinstance(entry, dict) and "value" in entry):
+            raise AssertionError(
+                "ANDON: profile %s entry '%s' must be an object with 'value'" % (path, key))
+        if not (entry.get("why")):
+            raise AssertionError(
+                "ANDON: profile %s entry '%s' carries no 'why'. Every tuned value states why "
+                "it holds that value, or the profile becomes the hiding place the old memory "
+                "store was." % (os.path.basename(path), key))
+        if not (entry.get("from")):
+            raise AssertionError(
+                "ANDON: profile %s entry '%s' carries no 'from' - which experiment measured it"
+                % (os.path.basename(path), key))
         applied[dest] = entry["value"]
     ap.set_defaults(**applied)
     print("[profile] %s (%s): %d values applied to %s"
