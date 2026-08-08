@@ -325,6 +325,61 @@ a partial sweep read as a complete one is how a claim becomes doctrine.
 
 ---
 
+## §8 — THE NAME. Added 2026-08-08 (night) by the ruling seat, on the Director's question.
+
+**His question, arriving live:** *"Facet is taken on pypi, so we may need to change the
+name."*
+
+**Measured before answering, because the degree decides the answer:**
+
+| checked | result |
+|---|---|
+| PyPI `facet` | **taken** — an asyncio service manager, v0.10.1, 12 releases, **last upload 2024-04-25**. Occupied, dormant, unrelated domain |
+| npm `facet` | taken |
+| **npm `@mcptoolshop/facet`** | **AVAILABLE** — and scoped packages are the org convention, so the npm half of the problem does not exist |
+| PyPI `facet-cli` · `facet3d` · `facet-pipeline` | all **available** |
+| rename blast radius | **201 tracked files, 2,481 occurrences** — `facet_index` ×437, `/facet` ×356, `facet.db` ×110, `facet-record`/`mcp__facet-record` ×25/×11, `logos/facet` ×23 |
+
+**⚖ THE DIRECTOR'S RULING: KEEP `facet`.** A distinct distribution name at extraction
+is acceptable.
+
+**The reasoning, recorded so this is not re-litigated in three months:**
+
+1. **The name is earned.** *"Named for both halves of the problem: the polygons, and the
+   face they have to hold."* A facet is a polygon face; the pun is the product thesis in
+   one word. Trading it to dodge a dormant, unrelated package is a net loss.
+2. **Nothing here needs the PyPI name, and by this memo's own rulings it may never.**
+   What publishes is the *extracted* tool: the record index and measurement stay **in
+   facet**, comfy-preflight is **standalone** with its own repo and its own name,
+   fixture-lint is **sdlab's**. The registry name is chosen by whatever ships, not by
+   this repo.
+3. **The studio has already solved this collision in-house** — audiobooker ships as PyPI
+   `audiobooker-ai` alongside npm `@mcptoolshop/audiobooker`. Distribution name ≠ project
+   name is established practice here, not a workaround.
+
+**Two hazards recorded for whoever ever does attempt a rename**, because they are not
+obvious and a find-and-replace walks straight into both:
+
+- **71 occurrences in the docs are the geometry word** — "facets", "faceted", "facet
+  mosaic". A blind substitution corrupts the technical prose of a repo named for that
+  exact double meaning.
+- **The index is gated on locators.** Verify leg 3 is *every row's file exists and its
+  locator is findable* across 571 rulings, and leg 1 is byte-identity. Moving the name
+  through `docs/experiments/` moves the locators the gate reads.
+
+**Re-open condition:** the extraction gate. When a Python artifact here first publishes,
+its **distribution** name is chosen then — `facet-cli`, `facet3d` and `facet-pipeline`
+were free on 2026-08-08 and none was reserved, deliberately: reserving a name for an
+unbuilt package is the kind of speculative claim this repo does not make.
+
+**Timing note, and it was the load-bearing half of the answer:** had the ruling gone the
+other way, the rename had to precede the v1.0.0 tag and the translations. A tag and its
+release are immutable and translations would bake the name into eight languages — the
+same release-ordering law that held this release once already today. The ruling arrived
+before the tag, so nothing is owed.
+
+---
+
 ## Standards compliance (this memo)
 
 | standard | score | evidence |
