@@ -87,6 +87,17 @@ render** still keys the figure mask, and it was silently losing a quarter of the
 a stripe down the whole blade, patches through pauldrons, chest and greaves. A root cause has
 as many sites as it has callers. Grep for them when you fix one.
 
+**Tests ride the commit that touches the code.** A studio standing rule (earned on
+PixelStudio; "applies to ALL repos") that this repo deviated from through its first arcs,
+surfaced by the Director 2026-08-08: verification here ran as recorded anchors and in-tool
+invariants — real checks, run once and recorded in reports rather than kept runnable. Only
+the index's four-leg verify and `texpass_iter`'s selftest persist. From the MCP build
+forward: a commit that adds or modifies tool code carries tests for that code in the same
+commit; anchors remain the acceptance form for measured artifacts, and re-runnable anchors
+are ported into the harness rather than left in reports; a dispatch that plans a tool
+change without naming its tests is missing a step, and the executor adds them unasked —
+the studio rule's own words.
+
 **A PNG hash mismatch is not evidence a render changed — file bytes are not pixel values.**
 Twice now a hash check has produced a false halt on pixel-identical renders (encoder
 metadata differs run to run). Compare pixels; reserve byte-hashes for artifacts whose bytes
