@@ -1084,3 +1084,150 @@ it per frame: the ribbon's flanks are real steel now); the probe's
 against the ratio, not against hope. A negative result, including an
 edge-on stroke that fails twice, is a full success and is reported as
 one. Zero credits expected; quote it anyway.
+
+---
+
+## Session handoff 9 (2026-08-08) — FINALIZE, PACK, GATE 1. The lane's last dispatch. Comprehensive.
+
+**Authorised by [E14-ruling.md](E14-ruling.md) Ruling 30** — HALT 2 is
+ACCEPTED (the Director: *"I love it"*). The stroke lane is closed: eight
+strokes + the garnet re-projection + the collar repair, zero credits, the
+stone and every compensator standing. What remains is the route's tail:
+**finalize** (dilation closes the remaining holes from the strokes' own
+near paint), **pack** (the GLB), and the **Gate 1 staging** — the
+finished sword beside the Director's clay. No generation anywhere in
+this dispatch; local CPU only. A fresh executor session starts here:
+
+```
+cd E:\AI\facet && git pull
+python tools/facet_index.py build          <- the E15 ritual
+CLAUDE.md                                  <- read first, follow exactly
+docs/experiments/E14-ruling.md             <- Rulings 24-30 are the lane's law; 30b is your
+                                              authorisation; 29a names what the walk found
+                                              (the fifth-signature reading, the violet
+                                              edge-streaks, the hole speckle finalize owns)
+profiles/prop.json                         <- the registry; texpass_iter's _emit_requires_profile
+                                              trap note; NO finalize block exists yet - your
+                                              invocation's values land there at the Gate-1 fold
+docs/experiments/E14-handoff8-report.md    <- the state you inherit (run/s8/ is live; SHAs in
+                                              section 10)
+E:\AI\training\facet_next\E14_strokes\run\s8\   <- THE LIVE STATE. Verify by SHA before
+                                              anything: atlas 34dafd4b57aa5b04df935cfb
+```
+
+**Your rules and environment are unchanged** (CLAUDE.md §executor).
+Blender through PowerShell; ASCII prints; scripts create their own
+output dirs; the watchdog verified before any Blender leg, reported
+either way. **Blind predictions first, committed before finalize runs**:
+the closed-texel count, the source-distance median in triangle edges
+(the dragon's 0.92 is the comparable), the mean-fallback count (the
+dragon's was ZERO — predict against it), the final mix (reference /
+brush / dilation, both denominator families), and the off-surface rate
+with island count and erode-2 residue (Ruling 9's form).
+
+### Step 1 — FINALIZE, copied forward, never in place
+
+Copy `run/s8/` to `run/final/` (the state chain stays a rollback
+ladder; `s8` is never opened for writing). Run `texpass_finalize.py` at
+**the accepted route's recorded invocation** — the beast's finalize
+command is the precedent; quote the full command with every flag and
+value in the report (the values land in the profile's registry at the
+advisor's Gate-1 fold — the 24l lesson, pre-committed there). TWO
+pre-stated caveats, both from the record:
+
+1. **Verify the source-distance unit before quoting it** — E07 found
+   `texpass_finalize.py`'s triangle-edge length HARDCODED from one
+   mesh. Measure THIS mesh's median edge length, state both numbers,
+   and quote distances in raw units beside edges if the constant
+   mismatches. A distance in someone else's unit is not a distance.
+2. **The known cross-island flood defect is quoted beside the
+   numbers**, with this asset's mitigating fact stated rather than
+   assumed: the lane's paint is rim-and-ribbon near-source by
+   construction (median island 1 texel — 24c's design), so the
+   near-source class should dominate. **Measure it**: the source-
+   distance distribution (median / p90 / max), the mean-fallback
+   population (a nonzero is a FINDING, located per structure), and
+   the cross-island share if the tool's replay exposes it.
+
+Report finalize per the route's standard: texels closed · the
+distribution · fallback · the per-structure table (the BLADE especially
+— the E08 blade-band history makes its dilation share a named
+comparable: W3's blade ran 47–61% dilation) · the stone verified
+untouched (styled texels are not finalize's to move — assert it).
+
+### Step 2 — the provenance accounting
+
+The final mix — **reference / brush / dilation** — as % of valid AND %
+of reachable, both ceilings quoted (the eight-camera 51.33% route-
+comparable and the six-camera 51.005%), the on-surface family beside
+as-recorded (island count 46,496 + erode-2 residue — Ruling 9's form).
+The comparables, stated in the report so nobody reaches for them: W3
+68.8 / 4.2 / 27.0 · the galleon 36.89 / 6.87 / 56.24 · the dragon
+44.15 / 3.07 / 52.78. **The stone's provenance is its own sub-class and
+is never blended into the brush's numbers**: projected reference paint,
+colour-corrected, operands recorded (Rulings 25–26), plus the 1,436
+collar-repair texels restored from stage 1b. The per-structure mix
+table carries it as its own row.
+
+### Step 3 — PACK
+
+`bake_hero_pack.py` → `longsword_hero.glb` (the dragon's naming
+pattern). SHA recorded. A smoke render proves the GLB loads — one
+FLAT-light view, not a judgment artifact.
+
+### Step 4 — the GATE 1 staging, then HALT
+
+Full size, never a contact sheet alone, FLAT light throughout
+(textures under flat light; the Workbench-STUDIO trap is the founding
+lesson):
+
+1. **The Gate 1 sheets** — clay reference | finished asset |
+   provenance, per view, all eight yaws (the E08 Gate-0/Gate-1 sheet
+   form; `gate1_sheet.py` if it serves this subject, else the
+   handoff-8 walk-set builder's form — state which ran).
+2. **The turn set** — the eight finished views at native frame.
+3. **The magnification set** — the hilt at 4×, the stone at 6× beside
+   the fixture panel, the ribbon at 4× both faces, the crossing at 4×
+   — and **the fifth-signature regions' final read after dilation**
+   (the fuller seams at 5×: the flagged class, judged on the FINISHED
+   asset — Rulings 29a/30a said it rides to exactly this sheet).
+4. **The GLB itself** staged for the Director's own zoom — the gate is
+   ruled on the asset, not on renders (the dragon and W3 precedent).
+
+**HALT — the advisor's sheet-walk first, then the Director beside the
+clay.** Nothing in this dispatch judges the asset; the sheets carry no
+verdicts. On acceptance, the post-Gate-1 queue opens on the Director's
+sentences (the E11 dense export, the ingest, the activated state) —
+none of it is this session's.
+
+### Do not
+
+Generate anything (no cloud call exists in this dispatch) · open
+`run/s8/` for writing (copy forward) · run any errand-batch repair (the
+window is deferred past Gate 1 — Ruling 30b) · edit any fixture,
+profile, palette, or tool · arm any gate · re-derive any value · write
+to the memory store · end a session the Director has not ended.
+
+### Standards compliance (this dispatch)
+
+| standard | score | evidence |
+|---|---|---|
+| PIN_PER_STEP | 3 | The state copied forward with SHAs both sides; the finalize invocation quoted in full with every value; blind predictions committed before the run; the edge-length constant verified before any distance is quoted |
+| ANDON_AUTHORITY | 3 | The stone's untouchability asserted at finalize; a nonzero mean-fallback is a located finding; the halt is the gate — nothing judges the asset in-session |
+| NAMED_COMPENSATORS | 3 | No spend, no generation; s8 preserved as the rollback point; every prior compensator standing |
+| DECOMPOSE_BY_SECRETS | 3 | The mix reported per structure with the stone as its own provenance sub-class; both denominator families; the comparables stated so no number is read against the wrong asset |
+| UNCERTAINTY_GATED_HUMANS | 3 | The sheets carry no verdicts; the fifth-signature class goes to the eye on the finished asset as ruled; the halt ends at the advisor then the Director beside the clay |
+| EXTERNAL_VERIFIER | 2 | The provenance replay and band instruments check finalize from independent code; the Gate-1 sheets check identity against the clay. `skip:` on a second model per precedent |
+
+### Calibration
+
+The lane's last leg, and the quiet one: no generation, no seeds, no
+watches to fire — the risks are UNIT errors (the hardcoded edge
+length), SILENT defaults (the 752-frame trap's sibling — bind the
+profile on every emit), and reading a dilation number against the
+wrong asset's history (the comparables are stated; use them). The
+dragon's finalize landed median 0.92 edges with zero fallback because
+its strokes put paint near everything — this lane's rim-and-ribbon
+paint is the same design; if the numbers come back far from that
+class, that is a finding to report plainly, not to explain away. A
+negative result is a full success.

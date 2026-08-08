@@ -1840,3 +1840,39 @@ Gate 1 dispatch (handoff 9) drafts — finalize's dilation closes the
 remaining holes from the strokes' own near paint, pack produces the
 GLB, and Gate 1 is the finished sword beside his clay.
 
+## Ruling 30 — HALT 2 is ACCEPTED (Director, 2026-08-08: "I love it"); handoff 9 is authorised — finalize, pack, Gate 1 (2026-08-08)
+
+**30a — accepted, his words: "I love it."** The stroked asset stands
+and the lane closes: eight strokes, the garnet re-projection, the
+collar repair — zero credits across the entire arc still, zero re-rolls
+spent, every compensator exercised and unused. The flagged
+fifth-signature class is accepted AT THIS HALT as worn-steel seam
+character (the walk's reading, 29a) and rides to Gate 1 on the finished
+asset, where his eye judges it after finalize's dilation — the same
+path the dragon's named signature travelled through an accepted Gate 1.
+The acceptance scope is precise: HALT 2 clears the stroked asset to
+finalize; **Gate 1 — the finished sword beside his clay — remains his
+next and final gate on this subject.**
+
+**30b — HANDOFF 9 IS AUTHORISED: finalize, pack, and the Gate 1
+staging — the lane's last dispatch.** Finalize runs the accepted
+route's dilation at the beast's recorded invocation (local CPU, no
+generation, no spend), with the dragon's landing as the comparable
+(median 0.92 triangle edges sourced, zero mean-fallback) and two
+pre-stated caveats: the source-distance unit's edge-length constant is
+verified against THIS mesh before any distance is quoted (the E07
+hardcode), and the known cross-island flood defect is quoted beside
+the numbers with this asset's mitigating fact stated (the lane's paint
+is rim-and-ribbon near-source by construction — 24c's design). Pack
+produces the GLB with SHAs recorded. Gate 1 stages full-size: the
+clay beside the finished asset at every yaw under FLAT light, the
+provenance panels, the hilt and stone and ribbon at magnification, and
+the fifth-signature regions' final read after dilation. The advisor's
+sheet-walk first, then the Director beside the clay. **THE ERRAND
+WINDOW IS EXPLICITLY DEFERRED past Gate 1** — momentum is the
+instruction, no queued errand touches finalize's path, and the batch's
+own conditions want the quiet tree after the arc. On Gate 1's
+acceptance, per the standing queue: the E11 dense export (dataset
+asset #4), the lane ingest paste, and the activated state's window —
+each on his sentence, none before.
+
