@@ -768,8 +768,57 @@ by a structural tripwire, not by attestation), **Hunyuan3D-Paint** (licence void
 EU, UK and South Korea), **MVPaint** and **TEXGen** (no licence at all), and
 **UltraSharp / SUPIR / StableSR** (non-commercial upscalers).
 
+## Trust and threat model
+
+facet is a **research repository**, not a published package: nothing here is on npm
+or PyPI, there is no installer and no entry point, and every tool is invoked as
+`python tools/<name>.py` against paths you type. So the honest question is not *what
+permissions does this app request* but *what do these scripts do to your machine*.
+Measured, with the sweeps re-runnable — the full policy is in
+[SECURITY.md](SECURITY.md):
+
+- **Data touched:** meshes, textures, images and JSON on local disk, at paths you
+  pass on the command line. Plus `docs/index/facet.db`, which is *derived* — it holds
+  nothing that was not already a file in this repo, and `facet_index.py build`
+  regenerates it from scratch.
+- **Data NOT touched:** no credentials, ever. Nothing here reads, stores or transmits
+  a token, key or password, and none is present in the tree — swept for
+  provider-prefixed keys, GitHub PATs, Slack tokens, AWS key ids, private-key blocks,
+  bearer tokens and inline `api_key`/`password` assignments, **zero matches**, no
+  credential-shaped file tracked.
+- **No telemetry.** None collected, none sent. There is no opt-out because there is
+  nothing to opt out of.
+- **Network egress:** two tools of thirty-four open a socket — `restylize_views.py`
+  and `texpass_brush.py` — and both call a ComfyUI HTTP API at `--host`, **default
+  `127.0.0.1:8188`**. Nothing else in `tools/` makes a network call.
+- **Permissions:** ordinary user. No elevation, no service install, no system-settings
+  or registry writes.
+
+Three sharp edges are disclosed rather than claimed away, because a security note that
+only lists reassurances is not a threat model: **file operations are not sandboxed**
+(a tool writes wherever its arguments say); **absolute local paths are baked into many
+tools and docs** — 114 occurrences across 26 files, not secrets but a disclosure of one
+machine's layout, and the reason most tools will not run unmodified elsewhere; and
+**unexpected failures surface as Python tracebacks**, with no `--debug` gate and no
+structured error shape. Deliberate halts are `ANDON:` messages carrying the measurement
+that fired them. That is the research-instrument contract, and
+[SHIP_GATE.md](SHIP_GATE.md) records exactly when it stops being good enough.
+
+**Support status:** this repo is developed in the open, at one rig, by one director
+and a rotating pair of advisor and executor sessions. `main` is the only supported
+state. There is no release channel, no backport policy, and no SLA — what there is
+instead is the record: every claim sits next to the code that produces it, and
+[docs/experiments](docs/experiments/) carries the spec, the report and the ruling for
+each one.
+
 ## Requirements
 
 Blender 5.x, Python 3.11+ with `numpy`, `scipy`, `trimesh`, `open3d`, `Pillow`,
 `spandrel`, `torch`. A local ComfyUI install is needed only for the inpainting brush.
 Developed against an RTX 5090; VRAM headroom matters more than raw speed.
+
+CI runs the hermetic subset of the suite on **ubuntu-latest / Python 3.12** with
+pinned installs (`.github/workflows/ci.yml`); the artifacts tier needs the recorded
+trees under `E:\AI\training`, which are not in git, so CI deselects them by design.
+Locally, `python -m pytest` runs all **32** tests and `python -m pytest -m "not artifacts"`
+runs the **24** CI reproduces.

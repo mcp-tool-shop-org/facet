@@ -1,0 +1,91 @@
+# Ship Gate
+
+> No repo is "done" until every applicable line is checked.
+> Copy this into your repo root. Check items off per-release.
+
+**Tags:** `[all]` every repo · `[npm]` `[pypi]` `[vsix]` `[desktop]` `[container]` published artifacts · `[mcp]` MCP servers · `[cli]` CLI tools
+
+**Detected tags for this repo: `[all]`** — `shipcheck init` v1.0.7, 2026-08-08.
+No `[npm]`, no `[pypi]`, no `[cli]`, no `[mcp]`: facet carries no dependency
+manifest, no entry point and no published artifact of any kind.
+
+**How to read the SKIPs below.** Most of them share one reason and it is a ruled
+one: **facet publishes nothing until the extraction gate.** The four MCP tools
+specced in `docs/specs/` are placed but not extracted; until they are, there is no
+package, no installed command, and no product surface for a product-surface item to
+bind to. Each SKIP names its own re-open condition, because a SKIP whose condition
+is unwritten quietly becomes doctrine — the failure mode this repo exists to avoid.
+
+---
+
+## A. Security Baseline
+
+- [x] `[all]` SECURITY.md exists (report email, supported versions, response timeline) (2026-08-08) — [SECURITY.md](SECURITY.md); report address, `main`-only support table, 48h/7d/30d timeline
+- [x] `[all]` README includes threat model paragraph (data touched, data NOT touched, permissions required) (2026-08-08) — README **Trust and threat model**, with the three sharp edges disclosed rather than claimed away
+- [x] `[all]` No secrets, tokens, or credentials in source or diagnostics output (2026-08-08) — swept the whole tree for provider-prefixed keys, `ghp_`/`github_pat_`, `xox[baprs]-`, `AKIA…`, private-key blocks, bearer tokens and inline `api_key`/`password` assignments: **zero matches**; `git ls-files` carries no `.env`, `.pem`, `.key` or credential-shaped file
+- [x] `[all]` No telemetry by default — state it explicitly even if obvious (2026-08-08) — none collected, none sent, stated in README and SECURITY.md. Measured: exactly two of thirty-four tools open a socket (`restylize_views.py`, `texpass_brush.py`), both to a ComfyUI HTTP API at `--host`, **default `127.0.0.1:8188`**
+
+### Default safety posture
+
+- [ ] `[cli|mcp|desktop]` SKIP: facet is not tagged `[cli]`, `[mcp]` or `[desktop]` and installs no command — and where a tool performs an irreversible step the ruled design is the **opposite** of an opt-in flag: the gate lives *inside* the tool with **no skip flag** (E08 Amendment 32, earned after a shell chain walked past a fired gate and committed 47,020 texels anyway). An `--allow-*` escape hatch here would be a regression against a ruling, not an improvement. Re-opens at extraction, when a tool becomes an installed command someone else runs.
+- [ ] `[cli|mcp|desktop]` SKIP: file operations are **not** constrained to known directories, and the honest move is to disclose that rather than check a box. Every path is supplied by the operator on the command line; there is no allow-list and no confinement. Stated plainly in SECURITY.md and the README threat model. Re-opens at extraction — a shipped tool needs a real boundary, and specifying it is extraction work.
+- [ ] `[mcp]` SKIP: no MCP server on `main` at this audit (E18 is building the record-index server in the other lane; `.mcp.json` has not landed). **Re-opens the moment E18's server lands** — flagged for the ruling.
+- [ ] `[mcp]` SKIP: same — no MCP server on `main` at this audit. Re-opens with E18.
+
+## B. Error Handling
+
+- [ ] `[all]` SKIP: facet has no structured error shape, and retrofitting one across ~34 research instruments is neither this treatment's scope nor this lane's (`tools/` belongs to E18). What it has instead is a named convention: deliberate halts `raise SystemExit("ANDON: …")` carrying the measurement that fired them, so a halt is legible at the point of failure rather than at a log aggregator. **The condition is written, not implied:** the `code`/`message`/`hint` contract is a *product-surface* contract and lands with the extracted MCP tools, whose specs already require structured tool results. Disclosed in SECURITY.md so no reader has to discover it.
+- [ ] `[cli]` SKIP: not tagged `[cli]` — nothing is installed as a command. Measured behaviour, recorded so the SKIP is not hiding anything: tools ending `sys.exit(main())` return `0` on success and non-zero on failure, and `ANDON` halts exit non-zero — so 0-vs-nonzero is real, but the **0/1/2/3 registry is absent**. Re-opens at extraction.
+- [ ] `[cli]` SKIP: not tagged `[cli]`. Measured and disclosed: unexpected failures surface as raw Python tracebacks and there is no `--debug` gate. Re-opens at extraction.
+- [ ] `[mcp]` SKIP: no MCP server on `main` at this audit. Re-opens with E18.
+- [ ] `[mcp]` SKIP: no MCP server on `main` at this audit. Re-opens with E18.
+- [ ] `[desktop]` SKIP: not a desktop application — no UI of any kind.
+- [ ] `[vscode]` SKIP: not a VS Code extension.
+
+## C. Operator Docs
+
+- [x] `[all]` README is current: what it does, install, usage, supported platforms + runtime versions (2026-08-08) — the README is the repo's measured-state document and is maintained as one: claims corrected in place beside the measurements that overturned them. Requirements names Blender 5.x, Python 3.11+ and the dependency set; the treatment added the CI matrix (ubuntu-latest / Python 3.12, pinned) and both local test invocations
+- [x] `[all]` CHANGELOG.md (Keep a Changelog format) (2026-08-08) — [CHANGELOG.md](CHANGELOG.md), with the v1.0.0 entry stating what the version asserts **and what it does not**
+- [x] `[all]` LICENSE file present and repo states support status (2026-08-08) — MIT, `LICENSE`; support status stated in both the README threat-model section and SECURITY.md (`main` is the only supported state; no release channel, no backport policy, no SLA)
+- [ ] `[cli]` SKIP: not tagged `[cli]`; no installed command has a `--help` contract to be accurate about. Measured note so this is not hiding behind a tag: 32 of 34 tools use `argparse`, and `tools/diagnostics/e12_help_format_scan.py` gates help-string *formatting* — **not accuracy**, which is a different property and is not claimed here. Re-opens at extraction.
+- [ ] `[cli|mcp|desktop]` SKIP: there are no logging levels, deliberately. In this repo **stdout is the measurement record** — a tool prints the numbers a report is written from, and suppressing them behind a level would suppress the evidence. Nothing is redacted because nothing sensitive is printed (see A3). Re-opens at extraction, where a shipped tool needs a quiet mode.
+- [ ] `[mcp]` SKIP: no MCP server on `main` at this audit. Re-opens with E18.
+- [ ] `[complex]` SKIP: no daemon, no background service, no state files requiring recovery procedures, no operational modes. Every tool is a one-shot invocation the operator watches. (The Starlight handbook the treatment adds is a *product* handbook, not the C7 operations runbook.)
+
+## D. Shipping Hygiene
+
+- [x] `[all]` `verify` script exists (test + build + smoke in one command) (2026-08-08) — `python -m pytest` runs the full **32-test** suite; `python -m pytest -m "not artifacts"` runs the **24** hermetic tests CI reproduces. There is no build step because nothing is built. The artifacts tier is the smoke layer — it replays recorded trees and anchors. Configured in `pytest.ini`, gated in `.github/workflows/ci.yml`, established in [E17 Ruling 5](docs/experiments/E17-ruling.md). *Counted at this commit, not inherited — the dispatch said 27, which was Ruling 1's state before Ruling 5 closed the arc at 32.*
+- [ ] `[all]` SKIP: **no manifest carries a version**, so there is nothing to match a tag against. facet has no `package.json`, `pyproject.toml` or equivalent. The proposed `v1.0.0` lives as a git tag plus the CHANGELOG heading and nowhere else — CHANGELOG.md states this explicitly rather than implying a package exists. Re-opens at extraction, when an extracted tool gains a real manifest.
+- [ ] `[all]` SKIP: facet declares **no dependency manifest**, so there is no dependency graph for a scanner to read. Its runtime deps are documented prose in the README and pinned inline in `ci.yml`'s install step. ⚑ **Flagged for the ruling, not decided here:** if the ruling wants D3 executed rather than skipped, the cheapest honest form is a `pip-audit` step over the versions `ci.yml` already pins — that is one step in **E18's lane**, so it is named here and not edited.
+- [ ] `[all]` SKIP: no automated dependency-update mechanism, by two independent reasons — the org's own GitHub Actions rule (*"Do NOT add dependabot.yml unless explicitly requested"*), and no manifest for dependabot to track even if it were requested.
+- [ ] `[npm]` SKIP: **executed, not attested** — `npx @mcptoolshop/shipcheck pack` (Gate H, v1.0.7) ran against this repo on 2026-08-08 and reported *"no publishable packages found"*, exit 0. There is no workspace, no `package.json`, and nothing to pack. Re-opens at extraction.
+- [ ] `[npm]`/`[pypi]` SKIP: no `package.json` and no `pyproject.toml`, so neither `engines.node` nor `requires-python` has a file to live in. The runtime floor is stated in the README (Python 3.11+, Blender 5.x) and pinned in CI (3.12). Re-opens at extraction.
+- [ ] `[npm]`/`[pypi]` SKIP: no lockfile because no manifest; no wheel or sdist because nothing is packaged. CI pins its install set inline instead, which is the honest equivalent at this state. Re-opens at extraction.
+- [ ] `[vsix]` SKIP: not a VS Code extension.
+- [ ] `[desktop]` SKIP: not a desktop application.
+
+## E. Identity (soft gate — does not block ship)
+
+- [ ] `[all]` Logo in README header
+- [ ] `[all]` Translations (polyglot-mcp, 8 languages)
+- [ ] `[org]` Landing page (@mcptoolshop/site-theme)
+- [ ] `[all]` GitHub repo metadata: description, homepage, topics
+
+---
+
+## Gate Rules
+
+**Hard gate (A–D):** Must pass before any version is tagged or published.
+If a section doesn't apply, mark `SKIP:` with justification — don't leave it unchecked.
+
+**Soft gate (E):** Should be done. Product ships without it, but isn't "whole."
+
+**Checking off:**
+```
+- [x] `[all]` SECURITY.md exists (2026-02-27)
+```
+
+**Skipping:**
+```
+- [ ] `[pypi]` SKIP: not a Python project
+```
