@@ -1322,3 +1322,117 @@ is the correction discipline as written.
 **The lane resumes at stroke 1's graph build.** Zero credits still; the
 banked A0 untouched; every watch as armed at 24g–24i.
 
+## Ruling 25 — stroke 1's double misbind: the stone LEAVES the generation path; the garnet re-projection is ruled (2026-08-08)
+
+Evidence — what this seat OPENED: the stroke-1 halt report in full
+([E14-handoff7-stroke1-halt.md](E14-handoff7-stroke1-halt.md)), and
+`GATE1_both_rolls_6x.png` walked at 6× before any number below — fixture,
+before, and both rejected rolls, the rejections labelled in-image.
+
+**25a — THE WALK, in plain words first, this seat's own eye.** The fixture
+panel: a pointed kite of distinct flat facets in a thin silver bezel,
+near-black at the rim, deep garnet-red inside, one white highlight. The
+BEFORE panel: **the same kite, the same bezel, the same facet planes —
+violet.** Right form, wrong colour, with the demoted texels speckling
+hole-grey. Roll 1 (770700, outlined red REJECTED in-image): the kite is
+gone — a rounded knurled metal mount holding a **flat smooth disc of deep
+red**, a cabochon in a bezel; the colour right, the form a different
+jewellery object. Roll 2 (770702): the same cabochon recomposition, gone
+back to magenta-pink; both clauses fail. Below the stone in every panel
+the collar, ring and wrap are correct. Mismatch stated plainly: **the
+generation replaced a faceted polyhedron with a jewel-in-setting template
+at both seeds, while the drifted paint it was sent to fix already carries
+the correct form.**
+
+**25b — the halt is RATIFIED; the discipline was exact.** 24i's branch
+fired as pre-registered: two rolls, both rejected on the eye clause, the
+re-roll spent at the ruled 770702 with the deviation printed loudly,
+nothing committed (`run/state/atlas.png` byte-identical to `state0`'s, no
+commit artifact exists), no third roll, stroke 2 never launched, both
+artifacts preserved under name with their as-submitted graphs, zero
+credits quoted at both submissions. The executor's self-caught measurement
+contamination — the gem watch band rows 87–158 contain the GOLD COLLAR
+(handoff 5's landmark bug in a new form) — was corrected before reporting:
+**the stone is isolated by the demotion's own footprint from here, and
+that is the standing cut** (the row band is retired for colour
+measurement on this structure).
+
+**25c — two findings banked route-wide.** (i) **Ruling 20b's class has a
+second structure on this subject, and the class generalises**: anatomy
+misbinding seeded by the control's own features is not an edge-on-blob
+phenomenon — it fired face-on, through a masked inpaint at cn-strength
+1.0, on a compact structure whose thin bright rim resembles a
+jewel-in-a-ring-setting template. Small identity-bearing structures with
+setting-like silhouettes are misbind territory at any camera when
+constraint density is sparse. (ii) **Ruling 19b reproduces at the brush
+stage**: the seed carries the gem's hue family through a masked inpaint
+at denoise 1.0 — 770700 landed deep red (median hue 23.7 beside the
+fixture's 17.0, lav+mag 6.2%), 770702 reverted (323.9, 26.5%) — the same
+seed pair, the same direction, a different transport. The term
+`a deep red garnet gem pommel` put red on the stone and nowhere else at
+the seed that binds it; **the term question is answered — the term works
+— and the term was never the failure.**
+
+**25d — THE MECHANISM IS RE-RULED: the stone leaves the generation path.
+The garnet repaint becomes THE GARNET RE-PROJECTION.** The walk's own
+finding decides it: the drifted paint carries the correct faceted form —
+only its hue family is wrong — and the demoted territory is, by
+construction, exactly the set the four drifted twins (1/3/5/7) committed
+at stage 1b, so those twins can reach every texel of it again. The ruled
+operation: **an operands-recorded hue/chroma transfer of the four drifted
+twins' stone regions toward the identity's stone — the accepted pair's
+view 0 — with L preserved** (the facet shading lives in L; the drift is a
+hue rotation), **then a masked re-projection of the corrected twins into
+the demoted territory** through the recorded stage-1b masks, restricted
+to the ruled stone mask, own invariance printed, A32 untouched — the
+territory is holes, so the ordinary commit path applies. Grounds, in
+order: (i) the failure mode becomes IMPOSSIBLE rather than watched — no
+generator touches the stone (*prefer eliminating a risk to gating it*,
+the route's own law); (ii) every machinery class is proven — the E13
+harmonization is an adopted, identity-tested, operands-recorded transfer;
+projection is the spine; the demotion lifecycle is ruled and its
+compensator exercised; (iii) coverage is **100% of the drifted territory
+by construction** — it is those twins' own committed paint; (iv) zero
+generation, zero credits, deterministic and auditable. The alternatives,
+declined with reasons: a third generation attempt under a form term
+("faceted") fights a template prior that just won twice at cn 1.0 —
+seed-independent, control-resemblance-driven, and the record holds no
+instance of a word overriding a recomposition at this scale; deferral
+(the violet stands to Gate 1) stages an artifact against the Director's
+own word — not this seat's to choose. His window is open on all of it,
+in a sentence, as always.
+
+**25e — the derivation is DISPATCHED, one halt, and the registry payment
+is pre-committed.** The executor proposes, adopts nothing: the transfer's
+operands (space, per-channel treatment, the reference = the pair view-0
+stone pixels), the per-view stone masks in twin space, and the projection
+mechanism (recorded masks, ruled values, restriction to the stone
+territory). Pre-registered validations, all staged at the halt: (i) **the
+near-no-op test** — the same transfer applied to twin 0's garnet-core
+stone pixels must move them ≈ nothing (it is already the reference's
+distribution), denominators stated (the D8 lesson — small counts are
+named, never hidden in ratios); (ii) **the corrected stones at 6×** —
+four panels beside the fixture panel, THIS SEAT'S EYE before any commit;
+(iii) the rim-band effect reported separately (the deep-lavender class
+has two faces; a transfer must not silently repaint backdrop bleed
+without saying where); (iv) any tool touched reproduces a stage-1b anchor
+first. **The operands' registry rows land in the SAME fold as their
+ruling — the 24l lesson, pre-committed here so it cannot be missed
+twice.**
+
+**25f — the lane after the stone fills.** Stroke 1 RE-ENTERS the ruled
+order with the stone territory out of its mask — hole-fill only, its
+re-roll budget RESET with the new spec (the spent rolls belonged to the
+merged spec and their failure was the stone's: both rolls filled the
+blade rim with continuous steel and every non-stone watch was clean).
+The order resumes as ruled: 0 → 180 → 45 → 225 → 315 → 135 → 90 → 270,
+per-stroke eye gates unchanged — the fifth signature, 20b at the
+edge-ons, 12e-gold at the diagonals, deep-share beside every total — and
+the gem check at each gate becomes *the stone unchanged and rendering
+garnet as context*. Stems v3 stand as built: the strengthened term is now
+a true description of the frame's stone, and the red-outside-L5 watch
+stays armed. HALT 2 restates the stone's provenance honestly as
+**projected reference paint, colour-corrected, operands recorded** — a
+provenance sub-class stated in the walk set, never blended into the
+brush's numbers.
+

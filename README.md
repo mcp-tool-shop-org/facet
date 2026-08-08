@@ -366,7 +366,17 @@ ordinary holes; A32 untouched), spiral order with the two edge-on hazard
 strokes last, `thin_extent` **decided at 0.0** (the 10d inversion is total —
 the strokes the guard would protect are the ones it disarms), stroke stems
 strengthening the gem's term to *deep red garnet* against the violet context
-(the fixture's word unchanged). Then strokes under per-stroke eye gates,
+(the fixture's word unchanged). Stroke 1 then misbound twice — **both seeds
+recomposed the faceted stone as a cabochon-in-a-bezel** (Ruling 20b's class
+at a second structure: the stone's bright-rimmed kite resembles a
+jewel-in-a-setting template; the term itself landed deep red at 770700 and
+the drift's seed-dependence reproduced at the brush) — and
+[Ruling 25](docs/experiments/E14-ruling.md) took the stone OFF the
+generation path: **the garnet re-projection** (hue/chroma transfer of the
+four drifted twins' stone regions toward the identity's stone, L preserved,
+re-projected into the demoted territory — the twins' own committed texels,
+100% by construction, zero generation), the misbind made impossible rather
+than watched. Then strokes 1–8 hole-fill only under per-stroke eye gates,
 HALT 2, and finalize, pack, Gate 1 beside the clay.
 
 **E15 — the context index — is LIVE and ruled**
