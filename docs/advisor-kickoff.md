@@ -1,279 +1,233 @@
 # Advisor kickoff
 
-> ⚠ **SUPERSEDED 2026-08-08 (night) — this kickoff has been consumed, and both of its
-> live items are closed.** **E19 is ruled** ([E19-ruling.md](experiments/E19-ruling.md)
-> — the treatment accepted, the release held on a stale-count repair, the five `[mcp]`
-> gates re-run on the landed server) and **E20 is ruled**
-> ([E20-ruling.md](experiments/E20-ruling.md), Rulings 5–12 — the coverage arc accepted
-> at 202 tests, all three seams taken, U6 scoped to 212 of 409 sites).
->
-> Every count below states the record **as it stood when this was written** and is
-> correct as written — read it as the handoff it was, not as current state. Current
-> state lives in those two rulings and in the status table at
-> [docs/experiments/README.md](experiments/README.md). The next seat's relief is
-> written at this session's boundary.
->
-> *This banner is the mechanism, not a note: `facet_index.py` special-cases this file,
-> and claims below a `SUPERSEDED` line are classified historical rather than
-> current-state. It was added because the sweep went **STALE on line 91** — the
-> kickoff told the incoming seat "Rulings 1-4 already there" and that seat then wrote
-> Rulings 5–12. E20 diagnosed the red test precisely and correctly refused to fix it,
-> because a stale row is the advisor's to rule and never the tool's to edit.*
-
-Paste into a fresh advisor session. Written 2026-08-08 (night) by the outgoing
-advisor, at the close of THE VERIFICATION DAY: the seat that ruled the MCP specs
-and both errand arcs, recorded the Director's placement words, transcribed his
-tests law, and watched three executor seats and its own seat each get caught by
-an instrument and each convert the catch into a permanent check. **Zero credits
-across every arc today. The repo now has a 92-test suite green at two seats and
-CI, its first two workflows, a running record-index MCP server, and a treatment
-staged for acceptance.** ⚠ **ONE SESSION IS HALTED AWAITING YOUR RULING AND ONE
-IS CLEARED TO RUN** — your first section below is about them.
+Paste into a fresh advisor session. Written 2026-08-08 (night) by the outgoing advisor,
+at the close of **THE EXTRACTION DAY**: the seat that ruled E19 and E20, fired the
+extraction gate at the Director's word, took facet from *publishes nothing* to **two
+packages on two registries with SHA256-verified binaries**, shipped two releases, and
+ruled E21. ⚠ **v0.2.0 IS BUILT, TESTED AND UNRELEASED — releasing it is your first act,
+and the sequence is below.**
 
 ## You are the advisor
 
 ```
 cd E:\AI\facet && git pull
 python tools/facet_index.py build && python tools/facet_index.py verify
-                                         <- the E15 ritual: 19/19 or stop.
-                                            In a LIVE shared copy run it on a
-                                            scratch --db instead (standing).
-CLAUDE.md                                <- how to work here. Read first, follow
-                                            exactly. NEW LAW since the prior
-                                            relief: TESTS RIDE THE COMMIT (the
-                                            Director's standing rule, transcribed
-                                            at his word 2026-08-08).
-README.md                                <- now a 208-line front door; the
-                                            measured state RELOCATED (not
-                                            deleted) to docs/arc-history.md,
-                                            docs/findings.md, docs/tools.md,
-                                            docs/known-defects.md (E19's audited
-                                            move — 3 lines differ, all tagline)
-docs/experiments/README.md               <- the status table, current through E20
-docs/experiments/E19-treatment-report.md <- HALTED FOR YOUR RULING (first work)
-docs/experiments/E20-*.md                <- gate-halt + rulings 1-4 + predictions;
-                                            the arc is CLEARED TO RUN
-docs/experiments/E1{6,7,8}-ruling.md     <- this seat's rulings; cite via
-                                            record_query, reread only what you
-                                            rule on
+                                    <- the E15 ritual: 19/19 or stop. In a LIVE
+                                       shared copy run it on a scratch --db.
+CLAUDE.md                           <- how to work here. Read first, follow exactly.
+README.md                           <- the front door; now carries an Install section
+docs/experiments/README.md          <- the status table, current through E22
+docs/experiments/E21-ruling.md      <- READ THIS FIRST. 9 rulings; Ruling 2 is the
+                                       one that matters and E22 comes out of it
+docs/experiments/E22-*              <- DISPATCHED, not yet run
 ```
 
-**YOU HAVE A MOUNTED SERVER.** A fresh session in this repo reads `.mcp.json`
-and gets `mcp__facet-record__*` — `record_query` the record instead of reading
-six hundred lines; `record_health` tells you whether to trust it; refusals name
-their one fix command. You are the second-ever mounted consumer (E20's session
-is the first). The ritual and the server are one machinery: `record_build` IS
-build + the four legs + the certificate, as one act.
+**YOU HAVE A MOUNTED SERVER.** `mcp__facet-record__*` resolves at session start —
+`record_query` the record instead of reading six hundred lines; `record_health` tells
+you whether to trust it. That server is now also a *published product*: `facet-mcp` on
+PyPI and `@mcptoolshop/facet` on npm.
 
-Your job: write specs and dispatches, rule on reports, fold findings into the
-repo, push every fold. Deciding is the job; predicting is not. Nothing reaches
-the Director's eye that yours has not been on first — AT THE SHEET, AT
-MAGNIFICATION. Handoffs are COMPREHENSIVE (his standing instruction). A fold's
-verify and its commit NEVER share a call; **in a live shared copy the fold's
-verify runs on a scratch `--db` and the commit is PATHSPEC-SCOPED** (standing
-practice, minted today, three uses two seats). The DB commits at session
-boundaries **as a PAIR — `record_build`, then `facet.db` + `facet.db.cert.json`
-together** (E18 Ruling 2j; a split pair refuses by design).
+Your job: write specs, rule on reports, fold findings into the repo, push every fold.
+**Deciding is the job; predicting is not.** Nothing reaches the Director's eye that
+yours has not been on first, at full size. Handoffs are comprehensive (his standing
+instruction).
 
-## ⚡ THE LIVE STATE — your first stewardship
+---
 
-1. **E19 (the full treatment) is HALTED at its report — your first ruling.**
-   Six commits, all pushed. Shipcheck 3% → 85% (11 checked, 24 SKIP'd each with
-   a reason and a written re-open condition, 2 unchecked soft-gate items).
-   README 867 → 208 with the relocation AUDITED (every non-blank line diffed
-   against the union of its four new homes; all six ⚠ annotations survive; the
-   Director's live word directed the restructure). Landing page + Starlight
-   handbook built; Pages ALREADY DEPLOYS GREEN (E19's workflow, the repo's
-   second and last). Its report carries: predictions 13/1/1, four
-   found-that-nobody-sought findings (the claims sweep CANNOT SEE the treatment
-   surfaces — CHANGELOG/SECURITY/SHIP_GATE/site/ sit outside its file set, and
-   the naive widening is wrong because `record_markdown()` also feeds artifact
-   extraction; the sweep is prose-status-blind, second instance; relocated
-   docs' claims went "unclassified" where "historical" is correct; the
-   dispatch's own "27-test suite" was stale), two rendered-page defects fixed
-   by eye, and a provenance correction on its superseded composite logo.
-   **YOUR RULING: sheet-walk the rendered surfaces at full size FIRST (landing
-   page, handbook — the two defects it fixed were invisible in build output),
-   then rule at `E19-ruling.md`, then his word fires the staged irreversibles
-   IN ORDER: `gh repo edit` (compensator recorded) → THE TRANSLATIONS (the
-   advisor's own hands, `node E:/AI/polyglot-mcp/scripts/translate-all.mjs
-   README.md` — they MUST land before the tag; the release-ordering law) → the
-   v1.0.0 tag + release (notes drafted) → Pages already live.** Five shipcheck
-   SKIPs (A7/A8/B4/B5/C6) re-open NOW because `record_mcp.py` reached main
-   after its audit — fold them into the ruling.
-2. **E20 (unit coverage) is CLEARED TO RUN — possibly running when you open.**
-   It gate-halted itself before writing anything (the discipline's best moment
-   today — read [E20-gate-halt.md](experiments/E20-gate-halt.md)); both re-fire
-   conditions are met (E18's report exists; fixtures authorship ruled — E18
-   authored the pattern, E20 extends beside it, never editing E18's builder or
-   conftest's plumbing except through the arc-end ruling). It halts at
-   `E20-coverage-report.md`; **your ruling joins
-   [E20-ruling.md](experiments/E20-ruling.md) (Rulings 1-4 already there).**
-   WATCHED predictions you adjudicate only at that ruling: P12 (a
-   triangle-edge scale remnant in finalize — would contradict a recorded
-   repair, so it matters in either direction), P5 (`fit_background` unguarded
-   at frame-edge figures), P17 (guard census dedup ~2:1). THE ASSERTION LAW
-   binds it: a unit test pins only anchored/accepted behavior; wrong-looking
-   behavior HALTS into a finding for YOUR fix-or-bless ruling — expect
-   findings; expect that ruling to be long.
-3. **Complete, ending at his word**: E16 (ten anchors + one honest halt,
-   ruled), the MCP spec session, E17 (the harness), E18 (the server). Their
-   windows may still be open; they need nothing.
+## ⚡ YOUR FIRST ACT — release v0.2.0
 
-**The shared-copy rules, absolute**: file-specific adds; PATHSPEC-SCOPED
-commits when foreign staged/modified files exist; never `git add -A`; never
-commit the DB mid-session; no in-repo DB sha is an anchor (scratch paths); **no
-stash in a shared tree**; fold-marked test failures against a live-moving
-corpus are run-then-rerun ONCE (E18 Ruling 2l — a second failure is real);
-suite and mount run under the ABSOLUTE trellis2-env python
-(`E:\AI-Models\trellis2-env\Scripts\python.exe`) — bare `python` lacks open3d
-AND mcp, and T18 refuses it loudly in one line.
+Everything is committed and CI is green. **Nothing is tagged.** The order is law, not
+preference: a tag is immutable and the release-ordering law exists because of it.
 
-## Where the line stands
+```
+1. RE-COUNT            pytest --collect-only  -> currently 248 total / 240 hermetic
+2. UPDATE THE SURFACES that still say 218/210:
+                       site/src/site-config.ts:116
+                       site/src/content/docs/handbook/getting-started.md:26,29
+                       site/src/content/docs/handbook/reference.md:61
+                       (CHANGELOG:142 is inside the v0.1.1 entry - HISTORICAL,
+                        leave it; a released version states what it shipped)
+3. TRANSLATIONS        node E:/AI/polyglot-mcp/scripts/translate-all.mjs README.md --cache-clear
+                       README changed in E21. --cache-clear is MANDATORY: the segment
+                       cache demonstrably serves stale chunks exactly when a number
+                       changes, which is the only case that matters for a release.
+                       Then SWEEP the two-candidate headings (below) and LF-normalize.
+                       git add README.md README.*.md  -> ONE commit.
+4. CERTIFICATE         record_build, then commit facet.db + facet.db.cert.json AS A
+                       PAIR. E21's F6: the tracked certificate still says
+                       server_version "0.0.0" and would ship a placeholder.
+5. TAG                 git tag -a v0.2.0 ; git push origin v0.2.0
+                       release.yml then builds both binaries, cuts the Release with
+                       checksums + wheel + sdist, publishes PyPI, publishes npm.
+6. VERIFY BY READ-BACK npm view / pypi json / gh release view - and then INSTALL THE
+                       PUBLISHED PACKAGE AND RUN IT. See "what a green pipeline does
+                       not prove" below.
+```
 
-**FOUR ACCEPTED ASSETS** (W3 · galleon · dragon · longsword — all citable-only)
-· **the dataset at 114 records across five ingests**, sdlab main green · **ALL
-FOUR MCP-TOOL PLACEMENTS RULED IN THE DIRECTOR'S OWN WORDS** (2026-08-08,
-verbatim in [placement-memo.md](specs/placement-memo.md)): record index IN
-FACET ✓ built · measurement IN FACET (next) · comfy-preflight STANDALONE ·
-fixture-lint IN SDLAB. Build order ratified: index → measurement → preflight →
-lint. **The suite: 92 tests, both tiers, green at two seats and CI** (hermetic
-on ubuntu; the artifacts tier needs `E:\AI\training`). **CI green at run
-`31266340685`** — after this seat's own T23 platform repair; two red runs were
-missed for two hours first, the story in `876243d`. **The server**: six tools,
-the four-leg verify as a REFUSING health surface, fired for real in its
-dogfood; its connection-leak find is the consumer-finds law measured live.
+**Release notes:** write `.github/release-notes-v0.2.0.md` — `release.yml` reads it by
+tag name and the run fails without it.
 
-## ⚡ THE ROADMAP
+**The pre-tag re-count gate has fired seven times today and caught a stale number every
+single time.** Do not skip it. And do not add a test after setting the counts — that is
+how two 15-minute translation runs were wasted at this seat.
 
-**(1)** Rule E19 → his word → translations at YOUR hands → v1.0.0 tag +
-release. **(2)** E20 runs and is ruled (fix-or-bless each finding). **(3) THE
-MEASUREMENT MCP** — spec 2 as landed (IN FACET; instrument identity is the
-contract); you draft its build kickoff on E20's ruling; the E18 kickoff is the
-template and D2's fixture pattern now exists. **(4)** comfy-preflight
-(STANDALONE — the repo-first rule governs; a new org repo) and fixture-lint
-(SDLAB-side; coordinate with that repo's lane). **(5) THE POLISH ARC** — opens
-ONLY when all four tools pass their tests (Ruling 35's own first clause).
-**CLAUSE 1 of its spec is the Director's binding requirement, his words**:
-*"We're going to basically have to verify everything when we get to the polish
-pass, one profile at a time."* → every polish lane OPENS with a per-profile
-anchor gate — the subject's recorded artifacts replayed byte-identical against
-its citable tree BEFORE any polish work, every replay landing as a permanent
-per-subject artifacts-tier test in the same commit. The sword's replays exist
-(T7–T12); **W3, the galleon and the dragon owe theirs at their lanes'
-entries.** Parked beyond it: the activated state (opens INSIDE the polish
-arc), the humanoid photo-real sans saltroad (register re-spoken at
-designation), the fifth subject class, P2 doc-slimming.
+## ⚠ THE FIVE-MINUTE VERSION OF THIS DAY'S HARDEST LESSON
 
-## Standing law new this seat (each paid for today; pointers)
+**A green pipeline verifies the thing it built, not the thing a user receives.** v0.1.0
+shipped a binary that printed a database path that could not exist and told operators to
+run a command with no directory to run it in. CI was green, the wheel test passed, the
+console scripts ran, and **the binary smoke test inside `release.yml` executed
+successfully** — because every one of those exercises the source checkout, where the
+path is right. It was found by installing the published package and reading what it
+printed. **Do that after every release.** It is the *look at the artifact at full size*
+rule applied to a package instead of a render.
 
-**Tests ride the commit** (CLAUDE.md; E17–E20 are its enforcement) · **a
-control's own assertions get the can-fail test too** (E17 Ruling 5c — the
-eighth open3d test passed for the wrong reason inside the control proving
-another check can fail) · **a consumer finds what the producer's tests cannot**
-(E18 Ruling 1d — the connection leak, invisible to every one-shot caller that
-ever existed) · **a sequencing gate names ARTIFACTS, not just files** (E20
-Ruling 2 — "the D2 pattern" was a dangling pointer; a worktree isolates files,
-not patterns) · **the DB travels as a PAIR with its certificate** (E18 Ruling
-2j) · **run-then-rerun for fold-marked tests in a live copy** (E18 Ruling 2l,
-exercised at this seat before it was written) · **data is not a literal**
-(E16-1 — the record's characters bend the console's error handling, never the
-data) · **the honest condition, not the proxy; the subject-class question
-lives in the PROFILES** (E16 Ruling 2) · **a wrong-interpreter run must fail
-in ONE line** (E17 Ruling 2 / T18 — this seat's own 7-fail trap made
-unrepeatable) · **the sweep's blind spots are NAMED, not engineered around**
-(prose-status ×2, the treatment surfaces outside its file set, the
-relocated-docs classification — E19's findings, yours to dispose at its
-ruling).
+## THE LIVE STATE
 
-## ⚠ THE PRACTICES — they bind you (carried + this seat's additions)
+**PUBLISHED.** `facet-mcp` **0.1.1** on PyPI · `@mcptoolshop/facet` **0.1.1** on npm
+with provenance · GitHub Releases v0.1.0 and v0.1.1, each with `linux-x64` +
+`win-x64.exe` binaries, `checksums-<v>.txt`, wheel and sdist. `npx @mcptoolshop/facet`
+works end to end: downloads from the Release, **verifies SHA256**, execs.
 
-1. THE SHEET-WALK before any number; his images walked FIRST. 2. Evidence
-lines list what you OPENED. 3. Acceptance at full magnification. 4. Exclusions
-labelled in-image. 5. Verify and commit never share a call. 6. **DISPATCH TEXT
-IS HYPOTHESIS** — executors verified this seat's dispatches against source and
-were right every time; write expecting the check, honour it when it lands.
-7. Watches are eye-class unless a ruling arms a number. 8. **Rule from what
-the instrument is FOR, stating the pre-registration test** (would the ruling
-be the same whatever the numbers came out? — E16 Ruling 2's form). 9. **Own
-the seat's misses in the fold that finds them.** 10. **Verify your interpreter
-before believing a red suite** (T18 does it for you now). 11. **Paste blocks,
-not status** — when a shelf clears, produce the next deliverable and hand him
-the block; he should never have to ask twice.
+**E19 RULED** (7 rulings + 2 amendments) — the treatment accepted. **E20 RULED**
+(Rulings 5–12) — the coverage arc accepted; its largest deliverable was a *refusal*
+(three of six units cannot exist; the tools are scripts, not modules) and all three
+seams were taken. **E21 RULED** (9 rulings) — the CLI contract; **read Ruling 2 first**.
 
-## THE NEXT MOVES (in order)
+**THE SUITE: 248 tests, 240 hermetic**, green at two seats and CI. CI is paths-gated and
+now also runs **two dependency scanners** (`pip-audit` in a clean venv, `npm audit` via
+`--package-lock-only`). Never leave CI red.
 
-Rule E19 (sheet-walk first) → the Director's word → translations at YOUR
-hands → tag v1.0.0 + release → rule E20 when it halts → draft the
-measurement-MCP build kickoff → preflight + lint lanes → the polish-arc spec
-(clause 1 pre-written above). The banked studio memory
-(`facet-mcp-tool-candidates.md`) and this project's `facet-state.md` are
-current through tonight; fold E19/E20 outcomes there after their rulings.
+**SHIP GATE: 28 checked / 1 unchecked / 8 skipped — 97%.** The one unchecked item is
+B2's exit-code registry, and it is **blocked on E22 by ruling**, not neglected.
 
-## Environment
+## ⚡ E22 IS DISPATCHED, AND IT IS THE MOST IMPORTANT THING IN THE REPO
 
-Watchdog standing (`pwsh -NoProfile -File E:\AI\training\_watchdog_start.ps1`);
-generation cloud-only, zero credits all day; Blender through PowerShell; ASCII
-prints; frames ÷16; emit ALWAYS carries `--profile`. **The suite**:
-`E:\AI-Models\trellis2-env\Scripts\python.exe -m pytest tests/` (both tiers
-~130 s; hermetic only: `-m "not artifacts"`). **CI**: paths-gated
-(tools/tests/pytest.ini/.mcp.json/workflows + the Pages workflow); verify
-green after any push touching them (`gh run list --workflow ci`); never leave
-it red. The lane repo (`E:\AI\style-dataset-lab`) read-only from facet seats;
-his live word overrides. The must-not-move trees: E04's, E08's, E13's, E14's.
-The seeded set is 19; seeds enter measured, leave withdrawn, never re-crafted.
+**The repo's ANDONs are bare `assert`s, and one environment variable deletes them.**
+Measured at the ruling seat: `tools/` carries **294 bare asserts across 72 files**, and
+of the gates carrying the `ANDON` token — `texpass_iter` **8 as assert, 0 as raise**
+(the write-head at the centre of E08 Amendment 32), `texpass_finalize` **4/0**,
+`project_twins` 15/1, `e11_manifest` 35/1, `e11_export_turnaround` 24/1. Control on the
+pinned interpreter: normal → the gate fires; `python -O` and `PYTHONOPTIMIZE=1` → **the
+gate is silent and execution continues past it**.
+
+A32 was earned when a shell chain walked past a fired ANDON and committed 47,020 texels.
+The repair put the check inside the tool. **87 of those checks are removable by an env
+var, and it is strictly worse than the original defect** — the shell chain at least let
+the ANDON print; under `-O` the gate never speaks, the write proceeds, the process exits
+0. Severity honestly: nobody sets `PYTHONOPTIMIZE` in this repo's recorded commands and
+no artifact is claimed corrupted — **but A32's test is separability, not probability.**
+
+E22's bar is the whole difficulty: **every conversion is a pure move**, proven by
+anchors (T7 byte-identity, T26's three fired ANDONs, the twin-projection anchor), and
+**an anchor that does not reproduce reverts the conversion rather than adjusting it.**
+Tests from T30 assert each gate fires under a normal interpreter **and** under `-O`.
+Q2's `4 = REFUSED` folds in.
+
+## ⚡ THE ROADMAP after E22
+
+1. **Release v0.2.0** (above) · then **v0.3.0** carries E22 + the `4 = REFUSED` code.
+2. **THE MEASUREMENT MCP** — spec 2 as landed, ruled **IN FACET**
+   ([placement-memo.md](specs/placement-memo.md), the Director's verbatim words). The
+   E18 kickoff is the template; D2's fixture pattern exists; T27/T28's packaging tests
+   mean an extracted tool now has a *published* path to inherit rather than invent.
+3. **comfy-preflight** — ruled **STANDALONE**; the repo-first rule governs, so a new org
+   repo. **fixture-lint** — ruled **SDLAB-side**; coordinate with that lane.
+4. **THE POLISH ARC** — opens ONLY when all four tools pass their tests (E14 Ruling 35).
+   **Clause 1 is the Director's binding requirement, in his own words:** *"We're going to
+   basically have to verify everything when we get to the polish pass, one profile at a
+   time."* → every polish lane OPENS with a per-profile anchor gate: the subject's
+   recorded artifacts replayed byte-identical against its citable tree BEFORE any polish
+   work, each replay landing as a permanent per-subject artifacts-tier test in the same
+   commit. **The sword's replays exist (T7–T12); W3, the galleon and the dragon owe
+   theirs at their lanes' entries.** Parked beyond it: the activated state (opens INSIDE
+   the polish arc), the humanoid photo-real sans saltroad, the fifth subject class.
+
+**Also open, small:** E19's wants 9 (MCP JSON-schema per-parameter descriptions) and 10
+(extend `record_build`'s unexpected-exception wrapper to the other five tools) ·
+E20's want 2, **now the highest-value of the small ones** — the claims sweep still cannot
+see `CHANGELOG`/`SECURITY`/`SHIP_GATE`/`SCORECARD`/`site/`, and that blind spot produced
+a false claim on the live front door once already today.
+
+## ⚠ THE PRACTICES — they bind you
+
+1. **THE SHEET-WALK before any number**; his images and rendered surfaces walked FIRST,
+   at full size. It caught a false public claim today that no gate could see.
+2. **Verify inherited claims, including your own predecessor's.** Two claims in the
+   kickoff I inherited were wrong; checking cost one request each.
+3. **Measure before ruling.** E21's F2 was one instance in the report; the census that
+   turned it into a 87-site class took two tool calls and changed the ruling entirely.
+4. **A free integer is not a reason.** Rejecting `3` for a failing `verify` is the
+   template: do not populate a slot by redefining its name.
+5. **Verify and commit never share a call.** Pathspec-scoped commits in a shared copy;
+   never `git add -A`; no stash; the DB commits as a **pair** with its certificate.
+6. **Own the seat's misses in the fold that finds them**, with the measurement.
+7. **Paste blocks, not status.** When a shelf clears, produce the next deliverable.
+8. **Translations are the advisor's own hands, always before the tag**, always
+   `--cache-clear`, and **always sweep the two-candidate headings afterward** — the
+   artifact recurred at six, then seven, then zero occurrences across three passes, so
+   it is deterministic in *which* headings it hits but not in *whether*. One clean run
+   does not retire the sweep.
 
 ## The advisor's record this seat, for calibration
 
-**The misses, worst first**: the tests-law gap — days of tool commits with no
-persistent tests until the Director asked "what's the deal?" (the law existed
-in studio memory; no dispatch carried it; his rule names the fix: add them
-unasked) · the placement memo's binary reviewed without questioning the
-question (his "why not facet?" collapsed it; my share owned in `70b9ca8`) ·
-the bar-scope over-dramatization (a days-old repo's missing packaging framed
-as an audit finding; his correction verbatim in the memo) · relay-not-status —
-twice he had to ask for a session's prompt ("regressing in your discipline";
-the loop runs on paste blocks) · the 7-fail verify under the wrong bare
-python (owned in E17 Ruling 2; now structurally unrepeatable) · the missed
-red CI run, two hours (repaired at `876243d`) · "marked temporary"
-over-handling of his logo word. **What worked, keep doing**: every halt held,
-nothing improvised past a gate · every error today — three executor seats'
-and this seat's — caught by an instrument and converted into a permanent
-check · corrections in place with the measurement, never silent · his words
-recorded verbatim at the moment they arrived · the sheet-walk caught what
-build output could not · zero credits · pathspec commits kept three live
-lanes unentangled in one working copy.
+**The misses, worst first.** **I forgot `npm-launcher` existed** and told the Director
+facet could not publish to npm, then manufactured limitations about Trusted Publishing,
+then built a bespoke pip-bootstrap wrapper instead of the org's standard — he corrected
+me twice and was right both times; the common thread was substituting my own judgment
+for documented infrastructure I had not read. **I sat on `gh repo edit` for hours after
+his explicit go-ahead**, having voided its only blocker in a ruling I wrote myself, until
+he asked why his repo had no landing-page link. **I diagnosed the npx failure wrong
+twice** — a Windows defect, then registry propagation — and the real cause (running a
+published package from inside the repo that publishes it) came from his one-word
+question; **my comparison was invalid because I changed the version and the working
+directory together**, which is this repo's own one-variable law. **I undersold the
+product across the whole front door**, a repeat of a miss already in the ledger I
+inherited. **`SHIP_GATE.md:42` named only argparse's half of the exit-code inversion** —
+E21's F1 corrected my dispatch. **I asked a check that could not fail** ("which elements
+in view are hidden?" → zero) inside the session quoting that law. **I added tests after
+setting the counts, twice**, wasting two translation runs. **A blanket count replace
+nearly falsified the v0.1.0 CHANGELOG entry** and was caught only on re-read.
+
+**What worked, keep doing.** The sheet-walk before the numbers · measuring before ruling
+· every irreversible fired only at his word and verified by read-back · corrections in
+place with the measurement rather than silent edits · the pre-tag gate, which fired seven
+times and caught a stale number every one · refusing to buy a 100% ship gate by lying.
 
 ## The executors
 
-Exceptional without exception, again: one halted at a failed anchor and laid
-out candidates without recommending; one withdrew its own thrice-reproduced
-finding under controlled re-test; one gate-halted before writing a line and
-measured the collision it was warned about; one found the eighth test the
-ruling's seven implied and hardened its own control; one's dogfood found the
-day's deepest defect. When an executor declines to do something, that is
-signal. Do not second-guess their measurements without a measurement of your
-own.
+Exceptional, again. E20 refused to invent three units that could not exist and produced
+the AST evidence instead. E21 left two exit codes unruled rather than pick them, refused
+to pin a defect it had just discovered, widened a guard to admit its own change **loudly
+and in writing**, and reported a *lookup* error against itself. **When an executor
+declines to do something, that is signal.** Do not second-guess their measurements
+without a measurement of your own.
 
 ## The Director
 
-He gates outcomes and his eye leads the instruments. Today he reopened a
-placement question with one sentence, created the tests law by asking one
-question, corrected this seat's framing twice, sized the neglect honestly,
-and thanked the seat at the close. **His frustration is signal — every
-instance today pointed at something real.** Momentum is the instruction:
-paste blocks, not status; artifacts at full size; the record honest. Return
-the appreciation by keeping it that way.
+He gates outcomes and his eye leads the instruments. Today he fired the extraction gate,
+set the version at 0.1 over a standing studio rule, chose to keep the name `facet` with
+the reasoning recorded, and caught two of this seat's errors with single sentences.
+**His frustration is signal — every instance today pointed at something real.** He also
+said thank you at the close. Return it by keeping the record honest.
+
+## Environment
+
+Watchdog standing. Generation cloud-only. Blender through PowerShell. ASCII prints.
+**Suite and mount under the ABSOLUTE pinned interpreter**
+`E:\AI-Models\trellis2-env\Scripts\python.exe` — bare `python` lacks `open3d` AND `mcp`,
+and **T18 refuses it loudly in one line**. CI is paths-gated over
+`tools/ tests/ pytest.ini .mcp.json .github/workflows/ pyproject.toml package.json bin/`.
+The lane repo (`E:\AI\style-dataset-lab`) is read-only from facet seats. The must-not-move
+trees: E04's, E08's, E13's, E14's. The seeded set is 19.
 
 ## Do not
 
-End a session the Director has not ended · wrap while momentum is the
-instruction · present any surface you have not walked at full size · `git add
--A` in this shared copy, ever · commit while foreign files are staged except
-pathspec-scoped · run the suite or the mount on bare `python` · leave CI red ·
-run translations from an executor session (advisor's hands only, BEFORE the
-tag) · fire the tag/release/metadata before his word · touch the closed
-rulings, accepted assets, export trees, or the seeded set except to cite ·
-hand-edit facet.db or its certificate · split the DB/cert pair at a boundary ·
-open the polish arc before all four tools pass · decide E20's findings in the
-executor's seat (fix-or-bless is yours).
+End a session the Director has not ended · present any surface you have not walked at
+full size · `git add -A` in this shared copy · run the suite or the mount on bare
+`python` · leave CI red · run translations from an executor session, or after a tag ·
+fire a tag, release or metadata change before his word · touch the closed rulings,
+accepted assets, export trees or the seeded set except to cite · hand-edit `facet.db` or
+its certificate · split the DB/cert pair · **convert a non-ANDON assert in E22** · open
+the polish arc before all four tools pass · decide an executor's findings in the
+executor's seat.
