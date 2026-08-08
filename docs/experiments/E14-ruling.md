@@ -1538,3 +1538,92 @@ per 25f** without waiting on a ruling, unless the works-perfectly gate
 or any invariance fails, which halts. The advisor's next gate is
 HALT 2's sheet-walk; the Director's is after it.
 
+## Ruling 27 — the re-projection RATIFIED: the stone is garnet by arithmetic; one located repair ruled; the probe calibrated; handoff 8 authorised (2026-08-08)
+
+Evidence — what this seat OPENED: the re-projection report in full
+([E14-handoff7-garnet-reprojection-report.md](E14-handoff7-garnet-reprojection-report.md),
+`fd1f8d0`) and `GARNET_projected_6x.png` walked at 6× — three view rows,
+fixture | before | after under FLAT light — before anything below.
+
+**27a — THE WALK first, and the run is RATIFIED.** The projected stone is
+deep garnet in every rendered view — dark facets, red glints, the kite,
+the bezel and the facet planes fully intact, the blend seamless across
+the rotated/unrotated ownership partition — and the single defect my eye
+finds is exactly the one the numbers located: a thin green sliver at the
+collar junction, both sides, every view. The arithmetic record: the
+works-perfectly gate passed PIXEL-IDENTICAL and stronger than required
+(the whole 3,661,903-texel atlas, same SHA-256); the restricted write's
+three invariances held (write set = territory ∩ holes exactly, 0 styled
+texels touched, 16,709,312 outside-texels byte-identical); styled
+restored to **1,656,847 exactly** — the demotion's dip closed to the
+texel; median hue 308.6 → 22.5, wine 15.04% → 57.38%, lav+mag 70.51% →
+18.88%, C\* unchanged, **L preserved to 0.088 median on the fixed
+67,904** (the executor's own two-populations catch — a shifted C\*-floor
+population masquerading as an L move, re-measured on a fixed set before
+reporting — is the operand law working); the 305°-apart partition now
+sits 6.6° apart with the garnet views untouched to the digit — the
+unrotated decision landing as an exact no-op.
+
+**27b — the restriction's catch is BANKED route-wide.** The corrected
+run's own styled total came back +1,374 texels, all outside the
+territory: `project_twins` keys each twin's figure FROM THE IMAGE, so a
+colour-only edit moves which stone-adjacent pixels pass the key
+(registration IoU 0.9337 → 0.9366 on view 1). **An image edit feeding a
+keyed consumer changes the key** — any future pixel-space correction
+restricts its write set or re-anchors its masks; without the
+restriction those texels ride in unnoticed. Filed beside the one-variable
+dependency-graph law, whose mechanism this is.
+
+**27c — the collar-junction repair is RULED: restore the 1,086 located
+texels from `state0/`.** The defect is a mask-boundary artifact, not a
+treatment error: the geometric stone mask's lower bound clips the
+bezel's arc where the GOLD COLLAR's paint sits (the derivation's §6 rim
+finding — twin 0's rim at hue 70.9 was always the collar), and rotating
+gold +34–55° lands it green in the forbidden band. The paint was
+CORRECT at stage 1b; its correct value is KNOWN; the repair is a
+recorded state operation in the demotion's class: re-derive the mask by
+the recorded predicate (territory ∩ within 0.010 of the stone mask's
+bottom edge ∩ stage-1b hue in the gold band), **assert the count 1,086**
+(a different count HALTS), restore exactly those texels' atlas values
+from `state0/`, invariance printed (exactly the mask changed, both SHAs
+recorded), NAMED COMPENSATOR: the pre-repair values saved beside as the
+op's inverse. Grounds for repairing now rather than at HALT 2: the
+value is known and deterministic, the op is 1,086 texels, and seven
+strokes' context frames render this junction — a visible defect in
+every subsequent stroke's context is a needless contamination vector
+when its removal is free. Report-only (Ruling 17) governs the GATE'S
+authority, not the ruling's: this is a ruled repair on located paint,
+not a gate arming. Runs as step 0 of handoff 8.
+
+**27d — the probe is CALIBRATED, and the finding is banked route-wide:
+a selftest's fake-inpaint keys wider than a real inpaint.** The blur
+fake preserves the figure's own colours, so its keyed figure tracks the
+emitted render; a real inpaint changes rim colours, shrinks the keyed
+figure, and pushes texels below `edge-dist` — measured **1.75×** at
+yaw 0 (probe 7,591, real commit 4,344). **The 69,239 achievable set is
+an UPPER BOUND, not a forecast** — the denominator law arriving one
+layer further in (after reach-vs-territory and territory-vs-achievable,
+now achievable-vs-committed). HALT 2 reads coverage against this
+calibration, pre-stated here; handoff 8 quotes probe-vs-actual per
+stroke — seven free calibration points on the ratio.
+
+**27e — stroke 1's commit is ACCEPTED**: 4,344 texels at yaw 0, job
+mask back to 8,742 +0/−0 against pre-demotion (the stone out exactly as
+25f ruled), every watch MEASURED on the newly-painted pixels rather
+than asserted — red-outside-L5 at 81.1% on the wrap's own rows and zero
+on crossing or blade, the 12e gold on the collar/ring/boss rows, the
+fifth signature at 29.1% against the context's own 31.8% (less, not
+more — the honest comparison, adopted as the watch's standing form),
+20b clean at 4×, the gem unchanged and rendering garnet as context.
+
+**27f — HANDOFF 8 IS AUTHORISED: a fresh executor session runs the
+repair (step 0) and the remaining seven strokes in the ruled order
+(180 → 45 → 225 → 315 → 135 → 90 → 270), one at a time under the full
+per-stroke discipline, to HALT 2.** The dispatch is appended to the
+executor kickoff; the Director launches it on his paste. The two 20b
+edge-on strokes remain last and highest-risk, with the misbind
+signature pre-stated and the crossing crop at 4× gating each before
+the next launches. Zero credits expected; quoted per submission
+anyway. HALT 2 stages the walk set for this seat's sheet-walk, then
+the Director. Finalize, pack and Gate 1 are the next dispatch.
+

@@ -919,3 +919,159 @@ hole-fill and what was repaint. The edge-on strokes are where 20b lives:
 the painted neighbourhood is your constraint advantage over the twins;
 quantify it per frame rather than assuming it. A stroke that fails twice
 is the result. Zero credits expected; quote it anyway.
+
+---
+
+## Session handoff 8 (2026-08-08) — the SEVEN REMAINING STROKES to HALT 2. One repair first. Comprehensive.
+
+**Authorised by [E14-ruling.md](E14-ruling.md) Ruling 27f.** Where the lane
+stands: the garnet re-projection RAN (works-perfectly gate pixel-identical,
+whole-atlas SHA; the stone is garnet — median hue 308.6 → 22.5, L preserved
+to 0.088, the 305°-apart partition now 6.6°; styled restored to 1,656,847
+exactly) and **stroke 1 is committed** (4,344 texels, every watch measured
+clean). One located defect awaits its ruled repair (step 0 below). Seven
+strokes remain. A fresh executor session starts here:
+
+```
+cd E:\AI\facet && git pull
+python tools/facet_index.py build          <- the E15 ritual
+CLAUDE.md                                  <- read first, follow exactly. TWO NEW LAWS
+                                              since your predecessor: the circular-statistics
+                                              law and the chroma-floor sibling note.
+docs/experiments/E14-ruling.md             <- Rulings 24-27 are THE LANE'S LAW. Read all
+                                              four fully: 24 (the stroke-lane ruling + 24l),
+                                              25 (the stone off the generation path),
+                                              26 (the re-projection operands),
+                                              27 (the repair you run + your authorisation)
+profiles/prop.json                         <- texpass_brush's cleared block: order, seed,
+                                              re-roll law, prompts path, garnet_reprojection,
+                                              demotion record; texpass_iter thin-extent 0.0
+docs/experiments/E14-handoff7-garnet-reprojection-report.md   <- the state you inherit
+docs/experiments/E14-handoff7-stroke1-halt.md                 <- the misbind record (20b's
+                                              second structure; why the stone is not yours)
+docs/experiments/E14-brush-prompts.json    <- stems v3, the _order array, the drop map
+E:\AI\training\facet_next\E14_strokes\run\ <- the LIVE run state. state/ is current
+                                              (post-reprojection, post-stroke-1); state0/
+                                              is the pristine A0 and the compensators' source
+```
+
+**Your rules and environment are unchanged** (CLAUDE.md §executor).
+Generation cloud-only through `brush_cloud_step.py` (binds NO profile —
+agreement BY VALUE per stroke against the cleared block; the inverted
+no-LoRA pre-flight on every submission; graphs saved with cloud input
+names so the file IS the submitted recipe — A30; link topology checked in
+code); `estimate_credits` per submission, quoted either way (expect 0 —
+quote anyway); the invariance ANDON lives IN the tool, no skip flag, and
+no shell chain gates a commit (A32; 21g). ASCII prints. **Blind
+predictions first, committed before stroke 2 submits**: per-stroke
+committed-texel counts (the probe columns are known — predict the
+probe-vs-actual ratio per stroke against 27d's 1.75× first point), the
+two edge-on strokes' 20b outcomes, the fifth-signature share range, and
+where the deep-share lands after all seven.
+
+### Step 0 — the collar-junction repair (Ruling 27c), before any stroke
+
+The re-projection rotated 1,086 texels of the GOLD COLLAR's paint (the
+stone mask's lower bound clips the bezel arc) into the forbidden band —
+the thin green line at the collar junction, visible at 6× in every view.
+The ruled repair: **re-derive the mask by the recorded predicate**
+(territory ∩ within 0.010 of the stone mask's bottom edge ∩ stage-1b hue
+in the gold band 42–104), **ASSERT the count is exactly 1,086** — any
+other count is a HALT, not a tune — then **restore exactly those texels'
+atlas values from `state0/`**, invariance printed (exactly the mask
+changed; both atlas SHAs recorded), the pre-repair values saved beside as
+the op's NAMED COMPENSATOR. The op lives in `tools/diagnostics/` (the 2a
+practice). Verify the green line is gone at 6× on one rendered view;
+stage the before/after crop in your report.
+
+### The seven strokes — one at a time, in the ruled order
+
+`180 → 45 → 225 → 315 → 135 → 90 → 270` (Ruling 24e; the `_order` array
+in the stems file). Per stroke, in pinned order:
+
+1. **Emit** the job at the profile frame; record the job mask px and the
+   painted % of figure.
+2. **Graph** built from the cleared block's values (seed 770700, steps
+   20, cfg 2.5, cn-strength 1.0, denoise 1.0 latent-masked, lora-w 0.0
+   re-verified BY VALUE), stems v3 by the job key, saved pre-submission
+   with cloud input names; pre-flight (five values, the inverted no-LoRA
+   scan, lane corroboration, prompt/negative provenance, link topology).
+3. **`estimate_credits`**, quoted; **submit**; invariance ANDON.
+4. **The eye gate — every watch MEASURED on the newly-painted pixels,
+   never asserted** (the 27e form): red-outside-L5 (wine-band px with
+   their row locations — the wrap owns its rows; crossing and blade must
+   read zero) · 12e gold (gold-band px located to collar/ring/boss rows)
+   · the fifth signature (dark+desaturated share of the fill AGAINST THE
+   CONTEXT'S OWN SHARE — less-or-equal is clean) · **20b at 4× on the
+   crossing crop** (LOW on 180/45/225/315/135; **HIGH on 90/270** — the
+   pre-stated misbind signature: a crossguard-like or figurative form in
+   the blade ribbon near the guard, or the guard's edge-on face growing
+   a face/skull motif; the stone's cabochon recomposition is this class'
+   second instance — read the crop against the CLAY reference, not from
+   memory) · the gem unchanged and rendering garnet as context ·
+   deep-share beside the totals, with location. **The gate passes before
+   the next stroke launches.**
+5. **Commit** through the tool's own ANDON; record committed texels and
+   **quote probe-vs-actual** (the probe column: 180 → 6,559 · 45 → 10,539
+   · 225 → 8,600 · 315 → 9,633 · 135 → 7,728 · 90 → 14,211 · 270 →
+   27,010; Ruling 27d pre-states actuals will undershoot — the ratio is
+   the calibration series, not a failure).
+
+**The re-roll law** (Rulings 24h/24i as amended by 25f): one bounded
+re-roll per stroke, at **770702**, on the eye clause only; the rejected
+artifact preserved under name with its graph; **a second failure on any
+stroke is THE RESULT — halt the lane with the evidence; no third roll
+anywhere, no stroke out of order.**
+
+### HALT 2 — the stroked asset staged
+
+After stroke 270's gate: build the walk set — **reference | before |
+after | provenance per stroke region**, the stone at 6× beside the
+fixture's word, the ribbon at 4× (both faces), the crossing at 4× —
+excluded and rejected artifacts labelled AS SUCH in-image (20d).
+Restate: coverage against BOTH denominators (the 210,907 territory and
+the 69,239 achievable-as-upper-bound, with the demotion dip and the 27d
+calibration stated and the per-stroke probe-vs-actual table); the
+on-surface family per Ruling 9's form (island count 46,496 + erode-2
+residue beside any off-surface rate); the gate report-only in the
+admitted configuration with the deep-share diagnostic and its location
+read; the final SHAs. **The advisor's sheet-walk first, then the
+Director. Finalize, pack and Gate 1 are the NEXT dispatch — not yours.**
+
+### Do not
+
+Run any stroke before step 0's repair lands and its count asserts ·
+generate out of the ruled order · touch texels outside a stroke's job
+mask (the in-tool ANDON is the guard; a fired ANDON is a report, not a
+retry) · re-roll on any authority but the eye clause, once, at 770702 ·
+roll a third seed at anything · arm any gate · run finalize or pack ·
+touch the stone (it is styled; the ANDON forbids it and the identity is
+banked) · edit any fixture, profile, or the palette (a fixture row is
+the advisor's fold — your predecessor's halt at exactly this line was
+correct) · write to the memory store · end a session the Director has
+not ended.
+
+### Standards compliance (this dispatch)
+
+| standard | score | evidence |
+|---|---|---|
+| PIN_PER_STEP | 3 | Step 0's mask re-derived by recorded predicate with its count asserted; every stroke's graph saved pre-submission with cloud input names and prompt_id; probe-vs-actual quoted per stroke; blind predictions committed before stroke 2 |
+| ANDON_AUTHORITY | 3 | The repair count-assert halts on any surprise; per-stroke eye gates before the next launches; the in-tool invariance ANDON with no skip flag; a second failure halts the lane; HALT 2 gates finalize |
+| NAMED_COMPENSATORS | 3 | The repair saves its pre-state as its own inverse; the demotion's compensator stands; every rejection preserved; spend bounded to seven submissions + bounded re-rolls at expected 0 credits, quoted each |
+| DECOMPOSE_BY_SECRETS | 3 | Strokes read the cleared block by value; the stems by job key; the watches measured per structure with locations, never as bare totals; the calibration series kept separate from the coverage claim |
+| UNCERTAINTY_GATED_HUMANS | 3 | Every stroke gated by eye before the next; both HALT-2 denominators pre-stated with the calibration so no number surprises; the walk set ends at the advisor then the Director |
+| EXTERNAL_VERIFIER | 2 | The invariance ANDON and band instruments check the generator from independent code; the walk sheets check identity against the clay reference. `skip:` on a second model per precedent |
+
+### Calibration
+
+Your predecessor's session is the standard: the anchor before the
+operands, two self-caught instrument errors that never left the script,
+a fired gate honoured at the exact line the record predicted, and every
+watch measured rather than asserted. Named risks: **the two edge-on
+strokes are the lane's highest-risk and they run LAST by design** — the
+painted context is your constraint advantage over the twins (quantify
+it per frame: the ribbon's flanks are real steel now); the probe's
+1.75× optimism means small committed counts are EXPECTED — report them
+against the ratio, not against hope. A negative result, including an
+edge-on stroke that fails twice, is a full success and is reported as
+one. Zero credits expected; quote it anyway.
