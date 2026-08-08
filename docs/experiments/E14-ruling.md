@@ -1436,3 +1436,105 @@ stays armed. HALT 2 restates the stone's provenance honestly as
 provenance sub-class stated in the walk set, never blended into the
 brush's numbers.
 
+## Ruling 26 — the garnet re-projection's operands RULED: T3 at the ruled rotations, M2 through the spine, six twins with the garnet pair unrotated (2026-08-08)
+
+Evidence — what this seat OPENED: the derivation report in full
+([E14-handoff7-garnet-derivation.md](E14-handoff7-garnet-derivation.md)),
+`GARNET_corrected_6x.png` walked at native resolution (the four AFTER
+panels re-cropped to full size at this seat — the acceptance-at-
+magnification practice), and `GARNET_nearnoop_6x.png` — both controls
+under this seat's eye before any decision below.
+
+**26a — THE WALK first.** The four corrected stones land deep garnet-red
+with **every facet plane, the bezel line, the white highlight and the
+shading intact** — the exact property both generation attempts destroyed,
+delivered by arithmetic that cannot touch L or C\*. Twin 3 is the
+liveliest (C\* 26.1), twin 5 the darkest — inside the family's own
+measured same-seed spread. A faint warm rim rides each corrected stone's
+silhouette edge against the backdrop (the §6 finding made visible;
+mostly eroded at projection; the deep-share diagnostic owns what
+survives). The near-no-op controls: twin 4's −8.4° is invisible; twin
+0's −25.5° is barely legible — the ~25° same-seed floor is honest. One
+non-finding recorded so nobody rediscovers it: the reference panel's
+dark collar is the pair's own pre-rings-term state (Ruling 13's origin),
+not a defect.
+
+**26b — the anchor is ACCEPTED and two instrument catches are banked,
+one as a new route law.** The recorded-mask resample reproduces the
+stage-1b stone at **median ΔE 1.003** over all 67,904 texels — smaller
+than the blend-and-levelling step it omits (2.13, handoff 5's own
+number) — with the frame asserted against stage 1b's logged extents
+before anything ran. The catches: (i) the chroma-floor law fired on the
+derivation's own first draft — operands computed over a mask that is
+71–85% near-achromatic would have rotated the stone into green and
+DESATURATED it; caught by printing the after-state instead of asserting
+success. (ii) **NEW LAW, to CLAUDE.md beside the chroma-floor law: a
+statistic of angles must be circular.** An arithmetic median of hues
+reported twin 4 at **+49.1° when the true direction is −8.4°**, because
+garnet straddles the 0/360 wrap — the exact family this route paints
+most. The chroma floor decides which pixels vote; a circular mean
+decides where they point. Neither error left the script; both are the
+print-the-outcome discipline working.
+
+**26c — the five decisions, ruled:**
+
+1. **Treatment: T3** — per-view hue rotation about the achromatic axis,
+   C\* and L preserved exactly. It is 25d's own words as arithmetic; T1
+   moves C\* (a second operand with no defect to fix); T2 is unstable
+   (two views land at 67.7°/60.1° — falsified); T3 is the only candidate
+   whose near-no-op is a near-no-op (0.760 against 5–6 ΔE).
+2. **Operand population: whole stone mask above the C\* 12 floor, on
+   both sides — STANDS as computed.** Grounds: commensurability (the
+   reference and drift populations are built identically — same
+   geometric mask, same floor); every alternative moves the target
+   inside the measured ~25° same-seed floor (interior-only shifts it
+   ~10°, and the rim is mixed backdrop-AND-collar bleed — twin 0's rim
+   at hue 70.9 is the GOLD COLLAR's contribution at the kite's lower
+   arc, not only lavender); the silhouette rim largely erodes at
+   projection and the deep-share diagnostic reads what survives, with
+   location. The §6 table is banked as the rim's record.
+3. **Chroma: NOT matched — no chroma operand.** The family's own
+   same-seed spread spans C\* 16.8–26.1; a scale's failure mode
+   (desaturation) was the first draft's actual bug; the right hue at
+   each view's own saturation is what the blend machinery expects from
+   every other texel. The eye at 26a confirms all four read as one
+   stone family.
+4. **The statistic: the unweighted circular mean (8.18°).** The floor is
+   the filter; weighting by chroma would double-count saturation. The
+   chroma-weighted alternative differs by 3.6° — under the floor — so
+   the choice is measured FREE and recorded as such, which is why the
+   minimal operand wins.
+5. **Mechanism: M2 — full re-projection through the spine — with the
+   held question answered: SIX twins go in, the garnet pair UNROTATED.**
+   Twins 0/4's stones are the identity family already; rotating
+   accepted-family paint toward the reference's exact mean would
+   "correct" the medium's own roll variance (the 25° floor), which is
+   not a defect. The four drift twins go in corrected at the ruled
+   rotations (**+51.80 / +34.47 / +55.45 / +48.01** for views
+   1/3/5/7). Writes restricted to the demoted stone territory; the
+   invariance conditions adopted as proposed (styled outside the mask
+   byte-identical; write set = demoted mask ∩ holes; SHAs recorded);
+   the compensator stands exercised. **The works-perfectly gate runs
+   FIRST**: the same six-twin restricted projection with ALL twins
+   uncorrected must reproduce `stage1b_atlas.png` **pixel-identically
+   on the territory** — deterministic machinery on content-identical
+   inputs; a miss is a HALT, not a tune. The executor's refusal to run
+   this test before the treatment was ruled is RATIFIED — it would have
+   prejudged which twins go in, and the ruling has now answered that
+   question instead.
+
+**26d — the registry is paid in this fold** (the 24l pre-commitment
+honoured): `texpass_brush.py.garnet_reprojection` carries the treatment,
+the six per-view dispositions, the target with its statistic and floor,
+the population choice with its measured freedom, the mechanism, the
+works-perfectly gate, the invariance conditions and the compensator —
+provenance to the derivation report and `garnet_operands_final.json`.
+
+**26e — execution order, no new halt.** Works-perfectly gate → the
+corrected M2 run → the run's report stages the projected stone at 6×
+(rendered), the 19b-form hue readout re-run on the filled territory, the
+deep-share read with location, and both SHAs — then **stroke 1 re-enters
+per 25f** without waiting on a ruling, unless the works-perfectly gate
+or any invariance fails, which halts. The advisor's next gate is
+HALT 2's sheet-walk; the Director's is after it.
+

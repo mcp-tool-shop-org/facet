@@ -154,7 +154,16 @@ everything — report the total *and* the largest connected component.
 The same fact bit two instruments here: a contradiction test's hue column was meaningless
 wherever chroma collapsed, and an off-palette gate without a floor flags a steel sword
 (C\* 1.6–2.8 at hue 267) as blue on every view. Any hue number carries its chroma or it is not
-quoted.
+quoted. And its third firing found the law's sibling: a transfer derived over a stone mask
+that is 71–85% near-achromatic would have rotated the stone green and *desaturated* it —
+the floor decides which pixels vote before any statistic of them means anything.
+
+**A statistic of angles must be circular.** An arithmetic median of hues reported a +49.1°
+move where the true direction was −8.4°, because garnet straddles the 0/360 wrap — the exact
+family this route paints most (E14, the garnet derivation; caught before any number left the
+script, by printing the after-state instead of asserting success). The chroma floor decides
+who votes; a circular mean of unit chromatic vectors decides where they point. A hue centre
+quoted in this repo is a circular statistic or it is not a centre.
 
 **Rejecting an output that violates a pre-registered specification is not selecting a result.**
 What is forbidden is choosing a *decision rule* after seeing the outcome. The test: would the
