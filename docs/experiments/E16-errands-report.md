@@ -268,6 +268,70 @@ were copied to scratch and emit ran there.
 
 **Prediction: HELD.**
 
+### E16-5 — `mesh_stats` honest warning condition (Ruling 2d) · ⚠ ANCHOR FAILED — HALTED, NOTHING CHANGED
+
+**The anchor as dispatched cannot be satisfied by the repair as dispatched, and
+the two clauses contradict each other on the measured data.** Nothing was
+changed. Reported rather than tuned past, per the dispatch's own instruction.
+
+**What the dispatch asked for.** Fire the warning on `rect_frac_of_figure > 1`
+(the honest condition) instead of `not up_axis_dominant` (the proxy a
+tip-standing prop passes). **ANCHOR:** every VALUE unchanged; *W3/galleon/beast
+warning state unchanged*; the sword NOW warns.
+
+**All four subjects measured — the anchor's four outputs.**
+
+| label | faces / verts | components (largest) | `extent_blender` | `up_axis_dominant` | `rect_frac_of_figure` | OLD warning | NEW warning |
+|---|---|---|---|---|---|---|---|
+| W3 | 287,170f / 141,561v | 38 (0.990) | `[0.4561, 0.3291, 0.9969]` | true | 0.680787 | silent | silent |
+| galleon | 939,104f / 465,569v | 512 (0.929) | `[0.969, 0.4969, 0.9312]` | false | 0.327707 | **WARNS** | **silent** |
+| beast | 986,814f / 485,291v | 9 (1.000) | `[1.0017, 1.0004, 0.5743]` | false | 0.568773 | **WARNS** | **silent** |
+| longsword | 999,474f / 499,609v | 1 (1.000) | `[0.2262, 0.0634, 1.002]` | true | 1.902512 | silent | **WARNS** |
+
+Verbatim, today, before any change: `WARNING galleon: vertical extent is not the
+largest ([0.969, 0.4969, 0.9312])` and the same for `beast`. W3 and longsword
+print no warning.
+
+**So the swap is not additive — it is a trade.** The sword starts warning
+(dispatch expected that) *and galleon and beast stop* (dispatch expected them
+unchanged). Ruling 2d named the sword's `rect_frac` of 1.45–1.90 and did not
+measure what the honest condition does to the two subjects the proxy currently
+catches; it is 0.33 and 0.57, both comfortably under 1.
+
+**Why I did not resolve it myself.** The obvious move —
+`not up_axis_dominant or rect_frac > 1` — satisfies every clause of the anchor
+exactly. That is what makes it the wrong move: it was chosen *after* seeing which
+result each candidate produces, which is retuning however reasonable the
+reasoning, and the repo's rule is that the one move always wrong is retuning a
+condition after seeing the result it would judge. It also keeps the proxy Ruling
+2d called defective, so it is not obviously the repair the ruling asked for.
+
+**What the advisor is ruling between** — stated without a recommendation, since
+this is a question about what the instrument is *for*:
+
+1. **Replace** (the literal repair). The sword is caught; galleon and beast go
+   silent. Defensible if the warning's job is *"is the face rect measuring
+   something other than a face"*, since 0.33 and 0.57 are unremarkable coverages.
+2. **Union** (proxy OR honest). Every clause of the anchor passes, but the proxy
+   Ruling 2d called a proxy survives, and the choice was made after the fact.
+3. **Two separate warnings** with distinct texts — the proxy one saying the
+   figure is not upright, the honest one saying the rect exceeds the figure.
+   Nothing goes silent and nothing is a proxy for the other, but it is a larger
+   change than the ruling queued.
+
+A prior question sits under all three: on a ship and a dragon there **is** no
+head, so it is not clear the galleon/beast warnings were ever true positives
+rather than the instrument correctly reporting that a character-shaped question
+does not apply. That is Ruling 2d's own observation — *the character instrument
+did not notice it was not looking at a character* — and it may mean the warning
+needs a subject class, not a better threshold.
+
+**Prediction: HELD, and it was the one that mattered.** I predicted I did not
+know that galleon and beast would stay silent, and that if either crossed, the
+dispatch's expectation was wrong and it was to be reported rather than tuned
+around. Both crossed — in the opposite direction to the one I was watching for
+(they *stop* warning rather than *start*).
+
 ---
 
 ## 2. A session-level finding: the working tree is shared
