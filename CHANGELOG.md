@@ -37,12 +37,18 @@ it, so a reader can check the claim rather than trust it.
   All six ⚠ annotations survive. Corrections stay in place beside the measurements
   that overturned them, exactly as before — they just live one click deeper.
 
-## [1.0.0] — proposed, awaiting the Director's word
+## [0.1.0] — 2026-08-08
 
-Proposed at the close of the E19 treatment. Not yet tagged; there is no manifest to
-bump, so this version exists as a tag and this heading and nothing else.
+Cut at the close of the E19 treatment, at the Director's word. There is no manifest to
+bump, so this version exists as a git tag and this heading and nothing else.
 
-### What v1.0.0 asserts
+**Why 0.1.0 and not 1.0.0.** The Director set the number. It is the honest one: the
+extraction gate is open, three testability seams are dispatched and untaken, and the
+repo's own highest-value question (P5 — `fit_background` at frame-edge figures) has
+never been looked at. A 1.0.0 would assert a stability this route has not earned yet.
+What the four accepted assets earn is a *first* release, not a stable one.
+
+### What v0.1.0 asserts
 
 **Four accepted assets across four subject classes, at zero credits.**
 
@@ -72,8 +78,8 @@ bump, so this version exists as a tag and this heading and nothing else.
   the record-index MCP; [E20](docs/experiments/E20-ruling.md) is adding the unit tier).
   Counted at this commit rather than inherited: `pytest --collect-only` over the
   committed `tests/` returns 202, and 194 with `-m "not artifacts"`. **The lineage is
-  27 → 32 → 92 → 202 in a single day, and this figure is provisional until E20 closes**
-  — it is re-counted at the tagging commit before v1.0.0 is cut, per
+  27 → 32 → 92 → 202 in a single day** — E20 has since closed and been ruled, and the
+  figure is re-counted at the tagging commit before the tag is cut, per
   [E19 Ruling 7](docs/experiments/E19-ruling.md).
 - The claims sweep (`facet_index.py claims`) reads **0 STALE** against the record.
 
@@ -81,7 +87,7 @@ bump, so this version exists as a tag and this heading and nothing else.
 ([E11-ruling.md](docs/experiments/E11-ruling.md),
 [E14 Ruling 34](docs/experiments/E14-ruling.md)).
 
-### What v1.0.0 does NOT assert
+### What v0.1.0 does NOT assert
 
 - That the texture stage is finished. The blade band, the unlevelled stroke seams and
   the cross-island dilation bleed are named, measured and open — see **Known defects,

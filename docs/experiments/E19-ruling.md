@@ -174,10 +174,12 @@ the tag is immutable.
 0b. E20 CLOSES AND IS RULED    -- see the amendment; the tag must not freeze a
                                   count an open arc is still moving
 0c. RE-COUNT                   -- one --collect-only; every surface must match
+0d. NPM NAME RESERVED          -- @mcptoolshop/facet at 0.0.0, from a sibling dir
+                                  OUTSIDE this repo (see the second amendment)
 1.  gh repo edit               -- description + homepage + 9 topics (compensator 8a)
 2.  THE TRANSLATIONS           -- advisor's own hands, translate-all.mjs
                                   git add README.md README.*.md  -> ONE commit
-3.  git tag -a v1.0.0 + push + gh release create
+3.  git tag -a v0.1.0 + push + gh release create
 4.  Pages                      -- ALREADY LIVE (Ruling 3); redeploys on the push
 ```
 
@@ -213,6 +215,32 @@ The honest read of Ruling 2 is therefore sharper than it was first written: the 
 was never "someone wrote a wrong number." It is that **the presentation surfaces carry
 live-moving quantities with no gate**, which is exactly want 2 — and want 2 has now
 earned priority over everything else in E20's lane.
+
+### AMENDED AGAIN 2026-08-08 — the Director set the version, and added a step
+
+**The tag is `v0.1.0`, not `v1.0.0`** (his word: *"Make sure it's released at v0.1"*;
+`v0.1` maps to `v0.1.0` because semver takes three parts and npm rejects two). This
+**overrides the studio's standing shipcheck rule** — *"repos at v0.x MUST be promoted
+to v1.0.0 — never patch-bump a pre-1.0 version"* — and the override is recorded here
+rather than left to be discovered as a rule violation. His live word outranks the
+standing rule by the stated authority order.
+
+It is also the more honest number, and the CHANGELOG now says why in its own words:
+the extraction gate is open, three seams are dispatched and untaken, and P5 has never
+been looked at. **1.0.0 would assert a stability this route has not earned.** Four
+accepted assets earn a *first* release, not a stable one.
+
+**Step 0d is new, and its placement outside the repo is the load-bearing part.** The
+name `@mcptoolshop/facet` is reserved by a `0.0.0` placeholder published from
+`E:/AI/facet-placeholder/` — a sibling directory, **never inside this repo**. The
+playbook's primary path is TP-first, and it was **not** taken here for two measured
+reasons: it requires `release.yml` (a *third* workflow against the studio's max-2 cap
+that E19 landed exactly at `ci.yml` + `pages.yml`), and it requires a root
+`package.json` — which would flip shipcheck's Gate H off *"no publishable packages
+found"* and **re-open the npm-class SKIPs D5/D6/D7**, the precise thing P14 held
+because facet's root stayed manifest-free. A name reservation should not re-open a
+packaging gate. The fallback path costs one user-run publish and changes nothing in
+the repo.
 
 **The draft release notes in §8c say "32 tests" and must not ship that.** Corrected to
 92 at step 3; the four-accepted-assets claim in those notes holds.

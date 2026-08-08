@@ -18,8 +18,8 @@ is to say exactly what they do.
 | `main` | Yes — the record is the product; `main` is the only supported state |
 
 `main` carries the current state of every instrument and the evidence behind it.
-`v1.0.0` is cut at the close of the E19 treatment — see [CHANGELOG.md](CHANGELOG.md)
-for what it marks.
+`v0.1.0` is cut at the close of the E19 treatment — see [CHANGELOG.md](CHANGELOG.md)
+for what it marks and what it deliberately does not.
 
 ## Reporting a vulnerability
 
