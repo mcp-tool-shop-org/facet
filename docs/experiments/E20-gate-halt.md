@@ -336,3 +336,34 @@ refusal in `tools/`" without exception. The advisor rules.
 
 Nothing was written to the memory store. No DB was committed. The tracked
 `docs/index/facet.db` was not touched by this session.
+
+---
+
+## 8. The Director's disposition, 2026-08-08 (appended after §7 was written)
+
+Both questions in §7 were put to the Director. He ruled:
+
+| question | ruling |
+|---|---|
+| how E20 proceeds | **Disposition 1 — wait for E18's halt.** Not the partial run this session offered (U1 + inline-fixture probes as new files at T24+, no `conftest.py` edits, no `tests/fixtures/`), and not the worktree. E20 runs unchanged against a committed tree after E18 reports. |
+| who authors `tests/fixtures/`'s builder | **Deferred to the advisor's ruling** (`E20-ruling.md`). E20 touches no fixtures directory until then. |
+
+Both rulings are more conservative than the options this session leaned toward,
+and both are consistent with the repo's own laws: the executor decides neither the
+meaning of a result nor the resolution of a scope question, and a partial run
+whose safety rests on "these particular units happen not to need `conftest.py`"
+would have put the gate's protection on a property of the current unit list rather
+than on the gate.
+
+**E20 is therefore parked, not abandoned.** Its entry state is measured and
+committed (§2, §4, §5), its predictions are committed blind (`E20-predictions.md`),
+and the two things that must be true before it fires are now written down as
+checkable conditions rather than a sequencing sentence:
+
+1. `docs/experiments/E18-index-mcp-report.md` exists (E18 has halted), **and**
+2. the `tests/fixtures/` builder's author is ruled in `E20-ruling.md`.
+
+Condition 2 is new — it did not exist in the dispatch, and §1.5 is why.
+
+The session did not end here on its own account; the work halted at the gate and
+the Director ruled on the halt.
