@@ -1,18 +1,22 @@
 #!/usr/bin/env python
-"""Build facet's logo from the four accepted assets.
+"""Build the four-accepted-assets showcase sheet.
 
-The mark is not an invented device. It is the route's own output: the four
+Not an illustration of what the route can do — the route's own output: the four
 assets the Director accepted at Gate 1, each cut from the **exact silhouette**
-its dense export ships beside it, composited onto a flat ground. So the logo
+its dense export ships beside it, composited onto a flat ground. So the sheet
 makes the same claim the README makes — four subject classes, one route — and a
 reader can check it against the record rather than take it on trust.
+
+This is NOT the logo. The logo is the clay wordmark in the org's brand registry
+(see README.md beside this file); the sheet's own wordmark is a leftover from
+when it was a logo candidate, kept rather than tidied away.
 
 Deterministic by construction: fixed source paths, fixed cameras, fixed layout,
 no sampling and no randomness. Re-running it on the same export trees returns
 the same bytes, which is the standard this repo holds its own artifacts to
 ("a recipe that does not reproduce its output is not a recipe").
 
-    python docs/brand/make_logo.py --out docs/brand/facet-logo.png
+    python docs/brand/make_asset_sheet.py --out docs/brand/four-accepted-assets.png
 
 The export trees live under E:\\AI\\training and are NOT in git — they are the
 recorded artifacts of E04/E08/E12/E14. Point --root elsewhere if they move.
@@ -28,8 +32,8 @@ import sys
 import numpy as np
 from PIL import Image, ImageDraw, ImageFont
 
-# The four accepted assets, each with the camera the mark uses and the ruling
-# that accepted it. Cameras chosen for legibility at logo scale, not for flattery.
+# The four accepted assets, each with the camera the sheet uses and the ruling
+# that accepted it. Cameras chosen for legibility at sheet scale, not for flattery.
 SUBJECTS = [
     ("galleon",   "E04_stroke/export/turnaround",  "y+030_e+00", "E04 Ruling 29"),
     ("dragon",    "E13_stroke/export/turnaround",  "y+045_e+00", "E12 Ruling 28"),
@@ -113,7 +117,7 @@ def main():
                     help="parent of the export trees (default: %(default)s)")
     ap.add_argument("--size", type=int, default=1060,
                     help="square edge in px; brand minimum is 530 (default: %(default)s)")
-    ap.add_argument("--out", default="docs/brand/facet-logo.png")
+    ap.add_argument("--out", default="docs/brand/four-accepted-assets.png")
     ap.add_argument("--no-wordmark", action="store_true")
     args = ap.parse_args()
 

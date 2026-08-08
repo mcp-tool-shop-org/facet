@@ -1,14 +1,25 @@
-# The mark
+# Brand assets
 
-`facet-logo.png` is not an invented device. It is **the route's own output**: the
-four assets the Director accepted at Gate 1, one per subject class, each cut from
-the **exact silhouette** its dense export ships beside it and composited onto a flat
-ground.
+## The logo — the clay wordmark
 
-That is deliberate. The rest of this repo holds every claim to "measured, not
-asserted"; a logo drawn to *suggest* what the pipeline can do would be the one
-surface where that standard lapsed. This one makes the same claim the README makes,
-and a reader can check it.
+The canonical mark lives in the org's brand registry at
+`mcp-tool-shop-org/brand/logos/facet/readme.png` (1344×1024), and the README
+references it there. It is the word **FACET** sculpted in clay.
+
+That is the right mark for this repo, and the reason is structural rather than
+decorative: **the route begins with a form-exaggerated clay concept.** Everything
+downstream — the reconstruction, the twins, the projection, the brush — exists to
+carry that clay into a textured asset. A clay wordmark says what the first stage is,
+in the material the first stage is made of.
+
+*Chosen and pushed by the Director, 2026-08-08.*
+
+## The four-accepted-assets sheet
+
+`four-accepted-assets.png` is **not the logo**. It is a showcase sheet, and it is the
+route's own output rather than an illustration of it: the four assets the Director
+accepted at Gate 1, one per subject class, each cut from the **exact silhouette** its
+dense export ships beside it and composited onto a flat ground.
 
 | quadrant | subject | camera | accepted |
 |---|---|---|---|
@@ -19,10 +30,15 @@ and a reader can check it.
 
 Every generation in all four arcs ran at **zero credits**.
 
-## Rebuilding it
+It carries a wordmark of its own because it was authored as a logo candidate before
+the clay mark landed. That history stays recorded here rather than tidied away, in
+the same spirit as `tools/superseded/` — and the sheet is kept because it has a real
+job that is not the logo's job: **showing what the route produced, checkably.**
+
+### Rebuilding it
 
 ```bash
-python docs/brand/make_logo.py --out docs/brand/facet-logo.png
+python docs/brand/make_asset_sheet.py --out docs/brand/four-accepted-assets.png
 ```
 
 Deterministic by construction — fixed sources, fixed cameras, fixed layout, no
@@ -34,7 +50,8 @@ be a file we could copy and could not recreate.
 The generator reads the dense turnaround trees under `E:\AI\training`, which are the
 recorded artifacts of E04 / E08 / E12 / E14 and are **not in git**. `--root` points
 elsewhere if they move. It refuses rather than guesses: a silhouette that does not
-match its render's dimensions, or an empty one, halts with an `ANDON:` line.
+match its render's dimensions, and an empty silhouette, both halt with an `ANDON:`
+line.
 
 **Why the silhouette and not a colour key.** Keying was retired in this repo three
 times — painted concept art has a gradient and a cast shadow, a clay render is grey
@@ -42,13 +59,3 @@ on grey, and a diffusion model paints a lit studio backdrop. The dense export al
 ships the raycast silhouette per camera, which answers *is there surface here*
 exactly. There was no reason to ask a threshold a question geometry had already
 answered.
-
-## Brand-repo copy
-
-The org's canonical home for this file is
-`mcp-tool-shop-org/brand/logos/facet/readme.png`. That push is **staged, not fired** —
-the mark has not been past the Director's eye yet, and the brand repo is indexed by
-`brand manifest` and consumed by other surfaces, so an unjudged asset should not land
-there. The command and its compensator are in
-[E19-treatment-report.md](../experiments/E19-treatment-report.md); README image URLs
-swap from the local path to the brand raw URL in the same one-line change.

@@ -51,3 +51,10 @@ site/.astro/
 # descended into, so the negation has to re-include the tree itself, not only
 # the files in it.
 !tests/fixtures/**
+
+# landing page + handbook build artifacts (site/.astro/ added by site-theme init)
+site/dist/
+site/node_modules/
+.polyglot-cache.json
+# the site's own images are tracked despite the *.png rule above
+!site/src/assets/**
