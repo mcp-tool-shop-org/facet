@@ -162,6 +162,31 @@ run. No third roll on anything.
 
 ---
 
+## Amendment 1 (2026-08-07, before any submission) — reading the halt clause
+
+The dispatch says the task is four submissions, and its second exit says *"HALT IMMEDIATELY —
+no further submissions on any view, not 770702, nothing."* Read in sequence those two could
+conflict: if view 1 sprawled, does the halt forbid submitting 3, 5 and 7?
+
+**Decided now, before any output exists, because deciding it after would make the design
+outcome-dependent: all four are submitted.** Grounds, in order:
+
+1. Ruling 18b authorises exactly one re-roll per diagonal — four, and the dispatch's task
+   section names them as the unit of work. All four are pre-registered and pre-authorised.
+2. The halt sentence *enumerates escalation*: "not 770702, nothing." It bans a third roll and
+   any view outside the four, which is the thing Ruling 18b bounds.
+3. The exit's own instruction is *"Report what landed and what sprawled with the quantified
+   watch"* — a mixed outcome is anticipated and reportable, which requires all four measured.
+4. Stopping early would make the number of measurements a function of the result. The ruling
+   needs the diagonal class characterised at this seed either way; a truncated set answers a
+   smaller question than the one that was asked.
+
+What the halt does forbid, and is honoured absolutely: **no third roll on any view, no 770702,
+no other seed, no other view, and no disposition made here.** The four graphs and their
+measurements go to the ruling exactly as they land.
+
+---
+
 ## Standards compliance (this predictions file)
 
 | standard | score | evidence |
