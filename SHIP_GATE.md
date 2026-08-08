@@ -68,8 +68,8 @@ is unwritten quietly becomes doctrine — the failure mode this repo exists to a
 
 - [x] `[all]` Logo in README header (2026-08-08) — the clay **FACET** wordmark, chosen and pushed by the Director to `mcp-tool-shop-org/brand/logos/facet/readme.png`; referenced from the README at the brand raw URL, centred at width 400, verified live (HTTP 200). Rationale and the separate four-accepted-assets showcase sheet are documented in [docs/brand/README.md](docs/brand/README.md)
 - [ ] `[all]` **STAGED, not skipped** — translations run locally via `translate-all.mjs` on TranslateGemma, and the standing rule is that an executor session defers: **the advisor runs them at the fold**, before any tag or release, per the release-ordering law. This is the one line the treatment leaves bare on purpose; it is a soft-gate item and does not block
-- [ ] `[org]` Landing page (@mcptoolshop/site-theme)
-- [ ] `[all]` GitHub repo metadata: description, homepage, topics
+- [x] `[org]` Landing page (@mcptoolshop/site-theme) (2026-08-08) — `site/`, built and walked at desktop width: `dist/index.html`, six handbook pages under `dist/handbook/`, and the Pagefind search index (at `dist/pagefind/` — current Starlight, not the playbook's `dist/_pagefind/`). `secondaryCta` is the org invariant `handbook/`. The **Pages deploy** is a separate irreversible act and is staged for the Director's word
+- [ ] `[all]` **STAGED, not skipped** — the exact `gh repo edit` command, the proposed values, and the pre-treatment values needed to undo it are in [E19-treatment-report.md](docs/experiments/E19-treatment-report.md). Held for one reason: the homepage field would point at a Pages URL that 404s until the Director fires the deploy, and shipping a metadata field that resolves to nothing is the same marketing drift as a "live" badge over a dead link. Fires with Pages, in the same breath
 
 ---
 

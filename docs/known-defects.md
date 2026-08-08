@@ -34,13 +34,13 @@ per-view rate is 0.00% on all eight; the union rescues 55.72% of the band. **On 
 asset the blade band runs 47–61% dilation against the whole asset's 27%, carrying 30–47%
 reference where E07's blade carried none** — the worst-served structure by both measures,
 visible as the orange stripe on every provenance panel of the Gate 1 sheet. Measured in
-[E08-intersection-regression.md §9a](docs/experiments/E08-intersection-regression.md),
-[E08-eightcam.md §5](docs/experiments/E08-eightcam.md) and
-[E08-task3-report.md §4](docs/experiments/E08-task3-report.md); the blade arm is specified
+[E08-intersection-regression.md §9a](experiments/E08-intersection-regression.md),
+[E08-eightcam.md §5](experiments/E08-eightcam.md) and
+[E08-task3-report.md §4](experiments/E08-task3-report.md); the blade arm is specified
 after Gate 1 with this as its targeting data.
 
 **⚠ The defect list below was written against high-pass metrics** that
-[E07's ruling](docs/experiments/E07-ruling-gate1.md) found blind to the defect that decides
+[E07's ruling](experiments/E07-ruling-gate1.md) found blind to the defect that decides
 acceptance. Each entry is still measured and still true; none of them is established as the
 thing that makes the asset unacceptable.
 
@@ -54,7 +54,7 @@ implemented in projection and never carried into the loop. **Located in code:** 
 term is `project_twins.py:253-256` and `bake_hero_fuse.py:233-237` (`--seam-sigma 16.0`, its
 own docstring calling it *"the multi-band/Poisson role"*); in `texpass_iter.py`, `commit`
 writes `a2[hidx] = col` (line 246) and `gaussian_filter` appears only in the selftest's fake
-inpaint. **Measured** in [E07 Gate 0](docs/experiments/E07-gate0.md): a provenance boundary
+inpaint. **Measured** in [E07 Gate 0](experiments/E07-gate0.md): a provenance boundary
 steps **5.5× ordinary texture variation** (median |ΔL| 0.02876 across, 0.00523 within), and
 the forehead the Director named is **9.5×**. Dilation boundaries are nearly flat at 1.5–1.75
 — dilation blends *from* its neighbour by construction — so the step is a brush-boundary
@@ -66,7 +66,7 @@ against a 5% base. Colour crosses the gutter from whichever island the packer pl
 door, and atlas adjacency is not surface adjacency. **Located in code, and the docstring was
 wrong:** `texpass_finalize.py`'s flood predicate is `fill = ~grown & (cnt > 0)` with no
 `& valid` — `valid` decides when to stop, never where to write.
-[E07 Gate 0](docs/experiments/E07-gate0.md) measured the cost by replaying that flood
+[E07 Gate 0](experiments/E07-gate0.md) measured the cost by replaying that flood
 carrying a source label: **74.9% of 813,773 dilated texels take their colour from another
 island**, from a median **0.177 away on a figure 1.0 tall** — 61 median triangle edges, 18%
 of the figure's height.
@@ -92,7 +92,7 @@ Faces-per-chart fell 20.5 → 16.4, bbox fill 42.1% → 36.6%, packed coverage 2
 Net texels landing on visible surface rose ~17% where a naive reading predicts double.
 
 **Paint lives in big charts; holes live in small ones.** Measured in
-[E07 Gate 0](docs/experiments/E07-gate0.md): the island holding a randomly chosen *styled*
+[E07 Gate 0](experiments/E07-gate0.md): the island holding a randomly chosen *styled*
 texel has a median 1,231 texels (~35×35), the island holding a *dilated* one has 296. So
 atlas-space operations are safe exactly where there is already paint and unsafe exactly where
 there is not — which is why stage 1's σ=16 levelling draws only 6.8% of its weight

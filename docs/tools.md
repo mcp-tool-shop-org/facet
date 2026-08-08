@@ -20,7 +20,7 @@ runnable code can be checked in minutes instead of trusted.
 Claims that turned out to be wrong are corrected **in place, with the measurement that
 overturned them**, rather than quietly deleted — see the `smart_decimate.py` entry below
 for a worked example. The evidence trail lives in
-[docs/experiments](docs/experiments/): a spec is written before the work, a report after,
+[docs/experiments](experiments): a spec is written before the work, a report after,
 and conclusions come last.
 
 ### `tools/` — works, load-bearing
@@ -39,8 +39,8 @@ and conclusions come last.
 | `resample_atlas.py` | nearest-surface texture transfer between topologies | replaces Blender's ray bake, which returned a black atlas when rays were cast from a seam-split mesh |
 | `restylize_views.py` | generates a mesh's own twins — builds the control image, saves the exact figure mask beside each twin | silhouette IoU **0.290 → 0.777**; per-view prompts take face detections on the rear view 1 → 0 |
 | `cull_unseen.py` | classifies faces by exterior visibility so the atlas can skip them | 47.6% of faces unseen by 46 cameras; interpolation down **68%**; gated on first-hit **depth**, not silhouette |
-| `texpass_provenance.py` | replays the commit chain offline to tell you, per texel, whether colour came from a twin, a specific stroke, or dilation | reproduces live commit counts to the texel; settled the blotch question without a GPU. ⚠ *Corrected 2026-08-05: the replay predates E08 A32 and over-claims +358 commits on the galleon (the missing `fm_e & hit` intersect — [report](docs/experiments/E10-offsurface-consumers-report.md)); the A32-faithful replay is `diagnostics/e10_claim_replay.py`; fix queued for the tool's next use* |
-| `e11_export_turnaround.py` | dense-turnaround export — emit-orchestrated flat renders + exact silhouettes + born-indexed class maps + owner slices, per camera, as a sha-linked self-contained tree | export proven a pure function; beam channels byte-anchored to the record; both subjects' trees validate through the sdlab lane 28/28 and 26/26 ([E11-report.md](docs/experiments/E11-report.md)) |
+| `texpass_provenance.py` | replays the commit chain offline to tell you, per texel, whether colour came from a twin, a specific stroke, or dilation | reproduces live commit counts to the texel; settled the blotch question without a GPU. ⚠ *Corrected 2026-08-05: the replay predates E08 A32 and over-claims +358 commits on the galleon (the missing `fm_e & hit` intersect — [report](experiments/E10-offsurface-consumers-report.md)); the A32-faithful replay is `diagnostics/e10_claim_replay.py`; fix queued for the tool's next use* |
+| `e11_export_turnaround.py` | dense-turnaround export — emit-orchestrated flat renders + exact silhouettes + born-indexed class maps + owner slices, per camera, as a sha-linked self-contained tree | export proven a pure function; beam channels byte-anchored to the record; both subjects' trees validate through the sdlab lane 28/28 and 26/26 ([E11-report.md](experiments/E11-report.md)) |
 | `e11_manifest.py` | the lane-contract manifest for an export tree | validated by the lane's own codebase on both subjects; the lane's palette gate reproduced the staged manifest's blob digits from fresh renders |
 
 ### `tools/` — unblocked, fix measured
@@ -53,7 +53,7 @@ Decimating tore holes and left lace instead of redistributing density. **The cau
 mislabelled in this file until it was measured, and the correction matters more than the
 tool.** An earlier version blamed reconstruction — "roughly 8,600 disconnected shells" —
 a number inherited from a session record and never checked. Measured in
-[E01](docs/experiments/E01-facial-structure-ceiling.md):
+[E01](experiments/E01-facial-structure-ceiling.md):
 
 | mesh | connected components |
 |---|---|

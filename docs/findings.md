@@ -20,7 +20,7 @@ generated alongside the clay from the same control, stays as the colour and iden
 reference for the texture stage.
 
 **Frame the face, get a face.** Reconstruct a second time from a head-and-shoulders crop
-of the same clay. Measured in [E01](docs/experiments/E01-facial-structure-ceiling.md)
+of the same clay. Measured in [E01](experiments/E01-facial-structure-ceiling.md)
 across two characters: the crop puts **3.1–4.5× more polygons** on the head, and the
 difference is structural rather than cosmetic. Full-figure input gives a continuous brow
 bar over a shallow recess and flat punctured nostrils; the same character from a bust

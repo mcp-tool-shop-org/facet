@@ -16,10 +16,27 @@ check the claim rather than trust it.
 
 ### Added
 
-- Presentation surface (E19 treatment): landing page, Starlight handbook, README
-  header, `SECURITY.md`, this file, GitHub metadata. **No measured claim, correction
-  or ⚠ annotation in the record was rewritten, trimmed or deleted** — the treatment
-  adds surface and leaves the record intact.
+- **Presentation surface** (E19 treatment): a landing page, a six-page Starlight
+  handbook rendered from the canonical `docs/handbook/`, the clay wordmark logo,
+  `SECURITY.md` with a measured threat model, `SHIP_GATE.md`, `SCORECARD.md`, and
+  this file.
+- **A repo-knowledge entry** — thesis, architecture, conventions, environment traps,
+  drift risks and three mapped relationships.
+
+### Changed
+
+- **The README is a front door, not a changelog** (at the Director's word). It went
+  from 867 lines to 208 by **relocating** — never deleting — the chronological arc
+  narrative to [docs/arc-history.md](docs/arc-history.md), the durable findings and
+  hard-won rules to [docs/findings.md](docs/findings.md), the tool status tables to
+  [docs/tools.md](docs/tools.md), and the defect list to
+  [docs/known-defects.md](docs/known-defects.md).
+
+  **Nothing measured was lost, and that is audited rather than asserted:** every
+  non-blank line of the old README was diffed against the union of its new homes.
+  Three lines differ, and all three are the marketing tagline, deliberately rewritten.
+  All six ⚠ annotations survive. Corrections stay in place beside the measurements
+  that overturned them, exactly as before — they just live one click deeper.
 
 ## [1.0.0] — proposed, awaiting the Director's word
 
