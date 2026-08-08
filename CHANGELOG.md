@@ -66,11 +66,16 @@ bump, so this version exists as a tag and this heading and nothing else.
   (byte-identical determinism across interpreters, counts against independent greps,
   zero dangling pointers, a seeded question gate)
   ([E15-ruling.md](docs/experiments/E15-ruling.md)).
-- **32 tests, 32 passing at two seats' hands** — 24 hermetic + 8 artifacts — plus the
+- **202 tests, 202 passing at two seats' hands** — 194 hermetic + 8 artifacts — plus the
   repo's first CI workflow, paths-gated and pinned
-  ([E17 Ruling 5](docs/experiments/E17-ruling.md), which closed the arc; Ruling 1's
-  27/27 is the earlier state and is superseded by it). Counted at this commit rather
-  than inherited: `pytest --collect-only` over the committed `tests/` returns 32.
+  (the harness at [E17 Ruling 5](docs/experiments/E17-ruling.md), which closed that arc
+  at 32; [E18](docs/experiments/E18-ruling.md) rode 60 more in on the commits that built
+  the record-index MCP; [E20](docs/experiments/E20-ruling.md) is adding the unit tier).
+  Counted at this commit rather than inherited: `pytest --collect-only` over the
+  committed `tests/` returns 202, and 194 with `-m "not artifacts"`. **The lineage is
+  27 → 32 → 92 → 202 in a single day, and this figure is provisional until E20 closes**
+  — it is re-counted at the tagging commit before v1.0.0 is cut, per
+  [E19 Ruling 7](docs/experiments/E19-ruling.md).
 - The claims sweep (`facet_index.py claims`) reads **0 STALE** against the record.
 
 **Four dense assets are in the training dataset**, 114 records across five ingests

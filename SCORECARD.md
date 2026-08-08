@@ -18,7 +18,7 @@ verbatim entry audit (1 checked / 35 unchecked / 1 skipped, 3%) is recorded in
 | A. Security | 4/10 | The *substance* was already clean — no credentials anywhere in the tree, no telemetry, network egress confined to a loopback ComfyUI default. The *documentation* was entirely absent: no SECURITY.md, no threat model, and nothing stating the three real sharp edges (unsandboxed file writes, baked absolute paths, raw tracebacks). A reader had no way to know any of it without reading 34 scripts. |
 | B. Error Handling | 3/10 | No structured error shape, no exit-code registry, raw Python tracebacks on unexpected failure. Not zero, because the `ANDON:` halt convention is real, load-bearing and ruled (E08 A32: the gate lives inside the tool, no skip flag) — a deliberate halt says what measurement fired it. |
 | C. Operator Docs | 6/10 | The README is unusually strong for this axis — a measured-state document with corrections kept in place beside the measurements that overturned them, and `docs/experiments/` carrying spec → report → ruling for every claim. Missing: CHANGELOG, any statement of support status, any runtime/CI version note. |
-| D. Shipping Hygiene | 5/10 | The verify story was genuinely there and better than most: 27 tests passing at two seats' hands plus a paths-gated pinned CI workflow (E17). Everything version-shaped was absent — no manifest, no version field, zero git tags — and no dependency scanning. |
+| D. Shipping Hygiene | 5/10 | The verify story was genuinely there and better than most: 32 tests passing at two seats' hands plus a paths-gated pinned CI workflow (E17). *(Corrected 2026-08-08 at the E19 ruling: this row read "27", inherited from the dispatch's stale premise — the same figure §6a caught and corrected. E17 Ruling 1 closed at 27; Ruling 5 closed the arc at 32, which was the state at treatment entry.)* Everything version-shaped was absent — no manifest, no version field, zero git tags — and no dependency scanning. |
 | E. Identity (soft) | 0/10 | Nothing. No logo, no translations, no landing page, no GitHub description, homepage or topics. |
 | **Overall** | **18/50** | A repo whose *record* was far ahead of its *presentation*. |
 
@@ -32,7 +32,7 @@ verbatim entry audit (1 checked / 35 unchecked / 1 skipped, 3%) is recorded in
    in a treatment, but a defect to *disclose* — with the condition under which it stops
    being good enough written down (extraction).
 4. **No presentation surface at all.** Four accepted assets across four subject classes
-   at zero credits, a four-leg-verified index and a green 27-test suite — and no way for
+   at zero credits, a four-leg-verified index and a green 32-test suite — and no way for
    anyone to see any of it without reading 775 lines of README.
 5. **Dependency posture has no executable check** and no manifest to give one a target.
 

@@ -113,7 +113,7 @@ export const config: SiteConfig = {
         },
         {
           title: 'Tests ride the commit',
-          desc: '32 tests passing at two seats’ hands, with paths-gated CI on the hermetic subset. A commit that changes tool code carries tests for that code in the same commit; recorded anchors are ported into the harness rather than left in reports.',
+          desc: '202 tests passing at two seats’ hands, with paths-gated CI on the 194 hermetic ones. A commit that changes tool code carries tests for that code in the same commit; recorded anchors are ported into the harness rather than left in reports.',
         },
       ],
     },
