@@ -53,9 +53,16 @@ def test_t23_mount_declares_the_server(mount):
     assert entry["args"] == [ENTRY], entry
     assert (REPO / ENTRY).exists(), "the mount points at a file that is not here"
     assert entry["command"], "the mount declares no interpreter"
-    # no bare `python`: T18's trap, one config file over
-    assert os.path.basename(entry["command"]).lower().startswith("python")
-    assert os.path.isabs(entry["command"]) or os.sep in entry["command"], (
+    # no bare `python`: T18's trap, one config file over. Parse the mount's
+    # OWN separators, not the host's: the command is a Windows absolute path
+    # and this test also runs on CI's ubuntu, where posixpath neither splits
+    # backslashes nor calls "E:\..." absolute - os.path.basename returned the
+    # whole string there and the startswith failed (ci runs 31264937296 and
+    # 31266198244, the shape test's own platform defect, repaired 2026-08-08).
+    cmd = entry["command"]
+    leaf = cmd.replace("\\", "/").rsplit("/", 1)[-1]
+    assert leaf.lower().startswith("python"), cmd
+    assert "/" in cmd or "\\" in cmd, (
         "the mount inherits PATH for its interpreter - on this rig bare "
         "`python` has no mcp and no open3d (E17 Ruling 2)")
 
