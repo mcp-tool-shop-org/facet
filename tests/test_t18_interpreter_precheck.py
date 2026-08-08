@@ -92,3 +92,6 @@ def test_t18_required_set_is_not_silently_empty():
     """A pre-check over an empty module list cannot fail - guard the guard."""
     assert "open3d" in REQUIRED_CHILD_MODULES
     assert len(REQUIRED_CHILD_MODULES) >= 5
+    # E18: tools/record_mcp.py imports `mcp` at module level, so T22's stdio
+    # subprocess is the same trap class the ruling closed for open3d.
+    assert "mcp" in REQUIRED_CHILD_MODULES

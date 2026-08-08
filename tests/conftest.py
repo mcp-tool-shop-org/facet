@@ -55,11 +55,18 @@ def tool(rel):
 #     e12_elevated      numpy         trimesh open3d     (T9)
 #     mesh_stats        numpy scipy   trimesh            (T12)
 #     texpass_finalize  numpy     PIL                    (T7)
+#     record_mcp        mcp                              (T19-T22, E18)
 #     facet_index, e04_registry_sweep   stdlib only      (T1, T4, T5, T13, T16)
 # The stdlib-only pair is exactly why a wrong interpreter reads as a PARTIAL
 # green instead of an obvious environment error - the twenty that pass are the
 # ones that never needed the environment.
-REQUIRED_CHILD_MODULES = ("numpy", "scipy", "PIL", "trimesh", "open3d")
+#
+# `mcp` joined this table with the E18 server (2026-08-08), and for the same
+# reason the others are here: tools/record_mcp.py imports it at MODULE level, so
+# T22's stdio subprocess cannot start without it, and an interpreter missing it
+# would produce the same partial-green misreading Ruling 2 closed. The pin lives
+# in .github/workflows/ci.yml beside the rest.
+REQUIRED_CHILD_MODULES = ("numpy", "scipy", "PIL", "trimesh", "open3d", "mcp")
 
 _PROBE_SRC = (
     "import importlib, sys\n"
