@@ -386,3 +386,168 @@ a register drift would look like on metal before the pair runs). The hilt at ~7%
 of frame pixels is S-hilt-scale — if the pair's hilt reads soft, that is the
 E12 head physics arriving on schedule, recorded not tuned. And the mirror facts
 mean view-pair comparisons are cheap corroboration everywhere — use them.
+
+---
+
+## Session handoff 3 (2026-08-07) — the palette bands and the twin set. TWO advisor halts. Comprehensive.
+
+**Authorised by [E14-ruling.md](E14-ruling.md) Ruling 16** — the pair is
+ACCEPTED (the Director: "I agree with view 0 being the best. I love it. You
+have my acceptance."), the recipe anchor is converted, and the route proceeds:
+**bands → twins → stage 1**. This dispatch is the bands and the twins; stage 1
+is the NEXT dispatch, after the twin-set ruling. A fresh executor session
+starts here:
+
+```
+cd E:\AI\facet && git pull
+python tools/facet_index.py build        <- the E15 ritual: query the tip
+CLAUDE.md                                <- read first, follow exactly
+docs/experiments/E14-ruling.md           <- Rulings 1-16. 6/7 are your ruled values; 12-16 are
+                                            the pair record, the rings term, the realised-value
+                                            corrections, and your authorisation (16b)
+canon/LONGSWORD-IDENTITY.md              <- the fixture: L3 now carries TWO terms (Ruling 13)
+profiles/prop.json                       <- every decided value; the prompt entry is the LIVE
+                                            v2 source; generation_recipe_anchor is the anchor
+docs/experiments/E14-task4-report.md     <- the pair's record: realised values in section 6
+docs/experiments/E14-task4-pair-sidecar.md
+docs/experiments/E12-executor-kickoff.md <- handoff 8 there is the METHOD PRECEDENT (the
+                                            beast's twins); this dispatch cites, not restates
+```
+
+**Your rules and environment are unchanged** (CLAUDE.md §executor). Generation
+cloud-only, `estimate_credits` per submission, graphs saved to disk and
+pre-flighted before submission, the inverted no-LoRA pre-flight on every
+graph. No local GPU leg is expected (the renders, masks and controls exist);
+if any Blender invocation becomes necessary, the watchdog is verified before
+it, reported either way. Output: `E:\AI\training\facet_next\E14_prep\bands\`
+and `E14_prep\twins\`. ASCII prints. **Blind predictions first, committed
+before any derivation runs, blind status disclosed** — they must cover at
+minimum: the wine-merge question, where the gate's chroma floor lands
+relative to L1's realised 5.39 cast, the backdrop band's position, the twins'
+per-view IoU spread, the view-1-at-770700 outcome, and the gold-watch firing
+count.
+
+### Task 1 — the palette bands, derived and VALIDATED, then HALT for the ruling
+
+Derive the off-palette gate's bands **from the fixture's named materials,
+cross-checked against the ACCEPTED PAIR — never against the twins they will
+gate** (non-circularity, kept from the galleon). The realised values are in
+the room (task4 report §6): use the PAIR's measured colours, not the
+superseded estimates file.
+
+Pre-registered structure, from the profile's suspension note and the fixture
+— verify each against the pair rather than assuming:
+
+1. **L1 steel and L2 iron carry NO hue bands, by design** — they sit below
+   any honest chroma floor and separate by VALUE; the achromatic channel
+   (E12 17d's permanent member) is their instrument. **The floor itself is
+   derived from the separation structure of the pair's realised values —
+   never chosen to put L1's 5.39 cast on either side of it.** Where the
+   floor lands relative to that cast is a RESULT, reported with the
+   derivation (the beast's realised backdrop sat under its gate's floor and
+   was hue-neutral under the gate's own rule — the 15i mechanism; this
+   subject's answer is measured, not inherited).
+2. **The band candidates**: gold (warm, ~L3's measured 83.5) and the wine
+   family (oxblood 25.4 + garnet 24.3 — likely ONE merged band, the
+   D4/D5/D10 precedent; report both merged and split forms with the
+   between-band density so the ruling can see whether a cut exists — never
+   claim a gap without plotting the density between).
+3. **The backdrop band is NEW TERRITORY on this subject**: the realised
+   backdrop is hue ~305 at C\* 32.6–37.1 — far ABOVE any floor, so unlike
+   the beast's it is NOT hue-neutral, and its band is carved deliberately.
+   Its proximity to L1's realised cast (~295, ten degrees away) is the
+   derivation's hardest question: report the density between 290 and 310 on
+   the pair's figure pixels vs backdrop pixels before proposing any
+   boundary.
+4. **The dark-rows caveat (15j) bites on blackened iron exactly as it bit on
+   charcoal** — dark bands are colour-matches to shadow; colour-not-placement
+   rides beside the bands in the profile block when they land.
+5. **Every bound obeys the perimeter law** (normalise boundary quantities by
+   perimeter, not area) **and the two-thresholds law** (report total AND
+   largest connected component).
+
+**Validation before proposal** (the S3 discipline — validate against known
+artifacts): the gate as drafted must (a) PASS both accepted pair views, (b)
+be run on the REJECTED 770700 artifact and its behaviour REPORTED — note the
+rejection was occupancy (gold on the wrong surface), which colour-not-
+placement cannot see; whether the gate fires on it for any other reason is
+data about the gate, stated plainly either way. **HALT 1: the derivation, the
+density plots, the validation table and a proposed band set go to the
+advisor. The bands and the gate's disposition (armed with bounded re-roll
+authority vs report-only, per band) are RULED before any twin generates.**
+
+### Task 2 — the twin set, after the bands ruling lands
+
+1. **Stems v2 by the committed builder** — it reads the profile's LIVE prompt
+   entry (Ruling 13's rings term included) and re-verifies the one-string
+   drop against the renders:
+   `e12_make_twin_prompts.py --profile profiles/prop.json --tag swordclay
+   --drop "a gold diamond boss at the crossing:2,6" --version 2`.
+   Views 0–7; expect FULL stems everywhere except 2/6 (one drop); the rings
+   term drops nowhere (visible on all eight — verified at Task 4).
+2. **Controls**: re-emit through the profile (`--emit-only`) and verify the
+   canny counts against the anchor row — 8,695 / 8,230 / 5,580 / 8,400 /
+   9,509 / 8,508 / 5,230 / 7,870. Any drift is a HALT, not a re-derivation.
+3. **Eight twins at the pair-anchored recipe** — profile values, seed 770700
+   per view, one generation per view. **One bounded re-roll per failing
+   view** (new seed, +1 per attempt), where "failing" means: a ruled-armed
+   band fires, or a pre-registered fixture rule is violated by eye (the
+   occupancy class — the pair's own precedent). The rejected artifact stays
+   in the record with its measurement, and a second failure on any view is
+   the RESULT, not a third roll.
+4. **Pre-registered watches, judged by eye at 4× hilt crops per twin**: the
+   12e gold-family-pressure watch (gold on ANY surface outside L3's boss +
+   rings is the signature; the rejected 770700 is its recorded example) ·
+   view 1 at 770700 is the measured-risk view (same seed that sprawled on
+   the pair; the stems have since gained the rings term — either outcome is
+   one data point on whether naming the rings redirects the pressure,
+   recorded not tuned) · L5's gem-hue drift (garnet vs magenta — the pair's
+   internal drift, watched per twin).
+5. **Per-view registration diagnostics** with the halts suspended as the
+   profile expresses (reg-iou-min 0.0, bbox-tol 9.99): IoU per view against
+   the exact raycast silhouette, computed and printed; the across-pair area
+   swing is 2.061× on this subject (Ruling 10c) — any per-view-area
+   normalisation inherits it; report absolute px counts beside any ratio.
+   This subject derives its own IoU bound from its own twins' spread at the
+   ruling, or keeps reporting — never inherits W3's 0.80.
+6. **Sheets**: per twin, full size — render | control | twin — plus the 4×
+   hilt crop. Never a contact sheet alone.
+
+**HALT 2: the twin set staged** — eight twins (plus any bounded re-rolls,
+rejected artifacts preserved), the registration table, the gate results per
+the ruling's disposition, the watch findings, and the sheets. **The advisor's
+eye first, then the Director.** The twin-set ruling decides: twin acceptance,
+any subject-derived IoU bound, and dispatches stage 1 against the
+pre-registered 51.33% ceiling.
+
+### Do not
+
+Generate any twin before HALT 1's bands ruling lands · arm any threshold the
+ruling has not armed · re-choose the backdrop word or canny pair on anything
+a twin shows (both RULED; twins are not the pair's judges) · project anything
+(stage 1 is the next dispatch) · touch `thin_extent`'s value, the head-rect
+arm, or the activated state (parked, 16c) · edit any fixture or profile (the
+gold watch and gem drift are REPORTED; the fixture is the advisor's) · write
+to the memory store · end a session the Director has not ended.
+
+### Standards compliance (this dispatch)
+
+| standard | score | evidence |
+|---|---|---|
+| PIN_PER_STEP | 2 | Stems versioned (v2) with the builder re-run recorded; the canny anchor row is a byte-level pre-flight; every twin's graph saved pre-submission with prompt_id + seed; band derivation lands in JSON beside its density plots |
+| ANDON_AUTHORITY | 3 | TWO advisor halts (the bands ruling before any generation; the twin set before any projection); canny-count drift halts; the bounded re-roll rule is the only re-generation authority and a second failure is the result |
+| NAMED_COMPENSATORS | 2 | Cloud spend bounded to 8 generations + at most 8 bounded re-rolls, estimate_credits each (expected 0 on the OSS graph — quote anyway); all writes in new files under E14_prep/bands and E14_prep/twins; rejected artifacts preserved, never deleted |
+| DECOMPOSE_BY_SECRETS | 3 | Bands derive from fixture materials × the accepted pair, never the twins they gate; the floor derived from separation structure, never from where L1's cast falls; stems carry identity through the profile's live entry, never retyped |
+| UNCERTAINTY_GATED_HUMANS | 3 | The bands' disposition (armed vs report-only, per band) is the advisor's ruling with density plots in the room; twin acceptance and any derived IoU bound are the twin-set ruling's; the gold watch and gem drift go up as findings |
+| EXTERNAL_VERIFIER | 2 | The gate is validated against artifacts it did not derive from (the pair) and exercised on a known-rejected artifact before ruling; registration is measured against the raycast silhouette, an independent code path from the generator; `skip:` on a second model for the derivation legs, per precedent |
+
+### Calibration
+
+The Task-4 standard holds — verify inherited claims against source in the
+same breath you use them (the last two dispatches' carried flags each broke
+half-wrong). Named risks: **the 295-vs-305 proximity** (L1's realised cast
+ten degrees from the realised backdrop hue) is the bands derivation's hardest
+cut and may honestly have no clean boundary — a suspension with the density
+plotted is a full success; **the gold watch** is live on every twin; and the
+mirror-pair facts make view-pair comparisons cheap corroboration on all
+eight — use them.
