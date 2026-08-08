@@ -125,7 +125,16 @@ jobs:
           TAG="${GITHUB_REF_NAME#v}"
           PYPROJECT=$(python -c "import tomllib,pathlib;print(tomllib.loads(pathlib.Path('pyproject.toml').read_text())['project']['version'])")
           PKGJSON=$(node -p "require('./package.json').version")
-          BINJS=$(node -p "JSON.parse((require('fs').readFileSync('bin/facet.js','utf8').match(/JSON.stringify\(([\s\S]*?)\)\;/)||[])[1].replace(/(\w+):/g,'\"\$1\":').replace(/,(\s*})/,'\$1')).version")
+          # Extracted with python, NOT a node one-liner. The obvious node version
+          # uses a regex replacement containing $1, and bash expands $1 inside
+          # double quotes to an empty positional parameter - the JSON.parse then
+          # dies and takes the whole release with it. Caught in pre-flight.
+          BINJS=$(python -c "import re,pathlib;print(re.search(r'version:\s*\"([^\"]+)\"', pathlib.Path('bin/facet.js').read_text()).group(1))")
+          BINTAG=$(python -c "import re,pathlib;print(re.search(r'tag:\s*\"([^\"]+)\"', pathlib.Path('bin/facet.js').read_text()).group(1))")
+          if [ "$BINTAG" != "$GITHUB_REF_NAME" ]; then
+            echo "::error::bin/facet.js pins tag $BINTAG but this release is $GITHUB_REF_NAME - npm-launcher would fetch the wrong release"
+            exit 1
+          fi
           SERVER=$(python -c "import re,pathlib;print(re.search(r'SERVER_VERSION = \"([^\"]+)\"', pathlib.Path('tools/record_mcp.py').read_text()).group(1))")
           echo "tag=$TAG pyproject=$PYPROJECT package.json=$PKGJSON bin/facet.js=$BINJS record_mcp=$SERVER"
           fail=0
