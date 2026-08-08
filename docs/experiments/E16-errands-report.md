@@ -634,6 +634,64 @@ the mode is a relaxation only where the structure is genuinely thin.
 
 **Prediction: HELD** — byte-identical at the default.
 
+### E16-11 — the `_per_invocation` migration (E12 Ruling 6d) · ANCHOR HELD
+
+**A blanket rename would have been wrong, and enumerating first is what showed
+it.** `_not_on_route` appears in three structurally different places, and only one
+of them is Ruling 6d's fifth form:
+
+| node | meaning | action |
+|---|---|---|
+| `/tools/<tool>/_not_on_route` (7 sites) | a key the profile supplies no value for | **renamed** to `_per_invocation` |
+| `/_tools_not_on_route` (beast, prop, ship) | whole tools off the route | untouched |
+| **`/_not_on_route` at ship's top level** | whole tools off the route, under the *key-level* name | **untouched** |
+
+The seven renamed sites are exactly Ruling 6d's: `brush_cloud_step` `lane` on all
+four profiles, `texpass_iter` `yaw`/`el` on beast, prop and ship (character has no
+such block). All four files still parse.
+
+**Byproduct finding, reported not fixed:** `ship.json` declares the *same three
+tools* twice — once at top level as `_not_on_route` and again as
+`_tools_not_on_route`. Only the latter is a documented top-level form and only
+the latter is what the sweep reads (`prof.get("_tools_not_on_route")`), so the
+first is inert. No ruling queued it, so it stands.
+
+**Readers updated in the same commit.** `e04_registry_sweep` recognises
+`_per_invocation` as a distinct `how`, *added* beside `_not_on_route` rather than
+replacing it — the older form stays correct for a key genuinely not exercised on
+a route, and the registry should be able to tell "never runs" from "runs every
+time, supplied by the job". `e04_profile_check` merges the two for its own
+narrower question. Both docstrings updated.
+
+**Debt repaid: E16-10 had put two flags into the registry undeclared.** Adding
+`--edge-mode` and `--edge-frac` made them UNDECIDED on **all four** profiles —
+E16-10's own doing, caught by this errand's anchor. Both are now declared:
+`edge-mode: "global"` (Ruling 24c adopted `local` nowhere; without the entry a
+*mode* would arrive by silence) and `edge-frac: 1/3` (inert unless the mode is
+adopted). **Flagged for the advisor:** on `project_twins` this same flag is
+classified CODE in the classification table's section 6 — *"a derived law, not a
+tuned number"* — and the identical reasoning applies to this tool's copy, but
+moving it there is a table edit an executor should not make.
+
+**ANCHOR.**
+
+| check | before | after |
+|---|---|---|
+| beast sweep | exit 1, 2 UNDECIDED | **exit 0**, 85/85 decided, `_per_invocation 3` |
+| ship sweep | exit 1, 2 UNDECIDED | **exit 0**, 85/85 decided, `_per_invocation 3` |
+| prop sweep | exit 1, 3 UNDECIDED | exit 1, **1** UNDECIDED (pre-existing `texpass_brush prompt`) |
+| character sweep | exit 1, 20 UNDECIDED | exit 1, **18** UNDECIDED (all pre-existing), `_per_invocation 1` |
+| undecided rows, diffed line by line | — | **the only rows that changed are `edge-mode` and `edge-frac`** — 0 new, 2 repaid per profile |
+| claims sweep | — | **STALE: 0** |
+| build | — | 660 artifacts · 483 rulings · 31 handoffs · 225 decisions |
+| verify | — | **PASSED all four legs, 19/19** |
+| E16-10 stroke anchor, re-run because the profiles changed | 4,344 | **4,344**, three outputs byte-identical |
+| E16-4 emit anchor, re-run for the same reason | — | all four outputs **byte-identical** (9 profile values applied now, was 7) |
+
+**Prediction: HELD** — build and verify pass, 0 STALE, 0 new UNDECIDED. The risk I
+named was "a missed reader, not a wrong value"; the reader that turned out to
+matter was the registry itself, catching two flags I had added an errand earlier.
+
 ---
 
 ## 2. A session-level finding: the working tree is shared

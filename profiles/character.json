@@ -89,6 +89,8 @@
     },
 
     "texpass_iter.py": {
+      "edge-mode": {"value": "global", "why": "DECIDED at the tool default. E14 Ruling 24c ported A3's local-half-width bound to this tool as an OPT-IN mode and adopted it NOWHERE - 'global' is byte-identical to every commit this route has made, and this subject's accepted asset was built under it. 'local' waits for a stroke lane that brings its own evidence; without this entry a MODE would arrive by silence, which is the failure the sweep exists to catch.", "from": "E14 Ruling 24c; E16-10 (the port, measured on the sword's stroke 1 at yaw 0: 4,344 -> 5,675 texels, adopted nowhere)"},
+      "edge-frac": {"value": 0.3333333333333333, "why": "A3's invariant - erosion may never exceed a third of a structure's own local half-width - the same derived law project_twins' edge-frac carries. Read ONLY under --edge-mode local, which no subject runs, so it is inert here and recorded so it cannot arrive by silence if a ruling ever adopts the mode. FLAGGED FOR THE ADVISOR: on project_twins this flag is classified CODE in the E04 classification table's section 6 ('a derived law, not a tuned number'); the same reasoning applies to this tool's copy, and moving it there is a table edit this executor did not make.", "from": "E08 Amendment 3 (the invariant); E14 Ruling 24c; E16-10"},
       "facing-min": {"value": 0.25, "why": "Acceptance floor for committing brush output. Same argument as project_twins' floor, at the looser value the brush stage uses.", "from": "E06"},
       "edge-dist": {"value": 4.0, "why": "Erosion of the brush output's keyed figure before commit, in job-image pixels - a framing unit.", "from": "E06"},
       "mask-dilate": {"value": 9, "why": "Dilation radius, in job-image pixels, applied to the hole mask before it is handed to the brush. Scales with framing, which is subject data.", "from": "E06"},
@@ -96,7 +98,7 @@
     },
 
     "brush_cloud_step.py": {
-      "_not_on_route": {
+      "_per_invocation": {
         "lane": "SUPPLIED PER INVOCATION, never from this profile - and it CANNOT come from one: brush_cloud_step.py calls subject_profile.bind() ZERO times, so no block reaches its argparse. It takes --profile only to read _fixtures through subject_profile.value() (required, no skip, E04 Ruling 24). The tool default 'base' must not arrive by silence. THE REAL CONTROL IS IN-TOOL AND ALREADY EXISTS: E10 Ruling 6's pre-flight maps lane -> fixture key explicitly (base -> _fixtures.brush_prompts, layer -> _fixtures.layer_prompts) and CORROBORATES the declared lane against the job's state identity, with no skip flag in either lane. This subject ran the base lane throughout; --lane was born in E10, long after this profile's extraction, so this entry documents a flag the accepted asset never saw rather than restating one of its values. THIS IS NOT A VALUE and does not touch the relocation claim: subject_profile.bind() skips every key beginning with an underscore, so nothing reaches any tool and the pixel-identity gate is unaffected. FLAG: `_not_on_route` is the wrong NAME for a key exercised on every invocation, and is used because it is the only one of Ruling 22's four forms meaning 'decided, and the decision is that the profile supplies no value' that the sweep recognizes. E12 Ruling 5c."
       }
     },

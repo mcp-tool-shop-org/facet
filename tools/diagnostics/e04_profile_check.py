@@ -163,6 +163,10 @@ if bad:
 # point: the failure mode is a value nobody decided, not a value someone chose wrongly.
 #
 #   _not_on_route: {"key": "why"}          inside a tool block, per key
+#   _per_invocation: {"key": "why"}        inside a tool block, per key - E12 Ruling 6d's
+#                                          fifth form: the key IS exercised every run, and
+#                                          the profile supplies no value BY DESIGN because
+#                                          the correct one arrives from the job context
 #   _tools_not_on_route: {"tool": "why"}   at profile top level, for a whole tool
 if args.coverage:
     ref = json.load(open(args.coverage, encoding="utf-8"))
@@ -179,7 +183,13 @@ if args.coverage:
                 for k in rkeys:
                     undecided.append((tool, k, "tool has no block in this profile"))
             continue
-        skip = sblock.get("_not_on_route", {})
+        # `_per_invocation` is E12 Ruling 6d's fifth form, migrated in E16-11 and
+        # merged here rather than tracked separately: for THIS check both mean the
+        # key is decided-with-no-profile-value, and the distinction between "never
+        # runs" and "runs every time, supplied by the job" is carried by the registry
+        # sweep's `how` column, which is where it is actually read.
+        skip = dict(sblock.get("_not_on_route", {}))
+        skip.update(sblock.get("_per_invocation", {}))
         # `_NOT_CLEARED` is the FOURTH accepted form (E04 Ruling 22) and the STRONGEST: it
         # decides a whole tool by forbidding its use, rather than excusing a key. The
         # lifecycle is the point — when a ruling lifts the block, the marker goes, its keys

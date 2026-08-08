@@ -25,8 +25,10 @@ store_true, or default=None). CODE_ROWS below is a transcription of section 6, t
 and every entry carries the table's own reason - so a flag nobody classified shows up as
 subject data and demands a decision, which is the direction that fails safe.
 
-A decision is any of Ruling 22's four forms: a value, a vacuous suspension (a value the tool
-receives that cannot fire), `_not_on_route`, or `_NOT_CLEARED`.
+A decision is any of Ruling 22's four forms plus E12 Ruling 6d's fifth: a value, a vacuous
+suspension (a value the tool receives that cannot fire), `_not_on_route`, `_NOT_CLEARED`, or
+`_per_invocation` (the profile supplies no value BY DESIGN because the correct one varies per
+invocation and arrives from the job context - migrated at all sites in E16-11).
 
   e04_registry_sweep.py --profile profiles/ship.json --tools tools
 
@@ -210,6 +212,13 @@ for tool in ROUTE:
     blk = prof["tools"].get(tool)
     whole_off = tool in tools_skip
     skip = (blk or {}).get("_not_on_route", {})
+    # E12 Ruling 6d's fifth form, migrated in E16-11. `_per_invocation` is ADDED, not
+    # a replacement: `_not_on_route` remains correct for a key genuinely not exercised
+    # on a route, while `_per_invocation` means the profile supplies no value BY
+    # DESIGN because the correct value arrives from the job context. Both are decided;
+    # they are recorded under distinct `how` labels so the registry can tell a key
+    # that never runs from one that runs every time.
+    per_inv = (blk or {}).get("_per_invocation", {})
     not_cleared = "_NOT_CLEARED" in (blk or {})
     for key, (kind, info) in sorted(defaults_of(path).items()):
         if kind == "NA":
@@ -225,6 +234,8 @@ for tool in ROUTE:
             decided, how = True, "_NOT_CLEARED"
         elif blk and key in blk:
             decided, how = True, "value"
+        elif key in per_inv:
+            decided, how = True, "_per_invocation"
         elif key in skip:
             decided, how = True, "_not_on_route"
         else:

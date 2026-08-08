@@ -230,7 +230,7 @@
    }
   },
   "brush_cloud_step.py": {
-   "_not_on_route": {
+   "_per_invocation": {
     "lane": "SUPPLIED PER INVOCATION, never from this profile - and it CANNOT come from one: brush_cloud_step.py calls subject_profile.bind() ZERO times, so no block reaches its argparse. It takes --profile only to read _fixtures through subject_profile.value() (required, no skip, E04 Ruling 24). The tool default 'base' must not arrive by silence, which is the whole point of the sweep. THE REAL CONTROL IS IN-TOOL AND ALREADY EXISTS: E10 Ruling 6's pre-flight maps lane -> fixture key explicitly (base -> _fixtures.brush_prompts, layer -> _fixtures.layer_prompts) and CORROBORATES the declared lane against the job's state identity, with no skip flag in either lane - a guard that inferred its own jurisdiction could be steered, so the lane is a declared input cross-checked against data already in hand. On the beast no lane runs at all until the stroke lifecycle clears (see texpass_brush.py's _NOT_CLEARED). FLAG CARRIED FORWARD from ship.json's identical note: `_not_on_route` is the wrong NAME for a key that IS exercised on every invocation, and it is used here only because it is the one form of Ruling 22's four whose operational meaning is 'decided, and the decision is that the profile supplies no value' AND which the sweep recognizes. A fifth form for per-invocation selectors remains the advisor's call. E12 Ruling 5c; form chosen by reading the sweep's own recognizer (e04_registry_sweep.py, the _not_on_route branch), not by analogy."
    }
   },
@@ -274,7 +274,17 @@
    "_THE_RECIPE_NUMBERS_DO_NOT_REACH_THE_CLOUD_GRAPH": "Inherited finding (E04 stroke derivation): generation is cloud-only, so a beast stroke runs through brush_cloud_step.py, which binds NO profile - it carries its own DEFAULTS (seed 770700, steps 20, cfg 2.5, lora_w 0.75, cn_strength 1.0) and a hardcoded CLOUD_LORA, reading prompt and negative from the prompts file. Agreement is by value, not construction; the stroke-clearing ruling re-verifies it."
   },
   "texpass_iter.py": {
-   "_not_on_route": {
+   "edge-mode": {
+    "value": "global",
+    "why": "DECIDED at the tool default. E14 Ruling 24c ported A3's local-half-width bound to this tool as an OPT-IN mode and adopted it NOWHERE - 'global' is byte-identical to every commit this route has made, and this subject's accepted asset was built under it. 'local' waits for a stroke lane that brings its own evidence; without this entry a MODE would arrive by silence, which is the failure the sweep exists to catch.",
+    "from": "E14 Ruling 24c; E16-10 (the port, measured on the sword's stroke 1 at yaw 0: 4,344 -> 5,675 texels, adopted nowhere)"
+   },
+   "edge-frac": {
+    "value": 0.3333333333333333,
+    "why": "A3's invariant - erosion may never exceed a third of a structure's own local half-width - the same derived law project_twins' edge-frac carries. Read ONLY under --edge-mode local, which no subject runs, so it is inert here and recorded so it cannot arrive by silence if a ruling ever adopts the mode. FLAGGED FOR THE ADVISOR: on project_twins this flag is classified CODE in the E04 classification table's section 6 ('a derived law, not a tuned number'); the same reasoning applies to this tool's copy, and moving it there is a table edit this executor did not make.",
+    "from": "E08 Amendment 3 (the invariant); E14 Ruling 24c; E16-10"
+   },
+   "_per_invocation": {
     "yaw": "SUPPLIED PER STROKE from the future brush-prompts _order, never from this profile - the ship's flagged form, kept: no single value can be correct, and pinning one would make an emit that forgot --yaw silently repeat a stroke. The tool default (90.0) must not arrive by silence.",
     "el": "Same - elevation comes from the job key when strokes exist."
    },
