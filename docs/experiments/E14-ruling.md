@@ -1627,3 +1627,87 @@ the next launches. Zero credits expected; quoted per submission
 anyway. HALT 2 stages the walk set for this seat's sheet-walk, then
 the Director. Finalize, pack and Gate 1 are the next dispatch.
 
+## Ruling 28 — step 0's count assert fired on this seat's own predicate: the repair mask is RULED as the union, 1,436; two ledger entries; the lane resumes (2026-08-08)
+
+Evidence — what this seat OPENED: the step-0 halt report in full
+([E14-handoff8-step0-halt.md](E14-handoff8-step0-halt.md), `c36a30a`),
+the blind predictions
+([E14-handoff8-predictions.md](E14-handoff8-predictions.md), committed
+before any stroke, per the dispatch, even with the lane halted), and
+`STEP0_collar_repair_candidates.png` walked at 6× before anything below.
+
+**28a — THE WALK first, and the halt is RATIFIED.** Panel A carries the
+thin green line along the gold collar's top rim at both yaws; in B (the
+1,086 restored) it is gone and the rim reads gold; C (the 1,431
+restored) is inseparable from B at this seat's eye exactly as at the
+executor's; and **panel D decides the character of the question: red and
+cyan interleaved along ONE rim line** — the extra 350 are the same
+defect at smaller magnitude, not a second structure. The discipline was
+exact: the assert fired and the session stopped — no second reading of
+the floor was tried (choosing between readings by which one returns
+1,086 would tune a mask against the number it must hit — the executor's
+own words, and the retuning-refusal standard precisely), nothing was
+written to any live state (all SHAs unmoved), the predictions committed
+anyway, and both candidate masks preserved as flat atlas indices so the
+ruling picks by naming, not by re-deriving.
+
+**28b — the ledger, this seat, two entries.** (i) **Ruling 27c attached
+an outcome set's count to a descriptive predicate — a set's DESCRIPTION
+is not its GENERATOR.** The 1,086 was measured as *territory ∩
+forbidden-after ∩ ¬forbidden-before* (an outcome characterisation of a
+deterministic recorded operation); 27c restated it as three descriptive
+legs every member satisfies — and as a generator those legs admit 350
+more and exclude 5. Kin to the withdrawn-threshold law (*a condition
+whose stated derivation does not describe it was never a threshold*),
+one level down: **a ruling that names a mask names the predicate that
+PRODUCED its count, or ships the indices** — the executor's npz is the
+robust form, adopted as the practice. The count assert did exactly what
+it was written to do and **stays absolute** (their item 3, reaffirmed).
+(ii) **The handoff-8 path sketch was wrong and load-bearing**: it called
+`run/state/` current when the live state is `run/s1b/` — pointing the
+repair there would have dropped stroke 1's 4,344 texels from the lane.
+Falsified by SHA in the session's first five minutes (the
+inherited-claim law paying for itself); corrected in place in the
+dispatch this fold. Both errors were this seat's; ledger, beside 24j
+and 24l.
+
+**28c — the chroma-floor law's FOURTH firing is recorded at its
+source.** Handoff 7's §5 line "gold band share 100.0%" reads **99.5%**
+with the palette's own floor applied — five of the 1,086 sat below
+C\* 12 at stage 1b, where a hue is not a colour. Annotated in place at
+the handoff-7 report; it is the exact reason the count could not be
+re-derived from the description.
+
+**28d — THE REPAIR MASK IS RULED: the UNION, count asserted 1,436** —
+(territory ∩ z ≤ bottom-edge + 0.010 ∩ stage-1b gold 42–104 above
+C\* 12) ∪ (territory ∩ forbidden-after ∩ ¬forbidden-before) = 1,431 +
+5, disjoint by construction (the five fail the gold-above-floor leg).
+Grounds: (i) panel D and the magnitudes say the 350 are **the shallow
+end of the same arc** (median shift 12 levels against the deep end's
+24, same structure, same line, all drifted-owned and all rotated) —
+repairing by visibility threshold instead of by class would leave
+knowingly-shifted collar paint in the atlas when its accepted value is
+one command away; (ii) the outcome clause is a **located-defect
+predicate on a known, deterministic prior state** — the executor's own
+note, adopted: the tautology trap requires a selection tuned against
+results, not a set fully determined by a recorded operation before
+anyone looked; (iii) every restored value is accepted stage-1b paint,
+and stroke 1 touched neither candidate (measured: 0 of 4,344), so the
+repair is orthogonal to committed brush work. The op re-derives both
+legs, asserts all three counts (1,431 / 1,086 / union 1,436 — any
+other number HALTS), restores from `state0/`, prints its invariance
+(exactly the union changed; both SHAs), saves the pre-repair values as
+its named compensator, and verifies the line gone at 6× with the
+before/after crop staged.
+
+**28e — the ~20 residual forbidden px in the junction crop under BOTH
+candidates are the forbidden-BEFORE class** — pre-existing paint, not
+the re-projection's work, outside every candidate by the
+¬forbidden-before clause. Report-only per Ruling 17; read at HALT 2
+with location; correctly not chased.
+
+**28f — the lane RESUMES**: step 0 at the ruled union, then the seven
+strokes exactly as dispatched (nothing else in handoff 8 changes; the
+blind predictions already stand). Zero credits still; the re-roll
+budgets untouched; HALT 2 as dispatched.
+

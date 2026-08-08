@@ -113,7 +113,7 @@ The forbidden band 104–290 went 292 → 1,106 texels on the stone; orange 25�
 | inside the re-projected territory | **1,086 = 100.0%** |
 | z range | **0.4340 – 0.4364** (the stone spans 0.4340 – 0.4993) |
 | within 0.010 of the stone mask's BOTTOM edge | **1,086 = 100.0%** |
-| their hue BEFORE the rotation | median **76.0**; gold band 42–104 share **100.0%** |
+| their hue BEFORE the rotation | median **76.0**; gold band 42–104 share **100.0%** *(⚠ corrected 2026-08-08, Ruling 28c: 99.5% with the palette's own C\* 12 floor applied — five of the 1,086 sat below the floor at stage 1b, where a hue is not a colour. The chroma-floor law's fourth firing on this route, and the reason the count could not be re-derived from this description — see the step-0 halt.)* |
 
 **Every one of them was gold before the rotation.** The geometric stone mask's lower bound
 (z ≥ 0.4340) clips the bezel's lower arc where the **gold collar's** paint sits — the

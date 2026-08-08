@@ -971,18 +971,27 @@ where the deep-share lands after all seven.
 
 ### Step 0 — the collar-junction repair (Ruling 27c), before any stroke
 
-The re-projection rotated 1,086 texels of the GOLD COLLAR's paint (the
-stone mask's lower bound clips the bezel arc) into the forbidden band —
-the thin green line at the collar junction, visible at 6× in every view.
-The ruled repair: **re-derive the mask by the recorded predicate**
-(territory ∩ within 0.010 of the stone mask's bottom edge ∩ stage-1b hue
-in the gold band 42–104), **ASSERT the count is exactly 1,086** — any
-other count is a HALT, not a tune — then **restore exactly those texels'
-atlas values from `state0/`**, invariance printed (exactly the mask
-changed; both atlas SHAs recorded), the pre-repair values saved beside as
-the op's NAMED COMPENSATOR. The op lives in `tools/diagnostics/` (the 2a
-practice). Verify the green line is gone at 6× on one rendered view;
-stage the before/after crop in your report.
+**⚠ AMENDED IN PLACE by [Ruling 28](E14-ruling.md) (2026-08-08) — the
+count assert FIRED as armed: 27c's predicate yields 1,431 where the
+ruling asserted 1,086 (an outcome set's count attached to a descriptive
+predicate — this seat's error, 28b). The ruled mask is now THE UNION,
+count asserted 1,436**: (territory ∩ z ≤ bottom-edge + 0.010 ∩ stage-1b
+gold 42–104 above C\* 12) ∪ (territory ∩ forbidden-after ∩
+¬forbidden-before) — both legs re-derived, all three counts asserted
+(1,431 / 1,086 / 1,436; any other number HALTS). **And the path sketch
+below was wrong (28b-ii): the LIVE state is `run/s1b/`, not `run/state/`
+— `state/` is the pre-stroke-1 checkpoint; verify by SHA as the step-0
+session did.** The rest of the step stands as written:
+
+The re-projection rotated the GOLD COLLAR's paint (the stone mask's
+lower bound clips the bezel arc) toward green — the deep end crossed
+into the forbidden band (the visible line at the collar junction), the
+shallow end shifted within the gold band. Restore the ruled union's
+atlas values from `state0/`, invariance printed (exactly the union
+changed; both atlas SHAs recorded), the pre-repair values saved beside
+as the op's NAMED COMPENSATOR. The op lives in `tools/diagnostics/`
+(the 2a practice). Verify the green line is gone at 6× on one rendered
+view; stage the before/after crop in your report.
 
 ### The seven strokes — one at a time, in the ruled order
 
