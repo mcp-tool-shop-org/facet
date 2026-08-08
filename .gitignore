@@ -37,3 +37,17 @@ __pycache__/
 venv/
 .DS_Store
 Thumbs.db
+site/.astro/
+
+# THE HERMETIC TEST FIXTURE IS AN INPUT, NOT AN OUTPUT (E18 D2, commissioned by
+# E17 Ruling 3d). Same exception this file's own premise already makes for
+# canon/: "large and regenerable" is measured false here in the half that
+# matters — 40 KB total, and its whole purpose is that CI can run the write
+# head's losslessness WITHOUT the recorded trees. A fixture the repo does not
+# carry is a hermetic test that is not hermetic.
+#
+# Every rule above catches part of it: *.glb, *.png, *.npy by extension, and
+# `state/`/`prep/` by directory name. A directory excluded by name is never
+# descended into, so the negation has to re-include the tree itself, not only
+# the files in it.
+!tests/fixtures/**

@@ -1,0 +1,15 @@
+{
+ "_note": "synthetic hermetic fixture (E18 D2); one flat quad",
+ "hi": [
+  1.0,
+  0.6,
+  1.0
+ ],
+ "lo": [
+  1.0,
+  -0.6,
+  -1.0
+ ],
+ "maxabs": 1.0,
+ "res": 32
+}
