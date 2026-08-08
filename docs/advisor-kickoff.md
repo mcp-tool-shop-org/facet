@@ -1,5 +1,25 @@
 # Advisor kickoff
 
+> ⚠ **SUPERSEDED 2026-08-08 (night) — this kickoff has been consumed, and both of its
+> live items are closed.** **E19 is ruled** ([E19-ruling.md](experiments/E19-ruling.md)
+> — the treatment accepted, the release held on a stale-count repair, the five `[mcp]`
+> gates re-run on the landed server) and **E20 is ruled**
+> ([E20-ruling.md](experiments/E20-ruling.md), Rulings 5–12 — the coverage arc accepted
+> at 202 tests, all three seams taken, U6 scoped to 212 of 409 sites).
+>
+> Every count below states the record **as it stood when this was written** and is
+> correct as written — read it as the handoff it was, not as current state. Current
+> state lives in those two rulings and in the status table at
+> [docs/experiments/README.md](experiments/README.md). The next seat's relief is
+> written at this session's boundary.
+>
+> *This banner is the mechanism, not a note: `facet_index.py` special-cases this file,
+> and claims below a `SUPERSEDED` line are classified historical rather than
+> current-state. It was added because the sweep went **STALE on line 91** — the
+> kickoff told the incoming seat "Rulings 1-4 already there" and that seat then wrote
+> Rulings 5–12. E20 diagnosed the red test precisely and correctly refused to fix it,
+> because a stale row is the advisor's to rule and never the tool's to edit.*
+
 Paste into a fresh advisor session. Written 2026-08-08 (night) by the outgoing
 advisor, at the close of THE VERIFICATION DAY: the seat that ruled the MCP specs
 and both errand arcs, recorded the Director's placement words, transcribed his
