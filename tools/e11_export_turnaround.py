@@ -192,23 +192,33 @@ def write_indexed_png(path, class_map, palette=None):
         f"ANDON: {path} pixels changed through the indexed write"
 
 
-def view_products(caster, cam, claim_flat, owner_flat, out_dir, view_id, palette=None):
+def view_products(caster, cam, claim_flat, owner_flat, out_dir, view_id, palette=None,
+                  class_flat=None):
     """The exact per-view maps: indexed class render, owner slice, loss mask, shares.
 
     owner_flat=None means the asset has NO owner sidecar (W3) — owner products are
-    then honestly ABSENT, not synthesized (the spec's X2 clause verbatim)."""
+    then honestly ABSENT, not synthesized (the spec's X2 clause verbatim).
+
+    class_flat is the X4 addition: a per-texel class INDEX into `palette`, used
+    directly instead of the three-way claim mapping below. The longsword's
+    provenance atlas carries FIVE non-background classes (the stone kept as its own
+    sub-class, E14 Rulings 30/31b), which the 0/1..254/255 claim encoding cannot
+    express. Absent, every prior subject takes the identical code path."""
     palette = palette or CLAIM_CLASSES
     tex, hit = caster.texel_ids(cam)
     H, W = hit.shape
     cls = np.zeros((H, W), dtype=np.uint8)          # background
     ok = tex >= 0
     t = tex[ok]
-    cvals = claim_flat[t]
-    out = np.zeros(len(t), dtype=np.uint8)
-    out[cvals == 0] = 1
-    out[(cvals >= 1) & (cvals <= 254)] = 2
-    out[cvals == 255] = 3
-    cls[ok] = out
+    if class_flat is not None:
+        cls[ok] = class_flat[t]
+    else:
+        cvals = claim_flat[t]
+        out = np.zeros(len(t), dtype=np.uint8)
+        out[cvals == 0] = 1
+        out[(cvals >= 1) & (cvals <= 254)] = 2
+        out[cvals == 255] = 3
+        cls[ok] = out
 
     write_indexed_png(J(out_dir, f"prov_class_{view_id}.png"), cls, palette)
 
@@ -290,8 +300,9 @@ def owner_atlas_vs_sidecar(claim_flat, owner_flat, valid_flat):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--step0", action="store_true", help="one-view anchor; HALT on any digit")
-    ap.add_argument("--arm", choices=["X1", "X2", "X3"],
-                    help="X1: galleon superset; X2: W3 dense; X3: dragon dense")
+    ap.add_argument("--arm", choices=["X1", "X2", "X3", "X4"],
+                    help="X1: galleon superset; X2: W3 dense; X3: dragon dense; "
+                         "X4: longsword dense")
     ap.add_argument("--claim", help="anchored claim.npy (per-stroke replay; X1/step0)")
     ap.add_argument("--glb", default=J(PREP, "prep_uv.glb"),
                     help="the GLB emit renders with; the Step-0 byte anchor is what "
@@ -305,6 +316,10 @@ def main():
         if args.out == J(STROKE, "export", "turnaround"):
             args.out = J(r"E:\AI\training\facet_next\E13_stroke", "export", "turnaround")
         return arm_dragon(args)
+    if args.arm == "X4":
+        if args.out == J(STROKE, "export", "turnaround"):
+            args.out = J(r"E:\AI\training\facet_next\E14_strokes", "export", "turnaround")
+        return arm_longsword(args)
 
     assert args.claim, "ANDON: --claim is required for the galleon legs"
     claim = np.load(args.claim).reshape(-1)
@@ -616,6 +631,239 @@ def arm_dragon(args):
                "renders": renders},
               open(J(out_root, "x3_run.json"), "w"), indent=1)
     print(f"[X3] wrote {J(out_root, 'x3_run.json')}")
+    return 0
+
+
+# ─── X4: the longsword (E14), dataset asset #4 ───────────────────────────────
+# Fourth subject, fourth subject CLASS (character, ship, beast, prop), and the
+# first whose provenance atlas carries more than three classes. Rulings 30/31b
+# keep THE STONE as its own provenance sub-class — projected reference paint,
+# colour-corrected, never blended into the brush's numbers — so the class map is
+# six-valued (background + stage-1b projection + garnet re-projection + collar
+# repair + brush + dilation) and rides through view_products' class_flat path.
+#
+# The owner channel: NUMERIC present, display ABSENT — the dragon's configuration.
+# The array declared is stage 1b's, because it is the one that agrees EXACTLY with
+# the accepted asset's reference partition; the re-projection's own owner array
+# (the same six twins re-projected, whose atlas WRITE was restricted afterward but
+# whose owner sidecar never was — Ruling 27b's catch one layer over) disagrees and
+# rides undeclared beside it. Measured in the preflight below, not asserted.
+#
+# The camera set is READ FROM THE PROFILE at runtime. --profile is bound on every
+# emit and the 240x1024 frame asserted after each (Ruling 29c: an unprofiled emit
+# silently produces a 752-wide frame).
+
+LS_PREP = r"E:\AI\training\facet_next\E14_prep"
+LS_FINAL = r"E:\AI\training\facet_next\E14_strokes\run\final"
+LS_STAGE1 = J(LS_PREP, "stage1")
+LS_PROFILE = os.path.join(FACET, "profiles", "prop.json")
+LS_PALETTE = [("background", (16, 16, 18)),
+              ("stage1b_projection", (118, 146, 110)),
+              ("garnet_reprojection", (220, 60, 220)),
+              ("collar_repair", (40, 230, 230)),
+              ("brush", (240, 176, 48)),
+              ("dilation", (150, 90, 150))]
+# run/final/provenance_legend.json + E14 Ruling 31b, checked against the atlas.
+LS_MIX = {"stage1b_projection": 1588943, "garnet_reprojection": 66468,
+          "collar_repair": 1436, "brush": 75890, "dilation": 1929166}
+LS_VALID = 3661903
+# owner id k is the POSITIONAL index into stage 1b's six-view input list — NOT a
+# route view index (views 2 and 6 have no accepted twin, E14 Ruling 20). Verified
+# below against stage1b_provenance_legend.json's own per-view committed counts.
+LS_OWNER_VIEWS = [0, 1, 3, 4, 5, 7]
+LS_FRAME = (240, 1024)
+
+
+def longsword_class_from_colors():
+    """Exact 6-colour class map -> per-texel class index into LS_PALETTE."""
+    pa = np.asarray(Image.open(J(LS_FINAL, "provenance_atlas.png")).convert("RGB"))
+    flat = pa.reshape(-1, 3)
+    sel = {name: np.all(flat == rgb, axis=1) for name, rgb in LS_PALETTE}
+    n_other = flat.shape[0] - int(sum(s.sum() for s in sel.values()))
+    assert n_other == 0, f"ANDON: {n_other:,} texels outside the 6 declared class colours"
+    for name, want in LS_MIX.items():
+        got = int(sel[name].sum())
+        assert got == want, (
+            f"ANDON: provenance atlas has {got:,} {name} texels; the record "
+            f"(run/final/provenance_legend.json, E14 Ruling 31b) says {want:,}")
+    valid = int(sum(sel[n].sum() for n in LS_MIX))
+    assert valid == LS_VALID, f"ANDON: classes partition {valid:,} texels, not {LS_VALID:,}"
+    cls = np.zeros(flat.shape[0], dtype=np.uint8)
+    for i, (name, _rgb) in enumerate(LS_PALETTE):
+        if i:
+            cls[sel[name]] = i
+    print(f"[X4] class map from the exact 6-colour atlas; all five non-background "
+          f"class counts reproduce the record to the texel over {valid:,} valid")
+    return cls, pa, sel
+
+
+def arm_longsword(args):
+    out_root = args.out
+    os.makedirs(out_root, exist_ok=True)
+    print(f"[X4] longsword dense export -> {out_root}")
+
+    cls_flat, pa, sel = longsword_class_from_colors()
+    reference = sel["stage1b_projection"] | sel["garnet_reprojection"] | sel["collar_repair"]
+    n_ref = int(reference.sum())
+
+    # ── the owner sidecar, chosen on evidence and reported either way ──────────
+    owner = np.load(J(LS_STAGE1, "stage1b_atlas_owner.npy")).reshape(-1)
+    alt = np.load(J(r"E:\AI\training\facet_next\E14_strokes\garnet",
+                    "reproj_corrected", "atlas_owner.npy")).reshape(-1)
+    owner_report = {}
+    for tag, arr in (("stage1b", owner), ("reprojection", alt)):
+        own = arr >= 0
+        owner_report[tag] = {
+            "owned": int(own.sum()),
+            "reference_unowned": int((reference & ~own).sum()),
+            "owned_outside_reference": int((own & ~reference).sum()),
+            "ids": sorted(int(x) for x in np.unique(arr[own])),
+        }
+        print(f"[X4] owner sidecar [{tag}]: owned {owner_report[tag]['owned']:,}  "
+              f"reference unowned {owner_report[tag]['reference_unowned']:,}  "
+              f"owned outside reference {owner_report[tag]['owned_outside_reference']:,}")
+    # the dragon's ANDON, on the array this subject declares
+    unowned = owner_report["stage1b"]["reference_unowned"]
+    assert unowned == 0, (
+        f"ANDON: {unowned:,} reference texels carry sidecar owner -1 — the sidecar "
+        f"disagrees with the class map")
+    stray = owner_report["stage1b"]["owned_outside_reference"]
+    assert stray == 0, f"ANDON: {stray:,} texels outside the reference class carry an owner id"
+    assert owner_report["stage1b"]["ids"] == list(range(len(LS_OWNER_VIEWS))), \
+        f"ANDON: owner ids {owner_report['stage1b']['ids']} are not 0..{len(LS_OWNER_VIEWS)-1}"
+
+    # the id -> view mapping VERIFIED against stage 1b's own committed counts,
+    # never assumed: a consumer reading owner id 2 as "view 2" would read the
+    # EXCLUDED view (Ruling 20).
+    legend = json.load(open(J(LS_STAGE1, "stage1b_provenance_legend.json"), encoding="utf-8"))
+    for k, view in enumerate(LS_OWNER_VIEWS):
+        got = int((owner == k).sum())
+        want = int(legend["committed"][str(view)])
+        assert got == want, (
+            f"ANDON: owner id {k} covers {got:,} texels; stage 1b's legend records "
+            f"{want:,} committed for view {view} — the id->view mapping is not "
+            f"positional as assumed")
+    print(f"[X4] owner id -> view mapping VERIFIED positionally against stage 1b's "
+          f"legend: {dict(enumerate(LS_OWNER_VIEWS))}, every count exact; "
+          f"{n_ref:,} reference texels all owned")
+
+    # X-H3's lossless leg: truecolor provenance atlas -> indexed, pixel-identical.
+    idx = np.zeros(pa.shape[:2], dtype=np.uint8)
+    for i, (_, rgb) in enumerate(LS_PALETTE):
+        idx[np.all(pa == rgb, axis=-1)] = i
+    ipath = J(out_root, "provenance_atlas_indexed.png")
+    write_indexed_png(ipath, idx, LS_PALETTE)
+    back = np.asarray(Image.open(ipath).convert("RGB"))
+    assert np.array_equal(back, pa), "ANDON: indexed conversion is not lossless"
+    print(f"[X4] X-H3 lossless conversion: indexed 6-class atlas pixel-identical to "
+          f"the truecolor source through PLTE round-trip")
+
+    # fresh emit states, copied out of the read-only run tree (Ruling 32a: the
+    # accepted asset and everything under run/final/ is citable-only).
+    src_state = {"asset": J(LS_FINAL, "rstate_final"), "prov": J(LS_FINAL, "rstate_prov")}
+    states = {}
+    for ch, src in src_state.items():
+        st = J(out_root, "_state", ch)
+        os.makedirs(st, exist_ok=True)
+        for f in ("atlas.png", "holes.png", "styled_mask.npy"):
+            shutil.copyfile(J(src, f), J(st, f))
+        states[ch] = st
+    glb = J(LS_PREP, "prep_uv.glb")
+
+    prof = json.load(open(LS_PROFILE, encoding="utf-8"))
+    prod = prof["tools"]["cull_unseen.py"]["production"]["value"]
+    cams, seen = [], set()
+    for spec in prod.split(";"):
+        y, e = (float(x) for x in spec.split(","))
+        if (y, e) not in seen:
+            seen.add((y, e))
+            cams.append((y, e))
+    print(f"[X4] camera superset derived from profiles/prop.json: {len(cams)} cameras "
+          f"x {len(states)} channels")
+
+    caster = IdCaster(prep=LS_PREP)
+    anchors, renders, frames = [], [], set()
+    for (y, e) in cams:
+        vid = key_of(y, e)
+        dest = J(out_root, "views", vid)
+        os.makedirs(dest, exist_ok=True)
+        for ch in states:
+            jb = run_emit(states[ch], y, e, glb, prep=LS_PREP, profile=LS_PROFILE)
+            cj = json.load(open(J(jb, "cam.json")))
+            frames.add((cj["W"], cj["H"]))
+            assert (cj["W"], cj["H"]) == LS_FRAME, (
+                f"ANDON: {vid} {ch} emitted a {cj['W']}x{cj['H']} frame, not "
+                f"{LS_FRAME[0]}x{LS_FRAME[1]} — Ruling 29c's unprofiled-emit trap")
+            shutil.copyfile(J(jb, "render.png"), J(dest, f"{ch}.png"))
+            if ch == "asset":
+                shutil.copyfile(J(jb, "hit.png"), J(dest, "silhouette.png"))
+                shutil.copyfile(J(jb, "cam.json"), J(dest, "cam.json"))
+            # RECORDED-ARTIFACT ANCHOR: the eight route yaws were rendered through
+            # this same path for the Gate-1 sheets (handoff 9 step 4).
+            sub = {"asset": "render_final", "prov": "render_prov"}[ch]
+            rec = J(LS_FINAL, sub, f"flat_{int(y)}.png")
+            if e == 0 and float(y).is_integer() and os.path.exists(rec):
+                same = bytes_equal(J(dest, f"{ch}.png"), rec)
+                anchors.append({"view": vid, "channel": ch,
+                                "recorded": f"{sub}/flat_{int(y)}.png",
+                                "byte_identical": same})
+                if not same:
+                    a = np.asarray(Image.open(J(dest, f"{ch}.png")).convert("RGB"),
+                                   dtype=np.int16)
+                    b = np.asarray(Image.open(rec).convert("RGB"), dtype=np.int16)
+                    if a.shape == b.shape:
+                        dd = np.abs(a - b).max(axis=-1)
+                        print(f"[X4] ANCHOR MISMATCH {vid} {ch}: "
+                              f"{(dd > 0).sum():,} px differ, max {dd.max()} levels")
+                        anchors[-1]["px_differing"] = int((dd > 0).sum())
+                        anchors[-1]["max_levels"] = int(dd.max())
+                    else:
+                        print(f"[X4] ANCHOR MISMATCH {vid} {ch}: shapes "
+                              f"{a.shape} vs {b.shape}")
+        cam = json.load(open(J(dest, "cam.json")))
+        adm = view_products(caster, cam, None, owner, dest, vid,
+                            palette=LS_PALETTE, class_flat=cls_flat)
+        renders.append({"id": vid, "yaw": y, "el": e,
+                        "admission": adm["class_share_pct"]})
+        s = adm["class_share_pct"]
+        print(f"[X4] {vid}: stage1b {s['stage1b_projection']:.2f}%  "
+              f"garnet {s['garnet_reprojection']:.2f}%  repair {s['collar_repair']:.2f}%  "
+              f"brush {s['brush']:.2f}%  dilation {s['dilation']:.2f}%  "
+              f"figure {adm['figure_px']:,}px", flush=True)
+
+    n_anch = sum(1 for a in anchors if a["byte_identical"])
+    print(f"[X4] recorded-artifact anchors: {n_anch}/{len(anchors)} byte-identical")
+    print(f"[X4] frames emitted: {sorted(frames)} (asserted {LS_FRAME} on every emit)")
+
+    # X-H1 purity spot check: a SECOND fresh state, a different directory, one
+    # camera. (Comparing a file to itself would return identical however the export
+    # behaved — the two files below are produced independently.)
+    st2 = J(out_root, "_state", "asset_rerun")
+    os.makedirs(st2, exist_ok=True)
+    for f in ("atlas.png", "holes.png", "styled_mask.npy"):
+        shutil.copyfile(J(src_state["asset"], f), J(st2, f))
+    jb2 = run_emit(st2, 0.0, 0.0, glb, prep=LS_PREP, profile=LS_PROFILE)
+    pure = bytes_equal(J(out_root, "views", key_of(0, 0), "asset.png"),
+                       J(jb2, "render.png"))
+    print(f"[X4] X-H1 spot check (independent fresh state, yaw 0): byte-identical {pure}")
+    if not pure:
+        print("[X4] HALT — the export is not a pure function on this subject.")
+        return 1
+
+    json.dump({"cameras": len(cams), "channels": sorted(states),
+               "frame": list(LS_FRAME),
+               "owner_channel": "numeric present (view_owner.npy = stage 1b's "
+                                "owner sidecar + per-view owner_id/loss_mask); no "
+                                "display atlas exists for this subject and none was "
+                                "synthesized",
+               "owner_id_to_view": {str(k): v for k, v in enumerate(LS_OWNER_VIEWS)},
+               "owner_sidecar_comparison": owner_report,
+               "class_palette": [{"name": n, "rgb": list(rgb)} for n, rgb in LS_PALETTE],
+               "recorded_anchors": anchors,
+               "purity_spot_check_byte_identical": bool(pure),
+               "renders": renders},
+              open(J(out_root, "x4_run.json"), "w"), indent=1)
+    print(f"[X4] wrote {J(out_root, 'x4_run.json')}")
     return 0
 
 

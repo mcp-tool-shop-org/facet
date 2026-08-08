@@ -24,6 +24,8 @@ import json
 import os
 import shutil
 
+import numpy as np
+
 J = os.path.join
 STROKE = r"E:\AI\training\facet_next\E04_stroke"
 W3_ROOT = r"E:\AI\training\facet_E08\ARMB"
@@ -356,11 +358,337 @@ SUBJECTS["dragon"] = {
     "run_json": "x3_run.json",
     "class_palette": [("background", (16, 16, 18)), ("reference", (118, 146, 110)),
                       ("brush", (240, 176, 48)), ("dilation", (150, 90, 150))],
+    "palette_fn": dragon_palette,
+    "tone_ops_fn": build_tone_operands,
+    "ref_view": DRAGON_REF_VIEW,
+    "ref_view_table": J(r"E:\AI\training\facet_next\E12_gate0", "frame_00003.json"),
 }
 SUBJECTS["dragon"]["copies"]["provenance_atlas.png"] = J(
     SUBJECTS["dragon"]["tree"], "provenance_atlas_indexed.png")
 for _s in ("ship", "w3"):
     SUBJECTS[_s]["owner_display"] = SUBJECTS[_s]["owner_channel"]
+
+
+# ── the longsword: dataset asset #4, the route's fourth subject CLASS ────────
+# Schema 1.3.0. Two things are new here and both are the subject's, not the
+# contract's: the provenance atlas carries FIVE non-background classes (the stone
+# kept as its own sub-class, Rulings 30/31b), and the tone transform is a MASKED
+# PER-VIEW HUE ROTATION on four of eight generation views rather than the dragon's
+# whole-figure Lab statistics transfer. The contract's fields take honest values
+# for it (E14 handoff 10 P8, registered before this was written).
+
+LS_ROOT = r"E:\AI\training\facet_next\E14_strokes"
+LS_FINAL = J(LS_ROOT, "run", "final")
+LS_GARNET = J(LS_ROOT, "garnet")
+LS_PREP = r"E:\AI\training\facet_next\E14_prep"
+LS_TWINS = J(LS_PREP, "twins", "out")
+LS_CLAY = J(LS_PREP, "renders")
+
+# Views 2 and 6 have NO accepted twin (E14 Ruling 20 — the Director's own overrule
+# excluded view 6; view 2 was never accepted), so six pairs, not eight.
+LS_VIEWS = [0, 1, 3, 4, 5, 7]
+# THE APPLIED SET (E14 Ruling 26c/5): the four DRIFTED twins go in corrected at the
+# ruled rotations; the garnet pair (0/4) goes in UNROTATED — "the *original* files,
+# not my corrected copies" (E14-handoff7-garnet-reprojection-report.md §2). The
+# corrected 0/4 artifacts exist as the derivation's NEAR-NO-OP CONTROLS and are
+# recorded as computed-not-applied, never as projection sources.
+LS_ROTATED = {1: 51.80, 3: 34.47, 5: 55.45, 7: 48.01}
+LS_CONTROLS = [0, 4]
+LS_REF_VIEW = 0        # verified against E14_prep/masks/silhouettes.json at emit
+
+
+def longsword_palette():
+    """The palette block, READ from canon and translated at the boundary.
+
+    canon/E14-longsword-palette.json suspends BOTH gate bounds (E14 Ruling 17d:
+    report-only, no clean baseline until this subject's own twins existed). Fourth
+    application of the E04 Ruling 29 pattern."""
+    src = J(FACET_REPO, "canon", "E14-longsword-palette.json")
+    c = json.load(open(src, encoding="utf-8"))
+    gate = c["gate"]
+    assert gate["max_offpalette_blob_px"] is None and gate["max_offpalette_pct"] is None, (
+        "ANDON: canon now carries a measured bound — the suspension translation "
+        "below would silently overwrite it")
+    lav = [b for b in c["allowed_bands"] if b["name"] == "lavender-rim"]
+    assert len(lav) == 1, "ANDON: the lavender-rim admission is not in canon's allowed_bands"
+    return {
+        "source": "E:/AI/facet/canon/E14-longsword-palette.json",
+        "min_chroma": c["min_chroma"],
+        "allowed_bands": [{"name": b["name"], "hue_deg": list(b["hue_deg"])}
+                          for b in c["allowed_bands"]],
+        "gate": {"max_offpalette_pct": gate["max_offpalette_pct"],
+                 "max_offpalette_blob_px": 16777216},
+        "_max_offpalette_blob_px_IS_A_SUSPENSION_ENCODING":
+            "NOT A DERIVED BOUND AND NOT A THRESHOLD. canon/E14-longsword-palette.json "
+            "declares BOTH bounds null on purpose (E14 Ruling 17d: this subject had no "
+            "clean twin baseline when its bands were derived, and its only known-bad "
+            "artifact fails by OCCUPANCY - gold on the blackened-iron crossguard - which "
+            "a colour-not-placement gate is structurally blind to). The sdlab schema "
+            "requires an integer here while allowing null for max_offpalette_pct, so this "
+            "tool TRANSLATES the suspension at the boundary into 16777216 - the whole "
+            "4096x4096 atlas, a value no connected component can reach - so the consumer "
+            "receives a bound that gates nothing and cannot be mistaken for a measured "
+            "threshold. Canon keeps its nulls. Fourth application of the E04 Ruling 29 "
+            "pattern.",
+        "_the_lavender_rim_band_is_a_RIM_ADMISSION_not_a_material":
+            "It IS exported (canon puts it in allowed_bands, which palette_gate.py reads - "
+            "unlike the dragon's suspended blue-violet stratum, which canon deliberately "
+            "keeps in a key the gate does not read). E14 Ruling 17c admitted it so the "
+            "gate's numbers mean something on accepted work: the realised backdrop sits at "
+            "C* 32.6-37.1, far above the floor, so its antialiased rim mixing is a real "
+            "above-floor hue population INSIDE the silhouette. It covers NO declared "
+            "material - 92.8% of its support is rim pixels at median depth 1.00 px, against "
+            "wine at 8.0% and gold at 0.3%. The blindness it buys (interior backdrop-family "
+            "arrivals, and a DRIFTED declared material - the gem did exactly that at seed "
+            "770701) is watched by the standing DEPTH diagnostic, not by hue.",
+        "_the_perimeter_law": c["_the_perimeter_law_bites_hardest_here"]
+            if "_the_perimeter_law_bites_hardest_here" in c else None,
+    }
+
+
+def build_ls_tone_operands(tree, no_copy=False):
+    """Assemble the operands of the GARNET RE-PROJECTION's hue rotation.
+
+    Two recorded files hold the same operand and the assembly ASSERTS they agree:
+    garnet_operands_final.json's per-view rows and T3_rotations.npy's array. Every
+    row is carried verbatim; the four APPLIED rows are separated from the two
+    COMPUTED-NOT-APPLIED controls, because the ruled disposition (Ruling 26c/5) is
+    that the garnet pair went in unrotated and a reader must not count six.
+
+    The claims the manifest makes about this transform are checked here against the
+    file rather than asserted: C* and L identical before and after in every row is
+    what makes `space: CIELAB` (a rotation about the achromatic axis) and
+    `reversible: true` sourced statements rather than adjectives."""
+    src = J(LS_GARNET, "garnet_operands_final.json")
+    ops = json.load(open(src, encoding="utf-8"))
+    rot = np.load(J(LS_GARNET, "T3_rotations.npy"))
+    rot_by_view = {int(v): float(d) for v, d in rot}
+
+    rows, controls = {}, {}
+    for view in LS_VIEWS:
+        key = f"T3|{view}"
+        row = ops["T3_hue_rotation"].get(key)
+        assert row is not None, f"ANDON: garnet_operands_final.json has no row '{key}'"
+        assert row["view"] == view, f"ANDON: row {key} carries view {row['view']}"
+        assert view in rot_by_view, f"ANDON: T3_rotations.npy has no row for view {view}"
+        assert abs(row["rotation_deg"] - rot_by_view[view]) < 1e-9, (
+            f"ANDON: view {view} rotation is {row['rotation_deg']} in the operands JSON "
+            f"and {rot_by_view[view]} in T3_rotations.npy — two records of one operand "
+            f"disagree")
+        assert row["C_before"] == row["C_after"] and row["L_before"] == row["L_after"], (
+            f"ANDON: view {view} moved C* or L ({row['C_before']}->{row['C_after']}, "
+            f"{row['L_before']}->{row['L_after']}) — the transform is not the "
+            f"hue-only rotation the manifest declares")
+        tagged = dict(row, _source_file="garnet_operands_final.json", _source_key=key)
+        if view in LS_ROTATED:
+            assert abs(row["rotation_deg"] - LS_ROTATED[view]) < 1e-9, (
+                f"ANDON: view {view} rotation {row['rotation_deg']} is not the ruled "
+                f"{LS_ROTATED[view]} (E14 Ruling 26c/5)")
+            png = f"TWIN_swordclay_{view}_garnet.png"
+            p = J(LS_GARNET, "corrected", png)
+            assert os.path.exists(p), f"ANDON: corrected twin {p} is missing"
+            tagged.update(_applied=True, _projection_source=f"_operands_sources/{png}",
+                          _projection_source_sha256=sha256(p))
+            rows[f"view_{view}"] = tagged
+        else:
+            tagged.update(_applied=False, _why=(
+                "COMPUTED AS A NEAR-NO-OP CONTROL AND DELIBERATELY NOT APPLIED. E14 "
+                "Ruling 26c/5: the garnet pair's stones are the identity family "
+                "already, and rotating accepted-family paint toward the reference's "
+                "exact mean would 'correct' the medium's own roll variance (the "
+                "measured ~25 deg same-seed floor), which is not a defect. The "
+                "re-projection consumed the ORIGINAL files for these two views "
+                "(E14-handoff7-garnet-reprojection-report.md section 2)."))
+            controls[f"view_{view}"] = tagged
+    assert sorted(rows) == [f"view_{v}" for v in sorted(LS_ROTATED)], \
+        f"ANDON: applied set is {sorted(rows)}, not the four ruled views"
+    worst_control = max(controls[k]["median_dE_stone"] for k in controls)
+    best_applied = min(rows[k]["median_dE_stone"] for k in rows)
+    assert worst_control < best_applied, (
+        f"ANDON: a not-applied control moved the stone more ({worst_control}) than the "
+        f"smallest applied rotation ({best_applied}) — 'near-no-op' is not what these "
+        f"rows describe")
+
+    ref = dict(ops["reference"], view_index=LS_REF_VIEW)
+    assert os.path.basename(ref["path"].replace("\\", "/")) == \
+        f"PAIR_swordclay_{LS_REF_VIEW}.png", \
+        f"ANDON: the reference path {ref['path']} is not the pair's view {LS_REF_VIEW}"
+
+    sources = {"garnet_operands_final.json": J(LS_GARNET, "garnet_operands_final.json"),
+               "T3_rotations.npy": J(LS_GARNET, "T3_rotations.npy"),
+               "garnet_derivation.json": J(LS_GARNET, "garnet_derivation.json")}
+    sources.update({f"TWIN_swordclay_{v}_garnet.png":
+                    J(LS_GARNET, "corrected", f"TWIN_swordclay_{v}_garnet.png")
+                    for v in LS_ROTATED})
+    shas = {n: sha256(p) for n, p in sources.items()}
+
+    out = {
+        "_what":
+            "The per-view operands of THE GARNET RE-PROJECTION's hue rotation (E14 "
+            "Ruling 25d, operands RULED at 26c) — the deterministic, generation-free "
+            "colour operation that produced four of the six projection sources the "
+            "stone territory's paint came from. T3: a per-view rotation of hue about "
+            "the achromatic axis with C* and L preserved exactly, computed over each "
+            "twin's stone mask above the C* 12.0 chroma floor, toward the accepted "
+            "pair's view-0 stone as reference, by the UNWEIGHTED CIRCULAR MEAN of the "
+            "unit chromatic vector (an arithmetic median of hues reported +49.1 deg "
+            "where the true direction was -8.4 — garnet straddles the 0/360 wrap).",
+        "_scope_stated_exactly":
+            "FOUR of eight generation views (1/3/5/7 — the drifted twins), inside the "
+            "stone mask only, reaching 67,904 atlas texels = 1.854% of valid. Views "
+            "0 and 4 carry COMPUTED rotations in _computed_not_applied below and went "
+            "into the projection UNROTATED. Views 2 and 6 have no accepted twin at "
+            "all. This is NOT a whole-figure transform.",
+        "_assembled_from": {n: {"path": f"_operands_sources/{n}", "sha256": shas[n]}
+                            for n in sources},
+        "_the_recorded_invocation":
+            "E:/AI/facet/docs/experiments/E14-handoff7-garnet-reprojection-report.md "
+            "(the corrected M2 run, RATIFIED at E14 Ruling 27) — the restricted write "
+            "whose set was territory AND holes exactly, 0 styled texels touched, "
+            "16,709,312 outside texels byte-identical.",
+        "_chroma_floor": ops["chroma_floor"],
+        "_hue_statistic": ops["hue_statistic"],
+        "_reference": ref,
+        "views": rows,
+        "_computed_not_applied": controls,
+        "_rim": ops.get("rim"),
+    }
+
+    dest_dir = J(tree, "_operands_sources")
+    path = J(tree, "tone_transform_operands.json")
+    if no_copy:
+        for name in sources:
+            p = J(dest_dir, name)
+            assert os.path.exists(p), f"ANDON: --no-copy but {p} is missing"
+            assert sha256(p) == shas[name], f"ANDON: {p} no longer matches its source"
+        assert os.path.exists(path), f"ANDON: --no-copy but {path} is missing"
+        assert open(path, encoding="utf-8").read() == json.dumps(out, indent=1), \
+            f"ANDON: {path} differs from what this tool would assemble"
+        print(f"[manifest] tone operands VERIFIED in place (read-only)")
+        return "tone_transform_operands.json"
+    os.makedirs(dest_dir, exist_ok=True)
+    for name, p in sources.items():
+        shutil.copyfile(p, J(dest_dir, name))
+        assert sha256(J(dest_dir, name)) == shas[name], \
+            f"ANDON: copy of {name} changed bytes"
+    with open(path, "w", encoding="utf-8") as fh:
+        json.dump(out, fh, indent=1)
+    print(f"[manifest] tone operands assembled: {len(rows)} APPLIED rotations "
+          f"(views {sorted(LS_ROTATED)}), {len(controls)} computed-not-applied "
+          f"controls, both records of every rotation agreeing, C* and L identical "
+          f"before/after in every row")
+    return "tone_transform_operands.json"
+
+
+SUBJECTS["longsword"] = {
+    "tree": J(LS_ROOT, "export", "turnaround"),
+    "staged_manifest": None,
+    "asset_id": "e14_longsword_dense",
+    "schema_version": "1.3.0",
+    "identity": {"subject_name": "longsword"},
+    # E12 Ruling 10b's law on this subject's own register: the Director's sentence
+    # at designation day one ("Ultra-realistic, no LoRA" — E14 Ruling 5a), EARNED at
+    # Ruling 32a. The terms are prop.json's own prompt tail, verbatim.
+    "style": {
+        "register": {
+            "terms": ["ultra-realistic", "worn metal", "harsh directional light"],
+            "ruling": "E14 Ruling 5a; EARNED at E14 Ruling 32a",
+            "record": "E:/AI/facet/canon/LONGSWORD-IDENTITY.md STYLE-SUPPLIED; "
+                      "E:/AI/facet/profiles/prop.json restylize_views.py.prompt tail; "
+                      "E:/AI/facet/docs/style-registers.md",
+        },
+        "lora": {"declared": "none"},
+    },
+    "tone_transform": {
+        "kind": "hue-rotation",
+        "space": "CIELAB",
+        "scope": "stone-mask on four of eight generation views (1/3/5/7), above the "
+                 "C* 12.0 chroma floor; 67,904 atlas texels = 1.854% of valid",
+        "reversible": True,
+        "record": "E:/AI/facet/docs/experiments/E14-ruling.md Rulings 25d (the "
+                  "mechanism — the stone leaves the generation path), 26c (the five "
+                  "operands decisions: treatment T3, whole-mask population, no chroma "
+                  "operand, unweighted circular mean, six twins with the garnet pair "
+                  "UNROTATED), 27 (the run ratified). A per-view rotation of hue about "
+                  "the achromatic axis with C* and L preserved exactly — NOT the "
+                  "dragon's whole-figure lab-stats-transfer. sdlab records this claim "
+                  "and verifies neither application nor reversibility, which is the "
+                  "seam.",
+    },
+    "render_derivation": {"kind": "emit", "generated": False,
+                          "record": "E11 Ruling 2"},
+    "owner_note":
+        "Stage 1b's per-texel view-owner sidecar. OWNER VALUES ARE POSITIONAL INDICES "
+        "INTO THE SIX-VIEW INPUT LIST [0,1,3,4,5,7], NOT route view indices — id 2 is "
+        "view 3 and id 5 is view 7; views 2 and 6 have no accepted twin (E14 Ruling "
+        "20). Verified positionally against stage1b_provenance_legend.json's own "
+        "per-view committed counts, every count exact. It owns exactly the 1,656,847 "
+        "reference-class texels (stage-1b projection + garnet re-projection + collar "
+        "repair) with zero owned outside them.",
+    "blocks": {
+        "source": "facet/E14",
+        "acceptance": {
+            "gate": "gate-1",
+            "verdict": "accepted",
+            "date": "2026-08-08",
+            "record": "E:/AI/facet/docs/experiments/E14-ruling.md Ruling 32 "
+                      "(\"Fantastic! I accept\") - judged artifact: "
+                      "E14_strokes/run/final/longsword_hero.glb at the Director's own "
+                      "zoom in Blender, three screenshots returned with the verdict "
+                      "(the hero diagonal; near edge-on from the pommel down - the "
+                      "ribbon the whole stroke lane existed for, continuous steel to "
+                      "the tip at his own zoom; the hilt from above at the fixture's "
+                      "five elements). The route's FOURTH accepted asset and its "
+                      "fourth subject class - character, ship, beast, prop - at zero "
+                      "credits across the entire arc.",
+            "by": "director",
+        },
+        "captions": {
+            "subject": "a tip-standing longsword with a battle-worn steel blade and a "
+                       "raised central ridge, a blackened iron crossguard, a gold "
+                       "diamond boss at the crossing, gold collar rings, an oxblood "
+                       "leather grip wrap, and a dark garnet gem pommel",
+            "style_trigger": None,
+            "domain_tag": "3d asset",
+        },
+    },
+    "copies": {
+        "mesh.glb": J(LS_FINAL, "longsword_hero.glb"),
+        "atlas.png": J(LS_FINAL, "atlas_final.png"),
+        "provenance_atlas.png": None,   # filled below: the X4-proven indexed file
+        "view_owner.npy": J(LS_PREP, "stage1", "stage1b_atlas_owner.npy"),
+        "styled_mask.npy": J(LS_FINAL, "styled_mask.npy"),
+        # item 6: six clay <-> styled-twin pairs. The twin side is the ACCEPTED twin
+        # AS GENERATED — what stage 1b projected, and the source of 1,588,943 of the
+        # 1,656,847 reference texels. The four hue-corrected twins are the tone
+        # transform's OUTPUTS and ride in _operands_sources/ with their shas.
+        **{f"pair_clay_y+{v*45:03d}_e+00.png": J(LS_CLAY, f"swordclay_{v}.png")
+           for v in LS_VIEWS},
+        **{f"pair_twin_y+{v*45:03d}_e+00.png": J(LS_TWINS, f"TWIN_swordclay_{v}.png")
+           for v in LS_VIEWS},
+    },
+    "pairs": {f"y+{v*45:03d}_e+00": {"clay": f"pair_clay_y+{v*45:03d}_e+00.png",
+                                     "twin": f"pair_twin_y+{v*45:03d}_e+00.png"}
+              for v in LS_VIEWS},
+    "prov_atlas_encoding": "indexed",
+    "owner_channel": True,
+    "owner_display": False,   # no owner display atlas was ever built for this subject
+    "run_json": "x4_run.json",
+    # FIVE non-background classes: Rulings 30/31b keep the stone as its own
+    # provenance sub-class, never blended into the brush's numbers.
+    "class_palette": [("background", (16, 16, 18)),
+                      ("stage1b_projection", (118, 146, 110)),
+                      ("garnet_reprojection", (220, 60, 220)),
+                      ("collar_repair", (40, 230, 230)),
+                      ("brush", (240, 176, 48)),
+                      ("dilation", (150, 90, 150))],
+    "palette_fn": longsword_palette,
+    "tone_ops_fn": build_ls_tone_operands,
+    "ref_view": LS_REF_VIEW,
+    "ref_view_table": J(LS_PREP, "masks", "silhouettes.json"),
+}
+SUBJECTS["longsword"]["copies"]["provenance_atlas.png"] = J(
+    SUBJECTS["longsword"]["tree"], "provenance_atlas_indexed.png")
 
 
 def sha256(path):
@@ -373,6 +701,29 @@ def sha256(path):
 
 def safe_id(job_key):
     return job_key.replace("+", "")
+
+
+def verify_ref_view(table_path, ref_view):
+    """The tone transform's reference VIEW INDEX -> yaw, checked against the
+    recorded frame table rather than asserted from memory (E11 addenda 4's explicit
+    instruction: a reference pointing at the wrong camera is a false provenance
+    claim). Returns the verified yaw; the render id is then DERIVED from it through
+    the same construction the render ids come from."""
+    t = json.load(open(table_path, encoding="utf-8"))
+    step = float(t["step"])
+    views = t["views"]
+    if isinstance(views, dict):
+        row = views[str(ref_view)]
+        yaw = float(row["yaw"] if isinstance(row, dict) else row)
+    else:
+        assert ref_view in views, f"ANDON: {table_path} records no view {ref_view}"
+        yaw = ref_view * step
+    assert abs(yaw - ref_view * step) < 1e-9, (
+        f"ANDON: {table_path} puts view {ref_view} at yaw {yaw}, not {ref_view*step} "
+        f"(step {step}) — do not re-derive, halt")
+    print(f"[manifest] reference view {ref_view} = yaw {yaw:g}, verified against "
+          f"{os.path.basename(table_path)} (step {step:g})")
+    return yaw
 
 
 def main():
@@ -395,7 +746,7 @@ def main():
     else:
         b = S["blocks"]
         staged = {"asset": {"source": b["source"]}, "acceptance": b["acceptance"],
-                  "palette": dragon_palette(), "captions": b["captions"]}
+                  "palette": S["palette_fn"](), "captions": b["captions"]}
     run = json.load(open(J(tree, S["run_json"]), encoding="utf-8"))
 
     ledger = {}
@@ -445,8 +796,9 @@ def main():
             "id": "view_owner", "space": "texture", "encoding": "npy",
             "categorical": False, "path": "view_owner.npy",
             "dtype": "|i1", "shape": [4096, 4096],
-            "note": staged["channels"][1]["note"] if len(staged.get("channels", [])) > 1
-                    else "the native stage-1 view-owner sidecar"})
+            "note": S.get("owner_note") or (
+                staged["channels"][1]["note"] if len(staged.get("channels", [])) > 1
+                else "the native stage-1 view-owner sidecar")})
     if S["owner_display"]:
         channels.append({
             "id": "owner_view", "space": "render", "encoding": "rgb",
@@ -494,9 +846,13 @@ def main():
         # provenance dangles. Derived from the ruled reference VIEW INDEX through
         # the same key_of/safe_id construction the render ids come from — never
         # typed as a literal.
-        ref_vid = f"y+{DRAGON_REF_VIEW * 45:03d}_e+00"
+        ref_yaw = verify_ref_view(S["ref_view_table"], S["ref_view"])
+        ref_vid = f"y+{int(round(ref_yaw)):03d}_e+00"
         tt["reference"] = safe_id(ref_vid)
-        tt["operands"] = build_tone_operands(tree, no_copy=args.no_copy)
+        assert tt["reference"] in {r["id"] for r in renders}, (
+            f"ANDON: the tone transform's reference {tt['reference']} is not a render "
+            f"id this manifest declares — dangling provenance")
+        tt["operands"] = S["tone_ops_fn"](tree, no_copy=args.no_copy)
         asset["tone_transform"] = tt
     if S.get("render_derivation"):
         asset["render_derivation"] = S["render_derivation"]
