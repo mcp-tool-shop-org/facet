@@ -216,10 +216,20 @@ for i, p in enumerate(args.glb):
           f"watertight {r['watertight']} | rect {r['face_rect_faces']:,}f "
           f"density {r['face_rect_density']:,.0f} | curv_var {r['face_curvature_var']:.6g}",
           flush=True)
-    if not r["up_axis_dominant"]:
-        print(f"[stats] WARNING {r['label']}: vertical extent is not the largest "
-              f"({r['extent_blender']}) — the front-view rect may not be on the head",
-              flush=True)
+    # E16 Ruling 2 (Ruling 2d's repair): the warning fires on the HONEST
+    # condition alone - the face rect exceeding the figure's own silhouette
+    # area, which no face readout can do. The old `up_axis_dominant` proxy leg
+    # is GONE: a tip-standing prop passes it (the sword stood vertical at
+    # rect_frac 1.90 and stayed silent) while a ship and a dragon fail it for
+    # being the shape they are - orientation, not whether a face-shaped
+    # question applies. The subject-class question lives in the profiles,
+    # which answer it with provenance. The `up_axis_dominant` FIELD stays in
+    # the JSON untouched; only the warning leg moved.
+    if r["rect_frac_of_figure"] > 1:
+        print(f"[stats] WARNING {r['label']}: the front-view face rect covers "
+              f"{r['rect_frac_of_figure']:.2f}x the figure's own silhouette area "
+              f"- it cannot be measuring a face; treat this mesh's face-rect "
+              f"statistics as not-a-face-readout", flush=True)
     if r["median_tri_cells"] > 1.5:
         print(f"[stats] WARNING {r['label']}: median triangle spans "
               f"{r['median_tri_cells']:.2f} occupancy cells — silhouette area is "
