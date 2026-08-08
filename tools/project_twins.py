@@ -28,6 +28,7 @@ import argparse
 import sys as _sys, os as _os
 _sys.path.insert(0, _os.path.dirname(_os.path.abspath(__file__)))
 import subject_profile
+import mask_geometry
 import json
 import os
 
@@ -385,23 +386,10 @@ def srgb_to_lab(rgb):
                      200 * (fx[..., 1] - fx[..., 2])], axis=-1)
 
 
-def local_thickness(dist):
-    """Half-width of the structure each pixel belongs to.
-
-    `dist` is the distance transform of the figure mask, so dist(c) is the radius of
-    the largest disc centred at c that fits inside the figure, and a pixel p belongs to
-    that disc when ||p - c|| <= dist(c). Taking the largest such disc over all c gives
-    the local thickness (Hildebrand & Ruegsegger). Evaluated with one EDT per integer
-    radius band rather than an explicit disc dilation, which would be O(r^2) per pixel.
-    """
-    R = np.zeros_like(dist, dtype=np.float32)
-    for r in range(int(np.ceil(dist.max())), 0, -1):
-        core = dist >= r
-        if not core.any():
-            continue
-        cover = distance_transform_edt(~core) <= r
-        R[cover & (R == 0)] = r
-    return R
+# local_thickness moved to tools/mask_geometry.py for E16-10, so texpass_iter's
+# A3 port uses THIS model rather than a second copy of it. Body unchanged; the
+# twin-projection anchor was re-run across the extraction and did not move.
+local_thickness = mask_geometry.local_thickness
 
 
 def bilinear(img, x, y):

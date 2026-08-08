@@ -25,6 +25,7 @@ import argparse
 import sys as _sys, os as _os
 _sys.path.insert(0, _os.path.dirname(_os.path.abspath(__file__)))
 import subject_profile
+import mask_geometry
 import json
 import os
 import shutil
@@ -74,6 +75,19 @@ ap.add_argument("--facing-min", type=float, default=0.25,
 ap.add_argument("--edge-dist", type=float, default=4.0,
                 help="commit: reject brush pixels this close to the figure edge — "
                      "they carry background-grey mix")
+ap.add_argument("--edge-mode", default="global", choices=["global", "local"],
+                help="E14 Ruling 24c, the A3 port. `global` (DEFAULT) peels a fixed "
+                     "--edge-dist everywhere and is byte-identical to every commit "
+                     "this route has made. `local` bounds the peel by the structure's "
+                     "OWN half-width, min(--edge-dist, --edge-frac x local "
+                     "half-width), which is the A3 fix project_twins already carries "
+                     "and this tool was the missing consumer of. ADOPTED NOWHERE: the "
+                     "next subject's stroke-lane ruling opts in with its own evidence "
+                     "or does not.")
+ap.add_argument("--edge-frac", type=float, default=1.0 / 3.0,
+                help="--edge-mode local only: the fraction of a structure's own local "
+                     "half-width the peel may take. A3's bound; at 1/3 a bar of "
+                     "half-width R loses exactly e/R = 1/3 of its area at worst.")
 ap.add_argument("--bias", type=float, default=3e-3)
 ap.add_argument("--noffs", type=float, default=1.5e-3)
 ap.add_argument("--mask-dilate", type=int, default=9)
@@ -410,7 +424,56 @@ def commit(edited_path, cam_path):
               f"job predates Amendment 32's emit; the trust mask is NOT intersected",
               flush=True)
     dist_e = distance_transform_edt(fm_e > 0.5).astype(np.float32)
-    ok = bilin(dist_e, px, py) >= args.edge_dist
+    d_s = bilin(dist_e, px, py)
+    if args.edge_mode == "local":
+        # E14 Ruling 24c, the A3 port — OPT-IN, adopted nowhere. A fixed peel costs
+        # a structure a fraction of its own width, so the cost runs inversely with
+        # local feature width: 3.8 px off each side of a ~15 px blade is 51% of its
+        # half-width, while the same peel is 4% of a torso. The bound is the
+        # structure's OWN half-width, which needs no new input because the distance
+        # transform already carries it.
+        thick_s = bilin(mask_geometry.local_thickness(dist_e), px, py)
+        thr = np.minimum(args.edge_dist, args.edge_frac * thick_s)
+        # MASK MEMBERSHIP IS REQUIRED SEPARATELY, and leaving it implicit was a real
+        # defect in the first cut of this port: a candidate OUTSIDE the trust mask has
+        # d_s = 0 and thick_s = 0, so `d_s >= thr` reads 0 >= 0 and ADMITS it. The
+        # global branch excludes those only as a side effect of its constant being
+        # positive, so the local branch has to say it. Measured before the fix: 38,041
+        # texels committed against 4,344, most of them off-figure paint the guard
+        # exists to reject.
+        inside = bilin(fm_e, px, py) >= 0.5
+        ok = inside & (d_s >= thr)
+        # The invariant this introduces forecloses over-erosion BY CONSTRUCTION, so
+        # a halt aimed there would fire on correct work (E08 A3's lesson). Asserted
+        # as an implementation check, not gated on area.
+        assert bool(np.all(thr <= args.edge_frac
+                           * np.maximum(thick_s, 1e-6) + 1e-4)), (
+            "IMPLEMENTATION: threshold exceeded edge-frac x local half-width")
+        _in = thr[inside]
+        print(f"[commit] edge-mode LOCAL: threshold = min({args.edge_dist:.1f}px, "
+              f"{args.edge_frac:.3f} x local half-width); {int(inside.sum()):,} of "
+              f"{len(thr):,} candidates inside the trust mask, median threshold there "
+              f"{float(np.median(_in)) if len(_in) else 0.0:.2f}px "
+              f"[E14 Ruling 24c - OPT-IN, adopted nowhere]", flush=True)
+        # PER-STRUCTURE, because a global constant governing a local feature is the
+        # error this mode exists to undo, and an aggregate cannot show where it lands.
+        # Reported only; the mode changes nothing unless it is asked for.
+        _g = d_s >= args.edge_dist
+        print("[commit]   half-width band   candidates   global   local    delta",
+              flush=True)
+        for _a, _b, _nm in ((1, 2, "1-2px"), (2, 4, "2-4px"), (4, 8, "4-8px"),
+                            (8, 16, "8-16px"), (16, 32, "16-32px"),
+                            (32, np.inf, "32+px")):
+            _sel = inside & (thick_s >= _a) & (thick_s < _b)
+            _n = int(_sel.sum())
+            if not _n:
+                continue
+            _ng, _nl = int((_sel & _g).sum()), int((_sel & ok).sum())
+            print("[commit]   %-16s %10s %8s %8s %8s"
+                  % (_nm, f"{_n:,}", f"{_ng:,}", f"{_nl:,}", f"{_nl - _ng:+,}"),
+                  flush=True)
+    else:
+        ok = d_s >= args.edge_dist
     hidx, px, py = hidx[ok], px[ok], py[ok]
     col = bilin(edited, px, py).astype(np.float32)
     before = int((holes > 0.5).sum())

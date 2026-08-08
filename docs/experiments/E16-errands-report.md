@@ -581,6 +581,59 @@ original stash intact and untouched. The comparison was redone the way the rest
 of this batch does it — HEAD's tool copied into `tools/` and run directly — which
 never touches git state. **In a shared working tree, do not use the stash.**
 
+### E16-10 — the edge-dist A3 port, as an OPT-IN FLAG (Ruling 24c) · ANCHOR HELD
+
+**Repair.** `--edge-mode local` bounds the peel by the structure's own half-width,
+`min(--edge-dist, --edge-frac × local half-width)`. **`global` remains the
+default and is byte-identical**; the mode is adopted nowhere and the next
+subject's stroke-lane ruling opts in with its own evidence or does not.
+
+**One implementation, not two.** The port needs `local_thickness`, which lived in
+`project_twins`. `texpass_iter` cannot import that module (it parses argv at
+import), so the choice was a second copy or an extraction. E16-8's own commit
+message argues against the copy, so the function moved verbatim to
+`tools/mask_geometry.py` and both tools import it. **The projector was re-run
+across the extraction: all five outputs byte-identical.**
+
+**ANCHOR — the default must not move.**
+
+| check | result |
+|---|---|
+| recorded stroke 1, current tool, before any edit | `wrote 4,344 texels; holes 2,005,056 -> 2,000,712` — reproduces `s1b/commit.log` exactly |
+| `--edge-mode global` (default) after the change | **4,344 texels**, and `atlas.png` / `holes.png` / `styled_mask.npy` / `atlas.prev.png` all **BYTE-IDENTICAL** |
+| default re-checked again after every later edit | still 4,344, still byte-identical |
+| `project_twins` across the `local_thickness` extraction | all five outputs **BYTE-IDENTICAL** |
+
+**A real defect in my own first cut, caught by reading the number.** The first
+version committed **38,041** texels against 4,344 with a printed median threshold
+of **0.00 px**. A candidate outside the trust mask has `d_s = 0` *and*
+`thick_s = 0`, so `d_s >= thr` reads `0 >= 0` and admits it — the global branch
+excludes those only as a side effect of its constant being positive, so the local
+branch has to say so. Mask membership is now required explicitly. The 8.8×
+admission was not a result; it was the port being wrong, and the tell was a
+median threshold that could not be right.
+
+**The local mode's delta, REPORTED and adopted nowhere.** Stroke 1, yaw 0:
+**4,344 → 5,675 texels, +1,331 (+30.6%)**. Per structure — 7,754 of 43,987
+candidates lie inside the trust mask:
+
+| local half-width | candidates | global admits | local admits | delta |
+|---|---|---|---|---|
+| 1–2 px | 89 | **0** | 84 | **+84** |
+| 2–4 px | 159 | **0** | 158 | **+158** |
+| 4–8 px | 1,890 | 402 | 1,286 | **+884** |
+| 8–16 px | 2,920 | 1,681 | 1,877 | +196 |
+| 16–32 px | 2,687 | 2,261 | 2,261 | **+0** |
+
+That is the global-constant law's signature, measured rather than argued: the
+fixed 4 px peel admits **nothing at all** from the two thinnest strata and costs
+**exactly nothing** at 16–32 px. The cost of a fixed peel runs inversely with
+local feature width, and the median threshold inside the mask is still 4.00 px —
+the global constant binds wherever a structure is at least 12 px half-wide, so
+the mode is a relaxation only where the structure is genuinely thin.
+
+**Prediction: HELD** — byte-identical at the default.
+
 ---
 
 ## 2. A session-level finding: the working tree is shared
