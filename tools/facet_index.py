@@ -1553,7 +1553,7 @@ def claims(db_path):
                                     "count-claim-shaped; no family parses it"))
 
     print("=" * 78)
-    print("facet_index claims — the stale-claim sweep (REPORT-ONLY; always exits 0)")
+    print("facet_index claims - the stale-claim sweep (REPORT-ONLY; always exits 0)")
     print("=" * 78)
     print("\nMeasured, from the index:")
     for (arc, kind) in sorted(meas, key=lambda k: (k[0], k[1])):
@@ -1573,7 +1573,7 @@ def claims(db_path):
                  "%s %d" % (r["unit"], r["claimed"]),
                  "%s %s" % (r["unit"], r["measured"]),
                  r["file"], r["line"]))
-        print("%-14s   %s · %s · %s" % ("", r["fam"], r["arc"], r["why"]))
+        print("%-14s   %s - %s - %s" % ("", r["fam"], r["arc"], r["why"]))
 
     stale = [r for r in rows if r["verdict"] == "STALE"]
     amb = [r for r in rows if r["verdict"] == "AMBIGUOUS"]
@@ -1585,11 +1585,11 @@ def claims(db_path):
                  r["unit"], r["measured"], r["fam"]))
     print("\nAMBIGUOUS (a modifier makes the assertion unresolvable): %d" % len(amb))
     for r in amb:
-        print("   %s:%d  \"%s %s\"  — reported, not resolved to a number"
+        print("   %s:%d  \"%s %s\"  - reported, not resolved to a number"
               % (r["file"], r["line"], r["text"], r["tail"]))
     print("\nUNPARSEABLE (count-claim-shaped, no family): %d" % len(unparseable))
     for rel, i, txt, why in unparseable:
-        print("   %s:%d  \"%s\"  — %s" % (rel, i, txt, why))
+        print("   %s:%d  \"%s\"  - %s" % (rel, i, txt, why))
 
     print("\nPhrasing families found on the record: %d" % len(families_seen))
     for fam in sorted(families_seen):
@@ -1673,11 +1673,11 @@ def query(con, phrase, limit=8):
 def verify(db_path, top_n=3):
     fails = []
     print("=" * 78)
-    print("facet_index verify — four legs")
+    print("facet_index verify - four legs")
     print("=" * 78)
 
     # ---- leg 1: determinism -------------------------------------------------
-    print("\n[leg 1] determinism — two builds from an unchanged record")
+    print("\n[leg 1] determinism - two builds from an unchanged record")
     tmp_a = db_path + ".det_a"
     tmp_b = db_path + ".det_b"
     build(tmp_a, quiet=True)
@@ -1696,11 +1696,11 @@ def verify(db_path, top_n=3):
             first = next((i for i in range(min(len(ba), len(bb))) if ba[i] != bb[i]), -1)
             print("  byte-identity FAILED (first differing offset %d of %d/%d bytes)"
                   % (first, len(ba), len(bb)))
-            print("  .DUMP-IDENTICAL  %d chars — logical determinism holds"
+            print("  .DUMP-IDENTICAL  %d chars - logical determinism holds"
                   % len(da))
             det_leg = ".dump-identity (pre-registered fallback)"
         else:
-            print("  FAIL — neither byte- nor .dump-identical")
+            print("  FAIL - neither byte- nor .dump-identical")
             fails.append("determinism: two builds differ logically")
             det_leg = "NEITHER"
     for p in (tmp_a, tmp_b):
@@ -1720,7 +1720,7 @@ def verify(db_path, top_n=3):
         n = con.execute("SELECT COUNT(*) FROM rulings WHERE file=?", (rel,)).fetchone()[0]
         print("  %-46s arc %-18s %s"
               % (rel.replace("docs/experiments/", ""), arc,
-                 "%d rows" % n if n else "0 rows — prose only"))
+                 "%d rows" % n if n else "0 rows - prose only"))
     print("  %d documents matched %s" % (len(docs), RULING_DOC_RE.pattern))
     indexed = {r[0] for r in con.execute("SELECT DISTINCT file FROM rulings")}
     orphans = sorted(indexed - {rel for _, rel in docs})
@@ -1729,7 +1729,7 @@ def verify(db_path, top_n=3):
         fails.append("rulings from files the glob does not discover: %s" % orphans)
 
     # ---- leg 2: counts against the record's own numbering --------------------
-    print("\n[leg 2] counts — the verifier's own grep against the DB")
+    print("\n[leg 2] counts - the verifier's own grep against the DB")
     for name, rel, pattern, table, where in COUNT_CHECKS:
         g = _grep_count(rel, pattern)
         d = con.execute("SELECT COUNT(*) FROM %s WHERE %s" % (table, where)).fetchone()[0]
@@ -1767,7 +1767,7 @@ def verify(db_path, top_n=3):
             # eventually lie to every session that runs it.
             print("  %-28s ABOVE the dispatched bound of %d: %s  <- measured; the "
                   "bound stays as dispatched (E15 Ruling 3c)"
-                  % ("  ↑ completeness", hi, above))
+                  % ("  ^ completeness", hi, above))
 
     hg = sorted(r[0] for r in con.execute(
         "SELECT number FROM handoffs WHERE arc='E12'").fetchall())
@@ -1786,7 +1786,7 @@ def verify(db_path, top_n=3):
         fails.append("experiments missing %s" % miss)
 
     # ---- leg 3: zero dangling pointers ---------------------------------------
-    print("\n[leg 3] pointers — every row's file exists and its locator is findable")
+    print("\n[leg 3] pointers - every row's file exists and its locator is findable")
     cache = {}
     dangling = 0
     checked = 0
@@ -1820,7 +1820,7 @@ def verify(db_path, top_n=3):
     print("  total checked %d, dangling %d" % (checked, dangling + fts_bad))
 
     # ---- leg 4: the seeded question set --------------------------------------
-    print("\n[leg 4] the seeded question set — target within the top %d" % top_n)
+    print("\n[leg 4] the seeded question set - target within the top %d" % top_n)
     hits = 0
     for question, phrase, want in SEEDED:
         targets = want if isinstance(want, list) else [want]
@@ -1843,11 +1843,11 @@ def verify(db_path, top_n=3):
     print("\n" + "=" * 78)
     print("determinism leg that held: %s" % det_leg)
     if fails:
-        print("VERIFY FAILED — %d" % len(fails))
+        print("VERIFY FAILED - %d" % len(fails))
         for f in fails:
-            print("  ✗ %s" % f)
+            print("  X %s" % f)
         return 1
-    print("VERIFY PASSED — all four legs")
+    print("VERIFY PASSED - all four legs")
     return 0
 
 
@@ -1855,7 +1855,36 @@ def verify(db_path, top_n=3):
 # main
 # ---------------------------------------------------------------------------
 
+def _survivable_stdout():
+    """Make an unencodable character degrade instead of killing the verifier.
+
+    E14 Ruling 31f found the `↑` on the completeness branch crashing this tool
+    under cp1252. Folding the print LITERALS to ASCII (done, 17 sites) does not
+    finish the job, because the loud half of what this tool prints is the
+    RECORD, not its own prose: the DB carries 17 cp1252-unencodable cells right
+    now — `≤` in two ruling locators, `→` in an experiment status, `⚠` in a
+    handoff outcome, `Δ`/`σ` in indexed prose — and legs 3 and 4 print exactly
+    those columns. A literal-only repair moves the crash one leg downstream and
+    leaves it cold until a query happens to surface a row with an arrow in it.
+
+    Folding the DATA to ASCII is the wrong fix — this tool quotes the record and
+    `≤0.24%` is what the record says. So the console's own encoding is kept and
+    only the errors handler is relaxed: under `PYTHONIOENCODING=utf-8` nothing
+    is unencodable and output is byte-for-byte what it was, while under cp1252 a
+    `≤` prints as `\\u2264` instead of taking the process down. A verifier whose
+    FAILURE report cannot print (line 1848's `✗`, the second fatal literal, on
+    the branch that only runs when something is already wrong) is the house's
+    own class: a check that cannot fail.
+    """
+    for stream in (sys.stdout, sys.stderr):
+        try:
+            stream.reconfigure(errors="backslashreplace")
+        except (AttributeError, ValueError):      # not a reconfigurable stream
+            pass
+
+
 def main(argv=None):
+    _survivable_stdout()
     ap = argparse.ArgumentParser(
         description="the derived SQLite+FTS5 index over the facet record")
     ap.add_argument("verb", choices=["build", "verify", "q", "claims"])
@@ -1885,7 +1914,7 @@ def main(argv=None):
         head = "%s:%d" % (f, line)
         print("%-52s %s" % (head, a))
         if disp and disp.strip() and disp.strip() != a.strip():
-            print("%-52s   · %s" % ("", one_line(disp, 150)))
+            print("%-52s   - %s" % ("", one_line(disp, 150)))
         n += 1
         if n >= args.limit:
             break

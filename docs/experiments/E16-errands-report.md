@@ -41,3 +41,79 @@ rebuilt DB rides with errand 1, whose subject is the index tool.
 ## 1. Per-errand results
 
 *(filled in as each errand lands — one errand, one commit, one anchor)*
+
+### E16-1 — `facet_index.py` verify ASCII repair (Ruling 31f) · ANCHOR HELD
+
+**Finding.** The `↑` on the completeness branch crashes verify under cp1252.
+
+**What the audit found — the dispatch named one fatal literal; there are two.**
+An AST pass over every `print()` call (not a text grep — a text grep would have
+swept up two things that must not move) found **17 print-literal sites carrying
+non-ASCII, of which 2 are cp1252-fatal**:
+
+| line | char | branch |
+|---|---|---|
+| 1768 | `↑` | completeness — **hot right now** (four arcs print above their bounds) |
+| 1848 | `✗` | the FAIL report — cold, and it only runs when something is already wrong |
+
+The second one is the worse of the pair: a verifier whose *failure* report cannot
+print is the house's own named class, a check that cannot fail. Measured
+before/after on a deliberately broken DB under cp1252 — HEAD dies with
+`UnicodeEncodeError`; the repaired tool exits 1 and prints its three findings.
+
+**Two things the AST scope deliberately protected.** `DASH = "[—–-]"`
+(`:188`) is a *parser regex* over a record that uses all three dashes, and
+`one_line()`'s `…` (`:197`) feeds **18 DB columns** — folding either to ASCII
+would have changed what the index parses or what it stores, and the second would
+have broken this errand's own DB anchor. Consumers checked before the shared
+function was touched, per the standing law.
+
+**The literal fix is not sufficient — the prediction held.** The loud half of
+what this tool prints is the *record*, not its own prose. The live DB carries
+**17 cp1252-unencodable cells**: `≤` in two ruling locators, `→` in an
+experiment status, `⚠` in a handoff outcome, `Δ`/`σ` in indexed prose — and legs
+3 and 4 print exactly those columns. A literal-only repair moves the crash one
+leg downstream and leaves it cold until a query surfaces a row with an arrow in
+it. Folding the *data* to ASCII is the wrong fix (the tool quotes the record;
+`≤0.24%` is what the record says), so the repair keeps the console's own
+encoding and relaxes only the errors handler
+(`reconfigure(errors="backslashreplace")`): under utf-8 nothing is unencodable
+and output is byte-for-byte what it was; under cp1252 a `≤` prints as `≤`
+instead of taking the process down.
+
+**ANCHOR.**
+
+| leg | before | after |
+|---|---|---|
+| verify under `PYTHONIOENCODING=utf-8` | PASSED, 19/19 | PASSED, 19/19 |
+| verify under default cp1252 | **CRASH** at `:1768` | PASSED, 19/19 |
+| verify FAIL path under cp1252 (broken DB) | **CRASH** at `:1768` | exit 1, three readable `X` lines |
+| exit code, real DB | 0 | 0 |
+
+**DB byte-identity — held, and the anchor needed restating before it could be
+read.** The in-repo DB *did* move (`67ebd457… → 04d76d3…`) and that is not the
+tool: it is this report's own predictions file entering `docs/experiments/`.
+Proven rather than assumed, two independent like-for-like comparisons with
+HEAD's tool run from inside `tools/` so `REPO` resolves the same way:
+
+| comparison | HEAD tool | E16-1 tool |
+|---|---|---|
+| build to a **fresh** path, current corpus | `bb1d7962…` | `bb1d7962…` |
+| build to the **in-repo** path, current corpus | `37ed03b3…` | `37ed03b3…` |
+
+**Byproduct finding, reported not fixed — the DB's bytes depend on the target
+file's prior content, not only on the record.** A build into a path that does
+not exist yields one page layout (`bb1d7962…`); a build overwriting an existing
+DB yields another (`37ed03b3…`) and is stable from then on. Both are logically
+identical and each is internally deterministic. The consequence for this batch:
+*"the DB byte-identical" is only meaningful when the two sides share the same
+target-file history* — comparing a fresh build against the in-repo DB compares
+two different objects. **Leg 1 is not exposed**: it builds two fresh temps
+(`.det_a`/`.det_b`) and carries a pre-registered `.dump` fallback, so it is
+already fresh-vs-fresh. I also planted stale temps to simulate a crash between
+leg 1's build and its cleanup, expecting a spurious byte-identity failure —
+**that speculation was wrong**: leg 1 still reported BYTE-IDENTICAL and cleaned
+up, because both temps inherit the same prior content. Measured, not assumed.
+
+**Prediction: HELD** (the sharper half — literal-only would be insufficient —
+was the load-bearing part, and the 17 fatal DB cells are the evidence).
