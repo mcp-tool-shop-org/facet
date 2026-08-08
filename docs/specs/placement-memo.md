@@ -22,6 +22,18 @@ Three candidate homes are enumerated for each: **in facet** · **a standalone pa
 | fixture-lint | viable | ❌ | `style-dataset-lab` — **argument stands at full strength** | **DIRECTOR'S WORD** — both presented, §3.3 |
 | comfy-preflight | ❌ | ✅ | the Comfy plugin — third-party, unreachable | **STANDALONE** |
 
+**⚖ THE DIRECTOR'S WORD (2026-08-08, arriving on this table, verbatim):**
+
+> record index	IN FACET
+> measurement	IN FACET
+> fixture-sdlab and facet both at full strength
+> comfy-preflight	STANDALONE, re-examined and unchanged
+
+**The three ruled rows are RATIFIED as written.** The fixture-lint line restates the
+memo's own open form — the pick between sdlab and facet **remains at his word**, and
+§3.3 stands as its decision surface. The bar's scope (§5) and the build order were not
+addressed in this word and remain open beside it.
+
 ---
 
 ## 1. The correction — what the first version of this memo got wrong (2026-08-08)
