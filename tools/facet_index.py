@@ -1728,9 +1728,18 @@ def verify(db_path, top_n=3):
     print("=" * 78)
 
     # ---- leg 1: determinism -------------------------------------------------
+    # E16 Ruling 3 (the twelfth errand): the temp paths are PER-PROCESS unique,
+    # same directory. Two verifies in one working copy used to write the same
+    # two fixed files (db + ".det_a"/".det_b") and could read each other's
+    # bytes mid-build - both seats hit that independently on the day it was
+    # found (the advisor's fold colliding with E16-1's own verify; retried
+    # clean, flagged). The collision is now impossible by construction rather
+    # than retried on sight. A crashed process can strand its pid-named temps;
+    # they are inert - no later run reads a name it did not mint - and leg 1
+    # removes its own on every path.
     print("\n[leg 1] determinism - two builds from an unchanged record")
-    tmp_a = db_path + ".det_a"
-    tmp_b = db_path + ".det_b"
+    tmp_a = db_path + ".det_a.%d" % os.getpid()
+    tmp_b = db_path + ".det_b.%d" % os.getpid()
     build(tmp_a, quiet=True)
     build(tmp_b, quiet=True)
     with open(tmp_a, "rb") as fh:
