@@ -28,6 +28,9 @@ advisor rules at `E23-ruling.md`.
 - **F2 — two route tools create their output directory before their gate fires.**
 - **F3 — one ANDON in the twelve already raised**, which reconciles E22 Ruling 5's
   repo-wide `AssertionError 88` as 87 conversions plus that site.
+- **F4 — the `SystemExit` collision** in three of the twelve, recorded and not resolved
+  (E22 Ruling 5). **F7 — 20 of the 57 have no write later in their own scope**, a
+  diagnostic and never a gate (E22 Ruling 11).
 - **F5 — I caused a fold-marked test failure** by writing this report while the suite
   was running. The dispatch's run-then-rerun remedy cleared it; the lesson is that the
   concurrent writer the fold-race warning describes can be *this* session.
@@ -453,11 +456,12 @@ is the compensator and it ran before anything else did.
   touches those trees. Per-file sha256 over `facet_next`, `facet_E01/02/05/06/07/08`
   and `saltroad_bake_fix`: **7,312 files, 17.07 GB, 13 s** — E22's file count
   reproduces exactly.
-- **Re-checked after the baseline suite run and at the halt.**
+- **Re-checked three times** — after the baseline suite run, after the conversion and
+  the full artifacts-tier suite, and again at the true halt after the CI repair.
 
 ```
 RECHECK  before=7312 after=7312     added 0   removed 0   changed 0
-MANIFEST HELD - no file in the recorded trees moved
+MANIFEST HELD - no file in the recorded trees moved          x3, identical
 ```
 
 **Every smoke and every fired gate ran in a scratch cwd with scratch output paths.**
@@ -483,8 +487,8 @@ determinable from here. Flagged as an open discrepancy, not as a units note.*
 | **1. suite green before and after, full artifacts tier** | **275 → 370**, 0 failed, 0 skipped, artifacts live. Hermetic tier as CI runs it: **362 passed, 8 deselected** — on the **second** run, after a fold-marked failure I caused myself by editing docs mid-run (**F5**, with the dispatch's own run-then-rerun remedy applied) | **PASS** |
 | **2. whole-file AST equality for each of the twelve** | **12 of 12 IDENTICAL** to the rule applied at `48fa733`; comment tokens **0 changed**; per-site **57/57**; **0 reverted** | **PASS** |
 | **3. no edit outside the twelve under `tools/`** | `git diff --name-only -- tools/` returns exactly the twelve; nothing in `canon/`, `profiles/`, the citable trees, the seeded set or a closed ruling. Everything else edited is `tests/` or a doc, itemised below | **PASS** |
-| **4. CI green, both dependency scanners** | **FIRED on the first push** — run [`31282508427`](https://github.com/mcp-tool-shop-org/facet/actions/runs/31282508427) on `b032d63`, `hermetic set: failure`, scanners skipped. Cause measured and repaired in **F6**; re-run below | **FIRED, then PASS** |
-| **5. the tree manifest holds** | 7,312 files, **three checks, 0 added / 0 removed / 0 changed** | **PASS** |
+| **4. CI green, both dependency scanners** | **FIRED on the first push** — run [`31282508427`](https://github.com/mcp-tool-shop-org/facet/actions/runs/31282508427) on `b032d63`, `hermetic set: failure`, scanners skipped. Cause measured and repaired in **F6**. Re-run [`31282917234`](https://github.com/mcp-tool-shop-org/facet/actions/runs/31282917234) on `7f51b94`: `hermetic set` ✓, `dependency scan - python (published surface)` ✓, `dependency scan - npm (published surface)` ✓ | **FIRED, then PASS** |
+| **5. the tree manifest holds** | 7,312 files, **four measurements — one baseline and three rechecks, 0 added / 0 removed / 0 changed every time** | **PASS** |
 
 **Files edited outside `tools/`, every one:**
 
@@ -537,7 +541,7 @@ for the reason stated there.
 | P9 | baseline is 275 exactly | **HIT** — `275 passed in 174.31s` |
 | P10 | 1 file · 5–10 functions · 30–60 cases · total 300–345 | **SPLIT** — 1 file (**hit**), 8 functions (**hit**), **95 cases** (**miss**, above), total **370** (**miss**, above) |
 | P11 | the `SystemExit` trio is `brush_cloud_step` 4, `e13_harmonize` 3, `restylize_views` 3 | **HIT** — exactly, 10 sites |
-| P12 | manifest ≥ 7,312 files, 0/0/0 on all three runs | **HIT** — 7,312, three times |
+| P12 | manifest ≥ 7,312 files, 0/0/0 on all three runs | **HIT** — 7,312 exactly, and 0/0/0 on **three rechecks** (the arc ran one more than predicted, after the CI repair) |
 | P13 | CI green, **no workflow edit** | **MISS.** CI went red on the first push and the repair required a workflow edit — **F6**. The prediction assumed CI's environment already covered the twelve; nothing had ever asked it to, which is this arc's whole premise turned on its author |
 | P14 | **3–6 findings**, ≥1 about reachability or depth | **SPLIT** — the qualitative half **hit** (F1 is exactly a reachability finding), the count **missed**: **7**, one above the band. Two of the seven (F5, F6) are defects in how this session ran rather than in the twelve, and I did not predict finding any of those |
 | P15 | the **baseline** smoke passes 30/30 before conversion | **HIT** — which is what makes the after-run a before/after |
