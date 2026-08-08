@@ -1,0 +1,74 @@
+{
+ "_purpose": "The declared palette for E14's longsword, for palette_gate.py. Derived at handoff 3 Task 1 from canon/LONGSWORD-IDENTITY.md's five named elements (six terms after Ruling 13), measured on the DIRECTOR-ACCEPTED styled target pair (E14 Ruling 16a) - never on the twins this gate will judge. PROPOSED, NOT ADOPTED: the bands and the per-band disposition are the advisor's ruling at HALT 1.",
+
+ "_bands_are_derived_from_the_FIXTURE_and_cross-checked_against_a_DIFFERENT_IMAGE_than_they_gate": "They come from the accepted pair (E14_prep/pair/PAIR_swordclay_{0,1}.png inside the exact raycast silhouettes), which is a specification source and visual target and will never be projected. Deriving them from the twins they gate would be a tautology that passes review because the numbers look fine. The superseded estimates file (canon/longsword-materials-estimated.json) was NOT used - Ruling 14b superseded it at the Director's acceptance.",
+
+ "_THE_CHROMA_FLOOR_IS_A_KNEE_NOT_A_GAP_AND_THAT_IS_THE_FINDING": "The dispatch required the floor to come from the SEPARATION STRUCTURE of the pair's realised values and never from where L1's 5.39 cast falls. Measured: THERE IS NO SEPARATION STRUCTURE. The chroma density over 89,876 figure pixels is MONOTONE DECREASING from its peak at C* 2.8 (9,079 px) with no antimode anywhere - 10.2 -> 486 px, 10.8 -> 384, 11.2 -> 337, 11.8 -> 340, 12.2 -> 307, 12.8 -> 293 - decaying into a FLAT TAIL of ~250-350 px per 0.5 bin that runs out past C* 30. The executor predicted a wide empty gap and was FALSIFIED. What does exist is a KNEE: the decay flattens into the tail at C* 11.5-13, which is where two processes cross over (the achromatic mass's tail below, the genuinely coloured materials above). 12.0 sits on that knee. It is also the value W3 and the galleon inherited, so this is a vindication of an inherited number by this subject's own data rather than a new derivation - and it is stated that way rather than dressed as a discovery.",
+
+ "_where_L1s_cast_falls_is_a_RESULT": "L1's realised body chroma is C* 2.93 (view 0) and 5.39 (view 1's re-roll, Ruling 14c) - BELOW the 12.0 knee by a factor of two or more. So steel stays hue-neutral under the gate's own rule and the fixture's 'L1 and L2 carry no hue bands' claim survives its own measurement. This was predicted (F2) and it is reported as an outcome of the knee, not as a reason for it. The achromatic channel remains steel's instrument, exactly as the fixture pre-declared.",
+
+ "min_chroma": 12.0,
+
+ "_band_edge_rule_stated_before_it_was_applied": "A band is the contiguous span of BODY support (silhouette depth > 2 px, so rim mixing cannot vote on a material's edges) around a local body peak, trimmed where body density falls below 1% of THAT BAND'S OWN peak. Per-band normalisation because gold's peak is 58% of wine's and a global cut would trim the smaller band harder. The rule was fixed before the run; the sensitivity at 2/5/10% is in E14_prep/bands/derive/band_edges.json so the ruling can see how much the convention costs - at 2% the two material bands tighten to 40 and 44 degrees.",
+
+ "allowed_bands": [
+  {
+   "name": "wine",
+   "hue_deg": [332.0, 32.0],
+   "status": "MEASURED - MERGED, and the merge is FORCED not chosen",
+   "measured_peak_hue": 11.0,
+   "measured_span_deg": [332.0, 32.0],
+   "rests_on": "6,039 body px = 64.3% of all above-floor body pixels on the pair",
+   "covers": "L4 oxblood leather grip wrap, L5 dark garnet gem pommel",
+   "_why_the_merge_is_forced": "The profile expected one merged wine band on the D4/D5/D10 precedent. It is merged, but NOT because oxblood and garnet sit together - because L5 is VIEW-UNSTABLE and its two realised positions share continuous support with L4's. The pommel assembly's above-floor hue reads median 16.0 on view 0 (66.9% inside wine 0-25 - garnet, as specified) and median 303.9 on view 1's re-roll (21.9% lavender + 37.0% magenta - the gem's drift the pair recorded). The body density from 325 through 360 to 29 has NO antimode - it is one continuous run - so a band covering L4 and both of L5's positions is one band by measurement. The cost is a 60-degree span, and that span IS the gem's instability made numeric.",
+   "from": "E14 handoff 3 Task 1; density in E14_prep/bands/derive/band_density.json"
+  },
+  {
+   "name": "gold",
+   "hue_deg": [42.0, 104.0],
+   "status": "MEASURED",
+   "measured_peak_hue": 75.0,
+   "measured_span_deg": [42.0, 104.0],
+   "rests_on": "3,137 body px = 33.4% of all above-floor body pixels; only 55 rim px, the cleanest band of the three",
+   "covers": "L3 gold diamond boss at the crossing, gold collar rings (Ruling 13's term)",
+   "_the_trough_between_gold_and_wine_is_REAL_but_shallow": "Unlike the chroma case, hue DOES have an antimode here: body density falls to 3-4 px per 2-degree bin at hue 37-41, against wine's peak of 755 and gold's of 436 - a ~1% valley. The 1% trim rule reaches down into its shoulders (42) and leaves only 34-40 forbidden between the two bands. At the 2% rule gold starts at 58 and the trough opens to 24 degrees. THE RULING CHOOSES; this file records the rule as stated and its sensitivity.",
+   "from": "E14 handoff 3 Task 1"
+  },
+  {
+   "name": "lavender-rim",
+   "hue_deg": [292.0, 314.0],
+   "status": "SUSPENDED - NOT A MATERIAL BAND. RUN THE GATE BOTH WAYS.",
+   "measured_peak_hue": 303.0,
+   "rests_on": "2,366 RIM px against 183 BODY px - 92.8% rim",
+   "covers": "NOTHING DECLARED. This is backdrop bleed, not a material.",
+   "_what_this_band_actually_is": "palette_gate.py measures only INSIDE the exact silhouette, so the realised backdrop cannot enter as background - it enters as ANTIALIASED RIM PIXELS carrying backdrop colour. On the beast the backdrop sat below the chroma floor and never reached the hue gate (the 15i mechanism); this subject's realised backdrop is at C* 32.6-37.1, far above any floor, so its rim mixing is a real above-floor hue population inside the figure. THE PLACEMENT TEST SETTLED IT: hue cannot tell rim mixing from a material, so depth was measured directly - the 290-310 population is 93.1% within 2 px of the silhouette boundary (median depth 1.00 px), against wine at 8.0% and gold at 0.3% (median depths 7.99 and 16.29 px). Declared materials live deep inside the figure; this population lives on its edge.",
+   "_the_295_vs_305_question_ANSWERED_and_not_as_expected": "The dispatch named this the derivation's hardest cut and the executor predicted no clean antimode and a suspension. There IS no antimode in hue - the figure density rises monotonically from 4 px at hue 292 to 459 px at 305 and falls away, one population - but the cut turns out not to need one. L1's ~295 cast sits at C* 2.93-5.39, BELOW the 12.0 floor, so it never reaches the hue gate at all. The two are separated by CHROMA and by PLACEMENT, not by hue. The predicted suspension is therefore for a different reason than predicted: not 'no boundary exists' but 'this is not a material and a material band should not pretend it is one'.",
+   "_how_a_run_must_report_it": "Report per-view off-palette totals BOTH ways - lavender-rim allowed and lavender-rim excluded - so a ruling can choose without anyone choosing while looking at the result. Neither reading is adopted here. The galleon's blue band set this precedent and it is followed exactly.",
+   "_the_perimeter_law_bites_hardest_here": "This population scales with PERIMETER, and this subject is the route's thinnest: area/perimeter is 20.88 (view 0) and 17.78 (view 1) against a figure area that swings 2.061x between views (Ruling 10c). Any bound on it must be normalised by perimeter or reported absolute with the perimeter beside it - never as a percentage of area.",
+   "from": "E14 handoff 3 Task 1; placement test in band_density.json"
+  }
+ ],
+
+ "_forbidden_span": "216 deg = 60.0% of the hue circle above the floor with all three bands allowed (against the galleon's 288 deg / 80.0% and W3's 170 deg / 47.2%). The whole green-cyan-blue arc from 105 to 291 - 187 degrees - carries ZERO body pixels on the pair, which is the gate's real reach on this subject.",
+
+ "_dark_rows_caveat_15j_applies_and_is_NOT_absorbed": "L2 blackened iron sits at L* 15-24 and is a colour-match to shadow, exactly as charcoal was on the beast. The gate is COLOUR-NOT-PLACEMENT, so it cannot distinguish blackened iron from a shadow on steel, and both sit below the chroma floor where hue is undefined. Neither is flagged and neither should be read as verified. Colour-not-placement rides beside the bands in the profile block when they land.",
+
+ "_what_this_gate_CANNOT_do_ON_THIS_SUBJECT_SPECIFICALLY": "It tests COLOUR, not PLACEMENT - and on this subject that limit is not academic, it is the recorded failure. The pair's REJECTED 770700 roll put gold on the blackened-iron crossguard: L3's declared material on L2's declared surface. Every pixel of it is inside the gold band. The gate cannot see the one defect this subject has actually produced. Validated and reported in the handoff-3 report rather than worked around.",
+
+ "gate": {
+  "max_offpalette_pct": null,
+  "max_offpalette_blob_px": null,
+
+  "_both_bounds_are_null_ON_PURPOSE": "This subject has no clean baseline until its own twins exist - the galleon's exact position, and the reason its palette set both bounds null. Deriving a bound from the pair would be deriving it from two images, and arming it against twins generated afterwards would be arming a threshold on a baseline measured after the arm it judges. Run with --report-only; report numerator and denominator, total AND largest connected component (the two-thresholds law). The twin set's own spread is where a bound can honestly come from, at the twin-set ruling.",
+
+  "_baseline_that_DOES_exist_and_is_not_a_bound": "See the handoff-3 report's validation table: what the Director-accepted pair measures through this gate, both ways on the lavender band. That is what an accepted image of this subject looks like through it - context for a ruling, not a threshold."
+ },
+
+ "_provenance": {
+  "authored": "2026-08-07, E14 handoff 3 Task 1",
+  "derived_by": "tools/diagnostics/e04_bands.py (clusters, landing) + e14_band_density.py (chroma density, hue density, placement test) + e14_band_edges.py (edges by the stated rule, with sensitivity)",
+  "measured_on": "E14_prep/pair/PAIR_swordclay_{0,1}.png inside E14_prep/masks/swordclay_{0,1}.png",
+  "identity": "canon/LONGSWORD-IDENTITY.md",
+  "status": "PROPOSED at HALT 1. Not ruled. Not armed."
+ }
+}
