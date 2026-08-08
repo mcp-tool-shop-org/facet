@@ -980,6 +980,12 @@ printing the whole cross-section profile, wrong number kept in the report)
 and the P1 self-scoring. The calibration lesson is 21b's twin: naming a
 bias is not removing it from an estimate.
 
+**21h — 21b's promised measurement landed (2026-08-08, handoff 6)**: view
+6's exclusion prices at **0.2658 points of reach** (N7 − N6 = 9,733) and
+**1.9708 points of paint** (styled loss 72,170) — 20c's carried ~4.4 was
+16.6× overstated as a paint price, and the reach/paint gap itself became
+Ruling 22b's law.
+
 **21g — the gate fired on this ruling's own fold and the commit walked past
 it; owned and repaired (2026-08-08).** The E14 count legs — added to the
 verifier hours earlier — FIRED on this very fold: Ruling 21's insertion
@@ -995,4 +1001,59 @@ handoff 5's header restored over its own body, the dispatch renumbered to
 the convention (handoff 6). Standing practice, no exceptions: **a fold's
 verify and its commit never share a call — the verify runs first, PASSED is
 read, and only then does the commit issue.**
+
+## Ruling 22 — STAGE 1B IS THE BANKED A0; the price law gains its second clause (2026-08-08)
+
+Evidence: the handoff-6 report and its blind predictions (committed before
+the ceiling ran), the exact repartition checks, and this seat's sheet-walk
+of `STAGE1B_CROSSING_4x.png` and `STAGE1B_flat_strip.png` — stated in plain
+words at the top of the reply that carried this ruling, before any number.
+
+**22a — stage 1b is the banked A0.** Styled **1,656,847 = 45.25% of valid =
+88.71%** of its pre-registered six-camera ceiling (N6 = 1,867,754 =
+51.0050%), above the beast's 87.5% benchmark at the same stage. The walk
+confirms the identity is clean: the yaw-270 crossing's brown-tan smear and
+pale pad — the excluded artifact's paint — are GONE in the after column,
+and the excluded twin is labelled in-image (Ruling 20d's practice, first
+landing). The repartition checks held exactly: 0 of 1,583,832 non-v6
+texels changed owner, 0 newly styled, all six retained views' erosion logs
+byte-identical. The seven-run stays in the record as the measured
+comparison. Zero credits across the entire arc still.
+
+**22b — THE PRICE LAW'S SECOND CLAUSE, adopted route-wide: a reach price
+is not a paint price.** Reach measures what geometry permits a camera;
+paint measures what the pipeline COMMITS after the facing floor, erosion
+and the trust intersect — and on this subject the gap ran **7.4×** (reach
+cost 9,733; paint cost 72,170, of which **94.27% is reachable by the
+remaining six and goes unpainted anyway**, 75.1% of it two-camera
+reachable). Erosion and trust bind where the subject is thin — which is
+the whole surface an edge-on camera faces. Priced together with the
+first clause: a marginal is a property of an ordering; a reach price is
+not a paint price. **And the two edge-on cameras are not the same kind of
+camera** — 81.3% of yaw 270's exclusive set is OCCLUSION at a median best
+facing of 0.919, where yaw 90's 2,320 was angular; a future thin subject
+prices each edge-on camera by its own mechanism, not by class.
+
+**22c — the brush's principal territory is the blade ribbon.** 88.4% of
+the paint loss is blade: view 6 owned a continuous ribbon down the
+edge-on centreline for its whole length, now a hole for its whole length,
+with views 5 and 7 meeting at a hard vertical seam they do not close; the
+crossing took 6.1% at 0.50× concentration — BELOW its share of valid. The
+brush territory grows 42% to **5.76 points**. The stroke-lane ruling
+meets it with Ruling 20b's misbinding hazard and the fifth-brush-signature
+watch pre-registered. The executor's calibration form — *"I named the
+unknown and priced it at zero"*, the second under-application in two
+sessions — joins the ledger beside "naming a bias is not removing it."
+
+**22d — the gem window, re-priced honestly for the Director**: removing
+view 6 moved the stone AWAY from garnet (lav+mag 67.76% → 70.51%; the
+garnet partition untouched to four texels). Accepting the violet is
+cheaper than it was; holding the garnet now means the brush repaints
+roughly seventy percent of the stone's above-floor colour. The window
+stays his; nothing amends until his word.
+
+**22e — the executor's three commits are authorised to push with this
+fold.** The stroke-lane dispatch (handoff 7) drafts after the Director's
+gem word — the stroke set derives from the hole map AND his verdict,
+since a garnet-by-brush ruling adds the stone to the stroke territory.
 

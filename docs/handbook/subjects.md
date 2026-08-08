@@ -329,11 +329,21 @@ values live in its own profile and fixture, never inherited unmeasured.
   corner-median reference is the retired keying method's last live consumer
   (errand batch); the brush's territory is 148,470 reachable-unstyled texels =
   4.05 points.
-- **In flight: handoff 6 — the compliant re-projection** (six twins, view 6's
-  face-dome paint out; the seven-run preserved as the comparison): six-camera
-  ceiling pre-registered, the ownership diff characterises exactly what v6
-  contributed, sheets with excluded artifacts labelled in-image. Then the
-  stage-1b halt, then strokes.
+- **STAGE 1B IS THE BANKED A0** ([Ruling 22](../experiments/E14-ruling.md)):
+  six twins, styled **45.25% of valid = 88.71%** of the pre-registered
+  six-camera ceiling (beast: 87.5% of its own) — the contamination gone at the
+  walk (the crossing's smear absent in the after column), repartition exact,
+  zero credits across the whole arc. The re-projection's finding became **the
+  price law's second clause: a reach price is not a paint price** — view 6's
+  exclusion cost 0.27 points of reach but 1.97 of paint (7.4×; 94% of the loss
+  is reachable-but-unpainted — erosion and trust bind where a subject is
+  thin), and the two edge-on cameras failed by different mechanisms (angular
+  vs occlusion). The brush's territory is the blade's edge-on centreline
+  ribbon + the guard seam: **5.76 points**.
+- **At the Director's window:** the gem (violet at 70.51% lav+mag after the
+  re-projection — accept the violet, hold the garnet by brush, or defer to
+  Gate 1). **Next: handoff 7 — the stroke lane**, drafted after his gem word
+  (the stroke set derives from the hole map and the verdict together).
 
 ## The calibration table this page exists for
 
