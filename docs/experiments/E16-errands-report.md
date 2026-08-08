@@ -168,6 +168,53 @@ touches the file. The warning direction has flipped from "LF will be replaced by
 CRLF" to "CRLF will be replaced by LF", which is the pin doing its job: the
 repo's canonical form is now LF and git normalises toward it.
 
+### E16-3 — `texpass_finalize.py` surface-aware print (Ruling 31d.1) · ANCHOR HELD
+
+**Finding.** In surface-aware mode `grown = valid.copy()` runs *before* the
+dilation loop (`:135`), so `valid & ~grown` is empty by construction and `left`
+is 0 on every run regardless of the atlas. Three subjects quoted that zero as a
+pass; the dragon's celebrated zero was structural, not earned.
+
+**Repair.** The print at `:158` branches. Surface-aware mode still *shows* the
+number — a non-zero there would mean the construction had changed and is worth
+being startled by — but labels it structural and points at the quantity that is
+actually gated (the source-distance distribution, held by the two ANDONs at
+`:129`/`:132`). The atlas-flood path keeps its original line verbatim.
+
+**Read-only discipline first.** Ruling 33's ledger was paid for a dispatch that
+would have written into a citable-only tree, so before touching the sword's
+recorded run I audited every write in the tool: `os.makedirs` + `.save(args.out)`
++ `json.dump(args.json)` and nothing else. Both replays wrote only to scratch;
+the E14 tree was read.
+
+**ANCHOR — the recorded run replayed both sides of the change.**
+
+| | `atlas_final.png` sha | vs recorded |
+|---|---|---|
+| recorded artifact | `a0f51101…` | — |
+| replay, tool **before** the change | `a0f51101…` | byte-identical |
+| replay, tool **after** the change | `a0f51101…` | byte-identical |
+
+`finalize.json` also byte-identical before vs after. A print cannot move bytes —
+asserted, not assumed.
+
+**The branch condition tested by running it, not by reading it.** The risk in an
+if/else is inverting it, and only the flood path can catch that. Run without
+`--surface-aware` on the same inputs: `done, 0 texels took mean fallback` — the
+original wording, intact. The contrast is the repair's whole point: in flood mode
+`grown = have.copy()` and the loop can genuinely strand texels, so **that** zero
+is earned; in surface-aware mode the same zero cannot be anything else.
+
+**Flagged, not fixed — the JSON carries the same misleading zero.**
+`rep["mean_fallback"] = 0` is written to `finalize.json` in surface-aware mode
+with no indication that it is structural, and a JSON field is exactly how a
+number gets quoted into three subjects' reports. Ruling 31d queued *the print*,
+and the batch's named trap is fixing what no ruling queued, so the key is
+untouched and byte-identity preserved. Recommend the advisor queue the JSON side.
+
+**Prediction: HELD** (byte-identical, and the replay reproduced the recorded
+artifact rather than merely matching itself).
+
 ---
 
 ## 2. A session-level finding: the working tree is shared

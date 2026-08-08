@@ -155,7 +155,22 @@ left = int((valid & ~grown).sum())
 if left:
     img[valid & ~grown] = img[have].mean(axis=0)
 rep["mean_fallback"] = left
-print(f"[finalize] done, {left:,} texels took mean fallback", flush=True)
+if args.surface_aware:
+    # E14 Ruling 31d.1. In this mode `grown = valid.copy()` runs BEFORE the loop
+    # (line 135), so `valid & ~grown` is empty by construction and `left` is 0 on
+    # every run regardless of the atlas. Three subjects quoted that zero as a
+    # pass; the dragon's celebrated zero was structural, not earned. A check that
+    # cannot fail is not a check, so this mode must not print the count as if it
+    # were informative. The value is still shown — a non-zero here would mean the
+    # construction above had changed and is worth being startled by — but it is
+    # labelled for what it is. The mode's real gate is the source-distance
+    # distribution printed above, which IS gated, by the two ANDONs at 129/132.
+    print(f"[finalize] done, mean fallback {left:,} - STRUCTURAL in surface-aware "
+          f"mode (grown = valid.copy() before the loop), not a measured pass; the "
+          f"gated quantity is the source distance above  [E14 Ruling 31d]",
+          flush=True)
+else:
+    print(f"[finalize] done, {left:,} texels took mean fallback", flush=True)
 var = float(img[valid].var())
 rep["atlas_variance"] = round(var, 5)
 assert var > 0.001, "ANDON: final atlas uniform"
