@@ -15,7 +15,7 @@ advisor rules at `E22-ruling.md`.
 The conversion did what the dispatch asked and the anchors held on the first
 attempt. **The dispatch's scope premise did not survive being measured.**
 
-- **88 sites converted**, pure move, proved by whole-file AST equality rather than
+- **88 sites converted**, pure move, shown by whole-file AST equality rather than
   by my reading of the diff. **Zero reverted.**
 - **All three named anchors reproduce** — T7 byte-identical (sidecar json too),
   the twin-projection anchor, T26's three fired ANDONs.
@@ -46,7 +46,7 @@ byte-identity**, with `prose_sections` 2147 → 2157 (this arc's two documents).
 
 ---
 
-## The census — verified, not inherited
+## The census — re-measured, not inherited
 
 The dispatch ordered this measured. It was, by AST walk over all 150 `.py` files
 under `tools/` (`assert_census.py`, run before any file was opened for editing).
@@ -183,9 +183,11 @@ and it is the one that makes the type mandatory.
 0 lacked a message.** The splice was therefore safe by line range — measured
 before it was attempted, not assumed.
 
-### The pure-move proof
+### The pure-move check
 
-Two independent checks, neither of which is my reading of the diff.
+Two independent checks, neither of which is my reading of the diff. Both are
+mechanical equalities and neither says the result is good; that is the
+Director's.
 
 1. **Per site** (`convert.py --check`): the produced statement is an `If` whose
    body is a single `raise AssertionError(...)` with exactly one argument;
@@ -217,7 +219,7 @@ e11_export_turnaround 97 · facet_index 335 · record_mcp 132     ALL IDENTICAL
 comment lines changed: 0
 ```
 
-**Neither proof can be a standing test.** Both need the pre-conversion tree, and
+**Neither check can be a standing test.** Both need the pre-conversion tree, and
 after the commit `HEAD` *is* the converted state — a re-run would be a tautology.
 What was portable was ported: T30 pins the durable half (no ANDON gate in these
 seven files is an `assert`; the exception-type census; the ANDON message counts).
@@ -311,9 +313,9 @@ plus the fixture, no new module:
 | `tests/mcp_support.py` | `FAILED_PARSE["exit_code"]` → `facet_index.EXIT_REFUSED`; `PASSED_PARSE` → `EXIT_OK` |
 | `tests/test_t04_discovery_guards.py:44` | `rc == 1` → `rc == m.EXIT_REFUSED` |
 
-**The claim the dispatch ordered verified before it was relied on:**
+**The claim the dispatch ordered measured before it was relied on:**
 `record_mcp.parse_verify` keys on **`rc != 0`** (`record_mcp.py:429`) and
-**`rc == 0`** (`:432`), never on `rc == 1`. **Verified — the health state machine
+**`rc == 0`** (`:432`), never on `rc == 1`. **Measured — the health state machine
 is indifferent to which non-zero code arrives.** P20 HIT.
 
 **One hardening beyond the literal carry, declared rather than slipped in.** E21's
@@ -525,12 +527,12 @@ python -m pytest -q                                   248 -> 275
 python -m pytest -q -m "not artifacts"                267 passed, 8 deselected (as CI runs it)
 tree_manifest.py write|check                          7,312 files, 3 runs, 0 changed
 assert_census.py                                      294 / 72 / 278 / 16
-convert.py [--apply]                                  88 sites, per-site AST proof
-pure_move_proof.py                                    whole-file AST proof vs the prior commit
+convert.py [--apply]                                  88 sites, per-site AST check
+pure_move_proof.py                                    whole-file AST check vs the prior commit
 comment_diff.py                                       0 comment tokens changed
 irreversible.py                                       175 ANDON asserts before a write, 61 files
 ```
 
 Instruments live in the session scratchpad, not the repo: they are one-shot
-proofs that need the pre-conversion tree, and the repo's rule is that
+checks that need the pre-conversion tree, and the repo's rule is that
 **re-runnable** anchors get ported into the harness. The re-runnable half is T30.
