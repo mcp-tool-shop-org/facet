@@ -225,6 +225,20 @@ Named codes, minimum set: `INDEX_VERIFY_FAILED`, `INDEX_NEVER_VERIFIED`,
 `INDEX_MISSING`, `CORPUS_NOT_FOUND`, `CONVENTIONS_INVALID`, `SEEDED_SET_INVALID`,
 `ANCHOR_NOT_FOUND`, `INTERNAL`.
 
+*⚠ AMENDED 2026-08-08 by the build's ruling ([E18-ruling.md](../experiments/E18-ruling.md)
+Ruling 2) — five contract deltas, each argued in the report's §9 and ruled rather
+than folded in silently: (i) `BAD_ARGUMENT` joins the codes — a caller-failure
+code beside these index-failure codes, because an empty result for a typo'd
+argument is a wrong answer wearing success; (ii) `record_claims` ALSO gates on
+health (it reads the index's measurements); build/verify/health never gate;
+(iii) a DB whose sha does not match its certificate's REFUSES
+(`INDEX_NEVER_VERIFIED`) — a certificate describing a different artifact is no
+certificate for the one present, and this check makes the DB+certificate
+pair-commit cadence verifiable; (iv) the certificate carries a `0_discovery`
+bucket beside the four legs — the inverse guards produce their own failures;
+(v) §4.2's "exactly two paths" means two persistent artifacts — verify's leg 1
+writes per-process temps beside the target and removes them (E16 Ruling 3).*
+
 **There is no skip flag, and adding one is out of scope permanently.** E08 Amendment 32
 is the grounds: a check that a scripting accident can separate from the action it gates
 is not a gate — 47,020 texels were committed after a fired ANDON because a shell chain
