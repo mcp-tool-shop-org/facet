@@ -520,3 +520,65 @@ eight and among the clearest elements edge-on**. Importing the flag would have
 dropped a term for a live element on two views. The dispatch's
 verify-don't-import instruction — and the executor's two-scale check under it
 — is what caught it. Enters the ledger beside 10e.
+
+## Ruling 16 — THE PAIR IS ACCEPTED (Director, 2026-08-07); the conversions execute; the ACTIVATED STATE is named and parked
+
+**16a — accepted, his words**: *"I agree with view 0 being the best. I love
+it. You have my acceptance."* **View 0 is the pair's primary** — the
+identity-defining artifact. The window closes with the rings term standing
+(Ruling 13 unoverruled), and the recorded findings — the gem-hue drift, the
+magenta-band materialisation, the floor-marginal cool cast — ride to the
+bands derivation as filed. The register's first test on steel is passed at
+his eye: five elements, no LoRA, zero credits, one bounded re-roll.
+
+**16b — the two pre-stated conversions execute** (Ruling 12c): the accepted
+pair is this subject's **generation anchor** — view 0 at seed 770700, view 1
+at seed 770701 (the bounded re-roll), graphs at `E14_prep/cloud/`, stems =
+twin-prompts v1 — and `generation_recipe_anchor` converts to SPENT with the
+pair as provenance (the ship's Ruling 6 pattern, third execution).
+`canon/longsword-materials-estimated.json` is formally superseded by the
+pair's realised values (the file self-declares it; recorded here). Next on
+the route, in order: palette bands (from the fixture's named materials,
+cross-checked against the PAIR, never the twins they will gate — the
+achromatic channel is steel's instrument, with the realised cool-cast and
+magenta-band values in the room), then twins, then stage 1 against the
+pre-registered 51.33% ceiling.
+
+**16c — THE ACTIVATED STATE is NAMED and PARKED at the Director's timing.**
+His proposal, same turn as the acceptance: a second authored state for the
+sword — *"gem stone is glowing, the steel is red like it was just pulled out
+of the forge"* — explicitly excluding flames (*"that'd be hard to make look
+real since it's more of an after-effect"*). Recorded with its grounding:
+
+1. **This is the waterline charter arriving on its own schedule.** E04 Ruling
+   19's charter, his words then: *"The data that we'd learn from making that
+   work could be applied to other models in the future."* The E10 mechanism —
+   an authored layer, masked by geometry, provenance-tracked, **toggleable,
+   with the base asset byte-untouched by construction** (W-H3) — transfers
+   with exactly one swap: the contact query (a raycast band at a placed z)
+   becomes the **occupancy map** (the fixture's element→texel assignment).
+   Activation is owner-scoped where the waterline is height-scoped; the
+   machinery is the same.
+2. **The flame exclusion is the route's own law, not just taste**: a flame is
+   paint on no surface — the exact class the pipeline structurally rejects
+   (E08 A27; the trust mask is intersected with the silhouette).
+   **Incandescence is a material and lives on surface** — forge-hot steel and
+   a lit gem are paintable, authorable colour words; bloom and halo are the
+   renderer's after-effect at runtime, which is where the waterline research
+   (Q3: shader-side practice) already put effects of this class.
+3. **Per-state derivations re-run when opened**: hot steel occupies the warm
+   bands (it collides with gold and wine where cold steel was achromatic), so
+   the palette bands are per-state; the backdrop word is re-derived per state
+   (lavender against red-orange incandescence is a wide margin, but derived,
+   never assumed). All geometry artifacts — mesh, atlas, controls,
+   silhouettes, ceiling, cull — are state-invariant and already paid for.
+4. **The state fixture is authored from scratch when opened** (the A15 law:
+   replace owners on named regions, never patch): its first authoring
+   question is the participating-element table — L1 hot and L5 glowing are
+   his words; whether L2's iron carries a heat gradient, and the constraint
+   that L4's leather must NOT read as burning, are decided at that fixture's
+   birth, not now.
+
+**Opens on his sentence, after the base state's Gate 1** — the layer needs an
+accepted base to compose over, which is W-H3's own premise. Parked here so it
+cannot be lost.
