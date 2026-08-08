@@ -105,6 +105,60 @@ catches `AssertionError`; whether any anchor fails on the first conversion; and 
 of the ~207 non-ANDON asserts turn out to guard an irreversible step (**a quantity, and
 E21's calibration lesson is that this repo's density predictions run ~2× high**).
 
+## Standards compliance (this dispatch)
+
+**⚑ Amendment 1, 2026-08-08, added by the incoming advisor before any executor opened
+this spec.** The dispatch shipped without this block and without an Environment section.
+Every sibling kickoff E17–E21 carries both; this one carried neither, and the standing
+rule is that missing compliance halts a session rather than being noticed later. Scored
+against the spec **as amended** — what the amendment itself added is named in the row.
+
+| standard | score | evidence |
+|---|---|---|
+| PIN_PER_STEP | 3 | the control is pinned three ways (normal / `-O` / `PYTHONOPTIMIZE=1`), the per-tool ANDON counts are given as numbers to re-derive rather than trust, and three anchors are named literally. **The amendment added the Environment block below** — the absolute interpreter, the shared-copy git discipline, run-then-rerun — which the dispatch had left implicit |
+| ANDON_AUTHORITY | 3 | this experiment *is* andon authority: it exists because 87 gates are deletable by an env var. Gate 2 is the strong form — an anchor that does not reproduce **reverts the conversion**, it is never adjusted until it passes — and the arc halts at a report rather than deciding its own meaning |
+| NAMED_COMPENSATORS | **1** | **the weakest row, and it is a real gap, not a formality.** See the compensator note below: this arc replays anchors through tools that write into the must-not-move trees, and **those trees are not in git**, so `git revert` is not a compensator for them. Remediation is written below and is binding on the executor; owner: advisor, this dispatch |
+| DECOMPOSE_BY_SECRETS | 3 | scope is drawn by *what carries the ANDON token*, not by file or directory convenience, and the ~207 non-ANDON asserts are excluded with the reason stated — a large diff across accepted-asset tooling for no gate |
+| UNCERTAINTY_GATED_HUMANS | 3 | the genuinely uncertain call is pre-routed: a non-ANDON assert that turns out to guard an irreversible step is "a finding for the ruling, not a scope extension." Predictions are committed before any tool is opened, and the calibration note ("this repo's density predictions run ~2× high") frames the ask contrastively |
+| EXTERNAL_VERIFIER | 2 | the verifier is not the converting agent's own judgment but three byte-level anchors, the full artifacts tier and CI — none of which the agent can talk its way past. skip: no cross-family LLM check, because every outcome here is a byte comparison or an exit code, and a second model has nothing to add to `==` |
+
+### ⚑ The compensator gap, stated because scoring it 1 obliges naming it
+
+The anchors replay through tools that write into **E04's, E08's, E13's and E14's trees**,
+and those trees live under `FACET_ASSETS` (`E:\AI\training`) — **they are not in git.**
+For every other file in this arc the compensator is `git revert`; for those trees there
+is no revert, because there is no committed prior state to return to. A single bad write
+during an anchor replay is unrecoverable by any mechanism this repo currently has.
+
+Binding on the executor, and this is a gate not a suggestion:
+
+- **Replay anchors to a scratch output path**, never over the recorded tree. Where a tool
+  has no output-path argument, that is a finding to report — not a reason to point it at
+  the tree.
+- **Before the first replay, record the tree's state** (per-file sha256 manifest of the
+  four trees) and **re-check it at the halt**. The compensator for an unexpected write is
+  a restore from that manifest's source, and the owner is the executor within the session
+  that wrote it — a cross-session restore has nothing to restore from.
+- Any anchor replay that modifies a must-not-move tree **halts the arc** under gate 3,
+  which already forbids the edit; this row makes the *detection* mandatory rather than
+  assumed.
+
+## Environment
+
+- Suite and any tool invocation under the **absolute** pinned interpreter
+  `E:\AI-Models\trellis2-env\Scripts\python.exe`. Bare `python` lacks `open3d` **and**
+  `mcp`, and **T18 refuses it loudly in one line** — if you see that message, you used
+  the wrong interpreter.
+- Blender work runs **through PowerShell**; Git Bash mangles the paths.
+- Shared working copy: **file-specific `git add`**, pathspec-scoped commits, **never
+  `git add -A`**, no stash. The DB and its certificate commit as a **pair**, at a session
+  boundary only.
+- Fold-marked test failures against a live-moving corpus: **run-then-rerun once**
+  (E18 Ruling 2l). A second failure is real.
+- **ASCII prints.** CI is paths-gated over `tools/ tests/ pytest.ini .mcp.json
+  .github/workflows/ pyproject.toml package.json bin/` and runs two dependency scanners.
+  **Never leave CI red.**
+
 ## Gates
 
 1. **Suite green before and after** under the pinned interpreter, and **the full

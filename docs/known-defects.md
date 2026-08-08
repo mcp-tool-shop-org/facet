@@ -99,3 +99,56 @@ there is not — which is why stage 1's σ=16 levelling draws only 6.8% of its w
 off-island (median) and does no measured harm, while the dilation flood at the same scale
 does. Beware the inspection paradox in either direction: the median island holds 88 texels,
 but the median *texel* does not live in a median island.
+
+---
+
+## Tooling defects
+
+*Added 2026-08-08 at the v0.2.0 release read-back. The route's defects are above; this
+section is for the instruments themselves, which are now published products and so have
+users who are not this repo.*
+
+**`facet-index q` answers from an index that does not exist, and its answer is
+indistinguishable from a real one.** Pointed at any path with no database —
+`facet-index q "the hollow finding" --db ./nope.db` — the verb **creates a 0-byte file**
+and prints `(no rows)`, **exit 0**. The term used in that measurement is one of the
+seeded set, a question whose target the four-leg verify requires to rank **1**. So the
+strongest possible query returns the same output as a genuine miss, and the operator has
+no way to tell "the record has nothing on this" from "there is no record here."
+
+**The mechanism, located:** [`tools/facet_index.py:2194`](../tools/facet_index.py) opens
+with a bare `sqlite3.connect(args.db)` — which *creates* a missing file rather than
+failing — and consults neither the file's existence nor the health certificate. `query()`
+then swallows the consequence: both of its `except sqlite3.OperationalError` handlers —
+[`:1876`](../tools/facet_index.py) whose body at `:1877` is `pass`, and
+[`:1884`](../tools/facet_index.py) whose body at `:1885` is `return out[:limit]` — were
+written to tolerate a **malformed FTS5 MATCH expression from user input**, and
+`no such table: fts` is the same exception class. Three distinct
+conditions — bad query syntax, no index at all, and nothing matched — collapse into one
+output and one exit code.
+
+**This is the repo's own law, and the guard's stated reason is not the reason it fires.**
+An error handler written for a narrow condition catches a structural one by accident; the
+result is an answer that cannot be distinguished from its own failure, which is the
+sibling of *a check that cannot fail is not a check* and of the silhouette IoU that
+returned 1.00000 on a holed mesh.
+
+**It contradicts the surface built beside it.** The MCP server's `record_query` refuses
+when the index is not verified, on the stated principle that **a wrong citation is worse
+than no answer**. Two surfaces over the same index disagree about whether to answer from
+an unusable one, and the CLI is the one a shell script will call.
+
+**Reachable without a `--db` flag.** The default resolves against the working directory,
+so the published binary run anywhere outside a checkout takes exactly this path — the
+same class v0.1.1 fixed for the server, still open on the CLI.
+
+**Not a v0.2.0 regression, and the release's own contract holds.** All three declared
+codes were measured on the *published* artifact at the read-back: `--print-tools` → 0,
+`--no-such-flag` → 1, and `verify` against this very empty database → **2**, with a
+structured refusal and a `--debug` hint. `verify` gets it right; `q` does not.
+
+**Disposition: unruled, and deliberately not fixed in the seat that found it.** The
+honest code is a refusal, which points at E22's incoming `4 = REFUSED` — but E22's scope
+is ruled narrow, and quietly widening a dispatched spec is the move this repo forbids.
+It goes to the Director as a finding with its measurement, not into a spec by the hand
+that noticed it.
