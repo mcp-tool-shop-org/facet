@@ -24,7 +24,7 @@ import shutil
 
 import pytest
 
-from mcp_support import (FAILED_PARSE, certify, load_cert, record_mcp,
+from mcp_support import (FAILED_PARSE, REPO, certify, load_cert, record_mcp,
                          save_cert)
 
 # Which test reaches which named code. The mapping is asserted against
@@ -271,11 +271,20 @@ def test_t21_there_is_no_skip_flag(tmp_path, built_db, monkeypatch):
     chain walked past an exit code. Here the gated step is ANSWERING, so the
     check lives in the query path and there is no way around it: not a CLI
     flag, not an environment variable, not an argument.
+
+    THE ALLOWLIST WIDENED BY ONE IN E21, and that is the move this test
+    exists to make expensive, so it is written down rather than absorbed.
+    `--debug` was added to both published commands (E21 unit 2: an unexpected
+    exception must not reach an operator as a raw traceback). It is admitted
+    here on ONE condition, asserted in part 1b below and again structurally in
+    T29: it decides whether a traceback is printed AFTER a failure has already
+    been decided, and no gate, refusal or measurement reads it. The allowlist
+    stays closed - the next flag has to argue for itself the same way.
     """
     import contextlib
     import io
 
-    # 1. the CLI offers exactly two options and neither of them skips
+    # 1. the CLI offers exactly three options and none of them skips
     buf = io.StringIO()
     with contextlib.redirect_stdout(buf):
         with pytest.raises(SystemExit):
@@ -289,7 +298,23 @@ def test_t21_there_is_no_skip_flag(tmp_path, built_db, monkeypatch):
         for tok in line.split():
             if tok.startswith("--"):
                 opts.add(tok.strip(",").split("=")[0])
-    assert opts <= {"--help", "--db", "--print-tools"}, sorted(opts)
+    assert opts <= {"--help", "--db", "--print-tools", "--debug"}, sorted(opts)
+
+    # 1b. the widening is conditional, so the condition is CHECKED here and not
+    #     only in the file that introduced it. `--debug` must not reach the gate
+    #     at all: record_mcp's own source may name it (the flag is declared and
+    #     its help text mentions it) but nothing in this module may branch on
+    #     it, and the gate below must fire with the flag set.
+    import ast
+    tree = ast.parse((REPO / "tools" / "record_mcp.py").read_text(encoding="utf-8"))
+    branching = {n.name for n in tree.body
+                 if isinstance(n, ast.FunctionDef)
+                 for sub in ast.walk(n)
+                 if (isinstance(sub, ast.Name) and sub.id == "debug")
+                 or (isinstance(sub, ast.Attribute) and sub.attr == "debug")}
+    assert not branching, (
+        "record_mcp branches on --debug; a presentation flag that reaches "
+        "logic is the skip flag this test forbids: %s" % sorted(branching))
 
     # 2. no environment variable turns the gate off. The one env var this
     #    module reads selects WHICH derived index, never whether it is checked.

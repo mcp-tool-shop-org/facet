@@ -131,7 +131,7 @@ CERT_SCHEMA = "facet-record-index-certificate/1"
 # publish on a mismatch, because bin/facet.js installs an EXACT pinned version
 # from PyPI - a drift here ships a wrapper that fetches a package that does not
 # exist.
-SERVER_VERSION = "0.1.1"
+SERVER_VERSION = "0.2.0"
 
 # The env var exists so tests and scratch runs bind a copy instead of the
 # tracked artifact. It selects WHICH derived DB, never which corpus.
@@ -1013,7 +1013,7 @@ def _print_tools():
             else "destructiveHint: false"
         head = (fn.__doc__ or "").strip().splitlines()[0]
         print("  %-16s %-24s %s" % (name, ann, head))
-    return 0
+    return facet_index.EXIT_OK
 
 
 TOOL_ORDER = ("record_query", "record_get", "record_build", "record_verify",
@@ -1021,20 +1021,39 @@ TOOL_ORDER = ("record_query", "record_get", "record_build", "record_verify",
 
 
 def main(argv=None):
-    ap = argparse.ArgumentParser(
+    """The console-script entry point, under the shared exit-code contract.
+
+    `[project.scripts]` binds `facet-mcp = record_mcp:main`, so setuptools'
+    wrapper calls THIS function; a contract living in the `__main__` guard below
+    would be absent from every installed command. The contract itself is
+    facet_index's - one definition, both commands, and this module has imported
+    facet_index since it was written.
+    """
+    return facet_index.run_contract(_main, argv)
+
+
+def _main(argv=None):
+    ap = facet_index.ContractParser(
         description="the record-index MCP server over facet's markdown record")
     ap.add_argument("--db", default=None,
                     help="the derived index to serve (default %s, or $%s)"
                          % (facet_index.DB_REL, DB_ENV))
     ap.add_argument("--print-tools", action="store_true",
                     help="print the tool surface and exit; no server, no client")
+    # NOT A BYPASS, and T21 pins that it is not: this flag reaches exactly one
+    # site (facet_index._report_failure) and decides whether a traceback is
+    # printed beside the structured error. The health gate, the certificate
+    # check and every refusal are blind to it - E08 Amendment 32's design is
+    # that the check lives inside the tool with no skip flag, and adding a
+    # presentation flag must not become the exception to it.
+    ap.add_argument("--debug", action="store_true", help=facet_index.DEBUG_HELP)
     args = ap.parse_args(argv)
     if args.db:
         os.environ[DB_ENV] = os.path.abspath(args.db)
     if args.print_tools:
         return _print_tools()
     srv.run("stdio")
-    return 0
+    return facet_index.EXIT_OK
 
 
 if __name__ == "__main__":

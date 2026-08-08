@@ -99,11 +99,18 @@ and Blender on `PATH` (or its absolute path) for the render and mesh stages.
   `E:\AI-Models\...` — 114 occurrences across 26 files). They are not secrets, but
   they do disclose one machine's directory layout, and they mean most tools will
   not run unmodified on another rig.
-- **Unexpected failures surface as Python tracebacks.** There is no `--debug`
-  gate and no structured error shape; deliberate halts are `ANDON:` messages that
-  carry the measurement that fired them. This is the research-instrument contract,
-  not a product contract — see `SHIP_GATE.md` items B1–B3 for the reasoning and
-  the condition under which it changes.
+- **Unexpected failures surface as Python tracebacks — in the 34 unpublished
+  research scripts.** ⚑ **Corrected at 0.2.0**, and the narrowing is the point:
+  the two commands facet actually installs, `facet-index` and `facet-mcp`, no
+  longer do this. An unexpected exception leaves them as a structured failure
+  (`message` / `cause` / `hint`) and `--debug` restores the traceback; a fired
+  gate leaves as `GATE_FIRED` carrying its own `ANDON:` text. Measured before and
+  after through a subprocess — [E21](docs/experiments/E21-cli-contract-report.md),
+  T29. Everything under `tools/` that is *not* one of those two still prints a raw
+  traceback and still carries no `--debug`, deliberately: that is the
+  research-instrument contract, and retrofitting an error registry across the
+  instruments that produced four accepted assets is a large change to
+  accepted-asset tooling bought for a checkbox.
 - **No `--allow-*` escape hatches, by ruling.** Where a tool performs an
   irreversible step, the gate lives *inside* that tool with no skip flag — the
   practice earned in E08 Amendment 32, after a shell chain walked past a fired

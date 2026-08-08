@@ -130,7 +130,7 @@ earlier arc ran ten sessions that each judged their own output and wrote conclus
 next session read as established fact. Nothing in that loop was checkable.
 
 - **Spec before the work, report after, ruling last** — and the session that designs an
-  experiment never grades its own results. Twenty experiments are in
+  experiment never grades its own results. Twenty-one experiments are in
   [the record](docs/experiments/).
 - **Corrections land in place, beside the measurement that overturned them**, never as
   quiet deletions. Six inherited claims were falsified in the founding session alone, and
@@ -139,8 +139,8 @@ next session read as established fact. Nothing in that loop was checkable.
   is not an archive — anyone can run those tools and watch them fail the same way.
 - **A negative result is a full success**, reported and closed rather than tuned toward a
   number.
-- **Tests ride the commit that touches the code** — 218 passing at two seats' hands, with
-  paths-gated CI on the 210 hermetic ones.
+- **Tests ride the commit that touches the code** — 248 passing at two seats' hands, with
+  paths-gated CI on the 240 hermetic ones.
 - **The record is queryable.** A SQLite + FTS5 index over the whole trail, verified on
   four legs. It found a ruling count the prose had wrong at three sites, by counting the
   record itself.
@@ -150,7 +150,7 @@ next session read as established fact. Nothing in that loop was checkable.
 | | |
 |---|---|
 | **[The handbook](docs/handbook/index.md)** | the guide — the route stage by stage, the subjects, the profile system |
-| **[The record](docs/experiments/)** | twenty experiments: spec, report, ruling, and every prediction stated before the measurement |
+| **[The record](docs/experiments/)** | twenty-one experiments: spec, report, ruling, and every prediction stated before the measurement |
 | **[What the route learned](docs/findings.md)** | the durable findings and the hard-won rules, in full |
 | **[Status of every tool](docs/tools.md)** | what works, what is superseded, and the evidence for each |
 | **[Known defects](docs/known-defects.md)** | everything not solved, measured and located in code |
@@ -197,10 +197,13 @@ only lists reassurances is not a threat model: **file operations are not sandbox
 (a tool writes wherever its arguments say); **absolute local paths are baked into many
 tools and docs** — 114 occurrences across 26 files, not secrets but a disclosure of one
 machine's layout, and the reason most tools will not run unmodified elsewhere; and
-**unexpected failures surface as Python tracebacks**, with no `--debug` gate and no
-structured error shape. Deliberate halts are `ANDON:` messages carrying the measurement
-that fired them. That is the research-instrument contract, and
-[SHIP_GATE.md](SHIP_GATE.md) records exactly when it stops being good enough.
+**unexpected failures surface as Python tracebacks in the 34 unpublished research
+scripts**, with no `--debug` gate. Deliberate halts are `ANDON:` messages carrying the
+measurement that fired them. That is the research-instrument contract, and
+[SHIP_GATE.md](SHIP_GATE.md) records exactly when it stops being good enough — which for
+the two commands facet *installs* it did, at 0.2.0: `facet-index` and `facet-mcp` return
+`0` ok / `1` user error / `2` runtime error, and refuse with a structured failure naming
+the next step rather than a traceback ([E21](docs/experiments/E21-cli-contract-report.md)).
 
 **Support status:** this repo is developed in the open, at one rig, by one director
 and a rotating pair of advisor and executor sessions. `main` is the only supported
@@ -218,8 +221,8 @@ Developed against an RTX 5090; VRAM headroom matters more than raw speed.
 CI runs the hermetic subset of the suite on **ubuntu-latest / Python 3.12** with
 pinned installs (`.github/workflows/ci.yml`); the artifacts tier needs the recorded
 trees under `E:\AI\training`, which are not in git, so CI deselects them by design.
-Locally, `python -m pytest` runs all **218** tests and `python -m pytest -m "not artifacts"`
-runs the **210** CI reproduces.
+Locally, `python -m pytest` runs all **248** tests and `python -m pytest -m "not artifacts"`
+runs the **240** CI reproduces.
 
 ---
 

@@ -63,11 +63,168 @@ import os
 import re
 import sqlite3
 import sys
+import traceback
 import unicodedata
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 REPO = os.path.dirname(HERE)
 DB_REL = "docs/index/facet.db"
+
+# ---------------------------------------------------------------------------
+# THE OPERATOR CONTRACT (E21) - exit codes, and how a failure reaches a person
+# ---------------------------------------------------------------------------
+#
+# Shared by BOTH published console scripts. `record_mcp` has imported this
+# module since it was written (it calls facet_index.verify in-process to build
+# the certificate), and both ship as top-level py-modules out of tools/ - so one
+# definition here costs no new file, no new packaging surface, and nothing for
+# the frozen binary to fail to collect.
+#
+# MEASURED THROUGH A SUBPROCESS BEFORE THE CHANGE (E21, twenty rows, both
+# commands - docs/experiments/E21-cli-contract-report.md):
+#
+#   ok - help, q, claims, build, a passing verify        0
+#   user error, argparse - bad verb / flag / int         2   argparse's convention
+#   user error, hand-rolled - `q` with no term           2   matched to argparse
+#   runtime error - missing or corrupt DB                1   + a RAW TRACEBACK
+#   a leg of `verify` failing                            1   no traceback; legible
+#   the inverse discovery guard's ANDON firing           1   + a RAW TRACEBACK
+#
+# So the surface was inverted at BOTH ends against this registry - 2 for the
+# user, 1 for the runtime - and THREE distinct outcome classes shared exit 1.
+#
+# This block moves the two classes the registry names unambiguously. It leaves
+# the other two EXACTLY where it found them: what a fired gate deserves, and
+# what a failed leg deserves, are E21's open questions 1 and 2, and they are the
+# advisor's to rule. An executor that picked a number for them would be deciding
+# what a result means, which is not this seat's job.
+
+EXIT_OK = 0
+EXIT_USER = 1          # the operator's invocation was wrong
+EXIT_RUNTIME = 2       # the tool broke on something it did not expect
+
+# DECLARED AND DELIBERATELY UNUSED. Measured in E21: no verb of either command
+# has a partial-completion path - `verify` reporting three passing legs and one
+# failing one has COMPLETED, and reports a measured outcome. A code is not
+# populated by inventing a path for it to describe.
+EXIT_PARTIAL = 3
+
+# UNCHANGED, NOT CHOSEN. A fired ANDON exits what it exited before this arc,
+# because its code is E21 question 1. Named as a constant only so the value has
+# one site and the report can point at it; nothing here argues that 1 is right.
+EXIT_ANDON_UNRULED = 1
+
+
+def prog_name():
+    """The command the operator actually typed.
+
+    Derived from argv rather than hardcoded, which is T28's lesson (the 0.1.0
+    binary told a user with no tools/ directory to run a source-tree command):
+    a source checkout says `facet_index.py`, an installed console script says
+    `facet-index`. Advice that does not follow the runtime is wrong advice.
+    """
+    base = os.path.basename(sys.argv[0] or "")
+    return base or "facet"
+
+
+class ContractParser(argparse.ArgumentParser):
+    """argparse, with its usage-error exit moved from 2 to this repo's 1.
+
+    ONLY `error()` is overridden. `exit()` is left alone deliberately: `--help`
+    reaches the operator through `exit(0)`, and an override there would move a
+    success onto a failure code. Measured: every argparse usage failure in both
+    commands - unknown verb, missing required argument, unrecognised flag, a
+    non-integer where an int is declared - routes through `error()`, so one
+    override covers the whole class. Neither command uses subparsers (each has a
+    single flat parser; `facet-index`'s verb is a `choices`-constrained
+    positional), so there is no second parser to propagate this to.
+    """
+
+    def error(self, message):
+        self.print_usage(sys.stderr)
+        sys.stderr.write("%s: error: %s\n" % (self.prog, message))
+        raise SystemExit(EXIT_USER)
+
+
+def user_error(message, hint):
+    """A hand-rolled user error, in the shape argparse's now leaves in."""
+    sys.stderr.write("%s: error: %s\n" % (prog_name(), message))
+    sys.stderr.write("  hint: %s\n" % hint)
+    return EXIT_USER
+
+
+def debug_requested(argv=None):
+    """Whether --debug was asked for.
+
+    Read from argv rather than from parsed arguments, because the failures this
+    governs include ones raised before a parse completes. It is read HERE and
+    nowhere else in either tool: no gate, no refusal and no measurement consults
+    it, which is the property tests/test_t29 pins.
+    """
+    return "--debug" in (sys.argv[1:] if argv is None else list(argv))
+
+
+DEBUG_HELP = ("on failure, print the traceback as well as the structured error. "
+              "PRESENTATION ONLY - it changes nothing about what runs, skips no "
+              "gate, and no check consults it")
+
+
+def _report_failure(kind, exc, debug, hint):
+    """One site for every failure this contract prints. stderr only."""
+    if debug:
+        traceback.print_exc()
+    sys.stderr.write(
+        "%s: %s\n"
+        "  message: %s\n"
+        "  cause:   %s\n"
+        "  hint:    %s\n"
+        % (prog_name(), kind, str(exc) or exc.__class__.__name__,
+           exc.__class__.__name__, hint))
+
+
+def run_contract(fn, argv=None):
+    """Run a console script's body under the exit-code contract.
+
+    THIS WRAPS main() ITSELF, not the `__main__` guard. `[project.scripts]`
+    binds `facet-index = facet_index:main`, and setuptools' generated wrapper
+    calls that function directly - so a contract living in the `if __name__`
+    block would be present in a source-tree run and ABSENT from every installed
+    command, which is the surface this arc is about.
+
+    A fired gate is routed away from the unexpected-exception path on purpose.
+    An ANDON is the tool WORKING; folding it into a generic runtime error would
+    both hide its message behind a summary and silently assign it the runtime
+    code, which E21 leaves to the advisor.
+    """
+    debug = debug_requested(argv)
+    try:
+        return fn(argv)
+    except SystemExit:
+        # argparse's own exits already carry a contract code
+        raise
+    except KeyboardInterrupt:
+        sys.stderr.write("\n%s: interrupted\n" % prog_name())
+        return EXIT_RUNTIME
+    except AssertionError as exc:
+        # A FIRED GATE. This module carries exactly one bare `assert` and it is
+        # the inverse discovery guard, whose message opens with "ANDON:".
+        # Two E21 findings attach here and neither is fixed in this arc:
+        #   - the code is unruled (question 1), so it is left unchanged
+        #   - a bare `assert` is stripped by PYTHONOPTIMIZE=1, which an
+        #     installed command's environment can carry. Measured: the guard
+        #     goes silent and the build exits 0.
+        _report_failure(
+            "GATE_FIRED", exc, debug,
+            "this is a gate refusing, not a defect in the tool. Fix what it "
+            "names; there is no flag that skips it")
+        return EXIT_ANDON_UNRULED
+    except Exception as exc:                                  # noqa: BLE001
+        _report_failure(
+            "RUNTIME_ERROR", exc, debug,
+            "the traceback is above" if debug else
+            "re-run the same command with --debug for the traceback")
+        return EXIT_RUNTIME
+
 
 # ---------------------------------------------------------------------------
 # The record's own file list. Explicit and sorted rather than globbed, so the
@@ -1999,26 +2156,41 @@ def _survivable_stdout():
 
 
 def main(argv=None):
+    """The console-script entry point. `[project.scripts]` binds this name, so
+    the contract wrapper has to be HERE and not in the `__main__` guard."""
+    return run_contract(_main, argv)
+
+
+def _main(argv=None):
     _survivable_stdout()
-    ap = argparse.ArgumentParser(
+    ap = ContractParser(
         description="the derived SQLite+FTS5 index over the facet record")
     ap.add_argument("verb", choices=["build", "verify", "q", "claims"])
     ap.add_argument("term", nargs="?", default=None, help="query term for `q`")
     ap.add_argument("--db", default=os.path.join(REPO, DB_REL))
     ap.add_argument("--limit", type=int, default=8)
     ap.add_argument("--table", default=None, help="restrict `q` to one table")
+    ap.add_argument("--debug", action="store_true", help=DEBUG_HELP)
     args = ap.parse_args(argv)
 
     if args.verb == "build":
         build(args.db)
-        return 0
+        return EXIT_OK
     if args.verb == "verify":
+        # UNCHANGED by E21. verify's return value is not only this process's
+        # exit code: record_mcp calls verify() IN-PROCESS and writes the value
+        # into `verify_exit_code` of the schema-versioned certificate, where
+        # record_health serves it. Moving it is E21 question 2 and it moves a
+        # persisted artifact's field, not just a shell's $?.
         return verify(args.db)
     if args.verb == "claims":
+        # UNCHANGED, and ruled: E15 Ruling 9b binds `claims` to never return a
+        # failing code. The verb's own banner says so - "REPORT-ONLY; always
+        # exits 0".
         return claims(args.db)
     if not args.term:
-        print("q needs a term", file=sys.stderr)
-        return 2
+        return user_error("q needs a term",
+                          "%s q <term> [--table T] [--limit N]" % prog_name())
     con = sqlite3.connect(args.db)
     rows = query(con, args.term, limit=args.limit * 6)
     n = 0
@@ -2035,7 +2207,7 @@ def main(argv=None):
             break
     if n == 0:
         print("(no rows)")
-    return 0
+    return EXIT_OK
 
 
 if __name__ == "__main__":
