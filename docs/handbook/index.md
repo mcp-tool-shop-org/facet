@@ -4,9 +4,11 @@ A styled 2D concept goes in; a textured 3D asset comes out. Everything runs on o
 local machine plus a metered cloud generation step, and nothing in the chain carries a
 non-commercial licence. **Four subject classes have entered the route: a character
 (accepted), a galleon (accepted), a dragon (ACCEPTED 2026-08-07 — the third accepted
-asset, zero credits across its entire arc), and a longsword (designated, its
-measurement pass dispatched)** — each with every subject value in its own profile and
-identity fixture, so no subject can break another's path.
+asset, zero credits across its entire arc), and a longsword (pair ACCEPTED, stage-1b
+atlas banked at 88.71% of its pre-registered ceiling, the gem ruled GARNET at the
+Director's word, its stroke lane dispatched — zero credits so far)** — each with
+every subject value in its own profile and identity fixture, so no subject can break
+another's path.
 
 This handbook is the guide. [The README](../../README.md) is the measured state of every
 tool, and [docs/experiments](../experiments/) is the evidence — every claim here traces to

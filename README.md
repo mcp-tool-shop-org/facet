@@ -317,28 +317,45 @@ dataset asset #3, the first manifest under the lane's 1.3.0 contract), the
 ingest, then the [E15 context index](docs/experiments/E15-context-index-kickoff.md),
 then E14.
 
-**E14 — the prop arc — is IN FLIGHT: designated same day, measurement pass
-dispatched** ([E14-ruling.md](docs/experiments/E14-ruling.md), Rulings 1–5): the
-route's fourth subject class and its **first portrait subject**
-(widest-horizontal/height 0.2258 — the framing family pins HEIGHT here, per subject,
-where the beast pinned width). Gate 0 reconstructed all three longsword clays with
-the **cleanest topology the route has recorded** (zero boundary edges on all three)
-and produced a route-wide headline while chasing a sword anomaly: **every
-reconstruction this route has made — the accepted dragon and galleon as controls —
-is a hollow double-walled shell**, walls almost exactly two voxels of the 1024³
-grid, invisible for eleven experiments because the route only touches visible
-surface ([Ruling 3](docs/experiments/E14-ruling.md); the CLAUDE.md standing
-constraint now carries it). The pinch prior joined it: **fine relief becomes
-non-manifold pinching at constant density, not denser mesh** — the pinch locus is
-the grip wrap, not the cutting edges, and allocation ruled NONE on the lowest
-density contrast the route has measured (1.135×). **Designated: 00001** ("00001 is
-my favorite"); **register ruled day one, chosen fresh** ("Ultra-realistic, no
-LoRA") — the fixture ([LONGSWORD-IDENTITY.md](canon/LONGSWORD-IDENTITY.md), five
-elements, occupancy audit at authoring) was authored *under* the register, applying
-the dragon's palette lesson at birth. `profiles/prop.json` is drafted with the
-canny pair, backdrop and thin-extent deliberately suspended to the measurement
-dispatch — **S-steel is the subject's declared point**: the five-times-measured
-grey-on-grey class, at home, with two advisor rulings gating any generation.
+**E14 — the prop arc — is at its STROKE LANE, the last stage before Gate 1**
+([E14-ruling.md](docs/experiments/E14-ruling.md), Rulings 1–23, zero credits
+across the whole arc): the route's fourth subject class and its **first portrait
+subject** (widest-horizontal/height 0.2258 — the framing family pins HEIGHT here,
+per subject, where the beast pinned width). Gate 0 reconstructed all three
+longsword clays with the **cleanest topology the route has recorded** and produced
+a route-wide headline: **every reconstruction this route has made is a hollow
+double-walled shell**, walls ~two voxels ([Ruling 3](docs/experiments/E14-ruling.md);
+CLAUDE.md carries it). **Designated: 00001; register ruled day one** ("Ultra-realistic,
+no LoRA"); the fixture ([LONGSWORD-IDENTITY.md](canon/LONGSWORD-IDENTITY.md))
+authored under the register with the occupancy audit at birth. The measurement pass
+derived the canny pair per subject (0.10/0.25 — the accepted route's 0.4/0.8
+falsified a second time on grey-on-grey clay) and the backdrop word (`plain
+lavender background`, which materialises in the **magenta** band doing its job
+8–11× over the key's cut — the word stands, its grounds corrected in place), and
+**broke the off-surface "bake constant"**: the rate is a margin statistic tracking
+island count (the fourth subject measured 11.09% at 46,496 islands; eroding 2 texels
+drops all three prior subjects' rates 6–1300×). **The styled target pair is
+ACCEPTED** ("I agree with view 0 being the best. I love it.") with one roll rejected
+against the pre-registered occupancy audit — the specification working. The twin set
+taught the hard lessons: **at one seed every diagonal sprawled gold and at the
+cure-seed the gem drifts magenta** ("the seed buys an iron crossguard and costs a
+garnet gem"); **edge-on twinning of a thin subject FAILS as a class** (zero
+identity-clean rolls in four — a face-on crossguard grown from the mid-grip ring's
+edge line, a death's-head where the guard should be: **a control can be obeyed and
+still recompose the object when its features resemble the wrong parts**); and
+**registration measures where paint sits, not what it is** (a rejected phantom
+out-scored an accepted twin on IoU; the bbox law separates cleanly — no IoU bound
+armed). **Stage 1b is the banked A0**: six twins, styled **45.25% of valid = 88.71%
+of its pre-registered six-camera ceiling** (the dragon banked 87.5% of its own),
+identity clean at the sheet-walk. Two price laws came out of the exclusions: **a
+marginal is a property of an ordering, not of a camera** (a carried price overstated
+43.8×), and **a reach price is not a paint price** (7.4× apart on the thin subject —
+erosion and trust bind where the subject is thin). **The gem is GARNET at the
+Director's one-word ruling** — the fixture holds, the artifact bends to the
+identity — and **handoff 7, the stroke lane, is dispatched**: the blade's edge-on
+centreline ribbon, the guard seam, and the garnet repaint (5.76 points of
+territory), two advisor halts, the long-deferred `thin_extent` decided at the
+stroke-lane ruling. Then finalize, pack, and Gate 1 beside the clay.
 
 **E15 — the context index — is LIVE and ruled**
 ([E15-ruling.md](docs/experiments/E15-ruling.md), 9 rulings):
@@ -346,8 +363,12 @@ grey-on-grey class, at home, with two advisor rulings gating any generation.
 `docs/index/facet.db` — SQLite + FTS5 over the whole record, **ruling documents
 discovered by sorted glob with an inverse guard**, verified on four legs
 (byte-identical determinism across interpreters, counts against independent greps,
-zero dangling pointers over 1,000+ rows, a 14-question seeded gate) at **two
-seats' hands**. The verifier found E04's true ruling count (29, where the prose
+zero dangling pointers over 1,200+ rows, a seeded question gate — 20 questions as
+of E14, every new seed measured before it enters) at **two
+seats' hands**. The E14 arc proved the gate both ways in one night: its count legs
+caught the advisor's own malformed fold hours after being added — and the commit
+walked past the firing because verify and commit shared a shell call, minting the
+standing practice that **a fold's verify and its commit never share a call**. The verifier found E04's true ruling count (29, where the prose
 said 28 at three sites) by counting the record itself, and its own two self-caught
 defects minted a law: **a status is read from a convention's position, never
 matched in narrative prose**. The standing ritual: every advisor fold ends

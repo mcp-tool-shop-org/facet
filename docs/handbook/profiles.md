@@ -61,7 +61,7 @@ registry sweep (below) enforces it:
 | `ship.json` | **81/81, exit 0** | the first profile with every flag on an accepted route explicitly decided |
 | `beast.json` | **83/83, exit 0** | certified at E13 handoff 15 step 0 — the gate the texture arms waited on since handoff 2, passed after Ruling 26's transcriptions (*the count read 80/81 mid-arc; flags grew as the arc added registry slots*) |
 | `character.json` | 65/81 | that profile's silences-as-defaults predate the sweep; its relocation claim holds with one standing mismatch (`thin-extent` 0.03 vs source default 0.0 — the only profile that ever turned the guard on) |
-| `prop.json` | drafted, NOT YET SWEPT | the handoff-2 dispatch owns the sweep; expected deliberate UNDECIDEDs pre-stated there: `thin-extent` and the canny pair (both owned by measurements, the beast's deferral pattern) |
+| `prop.json` | SWEPT; generation keys SPENT at the accepted pair | canny 0.10/0.25 and the backdrop RULED (E14 Rulings 6/7); elevated NONE (Ruling 8); the recipe anchored on the accepted pair (Ruling 16b — seed reads SPENT, two-seed fact recorded); the palette wired at `_fixtures.palette` (Ruling 17, report-only); `thin-extent` is the ONE deliberate absence left — decided at the stroke-lane ruling (Ruling 23b), the beast's deferral pattern held to its end |
 
 ## The framing family
 
