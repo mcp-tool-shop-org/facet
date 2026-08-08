@@ -851,6 +851,27 @@ FAILS as a class; the edge-on surfaces (blade edges end-on, both guard
 ends, ~7 points of valid across the two cameras) belong to the brush stage
 by construction, not to rolls. Banked route-wide.
 
+*⚠ Sharpened 2026-08-08, the Director's second catch on the same image —
+this seat had described v2 twice without stating its plainest fact: THE
+GUARD SITS IN THE MIDDLE OF THE GRIP. Walked on the sheet, reference beside
+asset: the clay's stack is gem → collar → wrap → mid-grip RING → wrap →
+GUARD BLOCK → blade; the twin's is gem → collar → wrap → full face-on
+crossguard AT THE RING'S POSITION → wrap → collar → skull-dome AT THE
+GUARD'S POSITION → blade. The failure is not invention under absent
+constraint — it is ANATOMY MISBINDING SEEDED BY THE CONTROL'S OWN
+FEATURES: the ring's thin horizontal edge matched the model's crossguard
+template better than the true guard's edge-on blob, so the guard-prior
+bound to the ring and the displaced guard mass was dressed as a skull. A
+control can be obeyed and still recompose the object when its features
+resemble the wrong parts. And the finding's own discovery is the
+discipline's lesson: three viewings of the bare asset missed what one walk
+of the SHEET shows in a glance — the repo's sheet law ("the sheet tells
+you what it was supposed to be") applies to the advisor's eye exactly as
+it applied to E07's metrics. Standing practice from here: at every halt,
+each judged artifact is walked ON ITS SHEET, reference beside asset,
+structure by structure top to bottom, and the walk's mismatches are stated
+in plain words BEFORE any number or category is consulted.*
+
 **20c — STAGE 1 runs with SIX twins**: views 0 and 4 at 770700, views
 1/3/5/7 at 770701. Handoff 5 is amended in place before launch: the
 ceiling leg pre-registers the SIX-camera reach (the eight-camera 51.33%
