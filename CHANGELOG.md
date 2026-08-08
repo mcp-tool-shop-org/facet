@@ -63,9 +63,23 @@ it printed. **A green pipeline verifies the thing it built, not the thing a user
 receives** — T28 now exercises the frozen branch directly rather than trusting that a
 source-tree run implies a binary run.
 
-Also corrected: `npx @mcptoolshop/facet` was briefly reported as broken on Windows.
-It is not — two failures immediately after publish were registry propagation, and the
-bare form returns exit 0. No documentation changed, because nothing was wrong with it.
+Also corrected, twice, and the second correction is the useful one: `npx
+@mcptoolshop/facet` was reported as broken on Windows, then explained away as registry
+propagation. **Both were wrong.** `npx` works from any ordinary directory, on both
+versions, exit 0.
+
+It fails in exactly one place — **inside facet's own checkout** — because the repo root
+now declares `"bin": {"facet": …}` for the wrapper it publishes. npm resolves the
+command against the local project first, that project has no `node_modules`, and the
+shell reports `'facet' is not recognized`. A self-reference artifact of testing a
+published package from inside the repo that publishes it. No user encounters it.
+
+**The diagnosis took three attempts because the comparison was invalid.** The runs that
+worked were from a temp directory and the runs that failed were from the checkout — the
+version changed *and* the working directory changed, and the result was read as
+version-specific. This repo's own law, committed again: *"one variable" is a property of
+the dependency graph, not of the parameter you edited.* The Director found it with a
+one-word question after two confident wrong explanations.
 
 **218 tests, 218 passing** — 210 hermetic + 8 artifacts, counted at this commit. The
 five new ones are T28, and they exercise the frozen branch directly rather than
