@@ -586,7 +586,9 @@ real since it's more of an after-effect"*). Recorded with its grounding:
 
 **Opens on his sentence, after the base state's Gate 1** — the layer needs an
 accepted base to compose over, which is W-H3's own premise. Parked here so it
-cannot be lost.
+cannot be lost. *⚠ The sentence arrived 2026-08-08 (Ruling 35): the activated
+state opens AT THE POLISH ARC — after the four MCP tools are built and
+test-verified — alongside the exemplar polish pass, his word naming the time.*
 
 ## Ruling 17 — the bands RULED; the gate report-only; Task 2 is GO (2026-08-07)
 
@@ -2215,4 +2217,43 @@ Export ✓ (handoff 10, Ruling 33) · ingest ✓ (this ruling) · the
 errand batch and the MCP specs are in flight as E16 and the spec
 session · the activated state (16c) waits on his sentence, as
 designed.
+
+## Ruling 35 — THE POLISH ARC IS CHARTERED (Director, 2026-08-08): the exemplars polished after the MCP tools are built and test-verified; the humanoid goes photo-real; the activated state's time is named (2026-08-08)
+
+**His words**: *"We're going to polish all of the exemplars from each
+profile after the MCP tools have been built and verified properly with
+tests. This will be a way to dogfood the new MCP tools, polish the
+pipeline and the dataset that is informed by it, as well as making the
+humanoid without the salt_road LoRA so that we can get a proper
+photo-real look and the activated state of the sword at that time."*
+
+**35a — the sequence is his and it is recorded**: (1) the in-flight
+sessions land (E16's errands; the MCP specs); (2) **the four MCP tools
+are BUILT and VERIFIED PROPERLY WITH TESTS** — the studio's shipcheck
+bar, not a prototype bar; (3) **THE POLISH ARC** — every accepted
+exemplar (W3, the galleon, the dragon, the longsword) gets its polish
+pass, and the arc is quadruple-purpose by design: **dogfood the new MCP
+tools on real work · polish the pipeline · re-inform the dataset from
+the polished assets · and two named upgrades ride it** — the humanoid
+re-made WITHOUT the saltroad LoRA for a proper photo-real look, and
+**the sword's activated state opens** (16c's sentence has arrived; the
+park annotated in place).
+
+**35b — consequences banked now, opened later.** (i) The humanoid's
+polish is a REGISTER decision already spoken: photo-real, no LoRA —
+the style-registers law will record it fresh at that arc's designation
+moment, the Director's word already given (the register-is-subject-data
+law honoured: spoken per subject, not inherited — and this is the
+character class's row being re-decided at ITS moment, not a blanket).
+(ii) The e11 galleon/W3 re-emit errand NATURALLY PROMOTES into the
+polish arc — every polished asset re-exports and re-ingests, so the
+re-emit stops being a standalone errand. (iii) The MCP tools' first
+consumer is named before they are built — the polish arc IS their
+dogfood, which is the studio's built-vs-filled discipline applied at
+birth: the tools ship with a consumer waiting, not as scaffolding.
+(iv) The dataset's photo-real weighting grows with the polish arc —
+the realistic-creature training path (E12 Ruling 28a's named
+finalization arm) gains its humanoid deposit when the photo-real W3
+lands. **Nothing in the polish arc opens until the MCP tools pass
+their tests — the sequencing is the charter's own first clause.**
 

@@ -161,6 +161,23 @@ values live in `canon/E14-longsword-palette.json` + `prop.json` with provenance.
 
 ## THE NEXT MOVES (in order)
 
+**⚡ SUPERSEDING ROADMAP (Director, 2026-08-08 — E14 Ruling 35, after Gate 1
+closed on the FOURTH accepted asset and the dataset reached four dense
+ingests):** the arc below this banner completed through Ruling 34. The live
+sequence is now: **(1)** the in-flight sessions land — E16's errand batch
+([E16-errands-kickoff.md](experiments/E16-errands-kickoff.md)) and the MCP
+spec session ([mcp-spec-session-kickoff.md](specs/mcp-spec-session-kickoff.md));
+**(2)** the four MCP tools are BUILT and VERIFIED PROPERLY WITH TESTS (the
+shipcheck bar — his words); **(3)** **THE POLISH ARC** — every accepted
+exemplar (W3, galleon, dragon, longsword) polished, quadruple-purpose:
+dogfood the new MCP tools on real work · polish the pipeline · re-inform the
+dataset (the galleon/W3 re-emit errand promotes into it) · **the humanoid
+re-made photo-real WITHOUT the saltroad LoRA** (the register word already
+spoken, recorded fresh at that arc's designation) · **and the sword's
+ACTIVATED STATE opens there** (16c's sentence arrived — glowing gem,
+forge-hot steel, no flames, the waterline mechanism with the occupancy map).
+Nothing in the polish arc opens until the MCP tools pass their tests.
+
 The handoff-7 halts: HALT 1 (the stroke-lane ruling — yours; clears
 `_NOT_CLEARED`, decides thin-extent, rules the garnet-repaint prompt) → per-stroke
 eye gates → HALT 2 (the stroked asset — your sheet-walk, then the Director) →

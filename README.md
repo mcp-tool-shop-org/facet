@@ -416,8 +416,13 @@ dry run line for line, the operands materialized byte-identical, five
 sha-pinned pointers went live, and the lane pushed to main at the Director's
 word. **The dataset holds four dense assets** — the galleon, the dragon, the
 longsword, and W3 — 114 records across five ingests. The errand batch (E16)
-and the MCP-tool specs are in flight; the activated state (Ruling 16c) stays
-parked at his sentence.
+and the MCP-tool specs are in flight — and **the road ahead is chartered**
+([Ruling 35](docs/experiments/E14-ruling.md)): after the four MCP tools are
+built and test-verified, **the polish arc** runs every accepted exemplar
+through a polish pass that dogfoods the new tools, polishes the pipeline,
+re-informs the dataset, re-makes the humanoid photo-real without the
+saltroad LoRA, and opens the sword's activated state (Ruling 16c — its
+sentence has arrived).
 
 **E15 — the context index — is LIVE and ruled**
 ([E15-ruling.md](docs/experiments/E15-ruling.md), 9 rulings):
