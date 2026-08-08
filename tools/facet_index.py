@@ -1369,14 +1369,24 @@ COUNT_CHECKS = [
      r"^## Session handoff", "handoffs", "arc='E14'"),
     # E16 legs added 2026-08-08 (E17 T15, the E15 Ruling 8b pattern): the ruling
     # landed this same day and its rows enter the gate the day they exist. E17's
-    # own legs deliberately do NOT: no E17-ruling.md exists yet and its kickoff
-    # carries no handoff headers, so an E17 leg today would grep a file that is
-    # not there — a check that cannot fail. Those legs belong to the window
-    # where the E17 ruling lands.
+    # own legs deliberately did NOT, in that same commit: no E17-ruling.md
+    # existed yet and its kickoff carries no handoff headers, so an E17 leg then
+    # would have grepped a file that is not there — a check that cannot fail.
     ("E16 numbered rulings", "docs/experiments/E16-ruling.md", r"^## Ruling (\d+)\b",
      "rulings", "arc='E16' AND kind='ruling'"),
     ("E16 lettered sub-rulings", "docs/experiments/E16-ruling.md",
      r"^\*\*\d+[a-z] +[—–-]", "rulings", "arc='E16' AND kind='sub-ruling'"),
+    # E17 legs added on the ruling's own landing (T15b, E17 Ruling 3e) — the
+    # deferred half, unblocked by the file existing. Counts VERIFIED against
+    # source before the legs were written rather than taken from the dispatch:
+    # 4 numbered (1-4) and 10 lettered (1a-1d, 3a-3f), 14 rows, matching both
+    # the fold's reported figure and the DB. No handoffs leg: the E17 kickoff
+    # carries no `## Session handoff` header, so that half stays deferred on
+    # the same reasoning that deferred all of it a commit earlier.
+    ("E17 numbered rulings", "docs/experiments/E17-ruling.md", r"^## Ruling (\d+)\b",
+     "rulings", "arc='E17' AND kind='ruling'"),
+    ("E17 lettered sub-rulings", "docs/experiments/E17-ruling.md",
+     r"^\*\*\d+[a-z] +[—–-]", "rulings", "arc='E17' AND kind='sub-ruling'"),
 ]
 
 
@@ -1839,7 +1849,10 @@ def verify(db_path, top_n=3):
            # notes above the bound — the designed behaviour, not a widening.
            ("E14", "ruling", 1, 16),
            # E16 closed at Ruling 7 (E16-ruling.md, 2026-08-08); bound as ruled.
-           ("E16", "ruling", 1, 7)]
+           ("E16", "ruling", 1, 7),
+           # E17 ruled at 4 (E17-ruling.md, 2026-08-08); bound as ruled, and
+           # measured gapless 1-4 before this line was written.
+           ("E17", "ruling", 1, 4)]
     for arc, kind, lo, hi in seq:
         gaps = _sequence_gaps(con, arc, kind, lo, hi)
         print("  %-28s %s %d-%d gaps: %s"
