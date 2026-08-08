@@ -20,13 +20,13 @@
 
 ---
 
-Lo stile viene applicato **direttamente sull’oggetto**, nello spazio della texture, e non viene disegnato separatamente per ogni prospettiva per poi essere assemblato successivamente. Si fornisce al programma un modello concettuale in argilla con forme accentuate e questo restituisce una mesh texturizzata il cui colore deriva da un riferimento stilizzato di *quella* stessa mesh; tutte le aree che il riferimento non copre vengono riempite tramite uno strumento di pittura mascherato e una funzione di dilatazione che tiene conto della superficie.
+Lo stile viene applicato **direttamente sull’oggetto**, nello spazio della texture, e non viene disegnato separatamente per ogni prospettiva per poi essere assemblato successivamente. Si fornisce al programma un modello concettuale in argilla con forme accentuate e questo restituisce una mesh texturizzata il cui colore deriva da un riferimento stilizzato di *quella* stessa mesh; tutte le aree che il riferimento non copre vengono riempite tramite uno strumento di pittura mascherato e una dilatazione che tiene conto della superficie.
 
 Prende il nome dalle due componenti del problema: i poligoni e la superficie che devono delimitare.
 
 ## Dove si trova
 
-**Quattro opere sono state accettate, ripartite in quattro diverse categorie, senza richiedere alcun credito formativo.** Ciascuna è stata valutata dal direttore, che ha potuto esaminarla nel formato desiderato – sia su schermi più piccoli (GLB), sia su fogli di dimensioni standard –, e non sulla base di criteri quantitativi o del superamento di una soglia minima.
+**Quattro opere sono state selezionate, appartenenti a quattro diverse categorie tematiche, e non richiedono alcun credito.** Ciascuna di esse è stata valutata dal Direttore, che ha utilizzato il formato più adatto – sia esso la versione ridotta (GLB) o il formato completo – e non si è basato su criteri quantitativi predefiniti.
 
 | argomento; materia; soggetto | classe | accettato/a | riferimento / pennello / dilatazione |
 |---|---|---|---|
@@ -35,9 +35,9 @@ Prende il nome dalle due componenti del problema: i poligoni e la superficie che
 | **Dragon** | bestia, membrane alari | [2026-08-07](docs/experiments/E12-ruling.md) | 44.15 / 3.07 / 52.78 |
 | **Longsword** | oggetto di scena, quasi bidimensionale, con tonalità di grigio su grigio | [2026-08-08](docs/experiments/E14-ruling.md) | 45.25 / 2.07 / 52.68 |
 
-Le porzioni di texture sono valide e **non possono essere confrontate tra diversi soggetti** – una nave nasconde la maggior parte della sua superficie all’altezza degli occhi e un animale ne nasconde metà. Confrontare ciascuna con il proprio limite massimo predefinito, rispetto al quale raggiungono l’86–93%: la differenza tra le diverse porzioni è dovuta alla geometria, non a una regressione. [Valori completi, con i rispettivi denominatori](docs/handbook/subjects.md).
+Le porzioni di texture sono valide e **non possono essere confrontate tra diversi soggetti** – una nave nasconde la maggior parte della sua superficie all’altezza degli occhi e un animale ne nasconde metà. Confrontare ogni elemento con il proprio limite massimo predefinito, rispetto al quale si ottiene un risultato compreso tra l’**86% e il 93%**: la differenza tra le diverse porzioni è dovuta alla geometria, non a una regressione. [Valori completi, con i rispettivi denominatori](docs/handbook/subjects.md).
 
-**Si tratta di una pipeline, non di un generatore che produce immagini con un solo personaggio.** Contraddicendo le specifiche su otto elementi identificati, il modello ottiene **8 risultati positivi su 8**, con una differenza media ΔE di 46,3 rispetto a 6,2 nei cinque esempi di controllo; l’immagine rimane comunque la stessa. La struttura è mantenuta dalla griglia e dai controlli; gli attributi specificati influenzano il risultato finale.
+**Si tratta di una pipeline, non di un generatore che produce immagini con un solo personaggio.** Contraddicendo le specifiche su otto elementi identificati, il modello ottiene **8 risultati positivi su 8** – con una differenza media ΔE di 46,3 rispetto a 6,2 in cinque immagini di controllo – mentre l’immagine rimane la stessa. La struttura è mantenuta dalla griglia e dai controlli; gli attributi identificati sono influenzati dal prompt.
 
 ## Il percorso
 
@@ -50,38 +50,38 @@ form-exaggerated clay concept ──► image-to-3D ──► weld ──► den
        twins, generated from THIS mesh ──► project ──► brush the holes ──► fill
 ```
 
-Passo dopo passo, con la relativa spiegazione: **[il manuale](docs/handbook/index.md)**.
+Passaggio per passaggio, con la relativa spiegazione: **[il manuale](docs/handbook/index.md)**.
 
 ## Cosa lo rende efficace?
 
-Sono stati ottenuti sei risultati, ciascuno dei quali è stato il frutto di un esperimento e che, nel complesso, hanno portato a conclusioni più ampie rispetto all’ambito specifico in cui sono stati raggiunti. [La versione completa, con le misurazioni](docs/findings.md).
+Sono stati ottenuti sei risultati, ciascuno dei quali è stato il frutto di un esperimento e che, nel complesso, hanno una portata più ampia rispetto all’ambito specifico in cui sono stati prodotti. [La versione completa, con le misurazioni](docs/findings.md).
 
 - **Prima la forma, poi lo stile.** I programmi di ricostruzione interpretano il rumore superficiale come geometria. Un modello in argilla pulito, simile a una scultura, con piani volutamente esagerati, produce una topologia migliore rispetto a uno sprite stilizzato; la copia stilizzata viene generata contemporaneamente e diventa il riferimento cromatico.
 - **Definisci i contorni del viso, ottieni un volto.** Un ritaglio che inquadra il busto aggiunge dal **3,1 al 4,5 volte più poligoni** alla testa e la differenza è strutturale: palpebre separate, una piega sul sopracciglio, cavità nasali modellate, non semplicemente una sfocatura più accentuata.
-- **Le copie appartengono a una mesh, non a un personaggio.** Riutilizza una copia su diverse mesh e la copertura si riduce del **62% → 22,7%**, perché le braccia si proiettano nello spazio vuoto accanto al modello. Genera sempre le copie dalla mesh che stai per texturizzare.
-- **L'identità appartiene all'istruzione.** Un elemento canonico non menzionato nell'istruzione appare casualmente e scompare allo stesso modo: questo è stato misurato quando delle ginocchiere dorate sono apparse nell'immagine solo a causa del rumore in un ControlNet difettoso.
-- **Chiedi alla geometria, non a una soglia.** Sostituire una maschera con la silhouette esatta ottenuta tramite raycasting ha spostato la copertura di riferimento dal **28,4% al 39,1%** dei texel validi: in modo strettamente additivo, senza diffusione e senza l'utilizzo della GPU. Il metodo di keying basato sulla mediana degli angoli è fallito tre volte qui ed è stato abbandonato.
-- **Elimina ciò che nessuna telecamera può vedere, dall'atlante e mai dalla mesh.** Il 49% dei texel dell'atlante non sono visibili dall'esterno; escludendo queste facce, l'interpolazione si riduce del 68%. Escludere invece di eliminare rende il fallimento impossibile anziché semplicemente rilevabile.
+- **Le copie appartengono a una mesh, non a un personaggio.** Riutilizza una copia su diverse mesh e la copertura si riduce del **62% → 22,7%**, perché le braccia si proiettano nello spazio vuoto accanto al modello. Genera le copie dalla mesh che stai per texturizzare, ogni volta.
+- **L'identità appartiene al prompt.** Un elemento canonico non menzionato nel prompt compare accidentalmente e scompare allo stesso modo: questo è misurato quando delle ginocchiere dorate sono apparse nell'immagine solo a causa del rumore in un ControlNet difettoso.
+- **Chiedi alla geometria, non a una soglia.** Sostituire una maschera con il profilo esatto ottenuto tramite raycasting ha spostato la copertura di riferimento dal **28,4% al 39,1%** dei texel validi: in modo strettamente additivo, senza diffusione e senza l'utilizzo della GPU. Il metodo di keying basato sulla mediana degli angoli è fallito tre volte qui ed è stato abbandonato.
+- **Elimina ciò che nessuna telecamera può vedere, dall'atlante e mai dalla mesh.** Il 49% dei texel dell'atlante non è visibile dall'esterno; escludendo queste facce, l'interpolazione si riduce del 68%. Escludere anziché eliminare rende il fallimento impossibile invece di semplicemente rilevabile.
 
 ## Cosa non è ancora stato risolto?
 
 Elencati e descritti nella pagina principale, anziché in una nota a piè di pagina. [Tutti sono elencati nel codice](docs/known-defects.md).
 
-- **La fascia della lama rappresenta lo 0,00% del riferimento nella fase 1** su tutte e otto le telecamere: l’acciaio su uno sfondo grigio si allinea perfettamente con la soglia di riferimento. L’unione consente di recuperare il 55,72%.
+- **La fascia della lama rappresenta lo 0,00% del riferimento nella fase 1** su tutte e otto le telecamere: l’acciaio su uno sfondo grigio si allinea perfettamente con la soglia dell’immagine di riferimento. L’unione recupera il 55,72%.
 - **Le giunture delle pennellate non sono state livellate.** Un confine di provenienza presenta una variazione **5,5 volte** superiore rispetto alla normale tessitura; l’area indicata dal regista mostra una variazione **9,5 volte** superiore.
-- **La dilatazione si estende tra isole dell’atlante non correlate:** il 74,9% dei texel dilatati assume il colore da un’altra isola, a una distanza media di 0,177 su una figura alta 1,0.
+- **La dilatazione si estende tra isole dell’atlante non correlate:** il 74,9% dei texel dilatati assume il colore da un’altra isola, con una distanza mediana di 0,177 su una figura alta 1,0.
 - **Ogni ricostruzione in questo percorso è un guscio vuoto a doppia parete**, con pareti di circa due voxel. Nessun predicato volumetrico è valido per uno di essi.
 
 ## Come funziona questo repository
 
 La disciplina è tanto importante quanto il processo che la sostiene e ha una sua ragion d’essere: in un ciclo precedente, sono state svolte dieci sessioni durante le quali ogni partecipante ha valutato i propri risultati e redatto delle conclusioni che, nella sessione successiva, sono state considerate come fatti accertati. Nulla di tutto ciò poteva essere verificato.
 
-- **Si definiscono le specifiche prima dell'esecuzione, si redige un rapporto al termine e si stabilisce la conclusione alla fine**; inoltre, la sessione in cui viene progettato un esperimento non valuta mai i propri risultati. Venti esperimenti sono disponibili [nel registro](docs/experiments/).
+- **Si definiscono le specifiche prima dell'esecuzione, si redige un rapporto al termine e si stabilisce la conclusione alla fine**; inoltre, la sessione in cui viene progettato un esperimento non valuta mai i propri risultati. Venti esperimenti sono disponibili [nei documenti](docs/experiments/).
 - **Le correzioni vengono applicate direttamente, accanto alla misurazione che le ha confutate**, e non come semplici eliminazioni silenziose. Sei affermazioni ereditate sono state smentite nella sola sessione iniziale e tutte e sei sono ancora visibili accanto a ciò che le ha sostituite.
 - **I risultati negativi rimangono nel repository insieme alla motivazione.** [`tools/superseded/`](docs/tools.md) non è un archivio: chiunque può eseguire questi strumenti e osservare il loro fallimento nello stesso modo.
-- **Un risultato negativo è un successo completo**, viene segnalato e archiviato anziché essere modificato per raggiungere un determinato valore.
-- **I test vengono eseguiti insieme alla modifica del codice**; 213 test hanno avuto esito positivo grazie al lavoro di due persone, con CI basata su percorsi per i 205 elementi più importanti.
-- **Il registro è consultabile.** È stato creato un indice SQLite + FTS5 sull'intero percorso dei dati, verificato su quattro sistemi. Questo ha individuato un errore nel conteggio che era presente nel testo in tre punti, contando direttamente il registro stesso.
+- **Un risultato negativo è un successo completo**, viene segnalato e chiuso anziché essere modificato per raggiungere un determinato valore.
+- **I test vengono eseguiti insieme alla modifica del codice**; 218 test hanno avuto esito positivo grazie al lavoro di due persone, con CI basata su percorsi per i 210 elementi più importanti.
+- **È possibile effettuare ricerche nei dati.** È stato creato un indice SQLite + FTS5 sull'intero flusso di dati, verificato su quattro piattaforme. Questo ha permesso di individuare un errore nel conteggio dei risultati che era presente in tre sezioni del testo, contando direttamente i dati stessi.
 
 ## Dove si trova tutto
 
@@ -91,7 +91,7 @@ La disciplina è tanto importante quanto il processo che la sostiene e ha una su
 | **[I risultati](docs/experiments/)** | venti esperimenti: specifiche, relazione, valutazione e ogni previsione formulata prima della misurazione |
 | **[Cosa ha appreso il percorso](docs/findings.md)** | le scoperte durature e le regole ottenute con fatica, nella loro interezza |
 | **[Stato di ogni strumento](docs/tools.md)** | cosa funziona, cosa è obsoleto e le prove per ciascuno |
-| **[Difetti noti](docs/known-defects.md)** | tutto ciò che non è stato risolto, misurato e individuato nel codice |
+| **[Difetti noti](docs/known-defects.md)** | tutto ciò che non è stato risolto, misurato e localizzato nel codice |
 | **[L'evoluzione, come è avvenuta](docs/arc-history.md)** | la cronologia degli eventi, con le correzioni intatte |
 | **[CLAUDE.md](CLAUDE.md)** | come lavorare qui: i ruoli, le regole e il costo di ciascuno |
 
@@ -105,21 +105,21 @@ Esclusioni deliberate, con la relativa motivazione: **nvdiffrast** (non commerci
 
 facet viene eseguito interamente sulla propria macchina: ogni strumento è uno script che si esegue su percorsi specificati dall'utente, quindi la domanda utile non è *quali autorizzazioni richiede questa app*, ma *cosa fanno questi script alla tua macchina*. La risposta è fornita dalla misurazione, con ogni ciclo ripetibile; la politica completa è disponibile in [SECURITY.md](SECURITY.md):
 
-- **Dati elaborati:** mesh, texture, immagini e file JSON su disco locale, nei percorsi specificati nella riga di comando. Inoltre `docs/index/facet.db`, che sono *derivati*: non contengono nulla che non fosse già un file in questo repository e `facet_index.py build` li rigenera da zero.
-- **Dati NON elaborati:** nessuna credenziale, mai. Nessuno strumento legge, memorizza o trasmette token, chiavi o password, e nessuno di questi elementi è presente nell'albero: sono state eseguite verifiche per escludere chiavi con prefissi specifici del fornitore, GitHub PAT, token Slack, ID chiave AWS, blocchi di chiavi private, token bearer e assegnazioni inline `api_key`/`password`; **nessuna corrispondenza**, nessun file che assomigli a una credenziale è stato rilevato.
-- **Nessun telemetria.** Nessun dato viene raccolto o inviato. Non c'è la possibilità di disattivare la raccolta dati perché non c'è nulla da disattivare.
-- **Traffico di rete:** due degli strumenti, su un totale di trentaquattro, aprono una connessione di rete: `restylize_views.py` e `texpass_brush.py`, ed entrambi chiamano un'API HTTP di ComfyUI all'indirizzo `--host`, con valore predefinito `127.0.0.1:8188`. Nessun altro strumento in `tools/` effettua chiamate di rete.
+- **Dati interessati:** mesh, texture, immagini e file JSON su disco locale, nei percorsi specificati nella riga di comando. Inoltre `docs/index/facet.db`, che sono *derivati*: non contengono nulla che non fosse già un file in questo repository e `facet_index.py build` li rigenera da zero.
+- **Dati NON interessati:** nessuna credenziale, mai. Nessuno strumento legge, memorizza o trasmette token, chiavi o password, e nessuno di questi elementi è presente nell'albero: sono stati eseguiti controlli per verificare la presenza di chiavi con prefissi relativi al fornitore, GitHub PAT, token Slack, ID chiave AWS, blocchi di chiavi private, token bearer e assegnazioni inline `api_key`/`password`; **nessuna corrispondenza**, nessun file che assomigli a una credenziale è stato rilevato.
+- **Nessun telemetria.** Nessuna raccolta o trasmissione di dati. Non esiste un'opzione per disattivare la raccolta dei dati perché non c'è nulla da cui disattivarsi.
+- **Traffico di rete:** due degli strumenti su trentaquattro aprono una connessione socket: `restylize_views.py` e `texpass_brush.py`, ed entrambi chiamano l'API HTTP di ComfyUI all'indirizzo `--host`, con impostazione predefinita `127.0.0.1:8188`. Nessun altro strumento in `tools/` effettua chiamate di rete.
 - **Autorizzazioni:** utente standard. Nessuna elevazione dei privilegi, nessuna installazione di servizi, nessuna scrittura nelle impostazioni di sistema o nel registro di sistema.
 
-Tre aspetti critici vengono esplicitamente indicati anziché nascosti, perché una nota sulla sicurezza che elenca solo rassicurazioni non è un modello di minaccia: **le operazioni sui file non sono eseguite in un ambiente isolato** (uno strumento scrive ovunque indichino i suoi argomenti); **molti strumenti e documenti contengono percorsi locali assoluti** – 114 occorrenze in 26 file, non si tratta di segreti, ma della divulgazione del layout di una macchina specifica, ed è il motivo per cui la maggior parte degli strumenti non funzionerà senza modifiche su un altro sistema; e **i guasti imprevisti vengono visualizzati come tracce di errore di Python**, senza alcun filtro `--debug` e senza una struttura di errore definita. Le interruzioni deliberate sono messaggi `ANDON:` che contengono la misurazione che le ha attivate. Questo è il contratto dello strumento di ricerca, e [SHIP_GATE.md](SHIP_GATE.md) registra esattamente quando smette di essere sufficiente.
+Tre aspetti critici vengono esplicitamente indicati anziché nascosti, perché una nota sulla sicurezza che elenca solo rassicurazioni non è un modello di minaccia: **le operazioni sui file non sono eseguite in un ambiente isolato** (uno strumento scrive ovunque indichino i suoi argomenti); **i percorsi locali assoluti sono incorporati in molti strumenti e documenti**: 114 occorrenze in 26 file, non si tratta di segreti, ma della divulgazione del layout di una macchina, ed è il motivo per cui la maggior parte degli strumenti non funzionerà senza modifiche altrove; e **i guasti imprevisti vengono visualizzati come tracce di errore di Python**, senza un filtro `--debug` e senza una struttura di errore definita. Le interruzioni deliberate sono messaggi `ANDON:` che contengono la misurazione che le ha attivate. Questo è il contratto dello strumento di ricerca, e [SHIP_GATE.md](SHIP_GATE.md) registra esattamente quando smette di essere sufficiente.
 
-**Stato del supporto:** questo repository viene sviluppato in modo aperto, su un'unica piattaforma, da un unico responsabile e con sessioni a rotazione tra consulenti ed esecutori. `main` è l'unico stato supportato. Non esiste un canale di rilascio, una politica di backporting o un SLA: ciò che esiste è la documentazione: ogni affermazione si trova accanto al codice che la produce e [docs/experiments](docs/experiments/) contiene le specifiche, la relazione e la valutazione per ciascuna di esse.
+**Stato del supporto:** questo repository viene sviluppato in modo aperto, su un'unica piattaforma, da un unico responsabile e con una coppia rotante di sessioni di consulenza ed esecuzione. `main` è l'unico stato supportato. Non esiste un canale di rilascio, una politica di backporting o un SLA: ciò che esiste è la registrazione: ogni affermazione si trova accanto al codice che la produce e [docs/experiments](docs/experiments/) contiene le specifiche, la relazione e la valutazione per ciascuna di esse.
 
 ## Requisiti
 
 Blender 5.x, Python 3.11+ con `numpy`, `scipy`, `trimesh`, `open3d`, `Pillow`, `spandrel`, `torch`. È necessaria un'installazione locale di ComfyUI solo per il pennello di inpainting. Sviluppato su una RTX 5090; la quantità di VRAM disponibile è più importante della velocità pura.
 
-Il CI esegue il sottoinsieme ermetico della suite su **ubuntu-latest / Python 3.12** con installazioni fisse (`.github/workflows/ci.yml`); il livello degli artefatti richiede gli alberi registrati in `E:\AI\training`, che non sono presenti in git, quindi il CI li esclude intenzionalmente. Localmente, `python -m pytest` esegue tutti i **213** test e `python -m pytest -m "not artifacts"` esegue i **205** test riprodotti dal CI.
+Il CI esegue il sottoinsieme ermetico della suite su **ubuntu-latest / Python 3.12** con installazioni fisse (`.github/workflows/ci.yml`); lo strato degli artefatti richiede gli alberi registrati in `E:\AI\training`, che non sono presenti in git, quindi il CI li esclude intenzionalmente. Localmente, `python -m pytest` esegue tutti i **218** test e `python -m pytest -m "not artifacts"` esegue i **210** test riprodotti dal CI.
 
 ---
 

@@ -20,24 +20,24 @@
 
 ---
 
-O estilo é aplicado **no objeto**, no espaço da textura — não é pintado para cada perspectiva e depois combinado. Forneça ao programa um modelo conceitual em argila com formas exageradas e ele retornará uma malha texturizada cuja cor foi obtida a partir de uma referência estilizada *dessa* malha, com tudo o que a referência não conseguia visualizar preenchido por um pincel de retoque mascarado e uma dilatação que considera a superfície.
+O estilo é aplicado **no objeto**, no espaço da textura — não é pintado para cada perspectiva e depois combinado. Forneça ao programa um modelo conceitual em argila com formas exageradas e ele retornará uma malha texturizada cuja cor foi obtida a partir de uma referência estilizada *dessa* malha, com tudo o que a referência não conseguia visualizar preenchido por um pincel de retoque mascarado e uma dilatação consciente da superfície.
 
 O nome faz referência a ambos os aspetos do problema: os polígonos e a superfície que eles devem preencher.
 
 ## Qual é a situação atual?
 
-**Quatro trabalhos aprovados, abrangendo quatro áreas de estudo diferentes, sem qualquer requisito de créditos.** Cada um foi avaliado pelo diretor, individualmente – seja no formato digital (GLB) ou em folhas impressas em tamanho real –, e não com base em critérios quantitativos que estabelecessem um limite mínimo.
+**Quatro trabalhos aceitos, abrangendo quatro áreas de estudo diferentes, sem qualquer requisito de créditos.** Cada um foi avaliado pelo diretor, individualmente – seja no formato digital (GLB) ou em folhas impressas em tamanho real –, e não com base num critério que estabelecesse um limite mínimo.
 
 | assunto; tema; matéria | classe | aceito(a) / aprovado(a) | referência / pincel / dilatação |
 |---|---|---|---|
 | **Character (W3)** | humanoide | [2026-08-04](docs/experiments/E08-ruling-gate0.md) | 68.8 / 4.2 / 27.0 |
-| **Galleon** | veículo, cabo fino | [2026-08-05](docs/experiments/E04-ruling.md) | 36.89 / 6.87 / 56.24 |
+| **Galleon** | veículo, cabos finos (de um navio) | [2026-08-05](docs/experiments/E04-ruling.md) | 36.89 / 6.87 / 56.24 |
 | **Dragon** | fera, membranas das asas | [2026-08-07](docs/experiments/E12-ruling.md) | 44.15 / 3.07 / 52.78 |
-| **Longsword** | objeto de cena, quase bidimensional, tons de cinza sobre cinza | [2026-08-08](docs/experiments/E14-ruling.md) | 45.25 / 2.07 / 52.68 |
+| **Longsword** | objeto de cena, quase bidimensional, em tons de cinza. | [2026-08-08](docs/experiments/E14-ruling.md) | 45.25 / 2.07 / 52.68 |
 
-As amostras são de texels válidos e **não podem ser comparadas entre diferentes objetos** — um navio esconde a maior parte de si mesmo a partir do nível dos olhos e um animal esconde metade do corpo. Analise cada um em relação ao seu limite máximo pré-definido, no qual atingem uma percentagem de **86–93%**: a diferença entre as linhas é geométrica, não estatística. [Números completos, com os seus denominadores](docs/handbook/subjects.md).
+As amostras são de texels válidos e **não podem ser comparadas entre diferentes objetos** — um navio esconde a maior parte de si mesmo a partir do nível dos olhos e um animal esconde metade do corpo. Analise cada um em relação ao seu limite de alcance pré-definido, no qual atingem uma percentagem de **86–93%**: a diferença entre as linhas é geométrica, não estatística. [Números completos, com os seus denominadores](docs/handbook/subjects.md).
 
-**É um processo, não um gerador de imagens com apenas um único elemento.** Ao contradizer as especificações em oito elementos nomeados, o modelo obtém **8 de 8** pontos – a diferença média ΔE é de 46,3, contra 6,2 nos cinco exemplos de referência –, enquanto a imagem mantém a mesma pessoa. A estrutura é mantida pela malha e pelo controle; os atributos nomeados são determinados pelo comando (prompt).
+**É um processo, não um gerador de imagens com apenas um parâmetro.** Ao contradizer a especificação em oito elementos nomeados, o modelo obtém **8 de 8** pontos – a diferença média ΔE é de 46,3, contra 6,2 nos cinco exemplos de referência –, enquanto a imagem mantém a mesma aparência. A estrutura é mantida pela malha e pelo controle; os atributos nomeados são determinados pelo comando.
 
 ## O percurso/a rota
 
@@ -60,8 +60,8 @@ Seis descobertas, cada uma das quais exigiu a realização de um experimento e c
 - **Defina o contorno do rosto, crie um rosto.** Um recorte no formato de busto coloca **3,1–4,5 vezes** mais polígonos na cabeça, e a diferença é estrutural – pálpebras separadas, uma ruga na testa, cavidades nasais modeladas –, não apenas um desfoque mais nítido.
 - **Os modelos gêmeos pertencem a uma malha, não a um personagem.** Reutilize um modelo gêmeo em várias malhas e a cobertura diminui de **62% para 22,7%**, porque os braços se projetam no espaço vazio ao lado do modelo. Gere modelos gêmeos a partir da malha que você está prestes a texturizar, sempre.
 - **A identidade pertence à instrução.** Um elemento canônico não mencionado na instrução aparece por acidente e desaparecerá da mesma forma – medido quando as placas douradas nos joelhos acabaram aparecendo na imagem apenas através do ruído numa versão corrompida do ControlNet.
-- **Consulte a geometria, não um limite.** Substituir uma máscara com o contorno exato obtido por traçado de raio moveu a cobertura de referência de **28,4% para 39,1%** de texels válidos – estritamente aditivo, sem difusão, sem uso da GPU. O método de seleção baseado no canto-mediana falhou três vezes aqui e foi descontinuado.
-- **Elimine o que nenhuma câmera pode ver, do atlas e nunca da malha.** 49% dos texels do atlas são invisíveis a partir do exterior; excluir essas faces reduz a interpolação em **68%**. Excluir, em vez de apagar, torna a falha impossível, em vez de apenas detectável.
+- **Consulte a geometria, não um limite.** Substituir uma máscara com o contorno exato obtido por traçado de raio moveu a cobertura da referência de **28,4% para 39,1%** de texels válidos – estritamente aditivo, sem difusão, sem uso da GPU. O método de seleção baseado na mediana dos cantos falhou três vezes aqui e foi descontinuado.
+- **Elimine o que nenhuma câmera pode ver, do atlas e nunca da malha.** 49% dos texels do atlas são invisíveis vistos de fora; excluir essas faces reduz a interpolação em **68%**. Excluir, em vez de apagar, torna a falha impossível, em vez de apenas detectável.
 
 ## O que ainda não foi resolvido?
 
@@ -69,19 +69,19 @@ Identificados e descritos, na página principal em vez de numa nota de rodapé. 
 
 - **A faixa da lâmina representa 0,00% da referência do estágio 1** em todas as oito câmaras — o aço sobre um fundo cinzento está exatamente no limite definido. A união recupera 55,72%.
 - **As bordas dos traços não estão niveladas.** Um limite de proveniência apresenta uma variação **5,5 vezes** maior do que a textura normal; a região designada pelo diretor apresenta uma variação **9,5 vezes** maior.
-- **A dilatação causa sobreposição entre ilhas do atlas não relacionadas** — 74,9% dos texels dilatados obtêm sua cor de outra ilha, com uma distância mediana de 0,177 em uma figura com altura de 1,0.
+- **A dilatação causa sangramento entre ilhas do atlas não relacionadas** — 74,9% dos texels dilatados obtêm sua cor de outra ilha, a uma distância média de 0,177 em uma figura com altura de 1,0.
 - **Cada reconstrução nesta rota é uma estrutura oca de parede dupla**, com paredes de aproximadamente dois voxels. Nenhum predicado volumétrico é válido para ela.
 
-## Como este repositório é gerenciado
+## Como este repositório é gerenciado/mantido
 
-A disciplina é tão importante quanto o processo em si e existe por uma razão: numa fase anterior, foram realizadas dez sessões nas quais cada participante avaliou o seu próprio trabalho e redigiu conclusões que foram lidas na sessão seguinte como se fossem factos estabelecidos. Nada nesse ciclo podia ser verificado.
+A disciplina é tão importante quanto o processo em si, e existe por uma razão: numa fase anterior, foram realizadas dez sessões nas quais cada participante avaliou o seu próprio trabalho e redigiu conclusões que foram lidas na sessão seguinte como se fossem factos estabelecidos. Nada nesse ciclo podia ser verificado.
 
 - **Definir antes do trabalho, relatar depois, decidir por último** — e a sessão que planeja um experimento nunca avalia os seus próprios resultados. Vinte experimentos estão em [o registro](docs/experiments/).
-- **As correções são aplicadas no local, ao lado da medição que as refutou**, nunca como exclusões discretas. Seis alegações herdadas foram consideradas falsas apenas na sessão inicial, e todas as seis ainda podem ser consultadas ao lado do que as substituiu.
+- **As correções são aplicadas no local, ao lado da medição que as refutou**, nunca como exclusões discretas. Seis alegações herdadas foram consideradas falsas apenas na sessão inicial, e todas as seis ainda podem ser lidas ao lado do que as substituiu.
 - **Os resultados negativos permanecem no repositório com a sua justificativa.** [`tools/superseded/`](docs/tools.md) não é um arquivo — qualquer pessoa pode executar essas ferramentas e observar o seu fracasso da mesma forma.
-- **Um resultado negativo é um sucesso completo**, relatado e encerrado, em vez de ajustado para atingir um valor específico.
-- **Os testes acompanham o commit que modifica o código** — 213 aprovados por duas pessoas, com CI restrito a caminhos nas 205 versões herméticas.
-- **O registro pode ser consultado.** Um índice SQLite + FTS5 sobre todo o histórico, verificado em quatro pontos. Ele encontrou uma contagem de resultados que o texto havia indicado incorretamente em três locais, contando o próprio registro.
+- **Um resultado negativo é um sucesso completo**, relatado e encerrado, em vez de ajustado para atingir um número específico.
+- **Os testes acompanham o commit que modifica o código** — 218 aprovados por duas pessoas, com CI restrito a caminhos nos 210 experimentos herméticos.
+- **O registro pode ser consultado.** Um índice SQLite + FTS5 sobre todo o histórico, verificado em quatro pontos. Ele encontrou uma contagem que o texto havia indicado incorretamente em três locais, contando o próprio registro.
 
 ## Onde tudo acontece
 
@@ -92,7 +92,7 @@ A disciplina é tão importante quanto o processo em si e existe por uma razão:
 | **[O que a rota aprendeu](docs/findings.md)** | as descobertas duradouras e as regras arduamente conquistadas, na íntegra |
 | **[Status de cada ferramenta](docs/tools.md)** | o que funciona, o que está obsoleto e a evidência para cada um |
 | **[Defeitos conhecidos](docs/known-defects.md)** | tudo o que não foi resolvido, medido e localizado no código |
-| **[O ciclo, como aconteceu](docs/arc-history.md)** | o histórico cronológico, com as correções preservadas |
+| **[O processo, como aconteceu](docs/arc-history.md)** | o histórico cronológico, com as correções preservadas |
 | **[CLAUDE.md](CLAUDE.md)** | como trabalhar aqui — os papéis, as regras e o custo de cada um |
 
 ## Posição da licença
@@ -110,8 +110,7 @@ UE, Reino Unido e Coreia do Sul), **MVPaint** e **TEXGen** (nenhuma licença) e
 
 o facet é executado inteiramente na sua própria máquina — cada ferramenta é um script que você executa em relação a
 caminhos que você digita, portanto, a pergunta útil não é *quais permissões este aplicativo solicita*, mas
-*o que esses scripts fazem com sua máquina*. Resposta fornecida por meio de medição, com cada
-execução repetível; a política completa está em [SECURITY.md](SECURITY.md):
+*o que esses scripts fazem com sua máquina*. Respondido por meio de medição, com cada execução repetível; a política completa está em [SECURITY.md](SECURITY.md):
 
 - **Dados acessados:** malhas, texturas, imagens e JSON no disco local, nos caminhos que você
 fornece na linha de comando. Além disso, `docs/index/facet.db`, que é *derivado* — ele contém
@@ -121,7 +120,7 @@ o regenera do zero.
 um token, chave ou senha, e nenhum está presente na árvore — verificado para
 chaves com prefixo de provedor, GitHub PATs, tokens Slack, IDs de chaves AWS, blocos de chave privada,
 tokens de portador e atribuições inline `api_key`/`password`, **zero correspondências**, nenhum
-arquivo semelhante a credencial rastreado.
+arquivo semelhante a uma credencial rastreado.
 - **Nenhuma telemetria.** Nenhuma coletada, nenhuma enviada. Não há opção de desativar porque não há
 nada para desativar.
 - **Saída de rede:** duas das trinta e quatro ferramentas abrem um socket — `restylize_views.py`
@@ -143,7 +142,7 @@ que as acionou. Esse é o contrato do instrumento de pesquisa, e
 **Status de suporte:** este repositório é desenvolvido em código aberto, em uma única máquina, por um único diretor
 e um par rotativo de sessões de consultor e executor. `main` é o único estado suportado. Não há canal de lançamento, nenhuma política de retrocompatibilidade e nenhum SLA — em vez disso, existe
 o registro: cada afirmação está ao lado do código que a produz, e
-[docs/experiments](docs/experiments/) contém a especificação, o relatório e a avaliação para
+[docs/experiments](docs/experiments/) contém as especificações, o relatório e a avaliação para
 cada um.
 
 ## Requisitos
@@ -154,8 +153,8 @@ Desenvolvido em uma RTX 5090; a capacidade da VRAM é mais importante do que a v
 
 O CI executa o subconjunto hermético do conjunto no **ubuntu-latest / Python 3.12** com
 instalações fixas (`.github/workflows/ci.yml`); a camada de artefatos precisa das árvores registradas em `E:\AI\training`, que não estão no git, portanto, o CI as exclui por design.
-Localmente, `python -m pytest` executa todos os **213** testes e `python -m pytest -m "not artifacts"`
-executa os **205** que o CI reproduz.
+Localmente, `python -m pytest` executa todos os **218** testes e `python -m pytest -m "not artifacts"`
+executa os **210** que o CI reproduz.
 
 ---
 
