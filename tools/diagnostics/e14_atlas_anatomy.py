@@ -191,7 +191,23 @@ out["reachable_pct"] = round(float(reach_all.mean() * 100), 4)
 
 if args.ceiling_json and os.path.exists(args.ceiling_json):
     cj = json.load(open(args.ceiling_json, encoding="utf-8"))
-    ref = cj["settings"]["uniform 0.45"][f"N{len(VIEWS)}"]["reachable"]
+    # Select e08_ceiling's block by the FLOORS IT RAN, not by its caption. This
+    # line used to read cj["settings"]["uniform 0.45"] — a hardcoded string that
+    # is only correct while this tool's --facing-min happens to be 0.45, which is
+    # E12 Ruling 6e(i)'s defect wearing a different tool's clothes. E16-6 made
+    # e08_ceiling's captions honest, and honest captions MOVE, so the lookup has
+    # to be on the property. `settings_index` is absent from ceiling JSONs
+    # written before that repair; those are read by their old caption.
+    _want = (args.facing_min, args.facing_min)
+    _lbl = next((s["label"] for s in cj.get("settings_index", [])
+                 if (s["facing_min"], s["head_facing_min"]) == _want), None)
+    if _lbl is None:
+        _lbl = "uniform %g" % args.facing_min      # pre-E16-6 ceiling JSON
+    assert _lbl in cj["settings"], (
+        f"ANDON: {os.path.basename(args.ceiling_json)} has no block run at floors "
+        f"{_want} - blocks present: {sorted(cj['settings'])}. A cross-check against "
+        f"a different configuration is not a cross-check.")
+    ref = cj["settings"][_lbl][f"N{len(VIEWS)}"]["reachable"]
     assert int(reach_all.sum()) == int(ref), (
         f"ANDON: this file's reachability ({int(reach_all.sum()):,}) disagrees with "
         f"e08_ceiling's ({int(ref):,}) on the same bake and the same floors")

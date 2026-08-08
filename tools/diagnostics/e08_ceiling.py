@@ -111,11 +111,61 @@ for spec in [s for s in args.elev.split(",") if s.strip()]:
     y, e = spec.split(":")
     extra.append((float(y), float(e)))
 
-SETTINGS = [("production (body 0.45 / head 0.18)", args.facing_min, args.head_facing_min),
-            ("uniform 0.45", args.facing_min, args.facing_min),
-            ("uniform 0.18", args.head_facing_min, args.head_facing_min)]
+# ---- E12 Ruling 6e(i): the captions state the floors they RAN, not the floors
+# ---- one subject happened to have when the strings were typed ----------------
+# The three captions used to be the literals "body 0.45 / head 0.18",
+# "uniform 0.45", "uniform 0.18". When a profile sets head-facing-min equal to
+# facing-min — which Ruling 4 does, and which prop.json does — all three tuples
+# become the same tuple, so the tool measured one ladder and printed it three
+# times under two captions that were simply false. Every caption is now built
+# from the values in hand, and identical settings collapse to a single block
+# with their names joined, so the output can no longer imply three measurements
+# where there is one.
+_specs = [("production", args.facing_min, args.head_facing_min),
+          ("uniform body-floor", args.facing_min, args.facing_min),
+          ("uniform head-floor", args.head_facing_min, args.head_facing_min)]
+_names, _order = {}, []
+for _n, _fb, _fh in _specs:
+    _k = (_fb, _fh)
+    if _k not in _names:
+        _names[_k] = []
+        _order.append(_k)
+    _names[_k].append(_n)
+SETTINGS = [(" = ".join(_names[k]) + " (body %g / head %g)" % k, k[0], k[1])
+            for k in _order]
+if len(SETTINGS) < len(_specs):
+    print("[ceiling] NOTE: the three threshold settings collapse to %d - the body "
+          "and head floors are equal (%g), so what follows is ONE measurement, not "
+          "three. [E12 Ruling 6e]" % (len(SETTINGS), args.facing_min), flush=True)
+
+# ---- E14 Ruling 10b: the ray bias against this route's wall thickness --------
+# Every reconstruction on this route is a hollow double-walled shell with walls
+# ~0.00196 across (Ruling 3, measured three independent ways). A near-face ray
+# origin displaced further than that starts BEHIND its own wall, which reads as
+# reach that geometry does not have: measured +0.97 points at eight cameras on
+# the sword (51.33% at the shipped 3e-3 against 50.36-50.43% at 2e-4 to 5e-4,
+# converged by 5e-4). The shipped default is deliberately left alone so the
+# number stays comparable with every subject measured before it; the warning
+# makes the caveat travel with the output instead of living in a ruling.
+WALL_FLOOR = 0.00196
+if args.bias > WALL_FLOOR:
+    print("[ceiling] WARNING: --bias %g EXCEEDS this route's ~%g wall floor - "
+          "near-face ray origins displace through their own wall and the reach is "
+          "overstated (+0.97 points at N8 on the sword). The value is comparable "
+          "with prior subjects and is NOT changed here; read every percentage "
+          "below with this caveat. [E14 Ruling 10b]" % (args.bias, WALL_FLOOR),
+          flush=True)
 sets = [int(s) for s in args.sets.split(",")]
 out = {"valid_texels": int(NV), "head_band": int(headband.sum()), "settings": {}}
+# `settings` is keyed by the display label, and the labels move when the floors do
+# — which is the whole point of the 6e(i) repair, but it means a consumer must not
+# select a block by its caption. `e14_atlas_anatomy` did exactly that
+# (`cj["settings"]["uniform 0.45"]`), which is the same defect one tool over: the
+# caption was a PROXY for "the configuration whose floors are both 0.45", and the
+# floors ARE the configuration. This index lets a consumer select on the property.
+out["settings_index"] = [{"label": label, "facing_min": fb, "head_facing_min": fh,
+                          "aliases": list(_names[(fb, fh)])}
+                         for label, fb, fh in SETTINGS]
 
 for label, fb, fh in SETTINGS:
     print(f"\n[ceiling] {label}")
@@ -167,8 +217,23 @@ out["twin_back_reachable"] = int(rb.sum())
 out["twin_overlap"] = ov
 print(f"\n[ceiling] the two shipped twins: front {int(rf.sum()):,}  back {int(rb.sum()):,}"
       f"  union {int((rf|rb).sum()):,} ({(rf|rb).mean()*100:.2f}%)")
-print(f"[ceiling] front-back OVERLAP = {ov:,} texels — this is the population a "
-      f"hold-one-out comparison at N=2 would have")
+# E12 Ruling 6e(ii). The old line called this "the population a hold-one-out
+# comparison at N=2 would have", which cannot be true: opposed cameras test
+# dot(n,d) and dot(n,-d), jointly passable only at a floor <= 0, so at any
+# positive floor the overlap is zero by construction and was measured zero at
+# 0.45, 0.18 and 0.00 alike. A check that cannot fail is not a check; it is
+# repaired rather than deleted so the structural fact stays visible.
+_floor_min = min(args.facing_min, args.head_facing_min)
+if _floor_min > 0:
+    print(f"[ceiling] front-back OVERLAP = {ov:,} texels - STRUCTURALLY zero at any "
+          f"positive floor (lowest floor here {_floor_min:g}): opposed cameras test "
+          f"dot(n,d) and dot(n,-d), jointly passable only at a floor <= 0. A "
+          f"hold-one-out comparison at N=2 has NO population on this route. "
+          f"[E12 Ruling 6e]")
+else:
+    print(f"[ceiling] front-back OVERLAP = {ov:,} texels - the population a "
+          f"hold-one-out comparison at N=2 would have (the lowest floor is "
+          f"{_floor_min:g}, so this one CAN be non-zero)")
 
 if args.out_json:
     os.makedirs(os.path.dirname(os.path.abspath(args.out_json)), exist_ok=True)

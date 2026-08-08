@@ -332,6 +332,67 @@ dispatch's expectation was wrong and it was to be reported rather than tuned
 around. Both crossed — in the opposite direction to the one I was watching for
 (they *stop* warning rather than *start*).
 
+### E16-6 — `e08_ceiling` captions, the overlap line, and the bias warning (Rulings 6e / 10b) · ANCHOR HELD
+
+**Dispatch correction — the anchor's two numbers are not both this tool's.**
+The kickoff asks to re-derive "the sword's N6 and N8 — exact against the recorded
+51.005% / 51.3342%". `51.3342%` is `e08_ceiling`'s N8 and reproduces exactly.
+**`51.0050%` is not an `e08_ceiling` output at all.** The tool's `yaws(n)` is
+`[i·360/n]`, so `--sets 6` is the *evenly spaced* six (0/60/120/180/240/300) and
+returns **1,871,948 = 51.12%** — which is what handoff 2 recorded and what
+reproduces here. The `51.0050%` figure is the **set** 0/45/135/180/225/315 (all
+eight minus 90 and 270), computed in handoff 6 by `e14_atlas_anatomy` and a
+session reach script, two independent code paths; `e08_ceiling` cannot express an
+arbitrary equatorial set. Both "N6"s are real and neither is wrong — the dispatch
+conflated them. Anchored on the two numbers this tool actually produces.
+
+**Both 6e defects reproduced before the repair**, exactly as recorded: all three
+SETTINGS blocks printed **identical ladders** under captions reading
+`head 0.18` / `uniform 0.18` while the run's floors were both 0.45, and
+`front-back OVERLAP = 0`.
+
+**Three repairs.**
+
+1. **6e(i) captions** — every caption is now built from the values in hand, and
+   identical settings collapse to one block with their names joined, so the
+   output can no longer imply three measurements where there is one. With equal
+   floors it prints one block plus an explicit NOTE; with unequal floors
+   (`0.45`/`0.18`) it prints three, captioned `body 0.45 / head 0.18`,
+   `body 0.45 / head 0.45`, `body 0.18 / head 0.18` — all true.
+2. **6e(ii) overlap** — repaired rather than deleted, so the structural fact
+   stays visible: at any positive floor the overlap is zero by construction
+   (opposed cameras test `dot(n,d)` and `dot(n,-d)`, jointly passable only at a
+   floor ≤ 0), and the old line's claim that this was "the population a
+   hold-one-out comparison at N=2 would have" is replaced by the statement that
+   **no such population exists on this route**.
+3. **10b bias warning** — fires when `--bias` exceeds the route's ~0.00196 wall
+   floor, naming the +0.97-point overstatement at N8 and stating that the value
+   is deliberately unchanged for comparability. Silent at `--bias 5e-4`.
+
+**The repair broke a consumer, and finding it is the point.**
+`e14_atlas_anatomy.py:194` read `cj["settings"]["uniform 0.45"]` — a hardcoded
+caption. Honest captions move, so that lookup would have failed on every new
+ceiling JSON. It is **the same defect one tool over**: the caption was a *proxy*
+for "the configuration whose floors are both 0.45", and the floors **are** the
+configuration. `e08_ceiling` now emits a `settings_index` carrying each block's
+label, floors and aliases, and the consumer selects on the floors it ran.
+
+**ANCHOR.**
+
+| check | result |
+|---|---|
+| all 19 scalar / ladder / marginal values, before vs after | **identical, zero mismatches** |
+| N8 | 1,879,807 = 51.33% — exact against the recorded **51.3342%** |
+| N6 (this tool's evenly-spaced six) | 1,871,948 = 51.12% — exact against handoff 2 |
+| consumer, new ceiling JSON | `EXTERNAL CHECK: reproduces e08_ceiling's N8 total exactly (1,879,807)` |
+| consumer, **pre-repair** ceiling JSON | same — backward-compatible caption fallback |
+| consumer, floors-mismatched ceiling JSON | **ANDON refuses** — previously this class could cross-check against the wrong configuration silently |
+| unequal-floors branch | three blocks, all captions true, no collapse NOTE |
+| `--bias 5e-4` | no warning |
+
+**Prediction: HELD** — captions and a warning cannot move a reach number, and
+both of 6e's claims were re-measured rather than inherited.
+
 ---
 
 ## 2. A session-level finding: the working tree is shared
