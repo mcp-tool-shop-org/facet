@@ -333,22 +333,43 @@ def figure_mask(img, tol=0.06, erode=5, corner_median=False):
         bg = np.median(c, axis=0)
         fm = (np.abs(img - bg).max(axis=-1) > tol).astype(np.float32)
         return minimum_filter(fm, size=erode)
+    bg = fit_background(img)
+    resid = np.zeros(img.shape[:2] + (3,), dtype=np.float32)
+    for c in range(3):
+        resid[..., c] = img[..., c] - bg[..., c]
+    fm = (np.abs(resid).max(axis=-1) > tol).astype(np.float32)
+    return minimum_filter(fm, size=erode)
+
+
+def fit_background(img, b=24):
+    """The route's background model: a per-channel quadratic surface, least-squares
+    over a border ring the figure cannot reach.
+
+    Factored out of `figure_mask` for E16-8 so the background PROBE can use the same
+    model instead of a corner median — E14 Ruling 21e found the probe was the retired
+    method's last live consumer, wrong by dE 11-21 on these vignetted twins and moving
+    a reported percentage ~4x. Two implementations of one model is how the two drift
+    apart, so there is one.
+
+    Returns the fitted surface in float64, deliberately: `figure_mask` subtracts it
+    channel-by-channel into a float32 residual, and returning float64 keeps that
+    arithmetic bit-identical to the pre-factoring code. The masks this keys, and every
+    projection downstream of them, do not move.
+    """
     H, W = img.shape[:2]
     yy, xx = np.mgrid[0:H, 0:W]
     ring = np.zeros((H, W), dtype=bool)
-    b = 24
     ring[:b, :] = ring[-b:, :] = ring[:, :b] = ring[:, -b:] = True
     cols = [np.ones(H * W), xx.ravel() / W, yy.ravel() / H,
             (xx.ravel() / W) ** 2, (yy.ravel() / H) ** 2,
             (xx.ravel() / W) * (yy.ravel() / H)]
     A = np.stack(cols, axis=1)
     Xr = A.reshape(H, W, -1)[ring]
-    resid = np.zeros((H, W, 3), dtype=np.float32)
+    out = np.zeros((H, W, 3), dtype=np.float64)
     for c in range(3):
         coef, *_ = np.linalg.lstsq(Xr, img[..., c][ring], rcond=None)
-        resid[..., c] = img[..., c] - (A @ coef).reshape(H, W)
-    fm = (np.abs(resid).max(axis=-1) > tol).astype(np.float32)
-    return minimum_filter(fm, size=erode)
+        out[..., c] = (A @ coef).reshape(H, W)
+    return out
 
 
 def srgb_to_lab(rgb):
@@ -820,16 +841,26 @@ for _view_i, view in enumerate(VIEWS):
     # colour. Reported against the texels that would have been accepted anyway, so the
     # comparison is against a set already trusted in the SAME image rather than an
     # invented absolute.
-    bgc = np.median(np.concatenate([img[:8, :8].reshape(-1, 3),
-                                    img[:8, -8:].reshape(-1, 3)]), axis=0)
+    # E14 Ruling 21e. The reference used to be a corner median of two 8x8 patches —
+    # the keying method this repo has retired three times, found here as its LAST
+    # live consumer, six experiments late. On a vignetted twin a single corner colour
+    # is wrong by dE 11-21 against the background actually behind a given texel, and
+    # it moved this probe's reported percentage by ~4x. The reference is now the
+    # route's own fitted border-ring surface, SAMPLED AT EACH TEXEL'S OWN PIXEL, so a
+    # texel near the bright centre of the backdrop is compared against the backdrop
+    # where it sits rather than against a corner it is nowhere near.
+    bg_img = fit_background(img)
+    bgcol = bilinear(bg_img, px, py).astype(np.float32)
     relaxed = d_s[inm] < e_abs_s[inm]
-    dE_bg = np.linalg.norm(srgb_to_lab(col) - srgb_to_lab(bgc[None, :]), axis=-1)
+    dE_bg = np.linalg.norm(srgb_to_lab(col) - srgb_to_lab(bgcol), axis=-1)
     p_tr = float((dE_bg[~relaxed] < args.bg_de).mean() * 100) if (~relaxed).any() else 0.0
     if relaxed.any():
         p_rx = float((dE_bg[relaxed] < args.bg_de).mean() * 100)
-        print(f"[twins] {view['name']}: background probe — newly admitted "
+        _bgmed = np.median(bgcol[relaxed], axis=0)
+        print(f"[twins] {view['name']}: background probe - newly admitted "
               f"{int(relaxed.sum()):,} texels, median dE {np.median(dE_bg[relaxed]):.1f} "
-              f"from background rgb {tuple(int(c*255) for c in bgc)}; "
+              f"from the FITTED background at each texel's own pixel "
+              f"(median ref rgb {tuple(int(c*255) for c in _bgmed)}); "
               f"within dE {args.bg_de:.0f} of it {p_rx:.2f}% "
               f"(already-trusted texels: {p_tr:.2f}%)", flush=True)
         assert p_rx <= args.bg_max_pct, (

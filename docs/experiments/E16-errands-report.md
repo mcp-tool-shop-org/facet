@@ -455,6 +455,74 @@ check inherits the instability (the flagged pair changes with the winner).
 count rose an order of magnitude (37×). The wall-time half was directionally
 right but overstated: 17 s absolute is cheap.
 
+### E16-8 — the background probe's corner-median reference (Ruling 21e) · ANCHOR HELD
+
+**Dispatch correction — the probe is not report-only.** The kickoff says "the
+probe is REPORT-ONLY"; `project_twins.py:835` carries an `assert p_rx <=
+args.bg_max_pct` ANDON. It does not fire on this subject because `prop.json`
+pins `bg-max-pct` to **100.0**, but that is a profile value, not a property of
+the probe. Blast radius measured across all four profiles:
+
+| profile | `bg-max-pct` | probe ANDON |
+|---|---|---|
+| prop / beast / ship | 100.0 | disarmed |
+| **character** | **2.0** | **armed** |
+
+**Repair.** The reference was a corner median of two 8×8 patches — the keying
+method this repo has retired three times, found here as its **last live
+consumer**. It is now the route's own fitted border-ring surface, **sampled at
+each texel's own pixel**, so a texel is compared against the backdrop where it
+sits rather than against a corner it is nowhere near. The fit is factored out of
+`figure_mask` into `fit_background()` so there is **one** implementation of the
+model rather than two that can drift; it returns float64 deliberately, which
+keeps `figure_mask`'s channel-wise subtraction into a float32 residual
+bit-identical to the pre-factoring code.
+
+**ANCHOR — the projection must not move.** Same seven views, same profile, run
+through HEAD's tool and the repaired tool:
+
+| output | result |
+|---|---|
+| `atlas.png` · `atlas_blend.png` · `atlas_holes.png` · `atlas_owner.npy` · `atlas_styled_mask.npy` | **all five BYTE-IDENTICAL** |
+| every non-probe log line | identical (only the output path differs) |
+
+The before-run also reproduces the recorded `projection.log` exactly at y+000.0 —
+3,757 texels, median dE 23.9, 15.41% — so the baseline is the record, not just
+itself.
+
+**Old vs new probe percentages, the sword's seven twins.**
+
+| view | admitted | old ref rgb | old dE | old %<10 | new ref rgb | new dE | new %<10 |
+|---|---|---|---|---|---|---|---|
+| y+000 | 3,757 | (168,149,205) | 23.9 | 15.41% | (166,146,204) | 24.2 | 14.64% |
+| y+045 | 6,263 | (110,93,149) | 14.3 | 30.30% | (134,112,176) | 19.6 | **18.31%** |
+| y+135 | 6,360 | (111,94,151) | 9.9 | 50.68% | (137,115,180) | 16.2 | **31.64%** |
+| y+180 | 5,033 | (167,148,207) | 22.0 | 13.83% | (165,144,205) | 22.4 | 13.59% |
+| y+225 | 8,188 | (110,92,146) | 14.7 | 26.06% | (138,116,180) | 21.2 | **17.28%** |
+| **y+270** | 15,905 | **(86,72,114)** | 20.5 | **6.23%** | (144,124,185) | 17.0 | **19.87% ↑** |
+| y+315 | 13,391 | (110,94,150) | 8.7 | 60.15% | (136,115,179) | 9.0 | 54.31% |
+
+**The finding is y+270, and it goes the wrong way on purpose.** Six views fall;
+this one **rises 3.2×**. Its old corner reference was `(86,72,114)` — far darker
+than every other view's ~110, because the corners there are vignetted — so
+texels looked comfortably far from "background" and the view scored **6.23%, the
+safest of the seven**. Against the backdrop actually behind them it is 19.87%,
+mid-pack. **The retired method was not merely noisy; it under-reported risk
+worst on the highest-risk view** — yaw 270 is the edge-on blade, the ribbon the
+whole stroke lane existed for. A probe that reads safest exactly where the danger
+is concentrated is the failure mode that matters.
+
+**Prediction: SPLIT.** Direction HELD — the percentage falls on most twins (6 of
+7). Magnitude **FALSIFIED** — I predicted a 2–4× fall; the largest is 1.65×
+(30.30→18.31). And I did not anticipate a view moving **up** at all, which turned
+out to be the most informative result in the errand.
+
+**Flagged for the advisor, not ruled:** on the sword every view sits at 6–60%
+before and after, i.e. 3–30× over `character.json`'s armed bound of 2.0. Either
+W3's twins behave very differently or that bound is effectively vestigial — and
+the reference change moves the quantity it gates. W3's prep tree has no
+`meta.json` on this rig, so it was not measurable here.
+
 ---
 
 ## 2. A session-level finding: the working tree is shared
