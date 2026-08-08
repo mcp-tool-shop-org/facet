@@ -2,8 +2,8 @@
 "use strict";
 
 // Pure JSON config - npm-launcher derives the asset names from convention:
-//   binary:    facet-0.1.0-linux-x64  /  facet-0.1.0-win-x64.exe
-//   checksums: checksums-0.1.0.txt
+//   binary:    facet-0.1.1-linux-x64  /  facet-0.1.1-win-x64.exe
+//   checksums: checksums-0.1.1.txt
 // It downloads from the GitHub Release for `tag`, verifies SHA256, caches, and
 // execs with argv passthrough.
 //
@@ -20,8 +20,8 @@ process.env.MCPTOOLSHOP_LAUNCH_CONFIG = JSON.stringify({
   toolName: "facet",
   owner: "mcp-tool-shop-org",
   repo: "facet",
-  version: "0.1.0",
-  tag: "v0.1.0",
+  version: "0.1.1",
+  tag: "v0.1.1",
 });
 
 require("@mcptoolshop/npm-launcher/bin/mcptoolshop-launch.js");

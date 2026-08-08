@@ -101,8 +101,23 @@ from mcp.server.mcpserver import MCPServer            # noqa: E402
 from mcp.server.mcpserver.exceptions import ToolError  # noqa: E402
 from mcp.types import ToolAnnotations                 # noqa: E402
 
+# FROZEN is true inside a PyInstaller binary, where __file__ lives in a temp
+# extraction directory - so facet_index.REPO points at nowhere useful and
+# DB_DEFAULT names a path that cannot exist. Found by INSTALLING THE PUBLISHED
+# 0.1.0 BINARY and reading its own banner, which printed
+# `db: C:\Users\...\Temp\docs/index/facet.db`. The workflow was green the whole
+# time; only running the artifact a user actually receives surfaced it.
+FROZEN = bool(getattr(sys, "frozen", False))
+
 REPO = facet_index.REPO
-DB_DEFAULT = os.path.join(REPO, facet_index.DB_REL)
+
+# In a source checkout, REPO is the repo and the tracked index sits under it.
+# In a frozen binary REPO is a temp extraction dir, so resolve against the
+# WORKING DIRECTORY instead - which is the honest default, because the operator
+# runs `facet` from inside the checkout whose record they want served. Either
+# way an explicit --db or $FACET_INDEX_DB still wins.
+DB_DEFAULT = os.path.join(os.getcwd() if FROZEN else REPO, facet_index.DB_REL)
+
 CERT_SUFFIX = ".cert.json"
 CERT_SCHEMA = "facet-record-index-certificate/1"
 
@@ -116,13 +131,24 @@ CERT_SCHEMA = "facet-record-index-certificate/1"
 # publish on a mismatch, because bin/facet.js installs an EXACT pinned version
 # from PyPI - a drift here ships a wrapper that fetches a package that does not
 # exist.
-SERVER_VERSION = "0.1.0"
+SERVER_VERSION = "0.1.1"
 
 # The env var exists so tests and scratch runs bind a copy instead of the
 # tracked artifact. It selects WHICH derived DB, never which corpus.
 DB_ENV = "FACET_INDEX_DB"
 
-FIX_COMMAND = "python tools/facet_index.py build   (or call record_build)"
+# EVERY REFUSAL NAMES THE NEXT STEP, so the next step has to be one the reader
+# can actually take. `python tools/facet_index.py build` is the right advice in a
+# source checkout and useless advice to someone running a downloaded binary who
+# has no tools/ directory and may have no Python at all. 0.1.1: the hint follows
+# the runtime.
+if FROZEN:
+    FIX_COMMAND = (
+        "facet-index build --db <path>   (or set %s to an index you built, "
+        "or call record_build)" % DB_ENV
+    )
+else:
+    FIX_COMMAND = "python tools/facet_index.py build   (or call record_build)"
 
 
 # ---------------------------------------------------------------------------

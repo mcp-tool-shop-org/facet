@@ -37,6 +37,42 @@ it, so a reader can check the claim rather than trust it.
   All six ⚠ annotations survive. Corrections stay in place beside the measurements
   that overturned them, exactly as before — they just live one click deeper.
 
+## [0.1.1] — 2026-08-08
+
+**Fixes a defect that only exists in the artifact a user receives.**
+
+`0.1.0`'s binary told operators the wrong thing about their own machine. Inside a
+PyInstaller onefile, `__file__` lives in a temp extraction directory, so the server
+resolved its default index against that — printing
+`db: C:\Users\…\Temp\docs/index/facet.db`, a path that cannot exist — and every
+refusal hint said *"run `python tools/facet_index.py build`"*, a command with no
+`tools/` directory to run it in and possibly no Python at all.
+
+- **The index default now resolves against the working directory when frozen**, which
+  is the honest default: an operator runs `facet` from inside the checkout whose
+  record they want served. An explicit `--db` or `$FACET_INDEX_DB` still wins.
+- **The refusal hint follows the runtime** — `facet-index build --db <path>` (or the
+  env var) in a binary, the source command in a checkout. Every refusal in this repo
+  names the next step; the next step has to be one the reader can actually take.
+
+**How it was found, because that is the transferable part.** Not by CI, which was
+green; not by the wheel test, which passed; not by the console scripts, which ran.
+Every one of those exercises the *source checkout*, where `REPO` is the repo and the
+advice is correct. It was found by installing the published package and reading what
+it printed. **A green pipeline verifies the thing it built, not the thing a user
+receives** — T28 now exercises the frozen branch directly rather than trusting that a
+source-tree run implies a binary run.
+
+Also corrected: `npx @mcptoolshop/facet` was briefly reported as broken on Windows.
+It is not — two failures immediately after publish were registry propagation, and the
+bare form returns exit 0. No documentation changed, because nothing was wrong with it.
+
+**218 tests, 218 passing** — 210 hermetic + 8 artifacts, counted at this commit. The
+five new ones are T28, and they exercise the frozen branch directly rather than
+inferring it from a source-tree run. *(The v0.1.0 entry below keeps 213/205 — that is
+what that release actually shipped, and a blanket count update very nearly rewrote it.
+A released version's record states what it was, not what came after.)*
+
 ## [0.1.0] — 2026-08-08
 
 Cut at the close of the E19 treatment, at the Director's word. There is no manifest to
