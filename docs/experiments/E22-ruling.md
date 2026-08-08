@@ -168,6 +168,24 @@ Three ANDONs already `raise SystemExit` (`project_twins:281`, `e11_manifest:267`
 `e11_export_turnaround:108`). The executor reported them and did not touch them, which
 was right on the pure-move bar.
 
+**⚑ Corrected in place while scoping E23, hours after this ruling was written.** Three is
+the count **inside E22's own seven files**, which is all the report claimed and all I
+checked. **Repo-wide the population is 44** — measured by AST over `tools/`, against 88
+`AssertionError` ANDONs after E22's conversion:
+
+```
+ANDONs that already raise, repo-wide:   AssertionError 88 · SystemExit 44
+concentrated in:  diagnostics/e12_* 27 · brush_cloud_step 4 · e13_harmonize 3
+                  restylize_views 3 · texpass_brush 2 · the three named above 3
+```
+
+The ruling below is unchanged — `SystemExit` is not deletable by `-O`, so none of the 44
+carries this arc's defect, and they still stay. What changes is the size of the
+consistency question: **"an ANDON has two exception types in this repo" is a 44-site
+fact, not a 3-site curiosity**, and three of E23's twelve target files carry both forms
+at once. I restated a scoped number as if it were a population — the same move Ruling 2
+convicts the dispatch of, made inside the ruling that convicts it.
+
 `raise SystemExit` is **not deletable by `-O`**, so it does not carry the defect this arc
 exists to fix, and normalising a type nobody ruled is not a pure move. **They stay.**
 
