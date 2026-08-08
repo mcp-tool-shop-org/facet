@@ -225,7 +225,14 @@ contain it. Grounds, in order of weight:
    optimum (C\* 21.4 against cyan's 13.7) is the channel achromatic steel cannot
    erase at any lightness: at the sensitivity extreme (L1 L\* 94) pale
    blue-violet holds 0.094 where white holds 0.078. Chroma is what remains when
-   the lightness gap is gone.
+   the lightness gap is gone. *⚠ Corrected 2026-08-07 (Ruling 14, the pair
+   measured): the WORD materialises at hue ~305 on all three artifacts — the
+   magenta band, five degrees outside blue-violet — holding 78–79° to the wine
+   family, not ≥123°; and the mechanism inverted: steel arrived DARK (L\*
+   21–24), so the value gap is wider than derived, not narrower. The separation
+   the derivation exists for measures 0.51–0.67 against the key's 0.06 cut
+   (8–11×). The word stands (Ruling 14); a word is not a triple, and the
+   realised values are the record.*
 4. **The pre-registration held and is honoured**: the fixture named blue-violet
    as the expected unoccupied family at authoring; the derivation CHECKED it —
    confirmed, and stronger: five of seven bands unoccupied, L1/L2 below the
@@ -395,3 +402,121 @@ pre-registration stays the executor's per the dispatch's calibration note.
 **HALT with the pair staged: this seat's eye first, then the Director beside
 the clay** — his overrule window on the whole authored identity, and the
 register's first test on steel.
+
+---
+
+## Ruling 12 — the pair halt: the advisor's eye taken; the rejection RATIFIED; the pair goes to the Director (2026-08-07)
+
+Evidence: the Task 4 report (`c7dc53e`), the sidecar, and this seat's eye on
+both full sheets, both hilt crops at 4×, the rejected artifact's sheet and hilt
+crop, and the 8× crossing strip — before anything below was written.
+
+**12a — the executor's landing table is CONFIRMED row for row by this seat's
+eye.** View 0: all five elements landed — dark battle-worn steel with the wear
+reading as damage, a near-black rough-iron guard separated from the blade by
+VALUE exactly as the fixture designed, a crisp gold diamond boss exactly at the
+crossing, oxblood wrap with legible coils, and a deep faceted garnet that is
+the best single element on either artifact. View 1's re-roll: all five landed;
+the guard carries engraved ornament where view 0's is rough-cast (same
+material, different surface character — recorded), and **L5 reads
+magenta-purple rather than view 0's garnet-red** — a hue drift inside the pair,
+recorded for the Director's window and for the bands derivation. The clay's
+nick scoring is largely absent on both views, replaced by broader patina (view
+0) and etching (view 1) — the mesh carries the nicks as geometry; recorded, not
+actioned.
+
+**12b — the rejection and bounded re-roll are RATIFIED as the specification
+working.** The rejected 770700 view 1 put L3's material across L2's entire
+surface — unmistakable at 4× to this seat's eye — against an occupancy table
+authored before any generation existed; the rule passes the
+would-it-have-been-the-same test; one re-roll, new seed, the artifact preserved
+with its sheet and measurement; a second failure would have been the result and
+did not occur; view 0's re-roll is unspent. This is the E12 21c remedy executed
+in its pre-registered form.
+
+**12c — the pair goes to the Director beside the clay, and acceptance is his.**
+Staged for his eye: both sheets, both hilt crops, the rejected artifact's
+record. His window is the whole authored identity — any fixture line
+overrulable in a sentence, the rings question (Ruling 13) and the gem-hue drift
+named above explicitly in it. **On his acceptance, two conversions execute as
+pre-stated**: `generation_recipe_anchor` converts to SPENT with the pair as
+this subject's anchor (the ship's Ruling 6 pattern), and the realised values
+formally supersede `canon/longsword-materials-estimated.json` per the galleon
+rule. On his rejection, generation re-opens and nothing converts.
+
+## Ruling 13 — the collar rings EARN their term: `gold collar rings` (2026-08-07; inside the Director's window)
+
+**The fixture's own pre-registered condition fired.** The D6-spur watch-note
+said the rings *"earn their own prompt term only if the pair mislands them"* —
+and the pair mislanded them: view 0 landed both rings NOT gold (dark metal
+pommel collar, leather-brown mid-grip ring — this seat's eye confirms at 4×),
+view 1's re-roll landed both gold. An identity target that disagrees with
+itself about a declared element is the mislanding the note was written to
+catch.
+
+**13a — the term is `gold collar rings`**, its own comma-free noun phrase,
+placed after the boss term (the 17e form: the unclaimed-in-prompt surface gets
+named). The fixture keeps five L-elements; L3's row now carries two terms.
+**Gold now appears twice**, both hilt-local, physically coherent gilded
+fittings — and the 12e family-pressure watch is PRE-REGISTERED for the twin
+set: gold arriving on any surface outside L3's (boss + rings) on any twin is
+the signature, and the rejected 770700 is its recorded example at even one
+mention. Director-overrulable in a sentence at this window (e.g. "the rings
+are steel"), in which case the term flips or drops before any twin generates.
+
+**13b — the pair PREDATES the term and stays the anchor as generated.** The
+committed twin-prompts v1 (five-element stems) is the pair's provenance and is
+not rewritten; the profile's prompt entry becomes the LIVE source (the beast's
+documented-evolution pattern), and stems rebuild at `--version 2` when the
+twin dispatch runs — carrying the term if it survives the window.
+
+## Ruling 14 — the word STANDS on the measured separation; Ruling 7's grounds corrected in place (2026-08-07)
+
+**14a — `plain lavender background` is not re-chosen, and the evidence is that
+it worked**: blade-to-backdrop separation 0.51–0.67 on the key's own metric
+against its 0.06 cut — 8–11× — on all three artifacts including the rejected
+one. Re-choosing while looking at the artifact it would judge is the forbidden
+move (7b said so in terms); the 15i precedent is followed exactly: the
+falsified ground is corrected in place (the ⚠ at Ruling 7's ground 3 — the
+magenta-band materialisation, the 78–79° realised margin, the inverted
+mechanism with steel arriving dark), and the word survives on the measured
+ground.
+
+**14b — the realised values enter the record and the estimate is superseded**
+(formally at the Director's acceptance, per 12c): backdrop hue ~305 · L\*
+55.6–72.2 · C\* 32.6–37.1, darker and more saturated than the derived triple —
+both directions OPPOSITE the beast's precedent — and unstable across seeds by
+16.6 L\*. The key is unaffected by the instability by construction (the fitted
+background estimator is per-image); the bands derivation uses realised values,
+never the estimates file.
+
+**14c — 7b(a) executed as pre-registered, and the named risk materialised by
+degrees**: L1 carries a weak body chroma at hue ~295 — erosion-tested as NOT
+rim mixing — below the C\* 5 floor at the median on view 0 (2.93) and just
+above it on the re-roll (5.39). ROUTED to the palette-bands derivation, as 7b
+directed; the fixture's "L1/L2 occupy no hue" claim is now measured as
+floor-marginal on one artifact, the 15i staleness pattern arriving on
+schedule and landing in the mechanism built to receive it. The achromatic
+channel remains steel's instrument, as the fixture pre-declared. The
+executor's bleed correlation (darker backdrop → more blade chroma, three
+points) is recorded as data, not mechanism.
+
+## Ruling 15 — the one-string verdict; the ledger (2026-08-07)
+
+**15a — the premise FAILS narrowly and per-view stems are ADOPTED with one
+drop**: the boss term off views 2 and 6 — it is a plate on the guard FACE,
+subsumed into the guard's silhouette edge-on, verified at 3× across all eight
+renders and at 8× on the crossing (this seat's eye on the 8× strip concurs:
+the boss is unreadable at yaws 90/270). Four of five elements see slivers;
+the fifth sees nothing — the E12 9d shape at a fifth of the magnitude. The
+collar rings are NOT dropped on any view (visible on all eight). The E04
+Ruling 23 premise is now measured on its fourth subject: held on the ship
+alone; the check is permanent.
+
+**15b — the advisor's ledger: the carried flag was half wrong.** This seat's
+kickoff carried "views 2/6 render the gem and boss at near-nothing" from the
+Gate 0 session; measured, the boss is absent and **the gem is present on all
+eight and among the clearest elements edge-on**. Importing the flag would have
+dropped a term for a live element on two views. The dispatch's
+verify-don't-import instruction — and the executor's two-scale check under it
+— is what caught it. Enters the ledger beside 10e.

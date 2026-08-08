@@ -258,10 +258,20 @@ values live in its own profile and fixture, never inherited unmeasured.
   Ruling 10a); the thin curve banked with its face-on/edge-on inversion (Ruling 10d);
   the ship's missing fourth-consumer framing pin found by the cross-profile sweep and
   completed (Ruling 11a).
-- **In flight: Task 4** — the styled target pair at views 0 and 1 under the ruled
-  pair and word, `estimate_credits` per submission, the no-LoRA pre-flight, one
-  bounded re-roll each; HALT with the pair staged for the advisor's eye, then the
-  Director beside the clay. Steel's first meeting with the realism register.
+- **The styled target pair is STAGED at the Director's window** (Task 4, 0 credits —
+  OSS graph, GPU time on the subscription): view 0 at seed 770700, view 1 at 770701
+  after the first roll was **rejected against the fixture's occupancy audit** (gold
+  across L2's crossguard) and re-rolled once, bounded, with the rejected artifact
+  preserved — the specification working, ratified at
+  [E14 Ruling 12](../experiments/E14-ruling.md). All five elements landed on both
+  accepted views at the advisor's eye. Findings at the window: the collar rings'
+  watch-note fired both ways and the rings **earned their term** (`gold collar
+  rings`, Ruling 13); the ruled word materialised in the **magenta band** (~305,
+  not blue-violet) doing its job by 8–11× over the key's cut with steel arriving
+  dark — word stands, grounds corrected in place (Ruling 14); L1 carries a
+  floor-marginal cool cast routed to the bands derivation; the one-string premise
+  **failed narrowly** — per-view stems, boss term off views 2/6 (Ruling 15).
+  Steel's first meeting with the realism register is on his screen.
 
 ## The calibration table this page exists for
 

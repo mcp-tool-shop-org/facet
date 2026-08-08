@@ -38,7 +38,7 @@ grammar — an internal comma shatters a term at the stem builder).
 |---|---|---|
 | L1 | a battle-worn steel blade with a raised central ridge | the dominant surface: both blade faces, both edges, the tip. The mesh's nicks and scoring are geometry; this element colours them — worn steel, not mirror chrome, so the relief reads as damage rather than vanishing into specular. **S-steel owns this element's risk**: near-achromatic, hue-undefined below the chroma floor — the measured E07/W3 class, on home ground |
 | L2 | a blackened iron crossguard | both quillon arms end to end — the stepped chamfered ends included — and the guard's underside. Dark against L1's light steel so the two greys separate by VALUE, since below the chroma floor they cannot separate by hue |
-| L3 | a gold diamond boss at the crossing | the raised diamond boss, both faces. **Surface list also carries the two collar rings** (pommel collar + mid-grip ring) as gold-family members with a watch note — the D6-spur pattern: they earn their own prompt term only if the pair mislands them. Gold appears ONCE as a term; gilded fittings are physically coherent under realism where the dragon's five bones were not |
+| L3 | a gold diamond boss at the crossing **+ gold collar rings** | the raised diamond boss, both faces; the pommel collar and mid-grip ring. *THE WATCH-NOTE FIRED at the pair (E14 Ruling 13, 2026-08-07): view 0 mislanded both rings (dark metal / leather-brown) while view 1's re-roll landed them gold — the rings' term is EARNED: `gold collar rings`, its own noun phrase after the boss term. Gold now appears TWICE, both hilt-local, physically coherent gilded fittings; the 12e family-pressure watch is pre-registered for the twin set — gold on any surface outside L3's (boss + rings) on any twin is the signature, and the rejected 770700 artifact is its recorded example. The boss term drops on views 2/6 (E14 Ruling 15a — a plate on the guard face, subsumed edge-on); the rings term drops nowhere.* |
 | L4 | an oxblood leather grip wrap | the coil wrap, both sections, groove interiors included. Oxblood is the studio's proven wine register (W3's skirt) in a material that IS its colour |
 | L5 | a dark garnet gem pommel | the faceted polyhedral gem. Facets are geometry (designated-in with a softer apex — Ruling 1); this element colours them deep garnet-red. Below any area floor by construction at route frames — **the D8 lesson applies: no numeric gate may be armed on this element; landing is judged by eye at the hilt crop** |
 
@@ -119,7 +119,7 @@ sheets, the hilt crop and the tip crop at zoom, by the advisor. The map, complet
 | blade faces · both edges · central ridge · nicks and scoring · the tip | L1 |
 | both quillon arms · stepped chamfered ends · guard underside | L2 |
 | diamond boss, both faces | L3 |
-| pommel collar ring · mid-grip collar ring | L3 (surface list; own term only if the pair mislands them) |
+| pommel collar ring · mid-grip collar ring | L3 (own term EARNED at the pair — `gold collar rings`, E14 Ruling 13) |
 | the coil wrap, both sections, groove interiors | L4 |
 | the faceted gem | L5 |
 | the hollow interior walls | not paintable — never visible; culled by construction |
