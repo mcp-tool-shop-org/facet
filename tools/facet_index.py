@@ -1233,20 +1233,18 @@ SEEDED = [
      "corner-median keying retired failed three times",
      ("CLAUDE.md",
       "Rules for everyone · Corner-median keying has failed three times; it is retired")),
-    # Three targets, ENUMERATED FROM THE RECORD rather than from what ranked: a grep
-    # for paragraphs containing all three of 36.89 / 6.87 / 56.24 returns fifteen
-    # sites, of which exactly three state the galleon's accepted mix as their own
-    # holding — E04-ruling.md:1658 (Ruling 27), README.md:85 (The route) and
-    # docs/handbook/subjects.md:31 (The galleon). The rest are cross-subject
-    # comparisons, on-surface restatements, or E15's own documents quoting this key.
-    # The dispatch's key named the first two; the handbook was always in the FTS
-    # corpus it specified, so the third is a completion of the reference, not a
-    # loosening of it — and it is the one the index actually returns.
-    ("the galleon's accepted mix",
-     "galleon mix reference brush dilation ceiling",
-     [("docs/experiments/E04-ruling.md", "Ruling 27"),
-      ("README.md", "The route"),
-      ("docs/handbook/subjects.md", "The galleon (ACCEPTED, 2026-08-05)")]),
+    # WITHDRAWN 2026-08-08 (E14 Ruling 31e), under the standing law's own words:
+    # "withdrawn, never re-crafted, if the live corpus outranks them." The seed
+    # `the galleon's accepted mix` (targets E04-ruling.md Ruling 27 / README The
+    # route / handbook The galleon) regressed the gate to 19/20 when E14's
+    # handoff-9 report restated the comparables AS RULING 30 ORDERED - the
+    # displacing documents legitimately carry the digits, and a route that
+    # restates its comparables per subject will displace their canonical home
+    # once per subject, structurally. The prior comment block here had already
+    # named the class ("the rest are cross-subject comparisons... quoting this
+    # key"). A digit-keyed query whose digits the route deliberately propagates
+    # is a seed with a structural expiry. The entry is removed, not re-crafted;
+    # the history is this comment.
     # E14 seeds, added 2026-08-07: every phrase ran report-only through q FIRST and
     # its target ranked <= 3 BEFORE the row entered the gate — seeds are ruled in
     # from measured ranks, never added and then tuned until green.

@@ -316,6 +316,11 @@ stands; composition was never carried across subjects.
 46,496 islands · margin ratio 8.3× (21.83% of atlas valid from 2.62% triangle
 UV area, against the ship's 6.16× and the beast's 4.41×, recomputed by one code
 path) · erode-2 residue 0.0085% — the cleanest interior of the three measured.
+*⚠ Operand named 2026-08-08 (Ruling 31d): the 46,496 is the MESH's unwelded
+shell count (Gate 0's `shells (unwelded)` — a vertex split at every UV seam);
+the ATLAS-SPACE connected-component count is 31,887. Neither is wrong; the
+label "islands" was carrying both objects. From here an islands number names
+which object it counts.*
 
 ## Ruling 10 — instrument law from the measurement pass (2026-08-07)
 
@@ -1855,7 +1860,8 @@ finalize; **Gate 1 — the finished sword beside his clay — remains his
 next and final gate on this subject.**
 
 **30b — HANDOFF 9 IS AUTHORISED: finalize, pack, and the Gate 1
-staging — the lane's last dispatch.** Finalize runs the accepted
+staging — the lane's last dispatch.** *(Executed same day; ruled at
+Ruling 31.)* Finalize runs the accepted
 route's dilation at the beast's recorded invocation (local CPU, no
 generation, no spend), with the dragon's landing as the comparable
 (median 0.92 triangle edges sourced, zero mean-fallback) and two
@@ -1875,4 +1881,137 @@ own conditions want the quiet tree after the arc. On Gate 1's
 acceptance, per the standing queue: the E11 dense export (dataset
 asset #4), the lane ingest paste, and the activated state's window —
 each on his sentence, none before.
+
+## Ruling 31 — the finished asset is walked and STAGED FOR GATE 1; the finalize ratified; three ledger entries and five banked findings; the seed withdrawn under the standing law (2026-08-08)
+
+Evidence — what this seat OPENED: the handoff-9 report in full
+([E14-handoff9-report.md](E14-handoff9-report.md), `b0de3a5`) and its
+predictions (`1643249`); `build` + `verify` re-run at this seat's own
+hands (legs 1–3 PASS, leg 4 **19/20 with the identical MISS** — the
+executor's account confirmed exactly); the seed's own definition and
+comment block read in `facet_index.py`; and the Gate 1 sheets walked at
+full size: `GATE1_turnset_beside_clay.png`,
+`GATE1_FIFTH_SIGNATURE_5x.png` at 5×, `GATE1_STONE_6x.png` at 6× with
+its provenance channels.
+
+**31a — THE WALK, in plain words first.** The finished sword sits
+beside its clay at every yaw with the silhouette exact: dark
+battle-worn blade with its ridge and wear, iron guard with the bright
+gold boss, oxblood wrap with gold collar and ring, and a deep garnet
+stone from every angle. The edge-on views are continuous dark steel
+down the whole ribbon — the mottled gaps and hole speckle of HALT 2
+are gone. The flagged fifth-signature class, read on the finished
+asset after dilation: **darker crease character inside the blade's own
+dark register, continuous with the paint it meets** — the fuller's
+seam lines read as worn-steel grime over real crease geometry, nothing
+reads as mud, banding, or material breakdown; the sheet gives the
+Director the clay column beside all three flagged yaws for his own
+read. The stone at 6× from all eight yaws is garnet with its facets,
+bezel and highlights; the provenance channels show the re-projection's
+magenta body, the garnet-core's green bands, the repair's cyan line
+clean at the bezel-collar junction on every view, and dilation's
+violet confined to the apex tips. Named for his eye as before: the
+faint violet edge-streaks at blade flanks (the rim class, totals
+unchanged) and the apex's designated-in softness. The asset is ready.
+
+**31b — finalize and pack are RATIFIED.** The invocation quoted in
+full (surface-aware, all three ANDON values at defaults, none
+overridden — the beast's same mode and values); both gates passed on
+their own (median 2.04 edges against 3.0; 0.054% beyond 20 edges
+against 5%); 1,929,166 texels closed; **the lookup REPLAYED
+independently and reproducing `atlas_final.png` byte-for-byte** —
+external verification at its strongest form this arc; the stone and
+all 1,732,737 styled texels byte-identical (asserted); both ceilings
+re-derived exactly from an independent code path. The mix lands within
+1.1 points of the dragon on every class — **45.25 reference / 2.07
+brush / 52.68 dilation of valid; 88.14% of reachable is reference** —
+and the rendered provenance says what a viewer actually sees: **88.71%
+of the visible surface is the accepted pair's own paint; dilation is
+52.68% of the atlas and 2.08% of what a camera returns.** The blade's
+dilation share (52.11%) sits inside W3's blade band. The pack:
+`longsword_hero.glb`, 49.6 MB, SHA recorded, smoke-rendered.
+
+**31c — the ledger, this seat: the stale caveat.** The dispatch
+asserted *"E07 found the triangle-edge length HARDCODED"* — the repair
+had already landed (the tool measures per mesh at run time), and the
+record itself (E04-profile-extraction.md) had flagged this exact item
+stale. An inherited claim written into a dispatch without checking
+source — the third dispatch error of the arc, beside the path sketch
+(28b-ii) and the count-predicate (28b-i). The executor's three-way
+independent measurement is the calibration standard answering it.
+
+**31d — five findings BANKED route-wide:**
+
+1. **The mean-fallback ANDON cannot fire in surface-aware mode** —
+   `grown = valid.copy()` before the loop; `left == 0` on every run
+   regardless of the atlas. *A check that cannot fail is not a check*,
+   found on a number three subjects quoted as a pass — the dragon's
+   celebrated zero was structural, not earned. The mode's real gate is
+   the source-distance distribution, which IS gated and passed. The
+   print repair (surface-aware mode must not report the count as if
+   informative) joins the errand batch.
+2. **On a `1024_cascade` mesh the median triangle edge IS the voxel
+   pitch** (0.000980 vs 0.000977, three definitions agreeing), and on
+   a hollow shell finalize's absolute source distance sits at the
+   cavity's width — so the sword's 2.04 edges and the dragon's 0.92
+   are **the same absolute distance** (0.001996 vs 0.002115) on
+   2.35×-different triangles. A dilation distance is quoted in BOTH
+   units or the ratio misleads. P3's mechanism-first prediction landed
+   both halves and is the calibration form to imitate.
+3. **"46,496 islands" has been carrying two objects**: it is the
+   MESH's unwelded shell count (Gate 0's `shells (unwelded)`); the
+   atlas-space component count is **31,887**. Neither is wrong; the
+   label was doing double duty — Ruling 9c is annotated in place, and
+   from here an "islands" number names which object it counts (29g's
+   instrument-pinning lesson, one level over).
+4. **The cross-island flag's meaning collapses on a shattered atlas**:
+   98.16% of lookups are cross-island at median 2.04 edges — against
+   E07's defect class of 74.9% at 0.177 absolute, **89× further**. On
+   31,887 components averaging 115 texels, the opposing wall is
+   virtually always another component, so the flag answers UV packing;
+   the DISTANCE is the quantity, and only 0.054% travels beyond 20
+   edges.
+5. **A cross-session render column is anchored by re-emission or it is
+   not a column**: the HALT-2 walk set and the Gate-1 sheets differ in
+   every pixel (background 154 vs 107, RGBA vs RGB, figure ~25 levels
+   brighter) — a different render path, not a different asset. The
+   Director's HALT-2 acceptance stands; the two sheet families are not
+   pixel-comparable, and any before/after built across them is
+   measuring pipelines. Both of the executor's in-session instrument
+   catches came from one cheap move — *a figure moved a direction the
+   mechanism forbids* — 29g's check, now twice more paid for.
+
+**31e — the seeded question `the galleon's accepted mix` is
+WITHDRAWN, under the standing law's own words: "withdrawn, never
+re-crafted, if the live corpus outranks them."** The displacing
+documents legitimately carry the digits — Ruling 30's step 2 ordered
+the comparables restated in the report precisely so nobody reaches for
+them elsewhere, and a route that restates its comparables per subject
+will displace their canonical home once per subject, structurally. The
+executor's refusal to touch the tool (dispatch-forbidden) or to edit
+their own report to lose a ranking contest (retuning in different
+clothes) is RATIFIED as exactly right. The withdrawal is not choosing
+a new number (the withdrawn-condition law's own distinction); the
+seeded set stands at **19**, every other question passing; new seeds
+enter by the standing measured process only. Recorded for future seed
+authors: a digit-keyed query whose digits the route deliberately
+propagates is a seed with a structural expiry.
+
+**31f — the verifier's `↑` crashes under cp1252** on the
+completeness branch — cold until two arcs ran above their dispatched
+bounds, and the repo's own ASCII-prints rule broken inside its own
+verifier. Errand batch, beside the fallback-print repair.
+
+**31g — the registry is paid**: `texpass_finalize` enters
+`profiles/prop.json` with the spent invocation (surface-aware ON,
+max-edge-median 3.0, beyond-edges 20.0, max-frac-beyond 0.05 — all
+defaults, the beast's same mode and values) and the pack's artifact
+with its SHA; the handoff-9 promise honoured at this fold.
+
+**31h — GATE 1 IS STAGED.** The sheets are full size under FLAT light
+with no verdicts; the GLB is staged for the Director's own zoom — the
+gate is ruled on the asset, as W3's and the dragon's were. On his
+acceptance, the post-Gate-1 queue opens on his sentences (the E11
+dense export, the lane ingest, the activated state) and the errand
+window arrives. **The Director rules beside the clay.**
 

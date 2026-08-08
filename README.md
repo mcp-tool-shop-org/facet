@@ -388,8 +388,19 @@ falsifier: the lane committed **109.6%** of it, because each stroke's commit
 enlarges the next stroke's keyed context (**a static probe of a sequential
 process is a snapshot, not a bound** — Ruling 29f). The asset stands at
 **47.32% styled of valid** with the stone and repair untouched by any
-stroke, staged at HALT 2 for the Director. Then finalize, pack, Gate 1
-beside the clay.
+stroke; HALT 2 was accepted ("I love it"). **Finalize and pack then ran the
+lane's tail** ([Ruling 31](docs/experiments/E14-ruling.md)): surface-aware
+dilation closed the remaining 1,929,166 texels at a median source distance
+of 2.04 triangle edges — **the same absolute distance as the dragon's 0.92**,
+because on a `1024_cascade` mesh the median edge IS the voxel pitch and this
+mesh's triangles are 2.35× smaller (a dilation distance is quoted in both
+units or the ratio misleads); the byte-level replay reproduced the atlas
+exactly; the mean-fallback "zero" three subjects quoted was found to be
+STRUCTURAL in surface-aware mode (a check that cannot fail is not a check —
+the distance distribution is that mode's real gate, and it passed). Final mix
+**45.25% reference / 2.07% brush / 52.68% dilation of valid** — and of the
+surface a viewer actually sees, **88.71% is the accepted pair's own paint**.
+`longsword_hero.glb` is staged at Gate 1 beside the clay.
 
 **E15 — the context index — is LIVE and ruled**
 ([E15-ruling.md](docs/experiments/E15-ruling.md), 9 rulings):

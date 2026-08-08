@@ -179,7 +179,12 @@ the local-half-width bound, a correctness repair with its own anchored
 regression; NOT the stroke lane's lever, ruled 24c) · **texpass_iter
 emit-profile guard** (unprofiled emit silently produces a 752-wide W3-default
 frame — handoff 8's anchor catch, Ruling 29c; emit must require a frame or
-refuse loudly) · kickoff-glob discovery
+refuse loudly) · **texpass_finalize surface-aware fallback print** (the
+mean-fallback count cannot be nonzero in that mode — Ruling 31d; the print
+must say so instead of reporting a pass-shaped 0) · **facet_index verify
+ASCII repair** (the `↑` on the completeness branch crashes under cp1252 —
+Ruling 31f; the repo's own ASCII rule inside its own verifier) ·
+kickoff-glob discovery
 for HANDOFF_FILES · _per_invocation migration (all profiles together, wants no
 live dispatch) · .gitattributes LF pin (the CRLF warnings on every commit; wants
 the quiet tree) · e11 galleon/W3 re-emit (promotes if a training split is cut) —
@@ -198,9 +203,13 @@ evidence of life); the ceiling never rises. Generation cloud-only,
 graph is GPU time on subscription); TRELLIS local is the one exception. Blender
 through PowerShell; ASCII prints; scripts create their own output dirs; frames
 generator-legal ÷16; argparse leading-minus takes the = form. The E15 ritual
-every fold; the DB at session boundaries; the seeded set is 20 questions and new
+every fold; the DB at session boundaries; the seeded set is **19** questions
+(the galleon's-mix seed withdrawn at Ruling 31e when Ruling 30's own
+comparables order displaced its canonical home — the law working) and new
 seeds are MEASURED (report-only through q) before they enter the gate — and
-withdrawn, never re-crafted, if the live corpus outranks them. The lane repo
+withdrawn, never re-crafted, if the live corpus outranks them; a digit-keyed
+query whose digits the route deliberately propagates is a seed with a
+structural expiry. The lane repo
 (E:\AI\style-dataset-lab) is read-only from facet seats.
 
 ## The advisor's record this seat, for calibration
