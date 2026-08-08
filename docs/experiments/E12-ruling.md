@@ -220,7 +220,12 @@ is adopted: the lesson is not "anchor on the ship after all," it is that this su
 class has no working prior in either direction, and the E12 spec's priors must say so
 rather than interpolate. (Q8 is the counter-case that proves the rule: the off-surface
 rate anchored on the ship correctly because it is a **bake artifact class, not a
-subject property** — and measured 2.6430% on the beast beside the ship's 2.5065%.)
+subject property** — and measured 2.6430% on the beast beside the ship's 2.5065%.
+*⚠ Corrected 2026-08-07 (E14 Ruling 9): the fourth subject measured 11.0875% and the
+erosion test located the population as the bake-margin ring on all three prior bakes —
+the anchoring worked because ship and beast share island-size distributions, not
+because the rate is a class constant. A bake-side rate is quoted with its island count
+from here on.*)
 
 **6c — `e12_offsurface.py` is adopted; the validated-before-used pattern is the
 standard.** Carrying the bake half of a closed ruling's hardcoded instrument into a

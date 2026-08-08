@@ -216,14 +216,18 @@ values live in its own profile and fixture, never inherited unmeasured.
   manifest under the lane's 1.3.0), the ingest paste, then the
   [E15 context index](../experiments/E15-context-index-kickoff.md), then E14.
 
-## The longsword (DESIGNATED 2026-08-07 — measurement pass dispatched)
+## The longsword (DESIGNATED 2026-08-07 — measured; styled pair in flight)
 
-- **Record:** [E14-ruling.md](../experiments/E14-ruling.md), Rulings 1–5;
-  [Gate 0 report](../experiments/E14-gate0-report.md). Fixture:
+- **Record:** [E14-ruling.md](../experiments/E14-ruling.md), Rulings 1–11;
+  [Gate 0 report](../experiments/E14-gate0-report.md);
+  [handoff-2 report](../experiments/E14-handoff2-report.md) +
+  [Task-1 sweep](../experiments/E14-task1-sweep.md). Fixture:
   [canon/LONGSWORD-IDENTITY.md](../../canon/LONGSWORD-IDENTITY.md) (five L-elements —
   the compact case; occupancy audit at authoring, day one). Profile:
-  `profiles/prop.json` — drafted from Gate 0, not yet swept; canny pair, backdrop
-  and thin-extent deliberately suspended to the measurement dispatch.
+  `profiles/prop.json` — swept at handoff 2 (3 UNDECIDED, the pre-stated three); the
+  canny pair (**0.10/0.25**, Ruling 6) and the backdrop (**`plain lavender
+  background`**, Ruling 7) ruled per subject; thin-extent's curve measured, value
+  deferred by design (Ruling 10d).
 - **Designated: candidate 00001** ("00001 is my favorite") — 1 welded shell at
   1.000000, **zero boundary edges** (the cleanest topology the route has recorded,
   on all three candidates), 121 non-manifold edges with the grip wrap as the pinch
@@ -241,11 +245,23 @@ values live in its own profile and fixture, never inherited unmeasured.
   and the **pinch prior** — fine relief becomes non-manifold pinching at constant
   density, not denser mesh, so allocation ruled NONE on the lowest density
   contrast the route has measured (1.135×).
-- **In flight:** handoff 2 — the measurement pass (sweep, prep bake, pre-registered
-  reach ceiling, fresh thin curve with the blade reported separately, the elevated
-  question, then TWO advisor rulings — the per-subject canny pair and the backdrop
-  word, S-steel constraining both — before the styled target pair generates at
-  views 0 and 1). Steel's first meeting with the realism register.
+- **Measured at handoff 2** (the pass before any generation): pre-registered reach
+  ceiling **51.33% of valid at eight cameras** — a topology fact, not a camera-count
+  fact (93.34% of unreachable texels are the hollow finding's inner wall; 24 cameras
+  buy 51.86%; the instrument's ray bias overstates by a recorded +0.97 points,
+  Ruling 10b); off-surface at birth **11.0875%** — the fourth point that broke the
+  cross-subject class reading ([E14 Ruling 9](../experiments/E14-ruling.md): the
+  population is the bake-margin ring on all three measured bakes and the rate tracks
+  island count — this subject packs 46,496); elevated cameras ruled **NONE** at
+  converged ray density (+0.12 points for the best pair; the convergence itself
+  sharpened the 7b law — the profile-frame grid understated up-facing reach 3.9×,
+  Ruling 10a); the thin curve banked with its face-on/edge-on inversion (Ruling 10d);
+  the ship's missing fourth-consumer framing pin found by the cross-profile sweep and
+  completed (Ruling 11a).
+- **In flight: Task 4** — the styled target pair at views 0 and 1 under the ruled
+  pair and word, `estimate_credits` per submission, the no-LoRA pre-flight, one
+  bounded re-roll each; HALT with the pair staged for the advisor's eye, then the
+  Director beside the clay. Steel's first meeting with the realism register.
 
 ## The calibration table this page exists for
 
@@ -253,11 +269,18 @@ values live in its own profile and fixture, never inherited unmeasured.
 |---|---|---|---|---|
 | welded shells | 40–191 | 237–512 | **9–12** | **1–331** (00002's 331 = inner-wall fragments, not detail) |
 | widest-horizontal / height | ~0.46–0.72 | 1.04–1.11 | **1.61–1.74** | **0.226–0.358** (first portrait) |
-| reach ceiling (of valid, as recorded) | 74.1% | 42.72% | **50.46%** | *dispatch owns it* |
-| off-surface at birth (>1 px) | 2.5840% | 2.4967% (full bake) | 2.6430% | *dispatch owns it* |
+| reach ceiling (of valid, as recorded) | 74.1% | 42.72% | **50.46%** | **51.33%** (topology-bound: 93.34% of unreachable is inner wall) |
+| off-surface at birth (>1 px) ⚠ | 2.5840% | 2.4967% (full bake) | 2.6430% | **11.0875%** (46,496 islands) |
 | off-surface composition | paint-**depleted** (stage-1 1.94%, reach 0.899×) | paint-**enriched** (stage-1 3.06%, reach 1.426×) | *no consumers yet* | — |
 | accepted mix, as recorded (ref/brush/dilation) | 68.8 / 4.2 / 27.0 | 36.89 / 6.87 / 56.24 | **44.15 / 3.07 / 52.78** | — |
 | on-surface restatement — **the standing family** | 74.30 reach / 69.28 styled / 26.43 dilation | 42.25 / 36.68 / 86.8 / 56.44 / 6.89 | born on-surface; **87.49 / 2.86 / 9.65 of reachable** | — |
+
+⚠ *The off-surface row was re-read 2026-08-07
+([E14 Ruling 9](../experiments/E14-ruling.md)): the population is the bake-margin
+ring on every measured subject and the rate tracks island count — the three-subject
+0.15-point agreement was island-size coincidence, so this row is quoted per subject
+with its island count, never compared bare across subjects. The on-surface family's
+arithmetic is unchanged.*
 
 Three lessons live in this table. **Subject properties do not interpolate** — the
 dragon's shells and reach landed outside any band the two priors suggest, in opposite

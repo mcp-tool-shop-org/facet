@@ -110,6 +110,14 @@ already on record; its consumer exclusions are unmeasured until it has consumers
 instrument, 0.1463 points apart: ship 2.4967, W3 2.5840, beast 2.6430. The
 bake-artifact-class reading (Ruling 6b) is confirmed at the RATE level and refuted
 at the COMPOSITION level — carry the rate across subjects, never the composition.
+*⚠ Corrected 2026-08-07 (E14 Ruling 9): the fourth subject broke the rate's constancy
+— 11.0875% on the prop (46,496 islands) — and eroding 2 texels drops all three
+measured subjects' rates by 6–1300× (prop 11.104→0.0085, beast 2.614→0.220, ship
+2.492→0.391): the population is the bake-margin ring, and the 0.1463-point agreement
+was island-size-distribution coincidence. The rate is carried per subject WITH its
+island count and erode-2 residue; a bare rate across subjects compares atlases, not
+bakes. This ruling's on-surface arithmetic — the exclusions, both families quoted —
+is unchanged.*
 
 **7c — the mechanism line CLOSES as measured-and-bounded; no fix is dispatched.**
 The population is localized: **90.85% sits on the single outermost ring of the mask**

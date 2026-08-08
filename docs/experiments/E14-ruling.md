@@ -156,3 +156,242 @@ prep bake with pre-stated ANDON reading, the reach ceiling pre-registered before
 any projection, the off-surface birth rate, the fresh thin-extent curve with the
 box-section caveat, the backdrop derivation) ending at the styled-pair halt —
 the advisor's eye, then the Director beside the clay.
+
+---
+
+## Ruling 6 — the canny pair is RULED: 0.10 / 0.25 (2026-08-07)
+
+Evidence: the handoff-2 report §3.1 (`9c913f5`) — the replica anchored on
+`restylize_views`' own printed digits on all eight views with no skip flag, the
+120-row ladder, the works-perfectly test run FIRST — and this seat's eye on
+`CONTROL_SHEET_0.png` and all four staged crops before ruling, which is the gate
+the dispatch names.
+
+**6a — 0.10/0.25, adopted on the bracket's own shape.** Each side of the interval
+is owned by a different failure. At the shipped 0.40/0.80 the control is a bare
+outline: the wrap's helical coils, the collar rings and the diamond boss are
+absent from the constraint (interior edge share 4.55–11.28% against 15.20–20.33%
+at adoption) — the documented precursor of a control that constrains nothing. At
+the bottom rungs the ladder buys wander: 0.02/0.06 and 0.03/0.09 put broken
+iso-luminance contours down the blade's flat fields (W-flat12 4.39% / 1.80%),
+visible in the crops over regions the render shows as featureless gradient.
+0.10/0.25 is the unique rung the two crops bracket from opposite sides: the coil
+relief fully present (this seat's eye on `CROP_0_hilt-wrap-boss` — every helical
+turn the render carries is traced), the flat fields clean (W-flat12 0.05% worst
+view; what remains in the tip crop sits over render-visible relief — the central
+ridge, the fuller, one nick scar). W-speckle is flat across the middle rungs
+(6.84% at adoption against 6.59–7.01% at its neighbours) — no speckle price.
+W-outside 0.000% everywhere is structural (uniform black outside the exact
+silhouette), reported as such, not as cleanliness.
+
+**6b — the per-subject law held its second grey-on-grey case.** The accepted
+route's 0.4/0.8 was falsified on the beast's clay (E12 Rulings 10c/11a — its own
+ruled pair: 0.05/0.10) and is falsified again here, same direction, **different
+landing value** (0.10/0.25): two subjects of the class, two ruled pairs, which is
+what "derived per subject" means in practice. The pair enters `profiles/prop.json`
+as measured values with the anchor gate, ladder and crops as provenance;
+`_still_suspended.canny_pair` resolves. The restylize UNDECIDED count on this
+profile is 0.
+
+## Ruling 7 — the backdrop is RULED: blue-violet, and the word is `plain lavender background` (2026-08-07)
+
+Evidence: §3.2 — the optimum table, the occupancy check (chroma floor C\* 5.0
+applied before any hue is quoted), the four-way tie, the inherited-candidate
+scores, the L1 sensitivity sweep — with E12 Rulings 8a/15i read at this seat
+before ruling.
+
+**7a — the word, house form, one colour term — and deliberately NOT
+`lavender-grey`.** This subject's entire risk surface is grey; the word must not
+contain it. Grounds, in order of weight:
+
+1. **The metric cannot choose and does not** (the 8a mechanism, sharper here):
+   the top four families tie at 0.3549 to four decimal places, all bound by L3
+   gold's blue-channel gap. The tie is evidence about **gold**, not steel — the
+   executor's ⚠ that the weighted metric optimises against gold is read as
+   exactly that, and no steel conclusion is drawn from it.
+2. **Neutral white is disqualified by the fixture's own pre-registered
+   constraint, not by the metric that scored it co-optimum**: S-steel's backdrop
+   "cannot be any grey", and white is the L\* 100 end of the achromatic axis.
+   The sensitivity table is the measured teeth — white's whole margin over steel
+   is lightness, the single estimate the styled pair is most likely to move, and
+   at L1 L\* 94 (where worn steel's speculars under harsh directional light
+   live) white scores 0.078 against the key's own 0.06 cut. The galleon's white
+   transferring as co-optimum is an estimate-contingent fact; the constraint is
+   not.
+3. **Blue-violet maximises the one margin the tie cannot see**: against the
+   measured material hues (gold 83.5 · oxblood 25.4 · garnet 24.3) its band
+   holds ≥123° from every occupied hue, where cyan holds 116.5° and magenta 55°
+   (bordering the wine family at the hue wrap) — and its chroma at the tabled
+   optimum (C\* 21.4 against cyan's 13.7) is the channel achromatic steel cannot
+   erase at any lightness: at the sensitivity extreme (L1 L\* 94) pale
+   blue-violet holds 0.094 where white holds 0.078. Chroma is what remains when
+   the lightness gap is gone.
+4. **The pre-registration held and is honoured**: the fixture named blue-violet
+   as the expected unoccupied family at authoring; the derivation CHECKED it —
+   confirmed, and stronger: five of seven bands unoccupied, L1/L2 below the
+   floor occupy none. Switching to a metric-tied alternative would be an
+   unanchored choice on evidence that cannot distinguish the candidates.
+5. **The route has painted this family cleanly once** (the beast's accepted
+   pair) — a measured capability. And the beast's ruled VALUE scoring
+   worst-of-four here (0.1255, bound by L1: too dark and too desaturated beside
+   steel) is the 8b line's third vindication of per-subject derivation — W3's
+   grey under the cut on the beast, the beast's lavender-grey worst on the prop,
+   and the sensitivity's grey-trap rows (0.067 at L1 L\* 39) landing exactly
+   where the five-times-measured class always predicted.
+
+**7b — pre-registered for the pair (the 15i class, named before the artifact
+exists).** Occupancy claims go stale. At the styled pair: (a) **L1's realised
+lightness AND chroma are measured** — the named risk is cool-cast
+materialisation, worn steel arriving ABOVE the C\* 5 floor inside blue-violet's
+own band; if it does, that is a finding reported with the pair and owned by the
+palette-bands derivation — the word is not re-chosen while looking at the
+artifact it would judge. (b) The realised backdrop's own L\*/C\* are measured
+against the estimate (the beast's realised C\* 11.0 precedent). The estimated
+triple (214,214,255 · L\* 86.9 · C\* 21.4) rides in `backdrop/backdrop.json`;
+the pair supersedes it the moment it exists, per the galleon rule.
+
+**7c — the derivation's discipline is affirmed as stated**: declining to
+overload the `thin` flag to manufacture the L1 weighting (the 8c form, third
+occurrence — a field whose name lies), and stating plainly that the weighted
+metric binds on gold so no ruling reads "L1 binds" off the raw column's
+`<== MINIMUM` marker. The word joins the profile's prompt in the beast's
+placement — after the elements, before the register tail — and
+`_still_suspended.backdrop_derivation` resolves.
+
+## Ruling 8 — elevated cameras: NONE; the down-facing population is banked (2026-08-07)
+
+Evidence: §2.4 at CONVERGED ray density — the 7b law applied, and Ruling 10a is
+what applying it cost the instrument.
+
+**8a — NONE, on marginal gain.** Up-facing surface is 7.24% of total area and
+the eye-level eight already reach 53.92% of it; the best elevated pair
+(0/180 @ 40) buys **+0.12 points of the figure's total surface** and a second
+round +0.015. That is under any threshold this route has ever spent a camera
+on. The prior's NUMBER was wrong — the z-max slab's 0.10% was not the up-facing
+population (the executor's E1 falsification stands) — so the decision lands
+where the prior pointed but on the measured ground, marginal gain, not the
+predicted one. `cameras.elevated` is decided as the empty set; no `cull_unseen`
+union re-issue (nothing adopted). Director-overrulable in a sentence, as every
+allocation call is.
+
+**8b — the down-facing population is banked**: 76,641 faces at 7.01% of area —
+quillon undersides, the guard underside (L2's surface by fixture assignment),
+the collar rings' lower faces — within 3% of the up-facing population's size,
+addressed by **no camera set on this route** (no below-horizon camera exists
+anywhere in it). Recorded as context for stage-1's holes and for the brush
+stage that exists to fill them; no disposition is opened.
+
+## Ruling 9 — the off-surface re-reading, route-wide: the rate is a margin statistic, not a bake constant (2026-08-07)
+
+Evidence: §2.2c — the fourth point measured **11.0875%** (>1 px) against the
+three-subject 2.49–2.64%, then the erosion test on three bakes (two written by
+other sessions): eroding 2 texels drops the rate **1300×** on the prop
+(11.104 → 0.0085%), **12×** on the beast (2.614 → 0.220%), **6×** on the ship
+(2.492 → 0.391%). The population is the **bake-margin ring** on all three; what
+replicated at 2.50–2.64% was island-size distribution, and this subject breaks
+it by packing 46,496 islands (68.6% of its valid texels within 2 texels of an
+island edge).
+
+**9a — E10 Ruling 7b's rate-constancy claim is corrected in place** (dated ⚠
+annotations at E10 Ruling 7b and E12 Ruling 6b's parenthetical — the 15i
+mechanism, never a silent edit). From here on a bake-side off-surface rate is
+quoted **with its island count and its erode-2 residue**; a bare rate compared
+across subjects is comparing atlases, not bakes, and is void.
+
+**9b — nothing else in the E10 family moves.** The on-surface restatement's
+arithmetic — excluding off-surface texels from denominators, both families
+quoted — is unchanged and remains the standing cross-asset family. E10 Ruling
+4's painted-not-padding finding is a stroke question, untouched: this subject
+has no strokes and nothing here re-opens it. The composition inversion (7a)
+stands; composition was never carried across subjects.
+
+**9c — the prop's own numbers enter the record**: 11.0875% >1 px at birth ·
+46,496 islands · margin ratio 8.3× (21.83% of atlas valid from 2.62% triangle
+UV area, against the ship's 6.16× and the beast's 4.41×, recomputed by one code
+path) · erode-2 residue 0.0085% — the cleanest interior of the three measured.
+
+## Ruling 10 — instrument law from the measurement pass (2026-08-07)
+
+**10a — `e12_elevated`'s ray grid joins the errand batch** (repair: a grid floor
+derived from rays-per-mean-face, with the ratio printed). At this subject's
+240-px frame the grid ran **3.71× coarser than the mesh's mean face** and the
+up-facing answer was wrong by **3.9×** (13.851% → 53.920% converged). The 7b
+law is SHARPENED route-wide: a first-hit figure's ray density is quoted **as
+the ray-cell-to-mean-face ratio**, and a figure at ratio ≳ 1 is not converged.
+Until the repair lands, the convergence protocol this report ran — a density
+ladder to stability — is the method. The instrument is not changed mid-arc:
+shared, cited in closed rulings (the 2d practice).
+
+**10b — `e08_ceiling`'s bias exceeds the route's wall floor; the caveat is
+banked, the repair queued.** The bias default 3e-3 against walls ~0.00196
+(route-wide per Ruling 3) displaces the near-face ray origin through its own
+wall: measured **+0.97 points** at eight cameras (51.33% shipped against
+50.36–50.43% at 2e-4–5e-4, converged by 5e-4). The COMPARABLE number remains
+the shipped default's — **51.33% is this subject's pre-registered stage-1
+ceiling**, measured as every prior subject's was — with the geometric number
+recorded beside it. The errand batch gains the bias-vs-wall-floor warning,
+beside the 6e caption repair already queued. And the ceiling's mechanism is
+banked as measured, not inferred: **93.34% of unreachable texels are inner
+wall; 93.98% of outer-wall texels are reachable; 24 cameras buy 51.86%** — on
+this subject the ceiling is a topology fact, not a camera-count fact. The
+executor's wrong-object catch (UV islands wearing a wall's name on the unwelded
+round-trip mesh, caught against Gate 0's partition before any number was
+reported) is the repo's own law working at the instrument's birth.
+
+**10c — the mirror-check law.** Within opposite-direction view pairs,
+orthographic silhouette areas are equal **for any mesh** — the dispatch's
+within-pair expectation was a check that cannot fail, and it is retired as
+evidence. The subject's symmetry number is the bilateral comparison: yaw 45
+against yaw 135, **0.57% apart**. Across pairs the swing is **2.061×** (view 0
+against view 2) — the fifth moving-denominator instance in this repo, banked:
+any instrument normalising by per-view silhouette area on this subject
+inherits it in the route's sharpest form.
+
+**10d — the thin curve is banked; the value stays deferred** to its own ruling
+at the stage the guard serves (the beast's deferral pattern, held). Three facts
+ride the suspension note: the transition centres on the blade's own measured
+0.021 thickness (two independent code paths agreeing); the character's 0.03
+deletes 88.37% of the blade face-on and 59.011% of the whole figure; and the
+withheld fraction **inverts by view** (edge-on dominant below ~0.0075, face-on
+above), so no pooled number can judge a candidate on this subject.
+
+**10e — the advisor's ledger, this seat.** The dispatch's environment line said
+the watchdog was "restarted this morning after an overnight death"; the log
+says the only restart since 08-06 is **20:29:09 tonight**, at this seat's open.
+The restart-time claim was this seat's prose error; the executor's log check
+caught it. The silent death itself is uncontradicted — and "a hard death leaves
+no DEAD line" is now a recorded property of the failure mode. Checking
+inherited environment claims against the log is the calibration standard doing
+its job.
+
+## Ruling 11 — the ship's framing family is COMPLETED; Task 4 is GO (2026-08-07)
+
+**11a — `ship.json` gains its two missing pins** (`project_twins.fit-axis =
+width`, `project_twins.margin = 1.204`), completing the E12 Ruling 26a pin on
+the route's last unpinned consumer. The cross-profile sweep (Task 1 §3) found
+the accepted ship's family split — three consumers `width`, the projector
+silent → the tool's `height` — with the magnitude already recorded in the
+tool's own source (`project_twins.py:190–208`: IoU 0.986006 against 1.000000,
+every sample up to 0.33% of its centre distance too far in). **The accepted
+asset is not implicated**: the flag postdates it and every pre-E13 anchor
+reproduces under the pre-E13 expression; the pin closes a live trap for future
+invocations, which is what a pin is for. The beast's sweep found the lane
+class-gap on all profiles; this one found the family gap on exactly one — both
+are the cross-profile run earning its place.
+
+**11b — Task 1's exit state is ratified**: the 3 UNDECIDED were the pre-stated
+three; two are now ruled (Rulings 6/7) and thin-extent is deferred by design
+with its curve in hand (10d). The profile's registry carries no unowned
+silence; 0 UNDECIDED remains the gate on ARMS, exactly as dispatched.
+
+**11c — TASK 4 IS GO.** The styled target pair at views 0 and 1, per the
+dispatch as written: the committed builder runs with the ruled word (the
+one-string-vs-per-view check against the actual profile renders, the carried
+views-2/6 gem-and-boss flag verified per view, not imported); controls from the
+profile renders through the ruled pair 0.10/0.25; full cloud discipline —
+`estimate_credits` per submission, the no-LoRA pre-flight, one generation per
+view plus one bounded re-roll each; the register-drift-on-metal
+pre-registration stays the executor's per the dispatch's calibration note.
+**HALT with the pair staged: this seat's eye first, then the Director beside
+the clay** — his overrule window on the whole authored identity, and the
+register's first test on steel.

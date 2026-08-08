@@ -161,6 +161,16 @@
     "why": "The twins are generated at this aspect and the projection derives its horizontal extent from it; the two must agree. Re-ruled with turn_render.w by Ruling 15.",
     "from": "E04 Task 4a; Ruling 15"
    },
+   "fit-axis": {
+    "value": "width",
+    "why": "THE MISSING FOURTH-CONSUMER PIN, completed 2026-08-07 (E14 Ruling 11a): the E14 handoff-2 cross-profile sweep found this profile's framing family split - turn_render, silhouette_masks and texpass_iter pin width while this consumer was silent and took the tool's height. The magnitude is recorded in the tool's own source (project_twins.py:190-208, measured on the beast at E13 handoff 13): height-vs-width derivation IoU 0.986006 against 1.000000, every sample up to 0.33% of its centre distance too far in. THE ACCEPTED ASSET IS NOT IMPLICATED - the --fit-axis flag postdates it and every pre-E13 anchor reproduces under the pre-E13 expression; this pin closes the trap for future invocations only. Same adjudicated mode as the other three consumers.",
+    "from": "E14 Ruling 11a; E14-task1-sweep.md section 3; E12 Ruling 26a (the family law); project_twins.py:190-208"
+   },
+   "margin": {
+    "value": 1.204,
+    "why": "The framing family's third key on the fourth consumer, pinned with fit-axis (E14 Ruling 11a) - the value every ruled run on this subject used; equals the tool default, pinned so it is a decision rather than a silence (the 26a lesson).",
+    "from": "E14 Ruling 11a; E04 Ruling 11; E04 Ruling 25"
+   },
    "reg-iou-min": {
     "value": 0.0,
     "why": "SUSPENSION, EXPRESSED - Ruling 14 closing armT-halt2 Finding B. 0.0 makes the halt's assert vacuous while the per-view IoU still computes and prints, which is what _gates.reg_iou_min's prose always meant and the loader never saw. The character's 0.80 came from both sides of a measured line this subject does not have; the ship derives its own bound from its own spread after the twin baseline, or keeps reporting.",

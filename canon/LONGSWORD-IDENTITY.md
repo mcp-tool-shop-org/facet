@@ -77,6 +77,13 @@ sentence, 2026-08-07: "Ultra-realistic, no LoRA."*
   hue occupancy at authoring: steel/iron achromatic · gold warm yellow · oxblood + garnet
   wine-red. **Blue-violet is unoccupied** — the expectation for the derivation,
   pre-registered, checked not assumed (the 8a/15i lesson: occupancy claims go stale).
+  *CHECKED 2026-08-07 (E14 handoff 2 §3.2, chroma floor C\* 5.0 applied first):
+  CONFIRMED — and stronger, five of seven bands unoccupied; L1/L2 sit below the floor
+  and occupy none. The ruled word is `plain lavender background` (E14 Ruling 7 —
+  deliberately not `-grey`). The styled pair re-checks occupancy per the 15i lesson;
+  the named watch is L1's realised chroma — a cool cast arriving above the floor lands
+  inside blue-violet and is a finding for the bands derivation, not a re-choice of the
+  word.*
 - **S-thin** *(measured at Gate 0)* — the blade is a **hollow box section**: total
   thickness ~0.0208 at mid-blade, two ~0.00196 walls around a cavity. `thin_extent`
   derives fresh with the published cost curve; the two-sided extent probe reads
