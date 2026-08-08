@@ -315,11 +315,25 @@ values live in its own profile and fixture, never inherited unmeasured.
   ornament amplitude scales inversely with constraint density, and at edge-on
   constraint it goes figurative. The edge-on surfaces belong to the brush stage
   by construction. Registration measures WHERE paint sits, not WHAT it is.
-- **In flight: handoff 5 — STAGE 1, amended to SIX twins** (0/4 at 770700,
-  1/3/5/7 at 770701) — the six-camera ceiling pre-registered first, then
-  projection; styled/valid against both ceilings (the eight-camera **51.33%**
-  stays the route-comparable), the on-surface family with island count, the gem
-  readout, the atlas under flat light. No pass condition — the eye is the gate.
+- **Stage 1 ran as SEVEN twins** (the session launched before Ruling 20's
+  amendment; the Director let it complete as the measured comparison —
+  [Ruling 21](../experiments/E14-ruling.md)): styled **47.22% of valid =
+  92.09%** of the pre-registered 51.27% seven-camera ceiling (the beast banked
+  87.5% of its own). Its findings: **a marginal is a property of an ordering,
+  not of a camera** — Ruling 18c's 2.8-point price for view 2 was a
+  ladder-position artifact, true set-level cost **0.0634 points** (43.8×
+  overstated; 20c's v6 price corrected the same way); the projected gem is **a
+  garnet core inside a magenta shell split exactly on the ownership partition**
+  (one violet stone to the eye — the Director's window holds the L5 verdict);
+  the crossing is the worst-covered structure (38.1%); the background probe's
+  corner-median reference is the retired keying method's last live consumer
+  (errand batch); the brush's territory is 148,470 reachable-unstyled texels =
+  4.05 points.
+- **In flight: handoff 5b — the compliant re-projection** (six twins, view 6's
+  face-dome paint out; the seven-run preserved as the comparison): six-camera
+  ceiling pre-registered, the ownership diff characterises exactly what v6
+  contributed, sheets with excluded artifacts labelled in-image. Then the
+  stage-1b halt, then strokes.
 
 ## The calibration table this page exists for
 

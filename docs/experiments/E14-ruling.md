@@ -903,6 +903,78 @@ structure in plain words at the top of the reply, before anything else is
 said** — so that what he pointed at is found independently or the mismatch
 surfaces at once.*
 
+## Ruling 21 — stage 1 ruled: the prices corrected, the compliant re-projection ordered, the gem to the Director's window (2026-08-08)
+
+Evidence: the handoff-5 report (`05b087d`), its blind predictions
+(`4a9252d`), and this seat's sheet-walks — view 6's sheet, view 0's sheet,
+and the gem at 6× — stated in plain words at the top of the reply that
+carried this ruling, before any number was consulted. The run projected
+SEVEN twins: it launched before Ruling 20's amendment reached the tree (the
+Director's explicit word let it complete), so it is the measured comparison,
+not the banked A0.
+
+**21a — the measurement pass is ACCEPTED as delivered**: styled 1,729,017 =
+47.22% of valid = 92.09% of this run's pre-registered 51.27% ceiling (the
+beast banked 87.5% of its own at the same stage); reach agreed by three
+independent code paths; the on-surface family's cost measured at 1.79
+points on the route's most margin-dominated subject; the A3 per-structure
+erosion table monotone above 4 px with the 55-px stratum quoted with its
+denominator; ownership and marginal reach reported as DIFFERENT questions
+(view 7: most committed, least marginal, 26×) — neither alone is "how much
+a view mattered," banked as reporting law.
+
+**21b — the price law, adopted route-wide: A MARGINAL IS A PROPERTY OF AN
+ORDERING, NOT OF A CAMERA.** Ruling 18c's carried price for excluding view
+2 is corrected in place: **0.0634 points (2,320 texels), not 2.8** — the
+carried figure was yaw 90's marginal at ladder position 3, read out of the
+handoff-2 table and quoted as a set-level cost, overstated 43.8×; a
+surface facing yaw 90 clears the 0.45 floor from both diagonal neighbours.
+Ruling 20c's ~4.4-point price for view 6 is the SAME error class, corrected
+in place; its exact exclusive cost is measured by the six-camera ceiling in
+the re-projection below. Both wrong prices were this seat's — quoted from a
+column without asking what the column measured — beside the executor's own
+P1 admission (named the anchoring bias, then anchored anyway). Ledger.
+
+**21c — THE COMPLIANT RE-PROJECTION IS ORDERED (handoff 5b): six twins.**
+This seat's walk of view 6's sheet confirms the excluded artifact's paint
+is in this atlas: the guard's yaw-270 face carries the face-dome's curling
+hooks and gold-heavy mass where the clay has a plain faceted block. An A0
+cannot bank paint from an artifact excluded on identity. The re-projection
+is local CPU, no generation, no spend: pre-register the SIX-camera ceiling
+(which prices v6's exclusion exactly), project views 0/1/3/4/5/7, re-run
+the readouts and sheets with excluded artifacts labelled in-image, and
+DIFF against the seven-run — the crossing's delta characterises what v6
+was contributing. The seven-run stays in the record as the comparison that
+earned the 43.8× correction, the gem readout and the crossing census.
+
+**21d — the gem goes to the Director's window with both readings.** The
+numbers: 67.76% of the stone's above-floor texels in lavender+magenta
+against 16.23% in the declared wine band, split exactly on the ownership
+partition (garnet views' territory median hue 17.6, drifted views' 322.2,
+305° apart, unhomogenised by levelling). The eye at 6×: ONE coherent
+violet stone with a redder core — not patchwork — and plainly not the
+fixture's garnet against view 0's reference. His options, one sentence
+each: accept the violet stone (L5's colour word amends to match); hold the
+garnet (the brush repaints the stone — territory already sized at 88,902
+styled + 3,840 reachable holes); or defer to Gate 1 with the finished
+asset in hand. Nothing amends until his word.
+
+**21e — the background probe's reference joins the errand batch**: the
+probe inside `project_twins` uses the corner median — the keying method
+this repo retired three times — as a colour reference, and on these
+vignetted twins it is wrong by ΔE 11–21, moving a reported percentage ~4×.
+**The retired method's last live consumer, found by the E01 law six
+experiments late** (fix a root cause, find its consumers). The honest
+asset-level number stands: 0.31% of committed texels within ΔE 10 of
+background; the probe's candidate-population percentages are not asset
+statements — both-populations reporting banked with it.
+
+**21f — the executor's discipline, adopted**: the landmark self-catch (the
+first stone landmark walked past the collar to the grip neck, caught by
+printing the whole cross-section profile, wrong number kept in the report)
+and the P1 self-scoring. The calibration lesson is 21b's twin: naming a
+bias is not removing it from an estimate.
+
 **20e — what stands unchanged**: the diagonals' iron guards, the gem-drift
 ruling (19b), the bbox-not-IoU finding (19e), the rim band's two-faced
 blindness (19c), and zero credits spent. The set that projects is six twins
