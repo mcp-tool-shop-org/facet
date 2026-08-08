@@ -63,7 +63,13 @@ def test_t21_serves_when_the_certificate_passes_and_the_corpus_is_still(
     db = certify(tmp_path, built_db)
     h = record_mcp.health(db)
     assert h["serving"] is True
-    assert h["state"] == "SERVING"
+    # Strict, and self-diagnosing: the only way this can fail is a concurrent
+    # write under docs/ in the milliseconds between the certificate and this
+    # call - this repo IS a shared working copy, so the message names it rather
+    # than leaving a future reader to guess.
+    assert h["state"] == "SERVING", (
+        "state 1 did not hold; a concurrent fold moved the corpus mid-test: %s"
+        % ((h.get("staleness") or {}).get("counts"),))
     assert h["staleness"] is None
     assert h["certificate"]["state"] == "PASSED"
     assert h["certificate"]["determinism_leg"] == "byte-identity"

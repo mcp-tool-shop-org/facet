@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "facet-record": {
+      "command": "E:\\AI-Models\\trellis2-env\\Scripts\\python.exe",
+      "args": ["tools/record_mcp.py"]
+    }
+  }
+}
