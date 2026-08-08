@@ -46,11 +46,6 @@
   },
   "_consumers": "The E10 contact mask (Step 0.2) and the layer machinery. A flat z-plane: the hull has rocker, so the plane meets it at mid-length while bow and stern ride above - that is how real waterlines sit and it is not a defect."
  },
- "_not_on_route": {
-  "smart_decimate.py": "Not invoked on the ship route (the E06 recipe: prep, project, loop, finalize, pack). Its W3 body-weight/pad-frac/crop-res defaults never execute. Recorded per Ruling 14 so absence is a decision the coverage check can see.",
-  "verify/head_render.py": "Head instruments are meaningless here - _gates.head_rect_metrics false. Absence is a decision (armT-halt2's own table).",
-  "verify/mesh_stats.py": "Ran at Gate 0 with its front-view-rect warning correctly firing; head-derived columns have no referent. Absence of a block is a decision."
- },
  "_gates": {
   "mesh_gate": {
    "value": "none",

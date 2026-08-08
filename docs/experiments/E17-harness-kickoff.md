@@ -79,6 +79,29 @@ commit as the anchor.
 importability. A test that needs a tool edit to exist gets the edit proposed in the
 report, or made under the law (tests + anchor, same commit) — never silently.
 
+### ⚠ AMENDED 2026-08-08 — E16 is RULED ([E16-ruling.md](E16-ruling.md)); four additions
+
+- **T12 — the E16-5 repair, ruled at E16 Ruling 2**: `mesh_stats` warns on
+  `rect_frac_of_figure > 1` and on nothing else (the proxy leg goes; the
+  subject-class question lives in the profiles). ANCHOR, pre-stated by the ruling
+  from measured values: every VALUE unchanged; W3 silent (0.680787); galleon
+  silent (0.327707); beast silent (0.568773); the sword WARNS (1.902512). The
+  warning's test rides the same commit.
+- **T13 — the det_a race, ruled at E16 Ruling 3**: leg 1's temp paths become
+  per-process unique (same directory). ANCHOR: leg 1 byte-identity unchanged on a
+  quiet tree; the fixed-path collision impossible by construction. Test in the
+  same commit.
+- **T14 — the CODE_ROWS row, ruled at E16 Ruling 4a**: `texpass_iter`'s
+  `edge-frac` enters the sweep's section-6 transcription as CODE (A3's derived
+  law), matching `project_twins`' row verbatim; `edge-mode` stays SUBJECT-DATA.
+  ANCHOR: the four profile sweeps' decided counts move only as this
+  classification predicts, before/after quoted.
+- **T15 — E16 and E17 arcs enter verify's count legs** with their own greps,
+  sequence checks and completeness lines (the E15 Ruling 8b pattern) — if session
+  budget allows, else the next errand window.
+- **The E16-11 exclusion is LIFTED**: its port's anchor is commit `c284693`.
+  The E16-5 exclusion above is superseded by T12's ruled specification.
+
 ## Deliverable 3 — CI
 
 `.github/workflows/ci.yml` — the repo's FIRST workflow; the studio Actions rules bind:
