@@ -2169,3 +2169,50 @@ errand window opens (ten items queued), the MCP-tool speccing
 unlocks per the banked studio plan (the spec-after-Gate-1 condition
 is met), and the activated state stays parked at his sentence.
 
+## Ruling 34 — the INGEST LANDED and the lane is pushed to main at the Director's word; the dataset holds four dense assets (2026-08-08)
+
+Evidence — what this seat OPENED: the ingest receipt itself, read-only
+lane-side (`projects/facet-assets/assets/e14_longsword_dense/
+ingest-receipt.json` — 26 records created, 0 skipped, 0 rejected,
+manifest sha `58ff010c1c372f9b` = the manifest facet emitted, exactly
+the two info notices, 170 written paths), and the lane repo's own
+state before acting (27 untracked paths, branch
+`feat/asset-lane-skeleton` nine commits ahead of an undiverged main).
+
+**34a — the ingest is RATIFIED.** The live run reproduced the dry
+run's digits line for line — all 26 off-palette percentages and blob
+sizes identical — which is the dry-run's whole promise kept;
+`tone_transform_operands.json` materialized byte-identical per the
+lane's 1.2.0 rule, so the rotation operands survive independently of
+the export tree; five sha-pinned pointers (96.5 MB) went live and
+`E14_strokes\export\turnaround\` is now load-bearing for the dataset.
+**The project holds 114 records across five ingests** — the galleon's
+28, the dragon's 26, the longsword's 26, W3's dense 26, and the eight
+retired staged records.
+
+**34b — the lane is COMMITTED AND PUSHED TO MAIN at the Director's
+explicit word** ("Please push sdlab as needed to main" — his live
+instruction, the one authority above the lane's read-only-from-facet
+default). The ingest's 29 files committed on the asset-lane branch
+(`ddc7d0a`), main fast-forwarded `c626387..ddc7d0a` — carrying the
+entire asset-lane arc (the contract, schemas 1.1.0→1.3.0, five
+ingests, the lib-asset suites, the handbook page) onto the default
+branch — and pushed. CI and the Pages deploy triggered on main; the
+identical suite was green on the branch and 101/101 passed read-only
+at the export session.
+
+**34c — the export session's open-constructions note is answered:
+NOTHING IS OPEN.** Both constructions were ruled at 33c/33d BEFORE
+the ingest ran — the owner sidecar is stage 1b's array, the pair's
+twin side is the as-generated set with its rule named — and the
+ingested manifest carries exactly the ruled forms, since the ruling
+ratified what the export declared. The note was written from the
+lane-side session's vantage without facet's tip; stale on arrival,
+cleared here.
+
+**E14's on-acceptance queue is now EMPTY except the parked state.**
+Export ✓ (handoff 10, Ruling 33) · ingest ✓ (this ruling) · the
+errand batch and the MCP specs are in flight as E16 and the spec
+session · the activated state (16c) waits on his sentence, as
+designed.
+

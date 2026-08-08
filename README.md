@@ -410,9 +410,14 @@ ran the same day** ([Ruling 33](docs/experiments/E14-ruling.md)): 26 cameras,
 a six-class provenance palette (the garnet re-projection and collar repair as
 their own classes — a route first), the manifest's tone transform declared as
 a masked hue rotation with every operand sourced, **zero gap notices from the
-sdlab lane's validator on the first run** — dataset asset #4, staged for the
-Director's ingest paste. Then the errand batch and the MCP-tool specs; the
-activated state (Ruling 16c) stays parked at his sentence.
+sdlab lane's validator on the first run** — and **INGESTED the same day**
+([Ruling 34](docs/experiments/E14-ruling.md)): the live run reproduced the
+dry run line for line, the operands materialized byte-identical, five
+sha-pinned pointers went live, and the lane pushed to main at the Director's
+word. **The dataset holds four dense assets** — the galleon, the dragon, the
+longsword, and W3 — 114 records across five ingests. The errand batch (E16)
+and the MCP-tool specs are in flight; the activated state (Ruling 16c) stays
+parked at his sentence.
 
 **E15 — the context index — is LIVE and ruled**
 ([E15-ruling.md](docs/experiments/E15-ruling.md), 9 rulings):
