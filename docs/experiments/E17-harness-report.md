@@ -11,6 +11,13 @@ before any tool was read; they are scored in §4.
 quoted in §6. Zero skips on this rig; the skip path demonstrated with printed reasons
 in §7. Six commits, all local, listed in §9.
 
+> **⚠ SUPERSEDED IN PART, 2026-08-08** — the ruling landed and assigned this session a
+> final leg (T15b, T18). Sections 1–9 stand as written and are the record of the halt;
+> the **addendum at §10–12** carries the leg. Current suite end state: **32 tests, 32
+> passed** (24 hermetic, 8 artifacts). Flag 5 and the T18 finding are closed there;
+> flags 1, 2, 3, 4, 6, 7 were disposed by the ruling itself (§8 keeps the original
+> wording so the dispositions can be read against what was flagged).
+
 ---
 
 ## 1. The record moved under this session, three times
@@ -55,6 +62,8 @@ The dispatch warned that this is a shared working copy, and it was, throughout:
 | T14 | E16 Ruling 4a — amendment | (rides `test_t16_registry_sweep.py`) | hermetic | (post-prediction scope) | **ANCHOR HELD** — before: 85 subject-data flags, value 66; after: **84**, value 65, on all four profiles; beast/ship exit 0 at 84/84, prop exit 1 with exactly its pre-existing 1 UNDECIDED, character exit 1 with 18; `_per_invocation` untouched (3/3/3/1). Sweep edit + the T16 pin moved 85→84 in one commit (`e75f1a8`) |
 | T15 | E17 amendment ("if session budget allows") | asserts inside `test_t01` | hermetic | (post-prediction scope) | **HALF-EXECUTED, half deferred with its reason** — the E16 legs are in: greps for 7 numbered rulings + 18 lettered sub-rulings (the fold's own 25 rows) and the sequence bound 1–7, all green inside verify; T1 asserts the legs present-and-ok without pinning counts (grep==db stays verify's own invariant). The E17 half is DEFERRED: no `E17-ruling.md` exists and the E17 kickoff carries no handoff headers, so an E17 leg today would grep a file that is not there — the check-that-cannot-fail class. Commit `7fd4619` |
 | T16 | E16-11's anchor, commit `c284693` (condition met before the first port) | `test_t16_registry_sweep.py` (5 tests) | hermetic | PASS against the committed table | **PASS** — asserted at 85 in the base-suite commit, moved to 84 in T14's commit; prop's single undecided named (`texpass_brush prompt`) so a NEW undecided cannot hide behind the count |
+| **T15b** | E17 Ruling 3e — **appended 2026-08-08 after the ruling** | asserts inside `test_t01` | hermetic, `fold` | (post-ruling scope) | **ANCHOR HELD** — verify PASSED with `E17 numbered rulings grep 4 db 4 ok`, `E17 lettered sub-rulings grep 10 db 10 ok`, `E17 sequence ruling 1-4 gaps: none`. Counts verified against source **before** the legs were written (§10). Commit `5c81716` |
+| **T18** | E17 Ruling 2 — **appended 2026-08-08 after the ruling** | `test_t18_interpreter_precheck.py` (5 tests) | hermetic | (post-ruling scope) | **ANCHOR HELD** — the wrong-interpreter run now exits `USAGE_ERROR` with one refusal naming the missing module, the interpreter run, the law's interpreter and the ruling, having run nothing; the trap reproduced and closed end-to-end (§11). Commit `ac0a1f2` |
 
 ## 3. Two first-run failures, both this session's operand errors, both diagnosed from the record
 
@@ -239,3 +248,96 @@ file when the root exists but a recorded input inside it does not.
 no memory-store write; no push.
 
 **HALT.** The advisor rules at `E17-ruling.md`.
+
+---
+
+# Addendum — the final leg (2026-08-08, after the ruling)
+
+[E17-ruling.md](E17-ruling.md) accepted the harness (27/27 at two seats) and assigned
+this session two last items on the Director's relay: **T15b** (Ruling 3e) and **T18**
+(Ruling 2). Both are done and appended to §2's table. **Suite end state: 32 tests, 32
+passed** (24 hermetic, 8 artifacts). CI was green on the ruling's push (run
+`31263164713`) — the repo's first CI run, and the flag-3 closure.
+
+## 10. T15b — the E17 arc's count legs
+
+The ruling asked for "numbered + lettered as the file parses, sequence bounded 1-4 as
+ruled" and told me to verify the parsed counts myself, dispatch text being hypothesis.
+Verified three independent ways before a leg was written: my own greps against the file
+with the parser's own patterns (4 and 10), the DB queried directly (`ruling` 4 =
+`1,2,3,4`; `sub-ruling` 10 = `1a,1b,1c,1d,3a,3b,3c,3d,3e,3f`), and the fold's own
+reported figure of 14 rows. All three agree. No closure markers in the file.
+
+**The handoffs leg stays deferred, and that half is now measured rather than
+predicted:** the E17 kickoff carries no `## Session handoff` header and the DB holds
+zero E17 handoffs, so a handoffs leg would grep a header that does not exist — the same
+check-that-cannot-fail reasoning that deferred all of T15's E17 half one commit earlier,
+still holding for this one piece of it.
+
+**ANCHOR:** verify PASSED all four legs; new legs `grep 4 == db 4` and
+`grep 10 == db 10`; `E17 sequence ruling 1-4 gaps: none`. T1's assertions now cover all
+four E16/E17 count legs and both sequence lines, so a leg dropped from `COUNT_CHECKS`
+fails the suite instead of waiting for a reader to notice an absence.
+
+## 11. T18 — the interpreter pre-check, and what reproducing the trap corrected
+
+**The trap, reproduced exactly.** I simulated the wrong interpreter with a poisoned
+`PYTHONPATH` whose `open3d` raises on import — the same failure shape as an absent one —
+and ran the suite as it stood: **7 failed / 20 passed**, the ruling seat's result to the
+digit.
+
+**Reproducing it corrected my own arithmetic, which is why it was worth running rather
+than reasoning about.** I had counted the open3d-importing tools and got *eight* tests,
+not seven (`e12_elevated` imports open3d too, which the ruling's prose does not
+enumerate). The eighth is
+`test_t03_control_explicit_aspect_passes_the_guard`, and under the broken interpreter it
+**PASSED** — for the wrong reason. That control asserts two things: exits non-zero, and
+carries no ANDON text. A `ModuleNotFoundError` satisfies both. It is a check that cannot
+fail, sitting *inside the control that exists to prove another check can* — and it is
+exactly why the count is 7 and not 8.
+
+**Hardened in the same commit**, per the repo's rule that a root cause is fixed at every
+consumer rather than only where it was noticed: the control now also asserts the failure
+is not an import error and *is* a missing-input error, so it fails downstream of the
+guard for the only reason that proves the guard let it through.
+
+**The pre-check.** `conftest.pytest_sessionstart` probes the child interpreter once and,
+on any miss, `pytest.exit`s with `USAGE_ERROR`. Design points, each with its reason in
+the code:
+
+- **A real import, not `find_spec`** — a present-but-broken install (a DLL that will not
+  load) produces the same trap as an absent one, and `find_spec` would call it present.
+  Measured cost: ~1.2 s once per session against a 93 s suite.
+- **The required set is measured, not assumed** — the module-level third-party imports
+  of every tool the suite invokes, transcribed per tool. `facet_index` and
+  `e04_registry_sweep` are stdlib-only, which is precisely why a wrong interpreter reads
+  as a *partial green*: the twenty that pass are the ones that never needed the
+  environment.
+- **Strict by choice** — it refuses the whole session rather than only the tests that
+  need a mesh library, because under a wrong interpreter "20 passed" is the misreading
+  being closed.
+
+**ANCHOR, measured:** the poisoned run now exits `USAGE_ERROR` (4) with one message
+naming the missing module, the interpreter actually run, the law's interpreter and the
+ruling — **zero tests collected, zero run**.
+
+**Five tests ride the commit**, including the trap end-to-end (a child pytest under the
+poisoned PYTHONPATH), the probe's own can-fail proof (it must report an absent name),
+and a guard on the guard (a pre-check over an empty module list cannot fail). One
+disclosure: the first cut of the "nothing ran" assertion checked `" passed" not in
+output` and **failed on its own refusal message**, which quotes "7 failed / 20 passed";
+it is now checked structurally on pytest's own report lines. My assertion was wrong, not
+the code.
+
+## 12. Commits added by this leg
+
+| commit | contents |
+|---|---|
+| `5c81716` | T15b: E17 count legs + sequence bound + T1's extended assertions |
+| `ac0a1f2` | T18: the interpreter pre-check, its five tests, and the T3 control hardening |
+
+Local and unpushed, as dispatched; `docs/index/facet.db` still uncommitted; the stash
+untouched; no profile, canon, fixture, palette or seeded-set edit; no memory-store
+write.
+
+**HALT — final.** The advisor folds and pushes.
