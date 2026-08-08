@@ -76,9 +76,12 @@ pre-registered by history, which is as close to a blind test as a lint gets.
 
 ## The home — the one placement the advisor does not rule
 
+**⚖ RULED (Director, 2026-08-08): SDLAB — Option A below is the home.** Option B and
+the split-shape flag stay in place as the record of the decision surface he ruled on.
+
 **Two sound arguments point in opposite directions, and the tie-breaker is a
-studio-ownership judgment the Director holds.** Both are stated at full strength. This is
-the only one of the four tools left open; the other three are ruled in
+studio-ownership judgment the Director holds.** Both are stated at full strength. This
+was the only one of the four tools left open; the other three are ruled in
 [the memo](placement-memo.md).
 
 ### Option A — inside `style-dataset-lab`, as an `sdlab` verb

@@ -19,7 +19,7 @@ Three candidate homes are enumerated for each: **in facet** · **a standalone pa
 |---|---|---|---|---|
 | record index | ✅ | later, gated | `repo-knowledge` ❌ | **IN FACET** |
 | mesh/texture measurement | ✅ | later, gated | a 3D repo ❌ | **IN FACET** |
-| fixture-lint | viable | ❌ | `style-dataset-lab` — **argument stands at full strength** | **DIRECTOR'S WORD** — both presented, §3.3 |
+| fixture-lint | viable | ❌ | `style-dataset-lab` — **argument stands at full strength** | **SDLAB** — ruled 2026-08-08, §3.3 |
 | comfy-preflight | ❌ | ✅ | the Comfy plugin — third-party, unreachable | **STANDALONE** |
 
 **⚖ THE DIRECTOR'S WORD (2026-08-08, arriving on this table, verbatim):**
@@ -33,6 +33,19 @@ Three candidate homes are enumerated for each: **in facet** · **a standalone pa
 memo's own open form — the pick between sdlab and facet **remains at his word**, and
 §3.3 stands as its decision surface. The bar's scope (§5) and the build order were not
 addressed in this word and remain open beside it.
+
+**⚖ THE DIRECTOR'S SECOND WORD (2026-08-08, same day, on the three open items):**
+**fixture-lint → SDLAB.** **Build order ratified as banked**: index → measurement →
+preflight → lint. And on §5's framing, a correction this memo keeps, his words:
+*"We just started building facet a few days ago. There will be tests and packaging
+setup soon. You should know this. We haven't done a full treatment or versioned it.
+Is there a rush? You're acting like this has been out for months and is published."*
+— **§5's item split stands as build-session reference; its deficiency tone does not.**
+Facet is a days-old repo. The absence of tests, CI and packaging is a young repo's
+ordinary state, not a finding; they arrive with the MCP build in the ordinary course,
+per the charter's own sequencing, and nothing about it is urgent. The advisor's
+framing — here and in the fold that asked the scope as a ceremony question — carried
+the over-dramatization, and this note is its correction in place.
 
 ---
 
