@@ -284,10 +284,19 @@ values live in its own profile and fixture, never inherited unmeasured.
   the boundary), with a standing depth diagnostic; the gate **report-only** — its
   only known-bad artifact fails by occupancy, which colour-not-placement cannot
   see, so it has no validation target on this subject (demonstrated, banked).
-- **In flight: the twin set** (handoff 3 Task 2) — stems v2, eight twins at the
-  pair-anchored recipe, re-roll authority on the eye clause alone, the gold and
-  gem watches live at the hilt crops. Then the twin-set ruling, then stage 1
-  against the pre-registered **51.33%** ceiling.
+- **The twin set measured its seed** (handoff 3 Task 2 → [Ruling 18](../experiments/E14-ruling.md)):
+  at 770700 all four diagonals sprawled gold across L2's crossguard (93–96%,
+  0.0% on both face-ons — categorical, and the pair's own rejected-then-accepted
+  view 1 had already convicted the seed and cleared 770701); both edge-on views
+  hallucinated a face-on guard from a ~5,600-px control — view 6's re-roll clean
+  (IoU 0.93), view 2 a recorded second failure, **excluded from stage 1** (cost
+  measured: 2.8 points; the brush stage owns the hole). The depth diagnostic's
+  first run caught both corrupted views independently; zero credits across ten
+  submissions.
+- **In flight: handoff 4** — the diagonal re-roll pass at the pair's proven
+  770701, four submissions, binary branch (set completes at seven twins, or any
+  sprawl is THE RESULT and the recipe question opens). Then the set's acceptance,
+  then stage 1 against the pre-registered **51.33%** ceiling.
 
 ## The calibration table this page exists for
 

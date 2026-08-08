@@ -551,3 +551,91 @@ cut and may honestly have no clean boundary — a suspension with the density
 plotted is a full success; **the gold watch** is live on every twin; and the
 mirror-pair facts make view-pair comparisons cheap corroboration on all
 eight — use them.
+
+---
+
+## Session handoff 4 (2026-08-07) — the diagonal re-roll pass. Four submissions, one branch each. Ends at the set's halt.
+
+**Authorised by [E14-ruling.md](E14-ruling.md) Ruling 18** — the twin-set
+ruling at HALT 2. The Director has seen the first-roll set; the gold pattern
+is ruled SEED-CONDITIONAL on the pair's own evidence (770700 convicted on a
+diagonal by the pair's rejected roll; 770701 cleared on the same view by its
+accepted re-roll), and the eye clause's bounded re-roll authority applies to
+the four diagonals. This dispatch is surgical: **four submissions, nothing
+else generates.** A fresh executor session starts here:
+
+```
+cd E:\AI\facet && git pull
+python tools/facet_index.py build          <- the E15 ritual
+CLAUDE.md                                  <- read first, follow exactly
+docs/experiments/E14-ruling.md             <- Rulings 17-18 are your authorisation and
+                                              your branch conditions. Read both fully.
+docs/experiments/E14-handoff3-task1-report.md   <- the bands (RULED per Ruling 17)
+docs/experiments/E14-task4-report.md            <- the pair's seed evidence (section 4)
+canon/E14-longsword-palette.json           <- the gate config: admitted rim band,
+                                              report-only, deep-share standing
+profiles/prop.json                         <- every decided value; nothing here changes
+```
+
+**Your rules and environment are unchanged** (CLAUDE.md §executor; cloud-only;
+`estimate_credits` per submission, quote the 0-credit expectation either way;
+graphs saved to disk and pre-flighted before submission; the inverted no-LoRA
+pre-flight on all four; ASCII prints). No local GPU leg is expected — the
+controls, masks and stems all exist and none regenerates. **Blind predictions
+first, committed before any submission**: per-diagonal sprawl outcome at
+770701, the IoU range the re-rolls land in, deep-share behaviour, and the gem.
+
+### The task
+
+1. **Re-roll views 1, 3, 5, 7 at seed 770701** — stems v2 unchanged, controls
+   unchanged (verify the canny anchor row byte-identical before submitting;
+   drift is a HALT), recipe otherwise the profile's. One generation per view,
+   saved and pre-flighted first, `estimate_credits` each.
+2. **File discipline**: the four gold first-rolls are REJECTED artifacts under
+   Ruling 18b — rename to `REJECTED_TWIN_swordclay_N_seed770700.png` beside
+   the v2/v6 precedent; the new rolls become `TWIN_swordclay_N.png`. Nothing
+   is deleted.
+3. **Measure the finished set exactly as Task 2 did**: registration IoU + bbox
+   per the purpose-built tool on the four new twins; the gate report-only in
+   the admitted configuration with the deep-share diagnostic; the gold watch
+   QUANTIFIED per view (the 93–96% metric re-run — its landing on the re-rolls
+   is the dispatch's central number); the L5 gem watch; full-size sheets, 4×
+   hilt crops, and the final-set strip rebuilt (the one the Director saw was
+   first-roll era; the rebuilt strip is what goes up).
+4. **The branch, pre-stated — one of two exits, no third**:
+   - **All four land iron** → the set completes: seven accepted twins
+     (0, 1, 3, 4, 5, 6, 7) with view 2 EXCLUDED per Ruling 18c. HALT with
+     the set staged for the advisor's eye, then the Director's.
+   - **ANY diagonal sprawls gold again at 770701** → **THE RESULT. HALT
+     IMMEDIATELY** — no further submissions on any view, not 770702, nothing.
+     Report what landed and what sprawled with the quantified watch; the
+     recipe/fixture question goes to the ruling with systematic evidence in
+     hand. A second failure is the result, exactly as view 2's was.
+
+### Do not
+
+Re-roll views 0, 2, 4, or 6 (0/4 accepted; 6's re-roll accepted; 2 is the
+recorded result, excluded per 18c) · submit anything beyond the four · arm
+any gate or derive any IoU bound (the bound derives at the set's acceptance,
+not here) · project anything · edit any fixture, profile, or the palette ·
+write to the memory store · end a session the Director has not ended.
+
+### Standards compliance (this dispatch)
+
+| standard | score | evidence |
+|---|---|---|
+| PIN_PER_STEP | 3 | Four graphs saved pre-submission with prompt_id + seed; the anchor-row byte check before anything submits; every measurement lands in JSON beside its artifact; rejected artifacts renamed, never deleted |
+| ANDON_AUTHORITY | 3 | The branch is binary and pre-stated: any sprawl at 770701 halts the dispatch cold with no third roll anywhere — the second failure IS the result, the v2 precedent applied set-wide |
+| NAMED_COMPENSATORS | 3 | Spend bounded to exactly four submissions at expected 0 credits, quoted each; new files only; nothing irreversible beyond GPU time |
+| DECOMPOSE_BY_SECRETS | 3 | Nothing re-derives: stems, controls, bands, recipe all stand as ruled; the single variable is the seed, and it moves to a value the pair's own accepted artifact proved |
+| UNCERTAINTY_GATED_HUMANS | 3 | Both exits end at a human gate: the completed set to the advisor's eye then the Director's, or the sprawl evidence to a ruling; no disposition is made here |
+| EXTERNAL_VERIFIER | 2 | The registration tool and the gate check the generator from independent code paths; the gold watch is the quantified check on the ruling's own seed hypothesis — if 18b is wrong, this dispatch is what proves it. `skip:` on a second model, per precedent |
+
+### Calibration
+
+One variable moves. The dispatch exists to test Ruling 18b's seed hypothesis
+against four fresh diagonals, and **a sprawl at 770701 is not a failed
+dispatch — it is the measurement succeeding at falsifying the ruling**, which
+is worth more than a lucky pass. Say which happened plainly. The gold watch's
+per-view numbers are the evidence either way; the eye confirms at the 4×
+crops. Zero credits expected; quote it anyway.

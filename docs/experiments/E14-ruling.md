@@ -667,3 +667,70 @@ one bounded re-roll per view on the eye clause alone, the gate report-only
 per twin in the admitted configuration with the deep-share diagnostic beside
 it, the 12e gold watch and the L5 watch live at the 4× hilt crops. HALT 2
 with the twin set staged — this seat's eye first, then the Director.
+
+## Ruling 18 — the twin set ruled at HALT 2; the diagonals re-roll at the pair's proven seed (2026-08-07)
+
+Evidence: the Task 2 report (`3011035`), the Director's eye on the staged set
+("Looks like shit. What happened?" — his verdict leads the instruments and it
+is correct of the set as staged), and this seat's eye on the first-roll strip,
+the 4× hilt strip, and the final v2/v6 twins before this ruling.
+
+**18a — what the set is.** Face-on twins 0 and 4: CLEAN — iron guard, gold
+boss, garnet gem; twin 0's collar rings land gold (this seat's eye — the
+Ruling 13 term doing its own job where the pair's view 0 had missed them).
+All four diagonals (1/3/5/7): **gold across L2's entire crossguard, 93–96%**
+— the occupancy violation, view-systematic at this seed, 0.0% on both
+face-ons. Edge-on view 6: the re-roll is ACCEPTED (IoU 0.93, bbox 1.07×;
+compact and registered; the ornamental crossing recorded as odd but inside
+the silhouette). Edge-on view 2: **a second failure at reduced magnitude**
+(the phantom face-on guard persists, bbox 2.69×) — per the dispatch that is
+the result, and both rejected artifacts are preserved.
+
+**18b — the gold pattern is ruled SEED-CONDITIONAL on the pair's own
+evidence, and the diagonals re-roll ONCE each at 770701.** The pair's record
+convicts 770700 on a diagonal (its first view-1 roll sprawled and was
+rejected) and clears 770701 on the same view (its re-roll landed iron and
+the Director accepted it). The twin set ran all eight at 770700 and measured
+the class: DIAGONAL presentation sprawls at this seed; face-on does not. The
+executor's foreshortening hypothesis (arms + boss merge into one adjacent
+mass; gold takes the mass) stands as the labelled mechanism candidate. The
+eye clause fired — gold-on-L2 is exactly the pre-registered occupancy
+violation — so the bounded re-roll authority applies, one per view, and the
++1 rule lands on the proven seed. **Pre-registered branch: if ANY diagonal
+sprawls again at 770701, that is THE RESULT** — no third roll anywhere, and
+the recipe/fixture question opens at a ruling with the systematic evidence
+in hand. The executor's refusal to spend rolls against an
+apparently-systematic pattern was correct discipline; the seed-crossing
+evidence is what licenses spending them now.
+
+**18c — view 2 is EXCLUDED from stage 1; the route-level question is
+answered.** Two failures is the result. The cost is already measured: yaw
+90's marginal contribution was +101,544 texels = 2.8 points of valid at the
+ceiling pass; the mirror face is covered by accepted view 6; the brush stage
+exists for exactly this hole. "Can a subject this thin be twinned at 90/270
+from a 5,580-px control at all?" — measured answer: **marginally and
+unreliably** (one clean in four rolls across the two views); the route's
+mechanism for unreliable coverage is the brush, not more rolls. Banked
+route-level for every future thin subject.
+
+**18d — the IoU bound stays underived** until the final set exists; it
+derives from the clean set's spread at the set's acceptance, per the
+profile's own language. The purpose-built registration tool (the executor's
+correct refusal to trust a W3-shaped instrument on this subject) joins
+`tools/diagnostics/` under the 2a practice, and its bbox check catching both
+phantoms **before any IoU was read** is the bbox law's cleanest firing yet.
+
+**18e — banked**: the depth diagnostic's FIRST RUN caught both corrupted
+views from a signal that knows nothing about crossguards — Ruling 17c's
+priced blindness paid for on day one · Ruling 13a's redirect question is
+answered NO (the rings term neither caused nor cured the guard sprawl; its
+own job — the rings — it did) · the executor's X1/X3 self-scoring names the
+shared error form: my dispatch pre-registered the sprawl risk for ONE view
+when the pair's record supported the diagonal CLASS, and pinned one seed
+across a set whose failure structure was categorical — the advisor's ledger
+takes it beside 10e and 15b. Zero credits across all ten submissions;
+every failure is preserved, located, and priced.
+
+**18f — HANDOFF 4 IS AUTHORISED**: the diagonal re-roll pass, four
+submissions at 770701, then the finished set to this seat's eye and the
+Director's. Dispatched below in the kickoff document.
