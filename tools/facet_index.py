@@ -129,16 +129,65 @@ TOPICAL_RULING_FILES = [
     ("E08", "docs/experiments/E08-director-canon-ruling.md"),
 ]
 
-HANDOFF_FILES = [
-    ("E04", "docs/experiments/E04-executor-kickoff.md"),
-    ("E12", "docs/experiments/E12-executor-kickoff.md"),
-    # E14 joined 2026-08-07 (the housekeeping fold): its two session handoffs were
-    # invisible to the handoffs table because this list is LISTED, not discovered —
-    # the same class E15 handoff 3 fixed for ruling documents. The glob-discovery
-    # upgrade for kickoffs (with the inverse guard and a printed list) is a named
-    # errand-batch member; until it lands, every new arc's kickoff is added HERE.
-    ("E14", "docs/experiments/E14-executor-kickoff.md"),
-]
+# KICKOFF DOCUMENTS ARE DISCOVERED, NOT LISTED (E16-9; E15 Ruling 8b's class, one
+# list over — the comment that used to sit here said so and said "until it lands,
+# every new arc's kickoff is added HERE", which is the manual step this removes).
+#
+# The cost of the listed form was live when this landed: E15's own kickoff carried
+# TWO `## Session handoff` headers and was not on the list, so those two dispatches
+# were invisible to the handoffs table and to `verify`'s count legs alike — a gate
+# that can test whether a listed file lost a row, but not whether a file was missing
+# from the list.
+KICKOFF_DOC_RE = re.compile(r"^E\d\d-.*kickoff.*\.md$")
+
+
+def handoff_documents():
+    """(arc, path) for every kickoff document, sorted. Arc is the leading E-number.
+
+    Unlike `ruling_documents`, the arc is NOT derived by stripping from the keyword
+    onward: that rule exists there because `E10-offsurface-ruling.md` must not merge
+    into `E10`, and stripping from `kickoff` here would yield `E04-executor` and
+    `E15-context-index` — labels the handoffs table has never used and which would
+    break every existing anchor. The leading E-number reproduces the hardcoded list's
+    three labels exactly. The collision the ruling docs suffer is possible in
+    principle (two kickoffs, one arc, different subjects); it does not exist today,
+    and the inverse guard below would not catch it, so it is stated rather than
+    guarded — a known edge, not a hidden one.
+    """
+    out = []
+    d = os.path.join(REPO, "docs", "experiments")
+    for fn in sorted(os.listdir(d)):
+        if not KICKOFF_DOC_RE.match(fn):
+            continue
+        out.append((fn.split("-", 1)[0], "docs/experiments/" + fn))
+    return out
+
+
+def assert_no_undiscovered_handoffs(discovered):
+    """THE INVERSE GUARD: a parsed handoff row in an UNDISCOVERED file fails the run.
+
+    A discovery rule that only reports what it found cannot report what it missed,
+    which is exactly how the listed form failed. This asks the opposite question —
+    does any file in the record carry a handoff header that the glob did not reach —
+    and it is the check the old list could not express at all. Measured when written:
+    four documents carry `## Session handoff` headers and the glob reaches all four.
+    """
+    known = {rel for _, rel in discovered}
+    stray = []
+    d = os.path.join(REPO, "docs", "experiments")
+    for fn in sorted(os.listdir(d)):
+        rel = "docs/experiments/" + fn
+        if not fn.endswith(".md") or rel in known:
+            continue
+        for ln in lines_of(rel):
+            if HANDOFF_HDR.match(ln):
+                stray.append("%s :: %s" % (rel, ln.rstrip()[:70]))
+                break
+    assert not stray, (
+        "ANDON: %d file(s) carry a session-handoff header that the kickoff glob "
+        "(%s) does not reach, so their dispatches would be invisible to the "
+        "handoffs table and to verify's counts:\n  %s"
+        % (len(stray), KICKOFF_DOC_RE.pattern, "\n  ".join(stray)))
 
 LAW_FILES = ["CLAUDE.md"]
 
@@ -689,7 +738,9 @@ def parse_handoffs():
     lose a row the count check is entitled to see.
     """
     rows = []
-    for arc, rel in HANDOFF_FILES:
+    docs = handoff_documents()
+    assert_no_undiscovered_handoffs(docs)
+    for arc, rel in docs:
         ls = lines_of(rel)
         for m, i, body in _header_blocks(ls, HANDOFF_HDR):
             num = m.group(1) or "1"
@@ -947,7 +998,7 @@ def parse_prose(structured_files=None):
     structured = set(structured_files or ())
     files = list(PROSE_FILES)
     files += [rel for _, rel in TOPICAL_RULING_FILES]
-    files += [rel for _, rel in HANDOFF_FILES]
+    files += [rel for _, rel in handoff_documents()]
     files += [f for f in record_markdown()
               if f.startswith("docs/experiments/") and f not in files]
     rows = []
@@ -1727,6 +1778,23 @@ def verify(db_path, top_n=3):
     if orphans:
         print("  ROWS FROM UNDISCOVERED FILES: %s" % orphans)
         fails.append("rulings from files the glob does not discover: %s" % orphans)
+
+    # E16-9: the same audit for kickoffs, so the discovery rule's own misses are
+    # visible rather than assumed on BOTH lists. Symmetric with the block above --
+    # what was found, and whether anything the DB holds came from outside it.
+    print("\n[corpus] kickoff documents discovered by the sorted glob")
+    kdocs = handoff_documents()
+    for arc, rel in kdocs:
+        n = con.execute("SELECT COUNT(*) FROM handoffs WHERE file=?", (rel,)).fetchone()[0]
+        print("  %-46s arc %-18s %s"
+              % (rel.replace("docs/experiments/", ""), arc,
+                 "%d rows" % n if n else "0 rows - prose only"))
+    print("  %d documents matched %s" % (len(kdocs), KICKOFF_DOC_RE.pattern))
+    k_indexed = {r[0] for r in con.execute("SELECT DISTINCT file FROM handoffs")}
+    k_orphans = sorted(k_indexed - {rel for _, rel in kdocs})
+    if k_orphans:
+        print("  ROWS FROM UNDISCOVERED FILES: %s" % k_orphans)
+        fails.append("handoffs from files the glob does not discover: %s" % k_orphans)
 
     # ---- leg 2: counts against the record's own numbering --------------------
     print("\n[leg 2] counts - the verifier's own grep against the DB")

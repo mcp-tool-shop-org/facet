@@ -523,6 +523,64 @@ W3's twins behave very differently or that bound is effectively vestigial — an
 the reference change moves the quantity it gates. W3's prep tree has no
 `meta.json` on this rig, so it was not measurable here.
 
+### E16-9 — kickoff-glob discovery for `HANDOFF_FILES` · ANCHOR HELD, and the glob found what the list was missing
+
+**The defect was live, and the old comment said so.** `HANDOFF_FILES` carried
+three entries and its own comment read *"until it lands, every new arc's kickoff
+is added HERE."* Nobody added E15's. **`E15-context-index-kickoff.md` carries two
+`## Session handoff` headers**, so those two dispatches were invisible to the
+handoffs table *and* to `verify`'s count legs — E15 Ruling 8b's class exactly,
+one list over: a gate that can test whether a listed file lost a row but not
+whether a file was missing from the list.
+
+**Repair.** A sorted glob (`^E\d\d-.*kickoff.*\.md$`) with the arc taken from the
+leading E-number — *not* by stripping from the keyword as `ruling_documents` does,
+because that would yield `E04-executor` and `E15-context-index` and break every
+existing anchor. It reproduces the hardcoded list's three labels exactly. The
+collision the ruling docs suffer is possible here in principle and does not exist
+today; it is stated in the docstring rather than silently assumed away.
+
+**The inverse guard.** `assert_no_undiscovered_handoffs()` asks the opposite
+question — *does any file in the record carry a handoff header the glob did not
+reach* — which is the check the old list could not express at all. It runs on
+every build.
+
+**ANCHOR.**
+
+| check | result |
+|---|---|
+| **claims sweep, before vs after** | **BYTE-IDENTICAL**, 94 lines both — the dispatch's anchor as literally worded |
+| handoffs table | 29 → **31 rows**; the two new are `E15` handoffs 2 and 3 |
+| per-arc counts | E04 5 · E12 15 · E14 9 unchanged; **E15 2 (new)** |
+| discovered list printed in `verify` | 6 documents, with row counts and the pattern |
+| E08 / E16 kickoffs (0 handoff headers) | discovered, 0 rows, prose only — harmless, same as the topical ruling files |
+| guard on the real discovery set | **PASS** — nothing outside the glob carries a header |
+| guard on a synthetic miss (E15 dropped from the discovered set) | **FIRES**, naming the file and the offending line |
+| `verify` | **PASSED all four legs** |
+
+The synthetic miss was injected by handing the guard a **truncated discovery
+list** rather than by writing a decoy `.md` into `docs/experiments/`. That is the
+same failure condition — a glob that does not reach a file that has headers — and
+it keeps a stray document out of a working tree a second session is building
+from ([§2](#2-a-session-level-finding-the-working-tree-is-shared)).
+
+**Prediction: FALSIFIED, in the way I said would be the finding.** I predicted
+the hardcoded list was complete because "the sessions that added handoffs
+maintained it". They did not — E15's kickoff was omitted. I also wrote that if
+the glob discovered an omitted file, *"rows change and the dispatch's anchor
+expectation is wrong; that is the finding, and I report the delta rather than
+trimming the glob to match."* That is what happened, and the glob was not
+trimmed.
+
+**Ledger, mine.** I reached for `git stash push <path>` to isolate the
+before-comparison. This git rejected the subcommand form, so no stash was
+created — and the paired `git stash pop` then applied the **pre-existing
+session-start stash**, leaving a conflict in `docs/advisor-kickoff.md`, a file
+belonging to the other session. Restored from HEAD, zero conflict markers, the
+original stash intact and untouched. The comparison was redone the way the rest
+of this batch does it — HEAD's tool copied into `tools/` and run directly — which
+never touches git state. **In a shared working tree, do not use the stash.**
+
 ---
 
 ## 2. A session-level finding: the working tree is shared
