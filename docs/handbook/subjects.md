@@ -212,9 +212,9 @@ values live in its own profile and fixture, never inherited unmeasured.
   named forward (dark desaturated crevice fill), mix **44.15 / 3.07 / 52.78 of
   valid = 87.49 / 2.86 / 9.65 of reachable**. The three items named at the gate
   closed accepted-at-the-asset; the head-rect allocation arm stays parked at
-  his timing. Next: the dense export (handoff 16 — dataset asset #3, the first
-  manifest under the lane's 1.3.0), the ingest paste, then the
-  [E15 context index](../experiments/E15-context-index-kickoff.md), then E14.
+  his timing. All four then ran: the dense export (handoff 16 — dataset asset #3,
+  the first manifest under the lane's 1.3.0), the ingest, the
+  [E15 context index](../experiments/E15-context-index-kickoff.md), and the E14 arc.
 
 ## The longsword (ACCEPTED, 2026-08-08 — designated 2026-08-07)
 
@@ -230,7 +230,7 @@ values live in its own profile and fixture, never inherited unmeasured.
   repaired on an asserted-count union (Ruling 28), all eight strokes committed with
   both edge-ons clean on the 20b misbind watch (Ruling 29), finalize's fill
   replayed byte-for-byte (Ruling 31). Every E14 artifact is citable-only.
-- **Record:** [E14-ruling.md](../experiments/E14-ruling.md), Rulings 1–32;
+- **Record:** [E14-ruling.md](../experiments/E14-ruling.md), Rulings 1–35;
   [Gate 0 report](../experiments/E14-gate0-report.md);
   [handoff-2 report](../experiments/E14-handoff2-report.md) +
   [Task-1 sweep](../experiments/E14-task1-sweep.md);
@@ -287,8 +287,10 @@ values live in its own profile and fixture, never inherited unmeasured.
   anchor is converted; the estimates file is superseded by realised values.
 - **Named and parked at his timing: THE ACTIVATED STATE** (Ruling 16c) — a second
   authored state (glowing gem, forge-hot steel, no flames) as the E10 waterline
-  layer mechanism with the contact query swapped for the occupancy map; opens on
-  his sentence after the base state's Gate 1.
+  layer mechanism with the contact query swapped for the occupancy map. **Its time
+  is now named** ([Ruling 35](../experiments/E14-ruling.md), 2026-08-08): it opens
+  INSIDE the polish arc, after the four MCP tools pass their tests — the fixture
+  authors from scratch when opened, per-state derivations re-run.
 - **The bands are RULED** ([Ruling 17](../experiments/E14-ruling.md)): floor 12.0 —
   an inherited number *vindicated* at the measured knee (the chroma density is
   monotone; no antimode exists, and the executor refused to dress one up); wine
@@ -360,13 +362,24 @@ values live in its own profile and fixture, never inherited unmeasured.
   ~70% of the stone's above-floor colour, the garnet core kept). The 19b
   term question ("deep red garnet"?) goes to the stroke-prompt derivation
   with the 12e law in the room.
-- **In flight: handoff 7 — the stroke lane** (the ship's `_NOT_CLEARED`
-  lifecycle, third execution): the stroke set, spiral order, prompts,
-  cameras, recipe keys and the long-deferred `thin_extent` value are all
-  ruled at HALT 1 from the hole map; then strokes one at a time under the
-  in-tool invariance ANDON with per-stroke eye gates, the fifth-signature
-  and 20b misbinding watches live. HALT 2 stages the stroked asset; then
-  finalize, pack, and **Gate 1 — the finished sword beside the clay**.
+- **The lane ran to acceptance and the arc CLOSED at Ruling 35.** The stroke
+  lane was ruled at HALT 1 ([Ruling 24](../experiments/E14-ruling.md): eight
+  strokes merged with the garnet repaint, spiral order, thin_extent decided
+  0.0); stroke 1's double misbind took the stone **off the generation path**
+  (the garnet re-projection, Rulings 25–27, zero generation) with the collar
+  repair on an asserted-count union (Ruling 28); HALT 2 was accepted ("I love
+  it", Ruling 30) and Gate 1 followed (Ruling 32 — the first bullet above).
+  Then the same day: **the dense export at zero gap notices** (26 cameras, the
+  six-class provenance palette — a route first;
+  [Ruling 33](../experiments/E14-ruling.md)); **the ingest** — dataset asset
+  #4, live digits = dry digits line for line, the lane pushed to main at the
+  Director's word, **the dataset now four dense assets / 114 records across
+  five ingests** ([Ruling 34](../experiments/E14-ruling.md)); and **the polish
+  arc CHARTERED** ([Ruling 35](../experiments/E14-ruling.md)): every accepted
+  exemplar polished after the four MCP tools are built and test-verified at
+  the shipcheck bar — dogfooding the tools, re-informing the dataset, the
+  humanoid re-made photo-real without the saltroad LoRA, and the activated
+  state opening there.
 
 ## The calibration table this page exists for
 

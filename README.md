@@ -323,8 +323,9 @@ Director's own zoom — [Ruling 32](docs/experiments/E14-ruling.md)): the fourth
 subject class at **zero credits across the entire arc**, the identity held at
 five fixture elements, and the drifted stone returned to garnet by arithmetic
 rather than regeneration. **The E14 arc, designation to acceptance:**
-([E14-ruling.md](docs/experiments/E14-ruling.md), Rulings 1–23, zero credits
-across the whole arc): the route's fourth subject class and its **first portrait
+([E14-ruling.md](docs/experiments/E14-ruling.md), Rulings 1–35, zero credits
+across the whole arc — *the range read "1–23" here until the claims sweep caught it,
+written before Rulings 24–35 landed in this same paragraph*): the route's fourth subject class and its **first portrait
 subject** (widest-horizontal/height 0.2258 — the framing family pins HEIGHT here,
 per subject, where the beast pinned width). Gate 0 reconstructed all three
 longsword clays with the **cleanest topology the route has recorded** and produced
