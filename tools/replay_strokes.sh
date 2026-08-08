@@ -38,8 +38,11 @@ for i in "${!ORDER[@]}"; do
   d=$A/state/job_$k
   echo ""
   echo "--- stroke $((i+1))  $k ---"
+  # --aspect states W3's frame this replay was always emitting at by default; E14
+  # Ruling 29c closed the silent path. Same value, now said rather than inherited.
   ( cd /e/AI/training && "$P" $TOOLS/texpass_iter.py emit --state $A/state --prep $PREP \
-      --glb $A/stage1_8cam.glb --yaw $yaw --el 0 --thin-extent 0.03 ) 2>&1 | grep -E "hole px|ANDON"
+      --glb $A/stage1_8cam.glb --yaw $yaw --el 0 --thin-extent 0.03 \
+      --aspect 752,1024 ) 2>&1 | grep -E "hole px|ANDON"
   # emit determinism: the saved inpainted.png was generated FROM these bytes
   for f in render mask; do
     if cmp -s $d/$f.png $d/$f.orig.png; then echo "    $f.png byte-identical to the original"

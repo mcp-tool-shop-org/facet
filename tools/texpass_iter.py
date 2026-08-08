@@ -100,7 +100,31 @@ ap.add_argument("--thin-extent", type=float, default=0.0,
                      "seam-split (293,099 verts for 287,170 faces) so signed "
                      "distance at the figure's own bbox centre comes back POSITIVE. "
                      "Camera rays need neither a normal nor an interior.")
-args = ap.parse_args(subject_profile.bind(ap, "texpass_iter.py", None))
+_argv = subject_profile.bind(ap, "texpass_iter.py", None)
+args = ap.parse_args(_argv)
+
+# ---- E14 Ruling 29c: emit refuses to guess a frame ---------------------------
+# Omitting --profile did not fail; it silently emitted at --aspect's default of
+# 752x1024 — ONE subject's portrait framing — producing a differently-framed job
+# that would commit back through a different projection than the one that lit it.
+# Found by the re-emit anchor practice, which is why that practice is now standing
+# for any lane resuming across sessions. The prop's own frame is 240x1024, so the
+# silent default was not a near miss on this subject; it was 3.1x too wide.
+#
+# The refusal is narrowed to `emit` deliberately. `commit` reads W/H out of the
+# emitted cam.json (`cam["W"]`/`cam["H"]`, :307-308), not out of --aspect, so it
+# cannot drift this way and gating it would fire on correct work — the repo's own
+# rule about putting the andon on the direction the construction leaves open.
+_aspect_explicit = any(a == "--aspect" or a.startswith("--aspect=") for a in _argv)
+if args.mode == "emit" and args.profile is None and not _aspect_explicit:
+    _sys.exit(
+        "ANDON: `emit` needs a frame it was given, not one it guessed.\n"
+        "  Pass --profile <profiles/NAME.json>, or state the frame explicitly with\n"
+        "  --aspect W,H. Neither was supplied, and the default (752,1024) is one\n"
+        "  subject's portrait framing: a job emitted at the wrong width commits\n"
+        "  through a different projection than the one that lit it, with no error\n"
+        "  anywhere. E14 Ruling 29c.")
+
 W, H = (int(x) for x in args.aspect.split(","))
 
 S = args.state

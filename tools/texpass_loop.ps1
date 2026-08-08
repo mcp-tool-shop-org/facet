@@ -116,8 +116,12 @@ for ($i = $From; $i -le $To; $i++) {
   Write-Output "[loop] --- stroke $i/$($order.Count)  $job ---"
   $sw = [Diagnostics.Stopwatch]::StartNew()
 
+  # --aspect states W3's frame that this loop was always emitting at by default.
+  # E14 Ruling 29c closed the silent path: emit now refuses an unprofiled call
+  # rather than guessing 752,1024. Nothing about this loop's behaviour changes —
+  # the value IS the old default — it is now said out loud instead of inherited.
   & $Python "$Tools\texpass_iter.py" emit --state $StateDir --prep $Prep --glb $Glb `
-      --yaw $yaw --el $el --thin-extent $ThinExtent 2>&1 |
+      --yaw $yaw --el $el --thin-extent $ThinExtent --aspect 752,1024 2>&1 |
       Select-String '\[emit\]|ANDON'
 
   $brushArgs = @('--job', "$StateDir\$job", '--seed', $Seed, '--prompt', $p)

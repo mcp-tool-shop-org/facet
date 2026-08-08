@@ -215,6 +215,59 @@ untouched and byte-identity preserved. Recommend the advisor queue the JSON side
 **Prediction: HELD** (byte-identical, and the replay reproduced the recorded
 artifact rather than merely matching itself).
 
+### E16-4 — `texpass_iter emit` profile guard (Ruling 29c) · ANCHOR HELD
+
+**Dispatch correction.** The kickoff says the flag is `--frame`; it is
+**`--aspect`**. Dispatch text is hypothesis — the arc has paid for that four
+times.
+
+**Finding.** An unprofiled `emit` did not fail; it emitted at `--aspect`'s
+default `752,1024`, one subject's portrait framing. The prop's own frame is
+**240×1024**, so on this subject the silent default was 3.1× too wide.
+
+**Why it was silent — measured, and it is worse than "no error".** With
+`fit-axis height`, `h_ext = v_ext · W/H`, so the horizontal pixel scale is
+`W/h_ext = H/v_ext` — *identical to the vertical scale regardless of W*. The
+wider frame therefore renders the figure at the same size and just adds
+background. Emitted at 240 and at 752 on the same state, the log reports the
+**same numbers to the digit**: `49,775 figure px, 5,475 hole px` both times.
+Nothing in the emit output distinguishes a right frame from a wrong one.
+
+**Repair, scoped to `emit` only and deliberately so.** `commit` takes W/H from
+the emitted `cam.json` (`cam["W"]`/`cam["H"]`, `:307-308`), not from `--aspect`,
+so it cannot drift this way; gating it would fire on correct work — the repo's
+own rule about putting the andon on the direction the construction leaves open.
+
+**Callers grepped first, and the prediction HELD — two live callers lacked it.**
+
+| caller | before | action |
+|---|---|---|
+| `tools/texpass_loop.ps1:119` | no `--profile`, no `--aspect` | gained `--aspect 752,1024` |
+| `tools/replay_strokes.sh:41` | no `--profile`, no `--aspect` | gained `--aspect 752,1024` |
+| `tools/diagnostics/e04_sheet_renders.py:37` | `--profile ship.json` | already safe |
+| `tools/diagnostics/e04_replay_owner.py:40` | `--profile ship.json` (and `commit`) | already safe |
+
+Both repaired callers are W3-era and were relying on the default being W3's
+frame. The value written is the old default, so **behaviour is unchanged** — it
+is now said out loud instead of inherited.
+
+**ANCHOR.**
+
+| check | result |
+|---|---|
+| profile-bound sword yaw-0 emit, tool **before** the change | `render.png` `mask.png` `hit.png` `cam.json` all **byte-identical** to the recorded `rstate_s8anchor/job_y+000_e+00` |
+| profile-bound sword yaw-0 emit, tool **after** the change | all four **byte-identical** to the same recorded job |
+| unprofiled `emit` | **exit 1**, the ANDON message, **0 job dirs written** — it refuses before any output |
+| explicit `--aspect 752,1024`, no profile | proceeds, emits `W=752` — the legacy path preserved |
+| `commit` unprofiled | not gated (fails later on its own missing `--cam`) |
+| `selftest` unprofiled | not gated — `PASS`, write-head lossless, 377 texels |
+| `bash -n replay_strokes.sh` / PowerShell parse of `texpass_loop.ps1` | both clean |
+
+The citable-only tree was read, never written: the anchor state's three inputs
+were copied to scratch and emit ran there.
+
+**Prediction: HELD.**
+
 ---
 
 ## 2. A session-level finding: the working tree is shared
