@@ -1,0 +1,197 @@
+# Spec 4 — comfy-preflight
+
+**Charter.** Authored by the advisor (spec-author seat), 2026-08-08. **Nothing is built.**
+
+---
+
+## The job
+
+**A gate that runs on a workflow graph in the seconds before it is submitted, and halts
+a submission that will spend credits producing a known-wrong result.**
+
+The differentiator is one measured fact, and it is why the product exists at all:
+
+> **A Comfy Cloud `dry_run` PASS does not prove link sanity.** A hand-retyped payload
+> with a self-referencing node link — `VAEDecode.samples = ["14", 0]`, the node pointing
+> at itself — returned `status: validated`.
+
+The provider's validator answers *is this graph well-formed enough to run*. It does not
+answer *is this the graph you meant*. Every check below lives in that gap, and every one
+was paid for by a run that got past `dry_run`.
+
+## The checks
+
+| # | check | halts on |
+|---|---|---|
+| 1 | **Link topology** | a node input referencing its own node; a link to a node id not in the graph; an input the class does not declare |
+| 2 | **The inverted register scan** | see below — the load-bearing one |
+| 3 | **Recipe-vs-profile agreement, by value** | any parameter reaching the graph that disagrees with the subject profile's declared value |
+| 4 | **Graph-saved-is-graph-submitted** | the saved sidecar and the submitted payload differing **as parsed graphs** |
+| 5 | **Generator-legal frame** | a width or height the model's VAE cannot decode at |
+| 6 | **Estimate before submit** | a missing or unread credit estimate |
+| 7 | **Anchor reproduction** | a recorded graph that no longer rebuilds from its recorded inputs |
+
+### Check 2 — the inverted scan, in both directions
+
+The check that names the product's method. When a subject's register declares **no
+style adapter**, the claim being asserted is *not* "the weight is 0.0". It is that **no
+loader node and no card string exist anywhere in the graph** — asserted by walking every
+node and every input, plus the link assertion that the downstream consumer reads directly
+from the base model.
+
+*A weight of 0.0 is not a weight of zero on a loaded card; it is no card.*
+
+**And it asserts the mirror image**: a decided positive weight with no loader node is
+**silently inert** — the run completes, costs money, and produces base-model output while
+every log line says the adapter was requested. That halts too.
+
+This is the shape the studio's own laws demand. *A detector that only reproduces what its
+author already noticed is not an instrument* — asking "is the weight right" finds one
+failure; asking "does the declared register match the graph's actual construction" finds
+both directions. And *a gate must test the operation's failure mode, not its success
+mode.*
+
+The proof this is checkable: on one subject the two branches were compared **against each
+other** rather than each described alone — the no-adapter graph is 16 nodes, loader nodes
+NONE, card references NONE, and the **symmetric difference between the branches is exactly
+one node**, the loader and its single link. That is a falsifiable statement about a graph,
+and it is what check 2 produces.
+
+### Check 3 — agreement by value, not by default
+
+The parameter reaching the graph must come from **the subject's profile**, and the check
+compares against the profile — not against the tool's `DEFAULTS`. This converts a
+coincidence of value into agreement by construction.
+
+**And the check carries its own exclusion with the reason in the code**: when a default no
+longer reaches the graph at all, comparing it **fires on a correct build**. That is the
+exact class of error this repo keeps paying for, and a preflight that halts correct work
+gets disabled by the third person who hits it. *Put the andon on the direction the
+invariant does not bound.*
+
+### Check 4 — the recipe is the graph, and graphs compare as graphs
+
+**The recipe for a generative step is the submitted workflow JSON** — graph, model names,
+seed, sampler values, prompt, inputs. Not the script that built it: a script pins a local
+*invocation* while the parameters that matter live in its source. A saved per-step
+workflow JSON pins **more** than a loop script did, not less.
+
+So: the exact JSON is **saved before submission**, and the check compares saved against
+submitted **as parsed graphs** — node sets, class types, every input, every link —
+**because a JSON re-dump can differ in whitespace without a value moving.** Comparing text
+produces false halts; comparing parsed graphs produces true ones.
+
+This is also the check with a free test suite: hand-driven runs already produced sidecar
+JSONs whose purpose was explicitly to be *the future tool's regression fixtures*. Six
+recorded graphs rebuilt identical, node for node, at a later session. **Those fixtures
+exist; use them.**
+
+### Check 5 — generator-legal frames
+
+A Qwen VAE downsamples by 8. A width not divisible by 8 **decodes short** — 1066 arrives
+as 1064 — putting every output 2 px off its control image and breaking every downstream
+pairing. Two frames in the record passed by luck. **Derive the frame from the subject,
+then round to the nearest legal width; ÷8 is the floor, prefer ÷16.**
+
+The check is: does every dimension in this graph satisfy the model family's constraint?
+It costs microseconds and it caught a defect that corrupted a whole pairing stage.
+
+## The home
+
+**Standalone, and transport-independent.** Not a feature inside any one submission path.
+
+**Re-examined under the placement rewrite (2026-08-08) and unchanged** — this is the one
+tool of the four whose distribution argument survives intact, and the reason is the
+in-process requirement below. The other three lost that argument: an MCP server does not
+need to live in its caller's repo, so *mountability* answered them. It does not answer
+this one, because a mounted gate beside the submitting process is a transport, not a guard.
+
+The studio submits Comfy work through at least three doors: the official Comfy-Org MCP
+plugin (third-party — we cannot add checks inside it), a bespoke cloud bridge script, and
+hand-driven submission when a graph is being developed. **A gate that lives inside one
+door is absent at the other two**, and the record shows the hand-driven door is exactly
+where a retyped payload got past `dry_run`.
+
+So: a small library plus an MCP tool plus a CLI verb, operating on a workflow JSON and a
+profile. Any transport calls it. Its natural first callers are the studio's own bridge and
+the sessions that hand-drive.
+
+**The rule it enforces on itself:** *the check lives inside the tool that performs the
+irreversible step* (E08 Amendment 32). A preflight in a shell chain before a submit is a
+transport, not a guard — 47,020 texels were committed after a fired ANDON because a
+PowerShell chain walked past a failing exit code. **The adoption contract is therefore
+that a caller invokes preflight *in-process* on the submit path, and there is no skip
+flag.** A standalone CLI exists for development, not as the production gate.
+
+## What it does NOT do
+
+- **It does not submit.** Nothing here spends a credit. It returns PASS or a structured
+  halt; the caller submits.
+- **It does not fix a graph.** No rewiring, no auto-inserting a missing loader, no
+  rounding a frame for you. It names the defect and the node; a graph that a gate repaired
+  is a graph nobody reviewed.
+- **It does not judge the output.** It never sees one.
+- **It does not evaluate prompts** — whether the terms are right is fixture-lint's job
+  ([spec 3](fixture-lint-spec.md)) and the Director's eye.
+- **It does not model VRAM or predict fit.** The local ceiling is a measured dead end:
+  peak was 31.7–32.0 GB across three runs regardless of the reserve setting or the desktop
+  baseline, because the runtime stages to fill whatever it sees free; freeing 6.5 GB made
+  the working set grow 6.1 GB. **`--reserve-vram` and `--disable-smart-memory` are
+  falsified as levers and the ceiling is never raised.** A preflight offering a fit
+  prediction here would be selling a number the record already refuted.
+- **It does not replace `dry_run`.** It runs *beside* it. `dry_run` catches what it
+  catches; this catches what it demonstrably does not.
+
+## Compensators
+
+| action | irreversible? | compensator | post-rollback state | owner |
+|---|---|---|---|---|
+| running preflight | no | read-only on the graph and the profile | unchanged | — |
+| writing the saved sidecar JSON (check 4) | no | delete it; it is derived from the graph in hand | regenerable | the caller |
+| **submitting a graph** | **yes — credits spend, and this is the act being gated** | **cancel the job if it is still queued; otherwise none.** A completed cloud job is billed. The compensator is the gate itself, which is why it must be in-process | credits spent, output discarded | the submitting session |
+| npm publish (a later session) | **yes** | `npm deprecate` the version; publish a fixed patch | bad version visible, marked | the publishing session |
+| repo creation (a later session) | **yes** | `gh repo delete` same session, or archive | gone or archived | the Director |
+
+**The third row is the whole product.** Submission is the irreversible act with no real
+undo, and a preflight is a compensator you run *before* instead of after. That framing
+belongs in the README.
+
+## Standards compliance
+
+| standard | score | evidence |
+|---|---|---|
+| PIN_PER_STEP | 3 | check 4 *is* this standard made mechanical — the submitted graph is the pin, saved before submission, compared as a parsed graph so a whitespace re-dump cannot be mistaken for a change. Check 3 pins parameters to a profile rather than to a tool default |
+| ANDON_AUTHORITY | 3 | the whole product is an andon on the one irreversible act in the pipeline; no skip flag; in-process invocation is the adoption contract precisely because a shell chain is a transport, not a guard; check 3 carries an exclusion with its reason so the gate does not fire on correct work and get disabled |
+| NAMED_COMPENSATORS | 3 | complete above, and honest about the one action whose compensator is *cancel if still queued, otherwise none* — which is the argument for the tool rather than a gap in it |
+| DECOMPOSE_BY_SECRETS | 3 | graph-structural checks (1, 4, 5) know nothing about subjects; register and parameter checks (2, 3) resolve against a profile; the estimate check (6) is transport-side. Three groups changing at three rates, and the transport is deliberately outside all of them |
+| UNCERTAINTY_GATED_HUMANS | 3 | it halts and names the node rather than repairing; a human decides. Check 2's mirror direction exists because the silent-inert case produces *no* signal a human could notice, which is exactly where a gate earns its place over a person looking |
+| EXTERNAL_VERIFIER | 3 | it is an independent check on a provider's own validator, and it was born from a case where that validator returned `validated` on a self-linked graph. Check 7's anchor fixtures were authored by a different seat for a different purpose and rebuild identical — a regression suite the tool did not write for itself |
+
+## The build bar and the named consumer (E14 Ruling 35)
+
+**Landed mid-session, after this spec's first draft, and it governs.** The Director's
+word, 2026-08-08: built and verified properly with tests — **the studio's shipcheck bar,
+not a prototype bar** — before the polish arc opens.
+
+**The consumer lands directly on check 2.** The polish arc re-makes the humanoid
+**without the style adapter**, for a photo-real look. That is the inverted register scan's
+exact case, on a real submission, spending real credits: the claim to assert is not "the
+weight is 0.0" but that no loader node and no card string exist anywhere in the graph —
+and the mirror direction matters just as much, because a silently inert adapter on any of
+the other three exemplars produces base-model output while every log says otherwise.
+
+The arc submits generations for four subjects across two register conditions. **A
+preflight whose first production run is a deliberate no-adapter pass on a subject that
+previously used one is about as good a first consumer as this tool could be given.**
+
+## Open questions for the Director
+
+1. **Language and package.** TypeScript matches the studio's MCP form and the official
+   plugin's ecosystem; Python matches the existing bespoke bridge that would be its first
+   caller. My recommendation: **TypeScript**, with the bridge calling the CLI — but if the
+   bridge is the only near-term caller, Python is the cheaper honest answer.
+2. **Which model families' frame rules ship on day one.** Check 5 needs a per-family
+   constraint table. Qwen's ÷8 is measured here; others are not, and **I will not populate
+   that table from memory** — each entry needs a measurement or a citation.
+3. **Whether the studio's existing bridge adopts it as the gate, or keeps its own
+   inline checks.** Adoption is the point; two preflights is worse than one.
