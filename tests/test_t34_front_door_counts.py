@@ -39,6 +39,25 @@ THREE LEGS, because a count can go wrong three ways.
      item D records the v0.2.0 seat's handoff naming four surfaces and missing
      `SHIP_GATE.md` itself).
 
+THE SWEEP'S SHAPE IS THE PHRASE FORM, AND THAT IS A DECLARED BOUNDARY (E26
+Ruling 3). It matches `N tests` / `N hermetic`; it does NOT match `N/M` or
+`N -> M`. Measured at the ruling seat, planted on README.md at HEAD:
+
+    "The suite is 999 tests as of this line."   -> 3 FAILED, caught
+    "The suite is 999/991 as of this line."     -> 34 passed, SLIPS
+    "The suite moved 384 -> 999 this week."     -> 34 passed, SLIPS
+
+The matcher is deliberately NOT widened to close that. This file's first
+matcher was proximity-shaped and its own census returned 45 hits of which 15
+were not test counts at all (`RTX 5090`, four ISO dates, six identifiers,
+`limit=999`) while MISSING a real French site, because French spells it
+`hermetiques`. A matcher loose enough to catch `648/640` is loose enough to
+catch a version string and a date range.
+
+SO THE RULE IS A WRITING CONVENTION, NOT A REGEX: state a current-state test
+count in the phrase form above. A count written any other way is not pinned and
+is not claimed to be - the same disposition the translations carry below.
+
 CURRENT VERSUS HISTORICAL. A historical count is not a drift. `CHANGELOG`'s
 released entries state what a version shipped and are correct forever;
 `SHIP_GATE`'s lineage is a list of past values on purpose. The rule here is
