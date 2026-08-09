@@ -40,7 +40,14 @@ landed at E28 task 2b after the census halt was ruled, the eighth at 2c):
                     commission, not computed here. e10_offsurface.py stays the
                     ship-bound sibling whose ruled numbers this instrument was
                     validated against (E12 task 2).
-  texel_provenance  tools/diagnostics/texel_provenance.py
+  texel_provenance  tools/diagnostics/texel_provenance.py - the per-class
+                    census AND, since E28 task 3, each class's largest
+                    connected component (E27 Ruling 7's commission, filled in
+                    the INSTRUMENT: the two-thresholds law wants both numbers,
+                    and computing one here would be the measurement arithmetic
+                    this server contains none of). 4-connectivity in ATLAS
+                    space, so it is a LOWER BOUND on the largest
+                    surface-contiguous run - the caveat rides the payload.
   measure_report    tools/verify/gate1_sheet.py (the sheet half) + the
                     payload-comparison half, which is this server's own
                     envelope contract, not a measurement
@@ -140,9 +147,14 @@ REPO = os.path.dirname(HERE)
 # (the eighth tool, anchor_check over anchor_compare). The identity law is why
 # this bumps: a payload's envelope carries the server version and
 # measure_report refuses cross-version comparison, so two surfaces must not
-# share a number. No payload of an already-serving tool changes behaviour at
-# either bump; the number marks the surface, not the instruments.
-MEASURE_VERSION = "0.3.0"
+# share a number. No payload of an already-serving tool changed behaviour at
+# either of those bumps; the number marked the surface, not the instruments.
+# -> 0.4.0 at E28 task 3, and this one IS a serving tool's payload changing:
+# texel_provenance gains the per-class largest component. Additive - every
+# existing key keeps its name and its value - but a caller that pinned the
+# payload's shape is entitled to see the surface move, which is the whole
+# reason the envelope carries a version.
+MEASURE_VERSION = "0.4.0"
 SERVER_NAME = "facet-measure"
 
 # The sealed recorded trees. Same resolution as the test harness: the env var
@@ -796,6 +808,7 @@ def texel_provenance(prep: str, state: str, stage1: str, order: str,
     # and assert every pattern below was found, the record_mcp precedent)
     census = {"strokes": []}
     total = None
+    lcc = {}
     for ln in out.splitlines():
         m = re.match(r"\[prov\] whole atlas, valid texels ([\d,]+)", ln)
         if m:
@@ -814,23 +827,61 @@ def texel_provenance(prep: str, state: str, stage1: str, order: str,
                      r"([\d.]+)%", ln)
         if m:
             census["dilation"] = int(m.group(1).replace(",", ""))
+        # the largest-component block (E28 task 3). Its lines carry the `lcc `
+        # marker BEFORE the class label, which is exactly why the four
+        # patterns above cannot match them - each anchors the label directly
+        # after the leading whitespace. T47 pins that both ways round.
+        m = re.match(r"\[prov\]\s+lcc TWINS \(stage 1\)\s+([\d,]+) of\s+"
+                     r"([\d,]+)\s+([\d.]+)% of class", ln)
+        if m:
+            lcc["twins"] = int(m.group(1).replace(",", ""))
+        m = re.match(r"\[prov\]\s+lcc BRUSH stroke (\d+) \((.+?)\)\s+([\d,]+)"
+                     r" of\s+([\d,]+)\s+([\d.]+)% of class", ln)
+        if m:
+            lcc.setdefault("strokes", {})[int(m.group(1))] = \
+                int(m.group(3).replace(",", ""))
+        m = re.match(r"\[prov\]\s+lcc DILATION \(never painted\)\s+([\d,]+)"
+                     r" of\s+([\d,]+)\s+([\d.]+)% of class", ln)
+        if m:
+            lcc["dilation"] = int(m.group(1).replace(",", ""))
     if total is None or "twins" not in census or "dilation" not in census:
         _raise(MeasureError(
             "INSTRUMENT_FAILED",
             "texel_provenance's census lines did not parse",
             "Its print shape changed under this server; run it directly and "
             "update the pinned patterns WITH their tests."))
+    if "twins" not in lcc or "dilation" not in lcc:
+        _raise(MeasureError(
+            "INSTRUMENT_FAILED",
+            "texel_provenance's largest-component lines did not parse",
+            "The census parsed but its component block did not; the two are "
+            "printed together by the instrument, so run it directly and "
+            "update the pinned patterns WITH their tests."))
     census["valid_texels"] = total
+    census["twins_largest_component"] = lcc["twins"]
+    census["dilation_largest_component"] = lcc["dilation"]
+    for row in census["strokes"]:
+        row["largest_component"] = lcc.get("strokes", {}).get(row["stroke"])
 
     ratios = {"census.*": {
         "numerator": "the class's texel count",
-        "denominator": "valid_texels (in this payload)"}}
+        "denominator": "valid_texels (in this payload)"},
+        "*_largest_component": {
+        "numerator": "texels in that class's largest 4-connected atlas "
+                     "component",
+        "denominator": "THAT CLASS's own total, not valid_texels - the "
+                       "question the pair answers is one region versus "
+                       "speckle within the class"}}
     notes = [
-        "largest-connected-component per class is NOT measured: the wrapped "
-        "instrument reports totals only. The record's own law wants the "
-        "total AND the largest component for blob-shaped defect classes "
-        "(DILATION especially); adding it is a measurement, so it is an E27 "
-        "finding for the ruling seat, not something this wrapper computes."]
+        "the largest component is 4-connectivity in ATLAS space over class "
+        "AND valid, no wrap. ATLAS ADJACENCY IS NOT SURFACE ADJACENCY: UV "
+        "seams split one surface region into several atlas components, so "
+        "each figure is a LOWER BOUND on that class's largest "
+        "surface-contiguous run. A large value therefore means one region "
+        "for certain; a small one does not rule it out.",
+        "surface-connected components are a different and more expensive "
+        "measurement over the mesh graph. Neither the instrument nor this "
+        "wrapper computes one."]
     if render:
         notes.append("claim.npy was written into %s (the instrument's own "
                      "contract on the --render path)" % os.path.abspath(state))

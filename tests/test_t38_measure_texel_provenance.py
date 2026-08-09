@@ -80,9 +80,20 @@ def test_t38_missing_job_member_refuses_naming_it(scratch_state):
     assert "cam.json" in err["message"]
 
 
-def test_t38_the_largest_component_gap_is_named_in_the_payload(scratch_state):
-    doc = payload(call("texel_provenance", _args(scratch_state)))
-    notes = doc["measure"]["notes"]
-    assert any("largest-connected-component" in n for n in notes), (
-        "the census reports totals only; the payload must say so rather "
-        "than let the caller assume the blob question was answered")
+def test_t38_the_census_carries_the_component_beside_every_total(scratch_state):
+    """MOVED DELIBERATELY at E28 task 3, in the commit that filled the gap.
+
+    This leg used to assert the payload NAMED the missing largest-component
+    measurement (E27 Ruling 7's disclosure pattern). The instrument now makes
+    that measurement, so asserting the disclaimer would pin a stale claim -
+    the pin moves in the direction of demanding the number rather than
+    demanding an apology for its absence. T47 owns the values and the
+    two-thresholds separation; this leg owns the pairing: no total on this
+    surface is reported without its component beside it.
+    """
+    c = payload(call("texel_provenance", _args(scratch_state)))["census"]
+    assert "twins_largest_component" in c
+    assert "dilation_largest_component" in c
+    for s in c["strokes"]:
+        assert s.get("largest_component") is not None, (
+            "stroke %d reported a total with no component" % s["stroke"])

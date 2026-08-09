@@ -14,6 +14,20 @@ completely different things:
 
 Distinguishing them is a measurement, not a discussion, and this tool makes it one.
 
+Each class is reported TWICE: its total, and its LARGEST CONNECTED COMPONENT. The
+record's law is that two thresholds are needed to separate one wrong garment from
+ordinary speckle - a total alone must choose between missing the garment and firing
+on everything, because 813,773 dilated texels are a different object when they are
+one unpainted region than when they are a one-texel rim around every island.
+
+The component census is 4-connectivity in ATLAS space over `class AND valid`, with
+no wrap. Atlas adjacency is not surface adjacency - the same fact that makes
+DILATION a defect class - so a surface-contiguous region split by UV seams appears
+as SEVERAL atlas components. The number is therefore a LOWER BOUND on that class's
+largest surface-contiguous run, and the direction is stated wherever it is printed.
+Surface-connected components are a different and more expensive measurement over
+the mesh graph; this tool does not compute one and does not pretend to.
+
 The per-stroke claim is reconstructed by REPLAYING texpass_iter.commit's filter chain
 offline from the saved job directories, in stroke order, starting from stage 1's hole
 map. commit is deterministic given (holes, job mask, inpainted image, cam, prep), all
@@ -36,7 +50,8 @@ import numpy as np
 import open3d as o3d
 import trimesh
 from PIL import Image
-from scipy.ndimage import distance_transform_edt, median_filter, minimum_filter
+from scipy.ndimage import (distance_transform_edt, label, median_filter,
+                           minimum_filter)
 
 Image.MAX_IMAGE_PIXELS = None
 
@@ -147,14 +162,41 @@ for si, keyname in enumerate(order, start=1):
     print(f"[prov] stroke {si} {keyname}: claimed {len(hidx):,}; holes left "
           f"{int((h & valid.reshape(-1)).sum()):,}", flush=True)
 
+CLASSES = ([("TWINS (stage 1)", claim == 0)]
+           + [(f"BRUSH stroke {i} ({order[i-1]})", claim == i)
+              for i in range(1, len(order) + 1)]
+           + [("DILATION (never painted)", claim == 255)])
+
 vf = valid.reshape(-1)
 print(f"\n[prov] whole atlas, valid texels {int(vf.sum()):,}")
-for lab, sel in ([("TWINS (stage 1)", claim == 0)]
-                 + [(f"BRUSH stroke {i} ({order[i-1]})", claim == i)
-                    for i in range(1, len(order) + 1)]
-                 + [("DILATION (never painted)", claim == 255)]):
+for lab, sel in CLASSES:
     n = int((sel.reshape(-1) & vf).sum())
     print(f"[prov]   {lab:<34s} {n:>9,}  {n/max(int(vf.sum()),1)*100:5.1f}%")
+
+# The TOTAL above and the LARGEST COMPONENT below are the two thresholds the
+# record's law asks for: a total alone must choose between missing one wrong
+# region and firing on every rim texel. 4-connectivity, atlas space, over
+# `class AND valid` - the same mask the totals use, or the pair would describe
+# two different sets. Atlas adjacency is NOT surface adjacency, so this is a
+# LOWER BOUND (see the module docstring); the direction is printed with it.
+print("\n[prov] largest connected component per class"
+      " -- 4-connectivity, ATLAS space,")
+print("[prov]   over class AND valid, no wrap. Atlas adjacency is not surface"
+      " adjacency:")
+print("[prov]   UV seams split one surface region into several atlas"
+      " components, so each")
+print("[prov]   figure is a LOWER BOUND on that class's largest"
+      " surface-contiguous run.")
+for lab, sel in CLASSES:
+    m2 = (sel.reshape(-1) & vf).reshape(RES, RES)
+    n = int(m2.sum())
+    lcc = 0
+    if n:
+        comp, ncomp = label(m2)
+        if ncomp:
+            lcc = int(np.bincount(comp.reshape(-1))[1:].max())
+    print(f"[prov]   lcc {lab:<34s} {lcc:>9,} of {n:>9,}  "
+          f"{lcc/max(n,1)*100:5.1f}% of class")
 
 if not args.render:
     raise SystemExit(0)

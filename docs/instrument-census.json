@@ -17,8 +17,8 @@
     "py_files_total": 108
   },
   "provenance": {
-    "corpus_files": 265,
-    "corpus_files_before_self_exclusion": 272,
+    "corpus_files": 267,
+    "corpus_files_before_self_exclusion": 277,
     "probe_interpreter": "E:\\AI-Models\\trellis2-env\\Scripts\\python.exe",
     "probe_interpreter_version": "3.13.13",
     "probe_skipped": false,
@@ -29,10 +29,13 @@
       "docs/experiments/E28-predictions.md",
       "docs/experiments/E28-ruling.md",
       "docs/experiments/E28-task2-predictions.md",
+      "docs/experiments/E28-task2-report.md",
       "docs/experiments/E28-task2c-predictions.md",
+      "docs/experiments/E28-task3-predictions.md",
+      "docs/experiments/E28-task3-report.md",
       "docs/instrument-census.md"
     ],
-    "test_files": 48
+    "test_files": 49
   },
   "rows": [
     {
@@ -53,9 +56,11 @@
       ],
       "b1_literals": [],
       "b2_literals": [],
-      "cited_count": 1,
-      "cited_count_raw": 4,
+      "cited_count": 3,
+      "cited_count_raw": 8,
       "cited_in": [
+        "docs/experiments/E30-polish-anchor-gates-kickoff.md",
+        "docs/experiments/E30-predictions.md",
         "docs/experiments/README.md"
       ],
       "dir": "tools/verify",
@@ -1903,7 +1908,7 @@
       "b1_literals": [],
       "b2_literals": [],
       "cited_count": 5,
-      "cited_count_raw": 9,
+      "cited_count_raw": 10,
       "cited_in": [
         "docs/experiments/E12-gate0-report.md",
         "docs/experiments/E14-gate0-report.md",
@@ -1939,7 +1944,7 @@
       "b1_literals": [],
       "b2_literals": [],
       "cited_count": 14,
-      "cited_count_raw": 19,
+      "cited_count_raw": 20,
       "cited_in": [
         "CLAUDE.md",
         "docs/advisor-kickoff.md",
@@ -2140,7 +2145,7 @@
       "b1_literals": [],
       "b2_literals": [],
       "cited_count": 8,
-      "cited_count_raw": 11,
+      "cited_count_raw": 12,
       "cited_in": [
         "docs/advisor-kickoff.md",
         "docs/experiments/E12-task2b-report.md",
@@ -2914,7 +2919,7 @@
       "b1_literals": [],
       "b2_literals": [],
       "cited_count": 7,
-      "cited_count_raw": 12,
+      "cited_count_raw": 13,
       "cited_in": [
         "docs/advisor-kickoff.md",
         "docs/experiments/E14-gate0-report.md",
@@ -3109,7 +3114,7 @@
       "b1_literals": [],
       "b2_literals": [],
       "cited_count": 5,
-      "cited_count_raw": 8,
+      "cited_count_raw": 9,
       "cited_in": [
         "docs/experiments/E14-executor-kickoff.md",
         "docs/experiments/E14-handoff9-report.md",
@@ -3141,7 +3146,7 @@
       "b1_literals": [],
       "b2_literals": [],
       "cited_count": 10,
-      "cited_count_raw": 11,
+      "cited_count_raw": 12,
       "cited_in": [
         "docs/experiments/E04-executor-kickoff.md",
         "docs/experiments/E04-gate0-report.md",
@@ -3383,7 +3388,7 @@
       "b1_literals": [],
       "b2_literals": [],
       "cited_count": 19,
-      "cited_count_raw": 22,
+      "cited_count_raw": 23,
       "cited_in": [
         "docs/experiments/E01-facial-structure-ceiling.md",
         "docs/experiments/E04-armT-halt2.md",
@@ -3429,7 +3434,7 @@
       "b1_literals": [],
       "b2_literals": [],
       "cited_count": 0,
-      "cited_count_raw": 1,
+      "cited_count_raw": 2,
       "cited_in": [],
       "dir": "tools/verify",
       "docstring_line1": "Contact sheet + per-view figure brightness readout.",
@@ -3518,13 +3523,14 @@
         "tests/fixtures/make_measure_fixture.py",
         "tests/test_t35_measure_mcp_surface.py",
         "tests/test_t38_measure_texel_provenance.py",
-        "tests/test_t41_instrument_census.py"
+        "tests/test_t41_instrument_census.py",
+        "tests/test_t47_measure_texel_component.py"
       ],
       "anchored_in_basename_only": [],
       "b1_literals": [],
       "b2_literals": [],
-      "cited_count": 11,
-      "cited_count_raw": 15,
+      "cited_count": 12,
+      "cited_count_raw": 19,
       "cited_in": [
         "docs/advisor-kickoff.md",
         "docs/experiments/E07-gate0.md",
@@ -3536,7 +3542,8 @@
         "docs/experiments/E10-step0-2-halt.md",
         "docs/experiments/E27-measurement-mcp-report.md",
         "docs/experiments/E27-predictions.md",
-        "docs/experiments/E27-ruling.md"
+        "docs/experiments/E27-ruling.md",
+        "docs/experiments/E30-polish-anchor-gates-kickoff.md"
       ],
       "dir": "tools/diagnostics",
       "docstring_line1": "Where did this pixel's colour actually come from?",
@@ -3547,7 +3554,7 @@
       "import_safe_modes": {},
       "import_safe_reason": "has a flag surface but no `__main__` guard, so probing it would EXECUTE the module body - against whatever subject its constants name. Not probed, deliberately",
       "invocable": false,
-      "lines": 238,
+      "lines": 280,
       "parse_error": null
     },
     {
