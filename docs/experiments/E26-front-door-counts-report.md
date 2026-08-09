@@ -241,7 +241,7 @@ produce a STALE row and is watched in appearance only
 | 2. Half A FAILS on a stale surface, passes at HEAD | **PASS, strong form** | T34 run against HEAD's own unedited surfaces: **25 failed / 9 passed**, and the failure kinds are **50 × AssertionError, 0 × AttributeError / NameError / ImportError**. Every message names a site: *"README.md:160 :: the bullet, full — states full 384, the collector reports 418"*. Also kept runnable in-harness: `test_t34_a_stale_surface_fails_the_pin_leg`, `…_a_stale_translation_fails_the_digits_leg`, `…_a_new_unwatched_site_fails_the_sweep`, each of which first asserts the unmutated mirror passes |
 | 3. does not fire on a historical count | **PASS** | 10 shaped hits absorbed by declared historical regions — `CHANGELOG` 7, `SCORECARD` 2, `release-notes-v0.1.0` 1 — with 0 unaccounted. `test_t34_the_sweep_does_not_fire_on_a_historical_count` inserts the same sentence twice: inside a released entry it does **not** fire; above the boundary it **does** |
 | 4. `record_markdown()` unchanged, four legs pass | **PASS** | AST hash `1581685c309faedd` identical both sides. Build rows identical (677 / 225 / 26 / 3985 / 31 / 77 / 28 / 2310 / 611). `verify` **19 / 19, all four legs**, before *and* after, on scratch `--db` |
-| 5. CI green, both dependency scanners | **NOT YET RUN** — see §7 | written as `NOT YET RUN` rather than with a plausible run id beside a verdict |
+| 5. CI green, both dependency scanners | **FIRED, then PASS** | run [31294891661](https://github.com/mcp-tool-shop-org/facet/actions/runs/31294891661) **FAILED** on 25 T34 assertions — the real drift of §12, kept in the record as a failure. After the surface correction, run [31295436475](https://github.com/mcp-tool-shop-org/facet/actions/runs/31295436475) (`workflow_dispatch`, because the correction touched only docs and `ci.yml` is paths-gated): **639 passed, 1 skipped, 8 deselected** in 359.23 s. The skip is T23's mount tier naming the rig's interpreter, which is absent on a runner by design. `pip-audit` → *No known vulnerabilities found*; `npm audit --omit=dev --audit-level=high` → *found 0 vulnerabilities* |
 | 6. no edit to anything E25 owns | **PASS** | see §5 |
 
 ---
@@ -346,16 +346,16 @@ next release seat is a ruling question**, not one this seat settled.
 
 ---
 
-## 7. What has not run
+## 7. CI
 
-**CI.** `.github/workflows/ci.yml` is paths-gated and this arc touches `tests/**` and
-`tools/**`, so it will trigger on push. It has **not run at the time of writing** and no
-run id exists. Written as `NOT YET RUN` per the law that a report may not contain a
-placeholder shaped like evidence.
+⚑ **This section read "What has not run" and carried no run id, per the law that a report
+may not contain a placeholder shaped like evidence. CI has since run twice.** Both are
+recorded in gate 5 above; the first is a **FAILURE** and stays one (§12).
 
-Two CI-specific risks, named in advance: T34 spawns two `pytest --collect-only`
-subprocesses, which CI has never done before; and the digits leg reads all eight READMEs
-as UTF-8, which is unremarkable but is the first test to do it.
+Two CI-specific risks were named in advance and **both held**: T34 spawns two
+`pytest --collect-only` subprocesses, which no CI run had ever done, and the digits leg
+reads all eight READMEs as UTF-8, the first test to do so. Neither produced a runner-only
+failure — the one failing run failed on the counts and nothing else.
 
 ---
 
