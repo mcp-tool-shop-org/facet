@@ -117,7 +117,7 @@ reason four green pipelines never saw the defect.
 ### The release sequence, when he fires the next one — the order is law
 
 ```
-1. RE-COUNT            pytest --collect-only  -> currently 699 total / 690 hermetic
+1. RE-COUNT            pytest --collect-only  -> currently 736 total / 727 hermetic
                        T34 enforces this in CI, but run it anyway: it is the gate
                        that has caught a stale number at every release seat.
 2. VERSION             FIVE declarations, not four - pyproject.toml, package.json,
@@ -158,7 +158,7 @@ the defect.**
 
 ### The suite and the gate
 
-**THE SUITE: 699 tests, 690 hermetic**, green at two seats and CI. The count is under a
+**THE SUITE: 736 tests, 727 hermetic**, green at two seats and CI. The count is under a
 test (T34) which fires in CI on any surface stating a stale one, and it has caught live
 drift twice.
 

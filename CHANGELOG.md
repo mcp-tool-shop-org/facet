@@ -27,6 +27,26 @@ it, so a reader can check the claim rather than trust it.
   languages' number words are **declined rather than mis-read**, and the seven generated
   translations are outside it for the reason leg 3 already carries.
 
+- **`tools/instrument_census.py` — the census of `tools/diagnostics/`, measured rather
+  than curated** ([E28](docs/experiments/E28-instrument-census-kickoff.md) task 1, at the
+  Director's ruling on [the spec](docs/specs/measurement-mcp-spec.md)'s open question 1).
+  Six mechanical axes plus one labelled judgment over all **99** files — the spec estimated
+  its own denominator at "~80". Outputs `docs/instrument-census.md` and
+  `docs/instrument-census.json` so the next arc diffs rather than re-reads; the population
+  is under a test (T41). **The headline measurement: 93 of 99 carry a flag surface and only
+  6 have a `__main__` guard** — the directory's house style is a straight-line module-level
+  script, which is why axis F declines to probe 88 of them rather than executing arc
+  scripts against recorded trees. Axis G is a **proposal**, not a boundary: that is the
+  advisor's to rule and the Director's to adjust.
+
+  ⚑ **Axis D excludes the documents that describe the census, and a fired gate is why.**
+  The census's own output tabulates all 99 filenames and its report names the files it
+  found, so both sit inside the corpus the axis reads — leaving them in makes every file
+  "cited" (**76 → 99**). `test_t41_axis_d_is_idempotent_across_runs` fired on a closing
+  suite run and caught it; the headline is unmoved at 76 and the contaminated read rides
+  beside it as `cited_raw`. **Four self-references were found in one arc, three of them by
+  a check that fired rather than by reading.**
+
 ### Fixed
 
 - **The experiment count on two public surfaces**, corrected in place with the
