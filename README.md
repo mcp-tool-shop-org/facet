@@ -148,7 +148,7 @@ earlier arc ran ten sessions that each judged their own output and wrote conclus
 next session read as established fact. Nothing in that loop was checkable.
 
 - **Spec before the work, report after, ruling last** — and the session that designs an
-  experiment never grades its own results. Twenty-three experiments are in
+  experiment never grades its own results. Twenty-six experiments are in
   [the record](docs/experiments/).
 - **Corrections land in place, beside the measurement that overturned them**, never as
   quiet deletions. Six inherited claims were falsified in the founding session alone, and
@@ -168,7 +168,7 @@ next session read as established fact. Nothing in that loop was checkable.
 | | |
 |---|---|
 | **[The handbook](docs/handbook/index.md)** | the guide — the route stage by stage, the subjects, the profile system |
-| **[The record](docs/experiments/)** | twenty-three experiments: spec, report, ruling, and every prediction stated before the measurement |
+| **[The record](docs/experiments/)** | twenty-six experiments: spec, report, ruling, and every prediction stated before the measurement |
 | **[What the route learned](docs/findings.md)** | the durable findings and the hard-won rules, in full |
 | **[Status of every tool](docs/tools.md)** | what works, what is superseded, and the evidence for each |
 | **[Known defects](docs/known-defects.md)** | everything not solved, measured and located in code |
@@ -234,11 +234,14 @@ converted them. Measured before and after on the same gate, in four interpreter 
 the route that produced the four accepted assets** — its **57 sites across twelve
 tools**, converted as a pure move on files no test had ever executed, each one now
 refusing under `-O` and `PYTHONOPTIMIZE=1` as well as under a normal interpreter.
-**134 gates in the remaining research tools are still asserts** — named here rather than
-omitted, scoped by [E22 Ruling 4](docs/experiments/E22-ruling.md), and none of them is
-in a command facet installs: 132 are measurement instruments under `diagnostics/`, one
-is a render check, and `superseded/`'s one is **never** converted, because those tools
-are kept so anyone can run them and watch them fail the same way.
+**And since [E25](docs/experiments/E25-ruling.md) the class is closed.** Its **133 sites
+across 43 files** — the measurement instruments that produced the evidence for the four
+accepted assets above — convert the same way, bringing the total that `raise` to **278**.
+Exactly **one** bare ANDON `assert` remains anywhere under `tools/`:
+`superseded/texpass_thin_mask.py`, which is **never** converted, because those tools are
+kept so anyone can run them and watch them fail the same way. That remainder is pinned
+**by name** in the test suite, so a future sweep cannot tidy it away without editing the
+test on purpose.
 
 **Support status:** this repo is developed in the open, at one rig, by one director
 and a rotating pair of advisor and executor sessions. `main` is the only supported

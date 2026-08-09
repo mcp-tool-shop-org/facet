@@ -232,9 +232,32 @@ What remains:
    subset. **I selected them from docstrings and the record, not from an exhaustive audit
    of all 80** — the boundary is a judgment call and it is yours to adjust.
 2. **Whether the arc-specific diagnostics (`e12_*`, `e14_*`) are in scope at all.** My
-   recommendation: **no** — they are per-arc instruments whose numbers sit in closed
-   rulings, and generalising them is how a shipped instrument gets edited. The server wraps
-   the subject-independent family and leaves the rest where they are.
+   recommendation was **no** — per-arc instruments whose numbers sit in closed rulings, and
+   generalising them is how a shipped instrument gets edited.
+
+   ⚑ **MEASURED BY E27, AND THE PRICE OF "no" IS HIGHER THAN THIS SPEC ASSUMED**
+   ([E27 Ruling 2](../experiments/E27-ruling.md)). The build forced this question **three
+   times, not twice**, and all three blocked tools have complete, parameterized,
+   subject-independent implementations sitting in the excluded family:
+
+   | tool | the implementation it may not wrap | state |
+   |---|---|---|
+   | `mesh_topology` | `e14_topology.py` | complete; **also crashes on tied extents** (E27 F1) |
+   | `thin_extent_curve` | `e12_thin_curve.py` | complete, parameterized |
+   | `offsurface_rate` | `e12_offsurface.py` | **9 flags, required `--prep`, no hardcoded subject** |
+
+   `e12_offsurface.py` is the sharpest case and it inverts the reasoning above: its
+   docstring's first line is *"E10 Ruling 4's question, **any subject**"*, and it exists
+   **because** `e10_offsurface.py` is hardcoded to the ship — an earlier seat refused to
+   edit a shipped instrument and wrote the general one instead. Excluding the `e12_*` family
+   therefore excludes the very file that was written to avoid the hazard the exclusion
+   exists to prevent. E27 ruled nothing here; the count is corrected so the question is
+   decided against what it actually costs.
+
+   Note what a "yes" does **not** buy: the erode / margin-statistic half of
+   `offsurface_rate` appears in **neither** offsurface instrument and remains a genuine
+   commission either way.
+
 3. ~~**`ai-eyes-mcp` overlap.**~~ **CLOSED 2026-08-09 by measurement, at the advisor seat
    that handed off.** The spec flagged this rather than asserting it, which was right; the
    check cost one look at a mounted server. `ai-eyes-mcp`'s live tool surface is **seven
@@ -246,3 +269,21 @@ What remains:
    `measure_report`, which composes a *sheet* — if that sheet is ever graded rather than
    looked at, `image_compare` is the tool for it and this server should call it, not
    reimplement it.
+
+---
+
+## A name collision, recorded before anyone builds against it
+
+**`tools/diagnostics/e13_anchor_check.py` is NOT this spec's `anchor_check`**
+([E27 Ruling 4](../experiments/E27-ruling.md)). It is the **spiral-law painted-adjacency
+guard** — its own docstring's first line says so — and it answers *"of the pixels this job
+asks the brush to invent, how many sit next to paint that already exists."* The
+anchored-regression pattern this spec asks for exists as harness tests and session
+procedure, **not as a tool**.
+
+**The file is not renamed.** Its numbers are cited in closed rulings and its name appears
+in the record; renaming it to tidy a collision would break citations to fix a cosmetic
+problem. **This spec keeps the name `anchor_check`**, which is the right name for the job.
+The collision is carried where a future session actually meets it — in the server's
+refusal text, pinned by a test that asserts the real file exists — so if anyone moves
+either file the test fails and the text is updated deliberately.

@@ -393,6 +393,28 @@ out** — decomposed tools put their gates in small validators that check an inp
 return, leaving the write to the caller. Ask what the denominator is made of, not only
 whether it exists.
 
+**And one level below that: a real population whose members you never checked for the
+property still breaks the prediction.** Fifth consecutive arc to miss on this family and
+the first of this shape. E27 predicted how many of eight tools could be tested
+hermetically; the eight names were real and every member was real, but the prediction
+carried an unexamined assumption — *that each one has an instrument to be hermetic about*.
+Three did not. 6 predicted, 4 measured, and the mechanism was scope, not fixtures. The
+dispatch's ritual — write what one of the counted thing **is** before the number — keeps
+the population honest and did its job; it does not ask what each member **has**. Before
+predicting how a set behaves, check the behaviour is even defined for every member.
+
+**Enumerate the resource before commissioning one — including when an executor has already
+named it.** E27's report identified that `offsurface_rate` had no invocable instrument
+(true: `e10_offsurface.py` binds its subject as module constants) and framed the remedy as
+*parameterise it or commission a fresh one*. It had itself named `e12_offsurface.py` one
+clause earlier as "the erode/margin form, excluded" — and one `grep -c add_argument`
+shows that file takes **nine** flags with a required `--prep` and no hardcoded subject.
+Its docstring's first line is *"E10 Ruling 4's question, any subject"*, and it exists
+precisely because editing a shipped instrument whose numbers sit in a closed ruling was
+refused by an earlier seat. **The instrument was already built.** This is the advisor's own
+recurring failure shape — *a check whose form assumed its answer* — found in a report, so
+the lesson is general: naming a resource is not enumerating it.
+
 **When a number will not move, check the baseline.** The most valuable measurement in this
 repo's history came from an executor who stopped chasing a stuck figure and asked whether
 the thing it was compared against was real. It was not.
