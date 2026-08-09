@@ -1,11 +1,11 @@
 {
  "andon": [],
  "corpus": {
-  "files": 264,
-  "id": "dcac7b63ee34f08637d27482654e5856fb8479c77e203d88e8758cc4ee457293",
+  "files": 265,
+  "id": "5881ffa8c74b6694c78eaaa61a641cb552923c726950ad7ca9398b5d262039cb",
   "manifest": {
    "CLAUDE.md": "585dcc11213215ea6830ebb3239094319a67fb5b94535fadec4a779f3ab7ba40",
-   "README.md": "585e6fab924ff475ba613549407ca1687e04de88498c168dc360c1b30ea317ee",
+   "README.md": "a142ae990b7662f72d547fadeda1cb7a0608f39981728e6e2148b8ef67662607",
    "docs/advisor-kickoff.md": "19cbe7fe3102880b9fbf3b60bbf446b4daeaf9ecd4e72c554dbba6e8d77d08b5",
    "docs/arc-history.md": "5b2876b3fed7be95a6efc984f5e5a00b7c1675b10a169ee43803b50e091b48a8",
    "docs/brand/README.md": "81f425b6a101135b43463b35468f08a2db37af39c856c01f7fbdb6ce66598226",
@@ -248,6 +248,7 @@
    "docs/experiments/E26-predictions.md": "ff09174f08147064d19786ca6ee526d11450d0db5dad662cb76933d771d8ab46",
    "docs/experiments/E26-ruling.md": "2d19cf96d5e5c8be1b382c2dc55472d9d3717726366db5418303fdbd0c2322b5",
    "docs/experiments/E27-measurement-mcp-kickoff.md": "1ccea815152ac0dd77e91478e0ab9a0b557484040a5ef40385330b5945a00911",
+   "docs/experiments/E27-predictions.md": "f1906ce0efabec21db2c56243c7a11292d55cab1a96760d527b0bb17bbc73c5e",
    "docs/experiments/README.md": "fed9ddc4ce2c884742ccb29239c526f5739761dc0b8f769a74a3c6cafa339077",
    "docs/findings.md": "a67189c22c064bafaa9272b0a93bfcf81fcf5ab6b0529c67dfc88a5606e69b55",
    "docs/handbook/index.md": "2bc07ca84a878101e67541cf924ebb152e9680e2c3a36cd8617d97ad5447dc16",
@@ -274,17 +275,17 @@
   "artifacts": 677,
   "decisions": 225,
   "experiments": 27,
-  "fts": 4060,
+  "fts": 4069,
   "handoffs": 31,
   "laws": 79,
   "phenomena": 28,
-  "prose_sections": 2365,
+  "prose_sections": 2374,
   "rulings": 628
  },
  "db": {
-  "bytes": 10031104,
+  "bytes": 10047488,
   "path": "docs/index/facet.db",
-  "sha256": "f65a7f839d9012e9faa65a0006a8602f80cdaa938f42db9c3b396427897ab779"
+  "sha256": "358200e5d25842542c6dcba299071f98cf081c761445e0755dcf7ed263b87566"
  },
  "determinism_leg": "byte-identity",
  "failures": [],
@@ -296,7 +297,7 @@
   "4_seeded": "PASSED"
  },
  "schema": "facet-record-index-certificate/1",
- "server_version": "0.3.0",
+ "server_version": "0.3.1",
  "state": "PASSED",
  "transcript": [
   "==============================================================================",
@@ -304,7 +305,7 @@
   "==============================================================================",
   "",
   "[leg 1] determinism - two builds from an unchanged record",
-  "  BYTE-IDENTICAL   10031104 bytes, both builds",
+  "  BYTE-IDENTICAL   10047488 bytes, both builds",
   "",
   "[corpus] ruling documents discovered by the sorted glob",
   "  E01-ruling-gate1.md                            arc E01                0 rows - prose only",
@@ -400,7 +401,7 @@
   "  artifacts      677 rows   dangling 0",
   "  phenomena       28 rows   dangling 0",
   "  decisions      225 rows   dangling 0",
-  "  fts           4060 rows   dangling 0",
+  "  fts           4069 rows   dangling 0",
   "  total checked 1695, dangling 0",
   "",
   "[leg 4] the seeded question set - target within the top 3",
@@ -431,7 +432,7 @@
  ],
  "unattributed_failures": [],
  "verb": "record_build",
- "verified_utc": "2026-08-09T05:34:44Z",
+ "verified_utc": "2026-08-09T06:17:00Z",
  "verify_exit_code": 0,
  "written_by": "tools/record_mcp.py"
 }
