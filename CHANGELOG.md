@@ -13,6 +13,18 @@ it, so a reader can check the claim rather than trust it.
 
 ## [Unreleased]
 
+Nothing yet.
+
+## [0.3.0] — 2026-08-08
+
+**The gates stop being deletable.** Two arcs, one theme: `assert` is a statement the
+interpreter is licensed to remove, and this repo had been using it for checks that decide
+whether an irreversible step proceeds. **145 of them now `raise`** — [E22](docs/experiments/E22-gates-report.md)'s
+88 in the write-head, the index and the published server, and [E23](docs/experiments/E23-route-gates-report.md)'s
+57 in the route tools that produced four accepted assets. A minor bump because a
+published command's exit surface changes: a fired gate and a failing `verify` leg both
+leave as **`4 = REFUSED`**.
+
 **A gate is never a bare `assert`.** [E22](docs/experiments/E22-gates-report.md)
 converted the **88 ruled ANDON gate sites** in five write-path tools plus the two
 published console scripts from `assert` to `raise AssertionError`, because `assert`
