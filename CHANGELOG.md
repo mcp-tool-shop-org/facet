@@ -13,7 +13,27 @@ it, so a reader can check the claim rather than trust it.
 
 ## [Unreleased]
 
-Nothing yet.
+### Added
+
+- **T34 gained a fourth leg, pinning the EXPERIMENT count**
+  ([E28](docs/experiments/E28-instrument-census-kickoff.md) task 0). Legs 0–3 pin the
+  test count; this one pins a second live-moving quantity on the same front door,
+  against the status table in `docs/experiments/README.md` rather than a constant. It
+  fired on **two real stale sites** on the tree it was written against —
+  `site/src/site-config.ts` read *"Twenty"* and `docs/advisor-kickoff.md` read *27*,
+  against a status table holding **28 rows** — which is the E26 gate-2 can-fail proof
+  discharged on a live tree rather than a synthetic one. Its notation boundary is
+  declared and itself under a test: digits and English cardinals 0–99 are read, other
+  languages' number words are **declined rather than mis-read**, and the seven generated
+  translations are outside it for the reason leg 3 already carries.
+
+### Fixed
+
+- **The experiment count on two public surfaces**, corrected in place with the
+  measurement that overturned it — **28 status-table rows**, agreeing with what
+  `record_health` reports. Third instance of this drift in 24 hours, second inside a fix —
+  [E27's ruling](docs/experiments/E27-ruling.md) corrected the front door to
+  *"twenty-six"* and undercounted by one while doing it.
 
 ## [0.3.1] — 2026-08-09
 

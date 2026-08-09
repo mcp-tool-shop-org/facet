@@ -1,4 +1,13 @@
-"""T34 - the stated test count, on every surface that states it (E26 Half A).
+"""T34 - the stated counts, on every surface that states them (E26 Half A).
+
+TWO QUANTITIES NOW. Legs 0-3 pin the TEST count (E26). THE FOURTH LEG, at the
+bottom of this file, pins the EXPERIMENT count (E28 task 0) - a second
+live-moving quantity on the same front door, drifting the same way and watched
+by nothing. Its truth is the status table in `docs/experiments/README.md`; it
+has its own pins, its own sweep and its own can-fail proofs, and its notation
+boundary is declared there rather than here because it is a different matching
+problem: the experiment count is spelled in ENGLISH WORDS on two of its four
+sites, where a test count is always digits.
 
 WHY THIS FILE EXISTS. The repo's stated test count drifted on its public
 surfaces four times in two days, once inside the very commit that fixed the
@@ -688,3 +697,578 @@ def test_t34_the_sweep_does_not_fire_on_a_historical_count(tmp_path, counts):
         "a count in the Unreleased block did NOT fire the sweep, so the "
         "boundary this file draws does not actually separate anything: %r"
         % (bad[:5],))
+
+
+# ===========================================================================
+# THE FOURTH LEG - the EXPERIMENT count (E28 task 0)
+# ===========================================================================
+# Legs 0-3 above pin the TEST count. This one pins a SECOND live-moving
+# quantity on the same surfaces, and it is here for the same reason: it
+# drifted three times in 24 hours, twice INSIDE the commit that fixed the
+# previous drift (E27's ruling corrected the front door from "twenty-three"
+# to "twenty-six" and undercounted by one while doing it; E26's drift landed
+# in its own fix). A class that re-drifts while being fixed does not need
+# another careful reader - it needs the mechanism this repo already has.
+#
+# THE TRUTH IS THE STATUS TABLE in `docs/experiments/README.md`, counted
+# here, never a constant - a constant would be one more surface to drift.
+# `docs/experiments/README.md` is therefore NOT a swept surface: it is the
+# instrument, not a claim about the instrument.
+#
+# ---------------------------------------------------------------------------
+# THE NOTATION BOUNDARY, DECLARED - which spellings this leg catches
+# ---------------------------------------------------------------------------
+# This is a DIFFERENT matching problem from the test count, and the difference
+# is the whole reason this section is separate. A test count is always digits
+# ("648 tests"), so the digits leg is language-agnostic and the seven
+# translations are covered for free. An experiment count is spelled in ENGLISH
+# WORDS on two of its four sites ("Twenty-eight experiments are in the
+# record"), and a generator TRANSLATES a word.
+#
+#   CAUGHT   - decimal digits            "27 experiments"
+#            - English cardinals 0-99, hyphenated or space-separated,
+#              case-insensitive         "Twenty-eight experiments"
+#                                        "twenty six experiments"
+#
+#   NOT CAUGHT - and each is a declared boundary, not an oversight. NOT
+#   CAUGHT here means DECLINED, never mis-read: a hyphenated pair that does
+#   not parse returns nothing rather than falling back to its right-hand
+#   half, which is what `vingt-six` did on this leg's first run (it returned
+#   SIX). See `trailing_count`.
+#            - non-English number words. Measured on the seven generated
+#              READMEs at the time this leg was written: `veintiseis`,
+#              `vingt-six`, `ventisei`, `vinte e seis`, the Devanagari and
+#              the CJK forms. Six languages, six spellings, and no phrase
+#              list survives a generator that rewrites them. This is the same
+#              disposition leg 3 already carries for the translations
+#              (NOT_SWEPT), reached the same way and for the same reason -
+#              E26 Ruling 3 ruled a WIDER MATCHER out, with a census: the
+#              first proximity-shaped one returned 45 hits of which 15 were
+#              not counts, while missing a real French site.
+#              The Japanese README writes the DIGIT (`26 件`), so it alone
+#              would be catchable by a digits leg; one of seven is not a leg.
+#            - vague quantifiers: "several experiments", "a few experiments".
+#            - ordinals as counts: "the twenty-eighth experiment".
+#            - numbers above 99 spelled in words.
+#            - A CLAIM SPLIT ACROSS A LINE BREAK. `shaped_hits` and
+#              `experiment_hits` are both line-scoped, so prose that wraps
+#              between the number and the noun ("...reports 28\nexperiments")
+#              is invisible to both. Found the honest way: this leg fired on
+#              the CHANGELOG entry announcing it, caught one of two counts in
+#              that entry, and the survivor had wrapped. Declared rather than
+#              closed - a multi-line matcher over a corpus this size is how
+#              the proximity-shaped matcher E26 Ruling 3 rejected got its 15
+#              false positives. The writing convention absorbs it: keep a
+#              count and its noun on one line.
+#
+# THE REMEDY FOR WHAT IS NOT CAUGHT IS A WRITING CONVENTION, NOT A REGEX -
+# E26 Ruling 3's disposition, carried: state the record's size on an English
+# surface, in the phrase forms pinned below. A count written any other way is
+# not pinned and is NOT CLAIMED TO BE.
+#
+# `test_experiment_notation_boundary_is_what_it_says` below makes every line
+# of the above runnable. Widening the parser is allowed - it just has to be
+# done ON PURPOSE, in the commit that edits that test.
+
+_CARDINAL_UNITS = (
+    "zero one two three four five six seven eight nine ten eleven twelve "
+    "thirteen fourteen fifteen sixteen seventeen eighteen nineteen").split()
+_CARDINAL_TENS = {"twenty": 20, "thirty": 30, "forty": 40, "fifty": 50,
+                  "sixty": 60, "seventy": 70, "eighty": 80, "ninety": 90}
+
+
+def english_cardinal(text):
+    """int for a decimal or an English cardinal 0-99, else None.
+
+    Returns None rather than guessing, because every non-number token in the
+    corpus reaches this function - it is the filter, not a parser applied to
+    something already known to be a number."""
+    t = text.strip().lower().replace(" ", "-")
+    if re.match(r"^\d{1,4}$", t):
+        return int(t)
+    if t in _CARDINAL_UNITS:
+        return _CARDINAL_UNITS.index(t)
+    if t in _CARDINAL_TENS:
+        return _CARDINAL_TENS[t]
+    m = re.match(r"^([a-z]+)-([a-z]+)$", t)
+    if m and m.group(1) in _CARDINAL_TENS and m.group(2) in _CARDINAL_UNITS[1:10]:
+        return _CARDINAL_TENS[m.group(1)] + _CARDINAL_UNITS.index(m.group(2))
+    return None
+
+
+_EXP_WORD = re.compile(r"experiments?\b", re.IGNORECASE)
+_LAST_TWO = re.compile(r"([A-Za-z]+|\d{1,4})([- ])([A-Za-z]+|\d{1,4})\s*$")
+_LAST_ONE = re.compile(r"([A-Za-z]+|\d{1,4})\s*$")
+
+
+def trailing_count(head):
+    """(value, start_col) for the number immediately preceding `head`'s end.
+
+    TWO TOKENS ARE TRIED BEFORE ONE, and that ordering is load-bearing rather
+    than tidy: a single greedy regex matches `redirected four` in "redirected
+    four experiments", fails to parse it, and having consumed the region never
+    sees the `four` that is actually there. Longest-first with an explicit
+    fallback is what makes the hyphenated `Twenty-eight` and the bare `four`
+    both reachable.
+
+    A HYPHENATED PAIR IS ALL-OR-NOTHING, AND THIS COST A DEFECT TO LEARN.
+    The first version fell back to the right-hand token whatever the
+    separator, so French `vingt-six` - which fails to parse as a pair - fell
+    through to `six` and returned SIX. That is not a missed reading, it is a
+    CONFIDENTLY WRONG one, and it is worse than declining: the leg would have
+    reported a number for a surface it cannot read. Caught by this leg's own
+    notation-boundary test on its first run, which is the argument for having
+    written that test at all. A hyphen joins one lexical unit; a space does
+    not, so the space fallback stays and the hyphen fallback is refused."""
+    m = _LAST_TWO.search(head)
+    if m:
+        v = english_cardinal("%s-%s" % (m.group(1), m.group(3)))
+        if v is not None:
+            return v, m.start(1)
+        if m.group(2) == "-":
+            return None
+    m = _LAST_ONE.search(head)
+    if m:
+        v = english_cardinal(m.group(1))
+        if v is not None:
+            return v, m.start(1)
+    return None
+
+
+def experiment_hits(path):
+    """[(line, col_start, col_end, value)] - every experiment-count-shaped
+    number. Shaped, not necessarily a claim about the record's SIZE: the
+    handbook says "Four experiments ran without one", which is a true
+    statement about the past and not a count of the record. Separating those
+    is the sweep's job below, by DECLARATION rather than by a cleverer
+    regex."""
+    out = []
+    for i, ln in enumerate(_lines(path), 1):
+        for m in _EXP_WORD.finditer(ln):
+            got = trailing_count(ln[:m.start()])
+            if got is None:
+                continue
+            value, col = got
+            out.append((i, col, m.end(), value))
+    return out
+
+
+# ---------------------------------------------------------------------------
+# the experiment pins - one per site that states the RECORD'S SIZE
+# ---------------------------------------------------------------------------
+# Same contract as PINS above: exactly one match, anchored on its own
+# phrasing, so a rewritten sentence must be re-pinned deliberately. The
+# captured group is a digit run OR an English cardinal; `english_cardinal`
+# decides which, so a site may be written either way.
+EXPERIMENT_PINS = [
+    ("README.md", "the discipline bullet",
+     r"([A-Za-z][A-Za-z-]*|\d+) experiments are in\b"),
+    ("README.md", "the where-to-read table",
+     r"\| ([A-Za-z][A-Za-z-]*|\d+) experiments: spec, report, ruling"),
+    ("site/src/site-config.ts", "the method card",
+     r"([A-Za-z][A-Za-z-]*|\d+) experiments are in the record"),
+    ("docs/advisor-kickoff.md", "the index-health line",
+     r"([A-Za-z][A-Za-z-]*|\d+) experiments\. No staleness"),
+]
+
+# Shaped hits that are REAL and TRUE but are not claims about the record's
+# size. Each is narrative about a past state - "four experiments ran without
+# a provenance sheet" is correct forever however many experiments exist -
+# which is the same disposition the historical rule carries for CHANGELOG,
+# reached per-site because these sit inside live prose. Excusing one is an
+# edit; leaving one unexcused is a failure.
+EXPERIMENT_NOT_TOTAL = [
+    ("docs/handbook/index.md", "Four experiments ran without one", 4,
+     "narrative: how many arcs ran before the provenance sheet existed"),
+    ("docs/handbook/index.md", "before you build on it.** Four experiments", 4,
+     "narrative: how many arcs were graded on high-pass statistics"),
+    ("site/src/content/docs/handbook/index.md",
+     "Four experiments ran without one", 4,
+     "narrative, the site mirror of docs/handbook/index.md"),
+    ("site/src/content/docs/handbook/index.md",
+     "before you build on it.** Four experiments", 4,
+     "narrative, the site mirror of docs/handbook/index.md"),
+    ("site/src/content/docs/handbook/getting-started.md",
+     "exist for the first seven experiments", 7,
+     "narrative: how many arcs preceded the provenance sheet"),
+    ("site/src/site-config.ts", "redirected four experiments", 4,
+     "narrative: how much work one negative result redirected"),
+]
+
+
+def experiment_rows(root):
+    """(count, ids) from the status table in `docs/experiments/README.md`.
+
+    THE TRUTH FUNCTION. A row is a table line whose first cell opens with an
+    experiment id, linked or bare - E09 and E03 are listed without links, so
+    the bracket is optional. Raises rather than returning 0 if the table's
+    header is gone, because a truth function that silently returns nothing
+    would make every pin below fail for the wrong reason and every stale
+    surface look like a table problem."""
+    p = os.path.join(root, "docs", "experiments", "README.md")
+    if not os.path.exists(p):
+        raise AssertionError(
+            "ANDON: docs/experiments/README.md is missing, so the experiment "
+            "count has no truth to pin against.")
+    lines = _lines(p)
+    if not any(re.match(r"^\|\s*id\s*\|", ln) for ln in lines):
+        raise AssertionError(
+            "ANDON: docs/experiments/README.md has no `| id |` status-table "
+            "header, so this leg cannot locate the table it counts. If the "
+            "table was restructured, re-point this function in the same "
+            "commit.")
+    ids = []
+    for ln in lines:
+        m = re.match(r"^\|\s*\[?(E\d{2,3})\b", ln)
+        if m:
+            ids.append(m.group(1))
+    return len(ids), ids
+
+
+@pytest.fixture(scope="module")
+def experiments():
+    """The record's size, measured once."""
+    n, _ = experiment_rows(str(REPO))
+    return n
+
+
+# ---------------------------------------------------------------------------
+# fourth leg, part 1 - the truth function, and that it is not vacuous
+# ---------------------------------------------------------------------------
+
+def test_the_status_table_yields_a_usable_experiment_count(experiments):
+    n, ids = experiment_rows(str(REPO))
+    assert n > 0, "the status table produced no rows to count"
+    assert len(set(ids)) == n, (
+        "the status table lists an id twice, which inflates the count every "
+        "surface must state: %s"
+        % ", ".join(sorted(i for i in set(ids) if ids.count(i) > 1)))
+    assert n == experiments
+
+
+def test_the_experiment_counter_actually_counts(tmp_path):
+    """Can-fail leg for the TRUTH itself. A counter that returned a constant
+    would make every pin below agree with it forever while the front door
+    said whatever it liked. Remove one row off-tree; the count must fall by
+    exactly one."""
+    root = str(tmp_path / "rows")
+    os.makedirs(os.path.join(root, "docs", "experiments"))
+    src = os.path.join(str(REPO), "docs", "experiments", "README.md")
+    dst = os.path.join(root, "docs", "experiments", "README.md")
+    shutil.copyfile(src, dst)
+    before, ids = experiment_rows(root)
+    lines = _lines(dst)
+    kept = []
+    dropped = 0
+    for ln in lines:
+        if dropped == 0 and re.match(r"^\|\s*\[?E\d{2,3}\b", ln):
+            dropped = 1
+            continue
+        kept.append(ln)
+    with io.open(dst, "w", encoding="utf-8", newline="") as fh:
+        fh.write("\n".join(kept))
+    after, _ = experiment_rows(root)
+    assert dropped == 1, "the fixture removed no row, so nothing was tested"
+    assert after == before - 1, (
+        "removing one status-table row moved the count from %d to %d; a "
+        "counter that does not track its own table cannot pin anything"
+        % (before, after))
+
+
+def test_the_experiment_counter_refuses_a_headerless_table(tmp_path):
+    """The other direction: a restructured table must HALT, not quietly
+    return a number from a document it no longer understands."""
+    root = str(tmp_path / "noheader")
+    os.makedirs(os.path.join(root, "docs", "experiments"))
+    dst = os.path.join(root, "docs", "experiments", "README.md")
+    src = _lines(os.path.join(str(REPO), "docs", "experiments", "README.md"))
+    with io.open(dst, "w", encoding="utf-8", newline="") as fh:
+        fh.write("\n".join(ln for ln in src if not re.match(r"^\|\s*id\s*\|", ln)))
+    with pytest.raises(AssertionError) as e:
+        experiment_rows(root)
+    assert "status-table header" in str(e.value)
+
+
+# ---------------------------------------------------------------------------
+# fourth leg, part 2 - the pins
+# ---------------------------------------------------------------------------
+
+def experiment_pin_spans(root):
+    """{rel: [(line, start, end)]} consumed by an experiment pin."""
+    spans = {}
+    for rel, _name, pat in EXPERIMENT_PINS:
+        p = os.path.join(root, rel.replace("/", os.sep))
+        if not os.path.exists(p):
+            continue
+        for i, ln in enumerate(_lines(p), 1):
+            for m in re.finditer(pat, ln):
+                spans.setdefault(rel, []).append((i, m.start(), m.end()))
+    return spans
+
+
+def experiment_pin_failures(root, want):
+    """Which experiment pins would fail against `root` - run off-tree by the
+    can-fail legs, and by the real leg against REPO."""
+    bad = []
+    for rel, name, pat in EXPERIMENT_PINS:
+        p = os.path.join(root, rel.replace("/", os.sep))
+        if not os.path.exists(p):
+            bad.append((rel, name, "missing"))
+            continue
+        found = []
+        for i, ln in enumerate(_lines(p), 1):
+            for m in re.finditer(pat, ln):
+                found.append((i, m.group(1)))
+        if len(found) != 1:
+            bad.append((rel, name, "%d matches" % len(found)))
+            continue
+        line, token = found[0]
+        value = english_cardinal(token)
+        if value is None:
+            bad.append((rel, name, "L%d states %r, which this leg's declared "
+                                   "notation does not read as a number"
+                        % (line, token)))
+        elif value != want:
+            bad.append((rel, name, "L%d states %d, the table holds %d"
+                        % (line, value, want)))
+    return bad
+
+
+@pytest.mark.parametrize("rel,name,pat", EXPERIMENT_PINS,
+                         ids=["%s::%s" % (p[0], p[1]) for p in EXPERIMENT_PINS])
+def test_every_pinned_site_states_the_experiment_count(
+        rel, name, pat, experiments):
+    p = os.path.join(str(REPO), rel.replace("/", os.sep))
+    assert os.path.exists(p), "pinned surface is gone: %s" % rel
+    found = [(i, m.group(1)) for i, ln in enumerate(_lines(p), 1)
+             for m in re.finditer(pat, ln)]
+    assert len(found) == 1, (
+        "%s :: %s - the anchor matched %d times, expected exactly 1. A "
+        "rewritten sentence must be re-pinned in the commit that rewrites it."
+        % (rel, name, len(found)))
+    line, token = found[0]
+    value = english_cardinal(token)
+    assert value is not None, (
+        "%s:%d :: %s - states %r, which is not a notation this leg reads. "
+        "See the NOTATION BOUNDARY block above: digits and English cardinals "
+        "0-99 only." % (rel, line, name, token))
+    assert value == experiments, (
+        "%s:%d :: %s - states %d experiments, the status table in "
+        "docs/experiments/README.md holds %d. Every surface in "
+        "EXPERIMENT_PINS changes in the commit that adds an experiment row."
+        % (rel, line, name, value, experiments))
+
+
+# ---------------------------------------------------------------------------
+# fourth leg, part 3 - the sweep
+# ---------------------------------------------------------------------------
+
+def experiment_unaccounted(root):
+    """Every experiment-count-shaped hit that is neither pinned, nor declared
+    non-total, nor inside a region the test-count legs already declared
+    historical. Returns [(rel, line, value)], ASCII only."""
+    spans = experiment_pin_spans(root)
+    whole, inline, cl_from, _ = historical_spans(root)
+    bad = []
+    for rel in surfaces(root):
+        p = os.path.join(root, rel.replace("/", os.sep))
+        if not os.path.exists(p):
+            continue
+        if rel in NOT_SWEPT:
+            continue
+        if rel in whole or rel.startswith(HISTORICAL_PREFIXES[0][0]):
+            continue
+        lines = _lines(p)
+        for (i, s, e, v) in experiment_hits(p):
+            if any(li == i and s >= ls and e <= le
+                   for (li, ls, le) in spans.get(rel, [])):
+                continue
+            if rel == "CHANGELOG.md" and cl_from is not None and i >= cl_from:
+                continue
+            if any(li == i and s >= ls for (li, ls, le) in inline.get(rel, [])):
+                continue
+            if any(r == rel and val == v and anchor in lines[i - 1]
+                   for r, anchor, val, _why in EXPERIMENT_NOT_TOTAL):
+                continue
+            bad.append((rel, i, v))
+    return bad
+
+
+def test_no_unaccounted_experiment_count_on_any_surface():
+    """Every experiment-count-shaped number on a declared surface is pinned as
+    the record's size, declared narrative, or declared historical. An
+    unaccounted hit means a site exists that nothing is watching - which is
+    how `site/src/site-config.ts` sat at "Twenty experiments" while the record
+    held twenty-eight, and how `docs/advisor-kickoff.md` sat at 27. Both were
+    found by THIS leg on the tree it was written against."""
+    bad = experiment_unaccounted(str(REPO))
+    assert not bad, (
+        "%d experiment-count-shaped number(s) on a declared surface are "
+        "neither pinned nor declared:\n%s\n\n"
+        "Pin it in EXPERIMENT_PINS if it states the record's SIZE, or add it "
+        "to EXPERIMENT_NOT_TOTAL with its reason if it is narrative about a "
+        "past state. Deciding which is a deliberate edit, which is the point."
+        % (len(bad), "\n".join("   %s:%d  (%d)" % b for b in bad)))
+
+
+def test_every_declared_non_total_experiment_site_is_real():
+    """A declaration that matches nothing is a dead exemption quietly widening
+    the sweep's blind spot."""
+    dead = []
+    for rel, anchor, _value, _why in EXPERIMENT_NOT_TOTAL:
+        p = os.path.join(str(REPO), rel.replace("/", os.sep))
+        text = "\n".join(_lines(p)) if os.path.exists(p) else ""
+        if anchor not in text:
+            dead.append("%s :: %s" % (rel, anchor))
+    assert not dead, (
+        "declared non-total experiment sites that match nothing: %s"
+        % ", ".join(dead))
+
+
+# ---------------------------------------------------------------------------
+# fourth leg, part 4 - the legs above are not vacuous (E26 gate 2)
+# ---------------------------------------------------------------------------
+# The dispatch requires that this leg FAIL on a deliberately stale surface
+# before it passes at HEAD. It did better than that: it fired on TWO REAL
+# STALE SITES on the tree it was written against - `site/src/site-config.ts`
+# at "Twenty" and `docs/advisor-kickoff.md` at 27, against a table holding
+# twenty-eight. Those are corrected in the same commit, so the proof below is
+# the synthetic one that stays runnable afterwards.
+
+def test_a_stale_experiment_site_fails_the_pin_leg(tmp_path, experiments):
+    """Byte-identical to HEAD except one number, and the failure names it."""
+    root = _mirror(str(REPO), str(tmp_path / "exp_stale"))
+    os.makedirs(os.path.join(root, "docs", "experiments"), exist_ok=True)
+    shutil.copyfile(
+        os.path.join(str(REPO), "docs", "experiments", "README.md"),
+        os.path.join(root, "docs", "experiments", "README.md"))
+    assert not experiment_pin_failures(root, experiments), (
+        "the MIRROR of HEAD already fails the experiment pin leg, so the next "
+        "assertion would prove nothing about staleness")
+    _rewrite(os.path.join(root, "docs", "advisor-kickoff.md"),
+             "%d experiments. No staleness" % experiments,
+             "%d experiments. No staleness" % (experiments - 3))
+    bad = experiment_pin_failures(root, experiments)
+    assert len(bad) == 1, "expected exactly one pin to fail, got %r" % (bad,)
+    assert bad[0][0] == "docs/advisor-kickoff.md", (
+        "the failure did not name the site that was made stale: %r" % (bad,))
+
+
+def test_a_stale_word_spelled_site_fails_the_pin_leg(tmp_path, experiments):
+    """The word form gets its own proof, because it is the notation this leg
+    exists for - the test-count legs never had to read one."""
+    root = _mirror(str(REPO), str(tmp_path / "exp_word"))
+    os.makedirs(os.path.join(root, "docs", "experiments"), exist_ok=True)
+    shutil.copyfile(
+        os.path.join(str(REPO), "docs", "experiments", "README.md"),
+        os.path.join(root, "docs", "experiments", "README.md"))
+    assert not experiment_pin_failures(root, experiments)
+    p = os.path.join(root, "README.md")
+    with io.open(p, encoding="utf-8") as fh:
+        t = fh.read()
+    m = re.search(r"([A-Za-z][A-Za-z-]*) experiments are in\b", t)
+    assert m and english_cardinal(m.group(1)) == experiments, (
+        "the fixture's own anchor no longer reads the current count")
+    with io.open(p, "w", encoding="utf-8", newline="") as fh:
+        fh.write(t.replace("%s experiments are in" % m.group(1),
+                           "Nineteen experiments are in", 1))
+    bad = experiment_pin_failures(root, experiments)
+    assert any(r == "README.md" and "19" in msg for r, _n, msg in bad), (
+        "a word-spelled stale count did not fire the pin leg: %r" % (bad,))
+
+
+def test_a_new_unwatched_experiment_site_fails_the_sweep(tmp_path):
+    """The sweep's own can-fail leg."""
+    root = _mirror(str(REPO), str(tmp_path / "exp_newsite"))
+    assert not experiment_unaccounted(root), (
+        "the MIRROR of HEAD already has unaccounted experiment hits, so the "
+        "next assertion would prove nothing: %r"
+        % (experiment_unaccounted(root)[:5],))
+    p = os.path.join(root, "SECURITY.md")
+    with io.open(p, "a", encoding="utf-8", newline="") as fh:
+        fh.write("\n\nThirty-one experiments are in the record.\n")
+    bad = experiment_unaccounted(root)
+    assert any(rel == "SECURITY.md" and v == 31 for rel, _, v in bad), (
+        "the sweep did not see a brand-new unpinned experiment count: %r"
+        % (bad,))
+
+
+def test_the_experiment_sweep_does_not_fire_on_a_historical_count(tmp_path):
+    """A released CHANGELOG entry is correct forever; the same sentence above
+    the released boundary is a current-state claim. Same boundary the test
+    count uses, exercised for this quantity."""
+    root = _mirror(str(REPO), str(tmp_path / "exp_hist"))
+    assert not experiment_unaccounted(root)
+    cl = os.path.join(root, "CHANGELOG.md")
+    at = changelog_historical_from(root)
+    assert at is not None
+    lines = _lines(cl)
+    lines.insert(at + 2, "Sixteen experiments were in the record at this tag.")
+    with io.open(cl, "w", encoding="utf-8", newline="") as fh:
+        fh.write("\n".join(lines))
+    assert not experiment_unaccounted(root), (
+        "a count inside a RELEASED changelog entry fired the experiment "
+        "sweep; released entries state what a version shipped")
+    lines = _lines(cl)
+    lines.insert(at - 1, "Sixteen experiments were in the record at this tag.")
+    with io.open(cl, "w", encoding="utf-8", newline="") as fh:
+        fh.write("\n".join(lines))
+    bad = experiment_unaccounted(root)
+    assert any(rel == "CHANGELOG.md" and v == 16 for rel, _, v in bad), (
+        "a count in the Unreleased block did NOT fire the experiment sweep: "
+        "%r" % (bad[:5],))
+
+
+def test_the_release_note_historical_count_does_not_fire():
+    """`.github/release-notes-v0.1.0.md` says "Twenty experiments" and is
+    correct forever - it states what that version shipped. It must not fire,
+    and it must still BE there, or this assertion is testing nothing."""
+    p = os.path.join(str(REPO), ".github", "release-notes-v0.1.0.md")
+    assert os.path.exists(p)
+    hits = experiment_hits(p)
+    assert any(v == 20 for _i, _s, _e, v in hits), (
+        "the release note no longer carries the historical count this test "
+        "exists to prove is exempt")
+    assert not [b for b in experiment_unaccounted(str(REPO))
+                if b[0].startswith(".github/release-notes-")], (
+        "a published release note's historical count fired the sweep")
+
+
+def test_experiment_notation_boundary_is_what_it_says():
+    """Every line of the NOTATION BOUNDARY block above, made runnable.
+
+    THIS TEST ASSERTS WHAT IS **NOT** CAUGHT, on purpose. Widening the parser
+    to read French or Devanagari is a legitimate change - it just has to be
+    made ON PURPOSE, in the commit that edits this test, which is the whole
+    point of putting a boundary under a test rather than in a comment."""
+    # caught
+    assert english_cardinal("27") == 27
+    assert english_cardinal("Twenty-eight") == 28
+    assert english_cardinal("twenty six") == 26
+    assert english_cardinal("four") == 4
+    assert english_cardinal("seven") == 7
+    assert english_cardinal("NINETY-NINE") == 99
+    # not caught - the six generated translations' spellings, measured from
+    # the READMEs at the time this leg was written
+    for foreign in ("veintiseis", "vingt-six", "ventisei", "vinte e seis",
+                    "twenty-eighth", "several", "a few", "one hundred and one"):
+        assert english_cardinal(foreign) is None, (
+            "%r now parses, so this leg's declared notation boundary has "
+            "moved. That may be correct - update this test and the NOTATION "
+            "BOUNDARY block together." % foreign)
+    # and the boundary is reached through `trailing_count`, not just the
+    # parser, because that is the function the sweep actually calls.
+    #
+    # THE HYPHEN RULE, which is the part that was wrong first time round:
+    # an unparseable HYPHENATED pair declines outright; an unparseable
+    # SPACE-separated pair still falls back to its last token.
+    assert trailing_count("vingt-six ") is None, (
+        "a French compound now returns a number. It would be read as SIX - "
+        "a confidently wrong reading, which is the failure mode this rule "
+        "exists for.")
+    assert trailing_count("redirected four ")[0] == 4, (
+        "the space fallback died with the hyphen fix; `four experiments` in "
+        "ordinary prose would stop being seen")
+    assert trailing_count("Twenty-eight ")[0] == 28
+    assert trailing_count("81 laws, 27 ")[0] == 27
+    assert trailing_count("the first seven ")[0] == 7
