@@ -403,6 +403,29 @@ dispatch's ritual — write what one of the counted thing **is** before the numb
 the population honest and did its job; it does not ask what each member **has**. Before
 predicting how a set behaves, check the behaviour is even defined for every member.
 
+**And below that again: a composite definition is governed by its rarest clause.** Sixth
+consecutive arc on the unit family. E28 pre-registered *invocable* as `argparse` ∧
+`add_argument` ∧ `__main__`-guard, then predicted 60 of 99 by reasoning about the flag
+surface alone. Measured: the conjunction holds on **5**, because the guard clause holds on
+**6** — the components landed 93 and 6, so the prediction was *above* band on the clause it
+reasoned about and off 12× on the join. The directory's house style is a straight-line
+module-level script; no amount of thinking about "how disciplined is this repo" reaches 5,
+because the number was never about discipline. **Predict each clause of a conjunction
+separately, then the join; the join tracks the rarest clause, not the salient one.**
+
+**An instrument that lives inside its own population must be checked against itself on
+every axis, each time — and one clean check is not clearance.** E28's census reads the
+corpus and `tests/`, while its output is a corpus file, its tests are test files, and its
+report is a corpus file too. Four self-references in one arc; **three moved a number**: the
+committed output made axis D read 99/99 on any second run; the arc's own report re-created
+the same contamination at arc scale, caught by an idempotency gate that FIRED (76 → 99, 51
+rows); and the repair's own can-fail fixture named a real module and moved the count it was
+verifying, 44 → 45 *by the test existing*. The first self-reference check came back clean
+and stopped being true two edits later. The remedies that held: **exclude the instrument's
+own derived artifacts from its evidence by construction, use synthetic names in its
+fixtures, and pin both with legs that fire on the contamination** — three of the four were
+found by a check firing, one by reading, and the ratio is the point.
+
 **Enumerate the resource before commissioning one — including when an executor has already
 named it.** E27's report identified that `offsurface_rate` had no invocable instrument
 (true: `e10_offsurface.py` binds its subject as module constants) and framed the remedy as

@@ -254,6 +254,17 @@ What remains:
    because a hand-read is what produced "~80" ([E23 Ruling 9](../experiments/E23-ruling.md):
    a count under a test cannot drift silently).
 
+   ⚖ **AND RULED 2026-08-09, against the measured census**
+   ([E28-ruling](../experiments/E28-ruling.md) Ruling 3). **The surface is the eight
+   questions; an instrument is ON it iff a served tool invokes it; directory membership
+   confers nothing.** The census measured 99 files ([the table](../instrument-census.md)):
+   21 map to one of the eight, 58 answer questions the spec does not list, 17 straddle, 3
+   carry no opinion — and the 58 + 17 + 3 stay off the surface as the record's arc-evidence
+   instruments, correctly outside a cross-subject product. The backing map (which file
+   serves which tool, both homes) is the ruling's table; a future instrument enters by a
+   ruling + a wrap, with the census's mechanical axes as entry checks, and the census
+   re-runs in the entering commit.
+
 2. **Whether the arc-specific diagnostics (`e12_*`, `e14_*`) are in scope at all.** My
    recommendation was **no** — per-arc instruments whose numbers sit in closed rulings, and
    generalising them is how a shipped instrument gets edited.

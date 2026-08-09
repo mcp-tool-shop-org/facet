@@ -181,8 +181,12 @@ E25  133 sites   the measurement instruments
 
 ### The record index
 
-Mount SERVING, certificate PASSED on four legs, byte-identity determinism, **corpus 267
-files**, 637 rulings, 81 laws, 28 experiments. No staleness.
+Mount SERVING, certificate PASSED on four legs, byte-identity determinism, no staleness.
+**The counts live in the ritual's own output and in `record_health` — read them there,
+not here.** *(This line used to quote corpus/rulings/laws totals and was stale within a
+day, twice: nothing sweeps this file for those quantities, and every advisor fold moves
+them. The experiment count stays quoted on swept surfaces only — T34's fourth leg watches
+those.)*
 
 ---
 

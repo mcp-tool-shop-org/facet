@@ -192,6 +192,17 @@ them look exposed. **That is the correction earning its keep: uncorrected, this 
 would have named the two most load-bearing instruments in the directory as unwatched, and
 been wrong about both.**
 
+> ⚠ **Corrected at the ruling seat, 2026-08-09 ([E28-ruling](E28-ruling.md) Ruling 6), with
+> the committed instrument output.** Two counts in the paragraph above are interim reads
+> from a corpus state that still contained this arc's uncommitted prose: the committed JSON
+> has `e12_offsurface.py` cited **14** (raw 17) — a **tie** with `e08_ceiling.py` at 14, not
+> the sole most-cited — and `texel_provenance.py` cited **11** (raw 13). And the cell of 14
+> below carries an unstated threshold: it is the **cited ≥ 3** slice of the full
+> cited>0 ∧ unanchored cell, which holds **36 files** in the committed JSON. The 14 names
+> and their per-file counts match the committed output exactly under that threshold; the
+> threshold is now stated. *Name the denominator — this repo's oldest defect, found here in
+> a report about measuring it.*
+
 The 14 that are genuinely unanchored: `e04_bands.py` (9), `e04_profile_check.py` (8),
 `e07_l2_bound.py` (5), `e12_stem_delta.py` (5), `commit_funnel.py`, `e04_backdrop.py`,
 `e04_frame_agree.py`, `e04_seam_sources.py`, `e08_bg_separation.py`, `e10_claim_replay.py`,

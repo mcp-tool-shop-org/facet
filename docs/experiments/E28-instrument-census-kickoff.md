@@ -170,6 +170,31 @@ moves task 2's scope, task 2 must not already have been spent.
 
 ---
 
+## ⚖ Amendment 1 — appended 2026-08-09 at the census ruling, before task 2 was picked up
+
+The census halted as dispatched and is **ruled** ([E28-ruling.md](E28-ruling.md), Rulings
+1–9). Task 2 is green-lit with three scope adjustments; everything not named here stands
+as written below.
+
+1. **Task 2-pre, new and first: extend the census to `tools/verify/` (8 files).** F3
+   measured that two of the four serving tools are implemented there, outside task 1's
+   population. Parameterize `instrument_census.py`'s directory (diagnostics stays the
+   default), add axis-G judgments for the 8 as a *proposal* (the missing-judgment ANDON
+   must keep firing), extend T41's population pin **deliberately, in the same commit**,
+   and re-emit both outputs. The boundary ruling's backing map then rests on measurement
+   over both homes.
+2. **`mesh_topology` wraps `e14_topology.py` alone** (Ruling 4). `e12_nonmanifold.py` is
+   NOT wrapped: its output is a picture drawn onto a render set it requires as input —
+   evidence for the eye, the Director's channel — and its non-manifold *count* is already
+   computed independently by `e14_topology`, by both instruments' own design. The served
+   payload's `notes` **names it** as the independent concentration picture, the E27
+   Ruling 7 pattern. No agreement leg is commissioned: E14 ran both instruments on the
+   same subjects and the record already carries their agreement.
+3. **The F5 watch-list is output, not work.** The 36-file cited>0 ∧ unanchored cell (see
+   the report's dated correction) is the standing watch-list; the anchor obligation rides
+   any future **edit** to a member, per CLAUDE.md's closed-ruling law. No wholesale test
+   commission.
+
 ## Task 2 — THE THREE WRAPS. After the ruling on task 1.
 
 ### 2a — `e14_topology.py`'s tie crash (F1), first, because `mesh_topology` needs it
