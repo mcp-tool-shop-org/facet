@@ -93,7 +93,7 @@ A disciplina é tão importante quanto o produto e a linha de produção, e exis
 - **Correções são aplicadas no local, ao lado da medição que as invalidou**, nunca como exclusões silenciosas. Seis alegações herdadas foram refutadas apenas na sessão inicial, e todas as seis ainda podem ser lidas ao lado do que as substituiu.
 - **Falhas permanecem no repositório com sua razão.** [`tools/superseded/`](docs/tools.md) não é um arquivo — qualquer pessoa pode executar essas ferramentas e observar suas falhas da mesma forma.
 - **Um resultado negativo é um sucesso total**, relatado e encerrado, em vez de ajustado para um número específico.
-- **Testes acompanham o commit que afeta o código** — 423 aprovados por duas pessoas, com CI baseado em caminhos nos 415 testes herméticos.
+- **Testes acompanham o commit que afeta o código** — 648 aprovados por duas pessoas, com CI baseado em caminhos nos 640 testes herméticos.
 - **O registro é pesquisável.** Um índice SQLite + FTS5 sobre todo o histórico, verificado em quatro etapas. Ele encontrou uma contagem de decisões que a redação havia apresentado incorretamente em três locais, contando o próprio registro.
 
 ## Onde tudo está:
@@ -136,7 +136,7 @@ Três pontos críticos são divulgados em vez de omitidos, porque uma nota de se
 
 Blender 5.x, Python 3.11+ com `numpy`, `scipy`, `trimesh`, `open3d`, `Pillow`, `spandrel`, `torch`. Uma instalação local do ComfyUI é necessária apenas para o pincel de preenchimento. Desenvolvido em uma RTX 5090; a capacidade da VRAM é mais importante do que a velocidade bruta.
 
-O CI executa o subconjunto hermético da suíte em **ubuntu-latest / Python 3.12** com instalações fixas (`.github/workflows/ci.yml`); a camada de artefatos precisa das árvores registradas sob `E:\AI\training`, que não estão no git, portanto, o CI as exclui por design. Localmente, `python -m pytest` executa todos os **423** testes e `python -m pytest -m "not artifacts"` executa os **415** que o CI reproduz.
+O CI executa o subconjunto hermético da suíte em **ubuntu-latest / Python 3.12** com instalações fixas (`.github/workflows/ci.yml`); a camada de artefatos precisa das árvores registradas sob `E:\AI\training`, que não estão no git, portanto, o CI as exclui por design. Localmente, `python -m pytest` executa todos os **648** testes e `python -m pytest -m "not artifacts"` executa os **640** que o CI reproduz.
 
 ---
 

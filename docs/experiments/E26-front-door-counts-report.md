@@ -10,15 +10,24 @@ Halts here. The advisor rules at `E26-ruling.md`.
 
 ## The measurement, first
 
-| quantity | at HEAD (`3ce6a39`) | after this arc |
-|---|---|---|
-| full tier, `pytest --collect-only` | **384** | **423** |
-| hermetic tier, `-m "not artifacts"` | **376** | **415** |
-| tier gap | 8 | 8 |
-| current-state sites stating a count, repo-wide | 23 | 23 |
-| of those, **wrong** | **16** | 0 |
+⚑ **CORRECTED IN PLACE, and the correction is the arc's own finding — see §12.** The
+numbers below first read **423 / 415**, measured on a clean worktree pinned to `1b60478`.
+E25 committed **T33 (225 tests)** to this shared working copy between that worktree's
+creation and this arc's commit, so the merged `HEAD` was never the tree the number was
+taken on. **T34 fired on the push, CI went red, and the surfaces were corrected to the
+merged tree's true count.** Every `423 / 415` elsewhere in this report is the pre-merge
+reading and is left standing where it is what was measured at the time.
 
-The 39 new tests are this arc's own: T34 adds 34, T05 adds 5.
+| quantity | at dispatch (`3ce6a39`) | this arc alone, at `1b60478` | at merged HEAD (`d908ccc`) |
+|---|---|---|---|
+| full tier, `pytest --collect-only` | **384** | 423 | **648** |
+| hermetic tier, `-m "not artifacts"` | **376** | 415 | **640** |
+| tier gap | 8 | 8 | 8 |
+| current-state sites stating a count, repo-wide | 23 | 23 | 23 |
+| of those, **wrong** | **16** | 0 | 0 |
+
+This arc adds **39** tests (T34 34, T05 5). E25's T33 adds **225**. The surfaces state
+**648 / 640**, which is what the merged tree collects.
 
 ---
 
@@ -228,7 +237,7 @@ produce a STALE row and is watched in appearance only
 
 | gate | verdict | evidence |
 |---|---|---|
-| 1. suite green before and after, artifacts tier | **PASS** | baseline measured **384**, not the dispatch's stated 384 by luck — same number. After: **423 passed, 0 failed** in 265.60 s on a clean `git worktree` at HEAD + this arc's 17 files, artifacts tier live |
+| 1. suite green before and after, artifacts tier | **PASS, after a correction** | baseline measured **384**, matching the dispatch. First reading: **423 passed, 0 failed** in 265.60 s on a clean worktree at `1b60478` + this arc's 17 files. **That tree was already stale** (§12). Re-measured on the merged `HEAD` `d908ccc` the surfaces were corrected against: **648 passed, 0 failed** in 395.41 s, artifacts tier live |
 | 2. Half A FAILS on a stale surface, passes at HEAD | **PASS, strong form** | T34 run against HEAD's own unedited surfaces: **25 failed / 9 passed**, and the failure kinds are **50 × AssertionError, 0 × AttributeError / NameError / ImportError**. Every message names a site: *"README.md:160 :: the bullet, full — states full 384, the collector reports 418"*. Also kept runnable in-harness: `test_t34_a_stale_surface_fails_the_pin_leg`, `…_a_stale_translation_fails_the_digits_leg`, `…_a_new_unwatched_site_fails_the_sweep`, each of which first asserts the unmutated mirror passes |
 | 3. does not fire on a historical count | **PASS** | 10 shaped hits absorbed by declared historical regions — `CHANGELOG` 7, `SCORECARD` 2, `release-notes-v0.1.0` 1 — with 0 unaccounted. `test_t34_the_sweep_does_not_fire_on_a_historical_count` inserts the same sentence twice: inside a released entry it does **not** fire; above the boundary it **does** |
 | 4. `record_markdown()` unchanged, four legs pass | **PASS** | AST hash `1581685c309faedd` identical both sides. Build rows identical (677 / 225 / 26 / 3985 / 31 / 77 / 28 / 2310 / 611). `verify` **19 / 19, all four legs**, before *and* after, on scratch `--db` |
@@ -255,11 +264,20 @@ table is drawn over **files**, and both arcs are disjoint on files while moving 
 number**. So every measurement in this report is taken against a **clean `git worktree` at
 HEAD plus this arc's own 17 files**, which is the state this arc's commit produces.
 
-**Consequence, stated plainly:** the surfaces are pinned at **423 / 415**. When E25 commits
-T33, the collected count becomes **643 / 635** and **T34 will fail on their commit** until
-the surfaces move with it. That is the instrument working — the arc was commissioned so a
-count cannot move without something noticing, and the first thing it noticed was a live
-drift caused by a parallel session. Whichever arc commits second owns the surface update.
+⚑ **This paragraph was written in the future tense and was already wrong. Left standing,
+with what actually happened beside it — §12.** It read:
+
+> **Consequence, stated plainly:** the surfaces are pinned at **423 / 415**. When E25
+> commits T33, the collected count becomes **643 / 635** and **T34 will fail on their
+> commit** until the surfaces move with it.
+
+E25 had **already committed** — `59f9409`, made locally in this shared copy while this
+arc's clean worktree was pinned to `1b60478`. So T34 fired on **this arc's** push, not on
+theirs, and the count was **648 / 640**, not 643 / 635 (T33 collects 225, and the tree
+also carried E25's edits to T31). The rest of the paragraph's claim holds unchanged: the
+arc was commissioned so a count cannot move without something noticing, and the first
+thing it noticed was a live drift caused by a parallel session. **Whichever arc commits
+second owns the surface update, and that was this one.**
 
 **Defect found in E25's files: none.** Their tests were not run in isolation by this seat;
 T33 appears green in the shared-tree collection but grading it is not this seat's job.
@@ -433,6 +451,59 @@ site/src/content/docs/handbook/reference.md             comment
 | DECOMPOSE_BY_SECRETS | 3 | Half A's truth is `pytest`, Half B's is the index; they share no code and `record_markdown()` is AST-identical, which is the decomposition made checkable |
 | UNCERTAINTY_GATED_HUMANS | 3 | eight findings routed to the ruling rather than decided here: the matcher's form-blindness (F3), the per-file count class (F6), the translation regeneration (F8), the changelog's line-scoped attribution (F4) |
 | EXTERNAL_VERIFIER | 2 | the verifier is `pytest --collect-only` in a subprocess and the index's four legs, neither of which this seat can talk past. skip: no cross-family model; every outcome is an integer comparison |
+
+---
+
+---
+
+## 12. The instrument fired on its own author, and the reason is a hole in the protocol
+
+**What happened, in order:**
+
+```
+1b60478  E26 predictions committed (this arc)
+         git worktree add --detach HEAD  ->  pinned at 1b60478
+         every measurement in sections 1-11 taken on that worktree
+59f9409  E25 commits T33 (225 tests) LOCALLY, in this shared working copy
+         `git fetch && git merge --ff-only origin/main`  ->  "Already up to date"
+d908ccc  this arc commits and pushes ON TOP of 59f9409, surfaces stating 423/415
+         CI run 31294891661  ->  FAILURE, 25 T34 assertions
+         every message: "states full 423, the collector reports 648"
+         surfaces corrected to 648/640; suite re-run on the merged tree: 648 passed
+```
+
+**The protocol hole.** The dispatch's parallel-session guard is
+`git fetch origin && git merge --ff-only origin/main` before every push, and it is a guard
+against **remote divergence**. E25's commit was **local**, made in the working copy both
+sessions share, so `origin` had nothing new and the merge correctly reported *Already up
+to date* while local `HEAD` had moved under this arc by one commit. **`--ff-only` cannot
+see the other session; that is not what it is for.** The dispatch also verified
+disjointness over **files**, and files stayed disjoint throughout.
+
+**The executor error, owned.** Measuring on a pinned worktree was the right call — it is
+what kept E25's uncommitted work out of the numbers. What was missing is one line: **re-run
+the collector against the actual commit parent immediately before committing.** The clean
+worktree answers *what does my change produce*; it does not answer *what does the tree I am
+committing to contain*, and only the second one is what the surfaces must state. Every
+number in sections 1–11 is correct for the tree it names; the one that reached the
+surfaces was correct for the wrong tree.
+
+**Why this was not fixed by tuning.** Nothing about the measurement changed. The surfaces
+were rewritten to state what the collector reports on the merged tree, which is the single
+action the test exists to compel. Narrowing T34, deselecting T33, or pinning a constant
+were all available and all rejected: each removes coverage, and the coverage is the arc.
+
+**Reported as a fired gate, not smoothed into a green row.** CI run
+[31294891661](https://github.com/mcp-tool-shop-org/facet/actions/runs/31294891661) is a
+**FAILURE** and stays in the record as one. It is also the only end-to-end proof this arc
+has that the instrument works on a drift nobody staged: gate 2's stale tree was
+deliberately broken by this seat, and this one was not.
+
+**For the ruling.** Two candidate remedies, neither implemented here: state in the parallel
+protocol that a shared working copy requires re-measuring any live-moving quantity against
+`HEAD` at commit time, not against a pinned worktree; or make the surfaces derive the count
+at build time so no commit can state it wrong. The second is a larger change than this arc
+was scoped for.
 
 ---
 
