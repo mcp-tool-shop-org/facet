@@ -201,6 +201,14 @@ def preflight(gr, P, key):
     """
     prof = json.load(open(args.profile, encoding="utf-8"))
     blk = prof.get("tools", {}).get("texpass_brush.py")
+    # E23 F1 / Ruling 4: THIS GATE CANNOT FIRE ON THE CURRENT CALL GRAPH, and that is
+    # recorded here so its never having fired is not read as its being untested. The only
+    # caller of preflight() sits below the `graph` command's lora-w gate, which reads the
+    # SAME block through a `{}` default - so an absent or non-dict block raises there
+    # first, in every case this check could catch. KEPT ON PURPOSE: this is a precondition
+    # on preflight()'s own contract, not on today's single call site, and a future caller
+    # would need it. Do not move it in front of the lora-w gate either - that changes
+    # which ANDON an operator sees for the same bad profile.
     if not (isinstance(blk, dict)):
         raise AssertionError(
             f"ANDON: {args.profile} has no tools['texpass_brush.py'] block, so there is nothing "

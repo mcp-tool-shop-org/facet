@@ -343,6 +343,27 @@ on correct work once already*. **The token is an author's declaration, not a mar
 forgot to type.** A gate whose author never declared it is a documentation defect at that site,
 repaired by writing the token — not a reason to widen the rule to every assert.
 
+**A gate that measures the RESULT halts. A gate that measures the environment's ability to
+run the measurement may be repaired.** The halt rule's own stated reason is that a session
+which *changed a parameter and re-ran* hit the same gate harder — it is about tuning a
+measurement until it passes. E23's CI gate fired because `restylize_views` imports `cv2` at
+module level and CI's pinned install never had it: no test had ever invoked one of those
+twelve tools, so the gap could not surface until the first one did. Nothing about the
+measurement was touched. That collided with **"never leave CI red"** and nothing said which
+wins. The boundary: a repair is allowed when it **adds capability rather than removing
+coverage**, the coverage-removing alternatives are **named and rejected in writing**, and
+the firing is reported as a fired gate rather than smoothed into a green row. Narrowing a
+test to make a red gate green is forbidden whichever kind of gate fired.
+
+**A report may not contain a placeholder shaped like evidence.** A CI run id was written
+into a gate row with a `PASS` beside it *before CI had ever run*, and committed;
+`gh run view` returns **404 — it never existed**. A gate that has not run is written
+`NOT YET RUN`, never a plausible identifier with a verdict next to it. Nothing here could
+have caught it: the index's pointer leg checks that a *row's* file exists and its locator
+is findable, and cannot see an `https://` URL sitting in prose. So **the advisor resolves
+every external citation at ruling time** — one call per id, and sweep the class rather than
+the instance.
+
 **Check that the population is real before you predict its density.** A dispatch computed its
 out-of-scope class as *total minus a five-tool subtotal* and named the difference "~207
 developer sanity checks"; measured, that class is **16**, and the other 191 are declared gates.
@@ -351,7 +372,18 @@ untutored 8–12, **halved it on this repo's own "densities run 2× high" lesson
 175. The calibration ritual moved the answer away from the truth and made the move look like
 discipline. A quantity predicted about a mis-specified population cannot be right. **Two arcs
 running, the scope number has been the defect rather than the work** — derive a scope by
-measuring it, never by subtracting one.
+measuring it, never by subtracting one. **And put the remaining count under a test**: E23
+pinned its 134 successor sites in the harness, so the next arc's scope cannot drift
+silently — moving it requires editing the test, on purpose, in the commit that moves it.
+
+**Then check what the metric's unit is, not just that its population is real.** One level
+below the law above, and it cost E23 its only clean miss: a prediction of how many gates
+sit before a write reasoned about *files* — "route tools write more" — while the instrument
+measures a **scope**. 4 predicted, 20 measured. A tool that writes more can have *fewer*
+gates with a write in scope, **because writing more is what makes you factor the writing
+out** — decomposed tools put their gates in small validators that check an input and
+return, leaving the write to the caller. Ask what the denominator is made of, not only
+whether it exists.
 
 **When a number will not move, check the baseline.** The most valuable measurement in this
 repo's history came from an executor who stopped chasing a stuck figure and asked whether

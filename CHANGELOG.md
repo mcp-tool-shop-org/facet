@@ -94,6 +94,20 @@ carried one ANDON that raised, which reconciles E22 Ruling 5's repo-wide
 `e13_harmonize` 3, `restylize_views` 3) — [E22 Ruling 5](docs/experiments/E22-ruling.md)
 ruled those stay, so the collision is recorded and not resolved.
 
+**CI now installs `opencv-python-headless`, and the reason is the arc's own premise.**
+The first push went red: `tools/restylize_views.py` imports `cv2` at module level, CI's
+pinned test install had never carried it, and **no test in this repo's history had ever
+invoked one of these twelve tools** — so the gap could not surface until T31 existed.
+Module-level imports were measured across all twelve before repairing (`cv2` is the only
+real gap; `mathutils` belongs to the Blender pair nothing here runs), and `cv2` joins
+`REQUIRED_CHILD_MODULES` so a missing module refuses loudly instead of producing the
+partial-green misreading E17 Ruling 2 closed. **This is a test-install pin only —
+`pyproject.toml` is untouched and the published package still depends on `mcp>=2.0.0`
+alone.** [E23 Ruling 2](docs/experiments/E23-ruling.md) ratified repairing rather than
+narrowing a test, and drew the boundary: a gate measuring the *result* halts, a gate
+measuring the environment's ability to *run* the measurement may be repaired when the
+repair adds capability rather than removing coverage.
+
 ## [0.2.0] — 2026-08-08
 
 **The operator contract of the two installed commands.** A behaviour change to a
