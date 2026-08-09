@@ -152,3 +152,49 @@ honest code is a refusal, which points at E22's incoming `4 = REFUSED` — but E
 is ruled narrow, and quietly widening a dispatched spec is the move this repo forbids.
 It goes to the Director as a finding with its measurement, not into a spec by the hand
 that noticed it.
+
+**The `pip` / `pipx` install cannot find the record at all — only the `npx` binary can.**
+Found at the v0.3.0 release read-back, by installing the published wheel and running more
+than `--help`. `facet_index.py` ships as a **top-level py-module**, so on a wheel install
+`__file__` is `<venv>/Lib/site-packages/facet_index.py` and
+[`facet_index.py:69-70`](../tools/facet_index.py) computes
+`REPO = dirname(dirname(__file__))` = **`<venv>/Lib`**. Every corpus and default-DB path
+is then resolved under a directory that holds neither. Measured on the published 0.3.0
+wheel, with the working directory set to a real facet checkout:
+
+| surface | result |
+|---|---|
+| `facet-index --help` · `facet-mcp --print-tools` | **work** — and these are exactly what `release.yml`'s wheel test runs |
+| the `db:` line `--print-tools` prints | `<venv>\Lib\docs/index/facet.db` — **a path that cannot exist** |
+| `facet-index build` | `RUNTIME_ERROR` — *cannot find `<venv>\Lib\docs\experiments`* |
+| `facet-index q` with no `--db` | `RUNTIME_ERROR` — *unable to open database file* |
+| `facet-index q --db <a real index>` | **works**, exit 0, correct rows |
+| `record_get`, even with a valid `--db` | `REFUSED: no record corpus under <venv>\Lib` |
+
+**Not a v0.3.0 regression — measured, not assumed.** The published **0.2.0** wheel fails
+identically (`REPO` = its own `<venv>\Lib`), so this has been true since the extraction.
+**The `npx` path is unaffected**: v0.1.1 fixed the *frozen* branch to resolve against the
+working directory, and `npx @mcptoolshop/facet` still downloads, verifies SHA256 and
+prints a correct `db:` line. Only the *wheel* branch was left behind.
+
+**Why nothing caught it, which is the transferable part — and it is the same lesson for
+the third time.** `release.yml`'s own step is *"Verify the wheel runs from a clean venv"*,
+and it runs `facet-index --help` and `facet-mcp --print-tools`. **Neither touches the
+corpus or the database.** T27/T28 pin packaging shape and the frozen branch. Every check
+exercises the surface that works. *A green pipeline verifies the thing it built, not the
+thing a user receives* — and this time the artifact was installed and a **verb** was run,
+which is what the earlier statement of the law did not quite say.
+
+**Second, separate defect on the same read-back: `$FACET_INDEX_DB` is honoured by
+`facet-mcp` and NOT by `facet-index`.** `DB_ENV` is defined in
+[`record_mcp.py:138`](../tools/record_mcp.py) and has no counterpart in `facet_index.py`,
+but [README](../README.md)'s Install section says *"Point **either** at an index with
+`--db` or `$FACET_INDEX_DB`."* Measured: the env var leaves `facet-index q` at
+`RUNTIME_ERROR`, while `--db` on the same invocation returns rows.
+
+**Disposition: unruled, and not fixed by the seat that found it.** The repair is a
+behaviour change to the path resolution of two published commands — it wants a spec,
+committed predictions and tests riding the commit, not a hotfix from the advisor's chair.
+The README's Install section is corrected in the meantime, because a front door that
+tells operators to run a command which cannot work is a false claim, and correcting a
+document is not a behaviour change.

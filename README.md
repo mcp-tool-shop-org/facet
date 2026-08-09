@@ -38,12 +38,21 @@ instead of reading it:
 
 ```bash
 npx @mcptoolshop/facet          # zero-prerequisite; verified binary, no Python needed
-pipx install facet-mcp          # or the Python package directly
 ```
 
 Two commands come with it — `facet-mcp`, the stdio MCP server (six tools, with the
 four-leg verify as a refusing health surface), and `facet-index` (`build` / `verify` /
-`q` / `claims`). Point either at an index with `--db` or `$FACET_INDEX_DB`.
+`q` / `claims`). Run it from inside a checkout; `--db` names a different index.
+
+⚠ **`pip install facet-mcp` currently works only for `q` and `claims`, and only with an
+explicit `--db`.** The wheel installs `facet_index` as a top-level module, so it resolves
+the record's location against `<venv>/Lib` — where there is no corpus and no index. So
+`build` fails, `q` without `--db` fails, and the server's corpus-reading tools refuse.
+`$FACET_INDEX_DB` is read by `facet-mcp` and **not** by `facet-index`. Both are
+[measured, located in code and open](docs/known-defects.md); **the `npx` binary above is
+unaffected and is the supported path** until they are fixed. This line was
+`pipx install facet-mcp # or the Python package directly` until v0.3.0's release
+read-back ran a *verb* instead of `--help`.
 
 ## Where it stands
 
