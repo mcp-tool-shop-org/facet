@@ -19,7 +19,7 @@ insert-only on stdout and byte-identical on both file outputs.
 |---|---|---|
 | 4 — allowed diff under `tools/` | **HELD** | `git diff --name-status -- tools/` is exactly `M tools/diagnostics/texel_provenance.py` and `M tools/measure_mcp.py`. `instrument_census.py` is **not** modified — the census is re-*run*, and its outputs live under `docs/`, outside this gate |
 | 5 — CI | **NOT YET RUN** — no identifier is written here ([E23](E23-ruling.md)'s fabricated-citation law). The push is the advisor's |
-| 6 — no recorded tree modified | **HELD** | 7,312 files / 17,072,807,610 bytes; **0 added / 0 removed / 0 changed**, baseline and close, across 18 instrument runs against the recorded trees plus three full suites' artifacts tier. Scope corrected — see F14 |
+| 6 — no recorded tree modified | **HELD** | 7,312 files / 17,072,807,610 bytes; **0 added / 0 removed / 0 changed**, baseline and close, across 18 instrument runs against the recorded trees plus the artifacts tier of four suite runs (two complete, two stopped early). Scope corrected — see F14 |
 | the pure-move condition | **HELD** | insert-only on 9 of 9 recorded triples plus the fixture; `--out-json` and `claim.npy` byte-identical |
 
 **Suite: 797 passed / 493.88 s / exit 0**, measured on a `git archive HEAD` of exactly the
