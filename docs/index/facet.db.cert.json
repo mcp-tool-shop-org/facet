@@ -2,14 +2,14 @@
  "andon": [],
  "corpus": {
   "files": 276,
-  "id": "9ea59f054fc6f1c8968e149976e7cf766819eddc16cbac0385b7c52cf26d3754",
+  "id": "8fcaae3e0bb1b4cc16d857900d71ae16c3b385e27f802de93abe93c39646b401",
   "manifest": {
    "CLAUDE.md": "67556f3e6ef3782622da9082042fe6cc522581b86017dc8177f56168938b3759",
    "README.md": "26babb0f8e6e41a20dba6b3022286241f4e594360adffb2cfe0fff53ca92bc9c",
    "docs/advisor-kickoff.md": "d196b9b257854184eeff6b7113854f03fef16408418dab400e168d0b851131ea",
    "docs/arc-history.md": "5b2876b3fed7be95a6efc984f5e5a00b7c1675b10a169ee43803b50e091b48a8",
    "docs/brand/README.md": "81f425b6a101135b43463b35468f08a2db37af39c856c01f7fbdb6ce66598226",
-   "docs/concept-prep.md": "19873b5febe82df736ec992f0f20e97ce52186dc3c0055fc80c24c4c8b24f482",
+   "docs/concept-prep.md": "d85a72c8564a196756db50aecc699955fb328057fb1f591309cc4ab33e2df155",
    "docs/context-architecture.md": "8555c7de2fe36ed81b9dfaedd8cb3679c3fb849d5ff2e42275135349082a083f",
    "docs/experiments/E01-facial-structure-ceiling.md": "53f992ff6aca14f59dab3ecaadc5fef1c9abe56f5c29600f427f316820ff90da",
    "docs/experiments/E01-ruling-gate1.md": "7daff8134d6f66f5b1a25224e0a4e51a5b396d68b9eb6bbbb78bc646e7946473",
@@ -446,7 +446,7 @@
  ],
  "unattributed_failures": [],
  "verb": "record_build",
- "verified_utc": "2026-08-09T18:16:57Z",
+ "verified_utc": "2026-08-09T18:19:31Z",
  "verify_exit_code": 0,
  "written_by": "tools/record_mcp.py"
 }

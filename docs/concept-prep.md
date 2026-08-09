@@ -143,15 +143,16 @@ rather than leaving a future reader to discover the gap.
 
 ## The local default, measured — and what the prompt was worth
 
-Four renders on the minotaur, 2026-08-09. **Only two of them are honest renders**, and the
-reason the other two are not is itself the finding (see the wiring note below).
+Five renders were reported on the minotaur, 2026-08-09. **Three are honest renders**; two
+executed nothing, and the reason is itself the finding (see the wiring note below).
 
-| run | config | C\* p50 | C\* p95 | C\* p99.9 |
-|---|---|---:|---:|---:|
-| concept (input) | — | 13.75 | 27.44 | 35.25 |
-| cloud Nano Banana 2 | — | 1.04 | 11.24 | 13.15 |
-| **Qwen run 1** | first-pass instruction | 1.55 | 22.24 | 25.17 |
-| **Qwen run 2** | + *monochrome / warm-grey* + negatives | 2.20 | **14.63** | **15.92** |
+| run | config | C\* p50 | C\* p95 | C\* p99.9 | bg L |
+|---|---|---:|---:|---:|---:|
+| concept (input) | — | 13.75 | 27.44 | 35.25 | 19.2 |
+| cloud Nano Banana 2 | — | 1.04 | 11.24 | 13.15 | 86.0 |
+| **Qwen run 1** | first-pass instruction, 40 steps | 1.55 | 22.24 | 25.17 | 83.9 |
+| **Qwen run 2 — the ceiling** | + *monochrome / warm-grey* + negatives; no LoRA, 40 steps, CFG 4 | 2.20 | **14.63** | **15.92** | 73.3 |
+| **Qwen floor** | same prompt; LoRA on, **4 steps**, CFG 1 | **1.27** | 14.89 | 17.29 | **82.7** |
 
 **Run 1 → run 2 changed the prompt and nothing else** — measured, 99.9996% of pixels
 differ, a genuine full re-render. The chroma tail fell **34% at p95 and 37% at p99.9**,
@@ -189,6 +190,22 @@ Measured: the ablation was **pixel-identical** to run 2 with **different file by
 - **Run 2 was therefore already no-LoRA at 40 steps and CFG 4: the quality ceiling, reached
   without anyone testing for it.** The only control that moves the configuration is node
   168; flipping it true switches all three together to the 4-step speed floor.
+
+**The floor then ran honestly, and it is not the degraded rung the ladder framing
+predicted.** New bytes, new pixels — 99.9881% differ from the ceiling at residual p50 29 —
+so it is a *different render*, not a softened one. Measured, its median chroma is **lower**
+(1.27 against 2.20) and its background is **lighter and cleaner** (L 82.7 / C\* 1.64 against
+73.3 / 2.24), landing closer to the cloud reference on both background axes than the
+40-step run does. The chroma tail is a wash. The residual concentrates in the head and
+horns, which is the region [E01](experiments/E01-facial-structure-ceiling.md) says decides
+what the reconstruction can hold.
+
+**No winner is declared here, and that is deliberate**: which clay is *right* is an artifact
+judgment at the Director's zoom, and no metric in this document approximates it. What the
+numbers support is an operating split rather than a choice — **the 4-step floor (~12 s) for
+Gate 0 exploration, where a subject's candidate clays are generated several at a time, and
+the 40-step ceiling (~2 min) for the clay that is kept.** One boolean switches between
+them coherently.
 
 **The law**: *a widget is not an input* — the same family as *file bytes are not pixel
 values*, and diagnosable only by reading the link topology, never the widget values. The
