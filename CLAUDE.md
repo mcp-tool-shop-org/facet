@@ -71,7 +71,15 @@ results, and the session that runs it does not decide their meaning.
    eye rule. Retuning a condition after seeing the result is the one move that is always wrong.
 4. **Own errors in the commit message.** They are how the next session learns which parts of
    the record to distrust.
-5. **Do not end a session the Director has not ended.**
+5. **A dispatch is not delivered until its paste block is on the screen.** Ship the executor
+   paste block *in the same message* as the dispatch, unasked — never "paste block on
+   request." The Director had to ask for it twice before this line existed, and the ask is
+   the defect: a spec sitting in `docs/experiments/` that nobody can start is a shelf, not a
+   deliverable. The same applies to every handoff the seat produces — when a shelf clears,
+   the next thing on the screen is the thing that starts the next arc, not a summary of the
+   last one. **Keeping the project moving is the job, and moving means the next session can
+   begin without another round trip.**
+6. **Do not end a session the Director has not ended.**
 
 ## Rules for everyone
 
