@@ -72,13 +72,14 @@ def srgb_to_lab(rgb):
 
 
 _e = srgb_to_lab(np.array([[214, 214, 255]]) / 255.0)[0]
-assert abs(_e[0] - 86.9) < 0.1 and abs(np.hypot(_e[1], _e[2]) - 21.4) < 0.1, \
-    "ANDON: sRGB->Lab disagrees with the recorded derivation triple"
+if not (abs(_e[0] - 86.9) < 0.1 and abs(np.hypot(_e[1], _e[2]) - 21.4) < 0.1):
+    raise AssertionError("ANDON: sRGB->Lab disagrees with the recorded derivation triple")
 
 PAIRS = args.pairs.split(",")
 MASKS = args.masks.split(",")
 LABELS = args.labels.split(",")
-assert len(PAIRS) == len(MASKS) == len(LABELS), "ANDON: --pairs/--masks/--labels differ in length"
+if not (len(PAIRS) == len(MASKS) == len(LABELS)):
+    raise AssertionError("ANDON: --pairs/--masks/--labels differ in length")
 f0, f1 = (float(v) for v in args.floor_scan.split(","))
 h0, h1 = (float(v) for v in args.hue_window.split(","))
 
@@ -89,7 +90,8 @@ bgC, bgH = [], []
 for p, m, lb in zip(PAIRS, MASKS, LABELS):
     img = np.asarray(Image.open(p).convert("RGB")).astype(np.float64) / 255.0
     msk = np.asarray(Image.open(m).convert("L")) > 127
-    assert img.shape[:2] == msk.shape, "ANDON: %s and %s differ in shape" % (p, m)
+    if not (img.shape[:2] == msk.shape):
+        raise AssertionError("ANDON: %s and %s differ in shape" % (p, m))
     H, W = msk.shape
     lab = srgb_to_lab(img)
     C = np.hypot(lab[..., 1], lab[..., 2])

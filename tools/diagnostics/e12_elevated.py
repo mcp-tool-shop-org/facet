@@ -165,7 +165,8 @@ def basis(yaw_d, el_d):
         ref = np.array([0.0, 1.0, 0.0])
     right = np.cross(look, ref)
     n = np.linalg.norm(right)
-    assert n > 1e-6, "ANDON: degenerate camera basis at yaw %g el %g" % (yaw_d, el_d)
+    if not (n > 1e-6):
+        raise AssertionError("ANDON: degenerate camera basis at yaw %g el %g" % (yaw_d, el_d))
     right /= n
     upv = np.cross(right, look)
     return look, right, upv / (np.linalg.norm(upv) + 1e-12)

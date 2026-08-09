@@ -86,7 +86,8 @@ N = np.load(os.path.join(args.prep, "nor.npy")).reshape(-1, 3)[valid].astype(np.
 N /= np.linalg.norm(N, axis=1, keepdims=True) + 1e-12
 NV = P.shape[0]
 styled = np.load(args.styled).reshape(-1)[np.where(valid)[0]]
-assert styled.shape == (NV,), f"ANDON: styled mask has {styled.shape} for {NV:,} valid texels"
+if not (styled.shape == (NV,)):
+    raise AssertionError(f"ANDON: styled mask has {styled.shape} for {NV:,} valid texels")
 
 m = trimesh.load(os.path.join(args.prep, "prep_uv.glb"), force="mesh", process=False)
 v = np.asarray(m.vertices, dtype=np.float64)
@@ -133,13 +134,15 @@ dil = ~reach                      # styled is a subset of reach, so this is dila
 
 print(f"[holes] valid {NV:,}   reach {int(reach.sum()):,}   styled {int(styled.sum()):,}",
       flush=True)
-assert int(reach.sum()) == args.banked_reach, (
-    f"ANDON: recomputed reach {int(reach.sum()):,} against the banked "
-    f"{args.banked_reach:,} — this is measuring a different object than stage 1 was")
-assert int(styled.sum()) == args.banked_styled, (
-    f"ANDON: styled {int(styled.sum()):,} against the banked {args.banked_styled:,}")
-assert int(brush.sum()) + int(dil.sum()) == NV - int(styled.sum()), (
-    "ANDON: the hole decomposition leaves a remainder")
+if not (int(reach.sum()) == args.banked_reach):
+    raise AssertionError(
+        f"ANDON: recomputed reach {int(reach.sum()):,} against the banked "
+        f"{args.banked_reach:,} — this is measuring a different object than stage 1 was")
+if not (int(styled.sum()) == args.banked_styled):
+    raise AssertionError(
+        f"ANDON: styled {int(styled.sum()):,} against the banked {args.banked_styled:,}")
+if not (int(brush.sum()) + int(dil.sum()) == NV - int(styled.sum())):
+    raise AssertionError("ANDON: the hole decomposition leaves a remainder")
 print(f"[holes] BRUSH set (reachable, unstyled) {int(brush.sum()):,}   "
       f"DILATION set (unreachable)  {int(dil.sum()):,}   "
       f"total holes {int(brush.sum()) + int(dil.sum()):,}", flush=True)

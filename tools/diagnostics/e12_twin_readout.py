@@ -77,8 +77,10 @@ def kv(specs, what):
     out = {}
     for s in specs:
         k, _, p = s.partition("=")
-        assert p, f"ANDON: --{what} wants LABEL=PATH, got {s!r}"
-        assert os.path.exists(p), f"ANDON: --{what} {k}: no such file {p}"
+        if not (p):
+            raise AssertionError(f"ANDON: --{what} wants LABEL=PATH, got {s!r}")
+        if not (os.path.exists(p)):
+            raise AssertionError(f"ANDON: --{what} {k}: no such file {p}")
         out[k] = p
     return out
 

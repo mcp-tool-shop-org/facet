@@ -61,7 +61,8 @@ mask2d = np.load(J(args.prep, "mask.npy"))[..., 0] > 0.5
 valid = mask2d.reshape(-1)
 vidx = np.where(valid)[0]
 terr_v = np.load(args.territory)
-assert terr_v.shape == vidx.shape, f"ANDON: territory is {terr_v.shape}, valid is {vidx.shape}"
+if not (terr_v.shape == vidx.shape):
+    raise AssertionError(f"ANDON: territory is {terr_v.shape}, valid is {vidx.shape}")
 flat = vidx[terr_v]
 N = len(flat)
 
@@ -71,7 +72,8 @@ atlas = np.array(Image.open(ap_).convert("RGB"))
 holes = np.array(Image.open(hp).convert("L"))
 styled = np.load(sp)
 src = np.array(Image.open(args.source).convert("RGB"))
-assert src.shape == atlas.shape, f"ANDON: source {src.shape} vs state {atlas.shape}"
+if not (src.shape == atlas.shape):
+    raise AssertionError(f"ANDON: source {src.shape} vs state {atlas.shape}")
 
 a_f, h_f, s_f = atlas.reshape(-1, 3), holes.reshape(-1), styled.reshape(-1)
 is_hole = h_f[flat] > 127
@@ -80,8 +82,10 @@ write = flat[is_hole]
 print(f"[reproj] territory            {N:,} texels")
 print(f"[reproj] of those, HOLES now  {len(write):,}   <- THE WRITE SET (territory AND holes)")
 print(f"[reproj] of those, already styled (excluded by construction): {N - len(write):,}")
-assert not s_f[write].any(), "ANDON: the write set contains styled texels"
-assert np.isin(write, flat).all(), "ANDON: the write set escapes the territory"
+if s_f[write].any():
+    raise AssertionError("ANDON: the write set contains styled texels")
+if not (np.isin(write, flat).all()):
+    raise AssertionError("ANDON: the write set escapes the territory")
 print("[reproj] ASSERTED: no styled texel in the write set; the write set is inside the territory")
 
 if args.dry_run:
@@ -95,11 +99,11 @@ s_f[write] = True
 
 outside = np.ones(len(a_f), dtype=bool)
 outside[flat] = False
-assert np.array_equal(a_f[outside], pre[outside]), (
-    "ANDON: a texel OUTSIDE the territory changed colour")
+if not (np.array_equal(a_f[outside], pre[outside])):
+    raise AssertionError("ANDON: a texel OUTSIDE the territory changed colour")
 untouched_in_terr = flat[~is_hole]
-assert np.array_equal(a_f[untouched_in_terr], pre[untouched_in_terr]), (
-    "ANDON: a non-hole texel inside the territory changed colour")
+if not (np.array_equal(a_f[untouched_in_terr], pre[untouched_in_terr])):
+    raise AssertionError("ANDON: a non-hole texel inside the territory changed colour")
 print(f"[reproj] ASSERTED: every texel outside the territory is byte-identical "
       f"({int(outside.sum()):,} texels)")
 

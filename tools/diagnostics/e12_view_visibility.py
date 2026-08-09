@@ -121,9 +121,10 @@ from scipy.sparse.csgraph import connected_components as _cc
 
 mw = m.copy()
 mw.merge_vertices(merge_tex=True, merge_norm=True)
-assert len(mw.faces) == len(f), (
-    "ANDON: welding changed the face count (%d -> %d); component labels would no longer "
-    "address the same faces as the raycast scene" % (len(f), len(mw.faces)))
+if not (len(mw.faces) == len(f)):
+    raise AssertionError(
+        "ANDON: welding changed the face count (%d -> %d); component labels would no longer "
+        "address the same faces as the raycast scene" % (len(f), len(mw.faces)))
 wf = np.asarray(mw.faces)
 _e = np.vstack([wf[:, [0, 1]], wf[:, [1, 2]], wf[:, [2, 0]]])
 _g = coo_matrix((np.ones(len(_e), dtype=np.int8), (_e[:, 0], _e[:, 1])),

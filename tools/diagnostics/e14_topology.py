@@ -95,7 +95,8 @@ AX = ["x", "y", "z"]
 
 m = trimesh.load(args.glb, force="mesh", process=False)
 m.merge_vertices(merge_tex=True, merge_norm=True)
-assert len(m.faces), "ANDON: %s has no faces" % args.glb
+if not (len(m.faces)):
+    raise AssertionError("ANDON: %s has no faces" % args.glb)
 
 f = np.asarray(m.faces)
 co = np.asarray(m.vertices, dtype=np.float64) @ GLTF_TO_BLENDER.T

@@ -32,11 +32,13 @@ ap.add_argument("--out", required=True)
 args = ap.parse_args()
 
 labels = args.labels or [os.path.basename(p) for p in args.images]
-assert len(labels) == len(args.images), "ANDON: --labels count must match --images count"
+if not (len(labels) == len(args.images)):
+    raise AssertionError("ANDON: --labels count must match --images count")
 ims = [Image.open(p).convert("RGB") for p in args.images]
 w, h = ims[0].size
 for p, im in zip(args.images, ims):
-    assert im.size == (w, h), "ANDON: %s is %s, expected %s" % (p, im.size, (w, h))
+    if not (im.size == (w, h)):
+        raise AssertionError("ANDON: %s is %s, expected %s" % (p, im.size, (w, h)))
 
 TOP, PAD = 46, 8
 sheet = Image.new("RGB", (len(ims) * w + (len(ims) - 1) * PAD, TOP + h), (16, 16, 18))

@@ -93,12 +93,14 @@ ry = args.h
 cover_h = float(ext[2]) * args.margin
 cover_w = cover_h * (rx / ry)
 worst = max(per_view.values())
-assert cover_w >= worst, (
-    "ANDON: frame %dx%d covers %.6f horizontally but view %s needs %.6f"
-    % (rx, ry, cover_w, max(per_view, key=per_view.get), worst))
-assert cover_h >= float(ext[2]), (
-    "ANDON: frame %dx%d covers %.6f vertically against a height of %.6f"
-    % (rx, ry, cover_h, ext[2]))
+if not (cover_w >= worst):
+    raise AssertionError(
+        "ANDON: frame %dx%d covers %.6f horizontally but view %s needs %.6f"
+        % (rx, ry, cover_w, max(per_view, key=per_view.get), worst))
+if not (cover_h >= float(ext[2])):
+    raise AssertionError(
+        "ANDON: frame %dx%d covers %.6f vertically against a height of %.6f"
+        % (rx, ry, cover_h, ext[2]))
 
 lab = args.label or os.path.splitext(os.path.basename(args.glb))[0]
 print("[frame] %s  extent (Blender xyz) x=%.4f y=%.4f z=%.4f" % (lab, *ext), flush=True)

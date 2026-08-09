@@ -110,9 +110,10 @@ print("[anat] valid %,d of %,d atlas texels (%.2f%%);  %,d faces"
 # length untouched, so the labels still index the same faces the raycast attributes to.
 mw = m.copy()
 mw.merge_vertices(merge_tex=True, merge_norm=True)
-assert len(mw.faces) == len(f), (
-    f"ANDON: welding changed the face array ({len(mw.faces):,} vs {len(f):,}), so face "
-    f"labels can no longer be indexed by the raycast's primitive ids")
+if not (len(mw.faces) == len(f)):
+    raise AssertionError(
+        f"ANDON: welding changed the face array ({len(mw.faces):,} vs {len(f):,}), so face "
+        f"labels can no longer be indexed by the raycast's primitive ids")
 print(f"[anat] welded for adjacency: {len(v):,} -> {len(mw.vertices):,} verts, "
       f"faces unchanged at {len(f):,}", flush=True)
 comp = trimesh.graph.connected_components(mw.face_adjacency, min_len=1,
@@ -170,7 +171,8 @@ def dtc_of(yaw_d, el_d=0.0):
     return cd / np.linalg.norm(cd)
 
 
-assert np.allclose(dtc_of(0.0), [0.0, -1.0, 0.0]), "ANDON: yaw 0 is not project_twins' front"
+if not (np.allclose(dtc_of(0.0), [0.0, -1.0, 0.0])):
+    raise AssertionError("ANDON: yaw 0 is not project_twins' front")
 
 VIEWS = [float(x) for x in args.views.split(",")]
 reach_all = np.zeros(NV, dtype=bool)
@@ -203,14 +205,16 @@ if args.ceiling_json and os.path.exists(args.ceiling_json):
                  if (s["facing_min"], s["head_facing_min"]) == _want), None)
     if _lbl is None:
         _lbl = "uniform %g" % args.facing_min      # pre-E16-6 ceiling JSON
-    assert _lbl in cj["settings"], (
-        f"ANDON: {os.path.basename(args.ceiling_json)} has no block run at floors "
-        f"{_want} - blocks present: {sorted(cj['settings'])}. A cross-check against "
-        f"a different configuration is not a cross-check.")
+    if not (_lbl in cj["settings"]):
+        raise AssertionError(
+            f"ANDON: {os.path.basename(args.ceiling_json)} has no block run at floors "
+            f"{_want} - blocks present: {sorted(cj['settings'])}. A cross-check against "
+            f"a different configuration is not a cross-check.")
     ref = cj["settings"][_lbl][f"N{len(VIEWS)}"]["reachable"]
-    assert int(reach_all.sum()) == int(ref), (
-        f"ANDON: this file's reachability ({int(reach_all.sum()):,}) disagrees with "
-        f"e08_ceiling's ({int(ref):,}) on the same bake and the same floors")
+    if not (int(reach_all.sum()) == int(ref)):
+        raise AssertionError(
+            f"ANDON: this file's reachability ({int(reach_all.sum()):,}) disagrees with "
+            f"e08_ceiling's ({int(ref):,}) on the same bake and the same floors")
     print(f"[anat] EXTERNAL CHECK: reproduces e08_ceiling's N{len(VIEWS)} total exactly "
           f"({int(ref):,})", flush=True)
     out["ceiling_cross_check"] = "exact"

@@ -49,7 +49,8 @@ args = ap.parse_args()
 
 paths = sorted(glob.glob(os.path.join(args.renders, "%s_*.png" % args.tag)),
                key=lambda p: int(os.path.splitext(p)[0].rsplit("_", 1)[1]))
-assert paths, "ANDON: no %s_*.png in %s" % (args.tag, args.renders)
+if not (paths):
+    raise AssertionError("ANDON: no %s_*.png in %s" % (args.tag, args.renders))
 views = [Image.open(p).convert("RGB") for p in paths]
 vw, vh = views[0].size
 cols = args.cols

@@ -145,7 +145,9 @@ y0, y1 = int(ys_m.min()), int(ys_m.max())
 
 # WHAT THE RIM SITS ON: nearest deep pixel, by EDT indices. Direction-free.
 deep = trust & (dist >= args.deep_px)
-assert deep.any(), "ANDON: no deep trust-mask pixels — cannot identify the underlying material"
+if not (deep.any()):
+    raise AssertionError(
+        "ANDON: no deep trust-mask pixels — cannot identify the underlying material")
 _, inds = distance_transform_edt(~deep, return_indices=True)
 deep_col = img[inds[0], inds[1]]                 # per-pixel: colour of nearest deep pixel
 deep_dist = distance_transform_edt(~deep).astype(np.float32)

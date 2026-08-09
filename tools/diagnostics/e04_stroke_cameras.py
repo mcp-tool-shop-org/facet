@@ -125,8 +125,10 @@ N /= np.linalg.norm(N, axis=1, keepdims=True) + 1e-12
 NV = P.shape[0]
 
 styled = np.load(args.styled)
-assert styled.shape == (RES, RES), "ANDON: styled mask is %s, prep says %d" % (
-    styled.shape, RES)
+if not (styled.shape == (RES, RES)):
+    raise AssertionError(
+        "ANDON: styled mask is %s, prep says %d" % (
+        styled.shape, RES))
 styled_v = styled.reshape(-1)[valid]
 hole = ~styled_v
 
@@ -203,8 +205,10 @@ def basis(yaw_d, el_d):
 
 
 # project_twins' two hardcoded camera axes, reproduced - the same assert e08_ceiling makes
-assert np.allclose(basis(0.0, 0.0)[0], [0.0, -1.0, 0.0]), "ANDON: yaw 0 is not front"
-assert np.allclose(basis(180.0, 0.0)[0], [0.0, 1.0, 0.0]), "ANDON: yaw 180 is not back"
+if not (np.allclose(basis(0.0, 0.0)[0], [0.0, -1.0, 0.0])):
+    raise AssertionError("ANDON: yaw 0 is not front")
+if not (np.allclose(basis(180.0, 0.0)[0], [0.0, 1.0, 0.0])):
+    raise AssertionError("ANDON: yaw 180 is not back")
 
 
 def bilin(img, x, y):

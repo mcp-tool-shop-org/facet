@@ -81,11 +81,13 @@ print(f"[sheet] yaw {args.yaw:+.0f}: head box -> route-frame rect {rect} "
 panels = []
 for spec in args.panel:
     k, _, p = spec.partition("=")
-    assert p and os.path.exists(p), f"ANDON: --panel {k}: no such file {p}"
+    if not (p and os.path.exists(p)):
+        raise AssertionError(f"ANDON: --panel {k}: no such file {p}")
     im = Image.open(p).convert("RGB")
-    assert im.size == (int(AW), int(AH)), (
-        f"ANDON: {k} is {im.size}, not the route frame {(int(AW), int(AH))} — a sheet whose "
-        f"rows are at different framings compares framing, not paint")
+    if not (im.size == (int(AW), int(AH))):
+        raise AssertionError(
+            f"ANDON: {k} is {im.size}, not the route frame {(int(AW), int(AH))} — a sheet whose "
+            f"rows are at different framings compares framing, not paint")
     c = im.crop(rect)
     c = c.resize((int(c.width * args.zoom), int(c.height * args.zoom)), Image.LANCZOS)
     panels.append((k, c))

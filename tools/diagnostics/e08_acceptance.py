@@ -138,17 +138,19 @@ def keyed_bbox_guard(name, twin_fm, sil, tol=0.25):
     """
     ys_t, xs_t = np.where(twin_fm > 0.5)
     ys_m, xs_m = np.where(sil)
-    assert len(ys_t) and len(ys_m), f"ANDON: {name}: empty keyed or silhouette mask"
+    if not (len(ys_t) and len(ys_m)):
+        raise AssertionError(f"ANDON: {name}: empty keyed or silhouette mask")
     th, tw = ys_t.max() - ys_t.min(), xs_t.max() - xs_t.min()
     mh, mw = ys_m.max() - ys_m.min(), xs_m.max() - xs_m.min()
-    assert th <= mh * (1 + tol) and tw <= mw * (1 + tol), (
-        f"ANDON: {name}: the corner-median key's bbox {th}x{tw} exceeds the mesh "
-        f"silhouette's {mh}x{mw} by more than {tol*100:.0f}% — it has keyed the backdrop, "
-        f"not the figure ({twin_fm.mean()*100:.1f}% of frame against the silhouette's "
-        f"{sil.mean()*100:.1f}%). This instrument keys with a corner median to reproduce "
-        f"its own anchor, and corner-median keying fails on any non-flat backdrop. Nothing "
-        f"it reports on this twin would mean anything; use project_twins, whose key is the "
-        f"fitted estimator.")
+    if not (th <= mh * (1 + tol) and tw <= mw * (1 + tol)):
+        raise AssertionError(
+            f"ANDON: {name}: the corner-median key's bbox {th}x{tw} exceeds the mesh "
+            f"silhouette's {mh}x{mw} by more than {tol*100:.0f}% — it has keyed the backdrop, "
+            f"not the figure ({twin_fm.mean()*100:.1f}% of frame against the silhouette's "
+            f"{sil.mean()*100:.1f}%). This instrument keys with a corner median to reproduce "
+            f"its own anchor, and corner-median keying fails on any non-flat backdrop. Nothing "
+            f"it reports on this twin would mean anything; use project_twins, whose key is the "
+            f"fitted estimator.")
 
 
 def bilinear(img, x, y):
@@ -199,9 +201,10 @@ for view in VIEWS:
     img = np.asarray(Image.open(view["path"]).convert("RGB"), dtype=np.float32) / 255.0
     twin_fm = figure_mask(img)
     mp = view["mask"] or os.path.splitext(view["path"])[0] + "_mask.png"
-    assert os.path.exists(mp), (
-        f"ANDON: no silhouette at {mp}. Pass --{view['name']}-mask explicitly — the "
-        f"derived <twin stem>_mask.png does not exist in every twin layout.")
+    if not (os.path.exists(mp)):
+        raise AssertionError(
+            f"ANDON: no silhouette at {mp}. Pass --{view['name']}-mask explicitly — the "
+            f"derived <twin stem>_mask.png does not exist in every twin layout.")
     rawm = (np.asarray(Image.open(mp).convert("L"), dtype=np.float32) / 255.0 > 0.5)
     mesh_fm = maximum_filter(rawm.astype(np.float32), size=5)
     # THE KEY's guard, before anything is computed off it. Against the LIVE silhouette
@@ -218,13 +221,14 @@ for view in VIEWS:
         # filename. Eliminating the hazard, not documenting it.
         sil = live_silhouette(view)
         nd = int((sil != rawm).sum())
-        assert nd == 0, (
-            f"ANDON: {view['name']}: the sidecar {os.path.basename(mp)} differs from the "
-            f"live raycast silhouette by {nd:,} px ({int(rawm.sum()):,} vs "
-            f"{int(sil.sum()):,}) — it is NOT the exact silhouette, so intersecting with "
-            f"it measures the sidecar's defect. E01-era masks score IoU 0.523/0.578 here. "
-            f"Point --{view['name']}-mask at an exact silhouette (silhouette_masks.py "
-            f"writes them; silhouette_agree.py checks them).")
+        if not (nd == 0):
+            raise AssertionError(
+                f"ANDON: {view['name']}: the sidecar {os.path.basename(mp)} differs from the "
+                f"live raycast silhouette by {nd:,} px ({int(rawm.sum()):,} vs "
+                f"{int(sil.sum()):,}) — it is NOT the exact silhouette, so intersecting with "
+                f"it measures the sidecar's defect. E01-era masks score IoU 0.523/0.578 here. "
+                f"Point --{view['name']}-mask at an exact silhouette (silhouette_masks.py "
+                f"writes them; silhouette_agree.py checks them).")
         print(f"[acc] {view['name']}: sidecar == live raycast silhouette, 0 differing px "
               f"({int(sil.sum()):,}px)", flush=True)
         fm = (twin_fm > 0.5) & rawm
@@ -319,9 +323,10 @@ if args.trust_intersect:
           f"HISTORICAL acceptance ({args.expect_styled:,}) and this run changes the "
           f"trust operand on purpose. Delta {int(A.sum()) - args.expect_styled:+,}.")
 else:
-    assert abs(int(A.sum()) - args.expect_styled) <= 2, (
-        f"ANDON: styled {int(A.sum()):,} does not reproduce E06's measured TWINS "
-        f"{args.expect_styled:,} — the replica of project_twins' acceptance is wrong")
+    if not (abs(int(A.sum()) - args.expect_styled) <= 2):
+        raise AssertionError(
+            f"ANDON: styled {int(A.sum()):,} does not reproduce E06's measured TWINS "
+            f"{args.expect_styled:,} — the replica of project_twins' acceptance is wrong")
     print(f"[acc]   anchor OK: styled reproduces E06's TWINS provenance "
           f"({args.expect_styled:,})")
 

@@ -24,19 +24,24 @@ twin = json.load(open(TWINS, encoding="utf-8"))
 # "one constant string" ruling does not describe this file's source
 stems = [k for k in twin if k.startswith("galleonclay_")]
 vals = {twin[k] for k in stems}
-assert len(stems) == 8, "ANDON: expected 8 twin stems, got %d" % len(stems)
-assert len(vals) == 1, "ANDON: the twin stems are NOT one constant string (%d variants)" % len(vals)
+if not (len(stems) == 8):
+    raise AssertionError("ANDON: expected 8 twin stems, got %d" % len(stems))
+if not (len(vals) == 1):
+    raise AssertionError(
+        "ANDON: the twin stems are NOT one constant string (%d variants)" % len(vals))
 IDENT = vals.pop()
 
 # the negative the ship's own generations actually ran on - restylize_views.negative, SPENT
 NEG = ship["tools"]["restylize_views.py"]["negative"]["value"]
-assert NEG == "watermark, text, logo, blurry, photo, deformed", "ANDON: negative moved"
+if not (NEG == "watermark, text, logo, blurry, photo, deformed"):
+    raise AssertionError("ANDON: negative moved")
 
 cams = []
 for s in ship["tools"]["cull_unseen.py"]["production"]["value"].split(";"):
     y, e = (int(float(x)) for x in s.split(","))
     cams.append((y, e))
-assert len(cams) == len(set(cams)), "ANDON: duplicate camera in the production superset"
+if not (len(cams) == len(set(cams))):
+    raise AssertionError("ANDON: duplicate camera in the production superset")
 
 
 def key(y, e):
@@ -49,7 +54,9 @@ def key(y, e):
 # the ten-stroke run: 80.8 / 76.7 / 76.3 / 83.8 / 71.7 / 76.1, MIN 71.72%, mean 77.57%.
 ORDER = [(300, 0), (30, 0), (150, 0), (240, 0), (0, 40), (180, 40)]
 for c in ORDER:
-    assert c in cams, "ANDON: proposed stroke %s is outside the production superset" % (c,)
+    if not (c in cams):
+        raise AssertionError(
+            "ANDON: proposed stroke %s is outside the production superset" % (c,))
 
 out = collections.OrderedDict()
 out["_version"] = "1.0.0"

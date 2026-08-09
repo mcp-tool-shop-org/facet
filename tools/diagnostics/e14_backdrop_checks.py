@@ -236,7 +236,8 @@ for p in _probe:
     d_here = np.abs(C - bgp[None, :]).max(axis=1)
     s_here = float((d_here / np.where(thin, args.thin_weight, 1.0)).min())
     s_mine, _, _ = weighted_min(bgp)
-    assert abs(s_here - s_mine) < 1e-12, "ANDON: this file's scorer disagrees with itself"
+    if not (abs(s_here - s_mine) < 1e-12):
+        raise AssertionError("ANDON: this file's scorer disagrees with itself")
 print("\n[chk] scorer reproduces the key's max-channel arithmetic on 4 probe points")
 
 if args.out:

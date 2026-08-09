@@ -75,10 +75,11 @@ def srgb_to_lab(rgb):
 
 # EXTERNAL_VERIFIER: the same conversion the derivation used, on the derivation's own triple
 _est = srgb_to_lab(np.array([[214, 214, 255]]) / 255.0)[0]
-assert abs(_est[0] - 86.9) < 0.1 and abs(np.hypot(_est[1], _est[2]) - 21.4) < 0.1, (
-    "ANDON: this file's sRGB->Lab disagrees with e14_backdrop_checks.py on the estimate "
-    "triple (got L* %.2f C* %.2f against the recorded 86.9 / 21.4)"
-    % (_est[0], np.hypot(_est[1], _est[2])))
+if not (abs(_est[0] - 86.9) < 0.1 and abs(np.hypot(_est[1], _est[2]) - 21.4) < 0.1):
+    raise AssertionError(
+        "ANDON: this file's sRGB->Lab disagrees with e14_backdrop_checks.py on the estimate "
+        "triple (got L* %.2f C* %.2f against the recorded 86.9 / 21.4)"
+        % (_est[0], np.hypot(_est[1], _est[2])))
 
 img = np.asarray(Image.open(args.pair).convert("RGB")).astype(np.float64) / 255.0
 msk = np.asarray(Image.open(args.mask).convert("L")) > 127
@@ -86,8 +87,10 @@ if args.erode:
     import cv2
     k = np.ones((2 * args.erode + 1, 2 * args.erode + 1), np.uint8)
     msk = cv2.erode(msk.astype(np.uint8), k, iterations=1) > 0
-assert img.shape[:2] == msk.shape, ("ANDON: pair %s and mask %s differ in shape"
-                                    % (img.shape[:2], msk.shape))
+if not (img.shape[:2] == msk.shape):
+    raise AssertionError(
+        "ANDON: pair %s and mask %s differ in shape"
+        % (img.shape[:2], msk.shape))
 H, W = msk.shape
 lab = srgb_to_lab(img)
 L, A, B = lab[..., 0], lab[..., 1], lab[..., 2]

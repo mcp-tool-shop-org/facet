@@ -82,8 +82,10 @@ hit = np.isfinite(rs.cast_rays(o3d.core.Tensor(np.concatenate(
 ))["t_hit"].numpy().reshape(H, W))
 
 pct = float(hit.mean() * 100)
-assert 0.5 < pct < 99.5, ("ANDON: silhouette is %.2f%% of frame - empty or runaway; the "
-                          "camera convention, the centre or the scale is wrong." % pct)
+if not (0.5 < pct < 99.5):
+    raise AssertionError(
+        "ANDON: silhouette is %.2f%% of frame - empty or runaway; the "
+        "camera convention, the centre or the scale is wrong." % pct)
 ys, xs = np.nonzero(hit)
 bb = [int(xs.min()), int(ys.min()), int(xs.max()), int(ys.max())]
 os.makedirs(os.path.dirname(os.path.abspath(args.out)) or ".", exist_ok=True)

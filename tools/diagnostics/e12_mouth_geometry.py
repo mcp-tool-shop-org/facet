@@ -57,9 +57,11 @@ args = ap.parse_args()
 
 os.makedirs(args.out, exist_ok=True)
 b = [float(v) for v in args.box.split(",")]
-assert len(b) == 6, "ANDON: --box wants x0,y0,z0,x1,y1,z1"
+if not (len(b) == 6):
+    raise AssertionError("ANDON: --box wants x0,y0,z0,x1,y1,z1")
 lo, hi = np.array(b[:3]), np.array(b[3:])
-assert (hi > lo).all(), "ANDON: degenerate cavity box %s" % (b,)
+if not ((hi > lo).all()):
+    raise AssertionError("ANDON: degenerate cavity box %s" % (b,))
 
 # --- geometry, in the frame head_00003.json speaks -----------------------------------
 # The Blender glTF import remap (x, -z, y), which is also the remap silhouette_masks and
@@ -83,8 +85,10 @@ inbox = np.all((cent >= lo) & (cent <= hi), axis=1)
 n_in = int(inbox.sum())
 print("[mouth] triangles with centroid inside the cavity box: %d (%.4f%% of mesh)"
       % (n_in, 100.0 * n_in / len(F)), flush=True)
-assert n_in > 0, ("ANDON: the cavity box contains no triangle centroids. The box is in the "
-                  "wrong frame or the wrong place; nothing was measured.")
+if not (n_in > 0):
+    raise AssertionError(
+        "ANDON: the cavity box contains no triangle centroids. The box is in the "
+        "wrong frame or the wrong place; nothing was measured.")
 
 nrm = mesh.face_normals[inbox]
 cin = cent[inbox]
@@ -127,7 +131,8 @@ XS = [float(x) for x in args.sections.split(",")]
 curves = {}
 for x in XS:
     sec = mesh.section(plane_origin=[x, 0, 0], plane_normal=[1, 0, 0])
-    assert sec is not None, "ANDON: section at x=%.5f returned nothing" % x
+    if not (sec is not None):
+        raise AssertionError("ANDON: section at x=%.5f returned nothing" % x)
     segs = []
     for ent in sec.entities:
         pts = sec.vertices[ent.points]

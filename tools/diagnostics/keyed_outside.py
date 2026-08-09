@@ -83,7 +83,8 @@ print(f"{'view':>5} {'yaw':>6} {'keyed':>9} {'sil':>9} {'OUTSIDE':>9} {'largest'
       f"{'%keyed':>7} {'IoU':>7} {'dx':>6} {'dy':>6} {'bbox twin':>11} {'bbox mesh':>11}")
 for k in [int(x) for x in args.views.split(",")]:
     p = os.path.join(args.twins, args.pattern.format(k=k))
-    assert os.path.exists(p), f"ANDON: no twin at {p}"
+    if not (os.path.exists(p)):
+        raise AssertionError(f"ANDON: no twin at {p}")
     img = np.asarray(Image.open(p).convert("RGB"), dtype=np.float32) / 255.0
     H, W = img.shape[:2]
     twin = figure_mask(img, args.tol, args.erode)

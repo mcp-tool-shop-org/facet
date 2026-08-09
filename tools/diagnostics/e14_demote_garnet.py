@@ -92,13 +92,15 @@ pk = int(np.argmax(exts[:16])); i = pk + 1
 while i + 1 < len(exts) and exts[i + 1] <= exts[i]:
     i += 1
 Z_BOT = zs[i]
-assert abs(Z_BOT - 0.4340) < 1e-6, f"ANDON: the stone landmark reads {Z_BOT}, not 0.4340"
+if not (abs(Z_BOT - 0.4340) < 1e-6):
+    raise AssertionError(f"ANDON: the stone landmark reads {Z_BOT}, not 0.4340")
 
 sel = (P[:, 2] >= Z_BOT) & styled1b & np.isin(owner, DRIFT_OI)
 N = int(sel.sum())
-assert N == args.expect, (
-    f"ANDON: the ownership partition yields {N:,} drifted-owned stone texels, but Ruling 24f "
-    f"names {args.expect:,}. The mask this op edits is not the mask the ruling adopted. HALT.")
+if not (N == args.expect):
+    raise AssertionError(
+        f"ANDON: the ownership partition yields {N:,} drifted-owned stone texels, but Ruling 24f "
+        f"names {args.expect:,}. The mask this op edits is not the mask the ruling adopted. HALT.")
 flat = np.where(valid)[0][sel]
 print(f"[demote] mask re-derived from OWNERSHIP (drifted views 1/3/5/7) and the stone's "
       f"landmark z >= {Z_BOT:.4f}: {N:,} texels, asserted against Ruling 24f")
@@ -109,7 +111,8 @@ def apply_demotion(state, tag="demote"):
     a_before = sha(ap_)
     st = np.load(sp)
     ho = np.array(Image.open(hp).convert("L"))
-    assert st.shape == mask2d.shape and ho.shape == mask2d.shape, "ANDON: state shape"
+    if not (st.shape == mask2d.shape and ho.shape == mask2d.shape):
+        raise AssertionError("ANDON: state shape")
     st_f, ho_f = st.reshape(-1), ho.reshape(-1)
     pre_st, pre_ho = st_f.copy(), ho_f.copy()
     n_styled0, n_holes0 = int(st.sum()), int((ho > 127).sum())
@@ -118,16 +121,17 @@ def apply_demotion(state, tag="demote"):
     # ⚠ THE OP'S OWN INVARIANCE, printed: exactly the mask changed, in state channels only.
     ch_st = np.where(pre_st != st_f)[0]
     ch_ho = np.where(pre_ho != ho_f)[0]
-    assert np.array_equal(np.sort(ch_st), np.sort(flat[pre_st[flat]])), (
-        "ANDON: the styled channel changed outside the ruled mask")
-    assert set(ch_ho.tolist()).issubset(set(flat.tolist())), (
-        "ANDON: the holes channel changed outside the ruled mask")
+    if not (np.array_equal(np.sort(ch_st), np.sort(flat[pre_st[flat]]))):
+        raise AssertionError("ANDON: the styled channel changed outside the ruled mask")
+    if not (set(ch_ho.tolist()).issubset(set(flat.tolist()))):
+        raise AssertionError("ANDON: the holes channel changed outside the ruled mask")
     np.save(sp, st)
     Image.fromarray(ho).save(hp)
     a_after = sha(ap_)
-    assert a_before == a_after, (
-        f"ANDON: atlas.png changed during a state-channel-only operation\n  before "
-        f"{a_before}\n  after  {a_after}")
+    if not (a_before == a_after):
+        raise AssertionError(
+            f"ANDON: atlas.png changed during a state-channel-only operation\n  before "
+            f"{a_before}\n  after  {a_after}")
     rep = {"op": tag, "mask_texels": N, "z_stone_bottom": float(Z_BOT),
            "styled": [n_styled0, int(st.sum())], "holes": [n_holes0, int((ho > 127).sum())],
            "styled_changed": int(len(ch_st)), "holes_changed": int(len(ch_ho)),
@@ -170,7 +174,8 @@ if args.verify_undo:
     apply_undo(scratch, args.state0)
     h1 = {f: sha(J(scratch, f)) for f in ("atlas.png", "holes.png", "styled_mask.npy")}
     bad = [f for f in h0 if h0[f] != h1[f]]
-    assert not bad, f"ANDON: the compensator did not restore {bad} byte-identically"
+    if bad:
+        raise AssertionError(f"ANDON: the compensator did not restore {bad} byte-identically")
     print("[verify-undo] PASS - demote then undo returns all three state files "
           "BYTE-IDENTICAL. The compensator is exercised, not merely declared.")
 elif args.undo:

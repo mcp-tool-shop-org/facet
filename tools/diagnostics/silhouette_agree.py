@@ -94,16 +94,19 @@ for k in [int(x) for x in args.views.split(",")]:
     ).reshape(-1, 6).astype(np.float32)))["t_hit"].numpy().reshape(H, W))
 
     mp = os.path.join(args.mask, f"{args.stem}_{k}{args.suffix}.png")
-    assert os.path.exists(mp), f"ANDON: no sidecar at {mp}"
+    if not (os.path.exists(mp)):
+        raise AssertionError(f"ANDON: no sidecar at {mp}")
     grey = np.asarray(Image.open(mp).convert("L"))
     # a mask is binary; a twin is not. Cheap, and it tests the failure mode.
     nlev = len(np.unique(grey))
-    assert nlev <= 4, (
-        f"ANDON: {mp} has {nlev} distinct grey levels — that is an IMAGE, not a mask. "
-        f"Point --mask at a mask directory, or add --suffix _mask for a twins/ sidecar.")
+    if not (nlev <= 4):
+        raise AssertionError(
+            f"ANDON: {mp} has {nlev} distinct grey levels — that is an IMAGE, not a mask. "
+            f"Point --mask at a mask directory, or add --suffix _mask for a twins/ sidecar.")
     side = grey.astype(np.float32) / 255.0 > 0.5
-    assert side.shape == live.shape, (
-        f"ANDON: sidecar {side.shape} vs live {live.shape} - different framing")
+    if not (side.shape == live.shape):
+        raise AssertionError(
+            f"ANDON: sidecar {side.shape} vs live {live.shape} - different framing")
     diff = int((live != side).sum())
     worst = max(worst, diff)
     rows[str(k)] = {"yaw": deg, "live_px": int(live.sum()), "sidecar_px": int(side.sum()),

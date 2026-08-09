@@ -36,9 +36,12 @@ args = ap.parse_args()
 Z0 = np.load(args.r0, allow_pickle=False)
 Z1 = np.load(args.r1, allow_pickle=False)
 views = [str(x) for x in Z0["__views__"]]
-assert views == [str(x) for x in Z1["__views__"]], "ANDON: view lists differ"
-assert not bool(Z0["__trust_intersect__"]), "ANDON: --r0 was run WITH --trust-intersect"
-assert bool(Z1["__trust_intersect__"]), "ANDON: --r1 was run WITHOUT --trust-intersect"
+if not (views == [str(x) for x in Z1["__views__"]]):
+    raise AssertionError("ANDON: view lists differ")
+if bool(Z0["__trust_intersect__"]):
+    raise AssertionError("ANDON: --r0 was run WITH --trust-intersect")
+if not (bool(Z1["__trust_intersect__"])):
+    raise AssertionError("ANDON: --r1 was run WITHOUT --trust-intersect")
 
 NV = int(Z0["__valid__"])
 s0, s1 = Z0["__styled__"], Z1["__styled__"]
@@ -77,9 +80,10 @@ for nm in views:
     print(f"VIEW {nm}")
     print("=" * 78)
     c0, c1 = Z0[f"{nm}/cand_idx"], Z1[f"{nm}/cand_idx"]
-    assert np.array_equal(c0, c1), (
-        f"ANDON: {nm}: the candidate set moved. facing+visibility must be identical "
-        f"across arms — the flag is not supposed to touch them.")
+    if not (np.array_equal(c0, c1)):
+        raise AssertionError(
+            f"ANDON: {nm}: the candidate set moved. facing+visibility must be identical "
+            f"across arms — the flag is not supposed to touch them.")
     a0, a1 = Z0[f"{nm}/accepted"], Z1[f"{nm}/accepted"]
     d0, d1 = Z0[f"{nm}/d_s"], Z1[f"{nm}/d_s"]
     ed0, ed1 = Z0[f"{nm}/ed"], Z1[f"{nm}/ed"]
@@ -87,8 +91,10 @@ for nm in views:
     D0, D1 = Z0[f"{nm}/dist_in"], Z1[f"{nm}/dist_in"]
     mesh = Z0[f"{nm}/mesh_fm"]
     twin = Z0[f"{nm}/twin_fm"]
-    assert np.array_equal(mesh, Z1[f"{nm}/mesh_fm"]), f"ANDON: {nm}: mesh_fm moved"
-    assert np.array_equal(twin, Z1[f"{nm}/twin_fm"]), f"ANDON: {nm}: twin_fm moved"
+    if not (np.array_equal(mesh, Z1[f"{nm}/mesh_fm"])):
+        raise AssertionError(f"ANDON: {nm}: mesh_fm moved")
+    if not (np.array_equal(twin, Z1[f"{nm}/twin_fm"])):
+        raise AssertionError(f"ANDON: {nm}: twin_fm moved")
 
     print(f"  fig_w   raw {float(Z0[f'{nm}/fig_w_raw']):.0f}px   "
           f"R0 used {float(Z0[f'{nm}/fig_w']):.0f}px   "

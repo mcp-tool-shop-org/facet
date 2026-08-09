@@ -49,18 +49,21 @@ args = ap.parse_args()
 
 
 def load(p, what):
-    assert os.path.exists(p), f"ANDON: {what} panel missing: {p}"
+    if not (os.path.exists(p)):
+        raise AssertionError(f"ANDON: {what} panel missing: {p}")
     return Image.open(p).convert("RGB")
 
 
 ref, asset, prov, clay = (load(args.reference, "reference"), load(args.asset, "asset"),
                           load(args.prov, "provenance"), load(args.clay, "clay"))
 sizes = {ref.size, asset.size, prov.size, clay.size}
-assert len(sizes) == 1, (
-    f"ANDON: the panels are not at one framing — {sizes}. A sheet whose columns sit at "
-    f"different frames compares framing, not paint.")
+if not (len(sizes) == 1):
+    raise AssertionError(
+        f"ANDON: the panels are not at one framing — {sizes}. A sheet whose columns sit at "
+        f"different frames compares framing, not paint.")
 m = np.asarray(Image.open(args.mask).convert("L")) > 127
-assert m.shape == (ref.size[1], ref.size[0]), "ANDON: mask frame disagrees with the panels"
+if not (m.shape == (ref.size[1], ref.size[0])):
+    raise AssertionError("ANDON: mask frame disagrees with the panels")
 
 a = np.asarray(asset, dtype=np.float32)
 r = np.asarray(ref, dtype=np.float32)

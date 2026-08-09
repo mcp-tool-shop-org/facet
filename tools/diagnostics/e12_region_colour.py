@@ -64,8 +64,10 @@ def kv(specs, what):
     out = {}
     for s in specs:
         k, _, p = s.partition("=")
-        assert p, f"ANDON: --{what} wants LABEL=PATH, got {s!r}"
-        assert os.path.exists(p), f"ANDON: --{what} {k}: no such file {p}"
+        if not (p):
+            raise AssertionError(f"ANDON: --{what} wants LABEL=PATH, got {s!r}")
+        if not (os.path.exists(p)):
+            raise AssertionError(f"ANDON: --{what} {k}: no such file {p}")
         out[k] = p
     return out
 
@@ -81,7 +83,8 @@ for spec in args.region:
     if head.count(":"):
         lab, _, head = head.partition(":")
     rect = [int(x) for x in head.split(",")]
-    assert len(rect) == 4, f"ANDON: --region wants x0,y0,x1,y1:name, got {spec!r}"
+    if not (len(rect) == 4):
+        raise AssertionError(f"ANDON: --region wants x0,y0,x1,y1:name, got {spec!r}")
     REG.setdefault(lab, []).append((name, rect))
 
 BAND = None

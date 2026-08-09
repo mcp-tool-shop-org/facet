@@ -228,9 +228,10 @@ if args.overlay:
         py0 = args.h / 2.0 - (corners[:, 2].max() - mid[2]) / s - 0.5
         py1 = args.h / 2.0 - (corners[:, 2].min() - mid[2]) / s - 0.5
         im = Image.open(p).convert("RGB")
-        assert im.size == (args.w, args.h), (
-            "ANDON: %s is %s but the box was read on a %dx%d frame"
-            % (os.path.basename(p), im.size, args.w, args.h))
+        if not (im.size == (args.w, args.h)):
+            raise AssertionError(
+                "ANDON: %s is %s but the box was read on a %dx%d frame"
+                % (os.path.basename(p), im.size, args.w, args.h))
         d = ImageDraw.Draw(im)
         d.rectangle([px0, py0, px1, py1], outline=(255, 90, 60), width=3)
         d.text((px0 + 6, py0 + 6), "head box, view %d" % idx, fill=(255, 200, 60))

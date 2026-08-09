@@ -90,9 +90,10 @@ for p in sorted(glob.glob(os.path.join(args.renders, "%s_*.png" % args.tag)),
     th = np.radians(idx * args.step)
     rgt = np.array([np.cos(th), np.sin(th), 0.0])
     im = Image.open(p).convert("RGB")
-    assert im.size == (args.w, args.h), (
-        "ANDON: %s is %s but the projection was set up for %dx%d"
-        % (os.path.basename(p), im.size, args.w, args.h))
+    if not (im.size == (args.w, args.h)):
+        raise AssertionError(
+            "ANDON: %s is %s but the projection was set up for %dx%d"
+            % (os.path.basename(p), im.size, args.w, args.h))
     d = ImageDraw.Draw(im)
     if len(mp):
         px = args.w / 2.0 + ((mp - mid) @ rgt) / s - 0.5

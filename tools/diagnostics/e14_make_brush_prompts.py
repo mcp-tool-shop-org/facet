@@ -45,17 +45,21 @@ twins = json.load(open(args.twins, encoding="utf-8"))
 OLD_TERM = "a dark garnet gem pommel"
 NEW_TERM = "a deep red garnet gem pommel"
 terms = [t.strip() for t in ENTRY.split(",")]
-assert terms.count(OLD_TERM) == 1, (
-    f"ANDON: the entry carries {terms.count(OLD_TERM)} copies of {OLD_TERM!r}; the ruled "
-    f"substitution addresses exactly one term or it addresses none")
+if not (terms.count(OLD_TERM) == 1):
+    raise AssertionError(
+        f"ANDON: the entry carries {terms.count(OLD_TERM)} copies of {OLD_TERM!r}; the ruled "
+        f"substitution addresses exactly one term or it addresses none")
 v3_terms = [NEW_TERM if t == OLD_TERM else t for t in terms]
 V3_ENTRY = ", ".join(v3_terms)
 diff = [(a, b) for a, b in zip(terms, v3_terms) if a != b]
-assert len(diff) == 1 and diff[0] == (OLD_TERM, NEW_TERM), (
-    f"ANDON: the v3 entry differs from the twin entry in {len(diff)} terms, not one: {diff}")
-assert len(v3_terms) == len(terms), "ANDON: the substitution changed the term COUNT"
-assert V3_ENTRY == twins["_entry_verbatim"].replace(OLD_TERM, NEW_TERM), (
-    "ANDON: the v3 entry is not the twin entry with exactly the ruled term replaced")
+if not (len(diff) == 1 and diff[0] == (OLD_TERM, NEW_TERM)):
+    raise AssertionError(
+        f"ANDON: the v3 entry differs from the twin entry in {len(diff)} terms, not one: {diff}")
+if not (len(v3_terms) == len(terms)):
+    raise AssertionError("ANDON: the substitution changed the term COUNT")
+if not (V3_ENTRY == twins["_entry_verbatim"].replace(OLD_TERM, NEW_TERM)):
+    raise AssertionError(
+        "ANDON: the v3 entry is not the twin entry with exactly the ruled term replaced")
 print(f"[stems] entry terms {len(terms)}; ONE substitution, asserted:")
 print(f"[stems]   - {OLD_TERM!r}\n[stems]   + {NEW_TERM!r}")
 
@@ -107,13 +111,18 @@ for key in ORDER:
     stem = ", ".join(stem_terms)
     # ordered-subsequence assertion, the twin builder's own
     it = iter(v3_terms)
-    assert all(any(t == u for u in it) for t in stem_terms), (
-        f"ANDON: {key}'s stem is not an ordered subsequence of the v3 entry")
+    if not (all(any(t == u for u in it) for t in stem_terms)):
+        raise AssertionError(
+            f"ANDON: {key}'s stem is not an ordered subsequence of the v3 entry")
     if not dropped:
-        assert stem == V3_ENTRY, f"ANDON: {key} has no drops but is not byte-equal to the entry"
+        if not (stem == V3_ENTRY):
+            raise AssertionError(
+                f"ANDON: {key} has no drops but is not byte-equal to the entry")
         full_keys.append(key)
-    assert NEW_TERM in stem, f"ANDON: {key} lost L5's ruled term"
-    assert OLD_TERM not in stem, f"ANDON: {key} still carries the superseded L5 term"
+    if not (NEW_TERM in stem):
+        raise AssertionError(f"ANDON: {key} lost L5's ruled term")
+    if not (OLD_TERM not in stem):
+        raise AssertionError(f"ANDON: {key} still carries the superseded L5 term")
     out[key] = stem
     per_terms[key] = len(stem_terms)
     extra[key] = {"dropped": dropped, "terms": len(stem_terms)}

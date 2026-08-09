@@ -124,7 +124,8 @@ def cast(yaw):
 # --- the spatial region, if one was given -------------------------------------------
 box = None
 if args.region_a or args.region_b:
-    assert args.region_a and args.region_b, "ANDON: --region-a and --region-b come as a pair"
+    if not (args.region_a and args.region_b):
+        raise AssertionError("ANDON: --region-a and --region-b come as a pair")
 
     def parse(spec):
         vw, _, rect = spec.partition(":")
@@ -132,9 +133,10 @@ if args.region_a or args.region_b:
         yaw = float(vw)
         _, right, up = basis(yaw, args.el)
         ax = [i for i in (0, 1) if abs(abs(right[i]) - 1.0) < 1e-9]
-        assert ax and abs(up[2] - 1.0) < 1e-9, (
-            "ANDON: view %g has right %s / up %s - not an axis-aligned pair; a box cannot be "
-            "read off it" % (yaw, np.round(right, 6).tolist(), np.round(up, 6).tolist()))
+        if not (ax and abs(up[2] - 1.0) < 1e-9):
+            raise AssertionError(
+                "ANDON: view %g has right %s / up %s - not an axis-aligned pair; a box cannot be "
+                "read off it" % (yaw, np.round(right, 6).tolist(), np.round(up, 6).tolist()))
         ax = ax[0]
         sgn = float(np.sign(right[ax]))
         u0 = bmid[ax] + sgn * ((min(x0, x1) + 0.5 - W / 2.0) * (h_ext / W))
@@ -145,12 +147,15 @@ if args.region_a or args.region_b:
 
     ya, aa, ra, za = parse(args.region_a)
     yb, ab, rb, zb = parse(args.region_b)
-    assert aa != ab, "ANDON: both region views read world axis %s; need orthogonal views" % "xyz"[aa]
+    if not (aa != ab):
+        raise AssertionError(
+            "ANDON: both region views read world axis %s; need orthogonal views" % "xyz"[aa])
     zd = max(abs(za[0] - zb[0]), abs(za[1] - zb[1])) / (bhi[2] - blo[2])
-    assert zd <= args.z_tol, (
-        "ANDON: the two region views disagree about z by %.4f of height (tol %.4f): "
-        "view %g says %s, view %g says %s" % (zd, args.z_tol, ya, np.round(za, 4).tolist(),
-                                              yb, np.round(zb, 4).tolist()))
+    if not (zd <= args.z_tol):
+        raise AssertionError(
+            "ANDON: the two region views disagree about z by %.4f of height (tol %.4f): "
+            "view %g says %s, view %g says %s" % (zd, args.z_tol, ya, np.round(za, 4).tolist(),
+                                                  yb, np.round(zb, 4).tolist()))
     box = np.zeros((2, 3))
     box[:, aa] = ra
     box[:, ab] = rb

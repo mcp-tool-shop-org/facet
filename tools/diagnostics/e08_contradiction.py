@@ -110,12 +110,15 @@ if args.overlay_only:
     print(f"[contra] box overlay -> {args.overlay_only}")
     raise SystemExit(0)
 
-assert args.arm, "ANDON: --arm is required unless --overlay-only"
+if not (args.arm):
+    raise AssertionError("ANDON: --arm is required unless --overlay-only")
 arm = load(args.arm)
-assert arm.shape == base.shape, f"ANDON: {arm.shape} vs {base.shape} — not registered"
+if not (arm.shape == base.shape):
+    raise AssertionError(f"ANDON: {arm.shape} vs {base.shape} — not registered")
 if args.mask:
     fm = np.asarray(Image.open(args.mask).convert("L"), dtype=np.float32) / 255.0 > 0.5
-    assert fm.shape == (H, W), f"ANDON: mask {fm.shape} vs image {(H, W)}"
+    if not (fm.shape == (H, W)):
+        raise AssertionError(f"ANDON: mask {fm.shape} vs image {(H, W)}")
 else:
     fm = np.ones((H, W), bool)
 

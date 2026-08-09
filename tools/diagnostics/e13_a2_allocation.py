@@ -83,16 +83,18 @@ v = np.asarray(m.vertices, dtype=np.float64)
 f = np.asarray(m.faces, dtype=np.int64)
 vmax = np.abs(v).max()
 v = np.stack([v[:, 0], -v[:, 2], v[:, 1]], axis=1) / vmax * 0.5
-assert abs(vmax - maxabs) < 1e-9, (
-    f"ANDON: prep_uv.glb |v|max {vmax:.9f} against meta maxabs {maxabs:.9f} — the std "
-    f"frame is not the one the bake recorded, so every box test below is against the "
-    f"wrong object")
+if not (abs(vmax - maxabs) < 1e-9):
+    raise AssertionError(
+        f"ANDON: prep_uv.glb |v|max {vmax:.9f} against meta maxabs {maxabs:.9f} — the std "
+        f"frame is not the one the bake recorded, so every box test below is against the "
+        f"wrong object")
 blo, bhi = v.min(axis=0), v.max(axis=0)
 _exp_lo, _exp_hi = lo / maxabs * 0.5, hi / maxabs * 0.5
-assert np.abs(blo - _exp_lo).max() < 1e-6 and np.abs(bhi - _exp_hi).max() < 1e-6, (
-    f"ANDON: std-frame bbox {blo.tolist()}..{bhi.tolist()} disagrees with the bake's "
-    f"{_exp_lo.tolist()}..{_exp_hi.tolist()} — the axis convention is not what "
-    f"project_twins assumes")
+if not (np.abs(blo - _exp_lo).max() < 1e-6 and np.abs(bhi - _exp_hi).max() < 1e-6):
+    raise AssertionError(
+        f"ANDON: std-frame bbox {blo.tolist()}..{bhi.tolist()} disagrees with the bake's "
+        f"{_exp_lo.tolist()}..{_exp_hi.tolist()} — the axis convention is not what "
+        f"project_twins assumes")
 rs = o3d.t.geometry.RaycastingScene()
 rs.add_triangles(o3d.core.Tensor(v.astype(np.float32)),
                  o3d.core.Tensor(f.astype(np.uint32)))

@@ -74,7 +74,8 @@ N = np.load(os.path.join(args.prep, "nor.npy")).reshape(-1, 3)[valid].astype(np.
 N /= np.linalg.norm(N, axis=1, keepdims=True) + 1e-12
 NV = P.shape[0]
 brush = np.load(args.brush)
-assert brush.shape == (NV,), "ANDON: brush mask shape disagreement"
+if not (brush.shape == (NV,)):
+    raise AssertionError("ANDON: brush mask shape disagreement")
 
 m = trimesh.load(os.path.join(args.prep, "prep_uv.glb"), force="mesh", process=False)
 v = np.asarray(m.vertices, dtype=np.float64)

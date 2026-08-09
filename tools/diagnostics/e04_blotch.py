@@ -137,11 +137,16 @@ n_tw = int((claim == 0).sum()); n_b7 = int((claim == 1).sum())
 n_b8 = int((claim == 8).sum()); n_di = int((claim == 255).sum())
 print("[e04] claim  TWINS %d  BRUSH1-7 %d  BRUSH8 %d  DILATION %d  (valid %d)"
       % (n_tw, n_b7, n_b8, n_di, NV), flush=True)
-assert n_tw == 1653659, "ANDON: stage-1 count %d != the run's 1,653,659" % n_tw
-assert n_b7 + n_b8 == 101527, "ANDON: brush count %d != the run's 101,527" % (n_b7 + n_b8)
-assert n_b8 == 25175, "ANDON: stroke-8 count %d != the run's 25,175" % n_b8
-assert n_di == 647624, "ANDON: dilation count %d != the run's 647,624" % n_di
-assert n_tw + n_b7 + n_b8 + n_di == NV, "ANDON: classes do not partition valid"
+if not (n_tw == 1653659):
+    raise AssertionError("ANDON: stage-1 count %d != the run's 1,653,659" % n_tw)
+if not (n_b7 + n_b8 == 101527):
+    raise AssertionError("ANDON: brush count %d != the run's 101,527" % (n_b7 + n_b8))
+if not (n_b8 == 25175):
+    raise AssertionError("ANDON: stroke-8 count %d != the run's 25,175" % n_b8)
+if not (n_di == 647624):
+    raise AssertionError("ANDON: dilation count %d != the run's 647,624" % n_di)
+if not (n_tw + n_b7 + n_b8 + n_di == NV):
+    raise AssertionError("ANDON: classes do not partition valid")
 out["claim_counts"] = {"TWINS": n_tw, "BRUSH_1_7": n_b7, "BRUSH_8": n_b8, "DILATION": n_di}
 
 # ------------------------------------------- stage-1 camera ownership, recomputed exactly
@@ -172,8 +177,10 @@ owner = owner.reshape(RES, RES)
 n_own = int((owner >= 0).sum())
 print("[e04] stage-1 ownership reconstructed: %d texels owned by %d views"
       % (n_own, len(views)), flush=True)
-assert n_own == n_tw, ("ANDON: ownership covers %d texels but stage 1 styled %d - the "
-                       "reconstruction is not the same set" % (n_own, n_tw))
+if not (n_own == n_tw):
+    raise AssertionError(
+        "ANDON: ownership covers %d texels but stage 1 styled %d - the "
+        "reconstruction is not the same set" % (n_own, n_tw))
 ocount = {views[i]: int((owner == i).sum()) for i in range(len(views))}
 print("[e04] per-view ownership: %s" % ocount, flush=True)
 out["ownership"] = ocount
@@ -236,7 +243,8 @@ else:
     print("[e04] islands %d  faces/island %.1f" % (n_isl, nf / n_isl), flush=True)
 
 atlas = np.asarray(Image.open(args.atlas).convert("RGB"), dtype=np.float32) / 255.0
-assert atlas.shape[0] == RES, "ANDON: atlas is %d, prep says %d" % (atlas.shape[0], RES)
+if not (atlas.shape[0] == RES):
+    raise AssertionError("ANDON: atlas is %d, prep says %d" % (atlas.shape[0], RES))
 
 # --------------------------------------------------------------- the head-crop camera
 CX0, CY0, CX1, CY1 = [float(x) for x in meta["crop"]]

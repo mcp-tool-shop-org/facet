@@ -59,8 +59,10 @@ args = ap.parse_args()
 Z0 = np.load(args.r0, allow_pickle=False)
 Z1 = np.load(args.r1, allow_pickle=False)
 views = [str(x) for x in Z0["__views__"]]
-assert not bool(Z0["__trust_intersect__"]), "ANDON: --r0 has the intersection ON"
-assert bool(Z1["__trust_intersect__"]), "ANDON: --r1 has the intersection OFF"
+if bool(Z0["__trust_intersect__"]):
+    raise AssertionError("ANDON: --r0 has the intersection ON")
+if not (bool(Z1["__trust_intersect__"])):
+    raise AssertionError("ANDON: --r1 has the intersection OFF")
 
 
 def srgb_to_lab(rgb):
@@ -151,7 +153,8 @@ def show(label, s):
 
 # ---- the normative control: the control view's accepted set at its NATIVE erosion
 ctrl_nm = next((nm for nm in views if view_index(nm) == args.control), None)
-assert ctrl_nm, f"ANDON: control view {args.control} not in this dump"
+if not (ctrl_nm):
+    raise AssertionError(f"ANDON: control view {args.control} not in this dump")
 ctrl = stats(ctrl_nm, Z1[f"{ctrl_nm}/accepted"], Z1)
 print(f"NORMATIVE CONTROL — view {args.control} ({ctrl_nm}), accepted at its native "
       f"ed {float(np.max(Z1[f'{ctrl_nm}/ed'])):.2f}px")

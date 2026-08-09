@@ -61,14 +61,16 @@ args = ap.parse_args()
 
 job = np.asarray(Image.open(os.path.join(args.job, "mask.png")).convert("L")) > 127
 hit = np.asarray(Image.open(os.path.join(args.job, "hit.png")).convert("L")) > 127
-assert job.shape == hit.shape, "ANDON: mask and hit disagree on shape"
+if not (job.shape == hit.shape):
+    raise AssertionError("ANDON: mask and hit disagree on shape")
 K = np.ones((args.radius, args.radius), bool)
 holes = binary_erosion(job, K)                    # undo emit's dilation to recover the holes
 painted = hit & ~holes                            # THE GATED OPERAND (the simulation's)
 context = hit & ~job                              # what the brush sees as fixed - diagnostic
 grown = binary_dilation(painted, K)
 n = int(job.sum())
-assert n > 0, "ANDON: this job asks the brush to paint nothing"
+if not (n > 0):
+    raise AssertionError("ANDON: this job asks the brush to paint nothing")
 adj = float((job & grown).sum()) / n
 adj_ctx = float((job & binary_dilation(context, K)).sum()) / n
 adj_holes = (float((holes & grown).sum()) / int(holes.sum())) if holes.any() else 0.0
@@ -97,8 +99,9 @@ if args.overlay:
     Image.fromarray(ov).save(args.overlay)
     print(f"[anchor]   overlay -> {args.overlay} (green = anchored, red = NOT)", flush=True)
 
-assert adj >= args.min, (
-    f"ANDON: painted-adjacency {adj*100:.2f}% is below the {args.min*100:.0f}% floor. This "
-    f"frame is hole-dominated and the brush at full denoise composes a NEW subject on one. "
-    f"Do not open this stroke; report it.")
+if not (adj >= args.min):
+    raise AssertionError(
+        f"ANDON: painted-adjacency {adj*100:.2f}% is below the {args.min*100:.0f}% floor. This "
+        f"frame is hole-dominated and the brush at full denoise composes a NEW subject on one. "
+        f"Do not open this stroke; report it.")
 print(f"[anchor] PASS - the brush opens on paint.", flush=True)

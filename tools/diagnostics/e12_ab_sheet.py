@@ -33,8 +33,10 @@ args = ap.parse_args()
 
 A = Image.open(args.a).convert("RGB")
 B = Image.open(args.b).convert("RGB")
-assert A.size == B.size, ("ANDON: %s is %s and %s is %s - an A|B sheet of two different "
-                          "frames compares nothing." % (args.a, A.size, args.b, B.size))
+if not (A.size == B.size):
+    raise AssertionError(
+        "ANDON: %s is %s and %s is %s - an A|B sheet of two different "
+        "frames compares nothing." % (args.a, A.size, args.b, B.size))
 
 W = args.width
 h = int(round(W * A.height / A.width))

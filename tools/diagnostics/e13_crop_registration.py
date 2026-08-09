@@ -63,14 +63,17 @@ def _pairs(specs, what):
     out = {}
     for s in specs:
         k, _, p = s.partition("=")
-        assert p, f"ANDON: --{what} wants LABEL=PATH, got {s!r}"
-        assert os.path.exists(p), f"ANDON: --{what} {k}: no such file {p}"
+        if not (p):
+            raise AssertionError(f"ANDON: --{what} wants LABEL=PATH, got {s!r}")
+        if not (os.path.exists(p)):
+            raise AssertionError(f"ANDON: --{what} {k}: no such file {p}")
         out[k] = p
     return out
 
 
 IM, MK = _pairs(args.image, "image"), _pairs(args.mask, "mask")
-assert set(IM) == set(MK), f"ANDON: labels differ — images {sorted(IM)} masks {sorted(MK)}"
+if not (set(IM) == set(MK)):
+    raise AssertionError(f"ANDON: labels differ — images {sorted(IM)} masks {sorted(MK)}")
 
 print(f"[creg] background fitted on pixels >= {args.clear:g}px OUTSIDE the raycast "
       f"silhouette; paint = residual > {args.tol:g}. NO BOUND IS ARMED "
@@ -86,17 +89,19 @@ for k in sorted(IM):
     img = np.asarray(Image.open(IM[k]).convert("RGB"), dtype=np.float64) / 255.0
     mesh = np.asarray(Image.open(MK[k]).convert("L"), dtype=np.uint8) > 127
     H, W = mesh.shape
-    assert img.shape[:2] == (H, W), f"ANDON: {k}: image {img.shape[:2]} vs mask {(H, W)}"
+    if not (img.shape[:2] == (H, W)):
+        raise AssertionError(f"ANDON: {k}: image {img.shape[:2]} vs mask {(H, W)}")
 
     # distance OUTSIDE the silhouette; clean = far enough out that rim mixing cannot reach
     d_out = distance_transform_edt(~mesh)
     clean = d_out >= args.clear
     frac_clean = float(clean.mean())
-    assert frac_clean >= args.min_clean, (
-        f"ANDON: {k}: only {frac_clean*100:.2f}% of frame is clean background at "
-        f"--clear {args.clear:g} — under the {args.min_clean*100:.1f}% floor, so the "
-        f"background fit would be unconstrained. Widen the crop or lower --clear "
-        f"deliberately; do not read a number off this.")
+    if not (frac_clean >= args.min_clean):
+        raise AssertionError(
+            f"ANDON: {k}: only {frac_clean*100:.2f}% of frame is clean background at "
+            f"--clear {args.clear:g} — under the {args.min_clean*100:.1f}% floor, so the "
+            f"background fit would be unconstrained. Widen the crop or lower --clear "
+            f"deliberately; do not read a number off this.")
 
     ys, xs = np.where(clean)
     xn = xs / W - 0.5

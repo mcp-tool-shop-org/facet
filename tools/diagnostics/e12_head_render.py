@@ -59,17 +59,20 @@ args = ap.parse_args(argv)
 # cannot live here. It is `e12_head_sheet.py`, run under the pipeline's own interpreter.
 
 b = [float(v) for v in args.box.split(",")]
-assert len(b) == 6, "ANDON: --box wants x0,y0,z0,x1,y1,z1"
+if not (len(b) == 6):
+    raise AssertionError("ANDON: --box wants x0,y0,z0,x1,y1,z1")
 lo, hi = Vector(b[:3]), Vector(b[3:])
 d = hi - lo
-assert min(d) > 0, "ANDON: degenerate head box %s" % (b,)
+if not (min(d) > 0):
+    raise AssertionError("ANDON: degenerate head box %s" % (b,))
 c = (lo + hi) / 2
 
 bpy.ops.wm.read_factory_settings(use_empty=True)
 scene = bpy.context.scene
 bpy.ops.import_scene.gltf(filepath=args.glb)
 meshes = [o for o in scene.objects if o.type == "MESH"]
-assert meshes, "ANDON: no mesh in GLB"
+if not (meshes):
+    raise AssertionError("ANDON: no mesh in GLB")
 
 mlo = Vector((1e9,) * 3)
 mhi = Vector((-1e9,) * 3)

@@ -74,10 +74,17 @@ SITES = {"bake_hero_prep.py": 15, "brush_cloud_step.py": 9, "subject_profile.py"
 PRE_EXISTING_RAISES = {"bake_hero_prep.py": 1}
 
 # E22 Ruling 4 measured 191 ANDON asserts left after E22, across tools/. E23 took
-# the 57 route sites, so 134 remain: 132 in diagnostics/, 1 in superseded/ (never
-# converted, by that ruling - those tools are kept so they fail the same way) and
-# 1 in verify/.
-REMAINING_ELSEWHERE = 134
+# the 57 route sites, leaving 134: 132 in diagnostics/, 1 in verify/, and 1 in
+# superseded/ (never converted, by that ruling - those tools are kept so they fail
+# the same way).
+#
+# MOVED 134 -> 1 BY E25, in the commit that earned it. E25 converted the 132 + 1, so
+# superseded/'s site is all that is left and it stays forever. This constant is E23
+# Ruling 9's structural fix for the scope-number defect that beat two consecutive
+# arcs - a scope that cannot drift silently, because moving it takes a deliberate
+# edit - and this is the first time it has been moved. T33 additionally pins WHICH
+# file the survivor is in, so a later arc cannot convert superseded/ and stay green.
+REMAINING_ELSEWHERE = 1
 
 # THE TWO TOOLS THAT CREATE THEIR OUTPUT DIRECTORY AHEAD OF THEIR GATE. Measured,
 # not tolerated: when these two fire they leave an empty `--out`/`--outdir` behind.
@@ -186,10 +193,11 @@ def test_t31_no_route_gate_is_an_assert():
     a check that decides whether an irreversible step proceeds must `raise`,
     because `-O` deletes an `assert` silently.
 
-    Scope is the twelve E23 converted. The 134 ANDON asserts still elsewhere in
-    tools/ are a measured, reported remainder and are deliberately not pinned
-    here - pinning a class nobody has been asked to convert would fail on work
-    that has not been done. T30 makes the same choice for the same reason.
+    Scope is the twelve E23 converted. When this file was written the 134 ANDON
+    asserts still elsewhere in tools/ were a measured, reported remainder,
+    deliberately not pinned here - pinning a class nobody had been asked to
+    convert would fail on work that had not been done. E25 has since done that
+    work, so the remainder is 1 and T33 pins the whole class by name.
     """
     offenders = []
     for rel in ROUTE:
@@ -233,10 +241,10 @@ def test_t31_the_census_is_the_one_e23_measured():
                 continue
             elsewhere += len(_andon_asserts(io.open(p, encoding="utf-8").read()))
     assert elsewhere == REMAINING_ELSEWHERE, (
-        "%d ANDON asserts remain outside the twelve; E23 measured %d (132 "
-        "diagnostics + 1 superseded, never converted + 1 verify). A change here "
-        "is either the diagnostics arc landing or an unconverted gate arriving."
-        % (elsewhere, REMAINING_ELSEWHERE))
+        "%d ANDON asserts remain outside the twelve; after E25 the number is %d - "
+        "superseded/texpass_thin_mask.py:160, which E22 Ruling 4 ruled is never "
+        "converted. A change here is an unconverted gate arriving, or superseded/ "
+        "being tidied away." % (elsewhere, REMAINING_ELSEWHERE))
 
 
 def test_t31_the_blender_pair_cannot_run_under_this_interpreter():

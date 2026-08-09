@@ -76,8 +76,10 @@ def dtc_of(yaw_d, el_d=0.0):
 
 
 # the generalisation must reproduce project_twins' two hardcoded entries exactly
-assert np.allclose(dtc_of(0.0), [0.0, -1.0, 0.0]), "ANDON: yaw 0 is not project_twins' front"
-assert np.allclose(dtc_of(180.0), [0.0, 1.0, 0.0]), "ANDON: yaw 180 is not its back"
+if not (np.allclose(dtc_of(0.0), [0.0, -1.0, 0.0])):
+    raise AssertionError("ANDON: yaw 0 is not project_twins' front")
+if not (np.allclose(dtc_of(180.0), [0.0, 1.0, 0.0])):
+    raise AssertionError("ANDON: yaw 180 is not its back")
 
 _cache = {}
 

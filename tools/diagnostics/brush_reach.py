@@ -44,7 +44,8 @@ N /= np.linalg.norm(N, axis=1, keepdims=True) + 1e-12
 NV = P.shape[0]
 
 styled = np.load(args.styled)
-assert styled.size == mask.size, "ANDON: styled mask is not the prep's atlas resolution"
+if not (styled.size == mask.size):
+    raise AssertionError("ANDON: styled mask is not the prep's atlas resolution")
 styled_v = styled.reshape(-1)[valid]
 hole = ~styled_v
 print(f"valid {NV:,}   styled {int(styled_v.sum()):,}   HOLES {int(hole.sum()):,} "

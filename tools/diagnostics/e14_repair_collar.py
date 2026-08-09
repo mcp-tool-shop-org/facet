@@ -130,10 +130,11 @@ def to_lab(rgb):
 # ---------------- the mask, re-derived: geometry AND stage-1b provenance ----------------
 a0p = J(args.state0, "atlas.png")
 sha_a0 = sha(a0p)
-assert sha_a0.startswith(args.stage1b_sha), (
-    f"ANDON: --state0's atlas is {sha_a0[:24]}, not the recorded stage-1b atlas "
-    f"{args.stage1b_sha}. The source of the restored values is not the paint the ruling "
-    f"calls correct. HALT.")
+if not (sha_a0.startswith(args.stage1b_sha)):
+    raise AssertionError(
+        f"ANDON: --state0's atlas is {sha_a0[:24]}, not the recorded stage-1b atlas "
+        f"{args.stage1b_sha}. The source of the restored values is not the paint the ruling "
+        f"calls correct. HALT.")
 
 meta = json.load(open(J(args.prep, "meta.json"), encoding="utf-8"))
 mask2d = np.load(J(args.prep, "mask.npy"))[..., 0] > 0.5
@@ -144,7 +145,8 @@ P = (np.load(J(args.prep, "pos.npy")).reshape(-1, 3)[valid].astype(np.float64)
      * (hi - lo) + lo) / meta["maxabs"] * 0.5
 
 terr_v = np.load(args.territory)
-assert terr_v.shape == vidx.shape, f"ANDON: territory is {terr_v.shape}, valid is {vidx.shape}"
+if not (terr_v.shape == vidx.shape):
+    raise AssertionError(f"ANDON: territory is {terr_v.shape}, valid is {vidx.shape}")
 
 # the landmark, RE-WALKED by the demotion's own code rather than pasted as a constant
 m = trimesh.load(J(args.prep, "prep_uv.glb"), force="mesh", process=False)
@@ -162,7 +164,8 @@ pk = int(np.argmax(exts[:16])); i = pk + 1
 while i + 1 < len(exts) and exts[i + 1] <= exts[i]:
     i += 1
 Z_BOT = zs[i]
-assert abs(Z_BOT - 0.4340) < 1e-6, f"ANDON: the stone landmark reads {Z_BOT}, not 0.4340"
+if not (abs(Z_BOT - 0.4340) < 1e-6):
+    raise AssertionError(f"ANDON: the stone landmark reads {Z_BOT}, not 0.4340")
 
 def lch_of(path):
     a = np.asarray(Image.open(path).convert("RGB"), dtype=np.float64) / 255.0
@@ -203,11 +206,13 @@ print(f"[repair]   of clause O, outside clause P                     {int(only_o
 print(f"[repair] THE RULED MASK  P OR O                              {N:,}")
 for got, want, nm in ((NP, args.expect_p, "clause P"), (NO, args.expect_o, "clause O"),
                       (N, args.expect, "the union")):
-    assert got == want, (
-        f"ANDON: {nm} yields {got:,} texels, but Ruling 28d names {want:,}. The mask this op "
-        f"would edit is not the mask the ruling adopted. A different count is a HALT, not a "
-        f"tune. HALT.")
-assert N == NP + int(only_o.sum()), "ANDON: the union is not P plus the O-only remainder"
+    if not (got == want):
+        raise AssertionError(
+            f"ANDON: {nm} yields {got:,} texels, but Ruling 28d names {want:,}. The mask this op "
+            f"would edit is not the mask the ruling adopted. A different count is a HALT, not a "
+            f"tune. HALT.")
+if not (N == NP + int(only_o.sum())):
+    raise AssertionError("ANDON: the union is not P plus the O-only remainder")
 print(f"[repair] ASSERTED against Ruling 28d: P {args.expect_p:,} / O {args.expect_o:,} / "
       f"union {args.expect:,}; the {int(only_o.sum())} O-only texels are disjoint from P")
 
@@ -215,9 +220,10 @@ print(f"[repair] ASSERTED against Ruling 28d: P {args.expect_p:,} / O {args.expe
 # on the LIVE atlas must give the SAME set. If a stroke had touched this territory the two
 # would differ, and the repair would be editing paint that a commit had already banked.
 clause_o_live = leg_terr & forbidden(CL, HL) & ~forbidden(C0, H0)
-assert np.array_equal(clause_o, clause_o_live), (
-    "ANDON: clause O computed on the LIVE atlas differs from clause O on the "
-    "post-re-projection atlas - a stroke has touched the repair territory. HALT.")
+if not (np.array_equal(clause_o, clause_o_live)):
+    raise AssertionError(
+        "ANDON: clause O computed on the LIVE atlas differs from clause O on the "
+        "post-re-projection atlas - a stroke has touched the repair territory. HALT.")
 print(f"[repair] ASSERTED: clause O is identical on the LIVE atlas - no committed stroke "
       f"touches this repair's texels")
 print(f"[repair] the union's stage-1b hue: median {np.median(H0[union]):.1f}  "
@@ -238,17 +244,19 @@ def apply_repair(state, tag="repair"):
     a_f[flat] = src[flat]
     # the op's own invariance: colour changed ONLY inside the mask
     ch = np.where((pre != a_f).any(axis=1))[0]
-    assert set(ch.tolist()).issubset(set(flat.tolist())), (
-        "ANDON: the atlas changed colour outside the ruled mask")
+    if not (set(ch.tolist()).issubset(set(flat.tolist()))):
+        raise AssertionError("ANDON: the atlas changed colour outside the ruled mask")
     outside = np.ones(len(a_f), dtype=bool)
     outside[flat] = False
-    assert np.array_equal(a_f[outside], pre[outside]), (
-        "ANDON: a texel outside the ruled mask changed colour")
+    if not (np.array_equal(a_f[outside], pre[outside])):
+        raise AssertionError("ANDON: a texel outside the ruled mask changed colour")
     Image.fromarray(atlas).save(ap_)
     sha_a_after, sha_h_after, sha_s_after = sha(ap_), sha(hp), sha(sp)
     # the mirror of the demotion's check: the STATE channels must not move
-    assert sha_h_before == sha_h_after, "ANDON: holes.png changed during a colour-only op"
-    assert sha_s_before == sha_s_after, "ANDON: styled_mask.npy changed during a colour-only op"
+    if not (sha_h_before == sha_h_after):
+        raise AssertionError("ANDON: holes.png changed during a colour-only op")
+    if not (sha_s_before == sha_s_after):
+        raise AssertionError("ANDON: styled_mask.npy changed during a colour-only op")
     dE = np.abs(pre[flat].astype(np.float64) - a_f[flat].astype(np.float64)).max(axis=1)
     print(f"[{tag}] restored {N:,} texels' atlas colour from {os.path.abspath(args.state0)}")
     print(f"[{tag}] of those, actually differing before the write: {len(ch):,} "
@@ -283,11 +291,13 @@ def apply_repair(state, tag="repair"):
 def apply_undo(state):
     """THE NAMED COMPENSATOR. Restores the pre-repair colour saved by the op itself."""
     cj = J(state, "collar_repair_compensator.npz")
-    assert os.path.exists(cj), f"ANDON: no compensator at {cj}; there is nothing to undo"
+    if not (os.path.exists(cj)):
+        raise AssertionError(f"ANDON: no compensator at {cj}; there is nothing to undo")
     z = np.load(cj)
     f0, rgb0 = z["flat"], z["rgb_pre"]
-    assert np.array_equal(np.sort(f0), np.sort(flat)), (
-        "ANDON: the saved compensator's texels are not the mask this run re-derived")
+    if not (np.array_equal(np.sort(f0), np.sort(flat))):
+        raise AssertionError(
+            "ANDON: the saved compensator's texels are not the mask this run re-derived")
     ap_ = J(state, "atlas.png")
     atlas = np.array(Image.open(ap_).convert("RGB"))
     atlas.reshape(-1, 3)[f0] = rgb0
@@ -311,7 +321,8 @@ if args.verify_undo:
     apply_undo(scratch)
     h1 = {f: sha(J(scratch, f)) for f in ("atlas.png", "holes.png", "styled_mask.npy")}
     bad = [f for f in h0 if h0[f] != h1[f]]
-    assert not bad, f"ANDON: the compensator did not restore {bad} byte-identically"
+    if bad:
+        raise AssertionError(f"ANDON: the compensator did not restore {bad} byte-identically")
     print("[verify-undo] PASS - repair then undo returns all three state files "
           "BYTE-IDENTICAL. The compensator is exercised, not merely declared.")
 elif args.undo:
