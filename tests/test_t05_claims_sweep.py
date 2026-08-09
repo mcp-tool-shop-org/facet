@@ -21,7 +21,17 @@ implementation of it:
   * routing - the same wrong cardinal is STALE in a current-state document
     and as-of-writing in a historical one.
   * never gates - exit 0 even WITH a STALE row present.
+
+E26 Half B widened the SWEEP's scan set to the front-door files the index
+deliberately does not index - CHANGELOG, SHIP_GATE, SCORECARD, SECURITY and the
+published site handbook. The legs below pin the property that makes that safe:
+`sweep_markdown()` is a strict superset of `record_markdown()`, and
+`record_markdown()` still does NOT reach any of them, so the index build, its
+FTS rows and verify's seeded rankings cannot move because a REPORT was widened.
+The synthetic fixture now patches `sweep_markdown`, which is what the sweep
+reads.
 """
+import os
 import re
 import sqlite3
 
@@ -75,7 +85,7 @@ def test_t05_semantics_on_synthetic_fixtures(facet_index_mod, built_db, monkeypa
             "The E12 arc carries %d handoffs in the record." % (h_count + 1),
         ],
     }
-    monkeypatch.setattr(m, "record_markdown", lambda: list(fixture))
+    monkeypatch.setattr(m, "sweep_markdown", lambda: list(fixture))
     monkeypatch.setattr(m, "lines_of", lambda rel: fixture[rel])
 
     rc = m.claims(str(built_db))
@@ -96,3 +106,83 @@ def test_t05_semantics_on_synthetic_fixtures(facet_index_mod, built_db, monkeypa
     assert re.search(
         r"^as-of-writing\s+historical\s.*E99-synthetic-kickoff\.md:1$", out, re.M), (
         "historical routing row not found\n%s" % out)
+
+
+# ---------------------------------------------------------------------------
+# E26 Half B - the widened scan set, and the index it must not disturb
+# ---------------------------------------------------------------------------
+
+def test_t05_sweep_scan_set_is_a_strict_superset_of_the_record(facet_index_mod):
+    m = facet_index_mod
+    rec, swp = set(m.record_markdown()), set(m.sweep_markdown())
+    assert rec < swp, (
+        "the sweep's scan set must strictly contain the record's - "
+        "record %d files, sweep %d" % (len(rec), len(swp)))
+    for rel in m.SWEEP_EXTRA:
+        assert rel in swp, "%s is not in the sweep's scan set" % rel
+    assert any(r.startswith("site/src/content/docs/") for r in swp), (
+        "the published site handbook is not in the sweep's scan set")
+
+
+def test_t05_the_index_still_does_not_reach_the_front_door(facet_index_mod):
+    """Gate 4's property, kept runnable. `record_markdown()` feeds the index
+    BUILD as well as the sweep; if the widening ever leaks into it, seven
+    non-English translations and 2,768 lines of front-door prose join the FTS5
+    index and move the seeded rankings verify's leg 4 gates on."""
+    m = facet_index_mod
+    rec = set(m.record_markdown())
+    leaked = [rel for rel in m.SWEEP_EXTRA if rel in rec]
+    leaked += [rel for rel in rec if rel.startswith("site/")]
+    leaked += [rel for rel in rec if re.match(r"^README\.[a-zA-Z-]+\.md$", rel)]
+    assert not leaked, (
+        "the index's own file list has grown front-door files: %s"
+        % ", ".join(sorted(set(leaked))))
+
+
+def test_t05_changelog_splits_at_the_first_released_heading(facet_index_mod):
+    """The rule E26 had to state: an entry under `## [x.y.z]` is correct
+    forever, while `## [Unreleased]` above it is a current-state claim wearing a
+    released entry's clothes. A file-scoped rule cannot express that."""
+    m = facet_index_mod
+    at = m._first_released_line("CHANGELOG.md")
+    assert at is not None, "CHANGELOG.md has no released version heading"
+    above, why_a = m.classify_document("CHANGELOG.md", at - 1)
+    below, why_b = m.classify_document("CHANGELOG.md", at + 1)
+    assert above == "current-state", "above the first release: %s (%s)" % (above, why_a)
+    assert below == "historical", "inside a released entry: %s (%s)" % (below, why_b)
+
+
+def test_t05_every_widened_surface_is_classified(facet_index_mod):
+    """A swept file that lands `unclassified` is swept but not routed - its
+    disagreements can never be STALE, so it is watched in appearance only."""
+    m = facet_index_mod
+    unclassified = []
+    for rel in m.SWEEP_EXTRA:
+        cls, _ = m.classify_document(rel, 1)
+        if cls == "unclassified":
+            unclassified.append(rel)
+    for rel in m.sweep_markdown():
+        if rel.startswith("site/src/content/docs/"):
+            cls, _ = m.classify_document(rel, 1)
+            if cls == "unclassified":
+                unclassified.append(rel)
+    assert not unclassified, (
+        "widened surfaces with no classification: %s"
+        % ", ".join(sorted(unclassified)))
+
+
+def test_t05_widening_the_sweep_left_the_build_alone(facet_index_mod, built_db):
+    """No front-door file reached the searchable index. This is the direct
+    statement of what gate 4 measured by hand, and it is checked on the rows
+    verify's leg 4 actually ranks: `fts`."""
+    con = sqlite3.connect(str(built_db))
+    n_fts = con.execute("SELECT COUNT(*) FROM fts").fetchone()[0]
+    files = {r[0] for r in con.execute("SELECT DISTINCT file FROM fts")}
+    con.close()
+    assert n_fts > 0, "the scratch index has no fts rows to check"
+    extra = set(facet_index_mod.SWEEP_EXTRA)
+    strays = sorted(f for f in files
+                    if f and (f.startswith("site/") or f in extra
+                              or re.match(r"^README\.[a-zA-Z-]+\.md$", f)))
+    assert not strays, (
+        "front-door files reached the searchable index: %s" % strays)

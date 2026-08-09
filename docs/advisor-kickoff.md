@@ -40,7 +40,7 @@ Everything is committed and CI is green. **Nothing is tagged.** The order is law
 preference: a tag is immutable and the release-ordering law exists because of it.
 
 ```
-1. RE-COUNT            pytest --collect-only  -> currently 248 total / 240 hermetic
+1. RE-COUNT            pytest --collect-only  -> currently 423 total / 415 hermetic
 2. UPDATE THE SURFACES that still say 218/210:
                        site/src/site-config.ts:116
                        site/src/content/docs/handbook/getting-started.md:26,29
@@ -94,7 +94,7 @@ works end to end: downloads from the Release, **verifies SHA256**, execs.
 (three of six units cannot exist; the tools are scripts, not modules) and all three
 seams were taken. **E21 RULED** (9 rulings) — the CLI contract; **read Ruling 2 first**.
 
-**THE SUITE: 248 tests, 240 hermetic**, green at two seats and CI. CI is paths-gated and
+**THE SUITE: 423 tests, 415 hermetic**, green at two seats and CI. CI is paths-gated and
 now also runs **two dependency scanners** (`pip-audit` in a clean venv, `npm audit` via
 `--package-lock-only`). Never leave CI red.
 

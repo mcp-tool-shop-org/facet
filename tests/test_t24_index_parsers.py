@@ -468,7 +468,12 @@ def test_t24_current_state_and_historical_are_separated(facet_index_mod):
 
 
 def test_t24_an_unlisted_document_is_reported_not_assigned(facet_index_mod):
-    cls, why = facet_index_mod.classify_document("SCORECARD.md", 1)
+    """The property is the FALL-THROUGH branch, not the example that reaches
+    it. This test named `SCORECARD.md` until E26 Half B classified that file
+    `historical` and the test went red - so the example moved to a document
+    that is still on neither list, and the property stayed. `docs/arc-history.md`
+    is the live case: the sweep prints `unclassified` rows for it today."""
+    cls, why = facet_index_mod.classify_document("docs/arc-history.md", 1)
     assert cls == "unclassified", why
     assert "neither list" in why
 

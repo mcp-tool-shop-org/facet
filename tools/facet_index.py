@@ -512,6 +512,51 @@ def record_markdown():
 
 
 # ---------------------------------------------------------------------------
+# The SWEEP's scan set - deliberately NOT record_markdown() (E26 Half B).
+# ---------------------------------------------------------------------------
+# `record_markdown()` feeds the index BUILD as well as the claims sweep, so
+# widening it to reach these files would put them in the FTS5 index too. That
+# was measured before it was ruled out: the candidates are 17 files / 2,768
+# lines against a 254-file / 62,161-line corpus, and seven of them are
+# non-English translations. Adding them moves prose rows, fts rows and - the
+# part that matters - the seeded set's rankings, which verify's leg 4 gates on.
+# Risking legs 1, 2 and 4 to improve a REPORT is a bad trade, and a separate
+# scan set gets the same result.
+#
+# The translations are OUT by the same ruling: every family pattern here is an
+# English phrasing, and a Japanese ruling-count claim is a different problem.
+# They are covered instead by T34, which checks their digits.
+SWEEP_EXTRA = [
+    "CHANGELOG.md",
+    "SHIP_GATE.md",
+    "SCORECARD.md",
+    "SECURITY.md",
+]
+# The published handbook, which is a SYNC of docs/handbook plus pages of its
+# own. Sweeping both copies is deliberate: a stale sync is exactly the drift
+# class this widening exists for, and only comparing both can see it.
+SWEEP_EXTRA_DIRS = ["site/src/content/docs"]
+
+
+def sweep_markdown():
+    """Every markdown file the claims sweep reads. A superset of the record's."""
+    r = repo()
+    out = list(record_markdown())
+    for rel in SWEEP_EXTRA:
+        if os.path.exists(os.path.join(r, rel.replace("/", os.sep))):
+            out.append(rel)
+    for root in SWEEP_EXTRA_DIRS:
+        base = os.path.join(r, root.replace("/", os.sep))
+        for dirpath, dirnames, filenames in os.walk(base):
+            dirnames.sort()
+            for fn in sorted(filenames):
+                if fn.endswith(".md"):
+                    p = os.path.join(dirpath, fn)
+                    out.append(os.path.relpath(p, r).replace("\\", "/"))
+    return sorted(set(out))
+
+
+# ---------------------------------------------------------------------------
 # reading helpers
 # ---------------------------------------------------------------------------
 
@@ -1755,17 +1800,50 @@ CURRENT_STATE = {
     "docs/style-registers.md",
     "docs/experiments/README.md",
 }
-CURRENT_STATE_DIRS = ("docs/handbook/",)
+CURRENT_STATE_DIRS = ("docs/handbook/", "site/src/content/docs/")
 # A kickoff or spec states its counts as of writing, and is correct as written.
 HISTORICAL_DIRS = ("docs/experiments/", "docs/research/")
 BANNERED = "docs/advisor-kickoff.md"     # current-state ABOVE its supersession banner
 BANNER_RE = re.compile(r"SUPERSEDED")
+
+# E26 Half B. The four front-door files the widening reaches, each classified
+# with its reason rather than defaulting to "unclassified":
+#
+#   CHANGELOG.md   SPLIT - see RELEASED_RE. An entry under `## [x.y.z]` states
+#                  what that version shipped and is correct forever; the
+#                  `## [Unreleased]` block above it is shaped like a released
+#                  entry and dated like the present, so a count inside it is a
+#                  current-state claim wearing a released entry's clothes.
+#   SHIP_GATE.md   current-state - a live gate document; its checked items
+#                  state what is true at this commit.
+#   SECURITY.md    current-state - a published policy about the tree as it is.
+#   SCORECARD.md   historical - the before/after treatment scorecard. Its
+#                  narrative counts are the state AT TREATMENT ENTRY, already
+#                  corrected in place once, and correct as written.
+SPLIT_AT_RELEASE = "CHANGELOG.md"
+RELEASED_RE = re.compile(r"^## \[\d+\.\d+\.\d+\]")
+CURRENT_STATE_EXTRA = {
+    "SHIP_GATE.md": "a live gate document - checked items state this commit",
+    "SECURITY.md": "a published policy about the tree as it is",
+}
+HISTORICAL_EXTRA = {
+    "SCORECARD.md": "the before/after treatment scorecard - counts are the "
+                    "state at treatment entry, correct as written",
+}
 
 
 def _banner_line(rel):
     """1-based line of the first supersession banner, or None."""
     for i, ln in enumerate(lines_of(rel), 1):
         if BANNER_RE.search(ln):
+            return i
+    return None
+
+
+def _first_released_line(rel):
+    """1-based line of the first RELEASED version heading, or None."""
+    for i, ln in enumerate(lines_of(rel), 1):
+        if RELEASED_RE.match(ln):
             return i
     return None
 
@@ -1779,6 +1857,17 @@ def classify_document(rel, line):
         if line < b:
             return "current-state", "advisor kickoff, above the banner at L%d" % b
         return "historical", "advisor kickoff, below the banner at L%d" % b
+    if rel == SPLIT_AT_RELEASE:
+        v = _first_released_line(rel)
+        if v is None:
+            return "current-state", "the changelog, no released heading found"
+        if line < v:
+            return "current-state", "changelog, above the first release at L%d" % v
+        return "historical", "changelog, inside a released entry (from L%d)" % v
+    if rel in CURRENT_STATE_EXTRA:
+        return "current-state", CURRENT_STATE_EXTRA[rel]
+    if rel in HISTORICAL_EXTRA:
+        return "historical", HISTORICAL_EXTRA[rel]
     if rel in CURRENT_STATE or rel.startswith(CURRENT_STATE_DIRS):
         return "current-state", "on the dispatch's current-state list"
     if rel.startswith(HISTORICAL_DIRS):
@@ -1851,7 +1940,9 @@ def claims(db_path):
     con.close()          # every measurement is read above; see verify's note
     rows, unparseable, families_seen = [], [], {}
 
-    for rel in record_markdown():
+    # sweep_markdown(), NOT record_markdown(): the sweep reaches the front-door
+    # files the index deliberately does not index (E26 Half B, above).
+    for rel in sweep_markdown():
         # E15's own documents QUOTE these counts as data — the seeded key, the
         # predictions, this report. Sweeping them would flag the sweep's own subject
         # matter, which is the self-reference property already recorded in §5.
