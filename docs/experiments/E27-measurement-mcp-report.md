@@ -23,11 +23,12 @@ index staged 02:27 — 58 s before my check). I froze all git activity, watched,
 commits landed cleanly (`be8d790` release prep, `9940226` DB/cert pair). My commit lands
 **after** both, so no sibling bytes ride in it. E26 Ruling 2's re-measure rule was applied
 in the direction it names: every quantity this arc's surfaces assert was re-measured
-against the tree as committed. **One residue to flag**: at this halt the v0.3.1 **tag has
-not yet been observed** — if the release seat builds its artifacts from the shared tree
-*after* this arc's surface updates, the tarball README would carry 684 where the tag
-carries 648. The release seat's own publish checklist re-verifies; this line exists so it
-re-verifies knowingly.
+against the tree as committed. **One residue was flagged here and resolved
+while the halt was closing** (recorded in the follow-up commit): the release seat cut
+**v0.3.1 at `9940226`** minutes after this arc's push, its Release workflow completed
+successfully from the **tag checkout** — so the published artifacts carry the 648-state
+surfaces that match their tag, this arc's 684 surfaces begin at `a30fea2`, and the drift
+the flag warned about did not occur.
 
 ## Predictions, scored — blindness disclosed per row
 
@@ -240,10 +241,13 @@ design caught my own wrong pointer immediately.
    on both). The fold-marked tests re-ran after this report entered the corpus; their
    result is stated in the commit message rather than here, because a claim about a run
    that includes this file cannot precede the file.
-5. **CI green, both scanners**: **NOT YET RUN at this report's commit** — the run id and
-   verdict are appended in a follow-up commit after the push, per the
-   fabricated-citation law: a gate that has not run is written NOT YET RUN, never a
-   plausible identifier with a verdict beside it.
+5. **CI green, both scanners**: **PASSED, measured after the push** (this line landed in
+   the follow-up commit, per the fabricated-citation law — it was written NOT YET RUN at
+   the report's own commit). Run **31299692852** on `a30fea2`, hermetic job green in
+   8m49s — the 675-tier including every new T35–T40 test on CI's pinned 3.12 — with both
+   scanner steps green: `dependency scan - python (published surface)` and
+   `dependency scan - npm (published surface)`.
+   `https://github.com/mcp-tool-shop-org/facet/actions/runs/31299692852`
 6. **No recorded tree modified.** Manifest BEFORE anything ran: **7,312 files,
    17,072,807,610 bytes, 50.0 s** — E22's count and E23's exact byte total reproduce.
    RECHECK at halt, after the artifacts-tier suite run:
