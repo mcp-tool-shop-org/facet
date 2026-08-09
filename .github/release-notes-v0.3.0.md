@@ -55,8 +55,26 @@ precondition on a function's contract and not on today's single call site.
 
 ```bash
 npx @mcptoolshop/facet          # zero-prerequisite, SHA256-verified binary
-pipx install facet-mcp==0.3.0   # or the Python package directly
 ```
+
+⚠ **Corrected after publication, at the release read-back.** This section also offered
+`pipx install facet-mcp==0.3.0`. **That path cannot find the record.** The wheel installs
+`facet_index` as a top-level module, so it resolves the corpus and the default index
+against `<venv>/Lib` — which holds neither: `build` fails, `q` fails without an explicit
+`--db`, and the server's corpus-reading tools refuse. `$FACET_INDEX_DB` is read by
+`facet-mcp` and **not** by `facet-index`.
+
+**This is not a v0.3.0 regression** — the 0.2.0 wheel fails identically, and it has been
+true since the extraction. v0.1.1 fixed the *frozen* branch and left the *wheel* branch
+behind. **The `npx` binary above is unaffected and is the supported path.** Both defects
+are measured and located in code in
+[known-defects.md](https://github.com/mcp-tool-shop-org/facet/blob/main/docs/known-defects.md);
+the fix is a behaviour change to two published commands and gets its own arc rather than
+a hotfix.
+
+Found by running a *verb* on the installed artifact instead of `--help` — which is also
+why `release.yml`'s own "verify the wheel runs from a clean venv" step went green: it
+runs `--help` and `--print-tools`, and neither touches the corpus or the database.
 
 Unchanged from v0.2.x: four accepted assets across four subject classes at zero credits,
 a four-leg-verified SQLite+FTS5 index over the whole evidence trail, and the open defects
