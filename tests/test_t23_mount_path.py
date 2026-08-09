@@ -5,11 +5,19 @@ consumption path". A mount config nobody checks is a config that silently stops
 working - and its failure mode is invisible, because a session that cannot see
 the server simply reads the record the old way and never notices.
 
+TWO SERVERS SINCE E31. This file asserted `list(servers) == ["facet-record"]`
+- one server, exactly - and that assertion is why adding the measurement
+server had to come here, in the commit that added it, rather than slipping in
+unnoticed. [E29 Ruling 7] found `tools/measure_mcp.py` declared nowhere, so no
+session could reach the eight measured tools over the transport at all; the
+registration lands at E31 and the exact-set assertion below moves with it. The
+set stays EXACT: a third server still fires.
+
 TWO TIERS, deliberately:
 
-  hermetic  - the file parses, names exactly one server, and its args point at
-              the entry point that exists in this repo. Runs anywhere, CI
-              included.
+  hermetic  - the file parses, names exactly the declared servers, and each
+              one's args point at an entry point that exists in this repo.
+              Runs anywhere, CI included.
   on-rig    - the interpreter the file names is LAUNCHED and driven over stdio,
               which is the only way to prove the command line in the file
               actually starts a server. Skipped with a printed reason where
@@ -32,8 +40,15 @@ import pytest
 from conftest import REPO
 
 MOUNT = REPO / ".mcp.json"
-SERVER_NAME = "facet-record"
-ENTRY = "tools/record_mcp.py"
+SERVER_NAME = "facet-record"          # the on-rig tier's subject, below
+
+# Every server the mount declares, and the entry point each must name. The set
+# is exact on purpose: a server added without a line here is a server nobody
+# checked. `facet-measure` joined at E31 (E29 Ruling 7).
+DECLARED = {
+    "facet-record": "tools/record_mcp.py",
+    "facet-measure": "tools/measure_mcp.py",
+}
 
 
 @pytest.fixture(scope="module")
@@ -44,15 +59,22 @@ def mount():
         return json.load(fh)
 
 
-def test_t23_mount_declares_the_server(mount):
+def test_t23_mount_declares_exactly_the_known_servers(mount):
     assert "mcpServers" in mount, mount
     servers = mount["mcpServers"]
-    assert list(servers) == [SERVER_NAME], (
-        "expected exactly one server named %r, got %s" % (SERVER_NAME, list(servers)))
-    entry = servers[SERVER_NAME]
-    assert entry["args"] == [ENTRY], entry
-    assert (REPO / ENTRY).exists(), "the mount points at a file that is not here"
-    assert entry["command"], "the mount declares no interpreter"
+    assert set(servers) == set(DECLARED), (
+        "the mount's server set moved: %s. Adding one is welcome - add it to "
+        "DECLARED in this same commit, or nothing checks it."
+        % sorted(set(servers) ^ set(DECLARED)))
+
+
+@pytest.mark.parametrize("name", sorted(DECLARED))
+def test_t23_each_declared_server_points_at_a_real_entry_point(mount, name):
+    entry = mount["mcpServers"][name]
+    assert entry["args"] == [DECLARED[name]], entry
+    assert (REPO / DECLARED[name]).exists(), (
+        "the mount points at a file that is not here: %s" % DECLARED[name])
+    assert entry["command"], "the mount declares no interpreter for %s" % name
     # no bare `python`: T18's trap, one config file over. Parse the mount's
     # OWN separators, not the host's: the command is a Windows absolute path
     # and this test also runs on CI's ubuntu, where posixpath neither splits
@@ -65,6 +87,15 @@ def test_t23_mount_declares_the_server(mount):
     assert "/" in cmd or "\\" in cmd, (
         "the mount inherits PATH for its interpreter - on this rig bare "
         "`python` has no mcp and no open3d (E17 Ruling 2)")
+
+
+def test_t23_every_declared_server_names_the_same_interpreter(mount):
+    """The environment law names exactly ONE python and T18 refuses the rest.
+    Two mounts pointing at two interpreters would serve two different
+    measurement environments out of one repo, and the difference would be
+    invisible from a session."""
+    cmds = {n: mount["mcpServers"][n]["command"] for n in DECLARED}
+    assert len(set(cmds.values())) == 1, cmds
 
 
 def test_t23_mount_file_is_ascii():
