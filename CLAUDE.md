@@ -494,6 +494,33 @@ executor is least likely to check. *Two minutes of reading the pipeline would ha
 the prediction before it was written* — so read the mechanism you are predicting about, and
 when you write a dispatch, mark which of its premises you measured and which you assumed.
 
+**When you enumerate the ways a thing can break, check the thing is PRESENT before you
+enumerate how it misbehaves.** E31's dispatch specified three failure layers — resolver,
+missing instrument file, missing import — and asked which one each of eight tools hit. Measured,
+there is a **layer 0 in front of all three**: at the shipped wheel the server module is *not in
+the artifact*, so "where does it fail" has no operand. The advisor's own error, in a dispatch
+rather than a prediction, and the same family as everything below: **a population of failure
+modes that omits its first member.**
+
+**And the object a count is over is part of its unit.** Ninth consecutive arc on this family.
+E31 predicted how many of eight tools survive an install tier and **counted a surviving *path*
+as a surviving *tool*** — several tools share one code path, so the two are different
+populations wearing one number. The family now reads: the *unit*, the *population*, an unchecked
+*property*, the rarest clause of a *conjunction*, the *instrument's continued ability to express
+the question*, the *premise inherited from your own dispatch*, and **the object being counted**.
+Its sibling in the same arc: a predicted **total** missed above band because *the term that
+dominates it was never measured* — open3d's manylinux wheel is 6.5× its Windows one.
+
+**An identity envelope that does not record the dependency set is not portable.** Every
+open3d-dependent number in this repo was measured against **`0.19.0+241aaee`** — a cp313
+*development* wheel from Open3D's `main-devel` channel, because PyPI's latest release publishes
+cp38–cp312 and **no sdist**. Four of the eight served instruments need it. The envelope carries
+server version, instrument sha256 and config hash and **not** what the instrument imported, so a
+number reproduced elsewhere against released `0.19.0` is compared to one produced against a
+git-hash-suffixed build and *nothing in the payload can see the difference*. Nothing recorded is
+withdrawn — this names a comparability component that stays invisible while one rig produces
+every measurement, and becomes load-bearing the moment the tool is published.
+
 **A row you predict to be uninformative is still a prediction, and it can miss.** E29's P4 hit
 every band it stated and was wrong about what they meant: it said the face/vertex counts could
 not separate the arms, said so out loud as a virtue, and the arms then differed by 3.66% —

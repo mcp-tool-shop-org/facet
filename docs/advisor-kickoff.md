@@ -71,7 +71,7 @@ dispatched. Pick by what he wants moving — none blocks another.
 |---|---|
 | HEAD | `99554a5`, working tree **clean**, **0** ahead of origin |
 | CI | **green** — [`31334466618`](https://github.com/mcp-tool-shop-org/facet/actions/runs/31334466618), `hermetic=success`, at `feab30b` |
-| suite | **THE SUITE: 808 tests, 768 hermetic** (40 artifacts), green at two seats and CI. ⚠ That phrasing is **pinned by T34** — preserve its shape if you rewrite this row |
+| suite | **THE SUITE: 890 tests, 850 hermetic** (40 artifacts), green at two seats and CI. ⚠ That phrasing is **pinned by T34** — preserve its shape if you rewrite this row |
 | highest T-number | **T57.** Take T58+ |
 | published | `facet-mcp` **0.3.1** (PyPI) · `@mcptoolshop/facet` **0.3.1** (npm, provenance) · Releases v0.1.0 → v0.3.1 with binaries, checksums, wheel, sdist |
 | `pip install` | **works** as of 0.3.1 — verified by installing the published package and running verbs, not `--help` |
@@ -173,7 +173,7 @@ the humanoid photo-real without the style adapter, the fifth subject class.
 ## The release sequence, when he fires one — the order is law
 
 ```
-1. RE-COUNT      pytest --collect-only  -> currently 808 total / 768 hermetic
+1. RE-COUNT      pytest --collect-only  -> currently 890 total / 850 hermetic
                  T34 enforces it in CI. Run it anyway: it has caught a stale
                  number at every release seat.
 2. VERSION       FIVE declarations - pyproject.toml, package.json, bin/facet.js

@@ -17,8 +17,8 @@
     "py_files_total": 108
   },
   "provenance": {
-    "corpus_files": 276,
-    "corpus_files_before_self_exclusion": 286,
+    "corpus_files": 278,
+    "corpus_files_before_self_exclusion": 288,
     "probe_interpreter": "E:\\AI-Models\\trellis2-env\\Scripts\\python.exe",
     "probe_interpreter_version": "3.13.13",
     "probe_skipped": false,
@@ -35,7 +35,7 @@
       "docs/experiments/E28-task3-report.md",
       "docs/instrument-census.md"
     ],
-    "test_files": 57
+    "test_files": 63
   },
   "rows": [
     {
@@ -49,22 +49,28 @@
         "tests/test_t40_measure_not_wrapped.py",
         "tests/test_t41_instrument_census.py",
         "tests/test_t46_measure_anchor_check.py",
-        "tests/test_t51_galleon_finalize_replay.py"
+        "tests/test_t51_galleon_finalize_replay.py",
+        "tests/test_t60_instrument_dependency_surface.py",
+        "tests/test_t62_recorded_invocation_form.py"
       ],
       "anchored_in_basename_only": [
         "tests/test_t41_instrument_census.py",
-        "tests/test_t46_measure_anchor_check.py"
+        "tests/test_t46_measure_anchor_check.py",
+        "tests/test_t60_instrument_dependency_surface.py",
+        "tests/test_t62_recorded_invocation_form.py"
       ],
       "b1_literals": [],
       "b2_literals": [],
-      "cited_count": 6,
-      "cited_count_raw": 11,
+      "cited_count": 8,
+      "cited_count_raw": 13,
       "cited_in": [
         "docs/experiments/E30-polish-anchor-gates-kickoff.md",
         "docs/experiments/E30-polish-anchor-gates-report.md",
         "docs/experiments/E30-predictions.md",
         "docs/experiments/E31-predictions.md",
         "docs/experiments/E31-publish-the-pipeline-kickoff.md",
+        "docs/experiments/E31-publish-the-pipeline-report.md",
+        "docs/experiments/E31-ruling.md",
         "docs/experiments/README.md"
       ],
       "dir": "tools/verify",
@@ -1067,7 +1073,8 @@
         "tests/test_t37_measure_reach_ceiling.py",
         "tests/test_t53_w3_ceiling_replay.py",
         "tests/test_t54_galleon_ceiling_replay.py",
-        "tests/test_t55_dragon_ceiling_replay.py"
+        "tests/test_t55_dragon_ceiling_replay.py",
+        "tests/test_t60_instrument_dependency_surface.py"
       ],
       "anchored_in_basename_only": [
         "tests/test_t08_ceiling.py",
@@ -1075,7 +1082,8 @@
         "tests/test_t37_measure_reach_ceiling.py",
         "tests/test_t53_w3_ceiling_replay.py",
         "tests/test_t54_galleon_ceiling_replay.py",
-        "tests/test_t55_dragon_ceiling_replay.py"
+        "tests/test_t55_dragon_ceiling_replay.py",
+        "tests/test_t60_instrument_dependency_surface.py"
       ],
       "b1_literals": [],
       "b2_literals": [],
@@ -1261,10 +1269,14 @@
       "a_argparse": true,
       "a_main_guard": true,
       "a_parse_args_module_level": false,
-      "anchored": false,
-      "anchored_basename_only": false,
-      "anchored_in": [],
-      "anchored_in_basename_only": [],
+      "anchored": true,
+      "anchored_basename_only": true,
+      "anchored_in": [
+        "tests/test_t62_recorded_invocation_form.py"
+      ],
+      "anchored_in_basename_only": [
+        "tests/test_t62_recorded_invocation_form.py"
+      ],
       "b1_literals": [
         "E:\\AI\\training\\facet_next\\E04_armT72\\stage1",
         "E:\\AI\\training\\facet_next\\E04_shipprep",
@@ -1304,10 +1316,14 @@
       "a_argparse": true,
       "a_main_guard": true,
       "a_parse_args_module_level": false,
-      "anchored": false,
-      "anchored_basename_only": false,
-      "anchored_in": [],
-      "anchored_in_basename_only": [],
+      "anchored": true,
+      "anchored_basename_only": true,
+      "anchored_in": [
+        "tests/test_t62_recorded_invocation_form.py"
+      ],
+      "anchored_in_basename_only": [
+        "tests/test_t62_recorded_invocation_form.py"
+      ],
       "b1_literals": [],
       "b2_literals": [],
       "cited_count": 1,
@@ -1337,13 +1353,16 @@
       "a_main_guard": true,
       "a_parse_args_module_level": false,
       "anchored": true,
-      "anchored_basename_only": false,
+      "anchored_basename_only": true,
       "anchored_in": [
         "tests/test_t24_index_parsers.py",
         "tests/test_t41_instrument_census.py",
-        "tests/test_t45_measure_offsurface.py"
+        "tests/test_t45_measure_offsurface.py",
+        "tests/test_t62_recorded_invocation_form.py"
       ],
-      "anchored_in_basename_only": [],
+      "anchored_in_basename_only": [
+        "tests/test_t62_recorded_invocation_form.py"
+      ],
       "b1_literals": [
         "E:\\AI\\training\\facet_next\\E04_shipprep",
         "E:\\AI\\training\\facet_next\\E04_stroke"
@@ -1389,10 +1408,14 @@
       "a_argparse": true,
       "a_main_guard": true,
       "a_parse_args_module_level": false,
-      "anchored": false,
-      "anchored_basename_only": false,
-      "anchored_in": [],
-      "anchored_in_basename_only": [],
+      "anchored": true,
+      "anchored_basename_only": true,
+      "anchored_in": [
+        "tests/test_t62_recorded_invocation_form.py"
+      ],
+      "anchored_in_basename_only": [
+        "tests/test_t62_recorded_invocation_form.py"
+      ],
       "b1_literals": [
         "E:\\AI\\training\\facet_next\\E04_armT72\\stage1",
         "E:\\AI\\training\\facet_next\\E04_shipprep",
@@ -1431,10 +1454,14 @@
       "a_argparse": true,
       "a_main_guard": true,
       "a_parse_args_module_level": false,
-      "anchored": false,
-      "anchored_basename_only": false,
-      "anchored_in": [],
-      "anchored_in_basename_only": [],
+      "anchored": true,
+      "anchored_basename_only": true,
+      "anchored_in": [
+        "tests/test_t62_recorded_invocation_form.py"
+      ],
+      "anchored_in_basename_only": [
+        "tests/test_t62_recorded_invocation_form.py"
+      ],
       "b1_literals": [],
       "b2_literals": [],
       "cited_count": 1,
@@ -1948,10 +1975,12 @@
       "anchored": true,
       "anchored_basename_only": true,
       "anchored_in": [
-        "tests/test_t45_measure_offsurface.py"
+        "tests/test_t45_measure_offsurface.py",
+        "tests/test_t60_instrument_dependency_surface.py"
       ],
       "anchored_in_basename_only": [
-        "tests/test_t45_measure_offsurface.py"
+        "tests/test_t45_measure_offsurface.py",
+        "tests/test_t60_instrument_dependency_surface.py"
       ],
       "b1_literals": [],
       "b2_literals": [],
@@ -2149,12 +2178,14 @@
       "anchored_in": [
         "tests/test_t33_diagnostics_gates.py",
         "tests/test_t41_instrument_census.py",
-        "tests/test_t44_measure_thin_curve.py"
+        "tests/test_t44_measure_thin_curve.py",
+        "tests/test_t60_instrument_dependency_surface.py"
       ],
       "anchored_in_basename_only": [
         "tests/test_t33_diagnostics_gates.py",
         "tests/test_t41_instrument_census.py",
-        "tests/test_t44_measure_thin_curve.py"
+        "tests/test_t44_measure_thin_curve.py",
+        "tests/test_t60_instrument_dependency_surface.py"
       ],
       "b1_literals": [],
       "b2_literals": [],
@@ -2922,18 +2953,20 @@
         "tests/test_t36_measure_mesh_stats.py",
         "tests/test_t41_instrument_census.py",
         "tests/test_t42_topology_tie_repair.py",
-        "tests/test_t43_measure_mesh_topology.py"
+        "tests/test_t43_measure_mesh_topology.py",
+        "tests/test_t60_instrument_dependency_surface.py"
       ],
       "anchored_in_basename_only": [
         "tests/test_t33_diagnostics_gates.py",
         "tests/test_t41_instrument_census.py",
         "tests/test_t42_topology_tie_repair.py",
-        "tests/test_t43_measure_mesh_topology.py"
+        "tests/test_t43_measure_mesh_topology.py",
+        "tests/test_t60_instrument_dependency_surface.py"
       ],
       "b1_literals": [],
       "b2_literals": [],
-      "cited_count": 10,
-      "cited_count_raw": 16,
+      "cited_count": 11,
+      "cited_count_raw": 17,
       "cited_in": [
         "docs/experiments/E14-gate0-report.md",
         "docs/experiments/E27-measurement-mcp-report.md",
@@ -2943,6 +2976,7 @@
         "docs/experiments/E29-predictions.md",
         "docs/experiments/E29-ruling.md",
         "docs/experiments/E31-publish-the-pipeline-kickoff.md",
+        "docs/experiments/E31-publish-the-pipeline-report.md",
         "docs/experiments/README.md",
         "docs/specs/measurement-mcp-spec.md"
       ],
@@ -3123,10 +3157,14 @@
       "anchored_basename_only": true,
       "anchored_in": [
         "tests/fixtures/make_measure_fixture.py",
-        "tests/test_t33_diagnostics_gates.py"
+        "tests/test_t33_diagnostics_gates.py",
+        "tests/test_t59_measure_mcp_install_geometry.py",
+        "tests/test_t60_instrument_dependency_surface.py"
       ],
       "anchored_in_basename_only": [
-        "tests/test_t33_diagnostics_gates.py"
+        "tests/test_t33_diagnostics_gates.py",
+        "tests/test_t59_measure_mcp_install_geometry.py",
+        "tests/test_t60_instrument_dependency_surface.py"
       ],
       "b1_literals": [],
       "b2_literals": [],
@@ -3157,10 +3195,14 @@
       "a_argparse": true,
       "a_main_guard": true,
       "a_parse_args_module_level": false,
-      "anchored": false,
-      "anchored_basename_only": false,
-      "anchored_in": [],
-      "anchored_in_basename_only": [],
+      "anchored": true,
+      "anchored_basename_only": true,
+      "anchored_in": [
+        "tests/test_t62_recorded_invocation_form.py"
+      ],
+      "anchored_in_basename_only": [
+        "tests/test_t62_recorded_invocation_form.py"
+      ],
       "b1_literals": [],
       "b2_literals": [],
       "cited_count": 10,
@@ -3397,16 +3439,27 @@
         "tests/test_t35_measure_mcp_surface.py",
         "tests/test_t36_measure_mesh_stats.py",
         "tests/test_t39_measure_report.py",
-        "tests/test_t40_measure_not_wrapped.py"
+        "tests/test_t40_measure_not_wrapped.py",
+        "tests/test_t58_measure_mcp_registration.py",
+        "tests/test_t59_measure_mcp_install_geometry.py",
+        "tests/test_t60_instrument_dependency_surface.py",
+        "tests/test_t61_frozen_instrument_invocation.py",
+        "tests/test_t62_recorded_invocation_form.py",
+        "tests/test_t63_the_wheel_carries_the_instruments.py"
       ],
       "anchored_in_basename_only": [
         "tests/test_t12_mesh_stats.py",
-        "tests/test_t35_measure_mcp_surface.py"
+        "tests/test_t35_measure_mcp_surface.py",
+        "tests/test_t58_measure_mcp_registration.py",
+        "tests/test_t59_measure_mcp_install_geometry.py",
+        "tests/test_t60_instrument_dependency_surface.py",
+        "tests/test_t61_frozen_instrument_invocation.py",
+        "tests/test_t63_the_wheel_carries_the_instruments.py"
       ],
       "b1_literals": [],
       "b2_literals": [],
-      "cited_count": 22,
-      "cited_count_raw": 26,
+      "cited_count": 23,
+      "cited_count_raw": 27,
       "cited_in": [
         "docs/experiments/E01-facial-structure-ceiling.md",
         "docs/experiments/E04-armT-halt2.md",
@@ -3428,6 +3481,7 @@
         "docs/experiments/E29-clay-reconstruction-report.md",
         "docs/experiments/E31-predictions.md",
         "docs/experiments/E31-publish-the-pipeline-kickoff.md",
+        "docs/experiments/E31-publish-the-pipeline-report.md",
         "docs/specs/measurement-mcp-spec.md",
         "docs/tools.md"
       ],
@@ -3539,15 +3593,19 @@
       "a_main_guard": false,
       "a_parse_args_module_level": true,
       "anchored": true,
-      "anchored_basename_only": false,
+      "anchored_basename_only": true,
       "anchored_in": [
         "tests/fixtures/make_measure_fixture.py",
         "tests/test_t35_measure_mcp_surface.py",
         "tests/test_t38_measure_texel_provenance.py",
         "tests/test_t41_instrument_census.py",
-        "tests/test_t47_measure_texel_component.py"
+        "tests/test_t47_measure_texel_component.py",
+        "tests/test_t58_measure_mcp_registration.py",
+        "tests/test_t60_instrument_dependency_surface.py"
       ],
-      "anchored_in_basename_only": [],
+      "anchored_in_basename_only": [
+        "tests/test_t60_instrument_dependency_surface.py"
+      ],
       "b1_literals": [],
       "b2_literals": [],
       "cited_count": 13,
@@ -3655,8 +3713,8 @@
     }
   ],
   "totals": {
-    "anchored": 51,
-    "anchored_basename_only": 49,
+    "anchored": 56,
+    "anchored_basename_only": 56,
     "any_add_argument": 102,
     "argparse": 102,
     "cited": 84,

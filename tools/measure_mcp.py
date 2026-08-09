@@ -136,13 +136,30 @@ from mcp.server.mcpserver import MCPServer             # noqa: E402
 from mcp.server.mcpserver.exceptions import ToolError  # noqa: E402
 from mcp.types import ToolAnnotations                  # noqa: E402
 
-REPO = os.path.dirname(HERE)
+# TWO QUESTIONS, TWO ANSWERS - and conflating them is what E24 cost four
+# releases. `REPO` answers *where is the record / what should a subprocess's
+# cwd be*, which is a CORPUS question: `facet_index.resolve_repo` tests for the
+# record itself (CLAUDE.md + docs/experiments) and returns None rather than
+# guessing, exactly as E24 ruled. The instrument path is a DIFFERENT question
+# and is NOT answered here - see `tool_path` below.
+#
+# This line was `os.path.dirname(HERE)`, which is E24's defect verbatim in a
+# file written after E24 fixed it elsewhere: in a wheel it resolves to
+# <venv>/Lib, so E31 measured `<venv>\Lib\tools\verify\mesh_stats.py` - a path
+# outside the package entirely. The consumer-grep that found E24's other
+# callers could not have caught this one, because this consumer did not exist
+# yet.
+REPO = facet_index.REPO
 
 # This server's own version, NOT the facet-mcp package version: the package
 # publishes the record server and its number is pinned across four sites by
-# T27. This module is deliberately NOT in the wheel (pyproject py-modules) -
-# whether it joins a release is the Director's, and versioning it here keeps
-# the identity contract live in the meantime.
+# T27. ⚑ CORRECTED 2026-08-09: this module IS in the wheel now. It read "this
+# module is deliberately NOT in the wheel - whether it joins a release is the
+# Director's", and he ruled it in ("facet-measure is what the publish is
+# waiting for"), so py-modules carries it alongside the instruments it invokes.
+# The version below stays INDEPENDENT of the package version and is still not
+# in T27's pinned set: it versions a payload surface, not a distribution, and
+# an install that ships both must not make the two numbers move together.
 # 0.1.0 -> 0.2.0 at E28 task 2b (4-of-8 serving -> 7-of-8), -> 0.3.0 at 2c
 # (the eighth tool, anchor_check over anchor_compare). The identity law is why
 # this bumps: a payload's envelope carries the server version and
@@ -190,6 +207,12 @@ CODES = {
                                                       # recorded trees
     "MEASUREMENT_MISMATCH": facet_index.EXIT_REFUSED,  # incomparable payloads
     "BAD_ARGUMENT":       facet_index.EXIT_USER,      # outside stated bounds
+    # REFUSED, not RUNTIME, and the distinction is the point: the environment
+    # cannot answer the question, which is the tool working and telling you not
+    # to proceed - not the instrument breaking. Reporting a missing dependency
+    # as a runtime failure is how a LIGHT install looked like a broken tool
+    # (E31 Ruling 6).
+    "MISSING_DEPENDENCY": facet_index.EXIT_REFUSED,   # environment, not code
     "INSTRUMENT_FAILED":  facet_index.EXIT_RUNTIME,   # the subprocess broke
     "INTERNAL":           facet_index.EXIT_RUNTIME,   # wrapped, never raw
 }
@@ -260,8 +283,12 @@ def envelope(tool, instrument_rel, params, ratios=None, warnings=None,
     configuration')."""
     inst = None
     if instrument_rel:
-        path = os.path.join(REPO, instrument_rel.replace("/", os.sep))
-        inst = {"path": instrument_rel, "sha256": _sha256_file(path)}
+        # tool_path, not REPO: the envelope's sha256 must hash the file that
+        # actually RAN. Building this path a second, different way is how a
+        # payload comes to certify an instrument it did not execute - and in a
+        # wheel the REPO form pointed outside the package entirely (E31).
+        inst = {"path": instrument_rel,
+                "sha256": _sha256_file(tool_path(instrument_rel))}
     doc = {"server": {"name": SERVER_NAME, "version": MEASURE_VERSION},
            "tool": tool, "instrument": inst, "params": params}
     doc["config_hash"] = hashlib.sha256(
@@ -306,7 +333,29 @@ def _sanitize_nan(obj):
 # ---------------------------------------------------------------------------
 
 def tool_path(rel):
-    return os.path.join(REPO, "tools", rel.replace("/", os.sep))
+    """Where an instrument lives - resolved BESIDE THIS MODULE, never via REPO.
+
+    ONE EXPRESSION, CORRECT IN BOTH WORLDS. In a checkout `HERE` is `tools/`
+    and the instrument directories sit in it; in an install `HERE` is
+    site-packages and `diagnostics/` and `verify/` sit in it too, because
+    pyproject packages them. Nothing here asks where the record is.
+
+    ⚠ AND E24's OWN FIX IS THE WRONG REMEDY HERE - this is the distinction the
+    whole repair turns on. `facet_index.RECORD_MARKERS` keys on the CORPUS, and
+    `facet_index.py` says in its own comment that neither marker can appear in
+    an install: corpus cannot ship. INSTRUMENTS ARE CODE AND DO SHIP. Routing
+    this through REPO would bind the measurement server to a checkout for a
+    reason that does not apply to it, and would refuse in an install that has
+    everything it needs.
+
+    Accepts either spelling - `verify/mesh_stats.py` (what run_instrument
+    passes) or `tools/verify/mesh_stats.py` (what the envelope records) - so
+    the two call sites cannot drift apart.
+    """
+    rel = rel.replace("\\", "/")
+    if rel.startswith("tools/"):
+        rel = rel[len("tools/"):]
+    return os.path.join(HERE, rel.replace("/", os.sep))
 
 
 def run_instrument(rel, args, timeout=3600):
@@ -322,6 +371,11 @@ def run_instrument(rel, args, timeout=3600):
     try:
         p = subprocess.run(
             [sys.executable, tool_path(rel)] + [str(a) for a in args],
+            # REPO is None in an install (no corpus to find), and subprocess
+            # reads None as "inherit this process's cwd" - which is what an
+            # installed caller wants, since it passes absolute subject paths.
+            # In a checkout REPO is the repo root, so behaviour there is
+            # unchanged. Deliberate, not incidental.
             cwd=REPO, capture_output=True, timeout=timeout)
     except subprocess.TimeoutExpired:
         _raise(MeasureError(
@@ -333,11 +387,68 @@ def run_instrument(rel, args, timeout=3600):
     err = p.stderr.decode(enc, errors="replace")
     if p.returncode != 0:
         tail = "\n".join((out + "\n" + err).strip().splitlines()[-8:])
+        # A MISSING DEPENDENCY IS NOT AN INSTRUMENT FAILURE, and saying so is
+        # what makes the four-of-eight tier usable as a product rather than a
+        # mystery. E31 measured that every part of the honest sentence was
+        # already at this call site - the instrument path in `rel`, the module
+        # name in the child's own traceback - and that NOTHING COMPOSED IT, so
+        # a LIGHT install reported "exited 1" and left the caller to guess.
+        missing = _missing_module(err) or _missing_module(out)
+        if missing:
+            _raise(MeasureError(
+                "MISSING_DEPENDENCY",
+                "the instrument %s needs %s, which this environment does not "
+                "have" % (rel, missing),
+                _install_hint(missing)))
         _raise(MeasureError(
             "INSTRUMENT_FAILED",
             "%s exited %d" % (rel, p.returncode),
             "Its own last lines:\n%s" % tail))
     return out, err
+
+
+# The four that LIGHT carries and the four it does not, kept beside the hint
+# that names them so the two cannot drift (E31 Ruling 6).
+_LIGHT_MODULES = ("numpy", "scipy", "trimesh", "PIL")
+
+
+def _missing_module(text):
+    """The module name from a child's ModuleNotFoundError, or None.
+
+    Read from the CHILD's traceback rather than probed in this process: this
+    server runs instruments as subprocesses precisely so their imports are
+    theirs, and importing numpy here to ask whether numpy exists there would
+    answer about the wrong interpreter.
+    """
+    m = re.search(r"ModuleNotFoundError: No module named ['\"]([\w.]+)['\"]",
+                  text or "")
+    return m.group(1).split(".")[0] if m else None
+
+
+def _install_hint(missing):
+    """What to type, and - when there is nothing to type - why not.
+
+    open3d is the case this exists for. It has no PyPI wheel for 3.13 and no
+    sdist at all, so `pip install facet-mcp[...]` CANNOT deliver it and a hint
+    that said otherwise would send the caller in a circle (E31 Ruling 3).
+    """
+    if missing in _LIGHT_MODULES:
+        return ("Install the measurement extra:  pip install "
+                "facet-mcp[measure]")
+    if missing == "open3d":
+        return (
+            "This tool needs open3d, which facet-mcp cannot declare as a "
+            "dependency: the latest release (0.19.0) publishes wheels for "
+            "cp38-cp312 and no sdist, so there is nothing installable for "
+            "Python %d.%d. The build this route is developed against is "
+            "0.19.0+241aaee from Open3D's own main-devel channel - an "
+            "UNRELEASED dev build, installed by direct URL. Four of the eight "
+            "served tools need it; the other four run on "
+            "facet-mcp[measure] alone."
+            % (sys.version_info[0], sys.version_info[1]))
+    return ("The instrument imports %s and this environment does not have it. "
+            "facet-mcp[measure] covers %s."
+            % (missing, ", ".join(_LIGHT_MODULES)))
 
 
 def warning_lines(text):

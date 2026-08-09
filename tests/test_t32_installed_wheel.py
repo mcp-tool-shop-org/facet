@@ -283,11 +283,43 @@ def test_t32_the_built_wheel_carries_no_record_marker(installed):
     site-packages exactly as before."""
     names = zipfile.ZipFile(str(installed["wheel"])).namelist()
     payload = [n for n in names if ".dist-info/" not in n]
-    assert sorted(payload) == ["facet_index.py", "record_mcp.py"], payload
+
+    # ⚑ 2026-08-09: this read `assert sorted(payload) == ["facet_index.py",
+    # "record_mcp.py"]`. That equality was a PROXY for the invariant this test
+    # is named after, and E31 Ruling 6 legitimately widened the payload -
+    # measure_mcp, subject_profile and the two instrument directories ship now,
+    # because the served tools invoke instruments as subprocesses and a
+    # two-file wheel had nothing to invoke.
+    #
+    # The replacement is derived from pyproject rather than hardcoded, so it is
+    # STRONGER than the list it replaces: a stray module, a `docs/` directory
+    # or an undeclared package fails it, and the allowed set can no longer
+    # drift from what the project actually declares.
+    declared = _declared_payload()
+    allowed_mods = {m + ".py" for m in declared["py_modules"]}
+    stray = [n for n in payload
+             if n not in allowed_mods
+             and not any(n.startswith(p + "/") for p in declared["packages"])]
+    assert not stray, (
+        "the wheel carries entries that pyproject declares neither as a "
+        "py-module nor under a package: %r" % sorted(stray))
+    missing = sorted(allowed_mods - set(payload))
+    assert not missing, "declared py-modules absent from the wheel: %r" % missing
+
+    # THE INVARIANT THIS TEST IS NAMED FOR, unchanged and still the point.
     for marker in facet_index.RECORD_MARKERS:
         assert not any(n == marker or n.startswith(marker.rstrip("/") + "/")
                        for n in names), \
             "%r ships in the wheel; it cannot be a root marker" % marker
+
+
+def _declared_payload():
+    """What pyproject says may be in the wheel. Read, never transcribed."""
+    import tomllib
+    with open(os.path.join(str(REPO), "pyproject.toml"), "rb") as fh:
+        st = tomllib.load(fh).get("tool", {}).get("setuptools", {})
+    return {"py_modules": list(st.get("py-modules", [])),
+            "packages": list(st.get("packages", []))}
 
 
 @pytest.mark.slow

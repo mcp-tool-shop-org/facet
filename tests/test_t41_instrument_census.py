@@ -39,6 +39,16 @@ import instrument_census as IC          # noqa: E402
 # number requires editing this dict on purpose, in the commit that moves it.
 
 EXPECTED_PY_FILES = {
+    # UNMOVED by E31 Ruling 6's packaging, and that is worth a line because it
+    # nearly did move. Packaging these directories does NOT require an
+    # `__init__.py` in the source tree: setuptools ships every `.py` in an
+    # explicitly-listed `packages` entry, and nothing imports these
+    # directories anyway - the server spawns instruments as SUBPROCESSES by
+    # path. Measured both ways on clean builds; the wheel carries 99 + 9
+    # either way. Adding the two marker files would have grown this population
+    # by two AND fired the census's own duplicate-basename ANDON, since it
+    # keys axes D/E/G on the filename and `__init__.py` would exist in both
+    # homes. The gate was right and the change was unnecessary.
     "tools/diagnostics": 99,
     # 8 -> 9 at E28 task 2c: anchor_compare.py entered by ruling + wrap
     # (Ruling 10, Ruling 3's entry rule), census re-run in the same commit.

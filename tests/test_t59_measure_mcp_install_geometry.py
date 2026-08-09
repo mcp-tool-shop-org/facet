@@ -33,6 +33,7 @@ Everything printed here is ASCII (the repo's law).
 """
 import json
 import os
+import re
 import shutil
 import subprocess
 import sys
@@ -74,21 +75,57 @@ def test_t59_the_pyproject_reader_can_miss():
     assert "there_is_no_such_module" not in mods
 
 
-def test_t59_the_measurement_server_is_not_in_the_wheel_today():
-    """LAYER 0, pinned. `pip install facet-mcp` today gives a record server and
-    no measurement server: the eight tools fail before any resolver is reached.
+def test_t59_layer_0_is_closed_the_measurement_server_ships():
+    """⚑ REWRITTEN 2026-08-09 in the commit that shipped it, as this test's
+    previous body instructed.
 
-    This is a fact about the current tree, not a preference. When a ruling
-    ships the module, this test fails and must be rewritten in that commit -
-    which is how the count surfaces and the census are kept honest too.
+    It read `assert "measure_mcp" not in py_modules()` and said: *this is a
+    fact about the current tree, not a preference; when a ruling ships the
+    module, this test fails and must be rewritten in that commit.* E31 Ruling
+    6 shipped it at the Director's word, so layer 0 is closed and the pin
+    turns around to hold it closed.
+
+    LAYER 0 WAS THE FAILURE IN FRONT OF ALL THE OTHERS: at tier T0 the module
+    was not in the artifact at all, so "where does it fail" had no operand and
+    all eight tools failed before any resolver ran. Each assertion below
+    un-ships something if it is deleted.
     """
-    assert "measure_mcp" not in py_modules(), (
-        "measure_mcp now ships; layer 0 is closed and this file's claims "
-        "about it are stale - rewrite them in the commit that ships it")
-    assert not packages(), (
-        "pyproject now declares packages %r; the instruments' packaging is a "
-        "shape choice with a second-order cost (two generic top-level import "
-        "names) and this file states the pre-choice state" % (packages(),))
+    mods = py_modules()
+    assert "measure_mcp" in mods, (
+        "measure_mcp left py-modules - `pip install facet-mcp` is back to a "
+        "record server with no measurement server (E31 tier T0, 8 of 8)")
+    assert "subject_profile" in mods, (
+        "subject_profile left py-modules - mesh_stats imports it, and without "
+        "it that tool fails at layer 3 in an install (E31 tier T2 -> T2b)")
+    assert set(packages()) == {"diagnostics", "verify"}, (
+        "the instrument directories are no longer both packaged (%r) - the "
+        "served tools invoke instruments as SUBPROCESSES, so a wheel without "
+        "them has nothing to invoke" % (packages(),))
+
+
+def test_t59_the_light_extra_is_declared_and_open3d_is_not_in_it():
+    """The tier, pinned - and the absence pinned with it.
+
+    `[measure]` is the honest ceiling rather than a first tier with a bigger
+    one behind it: open3d 0.19.0 publishes cp38-cp312 and no sdist, and the
+    only cp313 build is a direct-URL dev wheel, which CANNOT appear in
+    metadata uploaded to PyPI (E31 Ruling 3a). A `measure-full` extra naming
+    open3d would be unsatisfiable on the interpreter this repo runs on.
+    """
+    import tomllib
+    with open(os.path.join(REPO, "pyproject.toml"), "rb") as fh:
+        extras = tomllib.load(fh)["project"].get("optional-dependencies", {})
+    assert "measure" in extras, "the [measure] extra is gone"
+    names = {re.split(r"[<>=!\[ ]", d, 1)[0].lower() for d in extras["measure"]}
+    assert {"numpy", "scipy", "trimesh", "pillow"} <= names, (
+        "the [measure] extra no longer covers the four LIGHT modules: %r"
+        % (sorted(names),))
+    for extra, deps in extras.items():
+        flat = " ".join(deps).lower()
+        assert "open3d" not in flat, (
+            "extra %r names open3d - there is no PyPI-installable open3d for "
+            "this package's declared Python range, so this extra cannot be "
+            "satisfied (E31 Ruling 3a)" % extra)
 
 
 # ---------------------------------------------------------------------------
@@ -141,14 +178,24 @@ def test_t59_transplanted_measure_mcp_resolves_outside_its_own_install(tmp_path)
     site = _transplant(tmp_path)
     got = _probe(site, tmp_path)
 
-    assert got["repo"] == str(tmp_path), (
-        "the resolver did not take dirname(HERE): %r" % got["repo"])
+    # ⚑ REWRITTEN 2026-08-09 in the commit that fixed the defect it pinned.
+    # It read `assert got["repo"] == str(tmp_path)` - dirname(HERE), E24's
+    # defect verbatim, naming `<venv>\Lib\tools\verify\mesh_stats.py`, OUTSIDE
+    # the install entirely. Both halves now behave, and they behave for two
+    # DIFFERENT reasons, which is the distinction the repair turns on:
+    assert got["repo"] is None, (
+        "REPO is a CORPUS question and this directory holds no corpus, so the "
+        "resolver must return None rather than guess - E24's constraint. Got "
+        "%r" % got["repo"])
+    assert got["tool_path"].startswith(str(site)), (
+        "the instrument path is an INSTRUMENT question, answered beside the "
+        "module, so it must land inside the install root even when no corpus "
+        "exists: %r" % got["tool_path"])
     assert got["exists"] is False, (
-        "the instrument path resolved to something that exists - this leg "
-        "measures nothing: %r" % got["tool_path"])
-    assert not got["tool_path"].startswith(str(site)), (
-        "the named path lies INSIDE the install root, which would be layer 2 "
-        "(a missing file), not layer 1 (the resolver): %r" % got["tool_path"])
+        "this transplant deliberately copies the two modules and NOT the "
+        "instrument directories, so the named file must be absent - that is "
+        "layer 2 (a missing file), which packaging closes. If it exists, this "
+        "leg measures nothing: %r" % got["tool_path"])
 
 
 def test_t59_a_checkout_still_resolves_its_instruments(tmp_path):

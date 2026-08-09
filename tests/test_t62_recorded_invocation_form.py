@@ -132,16 +132,36 @@ def test_t62_the_recorded_invocation_form_still_answers(rel):
     assert "usage" in out.lower(), out[:300]
 
 
-def test_t62_the_instrument_directories_are_not_packages_today():
-    """The pre-choice state, stated. Packaging them is a shape E31 measured and
-    did not adopt; if `__init__.py` appears, the packaging decision was made
-    and this file's claims about the recorded invocation need re-measuring in
-    that commit (E31 measured NO breakage, so the expected edit here is one
-    line, not a redesign)."""
+def test_t62_the_instrument_directories_need_no_init_py():
+    """⚑ THE ASSERTION IS UNCHANGED AND ITS REASON IS REWRITTEN, 2026-08-09.
+
+    This test used to hold the PRE-PACKAGING state and said: *if `__init__.py`
+    appears, the packaging decision was made and this file's claims need
+    re-measuring in that commit.* The decision was made - E31 Ruling 6 adopted
+    Shape A at the Director's word that facet-measure ships - and re-measuring
+    is why the assertion survives it: **packaging these directories does not
+    require the file.**
+
+    Measured on clean builds both ways: with `packages = ["diagnostics",
+    "verify"]` in pyproject, setuptools ships every `.py` in each directory -
+    99 and 9 - with or without a marker, and an installed `mesh_stats` runs
+    from a clean venv either way (786,432 faces on the box control). Nothing
+    ever IMPORTS these directories: `tool_path` builds a filesystem path and
+    the server spawns the instrument as a SUBPROCESS, so package-ness is not
+    a property the route needs.
+
+    And adding them was not merely unnecessary - it FIRED A GATE. The census
+    keys axes D/E/G on the filename, so an `__init__.py` in both homes would
+    merge two files' evidence, and `instrument_census.py` halted with exactly
+    that ANDON when the two files were briefly in the tree. Keeping them out
+    keeps the census's population at 99 + 9 (T41) and its keying sound.
+    """
     for d in DIRS:
         assert not (TOOLS / d / "__init__.py").exists(), (
-            "tools/%s is now a package - re-run T62's --help legs and the "
-            "suite before trusting the invocation form" % d)
+            "tools/%s/__init__.py exists. Packaging does not need it (measured "
+            "both ways), it grows the census population, and it collides with "
+            "the census's filename keying - `__init__.py` in both homes fires "
+            "that instrument's duplicate-basename ANDON." % d)
 
 
 def test_t62_every_instrument_file_compiles():

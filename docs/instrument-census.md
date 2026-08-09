@@ -13,8 +13,8 @@
 | `.py` files in `tools/verify` | **9** |
 | — files of any other extension there | 0 |
 | **total members** | **108** |
-| corpus files read for axis D | 276 |
-| test files read for axis E | 57 |
+| corpus files read for axis D | 278 |
+| test files read for axis E | 63 |
 | probe interpreter | `E:\AI-Models\trellis2-env\Scripts\python.exe` (3.13.13) |
 
 ## Totals
@@ -33,8 +33,8 @@
 | C | has a docstring | 108 | 108 |
 | D | **cited** in ≥1 corpus file | **84** | 108 |
 | D | — with this arc's own documents left IN (the contaminated read) | 108 | 108 |
-| E | **anchored** — basename *or* module name as literal text under `tests/` | **51** | 108 |
-| E | — basename-with-`.py` only (the stricter read) | 49 | 108 |
+| E | **anchored** — basename *or* module name as literal text under `tests/` | **56** | 108 |
+| E | — basename-with-`.py` only (the stricter read) | 56 | 108 |
 | F | **import-safe** in all three modes | **7** | 108 |
 | F | — not clean in some mode | 0 | 108 |
 | F | — **`n/a`**, property not defined (reason per row) | 101 | 108 |
@@ -62,7 +62,7 @@
 
 | # | file | home | A | flags | B1 | D | E | F | G *(proposal)* | the question (docstring line 1) |
 |---:|---|---|:-:|---:|:-:|---:|:-:|:-:|---|---|
-| 1 | `anchor_compare.py` | verify | yes | 4 | no | 6 | yes | yes | anchor_check | Is this re-production the recorded output - and if not, what is the difference's shape? |
+| 1 | `anchor_compare.py` | verify | yes | 4 | no | 8 | yes | yes | anchor_check | Is this re-production the recorded output - and if not, what is the difference's shape? |
 | 2 | `blade_band.py` | diagnostics | no | 2 | no | 1 | no | n/a | ambiguous | How much surface does the twin's KEY exclude, and does stage 1 paint any of it? |
 | 3 | `brush_reach.py` | diagnostics | no | 7 | no | 4 | yes | n/a | reach_ceiling | Bound the brush arm before spending it — how many holes can the eight stroke cameras se… |
 | 4 | `build_masks.py` | diagnostics | no | 10 | **yes** | 0 | no | n/a | none | Build the per-view denoise masks: flat (control) and foreshortening-GRADED (test). |
@@ -99,11 +99,11 @@
 | 35 | `e08_intersect_delta.py` | diagnostics | no | 4 | no | 1 | yes | n/a | none | E08 Amendment 26 — what the trust-mask intersection actually moved. |
 | 36 | `e08_metric_probe.py` | diagnostics | no | 11 | no | 1 | no | n/a | none | E08 Gate 0, half 2 — can the hold-one-out metric be validated at all, and on what? |
 | 37 | `e08_registration.py` | diagnostics | no | 5 | no | 1 | no | n/a | none | E08 — does a twin register against the mesh it is supposed to be a reference for? |
-| 38 | `e10_claim_replay.py` | diagnostics | yes | 1 | **yes** | 4 | no | yes | ambiguous | Per-stroke claim replay, faithful to texpass_iter.commit AS SHIPPED (with E08 |
-| 39 | `e10_consumers_subject.py` | diagnostics | yes | 15 | no | 1 | no | yes | ambiguous | E10 Ruling 4(a) — the off-surface consumer sweep, SUBJECT-FLAGGED. |
+| 38 | `e10_claim_replay.py` | diagnostics | yes | 1 | **yes** | 4 | yes | yes | ambiguous | Per-stroke claim replay, faithful to texpass_iter.commit AS SHIPPED (with E08 |
+| 39 | `e10_consumers_subject.py` | diagnostics | yes | 15 | no | 1 | yes | yes | ambiguous | E10 Ruling 4(a) — the off-surface consumer sweep, SUBJECT-FLAGGED. |
 | 40 | `e10_offsurface.py` | diagnostics | yes | 2 | **yes** | 11 | yes | yes | offsurface_rate | Does the prep bake's position map lie on the mesh? Measured, because E10's Step 0.2 |
-| 41 | `e10_offsurface_consumers.py` | diagnostics | yes | 2 | **yes** | 3 | no | yes | ambiguous | E10 Ruling 4's dispatched measurement — per consumer, does excluding the |
-| 42 | `e10_offsurface_where.py` | diagnostics | yes | 8 | no | 1 | no | yes | ambiguous | E10 Ruling 4(b) — WHERE the painted off-surface texels live. Mechanism measurement. |
+| 41 | `e10_offsurface_consumers.py` | diagnostics | yes | 2 | **yes** | 3 | yes | yes | ambiguous | E10 Ruling 4's dispatched measurement — per consumer, does excluding the |
+| 42 | `e10_offsurface_where.py` | diagnostics | yes | 8 | no | 1 | yes | yes | ambiguous | E10 Ruling 4(b) — WHERE the painted off-surface texels live. Mechanism measurement. |
 | 43 | `e12_ab_sheet.py` | diagnostics | no | 7 | no | 0 | yes | n/a | measure_report | A \| B on one view, full size, plus named regions at N x — the sheet a re-roll is judge… |
 | 44 | `e12_agree_probe.py` | diagnostics | no | 9 | no | 1 | no | n/a | ambiguous | E12 handoff 3 - characterise a fired ANCHOR 1c, without re-running it for a pass. |
 | 45 | `e12_canny_derive.py` | diagnostics | no | 18 | no | 0 | no | n/a | none | E12 handoff 4 Task 1 — derive the BEAST's Canny threshold pair, measured on its own cla… |
@@ -149,21 +149,21 @@
 | 85 | `e14_pair_sheet.py` | diagnostics | no | 7 | no | 0 | no | n/a | measure_report | The styled pair's acceptance sheet: REFERENCE \| CONTROL \| ASSET, plus the hilt at zoo… |
 | 86 | `e14_repair_collar.py` | diagnostics | no | 12 | no | 3 | yes | n/a | none | THE COLLAR-JUNCTION REPAIR - E14 Ruling 27c, run ONCE as handoff 8's step 0. |
 | 87 | `e14_stroke_watch.py` | diagnostics | no | 5 | no | 1 | no | n/a | none | THE PER-STROKE EYE-GATE WATCHES, measured and LOCATED - E14 handoff 8, Ruling 27e's for… |
-| 88 | `e14_topology.py` | diagnostics | no | 8 | no | 10 | yes | n/a | mesh_topology | E14 Gate 0 - the topology facts `mesh_stats` does not print. NO VERDICT. |
+| 88 | `e14_topology.py` | diagnostics | no | 8 | no | 11 | yes | n/a | mesh_topology | E14 Gate 0 - the topology facts `mesh_stats` does not print. NO VERDICT. |
 | 89 | `e14_twin_registration.py` | diagnostics | no | 6 | no | 1 | no | n/a | none | Per-view twin registration against the EXACT raycast silhouette. Halts SUSPENDED. |
 | 90 | `flagged_identity.py` | diagnostics | no | 11 | no | 1 | yes | n/a | ambiguous | E08 Amendment 29 — WHAT are the background-flagged rim texels? |
 | 91 | `foreshorten_table.py` | diagnostics | no | 5 | no | 0 | no | n/a | none | Per-view foreshortening table for the HEAD region. |
 | 92 | `gained_bg_check.py` | diagnostics | no | 9 | no | 1 | yes | n/a | none | E08 Amendment 28 Ruling 2 — did the intersection's GAINED texels admit background? |
 | 93 | `gate0_sheet.py` | verify | no | 8 | no | 7 | yes | n/a | measure_report | E04 Gate 0 sheet — the source concept beside what it reconstructed into, per candidate. |
 | 94 | `gate1_sheet.py` | verify | no | 16 | no | 6 | yes | n/a | measure_report | The Gate 1 sheet — reference \| asset \| provenance \| error, at the Director's zoom. |
-| 95 | `gate_mesh.py` | verify | yes | 4 | no | 10 | no | yes | none | HARD MESH GATE -- may the pipeline spend money downstream of this mesh? Exit 0 = yes. |
+| 95 | `gate_mesh.py` | verify | yes | 4 | no | 10 | yes | yes | none | HARD MESH GATE -- may the pipeline spend money downstream of this mesh? Exit 0 = yes. |
 | 96 | `hair_agree.py` | diagnostics | no | 7 | no | 0 | no | n/a | none | Measure whether a GENERATED view's hair boundary agrees with the MESH's hair geometry. |
 | 97 | `hair_edge.py` | diagnostics | no | 8 | no | 0 | no | n/a | none | Extract the mesh's OWN hair/face boundary as a control hint. |
 | 98 | `head_crop.py` | verify | no | 13 | no | 1 | no | n/a | measure_report | Head-crop comparison sheet, with the head band LOCATED rather than guessed. |
 | 99 | `head_render.py` | verify | no | 11 | no | 19 | yes | n/a | none | Head-framed close-up renders of a GLB — the Director-zoom verification camera. |
 | 100 | `head_yaw.py` | diagnostics | no | 6 | no | 0 | no | n/a | none | Locate the direction a MESH's head actually faces, by mirror symmetry. |
 | 101 | `keyed_outside.py` | diagnostics | no | 9 | no | 2 | yes | n/a | ambiguous | How much of each twin's keyed paint sits on no surface at all? |
-| 102 | `mesh_stats.py` | verify | no | 9 | no | 22 | yes | n/a | mesh_stats | Identical measurement of any mesh — the numeric half of a comparison. |
+| 102 | `mesh_stats.py` | verify | no | 9 | no | 23 | yes | n/a | mesh_stats | Identical measurement of any mesh — the numeric half of a comparison. |
 | 103 | `montage.py` | verify | no | 7 | no | 0 | no | n/a | ambiguous | Contact sheet + per-view figure brightness readout. |
 | 104 | `prep_front.py` | diagnostics | no | 0 | **yes** | 0 | no | n/a | none | Prepare the front render for the paint pass. |
 | 105 | `silhouette_agree.py` | diagnostics | no | 8 | no | 3 | yes | n/a | ambiguous | Is project_twins' LIVE raycast silhouette the same object as the shipped sidecar mask? |
