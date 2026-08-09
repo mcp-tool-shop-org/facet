@@ -222,6 +222,12 @@ misses and attributed them to E16-8's fitted border ring and E16-10's `local_thi
 extraction — both *later* changes. The actual cause is **E08 A3's erosion rebuild**, earlier
 than either, and it was sitting in the tool's own comment the whole time.
 
+*One wording slip, noted rather than edited:* `E30-predictions.md` line 113 reads "T10 **works**
+because E16-8 **proved** byte-identity" — two words the dispatch forbids in any doc. **The
+predictions file is left byte-frozen anyway**, because editing a pre-registered prediction
+after seeing the results is the move the freeze exists to prevent, and that holds for wording
+as much as for numbers. The correction lives here, where post-hoc text belongs.
+
 ---
 
 ## 5. Gates
