@@ -195,6 +195,57 @@ as written below.
    any future **edit** to a member, per CLAUDE.md's closed-ruling law. No wholesale test
    commission.
 
+## ⚖ Amendment 2 — appended 2026-08-09, mid-flight, at the Director's word
+
+**The Director, on the 7-of-8 flag:** *"I'd like at least 8 tools, if it could be done
+honestly. I want control over the art, and the proper measurements allow for that control.
+Your call, though, as a tool that's forced is worse than no tool at all."* Ruled at
+[E28-ruling Ruling 10](E28-ruling.md): **build the eighth, compare-only.** This amendment
+adds **task 2c**, after 2b, before task 3. Your frozen task-2 predictions
+([E28-task2-predictions.md](E28-task2-predictions.md)) cover 2-pre/2a/2b/3 and are
+untouched by this — **2c requires its own predictions addendum, committed before
+`anchor_compare.py` exists.**
+
+### Task 2c — the eighth tool: `anchor_compare` + the `anchor_check` wrap. Droppable with a named carry.
+
+**The instrument: `tools/verify/anchor_compare.py`** — subject-independent, so it lives in
+the verify home beside `mesh_stats` and `gate1_sheet`. **Compare-only: the tool never
+executes a recipe.** It answers *is this re-production the recorded output, and if not,
+what is the difference's shape* — the replay is the caller's act, and the payload states
+`replay: caller-supplied` so the boundary reads as designed rather than forgotten.
+
+- **Inputs**: `--a` (recorded artifact) `--b` (candidate), any file; `--grid N` (default 8);
+  `--out` JSON to a caller path (scratch always in tests).
+- **Byte tier, always**: sha256 both, `byte_identical` — labelled gate-eligible **only for
+  artifacts whose bytes are the contract** (the E08-armB / E04-step-0 class), with that
+  caveat IN the payload, because encoder metadata moves it on renders and that mistake has
+  halted this repo twice.
+- **Pixel tier, when both are images of equal WxH**: `pixel_identical`; differing-pixel
+  count and fraction; **largest connected component** of differing pixels (the
+  two-thresholds law); |Δ| percentiles (p50/p95/max, max-channel) and ΔE (sRGB→Lab) mean/p95
+  beside them as diagnostics; **the shape as an N×N grid of per-cell differing fractions**
+  — carry the grid, do NOT reduce it to a uniformity score. Collapsing concentrated-vs-
+  uniform to one invented number is where forcing would begin; if a field wants a statistic
+  the record has not earned, ship the honest subset or refuse the field, and that refusal
+  is the specification working (Ruling 10, his words).
+- **Refusals, structured**: dimension mismatch (naming both), pixel tier asked of a
+  non-image (naming the byte tier as what exists). Read-only on both inputs.
+- **The wrap**: `anchor_check` in `tools/measure_mcp.py` replaces the fourth refusal —
+  subprocess, identity envelope, instrument sha256 pinned. Update the module docstring's
+  refusal block and **T40** (that pin moving is deliberate); the refusal text's
+  `e13_anchor_check.py` collision note migrates into the served tool's docs/notes so the
+  collision stays carried (E27 Ruling 4).
+- **Tests, riding both commits**: identical pair (both tiers SAME) · **the owed fixture: a
+  pixel-identical, byte-different PNG pair** (re-encode with different compression or an
+  added text chunk) pinning the false-halt class — byte tier DIFFERENT, pixel tier SAME ·
+  a concentrated synthetic residual (one blob) vs a spread one (scattered noise), the grid
+  and largest-component telling them apart · dimension-mismatch refusal · non-image
+  pixel-tier refusal · the served wrap end-to-end.
+
+**Sequencing**: 2-pre → 2a → 2b → **2c** → task 3. Both 2c and task 3 are droppable with a
+named carry — a session that lands 2-pre/2a/2b cleanly and halts is a good session; say so
+plainly rather than rushing a new instrument. T-numbers continue your sequence.
+
 ## Task 2 — THE THREE WRAPS. After the ruling on task 1.
 
 ### 2a — `e14_topology.py`'s tie crash (F1), first, because `mesh_topology` needs it

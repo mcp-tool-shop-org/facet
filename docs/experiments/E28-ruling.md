@@ -216,18 +216,71 @@ T42+. Everything else in the dispatch stands as written.
 
 ---
 
+## Ruling 10 — THE EIGHTH TOOL IS COMMISSIONED, AND ITS HONEST SHAPE IS COMPARE-ONLY
+
+**Appended 2026-08-09, same day, at the Director's word on the 7-of-8 question:** *"I'd
+like at least 8 tools, if it could be done honestly. I want control over the art, and the
+proper measurements allow for that control. Your call, though, as a tool that's forced is
+worse than no tool at all."*
+
+**Ruled: build it. The honesty test passes on three legs, and the shape that passes is
+narrower than the spec's sentence implies — that narrowing is the ruling.**
+
+**1. The job is real and its first consumer is already scheduled.** The polish arc's entry
+clause — his own binding words at [E14 Ruling 35](E14-ruling.md) — opens every lane with a
+per-profile anchor gate: recorded artifacts replayed against the citable tree before any
+polish work. That is this tool's question, asked four times before the next arc can start.
+And the record carries three instances of the measurement being needed and done by hand:
+**two false halts from byte-hashes on pixel-identical renders** (the CLAUDE.md law: file
+bytes are not pixel values), and the **hardware-boundary anchor**, where the number (ΔE
+0.84 against a pre-registered 1.07 floor) decided less than the residual's *shape* did —
+*"uniform across every structure, which is what two float kernels look like."*
+
+**2. An honest decomposition exists: the tool COMPARES; the caller REPLAYS.** The
+anchored-regression pattern has two halves. The replay half is a heterogeneous recorded
+command per artifact — Blender invocations, projection scripts, brush steps — and a tool
+that executes arbitrary recorded recipes is a shell with a safety surface, the exact thing
+the census's axis F refused at instrument scale (*probing an unguarded file would execute
+it against whatever its constants name*). The comparison half is one question asked
+identically every time: **is this re-production the recorded output, and if not, what is
+the difference's shape?** That half is instrument-shaped, it is the part every anchor in
+this repo currently re-implements ad hoc, and it is what `anchor_check` serves. The payload
+states `replay: caller-supplied` so nobody later mistakes the boundary for an omission.
+
+**3. It carries existing laws rather than inventing metrics.** Two-tier identity (bytes,
+then pixels — byte-identity labelled gate-eligible **only for artifacts whose bytes are the
+contract**, the E08-armB/E04-step-0 class, because encoder metadata moves it on renders);
+differing-pixel count **and largest connected component** (the two-thresholds law); residual
+magnitude percentiles + ΔE beside them; and shape reported as a **coarse grid of
+differing-pixel fractions** — the payload carries the grid, the reader does the reducing,
+because collapsing "concentrated vs uniform" to one invented score is where forcing would
+begin. Refusals where the comparison is undefined: dimension mismatch, pixel tier on a
+non-image — structured, naming what was asked and what exists.
+
+**The bound, in his own words: a tool that's forced is worse than no tool at all.** If the
+build reaches for an unprincipled statistic or a magic threshold to fill a payload field,
+the executor ships the honest subset or refuses the field — a refusal there is the
+specification working, and this ruling says so in advance.
+
+Scope lands as **task 2c** ([kickoff Amendment 2](E28-instrument-census-kickoff.md)): a new
+instrument `tools/verify/anchor_compare.py` (subject-independent, so it lives with
+`mesh_stats` and `gate1_sheet` in the verify home), wrapped as the served `anchor_check`,
+tests riding both commits — including the fixture this repo has owed itself twice:
+**a pixel-identical, byte-different PNG pair**, pinning the false-halt class as a can-fail
+leg. With 2c, the server reaches **8 of 8 honestly**, and the 7-of-8 question this
+document flagged is dissolved rather than answered.
+
+---
+
 ## What is NOT ruled here
 
 - **The arc's close** — this document extends when task 2 reports.
 - **The erode/margin half of `offsurface_rate`** — open commission, unscoped, unchanged.
-- **`anchor_check`'s instrument** — commission stands, not this arc.
 - **Whether `facet-measure` ships** — E27 Ruling 8's default holds: not before the polish
   arc has exercised it.
-- **The polish arc** — still gated on all four MCP tools built and test-verified; after
-  task 2 the measurement server would stand at 7 of 8 tools with `anchor_check` the named
-  remainder, and **whether 7-of-8 opens the polish gate or waits for the eighth is the
-  Director's question, not mine** — flagged now so it is on the table before anyone builds
-  toward an assumed answer.
+- **The polish arc** — still gated on the four MCP *products* built and test-verified
+  (the record index is; the measurement server completes at 2c; `comfy-preflight` awaits
+  the Director's repo creation; `fixture-lint` is sdlab-side).
 
 ## The advisor's record, this ruling
 
