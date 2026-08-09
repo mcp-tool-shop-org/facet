@@ -863,6 +863,12 @@ def experiment_hits(path):
 EXPERIMENT_PINS = [
     ("README.md", "the discipline bullet",
      r"([A-Za-z][A-Za-z-]*|\d+) experiments are in\b"),
+    # Added at E28 2c: this site read "Twenty of them are in" - a real stale
+    # count (the record held 28) in a phrasing the sweep structurally cannot
+    # see, found by a person editing the file for the suite count. Rephrased
+    # into the pinned form and pinned, the writing-convention remedy.
+    ("site/src/content/docs/handbook/getting-started.md", "reading the record",
+     r"([A-Za-z][A-Za-z-]*|\d+) experiments are in\b"),
     ("README.md", "the where-to-read table",
      r"\| ([A-Za-z][A-Za-z-]*|\d+) experiments: spec, report, ruling"),
     ("site/src/site-config.ts", "the method card",

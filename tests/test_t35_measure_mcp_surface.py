@@ -41,7 +41,15 @@ def test_t35_print_tools_runs_under_the_exit_contract():
     assert p.returncode == 0, out + p.stderr.decode("ascii", errors="replace")
     for name in EIGHT:
         assert name in out, "--print-tools does not list %s" % name
-    assert "REFUSES - no in-scope instrument" in out
+    # Moved deliberately at E28 2c (the pin's second move, with T40's): the
+    # line used to assert the refusal marker was PRESENT, because four tools
+    # refused. Since Ruling 10's eighth wrap every name serves, so the
+    # printable surface must carry a real instrument per line and no refusal
+    # marker anywhere.
+    assert "REFUSES" not in out, (
+        "--print-tools shows a refusal marker; since E28 2c all eight serve")
+    assert out.count("wraps: tools/") == 8, (
+        "every one of the eight lines names its instrument")
 
 
 def test_t35_envelope_carries_version_instrument_hash_and_config_hash():

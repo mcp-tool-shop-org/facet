@@ -150,7 +150,12 @@ _G = {
     "mesh_stats": [
         "mesh_stats.py",
     ],
-    "anchor_check": [],
+    "anchor_check": [
+        # tools/verify (task 2c) - the FIRST file this question has ever
+        # attracted: commissioned at E28 Ruling 10, entered by ruling + wrap
+        # per Ruling 3's entry rule, census re-run in the entering commit.
+        "anchor_compare.py",
+    ],
     "ambiguous": [
         "blade_band.py", "e04_frame_agree.py", "e04_replay_owner.py",
         "e10_claim_replay.py", "e10_consumers_subject.py",

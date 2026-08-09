@@ -10,38 +10,38 @@
 |---|---|
 | `.py` files in `tools/diagnostics` | **99** |
 | — files of any other extension there | 0 |
-| `.py` files in `tools/verify` | **8** |
+| `.py` files in `tools/verify` | **9** |
 | — files of any other extension there | 0 |
-| **total members** | **107** |
-| corpus files read for axis D | 264 |
-| test files read for axis E | 43 |
+| **total members** | **108** |
+| corpus files read for axis D | 265 |
+| test files read for axis E | 48 |
 | probe interpreter | `E:\AI-Models\trellis2-env\Scripts\python.exe` (3.13.13) |
 
 ## Totals
 
 | axis | measure | count | of |
 |---|---|---:|---:|
-| A | **invocable** (argparse **and** ≥1 `add_argument` **and** a `__main__` guard) | **6** | 107 |
-| A | — imports `argparse` | 101 | 107 |
-| A | — has ≥1 `add_argument` | 101 | 107 |
-| A | — has a `__main__` guard | 7 | 107 |
-| A | — **flag surface** (argparse **and** ≥1 `add_argument`, guard not required) | **101** | 107 |
-| A | — calls `parse_args()` at module level | 95 | 107 |
-| A | — **flag surface but UNGUARDED** (the house style) | **95** | 107 |
-| B1 | **subject-bound**, module-level literal | **11** | 107 |
-| B2 | subject marker in any non-docstring literal | 11 | 107 |
-| C | has a docstring | 107 | 107 |
-| D | **cited** in ≥1 corpus file | **83** | 107 |
-| D | — with this arc's own documents left IN (the contaminated read) | 107 | 107 |
-| E | **anchored** — basename *or* module name as literal text under `tests/` | **50** | 107 |
-| E | — basename-with-`.py` only (the stricter read) | 48 | 107 |
-| F | **import-safe** in all three modes | **6** | 107 |
-| F | — not clean in some mode | 0 | 107 |
-| F | — **`n/a`**, property not defined (reason per row) | 101 | 107 |
-| G | *proposed* to answer one of the spec's eight | *25* | 107 |
-| G | *proposed* `none` | *61* | 107 |
-| G | *proposed* `ambiguous` | *18* | 107 |
-| G | *`no opinion`* | *3* | 107 |
+| A | **invocable** (argparse **and** ≥1 `add_argument` **and** a `__main__` guard) | **7** | 108 |
+| A | — imports `argparse` | 102 | 108 |
+| A | — has ≥1 `add_argument` | 102 | 108 |
+| A | — has a `__main__` guard | 8 | 108 |
+| A | — **flag surface** (argparse **and** ≥1 `add_argument`, guard not required) | **102** | 108 |
+| A | — calls `parse_args()` at module level | 95 | 108 |
+| A | — **flag surface but UNGUARDED** (the house style) | **95** | 108 |
+| B1 | **subject-bound**, module-level literal | **11** | 108 |
+| B2 | subject marker in any non-docstring literal | 11 | 108 |
+| C | has a docstring | 108 | 108 |
+| D | **cited** in ≥1 corpus file | **84** | 108 |
+| D | — with this arc's own documents left IN (the contaminated read) | 108 | 108 |
+| E | **anchored** — basename *or* module name as literal text under `tests/` | **51** | 108 |
+| E | — basename-with-`.py` only (the stricter read) | 49 | 108 |
+| F | **import-safe** in all three modes | **7** | 108 |
+| F | — not clean in some mode | 0 | 108 |
+| F | — **`n/a`**, property not defined (reason per row) | 101 | 108 |
+| G | *proposed* to answer one of the spec's eight | *26* | 108 |
+| G | *proposed* `none` | *61* | 108 |
+| G | *proposed* `ambiguous` | *18* | 108 |
+| G | *`no opinion`* | *3* | 108 |
 
 ## Axis G — the proposal, by tool
 
@@ -53,7 +53,7 @@
 | `thin_extent_curve` | `e12_thin_curve.py` |
 | `offsurface_rate` | `e10_offsurface.py`, `e12_offsurface.py` |
 | `texel_provenance` | `texel_provenance.py` |
-| `anchor_check` | — |
+| `anchor_check` | `anchor_compare.py` |
 | `measure_report` | `e04_g7_sheet.py`, `e04_sheet_renders.py`, `e12_ab_sheet.py`, `e12_head_sheet.py`, `e12_n_sheet.py`, `e12_pair_sheet.py`, `e13_gate1_sheet.py`, `e13_payoff_sheet.py`, `e14_pair_sheet.py`, `gate0_sheet.py`, `gate1_sheet.py`, `head_crop.py` |
 
 ## Every file
@@ -62,113 +62,114 @@
 
 | # | file | home | A | flags | B1 | D | E | F | G *(proposal)* | the question (docstring line 1) |
 |---:|---|---|:-:|---:|:-:|---:|:-:|:-:|---|---|
-| 1 | `blade_band.py` | diagnostics | no | 2 | no | 1 | no | n/a | ambiguous | How much surface does the twin's KEY exclude, and does stage 1 paint any of it? |
-| 2 | `brush_reach.py` | diagnostics | no | 7 | no | 4 | yes | n/a | reach_ceiling | Bound the brush arm before spending it — how many holes can the eight stroke cameras se… |
-| 3 | `build_masks.py` | diagnostics | no | 10 | **yes** | 0 | no | n/a | none | Build the per-view denoise masks: flat (control) and foreshortening-GRADED (test). |
-| 4 | `canny_probe.py` | diagnostics | no | 0 | **yes** | 0 | no | n/a | none | Does the ControlNet hint actually SEE the green apron, the fingers, and the 3/4 face? |
-| 5 | `commit_funnel.py` | diagnostics | no | 8 | no | 4 | no | n/a | none | E05 — which of commit's five tests actually rejects the texels? |
-| 6 | `e04_backdrop.py` | diagnostics | no | 4 | no | 4 | no | n/a | none | E04 Task 4b - derive the twins' backdrop (S-backdrop). |
-| 7 | `e04_bands.py` | diagnostics | no | 10 | no | 9 | no | n/a | none | E04 Task 4d - the landing table, the palette bands, and the backdrop re-derivation. |
-| 8 | `e04_blotch.py` | diagnostics | no | 16 | no | 5 | yes | n/a | none | E04 Task 1 - what is the crown blotch made of? Boundary alignment at an arbitrary camer… |
-| 9 | `e04_frame_agree.py` | diagnostics | no | 8 | no | 4 | no | n/a | ambiguous | E04 Step 0 anchor 1c, REPLACEMENT INSTRUMENT — geometry against geometry, bound 0 px. |
-| 10 | `e04_g7_landing.py` | diagnostics | no | 10 | no | 2 | no | n/a | none | E04 Arm G7 - did `red gun port lids` land where `red-lined gun port lids` missed? |
-| 11 | `e04_g7_sheet.py` | diagnostics | no | 7 | no | 2 | no | n/a | measure_report | E04 Arm G7 - the comparison sheet. Built before the report is written, not after it. |
-| 12 | `e04_g7_where.py` | diagnostics | no | 7 | no | 2 | no | n/a | none | E04 Arm G7 - WHERE did the one word land? A change-localisation diagnostic. |
-| 13 | `e04_invar_probe.py` | diagnostics | no | 0 | **yes** | 0 | no | n/a | none | What did brush_cloud_step's invariance ANDON actually fire on? |
-| 14 | `e04_make_brush_prompts.py` | diagnostics | no | 0 | **yes** | 4 | yes | n/a | none | Emit E04-brush-prompts.json mechanically, so the fixture is REPRODUCIBLE. |
-| 15 | `e04_profile_check.py` | diagnostics | no | 4 | no | 8 | no | n/a | none | Is the character profile a pure RELOCATION of the tools' own defaults? |
-| 16 | `e04_registry_sweep.py` | diagnostics | no | 2 | no | 6 | yes | n/a | none | E04 Ruling 25 - the sweep. Is every SUBJECT-DATA flag on this subject's route decided? |
-| 17 | `e04_replay_owner.py` | diagnostics | no | 0 | **yes** | 2 | no | n/a | ambiguous | Recover per-stroke ownership by RE-RUNNING the shipped commits on a scratch state. |
-| 18 | `e04_seam_sources.py` | diagnostics | no | 8 | no | 4 | no | n/a | none | E04 Task 1 - is the crown step a SOURCE SWITCH or a real change in the scalp? |
-| 19 | `e04_sheet_renders.py` | diagnostics | no | 0 | **yes** | 1 | no | n/a | measure_report | Render asset / provenance / owner at the Gate-1 sheet's cameras. |
-| 20 | `e04_ship_cameras.py` | diagnostics | no | 4 | no | 0 | no | n/a | reach_ceiling | E04 Task 4a, part 2 - candidate CAMERA SETS by union coverage, and whether the |
-| 21 | `e04_ship_measure.py` | diagnostics | no | 8 | no | 0 | no | n/a | none | E04 Task 4a - measure ship.json's suspended values from the designated mesh. |
-| 22 | `e04_stroke_cameras.py` | diagnostics | no | 20 | no | 5 | yes | n/a | reach_ceiling | E04 stage 2 - STROKE cameras, derived from the hole map the way Task 4a derived the |
-| 23 | `e04_twin_baseline.py` | diagnostics | no | 10 | no | 2 | no | n/a | none | E04 Arm T — the twin baseline. Measure, report, no bound anywhere. |
-| 24 | `e07_gate0.py` | diagnostics | no | 16 | no | 2 | no | n/a | none | E07 Gate 0 — test both premises before either fix is built. No GPU, no brush. |
-| 25 | `e07_l1_andon.py` | diagnostics | no | 5 | no | 2 | no | n/a | none | E07 — evidence for the L1 back-facing ANDON. Diagnostic only; writes no atlas. |
-| 26 | `e07_l2_bound.py` | diagnostics | no | 14 | no | 5 | no | n/a | none | E07 L2 — the offline bound, before any GPU is spent. |
-| 27 | `e07_score_arm.py` | diagnostics | no | 12 | no | 0 | no | n/a | no opinion | E07 — the render-side half of §5's table, computed identically for every arm. |
-| 28 | `e08_acceptance.py` | diagnostics | no | 18 | no | 4 | yes | n/a | none | E08 Arm A — what does each acceptance test actually cost? |
-| 29 | `e08_bg_derive.py` | diagnostics | no | 7 | no | 2 | no | n/a | none | E08 background arm, step 1 — derive the render background from the subject's gamut. |
-| 30 | `e08_bg_separation.py` | diagnostics | no | 6 | no | 4 | no | n/a | none | E08 A4 — is the subject separable from its background, and where does the cut fall? |
-| 31 | `e08_ceiling.py` | diagnostics | no | 8 | no | 14 | yes | n/a | reach_ceiling | E08 Gate 0, half 1 — how much of the figure can a styled reference physically reach? |
-| 32 | `e08_contradiction.py` | diagnostics | no | 9 | no | 0 | yes | n/a | none | E08 — the contradiction test: does the PROMPT override an attribute the route supplies? |
-| 33 | `e08_deltaE.py` | diagnostics | no | 10 | no | 1 | no | n/a | none | E08 — reference agreement in CIE Lab dE, against a styled reference view. |
-| 34 | `e08_intersect_delta.py` | diagnostics | no | 4 | no | 1 | yes | n/a | none | E08 Amendment 26 — what the trust-mask intersection actually moved. |
-| 35 | `e08_metric_probe.py` | diagnostics | no | 11 | no | 1 | no | n/a | none | E08 Gate 0, half 2 — can the hold-one-out metric be validated at all, and on what? |
-| 36 | `e08_registration.py` | diagnostics | no | 5 | no | 1 | no | n/a | none | E08 — does a twin register against the mesh it is supposed to be a reference for? |
-| 37 | `e10_claim_replay.py` | diagnostics | yes | 1 | **yes** | 4 | no | yes | ambiguous | Per-stroke claim replay, faithful to texpass_iter.commit AS SHIPPED (with E08 |
-| 38 | `e10_consumers_subject.py` | diagnostics | yes | 15 | no | 1 | no | yes | ambiguous | E10 Ruling 4(a) — the off-surface consumer sweep, SUBJECT-FLAGGED. |
-| 39 | `e10_offsurface.py` | diagnostics | yes | 2 | **yes** | 12 | yes | yes | offsurface_rate | Does the prep bake's position map lie on the mesh? Measured, because E10's Step 0.2 |
-| 40 | `e10_offsurface_consumers.py` | diagnostics | yes | 2 | **yes** | 3 | no | yes | ambiguous | E10 Ruling 4's dispatched measurement — per consumer, does excluding the |
-| 41 | `e10_offsurface_where.py` | diagnostics | yes | 8 | no | 1 | no | yes | ambiguous | E10 Ruling 4(b) — WHERE the painted off-surface texels live. Mechanism measurement. |
-| 42 | `e12_ab_sheet.py` | diagnostics | no | 7 | no | 0 | yes | n/a | measure_report | A \| B on one view, full size, plus named regions at N x — the sheet a re-roll is judge… |
-| 43 | `e12_agree_probe.py` | diagnostics | no | 9 | no | 1 | no | n/a | ambiguous | E12 handoff 3 - characterise a fired ANCHOR 1c, without re-running it for a pass. |
-| 44 | `e12_canny_derive.py` | diagnostics | no | 18 | no | 0 | no | n/a | none | E12 handoff 4 Task 1 — derive the BEAST's Canny threshold pair, measured on its own cla… |
-| 45 | `e12_crop_silhouette.py` | diagnostics | no | 8 | no | 4 | yes | n/a | ambiguous | An exact mesh silhouette at an ARBITRARY crop camera — the mask a head-crop control nee… |
-| 46 | `e12_elevated.py` | diagnostics | no | 9 | no | 3 | yes | n/a | reach_ceiling | Does this subject buy anything from elevated cameras? Measured, the ship's own method. |
-| 47 | `e12_family_mass.py` | diagnostics | no | 12 | no | 0 | no | n/a | none | How much of a named region wears a named COLOUR FAMILY - reported per image, never gate… |
-| 48 | `e12_frame.py` | diagnostics | no | 8 | no | 3 | yes | n/a | none | E12 Gate 0 — derive a turnaround render frame from THIS mesh, and show the derivation. |
-| 49 | `e12_head_evidence.py` | diagnostics | no | 15 | no | 3 | yes | n/a | none | E12 Gate 0 — head-region evidence on a raw reconstruction. NO VERDICT. |
-| 50 | `e12_head_render.py` | diagnostics | no | 13 | no | 10 | yes | n/a | none | E12 Gate 0 — a head crop render framed by a MEASURED box, not an inherited rect. |
-| 51 | `e12_head_sheet.py` | diagnostics | no | 5 | no | 1 | yes | n/a | measure_report | E12 Gate 0 — compose one candidate's head crops into ONE artifact, at full size. |
-| 52 | `e12_help_format_scan.py` | diagnostics | no | 3 | no | 3 | no | n/a | none | Find every argparse help string this repo cannot print. E12 Ruling 4b's consumer grep. |
-| 53 | `e12_make_twin_prompts.py` | diagnostics | no | 12 | no | 4 | no | n/a | none | Build a subject's twin-prompts file by DELETING whole comma-terms from the profile's own |
-| 54 | `e12_mouth_geometry.py` | diagnostics | no | 7 | no | 1 | yes | n/a | ambiguous | Is there a TONGUE inside this mesh's mouth, and can any exterior camera see it? |
-| 55 | `e12_n_sheet.py` | diagnostics | no | 4 | no | 0 | no | n/a | measure_report | N generations of ONE view, stacked full size, plus named regions at N x - and no number. |
-| 56 | `e12_nonmanifold.py` | diagnostics | no | 10 | no | 5 | yes | n/a | mesh_topology | E12 Gate 0 — where a reconstruction goes non-manifold, counted AND put on the picture. |
-| 57 | `e12_offsurface.py` | diagnostics | no | 9 | no | 14 | yes | n/a | offsurface_rate | Does a prep bake's position map lie ON the mesh? E10 Ruling 4's question, any subject. |
-| 58 | `e12_pair_cloud_step.py` | diagnostics | no | 8 | **yes** | 4 | no | n/a | none | E12 handoff 3 Task 4 — the styled target pair's cloud workflow, built and CHECKED on di… |
-| 59 | `e12_pair_sheet.py` | diagnostics | no | 9 | no | 0 | no | n/a | measure_report | clay \| control \| styled, one row per view, full size — the sheet that serves the eye. |
-| 60 | `e12_region_colour.py` | diagnostics | no | 6 | no | 0 | yes | n/a | none | Median Lab / chroma / hue inside named regions, masked to the silhouette — the tone cha… |
-| 61 | `e12_region_crops.py` | diagnostics | no | 17 | no | 2 | no | n/a | none | Crop the SAME world-space region out of every view's image, under the route's own frami… |
-| 62 | `e12_stem_delta.py` | diagnostics | no | 6 | no | 5 | no | n/a | none | ANDON: assert a twin-prompts rebuild differs from its predecessor by EXACTLY the named … |
-| 63 | `e12_thin_curve.py` | diagnostics | no | 13 | no | 8 | yes | n/a | thin_extent_curve | The `thin_extent` cost curve, measured on THIS mesh, with a region fraction beside it. |
-| 64 | `e12_twin_gate.py` | diagnostics | no | 7 | no | 0 | no | n/a | none | E12's palette gate in the form Ruling 16e ruled: REPORT-STRUCTURED, null bounds, eye ru… |
-| 65 | `e12_twin_readout.py` | diagnostics | no | 8 | no | 2 | yes | n/a | none | The two channels the palette gate is BLIND TO, per twin: achromatic mass, and registrat… |
-| 66 | `e12_view_visibility.py` | diagnostics | no | 11 | no | 1 | yes | n/a | ambiguous | E12 Ruling 9d — per-view element visibility, so the per-view stems are MEASURED not gue… |
-| 67 | `e13_a2_allocation.py` | diagnostics | no | 12 | no | 1 | yes | n/a | none | E13 A2 — the texel-allocation arithmetic, and the two frame checks it rides beside. |
-| 68 | `e13_anchor_check.py` | diagnostics | no | 5 | no | 6 | yes | n/a | none | E13 — the SPIRAL LAW's guard, run before a brush opens on a job. |
-| 69 | `e13_crop_registration.py` | diagnostics | no | 7 | no | 1 | yes | n/a | none | E13 H2 — registration of a CROP-framed twin, keyed off a background region a crop frame |
-| 70 | `e13_gate1_sheet.py` | diagnostics | no | 11 | no | 0 | yes | n/a | measure_report | E13 Gate 1 — the house five-column sheet: reference \| asset \| provenance \| error \| … |
-| 71 | `e13_hole_map.py` | diagnostics | no | 16 | no | 1 | yes | n/a | ambiguous | E13 stroke lane — decompose stage 1's hole map, and answer Ruling 7's re-open check. |
-| 72 | `e13_payoff_sheet.py` | diagnostics | no | 10 | no | 0 | yes | n/a | measure_report | E13 H3 — the judging artifact: clay \| A0 \| A1 \| provenance, one camera, one crop, on… |
-| 73 | `e13_stroke_cameras.py` | diagnostics | no | 16 | no | 1 | yes | n/a | reach_ceiling | E13 stroke lane — the stroke cameras, greedy on what a stroke can actually CLOSE, and t… |
-| 74 | `e13_thin_inputs.py` | diagnostics | no | 13 | no | 3 | yes | n/a | ambiguous | E13 — thin_extent's DECISION INPUTS, at the brush's level. Assembles; proposes nothing. |
-| 75 | `e14_atlas_anatomy.py` | diagnostics | no | 11 | no | 3 | yes | n/a | ambiguous | What IS the atlas, on a hollow double-walled mesh? Three linked questions, one pass. |
-| 76 | `e14_backdrop_checks.py` | diagnostics | no | 7 | no | 2 | yes | n/a | none | E14 handoff 2, Task 3.2 — the three checks the backdrop derivation does NOT do. |
-| 77 | `e14_band_density.py` | diagnostics | no | 9 | no | 2 | yes | n/a | none | The three questions `e04_bands.py` does not answer, for the prop's palette derivation. |
-| 78 | `e14_band_edges.py` | diagnostics | no | 7 | no | 1 | no | n/a | none | Band EDGES by a stated rule, applied once, with the rule's own sensitivity beside it. |
-| 79 | `e14_deep_share.py` | diagnostics | no | 7 | no | 1 | no | n/a | no opinion | The STANDING DEPTH DIAGNOSTIC — E14 Ruling 17c, required beside every gate table. |
-| 80 | `e14_demote_garnet.py` | diagnostics | no | 7 | no | 3 | yes | n/a | none | THE GARNET DEMOTION — E14 Ruling 24f, run ONCE before stroke 1. |
-| 81 | `e14_garnet_reproject.py` | diagnostics | no | 6 | no | 0 | yes | n/a | none | THE GARNET RE-PROJECTION's restricted write — E14 Ruling 26c/5 (mechanism M2). |
-| 82 | `e14_make_brush_prompts.py` | diagnostics | no | 3 | no | 2 | yes | n/a | none | Build the E14 STROKE STEMS v3, as Ruling 24g rules them. |
-| 83 | `e14_pair_readout.py` | diagnostics | no | 8 | no | 2 | yes | n/a | none | The styled pair's pre-registered readout — E14 Ruling 7b's checks, plus element landing. |
-| 84 | `e14_pair_sheet.py` | diagnostics | no | 7 | no | 0 | no | n/a | measure_report | The styled pair's acceptance sheet: REFERENCE \| CONTROL \| ASSET, plus the hilt at zoo… |
-| 85 | `e14_repair_collar.py` | diagnostics | no | 12 | no | 3 | yes | n/a | none | THE COLLAR-JUNCTION REPAIR - E14 Ruling 27c, run ONCE as handoff 8's step 0. |
-| 86 | `e14_stroke_watch.py` | diagnostics | no | 5 | no | 1 | no | n/a | none | THE PER-STROKE EYE-GATE WATCHES, measured and LOCATED - E14 handoff 8, Ruling 27e's for… |
-| 87 | `e14_topology.py` | diagnostics | no | 8 | no | 7 | yes | n/a | mesh_topology | E14 Gate 0 - the topology facts `mesh_stats` does not print. NO VERDICT. |
-| 88 | `e14_twin_registration.py` | diagnostics | no | 6 | no | 1 | no | n/a | none | Per-view twin registration against the EXACT raycast silhouette. Halts SUSPENDED. |
-| 89 | `flagged_identity.py` | diagnostics | no | 11 | no | 1 | yes | n/a | ambiguous | E08 Amendment 29 — WHAT are the background-flagged rim texels? |
-| 90 | `foreshorten_table.py` | diagnostics | no | 5 | no | 0 | no | n/a | none | Per-view foreshortening table for the HEAD region. |
-| 91 | `gained_bg_check.py` | diagnostics | no | 9 | no | 1 | yes | n/a | none | E08 Amendment 28 Ruling 2 — did the intersection's GAINED texels admit background? |
-| 92 | `gate0_sheet.py` | verify | no | 8 | no | 7 | yes | n/a | measure_report | E04 Gate 0 sheet — the source concept beside what it reconstructed into, per candidate. |
-| 93 | `gate1_sheet.py` | verify | no | 16 | no | 5 | yes | n/a | measure_report | The Gate 1 sheet — reference \| asset \| provenance \| error, at the Director's zoom. |
-| 94 | `gate_mesh.py` | verify | yes | 4 | no | 10 | no | yes | none | HARD MESH GATE -- may the pipeline spend money downstream of this mesh? Exit 0 = yes. |
-| 95 | `hair_agree.py` | diagnostics | no | 7 | no | 0 | no | n/a | none | Measure whether a GENERATED view's hair boundary agrees with the MESH's hair geometry. |
-| 96 | `hair_edge.py` | diagnostics | no | 8 | no | 0 | no | n/a | none | Extract the mesh's OWN hair/face boundary as a control hint. |
-| 97 | `head_crop.py` | verify | no | 13 | no | 1 | no | n/a | measure_report | Head-crop comparison sheet, with the head band LOCATED rather than guessed. |
-| 98 | `head_render.py` | verify | no | 11 | no | 19 | yes | n/a | none | Head-framed close-up renders of a GLB — the Director-zoom verification camera. |
-| 99 | `head_yaw.py` | diagnostics | no | 6 | no | 0 | no | n/a | none | Locate the direction a MESH's head actually faces, by mirror symmetry. |
-| 100 | `keyed_outside.py` | diagnostics | no | 9 | no | 2 | yes | n/a | ambiguous | How much of each twin's keyed paint sits on no surface at all? |
-| 101 | `mesh_stats.py` | verify | no | 9 | no | 19 | yes | n/a | mesh_stats | Identical measurement of any mesh — the numeric half of a comparison. |
-| 102 | `montage.py` | verify | no | 7 | no | 0 | no | n/a | ambiguous | Contact sheet + per-view figure brightness readout. |
-| 103 | `prep_front.py` | diagnostics | no | 0 | **yes** | 0 | no | n/a | none | Prepare the front render for the paint pass. |
-| 104 | `silhouette_agree.py` | diagnostics | no | 8 | no | 3 | yes | n/a | ambiguous | Is project_twins' LIVE raycast silhouette the same object as the shipped sidecar mask? |
-| 105 | `texel_provenance.py` | diagnostics | no | 17 | no | 11 | yes | n/a | texel_provenance | Where did this pixel's colour actually come from? |
-| 106 | `texpass_metrics.py` | diagnostics | no | 7 | no | 2 | no | n/a | no opinion | E05 — one metric table, computed identically for every arm. |
-| 107 | `turn_render.py` | verify | no | 14 | no | 17 | no | n/a | none | Matched-framing turnaround render of a GLB. |
+| 1 | `anchor_compare.py` | verify | yes | 4 | no | 1 | yes | yes | anchor_check | Is this re-production the recorded output - and if not, what is the difference's shape? |
+| 2 | `blade_band.py` | diagnostics | no | 2 | no | 1 | no | n/a | ambiguous | How much surface does the twin's KEY exclude, and does stage 1 paint any of it? |
+| 3 | `brush_reach.py` | diagnostics | no | 7 | no | 4 | yes | n/a | reach_ceiling | Bound the brush arm before spending it — how many holes can the eight stroke cameras se… |
+| 4 | `build_masks.py` | diagnostics | no | 10 | **yes** | 0 | no | n/a | none | Build the per-view denoise masks: flat (control) and foreshortening-GRADED (test). |
+| 5 | `canny_probe.py` | diagnostics | no | 0 | **yes** | 0 | no | n/a | none | Does the ControlNet hint actually SEE the green apron, the fingers, and the 3/4 face? |
+| 6 | `commit_funnel.py` | diagnostics | no | 8 | no | 4 | no | n/a | none | E05 — which of commit's five tests actually rejects the texels? |
+| 7 | `e04_backdrop.py` | diagnostics | no | 4 | no | 4 | no | n/a | none | E04 Task 4b - derive the twins' backdrop (S-backdrop). |
+| 8 | `e04_bands.py` | diagnostics | no | 10 | no | 9 | no | n/a | none | E04 Task 4d - the landing table, the palette bands, and the backdrop re-derivation. |
+| 9 | `e04_blotch.py` | diagnostics | no | 16 | no | 5 | yes | n/a | none | E04 Task 1 - what is the crown blotch made of? Boundary alignment at an arbitrary camer… |
+| 10 | `e04_frame_agree.py` | diagnostics | no | 8 | no | 4 | no | n/a | ambiguous | E04 Step 0 anchor 1c, REPLACEMENT INSTRUMENT — geometry against geometry, bound 0 px. |
+| 11 | `e04_g7_landing.py` | diagnostics | no | 10 | no | 2 | no | n/a | none | E04 Arm G7 - did `red gun port lids` land where `red-lined gun port lids` missed? |
+| 12 | `e04_g7_sheet.py` | diagnostics | no | 7 | no | 2 | no | n/a | measure_report | E04 Arm G7 - the comparison sheet. Built before the report is written, not after it. |
+| 13 | `e04_g7_where.py` | diagnostics | no | 7 | no | 2 | no | n/a | none | E04 Arm G7 - WHERE did the one word land? A change-localisation diagnostic. |
+| 14 | `e04_invar_probe.py` | diagnostics | no | 0 | **yes** | 0 | no | n/a | none | What did brush_cloud_step's invariance ANDON actually fire on? |
+| 15 | `e04_make_brush_prompts.py` | diagnostics | no | 0 | **yes** | 4 | yes | n/a | none | Emit E04-brush-prompts.json mechanically, so the fixture is REPRODUCIBLE. |
+| 16 | `e04_profile_check.py` | diagnostics | no | 4 | no | 8 | no | n/a | none | Is the character profile a pure RELOCATION of the tools' own defaults? |
+| 17 | `e04_registry_sweep.py` | diagnostics | no | 2 | no | 6 | yes | n/a | none | E04 Ruling 25 - the sweep. Is every SUBJECT-DATA flag on this subject's route decided? |
+| 18 | `e04_replay_owner.py` | diagnostics | no | 0 | **yes** | 2 | no | n/a | ambiguous | Recover per-stroke ownership by RE-RUNNING the shipped commits on a scratch state. |
+| 19 | `e04_seam_sources.py` | diagnostics | no | 8 | no | 4 | no | n/a | none | E04 Task 1 - is the crown step a SOURCE SWITCH or a real change in the scalp? |
+| 20 | `e04_sheet_renders.py` | diagnostics | no | 0 | **yes** | 1 | no | n/a | measure_report | Render asset / provenance / owner at the Gate-1 sheet's cameras. |
+| 21 | `e04_ship_cameras.py` | diagnostics | no | 4 | no | 0 | no | n/a | reach_ceiling | E04 Task 4a, part 2 - candidate CAMERA SETS by union coverage, and whether the |
+| 22 | `e04_ship_measure.py` | diagnostics | no | 8 | no | 0 | no | n/a | none | E04 Task 4a - measure ship.json's suspended values from the designated mesh. |
+| 23 | `e04_stroke_cameras.py` | diagnostics | no | 20 | no | 5 | yes | n/a | reach_ceiling | E04 stage 2 - STROKE cameras, derived from the hole map the way Task 4a derived the |
+| 24 | `e04_twin_baseline.py` | diagnostics | no | 10 | no | 2 | no | n/a | none | E04 Arm T — the twin baseline. Measure, report, no bound anywhere. |
+| 25 | `e07_gate0.py` | diagnostics | no | 16 | no | 2 | no | n/a | none | E07 Gate 0 — test both premises before either fix is built. No GPU, no brush. |
+| 26 | `e07_l1_andon.py` | diagnostics | no | 5 | no | 2 | no | n/a | none | E07 — evidence for the L1 back-facing ANDON. Diagnostic only; writes no atlas. |
+| 27 | `e07_l2_bound.py` | diagnostics | no | 14 | no | 5 | no | n/a | none | E07 L2 — the offline bound, before any GPU is spent. |
+| 28 | `e07_score_arm.py` | diagnostics | no | 12 | no | 0 | no | n/a | no opinion | E07 — the render-side half of §5's table, computed identically for every arm. |
+| 29 | `e08_acceptance.py` | diagnostics | no | 18 | no | 4 | yes | n/a | none | E08 Arm A — what does each acceptance test actually cost? |
+| 30 | `e08_bg_derive.py` | diagnostics | no | 7 | no | 2 | no | n/a | none | E08 background arm, step 1 — derive the render background from the subject's gamut. |
+| 31 | `e08_bg_separation.py` | diagnostics | no | 6 | no | 4 | no | n/a | none | E08 A4 — is the subject separable from its background, and where does the cut fall? |
+| 32 | `e08_ceiling.py` | diagnostics | no | 8 | no | 14 | yes | n/a | reach_ceiling | E08 Gate 0, half 1 — how much of the figure can a styled reference physically reach? |
+| 33 | `e08_contradiction.py` | diagnostics | no | 9 | no | 0 | yes | n/a | none | E08 — the contradiction test: does the PROMPT override an attribute the route supplies? |
+| 34 | `e08_deltaE.py` | diagnostics | no | 10 | no | 1 | no | n/a | none | E08 — reference agreement in CIE Lab dE, against a styled reference view. |
+| 35 | `e08_intersect_delta.py` | diagnostics | no | 4 | no | 1 | yes | n/a | none | E08 Amendment 26 — what the trust-mask intersection actually moved. |
+| 36 | `e08_metric_probe.py` | diagnostics | no | 11 | no | 1 | no | n/a | none | E08 Gate 0, half 2 — can the hold-one-out metric be validated at all, and on what? |
+| 37 | `e08_registration.py` | diagnostics | no | 5 | no | 1 | no | n/a | none | E08 — does a twin register against the mesh it is supposed to be a reference for? |
+| 38 | `e10_claim_replay.py` | diagnostics | yes | 1 | **yes** | 4 | no | yes | ambiguous | Per-stroke claim replay, faithful to texpass_iter.commit AS SHIPPED (with E08 |
+| 39 | `e10_consumers_subject.py` | diagnostics | yes | 15 | no | 1 | no | yes | ambiguous | E10 Ruling 4(a) — the off-surface consumer sweep, SUBJECT-FLAGGED. |
+| 40 | `e10_offsurface.py` | diagnostics | yes | 2 | **yes** | 12 | yes | yes | offsurface_rate | Does the prep bake's position map lie on the mesh? Measured, because E10's Step 0.2 |
+| 41 | `e10_offsurface_consumers.py` | diagnostics | yes | 2 | **yes** | 3 | no | yes | ambiguous | E10 Ruling 4's dispatched measurement — per consumer, does excluding the |
+| 42 | `e10_offsurface_where.py` | diagnostics | yes | 8 | no | 1 | no | yes | ambiguous | E10 Ruling 4(b) — WHERE the painted off-surface texels live. Mechanism measurement. |
+| 43 | `e12_ab_sheet.py` | diagnostics | no | 7 | no | 0 | yes | n/a | measure_report | A \| B on one view, full size, plus named regions at N x — the sheet a re-roll is judge… |
+| 44 | `e12_agree_probe.py` | diagnostics | no | 9 | no | 1 | no | n/a | ambiguous | E12 handoff 3 - characterise a fired ANCHOR 1c, without re-running it for a pass. |
+| 45 | `e12_canny_derive.py` | diagnostics | no | 18 | no | 0 | no | n/a | none | E12 handoff 4 Task 1 — derive the BEAST's Canny threshold pair, measured on its own cla… |
+| 46 | `e12_crop_silhouette.py` | diagnostics | no | 8 | no | 4 | yes | n/a | ambiguous | An exact mesh silhouette at an ARBITRARY crop camera — the mask a head-crop control nee… |
+| 47 | `e12_elevated.py` | diagnostics | no | 9 | no | 3 | yes | n/a | reach_ceiling | Does this subject buy anything from elevated cameras? Measured, the ship's own method. |
+| 48 | `e12_family_mass.py` | diagnostics | no | 12 | no | 0 | no | n/a | none | How much of a named region wears a named COLOUR FAMILY - reported per image, never gate… |
+| 49 | `e12_frame.py` | diagnostics | no | 8 | no | 3 | yes | n/a | none | E12 Gate 0 — derive a turnaround render frame from THIS mesh, and show the derivation. |
+| 50 | `e12_head_evidence.py` | diagnostics | no | 15 | no | 3 | yes | n/a | none | E12 Gate 0 — head-region evidence on a raw reconstruction. NO VERDICT. |
+| 51 | `e12_head_render.py` | diagnostics | no | 13 | no | 10 | yes | n/a | none | E12 Gate 0 — a head crop render framed by a MEASURED box, not an inherited rect. |
+| 52 | `e12_head_sheet.py` | diagnostics | no | 5 | no | 1 | yes | n/a | measure_report | E12 Gate 0 — compose one candidate's head crops into ONE artifact, at full size. |
+| 53 | `e12_help_format_scan.py` | diagnostics | no | 3 | no | 3 | no | n/a | none | Find every argparse help string this repo cannot print. E12 Ruling 4b's consumer grep. |
+| 54 | `e12_make_twin_prompts.py` | diagnostics | no | 12 | no | 4 | no | n/a | none | Build a subject's twin-prompts file by DELETING whole comma-terms from the profile's own |
+| 55 | `e12_mouth_geometry.py` | diagnostics | no | 7 | no | 1 | yes | n/a | ambiguous | Is there a TONGUE inside this mesh's mouth, and can any exterior camera see it? |
+| 56 | `e12_n_sheet.py` | diagnostics | no | 4 | no | 0 | no | n/a | measure_report | N generations of ONE view, stacked full size, plus named regions at N x - and no number. |
+| 57 | `e12_nonmanifold.py` | diagnostics | no | 10 | no | 5 | yes | n/a | mesh_topology | E12 Gate 0 — where a reconstruction goes non-manifold, counted AND put on the picture. |
+| 58 | `e12_offsurface.py` | diagnostics | no | 9 | no | 14 | yes | n/a | offsurface_rate | Does a prep bake's position map lie ON the mesh? E10 Ruling 4's question, any subject. |
+| 59 | `e12_pair_cloud_step.py` | diagnostics | no | 8 | **yes** | 4 | no | n/a | none | E12 handoff 3 Task 4 — the styled target pair's cloud workflow, built and CHECKED on di… |
+| 60 | `e12_pair_sheet.py` | diagnostics | no | 9 | no | 0 | no | n/a | measure_report | clay \| control \| styled, one row per view, full size — the sheet that serves the eye. |
+| 61 | `e12_region_colour.py` | diagnostics | no | 6 | no | 0 | yes | n/a | none | Median Lab / chroma / hue inside named regions, masked to the silhouette — the tone cha… |
+| 62 | `e12_region_crops.py` | diagnostics | no | 17 | no | 2 | no | n/a | none | Crop the SAME world-space region out of every view's image, under the route's own frami… |
+| 63 | `e12_stem_delta.py` | diagnostics | no | 6 | no | 5 | no | n/a | none | ANDON: assert a twin-prompts rebuild differs from its predecessor by EXACTLY the named … |
+| 64 | `e12_thin_curve.py` | diagnostics | no | 13 | no | 8 | yes | n/a | thin_extent_curve | The `thin_extent` cost curve, measured on THIS mesh, with a region fraction beside it. |
+| 65 | `e12_twin_gate.py` | diagnostics | no | 7 | no | 0 | no | n/a | none | E12's palette gate in the form Ruling 16e ruled: REPORT-STRUCTURED, null bounds, eye ru… |
+| 66 | `e12_twin_readout.py` | diagnostics | no | 8 | no | 2 | yes | n/a | none | The two channels the palette gate is BLIND TO, per twin: achromatic mass, and registrat… |
+| 67 | `e12_view_visibility.py` | diagnostics | no | 11 | no | 1 | yes | n/a | ambiguous | E12 Ruling 9d — per-view element visibility, so the per-view stems are MEASURED not gue… |
+| 68 | `e13_a2_allocation.py` | diagnostics | no | 12 | no | 1 | yes | n/a | none | E13 A2 — the texel-allocation arithmetic, and the two frame checks it rides beside. |
+| 69 | `e13_anchor_check.py` | diagnostics | no | 5 | no | 6 | yes | n/a | none | E13 — the SPIRAL LAW's guard, run before a brush opens on a job. |
+| 70 | `e13_crop_registration.py` | diagnostics | no | 7 | no | 1 | yes | n/a | none | E13 H2 — registration of a CROP-framed twin, keyed off a background region a crop frame |
+| 71 | `e13_gate1_sheet.py` | diagnostics | no | 11 | no | 0 | yes | n/a | measure_report | E13 Gate 1 — the house five-column sheet: reference \| asset \| provenance \| error \| … |
+| 72 | `e13_hole_map.py` | diagnostics | no | 16 | no | 1 | yes | n/a | ambiguous | E13 stroke lane — decompose stage 1's hole map, and answer Ruling 7's re-open check. |
+| 73 | `e13_payoff_sheet.py` | diagnostics | no | 10 | no | 0 | yes | n/a | measure_report | E13 H3 — the judging artifact: clay \| A0 \| A1 \| provenance, one camera, one crop, on… |
+| 74 | `e13_stroke_cameras.py` | diagnostics | no | 16 | no | 1 | yes | n/a | reach_ceiling | E13 stroke lane — the stroke cameras, greedy on what a stroke can actually CLOSE, and t… |
+| 75 | `e13_thin_inputs.py` | diagnostics | no | 13 | no | 3 | yes | n/a | ambiguous | E13 — thin_extent's DECISION INPUTS, at the brush's level. Assembles; proposes nothing. |
+| 76 | `e14_atlas_anatomy.py` | diagnostics | no | 11 | no | 3 | yes | n/a | ambiguous | What IS the atlas, on a hollow double-walled mesh? Three linked questions, one pass. |
+| 77 | `e14_backdrop_checks.py` | diagnostics | no | 7 | no | 2 | yes | n/a | none | E14 handoff 2, Task 3.2 — the three checks the backdrop derivation does NOT do. |
+| 78 | `e14_band_density.py` | diagnostics | no | 9 | no | 2 | yes | n/a | none | The three questions `e04_bands.py` does not answer, for the prop's palette derivation. |
+| 79 | `e14_band_edges.py` | diagnostics | no | 7 | no | 1 | no | n/a | none | Band EDGES by a stated rule, applied once, with the rule's own sensitivity beside it. |
+| 80 | `e14_deep_share.py` | diagnostics | no | 7 | no | 1 | no | n/a | no opinion | The STANDING DEPTH DIAGNOSTIC — E14 Ruling 17c, required beside every gate table. |
+| 81 | `e14_demote_garnet.py` | diagnostics | no | 7 | no | 3 | yes | n/a | none | THE GARNET DEMOTION — E14 Ruling 24f, run ONCE before stroke 1. |
+| 82 | `e14_garnet_reproject.py` | diagnostics | no | 6 | no | 0 | yes | n/a | none | THE GARNET RE-PROJECTION's restricted write — E14 Ruling 26c/5 (mechanism M2). |
+| 83 | `e14_make_brush_prompts.py` | diagnostics | no | 3 | no | 2 | yes | n/a | none | Build the E14 STROKE STEMS v3, as Ruling 24g rules them. |
+| 84 | `e14_pair_readout.py` | diagnostics | no | 8 | no | 2 | yes | n/a | none | The styled pair's pre-registered readout — E14 Ruling 7b's checks, plus element landing. |
+| 85 | `e14_pair_sheet.py` | diagnostics | no | 7 | no | 0 | no | n/a | measure_report | The styled pair's acceptance sheet: REFERENCE \| CONTROL \| ASSET, plus the hilt at zoo… |
+| 86 | `e14_repair_collar.py` | diagnostics | no | 12 | no | 3 | yes | n/a | none | THE COLLAR-JUNCTION REPAIR - E14 Ruling 27c, run ONCE as handoff 8's step 0. |
+| 87 | `e14_stroke_watch.py` | diagnostics | no | 5 | no | 1 | no | n/a | none | THE PER-STROKE EYE-GATE WATCHES, measured and LOCATED - E14 handoff 8, Ruling 27e's for… |
+| 88 | `e14_topology.py` | diagnostics | no | 8 | no | 7 | yes | n/a | mesh_topology | E14 Gate 0 - the topology facts `mesh_stats` does not print. NO VERDICT. |
+| 89 | `e14_twin_registration.py` | diagnostics | no | 6 | no | 1 | no | n/a | none | Per-view twin registration against the EXACT raycast silhouette. Halts SUSPENDED. |
+| 90 | `flagged_identity.py` | diagnostics | no | 11 | no | 1 | yes | n/a | ambiguous | E08 Amendment 29 — WHAT are the background-flagged rim texels? |
+| 91 | `foreshorten_table.py` | diagnostics | no | 5 | no | 0 | no | n/a | none | Per-view foreshortening table for the HEAD region. |
+| 92 | `gained_bg_check.py` | diagnostics | no | 9 | no | 1 | yes | n/a | none | E08 Amendment 28 Ruling 2 — did the intersection's GAINED texels admit background? |
+| 93 | `gate0_sheet.py` | verify | no | 8 | no | 7 | yes | n/a | measure_report | E04 Gate 0 sheet — the source concept beside what it reconstructed into, per candidate. |
+| 94 | `gate1_sheet.py` | verify | no | 16 | no | 5 | yes | n/a | measure_report | The Gate 1 sheet — reference \| asset \| provenance \| error, at the Director's zoom. |
+| 95 | `gate_mesh.py` | verify | yes | 4 | no | 10 | no | yes | none | HARD MESH GATE -- may the pipeline spend money downstream of this mesh? Exit 0 = yes. |
+| 96 | `hair_agree.py` | diagnostics | no | 7 | no | 0 | no | n/a | none | Measure whether a GENERATED view's hair boundary agrees with the MESH's hair geometry. |
+| 97 | `hair_edge.py` | diagnostics | no | 8 | no | 0 | no | n/a | none | Extract the mesh's OWN hair/face boundary as a control hint. |
+| 98 | `head_crop.py` | verify | no | 13 | no | 1 | no | n/a | measure_report | Head-crop comparison sheet, with the head band LOCATED rather than guessed. |
+| 99 | `head_render.py` | verify | no | 11 | no | 19 | yes | n/a | none | Head-framed close-up renders of a GLB — the Director-zoom verification camera. |
+| 100 | `head_yaw.py` | diagnostics | no | 6 | no | 0 | no | n/a | none | Locate the direction a MESH's head actually faces, by mirror symmetry. |
+| 101 | `keyed_outside.py` | diagnostics | no | 9 | no | 2 | yes | n/a | ambiguous | How much of each twin's keyed paint sits on no surface at all? |
+| 102 | `mesh_stats.py` | verify | no | 9 | no | 19 | yes | n/a | mesh_stats | Identical measurement of any mesh — the numeric half of a comparison. |
+| 103 | `montage.py` | verify | no | 7 | no | 0 | no | n/a | ambiguous | Contact sheet + per-view figure brightness readout. |
+| 104 | `prep_front.py` | diagnostics | no | 0 | **yes** | 0 | no | n/a | none | Prepare the front render for the paint pass. |
+| 105 | `silhouette_agree.py` | diagnostics | no | 8 | no | 3 | yes | n/a | ambiguous | Is project_twins' LIVE raycast silhouette the same object as the shipped sidecar mask? |
+| 106 | `texel_provenance.py` | diagnostics | no | 17 | no | 11 | yes | n/a | texel_provenance | Where did this pixel's colour actually come from? |
+| 107 | `texpass_metrics.py` | diagnostics | no | 7 | no | 2 | no | n/a | no opinion | E05 — one metric table, computed identically for every arm. |
+| 108 | `turn_render.py` | verify | no | 14 | no | 17 | no | n/a | none | Matched-framing turnaround render of a GLB. |
 
 ## Axis F — every `n/a` and every `false`, with its reason
 

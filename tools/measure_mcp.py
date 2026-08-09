@@ -12,9 +12,10 @@ spec names a tool no in-scope instrument can serve, that tool REFUSES and names
 the finding rather than growing a second implementation of a measurement the
 record already cites.
 
-THE SURFACE IS THE SPEC'S EIGHT NAMES, exactly. Seven wrap (the Director ruled
-the e12_*/e14_* family IN, 2026-08-09 - spec open question 2; the three released
-wraps landed at E28 task 2b, after the census halt was ruled):
+THE SURFACE IS THE SPEC'S EIGHT NAMES, exactly, AND ALL EIGHT WRAP (the
+Director ruled the e12_*/e14_* family IN and commissioned the eighth,
+2026-08-09 - spec open question 2 and E28 Ruling 10; the three released wraps
+landed at E28 task 2b after the census halt was ruled, the eighth at 2c):
 
   mesh_stats        tools/verify/mesh_stats.py
   mesh_topology     tools/diagnostics/e14_topology.py - ALONE, by E28 Ruling 4:
@@ -44,14 +45,22 @@ wraps landed at E28 task 2b, after the census halt was ruled):
                     payload-comparison half, which is this server's own
                     envelope contract, not a measurement
 
-and ONE refuses, naming exactly what is missing and whose question it is:
+  anchor_check      tools/verify/anchor_compare.py - the EIGHTH, commissioned
+                    at E28 Ruling 10 on the Director's word ("at least 8
+                    tools, if it could be done honestly... a tool that is
+                    forced is worse than no tool at all"), COMPARE-ONLY: the
+                    tool compares, the caller replays. Byte tier always
+                    (gate-eligible only where bytes are the contract, caveat
+                    in the payload); pixel tier with the largest connected
+                    component and the shape carried as a grid, never reduced.
+                    tools/diagnostics/e13_anchor_check.py remains a NAME
+                    COLLISION (the spiral-law guard), carried in the served
+                    notes per E27 Ruling 4.
 
-  anchor_check      NO instrument exists. tools/diagnostics/e13_anchor_check
-                    .py is a name collision - it is the spiral-law adjacency
-                    guard, not the anchored-regression pattern. The pattern
-                    lives in the harness's artifacts tier (T07-T11) and
-                    session procedure. The census swept both instrument homes
-                    (E28) and found no candidate; the commission stands.
+NOTHING REFUSES AS UNSERVED. The refusal machinery stays - preconditions,
+sealed trees, mismatched comparisons all still refuse with structured errors
+- but every one of the spec's eight questions now has an instrument behind
+it, and NOT_WRAPPED has no live site.
 
 INSTRUMENT IDENTITY IS THE CONTRACT (the spec's own law). Every successful
 payload carries a `measure` envelope: this server's version, the wrapped
@@ -127,13 +136,13 @@ REPO = os.path.dirname(HERE)
 # T27. This module is deliberately NOT in the wheel (pyproject py-modules) -
 # whether it joins a release is the Director's, and versioning it here keeps
 # the identity contract live in the meantime.
-# 0.1.0 -> 0.2.0 at E28 task 2b: the surface moved from 4-of-8 serving to
-# 7-of-8. The identity law is why this bumps: a payload's envelope carries the
-# server version and measure_report refuses cross-version comparison, so two
-# surfaces must not share a number. No 0.1.0 payload of the four
-# already-serving tools changes behaviour; the bump marks the surface, not
-# the instruments.
-MEASURE_VERSION = "0.2.0"
+# 0.1.0 -> 0.2.0 at E28 task 2b (4-of-8 serving -> 7-of-8), -> 0.3.0 at 2c
+# (the eighth tool, anchor_check over anchor_compare). The identity law is why
+# this bumps: a payload's envelope carries the server version and
+# measure_report refuses cross-version comparison, so two surfaces must not
+# share a number. No payload of an already-serving tool changes behaviour at
+# either bump; the number marks the surface, not the instruments.
+MEASURE_VERSION = "0.3.0"
 SERVER_NAME = "facet-measure"
 
 # The sealed recorded trees. Same resolution as the test harness: the env var
@@ -833,23 +842,76 @@ def texel_provenance(prep: str, state: str, stage1: str, order: str,
 
 
 @srv.tool(annotations=ToolAnnotations(readOnlyHint=True))
-def anchor_check(subject: str | None = None) -> dict:
-    """Does this recorded output still reproduce? - NOT SERVABLE YET.
+def anchor_check(a: str, b: str, grid: int | None = None) -> dict:
+    """Does this recorded output still reproduce from its recorded
+    parameters? - the COMPARE half.
 
-    Refuses (a gate-3 finding): no instrument exists under tools/.
+    Wraps tools/verify/anchor_compare.py, commissioned at E28 Ruling 10 with
+    the honesty decomposition as its whole design: THE TOOL COMPARES, THE
+    CALLER REPLAYS. The replay that produced `b` is the caller's act - a
+    recipe-runner would execute arbitrary module bodies, the exact surface
+    the census's axis F refused at instrument scale - and the payload states
+    `replay: caller-supplied` so the boundary reads as designed.
+
+    a      the recorded artifact
+    b      the candidate re-production, produced by the caller's replay
+    grid   N for the N x N difference-shape grid (instrument default 8)
+
+    Two tiers ride every image payload: byte (sha256, gate-eligible ONLY for
+    artifacts whose bytes are the contract - the caveat travels IN the
+    payload, because this repo has false-halted twice on byte-different
+    pixel-identical renders) and pixel (differing count and fraction, the
+    LARGEST CONNECTED COMPONENT per the two-thresholds law, |delta| and Lab
+    dE diagnostics, and the shape CARRIED as a grid, never reduced to an
+    invented uniformity score).
     """
-    _raise(MeasureError(
-        "NOT_WRAPPED",
-        "anchor_check has no instrument: nothing under tools/ implements the "
-        "anchored-regression pattern as a tool. "
-        "tools/diagnostics/e13_anchor_check.py is a NAME COLLISION - it is "
-        "the spiral-law painted-adjacency guard that runs before a brush "
-        "stroke, not a regeneration check",
-        "The pattern itself lives in the harness's artifacts tier (T07-T11 "
-        "replay recorded runs and re-hash their inputs) and in session "
-        "procedure (the E04 hardware anchor, dE 0.84 against the 1.07 "
-        "floor). Building it as a tool is a commission for the ruling seat; "
-        "E27's report carries the finding."))
+    _need_file(a, "the recorded artifact",
+               "Pass the recorded output this check re-verifies.")
+    _need_file(b, "the candidate re-production",
+               "Pass the artifact your own replay produced; this tool "
+               "compares, it does not run recipes.")
+    args = ["--a", a, "--b", b]
+    params = {"a": os.path.abspath(a), "b": os.path.abspath(b)}
+    if grid is not None:
+        args += ["--grid", str(grid)]
+        params["grid"] = grid
+    fd, out_json = tempfile.mkstemp(suffix=".json", prefix="anchor_")
+    os.close(fd)
+    try:
+        out, _ = run_instrument("verify/anchor_compare.py",
+                                args + ["--out", out_json])
+        with open(out_json, encoding="utf-8") as fh:
+            doc = json.load(fh)
+    finally:
+        if os.path.exists(out_json):
+            os.remove(out_json)
+
+    ratios = {
+        "pixel.differing_fraction": {
+            "numerator": "differing_pixels (in this payload)",
+            "denominator": "width * height (in this payload)"},
+        "pixel.largest_component_fraction_of_differing": {
+            "numerator": "largest_component_px (in this payload)",
+            "denominator": "differing_pixels (in this payload)"},
+    }
+    notes = [
+        "replay: caller-supplied - this tool COMPARES; the replay that "
+        "produced b is the caller's act (E28 Ruling 10's decomposition, the "
+        "honesty condition the Director's word set).",
+        "tools/diagnostics/e13_anchor_check.py is a NAME COLLISION, carried "
+        "here from the old refusal (E27 Ruling 4): it is the spiral-law "
+        "painted-adjacency guard that runs before a brush stroke, not this "
+        "tool and not this question.",
+        "the residual's SHAPE is the reading, not just its magnitude: a "
+        "structural difference concentrates (read the grid and the largest "
+        "component), two float kernels spread uniformly (the E04 hardware "
+        "anchor's reading, dE 0.84 uniform across every structure)."]
+    doc, nan_paths = _sanitize_nan(doc)
+    doc["measure"] = envelope("anchor_check",
+                              "tools/verify/anchor_compare.py", params,
+                              ratios=ratios, warnings=warning_lines(out),
+                              nan_paths=nan_paths, notes=notes)
+    return doc
 
 
 @srv.tool(annotations=ToolAnnotations(readOnlyHint=True))
@@ -1032,7 +1094,7 @@ WRAPPED = {
     "thin_extent_curve": "tools/diagnostics/e12_thin_curve.py",
     "offsurface_rate": "tools/diagnostics/e12_offsurface.py",
     "texel_provenance": "tools/diagnostics/texel_provenance.py",
-    "anchor_check": None,
+    "anchor_check": "tools/verify/anchor_compare.py",
     "measure_report": "tools/verify/gate1_sheet.py",
 }
 

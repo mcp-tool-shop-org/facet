@@ -40,7 +40,9 @@ import instrument_census as IC          # noqa: E402
 
 EXPECTED_PY_FILES = {
     "tools/diagnostics": 99,
-    "tools/verify": 8,
+    # 8 -> 9 at E28 task 2c: anchor_compare.py entered by ruling + wrap
+    # (Ruling 10, Ruling 3's entry rule), census re-run in the same commit.
+    "tools/verify": 9,
 }
 
 

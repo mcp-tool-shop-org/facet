@@ -11,14 +11,14 @@
         "dir": "tools/verify",
         "non_py_files": 0,
         "non_py_names": [],
-        "py_files": 8
+        "py_files": 9
       }
     ],
-    "py_files_total": 107
+    "py_files_total": 108
   },
   "provenance": {
-    "corpus_files": 264,
-    "corpus_files_before_self_exclusion": 270,
+    "corpus_files": 265,
+    "corpus_files_before_self_exclusion": 272,
     "probe_interpreter": "E:\\AI-Models\\trellis2-env\\Scripts\\python.exe",
     "probe_interpreter_version": "3.13.13",
     "probe_skipped": false,
@@ -29,11 +29,51 @@
       "docs/experiments/E28-predictions.md",
       "docs/experiments/E28-ruling.md",
       "docs/experiments/E28-task2-predictions.md",
+      "docs/experiments/E28-task2c-predictions.md",
       "docs/instrument-census.md"
     ],
-    "test_files": 43
+    "test_files": 48
   },
   "rows": [
+    {
+      "a_add_argument": 4,
+      "a_argparse": true,
+      "a_main_guard": true,
+      "a_parse_args_module_level": false,
+      "anchored": true,
+      "anchored_basename_only": true,
+      "anchored_in": [
+        "tests/test_t40_measure_not_wrapped.py",
+        "tests/test_t41_instrument_census.py",
+        "tests/test_t46_measure_anchor_check.py"
+      ],
+      "anchored_in_basename_only": [
+        "tests/test_t41_instrument_census.py",
+        "tests/test_t46_measure_anchor_check.py"
+      ],
+      "b1_literals": [],
+      "b2_literals": [],
+      "cited_count": 1,
+      "cited_count_raw": 4,
+      "cited_in": [
+        "docs/experiments/README.md"
+      ],
+      "dir": "tools/verify",
+      "docstring_line1": "Is this re-production the recorded output - and if not, what is the difference's shape?",
+      "file": "anchor_compare.py",
+      "flag_surface": true,
+      "g_proposal": "anchor_check",
+      "import_safe": "true",
+      "import_safe_modes": {
+        "-O": "clean",
+        "PYTHONOPTIMIZE=1": "clean",
+        "normal": "clean"
+      },
+      "import_safe_reason": "",
+      "invocable": true,
+      "lines": 232,
+      "parse_error": null
+    },
     {
       "a_add_argument": 2,
       "a_argparse": true,
@@ -1281,15 +1321,13 @@
       "a_main_guard": true,
       "a_parse_args_module_level": false,
       "anchored": true,
-      "anchored_basename_only": true,
+      "anchored_basename_only": false,
       "anchored_in": [
         "tests/test_t24_index_parsers.py",
-        "tests/test_t40_measure_not_wrapped.py",
-        "tests/test_t41_instrument_census.py"
+        "tests/test_t41_instrument_census.py",
+        "tests/test_t45_measure_offsurface.py"
       ],
-      "anchored_in_basename_only": [
-        "tests/test_t40_measure_not_wrapped.py"
-      ],
+      "anchored_in_basename_only": [],
       "b1_literals": [
         "E:\\AI\\training\\facet_next\\E04_shipprep",
         "E:\\AI\\training\\facet_next\\E04_stroke"
@@ -1855,10 +1893,12 @@
       "anchored": true,
       "anchored_basename_only": true,
       "anchored_in": [
-        "tests/test_t33_diagnostics_gates.py"
+        "tests/test_t33_diagnostics_gates.py",
+        "tests/test_t43_measure_mesh_topology.py"
       ],
       "anchored_in_basename_only": [
-        "tests/test_t33_diagnostics_gates.py"
+        "tests/test_t33_diagnostics_gates.py",
+        "tests/test_t43_measure_mesh_topology.py"
       ],
       "b1_literals": [],
       "b2_literals": [],
@@ -1889,11 +1929,13 @@
       "a_main_guard": false,
       "a_parse_args_module_level": true,
       "anchored": true,
-      "anchored_basename_only": false,
+      "anchored_basename_only": true,
       "anchored_in": [
-        "tests/test_t40_measure_not_wrapped.py"
+        "tests/test_t45_measure_offsurface.py"
       ],
-      "anchored_in_basename_only": [],
+      "anchored_in_basename_only": [
+        "tests/test_t45_measure_offsurface.py"
+      ],
       "b1_literals": [],
       "b2_literals": [],
       "cited_count": 14,
@@ -2087,13 +2129,13 @@
       "anchored_basename_only": true,
       "anchored_in": [
         "tests/test_t33_diagnostics_gates.py",
-        "tests/test_t40_measure_not_wrapped.py",
-        "tests/test_t41_instrument_census.py"
+        "tests/test_t41_instrument_census.py",
+        "tests/test_t44_measure_thin_curve.py"
       ],
       "anchored_in_basename_only": [
         "tests/test_t33_diagnostics_gates.py",
-        "tests/test_t40_measure_not_wrapped.py",
-        "tests/test_t41_instrument_census.py"
+        "tests/test_t41_instrument_census.py",
+        "tests/test_t44_measure_thin_curve.py"
       ],
       "b1_literals": [],
       "b2_literals": [],
@@ -2253,7 +2295,8 @@
       "anchored_basename_only": true,
       "anchored_in": [
         "tests/test_t33_diagnostics_gates.py",
-        "tests/test_t40_measure_not_wrapped.py"
+        "tests/test_t40_measure_not_wrapped.py",
+        "tests/test_t46_measure_anchor_check.py"
       ],
       "anchored_in_basename_only": [
         "tests/test_t33_diagnostics_gates.py",
@@ -2858,13 +2901,15 @@
       "anchored_in": [
         "tests/test_t33_diagnostics_gates.py",
         "tests/test_t36_measure_mesh_stats.py",
-        "tests/test_t40_measure_not_wrapped.py",
-        "tests/test_t41_instrument_census.py"
+        "tests/test_t41_instrument_census.py",
+        "tests/test_t42_topology_tie_repair.py",
+        "tests/test_t43_measure_mesh_topology.py"
       ],
       "anchored_in_basename_only": [
         "tests/test_t33_diagnostics_gates.py",
-        "tests/test_t40_measure_not_wrapped.py",
-        "tests/test_t41_instrument_census.py"
+        "tests/test_t41_instrument_census.py",
+        "tests/test_t42_topology_tie_repair.py",
+        "tests/test_t43_measure_mesh_topology.py"
       ],
       "b1_literals": [],
       "b2_literals": [],
@@ -2888,7 +2933,7 @@
       "import_safe_modes": {},
       "import_safe_reason": "has a flag surface but no `__main__` guard, so probing it would EXECUTE the module body - against whatever subject its constants name. Not probed, deliberately",
       "invocable": false,
-      "lines": 253,
+      "lines": 266,
       "parse_error": null
     },
     {
@@ -3580,24 +3625,24 @@
     }
   ],
   "totals": {
-    "anchored": 50,
-    "anchored_basename_only": 48,
-    "any_add_argument": 101,
-    "argparse": 101,
-    "cited": 83,
-    "cited_raw": 107,
-    "flag_surface": 101,
+    "anchored": 51,
+    "anchored_basename_only": 49,
+    "any_add_argument": 102,
+    "argparse": 102,
+    "cited": 84,
+    "cited_raw": 108,
+    "flag_surface": 102,
     "flag_surface_unguarded": 95,
     "g_ambiguous": 18,
-    "g_mapped": 25,
+    "g_mapped": 26,
     "g_no_opinion": 3,
     "g_none": 61,
-    "has_docstring": 107,
+    "has_docstring": 108,
     "import_safe_false": 0,
     "import_safe_na": 101,
-    "import_safe_true": 6,
-    "invocable": 6,
-    "main_guard": 7,
+    "import_safe_true": 7,
+    "invocable": 7,
+    "main_guard": 8,
     "parse_args_module_level": 95,
     "parse_errors": 0,
     "subject_bound_b1": 11,
