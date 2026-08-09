@@ -29,7 +29,17 @@ was paid for by a run that got past `dry_run`.
 | 4 | **Graph-saved-is-graph-submitted** | the saved sidecar and the submitted payload differing **as parsed graphs** |
 | 5 | **Generator-legal frame** | a width or height the model's VAE cannot decode at |
 | 6 | **Estimate before submit** | a missing or unread credit estimate |
-| 7 | **Anchor reproduction** | a recorded graph that no longer rebuilds from its recorded inputs |
+| 7 | **Anchor reproduction** | a recorded graph that no longer rebuilds from its recorded inputs — ⚠ **see the flag below; this one may be narrower than it reads** |
+
+> ⚠ **CHECK 7 IS FLAGGED, 2026-08-09, and it is a flag rather than a finding.** The build seat
+> raised it and correctly declined to investigate it out of scope: *"it needs the **builder**,
+> and the corpus holds outputs, not the scripts that made them."* A graph that "rebuilds from
+> its recorded inputs" presupposes something that can rebuild it, and 70 recorded graphs are 70
+> **results**. This is the same shape as [E30 Ruling 5](../experiments/E30-ruling.md)'s law —
+> *existence of the operands is not replayability; a replay needs a tool that can still be asked
+> the recorded question* — arriving in a second repo within the week.
+> **Enumerate before dispatching check 7**: find out whether a builder exists, and if it does
+> not, the honest check is narrower than the table's wording and the table is what changes.
 
 ### Check 2 — the inverted scan, in both directions
 
@@ -143,6 +153,29 @@ It costs microseconds and it caught a defect that corrupted a whole pairing stag
 > ⚠ **Still not populated from memory:** the per-family constraint table. Qwen's ÷8 is measured
 > here. **Ship Qwen alone and leave every other family declared-absent** — open question 2 is
 > unchanged, and an unmeasured entry in that table is worse than a missing one.
+>
+> ### ⚖ AMENDMENT 1a — ÷8 HALTS, ÷16 ADVISES. The build seat's judgment call is RATIFIED.
+>
+> Built 2026-08-09, the seat found Amendment 1 did not say whether ÷16 halts, and ruled: **÷8
+> is a floor and halts; ÷16 is a preference and advises.** 1064 is ÷8-legal and ÷16-short, so
+> it PASSES with a note that says *this is not a halt*.
+>
+> **Ratified, and the record supports it more strongly than the seat argued.** It reasoned from
+> the wording — *"a floor and a preference, not two floors"* — which is correct: the standing
+> constraint reads *"÷8 is the Qwen VAE's floor, prefer ÷16."* The stronger ground is
+> [E04 Ruling 15](../experiments/E04-ruling.md)'s own rejection of 1064, which rests on
+> **three** clauses: *"/8 only, no precedent, and 2 px under the derived aspect."* Only the
+> first is the ÷16 preference; **the other two are frame-SELECTION criteria that a preflight
+> gate cannot evaluate** — it does not know what aspect was derived from a mesh it never sees,
+> nor what precedent a subject carries. A gate that halted on ÷16 would refuse 1064, a width
+> that ruling itself classifies as legal-but-not-preferred, and would fire on correct work —
+> which is check 3's own exclusion clause arriving at check 5.
+>
+> **The six declared-absent families are ratified too**, with the reason restated because it is
+> the load-bearing half: a test pins that `family="flux"` with `(1066, 1066)` returns
+> `NOT_APPLICABLE` **and does not halt**, where Qwen would halt on exactly those numbers.
+> Borrowing Qwen's divisor for an unmeasured family would be *inventing a measurement*, and the
+> test makes that refusal falsifiable rather than merely stated.
 
 ## The home
 

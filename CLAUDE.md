@@ -323,6 +323,18 @@ got 0.00%. It was reported as *untested* rather than as confirmation, which is e
 and it is the same family as the silhouette-IoU gate that returned 1.00000 on a holed mesh.
 Before trusting a 0, ask what a non-zero would have required.
 
+**And its fixture-side sibling: a fixture that passes under the implementation you are
+REPLACING does not test the change.** A check built to compare *parsed graphs rather than
+text* — because a JSON re-dump can differ in whitespace without a value moving — reached for
+the three saved/submitted pairs in its corpus as its PASS evidence. Enumerated first, all
+three are **byte-identical, same sha256**: they pass under a text comparison too, so they
+cannot demonstrate the one property the check exists for. Sound fixtures, useless leg. The
+repair has the same shape as the law above — construct the discriminating case, and **assert
+the bytes really did change before asserting the graphs compare equal**, or the leg cannot
+fail — then pin the byte-identity separately so a corpus change arrives as a notification
+rather than a silent weakening. **Ask of every fixture: what would this look like if the code
+were wrong in the specific way this check exists to catch?**
+
 **A gate that a scripting accident can separate from the action it gates is not a gate.** An
 invariance ANDON fired on stroke 7 of a brush run and the commit ran anyway, because check and
 commit were chained in one PowerShell call that walked past the failing exit code — 47,020
