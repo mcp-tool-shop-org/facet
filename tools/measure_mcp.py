@@ -12,37 +12,46 @@ spec names a tool no in-scope instrument can serve, that tool REFUSES and names
 the finding rather than growing a second implementation of a measurement the
 record already cites.
 
-THE SURFACE IS THE SPEC'S EIGHT NAMES, exactly. Four wrap today:
+THE SURFACE IS THE SPEC'S EIGHT NAMES, exactly. Seven wrap (the Director ruled
+the e12_*/e14_* family IN, 2026-08-09 - spec open question 2; the three released
+wraps landed at E28 task 2b, after the census halt was ruled):
 
   mesh_stats        tools/verify/mesh_stats.py
+  mesh_topology     tools/diagnostics/e14_topology.py - ALONE, by E28 Ruling 4:
+                    e12_nonmanifold.py computes the same count independently
+                    but its output is a picture drawn onto a render set it
+                    requires as input - evidence for the eye, the Director's
+                    channel - so it is NAMED in the payload notes, never
+                    wrapped. The tie crash E27 measured (wide = 3-thin-tall
+                    with argmin == argmax on all-equal extents) was repaired at
+                    E28 2a with its proof in T42.
   reach_ceiling     tools/diagnostics/e08_ceiling.py
+  thin_extent_curve tools/diagnostics/e12_thin_curve.py - the per-view
+                    screen-space extent curve. e13_thin_inputs.py remains NOT a
+                    substitute (brush-level withholding, a different question).
+                    The instrument's --preview flag is not exposed: previews
+                    are artifacts for the eye, not payload numbers.
+  offsurface_rate   tools/diagnostics/e12_offsurface.py - the BAKE half only.
+                    The erode / margin-statistic half the spec asks for exists
+                    in NEITHER offsurface instrument (measured at the E27
+                    ruling seat; --margin here is the camera-framing margin, a
+                    different quantity) - named in the payload notes, an open
+                    commission, not computed here. e10_offsurface.py stays the
+                    ship-bound sibling whose ruled numbers this instrument was
+                    validated against (E12 task 2).
   texel_provenance  tools/diagnostics/texel_provenance.py
   measure_report    tools/verify/gate1_sheet.py (the sheet half) + the
                     payload-comparison half, which is this server's own
                     envelope contract, not a measurement
 
-and four refuse, each naming exactly what is missing and whose question it is:
+and ONE refuses, naming exactly what is missing and whose question it is:
 
-  mesh_topology     the instrument exists (tools/diagnostics/e14_topology.py,
-                    generic --glb, both census definitions named) but sits in
-                    the e12_*/e14_* family the spec's open question 2 leaves to
-                    the Director. Measured while building this server: it also
-                    CRASHES on any mesh whose extents tie (wide = 3-thin-tall
-                    with argmin == argmax), so ruling it in is necessary but
-                    not sufficient.
-  thin_extent_curve tools/diagnostics/e12_thin_curve.py - same family, same
-                    open question. e13_thin_inputs.py answers a different
-                    question (brush-level withholding, not the per-view curve).
-  offsurface_rate   tools/diagnostics/e10_offsurface.py computes it but binds
-                    its subject as module constants (E04_shipprep paths, the
-                    ship profile, one job's cam.json); it cannot be invoked on
-                    an arbitrary prep. The erode/margin form is
-                    e12_offsurface.py - excluded family again.
   anchor_check      NO instrument exists. tools/diagnostics/e13_anchor_check
                     .py is a name collision - it is the spiral-law adjacency
                     guard, not the anchored-regression pattern. The pattern
                     lives in the harness's artifacts tier (T07-T11) and
-                    session procedure.
+                    session procedure. The census swept both instrument homes
+                    (E28) and found no candidate; the commission stands.
 
 INSTRUMENT IDENTITY IS THE CONTRACT (the spec's own law). Every successful
 payload carries a `measure` envelope: this server's version, the wrapped
@@ -118,7 +127,13 @@ REPO = os.path.dirname(HERE)
 # T27. This module is deliberately NOT in the wheel (pyproject py-modules) -
 # whether it joins a release is the Director's, and versioning it here keeps
 # the identity contract live in the meantime.
-MEASURE_VERSION = "0.1.0"
+# 0.1.0 -> 0.2.0 at E28 task 2b: the surface moved from 4-of-8 serving to
+# 7-of-8. The identity law is why this bumps: a payload's envelope carries the
+# server version and measure_report refuses cross-version comparison, so two
+# surfaces must not share a number. No 0.1.0 payload of the four
+# already-serving tools changes behaviour; the bump marks the surface, not
+# the instruments.
+MEASURE_VERSION = "0.2.0"
 SERVER_NAME = "facet-measure"
 
 # The sealed recorded trees. Same resolution as the test harness: the env var
@@ -396,25 +411,77 @@ def mesh_stats(glb: str, profile: str | None = None,
 
 
 @srv.tool(annotations=ToolAnnotations(readOnlyHint=True))
-def mesh_topology(glb: str) -> dict:
-    """The topology facts mesh_stats does not print - NOT SERVABLE YET.
+def mesh_topology(glb: str, slab: float | None = None,
+                  face_deg: float | None = None, sections: int | None = None,
+                  section_window: float | None = None,
+                  wall_gap: float | None = None,
+                  label: str | None = None) -> dict:
+    """The topology facts mesh_stats does not print.
 
-    Refuses (spec open question 2, the Director's): the instrument exists at
-    tools/diagnostics/e14_topology.py - generic --glb, both shell definitions
-    named, boundary-edge triplet, nested-wall test - but the e12_*/e14_*
-    family is out of this arc's scope unless the Director rules it in.
+    Wraps tools/diagnostics/e14_topology.py (the Director ruled the family in,
+    2026-08-09; the tie crash was repaired at E28 2a with its proof in T42):
+    the boundary-edge triplet (count AND total length AND longest single
+    edge - a zero-length boundary edge and a hole's loop are the same integer
+    and different facts), non-manifold census, the shell count under BOTH
+    definitions named (shared-vertex = mesh_stats' quantity; shared-manifold-
+    edge beside it), the nested-wall hollow test, cross-section wall scan, and
+    the extremal-slab floor test.
+
+    glb    path to the mesh
+    slab, face_deg, sections, section_window, wall_gap
+           optional overrides; the instrument derives its windows from THIS
+           mesh's own extent and the payload echoes what actually ran
     """
-    _raise(MeasureError(
-        "NOT_WRAPPED",
-        "mesh_topology has no in-scope instrument: the implementation is "
-        "tools/diagnostics/e14_topology.py, which sits in the e12_*/e14_* "
-        "family the spec's open question 2 reserves to the Director",
-        "Two facts for that ruling, both measured while this server was "
-        "built: (1) the tool is subject-independent in its operands (--glb, "
-        "per-mesh-derived constants); (2) it CRASHES on any mesh whose "
-        "extents tie - wide = 3 - argmin - argmax with argmin == argmax - "
-        "measured on a unit cube and on the pinch fixture, so ruling it in "
-        "is necessary but not sufficient. E27's report carries both."))
+    _need_file(glb, "the mesh", "Pass a path to a .glb this rig can read.")
+    args = ["--glb", glb]
+    params = {"glb": os.path.abspath(glb)}
+    for name, val in (("slab", slab), ("face-deg", face_deg),
+                      ("sections", sections),
+                      ("section-window", section_window),
+                      ("wall-gap", wall_gap), ("label", label)):
+        if val is not None:
+            args += ["--%s" % name, str(val)]
+            params[name.replace("-", "_")] = val
+    fd, out_json = tempfile.mkstemp(suffix=".json", prefix="topo_")
+    os.close(fd)
+    try:
+        out, _ = run_instrument("diagnostics/e14_topology.py",
+                                args + ["--out", out_json])
+        with open(out_json, encoding="utf-8") as fh:
+            doc = json.load(fh)
+    finally:
+        if os.path.exists(out_json):
+            os.remove(out_json)
+
+    ratios = {
+        "nonmanifold_frac": {
+            "numerator": "nonmanifold_edges (in this payload)",
+            "denominator": "edges_unique (in this payload)"},
+        "largest_shell_frac": {
+            "numerator": "faces in the largest shared-vertex shell",
+            "denominator": "faces (in this payload)"},
+        "nested_wall_test.material_frac_of_outer": {
+            "numerator": "outer_volume + inner_volume (signed; inner is "
+                         "negative on a nested wall)",
+            "denominator": "outer_volume (in this payload)"},
+    }
+    notes = [
+        "shells vs pieces_manifold_adjacency are BOTH in this payload because "
+        "the two definitions do not agree on a pinched surface - the "
+        "instrument's own operand warning; `shells` is the only one "
+        "comparable with the record's family table.",
+        "where the non-manifold edges CONCENTRATE is not in this payload: "
+        "tools/diagnostics/e12_nonmanifold.py computes the same count "
+        "independently and projects every edge midpoint onto the turnaround "
+        "renders - a picture, on a render set it requires as input, evidence "
+        "for the eye rather than a payload number (E28 Ruling 4: named, not "
+        "wrapped)."]
+    doc, nan_paths = _sanitize_nan(doc)
+    doc["measure"] = envelope("mesh_topology",
+                              "tools/diagnostics/e14_topology.py", params,
+                              ratios=ratios, warnings=warning_lines(out),
+                              nan_paths=nan_paths, notes=notes)
+    return doc
 
 
 @srv.tool(annotations=ToolAnnotations(readOnlyHint=True))
@@ -488,42 +555,157 @@ def reach_ceiling(prep: str, sets: str = "2,4,6,8,12",
 
 
 @srv.tool(annotations=ToolAnnotations(readOnlyHint=True))
-def thin_extent_curve(glb: str) -> dict:
-    """The thin-structure cost curve on THIS mesh - NOT SERVABLE YET.
+def thin_extent_curve(glb: str, aspect: str | None = None,
+                      margin: float | None = None,
+                      fit_axis: str | None = None, views: str | None = None,
+                      el: float | None = None, values: str | None = None,
+                      region_a: str | None = None, region_b: str | None = None,
+                      region_name: str | None = None,
+                      z_tol: float | None = None) -> dict:
+    """What does this thin-structure threshold cost on THIS mesh?
 
-    Refuses (spec open question 2, the Director's): the instrument is
-    tools/diagnostics/e12_thin_curve.py, excluded family.
+    Wraps tools/diagnostics/e12_thin_curve.py (the Director ruled the family
+    in, 2026-08-09): the per-view screen-space front-to-back extent curve,
+    computed by emit's own construction - same canonicalisation, same D, same
+    fit-axis block - so a value read off the curve means the same thing when
+    texpass_iter receives it. 0.0 is a curve point, not an absent one: the
+    tool default runs the guard DISABLED, and the curve shows what undecided
+    actually does.
+
+    glb        path to the mesh
+    views      comma-separated yaws (instrument default: the 8-view ring)
+    values     comma-separated thin_extent candidates, canonical units
+    region_a, region_b   optional spatial region as VIEW:x0,y0,x1,y1 pixel
+               rects on two ORTHOGONAL views; the region fraction rides
+               beside the figure fraction, and its known impurity (thick
+               struts inside the box) can only push it DOWN
+    The instrument's --preview flag is deliberately not exposed: previews are
+    artifacts for the eye, not payload numbers - run the tool directly for
+    them.
     """
-    _raise(MeasureError(
-        "NOT_WRAPPED",
-        "thin_extent_curve has no in-scope instrument: the implementation is "
-        "tools/diagnostics/e12_thin_curve.py (generic --glb, emit's own "
-        "screen-space extent computation), which sits in the e12_*/e14_* "
-        "family the spec's open question 2 reserves to the Director",
-        "tools/diagnostics/e13_thin_inputs.py is NOT a substitute: it "
-        "answers brush-level withholding across a camera set, not the "
-        "per-view extent curve. E27's report carries the collision."))
+    _need_file(glb, "the mesh", "Pass a path to a .glb this rig can read.")
+    if (region_a is None) != (region_b is None):
+        _raise(MeasureError(
+            "BAD_ARGUMENT", "region_a and region_b come as a pair",
+            "The region is read off TWO orthogonal views or not at all - "
+            "one rect cannot place a box in three dimensions."))
+    args = ["--glb", glb]
+    params = {"glb": os.path.abspath(glb)}
+    for name, val in (("aspect", aspect), ("margin", margin),
+                      ("fit-axis", fit_axis), ("views", views), ("el", el),
+                      ("values", values), ("region-a", region_a),
+                      ("region-b", region_b), ("region-name", region_name),
+                      ("z-tol", z_tol)):
+        if val is not None:
+            args += ["--%s" % name, str(val)]
+            params[name.replace("-", "_")] = val
+    fd, out_json = tempfile.mkstemp(suffix=".json", prefix="thin_")
+    os.close(fd)
+    try:
+        out, _ = run_instrument("diagnostics/e12_thin_curve.py",
+                                args + ["--out", out_json])
+        with open(out_json, encoding="utf-8") as fh:
+            doc = json.load(fh)
+    finally:
+        if os.path.exists(out_json):
+            os.remove(out_json)
+
+    ratios = {
+        "curve.*.figure_pct": {
+            "numerator": "pixels with ext < value, all views pooled",
+            "denominator": "total_hit_px (in this payload)"},
+        "curve.*.region_pct": {
+            "numerator": "region pixels with ext < value, all views pooled",
+            "denominator": "total_region_px (in this payload)"},
+        "curve.*.ratio_region_over_figure": {
+            "numerator": "region_pct (in the same row)",
+            "denominator": "figure_pct (in the same row)"},
+    }
+    notes = [
+        "the curve is a CURVE, not a threshold: the server returns costs so a "
+        "human decides, and will return this curve where it is asked for a "
+        "threshold (the spec's no-subject-values law)."]
+    doc, nan_paths = _sanitize_nan(doc)
+    doc["measure"] = envelope("thin_extent_curve",
+                              "tools/diagnostics/e12_thin_curve.py", params,
+                              ratios=ratios, warnings=warning_lines(out),
+                              nan_paths=nan_paths, notes=notes)
+    return doc
 
 
 @srv.tool(annotations=ToolAnnotations(readOnlyHint=True))
-def offsurface_rate(prep: str | None = None) -> dict:
-    """Does this bake's position map lie on the mesh? - NOT SERVABLE YET.
+def offsurface_rate(prep: str, aspect: str | None = None,
+                    margin: float | None = None, fit_axis: str | None = None,
+                    v_ext: float | None = None, sample: int | None = None,
+                    seed: int | None = None, label: str | None = None) -> dict:
+    """Does this bake's position map lie on the mesh? - the BAKE half.
 
-    Refuses (a gate-3 finding): no subject-independent instrument exists.
+    Wraps tools/diagnostics/e12_offsurface.py (the Director ruled the family
+    in, 2026-08-09): world position per uv-valid texel reconstructed from
+    meta.json, distance to the surface from the raycasting scene, a fixed-seed
+    sample, and the emit-pixel unit DERIVED from the subject's own framing
+    with the derivation echoed in the payload. The instrument was validated
+    against the ship's ruled number before first use (E12 task 2: 2.5065%
+    via this instrument against E10 Ruling 4's 2.5%).
+
+    prep     a bake-prep directory: meta.json, mask.npy, pos.npy, prep_uv.glb
+    v_ext    override the derived emit-camera vertical extent - getting the
+             unit wrong scales every threshold, which is why the payload
+             carries v_ext_derivation
+    seed, sample   the fixed-seed sample; defaults reproduce the recorded
+             invocations
     """
-    _raise(MeasureError(
-        "NOT_WRAPPED",
-        "offsurface_rate has no invocable instrument: "
-        "tools/diagnostics/e10_offsurface.py computes exactly this quantity "
-        "but binds its subject as module constants (the E04_shipprep tree, "
-        "profiles/ship.json, one recorded job's cam.json), so it cannot be "
-        "pointed at an arbitrary prep; the erode/margin form the spec asks "
-        "for is tools/diagnostics/e12_offsurface.py, which sits in the "
-        "excluded e12_*/e14_* family (open question 2)",
-        "Parameterising the recorded instrument is an edit to a tool whose "
-        "numbers sit in closed rulings - the advisor rules whether that "
-        "happens, or commissions a fresh in-scope instrument. E27's report "
-        "carries both halves of the finding."))
+    _need_file(prep, "the prep directory",
+               "Pass the bake-prep directory the route produced.")
+    for member in ("meta.json", "mask.npy", "pos.npy", "prep_uv.glb"):
+        _need_file(os.path.join(prep, member),
+                   "prep member %s" % member,
+                   "offsurface_rate reads the bake-prep's position map "
+                   "against its mesh; this file is part of that contract.")
+    args = ["--prep", prep]
+    params = {"prep": os.path.abspath(prep)}
+    for name, val in (("aspect", aspect), ("margin", margin),
+                      ("fit-axis", fit_axis), ("v-ext", v_ext),
+                      ("sample", sample), ("seed", seed), ("label", label)):
+        if val is not None:
+            args += ["--%s" % name, str(val)]
+            params[name.replace("-", "_")] = val
+    fd, out_json = tempfile.mkstemp(suffix=".json", prefix="offsurf_")
+    os.close(fd)
+    try:
+        out, _ = run_instrument("diagnostics/e12_offsurface.py",
+                                args + ["--out", out_json])
+        with open(out_json, encoding="utf-8") as fh:
+            doc = json.load(fh)
+    finally:
+        if os.path.exists(out_json):
+            os.remove(out_json)
+
+    ratios = {
+        "pct_off_surface_gt_1px": {
+            "numerator": "sampled texels whose reconstructed position sits "
+                         "more than one emit pixel off the surface",
+            "denominator": "sampled (in this payload)"},
+        "pct_off_surface_gt_5px": {
+            "numerator": "sampled texels more than five emit pixels off",
+            "denominator": "sampled (in this payload)"},
+    }
+    notes = [
+        "the ERODE / MARGIN-STATISTIC half the spec asks for is NOT in this "
+        "payload: it exists in neither offsurface instrument (measured at "
+        "the E27 ruling seat - --margin on this instrument is the CAMERA "
+        "FRAMING margin, a different quantity). Commissioned in principle at "
+        "E27, unscoped; this wrapper does not compute it.",
+        "tools/diagnostics/e10_offsurface.py remains the ship-bound sibling "
+        "whose ruled numbers this instrument reproduces (E12 task 2); its "
+        "stroke-comparison half needs an emitted stroke directory and is a "
+        "different question."]
+    doc, nan_paths = _sanitize_nan(doc)
+    doc["measure"] = envelope("offsurface_rate",
+                              "tools/diagnostics/e12_offsurface.py", params,
+                              ratios=ratios, warnings=warning_lines(out),
+                              nan_paths=nan_paths, notes=notes)
+    return doc
 
 
 @srv.tool(annotations=ToolAnnotations(readOnlyHint=True))
@@ -845,10 +1027,10 @@ TOOL_ORDER = ("mesh_stats", "mesh_topology", "reach_ceiling",
 
 WRAPPED = {
     "mesh_stats": "tools/verify/mesh_stats.py",
-    "mesh_topology": None,
+    "mesh_topology": "tools/diagnostics/e14_topology.py",
     "reach_ceiling": "tools/diagnostics/e08_ceiling.py",
-    "thin_extent_curve": None,
-    "offsurface_rate": None,
+    "thin_extent_curve": "tools/diagnostics/e12_thin_curve.py",
+    "offsurface_rate": "tools/diagnostics/e12_offsurface.py",
     "texel_provenance": "tools/diagnostics/texel_provenance.py",
     "anchor_check": None,
     "measure_report": "tools/verify/gate1_sheet.py",

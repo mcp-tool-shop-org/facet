@@ -181,6 +181,19 @@ if len(pieces) >= 2 and len(pieces[1]) > 0.01 * tot_faces:
 # ---- 3. cross-section scan: how many walls would a ray cross? ------------------------------
 thin = int(np.argmin(ext))          # the thinnest axis: the one a ray crosses walls along
 tall = int(np.argmax(ext))          # the tallest axis: the one we scan along
+if thin == tall:
+    # TIED EXTENTS (E28 2a, the E27 F1 crash). `argmin == argmax` holds exactly
+    # when min(ext) == max(ext) - the first-of-min and first-of-max positions
+    # can only coincide if the values do - i.e. ALL THREE extents are equal,
+    # and then `3 - thin - tall` is 3, one past the axis list (the unit cube,
+    # reproduced at three seats). An extent-degenerate mesh has no thinnest or
+    # tallest axis to find, so the scan takes a deterministic permutation
+    # instead of crashing. On EVERY other input - distinct extents AND two-way
+    # ties - this branch is dead and thin/tall are untouched, so `wide` below
+    # is arithmetically unchanged; T42 carries the proof (exhaustive over the
+    # recorded subjects, randomized over distinct-extent triples) rather than
+    # this comment carrying it.
+    thin, tall = 0, 2
 wide = 3 - thin - tall
 cen = co[f].mean(axis=1)
 win, brk = args.section_window * H, args.wall_gap * H

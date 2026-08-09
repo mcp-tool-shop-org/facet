@@ -101,7 +101,7 @@ La disciplina es tan importante como el proceso, y existe por una razón: en un 
 - **Las correcciones se aplican en su lugar, junto a la medición que las refutó**, no como eliminaciones discretas. Se falsificaron seis afirmaciones heredadas solo en la sesión inicial, y todas siguen siendo legibles junto a lo que las reemplazó.
 - **Los fallos permanecen en el repositorio con su motivo.** [`tools/superseded/`](docs/tools.md) no es un archivo; cualquiera puede ejecutar esas herramientas y observar cómo fallan de la misma manera.
 - **Un resultado negativo es un éxito total**, se informa y se cierra en lugar de ajustarse a un número.
-- **Las pruebas se ejecutan con el commit que modifica el código:** 736 aprobadas por dos personas, con CI basado en rutas para las 727 herméticas.
+- **Las pruebas se ejecutan con el commit que modifica el código:** 782 aprobadas por dos personas, con CI basado en rutas para las 753 herméticas.
 - **El registro se puede consultar.** Un índice SQLite + FTS5 sobre todo el historial, verificado en cuatro etapas. Encontró un recuento de dictámenes que la prosa había indicado incorrectamente en tres sitios, contando el propio registro.
 
 ## Dónde está todo
@@ -145,7 +145,7 @@ Exactamente **una** instrucción ANDON básica `assert` permanece en cualquier l
 
 Blender 5.x, Python 3.11+ con `numpy`, `scipy`, `trimesh`, `open3d`, `Pillow`, `spandrel`, `torch`. Se necesita una instalación local de ComfyUI solo para el pincel de retoque. Desarrollado en un RTX 5090; la capacidad de VRAM es más importante que la velocidad bruta.
 
-CI ejecuta el subconjunto hermético de la suite en **ubuntu-latest / Python 3.12** con instalaciones fijas (`.github/workflows/ci.yml`); la capa de artefactos necesita los árboles registrados bajo `E:\AI\training`, que no están en git, por lo que CI los excluye por diseño. Localmente, `python -m pytest` ejecuta las **736** pruebas y `python -m pytest -m "not artifacts"` ejecuta las **727** que reproduce CI.
+CI ejecuta el subconjunto hermético de la suite en **ubuntu-latest / Python 3.12** con instalaciones fijas (`.github/workflows/ci.yml`); la capa de artefactos necesita los árboles registrados bajo `E:\AI\training`, que no están en git, por lo que CI los excluye por diseño. Localmente, `python -m pytest` ejecuta las **782** pruebas y `python -m pytest -m "not artifacts"` ejecuta las **753** que reproduce CI.
 
 ---
 
