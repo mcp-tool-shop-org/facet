@@ -13,7 +13,7 @@
 | `.py` files in `tools/verify` | **9** |
 | — files of any other extension there | 0 |
 | **total members** | **108** |
-| corpus files read for axis D | 269 |
+| corpus files read for axis D | 271 |
 | test files read for axis E | 57 |
 | probe interpreter | `E:\AI-Models\trellis2-env\Scripts\python.exe` (3.13.13) |
 
@@ -101,7 +101,7 @@
 | 37 | `e08_registration.py` | diagnostics | no | 5 | no | 1 | no | n/a | none | E08 — does a twin register against the mesh it is supposed to be a reference for? |
 | 38 | `e10_claim_replay.py` | diagnostics | yes | 1 | **yes** | 4 | no | yes | ambiguous | Per-stroke claim replay, faithful to texpass_iter.commit AS SHIPPED (with E08 |
 | 39 | `e10_consumers_subject.py` | diagnostics | yes | 15 | no | 1 | no | yes | ambiguous | E10 Ruling 4(a) — the off-surface consumer sweep, SUBJECT-FLAGGED. |
-| 40 | `e10_offsurface.py` | diagnostics | yes | 2 | **yes** | 12 | yes | yes | offsurface_rate | Does the prep bake's position map lie on the mesh? Measured, because E10's Step 0.2 |
+| 40 | `e10_offsurface.py` | diagnostics | yes | 2 | **yes** | 11 | yes | yes | offsurface_rate | Does the prep bake's position map lie on the mesh? Measured, because E10's Step 0.2 |
 | 41 | `e10_offsurface_consumers.py` | diagnostics | yes | 2 | **yes** | 3 | no | yes | ambiguous | E10 Ruling 4's dispatched measurement — per consumer, does excluding the |
 | 42 | `e10_offsurface_where.py` | diagnostics | yes | 8 | no | 1 | no | yes | ambiguous | E10 Ruling 4(b) — WHERE the painted off-surface texels live. Mechanism measurement. |
 | 43 | `e12_ab_sheet.py` | diagnostics | no | 7 | no | 0 | yes | n/a | measure_report | A \| B on one view, full size, plus named regions at N x — the sheet a re-roll is judge… |
@@ -125,7 +125,7 @@
 | 61 | `e12_region_colour.py` | diagnostics | no | 6 | no | 0 | yes | n/a | none | Median Lab / chroma / hue inside named regions, masked to the silhouette — the tone cha… |
 | 62 | `e12_region_crops.py` | diagnostics | no | 17 | no | 2 | no | n/a | none | Crop the SAME world-space region out of every view's image, under the route's own frami… |
 | 63 | `e12_stem_delta.py` | diagnostics | no | 6 | no | 5 | no | n/a | none | ANDON: assert a twin-prompts rebuild differs from its predecessor by EXACTLY the named … |
-| 64 | `e12_thin_curve.py` | diagnostics | no | 13 | no | 8 | yes | n/a | thin_extent_curve | The `thin_extent` cost curve, measured on THIS mesh, with a region fraction beside it. |
+| 64 | `e12_thin_curve.py` | diagnostics | no | 13 | no | 7 | yes | n/a | thin_extent_curve | The `thin_extent` cost curve, measured on THIS mesh, with a region fraction beside it. |
 | 65 | `e12_twin_gate.py` | diagnostics | no | 7 | no | 0 | no | n/a | none | E12's palette gate in the form Ruling 16e ruled: REPORT-STRUCTURED, null bounds, eye ru… |
 | 66 | `e12_twin_readout.py` | diagnostics | no | 8 | no | 2 | yes | n/a | none | The two channels the palette gate is BLIND TO, per twin: achromatic mass, and registrat… |
 | 67 | `e12_view_visibility.py` | diagnostics | no | 11 | no | 1 | yes | n/a | ambiguous | E12 Ruling 9d — per-view element visibility, so the per-view stems are MEASURED not gue… |
@@ -167,7 +167,7 @@
 | 103 | `montage.py` | verify | no | 7 | no | 0 | no | n/a | ambiguous | Contact sheet + per-view figure brightness readout. |
 | 104 | `prep_front.py` | diagnostics | no | 0 | **yes** | 0 | no | n/a | none | Prepare the front render for the paint pass. |
 | 105 | `silhouette_agree.py` | diagnostics | no | 8 | no | 3 | yes | n/a | ambiguous | Is project_twins' LIVE raycast silhouette the same object as the shipped sidecar mask? |
-| 106 | `texel_provenance.py` | diagnostics | no | 17 | no | 13 | yes | n/a | texel_provenance | Where did this pixel's colour actually come from? |
+| 106 | `texel_provenance.py` | diagnostics | no | 17 | no | 12 | yes | n/a | texel_provenance | Where did this pixel's colour actually come from? |
 | 107 | `texpass_metrics.py` | diagnostics | no | 7 | no | 2 | no | n/a | no opinion | E05 — one metric table, computed identically for every arm. |
 | 108 | `turn_render.py` | verify | no | 14 | no | 17 | no | n/a | none | Matched-framing turnaround render of a GLB. |
 

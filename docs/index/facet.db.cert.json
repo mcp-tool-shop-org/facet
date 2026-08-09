@@ -1,12 +1,12 @@
 {
  "andon": [],
  "corpus": {
-  "files": 283,
-  "id": "21f10b80517b0a67ec6601c6333d52fa7cbb39692dc1638d7739cbb30a0d559c",
+  "files": 284,
+  "id": "651706d99eb9c42b28d3999532a51ca18a3a8a94d29d88ddd6fde67bb3c06418",
   "manifest": {
    "CLAUDE.md": "3dacdd9818af6475feb0b85dff1420add5cd99d67996f0590b9960694abc95f1",
    "README.md": "18791fe091f821f90f9b2fa46bbf1ebbaf1fb38e081fbd1722f186ca4adc45af",
-   "docs/advisor-kickoff.md": "c40919565d0d037da709d3a25eb9b44b978a10f19a82757ba9cf7dfc8ee30bfb",
+   "docs/advisor-kickoff.md": "ae4bb03602d3894951dbbaedbc06a7be5126887a8fe67b800eaa4a68eb432bff",
    "docs/arc-history.md": "5b2876b3fed7be95a6efc984f5e5a00b7c1675b10a169ee43803b50e091b48a8",
    "docs/brand/README.md": "81f425b6a101135b43463b35468f08a2db37af39c856c01f7fbdb6ce66598226",
    "docs/concept-prep.md": "c96e648e71b375ddd5c77e0c9122bd131b2286334d91c1a02c4e000f2d88dee5",
@@ -262,6 +262,7 @@
    "docs/experiments/E28-task3-predictions.md": "b43747bfac766ef72879acd426f8e27631925272bba6d8d6589f0d9ec70c5e1a",
    "docs/experiments/E28-task3-report.md": "3d2fe84d66a4db8e12f829f6cfe810736d47c5b1644863ec161f94781ec415b7",
    "docs/experiments/E29-clay-reconstruction-kickoff.md": "6eb5e76aef811c461f84c7eec05dd3992f46b88da364ce3574ac6abfc6199bc0",
+   "docs/experiments/E29-predictions.md": "dfede9b130614fdb4ae938c4b65eb63e7560df9d47a87a4f0373ac76738e592a",
    "docs/experiments/E30-polish-anchor-gates-kickoff.md": "a727fab317fb039eab2f0d44a1ce873cecb6f8db583f5a12f4e49ab957f2afa0",
    "docs/experiments/E30-polish-anchor-gates-report.md": "80bee9afa3a445df942fd8e4becc3131eabba37586f8a87c5f3b56502f638bab",
    "docs/experiments/E30-predictions.md": "f39359dc23e20d97f9023351b9461eea0ab4e1f55380fea396897465c8fa6021",
@@ -271,7 +272,7 @@
    "docs/handbook/index.md": "2481565674a67102d8bc5e5853ce95af48f5694a1f765032d543a07d7bdfbe20",
    "docs/handbook/profiles.md": "411d6c7cbe44cda94d969e05e9d3d8882d898334208c949551857b90b336165b",
    "docs/handbook/subjects.md": "8bcaa95ec843c064ed94f8abb9f6cd2978c836a7cb563cffa5fc18f7b63aa7a1",
-   "docs/instrument-census.md": "5a122b5222eab6d641cd912a0d9121ec0e8275c60dc0983e56f4c77e0475214b",
+   "docs/instrument-census.md": "2a6b053085c7e3b3d24c641238f1b4f3e322ff581aa9b84921d8d116c37087df",
    "docs/known-defects.md": "7b2d4599f90375d7d144a3c8c75a307e7b0ac35bff102e616d1c5ab3c884abb7",
    "docs/profiles-design.md": "926c5f767cbdd043ab2740abfbf40d3cc79a9cc765aea57b3ddc46d2202c4339",
    "docs/research/RG01-texture-route-grounding.md": "bf5d8fdc7b9eb5b75be6644a97167ddc26a67468eb5496ebea9068b7441f7b9e",
@@ -293,17 +294,17 @@
   "artifacts": 701,
   "decisions": 225,
   "experiments": 30,
-  "fts": 4303,
+  "fts": 4317,
   "handoffs": 31,
   "laws": 87,
   "phenomena": 28,
-  "prose_sections": 2533,
+  "prose_sections": 2547,
   "rulings": 668
  },
  "db": {
-  "bytes": 10752000,
+  "bytes": 10784768,
   "path": "docs/index/facet.db",
-  "sha256": "d824d9e0810e2c1ce87da5af3f89876e3323229559e7ddffc93e3194dc82cae5"
+  "sha256": "587490be220791708e8d654a31056ebf89447cdd8748236fd5f3f910c82f91c8"
  },
  "determinism_leg": "byte-identity",
  "failures": [],
@@ -323,7 +324,7 @@
   "==============================================================================",
   "",
   "[leg 1] determinism - two builds from an unchanged record",
-  "  BYTE-IDENTICAL   10752000 bytes, both builds",
+  "  BYTE-IDENTICAL   10784768 bytes, both builds",
   "",
   "[corpus] ruling documents discovered by the sorted glob",
   "  E01-ruling-gate1.md                            arc E01                0 rows - prose only",
@@ -425,7 +426,7 @@
   "  artifacts      701 rows   dangling 0",
   "  phenomena       28 rows   dangling 0",
   "  decisions      225 rows   dangling 0",
-  "  fts           4303 rows   dangling 0",
+  "  fts           4317 rows   dangling 0",
   "  total checked 1770, dangling 0",
   "",
   "[leg 4] the seeded question set - target within the top 3",
@@ -456,7 +457,7 @@
  ],
  "unattributed_failures": [],
  "verb": "record_build",
- "verified_utc": "2026-08-09T20:34:43Z",
+ "verified_utc": "2026-08-09T20:53:37Z",
  "verify_exit_code": 0,
  "written_by": "tools/record_mcp.py"
 }

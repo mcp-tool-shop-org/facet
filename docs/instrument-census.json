@@ -17,8 +17,8 @@
     "py_files_total": 108
   },
   "provenance": {
-    "corpus_files": 269,
-    "corpus_files_before_self_exclusion": 279,
+    "corpus_files": 271,
+    "corpus_files_before_self_exclusion": 281,
     "probe_interpreter": "E:\\AI-Models\\trellis2-env\\Scripts\\python.exe",
     "probe_interpreter_version": "3.13.13",
     "probe_skipped": false,
@@ -1350,11 +1350,10 @@
         "E:\\AI\\training\\facet_next\\E04_shipprep",
         "E:\\AI\\training\\facet_next\\E04_stroke"
       ],
-      "cited_count": 12,
-      "cited_count_raw": 14,
+      "cited_count": 11,
+      "cited_count_raw": 13,
       "cited_in": [
         "CLAUDE.md",
-        "docs/advisor-kickoff.md",
         "docs/experiments/E10-offsurface-consumers-report.md",
         "docs/experiments/E10-offsurface-r4ab-predictions.md",
         "docs/experiments/E10-offsurface-r4ab-report.md",
@@ -2155,10 +2154,9 @@
       ],
       "b1_literals": [],
       "b2_literals": [],
-      "cited_count": 8,
-      "cited_count_raw": 12,
+      "cited_count": 7,
+      "cited_count_raw": 11,
       "cited_in": [
-        "docs/advisor-kickoff.md",
         "docs/experiments/E12-task2b-report.md",
         "docs/experiments/E14-handoff2-predictions.md",
         "docs/experiments/E14-handoff2-report.md",
@@ -2932,11 +2930,11 @@
       "cited_count": 7,
       "cited_count_raw": 13,
       "cited_in": [
-        "docs/advisor-kickoff.md",
         "docs/experiments/E14-gate0-report.md",
         "docs/experiments/E27-measurement-mcp-report.md",
         "docs/experiments/E27-predictions.md",
         "docs/experiments/E27-ruling.md",
+        "docs/experiments/E29-predictions.md",
         "docs/experiments/README.md",
         "docs/specs/measurement-mcp-spec.md"
       ],
@@ -3540,10 +3538,9 @@
       "anchored_in_basename_only": [],
       "b1_literals": [],
       "b2_literals": [],
-      "cited_count": 13,
-      "cited_count_raw": 20,
+      "cited_count": 12,
+      "cited_count_raw": 19,
       "cited_in": [
-        "docs/advisor-kickoff.md",
         "docs/experiments/E07-gate0.md",
         "docs/experiments/E07-the-atlas-is-not-a-neighbourhood.md",
         "docs/experiments/E08-executor-kickoff.md",
