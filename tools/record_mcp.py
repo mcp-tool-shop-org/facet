@@ -116,7 +116,21 @@ REPO = facet_index.REPO
 # WORKING DIRECTORY instead - which is the honest default, because the operator
 # runs `facet` from inside the checkout whose record they want served. Either
 # way an explicit --db or $FACET_INDEX_DB still wins.
-DB_DEFAULT = os.path.join(os.getcwd() if FROZEN else REPO, facet_index.DB_REL)
+#
+# E24 added `or os.getcwd()`. REPO is now None when NO candidate directory
+# contains the record, and a None here would make this module fail to IMPORT on
+# a wheel install - taking `--print-tools` and every `--db`-explicit run down
+# with it, and both of those exit 0 on the published wheel today. cwd is the
+# same honest default the frozen branch already takes, for the same stated
+# reason, and it names a DB rather than a corpus: nothing downstream treats it
+# as a record root, and `_corpus_manifest` still refuses when there is no
+# corpus. The FROZEN branch is now SUBSUMED by the resolver - in a binary,
+# dirname(HERE) is a temp dir that fails the marker test and cwd is tried next,
+# so REPO already equals cwd - but it is kept, not deleted: it states the
+# intent at the site, and T28 pins this expression as the proof that the frozen
+# default does not resolve against the extraction dir again.
+DB_DEFAULT = os.path.join(os.getcwd() if FROZEN else REPO or os.getcwd(),
+                          facet_index.DB_REL)
 
 CERT_SUFFIX = ".cert.json"
 CERT_SCHEMA = "facet-record-index-certificate/1"
@@ -268,6 +282,19 @@ def _corpus_manifest():
     record: an empty enumeration or a missing CLAUDE.md means this server is
     pointed at something else, and guessing would be worse than refusing.
     """
+    # E24: ASKED FIRST, because `_corpus_files()` below calls into
+    # facet_index.record_markdown(), which now refuses rather than walking a
+    # directory that is not the record. Catching that there and re-raising here
+    # would report the same fact twice in two vocabularies; asking directly
+    # keeps ONE refusal per condition. The check below is unchanged and stays
+    # load-bearing for a DIFFERENT condition - a REPO that exists but is the
+    # wrong tree, which is what the suite monkeypatches to an empty directory.
+    if facet_index.REPO is None:
+        raise RecordError(
+            "CORPUS_NOT_FOUND",
+            "no record corpus found from %s" % os.getcwd(),
+            "This server binds facet's own conventions; run it from a checkout "
+            "of the facet repo.")
     files = _corpus_files()
     if not files or not os.path.exists(os.path.join(REPO, "CLAUDE.md")):
         raise RecordError(
@@ -491,8 +518,12 @@ def write_certificate(db_path, verb, parsed, transcript, counts=None):
         "andon": parsed["andon"],
         "verify_exit_code": parsed["exit_code"],
         "db": {
+            # `REPO and` (E24): REPO is None when no candidate directory holds
+            # the record, and `startswith(None)` is a TypeError. Display falls
+            # back to the absolute path, which is the honest thing to print
+            # when there is no root to be relative TO.
             "path": os.path.relpath(db_path, REPO).replace("\\", "/")
-                    if db_path.startswith(REPO) else db_path,
+                    if REPO and db_path.startswith(REPO) else db_path,
             "bytes": os.path.getsize(db_path) if os.path.exists(db_path) else None,
             "sha256": _sha256_file(db_path) if os.path.exists(db_path) else None,
         },
@@ -878,6 +909,18 @@ def record_build() -> dict:
         counts = facet_index.build(db, quiet=True)
     except RecordError as err:
         _raise(err)
+    except facet_index.RootNotFound as exc:
+        # E24, CAUGHT ABOVE THE GENERIC WRAPPER ON PURPOSE. Without this line
+        # the builder's own refusal arrives as INTERNAL with the hint "this is
+        # a defect in the builder, NOT IN THE CORPUS" - which is precisely
+        # backwards: it is the corpus, and there is no defect. Measured before
+        # the line existed. `record_build` is the one read-and-write tool that
+        # reaches the builder without asking `_corpus_manifest` first, so it is
+        # the only site where this can surface.
+        _raise(RecordError(
+            "CORPUS_NOT_FOUND", str(exc),
+            "This server binds facet's own conventions; run it from a checkout "
+            "of the facet repo."))
     except Exception as exc:                       # noqa: BLE001 - wrapped, not raw
         _raise(RecordError("INTERNAL", "build failed: %s: %s"
                            % (exc.__class__.__name__, exc),
@@ -887,8 +930,11 @@ def record_build() -> dict:
     parsed = parse_verify(rc, transcript)
     doc = write_certificate(db, "record_build", parsed, transcript, counts=counts)
     return {"built": True, "counts": counts,
+            # `REPO and` (E24): see write_certificate's note - None has no
+            # relpath, and the absolute path is the honest fallback.
             "certificate_path": os.path.relpath(cert_path(db), REPO).replace("\\", "/")
-                                if cert_path(db).startswith(REPO) else cert_path(db),
+                                if REPO and cert_path(db).startswith(REPO)
+                                else cert_path(db),
             **_verify_result(doc, parsed)}
 
 

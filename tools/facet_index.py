@@ -67,8 +67,114 @@ import traceback
 import unicodedata
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-REPO = os.path.dirname(HERE)
 DB_REL = "docs/index/facet.db"
+
+# The env var that names a DERIVED INDEX. Stated once here and read by both
+# commands; `record_mcp` has carried this name since it was written and its
+# comment at the definition is the design statement - it selects WHICH DERIVED
+# DB, NEVER WHICH CORPUS, and extending it to this file changes nothing about
+# that. Two declarations of one string is drift waiting to happen, so T32 pins
+# that they agree, the way T27 pins the four version declarations.
+DB_ENV = "FACET_INDEX_DB"
+
+# ---------------------------------------------------------------------------
+# WHERE THE RECORD IS - resolved by TESTING FOR IT, never by assuming
+# ---------------------------------------------------------------------------
+#
+# This line was `REPO = os.path.dirname(HERE)`, which is correct in a source
+# checkout and wrong everywhere else. `pip install facet-mcp` ships this file
+# as a TOP-LEVEL py-module, so `__file__` is
+# <venv>/Lib/site-packages/facet_index.py and that expression returned
+# <venv>/Lib - a directory with no corpus and no index. Measured on a wheel
+# built from this tree (E24): `build` died with FileNotFoundError on
+# <venv>/Lib/docs/experiments, `claims` on <venv>/Lib/CLAUDE.md, `q` without
+# --db on an unopenable database, and the server's own banner printed
+# `db: <venv>\Lib\docs/index/facet.db`. FOUR RELEASES SHIPPED IT, because the
+# only wheel check ever run was `--help`, which cannot touch any of this.
+#
+# v0.1.1 fixed the frozen-binary case with `FROZEN`, a flag naming a RUNTIME.
+# That flag is a PROXY for "the directory this module sits in is not the
+# record", and it is blind to the wheel, which is neither frozen nor a
+# checkout. This repo's law is test the property, not a proxy for it - so the
+# question asked here is the property itself: DOES THIS DIRECTORY CONTAIN THE
+# RECORD. `record_mcp` has asked exactly that at its corpus gate since it was
+# written; this is the same question moved to where the path is decided.
+#
+# TWO markers, not one, and the second is not decoration. `CLAUDE.md` alone is
+# an ordinary filename: 26 directories under E:\AI on the rig this was measured
+# on carry one, and EXACTLY ONE of those also carries `docs/experiments`. A
+# single-marker resolver would bind a working directory that is some other repo
+# entirely and then fail deeper in - which is the defect this replaces, not a
+# fix for it. Neither marker can appear in an install: the wheel built from
+# this tree carries exactly facet_index.py, record_mcp.py and dist-info/, so
+# the installed branch can never key on itself.
+RECORD_MARKERS = ("CLAUDE.md", "docs/experiments")
+
+
+def is_record_root(path):
+    """Does this directory contain the record. The property, not a proxy."""
+    if not path:
+        return False
+    return all(os.path.exists(os.path.join(path, m)) for m in RECORD_MARKERS)
+
+
+def repo_candidates():
+    """The declared search order, most specific first.
+
+    1. The directory this module's parent sits in - a source checkout, and the
+       ONLY candidate that resolved before E24. A checkout therefore takes the
+       same branch it always did and cannot change behaviour.
+    2. The working directory - which is where an INSTALLED command is run from,
+       and is already the documented contract: record_mcp's corpus refusal has
+       said "run it from a checkout of the facet repo" since it was written,
+       and the frozen branch has resolved its DB against cwd since v0.1.1.
+
+    There is deliberately no walk UP from cwd. It would resolve a subdirectory
+    of a checkout, and would also reach a parent that is a DIFFERENT record;
+    the narrow rule is the one the refusal message can state exactly.
+    """
+    return (os.path.dirname(HERE), os.getcwd())
+
+
+def resolve_repo(candidates=None):
+    """The first candidate that contains the record, or None.
+
+    None, never a guess: E24's constraint 2 is that a resolver which cannot
+    find a corpus REFUSES. Returning a plausible-looking directory is how
+    <venv>/Lib became a banner four releases in a row, and a fallback here
+    would only move that failure one caller downstream - so the failure is
+    made impossible rather than detectable, which this repo prefers.
+    """
+    for cand in (repo_candidates() if candidates is None else candidates):
+        if is_record_root(cand):
+            return os.path.abspath(cand)
+    return None
+
+
+REPO = resolve_repo()
+
+
+class RootNotFound(Exception):
+    """No candidate directory contained the record. A refusal, not a defect.
+
+    Routed to EXIT_REFUSED by `run_contract` below, beside the fired-gate case:
+    the tool ran correctly and is telling the operator not to proceed.
+    """
+
+
+def repo():
+    """The record's root, or a refusal.
+
+    Reads the module global on every call rather than capturing it, because the
+    suite monkeypatches `facet_index.REPO` to point the corpus gate at an empty
+    directory, and a captured value would make that test measure nothing.
+    """
+    if REPO is None:
+        raise RootNotFound(
+            "no record corpus found - neither %s nor the working directory %s "
+            "contains %s"
+            % (os.path.dirname(HERE), os.getcwd(), " + ".join(RECORD_MARKERS)))
+    return REPO
 
 # ---------------------------------------------------------------------------
 # THE OPERATOR CONTRACT (E21) - exit codes, and how a failure reaches a person
@@ -229,6 +335,20 @@ def run_contract(fn, argv=None):
             "this is a gate refusing, not a defect in the tool. Fix what it "
             "names; there is no flag that skips it")
         return EXIT_REFUSED
+    except RootNotFound as exc:
+        # E24. The SECOND refusal that reaches this contract, and it is a
+        # refusal rather than a runtime error for the reason EXIT_REFUSED
+        # exists: the tool worked, and the answer is no. Before this it left as
+        # a FileNotFoundError on <venv>/Lib/docs/experiments under
+        # RUNTIME_ERROR - exit 2, a raw cause, and a path in the message that
+        # told the reader nothing about what to do. The hint names the two ways
+        # out because a refusal that cannot name the next step is one nobody
+        # can act on.
+        _report_failure(
+            "REFUSED", exc, debug,
+            "run this from inside a checkout of the record it serves, or pass "
+            "--db (or set $%s) to work against an index directly" % DB_ENV)
+        return EXIT_REFUSED
     except Exception as exc:                                  # noqa: BLE001
         _report_failure(
             "RUNTIME_ERROR", exc, debug,
@@ -278,7 +398,7 @@ def ruling_documents():
     actually yielded, not by whether it matched a name.
     """
     out = []
-    d = os.path.join(REPO, "docs", "experiments")
+    d = os.path.join(repo(), "docs", "experiments")
     for fn in sorted(os.listdir(d)):
         if not RULING_DOC_RE.match(fn):
             continue
@@ -323,7 +443,7 @@ def handoff_documents():
     guarded — a known edge, not a hidden one.
     """
     out = []
-    d = os.path.join(REPO, "docs", "experiments")
+    d = os.path.join(repo(), "docs", "experiments")
     for fn in sorted(os.listdir(d)):
         if not KICKOFF_DOC_RE.match(fn):
             continue
@@ -342,7 +462,7 @@ def assert_no_undiscovered_handoffs(discovered):
     """
     known = {rel for _, rel in discovered}
     stray = []
-    d = os.path.join(REPO, "docs", "experiments")
+    d = os.path.join(repo(), "docs", "experiments")
     for fn in sorted(os.listdir(d)):
         rel = "docs/experiments/" + fn
         if not fn.endswith(".md") or rel in known:
@@ -377,16 +497,17 @@ PROSE_FILES = [
 # every markdown file of the record, for artifact / phenomenon extraction. Built
 # by a sorted walk so the traversal cannot depend on directory order.
 def record_markdown():
+    r = repo()
     out = []
     for rel in ["CLAUDE.md", "README.md"]:
         out.append(rel)
     for root in ["docs"]:
-        for dirpath, dirnames, filenames in os.walk(os.path.join(REPO, root)):
+        for dirpath, dirnames, filenames in os.walk(os.path.join(r, root)):
             dirnames.sort()
             for fn in sorted(filenames):
                 if fn.endswith(".md"):
                     p = os.path.join(dirpath, fn)
-                    out.append(os.path.relpath(p, REPO).replace("\\", "/"))
+                    out.append(os.path.relpath(p, r).replace("\\", "/"))
     return sorted(set(out))
 
 
@@ -395,7 +516,7 @@ def record_markdown():
 # ---------------------------------------------------------------------------
 
 def read(rel):
-    with io.open(os.path.join(REPO, rel), encoding="utf-8") as fh:
+    with io.open(os.path.join(repo(), rel), encoding="utf-8") as fh:
         return fh.read().replace("\r\n", "\n")
 
 
@@ -842,7 +963,7 @@ def parse_experiments():
     # .md first, then the rest, each alphabetically — so an experiment discovered
     # from disk is anchored at a document's heading rather than at a JSON's `{`.
     files = sorted(
-        (f for f in os.listdir(os.path.join(REPO, "docs/experiments"))
+        (f for f in os.listdir(os.path.join(repo(), "docs/experiments"))
          if re.match(r"^E\d\d[-.]", f)),
         key=lambda f: (0 if f.endswith(".md") else 1, f))
     for f in files:
@@ -2069,7 +2190,7 @@ def verify(db_path, top_n=3):
         for f, a, loc in rows:
             checked += 1
             if f not in cache:
-                p = os.path.join(REPO, f)
+                p = os.path.join(repo(), f)
                 cache[f] = read(f) if os.path.exists(p) else None
             src = cache[f]
             if src is None or loc not in src:
@@ -2081,7 +2202,7 @@ def verify(db_path, top_n=3):
     fts_bad = 0
     for f, loc in con.execute("SELECT file, locator FROM fts").fetchall():
         if f not in cache:
-            p = os.path.join(REPO, f)
+            p = os.path.join(repo(), f)
             cache[f] = read(f) if os.path.exists(p) else None
         if cache[f] is None or loc not in cache[f]:
             fts_bad += 1
@@ -2185,11 +2306,28 @@ def _main(argv=None):
         description="the derived SQLite+FTS5 index over the facet record")
     ap.add_argument("verb", choices=["build", "verify", "q", "claims"])
     ap.add_argument("term", nargs="?", default=None, help="query term for `q`")
-    ap.add_argument("--db", default=os.path.join(REPO, DB_REL))
+    # DEFAULT None, RESOLVED BELOW (E24), for two reasons that arrived together.
+    # The default used to be `os.path.join(REPO, DB_REL)` evaluated at parser
+    # construction - so on a wheel install it named <venv>/Lib/docs/index/
+    # facet.db, a path that cannot exist, and `q` failed with "unable to open
+    # database file" from sqlite rather than with anything a reader could act
+    # on. It also could not be written at all once REPO may be None. And the
+    # README claimed "$FACET_INDEX_DB" worked here when only `facet-mcp` read
+    # it; that half of the defect is closed by the same three lines.
+    ap.add_argument("--db", default=None,
+                    help="the index to work against (default %s under the "
+                         "record's root, or $%s)" % (DB_REL, DB_ENV))
     ap.add_argument("--limit", type=int, default=8)
     ap.add_argument("--table", default=None, help="restrict `q` to one table")
     ap.add_argument("--debug", action="store_true", help=DEBUG_HELP)
     args = ap.parse_args(argv)
+
+    # PRECEDENCE, matched to record_mcp's: an explicit --db wins over the env
+    # var, which wins over the record's own tracked index. The env var stays a
+    # DB SELECTOR here exactly as it is there - it never names a corpus, and
+    # `repo()` below is the only thing that decides where the record is.
+    if not args.db:
+        args.db = os.environ.get(DB_ENV) or os.path.join(repo(), DB_REL)
 
     if args.verb == "build":
         build(args.db)

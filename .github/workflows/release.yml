@@ -165,13 +165,58 @@ jobs:
           python -m pip install --upgrade build
           python -m build
 
+      # THIS STEP IS THE GATE THAT SHOULD HAVE CAUGHT E24, AND DID NOT.
+      #
+      # It ran `--help` and `--print-tools`, and it was green through v0.1.0,
+      # v0.1.1, v0.2.0 and v0.3.0 while `pip install facet-mcp` could not find
+      # the record at all: the wheel ships facet_index as a TOP-LEVEL module, so
+      # the root resolved to <venv>/Lib and `build`, `claims` and `q` without
+      # --db all failed on a user's machine. Neither of those two commands
+      # touches a corpus or a database, so neither could ever have seen it.
+      #
+      # A verification step named "verify the wheel runs" must RUN WHAT A USER
+      # RUNS. The two original commands are kept below - as a floor, not as the
+      # gate - precisely because their being green proves nothing, and leaving
+      # them in place says so at the site.
       - name: Verify the wheel runs from a clean venv
         run: |
+          set -euo pipefail
           python -m venv /tmp/verify
           /tmp/verify/bin/pip install --quiet dist/*.whl
+
+          # the floor: what this step used to be, in full
           /tmp/verify/bin/facet-index --help > /dev/null
           /tmp/verify/bin/facet-mcp --print-tools > /dev/null
-          echo "both console scripts run"
+
+          # A VERB THAT TOUCHES THE CORPUS. `build` is the one that died with
+          # FileNotFoundError on <venv>/Lib/docs/experiments. It writes to a
+          # scratch path so the tracked index is never the thing under test.
+          /tmp/verify/bin/facet-index build --db /tmp/verify/index.db > /dev/null
+
+          # A VERB THAT TOUCHES THE DB, with no --db, which is how the default
+          # gets exercised at all. This exited 2 with "unable to open database
+          # file" on every published wheel.
+          /tmp/verify/bin/facet-index q erosion > /dev/null
+
+          # THE REFUSAL, from a directory that is not the record: 4 = REFUSED
+          # (E21 Ruling 4). A non-zero here is not enough - 2 is what the DEFECT
+          # returned, so this asserts the exact code.
+          rc=0
+          ( cd /tmp && /tmp/verify/bin/facet-index build ) > /dev/null 2>&1 || rc=$?
+          if [ "$rc" -ne 4 ]; then
+            echo "expected 4 = REFUSED outside a checkout, got $rc" >&2
+            exit 1
+          fi
+
+          # And the server's own banner must name a path inside this checkout.
+          # The 0.1.0 binary printed a path under its extraction dir and exited
+          # 0; the wheel printed one under <venv>/Lib and exited 0.
+          db=$(/tmp/verify/bin/facet-mcp --print-tools | sed -n 's/^db: *//p' | head -1)
+          case "$db" in
+            "$PWD"/*) ;;
+            *) echo "the banner names a path outside the checkout: $db" >&2; exit 1 ;;
+          esac
+          echo "verbs run, the refusal returns 4, and the banner names $db"
 
       # The Release must exist WITH its assets before anyone can npx: the
       # launcher fetches checksums + binary from this tag at run time.
