@@ -47,6 +47,21 @@ it, so a reader can check the claim rather than trust it.
   beside it as `cited_raw`. **Four self-references were found in one arc, three of them by
   a check that fired rather than by reading.**
 
+- **The measurement server serves all eight of the spec's tools**
+  ([E28](docs/experiments/E28-instrument-census-kickoff.md) tasks 2a/2b/2c, after the
+  census halt was ruled). The `e14_topology` tie crash is repaired under a discharged
+  proof — a guard dead on every input the old code returned on, shown identical by a
+  10,000-triple randomized sweep, a two-way-tie sweep, tool-conformance runs, and a
+  byte-level comparison of both trees on all seventeen recorded subjects (stdout and JSON
+  byte-identical, seventeen of seventeen). Three wraps land with anchors reproducing
+  recorded digits at the served surface — E14's longsword topology, E12's dragon curve and
+  its off-surface row — and the eighth tool, `anchor_compare`, is **compare-only by
+  Ruling 10's honesty decomposition**: the tool compares, the caller replays. Its fixture
+  is the pair this repo owed itself twice — a pixel-identical, byte-different PNG pair —
+  and the false-halt class that produced two live halts now separates in one payload.
+  `facet-measure` 0.1.0 → 0.3.0 across the two surface moves; `NOT_WRAPPED` has no live
+  site.
+
 ### Fixed
 
 - **The experiment count on two public surfaces**, corrected in place with the
