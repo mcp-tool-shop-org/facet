@@ -32,40 +32,74 @@ import instrument_census as IC          # noqa: E402
 
 
 # ---------------------------------------------------------------------------
-# the population - pinned
+# the population - pinned, PER HOME
 # ---------------------------------------------------------------------------
+# Extended DELIBERATELY at E28 task 2-pre (Amendment 1 / Ruling 5): the
+# boundary's backing map spans two homes, so the pin does too. Moving either
+# number requires editing this dict on purpose, in the commit that moves it.
 
-EXPECTED_PY_FILES = 99
+EXPECTED_PY_FILES = {
+    "tools/diagnostics": 99,
+    "tools/verify": 8,
+}
 
 
-def test_t41_the_population_is_what_the_census_claims():
+@pytest.mark.parametrize("dir_rel,expected", sorted(EXPECTED_PY_FILES.items()))
+def test_t41_the_population_is_what_the_census_claims(dir_rel, expected):
     """E23 Ruling 9's pattern. If this fires, the directory moved: re-run the
     census, re-read its diff, and change the number here deliberately."""
-    names, others = IC.members()
-    assert len(names) == EXPECTED_PY_FILES, (
-        "tools/diagnostics/ holds %d .py files, this test pins %d. That is not "
+    names, others = IC.members(dir_rel)
+    assert len(names) == expected, (
+        "%s holds %d .py files, this test pins %d. That is not "
         "a failure to route around - the census's every denominator is this "
-        "number. Re-run `python tools/instrument_census.py`, read the diff in "
-        "docs/instrument-census.json, and move this pin in the same commit."
-        % (len(names), EXPECTED_PY_FILES))
+        "number. Re-run `python tools/instrument_census.py --committed`, read "
+        "the diff in docs/instrument-census.json, and move this pin in the "
+        "same commit." % (dir_rel, len(names), expected))
 
 
-def test_t41_the_population_has_no_non_py_members():
-    """The dispatch measured 0 files of any other extension. A stray `.json` or
-    `.md` here would silently sit outside every axis."""
-    _names, others = IC.members()
+@pytest.mark.parametrize("dir_rel", sorted(EXPECTED_PY_FILES))
+def test_t41_the_population_has_no_non_py_members(dir_rel):
+    """Task 1 measured 0 files of any other extension in diagnostics and 2-pre
+    measured 0 in verify. A stray `.json` or `.md` would silently sit outside
+    every axis."""
+    _names, others = IC.members(dir_rel)
     assert others == [], (
-        "tools/diagnostics/ now holds non-.py files, which no axis measures: %s"
-        % ", ".join(others))
+        "%s now holds non-.py files, which no axis measures: %s"
+        % (dir_rel, ", ".join(others)))
 
 
-def test_t41_members_refuses_a_missing_directory(tmp_path, monkeypatch):
+def test_t41_the_committed_homes_are_the_pinned_homes():
+    """COMMITTED_DIRS and this file's pin must name the same homes - a home
+    added to one and not the other would be censused but unpinned, or pinned
+    but never emitted."""
+    assert sorted(IC.COMMITTED_DIRS) == sorted(EXPECTED_PY_FILES), (
+        "the census emits %r, this file pins %r"
+        % (sorted(IC.COMMITTED_DIRS), sorted(EXPECTED_PY_FILES)))
+
+
+def test_t41_members_refuses_a_missing_directory():
     """A census whose population directory is gone must HALT, not return an
     empty list that reads as `no instruments`."""
-    monkeypatch.setattr(IC, "DIAG", str(tmp_path / "not-here"))
     with pytest.raises(RuntimeError) as e:
-        IC.members()
+        IC.members("tools/not-here")
     assert "ANDON" in str(e.value)
+
+
+def test_t41_build_refuses_a_filename_shared_across_homes(tmp_path, monkeypatch):
+    """Axes D/E/G key on the FILENAME, so one name in two censused homes would
+    merge two files' evidence into one row. The census must refuse, not merge."""
+    for sub in ("home_a", "home_b"):
+        d = tmp_path / sub
+        d.mkdir()
+        with io.open(str(d / "same_name.py"), "w", encoding="utf-8",
+                     newline="\n") as fh:
+            fh.write('"""A file with a twin elsewhere."""\n')
+    monkeypatch.setattr(IC, "REPO", str(tmp_path))
+    monkeypatch.setattr(IC, "G_PROPOSAL", {})
+    with pytest.raises(RuntimeError) as e:
+        IC.build(sys.executable, 5, True, progress=False,
+                 dirs=("home_a", "home_b"))
+    assert "ANDON" in str(e.value) and "same_name.py" in str(e.value)
 
 
 # ---------------------------------------------------------------------------
@@ -394,7 +428,7 @@ def test_t41_this_file_does_not_perturb_axis_e():
     can-fail legs above need `e14_topology` and one `bpy` importer - but no
     member may be anchored ONLY by this file, because that would be axis E
     reporting a test that exercises nothing."""
-    names, _ = IC.members()
+    names = committed_members()
     tests = [t for t in IC.test_files() if "t41" not in t]
     stems = [n[:-3] for n in names]
     ext = IC.naming_files(tests, names)
@@ -455,8 +489,8 @@ def test_t41_axis_d_excludes_the_arc_s_own_papers_and_it_matters():
     This asserts the contamination is REAL rather than theoretical: leaving the
     arc's papers in must credit strictly more files than excluding them. If it
     ever stops mattering, this leg says so instead of quietly passing."""
-    names, _ = IC.members()
-    corpus = IC.corpus_files()
+    names, _ = IC.members()          # diagnostics alone suffices: the report
+    corpus = IC.corpus_files()       # names its files, which is the point
     arc_docs = [r for r in corpus if r.startswith(IC.SELF_DOC_PREFIXES)]
     if not arc_docs:
         pytest.skip("this arc's documents are not in the corpus yet")
@@ -481,14 +515,15 @@ def test_t41_axis_d_is_idempotent_across_runs():
         pytest.skip("no committed census yet")
     with io.open(p, encoding="utf-8") as fh:
         c = json.load(fh)
-    names, _ = IC.members()
+    names = committed_members()
     corpus = [r for r in IC.corpus_files() if not IC.is_self_document(r)]
     fresh = IC.naming_files(corpus, names)
     committed = dict((r["file"], r["cited_count"]) for r in c["rows"])
     drift = sorted(n for n in names if len(fresh[n]) != committed.get(n))
     assert not drift, (
         "%d file(s) have an axis-D count that no longer reproduces; re-run "
-        "`python tools/instrument_census.py`: %s" % (len(drift), drift[:10]))
+        "`python tools/instrument_census.py --committed`: %s"
+        % (len(drift), drift[:10]))
 
 
 # ---------------------------------------------------------------------------
@@ -616,10 +651,21 @@ def test_t41_axis_g_values_are_the_declared_set():
         "the spec names eight job-shaped tools; axis G maps against that set")
 
 
+def committed_members():
+    """Every member across the homes the committed outputs cover."""
+    out = []
+    for dir_rel in IC.COMMITTED_DIRS:
+        names, _others = IC.members(dir_rel)
+        out.extend(names)
+    return sorted(out)
+
+
 def test_t41_every_member_has_an_axis_g_judgment():
     """A missing judgment must not become a silent `none`. A table of confident
-    `none`s reads as a measurement and is not one."""
-    names, _others = IC.members()
+    `none`s reads as a measurement and is not one. Covers BOTH homes since
+    2-pre - a verify/ file without a judgment fails here exactly as a
+    diagnostics one does."""
+    names = committed_members()
     missing = [n for n in names if n not in IC.G_PROPOSAL]
     assert not missing, (
         "%d file(s) have no axis-G entry: %s. Judge them, or write "
@@ -636,7 +682,7 @@ def test_t41_axis_g_entries_are_all_legal_values():
 def test_t41_axis_g_entries_all_name_a_real_member():
     """A judgment about a file that no longer exists is a dead entry that would
     quietly stop being checked."""
-    names, _others = IC.members()
+    names = committed_members()
     orphans = sorted(set(IC.G_PROPOSAL) - set(names))
     assert not orphans, (
         "axis G judges files that are not in the population: %s" % orphans)
@@ -661,16 +707,23 @@ def test_t41_the_census_refuses_when_a_judgment_is_missing(monkeypatch):
 def test_t41_the_committed_json_matches_the_population():
     """The outputs are derived; a stale one is a fifth surface to drift. This
     checks the cheap invariant - that the committed census counted the
-    directory that is there now."""
+    directories that are there now, and covers exactly the committed homes:
+    a partial re-emit (diagnostics only, the CLI default) must fail here
+    rather than land silently."""
     import json
     p = os.path.join(str(REPO), "docs", "instrument-census.json")
     assert os.path.exists(p), "the census output is missing: %s" % p
     with io.open(p, encoding="utf-8") as fh:
         c = json.load(fh)
-    names, _others = IC.members()
-    assert c["population"]["py_files"] == len(names), (
-        "docs/instrument-census.json counted %d files; the directory holds "
-        "%d. Re-run `python tools/instrument_census.py`."
-        % (c["population"]["py_files"], len(names)))
+    covered = sorted(d["dir"] for d in c["population"]["dirs"])
+    assert covered == sorted(IC.COMMITTED_DIRS), (
+        "docs/instrument-census.json covers %r; the committed homes are %r. "
+        "Re-emit with `python tools/instrument_census.py --committed`."
+        % (covered, sorted(IC.COMMITTED_DIRS)))
+    names = committed_members()
+    assert c["population"]["py_files_total"] == len(names), (
+        "docs/instrument-census.json counted %d files; the homes hold "
+        "%d. Re-run `python tools/instrument_census.py --committed`."
+        % (c["population"]["py_files_total"], len(names)))
     assert sorted(r["file"] for r in c["rows"]) == names, (
-        "the committed census's row set is not the directory's file set")
+        "the committed census's row set is not the homes' file set")

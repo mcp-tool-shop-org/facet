@@ -37,7 +37,10 @@ about the module.
     census; it is `n/a (no CLI)`, which is what it would be anyway.
 
 USAGE
-    python tools/instrument_census.py                    # both outputs
+    python tools/instrument_census.py --committed        # the committed pair:
+                                                         # diagnostics + verify
+    python tools/instrument_census.py                    # diagnostics only
+    python tools/instrument_census.py --dir tools/verify # any one home
     python tools/instrument_census.py --skip-probe       # axes A-E and G only
     python tools/instrument_census.py --json-only
 """
@@ -54,6 +57,16 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 REPO = os.path.dirname(HERE)
 DIAG_REL = "tools/diagnostics"
 DIAG = os.path.join(REPO, "tools", "diagnostics")
+
+# THE COMMITTED OUTPUTS COVER BOTH HOMES (E28 Amendment 1 / Ruling 5): the
+# boundary is the backing map and the map spans `tools/diagnostics` and
+# `tools/verify` by construction, so a census over one home measures a
+# different population than the one the boundary is ruled against. `--dir` on
+# the command line censuses any one directory (diagnostics stays the default,
+# per the amendment); the COMMITTED artifact is emitted with `--committed`,
+# which is this tuple, and T41 pins that the committed JSON covers exactly
+# these homes so a partial re-emit cannot land silently.
+COMMITTED_DIRS = ("tools/diagnostics", "tools/verify")
 
 if HERE not in sys.path:
     sys.path.insert(0, HERE)
@@ -77,10 +90,10 @@ SPEC_TOOLS = ("mesh_stats", "mesh_topology", "reach_ceiling",
               "anchor_check", "measure_report")
 G_VALUES = SPEC_TOOLS + ("none", "ambiguous", "no opinion")
 
-# EVERY file in the directory must appear in exactly one list below. A missing
-# one is an ANDON rather than a silent `none`, so a file added later forces a
-# deliberate judgment instead of inheriting a default - which is why `none` is
-# spelled out 58 times rather than left as the fall-through.
+# EVERY file in a censused directory must appear in exactly one list below. A
+# missing one is an ANDON rather than a silent `none`, so a file added later
+# forces a deliberate judgment instead of inheriting a default - which is why
+# `none` is spelled out 58 times rather than left as the fall-through.
 #
 # THE RULE APPLIED, stated so a re-judging session can disagree with it
 # deliberately rather than by accident. Judged from docstring line 1 (axis C)
@@ -92,12 +105,24 @@ G_VALUES = SPEC_TOOLS + ("none", "ambiguous", "no opinion")
 #   - `no opinion` : line 1 does not say what the file measures, and reading
 #                    the body to find out would be inventing an answer
 #
-# TWO OF THE EIGHT ATTRACT NOTHING HERE, and both are findings rather than
-# gaps in the judging: `mesh_stats` lives at `tools/verify/mesh_stats.py`,
-# outside this directory entirely; and `anchor_check` has no implementation
-# anywhere - E27 Ruling 4 established that the file NAMED `e13_anchor_check.py`
-# is the spiral-law painted-adjacency guard, a different question, so it is
-# judged `none` here on its own docstring's evidence.
+# AT TASK 1 two of the eight attracted nothing from diagnostics, and both were
+# findings: `mesh_stats` lives at `tools/verify/mesh_stats.py`, outside that
+# directory entirely; `anchor_check` has no implementation anywhere - E27
+# Ruling 4 established that the file NAMED `e13_anchor_check.py` is the
+# spiral-law painted-adjacency guard, a different question, so it is judged
+# `none` here on its own docstring's evidence.
+#
+# AT TASK 2-PRE the census extended to `tools/verify/` (Amendment 1 / Ruling 5)
+# and its 8 files were judged under the same rule - docstring line 1 plus
+# filename, not the body - with task 1's own precedent applied deliberately:
+# comparison-sheet builders map to `measure_report` (nine diagnostics files
+# already do), so `gate0_sheet` / `gate1_sheet` / `head_crop` go there;
+# `mesh_stats` states the spec's sentence as its own line 1; `montage` is a
+# sheet PLUS a per-view brightness readout no spec tool covers - `ambiguous`;
+# `gate_mesh` is a VERDICT tool ("may the pipeline spend money... Exit 0 =
+# yes"), and the spec's surface never says whether output is good - `none`;
+# the two render stages are `none`. `anchor_check` still attracts nothing
+# from either home.
 _G = {
     "reach_ceiling": [
         "brush_reach.py", "e04_ship_cameras.py", "e04_stroke_cameras.py",
@@ -119,8 +144,12 @@ _G = {
         "e04_g7_sheet.py", "e04_sheet_renders.py", "e12_ab_sheet.py",
         "e12_head_sheet.py", "e12_n_sheet.py", "e12_pair_sheet.py",
         "e13_gate1_sheet.py", "e13_payoff_sheet.py", "e14_pair_sheet.py",
+        # tools/verify (task 2-pre)
+        "gate0_sheet.py", "gate1_sheet.py", "head_crop.py",
     ],
-    "mesh_stats": [],
+    "mesh_stats": [
+        "mesh_stats.py",
+    ],
     "anchor_check": [],
     "ambiguous": [
         "blade_band.py", "e04_frame_agree.py", "e04_replay_owner.py",
@@ -130,6 +159,8 @@ _G = {
         "e12_mouth_geometry.py", "e12_view_visibility.py", "e13_hole_map.py",
         "e13_thin_inputs.py", "e14_atlas_anatomy.py", "flagged_identity.py",
         "keyed_outside.py", "silhouette_agree.py",
+        # tools/verify (task 2-pre)
+        "montage.py",
     ],
     "no opinion": [
         "e07_score_arm.py", "e14_deep_share.py", "texpass_metrics.py",
@@ -157,6 +188,8 @@ _G = {
         "e14_twin_registration.py", "foreshorten_table.py",
         "gained_bg_check.py", "hair_agree.py", "hair_edge.py", "head_yaw.py",
         "prep_front.py",
+        # tools/verify (task 2-pre)
+        "gate_mesh.py", "head_render.py", "turn_render.py",
     ],
 }
 G_PROPOSAL = dict((fn, verdict) for verdict, fns in _G.items() for fn in fns)
@@ -167,22 +200,27 @@ def read_text(p):
         return fh.read()
 
 
-def members():
-    """The population. Every `.py` file directly in `tools/diagnostics/`.
+def members(dir_rel=DIAG_REL):
+    """The population of one home. Every `.py` file directly in `dir_rel`.
 
     A CURATED MEMBERSHIP IS THE THING THIS ARC EXISTS TO STOP, so there is no
     filter here - not `__init__.py`, not files without a docstring, not
     libraries imported by other diagnostics. Those are members that score
-    `false` on axis A; that is a RESULT, not an entry condition."""
-    if not os.path.isdir(DIAG):
+    `false` on axis A; that is a RESULT, not an entry condition.
+
+    Parameterized at E28 task 2-pre (Amendment 1): the boundary's backing map
+    spans two homes, so the census must reach both. Diagnostics stays the
+    default."""
+    d = os.path.join(REPO, dir_rel.replace("/", os.sep))
+    if not os.path.isdir(d):
         raise RuntimeError(
             "ANDON: %s does not exist, so this census has no population."
-            % DIAG)
-    names = sorted(fn for fn in os.listdir(DIAG)
-                   if os.path.isfile(os.path.join(DIAG, fn))
+            % d)
+    names = sorted(fn for fn in os.listdir(d)
+                   if os.path.isfile(os.path.join(d, fn))
                    and fn.endswith(".py"))
-    others = sorted(fn for fn in os.listdir(DIAG)
-                    if os.path.isfile(os.path.join(DIAG, fn))
+    others = sorted(fn for fn in os.listdir(d)
+                    if os.path.isfile(os.path.join(d, fn))
                     and not fn.endswith(".py"))
     return names, others
 
@@ -474,8 +512,29 @@ def axis_f(row, python, path, timeout, skip):
 # the census
 # ---------------------------------------------------------------------------
 
-def build(python, timeout, skip_probe, progress=False):
-    names, others = members()
+def build(python, timeout, skip_probe, progress=False, dirs=(DIAG_REL,)):
+    per_dir = []
+    names = []
+    home = {}
+    for dir_rel in dirs:
+        d_names, d_others = members(dir_rel)
+        per_dir.append({"dir": dir_rel, "py_files": len(d_names),
+                        "non_py_files": len(d_others),
+                        "non_py_names": d_others})
+        for fn in d_names:
+            # FILENAMES ARE THE KEY for axes D/E and axis G, so a name that
+            # appears in two censused homes would silently merge two files'
+            # evidence. Refuse rather than merge.
+            if fn in home:
+                raise RuntimeError(
+                    "ANDON: %s exists in both %s and %s. The census keys "
+                    "axes D/E/G on the filename; two homes sharing one name "
+                    "would merge two files' evidence. Rename one, or key the "
+                    "census on relative paths - deliberately."
+                    % (fn, home[fn], dir_rel))
+            home[fn] = dir_rel
+        names.extend(d_names)
+    names.sort()
     corpus_raw = corpus_files()
     corpus = [r for r in corpus_raw if not is_self_document(r)]
     # the unexcluded set, kept so the contamination stays visible rather than
@@ -520,8 +579,8 @@ def build(python, timeout, skip_probe, progress=False):
         if progress:
             sys.stderr.write("\r  [%d/%d] %-44s" % (i, len(names), fn))
             sys.stderr.flush()
-        path = os.path.join(DIAG, fn)
-        row = {"file": fn}
+        path = os.path.join(REPO, home[fn].replace("/", os.sep), fn)
+        row = {"file": fn, "dir": home[fn]}
         row.update(source_axes(path))
         f, reason, verdicts = axis_f(row, python, path, timeout, skip_probe)
         row["import_safe"] = f
@@ -545,10 +604,8 @@ def build(python, timeout, skip_probe, progress=False):
         sys.stderr.write("\r" + " " * 62 + "\r")
     return {
         "population": {
-            "dir": DIAG_REL,
-            "py_files": len(names),
-            "non_py_files": len(others),
-            "non_py_names": others,
+            "dirs": per_dir,
+            "py_files_total": len(names),
         },
         "provenance": {
             "probe_interpreter": python,
@@ -604,14 +661,18 @@ def _cell(s, n):
 def to_markdown(c):
     t = totals(c)
     p, pv = c["population"], c["provenance"]
+    N = p["py_files_total"]
+    homes = " + ".join("`%s/`" % d["dir"] for d in p["dirs"])
     L = []
     A = L.append
-    A("# The instrument census — `tools/diagnostics/`")
+    A("# The instrument census — %s" % homes)
     A("")
     A("**Generated by [`tools/instrument_census.py`](../tools/instrument_census.py). "
-      "Do not hand-edit — re-run it.** E28 task 1, at the Director's ruling on "
-      "[the spec](specs/measurement-mcp-spec.md)'s open question 1: *commission the "
-      "census first.*")
+      "Do not hand-edit — re-run it (`--committed` emits this pair).** E28 task 1, at "
+      "the Director's ruling on [the spec](specs/measurement-mcp-spec.md)'s open "
+      "question 1: *commission the census first* — extended to `tools/verify/` at "
+      "task 2-pre ([Amendment 1](experiments/E28-instrument-census-kickoff.md)), because "
+      "the boundary's backing map spans both homes.")
     A("")
     A("**Axes A–F are mechanical.** **Axis G is a judgment and is a PROPOSAL** — the "
       "boundary is the advisor's to rule and the Director's to adjust. `no opinion` is "
@@ -621,8 +682,10 @@ def to_markdown(c):
     A("")
     A("| | |")
     A("|---|---|")
-    A("| `.py` files in `%s` | **%d** |" % (p["dir"], p["py_files"]))
-    A("| files of any other extension | **%d** |" % p["non_py_files"])
+    for d in p["dirs"]:
+        A("| `.py` files in `%s` | **%d** |" % (d["dir"], d["py_files"]))
+        A("| — files of any other extension there | %d |" % d["non_py_files"])
+    A("| **total members** | **%d** |" % N)
     A("| corpus files read for axis D | %d |" % pv["corpus_files"])
     A("| test files read for axis E | %d |" % pv["test_files"])
     A("| probe interpreter | `%s` (%s) |"
@@ -633,42 +696,42 @@ def to_markdown(c):
     A("| axis | measure | count | of |")
     A("|---|---|---:|---:|")
     A("| A | **invocable** (argparse **and** ≥1 `add_argument` **and** a `__main__` guard) | **%d** | %d |"
-      % (t["invocable"], p["py_files"]))
-    A("| A | — imports `argparse` | %d | %d |" % (t["argparse"], p["py_files"]))
-    A("| A | — has ≥1 `add_argument` | %d | %d |" % (t["any_add_argument"], p["py_files"]))
-    A("| A | — has a `__main__` guard | %d | %d |" % (t["main_guard"], p["py_files"]))
+      % (t["invocable"], N))
+    A("| A | — imports `argparse` | %d | %d |" % (t["argparse"], N))
+    A("| A | — has ≥1 `add_argument` | %d | %d |" % (t["any_add_argument"], N))
+    A("| A | — has a `__main__` guard | %d | %d |" % (t["main_guard"], N))
     A("| A | — **flag surface** (argparse **and** ≥1 `add_argument`, guard not required) | **%d** | %d |"
-      % (t["flag_surface"], p["py_files"]))
+      % (t["flag_surface"], N))
     A("| A | — calls `parse_args()` at module level | %d | %d |"
-      % (t["parse_args_module_level"], p["py_files"]))
+      % (t["parse_args_module_level"], N))
     A("| A | — **flag surface but UNGUARDED** (the house style) | **%d** | %d |"
-      % (t["flag_surface_unguarded"], p["py_files"]))
+      % (t["flag_surface_unguarded"], N))
     A("| B1 | **subject-bound**, module-level literal | **%d** | %d |"
-      % (t["subject_bound_b1"], p["py_files"]))
+      % (t["subject_bound_b1"], N))
     A("| B2 | subject marker in any non-docstring literal | %d | %d |"
-      % (t["subject_bound_b2"], p["py_files"]))
-    A("| C | has a docstring | %d | %d |" % (t["has_docstring"], p["py_files"]))
-    A("| D | **cited** in ≥1 corpus file | **%d** | %d |" % (t["cited"], p["py_files"]))
+      % (t["subject_bound_b2"], N))
+    A("| C | has a docstring | %d | %d |" % (t["has_docstring"], N))
+    A("| D | **cited** in ≥1 corpus file | **%d** | %d |" % (t["cited"], N))
     A("| D | — with this arc's own documents left IN (the contaminated read) | %d | %d |"
-      % (t["cited_raw"], p["py_files"]))
+      % (t["cited_raw"], N))
     A("| E | **anchored** — basename *or* module name as literal text under `tests/` | **%d** | %d |"
-      % (t["anchored"], p["py_files"]))
+      % (t["anchored"], N))
     A("| E | — basename-with-`.py` only (the stricter read) | %d | %d |"
-      % (t["anchored_basename_only"], p["py_files"]))
+      % (t["anchored_basename_only"], N))
     A("| F | **import-safe** in all three modes | **%d** | %d |"
-      % (t["import_safe_true"], p["py_files"]))
+      % (t["import_safe_true"], N))
     A("| F | — not clean in some mode | %d | %d |"
-      % (t["import_safe_false"], p["py_files"]))
+      % (t["import_safe_false"], N))
     A("| F | — **`n/a`**, property not defined (reason per row) | %d | %d |"
-      % (t["import_safe_na"], p["py_files"]))
+      % (t["import_safe_na"], N))
     A("| G | *proposed* to answer one of the spec's eight | *%d* | %d |"
-      % (t["g_mapped"], p["py_files"]))
-    A("| G | *proposed* `none` | *%d* | %d |" % (t["g_none"], p["py_files"]))
-    A("| G | *proposed* `ambiguous` | *%d* | %d |" % (t["g_ambiguous"], p["py_files"]))
-    A("| G | *`no opinion`* | *%d* | %d |" % (t["g_no_opinion"], p["py_files"]))
+      % (t["g_mapped"], N))
+    A("| G | *proposed* `none` | *%d* | %d |" % (t["g_none"], N))
+    A("| G | *proposed* `ambiguous` | *%d* | %d |" % (t["g_ambiguous"], N))
+    A("| G | *`no opinion`* | *%d* | %d |" % (t["g_no_opinion"], N))
     if t["parse_errors"]:
         A("| — | **files that do not parse** | **%d** | %d |"
-          % (t["parse_errors"], p["py_files"]))
+          % (t["parse_errors"], N))
     A("")
     A("## Axis G — the proposal, by tool")
     A("")
@@ -684,13 +747,14 @@ def to_markdown(c):
       "`E` anchored by a test · `F` import-safe in three modes · "
       "`G` *proposal*")
     A("")
-    A("| # | file | A | flags | B1 | D | E | F | G *(proposal)* | the question (docstring line 1) |")
-    A("|---:|---|:-:|---:|:-:|---:|:-:|:-:|---|---|")
+    A("| # | file | home | A | flags | B1 | D | E | F | G *(proposal)* | the question (docstring line 1) |")
+    A("|---:|---|---|:-:|---:|:-:|---:|:-:|:-:|---|---|")
     for i, x in enumerate(c["rows"], 1):
         f = x["import_safe"]
         fcell = {"true": "yes", "false": "**no**", "n/a": "n/a"}[f]
-        A("| %d | `%s` | %s | %s | %s | %d | %s | %s | %s | %s |" % (
+        A("| %d | `%s` | %s | %s | %s | %s | %d | %s | %s | %s | %s |" % (
             i, x["file"],
+            x["dir"].rsplit("/", 1)[-1],
             "—" if x["invocable"] is None else ("yes" if x["invocable"] else "no"),
             "—" if x["a_add_argument"] is None else x["a_add_argument"],
             "**yes**" if x["b1_literals"] else "no",
@@ -738,8 +802,17 @@ def to_markdown(c):
 
 def main(argv=None):
     ap = argparse.ArgumentParser(
-        description="Census tools/diagnostics/ across six mechanical axes "
+        description="Census an instrument home across six mechanical axes "
                     "plus one labelled judgment.")
+    ap.add_argument("--dir", action="append", dest="dirs", metavar="REL",
+                    help="a directory to census, relative to the repo root; "
+                         "repeatable. Default: %s alone. The COMMITTED outputs "
+                         "are emitted with --committed, which is %s - T41 pins "
+                         "that shape so a partial re-emit cannot land silently."
+                         % (DIAG_REL, " + ".join(COMMITTED_DIRS)))
+    ap.add_argument("--committed", action="store_true",
+                    help="census exactly the homes the committed outputs "
+                         "cover: %s" % ", ".join(COMMITTED_DIRS))
     ap.add_argument("--out-md", default=os.path.join(REPO, "docs",
                                                      "instrument-census.md"))
     ap.add_argument("--out-json", default=os.path.join(REPO, "docs",
@@ -753,8 +826,13 @@ def main(argv=None):
     ap.add_argument("--quiet", action="store_true")
     args = ap.parse_args(argv)
 
+    if args.committed and args.dirs:
+        ap.error("--committed and --dir are mutually exclusive")
+    dirs = tuple(args.dirs) if args.dirs else \
+        (COMMITTED_DIRS if args.committed else (DIAG_REL,))
+
     c = build(args.python, args.timeout, args.skip_probe,
-              progress=not args.quiet)
+              progress=not args.quiet, dirs=dirs)
     t = totals(c)
 
     for p in (args.out_json, args.out_md):
@@ -771,9 +849,9 @@ def main(argv=None):
             fh.write(to_markdown(c))
 
     if not args.quiet:
-        print("[census] %s -> %d .py, %d other"
-              % (DIAG_REL, c["population"]["py_files"],
-                 c["population"]["non_py_files"]))
+        for d in c["population"]["dirs"]:
+            print("[census] %s -> %d .py, %d other"
+                  % (d["dir"], d["py_files"], d["non_py_files"]))
         for k in sorted(t):
             print("    %-22s %d" % (k, t[k]))
         print("[census] %s" % args.out_json)

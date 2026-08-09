@@ -1,13 +1,24 @@
 {
   "population": {
-    "dir": "tools/diagnostics",
-    "non_py_files": 0,
-    "non_py_names": [],
-    "py_files": 99
+    "dirs": [
+      {
+        "dir": "tools/diagnostics",
+        "non_py_files": 0,
+        "non_py_names": [],
+        "py_files": 99
+      },
+      {
+        "dir": "tools/verify",
+        "non_py_files": 0,
+        "non_py_names": [],
+        "py_files": 8
+      }
+    ],
+    "py_files_total": 107
   },
   "provenance": {
     "corpus_files": 264,
-    "corpus_files_before_self_exclusion": 268,
+    "corpus_files_before_self_exclusion": 270,
     "probe_interpreter": "E:\\AI-Models\\trellis2-env\\Scripts\\python.exe",
     "probe_interpreter_version": "3.13.13",
     "probe_skipped": false,
@@ -16,6 +27,8 @@
       "docs/experiments/E28-instrument-census-kickoff.md",
       "docs/experiments/E28-instrument-census-report.md",
       "docs/experiments/E28-predictions.md",
+      "docs/experiments/E28-ruling.md",
+      "docs/experiments/E28-task2-predictions.md",
       "docs/instrument-census.md"
     ],
     "test_files": 43
@@ -37,6 +50,7 @@
       "cited_in": [
         "docs/experiments/E08-eightcam.md"
       ],
+      "dir": "tools/diagnostics",
       "docstring_line1": "How much surface does the twin's KEY exclude, and does stage 1 paint any of it?",
       "file": "blade_band.py",
       "flag_surface": true,
@@ -71,6 +85,7 @@
         "docs/experiments/E10-step0-2-halt.md",
         "docs/experiments/E12-handoff14-predictions.md"
       ],
+      "dir": "tools/diagnostics",
       "docstring_line1": "Bound the brush arm before spending it \u2014 how many holes can the eight stroke cameras see?",
       "file": "brush_reach.py",
       "flag_surface": true,
@@ -100,6 +115,7 @@
       "cited_count": 0,
       "cited_count_raw": 1,
       "cited_in": [],
+      "dir": "tools/diagnostics",
       "docstring_line1": "Build the per-view denoise masks: flat (control) and foreshortening-GRADED (test).",
       "file": "build_masks.py",
       "flag_surface": true,
@@ -129,6 +145,7 @@
       "cited_count": 0,
       "cited_count_raw": 1,
       "cited_in": [],
+      "dir": "tools/diagnostics",
       "docstring_line1": "Does the ControlNet hint actually SEE the green apron, the fingers, and the 3/4 face?",
       "file": "canny_probe.py",
       "flag_surface": false,
@@ -159,6 +176,7 @@
         "docs/experiments/E08-intersection-regression.md",
         "docs/experiments/E10-step0-2-halt.md"
       ],
+      "dir": "tools/diagnostics",
       "docstring_line1": "E05 \u2014 which of commit's five tests actually rejects the texels?",
       "file": "commit_funnel.py",
       "flag_surface": true,
@@ -189,6 +207,7 @@
         "docs/experiments/E12-task3-report.md",
         "docs/experiments/E14-handoff2-report.md"
       ],
+      "dir": "tools/diagnostics",
       "docstring_line1": "E04 Task 4b - derive the twins' backdrop (S-backdrop).",
       "file": "e04_backdrop.py",
       "flag_surface": true,
@@ -224,6 +243,7 @@
         "docs/experiments/E14-handoff3-predictions.md",
         "docs/experiments/E14-handoff3-task1-report.md"
       ],
+      "dir": "tools/diagnostics",
       "docstring_line1": "E04 Task 4d - the landing table, the palette bands, and the backdrop re-derivation.",
       "file": "e04_bands.py",
       "flag_surface": true,
@@ -259,6 +279,7 @@
         "docs/experiments/E10-step0-2-halt.md",
         "docs/experiments/E22-gates-report.md"
       ],
+      "dir": "tools/diagnostics",
       "docstring_line1": "E04 Task 1 - what is the crown blotch made of? Boundary alignment at an arbitrary camera.",
       "file": "e04_blotch.py",
       "flag_surface": true,
@@ -289,6 +310,7 @@
         "docs/experiments/E12-anchor-repair.md",
         "docs/experiments/E12-task4-anchor-halt.md"
       ],
+      "dir": "tools/diagnostics",
       "docstring_line1": "E04 Step 0 anchor 1c, REPLACEMENT INSTRUMENT \u2014 geometry against geometry, bound 0 px.",
       "file": "e04_frame_agree.py",
       "flag_surface": true,
@@ -317,6 +339,7 @@
         "docs/experiments/E04-executor-session-record.md",
         "docs/experiments/E04-g7-report.md"
       ],
+      "dir": "tools/diagnostics",
       "docstring_line1": "E04 Arm G7 - did `red gun port lids` land where `red-lined gun port lids` missed?",
       "file": "e04_g7_landing.py",
       "flag_surface": true,
@@ -345,6 +368,7 @@
         "docs/experiments/E04-executor-session-record.md",
         "docs/experiments/E04-g7-report.md"
       ],
+      "dir": "tools/diagnostics",
       "docstring_line1": "E04 Arm G7 - the comparison sheet. Built before the report is written, not after it.",
       "file": "e04_g7_sheet.py",
       "flag_surface": true,
@@ -373,6 +397,7 @@
         "docs/experiments/E04-executor-session-record.md",
         "docs/experiments/E04-g7-report.md"
       ],
+      "dir": "tools/diagnostics",
       "docstring_line1": "E04 Arm G7 - WHERE did the one word land? A change-localisation diagnostic.",
       "file": "e04_g7_where.py",
       "flag_surface": true,
@@ -404,6 +429,7 @@
       "cited_count": 0,
       "cited_count_raw": 1,
       "cited_in": [],
+      "dir": "tools/diagnostics",
       "docstring_line1": "What did brush_cloud_step's invariance ANDON actually fire on?",
       "file": "e04_invar_probe.py",
       "flag_surface": false,
@@ -442,6 +468,7 @@
         "docs/experiments/E25-ruling.md",
         "docs/experiments/README.md"
       ],
+      "dir": "tools/diagnostics",
       "docstring_line1": "Emit E04-brush-prompts.json mechanically, so the fixture is REPRODUCIBLE.",
       "file": "e04_make_brush_prompts.py",
       "flag_surface": false,
@@ -476,6 +503,7 @@
         "docs/experiments/E12-task1-sweep.md",
         "docs/experiments/E14-task1-sweep.md"
       ],
+      "dir": "tools/diagnostics",
       "docstring_line1": "Is the character profile a pure RELOCATION of the tools' own defaults?",
       "file": "e04_profile_check.py",
       "flag_surface": true,
@@ -513,6 +541,7 @@
         "docs/experiments/E22-gates-report.md",
         "docs/handbook/profiles.md"
       ],
+      "dir": "tools/diagnostics",
       "docstring_line1": "E04 Ruling 25 - the sweep. Is every SUBJECT-DATA flag on this subject's route decided?",
       "file": "e04_registry_sweep.py",
       "flag_surface": true,
@@ -559,6 +588,7 @@
         "docs/experiments/E04-asset2-export-halt.md",
         "docs/experiments/E16-errands-report.md"
       ],
+      "dir": "tools/diagnostics",
       "docstring_line1": "Recover per-stroke ownership by RE-RUNNING the shipped commits on a scratch state.",
       "file": "e04_replay_owner.py",
       "flag_surface": false,
@@ -589,6 +619,7 @@
         "docs/experiments/E04-task1-report.md",
         "docs/experiments/E10-step0-2-halt.md"
       ],
+      "dir": "tools/diagnostics",
       "docstring_line1": "E04 Task 1 - is the crown step a SOURCE SWITCH or a real change in the scalp?",
       "file": "e04_seam_sources.py",
       "flag_surface": true,
@@ -632,6 +663,7 @@
       "cited_in": [
         "docs/experiments/E16-errands-report.md"
       ],
+      "dir": "tools/diagnostics",
       "docstring_line1": "Render asset / provenance / owner at the Gate-1 sheet's cameras.",
       "file": "e04_sheet_renders.py",
       "flag_surface": false,
@@ -657,6 +689,7 @@
       "cited_count": 0,
       "cited_count_raw": 1,
       "cited_in": [],
+      "dir": "tools/diagnostics",
       "docstring_line1": "E04 Task 4a, part 2 - candidate CAMERA SETS by union coverage, and whether the",
       "file": "e04_ship_cameras.py",
       "flag_surface": true,
@@ -682,6 +715,7 @@
       "cited_count": 0,
       "cited_count_raw": 1,
       "cited_in": [],
+      "dir": "tools/diagnostics",
       "docstring_line1": "E04 Task 4a - measure ship.json's suspended values from the designated mesh.",
       "file": "e04_ship_measure.py",
       "flag_surface": true,
@@ -717,6 +751,7 @@
         "docs/experiments/E10-step0-2-halt.md",
         "docs/experiments/E12-handoff14-predictions.md"
       ],
+      "dir": "tools/diagnostics",
       "docstring_line1": "E04 stage 2 - STROKE cameras, derived from the hole map the way Task 4a derived the",
       "file": "e04_stroke_cameras.py",
       "flag_surface": true,
@@ -745,6 +780,7 @@
         "docs/experiments/E04-armT-report.md",
         "docs/experiments/E04-executor-session-record.md"
       ],
+      "dir": "tools/diagnostics",
       "docstring_line1": "E04 Arm T \u2014 the twin baseline. Measure, report, no bound anywhere.",
       "file": "e04_twin_baseline.py",
       "flag_surface": true,
@@ -773,6 +809,7 @@
         "docs/experiments/E07-gate0.md",
         "docs/experiments/E10-step0-2-halt.md"
       ],
+      "dir": "tools/diagnostics",
       "docstring_line1": "E07 Gate 0 \u2014 test both premises before either fix is built. No GPU, no brush.",
       "file": "e07_gate0.py",
       "flag_surface": true,
@@ -801,6 +838,7 @@
         "docs/experiments/E07-gate0_5.md",
         "docs/experiments/E10-step0-2-halt.md"
       ],
+      "dir": "tools/diagnostics",
       "docstring_line1": "E07 \u2014 evidence for the L1 back-facing ANDON. Diagnostic only; writes no atlas.",
       "file": "e07_l1_andon.py",
       "flag_surface": true,
@@ -832,6 +870,7 @@
         "docs/experiments/E08-intersection-regression.md",
         "docs/experiments/E10-step0-2-halt.md"
       ],
+      "dir": "tools/diagnostics",
       "docstring_line1": "E07 L2 \u2014 the offline bound, before any GPU is spent.",
       "file": "e07_l2_bound.py",
       "flag_surface": true,
@@ -857,6 +896,7 @@
       "cited_count": 0,
       "cited_count_raw": 1,
       "cited_in": [],
+      "dir": "tools/diagnostics",
       "docstring_line1": "E07 \u2014 the render-side half of \u00a75's table, computed identically for every arm.",
       "file": "e07_score_arm.py",
       "flag_surface": true,
@@ -891,6 +931,7 @@
         "docs/experiments/E08-intersection-regression.md",
         "docs/experiments/E10-step0-2-halt.md"
       ],
+      "dir": "tools/diagnostics",
       "docstring_line1": "E08 Arm A \u2014 what does each acceptance test actually cost?",
       "file": "e08_acceptance.py",
       "flag_surface": true,
@@ -919,6 +960,7 @@
         "docs/experiments/E04-profile-extraction.md",
         "docs/experiments/E08-intersection-regression.md"
       ],
+      "dir": "tools/diagnostics",
       "docstring_line1": "E08 background arm, step 1 \u2014 derive the render background from the subject's gamut.",
       "file": "e08_bg_derive.py",
       "flag_surface": true,
@@ -949,6 +991,7 @@
         "docs/experiments/E08-intersection-regression.md",
         "docs/experiments/E08-ruling-gate0.md"
       ],
+      "dir": "tools/diagnostics",
       "docstring_line1": "E08 A4 \u2014 is the subject separable from its background, and where does the cut fall?",
       "file": "e08_bg_separation.py",
       "flag_surface": true,
@@ -982,7 +1025,7 @@
       "b1_literals": [],
       "b2_literals": [],
       "cited_count": 14,
-      "cited_count_raw": 15,
+      "cited_count_raw": 16,
       "cited_in": [
         "docs/experiments/E04-armT-halt2.md",
         "docs/experiments/E04-executor-session-record.md",
@@ -999,6 +1042,7 @@
         "docs/experiments/E27-measurement-mcp-report.md",
         "docs/experiments/E27-predictions.md"
       ],
+      "dir": "tools/diagnostics",
       "docstring_line1": "E08 Gate 0, half 1 \u2014 how much of the figure can a styled reference physically reach?",
       "file": "e08_ceiling.py",
       "flag_surface": true,
@@ -1028,6 +1072,7 @@
       "cited_count": 0,
       "cited_count_raw": 1,
       "cited_in": [],
+      "dir": "tools/diagnostics",
       "docstring_line1": "E08 \u2014 the contradiction test: does the PROMPT override an attribute the route supplies?",
       "file": "e08_contradiction.py",
       "flag_surface": true,
@@ -1055,6 +1100,7 @@
       "cited_in": [
         "docs/experiments/E08-gate0.md"
       ],
+      "dir": "tools/diagnostics",
       "docstring_line1": "E08 \u2014 reference agreement in CIE Lab dE, against a styled reference view.",
       "file": "e08_deltaE.py",
       "flag_surface": true,
@@ -1086,6 +1132,7 @@
       "cited_in": [
         "docs/experiments/E08-intersection-regression.md"
       ],
+      "dir": "tools/diagnostics",
       "docstring_line1": "E08 Amendment 26 \u2014 what the trust-mask intersection actually moved.",
       "file": "e08_intersect_delta.py",
       "flag_surface": true,
@@ -1113,6 +1160,7 @@
       "cited_in": [
         "docs/experiments/E08-gate0.md"
       ],
+      "dir": "tools/diagnostics",
       "docstring_line1": "E08 Gate 0, half 2 \u2014 can the hold-one-out metric be validated at all, and on what?",
       "file": "e08_metric_probe.py",
       "flag_surface": true,
@@ -1140,6 +1188,7 @@
       "cited_in": [
         "docs/experiments/E08-registration.md"
       ],
+      "dir": "tools/diagnostics",
       "docstring_line1": "E08 \u2014 does a twin register against the mesh it is supposed to be a reference for?",
       "file": "e08_registration.py",
       "flag_surface": true,
@@ -1178,6 +1227,7 @@
         "docs/experiments/E10-offsurface-ruling.md",
         "docs/tools.md"
       ],
+      "dir": "tools/diagnostics",
       "docstring_line1": "Per-stroke claim replay, faithful to texpass_iter.commit AS SHIPPED (with E08",
       "file": "e10_claim_replay.py",
       "flag_surface": true,
@@ -1209,6 +1259,7 @@
       "cited_in": [
         "docs/experiments/E10-offsurface-r4ab-report.md"
       ],
+      "dir": "tools/diagnostics",
       "docstring_line1": "E10 Ruling 4(a) \u2014 the off-surface consumer sweep, SUBJECT-FLAGGED.",
       "file": "e10_consumers_subject.py",
       "flag_surface": true,
@@ -1264,6 +1315,7 @@
         "docs/experiments/README.md",
         "docs/specs/measurement-mcp-spec.md"
       ],
+      "dir": "tools/diagnostics",
       "docstring_line1": "Does the prep bake's position map lie on the mesh? Measured, because E10's Step 0.2",
       "file": "e10_offsurface.py",
       "flag_surface": true,
@@ -1305,6 +1357,7 @@
         "docs/experiments/E10-offsurface-r4ab-predictions.md",
         "docs/experiments/E10-offsurface-r4ab-report.md"
       ],
+      "dir": "tools/diagnostics",
       "docstring_line1": "E10 Ruling 4's dispatched measurement \u2014 per consumer, does excluding the",
       "file": "e10_offsurface_consumers.py",
       "flag_surface": true,
@@ -1336,6 +1389,7 @@
       "cited_in": [
         "docs/experiments/E10-offsurface-r4ab-report.md"
       ],
+      "dir": "tools/diagnostics",
       "docstring_line1": "E10 Ruling 4(b) \u2014 WHERE the painted off-surface texels live. Mechanism measurement.",
       "file": "e10_offsurface_where.py",
       "flag_surface": true,
@@ -1369,6 +1423,7 @@
       "cited_count": 0,
       "cited_count_raw": 1,
       "cited_in": [],
+      "dir": "tools/diagnostics",
       "docstring_line1": "A | B on one view, full size, plus named regions at N x \u2014 the sheet a re-roll is judged on.",
       "file": "e12_ab_sheet.py",
       "flag_surface": true,
@@ -1396,6 +1451,7 @@
       "cited_in": [
         "docs/experiments/E12-task4-anchor-halt.md"
       ],
+      "dir": "tools/diagnostics",
       "docstring_line1": "E12 handoff 3 - characterise a fired ANCHOR 1c, without re-running it for a pass.",
       "file": "e12_agree_probe.py",
       "flag_surface": true,
@@ -1421,6 +1477,7 @@
       "cited_count": 0,
       "cited_count_raw": 1,
       "cited_in": [],
+      "dir": "tools/diagnostics",
       "docstring_line1": "E12 handoff 4 Task 1 \u2014 derive the BEAST's Canny threshold pair, measured on its own clay.",
       "file": "e12_canny_derive.py",
       "flag_surface": true,
@@ -1455,6 +1512,7 @@
         "docs/experiments/E12-handoff5-report.md",
         "docs/experiments/E13-detail-pass-spec.md"
       ],
+      "dir": "tools/diagnostics",
       "docstring_line1": "An exact mesh silhouette at an ARBITRARY crop camera \u2014 the mask a head-crop control needs.",
       "file": "e12_crop_silhouette.py",
       "flag_surface": true,
@@ -1491,6 +1549,7 @@
         "docs/experiments/E14-handoff2-report.md",
         "docs/tools.md"
       ],
+      "dir": "tools/diagnostics",
       "docstring_line1": "Does this subject buy anything from elevated cameras? Measured, the ship's own method.",
       "file": "e12_elevated.py",
       "flag_surface": true,
@@ -1516,6 +1575,7 @@
       "cited_count": 0,
       "cited_count_raw": 1,
       "cited_in": [],
+      "dir": "tools/diagnostics",
       "docstring_line1": "How much of a named region wears a named COLOUR FAMILY - reported per image, never gated.",
       "file": "e12_family_mass.py",
       "flag_surface": true,
@@ -1549,6 +1609,7 @@
         "docs/experiments/E14-gate0-report.md",
         "docs/tools.md"
       ],
+      "dir": "tools/diagnostics",
       "docstring_line1": "E12 Gate 0 \u2014 derive a turnaround render frame from THIS mesh, and show the derivation.",
       "file": "e12_frame.py",
       "flag_surface": true,
@@ -1582,6 +1643,7 @@
         "docs/experiments/E14-gate0-report.md",
         "docs/tools.md"
       ],
+      "dir": "tools/diagnostics",
       "docstring_line1": "E12 Gate 0 \u2014 head-region evidence on a raw reconstruction. NO VERDICT.",
       "file": "e12_head_evidence.py",
       "flag_surface": true,
@@ -1622,6 +1684,7 @@
         "docs/experiments/E25-predictions.md",
         "docs/experiments/README.md"
       ],
+      "dir": "tools/diagnostics",
       "docstring_line1": "E12 Gate 0 \u2014 a head crop render framed by a MEASURED box, not an inherited rect.",
       "file": "e12_head_render.py",
       "flag_surface": true,
@@ -1653,6 +1716,7 @@
       "cited_in": [
         "docs/experiments/E12-gate0-report.md"
       ],
+      "dir": "tools/diagnostics",
       "docstring_line1": "E12 Gate 0 \u2014 compose one candidate's head crops into ONE artifact, at full size.",
       "file": "e12_head_sheet.py",
       "flag_surface": true,
@@ -1682,6 +1746,7 @@
         "docs/experiments/E19-treatment-report.md",
         "docs/tools.md"
       ],
+      "dir": "tools/diagnostics",
       "docstring_line1": "Find every argparse help string this repo cannot print. E12 Ruling 4b's consumer grep.",
       "file": "e12_help_format_scan.py",
       "flag_surface": true,
@@ -1712,6 +1777,7 @@
         "docs/experiments/E14-executor-kickoff.md",
         "docs/experiments/E14-task4-report.md"
       ],
+      "dir": "tools/diagnostics",
       "docstring_line1": "Build a subject's twin-prompts file by DELETING whole comma-terms from the profile's own",
       "file": "e12_make_twin_prompts.py",
       "flag_surface": true,
@@ -1743,6 +1809,7 @@
       "cited_in": [
         "docs/experiments/E12-handoff5-report.md"
       ],
+      "dir": "tools/diagnostics",
       "docstring_line1": "Is there a TONGUE inside this mesh's mouth, and can any exterior camera see it?",
       "file": "e12_mouth_geometry.py",
       "flag_surface": true,
@@ -1768,6 +1835,7 @@
       "cited_count": 0,
       "cited_count_raw": 1,
       "cited_in": [],
+      "dir": "tools/diagnostics",
       "docstring_line1": "N generations of ONE view, stacked full size, plus named regions at N x - and no number.",
       "file": "e12_n_sheet.py",
       "flag_surface": true,
@@ -1795,7 +1863,7 @@
       "b1_literals": [],
       "b2_literals": [],
       "cited_count": 5,
-      "cited_count_raw": 6,
+      "cited_count_raw": 9,
       "cited_in": [
         "docs/experiments/E12-gate0-report.md",
         "docs/experiments/E14-gate0-report.md",
@@ -1803,6 +1871,7 @@
         "docs/experiments/README.md",
         "docs/tools.md"
       ],
+      "dir": "tools/diagnostics",
       "docstring_line1": "E12 Gate 0 \u2014 where a reconstruction goes non-manifold, counted AND put on the picture.",
       "file": "e12_nonmanifold.py",
       "flag_surface": true,
@@ -1828,7 +1897,7 @@
       "b1_literals": [],
       "b2_literals": [],
       "cited_count": 14,
-      "cited_count_raw": 17,
+      "cited_count_raw": 19,
       "cited_in": [
         "CLAUDE.md",
         "docs/advisor-kickoff.md",
@@ -1845,6 +1914,7 @@
         "docs/specs/placement-memo.md",
         "docs/tools.md"
       ],
+      "dir": "tools/diagnostics",
       "docstring_line1": "Does a prep bake's position map lie ON the mesh? E10 Ruling 4's question, any subject.",
       "file": "e12_offsurface.py",
       "flag_surface": true,
@@ -1879,6 +1949,7 @@
         "docs/experiments/E12-task4-pair-sidecar.md",
         "docs/experiments/E14-task4-report.md"
       ],
+      "dir": "tools/diagnostics",
       "docstring_line1": "E12 handoff 3 Task 4 \u2014 the styled target pair's cloud workflow, built and CHECKED on disk.",
       "file": "e12_pair_cloud_step.py",
       "flag_surface": true,
@@ -1904,6 +1975,7 @@
       "cited_count": 0,
       "cited_count_raw": 1,
       "cited_in": [],
+      "dir": "tools/diagnostics",
       "docstring_line1": "clay | control | styled, one row per view, full size \u2014 the sheet that serves the eye.",
       "file": "e12_pair_sheet.py",
       "flag_surface": true,
@@ -1933,6 +2005,7 @@
       "cited_count": 0,
       "cited_count_raw": 1,
       "cited_in": [],
+      "dir": "tools/diagnostics",
       "docstring_line1": "Median Lab / chroma / hue inside named regions, masked to the silhouette \u2014 the tone channel.",
       "file": "e12_region_colour.py",
       "flag_surface": true,
@@ -1961,6 +2034,7 @@
         "docs/experiments/E12-handoff11-report.md",
         "docs/experiments/E12-ruling.md"
       ],
+      "dir": "tools/diagnostics",
       "docstring_line1": "Crop the SAME world-space region out of every view's image, under the route's own framing.",
       "file": "e12_region_crops.py",
       "flag_surface": true,
@@ -1992,6 +2066,7 @@
         "docs/experiments/E12-handoff13-report.md",
         "docs/experiments/E12-ruling.md"
       ],
+      "dir": "tools/diagnostics",
       "docstring_line1": "ANDON: assert a twin-prompts rebuild differs from its predecessor by EXACTLY the named terms.",
       "file": "e12_stem_delta.py",
       "flag_surface": true,
@@ -2023,7 +2098,7 @@
       "b1_literals": [],
       "b2_literals": [],
       "cited_count": 8,
-      "cited_count_raw": 9,
+      "cited_count_raw": 11,
       "cited_in": [
         "docs/advisor-kickoff.md",
         "docs/experiments/E12-task2b-report.md",
@@ -2034,6 +2109,7 @@
         "docs/specs/measurement-mcp-spec.md",
         "docs/tools.md"
       ],
+      "dir": "tools/diagnostics",
       "docstring_line1": "The `thin_extent` cost curve, measured on THIS mesh, with a region fraction beside it.",
       "file": "e12_thin_curve.py",
       "flag_surface": true,
@@ -2059,6 +2135,7 @@
       "cited_count": 0,
       "cited_count_raw": 1,
       "cited_in": [],
+      "dir": "tools/diagnostics",
       "docstring_line1": "E12's palette gate in the form Ruling 16e ruled: REPORT-STRUCTURED, null bounds, eye rules.",
       "file": "e12_twin_gate.py",
       "flag_surface": true,
@@ -2091,6 +2168,7 @@
         "docs/experiments/E12-handoff11-report.md",
         "docs/experiments/E12-ruling.md"
       ],
+      "dir": "tools/diagnostics",
       "docstring_line1": "The two channels the palette gate is BLIND TO, per twin: achromatic mass, and registration.",
       "file": "e12_twin_readout.py",
       "flag_surface": true,
@@ -2122,6 +2200,7 @@
       "cited_in": [
         "docs/experiments/E12-executor-kickoff.md"
       ],
+      "dir": "tools/diagnostics",
       "docstring_line1": "E12 Ruling 9d \u2014 per-view element visibility, so the per-view stems are MEASURED not guessed.",
       "file": "e12_view_visibility.py",
       "flag_surface": true,
@@ -2153,6 +2232,7 @@
       "cited_in": [
         "docs/experiments/E12-handoff13-report.md"
       ],
+      "dir": "tools/diagnostics",
       "docstring_line1": "E13 A2 \u2014 the texel-allocation arithmetic, and the two frame checks it rides beside.",
       "file": "e13_a2_allocation.py",
       "flag_surface": true,
@@ -2191,6 +2271,7 @@
         "docs/experiments/README.md",
         "docs/specs/measurement-mcp-spec.md"
       ],
+      "dir": "tools/diagnostics",
       "docstring_line1": "E13 \u2014 the SPIRAL LAW's guard, run before a brush opens on a job.",
       "file": "e13_anchor_check.py",
       "flag_surface": true,
@@ -2222,6 +2303,7 @@
       "cited_in": [
         "docs/experiments/E12-handoff13-report.md"
       ],
+      "dir": "tools/diagnostics",
       "docstring_line1": "E13 H2 \u2014 registration of a CROP-framed twin, keyed off a background region a crop frame",
       "file": "e13_crop_registration.py",
       "flag_surface": true,
@@ -2251,6 +2333,7 @@
       "cited_count": 0,
       "cited_count_raw": 1,
       "cited_in": [],
+      "dir": "tools/diagnostics",
       "docstring_line1": "E13 Gate 1 \u2014 the house five-column sheet: reference | asset | provenance | error | clay.",
       "file": "e13_gate1_sheet.py",
       "flag_surface": true,
@@ -2282,6 +2365,7 @@
       "cited_in": [
         "docs/experiments/E12-handoff14-report.md"
       ],
+      "dir": "tools/diagnostics",
       "docstring_line1": "E13 stroke lane \u2014 decompose stage 1's hole map, and answer Ruling 7's re-open check.",
       "file": "e13_hole_map.py",
       "flag_surface": true,
@@ -2311,6 +2395,7 @@
       "cited_count": 0,
       "cited_count_raw": 1,
       "cited_in": [],
+      "dir": "tools/diagnostics",
       "docstring_line1": "E13 H3 \u2014 the judging artifact: clay | A0 | A1 | provenance, one camera, one crop, one scale.",
       "file": "e13_payoff_sheet.py",
       "flag_surface": true,
@@ -2342,6 +2427,7 @@
       "cited_in": [
         "docs/experiments/E12-handoff14-report.md"
       ],
+      "dir": "tools/diagnostics",
       "docstring_line1": "E13 stroke lane \u2014 the stroke cameras, greedy on what a stroke can actually CLOSE, and the",
       "file": "e13_stroke_cameras.py",
       "flag_surface": true,
@@ -2375,6 +2461,7 @@
         "docs/experiments/E27-measurement-mcp-report.md",
         "docs/experiments/E27-predictions.md"
       ],
+      "dir": "tools/diagnostics",
       "docstring_line1": "E13 \u2014 thin_extent's DECISION INPUTS, at the brush's level. Assembles; proposes nothing.",
       "file": "e13_thin_inputs.py",
       "flag_surface": true,
@@ -2409,6 +2496,7 @@
         "docs/experiments/E16-errands-report.md",
         "docs/experiments/README.md"
       ],
+      "dir": "tools/diagnostics",
       "docstring_line1": "What IS the atlas, on a hollow double-walled mesh? Three linked questions, one pass.",
       "file": "e14_atlas_anatomy.py",
       "flag_surface": true,
@@ -2441,6 +2529,7 @@
         "docs/experiments/E14-handoff2-report.md",
         "docs/experiments/E14-task4-report.md"
       ],
+      "dir": "tools/diagnostics",
       "docstring_line1": "E14 handoff 2, Task 3.2 \u2014 the three checks the backdrop derivation does NOT do.",
       "file": "e14_backdrop_checks.py",
       "flag_surface": true,
@@ -2473,6 +2562,7 @@
         "docs/experiments/E14-handoff3-task1-report.md",
         "docs/experiments/E25-diagnostics-gates-report.md"
       ],
+      "dir": "tools/diagnostics",
       "docstring_line1": "The three questions `e04_bands.py` does not answer, for the prop's palette derivation.",
       "file": "e14_band_density.py",
       "flag_surface": true,
@@ -2500,6 +2590,7 @@
       "cited_in": [
         "docs/experiments/E14-handoff3-task1-report.md"
       ],
+      "dir": "tools/diagnostics",
       "docstring_line1": "Band EDGES by a stated rule, applied once, with the rule's own sensitivity beside it.",
       "file": "e14_band_edges.py",
       "flag_surface": true,
@@ -2527,6 +2618,7 @@
       "cited_in": [
         "docs/experiments/E14-handoff3-task2-report.md"
       ],
+      "dir": "tools/diagnostics",
       "docstring_line1": "The STANDING DEPTH DIAGNOSTIC \u2014 E14 Ruling 17c, required beside every gate table.",
       "file": "e14_deep_share.py",
       "flag_surface": true,
@@ -2560,6 +2652,7 @@
         "docs/experiments/E14-handoff7-task2-halt.md",
         "docs/experiments/E22-gates-report.md"
       ],
+      "dir": "tools/diagnostics",
       "docstring_line1": "THE GARNET DEMOTION \u2014 E14 Ruling 24f, run ONCE before stroke 1.",
       "file": "e14_demote_garnet.py",
       "flag_surface": true,
@@ -2589,6 +2682,7 @@
       "cited_count": 0,
       "cited_count_raw": 1,
       "cited_in": [],
+      "dir": "tools/diagnostics",
       "docstring_line1": "THE GARNET RE-PROJECTION's restricted write \u2014 E14 Ruling 26c/5 (mechanism M2).",
       "file": "e14_garnet_reproject.py",
       "flag_surface": true,
@@ -2621,6 +2715,7 @@
         "docs/experiments/E14-handoff7-task2-halt.md",
         "docs/experiments/E22-gates-report.md"
       ],
+      "dir": "tools/diagnostics",
       "docstring_line1": "Build the E14 STROKE STEMS v3, as Ruling 24g rules them.",
       "file": "e14_make_brush_prompts.py",
       "flag_surface": true,
@@ -2653,6 +2748,7 @@
         "docs/experiments/E14-task4-report.md",
         "docs/experiments/E20-coverage-report.md"
       ],
+      "dir": "tools/diagnostics",
       "docstring_line1": "The styled pair's pre-registered readout \u2014 E14 Ruling 7b's checks, plus element landing.",
       "file": "e14_pair_readout.py",
       "flag_surface": true,
@@ -2678,6 +2774,7 @@
       "cited_count": 0,
       "cited_count_raw": 1,
       "cited_in": [],
+      "dir": "tools/diagnostics",
       "docstring_line1": "The styled pair's acceptance sheet: REFERENCE | CONTROL | ASSET, plus the hilt at zoom.",
       "file": "e14_pair_sheet.py",
       "flag_surface": true,
@@ -2711,6 +2808,7 @@
         "docs/experiments/E20-coverage-report.md",
         "docs/experiments/E22-gates-report.md"
       ],
+      "dir": "tools/diagnostics",
       "docstring_line1": "THE COLLAR-JUNCTION REPAIR - E14 Ruling 27c, run ONCE as handoff 8's step 0.",
       "file": "e14_repair_collar.py",
       "flag_surface": true,
@@ -2738,6 +2836,7 @@
       "cited_in": [
         "docs/experiments/E14-handoff8-report.md"
       ],
+      "dir": "tools/diagnostics",
       "docstring_line1": "THE PER-STROKE EYE-GATE WATCHES, measured and LOCATED - E14 handoff 8, Ruling 27e's form.",
       "file": "e14_stroke_watch.py",
       "flag_surface": true,
@@ -2770,7 +2869,7 @@
       "b1_literals": [],
       "b2_literals": [],
       "cited_count": 7,
-      "cited_count_raw": 10,
+      "cited_count_raw": 12,
       "cited_in": [
         "docs/advisor-kickoff.md",
         "docs/experiments/E14-gate0-report.md",
@@ -2780,6 +2879,7 @@
         "docs/experiments/README.md",
         "docs/specs/measurement-mcp-spec.md"
       ],
+      "dir": "tools/diagnostics",
       "docstring_line1": "E14 Gate 0 - the topology facts `mesh_stats` does not print. NO VERDICT.",
       "file": "e14_topology.py",
       "flag_surface": true,
@@ -2807,6 +2907,7 @@
       "cited_in": [
         "docs/experiments/E14-handoff3-task2-report.md"
       ],
+      "dir": "tools/diagnostics",
       "docstring_line1": "Per-view twin registration against the EXACT raycast silhouette. Halts SUSPENDED.",
       "file": "e14_twin_registration.py",
       "flag_surface": true,
@@ -2838,6 +2939,7 @@
       "cited_in": [
         "docs/experiments/E08-task3-step0-halt.md"
       ],
+      "dir": "tools/diagnostics",
       "docstring_line1": "E08 Amendment 29 \u2014 WHAT are the background-flagged rim texels?",
       "file": "flagged_identity.py",
       "flag_surface": true,
@@ -2863,6 +2965,7 @@
       "cited_count": 0,
       "cited_count_raw": 1,
       "cited_in": [],
+      "dir": "tools/diagnostics",
       "docstring_line1": "Per-view foreshortening table for the HEAD region.",
       "file": "foreshorten_table.py",
       "flag_surface": true,
@@ -2894,6 +2997,7 @@
       "cited_in": [
         "docs/experiments/E08-task3-step0-halt.md"
       ],
+      "dir": "tools/diagnostics",
       "docstring_line1": "E08 Amendment 28 Ruling 2 \u2014 did the intersection's GAINED texels admit background?",
       "file": "gained_bg_check.py",
       "flag_surface": true,
@@ -2903,6 +3007,122 @@
       "import_safe_reason": "has a flag surface but no `__main__` guard, so probing it would EXECUTE the module body - against whatever subject its constants name. Not probed, deliberately",
       "invocable": false,
       "lines": 210,
+      "parse_error": null
+    },
+    {
+      "a_add_argument": 8,
+      "a_argparse": true,
+      "a_main_guard": false,
+      "a_parse_args_module_level": true,
+      "anchored": true,
+      "anchored_basename_only": true,
+      "anchored_in": [
+        "tests/test_t33_diagnostics_gates.py"
+      ],
+      "anchored_in_basename_only": [
+        "tests/test_t33_diagnostics_gates.py"
+      ],
+      "b1_literals": [],
+      "b2_literals": [],
+      "cited_count": 7,
+      "cited_count_raw": 8,
+      "cited_in": [
+        "docs/experiments/E12-executor-kickoff.md",
+        "docs/experiments/E12-gate0-report.md",
+        "docs/experiments/E14-executor-kickoff.md",
+        "docs/experiments/E25-diagnostics-gates-report.md",
+        "docs/experiments/E26-front-door-counts-report.md",
+        "docs/experiments/E27-predictions.md",
+        "docs/tools.md"
+      ],
+      "dir": "tools/verify",
+      "docstring_line1": "E04 Gate 0 sheet \u2014 the source concept beside what it reconstructed into, per candidate.",
+      "file": "gate0_sheet.py",
+      "flag_surface": true,
+      "g_proposal": "measure_report",
+      "import_safe": "n/a",
+      "import_safe_modes": {},
+      "import_safe_reason": "has a flag surface but no `__main__` guard, so probing it would EXECUTE the module body - against whatever subject its constants name. Not probed, deliberately",
+      "invocable": false,
+      "lines": 98,
+      "parse_error": null
+    },
+    {
+      "a_add_argument": 16,
+      "a_argparse": true,
+      "a_main_guard": false,
+      "a_parse_args_module_level": true,
+      "anchored": true,
+      "anchored_basename_only": true,
+      "anchored_in": [
+        "tests/fixtures/make_measure_fixture.py",
+        "tests/test_t33_diagnostics_gates.py"
+      ],
+      "anchored_in_basename_only": [
+        "tests/test_t33_diagnostics_gates.py"
+      ],
+      "b1_literals": [],
+      "b2_literals": [],
+      "cited_count": 5,
+      "cited_count_raw": 8,
+      "cited_in": [
+        "docs/experiments/E14-executor-kickoff.md",
+        "docs/experiments/E14-handoff9-report.md",
+        "docs/experiments/E27-measurement-mcp-report.md",
+        "docs/experiments/E27-predictions.md",
+        "docs/tools.md"
+      ],
+      "dir": "tools/verify",
+      "docstring_line1": "The Gate 1 sheet \u2014 reference | asset | provenance | error, at the Director's zoom.",
+      "file": "gate1_sheet.py",
+      "flag_surface": true,
+      "g_proposal": "measure_report",
+      "import_safe": "n/a",
+      "import_safe_modes": {},
+      "import_safe_reason": "has a flag surface but no `__main__` guard, so probing it would EXECUTE the module body - against whatever subject its constants name. Not probed, deliberately",
+      "invocable": false,
+      "lines": 142,
+      "parse_error": null
+    },
+    {
+      "a_add_argument": 4,
+      "a_argparse": true,
+      "a_main_guard": true,
+      "a_parse_args_module_level": false,
+      "anchored": false,
+      "anchored_basename_only": false,
+      "anchored_in": [],
+      "anchored_in_basename_only": [],
+      "b1_literals": [],
+      "b2_literals": [],
+      "cited_count": 10,
+      "cited_count_raw": 11,
+      "cited_in": [
+        "docs/experiments/E04-executor-kickoff.md",
+        "docs/experiments/E04-gate0-report.md",
+        "docs/experiments/E12-executor-kickoff.md",
+        "docs/experiments/E12-gate0-report.md",
+        "docs/experiments/E14-executor-kickoff.md",
+        "docs/experiments/E14-gate0-report.md",
+        "docs/experiments/E27-predictions.md",
+        "docs/experiments/README.md",
+        "docs/profiles-design.md",
+        "docs/tools.md"
+      ],
+      "dir": "tools/verify",
+      "docstring_line1": "HARD MESH GATE -- may the pipeline spend money downstream of this mesh? Exit 0 = yes.",
+      "file": "gate_mesh.py",
+      "flag_surface": true,
+      "g_proposal": "none",
+      "import_safe": "true",
+      "import_safe_modes": {
+        "-O": "clean",
+        "PYTHONOPTIMIZE=1": "clean",
+        "normal": "clean"
+      },
+      "import_safe_reason": "",
+      "invocable": true,
+      "lines": 406,
       "parse_error": null
     },
     {
@@ -2919,6 +3139,7 @@
       "cited_count": 0,
       "cited_count_raw": 1,
       "cited_in": [],
+      "dir": "tools/diagnostics",
       "docstring_line1": "Measure whether a GENERATED view's hair boundary agrees with the MESH's hair geometry.",
       "file": "hair_agree.py",
       "flag_surface": true,
@@ -2944,6 +3165,7 @@
       "cited_count": 0,
       "cited_count_raw": 1,
       "cited_in": [],
+      "dir": "tools/diagnostics",
       "docstring_line1": "Extract the mesh's OWN hair/face boundary as a control hint.",
       "file": "hair_edge.py",
       "flag_surface": true,
@@ -2953,6 +3175,84 @@
       "import_safe_reason": "has a flag surface but no `__main__` guard, so probing it would EXECUTE the module body - against whatever subject its constants name. Not probed, deliberately",
       "invocable": false,
       "lines": 79,
+      "parse_error": null
+    },
+    {
+      "a_add_argument": 13,
+      "a_argparse": true,
+      "a_main_guard": false,
+      "a_parse_args_module_level": true,
+      "anchored": false,
+      "anchored_basename_only": false,
+      "anchored_in": [],
+      "anchored_in_basename_only": [],
+      "b1_literals": [],
+      "b2_literals": [],
+      "cited_count": 1,
+      "cited_count_raw": 2,
+      "cited_in": [
+        "docs/tools.md"
+      ],
+      "dir": "tools/verify",
+      "docstring_line1": "Head-crop comparison sheet, with the head band LOCATED rather than guessed.",
+      "file": "head_crop.py",
+      "flag_surface": true,
+      "g_proposal": "measure_report",
+      "import_safe": "n/a",
+      "import_safe_modes": {},
+      "import_safe_reason": "has a flag surface but no `__main__` guard, so probing it would EXECUTE the module body - against whatever subject its constants name. Not probed, deliberately",
+      "invocable": false,
+      "lines": 89,
+      "parse_error": null
+    },
+    {
+      "a_add_argument": 11,
+      "a_argparse": true,
+      "a_main_guard": false,
+      "a_parse_args_module_level": true,
+      "anchored": true,
+      "anchored_basename_only": true,
+      "anchored_in": [
+        "tests/test_t33_diagnostics_gates.py"
+      ],
+      "anchored_in_basename_only": [
+        "tests/test_t33_diagnostics_gates.py"
+      ],
+      "b1_literals": [],
+      "b2_literals": [],
+      "cited_count": 19,
+      "cited_count_raw": 20,
+      "cited_in": [
+        "docs/experiments/E01-facial-structure-ceiling.md",
+        "docs/experiments/E02-report.md",
+        "docs/experiments/E02-texture-stage-on-sound-inputs.md",
+        "docs/experiments/E04-armT-halt2.md",
+        "docs/experiments/E04-coverage-pass.md",
+        "docs/experiments/E07-report.md",
+        "docs/experiments/E12-companion-sidecar.md",
+        "docs/experiments/E12-executor-kickoff.md",
+        "docs/experiments/E12-gate0-report.md",
+        "docs/experiments/E12-handoff13-predictions.md",
+        "docs/experiments/E12-handoff13-report.md",
+        "docs/experiments/E12-handoff5-report.md",
+        "docs/experiments/E12-task1-sweep.md",
+        "docs/experiments/E14-task1-sweep.md",
+        "docs/experiments/E25-diagnostics-gates-kickoff.md",
+        "docs/experiments/E25-diagnostics-gates-report.md",
+        "docs/experiments/E25-predictions.md",
+        "docs/experiments/README.md",
+        "docs/tools.md"
+      ],
+      "dir": "tools/verify",
+      "docstring_line1": "Head-framed close-up renders of a GLB \u2014 the Director-zoom verification camera.",
+      "file": "head_render.py",
+      "flag_surface": true,
+      "g_proposal": "none",
+      "import_safe": "n/a",
+      "import_safe_modes": {},
+      "import_safe_reason": "has a flag surface but no `__main__` guard, so probing it would EXECUTE the module body - against whatever subject its constants name. Not probed, deliberately",
+      "invocable": false,
+      "lines": 98,
       "parse_error": null
     },
     {
@@ -2969,6 +3269,7 @@
       "cited_count": 0,
       "cited_count_raw": 1,
       "cited_in": [],
+      "dir": "tools/diagnostics",
       "docstring_line1": "Locate the direction a MESH's head actually faces, by mirror symmetry.",
       "file": "head_yaw.py",
       "flag_surface": true,
@@ -3001,6 +3302,7 @@
         "docs/experiments/E08-eightcam-predictions.md",
         "docs/experiments/E08-intersection-regression.md"
       ],
+      "dir": "tools/diagnostics",
       "docstring_line1": "How much of each twin's keyed paint sits on no surface at all?",
       "file": "keyed_outside.py",
       "flag_surface": true,
@@ -3010,6 +3312,90 @@
       "import_safe_reason": "has a flag surface but no `__main__` guard, so probing it would EXECUTE the module body - against whatever subject its constants name. Not probed, deliberately",
       "invocable": false,
       "lines": 132,
+      "parse_error": null
+    },
+    {
+      "a_add_argument": 9,
+      "a_argparse": true,
+      "a_main_guard": false,
+      "a_parse_args_module_level": true,
+      "anchored": true,
+      "anchored_basename_only": true,
+      "anchored_in": [
+        "tests/conftest.py",
+        "tests/fixtures/make_measure_fixture.py",
+        "tests/test_t12_mesh_stats.py",
+        "tests/test_t25_mask_geometry.py",
+        "tests/test_t35_measure_mcp_surface.py",
+        "tests/test_t36_measure_mesh_stats.py",
+        "tests/test_t39_measure_report.py",
+        "tests/test_t40_measure_not_wrapped.py"
+      ],
+      "anchored_in_basename_only": [
+        "tests/test_t12_mesh_stats.py",
+        "tests/test_t35_measure_mcp_surface.py"
+      ],
+      "b1_literals": [],
+      "b2_literals": [],
+      "cited_count": 19,
+      "cited_count_raw": 22,
+      "cited_in": [
+        "docs/experiments/E01-facial-structure-ceiling.md",
+        "docs/experiments/E04-armT-halt2.md",
+        "docs/experiments/E04-coverage-pass.md",
+        "docs/experiments/E04-executor-kickoff.md",
+        "docs/experiments/E12-executor-kickoff.md",
+        "docs/experiments/E12-gate0-predictions.md",
+        "docs/experiments/E12-task1-sweep.md",
+        "docs/experiments/E14-executor-kickoff.md",
+        "docs/experiments/E14-task1-sweep.md",
+        "docs/experiments/E16-errands-kickoff.md",
+        "docs/experiments/E17-harness-report.md",
+        "docs/experiments/E20-coverage-report.md",
+        "docs/experiments/E20-gate-halt.md",
+        "docs/experiments/E20-predictions.md",
+        "docs/experiments/E20-ruling.md",
+        "docs/experiments/E27-measurement-mcp-report.md",
+        "docs/experiments/E27-predictions.md",
+        "docs/specs/measurement-mcp-spec.md",
+        "docs/tools.md"
+      ],
+      "dir": "tools/verify",
+      "docstring_line1": "Identical measurement of any mesh \u2014 the numeric half of a comparison.",
+      "file": "mesh_stats.py",
+      "flag_surface": true,
+      "g_proposal": "mesh_stats",
+      "import_safe": "n/a",
+      "import_safe_modes": {},
+      "import_safe_reason": "has a flag surface but no `__main__` guard, so probing it would EXECUTE the module body - against whatever subject its constants name. Not probed, deliberately",
+      "invocable": false,
+      "lines": 247,
+      "parse_error": null
+    },
+    {
+      "a_add_argument": 7,
+      "a_argparse": true,
+      "a_main_guard": false,
+      "a_parse_args_module_level": true,
+      "anchored": false,
+      "anchored_basename_only": false,
+      "anchored_in": [],
+      "anchored_in_basename_only": [],
+      "b1_literals": [],
+      "b2_literals": [],
+      "cited_count": 0,
+      "cited_count_raw": 1,
+      "cited_in": [],
+      "dir": "tools/verify",
+      "docstring_line1": "Contact sheet + per-view figure brightness readout.",
+      "file": "montage.py",
+      "flag_surface": true,
+      "g_proposal": "ambiguous",
+      "import_safe": "n/a",
+      "import_safe_modes": {},
+      "import_safe_reason": "has a flag surface but no `__main__` guard, so probing it would EXECUTE the module body - against whatever subject its constants name. Not probed, deliberately",
+      "invocable": false,
+      "lines": 82,
       "parse_error": null
     },
     {
@@ -3030,6 +3416,7 @@
       "cited_count": 0,
       "cited_count_raw": 1,
       "cited_in": [],
+      "dir": "tools/diagnostics",
       "docstring_line1": "Prepare the front render for the paint pass.",
       "file": "prep_front.py",
       "flag_surface": false,
@@ -3063,6 +3450,7 @@
         "docs/experiments/E08-intersection-regression.md",
         "docs/experiments/E08-ruling-gate0.md"
       ],
+      "dir": "tools/diagnostics",
       "docstring_line1": "Is project_twins' LIVE raycast silhouette the same object as the shipped sidecar mask?",
       "file": "silhouette_agree.py",
       "flag_surface": true,
@@ -3091,7 +3479,7 @@
       "b1_literals": [],
       "b2_literals": [],
       "cited_count": 11,
-      "cited_count_raw": 13,
+      "cited_count_raw": 15,
       "cited_in": [
         "docs/advisor-kickoff.md",
         "docs/experiments/E07-gate0.md",
@@ -3105,6 +3493,7 @@
         "docs/experiments/E27-predictions.md",
         "docs/experiments/E27-ruling.md"
       ],
+      "dir": "tools/diagnostics",
       "docstring_line1": "Where did this pixel's colour actually come from?",
       "file": "texel_provenance.py",
       "flag_surface": true,
@@ -3133,6 +3522,7 @@
         "docs/experiments/E05-gate0.md",
         "docs/experiments/E10-step0-2-halt.md"
       ],
+      "dir": "tools/diagnostics",
       "docstring_line1": "E05 \u2014 one metric table, computed identically for every arm.",
       "file": "texpass_metrics.py",
       "flag_surface": true,
@@ -3143,28 +3533,72 @@
       "invocable": false,
       "lines": 179,
       "parse_error": null
+    },
+    {
+      "a_add_argument": 14,
+      "a_argparse": true,
+      "a_main_guard": false,
+      "a_parse_args_module_level": true,
+      "anchored": false,
+      "anchored_basename_only": false,
+      "anchored_in": [],
+      "anchored_in_basename_only": [],
+      "b1_literals": [],
+      "b2_literals": [],
+      "cited_count": 17,
+      "cited_count_raw": 18,
+      "cited_in": [
+        "docs/experiments/E02-report.md",
+        "docs/experiments/E02-texture-stage-on-sound-inputs.md",
+        "docs/experiments/E04-armT-halt.md",
+        "docs/experiments/E04-armT-halt3.md",
+        "docs/experiments/E04-step0-halt.md",
+        "docs/experiments/E04-stroke-frame-halt.md",
+        "docs/experiments/E07-report.md",
+        "docs/experiments/E08-armB-state.md",
+        "docs/experiments/E08-armBG.md",
+        "docs/experiments/E10-step0-1-waterline-candidates.md",
+        "docs/experiments/E12-handoff13-predictions.md",
+        "docs/experiments/E12-ruling.md",
+        "docs/experiments/E12-task4-anchor-halt.md",
+        "docs/experiments/E14-gate0-predictions.md",
+        "docs/experiments/E14-gate0-report.md",
+        "docs/experiments/E14-handoff2-predictions.md",
+        "docs/tools.md"
+      ],
+      "dir": "tools/verify",
+      "docstring_line1": "Matched-framing turnaround render of a GLB.",
+      "file": "turn_render.py",
+      "flag_surface": true,
+      "g_proposal": "none",
+      "import_safe": "n/a",
+      "import_safe_modes": {},
+      "import_safe_reason": "has a flag surface but no `__main__` guard, so probing it would EXECUTE the module body - against whatever subject its constants name. Not probed, deliberately",
+      "invocable": false,
+      "lines": 162,
+      "parse_error": null
     }
   ],
   "totals": {
-    "anchored": 46,
-    "anchored_basename_only": 44,
-    "any_add_argument": 93,
-    "argparse": 93,
-    "cited": 76,
-    "cited_raw": 99,
-    "flag_surface": 93,
-    "flag_surface_unguarded": 88,
-    "g_ambiguous": 17,
-    "g_mapped": 21,
+    "anchored": 50,
+    "anchored_basename_only": 48,
+    "any_add_argument": 101,
+    "argparse": 101,
+    "cited": 83,
+    "cited_raw": 107,
+    "flag_surface": 101,
+    "flag_surface_unguarded": 95,
+    "g_ambiguous": 18,
+    "g_mapped": 25,
     "g_no_opinion": 3,
-    "g_none": 58,
-    "has_docstring": 99,
+    "g_none": 61,
+    "has_docstring": 107,
     "import_safe_false": 0,
-    "import_safe_na": 94,
-    "import_safe_true": 5,
-    "invocable": 5,
-    "main_guard": 6,
-    "parse_args_module_level": 88,
+    "import_safe_na": 101,
+    "import_safe_true": 6,
+    "invocable": 6,
+    "main_guard": 7,
+    "parse_args_module_level": 95,
     "parse_errors": 0,
     "subject_bound_b1": 11,
     "subject_bound_b2": 11
