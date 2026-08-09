@@ -51,13 +51,20 @@ assumes you have a style you want carried faithfully rather than invented.
 
 ## The route, and why each stage exists
 
-### 0 — Where the clay comes from · CANDIDATE, not yet a stage
+### 0 — Where the clay comes from · LOCAL-FIRST, two implementations
 
 **Stage 1 assumes a clay image exists. Until 2026-08-09 nothing here made one** — every
-clay entered by hand, staged and byte-counted on arrival. A concept→clay tool now exists
-and has been walked once, and it is written here as **stage 0 in dashed lines**: read the
-route as beginning at stage 1 until [E29](https://github.com/mcp-tool-shop-org/facet/blob/main/docs/concept-prep.md) measures whether the mesh
-comes back better, which is the only question that promotes it.
+clay entered by hand, staged and byte-counted on arrival. Now the stage exists, with a
+**local-first default and a cloud option**:
+
+| | default | option |
+|---|---|---|
+| model | **Qwen-Image-Edit-2511**, Apache-2.0 | Nano Banana 2, licence unverified |
+| venue | this rig **or** cloud — Apache-2.0 travels with the weights, so the venue is an operational choice, not a licence one | cloud only |
+
+**Its benefit is still unmeasured, and that is stated rather than implied.** Whether a clay
+mesh reconstructs better than a concept mesh is [E29](https://github.com/mcp-tool-shop-org/facet/blob/main/docs/concept-prep.md)'s question. The
+stage is real; the reason for it is a hypothesis.
 
 What the first pair showed, on a minotaur concept: pose, both wrist wraps, the belt's
 medallion **with its floral emboss in relief**, the torn hem, and human feet where hooves
@@ -69,12 +76,12 @@ fixture names them*. Measured: no colour leak (whole-frame C\* p99.9 **13.15**, 
 never quoted), a seamless achromatic background at C\* p95 **1.25**, and no sculpting
 plinth for the reconstructor to rebuild as anatomy.
 
-⚠ **It runs on a closed cloud API, so two things do not transfer from the rest of this
-page:** its model alias is server-versioned and **replay is not promised** (an accepted
-clay is therefore frozen and hashed, provenance recorded as incomplete — the canon-twin
-precedent), and **the licence claim at the bottom of this page does not reach it**. The
-full designation, with the path to a local Apache-2.0 variant, is
-[concept prep](https://github.com/mcp-tool-shop-org/facet/blob/main/docs/concept-prep.md).
+⚠ **The cloud option carries two caveats the default does not:** its model alias is
+server-versioned so **replay is not promised** (an accepted clay is frozen and hashed,
+provenance recorded as incomplete — the canon-twin precedent), and **the licence paragraph
+at the bottom of this page does not reach it**. The Apache-2.0 default has neither problem.
+Full designation, with the measured prompt effect and the wiring finding that a **widget is
+not an input**: [concept prep](https://github.com/mcp-tool-shop-org/facet/blob/main/docs/concept-prep.md).
 
 ### 1 — Form first, style second
 
@@ -340,9 +347,14 @@ structural tripwire, not by attestation), **Hunyuan3D-Paint** (licence void in t
 and South Korea), **MVPaint** and **TEXGen** (no licence), **UltraSharp / SUPIR /
 StableSR** (non-commercial upscalers).
 
-**This paragraph describes stages 1–6.** The candidate clay hop at stage 0 runs on a closed
-cloud API whose terms are **unverified**, so no licence claim here covers an asset made
-from one of its clays. The path that closes the item is a local **Qwen-Image-Edit
-(Apache-2.0)** variant; **FLUX.1-Kontext [dev] is excluded on the same grounds as
-nvdiffrast**, being non-commercial weights. Both checked against the studio's model
-catalogue rather than recalled — [concept prep](https://github.com/mcp-tool-shop-org/facet/blob/main/docs/concept-prep.md).
+**Stage 0's default is covered too**: Qwen-Image-Edit-2511 is **Apache-2.0**, commercial
+use unrestricted, and the licence travels with the weights rather than with the venue.
+**The cloud option is not covered** — Nano Banana 2's terms are unverified, and a ToS can
+change under you where a weights file cannot. **FLUX.1-Kontext [dev] was excluded on the
+same grounds as nvdiffrast**, being non-commercial weights. All checked against the
+studio's model catalogue rather than recalled — [concept prep](https://github.com/mcp-tool-shop-org/facet/blob/main/docs/concept-prep.md).
+
+**And nothing here is local-*only*.** Geometry and measurement run on your machine;
+generation runs locally where it fits and on metered cloud where it does not — the
+restylize graph stages 31,006 MiB against a 31,200 MiB ceiling, which is why. Local-first
+is the accurate claim and the one this repo makes.

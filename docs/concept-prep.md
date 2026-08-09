@@ -1,9 +1,33 @@
 # Concept prep — the clay hop
 
-**Status: a STAGED CANDIDATE with a Gate 0 walk recorded. It is not a route stage, and
-nothing in the record depends on it yet.** Built by the Director, 2026-08-09; walked and
-designated by the advisor the same day. The experiment that would promote it is **E29**,
-queued behind [E28](experiments/E28-instrument-census-kickoff.md)'s close.
+**Status: IN THE PIPELINE as stage 0, LOCAL-FIRST, with two implementations.** Ruled by
+the Director 2026-08-09: *"I definitely want it in the pipeline, with the option for the
+clayify route if the user doesn't mind the cloud. But I want local-first."* Built and
+walked the same day. **Its reconstruction arm is still unmeasured** — whether a clay mesh
+beats a concept mesh is **E29**, queued behind
+[E28](experiments/E28-instrument-census-kickoff.md)'s close — so the stage is real and its
+*benefit* is still a hypothesis. Both statements are true at once and neither is softened.
+
+## The two implementations
+
+| | **DEFAULT — local-first** | **OPTION — cloud** |
+|---|---|---|
+| model | **Qwen-Image-Edit-2511** (20B MMDiT instruction editor) | Nano Banana 2 (Gemini 3.1 Flash Image) |
+| licence | **Apache 2.0** — commercial use unrestricted, no output restrictions | **UNVERIFIED**; a vendor ToS, revisable |
+| where it runs | this rig, or cloud — **the licence does not change with the venue** | cloud only |
+| weights | already on disk: `diffusion_models/qwen_image_edit_2511_fp8mixed.safetensors` (20.5 GB), `text_encoders/qwen_2.5_vl_7b_fp8_scaled.safetensors` (9.4 GB), `vae/qwen_image_vae.safetensors` | none — an API |
+| front-door claim | **covered** | **not covered** |
+
+**Why the default is not "local only."** Qwen-Image-Edit-2511 is Apache-2.0, so cloud
+versus local is an *operational* choice, not a licence one — the same weights and the same
+graph, either venue, clean both ways. That is what makes local-first worth having: the
+default is never compromised by where it happens to run. **Nothing in this repo claims the
+pipeline is local-only, and it must not** — the route's own restylize graph stages 31,006
+MiB against a 31,200 MiB ceiling and runs on metered cloud for that reason.
+
+**The cloud option stays offered rather than deprecated.** It works, the Director built it,
+and a user who does not mind a cloud API should have it. What it does not get is the
+licence claim.
 
 ---
 
@@ -117,9 +141,63 @@ in the chain* stays exactly as true as it was — the boundary it describes is t
 route, and this hop is upstream of it. The README and handbook now say so in one sentence
 rather than leaving a future reader to discover the gap.
 
-## Licence — the open item, and the path that closes it
+## The local default, measured — and what the prompt was worth
 
-⚠ **The cloud variant's licence is UNVERIFIED and no public claim rests on it.** The Comfy
+Four renders on the minotaur, 2026-08-09. **Only two of them are honest renders**, and the
+reason the other two are not is itself the finding (see the wiring note below).
+
+| run | config | C\* p50 | C\* p95 | C\* p99.9 |
+|---|---|---:|---:|---:|
+| concept (input) | — | 13.75 | 27.44 | 35.25 |
+| cloud Nano Banana 2 | — | 1.04 | 11.24 | 13.15 |
+| **Qwen run 1** | first-pass instruction | 1.55 | 22.24 | 25.17 |
+| **Qwen run 2** | + *monochrome / warm-grey* + negatives | 2.20 | **14.63** | **15.92** |
+
+**Run 1 → run 2 changed the prompt and nothing else** — measured, 99.9996% of pixels
+differ, a genuine full re-render. The chroma tail fell **34% at p95 and 37% at p99.9**,
+closing two thirds of the distance to the cloud tool. Visually the same edit restored the
+belt medallion's floral emboss, removed invented spiral motifs on shoulder and thigh, and
+sharpened the muscle planes.
+
+**This confirms a law the record already held** — *a colour term reads as a chroma
+instruction more reliably than a lightness one* — and it was the Director's call, made
+before the measurement: *"there wasn't much prompt-work done on the example, so I'm sure a
+lot of that degradation can be mitigated through proper prompts."*
+
+The prompt that produced run 2 is the working one; it is the Clay-ify prompt with one
+clause added — *preserve every existing costume and ornament detail — belt, buckle relief,
+wrist wraps, hem shape — rendered as sculpted clay relief* — plus a negative prompt:
+*engraved spirals, carved decorative motifs, added ornament, tattoos, painted markings,
+colour, saturated hues, glossy or wet surface, plinth, base, pedestal, text, watermark.*
+The plinth term is prophylactic: a sculpting base is the one artifact a reconstructor would
+faithfully rebuild as anatomy.
+
+### ⚠ A WIDGET IS NOT AN INPUT — the wiring finding, and it cost four exchanges
+
+Two further "runs" were reported as a LoRA ablation and a 4-step test. **Neither executed.**
+Measured: the ablation was **pixel-identical** to run 2 with **different file bytes**; the
+4-step run was **byte-identical**, the same file. Read from the graph rather than guessed:
+
+- A single boolean, `Enable 4steps LoRA?` (node 168, **false**), drives **three** switches —
+  model, steps and CFG. False selects: **LoRA bypassed, steps 40, CFG 4**.
+- The KSampler's `model`, `steps` and `cfg` are **all link-driven from those switches**, so
+  its own widgets (`steps: 4`, `cfg: 3`) are **dead**. ComfyUI ignores a widget whose input
+  carries a link.
+- So setting LoRA strength to 0 edited a node on the unselected branch — outside the
+  sampler's dependency chain — giving a cache hit with fresh PNG metadata. And setting the
+  steps *widget* changed nothing at all, so the identical job returned the identical file.
+- **Run 2 was therefore already no-LoRA at 40 steps and CFG 4: the quality ceiling, reached
+  without anyone testing for it.** The only control that moves the configuration is node
+  168; flipping it true switches all three together to the 4-step speed floor.
+
+**The law**: *a widget is not an input* — the same family as *file bytes are not pixel
+values*, and diagnosable only by reading the link topology, never the widget values. The
+subgraph's outer widgets are stale in the same way: node 170 still shows a background-swap
+prompt while the clay prompt is what executes.
+
+## Licence — the open item on the CLOUD option, and the path that closes it
+
+⚠ **The cloud option's licence is UNVERIFIED and no public claim rests on it.** The Comfy
 consult channel called Nano Banana 2 "commercial-safe"; that is an assertion this repo has
 not measured, and the studio's model KB structurally cannot settle it — it catalogues open
 weights, and this is the chain's first closed-API candidate. **Unlike every licence
@@ -127,9 +205,9 @@ currently in the chain, a ToS can change under us where a weights file cannot.**
 public licence claim covers a Clay-ify-fed asset, one verification pass against Google's
 live Gemini API terms, quoted and dated here.
 
-**A local variant would retire that item entirely, and the licence-correct model is not
-either of the two first proposed.** Measured against the studio KB
-(`E:\AI\readouts\model-knowledge\models.db`) rather than recalled:
+**That item does not block anything, because the default no longer depends on it.** The
+licence-correct model was neither of the two first proposed, and the selection was measured
+against the studio KB (`E:\AI\readouts\model-knowledge\models.db`) rather than recalled:
 
 | candidate | licence | commercial | verdict |
 |---|---|---|---|

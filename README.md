@@ -15,7 +15,8 @@
 
 <p align="center">
   <strong>A styled 2D concept goes in. A textured 3D asset comes out.</strong><br>
-  Local hardware end to end · no non-commercial licence anywhere in the chain
+  Local-first — your own GPU, with a metered cloud step where it will not fit<br>
+  No non-commercial licence anywhere in the chain
 </p>
 
 ---
