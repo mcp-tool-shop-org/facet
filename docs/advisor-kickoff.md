@@ -117,7 +117,7 @@ reason four green pipelines never saw the defect.
 ### The release sequence, when he fires the next one — the order is law
 
 ```
-1. RE-COUNT            pytest --collect-only  -> currently 797 total / 768 hermetic
+1. RE-COUNT            pytest --collect-only  -> currently 808 total / 768 hermetic
                        T34 enforces this in CI, but run it anyway: it is the gate
                        that has caught a stale number at every release seat.
 2. VERSION             FIVE declarations, not four - pyproject.toml, package.json,
@@ -158,7 +158,7 @@ the defect.**
 
 ### The suite and the gate
 
-**THE SUITE: 797 tests, 768 hermetic**, green at two seats and CI. The count is under a
+**THE SUITE: 808 tests, 768 hermetic**, green at two seats and CI. The count is under a
 test (T34) which fires in CI on any surface stating a stale one, and it has caught live
 drift twice.
 
@@ -182,7 +182,7 @@ E25  133 sites   the measurement instruments
 ### The record index
 
 Mount SERVING, certificate PASSED on four legs, byte-identity determinism.
-The record holds 28 experiments. No staleness. **The other counts live in the ritual's own output and in
+The record holds 29 experiments. No staleness. **The other counts live in the ritual's own output and in
 `record_health` — read them there, not here.** *(This line used to quote corpus, ruling
 and law totals too, and went stale within a day, twice: nothing sweeps this file for
 those, and every advisor fold moves them. The experiment count stays because **T34's

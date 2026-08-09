@@ -459,6 +459,33 @@ citations because each one was reading the last rather than the record. *The one
 handled it correctly was the served tool's own refusal text, which routed the question to a
 ruling instead of assuming one.*
 
+**Existence of the operands is not replayability.** Seventh consecutive arc on the
+unit/population family and a new member of it. E30 predicted how many recorded stages could
+be anchored, checked that each one's artifacts *exist* — they all do — and missed by three,
+because a replay needs a **second** thing nobody enumerated: **a tool that can still be
+asked the recorded question.** `project_twins`' erosion was rebuilt under E08 A3, so the
+recorded rule is no longer the default and three projections whose every input is present
+are not replayable by default. The family now reads: the *unit*, the *population*, an
+unchecked *property*, the rarest clause of a *conjunction*, and now the *instrument's
+continued ability to express the question*. Before predicting that a record can be
+reproduced, check that something can still ask it.
+
+**And when a tool has changed under an accepted asset, look for the era flag before
+commissioning one.** E30 reported *"no flag restores the old rule"* and proposed a new mode;
+`--edge-absolute` was already at `project_twins.py:103`, consumed at 754 and 797, and the
+report had quoted the comment naming it while reading past it. **Third instance of
+*enumerate the resource before commissioning one* in a single session** — the others were
+`e12_offsurface.py`'s nine flags and a model already sitting on the rig. One grep separates
+a commission from a flag that exists, and the commission is always the expensive branch.
+
+**When two seats are live, the count surfaces are the advisor's to reconcile after both
+land.** T34 pins a stated count against `pytest --collect-only` *of the tree the surfaces sit
+in*, so two parallel seats adding tests **cannot both be green independently** — E30's commit
+was self-consistent at 801/761, task 3's at 797/768, and only the combined tree at 808/768 is
+correct for either. Neither seat can be right alone, so neither should be asked to try, and
+an executor that reports the collision and touches nothing has done the right thing. Reserve
+the count surfaces in the dispatch, not just the status table.
+
 **When a number will not move, check the baseline.** The most valuable measurement in this
 repo's history came from an executor who stopped chasing a stuck figure and asked whether
 the thing it was compared against was real. It was not.

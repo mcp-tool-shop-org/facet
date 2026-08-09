@@ -17,8 +17,8 @@
     "py_files_total": 108
   },
   "provenance": {
-    "corpus_files": 268,
-    "corpus_files_before_self_exclusion": 278,
+    "corpus_files": 269,
+    "corpus_files_before_self_exclusion": 279,
     "probe_interpreter": "E:\\AI-Models\\trellis2-env\\Scripts\\python.exe",
     "probe_interpreter_version": "3.13.13",
     "probe_skipped": false,
@@ -1953,8 +1953,8 @@
       ],
       "b1_literals": [],
       "b2_literals": [],
-      "cited_count": 14,
-      "cited_count_raw": 20,
+      "cited_count": 15,
+      "cited_count_raw": 21,
       "cited_in": [
         "CLAUDE.md",
         "docs/advisor-kickoff.md",
@@ -1966,6 +1966,7 @@
         "docs/experiments/E14-handoff2-report.md",
         "docs/experiments/E27-measurement-mcp-report.md",
         "docs/experiments/E27-ruling.md",
+        "docs/experiments/E30-ruling.md",
         "docs/experiments/README.md",
         "docs/specs/measurement-mcp-spec.md",
         "docs/specs/placement-memo.md",

@@ -384,9 +384,133 @@ named carry, exactly as Amendment 2 allowed. It is the arc's only open item.
 
 ---
 
+---
+
+# Task 3 — ruled 2026-08-09. **E28 IS CLOSED.**
+
+Report: [E28-task3-report.md](E28-task3-report.md). Re-measured here.
+
+## Ruling 18 — TASK 3 IS ACCEPTED AND THE ARC CLOSES
+
+| claim | my check | result |
+|---|---|---|
+| gate 4 scope | `git diff --name-status 731df45..9061107 -- tools/` | **exactly two**: `M texel_provenance.py`, `M measure_mcp.py` |
+| the instrument emits the census | grep | 9 sites in `texel_provenance.py` |
+| the wrapper's gap-text is gone | grep `largest connected component` in `measure_mcp.py` | **1 hit, and it is `anchor_compare`'s own docstring** describing its pixel tier — the `texel_provenance` gap-note is deleted |
+| version moved | `MEASURE_VERSION` | **0.4.0** — the first bump where a serving tool's *payload* changes, which is the right trigger |
+
+## Ruling 19 — THE PURE-MOVE CONDITION WAS RE-SPECIFIED HONESTLY, BEFORE MEASURING
+
+The dispatch asked for pure-move discipline and set the bar at byte-identical stdout. **The
+executor registered, before running anything, that whole-stream byte identity is impossible
+when the task is to *add* an output** — naming it would have been a pass condition the work
+is built to break, which is this repo's fourth-listed mis-specification shape.
+
+Its substitute is stronger than a looser bar: **insert-only via difflib opcodes accepting
+only `equal` and `insert`**, so a modification cannot hide inside an addition — 9 of 9
+runnable recorded triples, 0 violations — with `--out-json` and `claim.npy` **byte-identical**
+as the unchanged half. Re-specifying a condition *before* the measurement, with the reason
+stated, is the opposite of retuning one after.
+
+## Ruling 20 — THE CLOSED-RULING LAW'S ANCHOR HALF WAS DISCHARGED, ON ITS FIRST OUTING
+
+CLAUDE.md gained a law this morning, at the Director's question, replacing the never-edit
+folklore: *a cited number must still reproduce from the tool at HEAD — prove the edit
+non-perturbing, or carry an anchor reproducing the cited number, in the commit that makes
+the edit.*
+
+**Task 3 is the first arc to owe that, and it paid both halves.** The `2,551,893 → 813,773`
+dilation figures CLAUDE.md cites reproduce **to the digit** at HEAD from E05-U1 and E06-C1,
+in the commit that edits the tool. A law written at breakfast and honoured by dinner, by a
+seat that was not in the room when it was written, is the record working as designed.
+
+## Ruling 21 — THE MEASUREMENT ITSELF EARNS THE LAW IT IMPLEMENTS
+
+DILATION's largest component runs **0.6–5.4%** of its class across nine subjects —
+seam-rim dominated, as predicted. The counterpart is the point: the SaltRoad hero subjects
+carry a single **43,000-texel** unpainted region inside an 800k class.
+
+**A total alone cannot tell that from 43,000 texels spread across ten thousand rims**, and
+those are completely different defects — one is a hole in the asset, the other is texture.
+That is the two-thresholds law demonstrating its own necessity on first use, which is a
+better argument for it than the garment that originally earned it.
+
+## Ruling 22 — THE MANIFEST-SCOPE FINDING IS CONFIRMED, INDEPENDENTLY AND TWICE
+
+The report finds that the inherited **7,312 files / 17,072,807,610 bytes** describes
+`E:\AI\training\{facet_*, saltroad_bake_fix}` — **not** `E:\AI\training`, which holds
+**131,970 files** and a live watchdog log.
+
+**I measured the same fact independently at this seat**, hours earlier and by a different
+route: summing the eight facet subtrees' file counts came to **exactly 7,312** and their
+bytes to **exactly 17,072,807,610**. Two seats, two methods, one answer.
+
+This matters beyond bookkeeping: every dispatch since E22 has said "manifest `E:\AI\training`
+— 7,312 files," which reads as covering the whole directory and does not. The figure was
+always right; **its stated scope was wrong**, and an executor obeying the sentence literally
+would have measured 131,970 and reported a false delta. **Corrected wording for every future
+dispatch: manifest the eight facet subtrees, not the training root.**
+
+## Ruling 23 — E08/ARMB CANNOT BE REPLAYED AT ALL, AND THAT IS A CROSS-ARC FINDING
+
+`facet_E08` holds no prep file and the record names no `--prep` for it — measured, not
+assumed. **This bounds [E30](E30-ruling.md)'s anchor work**: W3's replayable set is smaller
+than its stage list suggests, for a reason that has nothing to do with E30's own halt. Two
+arcs converged on the same subject's replayability from opposite directions in one day, and
+neither knew the other was looking.
+
+**[E10 Ruling 5](E10-offsurface-ruling.md)'s queued A32 replay repair remains queued** — not
+taken, because it changes existing numbers. Correct restraint: the new components ride a
+partition known to be slightly wrong, and the report says so rather than quietly improving
+it inside an unrelated arc.
+
+## Ruling 24 — THE 4-CONNECTIVITY GAP IS THE ARC'S BEST SELF-CATCH
+
+Six T47 legs **passed under an 8-connectivity patch**. The instrument declares 4-connectivity
+in three places and nothing could falsify it — a check that cannot fail, found by the
+executor testing its own tests rather than by anyone reading them. The seventh leg (a
+diagonal chain, 1 against 32 at an identical total) now pins it, **and it makes the
+executor's own prediction worse.**
+
+That is twice in one arc that a seat has degraded its own score to close a real gap. It is
+the behaviour the whole apparatus is built to produce and it should be said plainly.
+
+## Ruling 25 — THE CENSUS FIRED ON *MY* DOCUMENT, AND THE REMEDY IS A RITUAL, NOT A FIX
+
+`test_t41_axis_d_is_idempotent_across_runs` failed at the close. Measured: **one row**, and
+the new citer was **`docs/experiments/E30-ruling.md` — this seat's own ruling**, which names
+`e12_offsurface.py` while citing the enumerate-the-resource law. Axis D 14 → 15.
+
+**That is a legitimate citation, not contamination.** A ruling naming an instrument is the
+strongest possible evidence its numbers are relied upon, so excluding rulings from axis D
+would blind the axis to exactly what it measures. The census was simply stale against a
+corpus I had just grown. Re-emitted with `--committed` (population 108 = 99 diagnostics + 9
+verify, axis F preserved at 7/0/101).
+
+**The rule this settles**: the census is a *derived artifact of the corpus*, like the index
+DB. **It re-emits as part of the advisor's fold ritual**, in any commit that adds a corpus
+document naming a counted file — which is most folds. Not a defect, not a treadmill to
+engineer away; a second derived pair to keep current.
+
+## Ruling 26 — P22's MISS IS THE DAY'S RECURRING SHAPE, ONE MORE TIME
+
+*"I predicted a property of my contribution and the instrument measures a property of the
+tree."* That is the same family as E30's P1 (*existence of the operands is not
+replayability*), as the conjunction law, as the unit and the population before them. **Seven
+arcs, one family, a different member each time** — and each miss has been legible only
+because the unit was written down before the number. The ritual is working; it is the
+predictions that keep finding new ways to be about the wrong thing.
+
+P17 also inverted: the clause the executor named rarest (a=11) was the most abundant
+(b=48) — the conjunction law from Ruling 8 firing in the other direction, which is useful
+evidence that the law is about *checking* each clause rather than about guessing which is
+rarest.
+
+---
+
 ## What is NOT ruled here
 
-- **Task 3** — the named carry, unspent by design.
+- **E10 Ruling 5's A32 replay repair** — still queued, deliberately, and now recorded twice.
 - **The erode/margin half of `offsurface_rate`** — open commission, unscoped, unchanged.
 - **Whether `facet-measure` ships** — E27 Ruling 8's default holds: not before the polish
   arc has exercised it.

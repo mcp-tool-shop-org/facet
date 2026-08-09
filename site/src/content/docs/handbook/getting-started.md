@@ -26,7 +26,7 @@ cd facet
 python -m pytest -m "not artifacts"   # the 768 hermetic tests CI reproduces
 ```
 
-The full suite is 797 tests. The 29 it deselects are the *artifacts* tier — they replay
+The full suite is 808 tests. The 40 it deselects are the *artifacts* tier — they replay
 recorded trees that are not in git, so they pass locally and are skipped in CI by
 design.
 
@@ -79,7 +79,7 @@ before the measurement:
 spec written BEFORE the work  →  report written AFTER  →  advisor ruling LAST
 ```
 
-Twenty-eight experiments are in
+Twenty-nine experiments are in
 [docs/experiments](https://github.com/mcp-tool-shop-org/facet/tree/main/docs/experiments).
 You do not have to read them linearly — the record is indexed:
 
