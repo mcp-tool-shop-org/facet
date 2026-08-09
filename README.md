@@ -44,15 +44,24 @@ Two commands come with it — `facet-mcp`, the stdio MCP server (six tools, with
 four-leg verify as a refusing health surface), and `facet-index` (`build` / `verify` /
 `q` / `claims`). Run it from inside a checkout; `--db` names a different index.
 
-⚠ **`pip install facet-mcp` currently works only for `q` and `claims`, and only with an
-explicit `--db`.** The wheel installs `facet_index` as a top-level module, so it resolves
-the record's location against `<venv>/Lib` — where there is no corpus and no index. So
-`build` fails, `q` without `--db` fails, and the server's corpus-reading tools refuse.
-`$FACET_INDEX_DB` is read by `facet-mcp` and **not** by `facet-index`. Both are
-[measured, located in code and open](docs/known-defects.md); **the `npx` binary above is
-unaffected and is the supported path** until they are fixed. This line was
-`pipx install facet-mcp # or the Python package directly` until v0.3.0's release
-read-back ran a *verb* instead of `--help`.
+⚠ **`pip install facet-mcp` is broken in every released version through v0.3.0, and
+fixed on `main`.** The wheel installs `facet_index` as a top-level module, so up to and
+including v0.3.0 it resolved the record's location against `<venv>/Lib` — which holds
+neither corpus nor index — and `build`, `claims`, and `q` without `--db` all failed.
+**Use the `npx` binary above** until 0.3.1 ships.
+
+On `main` the root is resolved by **testing for the record** rather than by assuming it:
+run either command from inside a checkout and it finds it; run it from anywhere else and
+it exits **`4` REFUSED**, naming both directories it tried and both markers it looked for.
+`$FACET_INDEX_DB` is now read by both commands, and it selects which *index*, never which
+*corpus*. Measured on a wheel built from `main` and installed into a clean venv —
+[E24](docs/experiments/E24-ruling.md).
+
+*This block has been corrected twice. It first read `pipx install facet-mcp # or the
+Python package directly`, until v0.3.0's read-back ran a **verb** instead of `--help`.
+It then said the wheel "works only for `q` and `claims`" — **`claims` did not work
+either**, which E24 found by running it. Both corrections are in
+[known-defects.md](docs/known-defects.md) with their measurements.*
 
 ## Where it stands
 
@@ -148,8 +157,8 @@ next session read as established fact. Nothing in that loop was checkable.
   is not an archive — anyone can run those tools and watch them fail the same way.
 - **A negative result is a full success**, reported and closed rather than tuned toward a
   number.
-- **Tests ride the commit that touches the code** — 370 passing at two seats' hands, with
-  paths-gated CI on the 362 hermetic ones.
+- **Tests ride the commit that touches the code** — 384 passing at two seats' hands, with
+  paths-gated CI on the 376 hermetic ones.
 - **The record is queryable.** A SQLite + FTS5 index over the whole trail, verified on
   four legs. It found a ruling count the prose had wrong at three sites, by counting the
   record itself.
@@ -247,8 +256,8 @@ Developed against an RTX 5090; VRAM headroom matters more than raw speed.
 CI runs the hermetic subset of the suite on **ubuntu-latest / Python 3.12** with
 pinned installs (`.github/workflows/ci.yml`); the artifacts tier needs the recorded
 trees under `E:\AI\training`, which are not in git, so CI deselects them by design.
-Locally, `python -m pytest` runs all **370** tests and `python -m pytest -m "not artifacts"`
-runs the **362** CI reproduces.
+Locally, `python -m pytest` runs all **384** tests and `python -m pytest -m "not artifacts"`
+runs the **376** CI reproduces.
 
 ---
 
