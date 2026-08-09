@@ -3,6 +3,13 @@
 **Written by the executor, 2026-08-09.** No code was written. No repo was created. Nothing
 was submitted and no credit was spent. Nothing under `E:\AI\training` was modified.
 
+> **⚑ HALT CLEARED the same day.** The Director created
+> [mcp-tool-shop-org/comfy-preflight](https://github.com/mcp-tool-shop-org/comfy-preflight)
+> and `E:\AI\comfy-preflight`; all five repo-first conditions were then met and the build
+> proceeded. **This document is kept as written** — the pre-build measurements in §2–§7 are
+> what the build was designed against, and §5 carries a correction earned during the build
+> rather than a quiet edit. Build state lives in the new repo's README.
+
 **Why this file exists:** the build halts at gate 1 and the halt is not the whole result.
 Everything measurable without the repo was measured, and three findings change what gets
 built. Recorded here rather than in a chat log so the seat that builds this does not
@@ -125,6 +132,32 @@ Scoped properly, the **actual card surface in the corpus is exactly one input**:
 ```
 26x  LoraLoaderModelOnly.lora_name = mcp-tool-shop__saltroad-style-lora__saltroad_style_v2_lowlr_000001500.safetensors
 ```
+
+> **⚠ CORRECTED 2026-08-09, during the build, by a test going red.** The line above says
+> "exactly one input" — that part holds, `lora_name` is the only card-bearing input. But the
+> **one card** reading is wrong: the corpus carries **two names for one adapter**.
+>
+> ```
+> 26x  mcp-tool-shop__saltroad-style-lora__saltroad_style_v2_lowlr_000001500.safetensors
+>  1x  mikeyfrilot__saltroad-lora__saltroad_style_v2_lowlr_000001500.safetensors
+> ```
+>
+> Same trained weights, different cloud-side namespace prefix from a re-import under another
+> account. The figure above came from a walk of the **69** files under `E:\AI\training`; the
+> second name is carried by the **70th** graph alone — `E08-anchor-workflow-api.json`, the
+> in-git fixture, the first file this seat opened.
+>
+> **This is the enumerate-the-resource law at small scale, and the mechanism is worth the
+> line: a scan that misses one file of seventy reports the wrong cardinality with total
+> confidence, and nothing in the output looks partial.** It surfaced when check 2's
+> whole-corpus leg halted on `ADAPTER_CARD_MISMATCH` — found by a gate firing, not by
+> reading.
+>
+> Design consequence, already in the shipped check: exact-string comparison against one
+> declared card halts a correct build, and the whole basename differs so basename comparison
+> does not rescue it. The register takes declared `card_aliases`; equivalence is stated, never
+> inferred, because prefix-stripping would also accept a genuinely wrong card whose name
+> shared a tail.
 
 **Consequence for the build:** the spec's phrase *"no loader node and no card string exist
 anywhere in the graph"* is FALSE on all 43 no-adapter graphs under a naive reading, because

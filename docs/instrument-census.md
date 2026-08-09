@@ -13,7 +13,7 @@
 | `.py` files in `tools/verify` | **9** |
 | — files of any other extension there | 0 |
 | **total members** | **108** |
-| corpus files read for axis D | 275 |
+| corpus files read for axis D | 276 |
 | test files read for axis E | 57 |
 | probe interpreter | `E:\AI-Models\trellis2-env\Scripts\python.exe` (3.13.13) |
 
@@ -62,7 +62,7 @@
 
 | # | file | home | A | flags | B1 | D | E | F | G *(proposal)* | the question (docstring line 1) |
 |---:|---|---|:-:|---:|:-:|---:|:-:|:-:|---|---|
-| 1 | `anchor_compare.py` | verify | yes | 4 | no | 5 | yes | yes | anchor_check | Is this re-production the recorded output - and if not, what is the difference's shape? |
+| 1 | `anchor_compare.py` | verify | yes | 4 | no | 6 | yes | yes | anchor_check | Is this re-production the recorded output - and if not, what is the difference's shape? |
 | 2 | `blade_band.py` | diagnostics | no | 2 | no | 1 | no | n/a | ambiguous | How much surface does the twin's KEY exclude, and does stage 1 paint any of it? |
 | 3 | `brush_reach.py` | diagnostics | no | 7 | no | 4 | yes | n/a | reach_ceiling | Bound the brush arm before spending it — how many holes can the eight stroke cameras se… |
 | 4 | `build_masks.py` | diagnostics | no | 10 | **yes** | 0 | no | n/a | none | Build the per-view denoise masks: flat (control) and foreshortening-GRADED (test). |
@@ -163,7 +163,7 @@
 | 99 | `head_render.py` | verify | no | 11 | no | 19 | yes | n/a | none | Head-framed close-up renders of a GLB — the Director-zoom verification camera. |
 | 100 | `head_yaw.py` | diagnostics | no | 6 | no | 0 | no | n/a | none | Locate the direction a MESH's head actually faces, by mirror symmetry. |
 | 101 | `keyed_outside.py` | diagnostics | no | 9 | no | 2 | yes | n/a | ambiguous | How much of each twin's keyed paint sits on no surface at all? |
-| 102 | `mesh_stats.py` | verify | no | 9 | no | 21 | yes | n/a | mesh_stats | Identical measurement of any mesh — the numeric half of a comparison. |
+| 102 | `mesh_stats.py` | verify | no | 9 | no | 22 | yes | n/a | mesh_stats | Identical measurement of any mesh — the numeric half of a comparison. |
 | 103 | `montage.py` | verify | no | 7 | no | 0 | no | n/a | ambiguous | Contact sheet + per-view figure brightness readout. |
 | 104 | `prep_front.py` | diagnostics | no | 0 | **yes** | 0 | no | n/a | none | Prepare the front render for the paint pass. |
 | 105 | `silhouette_agree.py` | diagnostics | no | 8 | no | 3 | yes | n/a | ambiguous | Is project_twins' LIVE raycast silhouette the same object as the shipped sidecar mask? |

@@ -96,6 +96,54 @@ then round to the nearest legal width; ÷8 is the floor, prefer ÷16.**
 The check is: does every dimension in this graph satisfy the model family's constraint?
 It costs microseconds and it caught a defect that corrupted a whole pairing stage.
 
+> ## ⚖ AMENDMENT 1 — check 5 is RE-SPECIFIED (advisor, 2026-08-09)
+>
+> **Raised by the build seat's §4** ([comfy-preflight-build-halt.md](comfy-preflight-build-halt.md)),
+> which measured **zero `width`, `height`, `resolution` or `batch_size` inputs across all 70
+> recorded graphs, and no `EmptyLatentImage` anywhere** — every one is img2img, frame inherited
+> from the uploaded image. It offered three readings and correctly declined to choose among
+> them. All three are partly right and none is the answer alone.
+>
+> **A is adopted as a rejection.** A check that finds no operand and returns PASS is *a check
+> that cannot fail* — this repo's founding example is a silhouette IoU returning 1.00000 on a
+> mesh with a hole through it. The naive form is **not adoptable**.
+>
+> **B is adopted.** `NOT_APPLICABLE` is a distinct third verdict beside PASS and HALT, and it
+> **names what it could not see** — *frame-not-in-graph, inherited from `<input>`*. A refusal
+> that states its own blind spot is this repo's standard shape.
+>
+> **C is adopted.** The check keeps full force wherever a dimension **is** declared. This corpus
+> has none; other studio lanes generate txt2img graphs that do.
+>
+> ### ⚑ And the fourth thing, which decides the shape and which none of the three readings names
+>
+> **The defect check 5 exists for happened UPSTREAM OF THE GRAPH.** [E04 Ruling
+> 15](../experiments/E04-ruling.md) records *"the 1066 was derived correctly from the mesh"* —
+> `project_twins.py:263-266` computes `h_ext`/`v_ext` from the mesh bbox, and the twin was
+> **rendered at that width and uploaded**. The graph never declared 1066; it received an image
+> that was already 1066 wide. **So check 5 as this spec words it could not have caught the
+> incident that motivates it** — the same family as gating on a proxy, asking about graph
+> literals when the property is *the frame the run will actually produce*.
+>
+> **RULED: check 5's operand is the EFFECTIVE frame, not the declared one.**
+>
+> | case | operand | verdict |
+> |---|---|---|
+> | graph declares dimensions | the literals | PASS / HALT (C) |
+> | img2img, caller has the input | **the input image's dimensions** | PASS / HALT — a real operand on **70 of 70**, and it would have caught 1066 |
+> | neither available | — | `NOT_APPLICABLE`, naming what it could not see (B) |
+>
+> **The cost, named rather than discovered later:** the signature takes graph + register +
+> *optionally* the input's dimensions. That is a parameter, not an architecture, and it fits the
+> adoption contract already written below — **the production gate runs in-process on the submit
+> path, where the image is in hand by construction**, and the standalone CLI degrades to
+> `NOT_APPLICABLE`. That is the development/production split this spec already draws, arriving
+> at check 5 on its own.
+>
+> ⚠ **Still not populated from memory:** the per-family constraint table. Qwen's ÷8 is measured
+> here. **Ship Qwen alone and leave every other family declared-absent** — open question 2 is
+> unchanged, and an unmeasured entry in that table is worse than a missing one.
+
 ## The home
 
 **Standalone, and transport-independent.** Not a feature inside any one submission path.

@@ -17,8 +17,8 @@
     "py_files_total": 108
   },
   "provenance": {
-    "corpus_files": 275,
-    "corpus_files_before_self_exclusion": 285,
+    "corpus_files": 276,
+    "corpus_files_before_self_exclusion": 286,
     "probe_interpreter": "E:\\AI-Models\\trellis2-env\\Scripts\\python.exe",
     "probe_interpreter_version": "3.13.13",
     "probe_skipped": false,
@@ -57,12 +57,13 @@
       ],
       "b1_literals": [],
       "b2_literals": [],
-      "cited_count": 5,
-      "cited_count_raw": 10,
+      "cited_count": 6,
+      "cited_count_raw": 11,
       "cited_in": [
         "docs/experiments/E30-polish-anchor-gates-kickoff.md",
         "docs/experiments/E30-polish-anchor-gates-report.md",
         "docs/experiments/E30-predictions.md",
+        "docs/experiments/E31-predictions.md",
         "docs/experiments/E31-publish-the-pipeline-kickoff.md",
         "docs/experiments/README.md"
       ],
@@ -3404,8 +3405,8 @@
       ],
       "b1_literals": [],
       "b2_literals": [],
-      "cited_count": 21,
-      "cited_count_raw": 25,
+      "cited_count": 22,
+      "cited_count_raw": 26,
       "cited_in": [
         "docs/experiments/E01-facial-structure-ceiling.md",
         "docs/experiments/E04-armT-halt2.md",
@@ -3425,6 +3426,7 @@
         "docs/experiments/E27-measurement-mcp-report.md",
         "docs/experiments/E27-predictions.md",
         "docs/experiments/E29-clay-reconstruction-report.md",
+        "docs/experiments/E31-predictions.md",
         "docs/experiments/E31-publish-the-pipeline-kickoff.md",
         "docs/specs/measurement-mcp-spec.md",
         "docs/tools.md"
