@@ -272,9 +272,121 @@ document flagged is dissolved rather than answered.
 
 ---
 
+---
+
+# Task 2 — ruled 2026-08-09. THE ARC IS ACCEPTED AND THE SERVER SERVES 8 OF 8.
+
+Report: [E28-task2-report.md](E28-task2-report.md). Every claim below was re-measured here.
+
+## Ruling 11 — TASK 2 IS ACCEPTED
+
+| claim | my check | result |
+|---|---|---|
+| gate 4 — scope under `tools/` | `git diff --name-status 1eaa6ee..065fc6c -- tools/` | **exactly four**: `M e14_topology.py`, `M instrument_census.py`, `M measure_mcp.py`, `A verify/anchor_compare.py` — precisely Amendments 1+2's allowed set |
+| gate 5 — CI, resolved not cited | pushed, then `gh run view` | **[`31328637095`](https://github.com/mcp-tool-shop-org/facet/actions/runs/31328637095)** green, `hermetic=success`; **`git merge-base --is-ancestor 065fc6c 520de0e` = YES**, so the green tree contains the whole arc ([E25](E25-ruling.md)'s rule: the first *completed* run whose tree contains the commit) |
+| suite | full run, this seat | **790 passed, 436.49 s, exit 0** |
+| `NOT_WRAPPED` has no live site | read both occurrences | **confirmed** — one is a docstring sentence, one is the error-code registry entry. Neither is a `raise`. The code stays declared; nothing reaches it |
+| version | `MEASURE_VERSION` | **0.3.0**, moved across the two surface changes |
+
+The executor left gate 5 `NOT YET RUN` with no identifier, correctly, and the push was mine.
+**Its own CI note is owned below in Ruling 16 — the red run on the tree was mine, not its.**
+
+## Ruling 12 — 2a's PROOF IS DISCHARGED, AND IT CORRECTS E27 RULING 3 IN PASSING
+
+The obligation was to prove the tie repair non-perturbing rather than cite it, and the
+discharge is better than the specification asked for: a **10,000-triple distinct-extent
+sweep plus 6,000 two-way ties, 0 mismatches**, tool conformance on five synthetic GLBs, and
+**byte-identical stdout *and* JSON across 17 of 17 recorded subjects** over both trees.
+
+**And the derivation sharpened the class**, which is a correction to my own earlier ruling:
+[E27 Ruling 3](E27-ruling.md) framed the crash as tied extents generally. Measured, it is
+**all-equal extents only** — two-way ties never crashed — which *rules out* the argsort form
+an unexamined repair would most likely have reached for. The guard is dead on every input
+the old code returned on. E27's conclusion held; its stated class was imprecise, and the
+executor's measurement is what makes that visible.
+
+The proof harness's own false `DIFFERS` — produced by its `--out` argument appearing in the
+compared stdout — is [E15](E15-ruling.md)'s PNG-hash law meeting a text stream. Found,
+fixed, recorded rather than smoothed.
+
+## Ruling 13 — THE 2c PREDICTIONS DISCLOSURE IS RATIFIED, AND IT IS THE HARDER CALL
+
+`anchor_compare.py` was drafted and validated **in scratch** while the 2a+2b suite ran,
+before the addendum could be committed (corpus writes are barred mid-suite). The executor
+therefore **declared P12–P14 dead as forecasts inside the addendum and scored them SEEN,
+not HIT**, keeping P15/P16 blind.
+
+**Ratified without reservation.** The alternative — recording already-validated results as
+blind predictions — is precisely the calibration theater this record forbids, and it would
+have been invisible to me. A seat that scores three of its own rows unhittable, in the
+document that would otherwise have credited them, is doing the thing the whole apparatus
+exists for. P15 band-hit at 9 against 12; P16 held, and its reason is structural: a
+new instrument has no recorded-number anchor at birth.
+
+## Ruling 14 — THE OWED FIXTURE LANDED, AND THE FALSE-HALT CLASS NOW SEPARATES IN ONE PAYLOAD
+
+The pixel-identical, byte-different PNG pair is in the harness, **self-validating** (7,406
+against 7,028 bytes, pixels equal), and the served payload reports
+`byte_identical: false, pixel_identical: true`. The class that produced **two live false
+halts** in this repo's history is now a test rather than a lesson. Beside it, the
+two-thresholds law is exercised on equal-total blob-versus-scatter: **LCC 400 against 4.**
+
+**Unplanned corroboration from this seat, worth recording**: while task 2 was in flight the
+advisor hand-ran exactly this comparison twice on the Director's clay renders — and both
+times it decided the question. Once it separated a *pixel-identical, byte-different* pair
+that a hash check would have called "changed" (and which proved two reported experiments
+had never executed); once it confirmed a genuinely new render at 99.9881% differing pixels.
+**The tool's shape was validated against live work before the tool shipped.**
+
+## Ruling 15 — THE FIFTH FRONT-DOOR DRIFT, AND WHAT IT SAYS ABOUT THE PIN LIST
+
+`getting-started` read *"Twenty of them"* against a record of 28, in a phrasing T34's sweep
+**structurally cannot see**. Rephrased into the pinned form and added to `EXPERIMENT_PINS`.
+
+Fifth instance of this class in three days, and the pattern is now legible: **T34's fourth
+leg catches drift at pinned sites and is blind to unpinned phrasings**, so each new way of
+writing the count needs a pin before it can be watched. That is a real limit, not a defect —
+[E26 Ruling 3](E26-ruling.md) ruled against widening the matcher with a census showing a
+proximity matcher returns a third false positives. The remedy stays the writing convention
+plus the pin, and the pin list grows by one each time a new phrasing appears.
+
+## Ruling 16 — THE FOUR CROSSINGS, AND ONE OF THEM WAS MINE
+
+Two seats shared this working copy through the whole arc and crossed four times. Three were
+handled by the executor and named in the commits that carried them. **The fourth was my
+error and I own it here**: commit `a3e85db` (the concept-prep fold) **swept the executor's
+then-uncommitted `README.md` and `docs/advisor-kickoff.md` count bumps into my commit.** I
+used file-scoped adds throughout — and file-scoped adds are not sufficient when the *file*
+contains another seat's work. The executor named it in `e67fb93` rather than leaving it to
+be found.
+
+**And that same commit's CI run went RED** ([`31326775888`](https://github.com/mcp-tool-shop-org/facet/actions/runs/31326775888)) —
+for the executor's in-flight count drift, not for anything in my change. Reported as a red
+run rather than omitted, per [E25](E25-ruling.md): a red run for another arc's reason is
+*blocked*, not failed, and the qualifying green is `31328637095` above.
+
+**The standing rule this earns**: *file-scoped `git add` bounds which files you commit, not
+whose work is in them.* Before staging a shared file, diff it and name what else rides.
+
+## Ruling 17 — WHAT 8-OF-8 DOES AND DOES NOT UNLOCK
+
+The measurement server is **complete and test-verified**: eight job-shaped tools, the
+identity envelope on every payload, no instrument re-implemented, `NOT_WRAPPED` dead.
+
+**It does not open the polish arc.** [E14 Ruling 35](E14-ruling.md) gates that on the
+**four MCP products**, and two are done — the record index (E18, shipped on two registries)
+and this one. `comfy-preflight` is a new org repo and **repo creation is the Director's
+act**; `fixture-lint` is sdlab-side and read-only from facet seats. Stating this because
+"8 of 8" reads like a finish line and is not the one E14 Ruling 35 named.
+
+**Task 3** (`texel_provenance`'s largest connected component, in the instrument) is the
+named carry, exactly as Amendment 2 allowed. It is the arc's only open item.
+
+---
+
 ## What is NOT ruled here
 
-- **The arc's close** — this document extends when task 2 reports.
+- **Task 3** — the named carry, unspent by design.
 - **The erode/margin half of `offsurface_rate`** — open commission, unscoped, unchanged.
 - **Whether `facet-measure` ships** — E27 Ruling 8's default holds: not before the polish
   arc has exercised it.

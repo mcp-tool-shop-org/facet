@@ -200,12 +200,42 @@ so it is a *different render*, not a softened one. Measured, its median chroma i
 horns, which is the region [E01](experiments/E01-facial-structure-ceiling.md) says decides
 what the reconstruction can hold.
 
-**No winner is declared here, and that is deliberate**: which clay is *right* is an artifact
-judgment at the Director's zoom, and no metric in this document approximates it. What the
-numbers support is an operating split rather than a choice — **the 4-step floor (~12 s) for
-Gate 0 exploration, where a subject's candidate clays are generated several at a time, and
-the 40-step ceiling (~2 min) for the clay that is kept.** One boolean switches between
-them coherently.
+### ⚖ RULED: the 4-step floor is the configuration. `Enable 4steps LoRA?` = **true**.
+
+**The Director, 2026-08-09**, on seeing the pair: *"node 168 … seems to have the most
+contrast, which is needed. That's the winner."* Ruled, and the advisor did not object —
+**the contrast claim was then measured and holds on every axis**:
+
+| | figure tonal range (L p5–p95) | figure L sd | figure/bg separation | **interior shading gradient** mean / p90 |
+|---|---:|---:|---:|---:|
+| cloud Nano Banana 2 | 62.9 | 19.18 | 37.4 | 11.22 / 24.51 |
+| ceiling — 40 steps | 61.4 | 19.79 | 26.6 | 9.79 / 23.43 |
+| **floor — 4 steps** | **77.0** | **24.05** | **34.7** | **16.56 / 41.15** |
+
+**+25% tonal range, +30% figure/background separation, and +69% interior shading gradient**
+(+76% at p90) against the 40-step run — and it beats the cloud tool on interior gradient
+while nearly matching its silhouette separation.
+
+**This is not a taste axis for this hop, and that is why the eye was right.** Image-to-3D
+infers depth from shading gradients; [E01](experiments/E01-facial-structure-ceiling.md)'s
+founding failure was a flat grey-on-grey clay yielding 0.84% Canny edge pixels, so the
+ControlNet constrained nothing. More interior gradient is more depth signal. **The eye
+selected the property the reconstructor keys off — the property the advisor had not
+measured until asked to object.**
+
+⚠ **The cost inside the ruling, recorded because it is not free: at CFG 1 the negative
+prompt is inert.** Node 168 true selects CFG 1 through switch 164, and classifier-free
+guidance at 1.0 reduces to the conditional branch alone — the negative cancels, and ComfyUI
+generally skips the uncond pass outright. So **the plinth and anti-ornament guards are not
+armed in the shipped configuration.** The floor render came back clean regardless, which is
+evidence about base behaviour rather than about the guard. A plinth is the one artifact a
+reconstructor would faithfully rebuild as anatomy, so this is the thing to watch, and the
+lever if it ever appears is node 155 — raise the 4-step branch's CFG to ~1.5–2 and the
+negatives arm, at the risk Lightning distillations carry above their trained CFG. Untested,
+one run, same seed.
+
+**Ceiling and floor both stay in the record.** The ceiling (`14ffd0bd`, 40 steps, CFG 4) is
+the armed-negatives configuration and remains available for a clay that needs it.
 
 **The law**: *a widget is not an input* — the same family as *file bytes are not pixel
 values*, and diagnosable only by reading the link topology, never the widget values. The
