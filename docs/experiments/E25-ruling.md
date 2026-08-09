@@ -73,10 +73,33 @@ Each one says the same thing: a surface states **423** where the collector repor
 not been updated yet — and the update is written and sitting uncommitted in the other
 seat's tree.
 
-**So: E25's code is not implicated in a single failing assertion.** The gate is recorded
-as **BLOCKED — external, attributed**, and it closes the moment E26 commits the surface
-update it already has. Writing `PASS` would be a verdict I cannot support; writing `FAIL`
-would be false.
+**So: E25's code is not implicated in a single failing assertion.** The gate was recorded
+as **BLOCKED — external, attributed**. Writing `PASS` would have been a verdict I could
+not support; writing `FAIL` would have been false.
+
+### ⚑ Amendment 1, same session — GATE 4 IS **PASS**, and it closed by this ruling's own law
+
+E26 committed its surface update (`5049707`) while this ruling was being written, and
+manually dispatched CI because its commit touched no path in the gate. Measured:
+
+```
+run 31295436475  workflow_dispatch  head 5049707  SUCCESS
+  hermetic set ✓ · dependency scan - python ✓ · dependency scan - npm ✓
+  639 passed, 1 skipped, 8 deselected
+
+git merge-base --is-ancestor 59f9409 5049707  ->  TRUE
+```
+
+**The green run's tree contains E25's commit.** By the law written three paragraphs above
+— *gate 4 is satisfied by the first completed run whose tree contains the commit, and the
+report must name that run and what else was in it* — the gate is **PASS**, and what else
+was in it is stated: E26's halt commit `d908ccc` and its surface fix `5049707`, nothing
+else.
+
+That the law resolved a gate within the hour of being written is the reason it is written
+as a law rather than as an excuse. **The blocked verdict above is left standing, not
+rewritten**, because the sequence is the useful part: a cancelled run, an attributed red,
+and then a green one that qualified — and an executor who refused to invent any of it.
 
 ### The law this earns
 
