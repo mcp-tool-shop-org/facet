@@ -42,6 +42,31 @@ assumes you have a style you want carried faithfully rather than invented.
 
 ## The route, and why each stage exists
 
+### 0 — Where the clay comes from · CANDIDATE, not yet a stage
+
+**Stage 1 assumes a clay image exists. Until 2026-08-09 nothing here made one** — every
+clay entered by hand, staged and byte-counted on arrival. A concept→clay tool now exists
+and has been walked once, and it is written here as **stage 0 in dashed lines**: read the
+route as beginning at stage 1 until [E29](../concept-prep.md) measures whether the mesh
+comes back better, which is the only question that promotes it.
+
+What the first pair showed, on a minotaur concept: pose, both wrist wraps, the belt's
+medallion **with its floral emboss in relief**, the torn hem, and human feet where hooves
+were the lazy default — all carried. The shaggy mane mass did **not**, and the upper
+silhouette slimmed with it. Fur elements smoothed to clean bands, which is the clay
+register doing its job rather than a loss — fur-as-geometry is exactly the noise stage 1
+wants stripped, and those elements return through the prompt at stage 5, *provided the
+fixture names them*. Measured: no colour leak (whole-frame C\* p99.9 **13.15**, so hue is
+never quoted), a seamless achromatic background at C\* p95 **1.25**, and no sculpting
+plinth for the reconstructor to rebuild as anatomy.
+
+⚠ **It runs on a closed cloud API, so two things do not transfer from the rest of this
+page:** its model alias is server-versioned and **replay is not promised** (an accepted
+clay is therefore frozen and hashed, provenance recorded as incomplete — the canon-twin
+precedent), and **the licence claim at the bottom of this page does not reach it**. The
+full designation, with the path to a local Apache-2.0 variant, is
+[concept prep](../concept-prep.md).
+
 ### 1 — Form first, style second
 
 Feed the reconstructor a **clay** image: sculpt-like, planes deliberately exaggerated, no
@@ -305,3 +330,10 @@ Deliberately excluded with the reason: **nvdiffrast** (non-commercial — enforc
 structural tripwire, not by attestation), **Hunyuan3D-Paint** (licence void in the EU, UK
 and South Korea), **MVPaint** and **TEXGen** (no licence), **UltraSharp / SUPIR /
 StableSR** (non-commercial upscalers).
+
+**This paragraph describes stages 1–6.** The candidate clay hop at stage 0 runs on a closed
+cloud API whose terms are **unverified**, so no licence claim here covers an asset made
+from one of its clays. The path that closes the item is a local **Qwen-Image-Edit
+(Apache-2.0)** variant; **FLUX.1-Kontext [dev] is excluded on the same grounds as
+nvdiffrast**, being non-commercial weights. Both checked against the studio's model
+catalogue rather than recalled — [concept prep](../concept-prep.md).

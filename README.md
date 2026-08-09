@@ -90,6 +90,9 @@ control; named attributes ride the prompt.
 ## The route
 
 ```
+  styled 2D concept ╌╌► clay prep ╌╌╮   ← CANDIDATE hop, walked once. Not a route
+                                    ╎     stage. Everything below it is the route.
+                                    ▼
 form-exaggerated clay concept ──► image-to-3D ──► weld ──► density allocation
                                                              │
                     cull what no camera can see ◄────────────┘
@@ -99,6 +102,15 @@ form-exaggerated clay concept ──► image-to-3D ──► weld ──► den
 ```
 
 Stage by stage, with the reasoning for each: **[the handbook](docs/handbook/index.md)**.
+
+**The dashed hop is new and is deliberately not solid.** The route's first box has always
+read *clay concept*, and until now nothing here made one — every clay arrived by hand and
+was hashed on the way in. A concept→clay tool now exists and its first pair has been walked
+at full size: pose, wrist wraps, belt medallion and torn hem all carried; the mane mass did
+not; colour leak measured at whole-frame **C\* p99.9 = 13.15** with a seamless achromatic
+background. **What that pair cannot show is whether the mesh comes back better**, which is
+the only question that promotes it, so it stays a candidate with its evidence recorded:
+**[concept prep](docs/concept-prep.md)**.
 
 ## What makes it work
 
@@ -157,8 +169,8 @@ next session read as established fact. Nothing in that loop was checkable.
   is not an archive — anyone can run those tools and watch them fail the same way.
 - **A negative result is a full success**, reported and closed rather than tuned toward a
   number.
-- **Tests ride the commit that touches the code** — 736 passing at two seats' hands, with
-  paths-gated CI on the 727 hermetic ones.
+- **Tests ride the commit that touches the code** — 782 passing at two seats' hands, with
+  paths-gated CI on the 753 hermetic ones.
 - **The record is queryable.** A SQLite + FTS5 index over the whole trail, verified on
   four legs. It found a ruling count the prose had wrong at three sites, by counting the
   record itself.
@@ -168,6 +180,7 @@ next session read as established fact. Nothing in that loop was checkable.
 | | |
 |---|---|
 | **[The handbook](docs/handbook/index.md)** | the guide — the route stage by stage, the subjects, the profile system |
+| **[Concept prep](docs/concept-prep.md)** | the candidate clay hop: its Gate 0 walk, its placement, and the licence item it opens |
 | **[The record](docs/experiments/)** | twenty-eight experiments: spec, report, ruling, and every prediction stated before the measurement |
 | **[What the route learned](docs/findings.md)** | the durable findings and the hard-won rules, in full |
 | **[Status of every tool](docs/tools.md)** | what works, what is superseded, and the evidence for each |
@@ -185,6 +198,16 @@ Deliberately excluded, with the reason: **nvdiffrast** (non-commercial — enfor
 by a structural tripwire, not by attestation), **Hunyuan3D-Paint** (licence void in the
 EU, UK and South Korea), **MVPaint** and **TEXGen** (no licence at all), and
 **UltraSharp / SUPIR / StableSR** (non-commercial upscalers).
+
+**The claim's boundary, stated rather than left to be discovered.** It describes the
+**recorded route** — the stages in the diagram above, from image-to-3D onward. The
+candidate clay-prep hop upstream of it currently runs on a closed cloud API whose terms
+this repo **has not verified**, so no licence claim here covers an asset made from one of
+its clays. That is an open item with a named path to closing it: the licence-correct local
+model is **Qwen-Image-Edit (Apache-2.0)**, and **FLUX.1-Kontext [dev] is excluded on the
+same grounds as nvdiffrast** — non-commercial weights. Both checked against the studio's
+model catalogue rather than recalled; the reasoning is in
+[concept prep](docs/concept-prep.md).
 
 ## Trust and threat model
 
@@ -259,8 +282,8 @@ Developed against an RTX 5090; VRAM headroom matters more than raw speed.
 CI runs the hermetic subset of the suite on **ubuntu-latest / Python 3.12** with
 pinned installs (`.github/workflows/ci.yml`); the artifacts tier needs the recorded
 trees under `E:\AI\training`, which are not in git, so CI deselects them by design.
-Locally, `python -m pytest` runs all **736** tests and `python -m pytest -m "not artifacts"`
-runs the **727** CI reproduces.
+Locally, `python -m pytest` runs all **782** tests and `python -m pytest -m "not artifacts"`
+runs the **753** CI reproduces.
 
 ---
 
