@@ -13,8 +13,8 @@
 | `.py` files in `tools/verify` | **9** |
 | — files of any other extension there | 0 |
 | **total members** | **108** |
-| corpus files read for axis D | 267 |
-| test files read for axis E | 49 |
+| corpus files read for axis D | 268 |
+| test files read for axis E | 57 |
 | probe interpreter | `E:\AI-Models\trellis2-env\Scripts\python.exe` (3.13.13) |
 
 ## Totals
@@ -62,7 +62,7 @@
 
 | # | file | home | A | flags | B1 | D | E | F | G *(proposal)* | the question (docstring line 1) |
 |---:|---|---|:-:|---:|:-:|---:|:-:|:-:|---|---|
-| 1 | `anchor_compare.py` | verify | yes | 4 | no | 3 | yes | yes | anchor_check | Is this re-production the recorded output - and if not, what is the difference's shape? |
+| 1 | `anchor_compare.py` | verify | yes | 4 | no | 4 | yes | yes | anchor_check | Is this re-production the recorded output - and if not, what is the difference's shape? |
 | 2 | `blade_band.py` | diagnostics | no | 2 | no | 1 | no | n/a | ambiguous | How much surface does the twin's KEY exclude, and does stage 1 paint any of it? |
 | 3 | `brush_reach.py` | diagnostics | no | 7 | no | 4 | yes | n/a | reach_ceiling | Bound the brush arm before spending it — how many holes can the eight stroke cameras se… |
 | 4 | `build_masks.py` | diagnostics | no | 10 | **yes** | 0 | no | n/a | none | Build the per-view denoise masks: flat (control) and foreshortening-GRADED (test). |
@@ -167,7 +167,7 @@
 | 103 | `montage.py` | verify | no | 7 | no | 0 | no | n/a | ambiguous | Contact sheet + per-view figure brightness readout. |
 | 104 | `prep_front.py` | diagnostics | no | 0 | **yes** | 0 | no | n/a | none | Prepare the front render for the paint pass. |
 | 105 | `silhouette_agree.py` | diagnostics | no | 8 | no | 3 | yes | n/a | ambiguous | Is project_twins' LIVE raycast silhouette the same object as the shipped sidecar mask? |
-| 106 | `texel_provenance.py` | diagnostics | no | 17 | no | 12 | yes | n/a | texel_provenance | Where did this pixel's colour actually come from? |
+| 106 | `texel_provenance.py` | diagnostics | no | 17 | no | 13 | yes | n/a | texel_provenance | Where did this pixel's colour actually come from? |
 | 107 | `texpass_metrics.py` | diagnostics | no | 7 | no | 2 | no | n/a | no opinion | E05 — one metric table, computed identically for every arm. |
 | 108 | `turn_render.py` | verify | no | 14 | no | 17 | no | n/a | none | Matched-framing turnaround render of a GLB. |
 

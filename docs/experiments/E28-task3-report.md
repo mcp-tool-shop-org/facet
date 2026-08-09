@@ -24,8 +24,34 @@ insert-only on stdout and byte-identical on both file outputs.
 
 **Suite: 797 passed / 493.88 s / exit 0**, measured on a `git archive HEAD` of exactly the
 tree being committed with this seat's four files copied in — **not** in the shared working
-copy, where a live sibling seat's eight untracked test files are collected and would inflate
-every count this commit pins (F19). 790 → 797 is T47's seven cases.
+copy, where a live sibling seat's then-untracked test files are collected. 790 → 797 is
+T47's seven cases.
+
+> ### ⚠ CORRECTION, appended after the commit — **797 was already stale when I committed it**
+>
+> Between building that archive and running `git commit`, the E30 seat committed
+> **`f556d44`, eight test files (T50–T57), with no count bump**. So the collector at my own
+> commit reports **808 / 768 / 40**, not 797 / 768 / 29, and the fifteen surfaces this commit
+> bumped to 797 were stale on arrival. **768 hermetic is unaffected and correct** — every one
+> of their cases is artifacts-tier, so the gap moved 29 → 40 instead.
+>
+> **This is exactly the hazard the dispatch names and I walked into it anyway.** *"That guard
+> watches the REMOTE and cannot see a sibling's local commit — re-measure any quantity you
+> assert against the tree you are about to commit."* I did re-measure, against an archive —
+> and then treated the archive as current for the forty minutes it took to finish. An archive
+> is a *snapshot*, and a snapshot of a shared tree is stale the moment a co-tenant commits.
+> The remedy is not a better archive; it is **re-collecting at `git add` time**, which costs
+> two seconds.
+>
+> **I am not fixing it here, deliberately.** The E30 seat has the 797 → 808 bump *uncommitted
+> in the working copy right now*, across the same README ×8 / `SHIP_GATE` / `advisor-kickoff`
+> / `getting-started` / `site-config` set — and `reference.md` correctly left alone, because
+> its number is the unchanged hermetic one. Editing those files under them is how E26's drift
+> happened and is the failure [E28 Ruling 16](E28-ruling.md) wrote a standing rule about.
+> **The 797 in this commit's fifteen surfaces is wrong and their in-flight edit is right.**
+>
+> The suite figure the run itself produced stands as measured: 797 of 797 passed on my tree,
+> 0 failed. What is corrected is the claim that 797 describes the repository.
 
 ⚠ **One methodological catch, recorded because it would waste the next seat's hour.** The
 archive is not a git repository, so `T06`'s two legs fail there with
@@ -243,6 +269,23 @@ optional. `docs/experiments/README.md` was not touched — it is the advisor's t
 clearance*): emitted twice into the same tree with the report present in the corpus, the two
 JSON files are **byte-identical**. `anchored` (the axis-E boolean) moved on **0** rows, and
 the population pin is untouched at 99 + 9.
+
+### ⚠ And then it drifted again, from the other seat, within the hour
+
+`test_t41_axis_d_is_idempotent_across_runs` **FIRED** at HEAD immediately after the commit
+above: `anchor_compare.py` and `texel_provenance.py` no longer reproduced, because
+`docs/experiments/E30-polish-anchor-gates-report.md` had landed and cites both. Re-emitted
+from a fresh `git archive HEAD` — `cited_count` 3 → 4 and 12 → 13, `cited_in` gaining that
+one document, `anchored_in` gaining the sibling's now-**committed** T51/T53/T54/T55/T56, and
+`test_files` 49 → **57**.
+
+**Ruling 3's entry rule says the census re-runs in the commit that changes the population, and
+this is the first instance of a seat changing it without re-running.** Not a criticism of that
+seat — nothing tells you that adding a *report* moves an instrument census. It is a property
+of the artifact: **the census is a shared derived file that either live seat can invalidate by
+writing an ordinary document**, and the gate that catches it is red for both of them until
+someone re-emits. This seat re-emitted because the arc's entry rule points here and because a
+red gate is not left standing; whether the rule needs an owner clause is the advisor's.
 
 ---
 

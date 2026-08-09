@@ -17,8 +17,8 @@
     "py_files_total": 108
   },
   "provenance": {
-    "corpus_files": 267,
-    "corpus_files_before_self_exclusion": 277,
+    "corpus_files": 268,
+    "corpus_files_before_self_exclusion": 278,
     "probe_interpreter": "E:\\AI-Models\\trellis2-env\\Scripts\\python.exe",
     "probe_interpreter_version": "3.13.13",
     "probe_skipped": false,
@@ -35,7 +35,7 @@
       "docs/experiments/E28-task3-report.md",
       "docs/instrument-census.md"
     ],
-    "test_files": 49
+    "test_files": 57
   },
   "rows": [
     {
@@ -48,7 +48,8 @@
       "anchored_in": [
         "tests/test_t40_measure_not_wrapped.py",
         "tests/test_t41_instrument_census.py",
-        "tests/test_t46_measure_anchor_check.py"
+        "tests/test_t46_measure_anchor_check.py",
+        "tests/test_t51_galleon_finalize_replay.py"
       ],
       "anchored_in_basename_only": [
         "tests/test_t41_instrument_census.py",
@@ -56,10 +57,11 @@
       ],
       "b1_literals": [],
       "b2_literals": [],
-      "cited_count": 3,
-      "cited_count_raw": 8,
+      "cited_count": 4,
+      "cited_count_raw": 9,
       "cited_in": [
         "docs/experiments/E30-polish-anchor-gates-kickoff.md",
+        "docs/experiments/E30-polish-anchor-gates-report.md",
         "docs/experiments/E30-predictions.md",
         "docs/experiments/README.md"
       ],
@@ -1060,17 +1062,23 @@
         "tests/fixtures/make_measure_fixture.py",
         "tests/test_t08_ceiling.py",
         "tests/test_t33_diagnostics_gates.py",
-        "tests/test_t37_measure_reach_ceiling.py"
+        "tests/test_t37_measure_reach_ceiling.py",
+        "tests/test_t53_w3_ceiling_replay.py",
+        "tests/test_t54_galleon_ceiling_replay.py",
+        "tests/test_t55_dragon_ceiling_replay.py"
       ],
       "anchored_in_basename_only": [
         "tests/test_t08_ceiling.py",
         "tests/test_t33_diagnostics_gates.py",
-        "tests/test_t37_measure_reach_ceiling.py"
+        "tests/test_t37_measure_reach_ceiling.py",
+        "tests/test_t53_w3_ceiling_replay.py",
+        "tests/test_t54_galleon_ceiling_replay.py",
+        "tests/test_t55_dragon_ceiling_replay.py"
       ],
       "b1_literals": [],
       "b2_literals": [],
       "cited_count": 14,
-      "cited_count_raw": 16,
+      "cited_count_raw": 17,
       "cited_in": [
         "docs/experiments/E04-armT-halt2.md",
         "docs/experiments/E04-executor-session-record.md",
@@ -1577,16 +1585,18 @@
       "anchored_in": [
         "tests/conftest.py",
         "tests/test_t09_elevated.py",
-        "tests/test_t33_diagnostics_gates.py"
+        "tests/test_t33_diagnostics_gates.py",
+        "tests/test_t56_dragon_elevated_replay.py"
       ],
       "anchored_in_basename_only": [
         "tests/test_t09_elevated.py",
-        "tests/test_t33_diagnostics_gates.py"
+        "tests/test_t33_diagnostics_gates.py",
+        "tests/test_t56_dragon_elevated_replay.py"
       ],
       "b1_literals": [],
       "b2_literals": [],
       "cited_count": 3,
-      "cited_count_raw": 3,
+      "cited_count_raw": 4,
       "cited_in": [
         "docs/experiments/E12-task2b-report.md",
         "docs/experiments/E14-handoff2-report.md",
@@ -3529,8 +3539,8 @@
       "anchored_in_basename_only": [],
       "b1_literals": [],
       "b2_literals": [],
-      "cited_count": 12,
-      "cited_count_raw": 19,
+      "cited_count": 13,
+      "cited_count_raw": 20,
       "cited_in": [
         "docs/advisor-kickoff.md",
         "docs/experiments/E07-gate0.md",
@@ -3543,7 +3553,8 @@
         "docs/experiments/E27-measurement-mcp-report.md",
         "docs/experiments/E27-predictions.md",
         "docs/experiments/E27-ruling.md",
-        "docs/experiments/E30-polish-anchor-gates-kickoff.md"
+        "docs/experiments/E30-polish-anchor-gates-kickoff.md",
+        "docs/experiments/E30-polish-anchor-gates-report.md"
       ],
       "dir": "tools/diagnostics",
       "docstring_line1": "Where did this pixel's colour actually come from?",
