@@ -145,7 +145,7 @@ CERT_SCHEMA = "facet-record-index-certificate/1"
 # publish on a mismatch, because bin/facet.js installs an EXACT pinned version
 # from PyPI - a drift here ships a wrapper that fetches a package that does not
 # exist.
-SERVER_VERSION = "0.3.0"
+SERVER_VERSION = "0.3.1"
 
 # The env var exists so tests and scratch runs bind a copy instead of the
 # tracked artifact. It selects WHICH derived DB, never which corpus.

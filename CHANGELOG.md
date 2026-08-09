@@ -15,6 +15,71 @@ it, so a reader can check the claim rather than trust it.
 
 Nothing yet.
 
+## [0.3.1] — 2026-08-09
+
+**The install that could not find the record.** Every released version through v0.3.0
+shipped a wheel whose `facet-index` and `facet-mcp` could not locate the corpus they
+exist to serve. The patch is that fix, plus the arc that closed the deletable-gate
+class and the arc that put the front door's own counts under a test.
+
+### Fixed
+
+- **`pip install facet-mcp` resolves the record's root by TESTING FOR IT**
+  ([E24](docs/experiments/E24-ruling.md)). The wheel installs `facet_index` as a
+  top-level module, so up to and including v0.3.0 the root was resolved against
+  `<venv>/Lib` — which holds neither corpus nor index — and `build`, `claims`, and `q`
+  without `--db` all failed. The root is now found by testing candidates for the
+  record's own markers; from inside a checkout both commands find it, and from anywhere
+  else they exit **`4` REFUSED**, naming both directories tried and both markers looked
+  for. Measured on a wheel built from `main` into a clean venv.
+
+  **How four green releases shipped it:** every check exercised `--help`, which needs no
+  record. `release.yml`'s wheel step said *verify the wheel runs from a clean venv* and
+  ran the one surface that could not fail. It now runs a **verb**.
+
+- **`$FACET_INDEX_DB` is read by both commands**, and it selects which *index* — never
+  which *corpus*.
+
+- **CI was skipping the artifacts tier rather than running it** ([E24 Ruling 3](docs/experiments/E24-ruling.md)) —
+  the defect's own shape, in the tier that would have caught it.
+
+### Changed
+
+- **The deletable-gate class closes.** [E25](docs/experiments/E25-ruling.md) converted
+  the last **133** ANDON sites across **43** files — the measurement instruments — from
+  `assert` to `raise`, after [E22](docs/experiments/E22-gates-report.md)'s 88 and
+  [E23](docs/experiments/E23-route-gates-report.md)'s 57 in v0.3.0. **278 converted in
+  total.** Exactly **one** bare ANDON `assert` remains anywhere under `tools/`:
+  `superseded/texpass_thin_mask.py`, which is permanently out of scope because those
+  tools are kept so anyone can run them and watch them fail the same way.
+
+  These 133 are **not** in the published wheel — it ships `facet_index` and
+  `record_mcp` only — so this is an internal change, and the patch bump is not
+  concealing a published behaviour change.
+
+- **28 ANDONs that already `raise SystemExit`** across 12 files are unchanged and
+  pinned. `SystemExit` is not deletable by `-O`, so none of them carried the defect,
+  and normalising a type nobody ruled is not a pure move.
+
+### Added
+
+- **The front door's counts are under a test** ([E26](docs/experiments/E26-ruling.md)).
+  `T34` collects both tiers live and fails CI on any watched surface stating a stale
+  one. It caught a real drift on its first run that no coordination rule had seen. The
+  matcher is **phrase-shaped, not proximity-shaped** — a ±90-character window returned
+  45 hits of which six were not test counts at all — and the translations are covered by
+  a digits leg instead, a declared boundary rather than an oversight.
+
+- **`T28`, `T31`, `T33`, `T34`.** The remaining-gate count and the surviving
+  `superseded/` site are pinned **by name**, so a future sweep cannot tidy either away
+  without editing the test on purpose.
+
+  *No suite total is quoted here on purpose.* It is a live-moving number, and a released
+  CHANGELOG entry is one of the two regions `T34` deliberately does not sweep — so a
+  total written here would be the one kind of count nothing can catch when it goes stale.
+  `pytest --collect-only` at the tag is the answer, and it is step 1 of the release
+  sequence for exactly this reason.
+
 ## [0.3.0] — 2026-08-08
 
 **The gates stop being deletable.** Two arcs, one theme: `assert` is a statement the

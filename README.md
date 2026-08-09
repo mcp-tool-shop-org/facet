@@ -44,13 +44,13 @@ Two commands come with it — `facet-mcp`, the stdio MCP server (six tools, with
 four-leg verify as a refusing health surface), and `facet-index` (`build` / `verify` /
 `q` / `claims`). Run it from inside a checkout; `--db` names a different index.
 
-⚠ **`pip install facet-mcp` is broken in every released version through v0.3.0, and
-fixed on `main`.** The wheel installs `facet_index` as a top-level module, so up to and
+⚠ **`pip install facet-mcp` was broken in every released version through v0.3.0, and is
+fixed in v0.3.1.** The wheel installs `facet_index` as a top-level module, so up to and
 including v0.3.0 it resolved the record's location against `<venv>/Lib` — which holds
 neither corpus nor index — and `build`, `claims`, and `q` without `--db` all failed.
-**Use the `npx` binary above** until 0.3.1 ships.
+**On v0.3.0 or earlier, use the `npx` binary above.**
 
-On `main` the root is resolved by **testing for the record** rather than by assuming it:
+From v0.3.1 the root is resolved by **testing for the record** rather than by assuming it:
 run either command from inside a checkout and it finds it; run it from anywhere else and
 it exits **`4` REFUSED**, naming both directories it tried and both markers it looked for.
 `$FACET_INDEX_DB` is now read by both commands, and it selects which *index*, never which
