@@ -147,6 +147,15 @@ separate file **specifically so a shipped instrument whose numbers are cited in 
 ruling would not be edited** — its own docstring says so. Extracting the whole family to
 another repo is that hazard several orders larger.
 
+> ⚠ **Corrected 2026-08-09: "the record already refuses this move" is false, and this is
+> one of the two documents that asserted it.** No ruling in this repo forbids editing an
+> instrument (searched across all 25 ruling documents, at the Director's question). The
+> paragraph above inherited a sentence from an executor's docstring. **§3.2's conclusion is
+> untouched** — it rests on the identity law in the paragraph *above* this one, which is
+> measured and independent. Only this paragraph's supporting argument is void. See
+> [CLAUDE.md](../../CLAUDE.md), *a closed ruling freezes its own text, not the tool that
+> produced its numbers.*
+
 **And an in-repo MCP server imports the tools without moving a file.** The server is a new
 surface over `tools/verify/` and `tools/diagnostics/` as they stand — no port, no version
 boundary, and the Python/`trimesh`/`scipy` grounds from spec 2 now argue *for* staying

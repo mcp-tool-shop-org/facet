@@ -127,6 +127,18 @@ separate file **specifically so a shipped instrument whose numbers are cited in 
 ruling would not be edited** — its own docstring says so, in those words. Extracting the
 whole family is that hazard several orders larger.
 
+> ⚠ **Corrected 2026-08-09, at the Director's question — *"not sure why that closed ruling
+> exists."* It does not exist.** The sentence above is accurate about what an earlier seat
+> *did*, and wrong to call it something "the record refuses." Searched at this seat across
+> all 25 ruling documents: **no ruling in this repo forbids editing an instrument.** The
+> only `not edited` in a ruling is
+> [E10-off Ruling 1](../experiments/E10-offsurface-ruling.md), whose object is the **ruling
+> document** (*"E10-ruling.md is closed and is cited, not edited"*), not the tool. The
+> placement conclusion is unaffected — *a port is a new instrument* is measured and stands
+> on its own — but this paragraph's supporting argument is void. See
+> [CLAUDE.md](../../CLAUDE.md), *a closed ruling freezes its own text, not the tool that
+> produced its numbers.*
+
 **An in-repo server imports the tools without moving a file.** The MCP surface is new; the
 instruments are untouched; no version boundary is crossed. And reachability is not the cost
 it looks like — a session working in another repo *mounts* this server; it does not need
@@ -218,7 +230,7 @@ photo-real without the style adapter, and the sword's activated state. Both are
 before/after comparisons across a register change, which is where a shared instrument
 either holds or is exposed.
 
-## Open questions for the Director
+## Open questions for the Director — ⚖ BOTH CLOSED 2026-08-09
 
 **Narrowed by the placement ruling.** The first draft's opening question — alone, or inside
 an existing 3D repo — is answered by a third option it did not list: **neither, it stays
@@ -231,9 +243,39 @@ What remains:
    files; the eight tools in this spec are a curated surface over the subject-independent
    subset. **I selected them from docstrings and the record, not from an exhaustive audit
    of all 80** — the boundary is a judgment call and it is yours to adjust.
+
+   ⚖ **CLOSED 2026-08-09 — the Director: *"Commission the census first."*** The boundary is
+   not set by curation and is not set blind: **[E28](../experiments/E28-instrument-census-kickoff.md)
+   measures every file in `tools/diagnostics/` first**, and the boundary is ruled against
+   that census. Two corrections this question's own text needs, both measured here: the
+   directory holds **99** `.py` files, not "~80" — *the spec estimated its own denominator*,
+   which is the fourth instance of this repo's oldest defect — and the census is built as a
+   **committed, re-runnable instrument with its file count under a test**, not a hand-read,
+   because a hand-read is what produced "~80" ([E23 Ruling 9](../experiments/E23-ruling.md):
+   a count under a test cannot drift silently).
+
 2. **Whether the arc-specific diagnostics (`e12_*`, `e14_*`) are in scope at all.** My
    recommendation was **no** — per-arc instruments whose numbers sit in closed rulings, and
    generalising them is how a shipped instrument gets edited.
+
+   ⚖ **CLOSED 2026-08-09 — the Director ruled the family IN**, and added: *"Not sure why
+   that closed ruling exists."* **It does not exist**, and the check took one search of all
+   25 ruling documents: no ruling in this repo forbids editing an instrument. The
+   recommendation above rested on a sentence that originates in **one executor's docstring
+   explaining its own choice**, which five documents then cited as though it bound them —
+   this spec twice, the placement memo, the advisor kickoff, and the server's own refusal
+   text. The **inherited-claim law, in the repo built to escape it.**
+
+   What *is* ruled stays ruled, and neither clause blocks the family:
+   **(a)** a correction that rewrites a closed ruling would be revision, not correction —
+   [E10-off Ruling 1](../experiments/E10-offsurface-ruling.md), and its object is the ruling
+   **document**; **(b)** *an instrument does not change under the session using it* —
+   [E12 Ruling 6d/6e](../experiments/E12-ruling.md), which **scheduled** two repairs for
+   after the handoff rather than forbidding them. Both are temporal or textual. Neither is a
+   permanent prohibition on a tool.
+   **(c)** And what the folklore was protecting is real, is different, and is now stated as
+   a checkable thing rather than a taboo: **a cited number must still reproduce from the
+   tool at HEAD.** That is a test, not a prohibition — see CLAUDE.md.
 
    ⚑ **MEASURED BY E27, AND THE PRICE OF "no" IS HIGHER THAN THIS SPEC ASSUMED**
    ([E27 Ruling 2](../experiments/E27-ruling.md)). The build forced this question **three

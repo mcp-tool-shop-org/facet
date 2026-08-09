@@ -148,7 +148,7 @@ earlier arc ran ten sessions that each judged their own output and wrote conclus
 next session read as established fact. Nothing in that loop was checkable.
 
 - **Spec before the work, report after, ruling last** — and the session that designs an
-  experiment never grades its own results. Twenty-six experiments are in
+  experiment never grades its own results. Twenty-eight experiments are in
   [the record](docs/experiments/).
 - **Corrections land in place, beside the measurement that overturned them**, never as
   quiet deletions. Six inherited claims were falsified in the founding session alone, and
@@ -168,7 +168,7 @@ next session read as established fact. Nothing in that loop was checkable.
 | | |
 |---|---|
 | **[The handbook](docs/handbook/index.md)** | the guide — the route stage by stage, the subjects, the profile system |
-| **[The record](docs/experiments/)** | twenty-six experiments: spec, report, ruling, and every prediction stated before the measurement |
+| **[The record](docs/experiments/)** | twenty-eight experiments: spec, report, ruling, and every prediction stated before the measurement |
 | **[What the route learned](docs/findings.md)** | the durable findings and the hard-won rules, in full |
 | **[Status of every tool](docs/tools.md)** | what works, what is superseded, and the evidence for each |
 | **[Known defects](docs/known-defects.md)** | everything not solved, measured and located in code |

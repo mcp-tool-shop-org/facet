@@ -415,6 +415,27 @@ refused by an earlier seat. **The instrument was already built.** This is the ad
 recurring failure shape — *a check whose form assumed its answer* — found in a report, so
 the lesson is general: naming a resource is not enumerating it.
 
+**A closed ruling freezes its own text, not the tool that produced its numbers.** A spec
+recommended excluding a whole instrument family on the grounds that *"a shipped instrument
+whose numbers are cited in a closed ruling"* may not be edited. The Director asked why that
+ruling exists. **It does not.** Searched across all 25 ruling documents: **no ruling in this
+repo forbids editing an instrument.** The sentence originates in one executor's docstring
+explaining its own choice, and two documents then cited it as binding at three sites — both
+in the words *"the record already refuses this move."* The record refuses no such thing.
+What **is** ruled is narrower and stays: a correction that rewrites a closed ruling would be
+revision, not correction (E10-off Ruling 1 — whose object is the ruling **document**), and
+*an instrument does not change under the session using it* (E12 Ruling 6d/6e, which
+**scheduled** two repairs for after the handoff rather than forbidding them). One is
+textual, one temporal; neither is a permanent prohibition on a tool. **And the hazard the
+folklore stood in for is real, different, and checkable: a cited number must still reproduce
+from the tool at HEAD.** So a cited instrument may be edited under the discipline already
+applied to 278 sites in this repo — prove the edit non-perturbing, or carry an anchor that
+reproduces the cited number, **in the commit that makes the edit**. A taboo nobody can cite
+is not a guard; it is an inherited claim wearing a fact's clothes, and it survived three
+citations because each one was reading the last rather than the record. *The one site that
+handled it correctly was the served tool's own refusal text, which routed the question to a
+ruling instead of assuming one.*
+
 **When a number will not move, check the baseline.** The most valuable measurement in this
 repo's history came from an executor who stopped chasing a stuck figure and asked whether
 the thing it was compared against was real. It was not.
