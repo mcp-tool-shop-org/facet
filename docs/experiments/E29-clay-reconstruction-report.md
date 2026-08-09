@@ -470,6 +470,14 @@ M docs/index/facet.db.cert.json
 — and the record index's certificate moved under this session between two reads
 (`verified_utc` 20:34:43Z → 20:53:37Z) without this seat invoking `record_build`.
 
+**The inference is not needed: the other seat's commit is citable.** `dcf9a41` — *"THE
+HANDOFF: rewritten from measurement"* — landed **between** this session's two commits
+(`d07a975` predictions → `dcf9a41` → `e85352d` report), carrying `docs/advisor-kickoff.md`,
+`docs/index/facet.db`, `docs/index/facet.db.cert.json` and both instrument-census files. That
+is what moved the certificate. The nine paths above were **still dirty after** that commit, so
+the seat is live rather than finished, and `E31-publish-the-pipeline-kickoff.md` is untracked
+in the tree as this report is written.
+
 **This session committed only its own two files** (`E29-predictions.md`,
 `E29-clay-reconstruction-report.md`), staged by explicit path, never `git add -A`. Per the
 standing rule that *when two seats are live, the count surfaces are the advisor's to reconcile
