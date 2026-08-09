@@ -72,7 +72,7 @@ that fix**, plus E23's, E25's and E26's work. The README says so on the front pa
 ### The 0.3.1 sequence, when he fires it — the order is law
 
 ```
-1. RE-COUNT            pytest --collect-only  -> currently 648 total / 640 hermetic
+1. RE-COUNT            pytest --collect-only  -> currently 684 total / 675 hermetic
                        T34 now enforces this in CI, but run it anyway: it is the gate
                        that has caught a stale number at every release seat.
 2. VERSION             FIVE declarations, not four - pyproject.toml, package.json,
@@ -96,7 +96,7 @@ that fix**, plus E23's, E25's and E26's work. The README says so on the front pa
 **The tag is the Director's act.** Never fire it, or any release or metadata change,
 before his word.
 
-**THE SUITE: 648 tests, 640 hermetic**, green at two seats and CI. **The count is under a
+**THE SUITE: 684 tests, 675 hermetic**, green at two seats and CI. **The count is under a
 test now** (T34) — it fires in CI on any surface stating a stale one, and it has already
 caught a live drift nobody staged.
 

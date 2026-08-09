@@ -1,0 +1,22 @@
+{
+ "_note": "synthetic hermetic fixture (E27); one flat quad",
+ "crop": [
+  0,
+  0,
+  64,
+  64
+ ],
+ "crop_res": 1024,
+ "hi": [
+  1.0,
+  0.6,
+  1.0
+ ],
+ "lo": [
+  1.0,
+  -0.6,
+  -1.0
+ ],
+ "maxabs": 1.0,
+ "res": 32
+}
