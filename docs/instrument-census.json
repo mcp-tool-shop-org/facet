@@ -17,8 +17,8 @@
     "py_files_total": 108
   },
   "provenance": {
-    "corpus_files": 271,
-    "corpus_files_before_self_exclusion": 281,
+    "corpus_files": 275,
+    "corpus_files_before_self_exclusion": 285,
     "probe_interpreter": "E:\\AI-Models\\trellis2-env\\Scripts\\python.exe",
     "probe_interpreter_version": "3.13.13",
     "probe_skipped": false,
@@ -57,12 +57,13 @@
       ],
       "b1_literals": [],
       "b2_literals": [],
-      "cited_count": 4,
-      "cited_count_raw": 9,
+      "cited_count": 5,
+      "cited_count_raw": 10,
       "cited_in": [
         "docs/experiments/E30-polish-anchor-gates-kickoff.md",
         "docs/experiments/E30-polish-anchor-gates-report.md",
         "docs/experiments/E30-predictions.md",
+        "docs/experiments/E31-publish-the-pipeline-kickoff.md",
         "docs/experiments/README.md"
       ],
       "dir": "tools/verify",
@@ -1077,8 +1078,8 @@
       ],
       "b1_literals": [],
       "b2_literals": [],
-      "cited_count": 14,
-      "cited_count_raw": 17,
+      "cited_count": 15,
+      "cited_count_raw": 18,
       "cited_in": [
         "docs/experiments/E04-armT-halt2.md",
         "docs/experiments/E04-executor-session-record.md",
@@ -1093,7 +1094,8 @@
         "docs/experiments/E14-handoff2-predictions.md",
         "docs/experiments/E14-handoff2-report.md",
         "docs/experiments/E27-measurement-mcp-report.md",
-        "docs/experiments/E27-predictions.md"
+        "docs/experiments/E27-predictions.md",
+        "docs/experiments/E31-publish-the-pipeline-kickoff.md"
       ],
       "dir": "tools/diagnostics",
       "docstring_line1": "E08 Gate 0, half 1 \u2014 how much of the figure can a styled reference physically reach?",
@@ -1952,8 +1954,8 @@
       ],
       "b1_literals": [],
       "b2_literals": [],
-      "cited_count": 15,
-      "cited_count_raw": 21,
+      "cited_count": 16,
+      "cited_count_raw": 22,
       "cited_in": [
         "CLAUDE.md",
         "docs/advisor-kickoff.md",
@@ -1966,6 +1968,7 @@
         "docs/experiments/E27-measurement-mcp-report.md",
         "docs/experiments/E27-ruling.md",
         "docs/experiments/E30-ruling.md",
+        "docs/experiments/E31-publish-the-pipeline-kickoff.md",
         "docs/experiments/README.md",
         "docs/specs/measurement-mcp-spec.md",
         "docs/specs/placement-memo.md",
@@ -2154,14 +2157,15 @@
       ],
       "b1_literals": [],
       "b2_literals": [],
-      "cited_count": 7,
-      "cited_count_raw": 11,
+      "cited_count": 8,
+      "cited_count_raw": 12,
       "cited_in": [
         "docs/experiments/E12-task2b-report.md",
         "docs/experiments/E14-handoff2-predictions.md",
         "docs/experiments/E14-handoff2-report.md",
         "docs/experiments/E27-measurement-mcp-report.md",
         "docs/experiments/E27-predictions.md",
+        "docs/experiments/E31-publish-the-pipeline-kickoff.md",
         "docs/specs/measurement-mcp-spec.md",
         "docs/tools.md"
       ],
@@ -2927,14 +2931,17 @@
       ],
       "b1_literals": [],
       "b2_literals": [],
-      "cited_count": 7,
-      "cited_count_raw": 13,
+      "cited_count": 10,
+      "cited_count_raw": 16,
       "cited_in": [
         "docs/experiments/E14-gate0-report.md",
         "docs/experiments/E27-measurement-mcp-report.md",
         "docs/experiments/E27-predictions.md",
         "docs/experiments/E27-ruling.md",
+        "docs/experiments/E29-clay-reconstruction-report.md",
         "docs/experiments/E29-predictions.md",
+        "docs/experiments/E29-ruling.md",
+        "docs/experiments/E31-publish-the-pipeline-kickoff.md",
         "docs/experiments/README.md",
         "docs/specs/measurement-mcp-spec.md"
       ],
@@ -3122,13 +3129,14 @@
       ],
       "b1_literals": [],
       "b2_literals": [],
-      "cited_count": 5,
-      "cited_count_raw": 9,
+      "cited_count": 6,
+      "cited_count_raw": 10,
       "cited_in": [
         "docs/experiments/E14-executor-kickoff.md",
         "docs/experiments/E14-handoff9-report.md",
         "docs/experiments/E27-measurement-mcp-report.md",
         "docs/experiments/E27-predictions.md",
+        "docs/experiments/E31-publish-the-pipeline-kickoff.md",
         "docs/tools.md"
       ],
       "dir": "tools/verify",
@@ -3396,8 +3404,8 @@
       ],
       "b1_literals": [],
       "b2_literals": [],
-      "cited_count": 19,
-      "cited_count_raw": 23,
+      "cited_count": 21,
+      "cited_count_raw": 25,
       "cited_in": [
         "docs/experiments/E01-facial-structure-ceiling.md",
         "docs/experiments/E04-armT-halt2.md",
@@ -3416,6 +3424,8 @@
         "docs/experiments/E20-ruling.md",
         "docs/experiments/E27-measurement-mcp-report.md",
         "docs/experiments/E27-predictions.md",
+        "docs/experiments/E29-clay-reconstruction-report.md",
+        "docs/experiments/E31-publish-the-pipeline-kickoff.md",
         "docs/specs/measurement-mcp-spec.md",
         "docs/tools.md"
       ],
@@ -3538,8 +3548,8 @@
       "anchored_in_basename_only": [],
       "b1_literals": [],
       "b2_literals": [],
-      "cited_count": 12,
-      "cited_count_raw": 19,
+      "cited_count": 13,
+      "cited_count_raw": 20,
       "cited_in": [
         "docs/experiments/E07-gate0.md",
         "docs/experiments/E07-the-atlas-is-not-a-neighbourhood.md",
@@ -3552,7 +3562,8 @@
         "docs/experiments/E27-predictions.md",
         "docs/experiments/E27-ruling.md",
         "docs/experiments/E30-polish-anchor-gates-kickoff.md",
-        "docs/experiments/E30-polish-anchor-gates-report.md"
+        "docs/experiments/E30-polish-anchor-gates-report.md",
+        "docs/experiments/E31-publish-the-pipeline-kickoff.md"
       ],
       "dir": "tools/diagnostics",
       "docstring_line1": "Where did this pixel's colour actually come from?",
@@ -3606,8 +3617,8 @@
       "anchored_in_basename_only": [],
       "b1_literals": [],
       "b2_literals": [],
-      "cited_count": 17,
-      "cited_count_raw": 18,
+      "cited_count": 18,
+      "cited_count_raw": 19,
       "cited_in": [
         "docs/experiments/E02-report.md",
         "docs/experiments/E02-texture-stage-on-sound-inputs.md",
@@ -3625,6 +3636,7 @@
         "docs/experiments/E14-gate0-predictions.md",
         "docs/experiments/E14-gate0-report.md",
         "docs/experiments/E14-handoff2-predictions.md",
+        "docs/experiments/E29-clay-reconstruction-report.md",
         "docs/tools.md"
       ],
       "dir": "tools/verify",

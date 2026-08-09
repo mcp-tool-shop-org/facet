@@ -117,6 +117,22 @@ dungeon with stone touching both feet; image-to-3D on it would fight segmentatio
 doing anything else. The clay hands the reconstructor a pre-segmented studio subject. One
 hop fixed the form register *and* the background problem.
 
+> ⚑ **CORRECTED 2026-08-09 ([E29 Ruling 8](experiments/E29-ruling.md)): the background half of
+> that sentence is DOWNSTREAM-REDUNDANT for this pair, and is kept with its correction rather
+> than deleted.** *"Image-to-3D on it would fight segmentation"* was never tested — and when it
+> was, it did not. `pipe.run(..., preprocess_image=True)` resizes to a 1024 max edge, runs a
+> **`rembg`** model where the input carries no alpha, and **square-crops to the alpha bbox**
+> before any geometry is inferred (read at source,
+> `trellis2/pipelines/trellis2_image_to_3d.py`). The concept mesh came back with a z-min slab
+> of **0.2614%** of surface area — an *order of magnitude below* the recorded characters
+> (W3 2.4907%, W1 9.5279%) — and carries no floor, wall or block geometry on any view. **The
+> masonry never reached the geometry**, so this hop was not what removed it.
+>
+> ⚠ **The form-register half is untouched by this and is what E29 actually measured**: 9 shells
+> against 82 and 1,461 pinches against 4,201, at 73× and 152× the run-noise floor. The clay
+> hop's claim is now **narrower and better-evidenced**, not smaller — and whether that mesh is
+> the one the Director wants remains his, on the sheets, not on these numbers.
+
 **What this pair cannot show, stated plainly:** whether the mesh comes back better. That is
 the only question that decides whether this becomes a route stage, and it is E29's.
 

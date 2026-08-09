@@ -48,6 +48,22 @@ at import. **What ran is what the log says, not what was requested.** No anchor 
 this is a new subject with nothing to reproduce — but the next session should not read
 E02's recorded `sdpa` as describing this run.
 
+> ⚑ **CORRECTED 2026-08-09 ([E29 Ruling 3](E29-ruling.md)) — the sentence above is wrong, and
+> it is kept rather than deleted because the correction is the useful part.** That `[SPARSE]`
+> line is a **declared preference emitted at import, not a record of execution.** Measured in
+> E29: it printed on **all six runs** of a session in which `flash_attn` is **not installed,
+> cannot be imported** (`importlib.util.find_spec` → `None`, no package directory, no
+> `.dist-info`), and which **ran to completion**. A second banner — `[ATTENTION] Using
+> backend: sdpa` — is the one that tracks the dense path, and it was not quoted here. The
+> inference was sound given one banner and is wrong given two.
+>
+> This is the log-line sibling of the repo's own law that *a number that reproduces exactly
+> can still be measured against the wrong object*: the string reproduced perfectly across
+> sessions and described something other than what ran. **E12 carried this forward as P21**,
+> which inherits the correction. And it is now measured that **`ATTN_BACKEND=sdpa` alone**
+> reconstructs, while `SPARSE_ATTN_BACKEND` is **inert on this route** (E29 Ruling 2) — the
+> recorded two-variable invocation string stays, and the minimal sufficient set is one.
+
 ## 2. The runs
 
 TRELLIS.2 `1024_cascade`, local, watchdog verified. `mesh_character.py`'s `run()` signature

@@ -470,6 +470,25 @@ unchecked *property*, the rarest clause of a *conjunction*, and now the *instrum
 continued ability to express the question*. Before predicting that a record can be
 reproduced, check that something can still ask it.
 
+**And the eighth member is the one an executor has least reason to doubt: the premise it
+inherited from its own dispatch.** E29's spec asserted *"there is no segmentation stage in
+front of the reconstructor"*, and its P1 predicted the concept mesh would come back fused to a
+dungeon wall. There is a segmentation stage — **inside** the reconstructor: `pipe.run` resizes
+to a 1024 max edge, runs `rembg` where the input has no alpha, and square-crops to the alpha
+bbox, so masonry filling 100% of the non-figure frame never reached the geometry. Measured
+z-min slab area **0.2614%** against a predicted 6% (band 2–20%). **The sentence was the
+advisor's**, and the law about inherited claims applies with most force to the one document an
+executor is least likely to check. *Two minutes of reading the pipeline would have overturned
+the prediction before it was written* — so read the mechanism you are predicting about, and
+when you write a dispatch, mark which of its premises you measured and which you assumed.
+
+**A row you predict to be uninformative is still a prediction, and it can miss.** E29's P4 hit
+every band it stated and was wrong about what they meant: it said the face/vertex counts could
+not separate the arms, said so out loud as a virtue, and the arms then differed by 3.66% —
+**13.7× a noise floor that did not exist when the prediction was written.** A claim that a
+measurement cannot discriminate is a claim about the measurement, and it needs the same
+falsifier as any other.
+
 **And when a tool has changed under an accepted asset, look for the era flag before
 commissioning one.** E30 reported *"no flag restores the old rule"* and proposed a new mode;
 `--edge-absolute` was already at `project_twins.py:103`, consumed at 754 and 797, and the
@@ -632,12 +651,32 @@ the boundary.
 - **No volumetric predicate on an exported mesh.** It is not a solid — signed distance at the
   centre of a standing figure's chest reads *outside*. Containment, thickness and
   inside/outside must run on the welded mesh, before export. **And even welded, the mesh is
-  not solid**: every TRELLIS.2 `1024_cascade` reconstruction on this route is a hollow
-  double-walled shell — walls ~two voxels around an empty cavity, measured three independent
-  ways with the accepted dragon and galleon as controls (E14 Ruling 3). The figure's interior
-  is cavity and reads *outside* by parity; a volumetric consumer must address the outer wall
-  specifically. The route itself never meets the inner wall — invisible surface, culled by
-  construction.
+  not solid**: TRELLIS.2 `1024_cascade` reconstructions on this route are hollow double-walled
+  shells — walls ~two voxels around an empty cavity, measured three independent ways (E14
+  Ruling 3). ⚠ **That finding's evidence base is three longswords, a dragon and a galleon —
+  prop, beast and vehicle. NO CHARACTER**, and the character is the route's founding class;
+  E14 Ruling 3's own words quantify over "every reconstruction this route has made", which is
+  wider than what it measured (E29 Ruling 4, read verbatim at the ruling seat). **On the
+  character class the wall structure is UNMEASURED, and that is not a claim of solidity** —
+  `mesh_topology`'s nested-wall leg *declines to compute* on all five character meshes tested,
+  including two recorded ones, because it needs a second manifold piece above 1% of faces and
+  the largest runs 98.2–98.6%. An inner wall shredded into sub-1% pieces produces exactly that
+  signature **while still being hollow**. Answering it needs the other two methods
+  (ray-crossing, cross-section clustering), neither of which is on the served surface.
+  Meanwhile the constraint stands unchanged for every consumer: the figure's interior reads
+  *outside* by parity, a volumetric consumer must address the outer wall specifically, and the
+  route never meets the inner wall — invisible surface, culled by construction.
+
+- **A single-run mesh comparison has no noise floor. Measure the floor before reading a
+  difference.** Three reconstructions of one input at one seed are **bit-identical through
+  `pipe.run()`, hole-filling and remeshing** — to the digit — and then diverge inside
+  `to_glb`'s decimation: faces ±2,618 (**0.27%**), shells **±1**, non-manifold edges **±18**
+  (E29 Ruling 5). The studio's standing *"TRELLIS is DETERMINISTIC"* is half right, and the
+  wrong half is the half a mesh comparison lands in. **Nothing in this record carried such a
+  floor, so every prior single-run mesh comparison here has an unmeasured one** — which does
+  not overturn any of them, and does mean re-litigating one requires measuring its floor
+  rather than asserting it was small. E29's own gaps run 13.7×–152× the floor, which is a
+  property of that arc and not a licence.
 - **A ray along the surface normal measures the tessellation, not the geometry.**
 - **Twins belong to a mesh, not to a character.** Regenerate them for whatever you are about
   to texture.

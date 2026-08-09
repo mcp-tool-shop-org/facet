@@ -82,7 +82,7 @@ dispatched. Pick by what he wants moving — none blocks another.
 ### The record index
 
 Mount SERVING, certificate PASSED on five legs, byte-identity determinism.
-The record holds 30 experiments. No staleness. **Every other count lives in the ritual's own
+The record holds 31 experiments. No staleness. **Every other count lives in the ritual's own
 output and in `record_health` — read them there, not here.** *(This line once quoted corpus,
 ruling and law totals; they went stale within a day, twice, because nothing sweeps this file
 for them and every fold moves them. **The experiment count stays because T34's fourth leg
