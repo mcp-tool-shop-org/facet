@@ -57,7 +57,15 @@ Binding rules:
 - **File-specific `git add`, always. Never `git add -A`, never `git commit -a`.** The
   other arc's uncommitted work is in this tree; a broad add commits their half-finished
   edit under your message.
-- **`git pull --rebase` before every push.** Two sessions push to `main`.
+- **`git fetch origin && git merge --ff-only origin/main` before every push** — *not*
+  `git pull --rebase`. ⚑ **Corrected minutes after this dispatch was written, by trying
+  it:** rebase **refuses outright** while another session has unstaged changes
+  (*"cannot pull with rebase: You have unstaged changes"*), and the fix is emphatically
+  **not** `--autostash`, which would stash the other arc's half-finished work. A
+  fast-forward merge succeeds with a dirty tree **provided the incoming commits do not
+  touch the dirty files** — which is exactly what the disjointness above guarantees. **A
+  merge that is not a fast-forward means the disjointness assumption has broken: halt and
+  report it rather than resolving a conflict in another arc's files.**
 - **Do not run `-m fold` tests while the other arc is mid-run if you can avoid it.**
   [E23 Ruling 10](E23-ruling.md): the concurrent writer can be *another session*, and now
   there genuinely is one. On a `fold` failure apply run-then-rerun once (E18 Ruling 2l)
@@ -89,7 +97,13 @@ the prior commit, with the negation rule applied in the tree. E23's `pure_move_p
 is the pattern. **A file that does not prove identical REVERTS.** Comment tokens diffed
 separately.
 
-## Tests ride the commit — T32, and the census pin moves
+## Tests ride the commit — T33, and the census pin moves
+
+⚑ **T33, not T32.** This dispatch said T32 until E24's seat created
+`tests/test_t32_installed_wheel.py` minutes later. **The T-number is a shared namespace
+across parallel arcs and nothing allocates it** — that is a real gap this pairing
+exposed, and it is a finding for the ruling. Take **T33**, and if you find it also taken,
+take the next free number and **say so in the report** rather than renumbering anyone.
 
 **Measured at dispatch, so the tier is real rather than hoped for:**
 
