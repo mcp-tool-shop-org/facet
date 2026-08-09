@@ -22,7 +22,7 @@
 
 The style is applied **on the asset**, in texture space — not painted per view and
 stitched together afterwards. Feed the route a form-exaggerated clay concept and it
-returns a textured mesh whose colour came from a styled reference of *that* mesh,
+returns a textured mesh whose color came from a styled reference of *that* mesh,
 with everything the reference could not see filled by a masked inpainting brush and
 a surface-aware dilation.
 
