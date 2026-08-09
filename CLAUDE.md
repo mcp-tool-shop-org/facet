@@ -502,6 +502,25 @@ difference concentrates.
 
 **argparse eats leading minus signs** — use `--views=-30,0,30`.
 
+**Blender's own MCP server is a REFERENCE, never a pipeline stage** (Director, 2026-08-09:
+*"use it as a reference if you're ever stumped… but it doesn't belong in the pipeline"*).
+Blender Lab ships one (5.1+; we run 5.2) that attaches an add-on to a **live GUI session**
+and gives an LLM natural-language access to that session's Python API — good at *what is
+in this scene*: poly-count outliers, bad normals, non-uniform transforms, what a node
+setup does. Reach for it when a mesh question has you stuck.
+
+**It may not touch the route, and the reasons are measured.** Every Blender call here is
+`blender -b -P <script>.py -- <args>` — **12 `-b` invocations, zero GUI sessions** — because
+a recipe that does not reproduce its output is not a recipe, and an LLM improvising `bpy`
+against a session produces artifacts with no recorded parameters. And its own page states
+it *"will execute LLM generated code in Blender without any guards… recommended to use a
+virtual machine, or a system without access to sensitive information."* **This rig holds
+`E:\AI\training`** — not in git, no revert, the trees three consecutive rulings had
+executors sha256-manifest 7,312 files to protect. If you use it, use it on a scratch copy
+of one mesh, and bring back a hypothesis rather than a number: **a number that decides
+anything comes from a recorded script**, because here the provenance of a measurement is
+the product.
+
 **A Comfy Cloud `dry_run` PASS does not prove link sanity.** A hand-retyped payload with a
 self-referencing node link (`VAEDecode.samples = ["14", 0]`) returned `status: validated`
 (E04 Arm G7). Submit saved workflow files verbatim; check link topology in code — self-links

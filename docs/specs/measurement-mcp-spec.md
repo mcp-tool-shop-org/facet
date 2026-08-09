@@ -235,7 +235,14 @@ What remains:
    recommendation: **no** — they are per-arc instruments whose numbers sit in closed
    rulings, and generalising them is how a shipped instrument gets edited. The server wraps
    the subject-independent family and leaves the rest where they are.
-3. **`ai-eyes-mcp` overlap.** It grades images and is documented as unable to grade fine
-   structure. This server measures geometry and texels. I believe they are disjoint;
-   **I did not verify `ai-eyes-mcp`'s current tool surface this session** and am flagging
-   it rather than asserting it.
+3. ~~**`ai-eyes-mcp` overlap.**~~ **CLOSED 2026-08-09 by measurement, at the advisor seat
+   that handed off.** The spec flagged this rather than asserting it, which was right; the
+   check cost one look at a mounted server. `ai-eyes-mcp`'s live tool surface is **seven
+   tools, all image-grading**: `image_classify`, `image_compare`, `image_contains`,
+   `image_verify`, `image_score_batch`, plus `eyes_selftest` and `eyes_status`. This
+   server measures **geometry and texels** — components, curvature, silhouette area,
+   non-manifold edges, screen-space extent, off-surface rate, per-texel provenance.
+   **Disjoint, and now measured rather than believed.** The one adjacency worth naming is
+   `measure_report`, which composes a *sheet* — if that sheet is ever graded rather than
+   looked at, `image_compare` is the tool for it and this server should call it, not
+   reimplement it.
