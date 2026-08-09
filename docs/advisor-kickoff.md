@@ -182,7 +182,7 @@ E25  133 sites   the measurement instruments
 ### The record index
 
 Mount SERVING, certificate PASSED on four legs, byte-identity determinism.
-The record holds 29 experiments. No staleness. **The other counts live in the ritual's own output and in
+The record holds 30 experiments. No staleness. **The other counts live in the ritual's own output and in
 `record_health` — read them there, not here.** *(This line used to quote corpus, ruling
 and law totals too, and went stale within a day, twice: nothing sweeps this file for
 those, and every advisor fold moves them. The experiment count stays because **T34's
