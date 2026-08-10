@@ -62,7 +62,7 @@
 
 | # | file | home | A | flags | B1 | D | E | F | G *(proposal)* | the question (docstring line 1) |
 |---:|---|---|:-:|---:|:-:|---:|:-:|:-:|---|---|
-| 1 | `anchor_compare.py` | verify | yes | 4 | no | 8 | yes | yes | anchor_check | Is this re-production the recorded output - and if not, what is the difference's shape? |
+| 1 | `anchor_compare.py` | verify | yes | 4 | no | 9 | yes | yes | anchor_check | Is this re-production the recorded output - and if not, what is the difference's shape? |
 | 2 | `blade_band.py` | diagnostics | no | 2 | no | 1 | no | n/a | ambiguous | How much surface does the twin's KEY exclude, and does stage 1 paint any of it? |
 | 3 | `brush_reach.py` | diagnostics | no | 7 | no | 4 | yes | n/a | reach_ceiling | Bound the brush arm before spending it — how many holes can the eight stroke cameras se… |
 | 4 | `build_masks.py` | diagnostics | no | 10 | **yes** | 0 | no | n/a | none | Build the per-view denoise masks: flat (control) and foreshortening-GRADED (test). |
@@ -119,7 +119,7 @@
 | 55 | `e12_mouth_geometry.py` | diagnostics | no | 7 | no | 1 | yes | n/a | ambiguous | Is there a TONGUE inside this mesh's mouth, and can any exterior camera see it? |
 | 56 | `e12_n_sheet.py` | diagnostics | no | 4 | no | 0 | no | n/a | measure_report | N generations of ONE view, stacked full size, plus named regions at N x - and no number. |
 | 57 | `e12_nonmanifold.py` | diagnostics | no | 10 | no | 5 | yes | n/a | mesh_topology | E12 Gate 0 — where a reconstruction goes non-manifold, counted AND put on the picture. |
-| 58 | `e12_offsurface.py` | diagnostics | no | 9 | no | 16 | yes | n/a | offsurface_rate | Does a prep bake's position map lie ON the mesh? E10 Ruling 4's question, any subject. |
+| 58 | `e12_offsurface.py` | diagnostics | no | 9 | no | 15 | yes | n/a | offsurface_rate | Does a prep bake's position map lie ON the mesh? E10 Ruling 4's question, any subject. |
 | 59 | `e12_pair_cloud_step.py` | diagnostics | no | 8 | **yes** | 4 | no | n/a | none | E12 handoff 3 Task 4 — the styled target pair's cloud workflow, built and CHECKED on di… |
 | 60 | `e12_pair_sheet.py` | diagnostics | no | 9 | no | 0 | no | n/a | measure_report | clay \| control \| styled, one row per view, full size — the sheet that serves the eye. |
 | 61 | `e12_region_colour.py` | diagnostics | no | 6 | no | 0 | yes | n/a | none | Median Lab / chroma / hue inside named regions, masked to the silhouette — the tone cha… |

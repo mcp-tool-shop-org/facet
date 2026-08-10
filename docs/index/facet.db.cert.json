@@ -2,11 +2,11 @@
  "andon": [],
  "corpus": {
   "files": 291,
-  "id": "e1599b08b73fb3930f44e5cc4681e555286634a14558eb94812cdb489604e0fe",
+  "id": "7b6fe4d7513db6df41fbe8fa879e620dec378b21e0a37281bfe5c921593ade7c",
   "manifest": {
    "CLAUDE.md": "4f52aefeed8b39c7a6313a081522d3e039c9de5900d573249fdba7195a6572bc",
    "README.md": "081d08f08df6699095a634b40b78f00dd1b20a2ad2f0117a987a2843383c2f0d",
-   "docs/advisor-kickoff.md": "8657c1ed9e66158b90cc48a29caf6ac516f6d75341b1e58eea4ae0844d4c82fb",
+   "docs/advisor-kickoff.md": "35059a9d247bb1b38c8a4bb21808d1568a28d04d6d6befd89693d4786efab76d",
    "docs/arc-history.md": "5b2876b3fed7be95a6efc984f5e5a00b7c1675b10a169ee43803b50e091b48a8",
    "docs/brand/README.md": "81f425b6a101135b43463b35468f08a2db37af39c856c01f7fbdb6ce66598226",
    "docs/concept-prep.md": "85a2db891ab3cc7df1968630e18e43382df2156cdd5610a2273f13d2d639a28a",
@@ -278,7 +278,7 @@
    "docs/handbook/index.md": "2481565674a67102d8bc5e5853ce95af48f5694a1f765032d543a07d7bdfbe20",
    "docs/handbook/profiles.md": "411d6c7cbe44cda94d969e05e9d3d8882d898334208c949551857b90b336165b",
    "docs/handbook/subjects.md": "8bcaa95ec843c064ed94f8abb9f6cd2978c836a7cb563cffa5fc18f7b63aa7a1",
-   "docs/instrument-census.md": "d9eafe667fe3052f980901f59c94f5482ef6406105e9b1ff1702f605760ddb27",
+   "docs/instrument-census.md": "08f3f30dd3f98c8d1f89b5a50fac5fd823d09f8325b273eb470fa138639aebf8",
    "docs/known-defects.md": "7b2d4599f90375d7d144a3c8c75a307e7b0ac35bff102e616d1c5ab3c884abb7",
    "docs/profiles-design.md": "926c5f767cbdd043ab2740abfbf40d3cc79a9cc765aea57b3ddc46d2202c4339",
    "docs/research/RG01-texture-route-grounding.md": "bf5d8fdc7b9eb5b75be6644a97167ddc26a67468eb5496ebea9068b7441f7b9e",
@@ -309,9 +309,9 @@
   "rulings": 693
  },
  "db": {
-  "bytes": 11186176,
+  "bytes": 11177984,
   "path": "docs/index/facet.db",
-  "sha256": "862e4bb1cbcb72bf749a41e3ac00710574a06b1df2fa6697a3e1a7cd33d4fe24"
+  "sha256": "08261469f22b902ee6313031e7876afcd8ace016b984877d089f5ab82651c779"
  },
  "determinism_leg": "byte-identity",
  "failures": [],
@@ -331,7 +331,7 @@
   "==============================================================================",
   "",
   "[leg 1] determinism - two builds from an unchanged record",
-  "  BYTE-IDENTICAL   11186176 bytes, both builds",
+  "  BYTE-IDENTICAL   11177984 bytes, both builds",
   "",
   "[corpus] ruling documents discovered by the sorted glob",
   "  E01-ruling-gate1.md                            arc E01                0 rows - prose only",
@@ -467,7 +467,7 @@
  ],
  "unattributed_failures": [],
  "verb": "record_build",
- "verified_utc": "2026-08-10T01:26:57Z",
+ "verified_utc": "2026-08-10T02:13:04Z",
  "verify_exit_code": 0,
  "written_by": "tools/record_mcp.py"
 }
