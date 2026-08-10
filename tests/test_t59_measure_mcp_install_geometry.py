@@ -103,29 +103,75 @@ def test_t59_layer_0_is_closed_the_measurement_server_ships():
         "them has nothing to invoke" % (packages(),))
 
 
-def test_t59_the_light_extra_is_declared_and_open3d_is_not_in_it():
-    """The tier, pinned - and the absence pinned with it.
-
-    `[measure]` is the honest ceiling rather than a first tier with a bigger
-    one behind it: open3d 0.19.0 publishes cp38-cp312 and no sdist, and the
-    only cp313 build is a direct-URL dev wheel, which CANNOT appear in
-    metadata uploaded to PyPI (E31 Ruling 3a). A `measure-full` extra naming
-    open3d would be unsatisfiable on the interpreter this repo runs on.
-    """
+def _extras():
     import tomllib
     with open(os.path.join(REPO, "pyproject.toml"), "rb") as fh:
-        extras = tomllib.load(fh)["project"].get("optional-dependencies", {})
+        return tomllib.load(fh)["project"].get("optional-dependencies", {})
+
+
+def test_t59_the_light_extra_is_declared_and_open3d_is_not_in_it():
+    """`[measure]` is the tier that resolves on EVERY Python this package
+    claims, so open3d must not appear in it - that is what makes it the tier a
+    stranger can always install."""
+    extras = _extras()
     assert "measure" in extras, "the [measure] extra is gone"
-    names = {re.split(r"[<>=!\[ ]", d, 1)[0].lower() for d in extras["measure"]}
+    names = {re.split(r"[<>=!\[; ]", d, 1)[0].lower() for d in extras["measure"]}
     assert {"numpy", "scipy", "trimesh", "pillow"} <= names, (
         "the [measure] extra no longer covers the four LIGHT modules: %r"
         % (sorted(names),))
-    for extra, deps in extras.items():
-        flat = " ".join(deps).lower()
-        assert "open3d" not in flat, (
-            "extra %r names open3d - there is no PyPI-installable open3d for "
-            "this package's declared Python range, so this extra cannot be "
-            "satisfied (E31 Ruling 3a)" % extra)
+    assert "open3d" not in " ".join(extras["measure"]).lower(), (
+        "[measure] names open3d; it would then fail to resolve on 3.13 and "
+        "stop being the always-installable tier")
+
+
+def test_t59_the_full_extra_carries_open3d_behind_a_version_marker():
+    """⚑ REWRITTEN 2026-08-09. This file previously asserted NO extra names
+    open3d at all, on E31 Ruling 3a's reading that a full tier "cannot be
+    declared".
+
+    That claim was too strong and is corrected in the ruling. What cannot be
+    declared is the only open3d that exists FOR 3.13 - a direct-URL dev wheel
+    from Open3D's main-devel channel. open3d ITSELF publishes cp38-cp312 on
+    PyPI, and E31 measured the full tier at 0 OF 8 FAILING on py3.12. What
+    fails on 3.13 is RESOLUTION, not declaration.
+
+    So the requirement carries `python_version < "3.13"`, and the marker is the
+    load-bearing part: without it `pip install facet-mcp[measure-full]` fails
+    outright on 3.13. With it, the extra resolves without open3d there and the
+    four tools refuse with exit 4 - a clean four-of-eight rather than an
+    install error.
+    """
+    from packaging.requirements import Requirement
+    from packaging.markers import default_environment
+
+    extras = _extras()
+    assert "measure-full" in extras, "the [measure-full] extra is gone"
+    reqs = [Requirement(d) for d in extras["measure-full"]]
+    o3d = [r for r in reqs if r.name.lower() == "open3d"]
+    assert len(o3d) == 1, "expected exactly one open3d requirement: %r" % reqs
+    marker = o3d[0].marker
+    assert marker is not None, (
+        "open3d is declared with NO marker - `pip install "
+        "facet-mcp[measure-full]` then fails outright on 3.13 instead of "
+        "degrading to the four tools that do run")
+
+    def holds(v):
+        env = dict(default_environment())
+        env["python_version"] = v
+        return marker.evaluate(env)
+
+    assert holds("3.12"), "open3d must be required where a wheel exists (3.12)"
+    assert holds("3.11"), "open3d must be required where a wheel exists (3.11)"
+    assert not holds("3.13"), (
+        "open3d must NOT be required on 3.13 - PyPI has no cp313 wheel and no "
+        "sdist, so requiring it makes the extra uninstallable there")
+
+    # the full tier is a superset of the light one, or the names mislead
+    light = {re.split(r"[<>=!\[; ]", d, 1)[0].lower() for d in extras["measure"]}
+    full = {r.name.lower() for r in reqs}
+    assert light <= full, (
+        "[measure-full] is not a superset of [measure]: missing %r"
+        % sorted(light - full))
 
 
 # ---------------------------------------------------------------------------

@@ -13,6 +13,18 @@ it, so a reader can check the claim rather than trust it.
 
 ## [Unreleased]
 
+## [0.4.0] — 2026-08-09
+
+**The measurement server ships.** Four releases put a record index in the wheel and left
+the eight measurement tools behind — invisible because this repo *is* the checkout, so the
+tool worked where it was built and had never been anywhere else. `pip install
+facet-mcp[measure]` now runs a measurement from a clean venv, and the four tools that need
+a dependency PyPI cannot deliver refuse with the reason instead of looking broken. Three
+arcs close with it: [E29](docs/experiments/E29-ruling.md) (the clay hop measured, both
+paths kept at the Director's ruling), [E30](docs/experiments/E30-ruling.md) (the polish
+arc's anchors, and the halt that caught a route tool changed under an accepted asset), and
+[E31](docs/experiments/E31-ruling.md) (this).
+
 ### Added
 
 - **T34 gained a fourth leg, pinning the EXPERIMENT count**
@@ -62,6 +74,80 @@ it, so a reader can check the claim rather than trust it.
   `facet-measure` 0.1.0 → 0.3.0 across the two surface moves; `NOT_WRAPPED` has no live
   site.
 
+- **⚑ THE MEASUREMENT SERVER SHIPS.** `pip install facet-mcp[measure]` now installs
+  `facet-measure` and the instruments it invokes, and runs a measurement from a clean venv
+  with no checkout anywhere near it ([E31](docs/experiments/E31-ruling.md) Ruling 6, at the
+  Director's word). Verified the way [E24](docs/experiments/E24-ruling.md) taught — by
+  running a **verb**, never `--help`: `mesh_stats` on a control mesh returns 786,432 faces
+  with a full identity envelope whose instrument sha256 matches the one this rig produces.
+
+  **Two extras.** `[measure]` is the tier that resolves on **every** Python this package
+  claims — `mesh_stats`, `mesh_topology`, `measure_report`, `anchor_check`, which includes
+  **both anchor tools**. `[measure-full]` adds the four geometry instruments, and what it
+  delivers depends on the interpreter: **all eight on 3.11/3.12**, four on 3.13, because
+  `open3d` 0.19.0 is the latest *release* and publishes cp38–cp312 wheels with **no
+  sdist**. The requirement carries **`python_version < "3.13"`** so the install succeeds
+  there without it and the four refuse with exit 4, rather than the whole install dying on
+  a resolver error.
+
+  ⚑ **Corrected before release, at the Director's question.** The first cut of this shipped
+  **no** full extra at all, on the reading that one *"cannot be declared"*. That conflated
+  two things: the only open3d that exists **for 3.13** is a direct-URL devel wheel and
+  genuinely cannot be declared — but open3d itself is an ordinary PyPI package on
+  cp38–cp312, and E31 measured the full tier at **0 of 8 failing** on py3.12. What fails on
+  3.13 is *resolution*, not *declaration*. **All eight on 3.13 is one documented command**,
+  because Open3D publishes current cp313 wheels on a rolling devel channel and a direct URL
+  is legal on a command line — see the README. *This route's own open3d-dependent numbers
+  were measured against that devel build.*
+
+  ⚠ **`facet-measure`'s version stays independent of this package's.** It versions a
+  payload surface, not a distribution; the two numbers coinciding at 0.4.0 is a
+  coincidence and they are not locked.
+
+- **The polish arc's entry gates** ([E30](docs/experiments/E30-ruling.md)) — eight per-profile
+  anchors as permanent tests (T50–T57), three at the **byte** tier and the rest at the value
+  tier, no sha256 literal in any of them. ⛔ **The halt is the most valuable thing the arc
+  produced:** W3's projection no longer reproduces — styled **1,718,750** against a recorded
+  **1,653,659** — because `project_twins`' erosion was rebuilt. *A route tool changed under
+  an accepted asset and nothing noticed until an anchor was built for it*, which is exactly
+  the condition the Director's clause exists to detect, found on its first outing.
+
+- **The clay hop measured against the concept it came from** ([E29](docs/experiments/E29-ruling.md)).
+  One arm, one variable: the clay mesh returns **9 shells against 82** and **1,461
+  non-manifold edges against 4,201** — 73× and 152× a run-noise floor the arc had to measure
+  first. ⚖ **The Director ruled both paths KEPT**: *"they both are great… keep them both as
+  options."* Stage 0 is a per-subject choice, not a replacement.
+
+- **A reconstruction noise floor, which nothing in this record had** (E29 Ruling 5). Three
+  runs of one input at one seed are **bit-identical through `pipe.run()`, hole-filling and
+  remeshing** and diverge inside decimation: faces **±0.27%**, shells **±1**, non-manifold
+  edges **±18**. Every prior single-run mesh comparison here therefore carries an
+  *unmeasured* floor — which overturns nothing, and does mean re-litigating one requires
+  measuring its floor rather than asserting it was small.
+
+### Changed
+
+- **The hollow finding's reach is NARROWED, and the character class is ruled UNMEASURED**
+  ([E29](docs/experiments/E29-ruling.md) Ruling 4). [E14 Ruling 3](docs/experiments/E14-ruling.md)
+  reads *"every reconstruction this route has made is a hollow double-walled shell"*; read
+  verbatim, its evidence base is three longswords, a dragon and a galleon — **prop, beast and
+  vehicle, no character** — and the character is this route's founding class. `mesh_topology`'s
+  nested-wall leg **declines to compute** on all five character meshes tested, including two
+  recorded ones. ⚠ **That is not a finding that characters are solid**: an inner wall shredded
+  into sub-1% pieces produces the same signature while still being hollow. The finding stands
+  unchanged for the classes it was measured on; E14's closed text is untouched and the
+  narrowing lands in `CLAUDE.md`, where the standing constraint lives. Every consumer-facing
+  clause is unaffected — a volumetric predicate still meets a shell.
+
+- **A recorded inference about which attention backend ran is corrected in place**
+  (E29 Ruling 3). [E04's Gate 0 report](docs/experiments/E04-gate0-report.md) concluded
+  *"what ran is what the log says"* from a `[SPARSE] … Attention backend: flash_attn` line,
+  and E12 carried it forward. Measured: that banner printed on **all six runs of a session in
+  which `flash_attn` is not installed, cannot be imported, and which ran to completion.** It
+  is a **declared preference emitted at import, not a record of execution.** Kept with its
+  correction beside it rather than deleted. And `ATTN_BACKEND=sdpa` **alone** reconstructs —
+  `SPARSE_ATTN_BACKEND` is inert on this route while riding in every recorded invocation.
+
 ### Fixed
 
 - **The experiment count on two public surfaces**, corrected in place with the
@@ -69,6 +155,38 @@ it, so a reader can check the claim rather than trust it.
   `record_health` reports. Third instance of this drift in 24 hours, second inside a fix —
   [E27's ruling](docs/experiments/E27-ruling.md) corrected the front door to
   *"twenty-six"* and undercounted by one while doing it.
+
+- **`pip install facet-mcp` gave a record server and NO measurement server, and nothing
+  had ever noticed** ([E31](docs/experiments/E31-ruling.md), Rulings 1–6). The wheel held
+  **two `.py` files**; the eight served tools invoke instruments as *subprocesses*, so an
+  install had nothing to invoke. Six tiers were measured, each an actual wheel in its own
+  clean venv with every tool called through the server's own dispatch: today's wheel
+  **8 of 8 failing**, and with the instruments and the light dependency tier, **0 of 8**.
+  The wheel goes **58,401 B / 2 entries → 509,413 B / 118**. Invisible for four releases
+  because this repo *is* the checkout — the tool worked where it was built and had never
+  been anywhere else.
+
+- **`measure_mcp`'s resolver, which was [E24](docs/experiments/E24-ruling.md)'s defect
+  verbatim in a file written after E24 fixed it elsewhere** — `REPO = dirname(HERE)`,
+  which in a wheel resolves to `<venv>/Lib`. The repair is the distinction E24 never drew:
+  **`REPO` answers *where is the corpus*** (the two-marker property test, returning `None`
+  rather than guessing) and **`tool_path` answers *where is the instrument*** (resolved
+  beside the module — one expression correct in a checkout and an install, because record
+  markers key on a corpus that cannot ship while instruments are code that does). The
+  identity envelope now hashes through `tool_path` too: two path expressions for one file
+  is how a payload comes to certify an instrument that did not run.
+
+- **A missing dependency reported as a runtime failure**, which made a four-of-eight
+  install look like a broken tool. `MISSING_DEPENDENCY` is now **exit 4 REFUSED** — the
+  environment failing to answer is the tool working and telling you not to proceed — and
+  the refusal names the instrument, the module and what to install. Every part of that
+  sentence was already at the call site and nothing composed it.
+
+- **The measurement server was reachable by no session at all.** `.mcp.json` declared one
+  server; `tools/measure_mcp.py` was in neither it nor the workspace config
+  ([E29](docs/experiments/E29-ruling.md) Ruling 7). Registered **with a test** rather than
+  a line: T58 starts the declared arguments as a subprocess, speaks stdio, and asserts the
+  payload's instrument sha256 equals the file on disk.
 
 ## [0.3.1] — 2026-08-09
 

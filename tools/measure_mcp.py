@@ -436,15 +436,21 @@ def _install_hint(missing):
         return ("Install the measurement extra:  pip install "
                 "facet-mcp[measure]")
     if missing == "open3d":
+        if sys.version_info < (3, 13):
+            return ("Install the full measurement extra:  pip install "
+                    "facet-mcp[measure-full]  (it carries open3d on this "
+                    "Python; all eight tools run)")
         return (
-            "This tool needs open3d, which facet-mcp cannot declare as a "
-            "dependency: the latest release (0.19.0) publishes wheels for "
-            "cp38-cp312 and no sdist, so there is nothing installable for "
-            "Python %d.%d. The build this route is developed against is "
-            "0.19.0+241aaee from Open3D's own main-devel channel - an "
-            "UNRELEASED dev build, installed by direct URL. Four of the eight "
-            "served tools need it; the other four run on "
-            "facet-mcp[measure] alone."
+            "This tool needs open3d, and on Python %d.%d there is nothing to "
+            "install: open3d 0.19.0 is the latest release and publishes "
+            "cp38-cp312 wheels with NO sdist. facet-mcp[measure-full] carries "
+            "open3d only where a wheel exists (python_version < 3.13), so on "
+            "this interpreter it resolved WITHOUT it - deliberately, because "
+            "the alternative is an install that fails outright. The build this "
+            "route is developed against is 0.19.0+241aaee from Open3D's own "
+            "main-devel channel, an UNRELEASED dev build installed by direct "
+            "URL, which cannot be a declared dependency. Four of the eight "
+            "served tools need it; the other four run here already."
             % (sys.version_info[0], sys.version_info[1]))
     return ("The instrument imports %s and this environment does not have it. "
             "facet-mcp[measure] covers %s."

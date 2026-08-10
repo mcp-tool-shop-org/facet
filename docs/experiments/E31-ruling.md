@@ -64,6 +64,33 @@ cannot name the only open3d that exists for 3.13. This is not "difficult"; there
 declaration. Any FULL tier is honest only under `requires-python = ">=3.11,<3.13"`, which
 **contradicts the interpreter the whole repo runs on.**
 
+> ⚑ **CORRECTED 2026-08-09, before the release, at the Director's question — and the
+> correction is the useful part.** 3a as written above **conflates two things and is too
+> strong.** True: the only open3d that exists *for 3.13* is a direct-URL devel wheel, and
+> that cannot be declared. **False: that no FULL tier can be declared.** `open3d` is an
+> ordinary PyPI package on cp38–cp312, this arc's own FULL tier measured **0 of 8 failing on
+> py3.12**, and a PEP 508 marker expresses exactly the conditional the situation calls for.
+> **What fails on 3.13 is RESOLUTION, not DECLARATION**, and no `requires-python` narrowing
+> is needed.
+>
+> Shipped instead: **`[measure-full]` carrying `open3d; python_version < "3.13"`** — all
+> eight tools on 3.11/3.12, and on 3.13 the extra resolves *without* open3d so the install
+> succeeds and the four geometry tools refuse with exit 4. Verified on this rig: exit 0, no
+> open3d, no resolver error. Pinned by a T59 leg that evaluates the marker at 3.11, 3.12 and
+> 3.13 and asserts the full tier is a superset of the light one.
+>
+> ⚠ **And the thing the seat had in hand and did not use.** It read
+> `direct_url.json`, saw `main-devel` and `cp313` in the filename, correctly inferred
+> "unreleased dev build" — and still wrote *"there is nothing installable for Python 3.13"*
+> into a pyproject comment, a runtime refusal and this ruling. **A direct URL is legal on a
+> `pip install` command line and banned only in published metadata**, so all eight on 3.13
+> was always one documented command away. Measured at the correction: Open3D's `main-devel`
+> is a **rolling prerelease with 8 cp313 wheels**, currently `0.19.0+63e30be` — *newer than
+> the `+241aaee` this rig runs*, which makes 3b's comparability gap concrete rather than
+> hypothetical. The Director had to raise nightly builds himself, having done so before.
+> This is the *enumerate the resource before commissioning one* law with the resource
+> already open on the screen.
+
 **3b — ⚑ every open3d-dependent number this repo has produced was measured on an unreleased
 dev build.** `0.19.0+241aaee` is not `0.19.0`. **Four of the eight served instruments need
 open3d** (`reach_ceiling`, `thin_extent_curve`, `offsurface_rate`, `texel_provenance`). The
@@ -137,11 +164,18 @@ measured, not argued.
 tools**, which is the half the polish arc's gate actually calls. FULL cannot be declared at all
 on 3.13.
 
-**Ruled: ship Shape A with a LIGHT extra, and document the open3d four as requiring an
-out-of-band open3d**, naming the `main-devel` channel and the fact that it is a dev build. A
-tier that cannot be installed on the interpreter the repo runs on is not a tier; **naming the
-gap is the honest subset, and a forced FULL extra would be the "tool that is forced" the
-Director's own bound rejects.**
+**Ruled — AMENDED 2026-08-09 before release (see Ruling 3a's correction): ship Shape A with
+BOTH extras.** `[measure]` resolves everywhere and carries four tools including both anchor
+tools. **`[measure-full]` carries `open3d; python_version < "3.13"`** — all eight on
+3.11/3.12, and on 3.13 it resolves without open3d so the install succeeds and the four
+refuse with exit 4. The README documents the devel-channel wheel as the third path to eight
+on 3.13.
+
+*The original ruling stopped at the LIGHT extra and is kept above with its reasoning, because
+the reasoning is where the error was: it treated "cannot be satisfied on one interpreter" as
+"cannot be declared at all", and never asked whether a marker expressed the difference. A
+forced FULL extra would indeed be the "tool that is forced" the Director's bound rejects — but
+a **conditional** one is not forced, it is accurate.*
 
 ⚖ **One clause of this is his, not mine.** Whether a published server where **4 of 8 tools
 need an out-of-band dependency** satisfies *"the pipeline on npm"* is a product question, not

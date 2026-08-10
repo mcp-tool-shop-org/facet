@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "facet-mcp"
-version = "0.3.1"
+version = "0.4.0"
 description = "Query a governed decision record instead of reading it — facet's four-leg-verified SQLite+FTS5 index, served over MCP."
 requires-python = ">=3.11"
 license = "MIT"
@@ -18,6 +18,12 @@ classifiers = [
     "Intended Audience :: Developers",
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
+    # 3.13 added at 0.4.0: `requires-python` has said >=3.11 since 0.1.0 and the
+    # rig this is developed on runs 3.13.13, so omitting it understated support.
+    # ⚠ It is the base package that supports 3.13. The `[measure]` extra does too;
+    # the four open3d instruments do NOT, and cannot be made to from PyPI - see
+    # the optional-dependencies note below.
+    "Programming Language :: Python :: 3.13",
     "Topic :: Software Development :: Documentation",
     "Topic :: Text Processing :: Indexing",
 ]
@@ -35,25 +41,39 @@ dependencies = [
 # mesh_topology, measure_report, anchor_check - which includes BOTH anchor
 # tools, the half E14 Ruling 35's per-profile gate calls.
 #
-# ⛔ THERE IS NO `[measure-full]`, AND THAT IS MEASURED, NOT AN OMISSION. The
-# other four instruments (reach_ceiling, thin_extent_curve, offsurface_rate,
-# texel_provenance) need open3d. open3d 0.19.0 is the LATEST release, publishes
-# cp38-cp312 wheels and NO sdist, while this package declares >=3.11 and the
-# rig runs 3.13.13. The only cp313 build that exists is
-# `0.19.0+241aaee` from Open3D's `main-devel` GitHub channel - an unreleased
-# dev build, installed by direct URL, and A DIRECT-URL DEPENDENCY CANNOT BE
-# DECLARED IN METADATA UPLOADED TO PyPI. So a full extra is not hard here, it
-# is not expressible; declaring one would either lie or force
-# `requires-python <3.13`, contradicting the interpreter this repo runs on.
-# Those four tools refuse with the install line for what they need, and the
-# gap is documented rather than papered over - a forced tier is worse than a
-# named absence.
+# `[measure-full]` ADDS THE OTHER FOUR - reach_ceiling, thin_extent_curve,
+# offsurface_rate, texel_provenance - which need open3d.
+#
+# ⚑ THE MARKER IS THE WHOLE DESIGN, and it corrects an over-strong claim. E31
+# Ruling 6 first shipped NO full extra, reasoning that one "cannot be declared".
+# That is true of the only open3d which exists FOR 3.13 - `0.19.0+241aaee` from
+# Open3D's `main-devel` channel, a direct-URL dev wheel, and a direct-URL
+# dependency genuinely cannot appear in metadata uploaded to PyPI. It is NOT
+# true of open3d as such: 0.19.0 publishes cp38-cp312 wheels on PyPI, and E31
+# measured this extra at 0 OF 8 FAILING on py3.12. Declaring it is legal; what
+# fails on 3.13 is RESOLUTION, not declaration.
+#
+# So the requirement carries `python_version < "3.13"`. On 3.11/3.12 open3d
+# installs and ALL EIGHT tools run. On 3.13 the marker evaluates False, the
+# extra resolves WITHOUT open3d, and those four refuse with exit 4 naming what
+# they need - a clean four-of-eight instead of a resolver error. Omitting the
+# marker would break `pip install facet-mcp[measure-full]` outright on 3.13,
+# which is the rig this route is developed on.
 [project.optional-dependencies]
 measure = [
     "numpy",
     "scipy",
     "trimesh",
     "pillow",
+]
+measure-full = [
+    "numpy",
+    "scipy",
+    "trimesh",
+    "pillow",
+    # 3.13 has no PyPI wheel and no sdist; see the note above. The marker makes
+    # that degrade to a refusal rather than an install failure.
+    "open3d; python_version < '3.13'",
 ]
 
 [project.urls]

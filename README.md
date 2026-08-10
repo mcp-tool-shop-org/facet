@@ -34,16 +34,61 @@ Named for both halves of the problem: the polygons, and the face they have to ho
 The route itself is a set of local scripts you invoke against paths you type — clone
 the repo and read [getting started](https://mcp-tool-shop-org.github.io/facet/handbook/getting-started/).
 
-**The record index ships as a package**, so an assistant can query the evidence trail
-instead of reading it:
+**Two servers ship as a package** — the record index, so an assistant can query the
+evidence trail instead of reading it, and **as of v0.4.0 the measurement server**, so two
+assets measured months apart go through one code path.
 
 ```bash
-npx @mcptoolshop/facet          # zero-prerequisite; verified binary, no Python needed
+npx @mcptoolshop/facet               # the record index; zero-prerequisite, no Python needed
+pip install facet-mcp[measure-full]  # + the measurement tools and their instruments
 ```
 
-Two commands come with it — `facet-mcp`, the stdio MCP server (six tools, with the
-four-leg verify as a refusing health surface), and `facet-index` (`build` / `verify` /
-`q` / `claims`). Run it from inside a checkout; `--db` names a different index.
+`facet-mcp` is the stdio MCP server over the record (six tools, with the four-leg verify
+as a refusing health surface) and `facet-index` is the index itself (`build` / `verify` /
+`q` / `claims`). Run either from inside a checkout; `--db` names a different index.
+
+### The measurement server — new in v0.4.0
+
+`facet-measure` answers the **numeric half** of a comparison and never says whether output
+is good. Every payload carries the server version, the instrument's own file hash and a
+config hash, and `measure_report` **refuses** to compare across a mismatch — which is the
+property the whole thing exists for.
+
+Verified by running a **verb** rather than `--help` — a control mesh returns 786,432 faces
+with a full identity envelope on a machine with no checkout on it.
+
+**What you get depends on one thing, and it is your Python version:**
+
+| your Python | `[measure-full]` gives you |
+|---|---|
+| **3.11 / 3.12** | **all eight tools** — `open3d` installs from PyPI |
+| **3.13** | four tools; `mesh_stats`, `mesh_topology`, `measure_report`, `anchor_check` |
+
+`open3d` 0.19.0 is the latest *release* and publishes cp38–cp312 wheels with **no sdist**,
+so on 3.13 there is nothing on PyPI to install. The extra carries it behind
+`python_version < "3.13"`, so the install **succeeds** there and the four geometry tools
+exit **`4` REFUSED** naming what they need — rather than the whole install failing.
+
+**To get all eight on Python 3.13**, Open3D publishes current cp313 wheels on its rolling
+devel channel. A direct URL is fine on a command line; it is only banned inside published
+package metadata:
+
+```bash
+# Linux — stable filename, no build hash
+pip install https://github.com/isl-org/Open3D/releases/download/main-devel/open3d-0.19.0-cp313-cp313-manylinux_2_35_x86_64.whl
+```
+
+⚠ **On Windows and macOS the devel wheels are `+<sha>`-suffixed** (`open3d-0.19.0+63e30be-cp313-cp313-win_amd64.whl`
+at the time of writing) and the name moves as `main` moves — list the assets on
+[the `main-devel` release](https://github.com/isl-org/Open3D/releases/tag/main-devel) and
+take the current one. **That build is what this route's own open3d-dependent numbers were
+measured against**, and it is a real comparability boundary: the identity envelope records
+the instrument's hash, not its dependencies — [E31](docs/experiments/E31-ruling.md).
+
+*Through v0.3.1 the wheel held two `.py` files and none of the measurement instruments,
+so an installed measurement server had nothing to invoke. Nobody noticed for four
+releases because this repo IS the checkout: the tool worked where it was built and had
+never been anywhere else.*
 
 ⚠ **`pip install facet-mcp` was broken in every released version through v0.3.0, and is
 fixed in v0.3.1.** The wheel installs `facet_index` as a top-level module, so up to and
@@ -170,8 +215,8 @@ next session read as established fact. Nothing in that loop was checkable.
   is not an archive — anyone can run those tools and watch them fail the same way.
 - **A negative result is a full success**, reported and closed rather than tuned toward a
   number.
-- **Tests ride the commit that touches the code** — 890 passing at two seats' hands, with
-  paths-gated CI on the 850 hermetic ones.
+- **Tests ride the commit that touches the code** — 891 passing at two seats' hands, with
+  paths-gated CI on the 851 hermetic ones.
 - **The record is queryable.** A SQLite + FTS5 index over the whole trail, verified on
   four legs. It found a ruling count the prose had wrong at three sites, by counting the
   record itself.
@@ -283,8 +328,8 @@ Developed against an RTX 5090; VRAM headroom matters more than raw speed.
 CI runs the hermetic subset of the suite on **ubuntu-latest / Python 3.12** with
 pinned installs (`.github/workflows/ci.yml`); the artifacts tier needs the recorded
 trees under `E:\AI\training`, which are not in git, so CI deselects them by design.
-Locally, `python -m pytest` runs all **890** tests and `python -m pytest -m "not artifacts"`
-runs the **850** CI reproduces.
+Locally, `python -m pytest` runs all **891** tests and `python -m pytest -m "not artifacts"`
+runs the **851** CI reproduces.
 
 ---
 

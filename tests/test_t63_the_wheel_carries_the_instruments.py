@@ -210,15 +210,31 @@ def test_t63_a_light_module_hint_names_the_extra(measure_mcp):
     assert "facet-mcp[measure]" in hint
 
 
-def test_t63_the_open3d_hint_does_not_promise_an_install_that_cannot_work(
+def test_t63_the_open3d_hint_is_true_on_the_interpreter_it_runs_on(
         measure_mcp):
-    """E31 Ruling 3: open3d 0.19.0 publishes cp38-cp312 and NO sdist, and the
-    only cp313 build is a direct-URL dev wheel that cannot appear in PyPI
-    metadata. A hint reading `pip install facet-mcp[measure-full]` would send
-    the caller in a circle, which is worse than saying so."""
+    """⚑ REWRITTEN 2026-08-09 with the ruling it enforces.
+
+    This asserted the hint must NEVER name `measure-full`, on the reading that
+    such an extra "cannot exist". Corrected: it exists and carries open3d
+    behind `python_version < "3.13"`, because open3d publishes cp38-cp312 on
+    PyPI and E31 measured that tier at 0 of 8 failing on py3.12.
+
+    So the hint is now INTERPRETER-DEPENDENT, and each branch has to be true
+    where it fires: on <=3.12 there IS something to install and the hint must
+    say what; on 3.13 there is not, and it must say WHY rather than send the
+    caller round a loop. A single fixed string cannot be honest on both.
+    """
+    import sys
     hint = measure_mcp._install_hint("open3d")
-    assert "measure-full" not in hint, (
-        "the open3d hint names an extra that cannot exist: %r" % hint)
-    assert "open3d" in hint and "sdist" in hint, (
-        "the open3d hint should state WHY there is nothing to install: %r"
-        % hint)
+    assert "open3d" in hint
+
+    if sys.version_info < (3, 13):
+        assert "measure-full" in hint, (
+            "on %d.%d open3d IS installable and the hint must name the extra: "
+            "%r" % (sys.version_info[0], sys.version_info[1], hint))
+    else:
+        assert "sdist" in hint, (
+            "on 3.13 there is nothing to install; the hint must say why "
+            "rather than name an extra that will not deliver it: %r" % hint)
+        assert "3.13" in hint, (
+            "the hint should name the interpreter it is refusing on: %r" % hint)
