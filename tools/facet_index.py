@@ -125,6 +125,38 @@ def repo():
     return REPO
 
 
+def db_default():
+    """The tracked index under the record's root, or a REFUSAL.
+
+    ⚑ WHY THIS OVERRIDES THE PACKAGE'S OWN. `record_index.Binding.db_default`
+    is `os.path.join(self.root, ...)`, and with no root that join raises
+    `TypeError: expected str, bytes or os.PathLike object, not NoneType`.
+    `run_contract` has no branch for a TypeError, so it lands in the generic
+    handler and the command exits **2 = RUNTIME_ERROR** - a crash, where E24's
+    constraint says a resolver that cannot find a corpus REFUSES with **4**.
+
+    MEASURED, not reasoned: `facet_index.py claims` run from a directory that is
+    not the record returned `RUNTIME_ERROR / message: expected str, bytes or
+    os.PathLike object, not NoneType / cause: TypeError`, and T32's transplant
+    leg caught it. It is a defect in record-index 0.1.0 and it is NOT one of the
+    four that package pins as known - a FIFTH, recorded here so the next
+    version's list is complete rather than inherited. facet's adapter refuses at
+    its own surface meanwhile, which is also where the honest refusal message
+    belongs, since `repo()` is what knows what facet looked for. When a release
+    carries the package-side fix this override becomes redundant rather than
+    wrong, and `test_t32_the_default_db_refuses_when_there_is_no_record` keeps
+    working either way.
+
+    Assigned onto the binding INSTANCE rather than subclassed: `bind()`
+    constructs the Binding, so there is no class of ours to put a method on, and
+    an instance attribute is the smallest thing that shadows the broken one.
+    """
+    return os.path.join(repo(), DB_REL.replace("/", os.sep))
+
+
+BINDING.db_default = db_default
+
+
 def main(argv=None):
     """The console-script entry point. `[project.scripts]` binds this name, so
     the contract wrapper has to be HERE and not in the `__main__` guard."""

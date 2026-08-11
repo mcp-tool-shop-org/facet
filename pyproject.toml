@@ -32,9 +32,16 @@ dependencies = [
     # The index itself was EXTRACTED to its own package (S02). facet now
     # declares what its documents mean in docs/index/conventions.json and
     # consumes the parser, the four-leg verify and the ranking from here.
-    # NOT YET ON PyPI - the wheel tests that build a clean venv cannot
-    # resolve this until it is published, and that is named in the report
-    # rather than worked around.
+    # ⚑ CORRECTED 2026-08-11, kept rather than rewritten because the correction
+    # is the useful part. This read "NOT YET ON PyPI - the wheel tests that
+    # build a clean venv cannot resolve this until it is published". It is
+    # published now (0.1.0, OIDC Trusted Publishing, with attestations), so this
+    # line resolves and T32's five wheel legs run instead of dying at
+    # `ModuleNotFoundError: record_index` inside the venv. Measured against the
+    # published wheel the same day: its ten `record_index/*.py` are byte-
+    # identical to the checkout this repo develops against, which is why T29's
+    # and T30's source scans over `record_index.cli` mean the same thing on the
+    # rig and on the CI runner.
     "record-index>=0.1.0",
 ]
 

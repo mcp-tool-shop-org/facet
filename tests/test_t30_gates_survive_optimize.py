@@ -66,6 +66,24 @@ CONVERTED = ["texpass_iter.py", "texpass_finalize.py", "project_twins.py",
              "facet_index.py", "record_mcp.py"]
 
 
+def _shared_contract_source():
+    """The source file holding the exit-code contract facet's gates land in.
+
+    RESOLVED FROM THE IMPORT, never spelled as a path: on the rig
+    `record_index` is an editable checkout and in CI it is a wheel under
+    site-packages, so a literal would be right in exactly one of the two.
+    """
+    import pathlib
+
+    from record_index import cli as pkg_cli
+
+    p = pathlib.Path(pkg_cli.__file__)
+    assert p.suffix == ".py" and p.is_file(), (
+        "record_index.cli has no readable .py source at %s - a source scan "
+        "cannot answer this question against a compiled-only install" % p)
+    return p
+
+
 def run(flags, script, args, env_extra=None, timeout=1800):
     """One command, one process, with interpreter FLAGS as well as env.
 
@@ -374,6 +392,25 @@ def test_t30_the_andon_exception_types_are_the_ones_e22_measured():
     in this repo is a REPORTED FINDING, not something this test decides.
 
     Both populations are pinned, so a change to either is visible.
+
+    ⚑ `facet_index.py` WENT FROM 1 TO 0 ON 2026-08-11, AND THAT IS A MOVE
+    RATHER THAN A DELETION. S02 extracted the index to the `record-index`
+    package, and the single ANDON here - the inverse discovery guard - went
+    with it: it is `record_index/parse.py`'s
+    `assert_no_undiscovered_handoffs`, pinned at exactly one `AssertionError`
+    by `record-index tests/test_gates_and_writes.py::
+    test_the_andon_exception_type_census_is_the_one_measured`.
+
+    THE EVIDENCE THAT IT STILL FIRES IS ALREADY IN THIS FILE and is stronger
+    than a second census would be: `test_t30_index_discovery_gate_refuses_in_
+    every_mode` plants a stray handoff, runs `facet_index.py build` as a
+    subprocess under a normal interpreter, `-O` and `PYTHONOPTIMIZE=1`, and
+    requires exit 4 with the ANDON text naming the file - in all three modes.
+    A structural count that dropped to 0 while that leg stayed green is the
+    gate having moved house, not having gone quiet. If it HAD gone quiet, those
+    three legs go red first and this one is the footnote.
+
+    The other six rows are facet's own tools and are unmoved.
     """
     got = {}
     for rel in CONVERTED:
@@ -395,15 +432,17 @@ def test_t30_the_andon_exception_types_are_the_ones_e22_measured():
             per[name] = per.get(name, 0) + 1
         got[rel] = per
     # MEASURED after conversion, and against HEAD before it. The AssertionError
-    # column is 86 converted + facet_index's guard; the SystemExit column is
+    # column was 86 converted + facet_index's guard; the SystemExit column is
     # the three that were raises already and is BYTE-UNCHANGED by E22.
+    # RE-MEASURED 2026-08-11 after S02: facet_index's guard moved to
+    # record_index/parse.py, so this file's row is now empty - see the docstring.
     want = {
         "texpass_iter.py": {"AssertionError": 8},
         "texpass_finalize.py": {"AssertionError": 4},
         "project_twins.py": {"AssertionError": 15, "SystemExit": 1},
         "e11_manifest.py": {"AssertionError": 35, "SystemExit": 1},
         "e11_export_turnaround.py": {"AssertionError": 24, "SystemExit": 1},
-        "facet_index.py": {"AssertionError": 1},
+        "facet_index.py": {},
         "record_mcp.py": {},
     }
     assert got == want, (
@@ -414,8 +453,17 @@ def test_t30_the_andon_exception_types_are_the_ones_e22_measured():
 def test_t30_run_contract_still_keys_on_assertionerror():
     """The other half of the pair above, and the reason it matters. If this
     handler were ever narrowed or renamed, the type check would be guarding
-    nothing."""
-    src = io.open(tool("facet_index.py"), encoding="utf-8").read()
+    nothing.
+
+    ⚑ RE-POINTED 2026-08-11 (S02) at `record_index.cli`, which is where
+    `run_contract` lives now. It is kept here rather than left to the package's
+    own copy of this test because the five files above are FACET'S tools: their
+    ANDONs raise `AssertionError` and reach an operator through this handler, so
+    a narrowing there turns every one of facet's own fired gates into a generic
+    runtime error with the wrong exit code. The property is the package's; the
+    exposure is facet's, and this is the leg that watches it from facet's side.
+    """
+    src = _shared_contract_source().read_text(encoding="utf-8")
     tree = ast.parse(src)
     fn = next(n for n in ast.walk(tree)
               if isinstance(n, ast.FunctionDef) and n.name == "run_contract")
@@ -464,9 +512,14 @@ def test_t30_the_conversion_left_no_orphan_message():
     # ANDON token, so its count is 0 and that is correct rather than a miss.
     # A change here means a gate was added, removed or reworded, and the report
     # has to say which.
+    # RE-MEASURED 2026-08-11: facet_index 1 -> 0, the same single guard the type
+    # census above records as having MOVED to record_index/parse.py rather than
+    # having been deleted. Its message went with it and is still the one that
+    # reaches an operator - the three subprocess legs above read it out of a
+    # real refusal in all three interpreter modes.
     want = {"texpass_iter.py": 8, "texpass_finalize.py": 4,
             "project_twins.py": 16, "e11_manifest.py": 36,
-            "e11_export_turnaround.py": 25, "facet_index.py": 1,
+            "e11_export_turnaround.py": 25, "facet_index.py": 0,
             "record_mcp.py": 0}
     assert got == want, (
         "the ANDON message population moved:\n  measured %s\n  committed %s"

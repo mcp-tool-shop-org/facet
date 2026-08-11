@@ -73,7 +73,17 @@ def tool(rel):
 # closed, one module short. Measured over all twelve: cv2 is the ONLY third-party
 # module-level import outside this table, apart from bpy and mathutils, which
 # belong to the two Blender scripts nothing here runs.
-REQUIRED_CHILD_MODULES = ("numpy", "scipy", "PIL", "trimesh", "open3d", "mcp", "cv2")
+# `record_index` joined this table with the S02 extraction (2026-08-11), for the
+# same reason and with one difference worth naming. The index moved into its own
+# package and tools/facet_index.py imports it at MODULE level, so an interpreter
+# without it produces the partial-green misreading Ruling 2 closed - and the
+# stdlib-only pair the table's own note calls out as the reason a wrong
+# interpreter reads as a partial green is EXACTLY the pair that stops being
+# stdlib-only here. The difference: this is the studio's own package rather than
+# a third-party one, declared in pyproject as a RUNTIME dependency (not a test
+# pin), with its CI install beside the rest in .github/workflows/ci.yml.
+REQUIRED_CHILD_MODULES = ("numpy", "scipy", "PIL", "trimesh", "open3d", "mcp",
+                          "cv2", "record_index")
 
 _PROBE_SRC = (
     "import importlib, sys\n"

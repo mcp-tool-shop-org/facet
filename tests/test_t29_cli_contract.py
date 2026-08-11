@@ -274,6 +274,27 @@ def test_t29_debug_changes_no_side_effect(tmp_path):
         "--debug changed the artifact the build wrote")
 
 
+def _shared_contract_source():
+    """The source file that holds the exit-code contract both commands run on.
+
+    RESOLVED FROM THE IMPORT, never spelled as a path. `record_index` is a
+    dependency: on the rig it is an editable checkout and in CI it is a wheel
+    under site-packages, so any literal path would be right in one place and
+    wrong in the other. Asking the module where it lives is the only form that
+    is true in both, and it also fails loudly if the package ever ships without
+    source.
+    """
+    import pathlib
+
+    from record_index import cli as pkg_cli
+
+    p = pathlib.Path(pkg_cli.__file__)
+    assert p.suffix == ".py" and p.is_file(), (
+        "record_index.cli has no readable .py source at %s - a source scan "
+        "cannot answer this question against a compiled-only install" % p)
+    return p
+
+
 def _functions_reading(path, ident):
     """Every top-level function whose body reads the name `ident`.
 
@@ -307,6 +328,14 @@ def test_t29_debug_is_read_only_where_a_failure_is_PRINTED():
     Naming the exact three is deliberate. A looser form ("no function named
     like a gate reads it") would pass on a tool where the guard itself grew a
     debug branch under some other name.
+
+    ⚑ RE-POINTED 2026-08-11 (S02). The contract moved into `record_index.cli`
+    when the index was extracted, and this scan stayed pointed at
+    `tools/facet_index.py` - where it returned the EMPTY SET, which a
+    confinement check reads as "perfectly confined". It went red only because
+    the leg below requires the walk to find SOMETHING; without that pair this
+    guard would have gone quietly green on a shim, which is worse than absent.
+    The scan follows the code, and facet keeps the half that is facet's.
     """
     # `debug_requested` is NOT in this set and that is not an oversight: it
     # tests argv against the STRING "--debug" and never binds the name, so the
@@ -314,14 +343,18 @@ def test_t29_debug_is_read_only_where_a_failure_is_PRINTED():
     # the bool to the print.
     allowed = {"run_contract",      # holds the bool, passes it on
                "_report_failure"}   # decides whether a traceback is printed
-    readers = _functions_reading(REPO / "tools" / "facet_index.py", "debug")
+    readers = _functions_reading(_shared_contract_source(), "debug")
     assert readers == allowed, (
         "--debug is read outside the presentation path: %s"
         % sorted(readers - allowed))
-    mcp_readers = _functions_reading(REPO / "tools" / "record_mcp.py", "debug")
-    assert not mcp_readers, (
-        "record_mcp branches on --debug; it must reach the shared contract "
-        "and nothing else: %s" % sorted(mcp_readers))
+    # FACET'S OWN HALF, and after S02 it is the stronger statement: neither
+    # published module branches on the flag AT ALL - both reach the shared
+    # contract and nothing else.
+    for rel in ("facet_index.py", "record_mcp.py"):
+        own = _functions_reading(REPO / "tools" / rel, "debug")
+        assert not own, (
+            "%s branches on --debug; it must reach the shared contract and "
+            "nothing else: %s" % (rel, sorted(own)))
 
 
 def test_t29_the_debug_confinement_check_can_fail():
@@ -329,12 +362,15 @@ def test_t29_the_debug_confinement_check_can_fail():
 
     Without this, an ast walk that silently returned an empty set would make
     the guard above vacuous - the repo's most-repeated defect, in the test
-    written to prevent it.
+    written to prevent it. It is not belt-and-braces: this is the leg that
+    caught the re-point above, by refusing to call an empty set a pass.
     """
-    readers = _functions_reading(REPO / "tools" / "facet_index.py", "debug")
-    assert readers, "the ast walk found no readers at all - it is not looking"
-    unrelated = _functions_reading(REPO / "tools" / "facet_index.py",
-                                   "no_such_identifier_anywhere")
+    src = _shared_contract_source()
+    readers = _functions_reading(src, "debug")
+    assert readers, (
+        "the ast walk found no readers at all in %s - it is not looking, or "
+        "the contract moved again" % src)
+    unrelated = _functions_reading(src, "no_such_identifier_anywhere")
     assert unrelated == set(), "the ast walk matches names that do not exist"
 
 

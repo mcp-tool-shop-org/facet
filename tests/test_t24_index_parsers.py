@@ -20,6 +20,7 @@ written as \\u escapes rather than typed. That is E18's D2 lesson one file over,
 and this file paid for it twice - a post-hoc converter truncated the first draft
 to zero bytes, because "w" truncates before the encode raises.
 """
+import re
 import sqlite3
 
 import pytest
@@ -448,6 +449,101 @@ def test_t24_claim_shaped_is_case_insensitive(facet_index_mod):
 def test_t24_arc_re_needs_exactly_two_digits(facet_index_mod):
     assert facet_index_mod.ARC_RE.findall("E14 and E08") == ["14", "08"]
     assert facet_index_mod.ARC_RE.findall("E1 and E123") == []
+
+
+# ---------------------------------------------------------------------------
+# laws.paid_for_by - a declared BOUND, and it has to track the record
+# ---------------------------------------------------------------------------
+# THE DEFECT THESE THREE CLOSE, measured 2026-08-11. `laws.paid_for_by` was
+# declared as an E01-E15 range - frozen at E15 while the record ran to E33 - so
+# a law body citing E21, E22, E23, E27, E28, E29, E30, E31 or E32 got
+# `paid_for_by` NULL and NOTHING SAID SO. Measured on the corpus at the time:
+# 95 laws parsed, 31 of their bodies mention an experiment, 16 were attributed
+# and 15 were silently null. It is the SAME failure S02 halted its extraction
+# over on a second record - "the law corpus parsed 38 rows and left paid_for_by
+# NULL on every one, because the declared pattern matched an arc range that
+# repo does not use" - reproduced on facet's own, which is where it was written.
+#
+# Two things were needed and neither substitutes for the other: the package's
+# vocabulary counter makes it VISIBLE (verify printed `law paid_for_by ...
+# unrecognised` with the tokens named), and the declaration has to be RIGHT.
+# These legs are the second half, and they are what keeps it right when E34
+# lands.
+#
+# WHY A BOUND RATHER THAN A WILDCARD OVER TWO DIGITS. The counter's population
+# probe IS the two-digit E form; declaring the same thing would make its
+# unrecognised count 0 by construction, forever, whatever the corpus said.
+# This repo's law: grade an arm only on what it can move - if a metric reads
+# the same when the arm works and when it does nothing, it is not measuring the
+# arm. So the declaration states the arcs facet HAS, the counter keeps
+# something to report, and the second leg below is what makes the next arc's
+# bump a deliberate edit rather than a silence.
+
+def _record_arc_span(m):
+    """The highest experiment number the record itself carries.
+
+    Derived, never transcribed - `parse_experiments` reads the authored status
+    table plus the filesystem, which is the source `verify` counts against.
+    """
+    ids = sorted(e["id"] for e in m.parse_experiments())
+    assert ids, "the record parsed no experiments; this leg has no denominator"
+    for i in ids:
+        assert re.match(r"^E\d\d$", i), (
+            "an experiment id is not the two-digit E form (%r), so a numeric "
+            "bound over them is not defined" % i)
+    return max(int(i[1:]) for i in ids)
+
+
+def test_t24_paid_for_by_reads_every_arc_the_record_has(facet_index_mod):
+    """FAILS AT THE FROZEN VALUE. E16 through E33 are all in the record and the
+    old declaration matched none of them."""
+    m = facet_index_mod
+    hi = _record_arc_span(m)
+    unreadable = ["E%02d" % n for n in range(1, hi + 1)
+                  if not m.PAID_RE.search("this law was paid for by E%02d." % n)]
+    assert not unreadable, (
+        "laws.paid_for_by cannot read %d of the record's own arcs, so a law "
+        "citing one is attributed to nobody and nothing says so: %s"
+        % (len(unreadable), ", ".join(unreadable)))
+
+
+def test_t24_paid_for_by_is_a_bound_and_not_a_wildcard(facet_index_mod):
+    """CAN-FAIL LEG, and the one that keeps the vocabulary counter alive.
+
+    A declaration matching any two-digit E token would pass the leg above
+    forever and would make `law paid_for_by`'s unrecognised count structurally
+    zero. Requiring the bound to STOP at the record's own span is what leaves
+    the counter something to report - and it is deliberately the leg that goes
+    red the first time an arc lands without this declaration being edited.
+    """
+    m = facet_index_mod
+    beyond = "E%02d" % (_record_arc_span(m) + 1)
+    assert not m.PAID_RE.search("this law was paid for by %s." % beyond), (
+        "laws.paid_for_by matches %s, which the record does not have - it is a "
+        "wildcard rather than a bound, and the vocabulary counter that watches "
+        "it can no longer read anything but zero" % beyond)
+
+
+def test_t24_no_law_citing_an_arc_is_left_unattributed(facet_index_mod):
+    """THE MEASUREMENT THAT FOUND THE DEFECT, kept runnable.
+
+    Over the real law corpus rather than a fixture: a law whose body names an
+    experiment must come out of the parser with a non-empty `paid_for_by`. It
+    is a different question from the two above - those ask what the pattern
+    admits, this asks what the corpus actually got, which is the end the
+    declaration exists for.
+    """
+    m = facet_index_mod
+    laws = m.parse_laws()
+    assert laws, "the law corpus is empty; this leg would pass on nothing"
+    orphans = [(l["file"], l["statement"][:60],
+                ",".join(sorted(set(re.findall(r"\bE\d\d\b", l["body"])))))
+               for l in laws
+               if re.search(r"\bE\d\d\b", l["body"]) and not l["paid_for_by"]]
+    assert not orphans, (
+        "%d law(s) cite an experiment that laws.paid_for_by cannot read, so "
+        "their attribution is silently null:\n  %s"
+        % (len(orphans), "\n  ".join("%s :: %s :: %s" % o for o in orphans)))
 
 
 # ---------------------------------------------------------------------------

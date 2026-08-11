@@ -95,3 +95,9 @@ def test_t18_required_set_is_not_silently_empty():
     # E18: tools/record_mcp.py imports `mcp` at module level, so T22's stdio
     # subprocess is the same trap class the ruling closed for open3d.
     assert "mcp" in REQUIRED_CHILD_MODULES
+    # S02: tools/facet_index.py imports `record_index` at module level. Named
+    # rather than left to the length check, because a length check cannot say
+    # WHICH module arrived - and this is the one that ended the "stdlib-only
+    # pair" conftest's table names as the reason a wrong interpreter reads as a
+    # partial green rather than an obvious environment error.
+    assert "record_index" in REQUIRED_CHILD_MODULES

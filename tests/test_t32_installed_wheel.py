@@ -18,12 +18,32 @@ Two tiers, for a reason measured rather than assumed (E24):
     directory whose parent is not the record - by copying the module somewhere
     else and invoking it there. No wheel, no venv, no network.
   * the WHEEL legs build a real wheel and install it into a real venv. The
-    INSTALL is hermetic (`pip install --no-index --no-deps` needs no network,
-    and `facet_index` is stdlib-only so it runs without `mcp`); the BUILD is
-    not, because `python -m build` provisions an isolated build environment
-    from PyPI and `--no-isolation` fails against the rig's setuptools 70.2.0
-    where pyproject requires >=77. So they skip with a named reason when
-    `build` is absent or cannot run, and pytest.ini's `-rA` prints it.
+    BUILD reaches PyPI, because `python -m build` provisions an isolated build
+    environment from there and `--no-isolation` fails against the rig's
+    setuptools 70.2.0 where pyproject requires >=77. So they skip with a named
+    reason when `build` is absent or cannot run, and pytest.ini's `-rA` prints
+    it.
+
+⚑ THE INSTALL'S "NO NETWORK" CLAIM WAS RETIRED 2026-08-11, and the reason is
+the more useful half. It read: *the INSTALL is hermetic (`pip install
+--no-index --no-deps` needs no network, and `facet_index` is stdlib-only so it
+runs without `mcp`)*. The parenthesis carried TWO claims and only one of them
+survived S02. `facet_index` stopped being stdlib-only when the index was
+extracted to the `record-index` package - it imports it at module level - so
+`--no-deps` produced a venv where every one of these legs died at
+
+    File ".../site-packages/facet_index.py", line 46, in <module>
+        import record_index
+    ModuleNotFoundError: No module named 'record_index'
+
+which is a broken FIXTURE reporting as a broken artifact. `--no-deps` is KEPT
+and now carries the claim that is still true and still worth checking - the
+command runs WITHOUT the server's dependency - and the one declared dependency
+`facet_index` actually imports is installed the way a user's resolver installs
+it, from PyPI, with the requirement string READ FROM pyproject rather than
+transcribed here. `test_t32_the_command_runs_without_the_servers_dependency`
+is what keeps the surviving half honest, since nothing else would notice if
+`mcp` quietly arrived.
 
 A skip that nobody reads is a check that cannot fail; every skip below names
 the exact missing thing.
@@ -32,6 +52,7 @@ the exact missing thing.
 import importlib.util
 import os
 import pathlib
+import re
 import shutil
 import subprocess
 import sys
@@ -110,6 +131,37 @@ def test_t32_one_marker_is_not_enough_to_call_a_directory_the_record(tmp_path):
     assert facet_index.is_record_root(str(tmp_path)) is False
     (tmp_path / "docs" / "experiments").mkdir(parents=True)
     assert facet_index.is_record_root(str(tmp_path)) is True
+
+
+def test_t32_the_default_db_refuses_when_there_is_no_record(monkeypatch):
+    """THE DEFAULT --db IS A REFUSAL WHEN NOTHING IS BOUND, not a join with None.
+
+    ⚑ Measured 2026-08-11 on record-index 0.1.0, and it is a defect in the
+    package rather than in this repo: `Binding.db_default` is `os.path.join(
+    self.root, ...)`, so with no root it raises `TypeError: expected str,
+    bytes or os.PathLike object, not NoneType`. `run_contract` has no branch
+    for that, so `facet_index.py claims` from outside a checkout exited **2 =
+    RUNTIME_ERROR** with `cause: TypeError` where E24's constraint says a
+    resolver that cannot find a corpus REFUSES with **4**. The adapter now
+    supplies its own, and this leg is the mechanism-level pin under the
+    end-to-end one below.
+
+    ⚑ IT HAS TO BE THE BINDING'S. `record_index.cli.main` reads the default
+    through `binding.db_default()`, so a module-level function nobody attached
+    would be a repair that runs in this test and nowhere else - which is the
+    check-that-cannot-fail family with the arrow reversed.
+    """
+    # the can-fail half FIRST, unpatched: with a root it names the declared path
+    assert facet_index.db_default() == os.path.join(
+        str(REPO), facet_index.DB_REL.replace("/", os.sep))
+    assert facet_index.BINDING.db_default is facet_index.db_default, (
+        "the adapter's db_default is not the one the CLI calls")
+
+    monkeypatch.setattr(facet_index, "REPO", None)
+    with pytest.raises(facet_index.RootNotFound) as exc:
+        facet_index.BINDING.db_default()
+    for marker in facet_index.RECORD_MARKERS:
+        assert marker in str(exc.value), "the refusal must name what it looked for"
 
 
 def test_t32_the_two_db_env_declarations_agree():
@@ -262,8 +314,25 @@ def installed(tmp_path_factory):
     scripts = venv / ("Scripts" if os.name == "nt" else "bin")
     py = scripts / ("python.exe" if os.name == "nt" else "python")
 
-    # --no-index --no-deps: NO NETWORK. facet_index is stdlib-only, so every
-    # verb below runs without `mcp`; installing deps is what would need PyPI.
+    # THE ONE DECLARED DEPENDENCY `facet_index` IMPORTS, resolved from PyPI the
+    # way a user's `pip install facet-mcp` resolves it. Read from pyproject, not
+    # transcribed: a version transcribed here would be a second surface that can
+    # drift from what the package declares, which is the defect `_declared_
+    # payload` was written to close one layer up.
+    dep = _declared_requirement("record-index")
+    got_dep = subprocess.run(
+        [str(py), "-m", "pip", "install", "--quiet", dep],
+        capture_output=True, text=True, encoding="utf-8", errors="replace",
+        timeout=WHEEL_TIMEOUT)
+    if got_dep.returncode != 0:
+        pytest.skip("the declared dependency %r would not install into the "
+                    "wheel venv - this reaches PyPI, so it is also what no "
+                    "network looks like at this step: %s"
+                    % (dep, (got_dep.stderr or got_dep.stdout)[-400:]))
+
+    # --no-index --no-deps on the WHEEL ITSELF. `mcp` is deliberately absent:
+    # `facet-index` must run without the server's dependency, and that is a
+    # property rather than a saving - see the leg that measures it.
     got = subprocess.run(
         [str(py), "-m", "pip", "install", "--no-index", "--no-deps",
          "--quiet", str(wheel)],
@@ -273,7 +342,8 @@ def installed(tmp_path_factory):
 
     exe = scripts / ("facet-index.exe" if os.name == "nt" else "facet-index")
     assert exe.exists(), "the wheel installed no facet-index console script"
-    return {"wheel": wheel, "facet_index": str(exe), "venv": venv}
+    return {"wheel": wheel, "facet_index": str(exe), "venv": venv,
+            "python": str(py), "dep": dep}
 
 
 @pytest.mark.slow
@@ -322,6 +392,31 @@ def _declared_payload():
             "packages": list(st.get("packages", []))}
 
 
+def _declared_requirement(dist):
+    """The requirement string pyproject declares for `dist`, verbatim.
+
+    Same rule as `_declared_payload`: READ, never transcribed. A version
+    written into this file would be a second surface stating the same thing,
+    and the pair would drift the way T27's four version declarations did.
+
+    It RAISES rather than defaulting when the name is absent, because a fixture
+    that silently installed nothing would put the ModuleNotFoundError back and
+    make it look like the artifact's fault again.
+    """
+    import tomllib
+    with open(os.path.join(str(REPO), "pyproject.toml"), "rb") as fh:
+        deps = list(tomllib.load(fh)["project"]["dependencies"])
+    want = dist.replace("-", "_").lower()
+    for req in deps:
+        head = re.split(r"[<>=!~;\[\s]", req, maxsplit=1)[0]
+        if head.replace("-", "_").lower() == want:
+            return req
+    raise AssertionError(
+        "pyproject declares no dependency named %r; it declares %r. This "
+        "fixture installs what the project says it needs, so a rename has to "
+        "be made here on purpose." % (dist, deps))
+
+
 @pytest.mark.slow
 def test_t32_installed_wheel_runs_a_db_verb_with_no_db_flag(installed):
     """`facet-index q` with no --db, from inside a checkout.
@@ -367,6 +462,35 @@ def test_t32_installed_wheel_refuses_outside_a_checkout(installed, tmp_path):
     for marker in facet_index.RECORD_MARKERS:
         assert marker in r.stderr, "the refusal must name what it looked for"
     assert "FACET_INDEX_DB" in r.stderr, "a refusal names the way out"
+
+
+@pytest.mark.slow
+def test_t32_the_command_runs_without_the_servers_dependency(installed):
+    """WHAT `--no-deps` STILL CLAIMS, now that it no longer claims "no network".
+
+    `facet-index` is the index command; `mcp` belongs to the SERVER. The venv
+    above installs the wheel with `--no-deps` and adds only the one declared
+    dependency `facet_index` imports, so `mcp` is absent - and the verbs above
+    all ran anyway. Without this leg nothing would notice if `mcp` arrived and
+    the wheel legs started passing because the venv had grown, which is the
+    fixture-side sibling of a check that cannot fail.
+
+    Both directions, so neither half can be vacuous: the absent module really
+    is absent, and the present one really is present.
+    """
+    absent = _run([installed["python"], "-c", "import mcp"], cwd=REPO)
+    assert absent.returncode != 0, (
+        "`mcp` is importable in the wheel venv; --no-deps no longer holds and "
+        "the legs above stopped proving the index command stands alone")
+    assert "ModuleNotFoundError" in absent.stderr, absent.stderr
+
+    present = _run([installed["python"], "-c",
+                    "import record_index; print(record_index.__version__)"],
+                   cwd=REPO)
+    assert present.returncode == 0, (
+        "the declared dependency %r did not reach the venv:\n%s"
+        % (installed["dep"], present.stderr))
+    assert present.stdout.strip(), "record_index imported and printed nothing"
 
 
 @pytest.mark.slow

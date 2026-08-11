@@ -1,26 +1,8 @@
-"""T5 - the claims sweep: report-only, 0 STALE on the current corpus, and its
-parsing semantics exercised on synthetic fixtures.
+"""T5 - the claims sweep: report-only, 0 STALE on the current corpus, and the
+widened scan set that must not disturb the index.
 
 Source: E15 Ruling 8a (the sweep, and why it never gates); E16-9/E16-11
 (STALE: 0 measured on this corpus today).
-
-The synthetic half feeds the sweep fabricated documents via monkeypatched
-`record_markdown`/`lines_of` while the MEASUREMENTS stay real (the scratch
-DB), so the semantics under test are the sweep's own wiring, not a re-
-implementation of it:
-
-  * range vs cardinal - `handoffs 1-N` asserts the highest number and is
-    checked against MAX; `N handoffs` asserts how many exist and is checked
-    against COUNT. E12 is the record's own motivating case (handoffs numbered
-    to 16, only 15 exist - handoff 1 was never labelled), so conflating the
-    two manufactures a stale row.
-  * starts-at-1 - `Rulings 21-23` names three rulings and asserts nothing
-    about the total: no claim row, and NOT unparseable either.
-  * AMBIGUOUS - a modifier (`at least`, `so far`, `+ the close`, `or so`)
-    makes the assertion unresolvable; it is reported, never resolved.
-  * routing - the same wrong cardinal is STALE in a current-state document
-    and as-of-writing in a historical one.
-  * never gates - exit 0 even WITH a STALE row present.
 
 E26 Half B widened the SWEEP's scan set to the front-door files the index
 deliberately does not index - CHANGELOG, SHIP_GATE, SCORECARD, SECURITY and the
@@ -28,18 +10,53 @@ published site handbook. The legs below pin the property that makes that safe:
 `sweep_markdown()` is a strict superset of `record_markdown()`, and
 `record_markdown()` still does NOT reach any of them, so the index build, its
 FTS rows and verify's seeded rankings cannot move because a REPORT was widened.
-The synthetic fixture now patches `sweep_markdown`, which is what the sweep
-reads.
+
+⚑ WHAT S02 MOVED, AND WHAT STAYED (2026-08-11). The two lists this file read
+off the module - `SWEEP_EXTRA` and `SWEEP_EXTRA_DIRS` - are DECLARED fields now
+(`corpora.sweep_extra_files` and `corpora.sweep_extra_dirs` in
+`docs/index/conventions.json`), carrying the same four filenames and the same
+one directory. The legs below read the declaration, so they check the thing
+facet actually states rather than a constant that happened to agree with it.
+
+  * RETIRED: `test_t05_semantics_on_synthetic_fixtures`. It fed the sweep
+    fabricated documents by monkeypatching this module's `sweep_markdown` and
+    `lines_of`, and `claims` no longer reads either name - it builds a fresh
+    `Record` and asks that. The patch became a no-op, so the leg exercised
+    nothing but the real corpus wearing a fixture's name. Every semantic it
+    covered is pinned in `record-index tests/test_claims.py`, on that package's
+    own two fixture repos, one clause per test:
+
+      range vs cardinal  test_a_current_state_document_disagreeing_with_the_record_is_stale
+      starts-at-1        test_a_range_that_does_not_start_at_one_is_not_a_count_claim
+      AMBIGUOUS          test_a_modifier_makes_an_assertion_ambiguous_rather_than_resolved
+      routing            test_a_historical_document_disagreeing_is_as_of_writing_and_not_stale
+      unparseable        test_a_count_claim_no_family_parses_is_reported_not_guessed_at
+      never gates        test_the_sweep_exits_zero_with_stale_rows_on_the_record
+
+    Rebuilding them here would mean facet's suite re-asserting another
+    package's parser against fixtures facet does not own. What facet keeps is
+    the leg that reads facet's OWN corpus and requires STALE: 0.
 """
-import os
 import re
 import sqlite3
+
+from record_index import claims as _pkg_claims
 
 from conftest import run_py
 
 STALE_PREFIX = "STALE (current-state documents disagreeing with the record):"
 AMB_PREFIX = "AMBIGUOUS (a modifier makes the assertion unresolvable):"
 UNPARSE_PREFIX = "UNPARSEABLE (count-claim-shaped, no family):"
+
+
+def _sweep_extra(m):
+    """The extra files facet DECLARES the sweep reads, from its declaration.
+
+    Read rather than transcribed: a list repeated in this file would be a
+    second surface for one fact, and the first thing it would do is drift from
+    `conventions.json` without either copy noticing.
+    """
+    return list(m.CONV.sweep_extra_files)
 
 
 def _summary_count(out, prefix, label):
@@ -56,58 +73,6 @@ def test_t05_current_corpus_zero_stale(built_db):
         "STALE rows on the current corpus:\n%s" % out)
 
 
-def test_t05_semantics_on_synthetic_fixtures(facet_index_mod, built_db, monkeypatch, capsys):
-    m = facet_index_mod
-    con = sqlite3.connect(str(built_db))
-    h_count, h_max = con.execute(
-        "SELECT COUNT(*), MAX(number) FROM handoffs WHERE arc='E12'").fetchone()
-    con.close()
-    assert h_count and h_max, "E12 handoffs missing from the scratch DB"
-
-    current_state_rel = "README.md"                        # on the current-state list
-    historical_rel = "docs/experiments/E99-synthetic-kickoff.md"  # a kickoff path
-    fixture = {
-        current_state_rel: [
-            # range claim at the true MAX: ok (checked against max, not count)
-            "The E12 arc carries handoffs 1-%d in the record." % h_max,
-            # cardinal claim at the true COUNT: ok (checked against count)
-            "The E12 arc carries %d handoffs in the record." % h_count,
-            # wrong cardinal in a current-state document: STALE
-            "The E12 arc carries %d handoffs in the record." % (h_count + 1),
-            # an ambiguity modifier in the tail: AMBIGUOUS, never resolved
-            "The E12 arc carries %d handoffs at least." % h_count,
-            # a range that does not start at 1 asserts nothing about the
-            # total: no claim row AND not unparseable
-            "Rulings 21-23 of E12 discuss the twin registration.",
-        ],
-        historical_rel: [
-            # the SAME wrong cardinal in a historical document: as-of-writing
-            "The E12 arc carries %d handoffs in the record." % (h_count + 1),
-        ],
-    }
-    monkeypatch.setattr(m, "sweep_markdown", lambda: list(fixture))
-    monkeypatch.setattr(m, "lines_of", lambda rel: fixture[rel])
-
-    rc = m.claims(str(built_db))
-    out = capsys.readouterr().out
-
-    assert rc == 0, "claims gated (rc %d) - it must always exit 0" % rc
-    assert _summary_count(out, STALE_PREFIX, "T5-syn") == 1, out
-    assert _summary_count(out, AMB_PREFIX, "T5-syn") == 1, out
-    # starts-at-1: the 21-23 range produced neither a family row nor an
-    # unparseable (if it had parsed as a range it would be a second STALE;
-    # if it were merely claim-shaped it would appear here)
-    assert _summary_count(out, UNPARSE_PREFIX, "T5-syn") == 0, out
-    # the STALE row is the current-state document, line 3
-    assert re.search(r"^   README\.md:3\s", out, re.M), (
-        "STALE detail does not name README.md:3\n%s" % out)
-    # the identical wrong claim in the historical document routed to
-    # as-of-writing, not STALE
-    assert re.search(
-        r"^as-of-writing\s+historical\s.*E99-synthetic-kickoff\.md:1$", out, re.M), (
-        "historical routing row not found\n%s" % out)
-
-
 # ---------------------------------------------------------------------------
 # E26 Half B - the widened scan set, and the index it must not disturb
 # ---------------------------------------------------------------------------
@@ -118,7 +83,11 @@ def test_t05_sweep_scan_set_is_a_strict_superset_of_the_record(facet_index_mod):
     assert rec < swp, (
         "the sweep's scan set must strictly contain the record's - "
         "record %d files, sweep %d" % (len(rec), len(swp)))
-    for rel in m.SWEEP_EXTRA:
+    declared = _sweep_extra(m)
+    assert declared, (
+        "facet declares no corpora.sweep_extra_files, so this leg would pass "
+        "on an empty loop - the check must have something to check")
+    for rel in declared:
         assert rel in swp, "%s is not in the sweep's scan set" % rel
     assert any(r.startswith("site/src/content/docs/") for r in swp), (
         "the published site handbook is not in the sweep's scan set")
@@ -131,7 +100,7 @@ def test_t05_the_index_still_does_not_reach_the_front_door(facet_index_mod):
     index and move the seeded rankings verify's leg 4 gates on."""
     m = facet_index_mod
     rec = set(m.record_markdown())
-    leaked = [rel for rel in m.SWEEP_EXTRA if rel in rec]
+    leaked = [rel for rel in _sweep_extra(m) if rel in rec]
     leaked += [rel for rel in rec if rel.startswith("site/")]
     leaked += [rel for rel in rec if re.match(r"^README\.[a-zA-Z-]+\.md$", rel)]
     assert not leaked, (
@@ -142,9 +111,18 @@ def test_t05_the_index_still_does_not_reach_the_front_door(facet_index_mod):
 def test_t05_changelog_splits_at_the_first_released_heading(facet_index_mod):
     """The rule E26 had to state: an entry under `## [x.y.z]` is correct
     forever, while `## [Unreleased]` above it is a current-state claim wearing a
-    released entry's clothes. A file-scoped rule cannot express that."""
+    released entry's clothes. A file-scoped rule cannot express that.
+
+    ⚑ The SPLITTER is the package's and is pinned there on the package's own
+    fixture (`test_the_changelog_splits_at_its_first_release`); the SUBJECT here
+    is facet's real CHANGELOG.md, which is what this leg is for and what that
+    one cannot see. Calling the package's private locator is deliberate rather
+    than incidental: re-deriving "where is the first released heading" in this
+    file would make the leg agree with itself instead of with the tool, which
+    is the fixture-side check-that-cannot-fail.
+    """
     m = facet_index_mod
-    at = m._first_released_line("CHANGELOG.md")
+    at = _pkg_claims._first_released_line(m.BINDING.record(), "CHANGELOG.md")
     assert at is not None, "CHANGELOG.md has no released version heading"
     above, why_a = m.classify_document("CHANGELOG.md", at - 1)
     below, why_b = m.classify_document("CHANGELOG.md", at + 1)
@@ -157,7 +135,7 @@ def test_t05_every_widened_surface_is_classified(facet_index_mod):
     disagreements can never be STALE, so it is watched in appearance only."""
     m = facet_index_mod
     unclassified = []
-    for rel in m.SWEEP_EXTRA:
+    for rel in _sweep_extra(m):
         cls, _ = m.classify_document(rel, 1)
         if cls == "unclassified":
             unclassified.append(rel)
@@ -180,7 +158,7 @@ def test_t05_widening_the_sweep_left_the_build_alone(facet_index_mod, built_db):
     files = {r[0] for r in con.execute("SELECT DISTINCT file FROM fts")}
     con.close()
     assert n_fts > 0, "the scratch index has no fts rows to check"
-    extra = set(facet_index_mod.SWEEP_EXTRA)
+    extra = set(_sweep_extra(facet_index_mod))
     strays = sorted(f for f in files
                     if f and (f.startswith("site/") or f in extra
                               or re.match(r"^README\.[a-zA-Z-]+\.md$", f)))
