@@ -468,6 +468,24 @@ so no irreversible publish exists to undo**. Cloud: **the six jobs' GPU-hours ha
 compensator**, which is why the ceiling was stated before the first submission and why the
 arms were two views rather than eight. `E:\AI\armature` was never written to.
 
+### The delivery line (F01 gate A6)
+
+```
+path    E:\AI	rainingacet_E33\out\performer_textured.glb
+sha256  9e20ea7d800c0ffd2cff101a5e1bcc01fa13c620bbbe3ef05ae23b093547b1aa
+bytes   21,588,628
+tris    299,956   mesh objects 1   nodes 1   materials 1
+texture 1 x 4096 x 4096 (image/png, "atlas_final"), embedded
+shells  67 (largest 0.492)   watertight False   boundary edges 0 on the raw mesh
+rig     NONE - delivered unrigged, as F01 asks
+manifest E:\AI	rainingacet_E33\E33_manifest.json - 117 files, sha256 each
+```
+
+⚠ Against F01's gate A3: **triangles 299,956** sit inside its 200k-1.2M band and the
+embedded texture is **4096 px**, above its 2048 px floor; the **single mesh object** is not a
+documented split but the route's own output. A1/A2/A4 are the Director's eye on the sheet,
+not this seat's to mark.
+
 ## 13. Out of scope, and not run
 
 * **Projection, brush, fill, finalize: NOT RUN.** The spec cut them before the session began.
