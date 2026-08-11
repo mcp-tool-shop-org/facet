@@ -2,11 +2,11 @@
  "andon": [],
  "corpus": {
   "files": 298,
-  "id": "dda59229ed979e30d4017302cd98e26ecd9d333d65a97c16ff412518015dce1f",
+  "id": "3cf12364afb2a9820bac78b925965638116cc155656912182f646729c2a9d0dd",
   "manifest": {
    "CLAUDE.md": "0f25a65bec22448ae07ff26256906eb19492beeaf3a08fb830961940e2b5c5d9",
-   "README.md": "3c7328d20a4446945007a09ec77b2e1ab51c6c23dd58dca224ca6946993fb3dd",
-   "docs/advisor-kickoff.md": "497328c6b526ef8e69f23c2630883db6c8e18406cb0c5dda3efd2615e19654ef",
+   "README.md": "69afb930ec2f23ff9ec5f9e9badabdcb2a49ef0eb05653f23d960dfc0d8074cb",
+   "docs/advisor-kickoff.md": "7e59bfeb3c9d28e316615dc541ec0a463538901a7251901b834399e26d86c3b5",
    "docs/arc-history.md": "5b2876b3fed7be95a6efc984f5e5a00b7c1675b10a169ee43803b50e091b48a8",
    "docs/brand/README.md": "81f425b6a101135b43463b35468f08a2db37af39c856c01f7fbdb6ce66598226",
    "docs/concept-prep.md": "85a2db891ab3cc7df1968630e18e43382df2156cdd5610a2273f13d2d639a28a",
@@ -318,7 +318,7 @@
  "db": {
   "bytes": 11530240,
   "path": "docs/index/facet.db",
-  "sha256": "69cefc826f6a5edae70c8fc5f59e285f08ff6f4eb8f6c3c12ec08d27fffcab8e"
+  "sha256": "5a3f1e49cc1cca6939f41957dd963051f3691a5903e778cbc0e643204fdf4af6"
  },
  "determinism_leg": "byte-identity",
  "failures": [],
@@ -478,15 +478,14 @@
   "  artifact kinds         recognised  4056   unrecognised    0",
   "  experiment status      recognised    60   unrecognised    2",
   "      not recognised: **deprioritised by E07's ruling** \u2014 den\u2026  (+1 more occurrence(s))",
-  "  law paid_for_by        recognised    32   unrecognised   32",
-  "      not recognised: E21, E22, E23, E27, E28, E29, E30, E31  (+24 more occurrence(s))",
+  "  law paid_for_by        recognised    62   unrecognised    0",
   "  phenomenon markers     recognised    56   unrecognised  128",
   "      not recognised: AFFIRMED, AMENDED, CORRECTED, EXCLUDED, MEASURED, PLACED, REOPENED, RESOLVED  (+120 more occurrence(s))",
   "  ruling headers         recognised   600   unrecognised   12",
   "      not recognised: ## 0. What this seat verified before ruling, ## 1. Half 1 \u2014 RATIFIED, and two of my predictions are d, ## 2. Half 2's substitution \u2014 RATIFIED, ## 3. The ruling that reorders the spec \u2014 acceptance is , ## 4. Consequently: R8 is no longer the first arm, ## 5. What this does not settle  (+6 more occurrence(s))",
   "  verdicts               recognised   318   unrecognised  130",
   "      not recognised: AFFIRMED, CORRECTED, MEASURED, NAMED, PLACED, REOPENED, RESOLVED, TRANSLATED  (+122 more occurrence(s))",
-  "  total unrecognised inputs: 304",
+  "  total unrecognised inputs: 272",
   "  mechanism: bm25(8.0, 1.0), candidates 400, phrase slots 3 - calibrated on facet@2026-08 (~250 files / 62k lines, seeded set 19); these are defaults, not measurements about your record",
   "",
   "==============================================================================",
@@ -495,7 +494,7 @@
  ],
  "unattributed_failures": [],
  "verb": "record_build",
- "verified_utc": "2026-08-11T16:54:46Z",
+ "verified_utc": "2026-08-11T18:44:14Z",
  "verify_exit_code": 0,
  "written_by": "tools/record_mcp.py"
 }
