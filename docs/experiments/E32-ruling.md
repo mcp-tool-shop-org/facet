@@ -369,3 +369,65 @@ axis-D counts moved, both new tools judged axis-G `none` under the census's stat
 `RUNNABLE` seven → nine, T33's ANDON pin 28/12 → 30/14, `SHIP_GATE.md`'s lineage preserved
 (`… → 859 → 891 → 917`), and the seven translated READMEs digit-only with no translation pass.
 Nothing was transcribed. That is what Ruling 7 asked for.
+
+---
+
+## Ruling 15 — MY OWN RULING 13 CARRIED A DEFECTIVE PROCEDURE. Corrected in place.
+
+Ruling 13's instruction read: *"`facet_index.py build` then `verify` against a SCRATCH `--db`,
+19/19 or stop. Only after that passes is the committed `docs/index/facet.db` + `.cert.json`
+regenerated."*
+
+**The outcome I named was right and the procedure I prescribed cannot produce it.** Measured:
+
+* `write_certificate` is defined at `tools/record_mcp.py:499` and called **only** at `:931`, under
+  the verb `record_build`.
+* `tools/facet_index.py` never writes the certificate — it holds `CERT_SUFFIX` and a docstring
+  reference, nothing more.
+* The committed certificate's own field reads `written_by: tools/record_mcp.py`.
+
+So `facet_index.py build` regenerates `facet.db` **and leaves the certificate stale**. Followed
+literally, Ruling 13 would have committed a fresh db beside a certificate carrying the previous
+timestamp — **a half-pair, the exact thing Ruling 12 measured must never happen.**
+
+**Corrected procedure, and the split is the point:**
+
+1. **Gate** — `facet_index.py build` then `verify` against a **scratch `--db`**, 19/19 or stop.
+   A verification, and `facet_index.py` is the right tool for it. Unchanged.
+2. **Regenerate** — the committed pair is written by **`record_build`**, which runs build and
+   verify as one act by design and writes **both** files. `facet_index.py` is not the tool here.
+
+**Why the ruling survived its own defect:** the executor checked `git status` against Ruling 12's
+*"they move as a pair"* observation rather than trusting two zero exit codes. The invariant caught
+the procedure built on it — a small argument for stating an invariant next to the procedure it
+governs.
+
+**And it explains Ruling 12's measurement.** The pair moves together in every prior commit not by
+anyone's discipline but **because only one verb writes both**. The precedent was a property of the
+tool, not a habit.
+
+## Ruling 16 — the executor's own finding, adopted as a law
+
+Named unprompted after its precedent reading was overturned:
+
+> **A conclusion read off a truncated listing is not a measurement.**
+
+Three instances in one session, every one the session's own tooling silently dropping rows: a
+pytest summary read through `Select-Object -Last 12` reporting **11** failures where there were
+**31**; the same shape again on the full-suite list; and `git show --stat | tail -12` cutting the
+file lists into a **wrong precedent** about whether E31 rebuilt the index — an error that would
+have flipped this arc's index decision had it not been re-measured.
+
+**A distinct family from the unit/population laws.** There the population is mis-specified. Here it
+is real, correctly specified, and **silently truncated by the instrument reading it**. Folded into
+`CLAUDE.md`.
+
+## The arc is closed on this seat's side
+
+Verified independently: **`46e8369`** — 26 files, **zero** from `docs/index/`; **`6218ca9`** — the
+db and certificate, alone. Tree clean, gate **19/19 all four legs**, post-rebuild `record_health`
+**`SERVING`**, staleness null.
+
+**The push is the Director's**, and the two questions the Gate 0 sheet puts to him — *is this the
+armature mark*, and *does the 17.7%-of-width depth read as an object or a flat relief* — stay open
+and are not this seat's to answer.

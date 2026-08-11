@@ -590,6 +590,20 @@ guarantee.
 an archive; it is the mechanism that stops a falsified approach quietly becoming doctrine
 again. Anyone can run those tools and watch them fail the same way.
 
+**A conclusion read off a truncated listing is not a measurement.** Found by an executor in E32
+after its own precedent reading was overturned, and it had already fired **three times in that one
+session**: a pytest summary read through `Select-Object -Last 12` reported **11** failures where
+there were **31**; the same shape recurred on the full-suite list; and `git show --stat | tail -12`
+cut the file lists into a **wrong precedent** about whether a prior commit rebuilt the index — an
+error that would have flipped an advisor ruling had it not been re-measured. **This is a distinct
+family from the unit/population laws above**: there the population is mis-specified; here it is
+real, correctly specified, and **silently truncated by the instrument reading it**. `tail`, `head`,
+`Select-Object -Last` and default row caps all return a plausible, well-formed, incomplete answer,
+and none of them say so. When a listing decides anything, read it **complete** — count it, write it
+to a file, or use a form with no cap — and prefer a command that reports a total (`| wc -l`,
+`--name-only`, `--count`) so a truncation surfaces as a mismatch. **A paging flag is not a
+measurement instrument.**
+
 ## Judging artifacts
 
 - **Textures under FLAT light.** A Blender Workbench STUDIO render is not a texture readout —
