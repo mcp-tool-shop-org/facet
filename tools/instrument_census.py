@@ -146,6 +146,13 @@ _G = {
         "e13_gate1_sheet.py", "e13_payoff_sheet.py", "e14_pair_sheet.py",
         # tools/verify (task 2-pre)
         "gate0_sheet.py", "gate1_sheet.py", "head_crop.py",
+        # E33, judged under the rule above - docstring line 1 plus filename, NOT
+        # the body. Line 1 is "the register sheet: concept | clay | control | one
+        # column per CANDIDATE register", which is a comparison-sheet builder, and
+        # task 2-pre's own precedent puts comparison-sheet builders here (it is why
+        # gate0_sheet / gate1_sheet / head_crop sit in this list). Following that
+        # precedent deliberately rather than opening a new bucket for one file.
+        "e33_register_sheet.py",
     ],
     "mesh_stats": [
         "mesh_stats.py",

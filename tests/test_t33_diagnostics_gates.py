@@ -82,10 +82,13 @@ SMOKE = [r for r in SCOPE if r not in (BLENDER, PRE_ARGPARSE_FILE_WORK)]
 # below is not read as a conversion count. E22 Ruling 5 ruled these stay: SystemExit is
 # not deletable by -O, so none of them carries the defect this arc exists to fix.
 # 28 across 12 files at E25; 30 across 14 at E32, which added one
-# `raise SystemExit("ANDON: ...")` to each of its two tools. This pin finding them
-# is the pin working: both are raises, not asserts, so neither is deletable by -O.
-SYSTEMEXIT_ANDONS = 30          # across 14 files; 3 of those also hold assert ANDONs
-SYSTEMEXIT_ANDON_FILES = 14
+# `raise SystemExit("ANDON: ...")` to each of its two tools; 32 across 15 at E33, whose
+# single tool carries two - a candidate whose size is off its control's, and a missing
+# candidate. This pin finding them is the pin working: all four are raises, not asserts,
+# so none is deletable by -O, and T65 runs E33's firing case under both -O and
+# PYTHONOPTIMIZE=1 and asserts no sheet is written after the gate fires.
+SYSTEMEXIT_ANDONS = 32          # across 15 files; 3 of those also hold assert ANDONs
+SYSTEMEXIT_ANDON_FILES = 15
 
 # After E25 the only ANDON assert left anywhere under tools/ is superseded/'s one.
 # E22 Ruling 4 ruled it NEVER converted - those tools are kept so anyone can run them

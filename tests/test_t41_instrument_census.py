@@ -11,7 +11,7 @@ built to fail it, not merely agreeing with the directory as it happens to stand.
 E28 gate 2: these legs pass before any census number is believed.
 
 THE POPULATION IS PINNED HERE, the E23 Ruling 9 pattern. `tools/diagnostics/`
-holds 101 `.py` files (99 through E28; E32 added two); the spec estimated "~80"
+holds 102 `.py` files (99 through E28; E32 added two, E33 one); the spec estimated "~80"
 and that estimate is what the census exists to replace. Moving the count
 requires editing this file, on purpose, in the commit that moves it - it cannot
 drift silently.
@@ -53,7 +53,9 @@ EXPECTED_PY_FILES = {
     # 99 -> 101 at E32: e32_plate_geometry.py + e32_route_preprocess.py, both
     # judged for axis G in the same commit (E32 Ruling 7's procedure - the pin
     # moves deliberately, driven off the tree, never off a transcribed list).
-    "tools/diagnostics": 101,
+    # 101 -> 102 at E33: e33_register_sheet.py, judged for axis G in the same
+    # commit under the same procedure.
+    "tools/diagnostics": 102,
     # 8 -> 9 at E28 task 2c: anchor_compare.py entered by ruling + wrap
     # (Ruling 10, Ruling 3's entry rule), census re-run in the same commit.
     "tools/verify": 9,

@@ -5,7 +5,7 @@
         "dir": "tools/diagnostics",
         "non_py_files": 0,
         "non_py_names": [],
-        "py_files": 101
+        "py_files": 102
       },
       {
         "dir": "tools/verify",
@@ -14,11 +14,11 @@
         "py_files": 9
       }
     ],
-    "py_files_total": 110
+    "py_files_total": 111
   },
   "provenance": {
-    "corpus_files": 282,
-    "corpus_files_before_self_exclusion": 292,
+    "corpus_files": 285,
+    "corpus_files_before_self_exclusion": 295,
     "probe_interpreter": "E:\\AI-Models\\trellis2-env\\Scripts\\python.exe",
     "probe_interpreter_version": "3.13.13",
     "probe_skipped": false,
@@ -35,7 +35,7 @@
       "docs/experiments/E28-task3-report.md",
       "docs/instrument-census.md"
     ],
-    "test_files": 64
+    "test_files": 65
   },
   "rows": [
     {
@@ -1685,13 +1685,16 @@
       ],
       "b1_literals": [],
       "b2_literals": [],
-      "cited_count": 5,
-      "cited_count_raw": 5,
+      "cited_count": 8,
+      "cited_count_raw": 8,
       "cited_in": [
         "docs/experiments/E12-gate0-report.md",
         "docs/experiments/E14-gate0-report.md",
         "docs/experiments/E32-report.md",
         "docs/experiments/E32-ruling.md",
+        "docs/experiments/E33-predictions.md",
+        "docs/experiments/E33-report.md",
+        "docs/experiments/E33-the-first-performer-through-the-route.md",
         "docs/tools.md"
       ],
       "dir": "tools/diagnostics",
@@ -1721,11 +1724,13 @@
       ],
       "b1_literals": [],
       "b2_literals": [],
-      "cited_count": 3,
-      "cited_count_raw": 3,
+      "cited_count": 5,
+      "cited_count_raw": 5,
       "cited_in": [
         "docs/experiments/E12-gate0-report.md",
         "docs/experiments/E14-gate0-report.md",
+        "docs/experiments/E33-report.md",
+        "docs/experiments/E33-the-first-performer-through-the-route.md",
         "docs/tools.md"
       ],
       "dir": "tools/diagnostics",
@@ -1854,13 +1859,14 @@
       "anchored_in_basename_only": [],
       "b1_literals": [],
       "b2_literals": [],
-      "cited_count": 4,
-      "cited_count_raw": 5,
+      "cited_count": 5,
+      "cited_count_raw": 6,
       "cited_in": [
         "docs/experiments/E12-executor-kickoff.md",
         "docs/experiments/E12-repair-pair-sidecar.md",
         "docs/experiments/E14-executor-kickoff.md",
-        "docs/experiments/E14-task4-report.md"
+        "docs/experiments/E14-task4-report.md",
+        "docs/experiments/E33-report.md"
       ],
       "dir": "tools/diagnostics",
       "docstring_line1": "Build a subject's twin-prompts file by DELETING whole comma-terms from the profile's own",
@@ -2064,9 +2070,11 @@
       "anchored_in_basename_only": [],
       "b1_literals": [],
       "b2_literals": [],
-      "cited_count": 0,
-      "cited_count_raw": 1,
-      "cited_in": [],
+      "cited_count": 1,
+      "cited_count_raw": 2,
+      "cited_in": [
+        "docs/experiments/E33-report.md"
+      ],
       "dir": "tools/diagnostics",
       "docstring_line1": "clay | control | styled, one row per view, full size \u2014 the sheet that serves the eye.",
       "file": "e12_pair_sheet.py",
@@ -2425,9 +2433,11 @@
       ],
       "b1_literals": [],
       "b2_literals": [],
-      "cited_count": 0,
-      "cited_count_raw": 1,
-      "cited_in": [],
+      "cited_count": 1,
+      "cited_count_raw": 2,
+      "cited_in": [
+        "docs/experiments/E33-report.md"
+      ],
       "dir": "tools/diagnostics",
       "docstring_line1": "E13 Gate 1 \u2014 the house five-column sheet: reference | asset | provenance | error | clay.",
       "file": "e13_gate1_sheet.py",
@@ -2866,9 +2876,11 @@
       "anchored_in_basename_only": [],
       "b1_literals": [],
       "b2_literals": [],
-      "cited_count": 0,
-      "cited_count_raw": 1,
-      "cited_in": [],
+      "cited_count": 1,
+      "cited_count_raw": 2,
+      "cited_in": [
+        "docs/experiments/E33-report.md"
+      ],
       "dir": "tools/diagnostics",
       "docstring_line1": "The styled pair's acceptance sheet: REFERENCE | CONTROL | ASSET, plus the hilt at zoom.",
       "file": "e14_pair_sheet.py",
@@ -2967,8 +2979,8 @@
       ],
       "b1_literals": [],
       "b2_literals": [],
-      "cited_count": 13,
-      "cited_count_raw": 19,
+      "cited_count": 14,
+      "cited_count_raw": 20,
       "cited_in": [
         "docs/experiments/E14-gate0-report.md",
         "docs/experiments/E27-measurement-mcp-report.md",
@@ -2981,6 +2993,7 @@
         "docs/experiments/E31-publish-the-pipeline-report.md",
         "docs/experiments/E32-report.md",
         "docs/experiments/E32-ruling.md",
+        "docs/experiments/E33-predictions.md",
         "docs/experiments/README.md",
         "docs/specs/measurement-mcp-spec.md"
       ],
@@ -3007,10 +3020,11 @@
       "anchored_in_basename_only": [],
       "b1_literals": [],
       "b2_literals": [],
-      "cited_count": 1,
-      "cited_count_raw": 1,
+      "cited_count": 2,
+      "cited_count_raw": 2,
       "cited_in": [
-        "docs/experiments/E14-handoff3-task2-report.md"
+        "docs/experiments/E14-handoff3-task2-report.md",
+        "docs/experiments/E33-report.md"
       ],
       "dir": "tools/diagnostics",
       "docstring_line1": "Per-view twin registration against the EXACT raycast silhouette. Halts SUSPENDED.",
@@ -3043,11 +3057,13 @@
       ],
       "b1_literals": [],
       "b2_literals": [],
-      "cited_count": 2,
-      "cited_count_raw": 2,
+      "cited_count": 4,
+      "cited_count_raw": 4,
       "cited_in": [
         "docs/experiments/E32-gate0-predictions.md",
-        "docs/experiments/E32-report.md"
+        "docs/experiments/E32-report.md",
+        "docs/experiments/E33-report.md",
+        "docs/experiments/E33-the-first-performer-through-the-route.md"
       ],
       "dir": "tools/diagnostics",
       "docstring_line1": "E32 Gate 0 - a concept plate's OWN geometry, before anything reconstructs it. NO VERDICT.",
@@ -3084,10 +3100,12 @@
       "b2_literals": [
         "E:/AI-Models/TRELLIS.2-repo"
       ],
-      "cited_count": 1,
-      "cited_count_raw": 1,
+      "cited_count": 3,
+      "cited_count_raw": 3,
       "cited_in": [
-        "docs/experiments/E32-report.md"
+        "docs/experiments/E32-report.md",
+        "docs/experiments/E33-report.md",
+        "docs/experiments/E33-the-first-performer-through-the-route.md"
       ],
       "dir": "tools/diagnostics",
       "docstring_line1": "E32 Gate 0 - what the reconstructor ACTUALLY sees, reproduced from its own source.",
@@ -3102,7 +3120,47 @@
       },
       "import_safe_reason": "",
       "invocable": true,
-      "lines": 166,
+      "lines": 170,
+      "parse_error": null
+    },
+    {
+      "a_add_argument": 9,
+      "a_argparse": true,
+      "a_main_guard": true,
+      "a_parse_args_module_level": false,
+      "anchored": true,
+      "anchored_basename_only": true,
+      "anchored_in": [
+        "tests/test_t41_instrument_census.py",
+        "tests/test_t62_recorded_invocation_form.py",
+        "tests/test_t65_register_sheet.py"
+      ],
+      "anchored_in_basename_only": [
+        "tests/test_t41_instrument_census.py",
+        "tests/test_t62_recorded_invocation_form.py",
+        "tests/test_t65_register_sheet.py"
+      ],
+      "b1_literals": [],
+      "b2_literals": [],
+      "cited_count": 1,
+      "cited_count_raw": 1,
+      "cited_in": [
+        "docs/experiments/E33-report.md"
+      ],
+      "dir": "tools/diagnostics",
+      "docstring_line1": "E33 Gate 0 - the register sheet: concept | clay | control | one column per CANDIDATE register.",
+      "file": "e33_register_sheet.py",
+      "flag_surface": true,
+      "g_proposal": "measure_report",
+      "import_safe": "true",
+      "import_safe_modes": {
+        "-O": "clean",
+        "PYTHONOPTIMIZE=1": "clean",
+        "normal": "clean"
+      },
+      "import_safe_reason": "",
+      "invocable": true,
+      "lines": 173,
       "parse_error": null
     },
     {
@@ -3210,8 +3268,8 @@
       ],
       "b1_literals": [],
       "b2_literals": [],
-      "cited_count": 7,
-      "cited_count_raw": 8,
+      "cited_count": 8,
+      "cited_count_raw": 9,
       "cited_in": [
         "docs/experiments/E12-executor-kickoff.md",
         "docs/experiments/E12-gate0-report.md",
@@ -3219,6 +3277,7 @@
         "docs/experiments/E25-diagnostics-gates-report.md",
         "docs/experiments/E26-front-door-counts-report.md",
         "docs/experiments/E27-predictions.md",
+        "docs/experiments/E33-report.md",
         "docs/tools.md"
       ],
       "dir": "tools/verify",
@@ -3253,14 +3312,15 @@
       ],
       "b1_literals": [],
       "b2_literals": [],
-      "cited_count": 6,
-      "cited_count_raw": 10,
+      "cited_count": 7,
+      "cited_count_raw": 11,
       "cited_in": [
         "docs/experiments/E14-executor-kickoff.md",
         "docs/experiments/E14-handoff9-report.md",
         "docs/experiments/E27-measurement-mcp-report.md",
         "docs/experiments/E27-predictions.md",
         "docs/experiments/E31-publish-the-pipeline-kickoff.md",
+        "docs/experiments/E33-report.md",
         "docs/tools.md"
       ],
       "dir": "tools/verify",
@@ -3543,8 +3603,8 @@
       ],
       "b1_literals": [],
       "b2_literals": [],
-      "cited_count": 23,
-      "cited_count_raw": 27,
+      "cited_count": 25,
+      "cited_count_raw": 29,
       "cited_in": [
         "docs/experiments/E01-facial-structure-ceiling.md",
         "docs/experiments/E04-armT-halt2.md",
@@ -3567,6 +3627,8 @@
         "docs/experiments/E31-predictions.md",
         "docs/experiments/E31-publish-the-pipeline-kickoff.md",
         "docs/experiments/E31-publish-the-pipeline-report.md",
+        "docs/experiments/E33-predictions.md",
+        "docs/experiments/E33-the-first-performer-through-the-route.md",
         "docs/specs/measurement-mcp-spec.md",
         "docs/tools.md"
       ],
@@ -3762,8 +3824,8 @@
       "anchored_in_basename_only": [],
       "b1_literals": [],
       "b2_literals": [],
-      "cited_count": 21,
-      "cited_count_raw": 22,
+      "cited_count": 23,
+      "cited_count_raw": 24,
       "cited_in": [
         "docs/experiments/E02-report.md",
         "docs/experiments/E02-texture-stage-on-sound-inputs.md",
@@ -3785,6 +3847,8 @@
         "docs/experiments/E32-armature-mark-through-the-route.md",
         "docs/experiments/E32-report.md",
         "docs/experiments/E32-ruling.md",
+        "docs/experiments/E33-report.md",
+        "docs/experiments/E33-the-first-performer-through-the-route.md",
         "docs/tools.md"
       ],
       "dir": "tools/verify",
@@ -3801,24 +3865,24 @@
     }
   ],
   "totals": {
-    "anchored": 58,
-    "anchored_basename_only": 58,
-    "any_add_argument": 104,
-    "argparse": 104,
-    "cited": 86,
-    "cited_raw": 110,
-    "flag_surface": 104,
+    "anchored": 59,
+    "anchored_basename_only": 59,
+    "any_add_argument": 105,
+    "argparse": 105,
+    "cited": 90,
+    "cited_raw": 111,
+    "flag_surface": 105,
     "flag_surface_unguarded": 95,
     "g_ambiguous": 18,
-    "g_mapped": 26,
+    "g_mapped": 27,
     "g_no_opinion": 3,
     "g_none": 63,
-    "has_docstring": 110,
+    "has_docstring": 111,
     "import_safe_false": 0,
     "import_safe_na": 101,
-    "import_safe_true": 9,
-    "invocable": 9,
-    "main_guard": 10,
+    "import_safe_true": 10,
+    "invocable": 10,
+    "main_guard": 11,
     "parse_args_module_level": 95,
     "parse_errors": 0,
     "subject_bound_b1": 11,

@@ -51,6 +51,9 @@ RUNNABLE = (
     # deliberate edit here, exactly as this file's docstring requires.
     "diagnostics/e32_plate_geometry.py",
     "diagnostics/e32_route_preprocess.py",
+    # E33: same form - a __main__ guard and an argparse surface, so `--help` parses and
+    # exits before any file is opened. Named here on purpose, not swept in.
+    "diagnostics/e33_register_sheet.py",
     "verify/anchor_compare.py",
     "verify/gate_mesh.py",
 )

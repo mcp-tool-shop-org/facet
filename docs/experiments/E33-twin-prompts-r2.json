@@ -1,0 +1,34 @@
+{
+ "_version": "1",
+ "_built_by": "tools/diagnostics/e12_make_twin_prompts.py",
+ "_derived_from": "r2.json tools['restylize_views.py'].prompt - stems are that string with whole comma-terms DELETED, never retyped. Term order is the entry's throughout.",
+ "_entry_verbatim": "a slender jointed clay mannequin, a smooth bald head, a simple readable face with drawn brows, closed lidded eyes, a small closed smile, small ears, ball-and-socket shoulders and elbows, ball-and-socket wrists and ankles, ball-and-socket hips and knees, sculpted thumbprint hatching on the torso and limbs, empty open hands, simple rounded feet, plain pale grey background, painterly, visible brushstrokes, worked surface",
+ "_entry_terms": 16,
+ "_the_rule": "E12 Ruling 9d: an element whose surface a view cannot see is dropped from that view's stem - a term present in a view's prompt is an instruction to paint it, and the text wins against the control (the W3 beard mechanism, measured). Split deviation measured and ruled at E12 Ruling 10i.",
+ "_drop_map": {
+  "a simple readable face with drawn brows": [
+   "4"
+  ],
+  "a small closed smile": [
+   "4"
+  ],
+  "closed lidded eyes": [
+   "4"
+  ]
+ },
+ "_assertions": "Each stem asserted an ordered SUBSEQUENCE of the entry's term list; each view with no drops asserted BYTE-EQUAL to the entry. Both enforced in the builder with no skip flag; a failure writes no file.",
+ "_register": "CANDIDATE. The register clause is the ONLY difference between R1/R2/R3; identity terms and negative are byte-identical across the three. The Director rules which register is canon; this file decides nothing.",
+ "_lora": "NONE in all three arms. saltroad_style_v2_lowlr_000001500 returns 0 rows from Comfy Cloud search_models and its import is a Director action (E08 0a-remaining), so R2 reaches the painterly register through prompt terms only and is labelled that way on the sheet.",
+ "_view4drops": "The three face terms. Ears, hands and feet are visible from behind and are NOT dropped. E12 Ruling 9d.",
+ "armclay_0": "a slender jointed clay mannequin, a smooth bald head, a simple readable face with drawn brows, closed lidded eyes, a small closed smile, small ears, ball-and-socket shoulders and elbows, ball-and-socket wrists and ankles, ball-and-socket hips and knees, sculpted thumbprint hatching on the torso and limbs, empty open hands, simple rounded feet, plain pale grey background, painterly, visible brushstrokes, worked surface",
+ "armclay_4": "a slender jointed clay mannequin, a smooth bald head, small ears, ball-and-socket shoulders and elbows, ball-and-socket wrists and ankles, ball-and-socket hips and knees, sculpted thumbprint hatching on the torso and limbs, empty open hands, simple rounded feet, plain pale grey background, painterly, visible brushstrokes, worked surface",
+ "_per_view_term_count": {
+  "0": 16,
+  "4": 13
+ },
+ "_full_string_views": [
+  "0"
+ ],
+ "_negative": "watermark, text, logo, blurry, photo, deformed",
+ "_negative_provenance": "r2.json tools['restylize_views.py'].negative, transcribed. An authored negative would be a second variable in the run that introduces the first."
+}
