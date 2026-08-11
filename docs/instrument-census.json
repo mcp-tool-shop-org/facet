@@ -5,7 +5,7 @@
         "dir": "tools/diagnostics",
         "non_py_files": 0,
         "non_py_names": [],
-        "py_files": 99
+        "py_files": 101
       },
       {
         "dir": "tools/verify",
@@ -14,11 +14,11 @@
         "py_files": 9
       }
     ],
-    "py_files_total": 108
+    "py_files_total": 110
   },
   "provenance": {
-    "corpus_files": 278,
-    "corpus_files_before_self_exclusion": 288,
+    "corpus_files": 282,
+    "corpus_files_before_self_exclusion": 292,
     "probe_interpreter": "E:\\AI-Models\\trellis2-env\\Scripts\\python.exe",
     "probe_interpreter_version": "3.13.13",
     "probe_skipped": false,
@@ -35,7 +35,7 @@
       "docs/experiments/E28-task3-report.md",
       "docs/instrument-census.md"
     ],
-    "test_files": 63
+    "test_files": 64
   },
   "rows": [
     {
@@ -1685,11 +1685,13 @@
       ],
       "b1_literals": [],
       "b2_literals": [],
-      "cited_count": 3,
-      "cited_count_raw": 3,
+      "cited_count": 5,
+      "cited_count_raw": 5,
       "cited_in": [
         "docs/experiments/E12-gate0-report.md",
         "docs/experiments/E14-gate0-report.md",
+        "docs/experiments/E32-report.md",
+        "docs/experiments/E32-ruling.md",
         "docs/tools.md"
       ],
       "dir": "tools/diagnostics",
@@ -2965,8 +2967,8 @@
       ],
       "b1_literals": [],
       "b2_literals": [],
-      "cited_count": 11,
-      "cited_count_raw": 17,
+      "cited_count": 13,
+      "cited_count_raw": 19,
       "cited_in": [
         "docs/experiments/E14-gate0-report.md",
         "docs/experiments/E27-measurement-mcp-report.md",
@@ -2977,6 +2979,8 @@
         "docs/experiments/E29-ruling.md",
         "docs/experiments/E31-publish-the-pipeline-kickoff.md",
         "docs/experiments/E31-publish-the-pipeline-report.md",
+        "docs/experiments/E32-report.md",
+        "docs/experiments/E32-ruling.md",
         "docs/experiments/README.md",
         "docs/specs/measurement-mcp-spec.md"
       ],
@@ -3018,6 +3022,87 @@
       "import_safe_reason": "has a flag surface but no `__main__` guard, so probing it would EXECUTE the module body - against whatever subject its constants name. Not probed, deliberately",
       "invocable": false,
       "lines": 129,
+      "parse_error": null
+    },
+    {
+      "a_add_argument": 6,
+      "a_argparse": true,
+      "a_main_guard": true,
+      "a_parse_args_module_level": false,
+      "anchored": true,
+      "anchored_basename_only": true,
+      "anchored_in": [
+        "tests/test_t41_instrument_census.py",
+        "tests/test_t62_recorded_invocation_form.py",
+        "tests/test_t64_plate_geometry.py"
+      ],
+      "anchored_in_basename_only": [
+        "tests/test_t41_instrument_census.py",
+        "tests/test_t62_recorded_invocation_form.py",
+        "tests/test_t64_plate_geometry.py"
+      ],
+      "b1_literals": [],
+      "b2_literals": [],
+      "cited_count": 2,
+      "cited_count_raw": 2,
+      "cited_in": [
+        "docs/experiments/E32-gate0-predictions.md",
+        "docs/experiments/E32-report.md"
+      ],
+      "dir": "tools/diagnostics",
+      "docstring_line1": "E32 Gate 0 - a concept plate's OWN geometry, before anything reconstructs it. NO VERDICT.",
+      "file": "e32_plate_geometry.py",
+      "flag_surface": true,
+      "g_proposal": "none",
+      "import_safe": "true",
+      "import_safe_modes": {
+        "-O": "clean",
+        "PYTHONOPTIMIZE=1": "clean",
+        "normal": "clean"
+      },
+      "import_safe_reason": "",
+      "invocable": true,
+      "lines": 261,
+      "parse_error": null
+    },
+    {
+      "a_add_argument": 3,
+      "a_argparse": true,
+      "a_main_guard": true,
+      "a_parse_args_module_level": false,
+      "anchored": true,
+      "anchored_basename_only": true,
+      "anchored_in": [
+        "tests/test_t41_instrument_census.py",
+        "tests/test_t62_recorded_invocation_form.py"
+      ],
+      "anchored_in_basename_only": [
+        "tests/test_t41_instrument_census.py",
+        "tests/test_t62_recorded_invocation_form.py"
+      ],
+      "b1_literals": [],
+      "b2_literals": [
+        "E:/AI-Models/TRELLIS.2-repo"
+      ],
+      "cited_count": 1,
+      "cited_count_raw": 1,
+      "cited_in": [
+        "docs/experiments/E32-report.md"
+      ],
+      "dir": "tools/diagnostics",
+      "docstring_line1": "E32 Gate 0 - what the reconstructor ACTUALLY sees, reproduced from its own source.",
+      "file": "e32_route_preprocess.py",
+      "flag_surface": true,
+      "g_proposal": "none",
+      "import_safe": "true",
+      "import_safe_modes": {
+        "-O": "clean",
+        "PYTHONOPTIMIZE=1": "clean",
+        "normal": "clean"
+      },
+      "import_safe_reason": "",
+      "invocable": true,
+      "lines": 166,
       "parse_error": null
     },
     {
@@ -3677,8 +3762,8 @@
       "anchored_in_basename_only": [],
       "b1_literals": [],
       "b2_literals": [],
-      "cited_count": 18,
-      "cited_count_raw": 19,
+      "cited_count": 21,
+      "cited_count_raw": 22,
       "cited_in": [
         "docs/experiments/E02-report.md",
         "docs/experiments/E02-texture-stage-on-sound-inputs.md",
@@ -3697,6 +3782,9 @@
         "docs/experiments/E14-gate0-report.md",
         "docs/experiments/E14-handoff2-predictions.md",
         "docs/experiments/E29-clay-reconstruction-report.md",
+        "docs/experiments/E32-armature-mark-through-the-route.md",
+        "docs/experiments/E32-report.md",
+        "docs/experiments/E32-ruling.md",
         "docs/tools.md"
       ],
       "dir": "tools/verify",
@@ -3713,27 +3801,27 @@
     }
   ],
   "totals": {
-    "anchored": 56,
-    "anchored_basename_only": 56,
-    "any_add_argument": 102,
-    "argparse": 102,
-    "cited": 84,
-    "cited_raw": 108,
-    "flag_surface": 102,
+    "anchored": 58,
+    "anchored_basename_only": 58,
+    "any_add_argument": 104,
+    "argparse": 104,
+    "cited": 86,
+    "cited_raw": 110,
+    "flag_surface": 104,
     "flag_surface_unguarded": 95,
     "g_ambiguous": 18,
     "g_mapped": 26,
     "g_no_opinion": 3,
-    "g_none": 61,
-    "has_docstring": 108,
+    "g_none": 63,
+    "has_docstring": 110,
     "import_safe_false": 0,
     "import_safe_na": 101,
-    "import_safe_true": 7,
-    "invocable": 7,
-    "main_guard": 8,
+    "import_safe_true": 9,
+    "invocable": 9,
+    "main_guard": 10,
     "parse_args_module_level": 95,
     "parse_errors": 0,
     "subject_bound_b1": 11,
-    "subject_bound_b2": 11
+    "subject_bound_b2": 12
   }
 }

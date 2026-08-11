@@ -11,9 +11,10 @@ built to fail it, not merely agreeing with the directory as it happens to stand.
 E28 gate 2: these legs pass before any census number is believed.
 
 THE POPULATION IS PINNED HERE, the E23 Ruling 9 pattern. `tools/diagnostics/`
-holds 99 `.py` files; the spec estimated "~80" and that estimate is what the
-census exists to replace. Moving the count requires editing this file, on
-purpose, in the commit that moves it - it cannot drift silently.
+holds 101 `.py` files (99 through E28; E32 added two); the spec estimated "~80"
+and that estimate is what the census exists to replace. Moving the count
+requires editing this file, on purpose, in the commit that moves it - it cannot
+drift silently.
 
     THE SPEC'S ESTIMATE IS THE ARGUMENT FOR THE PIN. "~80" was not a lie; it was
     a hand-read, and a hand-read has no way to notice it has gone stale.
@@ -49,7 +50,10 @@ EXPECTED_PY_FILES = {
     # by two AND fired the census's own duplicate-basename ANDON, since it
     # keys axes D/E/G on the filename and `__init__.py` would exist in both
     # homes. The gate was right and the change was unnecessary.
-    "tools/diagnostics": 99,
+    # 99 -> 101 at E32: e32_plate_geometry.py + e32_route_preprocess.py, both
+    # judged for axis G in the same commit (E32 Ruling 7's procedure - the pin
+    # moves deliberately, driven off the tree, never off a transcribed list).
+    "tools/diagnostics": 101,
     # 8 -> 9 at E28 task 2c: anchor_compare.py entered by ruling + wrap
     # (Ruling 10, Ruling 3's entry rule), census re-run in the same commit.
     "tools/verify": 9,

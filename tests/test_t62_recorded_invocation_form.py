@@ -10,18 +10,20 @@ not - adding `__init__.py` changes nothing about `sys.path[0]`, which is the
 script's own directory either way - but "it does not" is only worth having if
 something keeps checking.
 
-THE POPULATION IS NOT ALL 108 FILES, AND THAT IS THE INTERESTING PART. This
+THE POPULATION IS NOT ALL OF THE FILES, AND THAT IS THE INTERESTING PART. This
 directory's house style is a STRAIGHT-LINE MODULE-LEVEL SCRIPT (E28 measured 6
 of 99 corpus-wide carrying a `__main__` guard), so running most of these files
 EXECUTES them, and some of them write. The runnable population is exactly the
 files carrying BOTH a `__main__` guard and an argparse surface: `--help` on
 one of those parses and exits without reaching any work. Measured at E31: 108
-files, SEVEN runnable.
+files, SEVEN runnable. E32 added two invocable tools, so the set is now NINE
+of 110 - still the small minority the assertion below checks for.
 
-The seven are pinned BY NAME rather than by count. A new instrument with an
+They are pinned BY NAME rather than by count. A new instrument with an
 argparse surface joins the set that `--help` can exercise, and joining it
 should be a deliberate edit here - the same discipline T34 applies to a test
-count and E23 applied to its successor sites.
+count and E23 applied to its successor sites. E32 is the first arc to make
+that edit, and it made it in the commit that added the instruments.
 
 Everything printed here is ASCII (the repo's law).
 """
@@ -44,6 +46,11 @@ RUNNABLE = (
     "diagnostics/e10_offsurface.py",
     "diagnostics/e10_offsurface_consumers.py",
     "diagnostics/e10_offsurface_where.py",
+    # E32: both new tools carry a __main__ guard AND an argparse surface, so
+    # `--help` parses and exits without reaching any work. Joining the set is a
+    # deliberate edit here, exactly as this file's docstring requires.
+    "diagnostics/e32_plate_geometry.py",
+    "diagnostics/e32_route_preprocess.py",
     "verify/anchor_compare.py",
     "verify/gate_mesh.py",
 )
@@ -105,7 +112,7 @@ def test_t62_the_property_scanner_can_return_false(tmp_path):
 # the population, and the invocation form itself
 # ---------------------------------------------------------------------------
 
-def test_t62_the_runnable_population_is_the_pinned_seven():
+def test_t62_the_runnable_population_is_the_pinned_set():
     rows = scan()
     got = tuple(sorted(k for k, (guard, ap) in rows.items() if guard and ap))
     assert got == tuple(sorted(RUNNABLE)), (
@@ -113,8 +120,8 @@ def test_t62_the_runnable_population_is_the_pinned_seven():
         "welcome; add it here in the same commit so `--help` covers it."
         % sorted(set(got) ^ set(RUNNABLE)))
     assert len(rows) >= 100, (
-        "the two instrument directories hold %d files; E31 measured 108 and "
-        "the point of the seven is that they are a small minority" % len(rows))
+        "the two instrument directories hold %d files; E31 measured 108 and the "
+        "point of the runnable set is that it is a small minority" % len(rows))
 
 
 @pytest.mark.parametrize("rel", RUNNABLE)

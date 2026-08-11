@@ -81,7 +81,11 @@ SMOKE = [r for r in SCOPE if r not in (BLENDER, PRE_ARGPARSE_FILE_WORK)]
 # ANDON gates in the 43 that already raised SystemExit before E25, so the raise census
 # below is not read as a conversion count. E22 Ruling 5 ruled these stay: SystemExit is
 # not deletable by -O, so none of them carries the defect this arc exists to fix.
-SYSTEMEXIT_ANDONS = 28          # across 12 files; 3 of those also hold assert ANDONs
+# 28 across 12 files at E25; 30 across 14 at E32, which added one
+# `raise SystemExit("ANDON: ...")` to each of its two tools. This pin finding them
+# is the pin working: both are raises, not asserts, so neither is deletable by -O.
+SYSTEMEXIT_ANDONS = 30          # across 14 files; 3 of those also hold assert ANDONs
+SYSTEMEXIT_ANDON_FILES = 14
 
 # After E25 the only ANDON assert left anywhere under tools/ is superseded/'s one.
 # E22 Ruling 4 ruled it NEVER converted - those tools are kept so anyone can run them
@@ -273,9 +277,9 @@ def test_t33_the_systemexit_collision_is_unchanged():
                     if "ANDON" in (ast.get_source_segment(src, node.exc.args[0]) or ""):
                         n += 1
                         files.add(p.name)
-    assert (n, len(files)) == (SYSTEMEXIT_ANDONS, 12), (
-        "the SystemExit ANDON population is %d across %d files; E25 measured %d across 12"
-        % (n, len(files), SYSTEMEXIT_ANDONS))
+    assert (n, len(files)) == (SYSTEMEXIT_ANDONS, SYSTEMEXIT_ANDON_FILES), (
+        "the SystemExit ANDON population is %d across %d files; the pin says %d across %d"
+        % (n, len(files), SYSTEMEXIT_ANDONS, SYSTEMEXIT_ANDON_FILES))
 
 
 def test_t33_the_blender_file_cannot_run_under_this_interpreter():

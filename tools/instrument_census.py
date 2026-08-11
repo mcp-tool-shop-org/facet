@@ -190,7 +190,17 @@ _G = {
         "e14_band_density.py", "e14_band_edges.py", "e14_demote_garnet.py",
         "e14_garnet_reproject.py", "e14_make_brush_prompts.py",
         "e14_pair_readout.py", "e14_repair_collar.py", "e14_stroke_watch.py",
-        "e14_twin_registration.py", "foreshorten_table.py",
+        "e14_twin_registration.py",
+        # E32, judged under the rule above - docstring line 1 plus filename,
+        # NOT the body. `e32_plate_geometry` line 1 is "a concept plate's OWN
+        # geometry, before anything reconstructs it": the spec has no tool that
+        # measures an INPUT IMAGE, and its widths are a 2D mask's local
+        # thickness, not `thin_extent_curve`'s per-view front-to-back extent of
+        # a mesh. `e32_route_preprocess` line 1 is "what the reconstructor
+        # ACTUALLY sees, reproduced from its own source" - a preprocessing
+        # reproduction, which is also a question the spec does not list.
+        "e32_plate_geometry.py", "e32_route_preprocess.py",
+        "foreshorten_table.py",
         "gained_bg_check.py", "hair_agree.py", "hair_edge.py", "head_yaw.py",
         "prep_front.py",
         # tools/verify (task 2-pre)

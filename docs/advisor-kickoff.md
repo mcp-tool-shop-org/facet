@@ -80,7 +80,7 @@ gates his polish lanes:
 |---|---|
 | HEAD | `1e30db3`, working tree **clean**, **0** ahead of origin, tag `v0.4.0` on it |
 | CI | **green** — [`31347712983`](https://github.com/mcp-tool-shop-org/facet/actions/runs/31347712983) on `main`; the Release run [`31348324862`](https://github.com/mcp-tool-shop-org/facet/actions/runs/31348324862) succeeded on all three jobs |
-| suite | **THE SUITE: 891 tests, 851 hermetic** (40 artifacts), green at two seats and CI. ⚠ That phrasing is **pinned by T34** — preserve its shape if you rewrite this row |
+| suite | **THE SUITE: 917 tests, 877 hermetic** (40 artifacts), green at two seats and CI. ⚠ That phrasing is **pinned by T34** — preserve its shape if you rewrite this row |
 | highest T-number | **T63.** Take T64+ |
 | published | `facet-mcp` **0.4.0** (PyPI) · `@mcptoolshop/facet` **0.4.0** (npm, provenance) · Release `v0.4.0` with both binaries, checksums, wheel, sdist |
 | `pip install` | **works, and now carries the measurement server** — verified by installing the *published* package and running a measurement verb, not `--help` |
@@ -160,7 +160,7 @@ commit. **A subject's lane opens when its gates do**, and W3's projection gate i
 ## The release sequence, when he fires one — the order is law
 
 ```
-1. RE-COUNT      pytest --collect-only  -> currently 891 total / 851 hermetic
+1. RE-COUNT      pytest --collect-only  -> currently 917 total / 877 hermetic
                  ⚠ RESERVE COUNT SURFACES BY NAMING T34's PINS TABLE, NEVER BY
                  TRANSCRIBING IT. It holds SIXTEEN pins across SIX files, plus a
                  separate leg over the SEVEN translated READMEs. Two seats in a row

@@ -8,40 +8,40 @@
 
 | | |
 |---|---|
-| `.py` files in `tools/diagnostics` | **99** |
+| `.py` files in `tools/diagnostics` | **101** |
 | — files of any other extension there | 0 |
 | `.py` files in `tools/verify` | **9** |
 | — files of any other extension there | 0 |
-| **total members** | **108** |
-| corpus files read for axis D | 278 |
-| test files read for axis E | 63 |
+| **total members** | **110** |
+| corpus files read for axis D | 282 |
+| test files read for axis E | 64 |
 | probe interpreter | `E:\AI-Models\trellis2-env\Scripts\python.exe` (3.13.13) |
 
 ## Totals
 
 | axis | measure | count | of |
 |---|---|---:|---:|
-| A | **invocable** (argparse **and** ≥1 `add_argument` **and** a `__main__` guard) | **7** | 108 |
-| A | — imports `argparse` | 102 | 108 |
-| A | — has ≥1 `add_argument` | 102 | 108 |
-| A | — has a `__main__` guard | 8 | 108 |
-| A | — **flag surface** (argparse **and** ≥1 `add_argument`, guard not required) | **102** | 108 |
-| A | — calls `parse_args()` at module level | 95 | 108 |
-| A | — **flag surface but UNGUARDED** (the house style) | **95** | 108 |
-| B1 | **subject-bound**, module-level literal | **11** | 108 |
-| B2 | subject marker in any non-docstring literal | 11 | 108 |
-| C | has a docstring | 108 | 108 |
-| D | **cited** in ≥1 corpus file | **84** | 108 |
-| D | — with this arc's own documents left IN (the contaminated read) | 108 | 108 |
-| E | **anchored** — basename *or* module name as literal text under `tests/` | **56** | 108 |
-| E | — basename-with-`.py` only (the stricter read) | 56 | 108 |
-| F | **import-safe** in all three modes | **7** | 108 |
-| F | — not clean in some mode | 0 | 108 |
-| F | — **`n/a`**, property not defined (reason per row) | 101 | 108 |
-| G | *proposed* to answer one of the spec's eight | *26* | 108 |
-| G | *proposed* `none` | *61* | 108 |
-| G | *proposed* `ambiguous` | *18* | 108 |
-| G | *`no opinion`* | *3* | 108 |
+| A | **invocable** (argparse **and** ≥1 `add_argument` **and** a `__main__` guard) | **9** | 110 |
+| A | — imports `argparse` | 104 | 110 |
+| A | — has ≥1 `add_argument` | 104 | 110 |
+| A | — has a `__main__` guard | 10 | 110 |
+| A | — **flag surface** (argparse **and** ≥1 `add_argument`, guard not required) | **104** | 110 |
+| A | — calls `parse_args()` at module level | 95 | 110 |
+| A | — **flag surface but UNGUARDED** (the house style) | **95** | 110 |
+| B1 | **subject-bound**, module-level literal | **11** | 110 |
+| B2 | subject marker in any non-docstring literal | 12 | 110 |
+| C | has a docstring | 110 | 110 |
+| D | **cited** in ≥1 corpus file | **86** | 110 |
+| D | — with this arc's own documents left IN (the contaminated read) | 110 | 110 |
+| E | **anchored** — basename *or* module name as literal text under `tests/` | **58** | 110 |
+| E | — basename-with-`.py` only (the stricter read) | 58 | 110 |
+| F | **import-safe** in all three modes | **9** | 110 |
+| F | — not clean in some mode | 0 | 110 |
+| F | — **`n/a`**, property not defined (reason per row) | 101 | 110 |
+| G | *proposed* to answer one of the spec's eight | *26* | 110 |
+| G | *proposed* `none` | *63* | 110 |
+| G | *proposed* `ambiguous` | *18* | 110 |
+| G | *`no opinion`* | *3* | 110 |
 
 ## Axis G — the proposal, by tool
 
@@ -110,7 +110,7 @@
 | 46 | `e12_crop_silhouette.py` | diagnostics | no | 8 | no | 4 | yes | n/a | ambiguous | An exact mesh silhouette at an ARBITRARY crop camera — the mask a head-crop control nee… |
 | 47 | `e12_elevated.py` | diagnostics | no | 9 | no | 3 | yes | n/a | reach_ceiling | Does this subject buy anything from elevated cameras? Measured, the ship's own method. |
 | 48 | `e12_family_mass.py` | diagnostics | no | 12 | no | 0 | no | n/a | none | How much of a named region wears a named COLOUR FAMILY - reported per image, never gate… |
-| 49 | `e12_frame.py` | diagnostics | no | 8 | no | 3 | yes | n/a | none | E12 Gate 0 — derive a turnaround render frame from THIS mesh, and show the derivation. |
+| 49 | `e12_frame.py` | diagnostics | no | 8 | no | 5 | yes | n/a | none | E12 Gate 0 — derive a turnaround render frame from THIS mesh, and show the derivation. |
 | 50 | `e12_head_evidence.py` | diagnostics | no | 15 | no | 3 | yes | n/a | none | E12 Gate 0 — head-region evidence on a raw reconstruction. NO VERDICT. |
 | 51 | `e12_head_render.py` | diagnostics | no | 13 | no | 10 | yes | n/a | none | E12 Gate 0 — a head crop render framed by a MEASURED box, not an inherited rect. |
 | 52 | `e12_head_sheet.py` | diagnostics | no | 5 | no | 1 | yes | n/a | measure_report | E12 Gate 0 — compose one candidate's head crops into ONE artifact, at full size. |
@@ -149,27 +149,29 @@
 | 85 | `e14_pair_sheet.py` | diagnostics | no | 7 | no | 0 | no | n/a | measure_report | The styled pair's acceptance sheet: REFERENCE \| CONTROL \| ASSET, plus the hilt at zoo… |
 | 86 | `e14_repair_collar.py` | diagnostics | no | 12 | no | 3 | yes | n/a | none | THE COLLAR-JUNCTION REPAIR - E14 Ruling 27c, run ONCE as handoff 8's step 0. |
 | 87 | `e14_stroke_watch.py` | diagnostics | no | 5 | no | 1 | no | n/a | none | THE PER-STROKE EYE-GATE WATCHES, measured and LOCATED - E14 handoff 8, Ruling 27e's for… |
-| 88 | `e14_topology.py` | diagnostics | no | 8 | no | 11 | yes | n/a | mesh_topology | E14 Gate 0 - the topology facts `mesh_stats` does not print. NO VERDICT. |
+| 88 | `e14_topology.py` | diagnostics | no | 8 | no | 13 | yes | n/a | mesh_topology | E14 Gate 0 - the topology facts `mesh_stats` does not print. NO VERDICT. |
 | 89 | `e14_twin_registration.py` | diagnostics | no | 6 | no | 1 | no | n/a | none | Per-view twin registration against the EXACT raycast silhouette. Halts SUSPENDED. |
-| 90 | `flagged_identity.py` | diagnostics | no | 11 | no | 1 | yes | n/a | ambiguous | E08 Amendment 29 — WHAT are the background-flagged rim texels? |
-| 91 | `foreshorten_table.py` | diagnostics | no | 5 | no | 0 | no | n/a | none | Per-view foreshortening table for the HEAD region. |
-| 92 | `gained_bg_check.py` | diagnostics | no | 9 | no | 1 | yes | n/a | none | E08 Amendment 28 Ruling 2 — did the intersection's GAINED texels admit background? |
-| 93 | `gate0_sheet.py` | verify | no | 8 | no | 7 | yes | n/a | measure_report | E04 Gate 0 sheet — the source concept beside what it reconstructed into, per candidate. |
-| 94 | `gate1_sheet.py` | verify | no | 16 | no | 6 | yes | n/a | measure_report | The Gate 1 sheet — reference \| asset \| provenance \| error, at the Director's zoom. |
-| 95 | `gate_mesh.py` | verify | yes | 4 | no | 10 | yes | yes | none | HARD MESH GATE -- may the pipeline spend money downstream of this mesh? Exit 0 = yes. |
-| 96 | `hair_agree.py` | diagnostics | no | 7 | no | 0 | no | n/a | none | Measure whether a GENERATED view's hair boundary agrees with the MESH's hair geometry. |
-| 97 | `hair_edge.py` | diagnostics | no | 8 | no | 0 | no | n/a | none | Extract the mesh's OWN hair/face boundary as a control hint. |
-| 98 | `head_crop.py` | verify | no | 13 | no | 1 | no | n/a | measure_report | Head-crop comparison sheet, with the head band LOCATED rather than guessed. |
-| 99 | `head_render.py` | verify | no | 11 | no | 19 | yes | n/a | none | Head-framed close-up renders of a GLB — the Director-zoom verification camera. |
-| 100 | `head_yaw.py` | diagnostics | no | 6 | no | 0 | no | n/a | none | Locate the direction a MESH's head actually faces, by mirror symmetry. |
-| 101 | `keyed_outside.py` | diagnostics | no | 9 | no | 2 | yes | n/a | ambiguous | How much of each twin's keyed paint sits on no surface at all? |
-| 102 | `mesh_stats.py` | verify | no | 9 | no | 23 | yes | n/a | mesh_stats | Identical measurement of any mesh — the numeric half of a comparison. |
-| 103 | `montage.py` | verify | no | 7 | no | 0 | no | n/a | ambiguous | Contact sheet + per-view figure brightness readout. |
-| 104 | `prep_front.py` | diagnostics | no | 0 | **yes** | 0 | no | n/a | none | Prepare the front render for the paint pass. |
-| 105 | `silhouette_agree.py` | diagnostics | no | 8 | no | 3 | yes | n/a | ambiguous | Is project_twins' LIVE raycast silhouette the same object as the shipped sidecar mask? |
-| 106 | `texel_provenance.py` | diagnostics | no | 17 | no | 13 | yes | n/a | texel_provenance | Where did this pixel's colour actually come from? |
-| 107 | `texpass_metrics.py` | diagnostics | no | 7 | no | 2 | no | n/a | no opinion | E05 — one metric table, computed identically for every arm. |
-| 108 | `turn_render.py` | verify | no | 14 | no | 18 | no | n/a | none | Matched-framing turnaround render of a GLB. |
+| 90 | `e32_plate_geometry.py` | diagnostics | yes | 6 | no | 2 | yes | yes | none | E32 Gate 0 - a concept plate's OWN geometry, before anything reconstructs it. NO VERDIC… |
+| 91 | `e32_route_preprocess.py` | diagnostics | yes | 3 | no | 1 | yes | yes | none | E32 Gate 0 - what the reconstructor ACTUALLY sees, reproduced from its own source. |
+| 92 | `flagged_identity.py` | diagnostics | no | 11 | no | 1 | yes | n/a | ambiguous | E08 Amendment 29 — WHAT are the background-flagged rim texels? |
+| 93 | `foreshorten_table.py` | diagnostics | no | 5 | no | 0 | no | n/a | none | Per-view foreshortening table for the HEAD region. |
+| 94 | `gained_bg_check.py` | diagnostics | no | 9 | no | 1 | yes | n/a | none | E08 Amendment 28 Ruling 2 — did the intersection's GAINED texels admit background? |
+| 95 | `gate0_sheet.py` | verify | no | 8 | no | 7 | yes | n/a | measure_report | E04 Gate 0 sheet — the source concept beside what it reconstructed into, per candidate. |
+| 96 | `gate1_sheet.py` | verify | no | 16 | no | 6 | yes | n/a | measure_report | The Gate 1 sheet — reference \| asset \| provenance \| error, at the Director's zoom. |
+| 97 | `gate_mesh.py` | verify | yes | 4 | no | 10 | yes | yes | none | HARD MESH GATE -- may the pipeline spend money downstream of this mesh? Exit 0 = yes. |
+| 98 | `hair_agree.py` | diagnostics | no | 7 | no | 0 | no | n/a | none | Measure whether a GENERATED view's hair boundary agrees with the MESH's hair geometry. |
+| 99 | `hair_edge.py` | diagnostics | no | 8 | no | 0 | no | n/a | none | Extract the mesh's OWN hair/face boundary as a control hint. |
+| 100 | `head_crop.py` | verify | no | 13 | no | 1 | no | n/a | measure_report | Head-crop comparison sheet, with the head band LOCATED rather than guessed. |
+| 101 | `head_render.py` | verify | no | 11 | no | 19 | yes | n/a | none | Head-framed close-up renders of a GLB — the Director-zoom verification camera. |
+| 102 | `head_yaw.py` | diagnostics | no | 6 | no | 0 | no | n/a | none | Locate the direction a MESH's head actually faces, by mirror symmetry. |
+| 103 | `keyed_outside.py` | diagnostics | no | 9 | no | 2 | yes | n/a | ambiguous | How much of each twin's keyed paint sits on no surface at all? |
+| 104 | `mesh_stats.py` | verify | no | 9 | no | 23 | yes | n/a | mesh_stats | Identical measurement of any mesh — the numeric half of a comparison. |
+| 105 | `montage.py` | verify | no | 7 | no | 0 | no | n/a | ambiguous | Contact sheet + per-view figure brightness readout. |
+| 106 | `prep_front.py` | diagnostics | no | 0 | **yes** | 0 | no | n/a | none | Prepare the front render for the paint pass. |
+| 107 | `silhouette_agree.py` | diagnostics | no | 8 | no | 3 | yes | n/a | ambiguous | Is project_twins' LIVE raycast silhouette the same object as the shipped sidecar mask? |
+| 108 | `texel_provenance.py` | diagnostics | no | 17 | no | 13 | yes | n/a | texel_provenance | Where did this pixel's colour actually come from? |
+| 109 | `texpass_metrics.py` | diagnostics | no | 7 | no | 2 | no | n/a | no opinion | E05 — one metric table, computed identically for every arm. |
+| 110 | `turn_render.py` | verify | no | 14 | no | 21 | no | n/a | none | Matched-framing turnaround render of a GLB. |
 
 ## Axis F — every `n/a` and every `false`, with its reason
 
@@ -295,5 +297,6 @@ A boolean would hide *which* subject a file is bound to, which is the part that 
 | `e10_offsurface.py` | `E:\AI\training\facet_next\E04_shipprep`<br>`E:\AI\training\facet_next\E04_stroke` | `E:\AI\facet\profiles\ship.json` |
 | `e10_offsurface_consumers.py` | `E:\AI\training\facet_next\E04_armT72\stage1`<br>`E:\AI\training\facet_next\E04_shipprep`<br>`E:\AI\training\facet_next\E04_stroke` | — |
 | `e12_pair_cloud_step.py` | `mcp-tool-shop__saltroad-style-lora__saltroad_style_v2_lowlr…` | — |
+| `e32_route_preprocess.py` | — | `E:/AI-Models/TRELLIS.2-repo` |
 | `prep_front.py` | `E:/AI/training/saltroad_bake_fix` | — |
 
