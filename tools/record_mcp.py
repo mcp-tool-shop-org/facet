@@ -133,7 +133,25 @@ DB_DEFAULT = os.path.join(os.getcwd() if FROZEN else REPO or os.getcwd(),
                           facet_index.DB_REL)
 
 CERT_SUFFIX = ".cert.json"
-CERT_SCHEMA = "facet-record-index-certificate/1"
+
+# RENAMED BY THE EXTRACTION, WITH DUAL-ACCEPT ON READ (S02 step-2 ruling,
+# answer 7). A schema id carrying one repo's name is the same defect as every
+# other facet-ism the extraction lifted: the index this certifies is now the
+# shared `record-index`, and `facet-record-index-certificate` describes the
+# tool's former address rather than the artifact.
+#
+# The migration is bounded and it is the only kind that is safe here: the WRITER
+# emits exactly one id, the new one; the READER accepts both. A certificate
+# written before the rename therefore keeps verifying instead of turning a
+# working index into INDEX_NEVER_VERIFIED on upgrade - which is what a
+# writer-and-reader rename in one step would have done to every checkout that
+# had not rebuilt yet.
+#
+# The old id is not deprecated-in-name-only: G4 regenerates facet's committed
+# certificate in the migration commit, so this repo's own artifact carries the
+# new id immediately and dual-accept exists for everyone else's.
+CERT_SCHEMA = "record-index-certificate/1"
+CERT_SCHEMA_ACCEPTED = (CERT_SCHEMA, "facet-record-index-certificate/1")
 
 # EXTRACTION HAPPENED (2026-08-08, at the Director's word), so the real version
 # attached exactly as this comment said it would. The line above used to read
@@ -335,8 +353,20 @@ def _corpus_diff(old, new):
 # the conventions this server binds - checked, not assumed
 # ---------------------------------------------------------------------------
 
+# `PROFILE_FILES` REMOVED FROM THE REQUIRED SET (S02 step-2 ruling, answer 5).
+# It made a CORPUS mandatory, not a convention: a record repo with no profiles
+# registry was refused with CONVENTIONS_INVALID rather than served with an empty
+# `decisions` table. Measured on the second repo to adopt these conventions -
+# armature has no `profiles/` and never will. The tool has no opinion about
+# which corpora exist; which ones a repo HAS is that repo's declaration to make,
+# and a declared-but-absent corpus is now reported by `verify` instead of
+# refusing the server.
+#
+# The verbs and the two identity names stay required: those are the surface this
+# file actually calls, and a rename there must still fail loudly rather than
+# three frames deep in an AttributeError.
 REQUIRED_CONVENTIONS = ("build", "verify", "query", "claims", "read",
-                        "record_markdown", "PROFILE_FILES", "DB_REL", "REPO")
+                        "record_markdown", "DB_REL", "REPO")
 
 
 def _check_conventions():
@@ -572,9 +602,9 @@ def read_certificate(db_path):
         for k in ("schema", "state", "legs", "corpus", "db"):
             if k not in doc:
                 raise ValueError("certificate has no %r" % k)
-        if doc["schema"] != CERT_SCHEMA:
-            raise ValueError("certificate schema %r, expected %r"
-                             % (doc["schema"], CERT_SCHEMA))
+        if doc["schema"] not in CERT_SCHEMA_ACCEPTED:
+            raise ValueError("certificate schema %r, expected one of %r"
+                             % (doc["schema"], CERT_SCHEMA_ACCEPTED))
         if not isinstance(doc["corpus"], dict) or "manifest" not in doc["corpus"]:
             raise ValueError("certificate carries no corpus manifest")
     except (ValueError, OSError, UnicodeDecodeError) as exc:

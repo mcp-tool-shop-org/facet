@@ -29,6 +29,13 @@ classifiers = [
 ]
 dependencies = [
     "mcp>=2.0.0",
+    # The index itself was EXTRACTED to its own package (S02). facet now
+    # declares what its documents mean in docs/index/conventions.json and
+    # consumes the parser, the four-leg verify and the ranking from here.
+    # NOT YET ON PyPI - the wheel tests that build a clean venv cannot
+    # resolve this until it is published, and that is named in the report
+    # rather than worked around.
+    "record-index>=0.1.0",
 ]
 
 # The measurement server's instruments are subprocesses with their own imports,
