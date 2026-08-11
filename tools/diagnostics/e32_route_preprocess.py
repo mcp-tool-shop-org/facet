@@ -51,7 +51,6 @@ import os
 import sys
 
 import numpy as np
-import torch
 from PIL import Image
 
 SRC = "trellis2/pipelines/trellis2_image_to_3d.py:127-160"
@@ -135,6 +134,11 @@ def main():
         os.makedirs(a.out_dir)  # scripts create their own output directories
 
     sys.path.insert(0, os.environ.get("TRELLIS_REPO", "E:/AI-Models/TRELLIS.2-repo"))
+    # torch is imported HERE, not at module level, for the reason E23 ruled: a tool whose
+    # recorded invocation form cannot answer `--help` without a GPU stack is not runnable
+    # in a hermetic environment, and T62 pins exactly that. The sibling import below was
+    # already lazy; this one was left at module scope by oversight and CI caught it.
+    import torch
     from trellis2.pipelines import rembg as tr_rembg
 
     model = tr_rembg.BiRefNet()
