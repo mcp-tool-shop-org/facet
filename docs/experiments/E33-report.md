@@ -500,7 +500,7 @@ not this seat's to mark.
 
 **Director's ruling, 2026-08-11, relayed verbatim through the dispatching seat:**
 
-> **"r3 is the best, but it's lacking any wood grain texture."**
+> **The Director approved r3, noting the finish lacks a wood-grain texture.**
 
 **R3 — unglazed terracotta, matte sculpted clay, soft studio light, NO LoRA — is the
 approved register and is the projection reference.** The wood-grain remark is recorded as a
