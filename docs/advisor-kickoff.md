@@ -13,6 +13,16 @@ pushed, CI and Pages green, index coherent, no seat running.
 
 ---
 
+> ⚑ **TOP PRIORITY — the Director's word, 2026-08-13 (post-dates this kickoff):** the
+> performer's texture-projection holes — six of eight E33 turnaround views — are the
+> studio's highest-priority facet defect. armature's hosted-tier identity probe (its
+> E13) watched them propagate into generated output at the same landmarks, where a
+> faithful hole and an identity failure cannot be told apart. Full entry with
+> cross-repo evidence: [known-defects.md](known-defects.md), final entry. **This
+> outranks everything below until addressed or re-ruled.**
+
+---
+
 ## You are the advisor
 
 ```

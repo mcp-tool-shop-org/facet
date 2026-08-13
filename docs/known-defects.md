@@ -198,3 +198,30 @@ committed predictions and tests riding the commit, not a hotfix from the advisor
 The README's Install section is corrected in the meantime, because a front door that
 tells operators to run a command which cannot work is a false claim, and correcting a
 document is not a behaviour change.
+
+---
+
+## Texture-projection holes on the performer — ruled TOP PRIORITY by the Director, 2026-08-13
+
+**The unpainted patches on the E33 performer's texture are now the studio's
+highest-priority facet defect.** Six of the performer's eight turnaround views carry
+unpainted texture-projection patches (jaw, temple, shoulder, ribcage, flank; the front
+and back views measure clean). armature measured them twice on 2026-08-13 — flat-alpha
+survey, then an RGBA-true re-render that proved they are texture truth, not render
+artifacts (they re-color under different lighting and persist) — and then watched them
+**propagate into hosted-tier generations**: the E13 identity probe carried the patches
+into generated output at the same landmarks. The Director ruled the character holds and
+the composed route proves its lever, which makes the holes the named confound on every
+identity read downstream: **a faithful hole and an identity failure are not separable
+by looking at the patch.**
+
+Evidence, cross-repo: the per-view hole survey (old set beside RGBA-true re-render) at
+`E:\AI\armature-S03\outputs\S03\survey\`; propagation sheets at
+`E:\AI\armature-E13\outputs\E13\sheets\`; the rulings in armature's
+`docs/dispatches/S03-ruling.md` (R3–R4) and its E13 record. The asset:
+`E:\AI\training\facet_E33\out\performer_textured.glb` (sha256 `9e20ea7d…`); the
+affected views `facet_E33/turn_final/armfinal_1,2,3,5,6,7`.
+
+The repair is this repo's projection-coverage arc — armature documents and consumes,
+never edits. It enters through facet's own method: a spec, committed predictions, tests
+riding the commit. **Priority set by the Director's word, 2026-08-13.**
