@@ -199,6 +199,20 @@ The README's Install section is corrected in the meantime, because a front door 
 tells operators to run a command which cannot work is a false claim, and correcting a
 document is not a behaviour change.
 
+**An unprofiled run resurrects a withdrawn threshold.** `project_twins.py:93` carries a
+`--bg-max-pct` default of **2.0** — the pre-withdrawal value.
+[E16 Ruling 4e](experiments/E16-ruling.md) withdrew that condition to the expressed
+suspension (100.0) because its stated derivation was measured against the retired
+corner-median reference — but the withdrawal landed **only in `profiles/character.json`**,
+so every unprofiled run re-arms a condition a ruling retired. Fired live on E33's first
+projection (9.00% against the resurrected 2.0 limit, exit 1, nothing written); the run was
+repeated at the ruled suspension value passed explicitly with its provenance
+([E33 §14b](experiments/E33-report.md)), and E34's dispatch rules that the withdrawal
+governs unprofiled runs. **Disposition: unruled as a tool change, and not fixed by the
+seats that found it** — moving a route-tool default is a behaviour change wanting its own
+spec, prediction and test; a default that contradicts a ruling is recorded here so it
+cannot quietly become doctrine.
+
 ---
 
 ## Texture-projection holes on the performer — ruled TOP PRIORITY by the Director, 2026-08-13

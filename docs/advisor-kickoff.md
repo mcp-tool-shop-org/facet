@@ -91,7 +91,7 @@ gates his polish lanes:
 | HEAD | `1e30db3`, working tree **clean**, **0** ahead of origin, tag `v0.4.0` on it |
 | CI | **green** — [`31347712983`](https://github.com/mcp-tool-shop-org/facet/actions/runs/31347712983) on `main`; the Release run [`31348324862`](https://github.com/mcp-tool-shop-org/facet/actions/runs/31348324862) succeeded on all three jobs |
 | suite | **THE SUITE: 927 tests, 887 hermetic** (40 artifacts), green at two seats and CI. ⚠ That phrasing is **pinned by T34** — preserve its shape if you rewrite this row |
-| highest T-number | **T63.** Take T64+ |
+| highest T-number | **T65** — E32 took T64, E33 took T65; this row read T63 until 2026-08-13. Take **T66+** (E34's dispatch reserves them) |
 | published | `facet-mcp` **0.4.0** (PyPI) · `@mcptoolshop/facet` **0.4.0** (npm, provenance) · Release `v0.4.0` with both binaries, checksums, wheel, sdist |
 | `pip install` | **works, and now carries the measurement server** — verified by installing the *published* package and running a measurement verb, not `--help` |
 | measurement server | **`facet-measure` 0.4.0, serving 8 of 8** from a checkout; **4 of 8 from a clean install on 3.13**, 8 of 8 on 3.11/3.12. `MEASURE_VERSION` is INDEPENDENT of the package version and not in T27's set |
@@ -101,7 +101,7 @@ gates his polish lanes:
 ### The record index
 
 Mount SERVING, certificate PASSED on five legs, byte-identity determinism.
-The record holds 31 experiments. No staleness. **Every other count lives in the ritual's own
+The record holds 34 experiments. No staleness. **Every other count lives in the ritual's own
 output and in `record_health` — read them there, not here.** *(This line once quoted corpus,
 ruling and law totals; they went stale within a day, twice, because nothing sweeps this file
 for them and every fold moves them. **The experiment count stays because T34's fourth leg

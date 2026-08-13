@@ -13,7 +13,7 @@
 | `.py` files in `tools/verify` | **9** |
 | — files of any other extension there | 0 |
 | **total members** | **111** |
-| corpus files read for axis D | 285 |
+| corpus files read for axis D | 286 |
 | test files read for axis E | 65 |
 | probe interpreter | `E:\AI-Models\trellis2-env\Scripts\python.exe` (3.13.13) |
 
@@ -115,7 +115,7 @@
 | 51 | `e12_head_render.py` | diagnostics | no | 13 | no | 10 | yes | n/a | none | E12 Gate 0 — a head crop render framed by a MEASURED box, not an inherited rect. |
 | 52 | `e12_head_sheet.py` | diagnostics | no | 5 | no | 1 | yes | n/a | measure_report | E12 Gate 0 — compose one candidate's head crops into ONE artifact, at full size. |
 | 53 | `e12_help_format_scan.py` | diagnostics | no | 3 | no | 3 | no | n/a | none | Find every argparse help string this repo cannot print. E12 Ruling 4b's consumer grep. |
-| 54 | `e12_make_twin_prompts.py` | diagnostics | no | 12 | no | 5 | no | n/a | none | Build a subject's twin-prompts file by DELETING whole comma-terms from the profile's own |
+| 54 | `e12_make_twin_prompts.py` | diagnostics | no | 12 | no | 6 | no | n/a | none | Build a subject's twin-prompts file by DELETING whole comma-terms from the profile's own |
 | 55 | `e12_mouth_geometry.py` | diagnostics | no | 7 | no | 1 | yes | n/a | ambiguous | Is there a TONGUE inside this mesh's mouth, and can any exterior camera see it? |
 | 56 | `e12_n_sheet.py` | diagnostics | no | 4 | no | 0 | no | n/a | measure_report | N generations of ONE view, stacked full size, plus named regions at N x - and no number. |
 | 57 | `e12_nonmanifold.py` | diagnostics | no | 10 | no | 5 | yes | n/a | mesh_topology | E12 Gate 0 — where a reconstruction goes non-manifold, counted AND put on the picture. |
@@ -150,7 +150,7 @@
 | 86 | `e14_repair_collar.py` | diagnostics | no | 12 | no | 3 | yes | n/a | none | THE COLLAR-JUNCTION REPAIR - E14 Ruling 27c, run ONCE as handoff 8's step 0. |
 | 87 | `e14_stroke_watch.py` | diagnostics | no | 5 | no | 1 | no | n/a | none | THE PER-STROKE EYE-GATE WATCHES, measured and LOCATED - E14 handoff 8, Ruling 27e's for… |
 | 88 | `e14_topology.py` | diagnostics | no | 8 | no | 14 | yes | n/a | mesh_topology | E14 Gate 0 - the topology facts `mesh_stats` does not print. NO VERDICT. |
-| 89 | `e14_twin_registration.py` | diagnostics | no | 6 | no | 2 | no | n/a | none | Per-view twin registration against the EXACT raycast silhouette. Halts SUSPENDED. |
+| 89 | `e14_twin_registration.py` | diagnostics | no | 6 | no | 3 | no | n/a | none | Per-view twin registration against the EXACT raycast silhouette. Halts SUSPENDED. |
 | 90 | `e32_plate_geometry.py` | diagnostics | yes | 6 | no | 4 | yes | yes | none | E32 Gate 0 - a concept plate's OWN geometry, before anything reconstructs it. NO VERDIC… |
 | 91 | `e32_route_preprocess.py` | diagnostics | yes | 3 | no | 3 | yes | yes | none | E32 Gate 0 - what the reconstructor ACTUALLY sees, reproduced from its own source. |
 | 92 | `e33_register_sheet.py` | diagnostics | yes | 9 | no | 1 | yes | yes | measure_report | E33 Gate 0 - the register sheet: concept \| clay \| control \| one column per CANDIDATE… |
@@ -172,7 +172,7 @@
 | 108 | `silhouette_agree.py` | diagnostics | no | 8 | no | 3 | yes | n/a | ambiguous | Is project_twins' LIVE raycast silhouette the same object as the shipped sidecar mask? |
 | 109 | `texel_provenance.py` | diagnostics | no | 17 | no | 13 | yes | n/a | texel_provenance | Where did this pixel's colour actually come from? |
 | 110 | `texpass_metrics.py` | diagnostics | no | 7 | no | 2 | no | n/a | no opinion | E05 — one metric table, computed identically for every arm. |
-| 111 | `turn_render.py` | verify | no | 14 | no | 23 | no | n/a | none | Matched-framing turnaround render of a GLB. |
+| 111 | `turn_render.py` | verify | no | 14 | no | 25 | no | n/a | none | Matched-framing turnaround render of a GLB. |
 
 ## Axis F — every `n/a` and every `false`, with its reason
 
