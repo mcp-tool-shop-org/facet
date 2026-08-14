@@ -2,11 +2,11 @@
  "andon": [],
  "corpus": {
   "files": 308,
-  "id": "cad2fa29b3c6f56dcad09b650b98fd57a33058e034b2d6e8eb155f032ab7688a",
+  "id": "3894b3cb4f19013df43bd9d2abe236f54ef75ccb9fc207badd626b16d0224873",
   "manifest": {
    "CLAUDE.md": "0f25a65bec22448ae07ff26256906eb19492beeaf3a08fb830961940e2b5c5d9",
    "README.md": "0ce85e088f4c92ff02c17116edb6bce61733e842fe6c1b61457c3270b432c33f",
-   "docs/advisor-kickoff.md": "7c6b7798842d9b1638b845914e7980d88ff6c7c287cd3ab6ffc82a1ffc9fdd8c",
+   "docs/advisor-kickoff.md": "0e5bd22d21661578d9ab73bcde234410a2016d479f209fa7d36428b54b521600",
    "docs/arc-history.md": "5b2876b3fed7be95a6efc984f5e5a00b7c1675b10a169ee43803b50e091b48a8",
    "docs/brand/README.md": "81f425b6a101135b43463b35468f08a2db37af39c856c01f7fbdb6ce66598226",
    "docs/comfy-consult-1-brief.md": "3ffe0b6744a757c27bf2c8d30c02829e36ce257672c011cffee353c09536a6c2",
@@ -294,7 +294,7 @@
    "docs/handbook/index.md": "2481565674a67102d8bc5e5853ce95af48f5694a1f765032d543a07d7bdfbe20",
    "docs/handbook/profiles.md": "411d6c7cbe44cda94d969e05e9d3d8882d898334208c949551857b90b336165b",
    "docs/handbook/subjects.md": "8bcaa95ec843c064ed94f8abb9f6cd2978c836a7cb563cffa5fc18f7b63aa7a1",
-   "docs/instrument-census.md": "f3c785612024513779381cf18d3918978b4b7a84f6718b55845a905a794d064d",
+   "docs/instrument-census.md": "2397f38150951f4f3bc0b2a8c2d7fc0c37922e120041b4468c5123d9701253fd",
    "docs/known-defects.md": "97e12c335cf0a441785084d7fb3917f9c508bb54ab23f532fa5cc9d58c14b062",
    "docs/profiles-design.md": "926c5f767cbdd043ab2740abfbf40d3cc79a9cc765aea57b3ddc46d2202c4339",
    "docs/research/E35-speck-research-grounding.md": "8a61b222be36b22dd88248e723e5208078da1240973d8461c97d80631c07d7b6",
@@ -328,7 +328,7 @@
  "db": {
   "bytes": 11890688,
   "path": "docs/index/facet.db",
-  "sha256": "35f7f4b5f33c4a1880dbc8eb7f6aeedb1fdee4243c98ac785ef41c1113168c86"
+  "sha256": "d8db4762187e4b828927c2fe0f85e54869f175baeecfe395a2ee382de1825d47"
  },
  "determinism_leg": "byte-identity",
  "failures": [],
@@ -488,7 +488,7 @@
   "",
   "[vocabulary] what each declared vocabulary did not recognise",
   "             REPORT ONLY - this section never fails the run",
-  "  artifact kinds         recognised  4204   unrecognised    0",
+  "  artifact kinds         recognised  4200   unrecognised    0",
   "  experiment status      recognised    66   unrecognised    4",
   "      not recognised: **DISPATCHED** (2026-08-14, at the Dire\u2026, **deprioritised by E07's ruling** \u2014 den\u2026  (+2 more occurrence(s))",
   "  law paid_for_by        recognised    62   unrecognised    0",
@@ -507,7 +507,7 @@
  ],
  "unattributed_failures": [],
  "verb": "record_build",
- "verified_utc": "2026-08-14T19:31:16Z",
+ "verified_utc": "2026-08-14T20:10:53Z",
  "verify_exit_code": 0,
  "written_by": "tools/record_mcp.py"
 }
