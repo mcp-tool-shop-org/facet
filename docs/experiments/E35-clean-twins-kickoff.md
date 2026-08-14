@@ -434,3 +434,49 @@ index pair in a terminal commit via `record_build`. **This dispatch's own commit
 > file's pushed SHA still serves its pre-registration; attribution corrected here.
 > **From this fold: the advisor's status check, the read of it, and the commit are
 > separate calls, always.**
+
+---
+
+> ## ⚖ GATE R2, SECOND SHEET — R2-b REJECTED at the Director's eye; the trade is measured and no in-arc lever reaches both classes (advisor, 2026-08-14)
+>
+> **R2-b is REJECTED** (the Director, on the sheet: the candidate still fails his eye).
+> The executor's own report says why, and saying it plainly is this ruling's job:
+> **R2-b reproduces E34's projection to the digit — including E34's core dark class,
+> untouched.** Atlas core-black 1,314 texels in 57 components, largest **377** —
+> identical to the accepted-then-reopened asset — because the corrector is bounded at
+> 36 px² by construction and the class is dominated by components 10× that cap. **It
+> was never in any tool's scope this arc.** The 35× dark reduction in the earlier
+> rejected candidate came from the seed, not from the tool the arc built.
+>
+> **The trade, measured at seed level** (R2-a; means over 8 views, Spearman over seed
+> means −1.000, over 24 individual twins +0.018):
+> 987654 pale 1065.5 / L\*-rise 14.78 / dark 71.9 · 770701 858.1 / 14.75 / 129.0 ·
+> 770700 734.5 / 11.67 / 170.4. Lighter generation ⇒ fewer dark specks ⇒ more pale.
+> The census selection took the palest seed through the seed, not per view (3 of 8
+> pale-maximal).
+>
+> **Lever accounting, all measured:** seed → slides the frontier, wins neither ·
+> corrector → out of scope above 36 px² · cn (flat 0.65, early-release schedule) →
+> inside the 3-seed noise floor on the dark census; UNMEASURED on the pale · denoise →
+> kills the register before either class (C\* 23.77 → 1.89 down the ladder). The cn
+> ladder stays authorized-held; whether it can move the pale is exactly what R2-c and
+> consult #4 now discriminate.
+>
+> **R2-c (zero jobs, dispatched):** the archive already holds the discriminator for
+> the pale mechanism — the 2c arms' twins (cn flat 0.65 and scheduled end-0.5, same
+> seed/view/denoise as the recorded arm). Run the R2-a pale instrument on them, blind
+> bands first. Pre-registered fork: pale UNCHANGED across cn arms ⇒ the
+> **init-bleed-through hypothesis** gains (the pale wash as the white-grey clay init
+> surviving where canny gives the sampler nothing — predicted by its localization on
+> low-canny regions, the L\*-rise-at-mild-chroma-pull signature, the ladder's
+> reversion continuum whose 0.85 rung is "pale greige" everywhere, and the seed
+> grading) and the cn ladder is likely pointless for it; pale DROPS at 0.65 ⇒ consult
+> #3's off-distribution-union mechanism stands and the ladder is live. Quantify the
+> 2b rungs' pale measure too — the continuum is evidence either way.
+>
+> **Also priced, held for the Director with consult #4's answer:** a 4-seed screen at
+> one view (4 jobs; both censuses per seed) IF the consult's mechanism read says the
+> dark↔pale frontier is plausibly 2-D rather than one exposure-like latent variable —
+> and the **Qwen-Image-Edit 2509 pilot** (parked at consult #3, re-opened as a
+> question only: its pilot shape is consult #4's Q4). Spend stands 33/45; the screen
+> plus a ladder or a rebuild cannot all fit — the Director sequences what fires.
