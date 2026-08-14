@@ -429,3 +429,80 @@ deletes term 2 by construction and does nothing to term 1, which is where the pa
 pre-projection. The two legs measure different stages — 6d the assembled render, 6c/6g the
 twins — and the conflict is reported rather than adjudicated. **The advisor rules the
 mechanism. Task 8 does not launch until that ruling issues.**
+
+---
+
+# ⚖ GATE R2 — tasks R2-a and R2-b. HALTED at the sheet for the Director's eye
+
+**Zero cloud jobs. Spend unchanged at 33 of 45.** Blind bands in
+[E35-R2a-blind-bands.md](E35-R2a-blind-bands.md), registered before the run with an explicit
+non-blindness declaration: leg 6c had already printed per-seed pale **area**, so no band was
+offered on it.
+
+## R2-a — the anticorrelation, quantified
+
+**The anchor was not a second population.** E34's eight accepted twins **are** the 770700
+column (views 0 and 4 are E33's r3 twins, reused byte-for-byte). Enumerated before measuring.
+
+| seed | mean pale area px² | mean pale L\*-rise | mean dark-speck area px² |
+|---|---|---|---|
+| **987654** | **1065.5** | **14.78** | **71.9** |
+| 770701 | 858.1 | 14.75 | 129.0 |
+| **770700** (E34 anchor) | **734.5** | **11.67** | **170.4** |
+
+**The ruling's eye is confirmed at the level it was asserted, and only there.**
+
+- Palest-first by area **and** by L\*-rise: **987654 > 770701 > 770700**. Both measures agree.
+- Spearman ρ(dark-speck area, pale area) over the **3 seed means**: **−1.000** — perfectly
+  monotone.
+- Spearman ρ over the **24 individual twins**: **+0.018** — no relationship at all.
+- The census-selected twin was also the **pale-maximal** twin on **3 of 8** views.
+
+**So the selection optimised into the pale class through the SEED, not per view.** It chose
+987654 — the palest seed on both measures — on 5 of 8 views because that seed carries the
+fewest dark specks, while being pale-maximal per view only 3 times.
+
+**Bands: 4 hits, 1 miss.** PR1 (rank agreement) HIT · PR2 (L\*-rise spread 2.0–7.0 → **3.11**)
+HIT · PR4 (pale-maximal 2–4 of 8 → **3**) HIT · PR5 (anchor mildest on both) HIT ·
+**PR3 MISS** — I predicted ρ −0.75…−0.25 and measured **+0.018**, because I stated the band
+over individual twins where the effect lives between seed means. The band was measured at the
+wrong level, not falsified.
+
+## R2-b — the candidate, global-770700
+
+Global-770700 selection → corrector (two passes, 1363 → 105 → **27 px²**) → the task-4
+projection pipeline unchanged → finalize → pack.
+
+**The projection reproduces the accepted asset exactly.** Registration per view **0.9063 /
+0.9196 / 0.9479 / 0.8835 / 0.8475 / 0.9042 / 0.9349 / 0.8745** — E34's recorded table to the
+digit; styled **2,287,542**; holes **157,228**; finalize source distance **1.82 edges**,
+beyond-20 **0.333%**. Gates green, none fired.
+
+**Candidate:** `facet_E35\r2b\out\performer_textured_clean.glb`.
+
+### ⚠ The finding the Director should have before he looks
+
+| asset | texture core-black | components | largest | flat census |
+|---|---|---|---|---|
+| E34 ACCEPTED | 1,314 | 57 | 377 | 733 / 4,122 px² |
+| **R2-b global-770700** | **1,314** | **57** | **377** | **712 / 3,816 px²** |
+| per-view mix (rejected) | 37 | 37 | 1 | 539 / 2,409 px² |
+
+**R2-b's texture dark-class census is identical to E34's.** The corrector did not move it,
+and the reason is structural rather than a failure: the atlas core-black class is dominated by
+components up to **377 texels**, while the detector is bounded at **36 px²** by construction —
+these are not specks and were never in its scope. Wide-dark moves only 16,660 → 16,454.
+
+**The dark-class reduction in the rejected candidate came almost entirely from the SEED, not
+from the corrector** (987654 carries 71.9 px² mean dark area against 770700's 170.4). So the
+two candidates are a clean trade, now measured:
+
+- **R2-b** — E34's tonal behaviour, no pale wash, and E34's dark texture census.
+- **per-view mix** — dark texture census 35× lower, and the pale wash the Director rejected.
+
+**Tonal-behaviour-equivalent to E34's inputs, NOT byte-equivalent** — task 7 found no
+parameter-identical pair across the eras (34 payloads, 34 distinct parameter sets), so
+equivalence is by seed and recipe, not by reproduction.
+
+**HALTED at the sheet.** The cn ladder (0.7 / 0.6) stays authorized and held; it is the lever
+that could move what neither seed choice nor the corrector reached. His word only.
