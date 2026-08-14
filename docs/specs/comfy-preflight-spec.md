@@ -428,3 +428,103 @@ previously used one is about as good a first consumer as this tool could be give
 > **inside** the vendor band — E35's arm 2c (0.65) is a deliberately below-recommendation
 > arm and is framed as such in the corrected E35 spec. `true_cfg_scale=4.0` and
 > `steps=30` remain notes, not bands, exactly as the build seat shipped them.
+
+---
+
+> ## ⚖ AMENDMENT 4 — the treatment arc is RULED AND ACCEPTED; the tag outran the sweep; what published, measured (advisor, 2026-08-14)
+>
+> **On the treatment report** (`comfy-preflight docs/treatment-report.md` at `9f3add0`).
+> Verified at this seat before ruling: CI green at the release commit `d888baf`;
+> `gh secret list` **empty** (the no-token claim holds); the four version sites agree at
+> 1.0.0; logo, landing page and handbook all live at 200; `SHIP_GATE.md` carries the
+> hand-corrected tags with the detector's blind spot stated at the top; CHANGELOG's
+> `[1.0.0]` entry proper. The arc is **ACCEPTED as built**: the drawn-not-generated mark
+> with its constants read off the reference by PIL; the favicon re-drawn after rendering
+> at true size caught the hamburger; `verify.py` as the single pinned gate; the pip-audit
+> declared-surface fix; §5's defects-found-by-running-things, §5d stated against the
+> seat's own instrument discipline; and §9's honest EXTERNAL_VERIFIER markdown. The
+> report's §6 also **predicted the exact failure the release then produced** — npm
+> masking a trusted-publisher gap as a 404 — which is what a threat model written from
+> mechanism looks like.
+>
+> ### The handback events, measured — the tag outran the sweep
+>
+> Halt committed 15:57. The Director's web edit 16:00; the executor's header repairs
+> 16:07 and 16:10; the outgoing advisor seat closed 16:11. `translate-all.mjs` ran
+> ~16:12–16:17 on this rig (TranslateGemma 27B resident; **which hand invoked it is not
+> established from any artifact** — the invocation lives in no tree). The release commit
+> `d888baf` (16:22) then carried the seven translations **unswept**, tag `v1.0.0` fired
+> the workflow, and the sweep this spec's release order assigns to the advisor ran only
+> AFTER the tag — at this seat, finding one real defect: **Hindi rendered `÷8 halts.
+> ÷16 advises.` as "stop eight times, advise sixteen times"** — an imperative at the
+> reader, meaning inverted, the `÷` tokens gone, on check 5's own subject matter. Caught
+> by digit-run parity. Also found and repaired: all seven translations lacked the
+> PyPI/npm badge pair (generation ran against the badge-less source; the release commit
+> re-added the pair per the report's own §5d plan). Dispositions that stand without
+> repair: ja's +2/+3 digit surplus is number-word→digit convention; working-copy CRLF is
+> `autocrlf` checkout behaviour — the committed blobs measure 0 CRLF, all seven. Repairs
+> landed as `0604335` on `main`.
+>
+> ### What published, and what it contains — measured, not read off config
+>
+> Run 1 (tag at `d888baf`) failed at the linux binary: PyInstaller's
+> `--collect-submodules mcp` imports `mcp.cli`, which `sys.exit(1)`s when typer is
+> absent. The executor's root-cause fix (`mcp.server`, with the collection-vs-exclusion
+> mechanism in the comment) is exemplary. Run 2 (tag moved to `2c072fa`): both binaries
+> built, the GitHub Release cut with assets, **PyPI `comfy-preflight` 1.0.0 LIVE with
+> provenance** — then **npm FAILED, E404 on PUT**: the trusted-publisher binding for
+> `@mcptoolshop/comfy-preflight` does not exist npm-side. Two facts this seat then
+> measured rather than inferred:
+>
+> 1. **npm packs README variants regardless of the `files` field.** The failed run's own
+>    pack listing shows all seven translated READMEs in the tarball against
+>    `files: ['bin/', 'README.md', 'LICENSE']`. This seat's first analysis read the
+>    config and called the npm artifact translation-free — **falsified within minutes by
+>    the tool's own log. That error is this seat's, owned here.** Consequence: the npm
+>    artifact is translation-bearing, so it must publish from a tree at or after
+>    `0604335`.
+> 2. **The PyPI sdist is clean** — downloaded and listed: `README.md` only, no
+>    translations; the wheel carries only the package. The live 1.0.0 is unaffected by
+>    the Hindi defect. The GitHub Release's binaries and dists are likewise clean; the
+>    unswept translations exist only in the `v1.0.0` tag's browse-tree.
+>
+> One harmless residue, recorded so nobody re-derives alarm: run 2 published a sigstore
+> provenance statement (logIndex 2468827143) for the npm tarball that never landed — an
+> orphan transparency-log entry, append-only by design.
+>
+> ### The process finding, and the law it folds to
+>
+> Nothing on disk distinguishes *translations generated* from *translations swept*. The
+> handback word lived in conversation; seven finished-looking files sat in the tree; the
+> release commit scooped them and the tag outran the gate. The defect the sweep exists
+> to catch was real and present — the system's one miss was ordering, not instruments.
+> **The law: translations enter the tree in the ADVISOR's commit, never riding an
+> executor's release commit. The sweep's PASS is that commit** — sequencing enforced by
+> who commits what, not by memory. This is the same shape as *the check lives inside the
+> tool that performs the irreversible step*: the advisor's commit IS the sweep receipt,
+> and a release commit that contains no translations cannot ship them unswept.
+>
+> ### Completion — the one account action, and the fork
+>
+> Blocking everything: **the Director configures npm's trusted publisher** for
+> `@mcptoolshop/comfy-preflight` → repository `mcp-tool-shop-org/comfy-preflight`,
+> workflow `release.yml`, environment none — the same binding shape PyPI carries.
+> Then the fork:
+>
+> - **Recommended: v1.0.1 forward.** Bump the four version sites + the launcher's
+>   pinned tag, CHANGELOG entry naming the swept translations and the workflow fix, one
+>   commit, tag at or after `0604335`, full run. No deletions, no compensators; npm
+>   debuts clean at 1.0.1; PyPI keeps a clean 1.0.0 beneath it; the v1.0.0 GitHub
+>   Release stands with working binaries.
+> - Rejected on content: **re-running the failed job** — it re-packs `2c072fa`'s
+>   unswept tree. Rejected on cost: **re-cutting v1.0.0** — three compensator actions
+>   on public surfaces (release delete, tag delete, re-tag) to buy version symmetry
+>   that a patch buys forward.
+>
+> ### Open items, routed
+>
+> §5c (pagefind path stale in the handbook playbook) → the playbook's canonical store
+> copy, next consolidation pass. §5e (shipcheck detects `[all] [pypi]` only, blind to
+> the npm launcher, console script and MCP server) → an issue on shipcheck's repo when
+> its next arc opens. The first `STUDIO_MEASURED` envelope entry → **waits on E35's
+> close**, exactly as Amendment 3B ruled; nothing ships into that dict from this arc.
