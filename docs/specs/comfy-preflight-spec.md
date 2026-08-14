@@ -308,7 +308,12 @@ previously used one is about as good a first consumer as this tool could be give
 > **Provenance, measured (E33→E35):** the performer's twins were generated at img2img
 > denoise **0.92** through a control checkpoint whose own model card documents an
 > operating band of **~0.10–0.50** — 2–9× outside it — and nothing on the submit path
-> said so. The dark-speck class that followed cost an acceptance, a consult, a five-agent
+> said so. *(⚑ CORRECTED 2026-08-14, Amendment 3: the card documents NO denoise band —
+> the cited figure was a research-agent claim falsified at its own source by this
+> amendment's verified-live discipline, at the build seat. The provenance's true form:
+> the twins were generated at a denoise the vendor gives no guidance on, and nothing
+> said even that. Check 8's declared-absence output now says exactly that, on the
+> submit path.)* The dark-speck class that followed cost an acceptance, a consult, a five-agent
 > research swarm and a repair arc
 > ([grounding](../research/E35-speck-research-grounding.md), agent 1 finding 8; facet
 > known-defects, final entry). The fact was knowable at submit time. This check puts it
@@ -331,7 +336,10 @@ previously used one is about as good a first consumer as this tool could be give
 > source URL and retrieval date, **verified against the live card at build time**. Day
 > one ships exactly one checkpoint — `Qwen-Image-InstantX-ControlNet-Union`, img2img
 > denoise ~0.10–0.50 per its card — plus any further parameter that card documents,
-> verified at the seat, and nothing else. ⚠ The E35 grounding also cites a **FLUX**
+> verified at the seat, and nothing else. *(⚑ Amendment 3: the card carries no such
+> band; what shipped is the band it DOES document —
+> `controlnet_conditioning_scale ∈ [0.8, 1.0]` — plus a declared absence for denoise
+> that reports the value it cannot judge. RATIFIED.)* ⚠ The E35 grounding also cites a **FLUX**
 > Union card (canny examples at 0.5); that is a **different checkpoint** and its numbers
 > do not enter a Qwen entry. A test pins that an uncited entry fails; a second pins that
 > an absent checkpoint returns NOT_APPLICABLE and does not halt.
@@ -347,3 +355,76 @@ previously used one is about as good a first consumer as this tool could be give
 > route tools** — they operate on generated images after the act this gate guards. A
 > preflight that touched pixels would be a different product. The fold is the envelope
 > fact alone, because that is the part that belongs *before* the spend.
+
+---
+
+> ## ⚖ AMENDMENT 3 — the aggregator arc is RULED AND ACCEPTED; check 8's fired gate is disposed; the citation defect is the advisor's (advisor, 2026-08-14)
+>
+> **On the build report** (`comfy-preflight docs/build-report-aggregator-and-check-8.md`,
+> code at `d8b2bf4`, report at `11b1487`). Verified at this seat before ruling: CI
+> `31830549226` resolved — success at `d8b2bf4`, 228 passed **zero skipped** on 3.11 and
+> 3.12 in three interpreter modes; the tree pulled and current; and the arc's central
+> claim re-verified by a **third independent fetch** of the cited card at this seat,
+> agreeing with the build seat's two: `controlnet_conditioning_scale ∈ [0.8, 1.0]`
+> explicit for all four control types, `true_cfg_scale=4.0` and `steps=30` as snippet
+> examples, **no img2img denoise or strength band anywhere**.
+>
+> ### The arc is ACCEPTED as built
+>
+> The aggregator's one-entry-point law (a non-raising twin is a skip flag renamed —
+> enforced by parsing the module, which is the right instrument for the absence of a
+> function) · the one-raise-carrying-everything composition with per-adapter catches of
+> `PreflightHalt` and only `PreflightHalt` · the registry as the extension proof (check 8
+> landed through it with no edit to `preflight()`) · PASS-with-declined-clauses printed
+> on a passing run (a clause nobody asked is not a clause that passed) · the exit-code
+> contract, including its load-bearing pair: **ADVISORY exits 0** so a shell chain cannot
+> reinstate the halt this spec removed, and **exit 2 is not exit 1** because nothing
+> examined supports no claim · the MCP surface as a byte-identical transport verified as
+> a real subprocess · and the four run-found defects, each the
+> install-and-run-before-writing discipline paying out. All ratified.
+>
+> ### The fired gate, disposed: readings A and B are ADOPTED, C is EXECUTED
+>
+> **A — adopted.** Check 8 as built is CORRECT. A declared absence naming the value it
+> cannot judge, with source and retrieval date, is real information on the submit path —
+> and inventing a band to judge against would have been the exact defect this table's
+> discipline exists to refuse. The check not flagging the 0.92 that motivated it is the
+> honest outcome of the world as measured: **the vendor gives no guidance, and now the
+> caller is told so at the moment it is cheap.**
+>
+> **B — adopted as a capability, gated as data.** The envelope table MAY carry
+> **studio-measured** entries beside vendor-cited ones — the spec's own discipline
+> already says *"each entry needs a measurement or a citation"*, and a measurement with
+> a facet-record locator satisfies it. The build-out arc adds the entry KIND (schema +
+> tests: a measured entry carries its record citation the way a vendor entry carries its
+> URL); **no measured entry ships until the advisor rules one in** — the first candidate
+> is E35's denoise sweep once ruled, which would convert facet's own record into the
+> documentation the vendor never wrote.
+>
+> **C — executed, in facet, this fold.** The grounding's finding 8 is corrected at all
+> seven sites (the grounding's three, the E35 spec, the status row, this amendment's
+> two), each in place beside the original with the three-fetch measurement, and relayed
+> to the live E35 seat. **The defect is the advisor's**: a research agent's citation
+> became load-bearing across five record surfaces and a dispatch rationale without being
+> resolved live — while the same seat WAS resolving the consult's checkable claim and CI
+> run ids. The law this folds to: **a citation that becomes load-bearing — entering a
+> spec, a defect entry, a data table, or a dispatch rationale — is resolved against its
+> live source at fold time**; a research agent's report is testimony, not a resolved
+> source. Amendment 2's cited-entries-only discipline is what caught it, one seat late —
+> the system working, and the lesson is to run it one seat earlier.
+>
+> ### Check 5's ÷16 note is PROMOTED to ADVISORY
+>
+> The build seat flagged the shape mismatch and correctly declined to re-specify a
+> ratified check. Ruled now: Amendment 1a's *"PASSES with a note"* predates the verdict
+> vocabulary; with `ADVISORY` in the merge order, the ÷16 note IS an advisory and
+> carrying it as one is a re-labeling, not a re-specification — ÷8 still halts, ÷16
+> still never does, the aggregate verdict for a ÷16-short frame moves PASS → ADVISORY.
+> Lands in the build-out arc with tests.
+>
+> ### And the sibling fact the verification surfaced, recorded so it is not re-derived
+>
+> The card's explicit `[0.8, 1.0]` cn recommendation means the studio's recorded 0.9 is
+> **inside** the vendor band — E35's arm 2c (0.65) is a deliberately below-recommendation
+> arm and is framed as such in the corrected E35 spec. `true_cfg_scale=4.0` and
+> `steps=30` remain notes, not bands, exactly as the build seat shipped them.

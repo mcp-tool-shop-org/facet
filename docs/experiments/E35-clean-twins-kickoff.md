@@ -37,8 +37,16 @@ eye?**
   starves both classes.
 - The recipe under test (E33 §7, byte-pinned): seed 770700 · steps 20 · cfg 2.5 ·
   denoise 0.92 · cn_strength 0.9 · shift 3.1 · euler/simple · 352×1024 · LoRA NONE ·
-  the four named models. Grounding headline: the control checkpoint's own documented
-  denoise band is **0.10–0.50** — 0.92 is 2–9× above it.
+  the four named models. ~~Grounding headline: the control checkpoint's own documented
+  denoise band is **0.10–0.50** — 0.92 is 2–9× above it.~~ **⚑ CORRECTED 2026-08-14:
+  the card carries NO denoise band** — the grounding's finding 8 was falsified at its
+  source by the comfy-preflight build seat's verified-live check (three independent
+  fetches across two seats). The denoise sweep stands on the theory knee (SDEdit
+  flat-guide; outline-first/details-later) and this record's own measurements. New
+  vendor fact from the same verification: the card recommends
+  `controlnet_conditioning_scale ∈ [0.8, 1.0]` — so the recorded 0.9 is IN the vendor
+  band and arm 2c (0.65) is a deliberately below-recommendation arm. Run it as specced,
+  framed as such.
 - Cost: **≈ $0.018/job** measured (E34 Ruling 5). **Ceiling this arc: 45 cloud jobs**
   (≈ $0.85), zero partner-API nodes.
 

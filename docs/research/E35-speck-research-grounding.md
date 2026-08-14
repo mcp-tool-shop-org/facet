@@ -13,8 +13,11 @@ are folded into [E35-clean-twins-kickoff.md](../experiments/E35-clean-twins-kick
    SDEdit's own low-information-guide case predicts the regime *by construction*
    (Meng et al. 2021); outline-first/details-later theory (Wang & Vastola 2023;
    Jiralerspong et al. 2025) predicts fine texture commits late and is
-   strength-sensitive over a **narrow band** — a knee, not a ramp. The InstantX control
-   checkpoint's own documented img2img band is **0.10–0.50**; our 0.92 is 2–9× above it.
+   strength-sensitive over a **narrow band** — a knee, not a ramp. ~~The InstantX control
+   checkpoint's own documented img2img band is **0.10–0.50**; our 0.92 is 2–9× above it.~~
+   **⚑ CORRECTED 2026-08-14: the cited card carries NO img2img denoise band** — finding 8
+   falsified at source (three independent fetches across two seats; correction block in
+   agent 1's section below). The knee prediction stands on the theory clauses alone.
 2. **Conditioning strength hardens what the sampler invents; it does not create it.**
    `conditioning_scale` was never ablated in the ControlNet paper (named absence); the
    Union card's canny examples run at 0.5; the evidenced refinement is **per-step
@@ -55,9 +58,24 @@ are folded into [E35-clean-twins-kickoff.md](../experiments/E35-clean-twins-kick
 7. Plug-and-Play Diffusion Features for Text-Driven Image-to-Image Translation — Tumanyan, Geyer, Bagon, Dekel (CVPR 2023) — arXiv:2211.12572 — Spatial features/self-attention injected from early (high-noise) steps carry structure while later steps determine appearance/texture — structure/texture splits by trajectory position, not by one global strength number (measured on a UNet, not MMDiT).
 8. Practitioner source, not peer-reviewed: InstantX Qwen-Image-ControlNet-Union model card — https://huggingface.co/InstantX/Qwen-Image-ControlNet-Union — vendor's own recommended img2img denoise range for canny conditioning is ~0.10–0.50; the pipeline's 0.92 sits 2–9x above the checkpoint's own tested range.
 
+   ⚑ **FINDING 8 IS FALSIFIED AT ITS CITED SOURCE (2026-08-14).** The comfy-preflight
+   build seat ran Amendment 2's verified-live discipline against this exact URL — two
+   independent fetches (rendered page + `raw/main/README.md`), a public search, and the
+   sibling Inpainting card — and a third fetch at the facet ruling seat agrees: **the card
+   documents `controlnet_conditioning_scale ∈ [0.8, 1.0]` (explicit, all four control
+   types), `true_cfg_scale=4.0` and `num_inference_steps=30` as snippet examples, and NO
+   img2img denoise or strength range at all.** The 0.10–0.50 figure and the 2–9× framing
+   are **withdrawn**; the correction is folded through every consuming surface (the E35
+   spec, the status row, comfy-preflight Amendment 2) and relayed to the live E35 seat.
+   What survives untouched: findings 1–7, the measured attribution in facet's record, and
+   the sweep design — which hunts the knee on theory grounds alone. One NEW vendor fact
+   from the same verification: the cn recommendation is **[0.8, 1.0]**, which makes E35
+   arm 2c (0.65) a deliberately below-recommendation arm, and puts the recorded 0.9
+   INSIDE the vendor band.
+
 Named absence: no paper studies strength thresholds for MMDiT/rectified-flow backbones on flat/low-variance inits. Rectified-flow strength-editing papers (FlowSlider, arXiv:2604.02088; Optimal Transport for Rectified Flow Image Editing, arXiv:2508.02363) show the naive strength knob is non-monotonic and entangled with edit direction in flow models — worse-behaved than DDPM-SDEdit — but give no quantitative curve and never examine flat inits. Treat any [0.3,0.6]-type band as a hypothesis to test on Qwen-Image, not a transferable constant.
 
-Design implications: the flat-guide case predicts the observed regime by construction · findings 2+3 predict a knee — add points between 0.80–0.92 (0.85, 0.88) to locate where speckle breaks vs glides · canny acts on structure (early steps) and is not expected to suppress late-trajectory invention · a stochastic/ancestral sampler at matched strength is a cheap orthogonal arm if low denoise costs register · the vendor's 0.10–0.50 band puts even 0.72 on the high side — don't expect zero invention at 0.72.
+Design implications: the flat-guide case predicts the observed regime by construction · findings 2+3 predict a knee — add points between 0.80–0.92 (0.85, 0.88) to locate where speckle breaks vs glides · canny acts on structure (early steps) and is not expected to suppress late-trajectory invention · a stochastic/ancestral sampler at matched strength is a cheap orthogonal arm if low denoise costs register · ~~the vendor's 0.10–0.50 band puts even 0.72 on the high side — don't expect zero invention at 0.72~~ ⚑ withdrawn with finding 8 (correction above); no vendor denoise anchor exists.
 
 ## Agent 2 — ControlNet conditioning strength and interior hardening
 
