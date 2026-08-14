@@ -1,8 +1,8 @@
 {
  "andon": [],
  "corpus": {
-  "files": 311,
-  "id": "f5ad974624ec5f9c6d07fcb04c3556d83c761b6a7f4c929da2fb4f340be58bfa",
+  "files": 312,
+  "id": "38029c5f70aa9679b935cafbc2171af99f5e466263c2fc99d5d697e31e387a77",
   "manifest": {
    "CLAUDE.md": "0f25a65bec22448ae07ff26256906eb19492beeaf3a08fb830961940e2b5c5d9",
    "README.md": "533c4545bae8b3c043603cb445be9c2575f8c767ad340601c413269d4a2ecc1a",
@@ -288,7 +288,8 @@
    "docs/experiments/E34-ruling.md": "3140a70da24dcf42906bcbe4dfe37acf030c66e60210077f1a9506864aa5c5f5",
    "docs/experiments/E35-R2a-blind-bands.md": "ea1e3d38a2b07662a14f5c37f62258d8dbb2a0d02c2eb50ebd8634fdbb8573a4",
    "docs/experiments/E35-R2c-blind-bands.md": "e4db28142322b1c428f58bd22945b1fa41d510d84c08625fa22f64f2f0cba86f",
-   "docs/experiments/E35-clean-twins-kickoff.md": "d552cacd3f2b8ff1055462f68a80201befc2b49efb0cc25a424419235b989c97",
+   "docs/experiments/E35-armslate-spec.md": "72cc577ef76421c5505531345bda6a6e7f6f76efaf909e50d0cb4c382761d528",
+   "docs/experiments/E35-clean-twins-kickoff.md": "a6a062a3d657bb2f3b23b4f4f2b0fdd89b8e06843139fb693c106f4e490ef14e",
    "docs/experiments/E35-clean-twins-report.md": "a03ef4c64a08df86c0a81c6f336aff39020140bb9dce5a6c5845918aab6e48b5",
    "docs/experiments/E35-predictions.md": "f8968b19a9af52a2a92f1823be9b9b1e29d74d22863fd0d823940f35774ef63e",
    "docs/experiments/E35-task6-blind-bands.md": "b4a7ea063e455a01595615c79d6eeab4a07f806b21032f488e80c609b4f4fd08",
@@ -318,20 +319,20 @@
   }
  },
  "counts": {
-  "artifacts": 769,
+  "artifacts": 774,
   "decisions": 225,
   "experiments": 35,
-  "fts": 4745,
+  "fts": 4768,
   "handoffs": 31,
   "laws": 95,
   "phenomena": 28,
-  "prose_sections": 2844,
+  "prose_sections": 2862,
   "rulings": 718
  },
  "db": {
-  "bytes": 11968512,
+  "bytes": 12054528,
   "path": "docs/index/facet.db",
-  "sha256": "4a420a678699cd8dca7ad4eea7ad1a67d2ffd56672267bb7ae66f02d104066d3"
+  "sha256": "ec6b21866ecd2427ef00aa1baa5b3ce9af66fd6b397af8a4071d4f96c54d3888"
  },
  "determinism_leg": "byte-identity",
  "failures": [],
@@ -351,7 +352,7 @@
   "==============================================================================",
   "",
   "[leg 1] determinism - two builds from an unchanged record",
-  "  BYTE-IDENTICAL   11968512 bytes, both builds",
+  "  BYTE-IDENTICAL   12054528 bytes, both builds",
   "",
   "[corpus] ruling documents discovered by the sorted glob",
   "  E01-ruling-gate1.md                            arc E01                0 rows - prose only",
@@ -457,11 +458,11 @@
   "  laws            95 rows   dangling 0",
   "  experiments     35 rows   dangling 0",
   "  handoffs        31 rows   dangling 0",
-  "  artifacts      769 rows   dangling 0",
+  "  artifacts      774 rows   dangling 0",
   "  phenomena       28 rows   dangling 0",
   "  decisions      225 rows   dangling 0",
-  "  fts           4745 rows   dangling 0",
-  "  total checked 1901, dangling 0",
+  "  fts           4768 rows   dangling 0",
+  "  total checked 1906, dangling 0",
   "",
   "[leg 4] the seeded question set - target within the top 3",
   "  canny values for the beast         rank 3   docs/experiments/E12-ruling.md \u00b7 Ruling 11a",
@@ -491,7 +492,7 @@
   "",
   "[vocabulary] what each declared vocabulary did not recognise",
   "             REPORT ONLY - this section never fails the run",
-  "  artifact kinds         recognised  4204   unrecognised    0",
+  "  artifact kinds         recognised  4228   unrecognised    0",
   "  experiment status      recognised    66   unrecognised    4",
   "      not recognised: **DISPATCHED** (2026-08-14, at the Dire\u2026, **deprioritised by E07's ruling** \u2014 den\u2026  (+2 more occurrence(s))",
   "  law paid_for_by        recognised    62   unrecognised    0",
@@ -510,7 +511,7 @@
  ],
  "unattributed_failures": [],
  "verb": "record_build",
- "verified_utc": "2026-08-14T21:44:37Z",
+ "verified_utc": "2026-08-14T22:11:38Z",
  "verify_exit_code": 0,
  "written_by": "tools/record_mcp.py"
 }
