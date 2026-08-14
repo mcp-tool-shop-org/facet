@@ -93,7 +93,10 @@ type selector). Every consult claim remains testimony until enumerated.
    process" in the mandate's own words); the asset question moves to the successor
    blind, which is the argument against.
 
-Whatever he picks, the close ruling appends here.
+**⚖ THE DIRECTOR'S WORD (2026-08-14): "2509." Path 2 fires — the pilot, 1–2 jobs,
+view 1, halting at the sheet for his eye. Paths 1 and 3 close.** The 8-view rebuild
+remains outside this arc's ceiling on any outcome; the close ruling appends here
+after the pilot's sheet is ruled.
 
 ## 5. Harness work and the seats' error records — ratified
 
