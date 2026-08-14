@@ -61,9 +61,23 @@ ROUTE = sorted(BLENDER + PINNED)
 # per-file ANDON site counts, measured at E23's census and again after the
 # conversion. Pinned so that a later arc moves them deliberately rather than by
 # accident - the same service E22's message census did for the seven.
+#
+# MOVED silhouette_masks.py 4 -> 5 BY THE E35 ARM SLATE, in the commit that earns it.
+# The `--depth` leg adds one ANDON: the depth map's support must be byte-identical to
+# the silhouette the same raycast produced, or the encode has eaten surface. It is a
+# real gate, it raises (never asserts), and it is shown FIRING under plain Python and
+# under PYTHONOPTIMIZE=1 in tests/test_t69_silhouette_depth.py by running a copy of the
+# tool with the encode's 1.. floor removed.
+#
+# WHY IT IS NOT ALSO IN `FIRE` BELOW: every FIRE entry fires on crafted INPUT and is
+# checked for -O survival and for writing nothing. This one fires on an internal
+# invariant no CLI argument can violate, so it has no `build(tmp_path)` and cannot join
+# that population honestly. T69 carries the same two properties for it instead - the
+# firing legs in both interpreter modes, and the encode is checked before the output
+# directory is created, so it has no business in DIR_AHEAD_OF_GATE either.
 SITES = {"bake_hero_prep.py": 15, "brush_cloud_step.py": 9, "subject_profile.py": 6,
          "e13_harmonize.py": 5, "bake_hero_fuse.py": 4, "bake_hero_pack.py": 4,
-         "silhouette_masks.py": 4, "cull_unseen.py": 3, "export_asset_source.py": 2,
+         "silhouette_masks.py": 5, "cull_unseen.py": 3, "export_asset_source.py": 2,
          "palette_gate.py": 2, "resample_atlas.py": 2, "restylize_views.py": 1}
 
 # ANDON gates in these files that ALREADY raised AssertionError before E23, so
@@ -228,7 +242,10 @@ def test_t31_the_census_is_the_one_e23_measured():
         assert len(_andon_raises(src)) == want, (
             "%s carries %d ANDON raises; E23 converted %d and %d already raised"
             % (rel, len(_andon_raises(src)), n, PRE_EXISTING_RAISES.get(rel, 0)))
-    assert sum(SITES.values()) == 57
+    # 57 was E23's route total; 58 since the E35 arm slate added silhouette_masks'
+    # depth-support ANDON. The literal moves in the commit that moves the table above,
+    # which is the whole service this pin performs.
+    assert sum(SITES.values()) == 58
 
     elsewhere = 0
     for dirpath, dirnames, filenames in os.walk(str(REPO / "tools")):

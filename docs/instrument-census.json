@@ -17,8 +17,8 @@
     "py_files_total": 111
   },
   "provenance": {
-    "corpus_files": 295,
-    "corpus_files_before_self_exclusion": 305,
+    "corpus_files": 301,
+    "corpus_files_before_self_exclusion": 311,
     "probe_interpreter": "E:\\AI-Models\\trellis2-env\\Scripts\\python.exe",
     "probe_interpreter_version": "3.13.13",
     "probe_skipped": false,
@@ -35,7 +35,7 @@
       "docs/experiments/E28-task3-report.md",
       "docs/instrument-census.md"
     ],
-    "test_files": 67
+    "test_files": 69
   },
   "rows": [
     {
@@ -1997,8 +1997,8 @@
       ],
       "b1_literals": [],
       "b2_literals": [],
-      "cited_count": 15,
-      "cited_count_raw": 21,
+      "cited_count": 17,
+      "cited_count_raw": 23,
       "cited_in": [
         "CLAUDE.md",
         "docs/experiments/E10-offsurface-r4ab-predictions.md",
@@ -2011,6 +2011,8 @@
         "docs/experiments/E27-ruling.md",
         "docs/experiments/E30-ruling.md",
         "docs/experiments/E31-publish-the-pipeline-kickoff.md",
+        "docs/experiments/E35-armslate-spec.md",
+        "docs/experiments/E35-clean-twins-kickoff.md",
         "docs/experiments/README.md",
         "docs/specs/measurement-mcp-spec.md",
         "docs/specs/placement-memo.md",
@@ -3824,14 +3826,18 @@
       "a_argparse": true,
       "a_main_guard": false,
       "a_parse_args_module_level": true,
-      "anchored": false,
-      "anchored_basename_only": false,
-      "anchored_in": [],
-      "anchored_in_basename_only": [],
+      "anchored": true,
+      "anchored_basename_only": true,
+      "anchored_in": [
+        "tests/test_t69_silhouette_depth.py"
+      ],
+      "anchored_in_basename_only": [
+        "tests/test_t69_silhouette_depth.py"
+      ],
       "b1_literals": [],
       "b2_literals": [],
-      "cited_count": 26,
-      "cited_count_raw": 27,
+      "cited_count": 28,
+      "cited_count_raw": 29,
       "cited_in": [
         "docs/experiments/E02-report.md",
         "docs/experiments/E02-texture-stage-on-sound-inputs.md",
@@ -3857,6 +3863,8 @@
         "docs/experiments/E33-the-first-performer-through-the-route.md",
         "docs/experiments/E34-projection-coverage-kickoff.md",
         "docs/experiments/E34-projection-coverage-report.md",
+        "docs/experiments/E35-armslate-spec.md",
+        "docs/experiments/E35-clean-twins-kickoff.md",
         "docs/experiments/README.md",
         "docs/tools.md"
       ],
@@ -3874,8 +3882,8 @@
     }
   ],
   "totals": {
-    "anchored": 59,
-    "anchored_basename_only": 59,
+    "anchored": 60,
+    "anchored_basename_only": 60,
     "any_add_argument": 105,
     "argparse": 105,
     "cited": 91,

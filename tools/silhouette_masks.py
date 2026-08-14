@@ -69,6 +69,17 @@ ap.add_argument("--anchor", action="append", default=[],
                 help="VIEW=PATH — assert the generated mask matches an existing one exactly. "
                      "Repeatable. This is the only thing standing between a wrong camera "
                      "convention and eight silently misregistered twins.")
+ap.add_argument("--depth", default=None, metavar="DIR",
+                help="also write a per-view DEPTH map from the same raycast. The mask leg "
+                     "already computes t_hit and keeps only isfinite(t_hit); this emits the "
+                     "distances themselves, so the depth and the mask are the SAME cast at "
+                     "the SAME camera and cannot drift apart. The camera is ortho "
+                     "(turn_render.py:92 sets cam_data.type = 'ORTHO'), so every ray is "
+                     "parallel and t_hit IS linear depth along the view axis, not a radial "
+                     "distance needing projection. Writes {tag}_{idx}_depth.png (near=white, "
+                     "the MiDaS/Depth-Anything convention) and {tag}_{idx}_depth_far.png "
+                     "(inverted), because which convention a consumer wants is not something "
+                     "this tool can know and the second file costs one encode.")
 args = ap.parse_args(subject_profile.bind(ap, "silhouette_masks.py", None))
 
 AW, AH = (int(x) for x in args.aspect.split(","))
@@ -126,9 +137,10 @@ for idx in [int(x) for x in args.views.split(",")]:
 
     o2 = (bmid[None, None, :] + g1[..., None] * rgt[None, None, :]
           + g2[..., None] * upv[None, None, :] - look[None, None, :] * 2.0)
-    hit = np.isfinite(rs.cast_rays(o3d.core.Tensor(np.concatenate(
+    t_hit = rs.cast_rays(o3d.core.Tensor(np.concatenate(
         [o2, np.broadcast_to(look, o2.shape)], axis=-1
-    ).reshape(-1, 6).astype(np.float32)))["t_hit"].numpy().reshape(H, W))
+    ).reshape(-1, 6).astype(np.float32)))["t_hit"].numpy().reshape(H, W)
+    hit = np.isfinite(t_hit)
 
     # ANDON: a silhouette that is empty or fills the frame is not a silhouette.
     pct = float(hit.mean() * 100)
@@ -145,6 +157,53 @@ for idx in [int(x) for x in args.views.split(",")]:
           f"{pct:6.3f}% of frame  bbox {bw}x{bh}  -> {os.path.basename(path)}", flush=True)
     report["views"][str(idx)] = {"yaw": idx * args.step, "pct_of_frame": round(pct, 4),
                                  "bbox": [bw, bh], "px": int(hit.sum())}
+
+    if args.depth:
+        # THE FIGURE OCCUPIES 1..255 AND THE BACKGROUND IS 0, deliberately. Mapping the
+        # figure to 0..255 would give the FARTHEST surface pixel the background's own
+        # value, and the support check below would then be unable to tell a far surface
+        # from no surface: a check that cannot fail is not a check (CLAUDE.md). The one
+        # level of headroom is what makes `depth > 0` mean exactly `there is surface here`.
+        t_in = t_hit[hit]
+        t_lo, t_hi = float(t_in.min()), float(t_in.max())
+        spread = t_hi - t_lo
+        near = np.zeros((H, W), dtype=np.uint8)
+        if spread <= 0:
+            # a surface with no depth extent in this view (a plane facing the camera);
+            # every hit is equidistant, so the whole figure is the near plane.
+            near[hit] = 255
+        else:
+            near[hit] = 1 + np.rint(254.0 * (t_hi - t_in) / spread).astype(np.uint8)
+        far = np.zeros((H, W), dtype=np.uint8)
+        far[hit] = (256 - near[hit].astype(np.int32)).astype(np.uint8)
+
+        for arr, suffix in ((near, "depth"), (far, "depth_far")):
+            # ANDON: the depth map's support IS the silhouette, or the encode has eaten
+            # surface. This is the direction the ortho camera does not bound for us: the
+            # cast is shared, so a disagreement here can only come from the encode above.
+            sup = arr > 0
+            if not np.array_equal(sup, hit):
+                raise AssertionError(
+                    "ANDON: view %d %s support differs from the mask by %d px - the encode "
+                    "lost surface the raycast found (near-plane clipped to background?)"
+                    % (idx, suffix, int((sup != hit).sum())))
+            # the output directory is created AFTER the ANDON above, not before it.
+            # T31 pins the two route sites that create an empty --out ahead of their
+            # gate, precisely so a third joining them fails rather than passing under a
+            # loosened rule. This gate fires on an internal invariant rather than on
+            # crafted input, so it cannot join T31's FIRE list - which is all the more
+            # reason to make "nothing is created when it fires" true by construction
+            # here rather than pinned as an exception somewhere else.
+            os.makedirs(args.depth, exist_ok=True)
+            dpath = os.path.join(args.depth, "%s_%d_%s.png" % (args.tag, idx, suffix))
+            # RGB, grey replicated: a ControlNet hint is consumed as a 3-channel IMAGE.
+            Image.fromarray(np.repeat(arr[:, :, None], 3, axis=2), mode="RGB").save(dpath)
+
+        print("[sil]   DEPTH view %d  t %.6f..%.6f  spread %.6f  -> %s_%d_depth.png (+_far)"
+              % (idx, t_lo, t_hi, spread, args.tag, idx), flush=True)
+        report["views"][str(idx)]["depth"] = {"t_min": round(t_lo, 6), "t_max": round(t_hi, 6),
+                                              "spread": round(spread, 6),
+                                              "near_white": True, "figure_range": [1, 255]}
 
     if idx in anchors:
         ref = np.asarray(Image.open(anchors[idx]).convert("L")) > 127

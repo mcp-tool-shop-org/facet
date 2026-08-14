@@ -13,8 +13,8 @@
 | `.py` files in `tools/verify` | **9** |
 | — files of any other extension there | 0 |
 | **total members** | **111** |
-| corpus files read for axis D | 295 |
-| test files read for axis E | 67 |
+| corpus files read for axis D | 301 |
+| test files read for axis E | 69 |
 | probe interpreter | `E:\AI-Models\trellis2-env\Scripts\python.exe` (3.13.13) |
 
 ## Totals
@@ -33,8 +33,8 @@
 | C | has a docstring | 111 | 111 |
 | D | **cited** in ≥1 corpus file | **91** | 111 |
 | D | — with this arc's own documents left IN (the contaminated read) | 111 | 111 |
-| E | **anchored** — basename *or* module name as literal text under `tests/` | **59** | 111 |
-| E | — basename-with-`.py` only (the stricter read) | 59 | 111 |
+| E | **anchored** — basename *or* module name as literal text under `tests/` | **60** | 111 |
+| E | — basename-with-`.py` only (the stricter read) | 60 | 111 |
 | F | **import-safe** in all three modes | **10** | 111 |
 | F | — not clean in some mode | 0 | 111 |
 | F | — **`n/a`**, property not defined (reason per row) | 101 | 111 |
@@ -119,7 +119,7 @@
 | 55 | `e12_mouth_geometry.py` | diagnostics | no | 7 | no | 1 | yes | n/a | ambiguous | Is there a TONGUE inside this mesh's mouth, and can any exterior camera see it? |
 | 56 | `e12_n_sheet.py` | diagnostics | no | 4 | no | 0 | no | n/a | measure_report | N generations of ONE view, stacked full size, plus named regions at N x - and no number. |
 | 57 | `e12_nonmanifold.py` | diagnostics | no | 10 | no | 5 | yes | n/a | mesh_topology | E12 Gate 0 — where a reconstruction goes non-manifold, counted AND put on the picture. |
-| 58 | `e12_offsurface.py` | diagnostics | no | 9 | no | 15 | yes | n/a | offsurface_rate | Does a prep bake's position map lie ON the mesh? E10 Ruling 4's question, any subject. |
+| 58 | `e12_offsurface.py` | diagnostics | no | 9 | no | 17 | yes | n/a | offsurface_rate | Does a prep bake's position map lie ON the mesh? E10 Ruling 4's question, any subject. |
 | 59 | `e12_pair_cloud_step.py` | diagnostics | no | 8 | **yes** | 4 | no | n/a | none | E12 handoff 3 Task 4 — the styled target pair's cloud workflow, built and CHECKED on di… |
 | 60 | `e12_pair_sheet.py` | diagnostics | no | 9 | no | 1 | no | n/a | measure_report | clay \| control \| styled, one row per view, full size — the sheet that serves the eye. |
 | 61 | `e12_region_colour.py` | diagnostics | no | 6 | no | 0 | yes | n/a | none | Median Lab / chroma / hue inside named regions, masked to the silhouette — the tone cha… |
@@ -172,7 +172,7 @@
 | 108 | `silhouette_agree.py` | diagnostics | no | 8 | no | 3 | yes | n/a | ambiguous | Is project_twins' LIVE raycast silhouette the same object as the shipped sidecar mask? |
 | 109 | `texel_provenance.py` | diagnostics | no | 17 | no | 14 | yes | n/a | texel_provenance | Where did this pixel's colour actually come from? |
 | 110 | `texpass_metrics.py` | diagnostics | no | 7 | no | 2 | no | n/a | no opinion | E05 — one metric table, computed identically for every arm. |
-| 111 | `turn_render.py` | verify | no | 14 | no | 26 | no | n/a | none | Matched-framing turnaround render of a GLB. |
+| 111 | `turn_render.py` | verify | no | 14 | no | 28 | yes | n/a | none | Matched-framing turnaround render of a GLB. |
 
 ## Axis F — every `n/a` and every `false`, with its reason
 

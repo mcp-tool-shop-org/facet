@@ -103,7 +103,7 @@ delivered until its paste block is on the screen** (advisor rule 5).
 |---|---|
 | HEAD | `55cd7dc`, working tree **clean**, **0/0** with origin — ⚠ the E35 seat commits here; re-measure at your open |
 | CI | **green** — [`31834666669`](https://github.com/mcp-tool-shop-org/facet/actions/runs/31834666669) at `55cd7dc` |
-| suite | **THE SUITE: 985 tests, 940 hermetic** (45 artifacts), green at two seats and CI. ⚠ That phrasing is **pinned by T34** — preserve its shape if you rewrite this row. ⚠ E35's close moves it again; the pinned surfaces reconcile at the combined tree |
+| suite | **THE SUITE: 995 tests, 950 hermetic** (45 artifacts), green at two seats and CI. ⚠ That phrasing is **pinned by T34** — preserve its shape if you rewrite this row. ⚠ E35's close moves it again; the pinned surfaces reconcile at the combined tree |
 | highest T-number | **T67** — E35 took T66 (despeckle census) and T67 (fuse). Take **T68+** |
 | published | `facet-mcp` **0.4.0** (PyPI) · `@mcptoolshop/facet` **0.4.0** (npm) · Release `v0.4.0` — unchanged this session; no facet tag moved |
 | accepted assets | **five** — W3, galleon, dragon, longsword, and the E34 performer repair (`ce793064…`, the first asset that repairs another). E33's pre-repair GLB stays recorded byte-unchanged (`9e20ea7d…`) |
@@ -166,7 +166,7 @@ seat falsified a swarm citation at its own source — see the law below.
 ## The release sequence, when he fires one — the order is law
 
 ```
-1. RE-COUNT      pytest --collect-only  -> currently 985 total / 940 hermetic
+1. RE-COUNT      pytest --collect-only  -> currently 995 total / 950 hermetic
                  ⚠ RESERVE COUNT SURFACES BY NAMING T34's PINS TABLE, NEVER BY
                  TRANSCRIBING IT.
 2. VERSION       FIVE declarations - pyproject.toml, package.json, bin/facet.js

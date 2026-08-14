@@ -1,0 +1,17 @@
+{
+ "_version": "r3L (view 1 PROBE)",
+ "_status": "PROBE - not a register change; R3 stands unless the Director rules otherwise",
+ "_built_by": "facet_E35/diag/s4b_make_prompt.py",
+ "_derived_from": "E34-twin-prompts-r3-8view.json armclay_1, by substituting ONE whole comma-term. Never retyped.",
+ "_the_change": {
+  "position": 15,
+  "of_terms": 16,
+  "from": "soft studio light",
+  "to": "flat even lighting"
+ },
+ "_why_substitution_not_addition": "the lighting surface is occupied by a ruled R3 term; this repo measured dE 1.07 (no response) when a specification adds a second element to an occupied surface",
+ "_register_note": "R3 as ruled by the Director 2026-08-11 reads: unglazed terracotta, matte sculpted clay, soft studio light, NO LoRA. This probe edits the third of those three terms and is his to veto.",
+ "_assertions": "term count unchanged; exactly one differing term; that term is the intended pair; and the rebuilt string equals the recorded string with one replacement. Enforced above with no skip flag - a failure writes no file.",
+ "_entry_verbatim": "a slender jointed clay mannequin, a smooth bald head, a simple readable face with drawn brows, closed lidded eyes, a small closed smile, small ears, ball-and-socket shoulders and elbows, ball-and-socket wrists and ankles, ball-and-socket hips and knees, sculpted thumbprint hatching on the torso and limbs, empty open hands, simple rounded feet, plain pale grey background, unglazed terracotta, matte sculpted clay, soft studio light",
+ "armclay_1": "a slender jointed clay mannequin, a smooth bald head, a simple readable face with drawn brows, closed lidded eyes, a small closed smile, small ears, ball-and-socket shoulders and elbows, ball-and-socket wrists and ankles, ball-and-socket hips and knees, sculpted thumbprint hatching on the torso and limbs, empty open hands, simple rounded feet, plain pale grey background, unglazed terracotta, matte sculpted clay, flat even lighting"
+}
