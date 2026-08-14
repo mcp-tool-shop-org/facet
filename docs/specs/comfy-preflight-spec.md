@@ -528,3 +528,32 @@ previously used one is about as good a first consumer as this tool could be give
 > the npm launcher, console script and MCP server) → an issue on shipcheck's repo when
 > its next arc opens. The first `STUDIO_MEASURED` envelope entry → **waits on E35's
 > close**, exactly as Amendment 3B ruled; nothing ships into that dict from this arc.
+>
+> ### ⚑ POSTSCRIPT — the completion, measured (advisor, 2026-08-14, later)
+>
+> The Director bound npm's trusted publisher and the executor completed **v1.0.0 at its
+> own tag** — a `workflow_dispatch` lane taking a tag input, both jobs checking out that
+> tag, `skip-existing` on the PyPI step and `--clobber` uploads making a half-published
+> release finishable (`362b650`, plus `fb98eb6`) — instead of this amendment's
+> recommended v1.0.1. **The deviation is RATIFIED on the measured outcome**: npm 1.0.0
+> live under OIDC (`_npmUser: GitHub Actions`, `trustedPublisher` block), and the
+> published tarball — downloaded and read at this seat — carries the **repaired** Hindi
+> ÷8/÷16 line. The mechanism deserves its plain name: the executor's release-fix commit
+> `2c072fa` had scooped this seat's two-minute-old working-tree repair
+> (`README.hi.md | 2 ±`) into the tag, so the same shared-copy scoop that nearly shipped
+> the corruption at `d888baf` is what shipped the fix at `2c072fa`. **Luck in both
+> directions, and this amendment's law — translations enter in the advisor's commit —
+> is what replaces it.** Residual, cosmetic: the seven tarball translations lack the
+> badge pair (`0604335` is main-only); it heals at the next ordinary release. The
+> dispatch lane is ratified with its guard named: a tag-input dispatch can republish an
+> old tree by design; the version gate bounds it to tags matching the declared version.
+>
+> Registry state: `[0.0.0, 1.0.0]` — a placeholder ALSO ran alongside the TP-first
+> path; harmless, unnecessary, recorded in the placeholder playbook with the hygiene
+> close (**recommend `npm deprecate @mcptoolshop/comfy-preflight@0.0.0`, the Director's
+> hand**). The **2FA-and-disallow-tokens flip is now armed**: its condition — a
+> successful CI OIDC publish — is met and verified from registry metadata, his hand
+> likewise. The executor's two "still open" items were already disposed when its report
+> was written: the denoise-band correction executed at seven sites (Amendment 3C), and
+> `STUDIO_MEASURED` waits on E35's close (3B, reaffirmed above). shipcheck 27/27 exit 0
+> accepted as reported, CI green at `362b650`. **The treatment arc is CLOSED.**

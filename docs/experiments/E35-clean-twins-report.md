@@ -354,3 +354,78 @@ blind prediction file after fixing the same error in a task-1 instrument two hou
 | DECOMPOSE_BY_SECRETS | 3 | detection and fusion are separate tools; the census JSON is the interface; `make_payload.py` isolates what varies per arm |
 | UNCERTAINTY_GATED_HUMANS | 3 | halted at Gate R with the sheet built at native scale before the metrics were read |
 | EXTERNAL_VERIFIER | 3 | the detector validates against **Director-rejected artifacts**, not its author's fixtures; both tools' bugs were caught by their own tests rather than by inspection |
+
+---
+
+# ⚖ GATE R2 — tasks 6 and 7. HALTED for the advisor's mechanism ruling
+
+**Run 2026-08-14 after the Gate R2 amendment.** Blind bands registered before any leg, in
+[E35-task6-blind-bands.md](E35-task6-blind-bands.md). **Task 8 not launched.**
+
+**Spend: 33 of 45.** Task 6 cost zero. Task 7 cost one — the archive-first check found no
+parameter-identical pair among **34 recorded payloads**, so P7a missed and the one job fired.
+
+## The Gate R ruling, recorded as the gate's outcome
+
+The register HOLDS at the recorded recipe — denoise 0.92, cn_strength 0.9, the approved R3
+register unchanged. The repaint configuration was K=3 seeds per view with the recorded seed
+among them, census-scored best-of-K **selection** per view. Executed at task 4; its candidate
+carries the pale-blotch class the Director caught, which is what Gate R2 exists to explain.
+
+## What the discriminator measured
+
+| leg | measurement | reading under the amendment's map |
+|---|---|---|
+| **6a** ownership overlay | pale boundary within 2 px of an ownership seam: **1,861 / 5,785 = 32.17%**; **35** pale regions span ≥ 2 owners | equivocal by construction — seams are dense on a head |
+| **6b** seam-crossing | \|ΔL\*\| across seams **inside** pale regions **6.089**; **outside** pale regions **9.16** | a step exists — but it is **LARGER away from the blotches**, so seams are stepped generally and pale is **not** seam-defined |
+| **6c** same view across seeds | **8 of 8 views** carry pale ≥ 25 px² at **all three seeds**; **87.7%** of pale pixels co-locate across ≥ 2 of 3 seeds within 10 px | **generation-side, stable across seed** |
+| **6d** chroma vs luminance | C\* in pale **29.52** vs register **32.61** → drop **9.48%**; L\* **76.54** vs **59.87** → rise **+16.68**; pale px below the C\* 8.0 floor: **0 of 9,276 (0.00%)** | **L\*-dominant at essentially unchanged chroma** — not a desaturation collapse |
+| **6e** frequency profile | pale-boundary gradient ÷ other-edge gradient = **0.92** | **smooth low-frequency lobes**, not step edges |
+| **6f** the spread metric's own test | E34 **ACCEPTED** set (all seed 770700): C\* **8.42**, L\* **11.54**. E35 rejected set: C\* **9.77**, L\* **10.14** | **DOES NOT SEPARATE** — the accepted asset's L\* spread is *higher* |
+| **6g** twins pre-projection | pale visible in **every lone twin, every seed, every view** ([sheet](../../../../E:/AI/training/facet_E35/diag/E35_6g_twins_by_seed.png)) | **not born at assembly** |
+
+## Task 7 — consult calibration
+
+No parameter-identical pair existed in the archive (34 payloads, 34 distinct parameter sets),
+so one job re-submitted arm 2a's view-1 / seed-987654 payload verbatim.
+
+**PNG bytes differ. PIXELS ARE IDENTICAL — ΔE 0.0000 mean, median, p95 and max; 0 of 360,448
+pixels differ.** The byte difference is encoder metadata, which this repo's law already covers:
+a PNG hash mismatch is not evidence a render changed. **Same-seed reasoning stands** on this
+Cloud path; no per-job platform entropy was observed.
+
+## Blind bands, scored
+
+**7 hits, 6 misses.** HIT: P6a, P6a-2, P6c, P6d(L\* rise), P6e, P6g, P7b. MISS: P6b, P6b-2,
+P6d(C\* drop), P6d-2, P6f, P7a.
+
+**The miss that matters is P6f, and I called it in advance as the one I most expected to
+miss.** The spread number — C\* 9.77 / L\* 10.14 — that I printed on the coherence sheet and
+that seeded my own mixed-seed proposal **does not separate the accepted asset from the
+rejected one**. E34's accepted set carries a *higher* L\* spread. Under the E07 law the metric
+has no standing and gates nothing; it is withdrawn as evidence for any mechanism, including
+mine.
+
+**P6b missed in the direction that matters too:** I predicted continuity (< 3.0 L\*) and
+measured a 6.089 step inside pale regions. But the same measurement away from the blotches
+returns **9.16** — so the asset has a pervasive ~9 L\* seam step that is *not* what makes the
+blotches, and my P6b-2 (inside ≈ outside) missed by 3.07.
+
+## What the executor reports, without ruling
+
+Two distinct terms are measured and they are not the same object:
+
+1. **A pale wash present in every twin at every seed before any projection** (6c: 8/8 views ×
+   3 seeds; 6g: visible in each lone twin; 6e: smooth lobes; 6d: L\*-dominant). No selection
+   rule over these twins can remove what all of them carry.
+2. **A pervasive mixed-seed seam step of ~9 L\*** (6b), real but *larger away from the
+   blotches than inside them*, and whose motivating metric (6f) has just lost its standing.
+
+**My own proposed remedy is not supported by this evidence.** Global-single-seed selection
+deletes term 2 by construction and does nothing to term 1, which is where the pale lives.
+
+⚠ **6d does not point the same way as 6c/6g**, and I am not resolving that: its map reads
+"L\* shift at modest chroma ⇒ patchwork" while 6c/6g place the class in every lone twin
+pre-projection. The two legs measure different stages — 6d the assembled render, 6c/6g the
+twins — and the conflict is reported rather than adjudicated. **The advisor rules the
+mechanism. Task 8 does not launch until that ruling issues.**
