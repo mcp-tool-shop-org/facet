@@ -480,3 +480,105 @@ index pair in a terminal commit via `record_build`. **This dispatch's own commit
 > and the **Qwen-Image-Edit 2509 pilot** (parked at consult #3, re-opened as a
 > question only: its pilot shape is consult #4's Q4). Spend stands 33/45; the screen
 > plus a ladder or a rebuild cannot all fit — the Director sequences what fires.
+
+---
+
+> ## ⚖ CONSULT #4 FOLDED — calibration PASSED at this seat; the plan re-shapes (advisor, 2026-08-14)
+>
+> **The calibration ritual ran before anything below became load-bearing.** The
+> consult's own nominated checkable claim — the served 2509 template's edit encoder is
+> `TextEncodeQwenImageEditPlus` with exactly `image1`/`image2`/`image3` IMAGE inputs
+> (the older `TextEncodeQwenImageEdit` carrying a single `image`) — was verified at
+> this seat by direct node-schema fetch: **exact match on every field name**, and the
+> template `image_qwen_image_edit_2509` is served (25 nodes with its subgraph). The
+> answer is creditable testimony; nothing in it is measurement of our pixels.
+>
+> **Q1 — the consult DEMOTES its own #3 ranking in favor of init-bleed-through**, on
+> the discriminator we measured: zero px under the C\* 8 floor is init survival
+> (high-L\*, low-nonzero-chroma clay), not union-flattening (which pulls toward the
+> achromatic centre and crosses the floor). Its pre-registered predictions attach to
+> R2-c: init-bleed ⇒ pale UNCHANGED across the cn arms; union ⇒ pale DROPS at 0.65.
+> **The scheduled arm is the sharper leg — the two mechanisms predict opposite
+> signs there** (init-bleed: unchanged-or-slightly-worse; union: better). And one new
+> zero-cost separator joins R2-c as **leg 3: pale-area vs local canny edge-density
+> within single twins** — monotone-negative ⇒ init-bleed; conflict-correlated ⇒ union.
+>
+> **Q2 — the dark class is ruled (as testimony) baked AO/shading painting**, and the
+> lever slate is ranked by whether a lever acts on shading specifically or on the
+> exposure axis (where it just pays the trade): flat-lighting POSITIVE vocabulary
+> (shading-specific, the one lever that can dodge the trade — ⚠ a versioned-prompt
+> change, so it carries the register gate); negative conditioning (real but modest at
+> cfg 2.5); **euler_ancestral** (the original kickoff's 2e arm, authorized and never
+> fired — its precondition, "the denoise knee costs register," measurably occurred);
+> **depth control** (the union supports the type; needs an authored per-view depth
+> render — a control-image build change, i.e. a recorded-workflow revision, flagged
+> as such); VAE precision deprioritized (57 components to 377 texels is structural
+> painting, not decode ringing).
+>
+> **Q3 — the trade is ruled (as testimony) effectively 1-D**: the seed's low-frequency
+> field sets one exposure-like key per twin; Spearman −1.000 over seed means IS that
+> signature, and the +0.018 over individual twins is view scatter, not a second seed
+> axis. **The 4-seed screen is RULED DOWN** — it can only slide the frontier, and a
+> lucky view-specific both-good seed would not generalize across the atlas. Its 4
+> jobs redirect to **THE ARM SLATE, held at the Director's word**: view 1, single
+> lever each — (a) euler_ancestral at matched everything · (b) flat-lighting positive
+> vocabulary, prompt v-next recorded · (c) depth control from an authored Blender
+> depth render · (d) the best-behaved pair combined. Register C\* + both censuses +
+> pale measure per arm, full-size sheet beside the recorded twin, **his eye rules**.
+>
+> **Q4 — the 2509 pilot spec is ON FILE, calibrated**: init enters as the edit
+> reference through `image1`, canny through the orthogonal ControlNet path in the
+> same graph; the three governing parameters are edit strength, cn strength, and the
+> prompt (where the Q2 lighting vocabulary should bite harder than on the img2img
+> path). Predicted per class: pale strongly reduced (the raw-init-pass-through
+> mechanism is removed), dark reduced-not-eliminated (2509 still owns a shading
+> prior) — **so the Q2 levers matter on either route, which is the argument for the
+> arm slate preceding any route decision.** The pilot remains a route change at the
+> Director's word.
+>
+> **Spend arithmetic re-stated**: 33 of 45. R2-c and its new leg 3 = 0. Arm slate =
+> 4 → 37. Eight-view rebuild at a winner = 8 → **45 exactly**. The cn ladder is
+> STRUCK-pending-R2-c (if pale holds flat across the cn arms it is pointless for the
+> pale and already measured pointless for the dark) — nothing else fits, and nothing
+> after R2-c fires without his word.
+
+---
+
+> ## ⚖ R2-c LANDED WHILE THE FOLD ABOVE WAS BEING WRITTEN — a third outcome neither branch enumerated; the ladder is struck as COUNTER-INDICATED (advisor, 2026-08-14)
+>
+> On the recorded arm's own view-1 / seed-770700 twins (executor, pushed `febce0a`):
+> recorded cn 0.9 / end 1.0 → pale **278** / L\*-rise **4.97** · scheduled end 0.5 →
+> **932** / **12.99** (+235%) · flat 0.65 → **1220** / **19.68** (+339%). **Pale rises
+> steeply and monotonically as conditioning weakens — the ControlNet is SUPPRESSING
+> this class.** Neither pre-registered branch contained this outcome: the ruling's
+> fork and the consult's predictions both assumed weakening cn could only leave pale
+> alone or reduce it, and the executor concurred at band registration. **Three seats
+> shared one unexamined sign assumption, and the measurement broke it.** The law this
+> folds to, in the executor's own words elevated: **a fork over a signed quantity has
+> at least three branches — state the sign, or admit it unknown.**
+>
+> **The mechanism is settled at convergence.** The init, measured: clay view-1 head
+> **L\* 76.43, C\* 1.12**. Down the 2b ladder the pale marches toward it on both axes —
+> L\* 52.86 → 61.79 → 67.66 → 72.08 rising toward 76.43, C\* 23.25 → 12.45 → 7.16 →
+> 2.82 collapsing toward 1.12 — and the cn arms move the same way. **The pale is the
+> clay init surviving where the sampler is least ANCHORED.** The corrected
+> sub-mechanism, against both the consult's Q1 reasoning and this ruling's own map:
+> control strength IS an anchoring term — canny at 0.9 gives the sampler structure to
+> overwrite the init with, and weakening it surrenders low-structure regions back to
+> the clay. The consult's headline demotion of its union hypothesis stands; its
+> sub-claim that "cn cannot make more of the init get overwritten" is falsified in
+> the same breath. The executor's bands: 1 hit, 3 misses, 1 mixed — the mixed being
+> its own init-bleed call, supported by the convergence while the reasoning beneath
+> it was backwards, and reported exactly so. The ritual working.
+>
+> **Consequences.** The cn ladder is **STRUCK as counter-indicated** — its two jobs
+> would buy a worse face (the executor's words, ratified). · The ARM SLATE's **depth
+> arm is now double-motivated**: anchoring suppresses pale (R2-c's measured
+> direction) and depth carries signal exactly where canny is empty — smooth
+> concavities — so slot (c) plausibly moves BOTH classes and is the slate's most
+> promising member. · The 2509 route's pale mechanism (init as semantic reference,
+> no raw pass-through) is unchanged, if anything strengthened. · The edge-density
+> leg (leg 3 above) is now corroboration rather than adjudication — run it cheap or
+> drop it; the executor's call. · Spend unchanged, **33 of 45**; the slate (4) plus
+> a rebuild (8) still land at 45 exactly, and everything waits on the Director's
+> word.
