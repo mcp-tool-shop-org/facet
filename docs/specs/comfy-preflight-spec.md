@@ -557,3 +557,74 @@ previously used one is about as good a first consumer as this tool could be give
 > was written: the denoise-band correction executed at seven sites (Amendment 3C), and
 > `STUDIO_MEASURED` waits on E35's close (3B, reaffirmed above). shipcheck 27/27 exit 0
 > accepted as reported, CI green at `362b650`. **The treatment arc is CLOSED.**
+
+---
+
+> ## ⚖ AMENDMENT 5 — the two "still open" items disposed by measurement; the first STUDIO_MEASURED entry is RULED IN (advisor, 2026-08-14)
+>
+> The Director returned the executor's still-open line a third time, and the postscript
+> above shows why he had to: this seat answered it twice from Amendment 3C's own
+> sentence without measuring it. The law — *when he asks about a claim, re-measure the
+> claim* — applied on the third ask. Both items now close on enumeration, not recital.
+>
+> ### 1. The denoise-band correction — VERIFIED COMPLETE, by enumeration
+>
+> The withdrawn `0.10–0.50` figure occurs at **nine** sites in the tree, and every one
+> is sound: E35 kickoff L41 (struck, ⚑-marked) · E35 report L256 (inside the executor's
+> own absorbed-correction block) · grounding L17 (struck, banner beneath) · grounding
+> L59 (finding 8's original, the falsification block directly under it — the house
+> form: correction beside the original) · grounding L67 (the correction's own quotation
+> of the withdrawn value) · grounding L78 (struck, ⚑ withdrawn-with-finding-8) · this
+> spec L310 and L338 (beside their Amendment-3 notes) · advisor-kickoff L195 (the
+> tuition narrative of the falsification itself). Amendment 3C's "seven sites" is
+> corrected to this enumeration — the two extra are the corrections' own quotations —
+> and its substantive claim **held**. A second instrument note, owned: this seat's
+> first marker-grep read two sites as uncorrected because its patterns missed two
+> phrasings; the sites were read before being reported, which is the only reason this
+> amendment says "complete" instead of repeating a grep artifact.
+>
+> ### 2. The `STUDIO_MEASURED` entry — RULED IN
+>
+> Amendment 3B's condition was *"the first candidate is E35's denoise sweep **once
+> ruled**"*. It is ruled: Gate R (the Director, 2026-08-14) held the register at the
+> recorded recipe, and the sweep's numbers are in the E35 report with the section title
+> that is the finding — **the register dies before the specks do**. The entry:
+>
+> ```
+> kind        STUDIO_MEASURED
+> checkpoint  Qwen-Image-InstantX-ControlNet-Union
+> parameter   denoise (img2img, canny route)
+> context     cn_strength 0.9 · steps 20 · cfg 2.5 · euler/simple · shift 3.1 ·
+>             352×1024 · no LoRA   (the measurement's validity envelope)
+> measured    0.92 → register C* 23.77, reverted-to-init 0.50%  (Director-ruled HOLD)
+>             0.85 → C* 10.00, reverted  5.01%
+>             0.80 → C*  3.91, reverted 36.66%
+>             0.72 → C*  1.89, reverted 56.00%  (census-0 by register destruction)
+> finding     "The register dies before the specks do: census-0 at 0.72 is reached
+>             only by reverting 56% of the figure toward the clay init
+>             (C* 23.77 → 1.89). At this route's recorded recipe, 0.92 is the
+>             measured register-safe point (Gate R, Director-ruled)."
+> record      experiment E35 · docs/experiments/E35-clean-twins-report.md
+>             § "2b — the denoise sweep" · measured 2026-08-14
+> ```
+>
+> **Boundary rules of the ruling.** The entry is a measurement with a validity
+> envelope, never a recommendation. The vendor entry's **declared absence for denoise
+> STAYS** — the card still publishes nothing; the measured entry answers the absence,
+> it does not erase it. Per-entry mutual exclusivity stands: two entries, one authority
+> each; if the schema as built holds one entry per checkpoint, the executor extends it
+> to (checkpoint, parameter) granularity and reports the shape. Check 8 remains
+> ADVISORY-only: a graph at any denoise on this checkpoint now gets the nearest
+> measured rungs and the finding, with the experiment citation, instead of only "the
+> vendor cannot judge this."
+>
+> **Implementation** is an ordinary comfy-preflight commit (post-1.0.0, no release
+> required; rides the next one): fulfill the named-candidate comment the build seat
+> left in the code, **delete the stays-empty test as the deliberate act the design
+> demands**, add the entry, and add its own can-fail advisory test (denoise 0.92 →
+> advisory citing E35 and the HOLD; 0.72 → advisory naming the register-destroying
+> measurement). CHANGELOG under `[Unreleased]`.
+>
+> If the E35 cn ladder later fires (authorized and held at the Director's word), its
+> measurements become the **second** candidate through this same gate — one ruling per
+> entry, always.
