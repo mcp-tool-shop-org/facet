@@ -17,8 +17,8 @@
     "py_files_total": 111
   },
   "provenance": {
-    "corpus_files": 286,
-    "corpus_files_before_self_exclusion": 296,
+    "corpus_files": 289,
+    "corpus_files_before_self_exclusion": 299,
     "probe_interpreter": "E:\\AI-Models\\trellis2-env\\Scripts\\python.exe",
     "probe_interpreter_version": "3.13.13",
     "probe_skipped": false,
@@ -1555,9 +1555,11 @@
       "anchored_in_basename_only": [],
       "b1_literals": [],
       "b2_literals": [],
-      "cited_count": 0,
-      "cited_count_raw": 1,
-      "cited_in": [],
+      "cited_count": 1,
+      "cited_count_raw": 2,
+      "cited_in": [
+        "docs/experiments/E34-projection-coverage-report.md"
+      ],
       "dir": "tools/diagnostics",
       "docstring_line1": "E12 handoff 4 Task 1 \u2014 derive the BEAST's Canny threshold pair, measured on its own clay.",
       "file": "e12_canny_derive.py",
@@ -1859,15 +1861,16 @@
       "anchored_in_basename_only": [],
       "b1_literals": [],
       "b2_literals": [],
-      "cited_count": 6,
-      "cited_count_raw": 7,
+      "cited_count": 7,
+      "cited_count_raw": 8,
       "cited_in": [
         "docs/experiments/E12-executor-kickoff.md",
         "docs/experiments/E12-repair-pair-sidecar.md",
         "docs/experiments/E14-executor-kickoff.md",
         "docs/experiments/E14-task4-report.md",
         "docs/experiments/E33-report.md",
-        "docs/experiments/E34-projection-coverage-kickoff.md"
+        "docs/experiments/E34-projection-coverage-kickoff.md",
+        "docs/experiments/E34-projection-coverage-report.md"
       ],
       "dir": "tools/diagnostics",
       "docstring_line1": "Build a subject's twin-prompts file by DELETING whole comma-terms from the profile's own",
@@ -3021,12 +3024,13 @@
       "anchored_in_basename_only": [],
       "b1_literals": [],
       "b2_literals": [],
-      "cited_count": 3,
-      "cited_count_raw": 3,
+      "cited_count": 4,
+      "cited_count_raw": 4,
       "cited_in": [
         "docs/experiments/E14-handoff3-task2-report.md",
         "docs/experiments/E33-report.md",
-        "docs/experiments/E34-projection-coverage-kickoff.md"
+        "docs/experiments/E34-projection-coverage-kickoff.md",
+        "docs/experiments/E34-projection-coverage-report.md"
       ],
       "dir": "tools/diagnostics",
       "docstring_line1": "Per-view twin registration against the EXACT raycast silhouette. Halts SUSPENDED.",
@@ -3757,8 +3761,8 @@
       ],
       "b1_literals": [],
       "b2_literals": [],
-      "cited_count": 13,
-      "cited_count_raw": 20,
+      "cited_count": 14,
+      "cited_count_raw": 21,
       "cited_in": [
         "docs/experiments/E07-gate0.md",
         "docs/experiments/E07-the-atlas-is-not-a-neighbourhood.md",
@@ -3772,7 +3776,8 @@
         "docs/experiments/E27-ruling.md",
         "docs/experiments/E30-polish-anchor-gates-kickoff.md",
         "docs/experiments/E30-polish-anchor-gates-report.md",
-        "docs/experiments/E31-publish-the-pipeline-kickoff.md"
+        "docs/experiments/E31-publish-the-pipeline-kickoff.md",
+        "docs/experiments/E34-projection-coverage-report.md"
       ],
       "dir": "tools/diagnostics",
       "docstring_line1": "Where did this pixel's colour actually come from?",
@@ -3826,8 +3831,8 @@
       "anchored_in_basename_only": [],
       "b1_literals": [],
       "b2_literals": [],
-      "cited_count": 25,
-      "cited_count_raw": 26,
+      "cited_count": 26,
+      "cited_count_raw": 27,
       "cited_in": [
         "docs/experiments/E02-report.md",
         "docs/experiments/E02-texture-stage-on-sound-inputs.md",
@@ -3852,6 +3857,7 @@
         "docs/experiments/E33-report.md",
         "docs/experiments/E33-the-first-performer-through-the-route.md",
         "docs/experiments/E34-projection-coverage-kickoff.md",
+        "docs/experiments/E34-projection-coverage-report.md",
         "docs/experiments/README.md",
         "docs/tools.md"
       ],
@@ -3873,7 +3879,7 @@
     "anchored_basename_only": 59,
     "any_add_argument": 105,
     "argparse": 105,
-    "cited": 90,
+    "cited": 91,
     "cited_raw": 111,
     "flag_surface": 105,
     "flag_surface_unguarded": 95,

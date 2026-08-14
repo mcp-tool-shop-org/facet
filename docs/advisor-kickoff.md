@@ -263,6 +263,12 @@ commit. **A subject's lane opens when its gates do**, and W3's projection gate i
 7. **A gate that pins the pre-change state is a gift, not an obstacle.** v0.4.0 moved five of
    them (T59, T62, T32, T41, the census ANDON) and **two had left instructions in their own
    docstrings** for whoever made the change. Read the docstring before editing the assertion.
+8. ⚠ **The commit that creates experiment E(n) bumps `laws.paid_for_by` in
+   `docs/index/conventions.json` in the same commit.** The arc span is a **declared field**
+   re-exported as `PAID_RE` since the record-index extraction — it greps nowhere in
+   `tools/facet_index.py` — and T24's span leg fires on any tree where the record outruns
+   the declaration. E34's dispatch commit missed the bump and the suite was red for the
+   whole arc (found by E34's executor, repaired at the E34 ruling).
 
 ## ⚠ IF TWO SEATS RUN IN PARALLEL
 
@@ -352,6 +358,10 @@ drives    C: (system) · D: (external AI-BACKUP, ~3,472 GB free) · E: (AI works
 - ⚠ **MANIFEST THE EIGHT FACET SUBTREES, NOT THE TRAINING ROOT** — `facet_next`,
   `facet_E01/E02/E05/E06/E07/E08`, `saltroad_bake_fix` = **7,312 files /
   17,072,807,610 bytes**. The root holds 131,970 ([E28 Ruling 22](experiments/E28-ruling.md)).
+  **Since E33/E34 closed, two more trees are protected by their own manifests**: `facet_E33`
+  (117 files, `E33_manifest.json` — ⚠ it records itself at a stale byte size, a known
+  self-reference) and `facet_E34` (84 files, `E34_manifest.json`, self-excluded by
+  construction). Read-only to future arcs, gated at open and close.
 - **The recorded trees are not in git and have no revert.**
 - **Scripts create their own output directories.** `argparse` eats leading minus signs
   (`--views=-30,0,30`). **ASCII prints.**
