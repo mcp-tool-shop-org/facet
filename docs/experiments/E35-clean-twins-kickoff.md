@@ -582,3 +582,66 @@ index pair in a terminal commit via `record_build`. **This dispatch's own commit
 > drop it; the executor's call. · Spend unchanged, **33 of 45**; the slate (4) plus
 > a rebuild (8) still land at 45 exactly, and everything waits on the Director's
 > word.
+
+---
+
+> ## ⚖ THE ARM SLATE IS DISPATCHED at the Director's word — spec on file, and three findings changed it before it went out (advisor, 2026-08-14)
+>
+> Spec: **[E35-armslate-spec.md](E35-armslate-spec.md)**. Sub-arc of E35, **not E36** — no
+> experiment number is created, so `laws.paid_for_by` is not bumped and T24's span leg does
+> not fire.
+>
+> **The order stands as given** — view 1, seed 770700, one lever per arm, (a)
+> `euler_ancestral` · (b) flat-lighting positive vocabulary · (c) depth control · (d) the
+> best pair on their measurements; register C\* + dark census + pale measure per arm; blind
+> bands first; full-size sheet; **HALT at the sheet**. Three things this seat's enumeration
+> changed before writing it, each stated at the top of the spec:
+>
+> **1 — consult #1 carries NO synthetic-depth guidance, and neither does anything else in
+> this repo.** The order cited it for the depth arm's strength. `comfy-consult-1.md` is 132
+> lines on despeckle nodes, mechanism ranking and levers; its only ControlNet-strength line
+> is the `cn 0.9 → 0.6–0.7` lever **R2-c struck as counter-indicated one commit ago**, and
+> `grep synthetic docs/**/*.md` returns eight hits, every one about flat grey backdrops. The
+> strength therefore **stays at the recorded 0.9 / 0.0 / 1.0** — which is also the only value
+> that keeps (c) to one lever. Inventing a number here is the *derivation that does not
+> describe the condition* failure; the citation was resolved live rather than repeated, per
+> the law this session has already paid for once.
+>
+> **2 — the depth render needs no Blender script.** `turn_render.py` is `BLENDER_WORKBENCH`
+> (`:121`), which has no Z pass — a Blender depth render means a different engine, i.e. a
+> different camera pipeline from the one that made the init. Meanwhile
+> `tools/silhouette_masks.py` **already raycasts this mesh at exactly turn_render's camera**
+> (derived from turn_render's own lines in its docstring, with `--anchor` asserting
+> byte-identity against known-good masks) and at `:129-131` computes `cast_rays(...)["t_hit"]`
+> **and discards everything but `isfinite`**. The camera is ortho (`turn_render.py:92`), so
+> `t_hit` IS linear depth. The hint is one already-computed array away, on the instrument
+> that made the mask this arc has used throughout, with an anchor flag that proves the edit
+> non-perturbing. ⚠ **Fourth instance of *enumerate the resource before commissioning one* in
+> two sessions** — `e12_offsurface.py`'s nine flags, a model already on the rig,
+> `--edge-absolute` at `project_twins.py:103`, now `t_hit`. Each was one grep from the
+> expensive branch.
+>
+> **3 — ⚠ FOR THE DIRECTOR: arm (b) does not ADD lighting vocabulary; it REPLACES a term you
+> ruled.** The view-1 prompt's last of sixteen terms is already **`soft studio light`**, and
+> `E34-twin-prompts-r3-8view.json` `_register` records it as R3 *"as ruled by the Director
+> 2026-08-11."* The lighting surface is occupied, and this repo has measured what a
+> specification does to an occupied surface: **no response at all, ΔE 1.07, in two
+> grammatical forms** — so appending would most likely measure nothing and be reported as
+> "the lever failed," which would be false. Arm (b) is therefore a one-term substitution,
+> `soft studio light` → `flat even lighting`, versioned as a PROBE (`…-r3L-view1.json`) that
+> does not change R3. **It edits a term you ruled, so it is yours to veto — and it can be
+> vetoed alone without touching the other three arms.**
+>
+> **What this seat added that the order did not carry: (d)'s selection rule, written before
+> its inputs exist.** (d) fires without your eye in between, so choosing its pair after
+> seeing (a)–(c) would be choosing a decision rule after the outcome. The rule is in the
+> spec: a signed two-class score against the recorded twin, a register exclusion at the
+> **measured** register-death value (C\* ≤ 10.00, the highest 2b rung — chosen by nothing),
+> and **three branches, two of which are "(d) does not fire"**, returning the fourth job to
+> the ceiling at 36/45. R2-c's own law, applied to the arc that folded it.
+>
+> **Gates are on measurement validity, not on outcome** — frame, single-lever, depth-support
+> byte-identity, the raycaster's non-perturbing anchor, the pale instrument's anchor against
+> R2-c's six published rows, and the prompt diff. Nothing halts before the sheet reaches your
+> eye; that is the whole point of the halt. Spend: **33 → 36 or 37 of 45**, the rebuild still
+> lands at 45 exactly, no re-rolls without your word.
