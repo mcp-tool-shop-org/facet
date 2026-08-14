@@ -98,7 +98,7 @@ values live in its own profile and fixture, never inherited unmeasured.
 - **The re-pair (0 credits) CONFIRMED the register** — "a lot better" — and the
   per-subject canny **0.05/0.10 is ratified into the profile**
   ([Ruling 11](https://github.com/mcp-tool-shop-org/facet/blob/main/docs/experiments/E12-ruling.md)): on grey-on-grey clay HIGH is the
-  structure lever at ~10× low's effect, and the ruled pair carries 108,887 control px
+  structure lever at ~10× low's effect, and the ruled pair carries 108,923 control px
   on view 1 against the falsified 0.4/0.8's 50,631. **The pair is not yet accepted.**
   Two named defects and the Director's own question gate it: the missing tongue goes
   to geometry first (Gate 0 saw a tongue on 00001/00002 and not on 00003 — if the
@@ -160,7 +160,7 @@ values live in its own profile and fixture, never inherited unmeasured.
   hue ~234 at C\* 14.4, 87° from any band). Ruled: floor stays 12.0 (the
   floor-14 trade deletes 6.6% of in-band mass), no band widens, no element is
   added for a seam; the per-pixel gate and the cluster table are **different
-  instruments** (first measured disagreement — a 3,927 px cluster floor cannot
+  instruments** (first measured disagreement — a 3,967 px cluster floor cannot
   see a diffuse 121-component population). The gate runs **report-structured
   with null bounds** — the galleon's own published configuration — and the
   halt trigger is the E07-class signature (one coherent garment-scale
