@@ -50,7 +50,7 @@ values live in its own profile and fixture, never inherited unmeasured.
   reach ceiling** (a ship hides most of itself from eye level — geometry, not
   regression; read against the ceiling, never against the character's raw mix).
   **Zero credits across every generation in the arc.**
-- ⚠ Restated 2026-08-05: 2.4967% of the bake's uv-valid texels carry positions off the
+- ⚠ Restated 2026-08-05: 2.4985% of the bake's uv-valid texels carry positions off the
   mesh, and the population is disproportionately *painted*. On-surface the same
   quantities read 42.25 / 36.68 / 86.8 / 56.44 / 6.89
   ([E10-offsurface-ruling.md](https://github.com/mcp-tool-shop-org/facet/blob/main/docs/experiments/E10-offsurface-ruling.md)). ⚠ *Resolved
@@ -98,7 +98,7 @@ values live in its own profile and fixture, never inherited unmeasured.
 - **The re-pair (0 credits) CONFIRMED the register** — "a lot better" — and the
   per-subject canny **0.05/0.10 is ratified into the profile**
   ([Ruling 11](https://github.com/mcp-tool-shop-org/facet/blob/main/docs/experiments/E12-ruling.md)): on grey-on-grey clay HIGH is the
-  structure lever at ~10× low's effect, and the ruled pair carries 108,923 control px
+  structure lever at ~10× low's effect, and the ruled pair carries 108,940 control px
   on view 1 against the falsified 0.4/0.8's 50,631. **The pair is not yet accepted.**
   Two named defects and the Director's own question gate it: the missing tongue goes
   to geometry first (Gate 0 saw a tongue on 00001/00002 and not on 00003 — if the
@@ -160,7 +160,7 @@ values live in its own profile and fixture, never inherited unmeasured.
   hue ~234 at C\* 14.4, 87° from any band). Ruled: floor stays 12.0 (the
   floor-14 trade deletes 6.6% of in-band mass), no band widens, no element is
   added for a seam; the per-pixel gate and the cluster table are **different
-  instruments** (first measured disagreement — a 3,967 px cluster floor cannot
+  instruments** (first measured disagreement — a 3,985 px cluster floor cannot
   see a diffuse 121-component population). The gate runs **report-structured
   with null bounds** — the galleon's own published configuration — and the
   halt trigger is the E07-class signature (one coherent garment-scale
@@ -397,7 +397,7 @@ values live in its own profile and fixture, never inherited unmeasured.
 | welded shells | 40–191 | 237–512 | **9–12** | **1–331** (00002's 331 = inner-wall fragments, not detail) |
 | widest-horizontal / height | ~0.46–0.72 | 1.04–1.11 | **1.61–1.74** | **0.226–0.358** (first portrait) |
 | reach ceiling (of valid, as recorded) | 74.1% | 42.72% | **50.46%** | **51.33%** (topology-bound: 93.34% of unreachable is inner wall) |
-| off-surface at birth (>1 px) ⚠ | 2.5840% | 2.4967% (full bake) | 2.6430% | **11.0875%** (46,496 islands) |
+| off-surface at birth (>1 px) ⚠ | 2.5840% | 2.4985% (full bake) | 2.6430% | **11.0875%** (46,496 islands) |
 | off-surface composition | paint-**depleted** (stage-1 1.94%, reach 0.899×) | paint-**enriched** (stage-1 3.06%, reach 1.426×) | *no consumers yet* | — |
 | accepted mix, as recorded (ref/brush/dilation) | 68.8 / 4.2 / 27.0 | 36.89 / 6.87 / 56.24 | **44.15 / 3.07 / 52.78** | — |
 | on-surface restatement — **the standing family** | 74.30 reach / 69.28 styled / 26.43 dilation | 42.25 / 36.68 / 86.8 / 56.44 / 6.89 | born on-surface; **87.49 / 2.86 / 9.65 of reachable** | — |

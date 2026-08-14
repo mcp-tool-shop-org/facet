@@ -155,7 +155,7 @@ exclusões silenciosas. Seis alegações herdadas foram falsificadas na sessão 
 não é um arquivo — qualquer pessoa pode executar essas ferramentas e vê-las falhar da mesma forma.
 - **Um resultado negativo é um sucesso total**, relatado e encerrado, em vez de ajustado para atingir um
 número.
-- **Os testes acompanham o commit que toca o código** — 967 aprovados por duas pessoas, com CI com restrições de caminho nos 923 herméticos.
+- **Os testes acompanham o commit que toca o código** — 985 aprovados por duas pessoas, com CI com restrições de caminho nos 940 herméticos.
 - **O registro é pesquisável.** Um índice SQLite + FTS5 em todo o histórico, verificado em quatro etapas. Ele encontrou uma contagem que a prosa havia errado em três locais, contando o próprio registro.
 
 ## Onde tudo está
@@ -202,7 +202,7 @@ Exatamente **um** ANDON simples `assert` permanece em qualquer lugar sob `tools/
 
 Blender 5.x, Python 3.11+ com `numpy`, `scipy`, `trimesh`, `open3d`, `Pillow`, `spandrel`, `torch`. Uma instalação local do ComfyUI é necessária apenas para o pincel de retoque. Desenvolvido em uma RTX 5090; a capacidade da VRAM é mais importante do que a velocidade bruta.
 
-O CI executa o subconjunto hermético da suíte no ambiente **ubuntu-latest / Python 3.12**, com instalações fixas (`.github/workflows/ci.yml`); a camada de artefatos necessita das árvores registradas em `E:\AI\training`, que não estão no Git, portanto, o CI as exclui intencionalmente. Localmente, `python -m pytest` executa todos os **967** testes e `python -m pytest -m "not artifacts"` executa os **923** testes reproduzidos pelo CI.
+O CI executa o subconjunto hermético da suíte no ambiente **ubuntu-latest / Python 3.12**, com instalações fixas (`.github/workflows/ci.yml`); a camada de artefatos necessita das árvores registradas em `E:\AI\training`, que não estão no Git, portanto, o CI as exclui intencionalmente. Localmente, `python -m pytest` executa todos os **985** testes e `python -m pytest -m "not artifacts"` executa os **940** testes reproduzidos pelo CI.
 
 ---
 

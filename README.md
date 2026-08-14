@@ -215,8 +215,8 @@ next session read as established fact. Nothing in that loop was checkable.
   is not an archive — anyone can run those tools and watch them fail the same way.
 - **A negative result is a full success**, reported and closed rather than tuned toward a
   number.
-- **Tests ride the commit that touches the code** — 967 passing at two seats' hands, with
-  paths-gated CI on the 923 hermetic ones.
+- **Tests ride the commit that touches the code** — 985 passing at two seats' hands, with
+  paths-gated CI on the 940 hermetic ones.
 - **The record is queryable.** A SQLite + FTS5 index over the whole trail, verified on
   four legs. It found a ruling count the prose had wrong at three sites, by counting the
   record itself.
@@ -328,8 +328,8 @@ Developed against an RTX 5090; VRAM headroom matters more than raw speed.
 CI runs the hermetic subset of the suite on **ubuntu-latest / Python 3.12** with
 pinned installs (`.github/workflows/ci.yml`); the artifacts tier needs the recorded
 trees under `E:\AI\training`, which are not in git, so CI deselects them by design.
-Locally, `python -m pytest` runs all **967** tests and `python -m pytest -m "not artifacts"`
-runs the **923** CI reproduces.
+Locally, `python -m pytest` runs all **985** tests and `python -m pytest -m "not artifacts"`
+runs the **940** CI reproduces.
 
 ---
 
