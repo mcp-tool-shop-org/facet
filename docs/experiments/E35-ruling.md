@@ -98,6 +98,54 @@ view 1, halting at the sheet for his eye. Paths 1 and 3 close.** The 8-view rebu
 remains outside this arc's ceiling on any outcome; the close ruling appends here
 after the pilot's sheet is ruled.
 
+## 6. The pilot's negative result — RATIFIED, and the dispatch shares the error
+
+Both pilot jobs returned a **pure-black 352×1024 single-colour frame while reporting
+`succeeded`** (landed `c79e8fb`; 38 of 45). Nothing about either class was measured
+because there was nothing to measure. The executor's halt, the second job fired under
+the mechanical-defect clause, and the refusal of a third are all correct.
+
+**The executor's error analysis is ratified — and it reaches this seat.** The repo's
+law — *moving a line to different hardware needs an anchor first* — governs a
+named-model change, and **the dispatch is where the anchor belonged**: the paste
+block ordered clay-ref + canny + prompt + frame onto a template nobody had ever run,
+five deltas with no baseline, and never ordered `run_template` unmodified. The
+executor's wrong between-jobs diagnosis (base-mismatch as the cause) was a
+consequence of having nothing to bisect against; its supporting catalog fact stands
+(no served template pairs any ControlNet with 2509; the union's declared base is
+Qwen-Image) while its causal reading is falsified by job 2. **The dispatch's author
+owns the missing anchor; the executor owns the bisection; both are recorded.**
+
+**The enumeration findings are adopted as record facts:** the served 2509 template
+has **no ControlNet path at all** despite its tag — which falsifies consult #4's Q4
+sub-claim that the template "wires both" (the consult ledger's sub-mechanism line
+moves to 0-for-3 today; its encoder-schema claim remains exact-verified) — the
+sampler sits at denoise 1.0 behind a **turbo switch defaulting to a Lightning LoRA**
+(the exact baked-in-config hazard the consult channel itself flagged in its round 2),
+and the template's `FluxKontextImageScale` forces Kontext-legal shapes, making
+**352×1024-reaches-a-model-that-forbids-it** the strongest untested candidate.
+P2a's can't-fail band (graph-runs-at-all, hit by a graph that runs and decodes to
+nothing) joins the IoU-on-a-holed-mesh family in the record. One observation routed,
+not commissioned: a provider `succeeded` over a decoded-to-nothing output is a
+sibling of the dry_run gap comfy-preflight was built on — post-run, so outside its
+scope; noted for the bridge's job-wrapper backlog.
+
+## 7. The ceiling — RAISED at the Director's word; the number set at this seat
+
+**The Director's word (2026-08-14): "Increase the job allotment."** The number, set
+under his delegation with the arithmetic stated: **the arc ceiling moves 45 → 60.**
+38 spent + the anchored pilot sequence ≤ 5 + the 8-view rebuild 8 + contingency 9
+(one mechanical repeat per stage and one re-roll) = 60. The rebuild therefore FITS on
+a successful pilot for the first time — and still fires only on his word at the
+sheet. The anchored sequence: **A1** `run_template` unmodified (the anchor the pilot
+skipped — black here means platform-side, halt); **A2** the template's own graph plus
+exactly two deltas (clay ref via `image1`, the v-next prompt), keeping
+`FluxKontextImageScale` so the frame question is tested from the legal side; **A3**
+the pilot proper at the nearest Kontext-legal portrait frame — derived from the scale
+node's own table, enumerated never assumed — turbo switch decided deliberately and
+stated, no ControlNet (no served pairing exists), bands re-registered for the reduced
+question with the chroma-split column riding.
+
 ## 5. Harness work and the seats' error records — ratified
 
 T69 (10 legs, both ANDONs shown firing under `-O` and `PYTHONOPTIMIZE=1`) · the E23
