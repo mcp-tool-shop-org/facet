@@ -350,3 +350,87 @@ index pair in a terminal commit via `record_build`. **This dispatch's own commit
 > as written. · The compensator table stands: harmonization writes live under
 > `facet_E35\` (existing row), task-7/8 jobs inside the ≤ 45 ceiling with the
 > arithmetic above.
+
+---
+
+> ## ⚖ GATE R2 — THE MECHANISM RULING (advisor, 2026-08-14, on the tasks-6/7 halt report)
+>
+> **The mechanism is GENERATION-SIDE.** The pale class is carried in the twins before
+> any projection — 6g puts it in every lone twin at every seed and my own eye has been
+> on that sheet at 3x; 6c makes it seed-stable (87.7% co-location); 6e makes it smooth
+> lobes, not step edges; 6b puts the seam steps AWAY from the blotches (9.16 outside vs
+> 6.089 inside). No selection rule over these twins can remove what all of them carry.
+>
+> **6d is adjudicated against its own map, and the map is corrected.** The map's
+> dichotomy — *desaturation ⇒ generation-side, L\*-shift-at-modest-chroma ⇒ patchwork* —
+> was inherited from consult #3's prototypes, and the measurement falsified the
+> prototype, not the mechanism: this stack's generation-side pale is an **L\*-rise wash
+> at essentially preserved chroma** (+16.68 L\*, C\* −9.48%, 0 px below the floor), now
+> measured. A leg reading the assembled composite under a wrong prototype does not
+> outvote legs reading the defect at its birthplace. The corrected signature is
+> recorded here for the next map.
+>
+> **6f: the spread metric is WITHDRAWN.** E34's accepted set carries a *higher* L\*
+> spread (11.54) than the rejected set (10.14) — the number fails the E07 bar and gates
+> nothing. **And the executor's self-charge is revised accordingly**: "I had the number
+> and didn't halt" presumed the number was a valid halt signal; it was not, and could
+> not have been known to be either way, because nobody had measured the accepted
+> asset's spread until leg 6f built the comparison. The miss that stands is the
+> unbuilt comparison, not the missed halt.
+>
+> **Task 7 is RATIFIED**: pixel-identity (ΔE 0.0000, 0 of 360,448) on a verbatim
+> re-submission — this Cloud path is deterministic per payload; the consult's
+> certain-half holds; E33's ΔE 0.84 anchor stays attributed to cross-hardware kernels.
+> The PNG-bytes-differ half is this repo's own law, applied by the executor unprompted.
+>
+> **What my eye adds that the binary legs could not carry** (6g sheet, head at 3x):
+> the pale class's INTENSITY is seed-graded — **987654 is the palest column across all
+> four views; 770700 the darkest and most tonally even; 770701 between**. The
+> dark-speck census and the pale wash anticorrelate across seeds — a lighter
+> generation carries fewer dark-reading specks — so the per-view census selection was
+> optimizing INTO the pale class, and the Director's "much stronger than E34's" has a
+> mechanism: E34 was all-770700. Also for his eye at the next sheet: 770700's v2/v7
+> twins carry hard graphic line features (brow/mouth/wink), 770701's v7 swooping
+> painted lids — register observations, his to weigh.
+>
+> ### The path, re-routed by the evidence — the zero-job candidate first
+>
+> **R2-a (zero jobs, runs first):** quantify the eye's observation with the leg-6
+> instrument — per-view, per-seed pale measure (area and L\*-rise) across the existing
+> 24 twins **plus E34's 8 accepted twins as the baseline anchor**, and report whether
+> the census-selected twin was also the pale-maximal twin per view. This replaces my
+> assertion with a number and hands the Director the anticorrelation as a measurement.
+> Blind bands per the executor's own ritual, registered before the run.
+>
+> **R2-b (zero jobs): the candidate.** Global-**770700** selection — the seed whose
+> class we cannot fix post-hoc is mildest there, and the class we CAN fix is what the
+> task-3 corrector exists for — → corrector to census-0 on those eight twins →
+> reproject through the task-4 pipeline unchanged → pack → the three-row sheet PLUS
+> the head at the Director's zoom beside E34's head. This candidate is E34's tonal
+> behaviour with the dark-speck class corrected — the repair this arc set out to
+> build, at zero further spend. It is tonal-behaviour-equivalent to E34's inputs, not
+> byte-equivalent (task 7 found no parameter-identical pair across the eras; say so
+> on the sheet).
+>
+> **The cn ladder (Path G's 0.7/0.6 A/B) stays AUTHORIZED and HELD.** It is the lever
+> that could push the pale wash below even 770700's level, and it re-opens register
+> risk; it fires only on the Director's word after his eye rules R2-b's sheet. Budget
+> unchanged: 33 of 45 spent; the ladder + rebuild (≤ 10-11) remain inside the ceiling
+> if he calls for them.
+>
+> **The global-987654 proposal is closed**: it would standardize on the palest seed —
+> the measured selection defect, made global.
+>
+> ### The seat's own error record, in the same fold
+>
+> Commit `63cff76` carries the executor's staged halt artifacts — the tasks-6/7 report
+> section and the blind-bands registration — under a comfy-preflight postscript
+> message. **The advisor's construction did it**: status, add, commit and push chained
+> in one call, so the status that showed the sibling's staged files printed but was
+> never read before the commit fired. The kickoff's own ⚠ names this defect verbatim;
+> this seat applied it to the sweep and broke it on its own commits, and the same
+> shared-copy scoop appears twice more in today's record (`d888baf`, `2c072fa`) — the
+> mechanism is now measured three ways in one day. Content unaltered; the blind-bands
+> file's pushed SHA still serves its pre-registration; attribution corrected here.
+> **From this fold: the advisor's status check, the read of it, and the commit are
+> separate calls, always.**
