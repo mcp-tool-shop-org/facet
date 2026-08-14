@@ -271,8 +271,79 @@ previously used one is about as good a first consumer as this tool could be give
    plugin's ecosystem; Python matches the existing bespoke bridge that would be its first
    caller. My recommendation: **TypeScript**, with the bridge calling the CLI — but if the
    bridge is the only near-term caller, Python is the cheaper honest answer.
+   *(Resolved by the build, 2026-08-09: the seat shipped **Python** — console-script
+   packaging, suite green in three interpreter modes. OQ1 is closed by reality.)*
 2. **Which model families' frame rules ship on day one.** Check 5 needs a per-family
    constraint table. Qwen's ÷8 is measured here; others are not, and **I will not populate
    that table from memory** — each entry needs a measurement or a citation.
 3. **Whether the studio's existing bridge adopts it as the gate, or keeps its own
    inline checks.** Adoption is the point; two preflights is worse than one.
+
+---
+
+> ## ⚖ AMENDMENT 2 — the aggregator arc is DISPATCHED, and check 8 joins the table (advisor, 2026-08-14)
+>
+> **At the Director's word**: the executor launches on the ratified next arc — **the
+> `preflight()` aggregator, the CLI verb and the MCP surface** — and the speck arc's
+> preflight-shaped lesson folds in as a new check. Checks 3/6/7 remain OUT for the
+> standing reasons (no profile fixture; transport-side; needs the builder enumerated).
+>
+> ### The arc, ratified
+>
+> 1. **The aggregator** — `preflight(graph, register_profile, input_dims=None)` composing
+>    checks 1/2/4/5 (+8 below) into one structured result: per-check findings, verdict
+>    merge **HALT > ADVISORY > NOT_APPLICABLE > PASS**, every finding naming its node and
+>    its evidence. The composition surface is a check registry, not a hardcoded list —
+>    check 8 lands **through** that registry as the proof it extends.
+> 2. **The CLI verb** — the development door; follows the repo's own established exit-code
+>    and refusal conventions (the executor enumerates them from the built tree, not from
+>    this spec).
+> 3. **The MCP surface** — stdio, the studio's server form; the tool returns the
+>    aggregator's structured result verbatim. The MCP is a *transport* over the same
+>    in-process function — the adoption contract is unchanged: **the production gate is
+>    the in-process call on the submit path, no skip flag.**
+>
+> ### Check 8 — the declared-envelope advisory
+>
+> **Provenance, measured (E33→E35):** the performer's twins were generated at img2img
+> denoise **0.92** through a control checkpoint whose own model card documents an
+> operating band of **~0.10–0.50** — 2–9× outside it — and nothing on the submit path
+> said so. The dark-speck class that followed cost an acceptance, a consult, a five-agent
+> research swarm and a repair arc
+> ([grounding](../research/E35-speck-research-grounding.md), agent 1 finding 8; facet
+> known-defects, final entry). The fact was knowable at submit time. This check puts it
+> there.
+>
+> **The check:** for each model/checkpoint the graph loads, compare the graph's parameter
+> values (denoise, conditioning strength, cfg, steps — whatever the entry declares)
+> against a **cited envelope table**. Out-of-band → **ADVISORY, never HALT**, the finding
+> quoting the value, the band, and the citation. No entry for the checkpoint →
+> **NOT_APPLICABLE, naming the checkpoint it could not see** (the Amendment-1 B-shape).
+>
+> **Why advisory is a ruling, not a softness:** the studio ran 0.92 *deliberately* and
+> the Director approved the register produced at it. A documented band is documentation,
+> not a gate; a check that halts correct work gets disabled by the third person who hits
+> it — check 3's exclusion law arriving at check 8. The advisory's job is to make the
+> out-of-band fact **visible at the moment it is cheap**, not to forbid it.
+>
+> **The data discipline (Amendment 1's, verbatim in force):** the envelope table ships
+> with **no entry populated from memory**. Every entry carries its parameter, band,
+> source URL and retrieval date, **verified against the live card at build time**. Day
+> one ships exactly one checkpoint — `Qwen-Image-InstantX-ControlNet-Union`, img2img
+> denoise ~0.10–0.50 per its card — plus any further parameter that card documents,
+> verified at the seat, and nothing else. ⚠ The E35 grounding also cites a **FLUX**
+> Union card (canny examples at 0.5); that is a **different checkpoint** and its numbers
+> do not enter a Qwen entry. A test pins that an uncited entry fails; a second pins that
+> an absent checkpoint returns NOT_APPLICABLE and does not halt.
+>
+> **Decompose-by-secrets placement:** check 8 joins the register/parameter group (2, 3)
+> — it resolves against declared knowledge, not graph structure — and the envelope table
+> is data beside the code, changing at documentation cadence, like check 5's family
+> table.
+>
+> ### What stays out of this fold, with the reason
+>
+> The despeckler (`twin_despeckle`) and the seed-fusion stage (`twin_fuse`) are **facet
+> route tools** — they operate on generated images after the act this gate guards. A
+> preflight that touched pixels would be a different product. The fold is the envelope
+> fact alone, because that is the part that belongs *before* the spend.
