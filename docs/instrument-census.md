@@ -13,7 +13,7 @@
 | `.py` files in `tools/verify` | **9** |
 | — files of any other extension there | 0 |
 | **total members** | **111** |
-| corpus files read for axis D | 289 |
+| corpus files read for axis D | 291 |
 | test files read for axis E | 65 |
 | probe interpreter | `E:\AI-Models\trellis2-env\Scripts\python.exe` (3.13.13) |
 

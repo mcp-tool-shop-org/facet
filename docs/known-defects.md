@@ -239,3 +239,55 @@ affected views `facet_E33/turn_final/armfinal_1,2,3,5,6,7`.
 The repair is this repo's projection-coverage arc — armature documents and consumes,
 never edits. It enters through facet's own method: a spec, committed predictions, tests
 riding the commit. **Priority set by the Director's word, 2026-08-13.**
+
+**⚖ REPAIRED AND ACCEPTED — [E34](experiments/E34-ruling.md), 2026-08-13.** Eight-view
+projection in the approved register: holes 927,492 → 157,228, the patches closed at
+every named landmark, accepted at the Director's eye with the suite green (927/0). The
+candidate is the record's fifth accepted asset; the recorded E33 asset stays
+byte-unchanged as the pre-repair state. **A second, distinct defect class on the same
+asset was then ruled unacceptable at his zoom — the dark-speck class, next entry.**
+
+---
+
+## The dark-speck class on the performer — ruled unacceptable by the Director, 2026-08-14
+
+**Scattered dark brown-to-black speckles — 2–6 px dots at the 352×1024 frame scale,
+reading as sharp dark triangles at zoom — across the performer's textured surface.** A
+second defect class, distinct from the unpainted patches E34 repaired. Found at the
+Director's zoom after E34's acceptance and ruled unacceptable the same day. It is
+visible on the accepted sheets, and neither the E34 report's observations nor the E34
+ruling named it — owned at the ruling seat as that walk's miss.
+
+**Measured attribution (E34 ruling seat, 2026-08-14; strips, per-pixel samples and the
+script staged at `E:\AI\training\facet_E35\diag\`):**
+
+- **Texture truth, not shading.** The specks persist under FLAT light. Near-black
+  counts, torso/legs crops: lit 3,233 / 2,039 px (dominated by legitimate joint
+  shading) against flat **18 / 20 px** — the flat residue is the baked dot cores.
+- **In the generated twins.** Every sampled view carries dark dots on the figure —
+  127 / 263 near-black px per crop, cores ~(70–95, 40–60, 15–40) — and at **5 of 6
+  sampled speck locations the twin is dark at the matching pixel**.
+- **The controls are clean.** The clay renders carry **0** near-black px: the canny
+  transmits no speck features. The generator invents the dots.
+- **Predates and survives E34.** The 2-view and 8-view textures carry the class at
+  near-identical values at the same locations (e.g. (59,52,49) in both) — every twin
+  carries it, so re-projecting from more views multiplies its sources.
+- **A minority sub-population is not twin paint.** ~1 of 6 sampled specks is pure-black
+  (11,9,8) at a texel whose view twin is mid-tone — candidate pipeline-local mechanisms
+  (the 10×10 parked-face patch, unfilled texels), **UNMEASURED**, task 0 of the repair
+  arc.
+
+**The Comfy consult** ([brief](comfy-consult-1-brief.md) → [answer](comfy-consult-1.md))
+ranks the mechanism: **the register prior rendered under an over-denoised (0.92)
+near-uniform grey init, hardened by ControlNet at 0.9** — the model painting plausible
+terracotta mineral flecks — with fp8 quantization and VAE decode ranked against this
+signature. Discriminators, cheapest first: a seed re-roll A/B (dots move = seed-bound
+content class, and cross-seed averaging becomes a lever; dots stay = input/quant-bound,
+the bf16 swap decides), then a denoise sweep 0.92/0.80/0.72, then cn_strength 0.65. A
+frequency-separation despeckle on the twins is the deterministic fallback — its four
+nodes verified against the live catalog at the facet seat, with one interface
+imprecision found and recorded in the answer's calibration section.
+
+**Disposition: the repair arc is E35, dispatch pending the Director's frame
+confirmation.** No recipe change ships without his eye re-gating the register — R3 is
+his ruling — and the arc's dispatch commit bumps `laws.paid_for_by` to `E3[0-5]`.
