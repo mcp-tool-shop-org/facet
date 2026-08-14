@@ -232,3 +232,121 @@ Tests take **T66+**. Tools and tests land, so the count surfaces MOVE — reconc
 (pin edits → collect → surfaces), census regenerated after every document is final, the
 index pair in a terminal commit via `record_build`. **This dispatch's own commit bumps
 `laws.paid_for_by` to `E3[0-5]`** — the E34 lesson, applied at birth this time.
+
+---
+
+> ## ⚖ AMENDMENT — GATE R2: the pale-blotch class, the discriminator before the fix (advisor, 2026-08-14)
+>
+> **What amended.** Task 4's candidate carries **pale blotching across the crown,
+> forehead and cheek** at the Director's eye — a LIGHT defect class this arc's detector
+> cannot see by construction (it counts dark-chromatic blobs; T66 asserts a brighter
+> blob is not a speck). The per-view best-of-K selection mixed three seeds
+> (987654 ×5, 770701 ×2, 770700 ×1) where E34's accepted set was uniform at 770700;
+> the selected set's cross-view spread — **C\* 9.77, L\* 10.14** — was printed on the
+> coherence sheet and passed as context. The executor surfaced its own miss, measured
+> the mechanism candidates, proposed a remedy, and held without touching count
+> surfaces — correct at every step after the miss. **Consult #3** (the Comfy channel,
+> relayed by the Director) rules the seed hypothesis **real but second-order at
+> denoise 0.92** — the seed pins where divergence starts, not how much — and names a
+> competing **generation-side desaturation class** (the off-distribution InstantX
+> union at cn 0.9 failing toward a pale mean exactly where smooth skin gives canny
+> nothing to anchor; cfg 2.5 second) **which no seed choice can cure**. The chroma-heavy
+> spread and the anatomical localization lean that way; the consult's numbers are
+> testimony, not measurement, so the rebuild is **gated on a discriminator, not on a
+> re-roll**. The Director's word: *rebuild with a more informed approach instead of
+> flailing.*
+>
+> **Spend arithmetic, before anything fires.** 32 of 45 spent (8 pre-Gate-R + 24 at
+> task 4). Remaining: **13**. This amendment budgets: task 7 ≤ 1 · task 8 worst case
+> ≤ 11 (2 cn A/B + 1 cfg on the Director's word only + 8 rebuild) → **≤ 12 of 13**.
+> Any overage is a halt, his word only.
+>
+> ### Task 6 — the discriminator (local, ZERO jobs; all inputs already exist)
+>
+> Interpretation maps pre-registered here so no reading is post-hoc. The executor
+> reports each leg; **the advisor rules the mechanism from the report; task 8 does not
+> launch until that ruling issues.** The advisor pre-registers **no** mechanism
+> prediction — the discriminator's job is to make one unnecessary.
+>
+> - **6a — ownership overlay.** `texel_provenance` view-ownership boundaries on the
+>   head region vs the pale regions at the Director's named locations. *Patchwork ⇒*
+>   pale regions piecewise-uniform inside one view's owned region, edges stepping AT
+>   seams. *Generation-side ⇒* lobes tracking anatomy, crossing seams unbroken.
+> - **6b — seam-crossing (decisive where it exists).** A blotch spanning two ownership
+>   regions: tone continuous across the seam ⇒ generation-side; a step at the seam ⇒
+>   patchwork.
+> - **6c — same view across seeds.** For the views owning blotch UVs, that view's twin
+>   at 987654 / 770701 / 770700: blotch at the same anatomical location across seeds ⇒
+>   generation-side, stable; moves or vanishes with seed ⇒ seed-driven tone.
+> - **6d — chroma vs luminance at the blotch.** Chroma floor honoured, circular means
+>   only. Desaturation signature (C\* collapse, L\* rise) ⇒ generation-side;
+>   predominantly L\* patch shift at modest chroma ⇒ patchwork.
+> - **6e — frequency profile.** Step edges with flat interiors ⇒ seams; smooth
+>   low-frequency lobes ⇒ generation.
+> - **6f — the spread metric earns or loses its voice.** Measure **E34's accepted
+>   eight-view set** with the same instrument that produced 9.77/10.14. If the accepted
+>   set's spread is not clearly lower than the rejected set's, the number does not
+>   separate accepted from rejected and gates nothing (the E07 law, applied before a
+>   threshold exists rather than after). Report both; invent no bound.
+> - **6g — the twins at the blotch UVs, pre-projection, full size.** The class that is
+>   invisible in every single twin and born at assembly is patchwork; the class carried
+>   in a lone twin is generation-side. Sheet, not prose.
+>
+> ### Task 7 — consult calibration (archive-first; ≤ 1 job)
+>
+> The consult's checkable claim: same seed + same dims ⇒ same initial noise ⇒
+> deterministic output on this Cloud path, IF noise is CPU-side; GPU-side noise breaks
+> byte-identity across workers. Archive-first: if any two recorded submissions share
+> byte-identical inputs and parameters, diff their outputs — **pixels, not PNG bytes**.
+> Else submit ONE existing (view, seed) job a second time, identical payload, and diff.
+> *Pre-registered reading:* pixel-identical, or a uniform residual at or under the
+> E33-measured cross-hardware float floor (ΔE ≈ 0.84, uniform shape) ⇒ same-seed
+> reasoning stands. Structured or localized differences ⇒ per-job platform entropy
+> exists, and every same-seed claim in this amendment weakens accordingly — report,
+> halt, re-rule.
+>
+> ### Task 8 — the fix, on the advisor's mechanism ruling; Gate R2 is the Director's eye
+>
+> Global-single-seed selection is the free baseline on EVERY path (it deletes the
+> mixed-seed term by construction). **The seed is 987654** unless the ruling says
+> otherwise — census-best (97/575 vs 770700's 202/1363) and per-view winner 5 of 8;
+> the consult's confound is recorded: standardizing on E34's 770700 for its tonal luck
+> would double the dark-speck load this arc exists to remove.
+>
+> - **Path P — patchwork dominant.** Global-987654 selection → per-view LAB
+>   harmonization to a reference view BEFORE projection (local op, zero jobs;
+>   reference = the Gate-R register-ruled view unless the ruling names another), with
+>   a guard: named canon materials' chroma centres before/after per view, circular
+>   means above the floor, shift bounded and reported → task-3 corrector to census-0 →
+>   the E34 projection pipeline exactly as task 4 records it → pack → sheets. The
+>   harmonized-vs-unharmonized head rides the SAME sheet so the Director's eye rules
+>   the new op, not the advisor's assumption. **Zero cloud jobs.**
+> - **Path G — generation-side dominant.** ONE-view A/B at the blotch-owning view,
+>   seed 987654, all else pinned at the recorded recipe: **cn_strength 0.9 → 0.7 and
+>   0.9 → 0.6** (2 jobs). Full-size sheet — blotch-region crops beside the current
+>   twin, register comparison on the same sheet (silhouette + canon chroma). **Gate R2:
+>   the Director picks or halts.** The cfg arm (2.5 → 2.0, 1 job) only on his word if
+>   cn fails. Then the eight-view rebuild at the winning configuration (8 jobs),
+>   selection global-single-seed, corrector, project, pack, sheets. ≤ 11 jobs.
+> - **Path M — mixed.** G's lever first, then P's harmonization on the rebuilt set.
+>   Same ceiling.
+>
+> Every path ends in the three-row sheet **plus the head at the Director's zoom beside
+> E34's head** — the surface his eye caught both classes on, at the scale he caught
+> them.
+>
+> ### Standing notes folded by this amendment
+>
+> The executor's earlier global-987654 proposal is Path P's first half — not wrong,
+> and not dispatched alone: unswept by the discriminator it risks rebuilding the
+> generation-side class straight back to his eye. · No pale-blotch detector is
+> commissioned mid-arc — a metric born chasing the defect it grades is the E07 defect;
+> the discriminator legs and his eye carry this arc, and the class enters
+> `known-defects.md` at the close ruling. · Consult #3 is testimony under the citation
+> law: its one checkable claim is exactly task 7; its catalog claims (colour-match
+> node families) touch only the next-programme option; **Qwen-Image-Edit 2509 stays
+> parked for the next programme** — a base swap re-opens the register ruling and does
+> not enter mid-arc. · Task 5 (close) runs last, unchanged, count surfaces reconciled
+> as written. · The compensator table stands: harmonization writes live under
+> `facet_E35\` (existing row), task-7/8 jobs inside the ≤ 45 ceiling with the
+> arithmetic above.
