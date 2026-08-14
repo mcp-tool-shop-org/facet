@@ -506,3 +506,70 @@ equivalence is by seed and recipe, not by reproduction.
 
 **HALTED at the sheet.** The cn ladder (0.7 / 0.6) stays authorized and held; it is the lever
 that could move what neither seed choice nor the corrector reached. His word only.
+
+---
+
+# ⚖ GATE R2 — R2-c. The cn ladder is COUNTER-INDICATED. Halted.
+
+**Zero jobs. Spend stands 33 of 45.** Bands in
+[E35-R2c-blind-bands.md](E35-R2c-blind-bands.md), registered before the run.
+
+## The fork returned a third outcome
+
+| arm (view 1, seed 770700, denoise 0.92) | pale area px² | pale L\*-rise | Δ area | Δ rise |
+|---|---|---|---|---|
+| **recorded** cn 0.9, end 1.0 | **278** | **4.97** | — | — |
+| 2c scheduled cn 0.9, end 0.5 | 932 | 12.99 | **+235.3%** | **+161.1%** |
+| 2c flat **cn 0.65** | **1220** | **19.68** | **+338.8%** | **+295.6%** |
+
+The ruling's fork offered two branches — pale *unchanged* (init-bleed-through, ladder
+pointless) or pale *drops* at 0.65 (union mechanism, ladder live). **Pale RISES, steeply, and
+monotonically with how much the conditioning is weakened.** Releasing it early (+235%) is bad;
+lowering its strength across the whole trajectory (+339%) is worse.
+
+**The ControlNet is SUPPRESSING the pale class, not causing it. The cn ladder at 0.7/0.6 would
+make the pale worse, not better — it is counter-indicated, not merely pointless.** Two jobs
+saved, and the lever accounting closes: no in-arc lever moves the pale class in the helpful
+direction.
+
+## The 2b ladder converges on the measured init, on both axes
+
+The init, measured: clay view 1 head region **L\* 76.43, C\* 1.12**.
+
+| rung | pale area | L\*-rise | L\* inside pale | C\* inside pale |
+|---|---|---|---|---|
+| recorded 0.92 | 278 | 4.97 | 52.86 | 23.25 |
+| 0.85 | 183 | 4.76 | 61.79 | 12.45 |
+| 0.80 | 404 | 7.15 | 67.66 | 7.16 |
+| 0.72 | 511 | 8.37 | **72.08** | **2.82** |
+| **the init itself** | — | — | **76.43** | **1.12** |
+
+As denoise falls, the pale regions march toward the init on **both** axes — L\* 52.86 → 72.08
+against the init's 76.43, C\* 23.25 → 2.82 against its 1.12. The cn arms do the same thing:
+weaker conditioning moves L\* up (52.86 → 57.68 → 63.60) and C\* down (23.25 → 23.63 → 18.80).
+
+**Both levers that let more of the init survive increase the pale and move it toward the
+init's measured values. The pale class is the clay init surviving where the sampler is least
+anchored.** My registered objection — that pure bleed-through should collapse chroma, and 6d
+found only a 9.48% drop — is resolved by the ladder: the chroma *does* collapse as more init
+survives; at the recorded recipe the init's contribution is small enough that the drop is mild.
+
+## Bands, scored: 1 hit, 3 misses, 1 mixed
+
+- **PC1 MISS** — predicted both cn arms within ±35%; measured +235% and +339%.
+- **PC2 HIT** — the scheduled arm is the closer of the two to the recorded twin.
+- **PC3 MISS** — predicted pale area non-monotone peaking at 0.85/0.80; it rises monotonically
+  to 0.72.
+- **PC4 MISS** — predicted L\*-rise falls at the bottom rung; it is highest there (8.37 vs 4.76).
+- **PC5 MIXED** — my fork call (init-bleed-through) is supported by the convergence evidence,
+  but the cn reasoning behind it was backwards: I expected cn to be irrelevant to the pale and
+  it is one of its strongest suppressors.
+
+**The lesson worth carrying: a two-branch fork missed the direction.** Both branches assumed
+weakening cn could only leave pale alone or reduce it. Neither the ruling nor I enumerated
+"weakening the conditioning makes it worse," and that is the outcome. A fork over a signed
+quantity needs the third branch — *moves the other way* — written into it.
+
+**HALTED.** The 4-seed screen and the cn ladder remain at the Director's word with consult
+#4; on this evidence the ladder would spend two jobs to worsen the class it was authorized to
+test.
