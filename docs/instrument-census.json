@@ -17,8 +17,8 @@
     "py_files_total": 111
   },
   "provenance": {
-    "corpus_files": 293,
-    "corpus_files_before_self_exclusion": 303,
+    "corpus_files": 295,
+    "corpus_files_before_self_exclusion": 305,
     "probe_interpreter": "E:\\AI-Models\\trellis2-env\\Scripts\\python.exe",
     "probe_interpreter_version": "3.13.13",
     "probe_skipped": false,
@@ -35,7 +35,7 @@
       "docs/experiments/E28-task3-report.md",
       "docs/instrument-census.md"
     ],
-    "test_files": 65
+    "test_files": 67
   },
   "rows": [
     {
@@ -2368,10 +2368,9 @@
       ],
       "b1_literals": [],
       "b2_literals": [],
-      "cited_count": 6,
-      "cited_count_raw": 8,
+      "cited_count": 5,
+      "cited_count_raw": 7,
       "cited_in": [
-        "docs/advisor-kickoff.md",
         "docs/experiments/E27-measurement-mcp-report.md",
         "docs/experiments/E27-predictions.md",
         "docs/experiments/E27-ruling.md",

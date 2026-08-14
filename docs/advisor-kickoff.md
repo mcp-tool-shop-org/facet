@@ -1,28 +1,66 @@
 # Advisor kickoff
 
-Paste into a fresh advisor session. **Written 2026-08-10 by the outgoing advisor** — the seat
-that ruled **E29** and **E31**, ruled comfy-preflight's first two builds, fixed the packaging
-defect E31 found, and **shipped v0.4.0**.
+Paste into a fresh advisor session. **Written 2026-08-14 by the outgoing advisor** — the seat
+that ruled and closed **E34** (the fifth accepted asset, the first produced as a repair of
+another), attributed the dark-speck class and dispatched **E35** on a five-agent study swarm,
+ruled it through **Gate R**, ruled comfy-preflight's aggregator arc (spec Amendments 2–3) and
+dispatched its treatment-and-publish arc, and folded four of its own defects into the record
+with the measurements that caught them.
 
-**Rewritten from measurement, not edited.** Every number below was re-measured at the close.
-[E26 Ruling 4](experiments/E26-ruling.md) caught a predecessor stale by three releases — on
-the very document whose step 1 reads *RE-COUNT* — so nothing here is carried forward unchecked.
-
-**Nothing is mid-flight.** Tree clean at `1e30db3`, **0 ahead of origin**, tag `v0.4.0`
-pushed, CI and Pages green, index coherent, no seat running.
+**Rewritten from measurement at the close.** Every number below was re-measured against the
+tree at `55cd7dc`; anything a live seat can move says so beside the number.
 
 ---
 
-> ⚑ **TOP PRIORITY — the Director's word, 2026-08-14 (supersedes the 08-13 banner):**
-> the texture-projection holes were repaired and ACCEPTED — [E34](experiments/E34-ruling.md)
-> closed, the fifth accepted asset. **The live top defect is now the DARK-SPECK CLASS on
-> the same asset**: generator-painted dark flecks baked into every twin, ruled
-> unacceptable at the Director's zoom post-acceptance. Measured attribution + the Comfy
-> consult: [known-defects.md](known-defects.md), final entry. The repair arc is **E35 —
-> DISPATCHED 2026-08-14**, study-swarm grounded
-> ([research](research/E35-speck-research-grounding.md) · [spec](experiments/E35-clean-twins-kickoff.md));
-> the span bump to `E3[0-5]` rode the dispatch commit (WHAT WILL COST YOU #8, applied at
-> birth this time). **This outranks everything below until addressed or re-ruled.**
+> # ⚑ TWO EXECUTOR SEATS ARE IN FLIGHT. READ THIS BEFORE ANYTHING.
+>
+> **Nothing is broken, and two arcs are mid-air. Your first acts are their landings.**
+>
+> **1 — E35 (this repo, this working copy), mid-tasks-3–5.** The dark-speck repair arc:
+> spec [E35-clean-twins-kickoff.md](experiments/E35-clean-twins-kickoff.md), grounding
+> [E35-speck-research-grounding.md](research/E35-speck-research-grounding.md), tasks 0–2
+> reported and **Gate R RULED by the Director** (2026-08-14): register HOLDS at the
+> recorded recipe (denoise 0.92 / cn 0.9); the repaint runs **K=3 seeds per view,
+> census-scored best-of-K selection** (≤24 jobs, ceiling 45, 8 spent), then the task-3
+> corrector cleans the selected twins to **texture census-0** before projection. The
+> executor halts at `E35-clean-twins-report.md`. **You rule it.** The closing ruling owes,
+> enumerated: (a) the premise reconciliation — the atlas census (61–79% of black texels
+> twin-painted) and the executor's render-dot co-occurrence (14.3%, 6.13× chance) measure
+> DIFFERENT operands and both stand; lay them out; (b) the outgoing seat's clustered
+> sample owned in the error record — "dark at 5 of 6 locations" was 2 locations, 5 points
+> in one shadow-crevice cluster; (c) the mesh-pit routing — the pure-black render class is
+> in NO texel of atlas or GLB (task 0a), it is geometry, unreachable by any twin-side
+> work; acceptance means texture census-0 under FLAT light, and the residual lit pit
+> shading either goes to a mesh arc or is accepted as geometry — the Director's call;
+> (d) candidate anchors commissioned on acceptance (E34's candidate anchors from E34
+> Ruling 9 are ALSO still owed — neither set is built); (e) the armature relay with the
+> new candidate's hash (the block is written — see the outgoing summary — and HELD at the
+> Director's timing); (f) count surfaces reconcile at the combined tree at their close
+> (the executor did this correctly once already); (g) when E36 is ever created, its
+> creating commit bumps `laws.paid_for_by` to `E3[0-6]` — twice-proven now.
+> ⚠ **While E35 flies, the two-seat discipline binds**: check for sibling commits and
+> untracked files BEFORE any push (`git status` + `git log origin/main..HEAD`); a
+> docs-only push with sibling untracked code files present is safe (untracked files do
+> not ride commits, and docs paths fire no CI); sibling LOCAL COMMITS defer your push —
+> the reason goes in your pair commit's message (`f405328` is the worked example).
+>
+> **2 — comfy-preflight, mid-treatment.** The aggregator arc is RULED AND ACCEPTED
+> ([spec Amendment 3](specs/comfy-preflight-spec.md)): `preflight()` over a check
+> registry, CLI, MCP, check 8 as built (declared-envelope ADVISORY; the card documents
+> `cn ∈ [0.8, 1.0]` and NO denoise band). The **treatment-and-publish arc is dispatched
+> at the Director's word** — shipcheck, v1.0.0, README front door, logo+banner in the
+> armature form (brand repo), landing page + handbook, repo-knowledge entry, then
+> publish via Trusted Publishing. ⚠ **The TRANSLATION HANDBACK comes to YOU**: the
+> executor halts with README final; the advisor runs
+> `node E:/AI/polyglot-mcp/scripts/translate-all.mjs README.md --cache-clear` and sweeps
+> (heading parity, no two-candidate headings, nav bars, line endings measured in
+> Python); the executor resumes on your word and publishes in the release order that is
+> law (translations BEFORE tag and publish). Their halt lands as a treatment report in
+> that repo's docs; you rule it.
+>
+> **3 — armature: the re-survey is HELD** until E35's candidate exists. The relay block
+> is delivered to the Director; he pastes at his timing. It targets the E35 candidate,
+> not E34's (superseded as the reference target; the E34 GLB stays recorded).
 
 ---
 
@@ -38,351 +76,223 @@ E:\AI-Models\trellis2-env\Scripts\python.exe tools/facet_index.py verify --db <s
                                      <- the E15 ritual: 19/19 or stop. SCRATCH --db;
                                         the record mount is live on this working copy.
 
-CLAUDE.md                            <- how to work here. Follow exactly. The prediction
-                                        family is now NINE members and it is still what
-                                        keeps biting.
+CLAUDE.md                            <- how to work here. Follow exactly. The
+                                        unit/population family's ORDINAL is retired
+                                        (E34 Ruling 6) - the member list is the record,
+                                        and it still bites.
 README.md                            <- the front door; its counts are under a test
-docs/experiments/README.md           <- the status table, current through E31
-docs/concept-prep.md                 <- stage 0: what it IS and what it has NOT been
-                                        shown to do. Both, unsoftened.
+docs/experiments/README.md           <- the status table, current through E35
+docs/known-defects.md                <- final entry: the dark-speck class, measured
+docs/concept-prep.md                 <- stage 0: what it IS and what it has NOT shown
 ```
 
-**YOU HAVE TWO MOUNTED SERVERS NOW.** `mcp__facet-record__*` and — new since v0.4.0 —
-`mcp__facet-measure__*`, eight tools. `record_health` tells you whether to trust the first.
-The measurement server was reachable by **no session at all** until E29 Ruling 7; if it is
-missing from your tool list, check `.mcp.json` before concluding anything.
+**Two mounted servers**: `mcp__facet-record__*` and `mcp__facet-measure__*` (8 tools).
+`record_health` tells you whether to trust the first.
 
-Your job: write specs, rule on reports, fold findings into the repo, **push every fold**.
-**Deciding is the job; predicting is not.** Nothing reaches the Director's eye that yours has
-not been on first, at full size. **A dispatch is not delivered until its paste block is on the
-screen** (advisor rule 5) — and that includes the arcs listed below.
+Your job: write specs, rule on reports, fold findings into the repo, **push every fold**
+(under the two-seat discipline above while E35 flies). **Deciding is the job; predicting is
+not.** Nothing reaches the Director's eye that yours has not been on first, at full size —
+**and the walk surfaces every visible class, named, even the out-of-scope ones**: the speck
+class was visible on the sheets E34 was accepted on, went unnamed by the report AND the
+ruling, and reopened the asset the next day at the Director's zoom. **A dispatch is not
+delivered until its paste block is on the screen** (advisor rule 5).
 
----
-
-## ⚡ YOUR FIRST ACT
-
-**Nothing is broken and no conversation is owed.** v0.4.0 shipped clean. Two correctness items
-are **ruled, commissioned and unscoped** — they are the natural next arc, and the first one
-gates his polish lanes:
-
-1. ⛔ **`anchor_check` PASSES SILENTLY WITHOUT PIL, and it is the polish arc's entry gate.**
-   `tools/verify/anchor_compare.py:101-106` imports PIL **inside** the `try`, and
-   `except Exception` catches `ModuleNotFoundError` identically to a decode failure. Without
-   PIL it reports *"one or both inputs do not decode as images"*, blames the caller's PNGs,
-   degrades to **byte tier only** and **exits 0**. Byte-tier-only is the exact configuration
-   that produced two false halts here — it is why [E28 Ruling 14](experiments/E28-ruling.md)
-   built the pixel tier, and [E30](experiments/E30-ruling.md)'s W3 halt was *confirmed* by
-   that tier. **Ruled** ([E31 Ruling 5](experiments/E31-ruling.md)): a missing dependency is
-   an environment **refusal**, exit `4`, not a per-input decode result — with a test that
-   installs without PIL. ⚠ It does not bite on this rig (PIL 12.2.0 present) and has touched
-   no recorded number.
-
-2. **The identity envelope records no dependency set** ([E31 Ruling 3b](experiments/E31-ruling.md)),
-   and this stopped being theoretical during the release: **four of the eight instruments need
-   `open3d`, every open3d-dependent number here was measured against `0.19.0+241aaee`, and the
-   devel channel moved to `+63e30be` while we worked.** The envelope carries server version,
-   instrument sha256 and config hash — *and nothing about what the instrument imported*.
-   Nothing recorded is withdrawn; a comparability component is named.
-
-3. **THE ARCHIVE-TO-`D:` ARC — still unwritten**, and it is the one queued arc that never got
-   a spec. Scope measured below.
-
-## THE LIVE STATE — every figure re-measured at the close
+## THE LIVE STATE — measured at `55cd7dc`, with the in-flight caveats stated
 
 | | |
 |---|---|
-| HEAD | `1e30db3`, working tree **clean**, **0** ahead of origin, tag `v0.4.0` on it |
-| CI | **green** — [`31347712983`](https://github.com/mcp-tool-shop-org/facet/actions/runs/31347712983) on `main`; the Release run [`31348324862`](https://github.com/mcp-tool-shop-org/facet/actions/runs/31348324862) succeeded on all three jobs |
-| suite | **THE SUITE: 967 tests, 923 hermetic** (44 artifacts), green at two seats and CI. ⚠ That phrasing is **pinned by T34** — preserve its shape if you rewrite this row |
-| highest T-number | **T65** — E32 took T64, E33 took T65; this row read T63 until 2026-08-13. Take **T66+** (E34's dispatch reserves them) |
-| published | `facet-mcp` **0.4.0** (PyPI) · `@mcptoolshop/facet` **0.4.0** (npm, provenance) · Release `v0.4.0` with both binaries, checksums, wheel, sdist |
-| `pip install` | **works, and now carries the measurement server** — verified by installing the *published* package and running a measurement verb, not `--help` |
-| measurement server | **`facet-measure` 0.4.0, serving 8 of 8** from a checkout; **4 of 8 from a clean install on 3.13**, 8 of 8 on 3.11/3.12. `MEASURE_VERSION` is INDEPENDENT of the package version and not in T27's set |
-| ship gate | **28 checked / 8 SKIP-with-reason / 0 genuinely open** |
-| gates class | **closed.** 278 ANDONs `raise`; **exactly one** bare `assert` remains under `tools/` — `superseded/texpass_thin_mask.py`, ruled never converted, pinned **by name** in T33 |
+| HEAD | `55cd7dc`, working tree **clean**, **0/0** with origin — ⚠ the E35 seat commits here; re-measure at your open |
+| CI | **green** — [`31834666669`](https://github.com/mcp-tool-shop-org/facet/actions/runs/31834666669) at `55cd7dc` |
+| suite | **THE SUITE: 967 tests, 923 hermetic** (44 artifacts), green at two seats and CI. ⚠ That phrasing is **pinned by T34** — preserve its shape if you rewrite this row. ⚠ E35's close moves it again; the pinned surfaces reconcile at the combined tree |
+| highest T-number | **T67** — E35 took T66 (despeckle census) and T67 (fuse). Take **T68+** |
+| published | `facet-mcp` **0.4.0** (PyPI) · `@mcptoolshop/facet` **0.4.0** (npm) · Release `v0.4.0` — unchanged this session; no facet tag moved |
+| accepted assets | **five** — W3, galleon, dragon, longsword, and the E34 performer repair (`ce793064…`, the first asset that repairs another). E33's pre-repair GLB stays recorded byte-unchanged (`9e20ea7d…`) |
+| protected trees | the eight subtrees (7,312 files) + `facet_E33` (117, ⚠ its manifest self-references at a stale size — known) + `facet_E34` (84, self-excluded). `facet_E35` joins on acceptance with its own manifest |
+| gates class | 278 raises was the **v0.4.0 closed-class figure**; E35's new tools add raise-ANDONs on top — **re-measure before quoting a total** |
+| spend | E35: **8 of 45** jobs spent pre-repaint; Gate R released ≤24 more. Measured price ~$0.018/job (E34 Ruling 5 — E33's $0.102 was an unattributed envelope) |
 
 ### The record index
 
-Mount SERVING, certificate PASSED on five legs, byte-identity determinism.
+Mount SERVING, certificate PASSED, byte-identity determinism.
 The record holds 35 experiments. No staleness. **Every other count lives in the ritual's own
-output and in `record_health` — read them there, not here.** *(This line once quoted corpus,
-ruling and law totals; they went stale within a day, twice, because nothing sweeps this file
-for them and every fold moves them. **The experiment count stays because T34's fourth leg
-pins this exact sentence.** Preserve the sentence shape when you edit this file.)*
+output and in `record_health` — read them there, not here.** *(The experiment count stays
+because T34's fourth leg pins this exact sentence. Preserve the sentence shape when you edit
+this file.)*
 
-### The arcs
+## The arcs, this session
 
-**E27, E28, E29, E30 and E31 are all ruled and closed.** Four accepted assets unchanged.
+**E34 — RULED, ACCEPTED, CLOSED** ([E34-ruling.md](experiments/E34-ruling.md), 9 rulings).
+Holes 927,492 → 157,228 at eight views; the Director's eye on controlled sheets; suite green
+at acceptance. Two gates fired at the ruling seat and were repaired owned: T24 (the span
+bump the dispatch commit missed — the declaration is `conventions.json:237`, re-exported as
+`PAID_RE`, grepping nowhere in the module) and T41 (census stale by the report's own
+citations). **Then the Director's zoom found the dark-speck class the next day** — a second
+defect class, visible on the accepted sheets, unnamed by report and ruling both. That
+flag-miss is the outgoing seat's, owned in the ruling's error record and in this page.
 
-⚖ **Director's rulings, 2026-08-09/10:** **both reconstruction paths are KEPT** — *"they both
-are great… keep them both as options"*; the concept mesh gives realistic relief for detailed
-sprites, the clay gives uniformity, and **stage 0 is a per-subject choice, not a replacement**
-([E29 Ruling D1–D3](experiments/E29-ruling.md)). His named lever for the next stage-0 arc is
-in his own words: *"could be better if the clay was made to be more detailed."*
-⚠ **Its cost, scoped and NOT built:** an asset must record **which stage-0 path made it**, or
-it cannot be reproduced. That is a provenance field, not an architecture.
-⚠ **And the canon question is OPEN**: the two meshes differ in **horn shape, muzzle and brow**.
-He accepted both *as meshes*; nothing says they are the same character, and
-[E08's canon ruling](experiments/E08-director-canon-ruling.md) is the standing precedent that
-identity dominates registration.
+**E35 — DISPATCHED, GATE-R-RULED, MID-FLIGHT** (banner above). The arms' results, compressed:
+only the SEED moves the class at the approved register (987654: 7 specks/34 px² vs recorded
+16/157, C\* held); the denoise ladder kills the terracotta before the specks (census-0 at
+0.72 = 56% reverted to grey init — H2's falsifier fired as pre-registered); conditioning
+moved nothing; fusion landed mid-stack (median = majority vote — H3 falsified; **selection
+beats fusion, and the census is the scorer**). Four ANDONs fired, none tuned past; one
+prediction withdrawn rather than re-derived (ratified).
 
-**⛔ THE OPEN FINDING THAT MATTERS MOST IS STILL E30's.** W3's projection does not reproduce —
-styled **1,718,750** against a recorded **1,653,659** — because `project_twins`' erosion was
-rebuilt under E08 A3. The remedy is **ruled**: a **re-run under the recorded era's flags, not
-a tool change.** `--edge-absolute` exists at `project_twins.py:103`; `--mask-keyed`,
-`--key-corner-median` and `--trust-intersect` are the other era switches on that path. Which
-combination reproduces is empirical and unspent.
+**comfy-preflight — aggregator arc ACCEPTED, treatment arc LIVE** (banner above). Its build
+seat falsified a swarm citation at its own source — see the law below.
 
-## What is queued, with scope already measured
+## The queue behind the landings
 
-**THE ARCHIVE-TO-`D:` ARC.** ⚡ **`D:` is a real drive** — external, label `AI-BACKUP`,
-~3,472 GB free. **Treat presence as a per-session fact** (`Test-Path D:\`) and never make a
-live pipeline path depend on an external drive being mounted.
-
-- `E:\AI\training` is **114 GB**, of which **15.9 GB is facet's protected record** — exactly
-  the eight subtrees, **7,312 files / 17,072,807,610 bytes**. The other ~98 GB is every other
-  studio project's training material.
-- **The design, and "fallback" has a precise meaning:** copy → **verify by per-file sha256** →
-  only then remove. Never move-then-check. **The index lives on `E:`**, because an unplugged
-  `D:` must still tell you what is on it. And the tool must be **structurally unable to reach
-  the eight facet subtrees** — a refusal list asserted before any move, with a test proving it
-  refuses. *Prefer eliminating a risk to gating it.*
-- **Waiting on his call:** ~38 GB of LoRA checkpoint sets and a 23 GB `output` directory.
-
-**`comfy-preflight` — LIVE, IN ITS OWN REPO, AND AHEAD OF SCHEDULE.**
-[mcp-tool-shop-org/comfy-preflight](https://github.com/mcp-tool-shop-org/comfy-preflight)
-(PUBLIC, `main`). **Checks 1, 2, 4 and 5 are built**, with its own suite green in all three
-interpreter modes — *count deliberately not quoted here: it is that repo's number, and T34's
-sweep correctly refuses a bare test count on this page that could be misread as facet's.*
-The spec lives here at [docs/specs/comfy-preflight-spec.md](specs/comfy-preflight-spec.md)
-with **Amendment 1 and 1a** — check 5 re-specified (its operand is the **effective** frame, not
-the declared one, because the 1066→1064 defect happened *upstream of the graph*) and ÷8-halts /
-÷16-advises ratified.
-**Its next arc is NOT checks 3/6/7**: check 3 has no profile fixture, check 7 needs enumeration
-first (it needs the *builder*, and the corpus holds outputs), and check 6 is transport-side.
-**It is the `preflight()` aggregator, the MCP surface and the CLI** — the adoption contract *is*
-the product (in-process on the submit path, no skip flag), and three built checks nothing can
-call is a shelf.
-
-**THE POLISH LANES.** [E14 Ruling 35](experiments/E14-ruling.md)'s four-tools precondition is
-**RELEASED**. ⚠ **Its per-profile anchor CLAUSE is NOT released**: every polish lane opens with
-a per-profile anchor gate, each replay landing as a permanent artifacts-tier test in the same
-commit. **A subject's lane opens when its gates do**, and W3's projection gate is the open one
-— and item 1 above is that gate's own instrument.
+1. ⛔ **`anchor_check` PASSES SILENTLY WITHOUT PIL** — `tools/verify/anchor_compare.py:101-106`
+   imports PIL inside the `try`; `except Exception` catches `ModuleNotFoundError` as a decode
+   failure, degrades to byte tier only and exits 0 — the configuration that produced two
+   false halts. **Ruled** ([E31 Ruling 5](experiments/E31-ruling.md)): refusal, exit 4, with
+   a test that installs without PIL. It is the polish arc's entry-gate instrument. Does not
+   bite on this rig (PIL present).
+2. **The identity envelope records no dependency set** ([E31 Ruling 3b](experiments/E31-ruling.md))
+   — four of eight instruments need `open3d`, every recorded number was measured against
+   `0.19.0+241aaee`, and the devel channel has moved. Named comparability component.
+3. **The archive-to-`D:` arc** — still the one queued arc that never got a spec. Copy →
+   sha256-verify → only then remove; index on `E:`; structurally unable to reach the
+   protected subtrees.
+4. **E30's W3 era-flags re-run** — ruled remedy, unspent (`--edge-absolute` at
+   `project_twins.py:103` + `--mask-keyed` / `--key-corner-median` / `--trust-intersect`).
+5. **The served `texel_provenance` refuses an empty stroke order** while its instrument
+   handles one — commissioned to the next `measure_mcp.py` commit with a can-fail test
+   (E34 Ruling 7b). **Candidate anchors for the E34 asset** (E34 Ruling 9) and, on
+   acceptance, the E35 asset — neither built. **The mesh-pit question** routes out of E35's
+   close (banner item 1c). The R3-brush question stays **parked**.
 
 ## The release sequence, when he fires one — the order is law
 
 ```
 1. RE-COUNT      pytest --collect-only  -> currently 967 total / 923 hermetic
                  ⚠ RESERVE COUNT SURFACES BY NAMING T34's PINS TABLE, NEVER BY
-                 TRANSCRIBING IT. It holds SIXTEEN pins across SIX files, plus a
-                 separate leg over the SEVEN translated READMEs. Two seats in a row
-                 hand-listed it and each missed a different file.
+                 TRANSCRIBING IT.
 2. VERSION       FIVE declarations - pyproject.toml, package.json, bin/facet.js
-                 `version` AND its `tag`, record_mcp.SERVER_VERSION. T27 pins the
+                 version AND its tag, record_mcp.SERVER_VERSION. T27 pins the
                  agreement; release.yml refuses on a mismatch.
                  ⚠ measure_mcp.MEASURE_VERSION is INDEPENDENT and NOT in that set.
-                 It sits at 0.4.0 and the package now does too - a COINCIDENCE.
 3. CHANGELOG     [Unreleased] -> [x.y.z], fresh empty [Unreleased] above.
-                 ⚠ NEVER quote a suite total in a released entry or a release-notes
-                 file - the TWO regions T34 deliberately does not sweep.
+                 ⚠ NEVER quote a suite total in a released entry or release notes.
 4. RELEASE NOTES .github/release-notes-vX.Y.Z.md - release.yml reads it BY TAG NAME
-                 and the run FAILS without it. Carry a compensators line.
+                 and the run FAILS without it.
 5. TRANSLATIONS  node E:/AI/polyglot-mcp/scripts/translate-all.mjs README.md
-                 --cache-clear   (MANDATORY). RUN IT ONCE, AFTER THE CONTENT IS
-                 FINAL - a mid-run README edit wastes the whole pass.
-                 ⚠ THEN SWEEP, AND THE SWEEP CATCHES REAL DEFECTS: heading parity,
-                 NO TWO-CANDIDATE HEADINGS (v0.4.0 had THREE - the model emitted
-                 "X? / Y?" rather than choosing, twice in Italian, once in Hindi),
-                 nav bars complete, any bare URL intact, LF measured IN PYTHON.
-                 git add README.md README.*.md -> ONE commit.
-6. THREE DERIVED ARTIFACTS, and THE ORDER MATTERS:
-                 (a) the CENSUS FIRST - `instrument_census.py --committed`. ⚠ NOT
-                     --skip-probe, which wipes axis F. It is machine-emitted from
-                     whatever is on disk, so it cannot be hand-reconciled and it
-                     belongs in the same reservation as the count surfaces.
-                 (b) THEN the DB + certificate - record_build IN A FRESH INTERPRETER
-                     (the mount holds SERVER_VERSION from process start and will
-                     write the OLD one), then read server_version back FROM THE
-                     FILE, then commit the pair.
-                     ⚠ `docs/instrument-census.md` IS IN THE CORPUS, so emitting it
-                     after the index leaves the index stale. record_health catches
-                     it; do it in this order and it never arises.
-                 (c) the count surfaces.
-7. TAG           AT HIS WORD ONLY, and cut it BY SHA at the release commit.
-                 ⚠ release.yml fires on `push: tags: ['v*']`, NOT on
-                 `release: published` - a Release made with GITHUB_TOKEN does not
-                 fire that event, which silently skipped PyPI on xrpl-lab v1.7.1.
-                 SO PUSHING THE TAG IS THE WHOLE ACTION; the workflow cuts the
-                 Release itself. He is on PowerShell 5.1 - `&&` is a parser error,
-                 give him two commands.
-8. READ-BACK     ⚠ QUERY THE INDEX THE CONSUMER READS. At v0.4.0 this seat read
-                 PyPI three ways and got three answers: the aggregate
-                 /pypi/<name>/json said the OLD version (cached), pip said "no
-                 matching distribution" (its own cache), and the SIMPLE INDEX -
-                 https://pypi.org/simple/<name>/ with the JSON Accept header - was
-                 authoritative and correct. Go there first, or just
-                 `pip install --no-cache-dir`. THEN INSTALL THE PUBLISHED PACKAGE
-                 AND RUN A VERB. Not --help. And test `npx` from OUTSIDE a checkout.
+                 --cache-clear - ONCE, AFTER the content is FINAL; then the sweep
+                 (heading parity, no two-candidate headings, nav bars, LF in Python).
+6. DERIVED       census FIRST, then DB+cert via record_build in a FRESH interpreter,
+                 server_version read back OFF DISK, then the count surfaces.
+7. TAG           AT HIS WORD ONLY, cut BY SHA. release.yml fires on push: tags ['v*'],
+                 NOT on release: published. He is on PowerShell 5.1 - no '&&'.
+8. READ-BACK     the SIMPLE INDEX (pypi.org/simple/<name>/), then INSTALL THE
+                 PUBLISHED PACKAGE AND RUN A VERB - never --help; npx from OUTSIDE.
 ```
 
-**The tag and the publish are his. Steps 1–6 are reversible and are YOURS.**
+## ⚠ WHAT WILL COST YOU — the standing list, plus this session's tuition
 
-## ⚠ WHAT WILL COST YOU
-
-1. **Run a verb, not `--help`.** Four releases shipped a wheel that could not find its own
-   record while four green pipelines checked the surface that worked.
-2. ⚠ **A DEPENDENCY MISSING FROM PyPI FOR THIS RIG'S PYTHON IS NOT UNAVAILABLE — CHECK THE
-   PROJECT'S NIGHTLY/DEVEL CHANNEL.** This seat wrote *"there is nothing installable for
-   Python 3.13"* into a pyproject comment, a runtime refusal and a ruling — **having read the
-   `main-devel` URL in that same session.** `open3d` publishes 8 cp313 wheels there and this
-   rig runs one. **"Cannot declare" ≠ "cannot install"**: a direct URL is legal on a pip
-   command line and banned only in published metadata; the remedy is a documented install line
-   plus a PEP 508 marker. **The Director has raised this repeatedly.** It is in the memory
-   store now.
-3. ⚠ **`pathlib.write_text()` translates `\n` to `\r\n` on Windows.** It put CRLF into 13
-   tracked files in one pass. Write **bytes** when editing tracked text programmatically; T06
-   catches it, but after the fact.
-4. **Reserve count surfaces from `T34.PINS`, never by transcribing a failure list.** A failure
-   list shows what is *currently stale*; the table shows what is *watched*.
-5. **Verify inherited claims — including your own rulings.** This seat's Ruling 3a was
-   over-strong and was corrected before release, at the Director's question.
-6. **Before trusting a reading, ask what a passing value would have looked like.**
-7. **Read the front door in full before editing it.** The `readme-gate` hook enforces it — and
-   at v0.4.0 the README did not mention the headline feature until it was rewritten.
+1. **A citation that becomes load-bearing is resolved against its LIVE source at fold
+   time.** A research agent's report is testimony, not a resolved source. The swarm's
+   "vendor denoise band 0.10–0.50" entered five record surfaces and a dispatch rationale
+   unresolved; the cited card carries NO such band (falsified by three independent fetches
+   across two seats). The same session resolved every CI id and the consult's checkable
+   claim — the discipline existed and was applied selectively. Corrected at seven sites in
+   place; [Amendment 3](specs/comfy-preflight-spec.md) carries the law.
+2. **Verify runs alone, PASSED is read complete, then the commit issues.** The outgoing
+   seat chained guards`;`commit — 26 failures printed, the commit landed anyway, with a
+   `-Last 2` cap hiding the names. Second instance of a form the seat's own memory already
+   carried. No chain between a check and the act it gates; no capped read of a result that
+   decides anything.
+3. **The two-seat push discipline** — banner item 1's ⚠ block. `f405328`'s message is the
+   worked example of deferring with the reason.
+4. **The commit that creates E(n) bumps `laws.paid_for_by`** in
+   `docs/index/conventions.json` — T24's span leg fires otherwise. Missed at E34's
+   dispatch (suite red the whole arc), applied at birth at E35's.
+5. **Reserve count surfaces from `T34.PINS`, never a hand list**; digits-only on the seven
+   translated READMEs; the census re-emits with any fold that names tools.
+6. **The register is a chroma story.** C\* beside the eye is the register-hold instrument —
+   the E35 denoise ladder read 23.8 → 1.9 while silhouette and pose survived. A register
+   can die with the geometry intact.
+7. **`--max-frac-beyond` is a SHARE** (0.05 = 5%); a spec transcribing a rendered "5%" as
+   "5.0" sets 500% and silently disarms a finalize gate. Read the tool's unit before
+   writing any flag value into a spec.
+8. **Run a verb, not `--help`; check nightly/devel channels before declaring a dependency
+   unavailable; `pathlib.write_text()` writes CRLF on Windows** — all standing, all still
+   true.
 
 ## THE PRACTICES — they bind you
 
-1. **THE SHEET-WALK before any number** — his images and rendered surfaces walked FIRST, at
-   full size, before any metric is quoted.
-2. **Measure before ruling.** Every ruling this seat made that reached beyond its arc was
-   re-checked at source first, and three of them corrected the report.
-3. **Verify and commit never share a call.** Pathspec-scoped commits; never `git add -A`; no
-   stash; the DB commits as a pair with its certificate.
-4. **Own the seat's misses in the fold that finds them**, with the measurement.
-5. **Translations are the advisor's own hands**, always before the tag, always
-   `--cache-clear`, always swept afterward.
-6. **Right-size verification** — but run the **full suite** before a ruling that accepts an arc.
-7. **A gate that pins the pre-change state is a gift, not an obstacle.** v0.4.0 moved five of
-   them (T59, T62, T32, T41, the census ANDON) and **two had left instructions in their own
-   docstrings** for whoever made the change. Read the docstring before editing the assertion.
-8. ⚠ **The commit that creates experiment E(n) bumps `laws.paid_for_by` in
-   `docs/index/conventions.json` in the same commit.** The arc span is a **declared field**
-   re-exported as `PAID_RE` since the record-index extraction — it greps nowhere in
-   `tools/facet_index.py` — and T24's span leg fires on any tree where the record outruns
-   the declaration. E34's dispatch commit missed the bump and the suite was red for the
-   whole arc (found by E34's executor, repaired at the E34 ruling).
-
-## ⚠ IF TWO SEATS RUN IN PARALLEL
-
-* **File-scoped `git add`, always — and diff each file before staging it.**
-* `git fetch && git merge --ff-only origin/main`, **not** `pull --rebase`.
-* ⚠ **Derived artifacts are why a fold goes narrow.** The census is machine-emitted from
-  whatever is on disk, so with a sibling's uncommitted work in the tree it encodes *their*
-  work into *your* commit. Measured at v0.4.0: a re-emit moved axis E only (test_files 57 → 61,
-  all from a sibling's uncommitted tests) and axis D not at all — so the census was reverted
-  rather than committed. **Check which axis moved before you commit one.**
-* **Rule on a pristine clone** when two seats' work is in the tree. `git clone --no-hardlinks`
-  to scratch and run the gates there; the local red may be the other seat.
-* **Allocate T-numbers in the dispatch.** The namespace has no allocator.
-
----
+1. **The sheet-walk before any number** — and it surfaces EVERY visible class, named, even
+   out-of-scope ones (the speck lesson).
+2. **Measure before ruling**; resolve external citations at ruling time — including the
+   ones your own dispatches created.
+3. **Verify and commit never share a call.**
+4. **Own the seat's misses in the fold that finds them, with the measurement.**
+5. **Translations are the advisor's own hands** — the comfy-preflight handback is yours.
+6. **Confirm product-defining frames contrastively before dispatching**; deliver the paste
+   block in the same message as the go.
+7. **A fired gate is reported with its evidence, never tuned past** — four executor
+   ANDONs and two advisor-seat gates fired this session; every one is in the record.
 
 ## The advisor's record, this seat — for calibration
 
-**The errors clustered in one place: I was too quick to declare something impossible, and
-twice I did it with the disproving evidence already on my screen.**
+Six misses, each caught by an executor, an instrument, or the Director — none by this
+seat's own reading: **the speck flag-miss** at E34's acceptance (a visible class walked
+past unnamed); **the unresolved citation fold** (law above); **the guards`;`commit chain
+with a capped read** (second instance of a recorded form); **the clustered sample** ("5 of
+6 locations" was 2, five points in one crevice); **the `--max-frac-beyond` unit
+transcription** (would have disarmed a gate; the executor read the source first); **"the
+six named landmarks"** (conflated six views with five landmarks). What worked, keep doing
+it: attribution before consultation (one flat-light check split texture from shading);
+three-fetch citation verification once triggered; contrastive frames at every product
+gate; the deferred push under two seats; swarm grounding with **named absences** — the
+falsified finding was findable precisely because the grounding named its sources.
 
-1. ⚑ **The nightly-build miss** (trap 2 above) — the worst of them, because the Director had to
-   raise it himself and had raised it before.
-2. ⚑ **Ruling 7's own figure was transcribed from a failure list** — "nine pins across five
-   files" against a true sixteen across six — *inside the ruling that forbids exactly that.*
-3. **I added two `__init__.py` files that were unnecessary and fired the census's
-   duplicate-basename ANDON**, then nearly banked a false "setuptools synthesizes them" result
-   from a stale build cache. Caught because the synthesized files were the exact byte size of
-   my own docstrings.
-4. **I put CRLF into 13 tracked files** with `write_text()` (trap 3).
-5. **I read PyPI three ways and narrated each swing** instead of going to the simple index.
-6. **My E29 dispatch asserted there was no segmentation stage in front of the reconstructor.**
-   There is one, inside it. That premise seeded a prediction that then missed.
+## The executors — all three exceptional
 
-**What worked, keep doing it**: reading source instead of accepting a report — it corrected
-three claims that reached beyond their arcs · demonstrating rather than asserting (a clean venv
-and a verb settled every packaging question that argument could not) · owning misses in the
-fold that found them · **stopping at a fired ANDON and looking for the cheaper path**, which is
-how the `__init__.py` route got replaced by no route at all.
-
-## The executors
-
-**All four were exceptional.** E29's seat **measured a noise floor nobody asked for**, because
-it noticed two runs of one input differed and judged the arm unreadable until it knew why —
-that became the arc's foundation and a standing law. It also **refused to convert a declining
-precondition into a solidity claim**, which would have been more impressive and wrong. E31's
-seat **built six wheels and six clean venvs** where the dispatch asked for one, and **found the
-frozen binary's `sys.executable` defect by running a measurement rather than a banner.**
-comfy-preflight's seat **halted correctly at repo-first** and produced its whole pre-build
-measurement set anyway. **When an executor declines to do something, that is signal.**
+E34's seat **proved an unrecorded invocation by replaying it to byte-identity** and
+removed a render confound rather than reporting a false material finding. E35's seat
+turned the register question into a chroma measurement, **corrected the arc's own founding
+premise against this seat's evidence**, and withdrew its own prediction rather than
+re-derive it. comfy-preflight's seat **ran the dispatch's own verification discipline
+against the dispatch's own citation and reported the falsification at full weight** —
+then built the declared absence instead of inventing the band. When an executor declines
+to do something, that is signal.
 
 ## The Director
 
-He gates outcomes and his eye leads the instruments. This seat's best work came from his
-questions: *"so we only got 4 of the measurement tools to work?"* surfaced that I had
-overstated a limit, and *"is there a nightly build for Python 3.13?"* corrected a ruling before
-it shipped. **When he asks a question about a claim, re-measure the claim — do not explain
-it.** His corrections are short and always about something real.
-
----
+His zoom found the speck class one day after an acceptance — **when he asks about a
+claim, re-measure the claim; when he shows you a crop, the walk was insufficient.** His
+mandate this session turned a defect into capability: the census instrument, the
+selection scorer, the corrector, and preflight's check 8 all exist because he said *"see
+that this problem becomes the catalyst for change."* Gates on outcomes; his eye leads
+the instruments.
 
 ## Environment
 
-⚠ **CHECK THE VRAM WATCHDOG AT SESSION START** — and verify the heartbeat **advancing**, not
-the starter's exit code.
+⚠ **CHECK THE VRAM WATCHDOG AT SESSION START** — verify the heartbeat **advancing**, not
+the starter's exit code. It **died hard twice this week** (13h stale once); if it recurs,
+that is its own finding for the Director.
 
 ```
 pwsh -NoProfile -File E:\AI\training\_watchdog_start.ps1
-```
-
-```
 python    E:\AI-Models\trellis2-env\Scripts\python.exe      <- ABSOLUTE, always
 blender   "C:\Program Files\Blender Foundation\Blender 5.2\blender.exe"   -b -P only
-drives    C: (system) · D: (external AI-BACKUP, ~3,472 GB free) · E: (AI workspace)
 ```
 
-- **Bare `python` lacks `open3d` AND `mcp`.** T18 refuses the wrong interpreter in one line.
-- ⚠ **`trellis2-env`'s `open3d` is `0.19.0+241aaee`, a cp313 DEV wheel** from Open3D's
-  `main-devel` channel — the channel has since moved to `+63e30be`. Four served instruments
-  need it, and the identity envelope does not record it.
-- ⚠ **`trellis2-env`'s setuptools predates PEP 639**, so `pip wheel . --no-build-isolation`
-  fails on `project.license`. Build with isolation (the default).
-- **The reconstructor needs `ATTN_BACKEND=sdpa`** — measured, one variable, no install.
-  `SPARSE_ATTN_BACKEND` is **inert on this route** but stays in the recorded string.
-- **Generation is cloud-only; the local ceiling is never raised.** Blender through PowerShell,
-  always `-b -P`.
-- ⚠ **MANIFEST THE EIGHT FACET SUBTREES, NOT THE TRAINING ROOT** — `facet_next`,
-  `facet_E01/E02/E05/E06/E07/E08`, `saltroad_bake_fix` = **7,312 files /
-  17,072,807,610 bytes**. The root holds 131,970 ([E28 Ruling 22](experiments/E28-ruling.md)).
-  **Since E33/E34 closed, two more trees are protected by their own manifests**: `facet_E33`
-  (117 files, `E33_manifest.json` — ⚠ it records itself at a stale byte size, a known
-  self-reference) and `facet_E34` (84 files, `E34_manifest.json`, self-excluded by
-  construction). Read-only to future arcs, gated at open and close.
-- **The recorded trees are not in git and have no revert.**
-- **Scripts create their own output directories.** `argparse` eats leading minus signs
-  (`--views=-30,0,30`). **ASCII prints.**
-- CI is paths-gated over `tools/ tests/ pytest.ini .mcp.json .github/workflows/ pyproject.toml
-  package.json bin/` — a docs-only commit correctly triggers **no** run.
-- ⚠ **A `grep -c $'\r'` CRLF alarm on the translations is a FALSE POSITIVE.** Measure line
-  endings in Python.
-- ⚠ **`npx @mcptoolshop/facet` run from INSIDE the repo short-circuits to the local package**
-  and looks fine. Test that path from outside a checkout.
+- Bare `python` lacks `open3d` AND `mcp`. Generation is cloud-only; the local ceiling is
+  never raised. Blender through PowerShell. Scripts create their own output directories.
+  `argparse` eats leading minus signs. ASCII prints.
+- Derived-artifact order: **census first, then the index pair via `record_build` in a
+  terminal commit** (E32 Rulings 13/15). Scratch-gate 19/19 before the pair, every time.
+- ⚠ E33's manifest self-references at a stale byte size (known); E34's is self-excluded.
 
 ## Do not
 
-End a session the Director has not ended · present any surface you have not walked at full
-size · **do work he did not ask for** · **verify his present-tense statements about his own
-rig** · `git add -A` in a shared copy · run the suite or the mount on bare `python` · leave CI
-red · run translations from an executor session, or after a tag · fire a tag, release or
-metadata change before his word · touch the closed rulings, accepted assets, export trees or
-the seeded set except to cite · hand-edit `facet.db` or its certificate · split the DB/cert
-pair · convert `superseded/`'s one remaining `assert` · rename `e13_anchor_check.py`
-(E27 Ruling 4) · **treat E14 Ruling 35's per-profile anchor CLAUSE as released — only its
-four-tools precondition was** · decide an executor's findings in the executor's seat.
+End a session the Director has not ended · present any surface you have not walked at
+full size · do work he did not ask for · `git add -A` in a shared copy · push with a
+sibling's local commits without the deferral reasoning · run the suite or the mount on
+bare `python` · leave CI red · run translations from an executor seat, or after a tag ·
+fire a tag, release or metadata change before his word · touch the closed rulings,
+accepted assets, export trees or the seeded set except to cite · hand-edit `facet.db` or
+its certificate · split the DB/cert pair · decide an executor's findings in the
+executor's seat · quote a research agent's citation as fact before resolving it live.
