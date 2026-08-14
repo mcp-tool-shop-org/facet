@@ -288,6 +288,10 @@ frequency-separation despeckle on the twins is the deterministic fallback — it
 nodes verified against the live catalog at the facet seat, with one interface
 imprecision found and recorded in the answer's calibration section.
 
-**Disposition: the repair arc is E35, dispatch pending the Director's frame
-confirmation.** No recipe change ships without his eye re-gating the register — R3 is
-his ruling — and the arc's dispatch commit bumps `laws.paid_for_by` to `E3[0-5]`.
+**Disposition: E35 DISPATCHED, 2026-08-14**, at the Director's mandate (comprehensive
+fix; the despeckler built out as a route capability) — spec at
+[E35-clean-twins-kickoff.md](experiments/E35-clean-twins-kickoff.md), five-agent
+research grounding at
+[E35-speck-research-grounding.md](research/E35-speck-research-grounding.md). No recipe
+change ships without his eye re-gating the register (Gate R — R3 is his ruling); the
+span bump to `E3[0-5]` rides the dispatch commit.

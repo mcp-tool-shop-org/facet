@@ -18,10 +18,11 @@ pushed, CI and Pages green, index coherent, no seat running.
 > closed, the fifth accepted asset. **The live top defect is now the DARK-SPECK CLASS on
 > the same asset**: generator-painted dark flecks baked into every twin, ruled
 > unacceptable at the Director's zoom post-acceptance. Measured attribution + the Comfy
-> consult: [known-defects.md](known-defects.md), final entry. The repair arc is **E35**
-> (dispatch pending the Director's frame confirmation) — ⚠ its dispatch commit bumps
-> `laws.paid_for_by` to `E3[0-5]` (WHAT WILL COST YOU #8). **This outranks everything
-> below until addressed or re-ruled.**
+> consult: [known-defects.md](known-defects.md), final entry. The repair arc is **E35 —
+> DISPATCHED 2026-08-14**, study-swarm grounded
+> ([research](research/E35-speck-research-grounding.md) · [spec](experiments/E35-clean-twins-kickoff.md));
+> the span bump to `E3[0-5]` rode the dispatch commit (WHAT WILL COST YOU #8, applied at
+> birth this time). **This outranks everything below until addressed or re-ruled.**
 
 ---
 
@@ -103,7 +104,7 @@ gates his polish lanes:
 ### The record index
 
 Mount SERVING, certificate PASSED on five legs, byte-identity determinism.
-The record holds 34 experiments. No staleness. **Every other count lives in the ritual's own
+The record holds 35 experiments. No staleness. **Every other count lives in the ritual's own
 output and in `record_health` — read them there, not here.** *(This line once quoted corpus,
 ruling and law totals; they went stale within a day, twice, because nothing sweeps this file
 for them and every fold moves them. **The experiment count stays because T34's fourth leg
