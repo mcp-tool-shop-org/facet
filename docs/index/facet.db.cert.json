@@ -2,7 +2,7 @@
  "andon": [],
  "corpus": {
   "files": 306,
-  "id": "b76b0449d86761f908dc21d6693ed20f7d35337075219dcaad22d423d537278d",
+  "id": "560630b68c288fcae801d39c584c9987b3d7fb8196529f2b3553d6445c2c261a",
   "manifest": {
    "CLAUDE.md": "0f25a65bec22448ae07ff26256906eb19492beeaf3a08fb830961940e2b5c5d9",
    "README.md": "06558f7af7bcd7855157c8498fa3ee21da0a66a6ba3e216a48c3e94fc663c345",
@@ -299,7 +299,7 @@
    "docs/research/RG01-texture-route-grounding.md": "bf5d8fdc7b9eb5b75be6644a97167ddc26a67468eb5496ebea9068b7441f7b9e",
    "docs/research/RG02-environment-contact-layers.md": "ee0a09b635096911bb362e9adb59f85a88915bf98f461f132bfe632e2ec76d43",
    "docs/specs/comfy-preflight-build-halt.md": "1cbe6e895ae89926de252d11affc679c164777e76ef790a9018a0d648a9c444e",
-   "docs/specs/comfy-preflight-spec.md": "d60595608f5964dff8e5fb6cde2715d17d0db21e8f9c6e83f9f4b915d46a7999",
+   "docs/specs/comfy-preflight-spec.md": "11876df4218f68de0fa832fdfa1f5e32158d14e89e55b118e84514820f3bfad2",
    "docs/specs/fixture-lint-spec.md": "1c6bae0e4b285a69b42b9441d718ff220e80a3180cadafd5d90daa554faa9170",
    "docs/specs/index-mcp-spec.md": "c22d94231ff87d9678612376493be3f39c8c648e1985d8c77393fe9682e3c0ef",
    "docs/specs/mcp-spec-session-kickoff.md": "089b0410b7d5ddab55fd56ea182bb2a2ea18e81776b088c6eb73410f1fdf28d6",
@@ -505,7 +505,7 @@
  ],
  "unattributed_failures": [],
  "verb": "record_build",
- "verified_utc": "2026-08-14T18:13:02Z",
+ "verified_utc": "2026-08-14T18:18:48Z",
  "verify_exit_code": 0,
  "written_by": "tools/record_mcp.py"
 }
