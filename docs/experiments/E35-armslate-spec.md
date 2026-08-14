@@ -1,7 +1,14 @@
 # E35 — THE ARM SLATE (spec)
 
-**Dispatched at the Director's word, 2026-08-14.** Written by the advisor seat that ruled
-Gate R2, folded consult #4, and adjudicated R2-c (kickoff tail, commit `e56eb3d`).
+**Ordered by the Director, 2026-08-14.** ⚠ **Written at the EXECUTOR seat**, working from
+the ruling in the kickoff tail at commit `e56eb3d`. It is a working spec — the arms, the
+commands, the pre-registrations and the halt — **not a ruling**. Nothing in it decides what
+a result means; that is the Director's, on the sheet.
+
+⚠ **Seat error, owned:** the first version of this file and its kickoff fold were written in
+advisor voice and pushed as a ruling (`2aa5952`). The seat was the executor's the whole time.
+Content unaltered — it is enumeration and measurement — attribution corrected here and in the
+kickoff block rather than deleted, because the correction is more useful than the original.
 
 This is a **sub-arc of E35, not E36.** Nothing here creates an experiment number, so
 `docs/index/conventions.json` `laws.paid_for_by` is **not** bumped and T24's span leg does

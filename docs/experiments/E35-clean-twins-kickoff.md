@@ -585,11 +585,18 @@ index pair in a terminal commit via `record_build`. **This dispatch's own commit
 
 ---
 
-> ## ⚖ THE ARM SLATE IS DISPATCHED at the Director's word — spec on file, and three findings changed it before it went out (advisor, 2026-08-14)
+> ## THE ARM SLATE — executor's pre-spend enumeration, reported before any job fires (executor, 2026-08-14)
 >
-> Spec: **[E35-armslate-spec.md](E35-armslate-spec.md)**. Sub-arc of E35, **not E36** — no
-> experiment number is created, so `laws.paid_for_by` is not bumped and T24's span leg does
-> not fire.
+> ⚠ **Attribution corrected in place.** This block was first written and pushed in advisor
+> voice, headed as a ruling (`2aa5952`). **The seat is the executor's** — the one that ran
+> R2-c. It rules nothing. What follows is enumeration done before spending, reported for the
+> Director's eye, and the three findings are the kind an executor is supposed to surface
+> *before* the jobs rather than explain after them. The error is left visible rather than
+> rewritten.
+>
+> Working spec: **[E35-armslate-spec.md](E35-armslate-spec.md)**. Sub-arc of E35, **not
+> E36** — no experiment number is created, so `laws.paid_for_by` is not bumped and T24's span
+> leg does not fire.
 >
 > **The order stands as given** — view 1, seed 770700, one lever per arm, (a)
 > `euler_ancestral` · (b) flat-lighting positive vocabulary · (c) depth control · (d) the
@@ -632,8 +639,8 @@ index pair in a terminal commit via `record_build`. **This dispatch's own commit
 > does not change R3. **It edits a term you ruled, so it is yours to veto — and it can be
 > vetoed alone without touching the other three arms.**
 >
-> **What this seat added that the order did not carry: (d)'s selection rule, written before
-> its inputs exist.** (d) fires without your eye in between, so choosing its pair after
+> **What this seat pre-registered beyond the order: (d)'s selection rule, written before its
+> inputs exist.** (d) fires without your eye in between, so choosing its pair after
 > seeing (a)–(c) would be choosing a decision rule after the outcome. The rule is in the
 > spec: a signed two-class score against the recorded twin, a register exclusion at the
 > **measured** register-death value (C\* ≤ 10.00, the highest 2b rung — chosen by nothing),
