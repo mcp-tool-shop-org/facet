@@ -32,7 +32,12 @@ Director's eye** — by candidate selection at each generation stage?
 3. Mesh with no pit shading — mesh candidates checked under flat light before
    texturing (a dark mark that persists under flat light is texture; one that
    vanishes is geometry; on an untextured solid render, a lit-only dark mark is
-   geometry).
+   geometry). *(⚠ Scoped 2026-08-15, E37 Rulings 1–2: the screen this clause
+   commissioned measures shading RELIEF — in round 1, substantially the source
+   plate's own swirl relief — and is not demonstrated to see the rejected
+   pure-black dot class, whose mechanism task 0a left UNMEASURED and which
+   remains open with the UV-gap candidate live. The screen ranks candidates; it
+   is not a verdict on that class.)*
 4. **RGBA-true turnarounds — real alpha, not flat-255** (the S03 lesson; E36 task 0
    measured this route's turn renders at alpha 255 across the whole frame, so this
    is new deliverable work, not a checkbox: alpha composited from the raycast
@@ -106,6 +111,33 @@ the record; the next round is his word.
 **Mechanical vs content** — as E36 defined: validation failures, degenerate frames
 and corruption signatures are MECHANICAL, one repeat per stage; census numbers,
 register, and identity are CONTENT, never repeated.
+
+---
+
+> ## ⚖ AMENDMENT 1 — round 2 and the wood register (advisor, 2026-08-15, at the Director's word: "round 2, wood")
+>
+> The source plate carries generator fingerprint-swirls, measured at the
+> Director's zoom and confirmed at the advisor's read of the plate itself; the
+> founding law bakes them into every round-1 mesh as relief. Full grounds and
+> ratifications: [E37-ruling.md](E37-ruling.md) Rulings 1–2. Operationally:
+>
+> - **Stage A gains round 2, zero cloud.** EDIT the picked plate locally with
+>   Qwen-Image-Edit-2511 (premise 7): smooth, clean, mark-free clay — same man,
+>   same pose, same framing, plain seamless background kept (no alpha, so `rembg`
+>   runs). Up to three edit attempts, hashed and sidecarred, all shown beside the
+>   original. **HALT at the Director's identity eye on the plate before any
+>   reconstruction.** Then the SAME six pre-registered seeds on the approved
+>   plate — the set unchanged so round 1 is the measured baseline — same screens,
+>   Stage-A sheet v2, his pick.
+> - **Requirement 3's screen is scoped** per the annotation above: it ranks
+>   candidates by relief; the pure-black class's mechanism is open.
+> - **Stage B's register is WOOD, not terracotta** — the E33 note became the
+>   change order at his word. The wood prompt is authored at Stage B's dispatch
+>   and his eye gates the register at the Stage-B sheet, the Gate-R form. The r3L
+>   question is MOOT as posed (its lighting evidence stays recorded). Grain is
+>   paint, never geometry.
+> - **The boundary:** round 2 fixes relief. The painted-speck defence remains
+>   Stage B's census selection, unchanged.
 
 ## Blind bands
 

@@ -13,7 +13,12 @@ Amendment 2 (`9cf4ce7`).
 The directive's ground is the record's own: both remaining defect classes on the
 performer are baked in at generation time — the dark specks are generator-painted
 (E35 measured them to their floor; no lever removes them while keeping the man) and
-the pure-black dots are mesh-pit shading, in no texel of atlas or GLB (E35 task 0a).
+the pure-black dots are ~~mesh-pit shading~~ in no texel of atlas or GLB (E35 task
+0a). *(⚠ Corrected in place, 2026-08-15, E37 Ruling 2.4: "mesh-pit shading"
+over-stated its citation — task 0a's own words are "Mechanism: UNMEASURED," with a
+UV-gap candidate and clay bright at all six dot locations. E37's control screen
+then measured 0 of 6 recorded dots co-located with any lit-only geometry mark. The
+dots are in no texel — that part stands; their mechanism is open, not geometry.)*
 E36's two arms acted on the texture route of the old mesh; a remake supersedes both.
 The close is clean by construction: **no cloud job ever fired, the blind bands were
 never sealed, and nothing about the arms was seen or set** — there is no partial
