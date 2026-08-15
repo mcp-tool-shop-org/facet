@@ -17,8 +17,8 @@
     "py_files_total": 112
   },
   "provenance": {
-    "corpus_files": 314,
-    "corpus_files_before_self_exclusion": 324,
+    "corpus_files": 315,
+    "corpus_files_before_self_exclusion": 325,
     "probe_interpreter": "E:\\AI-Models\\trellis2-env\\Scripts\\python.exe",
     "probe_interpreter_version": "3.13.13",
     "probe_skipped": false,
@@ -3842,8 +3842,8 @@
       ],
       "b1_literals": [],
       "b2_literals": [],
-      "cited_count": 8,
-      "cited_count_raw": 8,
+      "cited_count": 9,
+      "cited_count_raw": 9,
       "cited_in": [
         "docs/advisor-kickoff.md",
         "docs/experiments/E22-gates-report.md",
@@ -3852,7 +3852,8 @@
         "docs/experiments/E35-close.md",
         "docs/experiments/E35-ruling.md",
         "docs/experiments/E36-open-manifest-halt.md",
-        "docs/experiments/README.md"
+        "docs/experiments/README.md",
+        "docs/specs/tree-manifest-guard-spec.md"
       ],
       "dir": "tools/verify",
       "docstring_line1": "Protection manifests for the read-only trees: verify one, or emit a new one.",

@@ -628,3 +628,19 @@ previously used one is about as good a first consumer as this tool could be give
 > If the E35 cn ladder later fires (authorized and held at the Director's word), its
 > measurements become the **second** candidate through this same gate — one ruling per
 > entry, always.
+
+---
+
+> ## ⚑ POSTSCRIPT to Amendment 5 — the implementation, verified at the successor seat (advisor, 2026-08-15)
+>
+> Measured against the comfy-preflight tree, not recited: **the first entry is
+> implemented** — landed `dd50b79` (2026-08-14 17:52), one entry in the envelope
+> tuple, the stays-empty test deleted as the design demanded and a len==1 pin in its
+> place. **The second entry (E35-ruling Ruling 11, the 2509 quantisation character)
+> is ABSENT from that repo** — zero mentions of 2509 anywhere in its tree. The gap is
+> sequencing, not a miss: Ruling 11 ruled the entry in *after* the implementation
+> commit had already run, so the "same implementation dispatch" it was to ride had
+> executed without it. Disposition: a follow-up executor block was issued 2026-08-15
+> from the advisor seat — it points at Ruling 11 for the entry's content and at this
+> Amendment for the form, moves the len pin to 2 deliberately, and fires at the
+> Director's word.
