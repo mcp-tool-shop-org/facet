@@ -887,3 +887,6 @@ KSampler + ColorMatchV2(mkl, ref = the original set-A twin) before save;
 composite through the feathered mask locally; the delta-E proof; before/
 after crops and the repaired-set sheet to the advisor's walk, then the
 Director's eye. The lift composites at his chosen rung in the same pass.
+
+**Addendum, same day -- the rung: the Director's word on the ladder sheet is
++12 L*.** The v0 lift composites at the +12 rung in the firing pass.
