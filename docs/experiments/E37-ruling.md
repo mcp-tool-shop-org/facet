@@ -239,10 +239,18 @@ the sheet costs nothing.
 
 ## Ruling 7 — The set passes the Director's eye; Stage C fires
 
-**The Director's word at the sheet, 2026-08-15: "v0 is best."** The set is
+**⚠ Corrected in place, same day: this ruling was written on a partial word
+and his fuller word supersedes it — see Ruling 8.** "v0 is best" was the
+first line of his read, not the whole of it; the advisor folded it as an
+acceptance before he had finished. His complete ruling names three view
+defects and the set does NOT proceed unamended. The correction is the
+record's own law — his eye leads the instruments — landing on the advisor's
+haste this time.
+
+**The Director's word at the sheet, 2026-08-15: "v0 is best."** ~~The set is
 accepted for projection with v0 named the strongest view; the three
 executor-flagged rows (v6's mark concentration and brow weight, v1's partial
-face, v2's warmth) drew no rejection. The route's own mechanics align with his
+face, v2's warmth) drew no rejection.~~ The route's own mechanics align with his
 read: projection is facing-weighted, so v0 dominates the face in the finished
 texture by construction — the strongest view paints the part identity lives
 in, and the oblique rows contribute only where they win the facing
@@ -251,3 +259,24 @@ projection on the selected set, surface-aware fill, the RGBA-true turnarounds
 (requirement 4, named new work), final censuses on atlas and renders,
 provenance mix, sheets beside the source plate — all local, zero cloud. The
 next halt is Stage D: his acceptance at his zoom. Spend stands at 27 of 40.
+
+## Ruling 8 — His full word: three views fail at his eye; per-view re-roll authorized, guard instrumented
+
+**The Director's complete ruling on the sheet, 2026-08-15: v1 is missing a
+nose · v6 has a line across the face · v3 has a dent in the lower back.** The
+set proceeds only after those three views are replaced — each defect sits in
+the exact band its view wins under facing-weighted projection (the nose's
+side, that cheek band, the lower back), so left alone all three bake into the
+texture.
+
+**The remedy: per-view re-roll of exactly v1, v6, v3 at fresh seeds — 3 jobs,
+spend 27 → 30 of 40 — authorized at his word.** Per-view seed mixing was
+parked by Amendment 2 on the E35 pale-wash precedent and returns here by the
+only door it had: his word, for these three views only. The wash class that
+killed mixing before is now instrumented rather than trusted away: **each
+re-roll's register C\*, chroma signature, dark census and reg-IoU are measured
+beside the five kept views before anything projects**, and a tonal outlier is
+reported as a finding, never smoothed. One re-roll per view — the E08 law —
+and a second failure on any view is a result that returns to the Director,
+not a third roll. The re-rolled rows go up beside v0 for his eye; his word
+then gates Stage C exactly as Ruling 7 intended.
