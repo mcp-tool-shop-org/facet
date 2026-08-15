@@ -17,8 +17,8 @@
     "py_files_total": 112
   },
   "provenance": {
-    "corpus_files": 326,
-    "corpus_files_before_self_exclusion": 336,
+    "corpus_files": 327,
+    "corpus_files_before_self_exclusion": 337,
     "probe_interpreter": "E:\\AI-Models\\trellis2-env\\Scripts\\python.exe",
     "probe_interpreter_version": "3.13.13",
     "probe_skipped": false,
@@ -3452,10 +3452,11 @@
       "anchored_in_basename_only": [],
       "b1_literals": [],
       "b2_literals": [],
-      "cited_count": 2,
-      "cited_count_raw": 3,
+      "cited_count": 3,
+      "cited_count_raw": 4,
       "cited_in": [
         "docs/experiments/E37-stageB-selection-sheet.md",
+        "docs/experiments/E37-stageC-prep-halt.md",
         "docs/tools.md"
       ],
       "dir": "tools/verify",

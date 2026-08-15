@@ -322,7 +322,12 @@ cloud; spend stands at 30 of 40. The next halt is Stage D at his zoom.
 **The prep-gap finding is RATIFIED and the kickoff's "E34-proven form" clause
 is corrected by it**: E34 reused E33's prep because it textured the same mesh;
 E37's mesh is new, so nothing exists to point at, and Stage C's step 0 is the
-full prep chain — `cull_unseen` → `bake_hero_prep` — before any projection.
+full prep chain — ~~`cull_unseen` → `bake_hero_prep`~~ — before any projection.
+*(⚠ Corrected in place, 2026-08-15, Ruling 11: this chain text omitted
+`smart_decimate`, which the recorded route runs FIRST — E33's Gate W, the weld
+inside it. The omission fed `cull_unseen` a raw TRELLIS mesh and
+`bake_hero_prep`'s visible-mask ANDON fired on a 17-face loader disagreement.
+The advisor's omission; the gate's catch.)*
 The staged `prep_uv.glb` copy is a filename-resolution artifact (Ruling 2 §6),
 not a prep, and the executor caught the premise before spending Blender runs
 on it.
@@ -339,3 +344,37 @@ which excludes the shoulders by construction; ears are head and stay in.**
 The projected crop is visible in the Stage-C sheets, where a wrong box shows
 and everything upstream of acceptance is re-runnable. CI `31900743786`
 green is recorded — the arc's first push validated end to end.
+
+## Ruling 11 — The prep ANDON's catch is the advisor's omission; the chain corrects; the target is the recorded 300,000
+
+**The halt is RATIFIED and the fired gate is commended twice** — once for
+catching a wrong-order chain before any atlas existed, and once because its
+failure mode is structurally invisible on Blender-authored meshes, so no seat
+before this one could have surfaced it: E33 and E34 always culled a
+post-decimate GLB. **The omission was Ruling 10's own step-0 text, corrected
+in place above.** The 17-face trimesh-vs-Blender loader disagreement on a raw
+TRELLIS export (993,812 vs 993,795, 0.00171%, zero degenerate triangles — a
+pure loader fact, previously unmeasured) enters the record as a route fact.
+
+**The corrected chain, in order:**
+1. `smart_decimate --target 300000 --head-crop 432.8,47.5,591.5,196.3
+   --crop-res 1024` — **the target is the RECORDED 300,000**, an input-side
+   call with recorded precedent decided at this seat: E33 chose it for this
+   same subject class, silhouettes measured stable at it, and the accepted
+   E34 asset is built on it; armature consumes E37's performer the way it
+   consumed E34's. The default 120,000 has no precedent on this class.
+2. **The crop's flagged assumption is a required check, not a note**: measure
+   `maxabs` on the decimated GLB against the raw 0.500944555 — unchanged, the
+   crop stands; moved, re-derive through the same instrument (cheap, the
+   four-corner round-trip re-run).
+3. `cull_unseen` on the decimated GLB — the recorded post-decimate form.
+   The raw-mesh `seen_faces.npy` is VOID as an operand, standing only as a
+   record of the raw mesh, exactly as the executor filed it.
+4. `bake_hero_prep` — the fired ANDON should now find agreeing loaders on a
+   Blender-authored file; if the 17-face class fires again post-decimate,
+   that is a NEW fact and a halt, not a retry.
+
+The head-box derivation is vindicated in passing: the derived crop runs
+158.7 × 148.8 px against E33's 150 × 138 — inheriting the rect would have
+been 6–8% wrong per dimension, the exact error Ruling 10 was written against.
+Spend stands at 30 of 40; everything above is local.
