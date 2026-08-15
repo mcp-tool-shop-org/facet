@@ -203,3 +203,53 @@ cheaper to fix now than after seven jobs and a composite.
 
 **Priced:** the rects grow by the measured overshoot per region and v1 gains its polygon — one
 more local pass, zero cloud, one re-walk. Spend stays **51 of 80**.
+
+---
+
+## 8. The plain-wood growth FAILED as implemented, and I overwrote receipts doing it
+
+[Ruling 22](E37-ruling.md) clause 1 asks the five clipping masks to grow until every boundary
+lands on plain wood. **My implementation did not converge and produced unusable masks.**
+
+| mask | core before | core after | grew | boundary on "plain wood" |
+|---|---|---|---|---|
+| v0lift | 7,070 | **18,158** | 28 px (cap) | 66.0% |
+| v3ear | 858 | **5,674** | 28 px (cap) | 95.0% |
+| v4earL / earR | 828 / 828 | **5,644 / 5,644** | 28 px (cap) | 94.9% / 93.6% |
+| v6nose | 800 | **4,997** | 28 px (cap) | 67.1% |
+| v7band | 4,421 | **13,416** | 28 px (cap) | 71.0% |
+
+Every one hit the 28-px cap without ever reaching a clean boundary. A 26 × 33 px ear mask
+became a 5,674 px blob covering most of the skull — **6.6×** its target.
+
+**The defect is mine and it is in the predicate, not the criterion.** I encoded *plain wood* as
+`figure ∧ L > median−20 ∧ gradient < 88th percentile`. The gradient term is wrong: this subject
+is a **curved wooden surface under studio light**, so shading gradient is everywhere, and an
+88th-percentile cut marks ordinary curvature as a feature edge. The boundary can then never be
+clean, so the loop dilates to the cap — and each dilation sweeps the boundary across *new*
+drawn lines, which is why growth makes the score worse rather than better on v0, v6 and v7.
+
+**I have not retuned the percentile.** Tuning a constant while looking at the result it governs
+is the move that is always wrong here, and the fix belongs to a ruling, not to this seat. What
+I can state: the criterion *"every boundary lands on plain wood"* is sound and testable; the
+term that must go is the global gradient percentile. A predicate built from **dark-paint
+distance alone** — boundary avoids drawn paint and avoids the defect region — needs no
+shading-sensitive term and is what I would propose.
+
+### 8a. ⚠ I overwrote the mask receipts, and the recipe is what saved them
+
+The growth pass wrote to the **same paths** as the ratified masks, destroying six of the eight
+PNGs before I read the result. That broke the receipt discipline: a receipt that a later pass
+can silently overwrite is not a receipt.
+
+**Nothing was lost, and the reason is worth recording.** `masks.json` carries every rect, the
+feather radius, the v1 figure rule and the held-exclusion rule — a complete recipe — so all
+eight regenerate, and **8/8 reproduce their recorded `core_px` exactly** (7,070 · 10,867 · 858
+· 828 · 828 · 1,000 · 800 · 4,421). The masks now on disk are the ratified ones.
+
+*A recipe that reproduces its output is what made an overwrite survivable.* The repair for the
+overwrite itself — versioned mask paths, or a write-guard on an existing receipt — is named
+here and is not taken unbidden.
+
+**State: spend 51 of 80, unmoved. No job fired. The eight ratified masks stand; clause 1 and
+clause 2 both remain open.**
