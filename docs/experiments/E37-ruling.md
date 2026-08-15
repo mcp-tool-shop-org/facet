@@ -414,3 +414,42 @@ measurements in the same pass. **Readings pre-registered before it runs:**
 — `tail -45` ate view 0's line, the named failure fired on its own operator,
 and the re-capture changed nothing and was complete. Spend stands at 30 of
 40; the diagnostic is local and free.
+
+## Ruling 13 — Both readings land; the contamination sorts by twin, not camera; the menu goes to the Director
+
+**Reading 1: the v3 re-roll is the cause at view 3** — the replaced twin
+clears at 0.8394 where the re-roll measures 0.7547 under byte-identical
+everything; 0.0847 attributable to the twin alone. Clause 3 is reached: a
+third roll on v3 happens only at the Director's word.
+
+**Reading 3: view 7 fires on its own** — a kept view from the approved set,
+0.7989 against the 0.80 floor, a 0.0011 miss. The floor's own calibration
+text places every adjudicated view at ≥ 0.8329 and every failure at ≤ 0.578;
+**0.7989 is the first value in neither band**, and it enters the floor's
+evidence base whatever is decided. The executor drew nothing from it, which
+was right; the advisor draws this much: a fired floor is not overridden from
+this seat, and retuning it while looking at the miss is the forbidden move by
+name.
+
+**The route fact the complete table establishes: registration contamination
+sorts by TWIN, not by camera.** The two successful re-rolls are the cleanest
+rows at their angles (v6 at 433 px outside-silhouette against the other
+profile's 6,331; v1 at 4,790 against comparable views' 10,451–11,307), and
+every large-contamination row is a kept seed-770700 twin — the seed's paint
+carries a cast-shadow habit the projection key sees and Stage B's key did
+not. The v3 re-roll is the sole exception and was already the arc's triple
+outlier.
+
+**The menu, with the recommendation stated:**
+
+1. **RECOMMENDED — re-roll v3 (third roll, his word as clause 3 requires) and
+   v7 (first roll) at fresh seeds: 2 jobs, spend 30 → 32 of 40.** The
+   measured pattern favors it — fresh rolls register cleaner than the kept
+   set at every compared angle. One roll each; the wash guard rides both;
+   the two new rows go beside v0 at his eye before projection.
+2. Use the old v3 (0.8394, clears — the dent returns) and re-roll v7 alone:
+   1 job.
+3. Project without the failing view(s): free, and the fill takes their bands
+   — the patch-class risk E34 exists to prevent, named rather than hidden.
+4. Accept 0.7989 at his word: available to him alone; recommended against
+   from this seat, for the reason above.
