@@ -747,3 +747,30 @@ strays outside every mask go to a second local pass, never a widened one.
 Spend 51 to 58 of 80 when the repaints fly. The repaired set then sheets to
 this seat's walk, then the Director's eye, then Phase 3 with his reference
 view.
+
+## Ruling 22 -- The mask halt is ratified; connectivity is falsified for v1; the masks grow to put every boundary on plain wood
+
+**Ratified without reservation**: no job fired against masks that clip their
+targets, the held-pixel guarantee is ASSERTED by a raising check (mask value
+exactly 0.0000 on every held pixel, v6 and v7, -O-proof) rather than
+reasoned, and clause 2's non-delivery was owned before it was asked about.
+
+**The v1 finding is a measured route fact**: rect-intersect-figure with a
+largest-component rule cannot express a cut whose parts CONNECT inside the
+rect -- the arm joins the torso within the region, so connectivity keeps
+exactly what the cut must remove, while eating 1,313 px of background the
+mask never threatened to repaint anyway. **The polygon stands as ruled**;
+the substitution was reasonable to try, is falsified by its own overlay,
+and cost nothing.
+
+**The five clipping masks grow by their measured overshoot, with the
+criterion stated once for all of them: every mask boundary lands on PLAIN
+WOOD, never mid-feature and never mid-defect.** A repair whose seam crosses
+the defect leaves the defect protruding as a step; a lift whose boundary
+crosses a drawn line steps ON the line. Concretely: the ear masks take the
+full wedge tips; the v6 nose mask takes the wedge's whole lower-left edge;
+the v7 band's right edge moves past the nose (the held-brow exclusion island
+rides unchanged); the v0 lift's boundary moves onto the plain forehead above
+the brows and the chin below the mouth, where its feathered gradient is
+invisible. One local pass, one re-walk at both seats, zero cloud -- then
+the seven repaints fire under Ruling 21's terms. Spend stands at 51 of 80.
