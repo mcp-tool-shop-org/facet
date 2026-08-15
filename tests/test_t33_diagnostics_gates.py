@@ -87,8 +87,12 @@ SMOKE = [r for r in SCOPE if r not in (BLENDER, PRE_ARGPARSE_FILE_WORK)]
 # candidate. This pin finding them is the pin working: all four are raises, not asserts,
 # so none is deletable by -O, and T65 runs E33's firing case under both -O and
 # PYTHONOPTIMIZE=1 and asserts no sheet is written after the gate fires.
-SYSTEMEXIT_ANDONS = 32          # across 15 files; 3 of those also hold assert ANDONs
-SYSTEMEXIT_ANDON_FILES = 15
+# 35 across 16 at the E35 close: `tools/verify/tree_manifest.py` carries three -
+# --emit without --out/--occasion, a manifest that does not verify, and the selftest
+# refusing to report PASSED on a walk that misbehaves. All three are raises, so -O
+# cannot delete them, and T70 runs the fixture under PYTHONOPTIMIZE=1 to show it.
+SYSTEMEXIT_ANDONS = 35          # across 16 files; 3 of those also hold assert ANDONs
+SYSTEMEXIT_ANDON_FILES = 16
 
 # After E25 the only ANDON assert left anywhere under tools/ is superseded/'s one.
 # E22 Ruling 4 ruled it NEVER converted - those tools are kept so anyone can run them

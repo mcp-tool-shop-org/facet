@@ -177,6 +177,11 @@ _G = {
     "no opinion": [
         "e07_score_arm.py", "e14_deep_share.py", "texpass_metrics.py",
     ],
+    # AT THE E35 CLOSE one file joined `tools/verify/`: `tree_manifest.py`, judged under
+    # the same rule. Line 1 - "Protection manifests for the read-only trees: verify one,
+    # or emit a new one" - names tree integrity, which is not one of the eight spec
+    # questions, and the tool returns HELD/FIRED rather than a measurement. `gate_mesh`
+    # is the precedent applied deliberately: a VERDICT tool is `none`.
     "none": [
         "build_masks.py", "canny_probe.py", "commit_funnel.py",
         "e04_backdrop.py", "e04_bands.py", "e04_blotch.py",
@@ -211,7 +216,7 @@ _G = {
         "gained_bg_check.py", "hair_agree.py", "hair_edge.py", "head_yaw.py",
         "prep_front.py",
         # tools/verify (task 2-pre)
-        "gate_mesh.py", "head_render.py", "turn_render.py",
+        "gate_mesh.py", "head_render.py", "turn_render.py", "tree_manifest.py",
     ],
 }
 G_PROPOSAL = dict((fn, verdict) for verdict, fns in _G.items() for fn in fns)

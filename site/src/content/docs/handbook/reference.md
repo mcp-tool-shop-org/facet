@@ -58,5 +58,5 @@ same way.
 
 ```bash
 python tools/facet_index.py q "<anything>"   # ask the record
-python -m pytest -m "not artifacts"          # the 950 hermetic tests CI runs
+python -m pytest -m "not artifacts"          # the 957 hermetic tests CI runs
 ```

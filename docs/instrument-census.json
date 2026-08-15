@@ -11,14 +11,14 @@
         "dir": "tools/verify",
         "non_py_files": 0,
         "non_py_names": [],
-        "py_files": 9
+        "py_files": 10
       }
     ],
-    "py_files_total": 111
+    "py_files_total": 112
   },
   "provenance": {
-    "corpus_files": 301,
-    "corpus_files_before_self_exclusion": 311,
+    "corpus_files": 310,
+    "corpus_files_before_self_exclusion": 320,
     "probe_interpreter": "E:\\AI-Models\\trellis2-env\\Scripts\\python.exe",
     "probe_interpreter_version": "3.13.13",
     "probe_skipped": false,
@@ -35,7 +35,7 @@
       "docs/experiments/E28-task3-report.md",
       "docs/instrument-census.md"
     ],
-    "test_files": 69
+    "test_files": 70
   },
   "rows": [
     {
@@ -3350,6 +3350,7 @@
       "anchored": true,
       "anchored_basename_only": true,
       "anchored_in": [
+        "tests/test_t41_instrument_census.py",
         "tests/test_t62_recorded_invocation_form.py"
       ],
       "anchored_in_basename_only": [
@@ -3822,6 +3823,51 @@
       "parse_error": null
     },
     {
+      "a_add_argument": 7,
+      "a_argparse": true,
+      "a_main_guard": true,
+      "a_parse_args_module_level": true,
+      "anchored": true,
+      "anchored_basename_only": true,
+      "anchored_in": [
+        "tests/test_t33_diagnostics_gates.py",
+        "tests/test_t41_instrument_census.py",
+        "tests/test_t62_recorded_invocation_form.py",
+        "tests/test_t70_tree_manifest.py"
+      ],
+      "anchored_in_basename_only": [
+        "tests/test_t33_diagnostics_gates.py",
+        "tests/test_t41_instrument_census.py",
+        "tests/test_t62_recorded_invocation_form.py",
+        "tests/test_t70_tree_manifest.py"
+      ],
+      "b1_literals": [],
+      "b2_literals": [],
+      "cited_count": 4,
+      "cited_count_raw": 4,
+      "cited_in": [
+        "docs/experiments/E22-gates-report.md",
+        "docs/experiments/E23-route-gates-report.md",
+        "docs/experiments/E34-projection-coverage-report.md",
+        "docs/experiments/E35-close.md"
+      ],
+      "dir": "tools/verify",
+      "docstring_line1": "Protection manifests for the read-only trees: verify one, or emit a new one.",
+      "file": "tree_manifest.py",
+      "flag_surface": true,
+      "g_proposal": "none",
+      "import_safe": "true",
+      "import_safe_modes": {
+        "-O": "clean",
+        "PYTHONOPTIMIZE=1": "clean",
+        "normal": "clean"
+      },
+      "import_safe_reason": "",
+      "invocable": true,
+      "lines": 230,
+      "parse_error": null
+    },
+    {
       "a_add_argument": 14,
       "a_argparse": true,
       "a_main_guard": false,
@@ -3836,8 +3882,8 @@
       ],
       "b1_literals": [],
       "b2_literals": [],
-      "cited_count": 28,
-      "cited_count_raw": 29,
+      "cited_count": 29,
+      "cited_count_raw": 30,
       "cited_in": [
         "docs/experiments/E02-report.md",
         "docs/experiments/E02-texture-stage-on-sound-inputs.md",
@@ -3863,6 +3909,7 @@
         "docs/experiments/E33-the-first-performer-through-the-route.md",
         "docs/experiments/E34-projection-coverage-kickoff.md",
         "docs/experiments/E34-projection-coverage-report.md",
+        "docs/experiments/E35-anchored-pilot-bands.md",
         "docs/experiments/E35-armslate-spec.md",
         "docs/experiments/E35-clean-twins-kickoff.md",
         "docs/experiments/README.md",
@@ -3882,25 +3929,25 @@
     }
   ],
   "totals": {
-    "anchored": 60,
-    "anchored_basename_only": 60,
-    "any_add_argument": 105,
-    "argparse": 105,
-    "cited": 91,
-    "cited_raw": 111,
-    "flag_surface": 105,
+    "anchored": 61,
+    "anchored_basename_only": 61,
+    "any_add_argument": 106,
+    "argparse": 106,
+    "cited": 92,
+    "cited_raw": 112,
+    "flag_surface": 106,
     "flag_surface_unguarded": 95,
     "g_ambiguous": 18,
     "g_mapped": 27,
     "g_no_opinion": 3,
-    "g_none": 63,
-    "has_docstring": 111,
+    "g_none": 64,
+    "has_docstring": 112,
     "import_safe_false": 0,
     "import_safe_na": 101,
-    "import_safe_true": 10,
-    "invocable": 10,
-    "main_guard": 11,
-    "parse_args_module_level": 95,
+    "import_safe_true": 11,
+    "invocable": 11,
+    "main_guard": 12,
+    "parse_args_module_level": 96,
     "parse_errors": 0,
     "subject_bound_b1": 11,
     "subject_bound_b2": 12

@@ -10,38 +10,38 @@
 |---|---|
 | `.py` files in `tools/diagnostics` | **102** |
 | — files of any other extension there | 0 |
-| `.py` files in `tools/verify` | **9** |
+| `.py` files in `tools/verify` | **10** |
 | — files of any other extension there | 0 |
-| **total members** | **111** |
-| corpus files read for axis D | 301 |
-| test files read for axis E | 69 |
+| **total members** | **112** |
+| corpus files read for axis D | 310 |
+| test files read for axis E | 70 |
 | probe interpreter | `E:\AI-Models\trellis2-env\Scripts\python.exe` (3.13.13) |
 
 ## Totals
 
 | axis | measure | count | of |
 |---|---|---:|---:|
-| A | **invocable** (argparse **and** ≥1 `add_argument` **and** a `__main__` guard) | **10** | 111 |
-| A | — imports `argparse` | 105 | 111 |
-| A | — has ≥1 `add_argument` | 105 | 111 |
-| A | — has a `__main__` guard | 11 | 111 |
-| A | — **flag surface** (argparse **and** ≥1 `add_argument`, guard not required) | **105** | 111 |
-| A | — calls `parse_args()` at module level | 95 | 111 |
-| A | — **flag surface but UNGUARDED** (the house style) | **95** | 111 |
-| B1 | **subject-bound**, module-level literal | **11** | 111 |
-| B2 | subject marker in any non-docstring literal | 12 | 111 |
-| C | has a docstring | 111 | 111 |
-| D | **cited** in ≥1 corpus file | **91** | 111 |
-| D | — with this arc's own documents left IN (the contaminated read) | 111 | 111 |
-| E | **anchored** — basename *or* module name as literal text under `tests/` | **60** | 111 |
-| E | — basename-with-`.py` only (the stricter read) | 60 | 111 |
-| F | **import-safe** in all three modes | **10** | 111 |
-| F | — not clean in some mode | 0 | 111 |
-| F | — **`n/a`**, property not defined (reason per row) | 101 | 111 |
-| G | *proposed* to answer one of the spec's eight | *27* | 111 |
-| G | *proposed* `none` | *63* | 111 |
-| G | *proposed* `ambiguous` | *18* | 111 |
-| G | *`no opinion`* | *3* | 111 |
+| A | **invocable** (argparse **and** ≥1 `add_argument` **and** a `__main__` guard) | **11** | 112 |
+| A | — imports `argparse` | 106 | 112 |
+| A | — has ≥1 `add_argument` | 106 | 112 |
+| A | — has a `__main__` guard | 12 | 112 |
+| A | — **flag surface** (argparse **and** ≥1 `add_argument`, guard not required) | **106** | 112 |
+| A | — calls `parse_args()` at module level | 96 | 112 |
+| A | — **flag surface but UNGUARDED** (the house style) | **95** | 112 |
+| B1 | **subject-bound**, module-level literal | **11** | 112 |
+| B2 | subject marker in any non-docstring literal | 12 | 112 |
+| C | has a docstring | 112 | 112 |
+| D | **cited** in ≥1 corpus file | **92** | 112 |
+| D | — with this arc's own documents left IN (the contaminated read) | 112 | 112 |
+| E | **anchored** — basename *or* module name as literal text under `tests/` | **61** | 112 |
+| E | — basename-with-`.py` only (the stricter read) | 61 | 112 |
+| F | **import-safe** in all three modes | **11** | 112 |
+| F | — not clean in some mode | 0 | 112 |
+| F | — **`n/a`**, property not defined (reason per row) | 101 | 112 |
+| G | *proposed* to answer one of the spec's eight | *27* | 112 |
+| G | *proposed* `none` | *64* | 112 |
+| G | *proposed* `ambiguous` | *18* | 112 |
+| G | *`no opinion`* | *3* | 112 |
 
 ## Axis G — the proposal, by tool
 
@@ -172,7 +172,8 @@
 | 108 | `silhouette_agree.py` | diagnostics | no | 8 | no | 3 | yes | n/a | ambiguous | Is project_twins' LIVE raycast silhouette the same object as the shipped sidecar mask? |
 | 109 | `texel_provenance.py` | diagnostics | no | 17 | no | 14 | yes | n/a | texel_provenance | Where did this pixel's colour actually come from? |
 | 110 | `texpass_metrics.py` | diagnostics | no | 7 | no | 2 | no | n/a | no opinion | E05 — one metric table, computed identically for every arm. |
-| 111 | `turn_render.py` | verify | no | 14 | no | 28 | yes | n/a | none | Matched-framing turnaround render of a GLB. |
+| 111 | `tree_manifest.py` | verify | yes | 7 | no | 4 | yes | yes | none | Protection manifests for the read-only trees: verify one, or emit a new one. |
+| 112 | `turn_render.py` | verify | no | 14 | no | 29 | yes | n/a | none | Matched-framing turnaround render of a GLB. |
 
 ## Axis F — every `n/a` and every `false`, with its reason
 

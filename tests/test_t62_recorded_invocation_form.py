@@ -56,6 +56,10 @@ RUNNABLE = (
     "diagnostics/e33_register_sheet.py",
     "verify/anchor_compare.py",
     "verify/gate_mesh.py",
+    # E35 close: the protection-manifest walk. Same form again - a __main__ guard and an
+    # argparse surface, so `--help` parses and exits before any tree is walked. Named
+    # here deliberately, in the commit that adds the file.
+    "verify/tree_manifest.py",
 )
 
 

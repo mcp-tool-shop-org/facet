@@ -58,7 +58,13 @@ EXPECTED_PY_FILES = {
     "tools/diagnostics": 102,
     # 8 -> 9 at E28 task 2c: anchor_compare.py entered by ruling + wrap
     # (Ruling 10, Ruling 3's entry rule), census re-run in the same commit.
-    "tools/verify": 9,
+    # 9 -> 10 at the E35 close: tree_manifest.py, the protection-manifest walk that
+    # three arcs had been rewriting inline (and that E35's open session got wrong,
+    # firing a false halt on E34's declared `excludes_self`). Judged `none` for axis G
+    # in this same commit under the file's own rule - line 1 names tree integrity, not
+    # one of the eight spec questions, and it returns HELD/FIRED rather than a
+    # measurement, on `gate_mesh`'s verdict-tool precedent. Census re-run here too.
+    "tools/verify": 10,
 }
 
 
