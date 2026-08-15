@@ -1725,13 +1725,14 @@
       ],
       "b1_literals": [],
       "b2_literals": [],
-      "cited_count": 5,
-      "cited_count_raw": 5,
+      "cited_count": 6,
+      "cited_count_raw": 6,
       "cited_in": [
         "docs/experiments/E12-gate0-report.md",
         "docs/experiments/E14-gate0-report.md",
         "docs/experiments/E33-report.md",
         "docs/experiments/E33-the-first-performer-through-the-route.md",
+        "docs/experiments/E37-ruling.md",
         "docs/tools.md"
       ],
       "dir": "tools/diagnostics",

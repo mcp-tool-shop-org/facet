@@ -316,3 +316,26 @@ watched at the executor's seat.
 (five kept + three re-rolls), surface-aware fill, RGBA-true turnarounds,
 final censuses, provenance mix, sheets beside the source plate. Local, zero
 cloud; spend stands at 30 of 40. The next halt is Stage D at his zoom.
+
+## Ruling 10 — Stage C's real step 0: the prep chain builds; the head box derives, neck-bounded, at the seat
+
+**The prep-gap finding is RATIFIED and the kickoff's "E34-proven form" clause
+is corrected by it**: E34 reused E33's prep because it textured the same mesh;
+E37's mesh is new, so nothing exists to point at, and Stage C's step 0 is the
+full prep chain — `cull_unseen` → `bake_hero_prep` — before any projection.
+The staged `prep_uv.glb` copy is a filename-resolution artifact (Ruling 2 §6),
+not a prep, and the executor caught the premise before spending Blender runs
+on it.
+
+**The head box DERIVES — an input-side call, decided at this seat rather than
+escalated.** E33's crop was derived, not chosen, and Ruling 4's own 4.5%-wider
+measurement makes inheriting the pixel rect the global-constant error by name.
+The derivation runs on the executor's measured inputs (crown → neck rows
+89–215 front / 87–223 profile at 368×1024, head-span columns read WITHIN those
+rows), through `e12_head_evidence.py` — enumerated, already committed, not a
+commission. The ear-and-shoulder widening the executor flagged is handled by
+the derivation's own structure: **the box's bottom is the measured neck row,
+which excludes the shoulders by construction; ears are head and stay in.**
+The projected crop is visible in the Stage-C sheets, where a wrong box shows
+and everything upstream of acceptance is re-runnable. CI `31900743786`
+green is recorded — the arc's first push validated end to end.

@@ -111,7 +111,7 @@
 | 47 | `e12_elevated.py` | diagnostics | no | 9 | no | 3 | yes | n/a | reach_ceiling | Does this subject buy anything from elevated cameras? Measured, the ship's own method. |
 | 48 | `e12_family_mass.py` | diagnostics | no | 12 | no | 0 | no | n/a | none | How much of a named region wears a named COLOUR FAMILY - reported per image, never gate… |
 | 49 | `e12_frame.py` | diagnostics | no | 8 | no | 8 | yes | n/a | none | E12 Gate 0 — derive a turnaround render frame from THIS mesh, and show the derivation. |
-| 50 | `e12_head_evidence.py` | diagnostics | no | 15 | no | 5 | yes | n/a | none | E12 Gate 0 — head-region evidence on a raw reconstruction. NO VERDICT. |
+| 50 | `e12_head_evidence.py` | diagnostics | no | 15 | no | 6 | yes | n/a | none | E12 Gate 0 — head-region evidence on a raw reconstruction. NO VERDICT. |
 | 51 | `e12_head_render.py` | diagnostics | no | 13 | no | 10 | yes | n/a | none | E12 Gate 0 — a head crop render framed by a MEASURED box, not an inherited rect. |
 | 52 | `e12_head_sheet.py` | diagnostics | no | 5 | no | 1 | yes | n/a | measure_report | E12 Gate 0 — compose one candidate's head crops into ONE artifact, at full size. |
 | 53 | `e12_help_format_scan.py` | diagnostics | no | 3 | no | 3 | no | n/a | none | Find every argparse help string this repo cannot print. E12 Ruling 4b's consumer grep. |
