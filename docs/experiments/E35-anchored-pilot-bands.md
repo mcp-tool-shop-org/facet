@@ -186,3 +186,57 @@ LoRA contributes nothing at this cfg and the turbo switch is not the lever I thi
 held only by the edit reference, so reg-IoU measures how faithfully 2509 tracks its reference
 — an interesting number, and *not* one of the two classes. Stated so it is not quietly read
 as a quality score.
+
+---
+
+# D1 bands — registered before the discriminator ran
+
+## ⚠ Local enumeration first, which the dispatch's own falsifier branch asks for
+
+Both clay inputs read at the PNG chunk level before any job:
+
+| | A2's input (352×1024) | A3's input (native 672×1568) |
+|---|---|---|
+| bit depth | 8 | 8 |
+| colour type | **6 (RGBA)** | **6 (RGBA)** |
+| interlace | 0 | 0 |
+| chunk set | IHDR, sRGB, gAMA, cHRM, eXIf, oFFs, pHYs, 7×tEXt, IDAT…, IEND | **identical** |
+| alpha | **1 unique value, 255 everywhere** | **1 unique value, 255 everywhere** |
+
+**The two files are structurally identical except for size.** Two consequences, recorded
+before D1 spends:
+
+1. **Two of the dispatch's three named fallback candidates are already exonerated** — bit
+   depth and PNG colour type are the same in the file that worked and the file that did not.
+   Of its list only *upload normalization* survives, joined by content-side candidates the
+   list did not name (framing, spatial frequency).
+2. **The alpha hypothesis survives only in Ruling 8's exact form** — that the *path* differs,
+   the resample stripping a fourth channel the no-op passes through. It is **not** that the
+   files differ in alpha: they do not, and the alpha is a constant 255 plane in both, which
+   carries no spatial structure that could produce three distinct corruption patterns. D1 is
+   still the right discriminator; its clean branch would now be evidence about ComfyUI's
+   path, not about our file.
+
+## The bands
+
+**D1-P1 — the flattened input still corrupts.** Odds **0.7**, and I am registering against
+the dispatch's leading hypothesis. Reason: the alpha planes are identical and constant in
+both files, so for alpha to be the trigger the corruption must come from a channel carrying
+no information — possible only as a shape/stride fault, which would be a platform bug rather
+than a property of our data. *Falsifier: a clean image, which confirms exactly that and makes
+the flatten a permanent step in this route.*
+
+**D1-P2 — the register survives IF the image is clean.** The new term Ruling 8 folded, and
+this is its first use: **C\* on the keyed figure ≥ 15**, against A2's terracotta and the
+recorded twin's 23.77. *A corrupted return scores this as N/A, not as a fail — the term
+exists to separate a mannequin from a rainbow, and it can only speak when there is a figure
+to key.*
+
+**D1-P3 — if it corrupts, the signature is a FOURTH distinct one.** A3a streaked
+horizontally, A3b streaked and banded across the whole frame, A3c came back a blocky
+patchwork. Three inputs at one configuration gave three patterns, so the fault is not
+deterministic in the input. *Falsifier: it reproduces one of the three exactly, which would
+make the fault deterministic after all and change what the remaining candidates can be.*
+
+**D1-P4 — the flatten does not change one RGB value.** Alpha is 255 everywhere, so
+compositing is arithmetically the identity. Asserted locally before upload, not assumed.
