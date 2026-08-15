@@ -670,3 +670,41 @@ before/after per repair, walked at this seat before his eye.
 Spend 51 of 80. Phase 2 is local except repaint jobs (masked regions, same
 seed, ~6-10 jobs). The next halt is the repaired set at both eyes, then
 Phase 3 harmonization with his chosen reference view.
+
+## Ruling 20 -- The census is disqualified as a head-band targeting instrument; the region protocol is adopted; Phase 2 resumes at zero cost
+
+**The halt is RATIFIED and the sequence that produced it is the discipline at
+full strength**: two measured derivations failed honestly (the silhouette
+approach cannot see a knob that sits INSIDE the silhouette because the mesh
+has ear geometry; the colour approach conflates face with ear), the
+executor's own eye-proposed rects then FAILED THEIR OVERLAY WALK (background
+where ears should be, cheek where the nose should be), and nothing fired.
+Six masked repaints against those rects would have baked background repaints
+into a set that passes both eyes. Zero spend, set A untouched.
+
+**The fleck census is DISQUALIFIED as a repair-targeting instrument on the
+head band, by ruling.** Its four largest head-band components are the man's
+drawn face -- brows, an eye, the mouth -- because a dark-speck census and a
+dark-drawn face on pale wood are the same colour class by construction. The
+E07 family, caught before it acted this time. Consequences:
+1. The fleck repair applies ONLY to the nine body strays (rows 486-909),
+   where no design ambiguity exists.
+2. Head-band dark paint is DESIGN unless the Director's eye names it
+   otherwise. The Ruling 19 hold on v6's brows EXTENDS to v7's brow (the
+   third-largest head-band component, held by the same identity-adjacent
+   reasoning -- the executor's extension, ratified).
+
+**The region protocol is ADOPTED for every remaining repair region and for
+the v0 face lift**: per region, one local 1:1 crop -- never a downscaled
+sheet -- the rect proposed ON that crop, re-overlaid, walked at the
+executor's seat, then the overlay sheet walked at the advisor's seat BEFORE
+any job fires. A mask is a judgement, and judgements get the walk
+discipline. Cost: six local crops, zero cloud. The v0 lift's region is the
+drawn-feature band and cheeks, excluding skull and ear, proposed under the
+same protocol.
+
+Amendment-3's two nodes are verified live at the executor's seat
+(SetLatentNoiseMask core; ColorMatchV2 with its seven methods; the
+deprecated original absent from the catalog exactly as folded). Spend 51 of
+80, unmoved. The next artifact is the overlay sheet at this seat's walk,
+then the repaint jobs, then the repaired set at both eyes.
