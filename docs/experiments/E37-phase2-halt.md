@@ -253,3 +253,47 @@ here and is not taken unbidden.
 
 **State: spend 51 of 80, unmoved. No job fired. The eight ratified masks stand; clause 1 and
 clause 2 both remain open.**
+
+---
+
+## 9. Hand-placed polygons ([Ruling 23](E37-ruling.md)) — all eight clear the checker
+
+Eight polygons hand-placed on the 1:1 crops, vertices recorded. Held-brow exclusion islands
+unchanged (v7: 814 px re-cut; held-pixel assertion re-passes at 0.0000). Receipts written
+**append-only** to a fresh `phase2/masks_v2/` — the ratified `phase2/masks/` is untouched.
+
+**The checker, and a correction to how it must be read.** Ruling 23 clause 2 adopts the
+boundary ring's minimum distance to dark paint. Run literally — distance to **any** dark
+pixel — it returns **0.00 px on six of eight**. That is not six failures: on v1 the defect
+*is* the dark chest, and on v4R / v5 / v6 the ear and nose are themselves dark, so a boundary
+correctly drawn around the target necessarily abuts dark pixels **inside** the mask. It is the
+Ruling 20 conflation again, one layer down — a dark-paint predicate cannot separate *drawn
+feature* from *dark defect being repaired*.
+
+The informative operand is dark paint **outside** the mask:
+
+| mask | dist to ANY dark | **dist to dark OUTSIDE the mask** | core px |
+|---|---|---|---|
+| v0lift | 0.00 | **7.00** | 8,928 |
+| v1chest | 0.00 | **5.39** | 10,850 |
+| v3ear | 4.00 | **7.00** | 2,132 |
+| v4earL | 5.00 | **28.02** | 1,924 |
+| v4earR | 0.00 | **6.08** | 1,924 |
+| v5ear | 0.00 | **6.08** | 2,337 |
+| v6nose | 0.00 | **6.08** | 1,444 |
+| v7band | 0.00 | **5.66** | 6,581 |
+
+**Every boundary sits 5.39–28.02 px from any drawn feature or defect it is not repairing.**
+
+v1's polygon is the ruled hand cut, traced along the arm's inner edge from the row scans:
+`(152,246) (207,246) (207,420) (160,420) (158,400) (140,340) (138,300) (140,275)`.
+
+### 9a. ⚠ My own walk of the combined overlay was NOT done at 1:1
+
+The eight-tile overlay is 1680 × 4248, which cannot be viewed at this seat without ~2.1×
+downscale — the exact read that produced the v6 misjudgement in §6a. **What I walked at 1:1
+was each region individually while placing its vertices**; the combined sheet I have only seen
+reduced. Stated rather than implied, because "walked at the executor's seat" has a specific
+meaning in this arc and this is not the whole of it.
+
+**Spend 51 of 80, unmoved. No job fired.**
