@@ -297,3 +297,43 @@ reduced. Stated rather than implied, because "walked at the executor's seat" has
 meaning in this arc and this is not the whole of it.
 
 **Spend 51 of 80, unmoved. No job fired.**
+
+---
+
+## 10. Both walk sheets built at native resolution and walked at 1:1 — and one disclosure
+
+`mask_walk_sheet1.png` (1440 × 1590) and `mask_walk_sheet2.png` (1713 × 1746). Both are under
+the display cap, so both were read at **1:1** — the repair offered in §9a, delivered.
+
+**The executor's walk CLEARS on all eight.** Every mask covers its target; no boundary lands
+mid-feature; both held-brow islands sit in visibly un-tinted notches; v0's lift boundary is on
+plain forehead and chin with both ears outside; **v1's hand polygon puts the arm outside the
+mask** — the cut Ruling 21 asked for, now visibly done.
+
+### ⚠ The disclosure: how much of each boundary the checker never looked at
+
+The dark-paint checker measures the ring **where it lies on the figure** (`ring & fig`). Three
+masks sit on defects that *protrude past the silhouette*, so much of their boundary is on
+background, where the checker is structurally blind:
+
+| mask | core off-figure | **ring off-figure** |
+|---|---|---|
+| v4earR | 39.0% | **66.4%** |
+| v4earL | 35.0% | **64.4%** |
+| v6nose | 33.8% | **51.7%** |
+| v3ear | 5.5% | 31.8% |
+| v5ear | 6.3% | 26.2% |
+| v7band | 7.4% | 24.5% |
+| v0lift | 1.0% | 8.7% |
+| v1chest | 2.2% | 8.0% |
+
+So *"all eight clear at 5.39–28.02 px"* is a statement about **33.6%–92.0%** of each ring, not
+all of it. **The off-figure segments were examined by eye at 1:1 in this walk** and land on
+plain background, which is where a mask around a protruding defect must end — an ear at yaw 180
+and a nose wedge in profile cannot be covered without it. This is inherent, not an error.
+
+It is disclosed rather than waved through because a checker reporting "clear" over two-thirds
+of a boundary it never measured is the shape of thing this arc keeps paying for.
+
+**Spend 51 of 80. No job fired — Ruling 24 fires the repaints on BOTH walks, and the advisor's
+is still owed.**
