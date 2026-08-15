@@ -480,6 +480,50 @@ pure-black dots. Two independent readings, one mechanism.
 the record as the measured baseline round 2 is compared against, and the six seeds are
 deliberately reused unchanged so the comparison is like-for-like. Spend remains **0 of 40**.
 
+## Round 2 — the plate edit: three attempts, and the Director picks attempt 3
+
+Ruled at [E37-ruling.md](E37-ruling.md) Ruling 1 / kickoff Amendment 1: edit the plate
+locally with Qwen-Image-Edit-2511 to smooth, mark-free clay, same man / pose / framing,
+up to three attempts, all shown beside the original, **halt at his identity eye before any
+reconstruction**. The first submission fired the VRAM gate and its halt, disposition and
+resolution are in [E37-round2-vram-halt.md](E37-round2-vram-halt.md).
+
+One prompt across all three attempts; **`denoise` was the only variable**, and the negative
+is the recorded clay-ify negative reused verbatim — its first term is already
+*"engraved spirals"*, authored in `concept-prep.md` before this defect had a name.
+
+| attempt | denoise | wall | ridge energy inside the figure — median / p95 | swirls at the chest zoom |
+|---|---|---|---|---|
+| *original plate* | — | — | *0.1571 / 7.8663* | *heavy concentric whorls* |
+| 1 | 0.45 | 150 s | 0.1169 / 7.4035 | present, essentially unchanged |
+| 2 | 0.65 | 110 s | 0.0962 / 6.5431 | present, slightly reduced |
+| **3** | **0.85** | 110 s | **0.0756 / 3.7450** | **gone** |
+
+⚠ The ridge-energy column is a **reported diagnostic and decided nothing** — it cannot
+separate a removed swirl from a softened face, which is the exact trade `denoise` governs
+and exactly the failure this repo spent four experiments learning (*a metric that cannot
+separate an asset he rejected from one he accepted is not a metric*). It is printed because
+it moves with the eye here, not because it ruled.
+
+**The Director's word on the sheet: "attempt3 0.85 is the winner. The only one without the
+fingerprints."**
+
+### The approved plate, pinned
+
+| | |
+|---|---|
+| path | `E:\AI\training\facet_E37\round2\e37_attempt3.png` |
+| sha256 | `a4bcf2501414f769d4164ba910803f6d7882e98747897f5f256be801c75fb3b2` |
+| bytes / frame | 866,642 · **1328×1328 RGB** |
+| recipe | Qwen-Image-Edit-2511 fp8mixed · denoise 0.85 · 40 steps · CFG 4.0 · seed 42 · shift 3.1 · euler/simple |
+| from | source plate `753383255718…`, verified at submission |
+
+**It carries no alpha, exactly as the original did**, so `rembg` runs inside `pipe.run` for
+round 2's candidates on the same terms as round 1's — the comparison stays like-for-like,
+which is the whole reason the seed set is unchanged. The full recipe, the validated graph
+and both VRAM readings are in `round2/e37_attempt3.json`; attempts 1 and 2 stay in the
+record with their own sidecars as the measured rungs either side of it.
+
 ## Count surfaces and harness state
 
 T71 adds 38 tests. Moved in this commit, in the corrected order (**pin edits → FULL suite →

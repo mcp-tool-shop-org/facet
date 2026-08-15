@@ -95,3 +95,58 @@ fired gate hoping for a different number is the one move this record calls alway
 
 **Awaiting the ruling. Zero cloud spent; no round-2 plate exists; round 1 stands unchanged
 in the record as the measured baseline.**
+
+---
+
+## 6. RESOLVED — the Director's ruling: clear the GPU, stay local
+
+His word: *"raise the comfy cloud ceiling to whatever's needed"*, then, correcting to the
+local path: **"then clear the gpu as needed. This needs to stay within the pipeline."**
+Disposition 1, with the cloud branch withdrawn.
+
+⚠ **The cloud branch was withdrawn for a reason worth recording.** The only Comfy Cloud
+workflow this record holds for the clay hop is `73c229b3-267f-442f-8050-4d7090d3202c`, and
+enumerated rather than assumed it is a **three-node `GeminiNanoBanana2` graph — a partner
+API node.** `concept-prep.md`'s table lists Qwen-Image-Edit-2511 as the *local* target and
+Nano Banana 2 as the *cloud* one; E37's kickoff says **"Zero partner-API nodes"** and its
+out-of-scope bans partner nodes on identity grounds, and the README records that path's
+licence as unverified. A budget authorisation is not a model authorisation.
+
+### What was holding the card
+
+| holder | MiB | disposition |
+|---|---|---|
+| `llama-server` (pid 16248) — **`hermes3:8b`, keep-alive `Forever`** | **5,276** | unloaded via `ollama stop` |
+| `dwm` | 24,749 *reported* | the compositor's **shared-surface** accounting, not private allocation — the card's own total read 6,453 MiB at the same instant |
+| chrome / claude / explorer | ~740 combined | left alone |
+
+The pin is not a stray setting: `ollama-intern-mcp`'s **prewarm** loads the `instant` tier
+with `keep_alive: -1` by design, and the behaviour is pinned by three tests in that repo
+(`profiles.test.ts:126`, `prewarmInvariants.test.ts:57` and `:88`). Unpinning it properly
+is a source change plus three test updates plus a version bump **in that package**, not
+inside this arc. Recorded here so the next VRAM collision is diagnosed in seconds.
+
+Free VRAM went **6,453 → 1,173 MiB**.
+
+### The re-run, and what it measured
+
+**All three ruled attempts completed, no watchdog event.** But:
+
+| | |
+|---|---|
+| free before attempt 1 | 30,991 MiB |
+| **peak during attempt 1** | **31,110 MiB against the 31,200 ceiling — 90 MiB of margin** |
+| attempts 2 and 3 | model already resident, free-before 3,421 / 3,625 MiB, no re-stage, 110 s each |
+
+⚑ **CLAUDE.md's law is confirmed, not refuted: 5.3 GB freed, and ComfyUI staged ~5.3 GB
+more.** Clearing the GPU removed a *collision*; it bought no headroom. **The ceiling was
+never raised and the margin is 90 MiB**, so this path is one background process away from
+the same halt.
+
+### The pipeline now clears its own GPU
+
+Per *"this needs to stay within the pipeline"*: `e37_plate_edit.py` gained a `clear_gpu()`
+preflight that unloads any Ollama-resident model before staging, prints what it unloaded
+and records it in every sidecar. A pipeline that depends on the rig being tidy has an
+unrecorded precondition; this one no longer does. Its docstring carries the measurement
+above so nobody reads the preflight as headroom.
