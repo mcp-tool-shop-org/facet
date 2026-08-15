@@ -17,8 +17,8 @@
     "py_files_total": 112
   },
   "provenance": {
-    "corpus_files": 324,
-    "corpus_files_before_self_exclusion": 334,
+    "corpus_files": 325,
+    "corpus_files_before_self_exclusion": 335,
     "probe_interpreter": "E:\\AI-Models\\trellis2-env\\Scripts\\python.exe",
     "probe_interpreter_version": "3.13.13",
     "probe_skipped": false,
@@ -3451,9 +3451,10 @@
       "anchored_in_basename_only": [],
       "b1_literals": [],
       "b2_literals": [],
-      "cited_count": 1,
-      "cited_count_raw": 2,
+      "cited_count": 2,
+      "cited_count_raw": 3,
       "cited_in": [
+        "docs/experiments/E37-stageB-selection-sheet.md",
         "docs/tools.md"
       ],
       "dir": "tools/verify",
@@ -3663,9 +3664,11 @@
       "anchored_in_basename_only": [],
       "b1_literals": [],
       "b2_literals": [],
-      "cited_count": 0,
-      "cited_count_raw": 2,
-      "cited_in": [],
+      "cited_count": 1,
+      "cited_count_raw": 3,
+      "cited_in": [
+        "docs/experiments/E37-stageB-selection-sheet.md"
+      ],
       "dir": "tools/verify",
       "docstring_line1": "Contact sheet + per-view figure brightness readout.",
       "file": "montage.py",
@@ -3940,7 +3943,7 @@
     "anchored_basename_only": 61,
     "any_add_argument": 106,
     "argparse": 106,
-    "cited": 92,
+    "cited": 93,
     "cited_raw": 112,
     "flag_surface": 106,
     "flag_surface_unguarded": 95,

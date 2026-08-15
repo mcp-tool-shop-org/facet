@@ -236,3 +236,18 @@ no spend chases a seed the rule already excluded.
 full size beside the source plate, head band at 3×, the per-view reg-IoU and
 census table riding — then his word gates Stage C. Spend stands at 27 of 40;
 the sheet costs nothing.
+
+## Ruling 7 — The set passes the Director's eye; Stage C fires
+
+**The Director's word at the sheet, 2026-08-15: "v0 is best."** The set is
+accepted for projection with v0 named the strongest view; the three
+executor-flagged rows (v6's mark concentration and brow weight, v1's partial
+face, v2's warmth) drew no rejection. The route's own mechanics align with his
+read: projection is facing-weighted, so v0 dominates the face in the finished
+texture by construction — the strongest view paints the part identity lives
+in, and the oblique rows contribute only where they win the facing
+competition. Stage C runs per the kickoff — the E34-proven eight-view
+projection on the selected set, surface-aware fill, the RGBA-true turnarounds
+(requirement 4, named new work), final censuses on atlas and renders,
+provenance mix, sheets beside the source plate — all local, zero cloud. The
+next halt is Stage D: his acceptance at his zoom. Spend stands at 27 of 40.

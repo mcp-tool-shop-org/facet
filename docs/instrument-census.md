@@ -13,7 +13,7 @@
 | `.py` files in `tools/verify` | **10** |
 | — files of any other extension there | 0 |
 | **total members** | **112** |
-| corpus files read for axis D | 324 |
+| corpus files read for axis D | 325 |
 | test files read for axis E | 71 |
 | probe interpreter | `E:\AI-Models\trellis2-env\Scripts\python.exe` (3.13.13) |
 
@@ -31,7 +31,7 @@
 | B1 | **subject-bound**, module-level literal | **11** | 112 |
 | B2 | subject marker in any non-docstring literal | 12 | 112 |
 | C | has a docstring | 112 | 112 |
-| D | **cited** in ≥1 corpus file | **92** | 112 |
+| D | **cited** in ≥1 corpus file | **93** | 112 |
 | D | — with this arc's own documents left IN (the contaminated read) | 112 | 112 |
 | E | **anchored** — basename *or* module name as literal text under `tests/` | **61** | 112 |
 | E | — basename-with-`.py` only (the stricter read) | 61 | 112 |
@@ -162,12 +162,12 @@
 | 98 | `gate_mesh.py` | verify | yes | 4 | no | 10 | yes | yes | none | HARD MESH GATE -- may the pipeline spend money downstream of this mesh? Exit 0 = yes. |
 | 99 | `hair_agree.py` | diagnostics | no | 7 | no | 0 | no | n/a | none | Measure whether a GENERATED view's hair boundary agrees with the MESH's hair geometry. |
 | 100 | `hair_edge.py` | diagnostics | no | 8 | no | 0 | no | n/a | none | Extract the mesh's OWN hair/face boundary as a control hint. |
-| 101 | `head_crop.py` | verify | no | 13 | no | 1 | no | n/a | measure_report | Head-crop comparison sheet, with the head band LOCATED rather than guessed. |
+| 101 | `head_crop.py` | verify | no | 13 | no | 2 | no | n/a | measure_report | Head-crop comparison sheet, with the head band LOCATED rather than guessed. |
 | 102 | `head_render.py` | verify | no | 11 | no | 19 | yes | n/a | none | Head-framed close-up renders of a GLB — the Director-zoom verification camera. |
 | 103 | `head_yaw.py` | diagnostics | no | 6 | no | 0 | no | n/a | none | Locate the direction a MESH's head actually faces, by mirror symmetry. |
 | 104 | `keyed_outside.py` | diagnostics | no | 9 | no | 2 | yes | n/a | ambiguous | How much of each twin's keyed paint sits on no surface at all? |
 | 105 | `mesh_stats.py` | verify | no | 9 | no | 25 | yes | n/a | mesh_stats | Identical measurement of any mesh — the numeric half of a comparison. |
-| 106 | `montage.py` | verify | no | 7 | no | 0 | no | n/a | ambiguous | Contact sheet + per-view figure brightness readout. |
+| 106 | `montage.py` | verify | no | 7 | no | 1 | no | n/a | ambiguous | Contact sheet + per-view figure brightness readout. |
 | 107 | `prep_front.py` | diagnostics | no | 0 | **yes** | 0 | no | n/a | none | Prepare the front render for the paint pass. |
 | 108 | `silhouette_agree.py` | diagnostics | no | 8 | no | 3 | yes | n/a | ambiguous | Is project_twins' LIVE raycast silhouette the same object as the shipped sidecar mask? |
 | 109 | `texel_provenance.py` | diagnostics | no | 17 | no | 14 | yes | n/a | texel_provenance | Where did this pixel's colour actually come from? |
