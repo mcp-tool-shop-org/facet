@@ -295,3 +295,33 @@ research grounding at
 [E35-speck-research-grounding.md](research/E35-speck-research-grounding.md). No recipe
 change ships without his eye re-gating the register (Gate R — R3 is his ruling); the
 span bump to `E3[0-5]` rides the dispatch commit.
+
+**⚖ E35 CLOSED (2026-08-15 → [E35-ruling.md](experiments/E35-ruling.md), Rulings
+1–11); the class is measured to its floor and STANDS.** Five directions closed by
+measurement — the seed frontier is one-dimensional, cn weakening raises the pale
+class, denoise kills the register before either class, no slate lever moves the dark
+class while keeping the man, and 2509 is class-worse at both its configurations —
+and **no repaint candidate was produced**: the recorded route remains the class-best
+measured configuration and its best-measured candidate (R2-b) stands rejected at the
+Director's eye. The dark class is baked-shadow painting, 57 components to 377 px² on
+the accepted asset — above the corrector's 36 px² cap **by design**; the successor
+corrector contract (E36's second front) is the named path to those components. The
+pale class resolved into TWO signatures — chroma-collapsing init-bleed (mechanism
+established; anchoring suppresses it) and chroma-preserved lightening (the rejected
+class; mechanism open) — and is read by the chroma-split instrument, not by eye at
+working zoom.
+
+**The attribution above, reconciled — two instruments, two operands, both standing.**
+This entry's "5 of 6 sampled speck locations" line was re-measured at scale in the
+E35 report and weakened in place: the six sample points de-duplicate to two distinct
+locations, one of them a broad shadow crevice rather than a dot. The honest pair of
+numbers, and why they do not contradict: the **final-atlas census** attributes the
+atlas's dark *texels* to their painting source — core-black **61% twin-painted / 39%
+fill-propagated** (wide-dark 79% / 21%) — answering *who painted what the atlas
+holds*; the **render-dot co-occurrence** asks of each *rendered dot* whether the twin
+carries a detector-grade speck at the exact matching pixel — **14.3%, against 2.3%
+chance, ×6.13**, decaying monotonically with tolerance, the signature of real spatial
+correspondence. A dark texel is twin-painted whenever a twin sourced it, speck or
+broad shading alike, so the census's 61–79% and the co-occurrence's 14.3% measure
+different operands and both stand: **the twins are a genuine source and they are not
+the only one.**

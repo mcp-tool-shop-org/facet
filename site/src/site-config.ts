@@ -93,7 +93,7 @@ export const config: SiteConfig = {
       features: [
         {
           title: 'Spec before, report after, ruling last',
-          desc: 'Every non-trivial change runs as a numbered experiment. The session that designs an experiment does not grade its results, and the session that runs it does not decide what they mean. Thirty-five experiments are in the record, each with its predictions stated before the measurement.',
+          desc: 'Every non-trivial change runs as a numbered experiment. The session that designs an experiment does not grade its results, and the session that runs it does not decide what they mean. Thirty-six experiments are in the record, each with its predictions stated before the measurement.',
         },
         {
           title: 'Corrections in place, never deletions',

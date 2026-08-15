@@ -17,8 +17,8 @@
     "py_files_total": 112
   },
   "provenance": {
-    "corpus_files": 312,
-    "corpus_files_before_self_exclusion": 322,
+    "corpus_files": 314,
+    "corpus_files_before_self_exclusion": 324,
     "probe_interpreter": "E:\\AI-Models\\trellis2-env\\Scripts\\python.exe",
     "probe_interpreter_version": "3.13.13",
     "probe_skipped": false,
@@ -3842,15 +3842,17 @@
       ],
       "b1_literals": [],
       "b2_literals": [],
-      "cited_count": 6,
-      "cited_count_raw": 6,
+      "cited_count": 8,
+      "cited_count_raw": 8,
       "cited_in": [
         "docs/advisor-kickoff.md",
         "docs/experiments/E22-gates-report.md",
         "docs/experiments/E23-route-gates-report.md",
         "docs/experiments/E34-projection-coverage-report.md",
         "docs/experiments/E35-close.md",
-        "docs/experiments/E35-ruling.md"
+        "docs/experiments/E35-ruling.md",
+        "docs/experiments/E36-open-manifest-halt.md",
+        "docs/experiments/README.md"
       ],
       "dir": "tools/verify",
       "docstring_line1": "Protection manifests for the read-only trees: verify one, or emit a new one.",
@@ -3883,8 +3885,8 @@
       ],
       "b1_literals": [],
       "b2_literals": [],
-      "cited_count": 29,
-      "cited_count_raw": 30,
+      "cited_count": 30,
+      "cited_count_raw": 31,
       "cited_in": [
         "docs/experiments/E02-report.md",
         "docs/experiments/E02-texture-stage-on-sound-inputs.md",
@@ -3913,6 +3915,7 @@
         "docs/experiments/E35-anchored-pilot-bands.md",
         "docs/experiments/E35-armslate-spec.md",
         "docs/experiments/E35-clean-twins-kickoff.md",
+        "docs/experiments/E36-task0-report.md",
         "docs/experiments/README.md",
         "docs/tools.md"
       ],
