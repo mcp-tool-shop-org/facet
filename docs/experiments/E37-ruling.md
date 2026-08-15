@@ -834,3 +834,28 @@ fidelity, and the split sheets deliver it at zero cost.
 clear, the jobs fire immediately under Ruling 21's terms -- no further
 advisory round-trip stands between the cleared overlay and the spend. Any
 walk finding halts as always. Spend 51 of 80; 58 when they fly.
+
+## Ruling 25 -- Both walks CLEAR; the checker's scope limit is folded; the seven repaints FIRE
+
+**Walked at this seat on both native-resolution sheets, panel by panel: all
+eight masks clear.** The v0 lift boundary on plain forehead and chin, ears
+outside; the four ear masks taking their full domes with boundaries ending
+on background -- the only place a protruding defect's mask can end; the v6
+nose taking its whole lower edge with the held brow outside; the v7 band
+with its held-brow notch visibly un-tinted; and v1's hand polygon leaving
+the arm outside the mask -- Ruling 21's cut, delivered visibly.
+
+**The executor's disclosure is folded as the checker's declared scope**: the
+dark-distance verifier measures the boundary ring only where it lies on the
+figure, so its clearance speaks for 33.6-92.0% of each ring; the off-figure
+segments were walked by eye at native at both seats and land on plain
+background, which is inherent to protruding defects, not an error. A checker
+reporting clear over ground it never measured is the shape this arc keeps
+catching -- disclosed this time BEFORE it cost anything, which is the
+discipline arriving ahead of the failure for once.
+
+**Under Ruling 24's pre-authorization the seven masked repaints FIRE** --
+same seed, ColorMatchV2 per repair, receipts append-only, the v0 lift local
+and deterministic. Spend 51 to 58 of 80 as they fly. The repaired set
+sheets to this seat's walk, then the Director's eye, then Phase 3 with his
+reference view.
