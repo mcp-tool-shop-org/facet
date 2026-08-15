@@ -260,3 +260,53 @@ with turbo OFF — 20 steps, the template's non-turbo cfg, no Lightning — one 
 one mechanical repeat maximum. It separates the route from the LoRA, un-confounds
 every number above, and bounds the successor arc's entire direction. RECOMMENDED;
 the Director's word. The close ruling follows its sheet either way.
+
+## 10. F1 — the confound removed, the verdict unchanged; the route's measurement program is COMPLETE
+
+**F1 is RATIFIED, 6 of 6 measurable bands hit, one job, no repeat — 47 of 60.**
+Lightning was magnitude, not sign: removing it drops the dark census 3.8× and
+brings the register from an over-saturated 37.53 to 26.99 — and **2509-proper
+remains ~2.9× worse than the recorded route on both classes**, with the
+hatching-term caveat binding on both comparisons (part of every dark figure is the
+prompt's texture term rendered literally — herringbone in E2, crazed-fine in F1).
+The two-decimal agreement on pale-region chroma (F1 23.24 against the recorded
+23.25, a quantity neither run was tuned for) is ratified as instrument
+convergence. The register floor did its whole job at 26.99; the two-sided band
+stays dead.
+
+**B2 is the arc's finest methodological result and is folded as law for this
+class**: the executor's first pale-direction hit in five attempts was made by
+*refusing to look* — the dispatch's C3 ban forced mechanism reasoning (a more
+converged render carries less local excursion), and it held, where all four
+misses were made while looking at the picture. **For the pale class: the
+chroma-split instrument and mechanism reasoning outrank perception at working
+zoom. The eye keeps identity and register.** And on those, this seat's eye
+seconds the executor's sheet callouts with one refinement: F1 substantially
+recovers the material register — matte, incised features, near-recorded hue —
+and **is still a different man** (longer drawn smile, swooping lids, rounder
+head). E2 was a different species of object; F1 is a plausible cousin. The three
+judgements on the sheet are the Director's: identity, the register at 26.99
+against 23.77, and whether the crazed hatching reads as the term or as noise.
+
+**The arc's measurement program is COMPLETE.** Five directions closed by
+measurement: the seed trades on a 1-D frontier; cn is counter-indicated for pale
+and null for dark; denoise kills the register before either class; no slate lever
+moves the dark class while keeping the man; and 2509 is class-worse at both its
+configurations while out-registering the canny route with no ControlNet at all.
+**The recorded route remains the class-best measured configuration, and its
+candidate is the one the Director rejected.** No measured path to a class-clean
+accepted candidate exists inside this arc's scope. That is a complete result.
+
+**Held for the Director at the close, enumerated**: (a) the close word itself —
+task 5 runs as specced (manifests, count surfaces off `T34.PINS`, census, the
+terminal index pair) and the close ruling appends here; (b) **the armature relay's
+target is void** — it was held for "E35's candidate," which now does not exist;
+re-target to the E34 recorded GLB or hold for the successor, his word; (c) the
+successor arc's frame — the record names one untested direction (a NEW tool
+contract for the corrector class above 36 px², validated against his rejected
+artifacts before any A/B, reaching the 377-texel components the cap excluded by
+design) and the E34 disposition (reopened; accept-with-known-class or hold);
+(d) the E34 candidate anchors (E34 Ruling 9) remain owed regardless; (e) a
+`STUDIO_MEASURED` envelope candidate for the 2509 checkpoint (the quantisation
+trigger + the class measurements) goes to the close ruling's gate — one ruling
+per entry, always.
