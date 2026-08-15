@@ -62,7 +62,7 @@
 
 | # | file | home | A | flags | B1 | D | E | F | G *(proposal)* | the question (docstring line 1) |
 |---:|---|---|:-:|---:|:-:|---:|:-:|:-:|---|---|
-| 1 | `anchor_compare.py` | verify | yes | 4 | no | 9 | yes | yes | anchor_check | Is this re-production the recorded output - and if not, what is the difference's shape? |
+| 1 | `anchor_compare.py` | verify | yes | 4 | no | 8 | yes | yes | anchor_check | Is this re-production the recorded output - and if not, what is the difference's shape? |
 | 2 | `blade_band.py` | diagnostics | no | 2 | no | 1 | no | n/a | ambiguous | How much surface does the twin's KEY exclude, and does stage 1 paint any of it? |
 | 3 | `brush_reach.py` | diagnostics | no | 7 | no | 4 | yes | n/a | reach_ceiling | Bound the brush arm before spending it — how many holes can the eight stroke cameras se… |
 | 4 | `build_masks.py` | diagnostics | no | 10 | **yes** | 0 | no | n/a | none | Build the per-view denoise masks: flat (control) and foreshortening-GRADED (test). |
@@ -172,7 +172,7 @@
 | 108 | `silhouette_agree.py` | diagnostics | no | 8 | no | 3 | yes | n/a | ambiguous | Is project_twins' LIVE raycast silhouette the same object as the shipped sidecar mask? |
 | 109 | `texel_provenance.py` | diagnostics | no | 17 | no | 14 | yes | n/a | texel_provenance | Where did this pixel's colour actually come from? |
 | 110 | `texpass_metrics.py` | diagnostics | no | 7 | no | 2 | no | n/a | no opinion | E05 — one metric table, computed identically for every arm. |
-| 111 | `tree_manifest.py` | verify | yes | 7 | no | 5 | yes | yes | none | Protection manifests for the read-only trees: verify one, or emit a new one. |
+| 111 | `tree_manifest.py` | verify | yes | 7 | no | 6 | yes | yes | none | Protection manifests for the read-only trees: verify one, or emit a new one. |
 | 112 | `turn_render.py` | verify | no | 14 | no | 29 | yes | n/a | none | Matched-framing turnaround render of a GLB. |
 
 ## Axis F — every `n/a` and every `false`, with its reason
