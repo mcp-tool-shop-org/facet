@@ -309,3 +309,73 @@ this job's pixels.
   the Director's eye**. ≤ 2 further jobs, 47 of 60 at worst.
 - **Corrupted** → I stop. The finding is platform-side, there is no measurable configuration
   at our own frame, and inventing a further probe is not mine to do.
+
+---
+
+# E2 bands — interpolation vs framing, registered before the job
+
+## ⚠ First: my E1 branch plan's premise was wrong, and I am not executing it
+
+The E1 bands said *"Clean → the true A3 becomes runnable and I proceed to it."* **That
+premise does not hold.** E1 was clean using the **resampled** input, whose framing is the
+cover-crop — it does not make a *native-frame* run work, and the head band is still cut
+(rows −78…227), so the classes are still not measurable there. Executing the stated plan
+mechanically would have run a measurement whose head region is missing the crown, which is
+exactly where the pale class lives.
+
+Stating it before adapting, because a branch plan written in advance is worth nothing if I
+follow it past a premise that failed.
+
+## What E1 settled
+
+**Traversal is irrelevant; the pixels are what matter.** Content-equivalent pixels arriving
+as a file the node no-ops on came back clean (E1-P1 HIT at 0.75, E1-P3 HIT — resembles A2 at
+mean |Δ| 1.70 without pixel-identity). So **A3's native render content is the trigger**, and
+two candidates remain: the **framing** (native puts more background around the same figure)
+or the **interpolation character** (native is flat-shaded and quantised; the scaler's output
+is interpolated).
+
+## The construction
+
+The **native** 672×1568 render put through an inverse-then-forward lanczos round-trip
+(672×1568 → 352×821 → 672×1568). **Framing untouched, interpolation character acquired.**
+One variable, and it is the one that separates the two survivors:
+
+| | unique colours | mean \|grad\| | std | verdict so far |
+|---|---|---|---|---|
+| resampled (E1 input) | 5,046 | 2.0762 | 24.3 / 25.3 / 24.9 | **CLEAN** |
+| native (A3/D1 input) | **2,620** | 2.2042 | 20.2 / 21.1 / 20.8 | **CORRUPT** |
+| **native round-tripped (E2)** | **5,336** | 1.8027 | **20.2 / 21.1 / 20.8** | — |
+
+The round-trip sits in the clean family on colour count and in the native family on framing
+(std identical to the native's, because the framing is the native's).
+
+## The bands
+
+**E2-P1 — it comes back CLEAN**, odds **0.6**. The colour-count gap (2,620 against ~5,000) is
+the largest measured difference between the working and failing inputs, and a heavily
+quantised flat-shaded render is the kind of off-distribution input that can produce
+degenerate latents. *Falsifier: corruption, which puts **framing** as the trigger and means
+no native-framed input works — closing the measurable-frame route entirely.*
+
+**E2-P2 — the register survives: C\* on the keyed figure ≥ 15.** Ruling 8's term, third use.
+N/A on the instrument's refusal if corrupted.
+
+**E2-P3 — if clean, the classes become measurable for the first time in this arc.** The
+mask at this framing already exists and is verified (`armclay672mask_1.png`, edge deltas
+0.22–0.75 px), and the head band is `slice(92,337)` — fully inside the frame, crown
+included. *This is the whole point: a clean E2 is the first configuration where the pale and
+dark classes can be read at all.*
+
+**E2-P4 — I am NOT predicting the class values here.** The scaled parameters are derived and
+recorded, the head band is verified, but a clean E2 is a new population and I have missed the
+pale direction 3 of 3 this arc. If E2 is clean I will register the class bands **before**
+running the instruments on it, as a separate block, per the rule that a prediction comes
+before the number and not with it.
+
+## The branch plan, restated correctly
+
+- **Clean** → register class bands, then measure pale / dark / register / chroma-split at
+  the derived frame, build the sheet, **HALT** for the Director's eye. No further jobs.
+- **Corrupted** → framing is the trigger, no native-framed input works, and the arc's class
+  question cannot be answered at our own frame by this route. I stop and say so.
