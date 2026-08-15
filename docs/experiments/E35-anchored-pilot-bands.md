@@ -379,3 +379,65 @@ before the number and not with it.
   the derived frame, build the sheet, **HALT** for the Director's eye. No further jobs.
 - **Corrupted** → framing is the trigger, no native-framed input works, and the arc's class
   question cannot be answered at our own frame by this route. I stop and say so.
+
+---
+
+# E2 CLASS bands — registered after seeing the image, BEFORE any instrument ran
+
+**E2 came back clean** (P1 HIT at 0.6, P3 HIT). The trigger is the **interpolation
+character**, not the framing: a native render round-tripped through lanczos works, the same
+render untouched corrupts. **This is the arc's first configuration where the classes can be
+read** — full figure, crown included, at a frame whose mask is already built and verified.
+
+**Blindness limit, stated exactly.** I have looked at the image. I have NOT run the census,
+the pale instrument or the register instrument on it. These bands are from the eye and the
+construction, and the disclosure is the point: they are *not* blind to the picture, only to
+the numbers.
+
+## The configuration being measured
+
+E2 = served template · our native 672×1568 clay, lanczos round-tripped · v-next prompt at
+`433.image` · **turbo ON** (4 steps, cfg 1.0, Lightning LoRA) · no ControlNet · no seed
+override. ⚠ **Turbo carries a LoRA, and R3 as the Director ruled it says NO LoRA** — so this
+measures 2509+Lightning, not 2509. Named as a limit of the reading, not smoothed over.
+
+## Instrument parameters — derived, recorded, unchanged since
+
+Mask `armclay672mask_1.png`; head `slice(92,337)`; census `--blob-max-px2 84 --small-px2 21
+--window 23`; pale `--min-area 59 --window 47`. All scaled from the linear 1.53125 / area
+2.34473 ratios and nothing else. Baseline for direction only, **not for absolute
+comparison**: recorded twin pale 278 / rise 4.97 / dark 16 / 157 px² / C\* 23.77 at 352×1024.
+
+## The bands
+
+**E2-C1 — register survives, C\* ≥ 15.** Ruling 8's term. From the eye the terracotta is
+strong. Band **18–32**.
+
+**E2-C2 — dark census RISES above the recorded 16.** Band **18–60**. Reason, and it is a
+content reason rather than a defect one: the brows are rendered as **hard black graphic
+lines** and the herringbone hatching is far heavier than the recorded twin's, so there is
+simply more dark material on this figure. *This is the band I most expect to be argued with,
+because a census rise here is not the same defect the arc has been chasing — it is the
+prompt's own terms rendered literally.*
+
+**E2-C3 — pale area is LOW, band 0–250, at LOW confidence.** The crown reads evenly toned to
+my eye and there is no visible wash. **My pale-direction calls are 0 for 3 this arc**, which
+is why the band's floor is 0 and its ceiling still reaches below the recorded 278 rather than
+being pinned tight.
+
+**E2-C4 — if pale is non-zero, the chroma split lands (ii)**: pale C\* **above 15**, far from
+the clay's 1.12. At denoise 1.0 there is structurally no init to revert toward. N/A if pale
+area is 0.
+
+**E2-C5 — reg-IoU ≥ 0.85 against the verified mask.** With no ControlNet the silhouette is
+held only by the edit reference, so this measures how faithfully 2509 tracks it. **Reported
+as a fidelity number, not as a class metric** (the A3-P8 rule, carried).
+
+**E2-C6 — identity has moved.** Longer face, different nose, different proportions from the
+recorded twin. Not measurable; the Director's eye. Registered so it can be wrong.
+
+## After the numbers
+
+Build the sheet, **HALT**. No further jobs. The obvious next single job — **turbo OFF, no
+LoRA, R3-compliant, same round-tripped input** — is named for the Director's word and is not
+taken on my own initiative.
