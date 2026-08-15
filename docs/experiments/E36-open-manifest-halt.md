@@ -137,3 +137,40 @@ always wrong is retuning a condition while looking at the result it judges.
 
 **Awaiting the ruling. Zero cloud spent; the blind bands are unwritten and unsealed, so
 nothing about the arms has been seen or set.**
+
+---
+
+## 8. RESOLVED — the Director's ruling, 2026-08-15: delete the receipt
+
+He ruled the second disposition. Executed in this order:
+
+1. **The bytes recorded before the delete** — `sha256
+   C2E97E11523CA88CB6CC7EF0C8DB60080015F3000A6D90999976D2A67966CA1D`, 256 bytes. Its
+   complete content is transcribed in §2 above, in a document committed at `842f734`
+   **before** the file was touched, so nothing about it is lost. It is derived output of a
+   committed, re-runnable walk; re-deriving it costs one command.
+2. **Deleted** — `diag/close_manifest_D.json` removed from `facet_E35`. Nothing else in any
+   protected tree was touched.
+3. **Re-verified** — `MANIFEST GATE: HELD`, exit **0**:
+
+| gate | result after |
+|---|---|
+| A `facet_E33` | HELD — 116 / 116, 0/0/0 |
+| B `facet_E34` | HELD — 84 / 84, 0/0/0 |
+| **D `facet_E35`** | **HELD — 335 / 335, 0/0/0, 284,096,148 against declared 284,096,148** |
+
+**Premise 7 holds at open.** The existing seal was made true rather than rewritten — the
+manifest of a closed arc still declares exactly what that arc closed with.
+
+⚠ **The re-verification wrote its own `--out-json` receipt OUTSIDE every protected tree**
+(to the session scratchpad). That is the correct invocation and it is the whole lesson of
+this halt: the destination of a verify receipt must not be the root being verified.
+
+### Still open, and deliberately not taken here
+
+The **mechanism** is unrepaired — `tree_manifest.py`'s verify path still accepts an
+`--out-json` destination inside the root it walks, and T70 still has no leg that fires on
+it. This halt removed the instance; the class remains. That is a tool change carrying its
+own tests by the standing rule, and it was not folded into an arc whose subject is two
+route arms. **Named here so it is not lost:** the guard is one comparison against the
+walked root, and its fixture is a receipt written into a synthetic tree.
