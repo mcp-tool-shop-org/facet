@@ -128,3 +128,42 @@ so it is held with them rather than shipped on a looser rect than the ruling int
 - No protected tree was written to. Manifest gates HELD at open.
 - Phase 2's mechanics are verified and its inventory is measured; only the geometry of the
   masks is missing.
+
+---
+
+## 6. Region protocol executed — rects re-derived at 1:1 ([Ruling 20](E37-ruling.md))
+
+Seven regions, one local 1:1 crop each at 8× (v1 at 7×, 5× on the overlay), rect read against
+a source-pixel grid, re-overlaid, walked at this seat. **Zero cloud. Spend 51 of 80.**
+
+| region | view | rect (twin px) |
+|---|---|---|
+| v0 lift — features + cheeks, **excluding skull and ear** | 0 | 133, 122, 234, 192 |
+| v1 chest patch | 1 | 137, 246, 207, 420 |
+| v3 ear knob | 3 | 135, 141, 161, 174 |
+| v4 ear L / ear R | 4 | 110, 143, 133, 179 / 235, 143, 258, 179 |
+| v5 ear knob | 5 | 205, 141, 230, 181 |
+| v6 nose wedge | 6 | 225, 146, 250, 178 |
+| v7 face band | 7 | 165, 120, 235, 190 |
+| **HELD** v6 brows / v7 brow | 6 / 7 | 196, 112, 224, 142 / 214, 116, 236, 134 |
+
+Receipt: `phase2/repair_rects_v2.{png,json}`, status **proposed — awaiting the advisor's walk**.
+
+### 6a. ⚠ A correction to §3b, owed and made
+
+**My v6 rect was not wrong.** §3b reported it as sitting "over the cheek and mouth"; re-read at
+1:1 the nose wedge is **x 225–250, y 146–178**, and the original proposal (222, 138, 252, 178)
+frames it. That call was made off a **3.16× downscaled overlay** — the same unreliable read the
+halt was written against, committed in the act of reporting it. The genuine failures stand and
+are larger than stated: **v3's ear is at x 135–161 against a proposed 93–132** (no overlap at
+all), and **v5's at x 205–230 against a proposed 233–276** (no overlap). v4's were loose, v7's
+coarse, v1's plausible.
+
+### 6b. Two conflicts this seat will not resolve
+
+1. **The v7 face-band repair rect CONTAINS the v7 brow that Ruling 20 just HELD**
+   (165,120,235,190 ⊃ 214,116,236,134 in x; the brow's top edge sits 4 px above the band).
+   Repainting the band repaints the held feature. Either the band is cut to exclude the brow,
+   or the hold yields on that view — a ruling, not an executor's call.
+2. **v1's chest rect clips the left arm** at its top-left corner. Tightening it loses upper
+   chest, which is where the dark tone is strongest.
