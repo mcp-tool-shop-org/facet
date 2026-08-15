@@ -194,3 +194,45 @@ Spend after the confirm: 3 of 40. The executor's wrong-object catch on view
 4's reg-IoU (measured first against view 0's silhouette, 0.8915 → 0.9489
 against its own) is ratified — caught before it reached anyone, the
 measured-against-the-wrong-object family handled at its own seat.
+
+## Ruling 6 — The reg-IoU firing is CONTENT; the sealed rule applies; seed 770700 is the selected set
+
+**The halt is RATIFIED as executed.** The executor's scoring script read the
+floor as an eligibility filter and printed a winner; the executor refused its
+own script's reading and halted, because deciding what a gate means is not the
+running seat's call. That refusal is the two-seat design working.
+
+**The firing is CONTENT, not mechanical — no repeat fires.** The boundary's
+test: a mechanical defect is machinery failing to produce a measurable
+artifact; these jobs completed and produced real twins whose paint measurably
+over-keys (view 2: 91,559 keyed px against a 54,993 px geometry mask, 1.67×,
+where the other two seeds key the identical profile at 1.06× and 1.00× — the
+seed's paint, not the angle). And a repeat is not even coherent here: the
+platform is pixel-deterministic on a verbatim payload (E35 task 7, ΔE 0.0000),
+so a true repeat returns the same twin, and a changed repeat is a new variable.
+The numbers stand.
+
+**The halt-vs-filter tension resolves by seat, not by softening either clause:**
+the executor HALTS on any firing — always; the advisor then applies the
+selection rule as sealed. The rule predates every number ("lowest total dark
+census SUBJECT TO the register floor and reg-IoU ≥ 0.80"), so applying it is
+the specification working, not a post-hoc exclusion — the E08 test holds: the
+rule would have been the same whatever came out. **Seed 987654 is INELIGIBLE
+on the sealed rule; over the eligible seeds, the lowest dark census selects
+seed 770700** (160 / 887 px² against 20260815's 229 / 1,495; min reg-IoU
+0.9116; median C\* 29.90). Recorded plainly so nothing conflates: the STAGE-A
+mesh pick (reconstruction seed 987654) is untouched — mesh seed and twin seed
+are independent knobs, and only the twin seed is ruled out.
+
+**Two band outcomes fold as law-shaped notes:** H2's miss is the suspension
+vindicated by measurement — wood C\* runs 29.9–35.3, consistently above
+terracotta's 23.77, so a ported terracotta floor would have been a threshold
+about the wrong material; suspend-don't-invent paid in the first set it
+governed. And the over-key concentrating on a profile view joins the
+thin-structure family as a reported observation, uninvestigated by design —
+no spend chases a seed the rule already excluded.
+
+**Next: the Director's eye.** The selected set's sheet — all eight views at
+full size beside the source plate, head band at 3×, the per-view reg-IoU and
+census table riding — then his word gates Stage C. Spend stands at 27 of 40;
+the sheet costs nothing.
