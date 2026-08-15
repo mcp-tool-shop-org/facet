@@ -1,0 +1,57 @@
+{
+ "_version": "1",
+ "_built_by": "tools/diagnostics/e12_make_twin_prompts.py",
+ "_derived_from": "vw1.json tools['restylize_views.py'].prompt - stems are that string with whole comma-terms DELETED, never retyped. Term order is the entry's throughout.",
+ "_entry_verbatim": "a slender jointed wooden artist's mannequin, a smooth bald head, a simple readable face with drawn brows, closed lidded eyes, a small closed smile, small ears, ball-and-socket shoulders and elbows, ball-and-socket wrists and ankles, ball-and-socket hips and knees, fine straight wood grain across the torso and limbs, empty open hands, simple rounded feet, plain pale grey background, warm natural hardwood, matte oiled wood, soft studio light",
+ "_entry_terms": 16,
+ "_the_rule": "E12 Ruling 9d: an element whose surface a view cannot see is dropped from that view's stem - a term present in a view's prompt is an instruction to paint it, and the text wins against the control (the W3 beard mechanism, measured). Split deviation measured and ruled at E12 Ruling 10i.",
+ "_drop_map": {
+  "a simple readable face with drawn brows": [
+   "3",
+   "4",
+   "5"
+  ],
+  "a small closed smile": [
+   "3",
+   "4",
+   "5"
+  ],
+  "closed lidded eyes": [
+   "3",
+   "4",
+   "5"
+  ]
+ },
+ "_assertions": "Each stem asserted an ordered SUBSEQUENCE of the entry's term list; each view with no drops asserted BYTE-EQUAL to the entry. Both enforced in the builder with no skip flag; a failure writes no file.",
+ "_supersedes": "none - first wood register. E34-twin-prompts-r3-8view.json records R3 (terracotta) and is NOT superseded.",
+ "_register": "WOOD v-w1, authored verbatim by the advisor at E37 kickoff AMENDMENT 2, at the Director's word 'round 2, wood'. Three named deltas from R3; all else byte-preserved.",
+ "_drop_rule": "E12 Ruling 9d, same view set as E34's terracotta eight-view map: face-interior terms drop on views 3,4,5. Ears, hands and feet stay - visible from behind.",
+ "_gate": "Gate-R probe first, 2 jobs, views 0 and 4, seed 770700, the picked mesh's controls. No seed set fires before the Director's register word.",
+ "armwood_0": "a slender jointed wooden artist's mannequin, a smooth bald head, a simple readable face with drawn brows, closed lidded eyes, a small closed smile, small ears, ball-and-socket shoulders and elbows, ball-and-socket wrists and ankles, ball-and-socket hips and knees, fine straight wood grain across the torso and limbs, empty open hands, simple rounded feet, plain pale grey background, warm natural hardwood, matte oiled wood, soft studio light",
+ "armwood_1": "a slender jointed wooden artist's mannequin, a smooth bald head, a simple readable face with drawn brows, closed lidded eyes, a small closed smile, small ears, ball-and-socket shoulders and elbows, ball-and-socket wrists and ankles, ball-and-socket hips and knees, fine straight wood grain across the torso and limbs, empty open hands, simple rounded feet, plain pale grey background, warm natural hardwood, matte oiled wood, soft studio light",
+ "armwood_2": "a slender jointed wooden artist's mannequin, a smooth bald head, a simple readable face with drawn brows, closed lidded eyes, a small closed smile, small ears, ball-and-socket shoulders and elbows, ball-and-socket wrists and ankles, ball-and-socket hips and knees, fine straight wood grain across the torso and limbs, empty open hands, simple rounded feet, plain pale grey background, warm natural hardwood, matte oiled wood, soft studio light",
+ "armwood_3": "a slender jointed wooden artist's mannequin, a smooth bald head, small ears, ball-and-socket shoulders and elbows, ball-and-socket wrists and ankles, ball-and-socket hips and knees, fine straight wood grain across the torso and limbs, empty open hands, simple rounded feet, plain pale grey background, warm natural hardwood, matte oiled wood, soft studio light",
+ "armwood_4": "a slender jointed wooden artist's mannequin, a smooth bald head, small ears, ball-and-socket shoulders and elbows, ball-and-socket wrists and ankles, ball-and-socket hips and knees, fine straight wood grain across the torso and limbs, empty open hands, simple rounded feet, plain pale grey background, warm natural hardwood, matte oiled wood, soft studio light",
+ "armwood_5": "a slender jointed wooden artist's mannequin, a smooth bald head, small ears, ball-and-socket shoulders and elbows, ball-and-socket wrists and ankles, ball-and-socket hips and knees, fine straight wood grain across the torso and limbs, empty open hands, simple rounded feet, plain pale grey background, warm natural hardwood, matte oiled wood, soft studio light",
+ "armwood_6": "a slender jointed wooden artist's mannequin, a smooth bald head, a simple readable face with drawn brows, closed lidded eyes, a small closed smile, small ears, ball-and-socket shoulders and elbows, ball-and-socket wrists and ankles, ball-and-socket hips and knees, fine straight wood grain across the torso and limbs, empty open hands, simple rounded feet, plain pale grey background, warm natural hardwood, matte oiled wood, soft studio light",
+ "armwood_7": "a slender jointed wooden artist's mannequin, a smooth bald head, a simple readable face with drawn brows, closed lidded eyes, a small closed smile, small ears, ball-and-socket shoulders and elbows, ball-and-socket wrists and ankles, ball-and-socket hips and knees, fine straight wood grain across the torso and limbs, empty open hands, simple rounded feet, plain pale grey background, warm natural hardwood, matte oiled wood, soft studio light",
+ "_per_view_term_count": {
+  "0": 16,
+  "1": 16,
+  "2": 16,
+  "3": 13,
+  "4": 13,
+  "5": 13,
+  "6": 16,
+  "7": 16
+ },
+ "_full_string_views": [
+  "0",
+  "1",
+  "2",
+  "6",
+  "7"
+ ],
+ "_negative": "watermark, text, logo, blurry, photo, deformed",
+ "_negative_provenance": "vw1.json tools['restylize_views.py'].negative, transcribed. An authored negative would be a second variable in the run that introduces the first."
+}
