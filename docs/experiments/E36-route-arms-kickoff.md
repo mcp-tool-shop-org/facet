@@ -104,3 +104,127 @@ verbatim: **land all pin edits → run the FULL suite to surface unknown pins �
 collect → surfaces → census last.** Manifest gates at open and close via
 `tree_manifest` (E33 form and E34 form both served). E15 ritual at open: scratch db,
 19/19 or stop.
+
+---
+
+> ## ⚖ AMENDMENT — the execution spec this kickoff shipped without (advisor, 2026-08-15)
+>
+> The Director ruled the first executor handoff the weakest this seat has made, and
+> he was right: it compressed what the record already holds, ordered a structural
+> graph change with no anchor — the error class Ruling 6 folded hours earlier — and
+> described a topology that contradicts the recorded pipeline. This amendment is the
+> repair. Everything below supersedes the thin arm descriptions above where they
+> conflict.
+
+## Premises — measured or assumed (mark the outcome in the report)
+
+| # | premise | status |
+|---|---|---|
+| 1 | The recorded view-1 payload is reproducible from the archive and the platform is pixel-deterministic on a verbatim payload | **MEASURED** (E35 task 7: ΔE 0.0000 on 360,448 px) |
+| 2 | A `ControlNetApplyAdvanced` at strength 0.0 is a conditioning no-op, so the rewired dual graph at depth-strength 0 reproduces the recorded twin | **ASSUMED — task 0d proves it; this IS the structural anchor, and arm 2 does not run until it holds** |
+| 3 | The authored view-1 depth map exists and is mask-consistent | **MEASURED** (`facet_E35\depth\armclay_1_depth.png`, T69-anchored: 0 differing px vs the recorded masks; `_depth_far.png` variant also on disk) |
+| 4 | The depth map's head band occupies 110–179 of 254 levels (near-limb blowout compresses head relief) | **MEASURED at the slate — carried as a known property, not tuned; the `_far` variant is a contingency at the Director's word only** |
+| 5 | The flat-lit clay render changes shading only — silhouette byte-equal to the recorded mask | **ASSUMED — task 0e proves it via `silhouette_masks --anchor` (0 differing px) before any upload** |
+| 6 | The pale/register instruments reproduce every published R2-c and register row before measuring anything new | **ASSUMED — task 0f; the G5/G5b anchor forms are built and were green at the close** |
+| 7 | `facet_E33/E34/E35` + the eight subtrees verify 0/0/0 via `tree_manifest` | **MEASURED at the E35 close; re-verify at open and close** |
+
+## The baseline and the floors — the numbers every band is set against
+
+| | view-1 recorded (seed 770700, R3 prompt) |
+|---|---|
+| pale area / L\*-rise | **278 px² / 4.97** |
+| dark census / area | **16 / 157 px²** |
+| register C\* | **23.77** |
+| reg-IoU | **0.9372** |
+| **seed-noise floor (2a, 3 seeds)** | **count 7–26 · area 34–139 px²** — a result inside the floor is a re-roll, not a signal; every band states its position relative to the floor |
+| pale-region chroma, recorded | 23.25 (the chroma-split column reads signature, not just magnitude) |
+
+## ⚠ The prompt ruling that binds every arm
+
+The arms run **the RECORDED R3 prompt** (`E34-twin-prompts-r3-8view.json`, armclay_1 —
+sixteen terms ending *"…unglazed terracotta, matte sculpted clay, soft studio
+light"*). The r3L probe ("flat even lighting") **edits a ruled register term and is
+the Director's to veto** — its own file says so — and Ruling 1's "adopted into
+prompt v-next" overstepped: adoption awaits his ratification, surfaced in the
+advisor handoff. One lever per arm means the prompt does not move while the control
+or the init does. r3L's measured numbers (pale 226/4.09, dark flat) stand in the
+record as the term's own evidence when he rules.
+
+## The arc, task by task
+
+**Task 0 — mechanics, zero cloud.** E15 ritual (scratch db, 19/19 or stop);
+watchdog heartbeat ADVANCING (two reads, not the starter's exit code); manifests
+(premise 7). Then:
+- **0d — THE STRUCTURAL ANCHOR (1 job).** Emit the dual-control payload **from the
+  recorded payload by structural transform in code — never retyped** (the prompts
+  file's own discipline): add one `LoadImage` (the depth map) and one
+  `ControlNetApplyAdvanced` chained ahead of the recorded canny apply, conditioning
+  rewired through both. Link-sanity in code (self-links, dangling targets — the E04
+  G7 law: a `dry_run` PASS proves nothing). Submit at **depth strength 0.0**, all
+  else byte-recorded. **Gate: pixel-identical to the recorded twin, or a uniform
+  residual at the E33 float floor (ΔE ≈ 0.84, uniform shape).** Structured
+  difference ⇒ the rewire itself perturbs ⇒ HALT, report, arm 2 never fires.
+- **0e — the flat-init render, zero cloud.** `silhouette_masks`-gated re-render of
+  view-1 clay under `--flat` at the recorded invocation (recorded script, recorded
+  frame 352×1024). Gates: `--anchor` 0 differing px against the recorded mask
+  (geometry unchanged, shading only), then the **unique-colour count** — below the
+  clean family (~5,000), one lanczos round-trip (the E35-measured repair), and the
+  round-tripped file's mask re-anchored. Both numbers in the report.
+- **0f — instrument anchors.** The pale instrument and `t2_register_all.py
+  --twins` reproduce every published R2-c row (278/4.97 · 932/12.99 · 1220/19.68 ·
+  the three ladder rungs) and the register rows **to the digit** before any arm is
+  measured. A failed anchor halts the arc, not the instrument.
+
+**Task 1 — ARM 2, dual control (1 job).** The 0d graph with depth strength
+**0.80, start 0.0, end 0.45** (consult #1's schedule, environment-validated,
+provenance stated on the sheet) · canny apply at **0.45, full schedule** (the
+recorded canny control image, locally built as always — nothing cloud-side
+preprocesses anything) · seed 770700 · denoise 0.92 · steps 20 · cfg 2.5 · shift
+3.1 · euler/simple · 352×1024 · R3 prompt · no LoRA. Depth control =
+`armclay_1_depth.png` as uploaded input. Blind bands sealed in a commit BEFORE
+submission, three branches per hypothesis with the UP branch live, every numeric
+band stating its position against the seed floor.
+
+**Task 2 — ARM 1, the flat init (1 job).** The recorded graph unmodified; the only
+delta is the 0e init. Same band discipline.
+
+**Task 3 — ARM 3, combined (≤1 job).** Only if arms 1 and 2 each improved at least
+one class without worsening the other, breaking the register floor, or losing the
+man. The pre-registered rule is code, not judgement — write it in the bands file
+before task 1 runs.
+
+**Task 4 — sheets and the halt.** Per arm: full-size sheet beside the recorded
+twin + the head band at 3x (the surface his eye reads); columns carry pale
+(area, L\*-rise, **chroma-split signature**), dark (census, area, % of figure),
+register C\*, reg-IoU. The pale class is read by instrument only — no eye-claims
+at working zoom (the C3 law). **HALT at each sheet for the Director's eye.**
+Identity and register are his; the class numbers carry the class verdict.
+
+**Mechanical vs content, defined here so no seat re-litigates it:** validation
+failures, black/degenerate frames, and corruption signatures are MECHANICAL — one
+repeat per arm. Class numbers, register values, and identity are CONTENT — never
+repeated, whatever they say.
+
+## Artifact homes and report conventions
+
+Everything lands under `E:\AI\training\facet_E36\` (+ repo tools/tests/docs);
+`facet_E33/E34/E35` and the eight subtrees are read-only behind `tree_manifest`.
+The report is `E36-route-arms-report.md`; bands are
+`E36-route-arms-blind-bands.md`, sealed by commit SHA before the first job and
+scored hit/miss/mixed in the report. Payload sidecars record full parameter sets
+per job. No judgement words anywhere. Spend ledger per job in the report.
+
+## Out of scope
+
+The corrector-contract track (its own spec, local) · the r3L prompt ratification
+(the Director's) · the `_depth_far` variant (contingency, his word) · any
+8-view rebuild (his word at a sheet) · Qwen-Image-Edit-2509 in any form (closed
+worse by E35) · partner texture nodes (closed identity-blind by schema) · edits to
+any protected tree or accepted asset.
+
+## Budget — REVISED by this amendment
+
+**Ceiling 15**: 0d anchor 1 · arm 2 = 1 · arm 1 = 1 · arm 3 ≤ 1 · the eight-view
+rebuild on a Director-picked winner = 8 · contingency 3 (one mechanical repeat per
+arm). The anchor is not optional and not contingency — it is the first job of the
+arc, and Ruling 6 is why.
