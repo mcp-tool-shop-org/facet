@@ -774,3 +774,40 @@ rides unchanged); the v0 lift's boundary moves onto the plain forehead above
 the brows and the chin below the mouth, where its feathered gradient is
 invisible. One local pass, one re-walk at both seats, zero cloud -- then
 the seven repaints fire under Ruling 21's terms. Spend stands at 51 of 80.
+
+## Ruling 23 -- The growth halt is ratified; the eye proposes and the instrument verifies; receipts become append-only
+
+**Ratified**: the non-convergence was reported with its mechanism instead of
+a retuned percentile, the cap held, and the overwritten receipts were
+restored to exact core_px from their recipe -- the
+recipe-that-reproduces-its-output law paying out on the seat that tripped
+it, owned in the report before anyone asked.
+
+**The boundary task changes hands, by the evidence of three failures.** The
+gradient term's defect is real (curved wood under studio light has shading
+gradient everywhere, so "smooth" cannot mean "featureless" on this subject)
+-- but the deeper pattern is that this is the THIRD mechanized localisation
+to fail on this subject in one phase, after band-limited derivation and the
+connectivity rule, while hand placement under the 1:1 overlay-walk protocol
+has converged every time it ran. Ruled:
+1. **All remaining boundaries are placed BY HAND on the 1:1 crops** -- the
+   v1 polygon method, generalised: a polygon per region, boundary on plain
+   wood by eye.
+2. **The executor's dark-paint-distance idea is adopted as the VERIFIER,
+   not the generator**: after placement, measure each boundary ring's
+   minimum distance to any dark-paint pixel and report it per mask -- the
+   diagnostic that would have caught all five clips mechanically. The held
+   exclusion islands are exempt by construction; their boundaries are
+   ruled, not placed.
+3. Eye proposes, instrument verifies, both seats walk. No further
+   boundary-generation predicates this arc.
+
+**Receipts are append-only from this ruling forward**: a mask-writing pass
+writes into a fresh versioned directory, never over a ratified receipt. The
+overwrite survived only because the recipe was complete; survivable is not
+acceptable. The write-guard tool change is named for the errand list; the
+convention binds now.
+
+Spend 51 of 80, unmoved through two halts. The sequence stands: hand-placed
+polygons -> dark-distance verification -> overlay -> both walks -> the
+seven repaints.
