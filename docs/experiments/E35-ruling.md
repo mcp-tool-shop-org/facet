@@ -164,3 +164,45 @@ are in the record. The truncation family now counts **five** instances in this r
 history and gains a member: **a wrapper's exit code is a paging flag wearing a
 verdict's clothes — read the tool's own summary.** This seat's error this fold is
 Ruling 2's: an over-scoped mechanism closure, corrected above in place.
+
+## 8. The anchored sequence — RATIFIED
+
+**A1 vindicated the anchor law in the cheapest possible way**: one unmodified
+`run_template` job produced a fully-rendered 1024×1024 image (the template's own
+default dalmatian prompt — the Director asked; that is what the dog is), converting
+"2509 is broken" into "our construction was broken." **A2 is the route's first
+working configuration on our subject**: clay through the edit path, the v-next
+prompt, the scaler kept — a clean mannequin at the exactly-predicted 672×1568, the
+subject's identity surviving a 4-step turbo encode. The walk's findings stand
+un-judged as the route's open style questions: cover-crop at the feet, herringbone
+heavier than the recorded twin, gloss over matte, a different man — all under turbo
+defaults (4 steps, cfg 1.0, Lightning), the non-turbo path never yet cleanly run.
+**A3 corrupted three times with three distinct signatures**, register destroyed each
+time; the executor's isolation is ratified — the natively-rendered 672×1568 input is
+the trigger (the seed exonerated by the authorized repeat), the mechanism
+UNESTABLISHED, spend stopped at exactly the sequence's authorization. **43 of 60.**
+
+**The pre-registration held under pressure and is commended as precedent**: A2's
+class number was refused after A3's failure because the crop maps the head band to
+rows −78…227 — the replay (IoU 0.9531) is recorded as a finding, not read as a
+measurement. The executor's three owned errors (the un-asked seed override — a seed
+pin is a lever; the pure-scale registration model; the slot-address misread) are in
+the record with what caught each. Two instrument folds ride: **the band template
+gains a register term** — every future pixel-returning arm carries a "the register
+survived" band, measurable as C\* on the keyed figure, because non-degenerate cannot
+separate a mannequin from a rainbow — and the slot-address finding is recorded as a
+platform fact: **on proxyWidget-shifted templates the reported DEFAULTS are
+authoritative over slot names** (this template's positive prompt lives at
+`433.image`; platform validation caught the misread before any GPU ran).
+
+**The next arm's ranked hypothesis, with its falsifier stated** (the three-branch
+law observed): A2's input traversed the scaler's real resample; A3's hit it at
+no-op. If the no-op path passes the RGBA's fourth channel through to the encode
+where the resample flattens it, channel misalignment at the encode is consistent
+with three-signatures-at-one-input. **Discriminator, one job**: the RGB-flattened
+native 672×1568 clay, A2's proven config otherwise unchanged. Falsifier: still
+corrupted ⇒ alpha exonerated; the remaining candidates (bit depth, PNG colour type,
+upload-path normalization) are each enumerable locally before any further spend.
+Held at the Director's word: the discriminator (1 job), then on a clean result the
+true A3 — turbo decided deliberately and stated — (1–2 jobs), then the register
+sheet at his eye. Sequence ≤ 3 of the remaining 17.
