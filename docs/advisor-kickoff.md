@@ -110,7 +110,7 @@ seat made; the E36 amendment is the repair and the standard.
 ### The record index
 
 Mount SERVING, certificate PASSED, byte-identity determinism.
-The record holds 36 experiments. No staleness. **Every other count lives in the
+The record holds 37 experiments. No staleness. **Every other count lives in the
 ritual's own output and in `record_health` — read them there, not here.** *(The
 experiment count stays because T34's fourth leg pins this exact sentence. Preserve
 the sentence shape when you edit this file.)*
