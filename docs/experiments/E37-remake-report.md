@@ -289,6 +289,197 @@ Stated now so the Stage-A sheet is read for what it can show.
 
 ---
 
+## Stage A — the control screen: the fork FIRED, and my prediction MISSED
+
+The fork was pre-registered by the advisor at the Director's confirmation, **before the
+control was rendered or screened**, and is transcribed with its reasoning in
+`facet_E37/stageA_control_fork_preregistration.md`: *fires on the recorded mesh → the
+screen gates Stage A; doesn't fire → screen demotes to diagnostic.* Either branch is
+CONTENT, so it runs **once** and is not repeated.
+
+**It fired.** The recorded performer geometry, eight views, lit clay against `--flat` clay,
+figure bounded by the exact raycast silhouette:
+
+| view | lit blobs | flat blobs | **geometry marks** | largest |
+|---|---|---|---|---|
+| 0 | 71 | 2 | **71** | 10 px² |
+| 1 | 72 | 2 | **72** | 19 px² |
+| 2 | 40 | 1 | **38** | 36 px² |
+| 3 | 95 | 1 | **94** | 26 px² |
+| 4 | 74 | 3 | **74** | 21 px² |
+| 5 | 54 | 3 | **54** | 32 px² |
+| 6 | 40 | 0 | **40** | 17 px² |
+| 7 | 120 | 2 | **119** | 32 px² |
+| **total** | 566 | 14 | **562** | **36 px²** |
+
+⚑ **PREDICTION MISS, recorded as one.** This seat predicted **SILENT** (blind to any control
+render, reasoning from task 0a's clay-bright measurement) and the control returned 562. The
+prediction was wrong; **by the pre-registered rule the screen gates Stage A.**
+
+### But it does not fire WHERE the rejected dots are — and that is a different claim
+
+*A gate must test the operation's failure mode, not a proxy for it.* A lit-versus-flat
+asymmetry appears on **any** faceted mesh under a light, so "the screen fires" and "the
+screen sees the class the Director rejected" are two claims and only the second makes a
+candidate ranking mean what a sheet would be read to mean.
+
+Tested on entirely recorded operands, all four at 352×1024 sharing one camera, nothing
+re-rendered: E34's `turn_final_flat/armflat_1.png` (where task 0a found the dots), E33's
+recorded studio clay, **E36's flat clay of the same mesh**, and E34's geometry mask.
+
+| | |
+|---|---|
+| recorded dots reproduced | **6 px** within L1 ≤ 12 of (11,9,8) inside the mask — task 0a's own count, to the digit, so the operand is right |
+| locally dark under LIT | 8,514 px |
+| locally dark under FLAT | **1 px** |
+| lit-only (the screen's quantity) | 8,514 px in **110 components** |
+| **recorded dots inside a lit-only mark** | **0 of 6** |
+| **recorded dots within 3 px of one** | **0 of 6** |
+| per-dot distance to the nearest mark | 20.4 · 4.5 · 5.4 · 16.0 · 24.5 · 23.8 px |
+| **null model** — all 91,415 masked px | median **10.0** px, 9.31% at distance 0, 21.50% within 3 px |
+
+**The dots sit farther from the screen's marks than a typical figure pixel does** (median
+~18 px against the null's 10.0).
+
+⚠ **Stated with its limits, because six is a small sample.** Under the null, 0-of-6-inside
+has probability ≈ 0.56 and 0-of-6-within-3px ≈ 0.23, so this is **not** proof that the dots
+avoid the marks. What it is: **no evidence whatever that the screen sees them**, on a test
+that would have shown association had there been any.
+
+**Read together with `flat = 1 px`**, the reading is that essentially all local darkness on
+a clay render is shading, so the screen's count is a measure of a mesh's own **shading
+relief** — a real property, useful for separating candidates, and **not demonstrated to be
+the rejected class**. Finding 2's UV-gap candidate survives this test unweakened.
+
+**Nothing is renegotiated.** The fork's rule stands as pre-registered and the screen gates
+Stage A. This is recorded so the Stage-A sheet is read for what its ranking is: relief, at
+the Director's eye, alongside identity and topology — and *a diagnostic and a gate are
+different objects.*
+
+## Stage A — six candidates, measured. **HALT for the Director's pick.**
+
+Seeds pre-registered before any candidate existed
+(`facet_E37/stageA_seed_preregistration.md`): 42 (the library default every recorded
+reconstruction in this repo ran at), 770700, 987654, 424242, 770701 (the four the record
+already names), and 1 (one from outside this record's vocabulary). Each built by
+`reconstruct_mesh.py` from the pinned plate, then eight lit clay views, eight `--flat`
+views, and eight exact raycast silhouettes.
+
+### The seed moves the geometry — checked, because the ANDON cannot check it
+
+`reconstruct_mesh.py`'s gate proves `pipe.run` *accepts* a seed. It cannot prove the seed
+*changes* anything, and if some other source dominated, six candidates would be one mesh in
+six files with every downstream number a comparison of a thing with itself.
+
+| seed | raw verts | raw faces | GLB bytes | wall |
+|---|---|---|---|---|
+| 987654 | 687,457 | 1,381,656 | 36,269,164 | 109.2 s |
+| 42 | 704,494 | 1,428,392 | 36,121,852 | 109.5 s |
+| 424242 | 705,367 | 1,440,956 | 35,805,112 | 108.4 s |
+| 770700 | 722,296 | 1,471,748 | 36,342,412 | 106.7 s |
+| 1 | 735,086 | 1,488,292 | 37,653,084 | 108.9 s |
+| 770701 | 755,384 | 1,533,380 | 36,955,356 | 109.2 s |
+
+**Six distinct vertex counts, six distinct face counts, six distinct GLB hashes, one
+verified source plate** (`image_sha256` identical across all six). Raw-face spread
+**10.98%** — 40× the 0.27% `to_glb` floor, and the raw stage is deterministic per seed, so
+the spread is seed-driven.
+
+### The two screens, and they agree
+
+| candidate | pit marks | largest | shells | non-man | pieces | sat ≥1% | in/out | gap p95/p5 |
+|---|---|---|---|---|---|---|---|---|
+| **987654** | **378** | 34 | **4** | **75** | **39** | **1** | **0.939** | **1.16** |
+| 1 | 455 | 36 | 62 | 282 | 136 | 11 | 0.320 | 6.63 |
+| 770700 | 476 | 32 | 66 | 706 | 273 | 13 | 0.119 | 6.75 |
+| 770701 | 510 | 31 | 69 | 505 | 204 | 13 | 0.342 | 4.65 |
+| 42 | 525 | 36 | 67 | 542 | 239 | 14 | 0.321 | 2.80 |
+| 424242 | 565 | 32 | 51 | 324 | 147 | 13 | 0.341 | 1.31 |
+| *CONTROL (old)* | *562* | *36* | *67* | *534* | *218* | *5* | *0.686* | *1.67* |
+
+⚠ **The control row is not comparable on the count columns** and is printed only for the pit
+screen's sake: it is the 300k **decimated prep** at 299,956 faces against ~990k raw
+candidate faces, and it carries **165 boundary edges** where every candidate has 0 or 1.
+Candidate-against-candidate is like-for-like; candidate-against-control is not.
+
+Area-normalising the pit count changes no ranking (987654 563.5 marks/Mpx → 424242 872.9,
+control 851.6), and the count correlates weakly with both face count (**r = +0.380**) and
+figure area (**r = −0.386**), so it is not a proxy for either.
+
+### Only one candidate's nested-wall reading is actually about a wall
+
+The nested-wall test takes the two largest manifold pieces and asks whether the second is
+nested in the first. That is a wall test **only when the second piece is a wall**:
+
+- **987654**: inner/outer **0.939** (near-equal) with gap spread **1.16** (tight, uniform)
+  — the signature of a genuine nested wall. `material_frac_of_outer` **13.93%**, so ~86% of
+  the enclosed volume is cavity, wall gap **0.204% of height**, `boundary_edges` **0**.
+- **every other candidate**: inner/outer **0.119–0.342** with spreads to **6.75** — the
+  second piece is the largest *fragment*, and their `material_frac` describes a fragment
+  inside a bbox, not a wall. Do not read those numbers as wall thickness.
+
+⚑ **This is the first time the nested-wall leg has computed on a CHARACTER mesh in this
+repo.** CLAUDE.md records it *declining* on all five character meshes ever tested, because
+it needs a second manifold piece above 1% of faces and the largest ran 98.2–98.6%. On
+987654 the second piece is 48.2%, so it ran — and returned a hollow double-walled shell,
+which is E14 Ruling 3's finding **measured on this class rather than extrapolated to it**.
+The open item CLAUDE.md flags is answered for this one mesh; the ruling is the advisor's.
+
+### ⚠ The thing that must not be read off the topology table alone
+
+**The subject is a jointed artist's mannequin.** On the plate the limbs are physically
+separate segments meeting at ball joints. So a reconstruction returning limb segments as
+**separate shells may be the faithful structure, and 4 shells may mean the joints were
+fused into one continuous surface.** Seed 42's satellites sit in symmetric pairs at
+limb-shaped positions and heights (±0.053 at z −0.082, ±0.071 at z −0.329, ±0.137 at
+z −0.180, ±0.078 at z −0.484), which is what a segmented arm-and-leg set looks like in a
+shell census.
+
+At the torso zoom, all of 42 / 987654 / 770700 render the ball joints visibly. What differs
+by eye is surface: **987654 carries visible vertical striation across the chest** where 42
+and 770700 read smoother — the topologically cleanest candidate is not the smoothest-
+surfaced one. That is a trade, it is exactly the kind of thing a metric cannot rule on, and
+it is the Director's.
+
+**No candidate is recommended here, and no pass bar was invented.** *Canon is not a taste
+question to be routed around.*
+
+### The sheets
+
+Full size, at `E:\AI\training\facet_E37\stageA\sheets\`:
+
+- `E37_stageA_front_vs_plate.png` — 10624×1354, the source plate beside all six front views
+  and the old mesh
+- `turn_seed{42,770700,987654,424242,770701,1}.png` and `turn_CONTROL.png` — 6016×1050
+  each, eight views at full render resolution. Per-view brightness spread **1.03–1.07×**
+  on every one, inside montage's own <1.20× gate, so no view is darkened by the orbiting-
+  light bug
+- `E37_stageA_torso_zoom.png` — plate against three candidates at 2× on the joint band
+
+**HALT.** The pick is the Director's, on identity first.
+
+### Resolution — **no round-1 pick; resolved to ROUND 2 at the Director's word**
+
+His word, 2026-08-15: **"round 2, wood."** Grounds in [E37-ruling.md](E37-ruling.md)
+Rulings 1–2, operational spec in the kickoff's Amendment 1.
+
+**The cause explains this section's own two puzzles at once.** The source plate carries
+**generator fingerprint-swirls** — concentric ridge whorls across chest, belly and thighs,
+read at his zoom and confirmed at the advisor's read of the plate. The route's founding law
+is unchanged — *reconstructors read surface noise as geometry* — so TRELLIS baked the
+swirls into every round-1 candidate as **relief**, and all six share one plate. That is
+what the chest striation above is, and it is a substantial part of what the pit screen's
+378–565 marks are counting on every candidate, control included. **Picking from round 1
+would pick the least-swirled swirl.**
+
+It also coheres with the co-location result rather than contradicting it: a screen counting
+plate-inherited relief is exactly a screen that would *not* land on the six recorded
+pure-black dots. Two independent readings, one mechanism.
+
+**Round 1 is not discarded** — its candidates, screens, sidecars and this section stay in
+the record as the measured baseline round 2 is compared against, and the six seeds are
+deliberately reused unchanged so the comparison is like-for-like. Spend remains **0 of 40**.
+
 ## Count surfaces and harness state
 
 T71 adds 38 tests. Moved in this commit, in the corrected order (**pin edits → FULL suite →
