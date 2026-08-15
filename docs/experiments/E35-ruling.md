@@ -206,3 +206,57 @@ upload-path normalization) are each enumerable locally before any further spend.
 Held at the Director's word: the discriminator (1 job), then on a clean result the
 true A3 — turbo decided deliberately and stated — (1–2 jobs), then the register
 sheet at his eye. Sequence ≤ 3 of the remaining 17.
+
+## 9. D1/E1/E2 — the trigger closed, Ruling 8's hypothesis dead by its own falsifier, the route measured under a confound
+
+**Ruling 8's alpha hypothesis was this seat's, and it is FALSIFIED** — by the exact
+falsifier it carried. D1's output is **pixel-identical to A3c** (0 of 1,053,696
+differing) while the files' bytes differ: the fourth channel changed nothing
+anywhere in the pipeline, and the same fact proves **the fault is deterministic** —
+the three A3 signatures were three *configurations*, not a platform lottery. A
+hypothesis that dies by its own falsifier is the system working; it is recorded
+with the same weight its survival would have carried. The executor's pre-spend
+local enumeration — bit depth and colour type killed free, both inputs measured
+8-bit RGBA all-opaque — ran the falsifier branch's homework *before* the job, and
+is commended. The byte-vs-pixel law ran in reverse to produce a finding: a sha256
+comparison would have reported difference and exonerated nothing. The executor's
+P3 calibration member is adopted into the family: **state which variable was
+actually held fixed, read from the run log, not from memory** — it had the log on
+screen and summarised it wrong anyway.
+
+**E1 and E2 close the trigger.** Traversal is irrelevant (content-equivalent pixels
+arriving as a no-op file came back clean); framing is irrelevant (native framing
+unchanged, interpolation character altered, clean). **The trigger is the input's
+quantisation character**: the native Workbench render carries 2,620 unique colours
+and corrupts the edit encode; every clean input carries ~5,000; one lanczos
+round-trip at native framing fixes it. A trigger, not a mechanism — the mechanism
+is platform-side and stays open. **The E01 family widens to its third consumer
+class**: the Workbench render has now broken threshold keying, corner-median
+keying, and a generative edit encoder. The law: **a Workbench render is not a
+natural image — every NEW consumer of one gets a quantisation-character check
+before its first measured run.**
+
+**The first class measurement on the 2509 route is RATIFIED with its two
+pre-stated limits BINDING**: under Lightning — pale 2,323 px² against the recorded
+278 (**3.6× worse**), dark 1.8334% of figure against 0.1717% (**10.7× worse**,
+hatching-inflated), register C\* 37.53 (richer), reg-IoU **0.9611 with no
+ControlNet at all** (better than the recorded canny route — the edit reference
+alone out-registers it). **The class verdict is CONFOUNDED BY LIGHTNING.** This
+seat's eye on the E2 head at 3x adds the identity line: **not the man** — glossy
+toy register, comic brows, the matte hatching gone — and whether that break is
+2509's or Lightning's is the same one-job question as the class confound.
+
+**C3's perceptual miss is folded as SCOPING, not inversion**: the pale class is not
+reliably visible at per-twin working zoom even to a hunting eye — it was caught at
+the Director's assembled-asset zoom, and four consecutive pale-direction misses
+now span mechanism and perception. For this class the chroma-split instrument is
+the detector; the eye keeps identity and register. The executor's floor-vs-band
+note is ratified: Ruling 8's register term is a **floor**; the two-sided band was
+the executor's invention and was the part that failed.
+
+**Disposition**: the rebuild has no case on these numbers — ratified in the
+executor's own words. The remaining decision is **F1**: E2's exact configuration
+with turbo OFF — 20 steps, the template's non-turbo cfg, no Lightning — one job,
+one mechanical repeat maximum. It separates the route from the LoRA, un-confounds
+every number above, and bounds the successor arc's entire direction. RECOMMENDED;
+the Director's word. The close ruling follows its sheet either way.
