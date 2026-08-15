@@ -212,14 +212,27 @@ keyed threshold of 36.
 
 ### The dark class, on the atlas
 
-**NOT YET RUN.** Started at 16:32 and still executing at the time of writing (450 s CPU,
-26.4 GB working set) — the instrument's local-median window is expensive at 4096². It is
-written `NOT YET RUN` rather than given a plausible number, and its scale boundary is stated
-in advance so nobody compares it to the render row: the keyed threshold is an **absolute**
-36 px², and this route paints roughly **8.6 atlas texels per render pixel**, so 36 texels on
-the atlas is about 4.2 px² in a render. The atlas census asks a *smaller-featured* question
-than the render census; the two are not comparable and the derivation is written here rather
-than after the number lands.
+**ATTEMPTED AND FAILED — no number exists.** *(⚠ Corrected in place, 2026-08-15, same seat:
+this row first read "NOT YET RUN … still executing." It has since terminated, and the
+correction is the outcome rather than the wording.)*
+
+`twin_despeckle --mode census` on the 4096² atlas ran **≈50 minutes wall / 808 s CPU**, grew
+to a **44.4 GB working set**, and **exited 127 having written zero bytes** — no JSON, no
+stdout, no partial table. The instrument's local-median window and multi-scale blob pass are
+sized for a 368 × 1024 twin; at 16.7 M pixels they do not complete on this rig.
+
+Recorded as a **measured scaling boundary of a shipped instrument**, not as a defect of the
+asset. **It was not retried** — a second identical run meets the same wall, and picking a
+smaller scale *after* the first attempt failed would be choosing the unit to fit the outcome.
+
+Its scale boundary is stated anyway, so that nobody later compares an atlas number to the
+render row. The keyed threshold is an **absolute** 36 px², never a fraction of frame. On
+view 0 the surface visible to that camera spans **93,289 render px** and **802,088 atlas
+texels** — 8.6 texels per render pixel — so 36 texels on the atlas is about **4.2 px²** in a
+render. An atlas census asks a *smaller-featured* question than the render census, and the
+two are not comparable. (The 802,088 figure is what that view *could* paint, not the 267,298
+it won against the other cameras; the ratio wanted here is surface-to-frame, so the former is
+the operand.)
 
 ### The pale class — measured where it can occur
 
@@ -378,7 +391,9 @@ round-2 clay, re-hashed at this seat: `a4bcf2501414f769d4164ba910803f6d7882e9874
   so a blind band here would have been written with the receipts already on disk. Ruling 9's
   two-outcome fork *was* pre-registered and is resolved above; everything else is reported as
   numerator and denominator with no bar.
-- **The atlas dark census is still running** and is written `NOT YET RUN`.
+- **The atlas dark census does not exist.** It was attempted, ran ~50 minutes, and exited
+  127 with no output; the instrument does not scale to 4096² on this rig. Not retried, and
+  the reason is in §5.
 - **Nothing was delivered.** No manifest of `facet_E37`, no read-only pass, no relay to
   armature. Stage D fires on the Director's word and only on it.
 - **No protected tree was written to. No cloud job fired.** Spend stands at **35 of 80**.
