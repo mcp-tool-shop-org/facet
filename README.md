@@ -215,8 +215,8 @@ next session read as established fact. Nothing in that loop was checkable.
   is not an archive — anyone can run those tools and watch them fail the same way.
 - **A negative result is a full success**, reported and closed rather than tuned toward a
   number.
-- **Tests ride the commit that touches the code** — 1047 passing at two seats' hands, with
-  paths-gated CI on the 1002 hermetic ones.
+- **Tests ride the commit that touches the code** — 1053 passing at two seats' hands, with
+  paths-gated CI on the 1008 hermetic ones.
 - **The record is queryable.** A SQLite + FTS5 index over the whole trail, verified on
   four legs. It found a ruling count the prose had wrong at three sites, by counting the
   record itself.
@@ -273,7 +273,7 @@ sweep re-runnable; the full policy is in [SECURITY.md](SECURITY.md):
   credential-shaped file tracked.
 - **No telemetry.** None collected, none sent. There is no opt-out because there is
   nothing to opt out of.
-- **Network egress:** two tools of thirty-five open a socket — `restylize_views.py`
+- **Network egress:** two tools of thirty-six open a socket — `restylize_views.py`
   and `texpass_brush.py` — and both call a ComfyUI HTTP API at `--host`, **default
   `127.0.0.1:8188`**. Nothing else in `tools/` makes a network call.
 - **Permissions:** ordinary user. No elevation, no service install, no system-settings
@@ -284,7 +284,7 @@ only lists reassurances is not a threat model: **file operations are not sandbox
 (a tool writes wherever its arguments say); **absolute local paths are baked into many
 tools and docs** — 114 occurrences across 26 files, not secrets but a disclosure of one
 machine's layout, and the reason most tools will not run unmodified elsewhere; and
-**unexpected failures surface as Python tracebacks in the 35 unpublished research
+**unexpected failures surface as Python tracebacks in the 36 unpublished research
 scripts**, with no `--debug` gate. Deliberate halts are `ANDON:` messages carrying the
 measurement that fired them. That is the research-instrument contract, and
 [SHIP_GATE.md](SHIP_GATE.md) records exactly when it stops being good enough — which for
@@ -328,8 +328,8 @@ Developed against an RTX 5090; VRAM headroom matters more than raw speed.
 CI runs the hermetic subset of the suite on **ubuntu-latest / Python 3.12** with
 pinned installs (`.github/workflows/ci.yml`); the artifacts tier needs the recorded
 trees under `E:\AI\training`, which are not in git, so CI deselects them by design.
-Locally, `python -m pytest` runs all **1047** tests and `python -m pytest -m "not artifacts"`
-runs the **1002** CI reproduces.
+Locally, `python -m pytest` runs all **1053** tests and `python -m pytest -m "not artifacts"`
+runs the **1008** CI reproduces.
 
 ---
 

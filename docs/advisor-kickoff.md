@@ -99,7 +99,7 @@ seat made; the E36 amendment is the repair and the standard.
 |---|---|
 | HEAD | `1e293ed`, tree **clean**, 0/0 with origin — re-measure at your open |
 | CI | **green** at the E35 close (`694a9e3`, run `31864729310`, resolved live); commits after it are docs-only |
-| suite | **THE SUITE: 1047 tests, 1002 hermetic** (45 artifacts) — ⚠ pinned by T34; preserve the sentence shape. E37 moves it (T71, the seeded reconstructor); reconcile per the corrected order below. Re-count at your open: currently 1047 total / 1002 hermetic |
+| suite | **THE SUITE: 1053 tests, 1008 hermetic** (45 artifacts) — ⚠ pinned by T34; preserve the sentence shape. E37 moves it (T71, the seeded reconstructor); reconcile per the corrected order below. Re-count at your open: currently 1053 total / 1008 hermetic |
 | highest T | **T70** (`tree_manifest`). E36 takes **T71+** |
 | published | `facet-mcp` 0.4.0 · `@mcptoolshop/facet` 0.4.0 · **comfy-preflight 1.0.0 on both registries** (OIDC, `trustedPublisher` verified from registry metadata) |
 | accepted assets | five — W3, galleon, dragon, longsword, the E34 performer (`ce793064…`) **REOPENED at his zoom**; E33's pre-repair GLB recorded byte-unchanged |

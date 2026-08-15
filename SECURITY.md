@@ -68,7 +68,7 @@ re-run them.
 
 ### Network egress
 
-Two tools of thirty-five make network calls, and both call the **same local
+Two tools of thirty-six make network calls, and both call the **same local
 endpoint**:
 
 | tool | what it calls |
@@ -99,7 +99,7 @@ and Blender on `PATH` (or its absolute path) for the render and mesh stages.
   `E:\AI-Models\...` — 114 occurrences across 26 files). They are not secrets, but
   they do disclose one machine's directory layout, and they mean most tools will
   not run unmodified on another rig.
-- **Unexpected failures surface as Python tracebacks — in the 35 unpublished
+- **Unexpected failures surface as Python tracebacks — in the 36 unpublished
   research scripts.** ⚑ **Corrected at 0.2.0**, and the narrowing is the point:
   the two commands facet actually installs, `facet-index` and `facet-mcp`, no
   longer do this. An unexpected exception leaves them as a structured failure
