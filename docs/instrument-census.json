@@ -17,8 +17,8 @@
     "py_files_total": 112
   },
   "provenance": {
-    "corpus_files": 328,
-    "corpus_files_before_self_exclusion": 338,
+    "corpus_files": 329,
+    "corpus_files_before_self_exclusion": 339,
     "probe_interpreter": "E:\\AI-Models\\trellis2-env\\Scripts\\python.exe",
     "probe_interpreter_version": "3.13.13",
     "probe_skipped": false,
@@ -3666,9 +3666,10 @@
       "anchored_in_basename_only": [],
       "b1_literals": [],
       "b2_literals": [],
-      "cited_count": 1,
-      "cited_count_raw": 3,
+      "cited_count": 2,
+      "cited_count_raw": 4,
       "cited_in": [
+        "docs/experiments/E37-stageB-reroll2-halt.md",
         "docs/experiments/E37-stageB-selection-sheet.md"
       ],
       "dir": "tools/verify",

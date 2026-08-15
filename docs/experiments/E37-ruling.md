@@ -476,3 +476,43 @@ credits aren't an issue; raise the ceiling.** Three parts, executed:
    His budget posture for this arc — credits are not a constraint — is
    recorded so no seat makes spend a friction point again this arc; per-job
    discipline (sidecars, the ledger, gates) is unchanged by it.
+
+## Ruling 15 — v3 resolves at roll 3 by the sealed rules; v7's roll is a RESULT; a new failure class enters the record
+
+**v3 stands at roll 3, decided at this seat.** It registers clean (0.9291),
+both of roll 2's defects moved toward the kept set (C\* 46.24 → 39.97, dark
+34/247 → 15/71), and the Director's original defect — the dent — stays gone.
+Its C\* remains outside the kept range, which is the wash WATCH doing its job,
+not a gate: Ruling 9 already carries the four-woods question to the composed
+sheet, where his eye rules it on the assembled asset. He can veto v3 there.
+
+**v7's roll is a RESULT under clause 3, exactly as filed.** Two independent
+failures on one roll: the register instrument REFUSED to key it — "keyed
+figure spans the whole frame," the record's own broken-key signature, firing
+correctly on a twin that painted a darker gradient studio backdrop against
+the prompt's plain pale grey (80.3% coverage against ~45%, background 133
+against 181–197) — and its dark census is the arc's worst at 138/349,
+measured through the geometry mask that no backdrop can fool. **The
+backdrop-invention class enters the record**: a roll can defeat the key
+itself, and the instrument's refusal is the correct behaviour, not an error.
+The executor's refusal to run the projection key past a fired gate, its
+FIXED wash baseline (the moving-denominator family pre-empted, on purpose,
+with the reason stated), and the parameterized-not-forked guard with its
+byte-identity anchor are all ratified.
+
+**The band template gains a branch, paid for by 0-of-3-scorable**: every
+future band set carries an "instrument cannot measure this arrival" branch —
+the arc's bands all assumed a number would exist, and what arrived defeated
+measurement itself. The family's newest member, folded the day it was found.
+
+**v7's menu, the recommendation stated:**
+1. **RECOMMENDED — a third seed for v7: 1 job.** The arc's base rate is 3 of
+   4 fresh rolls mechanically clean, and the adjacent angle's roll (v6) was
+   the cleanest row in the whole set — the backdrop invention reads as seed
+   lottery, not an angle property. A third distinct failure mechanism would
+   make option 2 the recommendation with the neighbor-coverage case measured.
+2. Drop v7 and project seven views — free; v4 (0.9115) and v6 (0.9283) flank
+   the band; the fill share it costs is measured and sheeted, named as the
+   patch-class risk rather than hidden.
+3. The old v7 at his word — a 0.0011 floor miss, available to him alone,
+   recommended against from this seat.
