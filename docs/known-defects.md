@@ -288,6 +288,30 @@ frequency-separation despeckle on the twins is the deterministic fallback — it
 nodes verified against the live catalog at the facet seat, with one interface
 imprecision found and recorded in the answer's calibration section.
 
+---
+
+## The canny brow-fragmentation artifact — control-side, riding an accepted asset (found 2026-08-15, E37 Gate-R)
+
+Canny on the studio-lit clay render fragments the brow ridge where its specular
+highlight fades: instead of one continuous brow edge, the control carries a broken
+line plus a detached speck cluster, and ControlNet at 0.9 renders the cluster
+literally as a dark facial mark. Measured at E37's Gate-R probe: the wood twin's
+29 px blob at (123,167) sits exactly on a seven-fragment cluster in the control;
+the clay geometry carries no feature there — nearest dark feature is the brow
+itself, 9.4 px away. **The accepted E34 performer carries the same artifact at
+(124,166) at 81 px, nearly 3× larger** — present since E34, camouflaged by
+terracotta (a mole-coloured speck on terracotta reads as terracotta), surfaced by
+pale wood. Control-side, not prompt-side: prompt iteration cannot move it. The
+canny thresholds (`--canny-low 0.4 --canny-high 0.8`) are defaults never tuned on
+this subject and are the named lever; flat light is not an answer — E36 measured
+that flat collapses the control to pure contour, losing every interior edge with
+the artifact. Repair specced at [E37 Ruling 5](experiments/E37-ruling.md) (local
+threshold iteration, brow continuity verified on the control image, one confirm
+job); the E34 attribution rides the next armature relay so S07's panels read that
+forehead mark as a control artifact, not paint intent.
+
+---
+
 **Disposition: E35 DISPATCHED, 2026-08-14**, at the Director's mandate (comprehensive
 fix; the despeckler built out as a route capability) — spec at
 [E35-clean-twins-kickoff.md](experiments/E35-clean-twins-kickoff.md), five-agent

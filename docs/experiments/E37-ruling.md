@@ -156,3 +156,41 @@ probe 2 + seed sets 24 + mechanical and re-roll 14 = 40.
 
 The probe is CLEAR to fire on the picked mesh's controls at 368×1024, and halts
 at the Director's eye on the Gate-R sheet.
+
+## Ruling 5 — Gate-R PASSES IN WOOD at the Director's eye, conditional on the brow repair
+
+**The Director's word, 2026-08-15: "Everything is good but the mole."** The
+register is his-accepted — the man, the grain, the matte oiled surface — with
+one condition, and the condition is not the register's: the forehead mark is
+measured **control-side**. Canny fragments the brow ridge where the specular
+highlight fades; ControlNet at 0.9 renders the seven-fragment speck cluster
+literally. The clay geometry carries nothing there. **The accepted E34
+terracotta performer carries the same artifact at the same location at 81 px —
+3× this probe's 29 px** — present since E34, camouflaged by terracotta,
+surfaced by pale wood. The finding enters [known-defects](../known-defects.md)
+and its attribution rides the next armature relay, so S07's panels read the
+E34 forehead mark as a control artifact rather than paint intent.
+
+**The repair, specced here — one variable, local first, one job to confirm:**
+
+1. **Local, zero cloud**: rebuild view-0's control across canny threshold
+   settings (`--canny-low`/`--canny-high`, defaults 0.4/0.8, never tuned on
+   this subject) until the brow region reads as ONE continuous edge with no
+   detached fragments — verified on the control image at the measured
+   coordinates. Guard the other direction (the E36 law): the tuned control
+   must still carry interior edges strictly beyond the contour — report
+   control px against contour px beside the current 15,504 / 11,792, and the
+   face's other features checked present. No numeric bar is invented; both
+   numbers ride the report.
+2. **One confirm job**: view 0, the tuned control, everything else byte-held
+   (v-w1, seed 770700, the recorded recipe). The mark gone at its coordinates
+   and reg-IoU in family → the confirm lands on the Director's screen beside
+   the probe; unless he stops it, the register is accepted as conditioned.
+3. **The tuned thresholds become Stage B's control recipe**: all eight views'
+   controls rebuilt with them locally, each spot-checked for edge presence,
+   before the bands seal and the seed sets fire.
+
+Spend after the confirm: 3 of 40. The executor's wrong-object catch on view
+4's reg-IoU (measured first against view 0's silhouette, 0.8915 → 0.9489
+against its own) is ratified — caught before it reached anyone, the
+measured-against-the-wrong-object family handled at its own seat.
