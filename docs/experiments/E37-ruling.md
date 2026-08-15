@@ -378,3 +378,39 @@ The head-box derivation is vindicated in passing: the derived crop runs
 158.7 × 148.8 px against E33's 150 × 138 — inheriting the rect would have
 been 6–8% wrong per dimension, the exact error Ruling 10 was written against.
 Spend stands at 30 of 40; everything above is local.
+
+## Ruling 12 — The projection halt is ratified; the scratch diagnostic is authorized with its readings pre-registered
+
+**Ruling 11's chain is ratified clean end to end** — Gate W, the maxabs check
+(crop corners ≤ 0.0032 px), the loader class measured-not-inferred at parity
+299,976/299,976, the cull at 0.0007%, the prep at centroid deviation 5.96e-08.
+And the projection ANDON's firing on view 3 (reg-IoU 0.7547) is a correct
+halt, honored: no atlas written, views 4–7 unmeasured, nothing touched.
+
+**Three instruments now converge on the same object.** The v3 re-roll was the
+wash guard's largest outlier (C\* 46.24), the only view whose dark census
+worsened (8/49 → 34/247), and now the only view to fire the registration
+floor — its paint spans 29.3% of frame against a 24.3% silhouette, bbox 57%
+wider than the figure. The wash guard's firing at Stage B reads in hindsight
+as the early warning, and the convergence is recorded as such.
+
+**The executor's proposed diagnostic is AUTHORIZED, and its refusal to run it
+unbidden was right.** The distinction is the record's own: a diagnostic and a
+gate are different objects, and this is an attribution run to a scratch
+`--out` that advances nothing — the fired gate stays fired whatever it
+returns. One run: the REPLACED v3 (the original seed-770700 dent view) under
+byte-identical settings, scratch output, which also completes views 4–7's
+measurements in the same pass. **Readings pre-registered before it runs:**
+
+1. Old v3 clears 0.80 → the re-roll is the cause → Ruling 8 clause 3 applies
+   as written: a second failure on that view is a RESULT that returns to the
+   Director with the full menu, not a third roll taken silently.
+2. Old v3 also fires → the cause is upstream of both twins → a new
+   investigation returns to the advisor before anything else runs.
+3. Any OTHER view fires in the same pass → its number joins the halt's
+   evidence and the menu widens accordingly.
+
+**The executor's truncation self-catch is commended into the family's record**
+— `tail -45` ate view 0's line, the named failure fired on its own operator,
+and the re-capture changed nothing and was complete. Spend stands at 30 of
+40; the diagnostic is local and free.
