@@ -337,3 +337,50 @@ of a boundary it never measured is the shape of thing this arc keeps paying for.
 
 **Spend 51 of 80. No job fired — Ruling 24 fires the repaints on BOTH walks, and the advisor's
 is still owed.**
+
+---
+
+## 11. Ruling 25 — the v0 lift DELIVERED; the seven repaints prepared, not fired
+
+**Both walks cleared and the repaints are pre-authorized. They are not fired, and the reason is
+this seat's context budget, not a defect.** Seven irreversible jobs plus per-repair compositing,
+ColorMatchV2, before/after crops and a set sheet do not fit in what remains here, and authorized
+spend left half-processed is worse than spend sequenced. Stated plainly rather than started and
+abandoned.
+
+### 11a. Item 2 — the v0 face tone lift, DONE
+
+Local, deterministic, zero cloud, append-only in `phase2/v0lift_v1/`.
+
+Region: the ratified `mask_v0_v0lift` — **8,908 texels**, original L\* median **43.18**
+(p10 34.51, p90 55.36). Method: a **multiplicative gain in linear light**, target
+`L* = L*₀ + ΔL·mask`, so the lift scales with the feather and the ears and skull are excluded
+by the mask rather than by a second rule.
+
+| rung | region L\* median | measured Δ |
+|---|---|---|
+| original | 43.18 | — |
+| +3 | 46.12 | +2.95 |
+| +6 | 49.06 | +5.89 |
+| +9 | 52.01 | +8.83 |
+| +12 | 54.96 | +11.79 |
+
+Every rung lands within **0.21 L\*** of its target; the shortfall is the feathered edge taking a
+partial lift, which is the intent. `v0_lift_ladder.png` carries all five at 5× for the
+Director's eye — **the magnitude is his, and no rung is recommended from this seat.**
+
+### 11b. What the next seat fires, exactly
+
+Six jobs, not seven — **v4earL and v4earR are two masks on ONE view**, so they ride one repaint
+as a union mask. Firing twice at the same seed on one view produces a second full frame that
+would have to be composited twice for no gain. Spend **51 → 57**, one below the ruling's
+arithmetic, and the difference is named rather than absorbed.
+
+Per job: base payload from `phase1/payloads/set2026081511_v<N>.json` (byte-pinned, same seed,
+`cn_strength` 1.0, backdrop negative) **+** `SetLatentNoiseMask` between `VAEEncode` and
+`KSampler` **+** `ColorMatchV2(target=decoded, ref=the original set-A twin, method mkl,
+strength 1.0)` before `SaveImage`. Both node contracts are verified live (§1). Then locally:
+composite through the feathered mask so only masked pixels move, and measure ΔE inside the mask
+to prove the repaint changed something before claiming it repaired anything.
+
+**Spend 51 of 80. Masks, walks, ladder and payload recipe are all on disk.**
