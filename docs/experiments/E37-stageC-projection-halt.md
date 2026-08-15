@@ -99,6 +99,61 @@ roll. If it also fires, the cause is upstream of both twins.
 this record was paid for by a session that changed something and re-ran. The gate stays at
 0.80; nothing proceeds past it either way.
 
+---
+
+## 4a. ⚖ THE AUTHORIZED DIAGNOSTIC (Ruling 12) — old v3 CLEARS, **and a kept view fires**
+
+One scratch run, `--out` into `stageC/scratch_oldv3/`, view 3 = `s770700/twin_v3.png`,
+**every other argument byte-identical** to the real-path invocation. Nothing in the real path
+was touched. Complete capture, 105 lines, no paging flag: `stageC/scratch_oldv3/run.txt`.
+
+**Ruling 12's two readings both land, and they are not exclusive.**
+
+| view | twin used | reg-IoU | centroid \|d\| | keyed OUTSIDE the silhouette | |
+|---|---|---|---|---|---|
+| 0 | kept 770700 | 0.9091 | 0.2 px | 956 px (1.10%) | |
+| 1 | **re-roll** | 0.8975 | 13.9 px | 4,790 px (5.22%) | |
+| 2 | kept 770700 | 0.8671 | 40.3 px | 6,331 px (10.84%) | NOTE |
+| **3** | **kept 770700 (the replaced twin)** | **0.8394** | 35.8 px | 10,451 px (10.89%) | **CLEARS** |
+| 4 | kept 770700 | 0.9115 | 4.9 px | 1,637 px (1.86%) | |
+| 5 | kept 770700 | 0.8241 | 39.2 px | 11,307 px (11.71%) | NOTE |
+| 6 | **re-roll** | 0.9283 | 2.2 px | 433 px (0.85%) | |
+| **7** | **kept 770700** | **0.7989** | **54.1 px** | — | **ANDON FIRED** |
+
+**Reading 1 — the re-rolled v3 is the cause at view 3.** Old v3 measures **0.8394** where the
+re-roll measures **0.7547**, same prep, same key, same everything else: a gap of **0.0847**
+attributable to the twin alone. Ruling 12's clause-3 branch is reached for view 3.
+
+**Reading 2 — and it is not the whole story: view 7 fires at 0.7989, on a twin that was never
+re-rolled.** v7 is one of the five kept views from the Director-approved set. The floor is
+0.80 and it misses by **0.0011**.
+
+⚠ **Where 0.7989 sits, stated because the ANDON's own text frames it:** *"every adjudicated
+view measures 0.8329 or better; every measured registration failure sits at or below 0.578."*
+**0.7989 is in neither band** — it is not the signature of a twin registered to the wrong
+place, and it is not inside the recorded pass band either. This seat draws no conclusion from
+that; it is recorded because the threshold's own derivation makes the gap meaningful.
+
+**The per-view numbers are independent, which is what makes this table valid for the real
+path.** Views 0/1/2 reproduce **identically** across the two runs (0.9091 / 0.8975 / 0.8671),
+so a view's registration does not depend on its neighbours, and views 4–7's figures here are
+the figures the real-path run would have produced had it reached them.
+
+### What the complete table shows about the contamination
+
+`keyed OUTSIDE the silhouette` and centroid drift move together, and they sort by **twin**,
+not by camera class:
+
+- The two **re-rolls** in this table are the *cleanest* rows at their angles — v6 at
+  **433 px (0.85%)** against the other profile v2's **6,331 px (10.84%)**; v1 at 4,790 px
+  against the comparable three-quarters v5's 11,307 px and v3-old's 10,451 px.
+- Every large-contamination row is a **kept 770700** twin: v2, v3-old, v5, v7.
+- The one re-roll that behaved otherwise is **v3's**, which fired at 0.7547 and was already
+  the arc's largest tonal outlier (C\* 46.24) and the only view whose dark census worsened.
+
+So the two firings have opposite provenance: **view 3's is the new twin, view 7's is an old
+one.** No single remedy addresses both, and this seat does not choose between them.
+
 ## 5. Mechanics
 
 Watchdog **ADVANCING** on two reads (14:33:22.317 → 14:33:37.372, and 14:45:06 → 14:45:08 at
