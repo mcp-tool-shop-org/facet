@@ -85,3 +85,104 @@ My last three pale-direction calls missed, and my P2a band in the pilot **could 
 it predicted "the graph runs" against a failure mode that runs and returns nothing. So every
 band above is written as a property of the **returned pixels**, not of whether the job
 errors. `succeeded` is not evidence here and is not used as any band's falsifier.
+
+---
+
+# A3 bands — registered after A2 landed, before A3 was submitted
+
+**A1 and A2 both produced images. A1-P1/P2 and A2-P1/P2/P3/P4 all HIT** (scored in the
+report). The reduced question is now well posed, so A3's bands are written here — the
+dispatch's order, and the reason the class bands were withheld until the frame was known.
+
+## The frame, DERIVED not assumed
+
+The dispatch says to take the nearest Kontext-legal portrait frame *from the scale node's own
+table, enumerated, never assumed*. The node's implementation is not exposed by `get_node`, so
+the table cannot be read — but the node can be **asked**: A2 fed it our own 352×1024 clay and
+it returned **672×1568**. That is the node's answer for our aspect, which is stronger evidence
+than a table I transcribe. **A3 renders our clay and our mask at 672×1568**, so the scaler
+becomes a no-op and the frame is ours by construction rather than by its choice.
+
+Both legs verified before any A3 job:
+
+- **The render invocation is the recorded one** — view 1 re-rendered at 352×1024 through the
+  `saltroad_bake_fix` copy of `turn_render.py` matches the recorded `armclay_1.png` at
+  **0 differing pixels**. The anchor the pilot skipped, applied to the renderer too.
+- **The 672 frame registers to the 352 frame**: vertical is a pure ×1.53125 scale (bbox edge
+  deltas **0.22** and **0.75** px), horizontal carries a **computed** +66.50 px centre offset
+  — `(672 − 352 × 1.53125) / 2`, from the frames themselves, not fitted — with edge deltas
+  **0.31** and **0.62** px. ⚠ My first version of this check predicted a *pure* scale on both
+  axes and **FIRED**; the render was right and my model was wrong. Recorded because a check
+  that fires and is then read correctly is the point of having it.
+- **The head band scales vertically only**: `slice(60,220)` → **`slice(92,337)`**, confirmed
+  independently by the fraction of figure it captures — **11.5977%** at 352 vs **11.6012%**
+  at 672, 0.0035 points apart.
+
+## ⚠ The unit problem, stated before the numbers exist
+
+**A3's absolute class counts are NOT comparable to the recorded twin's.** Linear ratio
+1.53125, **area ratio 2.34473** — and the census's `blob_max_px2 36` is an *absolute* cap, so
+a 20 px² speck at 352 becomes 47 px² at 672 and falls *outside* the population the recorded
+census counted. Left alone, the same command would measure a different class and report it in
+the same column. Derived scalings, from the ratios and nothing else:
+
+| parameter | recorded | at 672×1568 | scales by |
+|---|---|---|---|
+| census `blob_max_px2` | 36 | **84** | area |
+| census `small_px2` | 9 | **21** | area |
+| census `window` | 15 | **23** | linear |
+| pale `min-area` | 25 | **59** | area |
+| pale median window | 31 | **47** | linear |
+| pale `head` | 60,220 | **92,337** | linear (vertical) |
+| census `dark_dl`, `de_min`, `chroma_floor`; pale `DL`; C\* | — | unchanged | scale-free |
+
+Both readings are reported: **scaled** (the like-for-like population) and **default-param**
+(what the flagless command would have said). The scaled one is the comparison; the default one
+is there so the size of the trap is visible.
+
+## The two A3 jobs, and the turbo decision stated
+
+The dispatch allows 1–2. Both are taken, and the pair **isolates the Lightning LoRA**:
+
+- **A3a — turbo ON** (4 steps, cfg 1.0, Lightning LoRA): A2's proven configuration, changed
+  only by the frame. Minimal deviation from a run that demonstrably works.
+- **A3b — turbo OFF** (20 steps, cfg 4.0, no LoRA): R3 as the Director ruled it says **NO
+  LoRA**, and the pilot's product is a register measurement, which an unmeasured style LoRA
+  would confound. **This is the deviation from the proven baseline and it is A3's mechanical
+  risk** — named here, not discovered later. cfg 4.0 is the template's own non-turbo value,
+  taken rather than the recorded route's 2.5, because 2509 is a different model and its own
+  sanctioned setting is the smaller deviation.
+
+No ControlNet in either: no served pairing exists and the union's declared base is Qwen-Image.
+
+## The bands
+
+**A3-P1 — both jobs produce non-degenerate images**, > 1000 unique colours. Odds **0.9** for
+A3a (A2's config, new frame), **0.7** for A3b (unproven config). *A3b coming back black is a
+mechanical result about the turbo switch, not about 2509.*
+
+**A3-P2 — pale, scaled, falls below the recorded 278.** Band **60–300** on A3a.
+⚠ **Registered at LOW confidence: my pale-direction calls are 0 for 3 this arc.** The reason
+to expect a fall is structural rather than empirical — at denoise 1.0 with the clay entering
+as a semantic reference there is no raw init latent to survive — and Ruling 2 says the
+recorded class is signature (ii), whose mechanism is OPEN, so structure may not decide it.
+
+**A3-P3 — the chroma split lands (ii) again**, pale C\* **above 15**, far from the init's
+1.12. Held at **high** confidence: at denoise 1.0 there is structurally no init to revert
+toward. *If it lands (i), my model of this pipeline is wrong somewhere I cannot see, and that
+outranks every other row on the sheet.*
+
+**A3-P4 — dark census, scaled, falls but is not eliminated.** Band **4–16** components.
+
+**A3-P5 — register C\* lands 15–30**, wide, for a model whose colour prior is unmeasured here.
+
+**A3-P6 — A3a and A3b differ visibly**, and A3b is the **matter** one: no Lightning LoRA
+should mean less of A2's gloss. *Falsifier: they are indistinguishable, which would mean the
+LoRA contributes nothing at this cfg and the turbo switch is not the lever I think it is.*
+
+**A3-P7 — identity moves on both.** Not measurable; the Director's eye.
+
+**A3-P8 — reg-IoU is NOT reported as a class metric.** With no ControlNet the silhouette is
+held only by the edit reference, so reg-IoU measures how faithfully 2509 tracks its reference
+— an interesting number, and *not* one of the two classes. Stated so it is not quietly read
+as a quality score.
