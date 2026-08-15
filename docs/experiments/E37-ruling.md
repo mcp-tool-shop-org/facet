@@ -516,3 +516,42 @@ measurement itself. The family's newest member, folded the day it was found.
    patch-class risk rather than hidden.
 3. The old v7 at his word — a 0.0011 floor miss, available to him alone,
    recommended against from this seat.
+
+## Ruling 16 — His word: v7 rolls again as a LEVER PROBE — three jobs, one lever each, the learning banked regardless
+
+**The Director's word, 2026-08-15: another seed for v7 — and use it as a
+chance to learn what levers we didn't exercise properly, the painted-on face
+making the subject forgiving.** Specced as a pre-registered three-job probe,
+one variable each, all on ONE fresh seed (pre-registered before submission,
+never used this arc):
+
+- **P1 — the control and the candidate**: the fresh seed alone, everything
+  byte-held. This is the plain re-roll his option 1 named.
+- **P2 — the negative-prompt backdrop clause**: the same seed, the recorded
+  negative gaining one named term against backdrop invention (dark
+  background · gradient backdrop · studio backdrop). The lever v7's failure
+  points at directly, never exercised: the positive asks for plain pale grey
+  and nothing on the negative side ever enforced it.
+- **P3 — conditioning at 1.0**: the same seed, `cn_strength` 0.9 → 1.0 —
+  inside the vendor's own [0.8, 1.0] band, never exercised, and the measured
+  direction (anchoring suppresses invention) predicts it acts on exactly
+  this failure class.
+
+**Bands sealed before submission, three branches per lever plus the
+instrument-cannot-measure branch — Ruling 15's template clause, first use.**
+Every arrival gets both keys, the census, and the wash guard against the
+FIXED round-1 baseline. One roll per configuration; any failure is a result.
+
+**Selection**: a row enters candidacy by measuring at all, clearing both
+keys, and a census in family; ties break by the arc's standing rule (lowest
+dark census). **A P2 or P3 winner enters the set with its delta NAMED on the
+sheet** — the per-view fork disclosed exactly as the seed mixing was, his
+eye gating it. The learning is banked whichever row wins: three levers
+exercised properly, with bands, at ≈ $0.06.
+
+**Named for later, not in this probe**: the dual-control depth+canny lever
+(E36's arm 2, dead with the old mesh but generic as a lever) is the next
+candidate if none of these three moves the failure class — it needs its own
+structural anchor first, priced ~2 jobs, and fires only on a further word.
+
+Spend: 32 → 35 of 80 when the probe flies.
