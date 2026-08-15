@@ -644,3 +644,22 @@ previously used one is about as good a first consumer as this tool could be give
 > from the advisor seat — it points at Ruling 11 for the entry's content and at this
 > Amendment for the form, moves the len pin to 2 deliberately, and fires at the
 > Director's word.
+>
+> **2026-08-15, later — the entry LANDED**: comfy-preflight `a1984b4`, pushed, CI green
+> (run `31869607646`, resolved live). Four executor calls, each verified against its
+> source and RATIFIED at this seat: **keyed on the payload's real filename** rather than
+> the ruling's shorthand — `qwen_image_edit_2509_fp8_e4m3fn.safetensors`, read from
+> `payload_p2509_v1.json`, because the table is looked up by what a graph carries;
+> **three rungs, not two** — the record holds three readings (E1 5,046 and E2 5,336
+> beside the corrupt 2,620, verified to the digit in `E35-E-report.md`), and
+> transcription beat both the ruling's "two measured points" summary and this seat's own
+> "~5,000" paraphrase; **the day-one "exactly one checkpoint" bound read as spent** — the
+> bound's own text says "day one ships", and Ruling 11 naming a second checkpoint is the
+> supersession; and **no check reaches the entry** — the package does not decode images
+> (check 5's standing boundary), so check 8 declines honestly, the entry is
+> table-and-handbook knowledge, and the decline's can-fail leg was proven rather than
+> assumed. The executor's refusal to propagate a paraphrase it was handed is the
+> discipline working and is commended. Owned beside it: this seat's dispatch block
+> mis-located the rung sections (it named the clean-twins report; the numbers live in
+> the D1/E reports) — the executor resolved past the imprecision. The channel's
+> results-back debt is paid at [comfy-consult-6-brief.md](../comfy-consult-6-brief.md).
