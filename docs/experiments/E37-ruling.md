@@ -280,3 +280,39 @@ reported as a finding, never smoothed. One re-roll per view — the E08 law —
 and a second failure on any view is a result that returns to the Director,
 not a third roll. The re-rolled rows go up beside v0 for his eye; his word
 then gates Stage C exactly as Ruling 7 intended.
+
+## Ruling 9 — The re-rolls pass his eye; the wash finding rides Stage C by name; Stage C fires
+
+**The Director's word on the re-roll sheet, 2026-08-15: approved.** All three
+named defects read gone at his eye — the nose reads as a form, the face line
+is gone, the back is continuous — with the guard numbers riding the sheet he
+approved. Ruling 8 clause 3 resolves as a first success: one re-roll per
+view, none needed a second.
+
+**The wash guard FIRED and the finding is honored, not smoothed.** All three
+arrivals land above the kept-five C\* range (23.30–29.90): v1 30.68, v6
+38.94, v3 46.24 — chroma EXCESS, explicitly not the pale-wash collapse class,
+four visibly different woods on one sheet. reg-IoU held (0.9404/0.9440/
+0.9592); v3's dark census worsened 8/49 → 34/247. **The risk this names is
+composition-level** — cross-view tonal banding in the projected texture — and
+the record's own lesson is that composition defects show at the assembled
+zoom, not per view. So it rides Stage C by name: projection's seam-sigma
+levelling is the mechanism that may absorb it, the Stage-C sheets and census
+answer whether it did, and Stage D is his zoom on the composed result. Stage
+C is local and free; nothing irreversible precedes his next gate.
+
+**Folded beside it:** the ear-knob observation (two independent seeds, same
+protrusion where the clay is flat — prior-driven, not seed noise; v6 adds
+concentric rings on it; his approval covered the sheet and Stage D re-judges
+at the composed zoom) · the executor's owned inference miss, which is a route
+fact worth its tuition: **the control says where a line is; the seed decides
+whether it reads as form or gets drawn** — 0 of 3 predicted reproductions
+occurred through a byte-held control · the emitter parameterized with a
+24-payload byte-identity anchor rather than forked · the first push in the
+arc's history (28 commits, origin level at `b20a8f0`), CI in flight and
+watched at the executor's seat.
+
+**Stage C fires**: the E34-proven eight-view projection on the amended set
+(five kept + three re-rolls), surface-aware fill, RGBA-true turnarounds,
+final censuses, provenance mix, sheets beside the source plate. Local, zero
+cloud; spend stands at 30 of 40. The next halt is Stage D at his zoom.
