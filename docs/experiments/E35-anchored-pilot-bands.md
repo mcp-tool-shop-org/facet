@@ -240,3 +240,72 @@ make the fault deterministic after all and change what the remaining candidates 
 
 **D1-P4 — the flatten does not change one RGB value.** Alpha is 255 everywhere, so
 compositing is arithmetically the identity. Asserted locally before upload, not assumed.
+
+---
+
+# E1 bands — the traversal-vs-content discriminator, registered before the job
+
+**At the Director's go**, 2026-08-14. The job I named in the D1 report and did not take.
+
+## The construction
+
+The recorded 352×1024 clay, put through **my local replay of the scaler's transform** —
+lanczos ×1.909091 to 672×1955, centre-crop to 1568, top offset 193 — saved as a 672×1568
+RGB PNG (colour type 2 read from the IHDR bytes) and submitted through A2's proven config.
+
+**The fork this splits**, and why it is decisive either way: those pixels are content-
+equivalent to what `FluxKontextImageScale` produced for A2, but they arrive as a file the
+node will **no-op** on (672×1568 is already legal).
+
+- **Clean ⇒ traversal is irrelevant; the pixels are what matter**, and A3's *native render
+  content* is the trigger.
+- **Corrupted ⇒ traversal is what matters** — content-equivalent pixels behave differently
+  depending on whether the node resampled them — which is a platform-side finding and closes
+  our side of the question.
+
+⚠ **The replay is content-equivalent, not bit-equivalent.** PIL's lanczos is not ComfyUI's
+torch `common_upscale`, so I cannot claim identical pixels to A2's intermediate. That is
+sufficient for this fork and insufficient for any stronger claim, and I am saying so before
+the result rather than after.
+
+## Measured locally, before the job
+
+| | resampled (E1 input) | native 672 (A3/D1 input) |
+|---|---|---|
+| mean | 161.5 / 162.0 / 164.2 | 159.1 / 159.4 / 161.7 |
+| std | 24.3 / 25.3 / 24.9 | 20.2 / 21.1 / 20.8 |
+| unique colours | 5,046 | 2,620 |
+| mean \|gradient\| | 2.0762 | **2.2042** |
+
+⚠ **This weakens the softness hypothesis before spending.** I had named "a 1.909× lanczos
+upscale is soft and band-limited; a native render is not" as a candidate — measured, the
+native is only **1.06×** sharper. The two inputs differ far more in **framing** (the
+resampled one is cover-cropped, so the figure fills more of the frame and the head is cut)
+and in interpolated colour count than in sharpness.
+
+## The bands
+
+**E1-P1 — it comes back CLEAN.** Odds **0.75**. If content decides and these pixels are
+content-equivalent to A2's, this should behave like A2. *Falsifier: corruption, which moves
+the finding to the platform and is the more interesting outcome.*
+
+**E1-P2 — the register survives: C\* on the keyed figure ≥ 15** (Ruling 8's term, second
+use). Scored N/A if the frame is corrupted, on the instrument's refusal rather than my say-so.
+
+**E1-P3 — if clean, it resembles A2 rather than reproducing it.** Same config, content-
+equivalent input, but my lanczos is not the node's, so the pixels differ upstream and 2509 is
+deterministic-per-input. *Falsifier: pixel-identity with A2, which would mean my replay is
+bit-exact after all — a stronger result than I am claiming.*
+
+**E1-P4 — framing, not sharpness, is the live content candidate**, on the 1.06× gradient
+ratio above. Stated as a claim about which candidate survives, not as a prediction about
+this job's pixels.
+
+## What I will do on each branch, stated before the result
+
+- **Clean** → the true A3 becomes runnable and I proceed to it under the ruling's D2 terms
+  (turbo OFF and stated, 20 steps at the template's non-turbo settings, no ControlNet, no
+  seed override), measure the classes at the derived frame, build the sheet, and **HALT for
+  the Director's eye**. ≤ 2 further jobs, 47 of 60 at worst.
+- **Corrupted** → I stop. The finding is platform-side, there is no measurable configuration
+  at our own frame, and inventing a further probe is not mine to do.
