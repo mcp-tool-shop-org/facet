@@ -441,3 +441,82 @@ recorded twin. Not measurable; the Director's eye. Registered so it can be wrong
 Build the sheet, **HALT**. No further jobs. The obvious next single job — **turbo OFF, no
 LoRA, R3-compliant, same round-tripped input** — is named for the Director's word and is not
 taken on my own initiative.
+
+---
+
+# F1 bands — the un-confounding job, registered before submission
+
+**At the Director's word (Ruling 9).** E2's exact configuration with **turbo OFF**. One job,
+46 → 47 of 60.
+
+## The resolved sampler settings, stated before submitting as ordered
+
+Turbo off flips `PrimitiveBoolean` 443, which drives three `ComfySwitchNode`s. Resolved from
+the template's own graph, node by node — **not chosen by me**:
+
+| | source in the graph | F1 value | (E2 was) |
+|---|---|---|---|
+| steps | `PrimitiveInt` 438 via switch 441 `on_false` | **20** | 4 |
+| cfg | `PrimitiveFloat` 439 via switch 442 `on_false` | **4.0** | 1.0 |
+| model path | switch 440 `on_false` = `UNETLoader` 37 direct | **no LoRA** | Lightning 4-step |
+| sampler | `KSampler` widget, unswitched | `euler` | same |
+| scheduler | `KSampler` widget, unswitched | `simple` | same |
+| denoise | `KSampler` widget, unswitched | `1.0` | same |
+
+cfg 4.0 is **the template's own non-turbo value**, not the recorded route's 2.5. Taking the
+model's own sanctioned setting is the smaller deviation; changing it too would put a second
+lever in an un-confounding job.
+
+Override: `433.seed_1 = false` — the turbo boolean, whose address is confirmed by A3b, which
+took visibly longer at 20 steps.
+
+Everything else byte-unchanged from E2: the round-tripped native input
+`0294d3210da93a539cd589bab888fa88e6ff33a9cb7b61cb187905a7c628a14b.png`, the v-next prompt at
+`433.image`, no ControlNet, no seed override.
+
+## ⚠ The C3 lesson binds
+
+**No eye-claim about pale appears in these bands.** The last one said the crown read evenly
+toned on a figure carrying 3.6× the recorded twin's wash. The pale band below is reasoned
+from mechanism and precedent only; **the instrument reads the class, and I do not.**
+
+## The bands
+
+**F1-B1 — register FLOOR: C\* on the keyed figure ≥ 15.** Ruling 8's term as a floor and
+nothing more. **The two-sided band is dead** — I invented its upper bound and it is the part
+that failed at 37.53. No ceiling is predicted here.
+
+**F1-B2 — pale falls relative to E2's 2,323 px², band 400–2,000.** Reasoning, with no
+appeal to the eye: 20 steps at cfg 4.0 converges further than 4 steps at cfg 1.0, and the
+class is a *local lightness excursion* — a more converged render has less local contrast
+noise. **Confidence LOW and stated: my pale calls are 0 for 4.** *Falsifier: ≥ 2,323, i.e.
+Lightning was not contributing to it.*
+
+**F1-B3 — dark census falls sharply relative to E2's 734, band 100–600.** The strongest
+reason is content rather than defect: much of E2's 734 is herringbone hatching fragmenting
+into components, and a higher-cfg, more converged render draws that hatching *more*
+coherently, not less — so I expect fewer, larger components. *Falsifier: a rise, which would
+mean cfg 4.0 renders the prompt's hatching term harder still.*
+
+**F1-B4 — chroma split stays signature (ii)**, pale C\* > 15. At denoise 1.0 there is
+structurally no init to revert toward. High confidence; N/A if pale area is 0.
+
+**F1-B5 — reg-IoU stays ≥ 0.90.** E2 hit 0.9611 with no ControlNet; the edit reference is
+doing that work and turbo is not what holds it.
+
+**F1-B6 — F1 and E2 are visibly different, and F1 is the LESS glossy of the two.** The
+Lightning LoRA is a style model; removing it should move the surface toward matte.
+*Falsifier: indistinguishable, or F1 glossier.*
+
+**F1-B7 — identity is still not the recorded man.** Neither Lightning nor step count is what
+moved it; the model did. Not measurable — the Director's eye, and his call on whether the
+identity and register are acceptable is the halt's whole purpose.
+
+## The sheet and the instruments
+
+Three columns — recorded r3 | E2 (Lightning) | F1 (no Lightning) — at full size, **the same
+instruments on all three**: `twin_despeckle --mode census`, the pale instrument, and
+`t2_register_all`. The recorded column runs at 352×1024 with default parameters and its own
+mask; E2 and F1 at 672×1568 with the parameters already derived from the 1.53125 / 2.34473
+ratios and the verified `armclay672mask_1.png`. Same code paths, parameterised per frame —
+stated so nobody reads three columns as three instruments.
