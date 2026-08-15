@@ -1,8 +1,8 @@
 {
  "andon": [],
  "corpus": {
-  "files": 320,
-  "id": "6d278b8580fd36f8e0fc36f7296c73516e51f653041a472192cd8a9d89156944",
+  "files": 321,
+  "id": "e66cee8e4302d8c20a9e5f6ab080258a08fdf28325cb0c0376b0200e9b601ce4",
   "manifest": {
    "CLAUDE.md": "0f25a65bec22448ae07ff26256906eb19492beeaf3a08fb830961940e2b5c5d9",
    "README.md": "06caa803b0a20f702f177e92eaf2c51bcb23484f6aa3b1b256b9601ad4e625ee",
@@ -289,9 +289,10 @@
    "docs/experiments/E35-2509-blind-bands.md": "65f662cd60742cad36383826eecb73d384e7d12830b8a8c1d648c35690e4b888",
    "docs/experiments/E35-2509-report.md": "cbadb03a2405c51f612e6240c4dd8e370d553ea23c8f82b9cef978b19bdd16aa",
    "docs/experiments/E35-D1-report.md": "35a0837f8ed48b112c8bed7ea280cf0ee78c1d5d9f51d3d41e3387f956204377",
+   "docs/experiments/E35-E-report.md": "03ce0d62f99d5a1f06b57df88873ad5d433688d9e66139aa470b0de9f8dc9de3",
    "docs/experiments/E35-R2a-blind-bands.md": "ea1e3d38a2b07662a14f5c37f62258d8dbb2a0d02c2eb50ebd8634fdbb8573a4",
    "docs/experiments/E35-R2c-blind-bands.md": "e4db28142322b1c428f58bd22945b1fa41d510d84c08625fa22f64f2f0cba86f",
-   "docs/experiments/E35-anchored-pilot-bands.md": "79658e56688279ac44cb010d779ad7d73043bd83156ce002fcd3e916aacd7509",
+   "docs/experiments/E35-anchored-pilot-bands.md": "1e2cd64922ce2a25b0329d0e263e188123ef92ce58b88571ced088543b8cf097",
    "docs/experiments/E35-anchored-pilot-report.md": "8f3012e7d56904260115d597619ccca729f7b79b6734888de9e63d81cbf61ec9",
    "docs/experiments/E35-armslate-blind-bands.md": "b4bd37a8c810827812438d76ba7ee2ddfd0e0ee6f3adb66f7edb6653de465dce",
    "docs/experiments/E35-armslate-report.md": "07750a50e1a19216d43acfd996f2070f2e51a7c23bfc988ee69109e373e95d59",
@@ -327,20 +328,20 @@
   }
  },
  "counts": {
-  "artifacts": 807,
+  "artifacts": 817,
   "decisions": 225,
   "experiments": 35,
-  "fts": 4876,
+  "fts": 4906,
   "handoffs": 31,
   "laws": 95,
   "phenomena": 28,
-  "prose_sections": 2937,
+  "prose_sections": 2957,
   "rulings": 718
  },
  "db": {
-  "bytes": 12292096,
+  "bytes": 12337152,
   "path": "docs/index/facet.db",
-  "sha256": "30ada0db55dc363fb0679713da5d251b8ffc013655e7dfe3b3dbb8d854ed1e22"
+  "sha256": "531ddf9d09de859c350717d7456c8d7b0938af1d935f001f5e5365ddfd2f594a"
  },
  "determinism_leg": "byte-identity",
  "failures": [],
@@ -360,7 +361,7 @@
   "==============================================================================",
   "",
   "[leg 1] determinism - two builds from an unchanged record",
-  "  BYTE-IDENTICAL   12292096 bytes, both builds",
+  "  BYTE-IDENTICAL   12337152 bytes, both builds",
   "",
   "[corpus] ruling documents discovered by the sorted glob",
   "  E01-ruling-gate1.md                            arc E01                0 rows - prose only",
@@ -467,11 +468,11 @@
   "  laws            95 rows   dangling 0",
   "  experiments     35 rows   dangling 0",
   "  handoffs        31 rows   dangling 0",
-  "  artifacts      807 rows   dangling 0",
+  "  artifacts      817 rows   dangling 0",
   "  phenomena       28 rows   dangling 0",
   "  decisions      225 rows   dangling 0",
-  "  fts           4876 rows   dangling 0",
-  "  total checked 1939, dangling 0",
+  "  fts           4906 rows   dangling 0",
+  "  total checked 1949, dangling 0",
   "",
   "[leg 4] the seeded question set - target within the top 3",
   "  canny values for the beast         rank 3   docs/experiments/E12-ruling.md \u00b7 Ruling 11a",
@@ -501,7 +502,7 @@
   "",
   "[vocabulary] what each declared vocabulary did not recognise",
   "             REPORT ONLY - this section never fails the run",
-  "  artifact kinds         recognised  4310   unrecognised    0",
+  "  artifact kinds         recognised  4334   unrecognised    0",
   "  experiment status      recognised    66   unrecognised    4",
   "      not recognised: **DISPATCHED** (2026-08-14, at the Dire\u2026, **deprioritised by E07's ruling** \u2014 den\u2026  (+2 more occurrence(s))",
   "  law paid_for_by        recognised    62   unrecognised    0",
@@ -520,7 +521,7 @@
  ],
  "unattributed_failures": [],
  "verb": "record_build",
- "verified_utc": "2026-08-15T00:23:57Z",
+ "verified_utc": "2026-08-15T00:36:15Z",
  "verify_exit_code": 0,
  "written_by": "tools/record_mcp.py"
 }
