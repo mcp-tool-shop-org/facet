@@ -708,3 +708,42 @@ Amendment-3's two nodes are verified live at the executor's seat
 deprecated original absent from the catalog exactly as folded). Spend 51 of
 80, unmoved. The next artifact is the overlay sheet at this seat's walk,
 then the repaint jobs, then the repaired set at both eyes.
+
+## Ruling 21 -- The rects clear the advisor's walk; both conflicts resolve by cutting the mask, never the hold
+
+**The overlay walked at this seat at full size: all seven repair rects land
+on their targets.** The v0 lift region takes the drawn features and cheeks
+and stops inside the ears; the three ear rects and v4's second ear frame
+their discs tightly; the v6 nose wedge is exactly boxed with the held brows
+outside it; the v1 chest rect covers the strong-tone column; the v7 band
+covers the crowded face. The executor's halt-doc self-correction is ratified
+in place with its sting recorded: the v6 "wrong rect" call was itself made
+from a downscaled overlay -- the class the halt condemned, committed in the
+act of reporting it -- while the two genuine failures were worse than first
+filed (zero overlap, both rects entirely on background). Both facts
+strengthen the protocol.
+
+**Conflict 1 -- the v7 band contains the held brow: the mask is cut, the
+hold does not yield.** The repaint mask = the face band MINUS the held brow
+rect DILATED BY THE FEATHER RADIUS, so the feather's soft edge lives
+entirely outside the held pixels. A mask is a pixel map, not a rectangle;
+nothing about the band forces repainting a feature the record holds.
+Identity-adjacent paint moves only at the Director's word. If the exclusion
+island leaves a visible boundary, the before/after crop shows it and his
+eye rules it at the sheet.
+
+**Conflict 2 -- the v1 corner clips the arm: cut the corner, keep the
+coverage.** The mask becomes a polygon -- the full rect minus a corner cut
+along the arm's inner edge -- proposed on the same 1:1 crop, re-overlaid,
+and re-walked at both seats. One extra local round-trip, zero cloud, and
+the upper chest's strong-tone region stays covered.
+
+**The jobs, once the v1 polygon clears its re-walk**: seven masked repaints
+at the same seed -- the v7 band, the four ears (v3, v4 left and right, v5),
+the v6 nose, the v1 chest -- with ColorMatchV2 after each and the mask
+saved as a receipt per repair. The v0 lift is LOCAL and deterministic --
+no job. The nine body strays ride whichever repaint masks reach them;
+strays outside every mask go to a second local pass, never a widened one.
+Spend 51 to 58 of 80 when the repaints fly. The repaired set then sheets to
+this seat's walk, then the Director's eye, then Phase 3 with his reference
+view.
