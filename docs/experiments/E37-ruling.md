@@ -555,3 +555,36 @@ candidate if none of these three moves the failure class — it needs its own
 structural anchor first, priced ~2 jobs, and fires only on a further word.
 
 Spend: 32 → 35 of 80 when the probe flies.
+
+## Ruling 17 — The probe is ratified, the levers enter the record, and the final eight are LOCKED at his word
+
+**The Director's word on the probe sheet, 2026-08-15: approved.** The final
+eight lock as sheeted — v0 · v1 (202608151) · v2 · v3 (roll 3) · v4 · v5 ·
+v6 (202608156) · v7 (P3, `cn_strength` 1.0) — three per-view forks, each
+named, each his-approved. Projection fires on this word.
+
+**The probe's discipline is ratified end to end**: bands sealed first with
+the instrument-cannot-measure branch carried on first use (it did not fire —
+the backdrop failure did not reproduce); one shared fresh seed
+(20260815007), one named delta per arm; P2's negative through the fixture
+path, never typed; P3's delta diff-proven in the payload transform; both
+keys, the census and the fixed-baseline guard on every arrival; P3 selected
+by the sealed tie-break (dark census 50/248).
+
+**The lever learnings fold as measured route facts, n=1 stated:**
+1. **Conditioning 0.9 → 1.0 suppresses invention on this class** — census
+   72 → 50 and coverage 38.9% → 32.2% at an identical seed; the anchoring
+   direction now measured on the backdrop/contamination class, not
+   inherited.
+2. **The negative-side backdrop clause enforces the positive's field** —
+   background 151 → 181 toward the kept ~196, best projection key of the
+   three (0.9196). The plain-pale-grey term now has measured enforcement
+   available from both sides of the prompt.
+3. **B3's miss is the probe's content**: a fresh seed alone was NOT the
+   whole story — both levers moved what the control did not, which is
+   exactly what "levers we didn't exercise properly" asked to learn.
+
+**Settled in passing**: v3 roll 3 clears the projection key at 0.9158 across
+all three probe projections — the view that halted Stage C twice is closed.
+Spend 35 of 80. Stage C's projection now runs the locked eight through the
+built prep; the next halt is Stage D at his zoom.
