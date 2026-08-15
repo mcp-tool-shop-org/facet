@@ -228,3 +228,57 @@ any protected tree or accepted asset.
 rebuild on a Director-picked winner = 8 · contingency 3 (one mechanical repeat per
 arm). The anchor is not optional and not contingency — it is the first job of the
 arc, and Ruling 6 is why.
+
+---
+
+> ## ⚖ AMENDMENT 2 — arm 1's two terms, ruled at the task-0 halt (advisor, 2026-08-15)
+>
+> [E36-task0-report.md](E36-task0-report.md) (committed `e53a695`) falsified two of
+> arm 1's specified terms by measurement, at zero spend, and halted per the rules.
+> The rulings below supersede the conflicting clauses in task 2 and 0e above. Arm 2
+> and 0d are untouched by both.
+
+### Ruling A2-1 — arm 1 runs with the RECORDED control; the init is the only delta
+
+The measured fact: `control_image = max(canny, contour)`; the canny term runs on the
+render, and under flat light it contributes nothing — the flat control equals the
+contour exactly (10,987 px both), a 21.47% delta against the recorded control with
+zero interior edges. Arm 1 as written moved node 9 (intended) and node 10 (not), and
+a control that constrains nothing carries the documented identity-loss signature.
+The confound law's own remedy is taken: **node 10 is pinned to the recorded control
+(`ae1bab6f…`, already uploaded); node 9's flat init is the single delta.** H3's
+branches are unchanged — the mechanism under test is the init's shading signal. The
+sheet states the pin and its reason, and notes that the flat init's background field
+moved too (4,279 px outside the mask, ~127 → ~154) — inherent to the arm's one
+variable, stated rather than discovered later. Banked as a route fact beside the
+ruling: **a flat-lit Workbench render cannot feed a canny control on this route** —
+any future flat-lit route variant needs a control story before it is a one-job test.
+
+### Ruling A2-2 — the unique-colour guard is WITHDRAWN for this route; the count stays as a reported diagnostic; lanczos is the named MECHANICAL repair only
+
+The ~5,000 bound was measured on the 2509 edit encode — a consumer E36 excludes —
+and the recorded qwen-image route demonstrably runs at 2,303 unique colours, below
+the bound: the condition condemns the accepted baseline and cannot discriminate.
+*A condition whose stated derivation does not describe it was never a threshold* —
+it is **withdrawn**, not re-derived; no new number is chosen, and that is the whole
+difference. What stands: the E35 quantisation-character CHECK ran, exactly as the
+law requires of every new consumer, and its numbers ride the report and every arm-1
+sheet (recorded 2,303 · flat 107 · round-trip 342, perturbing 8,413 px inside the
+mask — the reason the "repair" may not touch a one-variable arm's input
+pre-emptively). If the encode corrupts on the low-colour input, that is MECHANICAL
+under this spec's own boundary: the one authorized repeat fires, **the lanczos
+round-trip is its named repair**, and the repeat's sheet quantifies the perturbation.
+
+### Ruling A2-3 — sequencing ratified; premise 5's dead gate owned
+
+Seal the bands once, now, against arm 1's ruled form; then 0d as the arc's first
+job; then the arms in the dispatched order. Ratified from the report: the recovered
+clay invocation proven before use (0 of 360,448 px; the byte-vs-pixel law's third
+live firing) and now recorded where two arcs never wrote it; both vacuous checks
+named as vacuous rather than reported as passes. **Premise 5's specified gate was
+the advisor's defect**: `silhouette_masks --anchor` raycasts the GLB and cannot see
+a render, so the spec prescribed a check that could not fail on the premise it was
+attached to — a check whose shape assumed its answer, this seat's recurring form.
+The premise itself holds by construction (same GLB, same camera, anchored at 0 px),
+which is stronger than the dead gate. The `LABEL=PATH` parser split on a `=`-bearing
+label goes to the errand list; the instrument reproduces bit-identically.
