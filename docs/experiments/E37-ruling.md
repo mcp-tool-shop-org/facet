@@ -12,7 +12,13 @@ image generator's clay tell. The route's founding law applies unchanged:
 *reconstructors read surface noise as geometry.* TRELLIS baked the swirls into the
 mesh as relief, every round-1 candidate inherits them (they share the plate), and
 the pit screen's 378–565 relief marks across all candidates — control included —
-are in substantial part this relief. The executor's chest-striation observation and
+are ~~in substantial part this relief~~. *(⚠ Corrected in place, 2026-08-15,
+Ruling 3: round 2 falsified the mechanism clause — the plate's ridges halved
+(p95 7.87 → 3.75), the mesh got visibly smoother, and the screen's marks ROSE
+(mean 484.8 → 524.7). With the 0-of-6 co-location result, the screen measures the
+mesh's own facet shading — neither the dot class nor the swirls. The plate-had-
+fingerprints finding and the round-2 decision stand measured; the account of what
+the screen counted does not.)* The executor's chest-striation observation and
 the screen's behaviour cohere under one mechanism. **Picking from round 1 would
 pick the least-swirled swirl; no round-1 candidate is picked.**
 
@@ -79,3 +85,74 @@ dispatched.
 
 Round-1 candidates, screens, sidecars and the report section stay in the record
 as the baseline round 2 is measured against. Spend remains **0 of 40**.
+
+## Ruling 3 — Stage A closes at the Director's pick; the screen is demoted; Stage B dispatches in wood
+
+**The pick: seed 987654 on the clean plate — PINNED.** `884abe04…`,
+36,215,560 bytes, 32 shells / largest component 0.820 / 0 boundary edges. His
+eye, at the sheet, as designed. Stage A is CLOSED at spend 0 of 40.
+
+**Two executor corrections are RATIFIED, both against its own earlier reports:**
+
+1. Ruling 1's mechanism clause is falsified and corrected in place above — the
+   marks rose while the ridges halved. **The pit screen measures facet shading
+   and is hereby demoted permanently to an ordering diagnostic**: blind to the
+   dot class (0-of-6 co-location) and to the swirls (rose when they left), it may
+   rank candidates and may never gate anything. The E07 law, landing on
+   instruments built this same arc, owned by their own author before anyone else
+   read the numbers — the discipline at its best.
+2. The Stage-A ranking is ordering, not evidence; the pick was correctly the
+   Director's eye. Both instruments moved opposite his (correct) judgement.
+
+**The resolution hypothesis is recorded, named, and parked**: `pipe.run` resizes
+to a 1024 max edge over a 32³/64³ sparse structure, so fine surface whorls may
+reach the reconstructor's texture but sit below its geometric resolution. It
+explains both results at once; it is testable; it spends nothing here and fires
+only at the Director's word.
+
+**A prompt-term finding at this seat, load-bearing for Stage B:** the recorded R3
+prompt itself carries *"sculpted thumbprint hatching on the torso and limbs"* —
+the hatching on every recorded twin was NAMED, and arrived by the 8-of-8 law
+exactly as named things do. E35 had already measured the dark figures as partly
+"the prompt's texture term rendered literally" (herringbone in E2, crazed-fine in
+F1). **The wood prompt drops the term deliberately** — recorded as a second named
+delta beside the register change, so Stage B's dark-census movement is read
+against BOTH causes and neither is silently credited with the other's effect.
+
+**Stage B dispatches at Amendment 2** (the kickoff): the wood prompt authored
+verbatim there, a two-job Gate-R register probe at his eye before any seed set
+fires, the register floor SUSPENDED rather than ported (no calibrated wood floor
+exists; C\* is reported per twin, never gated — suspend-don't-invent), and the
+selection rule unchanged. Budget arithmetic inside the standing ceiling:
+probe 2 + seed sets 24 + mechanical and re-roll 14 = 40.
+
+## Ruling 4 — The advisor's collision call corrected; the frame carries at 368×1024; the prompt materialization ratified
+
+1. **The 25-failure diagnosis was this seat's miss, owned.** The advisor read
+   the failures as the two-seat count collision and said "do not chase" — a
+   pattern-match to a known failure, asserted without measurement. The executor
+   measured instead: nothing uncommitted added tests but its own T71 (38 → 45),
+   so 1047/1002 was correct for the combined tree and the repair was that
+   commit's own obligation under the corrected order. It repaired all sixteen
+   surfaces and T34 + T41 pass 91/91. The record's own law — *a signal that
+   pattern-matches a known failure may have a different cause* — at the ruling
+   seat this time. The counts stand; no reconcile remains.
+2. **The frame does not carry, and that is the spec working: 368×1024.** Premise
+   8's own derivation on the picked mesh gives worst-of-8-yaws 0.3457 against
+   E33's 0.3340 — the remade mesh is wider — so the frame is 368×1024, ÷16
+   legal. RATIFIED, with the consequence stated for the bands: **every E35
+   frame-based citation carries a 4.5% width shift** — the pale instrument's
+   row-based head band survives at h=1024, but any px² or column-based figure
+   against a 352-wide baseline is reference-only (the moving-denominator
+   family, pre-empted this time rather than found in a result). The bands file
+   cites this ruling where it quotes an E35 floor.
+3. **The prompt materialization is RATIFIED and is the discipline at its best**:
+   the v-w1 entry went verbatim into a register fixture at
+   `facet_E37/registers/vw1.json` — outside every protected tree, beside
+   nothing it could disturb — and the recorded builder derived the per-view
+   stems by whole-term deletion with ordered-subsequence assertions. No prompt
+   text was typed; the negative is `r3.json`'s byte-identical. Sixteen terms,
+   the same drop map as the terracotta file.
+
+The probe is CLEAR to fire on the picked mesh's controls at 368×1024, and halts
+at the Director's eye on the Gate-R sheet.

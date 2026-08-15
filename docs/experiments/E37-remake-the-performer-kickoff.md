@@ -139,6 +139,55 @@ register, and identity are CONTENT, never repeated.
 > - **The boundary:** round 2 fixes relief. The painted-speck defence remains
 >   Stage B's census selection, unchanged.
 
+---
+
+> ## ⚖ AMENDMENT 2 — Stage B in wood: the prompt, the probe, and the suspended floor (advisor, 2026-08-15, at the Stage-A close)
+>
+> Stage A closed at the Director's pick (Ruling 3: seed 987654 on the clean
+> plate, `884abe04…`). Stage B runs as dispatched with these deltas:
+>
+> **The wood prompt, v-w1, authored here verbatim** (three named deltas from the
+> recorded R3, everything else byte-preserved):
+>
+> ```
+> a slender jointed wooden artist's mannequin, a smooth bald head, a simple
+> readable face with drawn brows, closed lidded eyes, a small closed smile,
+> small ears, ball-and-socket shoulders and elbows, ball-and-socket wrists and
+> ankles, ball-and-socket hips and knees, fine straight wood grain across the
+> torso and limbs, empty open hands, simple rounded feet, plain pale grey
+> background, warm natural hardwood, matte oiled wood, soft studio light
+> ```
+>
+> The deltas, each named: (1) the object noun — *clay mannequin* → *wooden
+> artist's mannequin*; (2) the surface term — *sculpted thumbprint hatching on
+> the torso and limbs* → *fine straight wood grain across the torso and limbs*,
+> same grammatical slot, and the hatching term is DROPPED on Ruling 3's finding
+> that it was the named source of the literal-rendered dark component; (3) the
+> material close — *unglazed terracotta, matte sculpted clay* → *warm natural
+> hardwood, matte oiled wood* (matte kept deliberately — every glossy register
+> has failed his eye). *soft studio light* and every identity term are
+> byte-preserved. The executor materializes the per-view JSON under the recorded
+> prompt discipline (versioned, sidecarred, byte-pinned).
+>
+> **Gate-R probe first: 2 jobs.** Views 0 and 4, seed 770700, the picked mesh's
+> controls, v-w1 — a register sheet beside the source plate at full size, head
+> at 3×. **HALT at the Director's eye.** His register word gates the seed sets;
+> a register iteration (prompt v-w2) is his call, priced at 2 jobs per round.
+>
+> **The register floor is SUSPENDED, not ported.** The terracotta C\* floor was
+> route-measured for terracotta; no calibrated wood floor exists. C\* rides
+> every report and sheet as a diagnostic; nothing gates on it
+> (suspend-don't-invent). reg-IoU ≥ 0.80 stands unchanged — it is geometric and
+> register-independent.
+>
+> **Bands:** sealed by commit before the first seed set (after Gate-R passes).
+> The E35 terracotta floors are cited as reference context only — wood census
+> expectations are UNMEASURED and the bands say so; three branches, UP live.
+>
+> **Budget inside the standing 40:** probe 2 (+2 per his-word register
+> iteration) + seed sets 24 + mechanical/re-roll contingency = 40. Spend
+> currently 0.
+
 ## Blind bands
 
 Sealed by commit before Stage B's first job: the Stage-B census expectations
