@@ -453,3 +453,26 @@ outlier.
    — the patch-class risk E34 exists to prevent, named rather than hidden.
 4. Accept 0.7989 at his word: available to him alone; recommended against
    from this seat, for the reason above.
+
+## Ruling 14 — His word: both views re-roll at fresh seeds, and the arc ceiling rises 40 → 80
+
+**The Director's word, 2026-08-15: re-roll both v3 and v7 at fresh seeds;
+credits aren't an issue; raise the ceiling.** Three parts, executed:
+
+1. **Option 1 fires.** v3's THIRD roll is authorized by his word exactly as
+   clause 3 requires; v7's first roll rides beside it. Two fresh seeds, never
+   previously used in this arc, **pre-registered in the record before
+   anything submits** — the Stage-B discipline unchanged. Everything else
+   byte-held: v-w1, the tuned controls, the recorded recipe, 368×1024. The
+   wash guard and both registration keys measure the two arrivals beside the
+   kept rows; the two new views go up beside v0 at his eye before projection.
+   One roll each under the standing law — a further failure on either view is
+   a result that returns to him.
+2. **The ceiling moves 40 → 80 at his word**, the number set under his
+   delegation with the arithmetic stated: 32 spent after these two · headroom
+   for further his-word rolls (~8) · register or wash iterations (~8) · a
+   full Stage-D-rejection re-roll round (~16) · mechanical repeats (~8) ·
+   slack to 80. At the measured ≤ $0.0184/job the whole ceiling is ≈ $1.47.
+   His budget posture for this arc — credits are not a constraint — is
+   recorded so no seat makes spend a friction point again this arc; per-job
+   discipline (sidecars, the ledger, gates) is unchanged by it.
