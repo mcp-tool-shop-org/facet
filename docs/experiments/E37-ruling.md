@@ -811,3 +811,26 @@ convention binds now.
 Spend 51 of 80, unmoved through two halts. The sequence stands: hand-placed
 polygons -> dark-distance verification -> overlay -> both walks -> the
 seven repaints.
+
+## Ruling 24 -- The checker's operand correction is ratified; the split-sheet walk closes the gate; the repaints are pre-authorized behind it
+
+**The checker correction is RATIFIED and folds as the same law twice**: a
+boundary correctly drawn around a dark defect necessarily abuts dark pixels
+INSIDE the mask, so distance-to-any-dark-pixel condemns exactly the correct
+masks -- Ruling 20's conflation one layer down, caught by the operator
+before it blocked anything. The corrected operand -- distance to dark paint
+OUTSIDE the mask -- is the verifier's form from here, and all eight
+boundaries clear at 5.39-28.02 px.
+
+**The executor's stated limit on its own walk is commended and acted on**:
+the combined overlay only exists at 2.1x downscale at that seat, which is
+the read class this phase already convicted. The offered repair is taken:
+**two sheets of four tiles each, native resolution, walked at the
+executor's seat, then at this seat.** Per-region placement walks plus the
+checker are necessary and not sufficient; the protocol's purpose is
+fidelity, and the split sheets deliver it at zero cost.
+
+**The seven repaints are PRE-AUTHORIZED behind that walk**: if both walks
+clear, the jobs fire immediately under Ruling 21's terms -- no further
+advisory round-trip stands between the cleared overlay and the spend. Any
+walk finding halts as always. Spend 51 of 80; 58 when they fly.
