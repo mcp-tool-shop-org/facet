@@ -14,7 +14,7 @@ R2-c and register row to the digit) are accepted as reported, not independently 
 The report file (`E35-armslate-report.md`) is present in the working tree and lands
 with the executor's commit; this ruling cites it by name ahead of that landing.
 
-## 1. The slate — RATIFIED, and its answer is a negative result stated plainly
+## Ruling 1 — The slate — RATIFIED, and its answer is a negative result stated plainly
 
 Branch 4 held: (d) did not fire, because a best pair of one member is not a pair, and
 that outcome was written into the spec before its inputs existed. The fourth job
@@ -33,7 +33,7 @@ That is a full negative result and the arc's levers are now measured-exhausted, 
 is a product, not a failure. **The flat-lighting vocabulary is ADOPTED into prompt
 v-next** — a small true win that rides any future route.
 
-## 2. The pale instrument counts two classes — and this seat's own closure is CORRECTED
+## Ruling 2 — The pale instrument counts two classes — and this seat's own closure is CORRECTED
 
 The executor's §5 flag is ratified and it reaches back into this seat's R2-c fold.
 The detector measures **local lightness excursion**, and two signatures produce it:
@@ -60,7 +60,7 @@ gate; the E07 law stands). And the three-branch law gets its sibling, paid for t
 today: **name the SIGNATURE of the class you are chasing, not only its magnitude — two
 mechanisms can share a magnitude and part on a second axis.**
 
-## 3. The consult ledger, updated by enumeration
+## Ruling 3 — The consult ledger, updated by enumeration
 
 Consult #4's nominated checkable claim verified EXACT at this seat (the 2509 encoder's
 `image1/2/3` schema, against the single-`image` older node). C-i then falsified
@@ -72,7 +72,7 @@ have held once checked (generation-side; the init-bleed demotion; the 1-D trade)
 sub-mechanisms have fallen twice to enumeration** (cn-cannot-affect-overwrite; the
 type selector). Every consult claim remains testimony until enumerated.
 
-## 4. Disposition — the Director's decision, the arithmetic stated first
+## Ruling 4 — Disposition — the Director's decision, the arithmetic stated first
 
 36 of 45 spent; 9 remain. Three paths:
 
@@ -98,7 +98,7 @@ view 1, halting at the sheet for his eye. Paths 1 and 3 close.** The 8-view rebu
 remains outside this arc's ceiling on any outcome; the close ruling appends here
 after the pilot's sheet is ruled.
 
-## 6. The pilot's negative result — RATIFIED, and the dispatch shares the error
+## Ruling 6 — The pilot's negative result — RATIFIED, and the dispatch shares the error
 
 Both pilot jobs returned a **pure-black 352×1024 single-colour frame while reporting
 `succeeded`** (landed `c79e8fb`; 38 of 45). Nothing about either class was measured
@@ -130,7 +130,7 @@ not commissioned: a provider `succeeded` over a decoded-to-nothing output is a
 sibling of the dry_run gap comfy-preflight was built on — post-run, so outside its
 scope; noted for the bridge's job-wrapper backlog.
 
-## 7. The ceiling — RAISED at the Director's word; the number set at this seat
+## Ruling 7 — The ceiling — RAISED at the Director's word; the number set at this seat
 
 **The Director's word (2026-08-14): "Increase the job allotment."** The number, set
 under his delegation with the arithmetic stated: **the arc ceiling moves 45 → 60.**
@@ -146,7 +146,7 @@ node's own table, enumerated never assumed — turbo switch decided deliberately
 stated, no ControlNet (no served pairing exists), bands re-registered for the reduced
 question with the chroma-split column riding.
 
-## 5. Harness work and the seats' error records — ratified
+## Ruling 5 — Harness work and the seats' error records — ratified
 
 T69 (10 legs, both ANDONs shown firing under `-O` and `PYTHONOPTIMIZE=1`) · the E23
 raise-count pin moved on purpose in the commit that moved it, exactly as its docstring
@@ -165,7 +165,7 @@ history and gains a member: **a wrapper's exit code is a paging flag wearing a
 verdict's clothes — read the tool's own summary.** This seat's error this fold is
 Ruling 2's: an over-scoped mechanism closure, corrected above in place.
 
-## 8. The anchored sequence — RATIFIED
+## Ruling 8 — The anchored sequence — RATIFIED
 
 **A1 vindicated the anchor law in the cheapest possible way**: one unmodified
 `run_template` job produced a fully-rendered 1024×1024 image (the template's own
@@ -207,7 +207,7 @@ Held at the Director's word: the discriminator (1 job), then on a clean result t
 true A3 — turbo decided deliberately and stated — (1–2 jobs), then the register
 sheet at his eye. Sequence ≤ 3 of the remaining 17.
 
-## 9. D1/E1/E2 — the trigger closed, Ruling 8's hypothesis dead by its own falsifier, the route measured under a confound
+## Ruling 9 — D1/E1/E2 — the trigger closed, Ruling 8's hypothesis dead by its own falsifier, the route measured under a confound
 
 **Ruling 8's alpha hypothesis was this seat's, and it is FALSIFIED** — by the exact
 falsifier it carried. D1's output is **pixel-identical to A3c** (0 of 1,053,696
@@ -261,7 +261,7 @@ one mechanical repeat maximum. It separates the route from the LoRA, un-confound
 every number above, and bounds the successor arc's entire direction. RECOMMENDED;
 the Director's word. The close ruling follows its sheet either way.
 
-## 10. F1 — the confound removed, the verdict unchanged; the route's measurement program is COMPLETE
+## Ruling 10 — F1 — the confound removed, the verdict unchanged; the route's measurement program is COMPLETE
 
 **F1 is RATIFIED, 6 of 6 measurable bands hit, one job, no repeat — 47 of 60.**
 Lightning was magnitude, not sign: removing it drops the dark census 3.8× and
@@ -310,3 +310,78 @@ design) and the E34 disposition (reopened; accept-with-known-class or hold);
 `STUDIO_MEASURED` envelope candidate for the 2509 checkpoint (the quantisation
 trigger + the class measurements) goes to the close ruling's gate — one ruling
 per entry, always.
+
+## Ruling 11 — THE CLOSE: task 5 ratified, the arc is CLOSED, and the Director's surface in one place
+
+**Task 5 is RATIFIED.** Four manifest gates HELD — with one accounting note stated
+so no future reader mistakes it for a tree change: manifest A reads 116/116 where
+the arc's open read 117/117, because the new walk reports E33's self-reference
+instead of counting it. Same tree, honester count. `facet_E35` enters protection at
+335 files / 284,096,148 bytes, self-excluded per the E34 form. **The protection
+walk is at last a committed instrument** — `tools/verify/tree_manifest.py`, both
+encodings the record actually uses, an eight-leg can-fail fixture, T70 riding the
+commit — after three arcs of inline re-derivation; its first-run fixture firing
+that indicted the fixture rather than the walk is the can-fail discipline working
+as built. Counts 1002 / 957 off `T34.PINS`; the suite green from a complete
+capture whose FAILED count agrees with its summary; **CI green at `694a9e3`,
+resolved live at this seat**; the terminal pair at `9bd2215` preceded by the
+scratch gate, and this seat re-ran the scratch build at the closed tree before
+ruling.
+
+**The pass-ordering correction is ADOPTED into procedure**: land all pin edits →
+**run the full suite to surface the pins you did not know about** → collect →
+surfaces → census last. The two-pass form this arc's task 5 specified is necessary
+and insufficient — one new file moved four pinned populations, and T62
+parametrises over the very tuple it pins, so editing it moves the collected count
+after the surfaces are written. This enters the next kickoff verbatim. The
+census-ordering error (axis D moved by the arc's own close paper — the E28
+self-reference family) was the executor's, was caught by the gate built for
+exactly that, and carries its fix.
+
+**This seat's authorship defect, owned and repaired in this commit**: Rulings 1–10
+were written in a heading form the record's parser does not extract — the scratch
+build served them as prose, the rulings count unmoved at 718. Re-headed to the
+house form (`## Ruling N —`) in the commit that carries this ruling; the rows land
+at this close's terminal pair. Found by reading the build's own counts against the
+document — the instrument-inside-its-own-population family, at the ruling seat
+this time.
+
+**The second `STUDIO_MEASURED` entry is RULED IN** through Amendment 5's gate:
+checkpoint `qwen-image-edit-2509`, parameter — **input image quantisation
+character**. Measured: a 2,620-unique-colour Workbench render corrupts the edit
+encode **deterministically** (pixel-identical corruption on verbatim
+re-submission); ~5,000-colour inputs are clean; one lanczos round-trip at native
+framing repairs it; alpha, bit depth, colour type, seed and the turbo switch each
+exonerated by measurement. Two measured points, no bound invented. Locators: the
+E35 report's D1/E1/E2 sections and Ruling 9 above. Scope: submission-input
+knowledge for that checkpoint; the class comparisons stay in facet's record. It
+rides the same comfy-preflight implementation dispatch as the first entry — two
+entries now ruled in, one ruling each.
+
+**THE ARC IS CLOSED.** What it leaves, in the record's own terms: 47 of 60 spent,
+thirteen returned unspent; **five directions closed by measurement** — the seed
+frontier is one-dimensional, the cn sign is counter-indicated for pale and null
+for dark, denoise kills the register before either class, no slate lever moves
+the dark class while keeping the man, and 2509 is class-worse at both measured
+configurations while out-registering the canny route with no ControlNet; four
+instrument capabilities committed with their fixtures; the pale class governed by
+signature, one mechanism established and one open; **no repaint candidate
+produced** — the recorded route's R2-b remains the best-measured configuration
+and stands rejected at the Director's eye; E34 remains the accepted-and-reopened
+asset.
+
+**The Director's surface, in one place**: (a) the three sheet calls — identity,
+the register at 26.99, the hatching read — which now scope the successor's route
+frame only; (b) **the armature relay's re-target** — its held target, "E35's
+candidate," does not exist; (c) the E34 disposition — accepted-with-known-classes
+or held reopened; (d) the successor arc's frame, where the record names one
+untested direction: a new corrector contract above the 36 px² cap, validated
+against his rejected artifacts before any A/B, reaching the 377-texel components
+the cap excluded by design; (e) the E34 candidate anchors, owed regardless.
+Nothing below this line fires without his word.
+
+**The executor, in the record's tradition: exceptional.** The marks, enumerated:
+an anchor discipline rebuilt mid-arc after a shared error and never dropped
+again; the refusal of A2's number with nothing else to show; B2's
+pale-direction hit made by refusing to look; and three guards of its own
+construction firing on its own work — every one honoured, none tuned past.

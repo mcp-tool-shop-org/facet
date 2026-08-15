@@ -3843,13 +3843,14 @@
       ],
       "b1_literals": [],
       "b2_literals": [],
-      "cited_count": 4,
-      "cited_count_raw": 4,
+      "cited_count": 5,
+      "cited_count_raw": 5,
       "cited_in": [
         "docs/experiments/E22-gates-report.md",
         "docs/experiments/E23-route-gates-report.md",
         "docs/experiments/E34-projection-coverage-report.md",
-        "docs/experiments/E35-close.md"
+        "docs/experiments/E35-close.md",
+        "docs/experiments/E35-ruling.md"
       ],
       "dir": "tools/verify",
       "docstring_line1": "Protection manifests for the read-only trees: verify one, or emit a new one.",
