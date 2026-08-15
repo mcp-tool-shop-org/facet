@@ -188,6 +188,45 @@ register, and identity are CONTENT, never repeated.
 > iteration) + seed sets 24 + mechanical/re-roll contingency = 40. Spend
 > currently 0.
 
+---
+
+> ## ⚖ AMENDMENT 3 — the repair road after Stage D's rejection (advisor, 2026-08-15, at the Director's go)
+>
+> Stage D rejected the composed candidate (Ruling 18). The road, four phases,
+> every element measured this arc or schema-verified live (consult #7 fold):
+>
+> **Phase 1 — one wood by construction.** TWO complete single-seed eight-view
+> sets (a third only if neither censuses clean), fresh seeds pre-registered
+> before submission. Uniform configuration on every view: v-w1 + the backdrop
+> negative clause, `cn_strength` 1.0, the tuned controls, 368×1024, the
+> recorded recipe otherwise. ⚠ The two levers were measured one-at-a-time;
+> their combination is n=0 and the bands say so. Per set: both keys on all
+> eight views, census total + largest component, per-view register C\* with
+> the WITHIN-SET spread reported — the single-seed consistency claim is
+> verified, not assumed. **Selection rule sealed before generation**: every
+> view clears both keys → lowest total dark census → ties by within-set C\*
+> spread. One mechanical repeat per set; content defects are NOT re-rolled —
+> they go to Phase 2 by design. 16–24 jobs; spend from 35 of 80.
+>
+> **Phase 2 — repair in place, never re-roll.** The winning set's content
+> defects and its fleck census: masked repaint at the same seed and
+> conditioning (`noise_mask` path, schema-verified), feathered masks, a
+> ColorMatchV2 pass over each repaint with the surrounding view as reference.
+> The repair list goes to the Director's eye with the Phase-1 sheet.
+>
+> **Phase 3 — deterministic harmonization.** `ColorMatchV2` (live-verified;
+> the deprecated original is not used), `image_ref` = the one view the
+> Director approves, the other seven matched. No sampler, no seed,
+> byte-reproducible; method choice reported with its numbers, not tuned
+> against his eye.
+>
+> **Phase 4 — the proven chain.** Projection, fill, RGBA turnarounds,
+> censuses, sheets — and the sheets are WALKED AT FULL SIZE at the advisor's
+> seat before the Stage-D halt, every time, per Ruling 18.
+>
+> Out of scope: the reference-anchor model patch (later, single-variable) ·
+> per-view seed mixing (dead, permanently) · any edit to protected trees.
+
 ## Blind bands
 
 Sealed by commit before Stage B's first job: the Stage-B census expectations

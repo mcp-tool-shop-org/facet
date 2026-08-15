@@ -588,3 +588,40 @@ by the sealed tie-break (dark census 50/248).
 all three probe projections — the view that halted Stage C twice is closed.
 Spend 35 of 80. Stage C's projection now runs the locked eight through the
 built prep; the next halt is Stage D at his zoom.
+
+## Ruling 18 — Stage D REJECTED at the Director's eye; two seat errors owned; the repair road adopted at his go
+
+**The candidate is REJECTED, 2026-08-15, at the Director's zoom on the
+delivered frames**: hard tonal seams splitting the face and torso by view
+owner, the persistent dark-fleck class, pale contamination streaks at the
+boundaries. The asset read as broken at his eye, and he was right. Nothing
+was delivered; every accepted asset is intact; `performer_v3.glb` stands in
+the record as a rejected candidate with its measurements.
+
+**Two errors of this seat, owned in the record and not only in chat:**
+
+1. **The sheets reached his eye unwalked.** The law — nothing reaches the
+   Director's eye that this seat's has not walked at full size — was broken
+   at the one gate where it mattered most: the advisor framed Stage D from
+   gate numbers and passed the sheets through as file paths. Repaired as
+   standing practice, stated in every dispatch from here: the sheet-walk at
+   the advisor's seat precedes every Director halt.
+2. **A firing instrument was demoted three times.** The wash guard fired at
+   Stage B, at the re-rolls, and at the probe — the same object every time —
+   and Rulings 9, 15 and 17 each carried it forward as a watch item with a
+   principled-sounding reason. The lesson folds law-shaped: **an instrument
+   that fires on the same object at every stage of an arc is a gate wearing
+   a watch's label — by its third firing the honest reading is a halt, not
+   an annotation.** The per-view re-roll architecture this seat recommended
+   is what created the four-woods asset; the guard said so each time.
+
+**The repair road is ADOPTED at his word ("go"), its every element measured
+or schema-verified** — kickoff Amendment 3 carries the operational spec:
+Phase 1 single-seed sets (banding dead by construction, both measured levers
+uniform); Phase 2 masked in-place repair of content defects and the fleck
+census at the same seed; Phase 3 deterministic harmonization
+(`ColorMatchV2`, live-verified, one his-approved reference view); Phase 4
+the proven projection chain, sheets walked at this seat before his zoom. The
+reference-anchor patch stays out of the critical path as a later
+single-variable test. Per-view seed mixing is dead on this route,
+permanently, by his word and by its measured product.
