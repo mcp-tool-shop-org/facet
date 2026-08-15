@@ -616,7 +616,7 @@ the record as a rejected candidate with its measurements.
    is what created the four-woods asset; the guard said so each time.
 
 **The repair road is ADOPTED at his word ("go"), its every element measured
-or schema-verified** — kickoff Amendment 3 carries the operational spec:
+or schema-verified**, and Ruling 19 below records its first phase landing — kickoff Amendment 3 carries the operational spec:
 Phase 1 single-seed sets (banding dead by construction, both measured levers
 uniform); Phase 2 masked in-place repair of content defects and the fleck
 census at the same seed; Phase 3 deterministic harmonization
@@ -625,3 +625,48 @@ the proven projection chain, sheets walked at this seat before his zoom. The
 reference-anchor patch stays out of the critical path as a later
 single-variable test. Per-view seed mixing is dead on this route,
 permanently, by his word and by its measured product.
+
+## Ruling 19 -- Phase 1 PASSES at both eyes; set A selects by the sealed rule; the inventory merges; Phase 2 fires
+
+**The advisor walked both Phase-1 sheets at full size before answering -- the
+repaired law's first exercise -- and the Director's read and this seat's agree:
+one wood across all eight views, the banding class GONE, every key clear on
+set A.** Set A (seed 2026081511) selects mechanically: set B failed the
+projection key at v3 (0.7716), and the sealed rule's first clause leaves one
+eligible set. Census 162/809, within-set C* spread 8.33, scratch projection
+98.0% styled/reachable.
+
+**The executor's fired-gate self-catch is RATIFIED and is the known class's
+second live firing**: the withdrawn --bg-max-pct bound resurrected as a
+default when an invocation was written from the flag list instead of the
+record (known-defects, the E16 Ruling 4e withdrawal; E34's report carries the
+ruled 100.0 invocation). Owned first, corrected from the record, nothing
+tuned. The tool-default repair -- a behaviour change wanting its own spec --
+gains its second live firing as evidence and is specced at this arc's close.
+
+**P2's banked miss is a real lever finding, n=2**: cn 1.0's one-view census
+gain (72 to 50) does not survive as a set-level property -- seed variance
+between two sets under an identical configuration ran 73%, wider than the
+lever-free spread. The lever stays in the configuration for its measured
+coverage/backdrop effects; nobody cites it as a census guarantee again.
+
+**The Phase-2 inventory, merged from the Director's eye, the executor's
+measurements, and this seat's walk** -- masked repaint at the same seed,
+feathered masks, ColorMatchV2 after each, per Amendment 3:
+1. The v0 face tone lift (his "dim" -- and yes it bakes into the GLB: v0
+   owns the face; deterministic masked lift, magnitude at his eye).
+2. The v7 face region (his "chopped"; largely out-competed at the front by
+   v0 in projection, repaired regardless).
+3. The ear-knob band on v3, with v4/v5's milder instances (his call plus the
+   third-seed reproduction of the class -- the model's habit, not luck).
+4. v6's nose wedge (the executor's row) and v1's dark chest patch (this
+   seat's walk).
+5. v6's heavy brows: HELD, repaired only if visible on the composed asset --
+   brow weight is identity-adjacent and identity is his.
+The fleck census (162 sites) rides the same masked-repair pass where
+components are large enough to matter; the sheet after Phase 2 carries
+before/after per repair, walked at this seat before his eye.
+
+Spend 51 of 80. Phase 2 is local except repaint jobs (masked regions, same
+seed, ~6-10 jobs). The next halt is the repaired set at both eyes, then
+Phase 3 harmonization with his chosen reference view.
