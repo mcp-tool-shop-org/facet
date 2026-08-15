@@ -143,6 +143,46 @@ more.** Clearing the GPU removed a *collision*; it bought no headroom. **The cei
 never raised and the margin is 90 MiB**, so this path is one background process away from
 the same halt.
 
+## 7. IT FIRED AGAIN — the second kill, and why the first repair did not stop it
+
+Twelve minutes after the plate edits, the round-2 candidate build was killed at
+**31,659 MiB**:
+
+```
+05:18:26 WARN(1/3) 31657MiB - python(pid 31208)=26077MiB | python(pid 29332)=4806MiB | ...
+05:18:32 KILL     31659MiB - ABORT, killed win python PID(s): 5556,12640,31208
+```
+
+**Zero candidates were built.** The two holders name the cause exactly: `pid 31208` at
+**26,077 MiB is ComfyUI, still resident from the plate edits**, and `pid 29332` at 4,806 MiB
+is TRELLIS loading on top of it. Reconstruction's own peak on this route is 3.4 GB; there
+was never room.
+
+⚠ **The first repair covered the holder I had just been burned by, and the next kill came
+from a different one.** §6's preflight unloads Ollama; nothing unloaded ComfyUI, which keeps
+its models resident after a job by design. **A preflight that clears the holder you remember
+is not GPU hygiene** — that is the lesson, and it is the same shape as this repo's standing
+*when you fix a root cause, find its other consumers.*
+
+⚠ **And from inside, both kills looked identical to a crash**: a bare non-zero exit, no
+output, no traceback — because the interpreter was one of the killed PIDs. Twice a
+watchdog kill cost a diagnosis before it was recognised as one.
+
+### The repair, split so a third holder cannot repeat it
+
+| layer | what it does | why there |
+|---|---|---|
+| **orchestrator** (`e37_stagea_build.py`) | `clear_gpu()` shuts down **ComfyUI** and unloads **Ollama** before the first reconstruction | clearing is policy, and the orchestrator is the only layer that knows both stages exist |
+| **tool** (`tools/reconstruct_mesh.py`) | `check_vram_headroom()` **ANDONs** below a VRAM floor, naming free/total and the likely holders | refusing is a safety property. A consumer nobody has enumerated stops the run **with a number** instead of dying as a bare exit code |
+
+The floor defaults to 8 GB against a measured 3.4 GB peak — deliberately generous, because
+the gate exists to catch a **collision**, not to bound this run's appetite. T71 pins that
+reasoning (`test_t71_the_vram_floor_is_above_the_measured_peak`) so lowering it toward 3.4
+has to be a deliberate act.
+
+**The rebuild ran clean**: all six candidates, no watchdog event, card peaking far below the
+ceiling.
+
 ### The pipeline now clears its own GPU
 
 Per *"this needs to stay within the pipeline"*: `e37_plate_edit.py` gained a `clear_gpu()`

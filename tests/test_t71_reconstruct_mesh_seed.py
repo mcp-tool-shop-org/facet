@@ -317,6 +317,68 @@ def test_t71_anchor_alone_resolves_to_its_recorded_input_at_seed_42():
 
 
 # ---------------------------------------------------------------------------
+# 5b. the VRAM headroom gate - it refuses a COLLISION, and it can be silent
+# ---------------------------------------------------------------------------
+# Added after the rig's watchdog killed two jobs in one session at ~31.6 GB of a 31.2 GB
+# ceiling. Both were collisions with another resident GPU consumer, and both arrived as a
+# bare exit code with no output - indistinguishable from a crash in this tool. The gate
+# converts that into a refusal that names the number.
+
+GB = 1e9
+
+
+def test_t71_vram_gate_refuses_when_the_card_is_occupied():
+    """The measured case: 31.2 GB card, ~5 GB free because something else holds it."""
+    with pytest.raises(SystemExit) as e:
+        RM.check_vram_headroom(5.0 * GB, 32.6 * GB, min_free_gb=8.0)
+    msg = str(e.value)
+    assert "ANDON" in msg
+    assert "5.0" in msg and "8.0" in msg, "the refusal must name the numbers: %s" % msg
+    assert "ceiling" in msg, "the refusal must say not to raise the ceiling"
+
+
+def test_t71_vram_gate_is_silent_with_room():
+    assert RM.check_vram_headroom(30.9 * GB, 32.6 * GB, min_free_gb=8.0) is True
+
+
+def test_t71_vram_gate_can_fail_at_its_own_boundary():
+    """Both sides of the floor, so the threshold is a threshold and not a formality."""
+    assert RM.check_vram_headroom(8.01 * GB, 32.6 * GB, min_free_gb=8.0) is True
+    with pytest.raises(SystemExit):
+        RM.check_vram_headroom(7.99 * GB, 32.6 * GB, min_free_gb=8.0)
+
+
+@pytest.mark.parametrize("mode,flags,envx", MODES, ids=MODE_IDS)
+def test_t71_vram_gate_survives_the_optimizers(mode, flags, envx, tmp_path):
+    """It decides whether an expensive run proceeds, so `-O` must not delete it."""
+    probe = tmp_path / "probe.py"
+    probe.write_text(
+        "import sys; sys.path.insert(0, r'%s')\n"
+        "import reconstruct_mesh as RM\n"
+        "try:\n"
+        "    RM.check_vram_headroom(1e9, 32.6e9, min_free_gb=8.0)\n"
+        "    print('GATE_SILENT')\n"
+        "except SystemExit as e:\n"
+        "    print('GATE_FIRED', 'ANDON' in str(e))\n" % str(REPO / "tools"),
+        encoding="utf-8")
+    rc, out, err = run(flags, [], tmp_path, env_extra=envx, script=str(probe))
+    assert "GATE_FIRED True" in out, (
+        "the VRAM gate did not fire under %s:\n%s\n%s" % (mode, out, err[-1500:]))
+    assert "GATE_SILENT" not in out
+
+
+def test_t71_the_vram_floor_is_above_the_measured_peak():
+    """E29 measured this route's reconstruction peak at 3.4 GB. The floor is deliberately
+    well above it, because the gate exists to catch a COLLISION with another consumer -
+    not to bound this run's own appetite. If someone lowers it to ~3.4 they have quietly
+    changed what the gate is for."""
+    a = _args()
+    assert a.min_free_gb >= 8.0, (
+        "the default floor is %.1f GB; below 8 it stops catching the collisions that "
+        "actually killed jobs on this rig" % a.min_free_gb)
+
+
+# ---------------------------------------------------------------------------
 # 6. no ANDON here is a bare `assert` - by AST, with a leg that can catch one
 # ---------------------------------------------------------------------------
 

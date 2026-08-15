@@ -524,6 +524,76 @@ which is the whole reason the seed set is unchanged. The full recipe, the valida
 and both VRAM readings are in `round2/e37_attempt3.json`; attempts 1 and 2 stay in the
 record with their own sidecars as the measured rungs either side of it.
 
+## Stage A round 2 — six candidates on the clean plate; **the Director picks seed 987654**
+
+Same six pre-registered seeds, unchanged so round 1 stands as the baseline; the clean plate
+is the single variable. Built into `stageA_r2/` so round 1's tree is untouched.
+
+⚠ **The first build of this round was killed by the watchdog at 31,659 MiB** — ComfyUI was
+still holding 26,077 MiB from the plate edits when the first reconstruction began loading.
+Reported in [E37-round2-vram-halt.md](E37-round2-vram-halt.md) §7; the repair is below.
+
+| seed | shells | largest | non-man | pieces | sat ≥1% | pit marks (r1) |
+|---|---|---|---|---|---|---|
+| **987654 ← PICKED** | 32 | **0.820** | 405 | 178 | 8 | **480** (378) |
+| 770700 | **18** | 0.528 | **285** | **81** | 8 | 585 (476) |
+| 1 | 80 | 0.658 | 720 | 306 | 12 | 487 (455) |
+| 770701 | 88 | 0.648 | 885 | 505 | 15 | 502 (510) |
+| 424242 | 59 | 0.573 | 608 | 305 | 13 | 538 (565) |
+| 42 | 70 | 0.483 | 544 | 231 | 15 | 556 (525) |
+
+### ⚑ The screens went the wrong way, and the eye did not
+
+**The clean plate visibly cleaned the mesh** — round 1's torso carries vertical striation,
+round 2's at the same seed is markedly smoother, side by side at 2× in
+`stageA_r2/sheets/E37_r1_vs_r2_torso.png`.
+
+**Both instruments say otherwise:**
+
+| | round 1 | round 2 |
+|---|---|---|
+| pit-screen marks, mean of six | 484.8 | **524.7** (+8%) |
+| mesh ridge energy inside the silhouette, median of six | 1.5083 | **1.5651** (+3.8%) |
+
+The pit screen counts small dark **blobs** and the Laplacian median is dominated by joint
+edges and rim shading; a broad low-contrast torso striation is neither. **This is the
+repo's oldest lesson landing on this seat's own instruments** — *a metric that cannot
+separate an asset he rejected from one he accepted is not a metric* — and it is reported
+rather than smoothed, because both numbers rode a sheet.
+
+⚠ **It bears on [Ruling 1](E37-ruling.md).** That ruling's mechanism claim was that the pit
+screen's 378–565 marks were *"in substantial part"* the plate's swirl relief. Measured: the
+swirls are gone from the plate (ridge p95 **7.87 → 3.75**) and gone from the mesh by eye,
+and **the marks rose.** With the earlier co-location result — 0 of 6 recorded dots inside a
+mark, dots sitting farther from marks than a typical figure pixel — the screen appears to
+measure the **mesh's own facet shading**, which is neither the rejected dot class nor the
+plate's swirls. A hypothesis, named not asserted: `pipe.run` resizes to a 1024 max edge and
+the sparse structure is 32³/64³, so fine surface whorls may sit below the geometric
+resolution the reconstructor represents at all — reaching its *texture*, never its *shape*.
+**Not ruled here.** The Director's judgement that the plate carried fingerprints and had to
+be cleaned stands and is measured; what does not survive is the claim about what the screen
+was counting.
+
+### The pick, pinned
+
+| | |
+|---|---|
+| GLB | `E:\AI\training\facet_E37\stageA_r2\cand_s987654.glb` |
+| sha256 | `884abe048caba93b248625b8cd29e78b47dfc31e9b7a39182fd4d3d63167327d` |
+| bytes | 36,215,560 |
+| plate | `a4bcf2501414f769d4164ba910803f6d7882e98747897f5f256be801c75fb3b2` (round-2 attempt 3) |
+| seed / params | 987654 · `1024_cascade` · decimation 1,000,000 · texture 4096 · remesh 1 |
+| raw | 707,300 v / 1,428,990 f · 90 s · `ATTN_BACKEND=sdpa` |
+| topology | 32 shells, largest **0.820**, 0 boundary edges, 405 non-manifold |
+
+**His word on the v2 sheet: "seed 987654".** Round 1's candidates and both rounds' screens
+stay in the record; the five unpicked round-2 candidates stay with their sidecars.
+
+**Stage A closes here. Stage B does not fire from this seat** — it is the cloud stage, and
+the kickoff binds: no cloud job before the blind bands are sealed by commit with the
+pre-registered selection rule, and the **wood** prompt is authored at Stage B's dispatch
+(Ruling 1) and gated by the Director's eye at the Gate-R sheet. Spend remains **0 of 40**.
+
 ## Count surfaces and harness state
 
 T71 adds 38 tests. Moved in this commit, in the corrected order (**pin edits → FULL suite →

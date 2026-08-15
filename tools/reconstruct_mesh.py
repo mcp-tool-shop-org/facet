@@ -92,6 +92,38 @@ def run_kwargs(args):
     return {"pipeline_type": args.ptype, "seed": args.seed}
 
 
+def check_vram_headroom(free_bytes, total_bytes, min_free_gb):
+    """ANDON: refuse to start a reconstruction that cannot fit.
+
+    WHY THIS IS A GATE AND NOT A COMMENT. Twice in one session the rig's VRAM watchdog
+    killed a job at ~31.6 GB of a 31.2 GB ceiling, and BOTH times the cause was a
+    COLLISION rather than this run's own appetite: another GPU consumer was still resident
+    (an Ollama model pinned `keep_alive: -1`; then ComfyUI still holding 26 GB after a
+    plate edit). A watchdog kill arrives as a bare exit code with no output - it reads like
+    a crash in this tool, and it cost a diagnosis both times.
+
+    So the tool asks the one question that separates the two: is there room right now. A
+    refusal here names the number and costs nothing; a kill costs the run, looks like a
+    bug, and leaves a half-built tree. Reconstruction's own measured peak on this route is
+    3.4 GB (E29), so the default floor is generous and still catches every collision seen.
+
+    This does NOT raise the ceiling and does not free anything - freeing is the caller's
+    policy, and CLAUDE.md measures that freeing buys no headroom anyway because ComfyUI
+    stages to fill whatever it sees free. It only refuses to walk into a wall.
+    """
+    free_gb, total_gb = free_bytes / 1e9, total_bytes / 1e9
+    if free_gb < min_free_gb:
+        raise SystemExit(
+            "ANDON: only %.1f GB of %.1f GB VRAM is free; this run wants at least %.1f GB.\n"
+            "       Something else is holding the card. Free it and re-run - do NOT raise\n"
+            "       the watchdog ceiling. Common holders on this rig: a resident ComfyUI\n"
+            "       (it keeps models loaded after a job) and an Ollama model pinned with\n"
+            "       keep_alive=-1." % (free_gb, total_gb, min_free_gb))
+    print("[gate] VRAM %.1f GB free of %.1f GB (floor %.1f GB)"
+          % (free_gb, total_gb, min_free_gb))
+    return True
+
+
 def check_seed_is_honoured(run_callable):
     """ANDON: the pipeline must actually take a `seed` parameter.
 
@@ -174,6 +206,10 @@ def build_argparser():
                          "on a mismatch; implies --image and --seed %d" % RECORDED_SEED)
     ap.add_argument("--force", action="store_true",
                     help="overwrite an existing --out (refused by default)")
+    ap.add_argument("--min-free-gb", type=float, default=8.0,
+                    help="refuse to start below this much free VRAM; the measured peak on "
+                         "this route is 3.4 GB, so this floor catches a COLLISION with "
+                         "another GPU consumer rather than bounding this run")
     return ap
 
 
@@ -255,6 +291,9 @@ def main(argv=None):
     print("=== reconstruct: image=%s seed=%d ptype=%s remesh=%s decim=%d ==="
           % (args.image, args.seed, args.ptype, bool(args.remesh), args.decimation),
           flush=True)
+
+    # Before the 4B model loads, and before anything expensive: is there room.
+    check_vram_headroom(*torch.cuda.mem_get_info(), min_free_gb=args.min_free_gb)
 
     # The gate runs on the CLASS before the 4B model loads: fail fast and free.
     check_seed_is_honoured(Trellis2ImageTo3DPipeline.run)

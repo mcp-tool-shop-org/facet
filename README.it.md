@@ -135,7 +135,7 @@ La disciplina è tanto importante quanto il processo che la sostiene e ha una su
 - **Le correzioni vengono applicate direttamente, accanto alla misurazione che le ha confutate**, e non come semplici eliminazioni silenziose. Solo nella sessione iniziale, sei affermazioni preesistenti sono state smentite e tutte e sei sono ancora visibili accanto a ciò che le ha sostituite.
 - **I risultati negativi rimangono nel repository insieme alla motivazione.** [`tools/superseded/`](docs/tools.md) non è un archivio: chiunque può eseguire questi strumenti e osservare il loro fallimento nello stesso modo.
 - **Un risultato negativo è un successo completo**, viene segnalato e chiuso, anziché essere modificato per raggiungere un determinato valore.
-- **I test vengono eseguiti insieme alla modifica del codice**; 1040 test hanno avuto esito positivo grazie al lavoro di due persone, con una pipeline CI basata su percorsi per i 995 test più importanti.
+- **I test vengono eseguiti insieme alla modifica del codice**; 1047 test hanno avuto esito positivo grazie al lavoro di due persone, con una pipeline CI basata su percorsi per i 1002 test più importanti.
 - **Il registro è consultabile.** È stato creato un indice SQLite + FTS5 sull'intero percorso dei dati e verificato su quattro sistemi. Questo ha permesso di individuare un errore nel conteggio delle conclusioni, che era presente in tre sezioni del testo, analizzando direttamente il registro stesso.
 
 ## Dove si trova tutto
@@ -182,7 +182,7 @@ Esattamente **un** meccanismo ANDON semplice `assert` rimane in qualsiasi punto 
 
 Blender 5.x, Python 3.11+ con `numpy`, `scipy`, `trimesh`, `open3d`, `Pillow`, `spandrel`, `torch`. È necessaria un'installazione locale di ComfyUI solo per il pennello di inpainting. Sviluppato su una RTX 5090; la quantità di VRAM disponibile è più importante della velocità pura.
 
-CI esegue il sottoinsieme ermetico della suite su **ubuntu-latest / Python 3.12** con installazioni bloccate (`.github/workflows/ci.yml`); la fase di creazione degli artefatti richiede le strutture registrate in `E:\AI\training`, che non sono presenti in Git, quindi CI le esclude intenzionalmente. Localmente, `python -m pytest` esegue tutti i **1040** test e `python -m pytest -m "not artifacts"` esegue gli **995** test riprodotti da CI.
+CI esegue il sottoinsieme ermetico della suite su **ubuntu-latest / Python 3.12** con installazioni bloccate (`.github/workflows/ci.yml`); la fase di creazione degli artefatti richiede le strutture registrate in `E:\AI\training`, che non sono presenti in Git, quindi CI le esclude intenzionalmente. Localmente, `python -m pytest` esegue tutti i **1047** test e `python -m pytest -m "not artifacts"` esegue gli **1002** test riprodotti da CI.
 
 ---
 
