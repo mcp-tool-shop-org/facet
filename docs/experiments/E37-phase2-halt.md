@@ -167,3 +167,39 @@ coarse, v1's plausible.
    or the hold yields on that view — a ruling, not an executor's call.
 2. **v1's chest rect clips the left arm** at its top-left corner. Tightening it loses upper
    chest, which is where the dark tone is strongest.
+
+---
+
+## 7. The masks are built; the v1 cut is NOT delivered; several clip their target
+
+Feather **R = 5 px**, stated once and used everywhere. Eight masks written to
+`phase2/masks/` with `masks.json`.
+
+**Ruling 21 clause 1 is DONE and measured.** v7's band = band − dilate(held brow, R), and the
+guarantee is asserted rather than reasoned: **the mask value on every held pixel measures
+exactly 0.0000**, on v7 (479 px removed) and on v6. The check `raise`s; it is not an `assert`.
+
+**Ruling 21 clause 2 is NOT done.** The measured cut I built — rect ∩ figure, largest
+connected component — removed **1,313 px of background** (the rect's left edge sits off the
+figure at rows ~250 and ~400, where there is a background gap between arm and torso). It did
+**not** remove the arm, because the arm is *connected to the torso* inside the rect, so a
+largest-component rule keeps it. The overlay shows green over the shoulder and down the arm's
+inner edge. **The corner cut the ruling asked for is still owed, and it has to be a polygon,
+not a connectivity rule.**
+
+**And five masks clip their own target**, read at 8× on the overlay:
+
+| mask | what the walk shows |
+|---|---|
+| v4 earL / earR | tight — each ear's outboard wedge tip falls outside the mask |
+| v3 ear | slightly tight at the disc's right edge |
+| v6 nose | the wedge's lower-left hard edge runs outside the mask |
+| v7 band | the right edge cuts through the nose |
+| v0 lift | boundary runs **through** the brows at the top and the mouth at the bottom — a tone lift with a boundary mid-feature steps across a drawn line |
+
+**So no job fires.** Repainting v1 as masked would repaint the arm; the five tight masks would
+leave a repaired region with its original defect still protruding past the seam. Both are
+cheaper to fix now than after seven jobs and a composite.
+
+**Priced:** the rects grow by the measured overshoot per region and v1 gains its polygon — one
+more local pass, zero cloud, one re-walk. Spend stays **51 of 80**.
