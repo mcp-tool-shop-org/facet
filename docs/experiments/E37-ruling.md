@@ -859,3 +859,31 @@ same seed, ColorMatchV2 per repair, receipts append-only, the v0 lift local
 and deterministic. Spend 51 to 58 of 80 as they fly. The repaired set
 sheets to this seat's walk, then the Director's eye, then Phase 3 with his
 reference view.
+
+## Ruling 26 -- The sequencing decline is ratified; the lift is delivered exact; six jobs, not seven; the repaint proof requirement is adopted
+
+**Ratified**: authorized spend left half-processed is worse than spend
+sequenced, and a seat that declines to fire six irreversible jobs into a
+thinning context is applying the arc's own tuition. The v0 lift is DELIVERED
+-- local, deterministic, append-only, every rung within 0.21 L* of target
+with the shortfall being the feather doing its job -- and **the rung is the
+Director's call, on the ladder sheet now on his screen.**
+
+**The six-not-seven correction is RATIFIED as named**: v4's two ears are two
+masks on one view and ride one repaint as a union mask; firing twice at one
+seed on one view buys a second identical frame and a second composite for
+nothing. Spend arithmetic moves to 51 to 57, one under the prior figure,
+corrected in the open.
+
+**The repaint-proof requirement is ADOPTED as the check-that-can-fail law at
+the repaint layer**: after each composite, measure delta-E inside the mask
+against the original -- a same-seed repaint that reproduces its own defect
+must read as NO CHANGE, never as a repair. Without this, six successes could
+be six no-ops wearing receipts.
+
+**The firing recipe stands as the next seat's dispatch**: per job, the
+byte-pinned set-A payload + SetLatentNoiseMask between VAEEncode and
+KSampler + ColorMatchV2(mkl, ref = the original set-A twin) before save;
+composite through the feathered mask locally; the delta-E proof; before/
+after crops and the repaired-set sheet to the advisor's walk, then the
+Director's eye. The lift composites at his chosen rung in the same pass.
