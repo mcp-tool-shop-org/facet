@@ -33,6 +33,50 @@ coverage baseline, and a pass condition — and every one of them took minutes t
 The separation is the point: the session that designs an experiment does not grade its
 results, and the session that runs it does not decide their meaning.
 
+## How an experiment is run — the dispatched-seat standard (Director, 2026-08-16)
+
+**Standing from 2026-08-16: the advisor spawns the executor itself, as a background agent, and
+steers it on an open line.** The Director's words, making it the standard: *"much more
+effective, allowing you to freely maneuver."* He is out of the loop by default — the advisor
+decides, the executor measures, and he sees an artifact when there is something for his eye.
+**The advisor may also run research and study swarms (Sonnet-based) on its own authority**;
+the studio protocol at `memory/research-grounded-advisor-protocol.md` governs their form.
+
+**What this does not change.** The three roles above are untouched. The executor still never
+judges quality, still predicts before it looks, still halts at every gate. The advisor still
+does not execute and does not grade its own rulings. The Director's eye is still the only
+acceptance gate. The separation is *why* the method works, and dispatching a seat rather than
+pasting into one does not soften it — in E38 it was a dispatched seat that killed the
+advisor's parked-face hypothesis, its invented threshold, its `--reunwrap` arm and its
+island-count comparison.
+
+**What it changes, and what each change cost.**
+
+- **On-disk state is the record; a transcript is not.** Two executor transcripts were lost
+  inside E38's first day, one at ~500k tokens and one without warning. Both times the arc
+  continued and lost nothing but memory, because predictions, reports, scripts and arrays
+  were on disk under `E:\AI\training\facet_E3*\`. **A dispatched seat writes `handoff.md`
+  early and keeps it current** — not at the end, when it may not get one.
+- **The dispatch IS the spec, and it must land in the repo.** An agent prompt nobody can read
+  afterwards is worse than a paste block, because a paste block was at least on a screen.
+  The advisor records each dispatch and each mid-flight ruling in the arc's own document.
+  *E38 currently owes exactly this and the debt is the advisor's.*
+- **An executor does not delegate its own core measurement to a child agent.** One seat
+  spawned a background child for its bisect and then idled waiting on it — invisible to the
+  advisor, unsteerable, and stalled until the advisor read the disk and unstuck it.
+- **The advisor reads `git status` before every fold and commits by pathspec.** Dispatched
+  seats work uncommitted in a tree the advisor also writes to. This very section was folded
+  with an executor's live tool edit and its new test sitting unstaged beside it.
+- **Steering mid-flight is the point.** A dispatch is a living document: an arm can be
+  withdrawn, an order re-ranked, a threshold retracted while the seat runs. The corrections
+  above returned within minutes of the dispatches that carried them, rather than at a session
+  boundary — which is the whole difference between an error costing an exchange and an error
+  costing an arc.
+- **The paste-block law is not repealed; its mechanism moved.** Advisor rule 5 below exists
+  because the Director once had to paste kickoffs, and a spec nobody can start is a shelf.
+  Under this standard the advisor starts the seat itself, which serves that purpose more
+  directly. The rule still binds for anything only the Director can begin.
+
 ## Rules for an executor session
 
 1. **Never judge whether output is good.** Produce measurements and comparison sheets. The
