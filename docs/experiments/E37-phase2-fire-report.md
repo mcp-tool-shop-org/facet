@@ -164,6 +164,21 @@ Off-figure lift is now zero by construction rather than small by measurement, an
 - Set A originals are **untouched**; `phase2/masks_v2/` untouched; all writes append-only under `phase2fire/`.
 - Manifest gates HELD at open and close; E15 four legs exit 0; watchdog ADVANCING on two reads.
 - Nothing tuned, no threshold moved, no gate re-read to make it pass. The one falsified step is reported as falsified.
+- Suite **1067 / 0 failed**, complete capture, no pipe. Counts moved 1063 → 1067 total, 1018 → 1022 hermetic across all thirteen surfaces; T34 green.
+
+### 8a. T06's worktree CRLF is a RECURRING class, not an incident
+
+It fired again this session on `E37-ruling.md`, and again the **committed blob is clean
+(0 CRLF)** while the worktree copy carried CRLF — 9 last session, **1 this session**, each
+appearing in the commit that wrote a new ruling. Normalized the same way and with the same
+proof: the file with `\r` removed is byte-identical to `git show HEAD:`, and `git diff` exits
+**0** with nothing staged, so **no committed byte of any ruling has moved** in either repair.
+
+Twice in two sessions, from the same author on the same file, is a mechanism rather than an
+accident: the ruling-writing path emits CRLF into the working tree while git's `eol=lf`
+filter normalizes it away on commit — so the record is never wrong, and the gate is red at
+every executor's open until someone conforms the worktree. Named here so it can be fixed at
+the writing seat instead of normalized at each firing seat.
 
 **What the next ruling decides:** the disposition of clause 2 (the local ColorMatch, whose
 job appears to be empty once the init is right), and whether v5's feature-class change and
