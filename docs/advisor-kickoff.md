@@ -114,8 +114,8 @@ all minority.
 4. **⚠ Re-run translations for `fr`, `it` and `pt-BR`, and DO NOT TRUST THE TOOL'S OWN STATUS
    FIELD.** `translate-all.mjs` reported `"status": "ok"` for all seven languages and **three
    were wrong**: `it` silently dropped the three new "What is not solved" bullets, `fr` dropped
-   them *and* one of each count occurrence, and **`pt-BR` still says 890 / 850 tests** — numbers
-   from a long-dead state, meaning it was never re-translated from the current README. All three
+   them *and* one of each count occurrence, and **`pt-BR` still quoted a suite size from a
+   long-dead state** — meaning it was never re-translated from the current README. All three
    are reverted to their previous (stale-prose, correct-count) state, so T34 is green at 50 and
    **the tree is honest rather than tidy**. `ja` / `zh` / `es` / `hi` are fresh and carry the new
    findings.
