@@ -422,3 +422,35 @@ of the detector's own vocabulary), or indeterminate (G1 is a measured change of 
 **Process note, recorded because the handling was correct.** The 47.76% was computed without a
 blind prediction, and the seat wrote that down plainly instead of inventing one afterwards. **A
 fabricated post-hoc prediction would have been the defect; naming the gap is not.**
+
+### ⚑ The Director's direction on the blend stage, recorded 2026-08-16 before the evidence is in
+
+**His words:** *"frequency-split blending seems like it'd be a useful tool to develop and build
+on over time. That's the kind of control over our art that we need."*
+
+**Recorded as standing intent, and deliberately NOT acted on yet** — A-Task 2 is mid-measurement
+and the advisor is not telling the seat that the Director wants the arm to succeed. **Motivated
+measurement is the one contamination this arrangement cannot survive**, and a seat that knows the
+answer its Director prefers is no longer an external verifier. The seat reports blind; the
+capability is specced after.
+
+**One correction to the framing, because building on it would misdirect the work.** He asked
+*"if it's the cause of all of the color bleeding and blotching."* **The blend is not the cause.**
+Measured: gold is `reference`-carried at base rate with both mechanisms live ~2:1, green is
+**68.46%** `reference`-carried, and the blade's geometric mechanism is dead. **The cause sits
+upstream, in the twins** — they disagree with each other, and sometimes one of them paints the
+wrong material inside a single view. Frequency-split does not remove that disagreement. It makes
+the *blend robust to it*, by taking 5–10 view contributions in the band where a large
+wrong-material region lives.
+
+**That is a weaker claim than "the cause," and a better reason to build it.** It is a permanent
+hedge against a generator we do not control and cannot fix — and it works on assets already
+generated, including this one.
+
+**What the capability actually is, if the measurement supports it.** Today the blend is a single
+hardcoded formula: `w = facing^6.0`, with `facing_min = 0.45`, inside `project_twins.py`. There
+is no mode, no per-asset control, and no way for the Director to choose. **The deliverable is not
+"frequency-split" — it is a blend stage we own, carrying the three philosophies as selectable
+modes** (facing-weighted, frequency-split, hard selection), each measured, tested, and pickable
+per asset. Frequency-split winning one arm on one subject would not justify hardcoding it as the
+new single formula; that would repeat the defect being replaced.
