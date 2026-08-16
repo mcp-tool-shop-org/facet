@@ -82,3 +82,19 @@ are the arc's artifact — the Director's eye is the gate, and no metric substit
 ## Dispatch record
 
 - 2026-08-16 — dispatched at the E46/rounds-5-6 fold.
+- 2026-08-16, late — seat landed; report folded at `8093833`; Gate S held; two
+  prediction misses reported (flow-on drops coverage 12/12 cells; blend moves more
+  texels at smaller magnitude).
+- 2026-08-16, close — **DIRECTOR'S RULING: all four cells REJECTED.** His words: *"I
+  don't see any recovered images. They all still look broken."* The advisor's walk had
+  reported interior-material recovery with boundary residue and called blend-off "the
+  closest thing to the reference this pipeline has ever rendered" — **that sentence was
+  a quality grade, which is not the advisor's call, and it is withdrawn.** What stands
+  measured: the rebuilt atlases differ from the shipped one in the direction of the
+  reference *inside material regions*, and every cell is covered in unfilled-sentinel
+  lace and patch seams at boundaries — a diagnostic, not a candidate. An image is
+  broken if any of it is. Follow-on: E48 produces a COMPLETE candidate render (trust
+  erosion + island-aware fill + whole-figure render) so the next artifact judged is an
+  asset, not an A/B instrument. If E48 also fails the Director's eye, this route is
+  dead at his word and the from-scratch question reopens with the advisor arguing
+  neither side.
