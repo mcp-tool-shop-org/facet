@@ -77,6 +77,23 @@ island-count comparison.
   Under this standard the advisor starts the seat itself, which serves that purpose more
   directly. The rule still binds for anything only the Director can begin.
 
+**Search for prior art before deriving it (Director, 2026-08-16: *"utilize every recourse as
+we experiment"*).** Standing practice, and it paid on first use. Three arcs hunted the
+dark-mark class through the image generator; ~60% of it was atlas texels no bake ever writes
+— a problem game artists have solved for as long as UV atlases have existed. **Four parallel
+research agents against the practitioner literature returned, in about twenty minutes:** the
+mechanism named verbatim in Blender's own tracker with a fix already **merged** (PR #161752,
+*"if a triangle does not overlap texel center, it will be empty"*), a ~16-defect catalogue in
+`ADJACENT_FACES` explaining why the `EXTEND` arm worked (PR #162226, #119393), the confirmation
+that carrying UVs through decimation is the reverse of every documented pipeline, and the blunt
+finding that this route skips the high-to-low transfer bake that even AI-mesh pipelines keep.
+**Everything found that way is a hypothesis to verify locally, never a fact to adopt** — an
+outside claim gets exactly the treatment an advisor's claim gets. Resolve every external
+citation at its primary source before ruling on it: `projects.blender.org` 403s to a plain
+fetch and answers at `/api/v1/`, and the difference between a search snippet and the issue body
+was, in this instance, the difference between "matches our config" and "is a different defect in
+the same setting."
+
 ## Rules for an executor session
 
 1. **Never judge whether output is good.** Produce measurements and comparison sheets. The

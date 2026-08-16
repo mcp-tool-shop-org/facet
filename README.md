@@ -190,6 +190,12 @@ measurements](docs/findings.md).
 Named and measured, on the front page rather than in a footnote. [All of them, located in
 code](docs/known-defects.md).
 
+- **Some visible surface maps to atlas space that no bake ever writes**, and renders as the
+  image's untouched default black. Blender's baker uses texel-centre sampling, so a triangle
+  overlapping no texel centre is left empty — its own developers
+  [named the mechanism and merged a fix](https://projects.blender.org/blender/blender/pulls/161752)
+  two weeks after the build every number here was measured on. It is a property of the route,
+  not of one subject: measured on one asset, **unmeasured on the other four**.
 - **The blade band takes 0.00% of stage-1 reference** on all eight cameras — steel on a
   grey backdrop sits exactly on the key's own threshold. The union rescues 55.72%.
 - **Stroke seams are not levelled.** A provenance boundary steps **5.5×** ordinary texture

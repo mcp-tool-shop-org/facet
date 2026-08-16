@@ -349,3 +349,82 @@ correspondence. A dark texel is twin-painted whenever a twin sourced it, speck o
 broad shading alike, so the census's 61–79% and the co-occurrence's 14.3% measure
 different operands and both stand: **the twins are a genuine source and they are not
 the only one.**
+
+---
+
+## Atlas texels that are never painted — the class that survived every route change (E38, 2026-08-16)
+
+**Some visible mesh surface maps to atlas space no bake ever writes, so it renders as the
+image's untouched default fill, which is black.** Found in [E38](experiments/E38-material-route-kickoff.md)
+by replacing the entire colouring process — a procedural wood material authored directly in
+UV space, no diffusion anywhere — and watching the dark-mark class **survive**: 847 → 425
+marks, with **69.2% of them within 3px of a mark in the diffusion-textured build**, across two
+colouring processes with nothing in common. That co-location is what moved the class out of
+the generator, where three arcs had hunted it, and into the shared atlas substrate.
+
+**Split by a criterion chosen before looking, with a perfect null:**
+
+| population | share of mark pixels | signature |
+|---|---|---|
+| **A** | **57.94% / 60.34%** | UV lands outside any triangle's UV footprint; **100.00%** read atlas RGB exactly **(0,0,0)**. Null: **0.00%** |
+| **B** | 42.06% / 39.66% | atlas is clean at the exact nearest texel; boundary-distance median **1.414** against the null's **2.828** |
+
+Both were then confirmed by **intervention rather than inference**: refilling the atlas
+background with magenta left **0%** of A dark, and shifted **100%** of B at median ΔE 66–67
+*while nothing at B's own nearest texel changed*.
+
+⚠ **B's independence is challenged and under test.** B may be render-time bleed sourcing
+*from* A's black texels rather than a separate mechanism — B fell 49–61% under an arm that
+touched no packing parameter at all. If that holds, this is one mechanism with a halo, not two.
+
+**The mechanism is named by Blender's own developers.**
+[PR #161752, *"Bake: Conservative rasterization for texture bake"*](https://projects.blender.org/blender/blender/pulls/161752),
+**merged**, commits 2026-07-27/28 — resolved at the tracker's API because the HTML 403s:
+
+> *"Blender can miss small, thin or long triangles during the texture bake as texel center
+> sampling is used to determine which triangles overlap texture pixels. So, if a triangle does
+> not overlap texel center, it will be empty."*
+
+That is Population A exactly. **Blender 5.2.0 LTS (build 2026-07-14) predates the fix**, so
+every asset this route has produced was baked without conservative rasterization.
+
+**Located in code, and both sites are defaults nobody chose.**
+[`bake_hero_prep.py:319`](../tools/bake_hero_prep.py) calls
+`bpy.ops.uv.pack_islands(margin=args.pack_margin)` passing **only** `margin` — so
+`margin_method` has silently been Blender's default **`SCALED`** on every build this project
+has ever made, and SCALED multiplies the gutter *by island size* on an atlas whose median
+island is ~117 texels. The repo's own [E07 Gate 0](experiments/E07-gate0.md) already measured
+the consequence and never connected it: **5.73% of 4-adjacent valid texel pairs are in
+different islands and touching directly.** Separately, `bake_hero_prep.py:452` sets
+`scene.render.bake.margin = 8` and passes neither `margin_type` nor `use_clear`, inheriting
+`ADJACENT_FACES` and `use_clear=True` from the scene mirror.
+
+**`ADJACENT_FACES` is itself defective, per Blender's own tracker.**
+[#119393](https://projects.blender.org/blender/blender/issues/119393) is **open** and
+*Confirmed* — a 4.0.2 regression against 3.6.8 — and
+[PR #162226](https://projects.blender.org/blender/blender/pulls/162226) (open, 2026-08-01)
+catalogues ~16 concrete defects in the underlying fill search, including bounds checking that
+compares y against the image *width*. Measured here: switching that one setting to `EXTEND`
+cut the remaining marks a further 52–56%.
+
+**⚠ This is E05's defect, and it survived the fix that was thought to close it.**
+`bake_hero_prep.py`'s own `--reunwrap` help text has carried the finding the whole time —
+*"at 8 faces an island is small enough to be entirely unpainted, and 54.6% of them were."*
+**That is Population A.** E05 identified the mechanism, adopting native xatlas UVs reduced it,
+and the record treated the matter as settled. Apples to apples, E38's layout (13,722 islands /
+21.9 faces) is **normal for this route** against W3's 14,010 / 20.5 — so the class is a
+property of **every asset this route has produced**. *Measured on E38's subject;
+**UNMEASURED** on W3, the galleon, the dragon and the longsword. Naming the exposure is
+honest; quantifying it there without measuring it there would not be.*
+
+**Measured levers, all local and free.** Population A against its 766-pixel baseline:
+`margin_method='ADD'` **−91.5%** at unchanged resolution, with atlas utilisation rising
+6.37% → **24.10%**; atlas resolution 4096 → 8192 **−92.7%**, at 4× the texture memory;
+`margin_type='EXTEND'` on top of ADD **−95.95% cumulative**. Raising the *nominal* margin while
+leaving the method at SCALED is catastrophic — utilisation collapses to 0.52% and the census
+worsens 25× — which is the same diagnosis from the other side.
+
+**Disposition: E38 is RUNNING and nothing here is adopted.** The residual is dominated by
+triangles with *exactly zero* UV area, which no resolution can help (0 × 4 = 0), and a Blender
+5.3 alpha carrying the merged conservative-rasterization fix is under test as a separate arm.
+The route remains pinned to 5.2.

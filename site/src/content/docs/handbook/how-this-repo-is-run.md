@@ -37,7 +37,43 @@ each, the metrics, the gates, an explicit out-of-scope section, and a standards
 compliance block. Amendments are appended in place with dates and reasons — a spec that
 hides its own corrections is the thing this repo is trying to get away from.
 
+## How an experiment is actually run
+
+Since 2026-08-16 the advisor **spawns the executor itself**, as a background agent, and
+steers it on an open line while it works. The Director is out of the loop by default and
+sees an artifact when there is something for his eye.
+
+The obvious worry about an advisor starting its own executor is that it ends up grading its
+own work. It does not, and the arc that established the standard is the demonstration: in a
+single day the dispatched seats killed **four** of the advisor's asserted mechanisms — a
+hypothesis about parked faces, an invented threshold, an arm built on a `grep` line that
+truncated mid-sentence, and a comparison that set a post-export count beside a
+single-session one. Three came back within minutes of the dispatch that carried them.
+
+What that convenience cost, each item earned rather than theorised:
+
+- **On-disk state is the record; a transcript is not.** Two executor transcripts were lost
+  in one day. The arc continued both times and lost nothing but memory, because predictions,
+  reports, scripts and arrays were on disk. A dispatched seat writes its handoff *early*.
+- **The dispatch is the spec, and it must land in the repo.** An agent prompt nobody can
+  read afterwards is worse than a pasted one, which was at least on a screen.
+- **An executor never delegates its own core measurement** to a child agent. One did, then
+  idled waiting on it — invisible and unsteerable until the advisor read the disk.
+- **Steering mid-flight is the point.** A dispatch is a living document: an arm can be
+  withdrawn, an order re-ranked, a threshold retracted while the seat runs. That is the
+  difference between an error costing an exchange and an error costing an arc.
+
 ## The rules that cost the most
+
+**Search for prior art before deriving it.** Standing since 2026-08-16, and it paid for
+itself the first time it ran. Three arcs hunted a defect class through the image generator;
+roughly 60% of it turned out to be atlas texels that no bake ever writes — a problem game
+artists have solved for as long as UV atlases have existed. Four parallel research agents
+against the practitioner literature turned up the mechanism named verbatim in Blender's own
+tracker, with a fix already merged, plus a sixteen-defect catalogue explaining a second
+finding, in about twenty minutes. **Everything found that way is a hypothesis to verify
+locally, never a fact to adopt** — outside claims get exactly the treatment the advisor's
+own claims get.
 
 **An inherited claim is a hypothesis wearing a fact's clothes.** Checking one costs
 minutes; building on one costs a session. If a spec, README or handoff asserts a number,
@@ -97,6 +133,16 @@ conditions. In a later experiment it was wrong about two of its own gates — on
 a proxy that inverted and halted a correct arm, one defining a pass condition as a
 fraction of a baseline nobody had measured. Both were caught by an executor who ran them
 as written and reported the evidence rather than tuning past them.
+
+In the arc that established the dispatched-seat standard it was wrong about **five**
+asserted mechanisms in a single day: a hypothesis about which atlas feature produced a
+defect, an invented pass threshold, a tool default read from the API instead of from the
+call site that overrides it, an arm built on a truncated `grep` line, and a comparison
+between two counts measured through different pipelines. Dispatched seats caught three, a
+measurement killed one, and one returned partial. What held across the same arc was
+*structure* — the route decision, the design of the test that split the defect in two, the
+ordering that put a cheap measurement before an expensive one, and the gates. That is the
+distinction the last line of this section is pointing at, and it is not rhetorical.
 
 The advisor was useful at: ruling once evidence was in, killing options with reasons,
 refusing to commission a metric where no honest one existed, bounding an expensive arm
