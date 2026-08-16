@@ -43,8 +43,8 @@ not a test failure. Repair with `--basetemp=<scratch>`; it adds capability and r
 | | |
 |---|---|
 | HEAD | re-measure — `git log --oneline -1` |
-| suite | **1098 / 1053 hermetic.** RE-COUNT before quoting; T34 pins ~14 surfaces off the collector and they all move in the same commit |
-| the record | index recertified this session after **30 commits stale** — VERIFY PASSED, four legs, byte-identity |
+| suite | **THE SUITE: 1098 tests, 1053 hermetic.** RE-COUNT before quoting — `pytest --collect-only -q` and again with `-m "not artifacts"`, currently 1098 total / 1053 hermetic. T34 pins ~14 surfaces off the collector and they all move in the same commit |
+| the record | index recertified this session after **30 commits stale** — VERIFY PASSED, four legs, byte-identity, over 44 experiments. No staleness findings at the declaration leg |
 | CI | verify at open |
 | spend | **zero cloud credits, two sessions running.** Everything below is local |
 
@@ -86,7 +86,7 @@ results are real runs. Verify them here anyway; that is the protocol, not a slig
 - **Give results back, including when its chip loses.** S0 was its call and its own hypothesis
   died on it. Telling it so is worth more than another question.
 - **It can be delegated BUILDS.** `tools/callieri_border.py` is its work: MIT, numpy+scipy, pure
-  functions, self-test, 11 hermetic tests, and it satisfied this repo's global-constant law by
+  functions, self-test, eleven hermetic tests, and it satisfied this repo's global-constant law by
   construction rather than by comment.
 - Briefs live in `docs/grok-consult-N-brief.md`. It has no repo access — every brief is
   self-contained.
