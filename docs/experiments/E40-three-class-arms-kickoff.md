@@ -596,6 +596,52 @@ reached that by screen-pixel class attribution, Seat C by atlas-texel flood-sour
 structure, Seat B by single-hop source classification on the residual. **Three methods, three
 spaces, one answer.**
 
+### Amendment 6 — Seat A CLOSED; the sheet is built and it is the Director's (2026-08-16)
+
+**`E:\AI\training\facet_E40_A\task3_sheet.png`** — 1226×1034, native pixels, no resampling, plus
+four per-row files for zooming. Four regions × five panels: `reference | A0_actual | A1 | A2 |
+A0_flat`, each candidate labelled with its mean ΔE over that window's flagged pixels.
+
+| region | view | n flagged | A0_actual | A1 | A2 | A0_flat |
+|---|---|---|---|---|---|---|
+| TUNIC | y+000 | 813 | 33.7 | 31.1 | 32.2 | 28.3 |
+| TUNIC | y+045 | 537 | 31.3 | 30.8 | 31.4 | 28.4 |
+| SKIRT | y+000 | 615 | 46.9 | 39.8 | 42.2 | 36.3 |
+| BOOT TOPS | y+315 | 298 | 20.2 | 18.0 | 18.7 | 15.6 |
+
+**The ordering reproduces A-Task 2's pooled result independently in all four windows** — reported
+by the seat as a consistency observation and **not** a verdict, which is why it is worth more than
+the pooled number.
+
+**What makes the sheet trustworthy is its construction, not its picture.** Only the
+already-flagged `gold_out_of_place` pixels are repainted; **everything else in each crop is the
+untouched shipped pixel**, so no candidate can be flattered by a change it did not make. Panels
+reuse A-Task 2's exact formulas. No re-render was needed and none ran. And **the regions were
+found, not guessed** — connected components of the real mask, with two false starts (the sword
+hilt, the beard/pauldron boundary) rejected visually and the trail kept in `region_check/`.
+
+**⚠ Walked at native size by the advisor before presenting, per the standing rule.** Two
+observations, offered as description and explicitly **not** as grading — acceptance is the
+Director's alone:
+
+1. **The gold spatter remains visible in all four candidates.** The ΔE numbers move 10–23% and the
+   defect is still legible in every panel. **A number that improves while the eye still sees the
+   defect is exactly the situation this sheet exists to expose**, and it is why no candidate is
+   recommended by the seat or by the advisor.
+2. **The `reference` twin panels are visibly cleaner and more materially coherent than any
+   candidate built from them.** This is the second independent sighting of that — E39 Task 2's
+   `y+090` artifact showed the same thing — and it says the loss happens *after* generation, in
+   the projection and blend, which is where this whole arc converged.
+
+**Seat A's four findings, in rising order of consequence, three of which nobody asked for:** the
+per-face view vote (which closed E39's open side and returned a result too weak to adjudicate —
+and said *why*); the **clustering** finding, 19.7% dedup against ~63%; the **angular-spread
+bound**, the honest ceiling on the entire frequency-split family; and
+**`project_twins.py:901-913`** — the two-band split nobody knew the route already had.
+
+**All three seats are now CLOSED. The arc is complete at the measurement level. Acceptance,
+the grip's canon, and whether the blend stage gets built are the Director's.**
+
 **What the capability actually is, if the measurement supports it.** Today the blend is a single
 hardcoded formula: `w = facing^6.0`, with `facing_min = 0.45`, inside `project_twins.py`. There
 is no mode, no per-asset control, and no way for the Director to choose. **The deliverable is not
