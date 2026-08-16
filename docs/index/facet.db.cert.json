@@ -2,11 +2,11 @@
  "andon": [],
  "corpus": {
   "files": 379,
-  "id": "92cdc8a49611c05d0a1229f2e07fd7b6740dcddd7146e529b9446caf8e1c16ed",
+  "id": "5893ccd80eb1a79dd1a3d890a942e5b4743e1144d86918a08f80e4d3ce2079ee",
   "manifest": {
    "CLAUDE.md": "77f9495e73997c5143bdf7b3c7aa4d60ef18d03b3470556080fd926446164d50",
-   "README.md": "28e0f9023c1b4385989831487089b2e480190d7d0ed0e3bac773d7fe8e8ddb26",
-   "docs/advisor-kickoff.md": "bee6051e21be19843d9d10e24cc52b56b018206d0d1b2870a1b3242bf05f6026",
+   "README.md": "7b4ea9ea7360a3a5f4794b64d7735784feab3be004c69b5e9a199e5dc1c98a67",
+   "docs/advisor-kickoff.md": "65af2f9c04fa1ee54a467425b5785509c2f70f5b79078413a2139c75ed174d23",
    "docs/arc-history.md": "5b2876b3fed7be95a6efc984f5e5a00b7c1675b10a169ee43803b50e091b48a8",
    "docs/brand/README.md": "81f425b6a101135b43463b35468f08a2db37af39c856c01f7fbdb6ce66598226",
    "docs/comfy-consult-1-brief.md": "3ffe0b6744a757c27bf2c8d30c02829e36ce257672c011cffee353c09536a6c2",
@@ -399,7 +399,7 @@
  "db": {
   "bytes": 13987840,
   "path": "docs/index/facet.db",
-  "sha256": "cd66f973d46bd5206693c193e9e4bcf268a75246e961d2ac8ee8f55135e39218"
+  "sha256": "4e6a0838393fc92b24ed3e140852330a3eae9e916f032cccbc9105d960d03ca3"
  },
  "determinism_leg": "byte-identity",
  "failures": [],
@@ -589,7 +589,7 @@
  ],
  "unattributed_failures": [],
  "verb": "record_build",
- "verified_utc": "2026-08-16T20:12:25Z",
+ "verified_utc": "2026-08-16T20:28:04Z",
  "verify_exit_code": 0,
  "written_by": "tools/record_mcp.py"
 }
