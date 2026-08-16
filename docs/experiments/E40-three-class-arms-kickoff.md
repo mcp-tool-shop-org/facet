@@ -544,6 +544,58 @@ predicate and the thin-geometry policy are all real, all minority, and none of t
 the Director's eye names. **The arc opened on three classes and closes on one**, and the one
 lives in the blend.
 
+### Amendment 5 — Seat B CLOSED, and a canon gap the Director has to close (2026-08-16)
+
+#### ⚑ FOR THE DIRECTOR: the sword grip has no canon entry
+
+`canon/W3-IDENTITY.md` names the greatsword, crossguard and pommel (N14–16). **It never names the
+grip.** The grip is one of the four regions the Director identified by eye — *"green down the
+sword grip, which is not cloth"* — and **we cannot say what colour that surface should be.**
+
+The seat **refused to invent a standard for it** and reported those pixels as
+*indeterminate-by-canon-gap*. That is the correct call and it is this repo's own law: **canon is
+a ground truth the Director holds and no metric approximates it.** A seat that had quietly picked
+a plausible leather or wood centre would have produced a cleaner number and a worse result.
+**This is his to close, and it is the arc's only Director-blocking item.**
+
+Named in canon and usable: bracers **brown leather** (N10), belt (N7). Hands unnamed, skin
+implied.
+
+#### G1's honest value is ~2.3%, not 47.76%
+
+Centres frozen from a **different region of the same asset** — skin from the forehead, leather
+from the belt — located by crop-and-view after **two disclosed wrong guesses**, not eyeballed once
+and trusted. Calibration at E39's own `NEAR=20`, unretuned:
+
+| centre | its own patch | cross-talk |
+|---|---|---|
+| skin | **71.15%** | ~0 elsewhere |
+| leather | **63.28%** | **24.38% on green** — disclosed, and argued why it cannot contaminate a population already far from green by construction |
+
+**Through the whole-class denominator: ≈2.3% lands confidently on the correct material, ≈0.3% on
+gold, ≈5.3% exits green into indeterminate.** So the **47.76% flag-exit figure was partly an
+artifact of the detector's own vocabulary** — most exits go to *indeterminate*, not to *correct*.
+The strict and loose readings disagree 3× (28.74% vs 85.8%) because most exited pixels land in
+muted, low-chroma colour nearer skin/leather than gold/green **without confidently being either**;
+both are reported and **neither is picked as the answer**.
+
+**RULED: G1 is ADOPTABLE AND MODEST.** Free, a flag we already owned, gated at 4.06× and ~1,157×
+headroom, it does not relocate the defect, and it confidently corrects **~2.3% of the green
+class**. **Recorded at that size, not at 47.76%.** P4 missed narrow — 28.74% against a 30–50%
+band — and was called a miss rather than stretched.
+
+#### The third independent confirmation, at texel level
+
+Of the **3,867 still-flagged** rows, G1's source texel is **100% from the painted set, 0% from
+another dilation texel** (single-hop by construction), split **59.22% `reference` / 40.78%
+`brush`**. **No relabeling occurred.** They stay green because **their nearest painted 3D
+neighbour is itself green.**
+
+**The fill is behaving correctly and sourcing correctly. The paint is what is wrong.** Seat A
+reached that by screen-pixel class attribution, Seat C by atlas-texel flood-source tracing on one
+structure, Seat B by single-hop source classification on the residual. **Three methods, three
+spaces, one answer.**
+
 **What the capability actually is, if the measurement supports it.** Today the blend is a single
 hardcoded formula: `w = facing^6.0`, with `facing_min = 0.45`, inside `project_twins.py`. There
 is no mode, no per-asset control, and no way for the Director to choose. **The deliverable is not
