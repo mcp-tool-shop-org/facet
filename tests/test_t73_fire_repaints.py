@@ -196,6 +196,76 @@ def test_lift_hits_its_target_on_the_opaque_core(tmp_path):
     assert (lifted[mask <= 0] == orig[mask <= 0]).all(), "the lift must not move unmasked pixels"
 
 
+# ---------------------------------------------------------------- Ruling 27
+
+def test_liftmask_drives_off_figure_support_to_zero(tmp_path):
+    """Ruling 27: off-figure lift becomes zero BY CONSTRUCTION, not small by measurement.
+
+    Constructed so it can fail: the fixture mask deliberately overhangs the figure, and the
+    pre-intersection overhang is asserted non-zero first -- otherwise the check proves nothing.
+    """
+    h, w = 80, 60
+    fig = np.zeros((h, w)); fig[20:60, 15:45] = 255
+    m = np.zeros((h, w)); m[30:70, 10:50] = 255          # deliberately overhangs on all sides
+    fp, mp = tmp_path / "fig.png", tmp_path / "m.png"
+    _write(fp, fig); _write(mp, m)
+
+    overhang = int(((m > 0) & (fig <= 127)).sum())
+    assert overhang > 0, "fixture must overhang the figure or the check cannot fail"
+
+    out = tmp_path / "cut.png"
+    subprocess.run([sys.executable, str(TOOL), "liftmask", "--mask", str(mp),
+                    "--figure", str(fp), "--out", str(out)], check=True, capture_output=True)
+    got = np.asarray(Image.open(out).convert("L")).astype(np.float64) / 255.0
+    assert int(((got > 0) & (fig <= 127)).sum()) == 0
+    assert (got <= m / 255.0 + 1e-9).all(), "intersection may only shrink"
+
+
+def test_liftmask_andon_fires_when_the_intersection_empties_the_mask(tmp_path):
+    h, w = 40, 40
+    fig = np.zeros((h, w)); fig[0:10, 0:10] = 255
+    m = np.zeros((h, w)); m[30:40, 30:40] = 255           # disjoint from the figure
+    fp, mp = tmp_path / "f.png", tmp_path / "m.png"
+    _write(fp, fig); _write(mp, m)
+    r = subprocess.run([sys.executable, str(TOOL), "liftmask", "--mask", str(mp),
+                        "--figure", str(fp), "--out", str(tmp_path / "o.png")],
+                       capture_output=True, text=True)
+    assert r.returncode != 0
+    assert "ANDON" in (r.stdout + r.stderr)
+
+
+def test_payload_andon_fires_if_the_init_is_left_as_the_clay(tmp_path):
+    """Ruling 27 clause 1's whole content: the init is the operand under repair.
+
+    Ruling 26's recipe pinned the clay and the repaint reverted the unmasked region to it.
+    This is the check that makes that specific mistake impossible to repeat silently.
+    """
+    base = json.loads((Path(fr.PHASE1) / "payloads" / "set2026081511_v6.json").read_text()) \
+        if (Path(fr.PHASE1) / "payloads" / "set2026081511_v6.json").exists() else None
+    if base is None:
+        pytest.skip(f"recorded payload absent: {fr.PHASE1}/payloads/set2026081511_v6.json")
+    clay = base["9"]["inputs"]["image"]
+    r = subprocess.run([sys.executable, str(TOOL), "payload", "--view", "6", "--tag", "probe",
+                        "--mask-name", "m.png", "--init-name", clay, "--prefix", "p"],
+                       capture_output=True, text=True)
+    assert r.returncode != 0
+    assert "ANDON" in (r.stdout + r.stderr)
+
+
+def test_colormatch_moves_nothing_outside_the_mask(tmp_path):
+    h, w = 90, 90
+    rng = np.random.default_rng(3)
+    img = (rng.random((h, w, 3)) * 60 + 120).astype(np.uint8)
+    m = np.zeros((h, w)); m[30:60, 30:60] = 255
+    sp, mp = tmp_path / "s.png", tmp_path / "m.png"
+    _rgb(sp, img); _write(mp, m)
+    out = tmp_path / "cm.png"
+    subprocess.run([sys.executable, str(TOOL), "colormatch", "--src", str(sp), "--mask", str(mp),
+                    "--out", str(out), "--ring", "8"], check=True, capture_output=True)
+    got = np.asarray(Image.open(out).convert("RGB"))
+    assert (got[m <= 0] == img[m <= 0]).all()
+
+
 # ---------------------------------------------------------------- gates raise
 
 def test_every_gate_raises_and_survives_dash_O():

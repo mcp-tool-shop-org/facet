@@ -178,28 +178,42 @@ def cmd_prep(args):
 # ---------------------------------------------------------------- payload
 
 def cmd_payload(args):
-    """Emit one repaint payload: base + SetLatentNoiseMask + ColorMatchV2(mkl, ref=original twin)."""
+    """Emit one repaint payload under RULING 27's corrected recipe.
+
+    Ruling 26 said "the byte-pinned base payload" and the byte-pin pinned the CLAY as init,
+    so SetLatentNoiseMask restored the unmasked region to clay. Ruling 27 corrects it:
+
+      1. node 9's init = the SET-A TWIN for the view under repair -- a named delta; all
+         generation config (seed, denoise, cn, prompt, control) stays byte-held.
+      2. ColorMatchV2 leaves the job entirely -- it runs locally, post-composite, scoped
+         to the masked region against its surround (see cmd_colormatch).
+    """
     base = json.load(open(os.path.join(PHASE1, "payloads", f"set2026081511_v{args.view}.json")))
     before = json.dumps(base, sort_keys=True)
 
-    for nid in ("12", "13", "14", "15"):
+    for nid in ("9", "12", "13", "14", "15"):
         if nid not in base:
             raise SystemExit(f"ANDON: base payload for v{args.view} lacks node {nid}")
     if base["13"]["inputs"]["latent_image"] != ["12", 0]:
         raise SystemExit(f"ANDON: KSampler latent_image is {base['13']['inputs']['latent_image']}, expected ['12',0]")
     if base["15"]["inputs"]["images"] != ["14", 0]:
         raise SystemExit(f"ANDON: SaveImage images is {base['15']['inputs']['images']}, expected ['14',0]")
+    if base["12"]["inputs"]["pixels"] != ["9", 0]:
+        raise SystemExit(f"ANDON: VAEEncode pixels is {base['12']['inputs']['pixels']}, expected ['9',0]")
+
+    # Ruling 27 clause 1 -- the init is the operand under repair, not the render behind it.
+    clay_init = base["9"]["inputs"]["image"]
+    if args.init_name == clay_init:
+        raise SystemExit("ANDON: init unchanged from the base payload -- Ruling 27 clause 1 "
+                         "requires the set-A twin, and the base pins the clay render")
+    base["9"]["inputs"]["image"] = args.init_name
 
     base["20"] = {"class_type": "LoadImage", "inputs": {"image": args.mask_name}}
     base["21"] = {"class_type": "ImageToMask", "inputs": {"image": ["20", 0], "channel": "red"}}
     base["22"] = {"class_type": "SetLatentNoiseMask", "inputs": {"samples": ["12", 0], "mask": ["21", 0]}}
     base["13"]["inputs"]["latent_image"] = ["22", 0]
 
-    base["23"] = {"class_type": "LoadImage", "inputs": {"image": args.ref_name}}
-    base["24"] = {"class_type": "ColorMatchV2", "inputs": {
-        "image_target": ["14", 0], "image_ref": ["23", 0],
-        "method": "mkl", "strength": 1.0, "multithread": True}}
-    base["15"]["inputs"]["images"] = ["24", 0]
+    # Ruling 27 clause 2 -- no ColorMatch in the job. SaveImage takes the decode directly.
     base["15"]["inputs"]["filename_prefix"] = args.prefix
 
     # A payload that did not change cannot be the repaint payload (a check that can fail).
@@ -207,6 +221,9 @@ def cmd_payload(args):
         raise SystemExit("ANDON: payload unchanged after edit")
     if base["13"]["inputs"]["seed"] != 2026081511:
         raise SystemExit(f"ANDON: seed moved to {base['13']['inputs']['seed']}; the repaint is same-seed by ruling")
+    for ct in (n["class_type"] for n in base.values()):
+        if ct == "ColorMatchV2":
+            raise SystemExit("ANDON: ColorMatchV2 is in the job graph; Ruling 27 clause 2 puts it local")
 
     ids = set(base)
     for nid, node in base.items():
@@ -220,7 +237,8 @@ def cmd_payload(args):
     os.makedirs(os.path.join(FIRE, "payloads"), exist_ok=True)
     out = os.path.join(FIRE, "payloads", f"repaint_{args.tag}.json")
     json.dump(base, open(out, "w"), indent=1)
-    print(f"[payload] {out}  seed {base['13']['inputs']['seed']}  mask {args.mask_name}  ref {args.ref_name}")
+    print(f"[payload] {out}  seed {base['13']['inputs']['seed']}  mask {args.mask_name[:12]}...  "
+          f"init {args.init_name[:12]}... (was clay {clay_init[:12]}...)  no ColorMatch in job")
 
 
 # ---------------------------------------------------------------- composite
@@ -280,6 +298,122 @@ def cmd_composite(args):
     print(f"[composite] {os.path.basename(args.out)}  core {proof['core_px']} px  "
           f"dE mean {c['mean']:.2f} median {c['median']:.2f} p90 {c['p90']:.2f} max {c['max']:.2f}  "
           f">1: {c['pct_over_1']:.1f}%  >2: {c['pct_over_2']:.1f}%")
+
+
+# ---------------------------------------------------------------- colormatch
+
+def _mkl(Xt, Xr):
+    """Monge-Kantorovich linear transform taking target stats onto reference stats.
+
+    The same family ColorMatchV2's `mkl` implements, run here on clean operands: Ruling 27
+    clause 2 moves the match out of the job because in-job it computed over a frame whose
+    unmasked region was clay.
+    """
+    mt, mr = Xt.mean(0), Xr.mean(0)
+    Ct = np.cov(Xt.T) + np.eye(3) * 1e-8
+    Cr = np.cov(Xr.T) + np.eye(3) * 1e-8
+
+    def sqrtm(C):
+        w, V = np.linalg.eigh(C)
+        w = np.clip(w, 0, None)
+        return V @ np.diag(np.sqrt(w)) @ V.T
+
+    Ct_h = sqrtm(Ct)
+    Ct_hi = np.linalg.inv(Ct_h)
+    A = Ct_hi @ sqrtm(Ct_h @ Cr @ Ct_h) @ Ct_hi
+    return A, mt, mr
+
+
+def cmd_colormatch(args):
+    """Ruling 27 clause 2: match the masked region to its surround, locally, post-composite.
+
+    The transform is fitted on the masked region against a ring of surrounding figure, then
+    applied weighted by the feather so the boundary cannot step.
+    """
+    import scipy.ndimage as ndi
+
+    img = np.asarray(Image.open(args.src).convert("RGB")).astype(np.uint8)
+    m = np.asarray(Image.open(args.mask).convert("L")).astype(np.float64) / 255.0
+    if m.shape != img.shape[:2]:
+        raise SystemExit(f"ANDON: mask shape {m.shape} vs image {img.shape[:2]}")
+
+    core = m > 0.5
+    supp = m > 0.0
+    ring = ndi.binary_dilation(supp, iterations=args.ring) & ~supp
+    if core.sum() < 50 or ring.sum() < 50:
+        raise SystemExit(f"ANDON: too few pixels to fit -- core {int(core.sum())}, ring {int(ring.sum())}")
+
+    lin = srgb_to_linear(img)
+    A, mt, mr = _mkl(lin[core], lin[ring])
+    moved = (lin.reshape(-1, 3) - mt) @ A.T + mr
+    moved = linear_to_srgb(moved.reshape(lin.shape))
+
+    a = m[..., None]
+    out = linear_to_srgb(srgb_to_linear(img) * (1 - a) + srgb_to_linear((moved * 255).astype(np.uint8)) * a)
+    out8 = (out * 255.0 + 0.5).astype(np.uint8)
+
+    # ANDON: outside the mask nothing may move -- the match is scoped to the region.
+    outside = m <= 0.0
+    n = int((out8[outside] != img[outside]).any(axis=-1).sum())
+    if n:
+        raise SystemExit(f"ANDON: colormatch moved {n} px outside the mask")
+
+    os.makedirs(os.path.dirname(args.out), exist_ok=True)
+    Image.fromarray(out8).save(args.out)
+
+    lab_b, lab_a = rgb_to_lab(img), rgb_to_lab(out8)
+    lab_r = rgb_to_lab(img)[ring]
+    rec = {
+        "method": "mkl (local, Ruling 27 clause 2)",
+        "core_px": int(core.sum()), "ring_px": int(ring.sum()), "ring_width": args.ring,
+        "region_Lab_before": [float(lab_b[core][:, i].mean()) for i in range(3)],
+        "region_Lab_after": [float(lab_a[core][:, i].mean()) for i in range(3)],
+        "surround_Lab": [float(lab_r[:, i].mean()) for i in range(3)],
+        "dE_region_to_surround_before": float(delta_e76(lab_b[core].mean(0), lab_r.mean(0))),
+        "dE_region_to_surround_after": float(delta_e76(lab_a[core].mean(0), lab_r.mean(0))),
+        "dE_moved_in_region_mean": float(delta_e76(lab_b, lab_a)[core].mean()),
+    }
+    json.dump(rec, open(args.out.replace(".png", "_colormatch.json"), "w"), indent=1)
+    print(f"[colormatch] {os.path.basename(args.out)}  core {rec['core_px']} ring {rec['ring_px']}  "
+          f"region-to-surround dE {rec['dE_region_to_surround_before']:.2f} -> "
+          f"{rec['dE_region_to_surround_after']:.2f}  (moved {rec['dE_moved_in_region_mean']:.2f} in region)")
+
+
+# ---------------------------------------------------------------- lift mask
+
+def cmd_liftmask(args):
+    """Ruling 27: the lift mask intersects the figure silhouette.
+
+    Off-figure lift becomes zero BY CONSTRUCTION rather than small by measurement -- the
+    walk found 643 px of backdrop raised mean +6.01 L*, a visible +2.30 L* rectangular step,
+    which core statistics hid because the operative set for a composite is the SUPPORT.
+    """
+    m = np.asarray(Image.open(args.mask).convert("L")).astype(np.float64) / 255.0
+    fig = np.asarray(Image.open(args.figure).convert("L")).astype(np.float64) / 255.0 > 0.5
+    if m.shape != fig.shape:
+        raise SystemExit(f"ANDON: mask shape {m.shape} vs figure {fig.shape}")
+
+    before = counts(m)
+    off_before = int(((m > 0) & ~fig).sum())
+    out = m * fig
+    after = counts(out)
+    off_after = int(((out > 0) & ~fig).sum())
+
+    # ANDON: the intersection must leave zero support off the figure, and may only shrink.
+    if off_after != 0:
+        raise SystemExit(f"ANDON: {off_after} px of support still off-figure after intersection")
+    if any(after[k] > before[k] for k in after):
+        raise SystemExit(f"ANDON: mask GREW under intersection -- before {before}, after {after}")
+    if after["supp_px"] == 0:
+        raise SystemExit("ANDON: intersection emptied the mask")
+
+    os.makedirs(os.path.dirname(args.out), exist_ok=True)
+    Image.fromarray((out * 255.0 + 0.5).astype(np.uint8), mode="L").save(args.out)
+    rec = {"before": before, "after": after,
+           "off_figure_support_before": off_before, "off_figure_support_after": off_after}
+    json.dump(rec, open(args.out.replace(".png", "_liftmask.json"), "w"), indent=1)
+    print(f"[liftmask] support {before['supp_px']} -> {after['supp_px']}  "
+          f"off-figure {off_before} -> {off_after} (zero by construction)")
 
 
 # ---------------------------------------------------------------- locality
@@ -386,10 +520,24 @@ def main():
     q = sub.add_parser("payload")
     q.add_argument("--view", type=int, required=True)
     q.add_argument("--mask-name", required=True)
-    q.add_argument("--ref-name", required=True)
+    q.add_argument("--init-name", required=True,
+                   help="Ruling 27 clause 1: the set-A twin for this view, not the clay render")
     q.add_argument("--prefix", required=True)
     q.add_argument("--tag", required=True)
     q.set_defaults(func=cmd_payload)
+
+    q = sub.add_parser("colormatch")
+    q.add_argument("--src", required=True)
+    q.add_argument("--mask", required=True)
+    q.add_argument("--out", required=True)
+    q.add_argument("--ring", type=int, default=12)
+    q.set_defaults(func=cmd_colormatch)
+
+    q = sub.add_parser("liftmask")
+    q.add_argument("--mask", required=True)
+    q.add_argument("--figure", required=True)
+    q.add_argument("--out", required=True)
+    q.set_defaults(func=cmd_liftmask)
 
     q = sub.add_parser("composite")
     q.add_argument("--orig", required=True)

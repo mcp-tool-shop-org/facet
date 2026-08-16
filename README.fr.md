@@ -131,7 +131,7 @@ La discipline est aussi importante que le processus, et elle existe pour une rai
 - **Les corrections sont appliquées sur place, à côté de la mesure qui les a invalidées**, et non pas sous forme de suppressions discrètes. Six affirmations héritées ont été réfutées lors de la session initiale, et les six sont toujours lisibles à côté de ce qui les a remplacées.
 - **Les échecs restent dans le dépôt avec leur raison.** [`tools/superseded/`](docs/tools.md) n’est pas une archive : tout le monde peut exécuter ces outils et observer qu’ils échouent de la même manière.
 - **Un résultat négatif est un succès total**, qui est signalé et clôturé plutôt que modifié pour atteindre un nombre.
-- **Les tests sont liés au commit qui touche le code** : 1063 tests réussis, évalués par deux personnes, avec une intégration continue basée sur les chemins pour les 1018 tests hermétiques.
+- **Les tests sont liés au commit qui touche le code** : 1067 tests réussis, évalués par deux personnes, avec une intégration continue basée sur les chemins pour les 1022 tests hermétiques.
 - **Le registre est interrogeable.** Un index SQLite + FTS5 sur l’ensemble de la séquence, vérifié sur quatre systèmes. Il a trouvé un nombre de résultats que le texte avait mal indiqué à trois endroits, en comptant simplement le nombre de résultats dans le registre.
 
 ## Où tout se trouve
@@ -190,7 +190,7 @@ test on purpose.
 
 Blender 5.x, Python 3.11+ avec `numpy`, `scipy`, `trimesh`, `open3d`, `Pillow`, `spandrel`, `torch`. Une installation locale de ComfyUI n’est nécessaire que pour le pinceau d’inpainting. Développé sur une RTX 5090 ; la capacité de VRAM est plus importante que la vitesse brute.
 
-L’intégration continue exécute le sous-ensemble hermétique de la suite sur **ubuntu-latest / Python 3.12** avec des installations fixes (`.github/workflows/ci.yml`) ; la couche des artefacts a besoin des arborescences enregistrées situées dans `E:\AI\training`, qui ne se trouvent pas dans Git, c’est pourquoi l’intégration continue les exclut intentionnellement. Localement, `python -m pytest` exécute les **1063** tests et `python -m pytest -m "not artifacts"` exécute les **1018** tests reproduits par l’intégration continue.
+L’intégration continue exécute le sous-ensemble hermétique de la suite sur **ubuntu-latest / Python 3.12** avec des installations fixes (`.github/workflows/ci.yml`) ; la couche des artefacts a besoin des arborescences enregistrées situées dans `E:\AI\training`, qui ne se trouvent pas dans Git, c’est pourquoi l’intégration continue les exclut intentionnellement. Localement, `python -m pytest` exécute les **1067** tests et `python -m pytest -m "not artifacts"` exécute les **1022** tests reproduits par l’intégration continue.
 
 ---
 

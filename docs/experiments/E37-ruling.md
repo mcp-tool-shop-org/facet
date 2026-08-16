@@ -939,3 +939,16 @@ constructing tests whose -O leg caught a real ASCII defect; the T06
 handling (the committed blobs were clean; the worktree CRLF was inherited
 from this seat's Add-Content writes and normalized to .gitattributes with
 git diff empty). Counts stand at 1063/1018, complete capture, zero failed.
+
+## Ruling 28 -- THE ARC HALTS AT THE DIRECTOR'S WORD
+
+The Director halted E37 on 2026-08-15 after the repaired set showed face
+features painted on non-face views and the lift's boundary reading as a
+square on the front view. His assessment stands as the record's own: each
+repair round surfaced a new defect class, and no configuration of this
+route has yet made the generator paint eight consistent, defect-free views
+of this subject. Nothing further fires. Spend stops at 58 of 80. All
+artifacts, masks, receipts and attributions are committed and pushed; the
+accepted assets are untouched; E34 remains the delivered performer. The
+question of what builds this asset next is the Director's, outside this
+arc.
