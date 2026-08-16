@@ -890,3 +890,52 @@ Director's eye. The lift composites at his chosen rung in the same pass.
 
 **Addendum, same day -- the rung: the Director's word on the ladder sheet is
 +12 L*.** The v0 lift composites at the +12 rung in the firing pass.
+
+## Ruling 27 -- Ruling 26's recipe was defective and the defect is this seat's; the corrected recipe is ruled; the probe pattern becomes standing law
+
+**The halt is RATIFIED and the one-job-first probe is RULED as standing
+practice for every new graph composition** -- the executor fired one job as
+a deliberate pairing test and it caught at one job what would otherwise
+have cost six. Schema verification is NOT behavioural verification: both
+nodes behaved exactly as their schemas say, and the defect lived in the
+composition this seat specified.
+
+**The defect, owned**: Ruling 26 said "the byte-pinned base payload," and
+the byte-pin pinned the CLAY as init -- so SetLatentNoiseMask restored the
+unmasked region to clay (measured decisively: one global affine map fits
+clay-to-repaint at delta-E 7.13 against twin-to-repaint 17.99), and the
+in-job ColorMatch computed its statistics over that mixed frame,
+corrupting the masked region's tone with it. The pin's purpose was the
+generation config; the init is the operand under repair, and pinning it was
+a specification error, not a discipline.
+
+**The corrected recipe, ruled:**
+1. **Node 9's init = the set-A twin for the view under repair** -- a named
+   delta in the diff like every other, all generation config byte-held
+   (seed, denoise, cn, prompt, control).
+2. **ColorMatchV2 leaves the job entirely** -- it runs LOCALLY,
+   post-composite, scoped to the masked region against its surround. This
+   un-confounds the two levers and gives the match clean operands.
+3. The local feathered composite and the delta-E repaint proof stand
+   unchanged.
+
+**Re-verification**: v6 re-fires as the probe under the corrected recipe --
+MECHANICAL, the correction of a defective recipe, not a content re-roll.
+The locality check must now pass with outside-mask delta-E at the VAE
+round-trip floor; **on a passing probe the remaining five fire without
+further round-trip.** Spend 52 to 53 at the probe, 58 when the five fly.
+
+**The lift's backdrop step is repaired by construction**: the lift mask
+intersects the figure silhouette (the exact raycast masks on disk), the
+composite re-runs at the ruled +12, and off-figure lift is zero by
+construction rather than small by measurement. The receipts' blind spot is
+named: core statistics hid a support that reached 6.4% off-figure -- the
+support is the operative set for anything that composites.
+
+**Ratified besides**: the held-pixel one-px convention cut (closed vs
+half-open, the alternative named and rejected in writing); the executor's
+three owned errors, each caught by its own discipline; T73's ten
+constructing tests whose -O leg caught a real ASCII defect; the T06
+handling (the committed blobs were clean; the worktree CRLF was inherited
+from this seat's Add-Content writes and normalized to .gitattributes with
+git diff empty). Counts stand at 1063/1018, complete capture, zero failed.
