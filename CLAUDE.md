@@ -42,6 +42,17 @@ decides, the executor measures, and he sees an artifact when there is something 
 **The advisor may also run research and study swarms (Sonnet-based) on its own authority**;
 the studio protocol at `memory/research-grounded-advisor-protocol.md` governs their form.
 
+**The model tier is the advisor's call, and the Director set the default (2026-08-16):
+`Sonnet` executors for most experiments, `Opus` where technical skill is genuinely needed.**
+E40 ran its three parallel seats on Sonnet and they killed the swarm's blade hypothesis, killed
+the advisor's re-bake claim, caught their own degenerate metrics, and found the two-band split in
+`project_twins.py` that the advisor's own spec had described wrongly — so *most* is the honest
+default and not a concession. Reach for Opus when the seat must **design an instrument rather
+than run one**, hold a large uncommitted refactor across many files, or reason about a
+correctness argument where being subtly wrong is expensive and hard to detect. **Pick per seat,
+not per arc** — one Opus seat beside two Sonnet seats is a normal shape. Research swarm agents
+are Sonnet unless a brief demands otherwise.
+
 **What this does not change.** The three roles above are untouched. The executor still never
 judges quality, still predicts before it looks, still halts at every gate. The advisor still
 does not execute and does not grade its own rulings. The Director's eye is still the only

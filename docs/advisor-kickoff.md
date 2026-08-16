@@ -125,6 +125,15 @@ all minority.
 blocks, *"better for both of us — you have more control and I don't have to babysit the sessions."*
 **A paste block is the fallback for what only he can begin, not the deliverable.**
 
+**1b. ⚑ MODEL TIER — the Director's standing rule, 2026-08-16: `Sonnet` executors for most
+experiments, `Opus` where technical skill is genuinely needed.** E40's three parallel seats were
+Sonnet and they killed the swarm's blade hypothesis, killed the advisor's re-bake claim, caught
+their own degenerate metrics, and found the two-band split the advisor's own spec had described
+wrongly — **so *most* is the honest default, not a concession.** Reach for Opus when a seat must
+**design an instrument rather than run one**, hold a large uncommitted refactor across many
+files, or carry a correctness argument where being subtly wrong is expensive and hard to detect.
+**Pick per seat, not per arc.** Swarm agents are Sonnet unless a brief demands otherwise.
+
 **2. Hand seats your candidates labelled as candidates and tell them to kill yours as hard as
 their own.** Every useful ruling this session came from that: E39 killed the advisor's
 cross-island mechanism; E40's Seat C killed the swarm's blade hypothesis *and its own four arms*;
