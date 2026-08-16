@@ -44,6 +44,41 @@ is itself the test of it.**
 | N14 | a massive greatsword | |
 | N15 | an ornate gold crossguard | own phrase, not a modifier on N14 |
 | N16 | a gold pommel | own phrase |
+| N17 | **a brown leather-wrapped grip** | **NEW 2026-08-16** — an unoccupied surface, not a promoted modifier. Own phrase, not a modifier on N14. ⚠ UNVERIFIED: predicted to land, must be checked on the next generation |
+
+**N17 — the grip, added at the Director's delegation 2026-08-16.** He named the choice as leather
+or steel and left it to the advisor. **Leather**, for four reasons, given in the order of how much
+they should be trusted:
+
+1. **The surface was unoccupied, and that is why this should land.** Nothing in N1–N16 named the
+   grip, so whatever the generator painted there was arriving by accident and would leave the same
+   way — it is one of the four regions the Director identified by eye. The measured law is
+   co-location, not grammar: a specification determines what occupies a surface and **cannot** add
+   a second element to an occupied one, which is why N11's promoted modifier drew ΔE 1.07 and no
+   response. N17 occupies an empty surface, so it is the case the law says works.
+2. **Brown leather is already twice-landed vocabulary on this character** — N7 the belt and N10 the
+   bracers, the latter recorded as *measured to land*. It is the lowest-risk term available.
+3. **Historically it is simply what a grip is**: a wooden core wrapped in leather, usually over
+   cord. Bare metal grips exist but are late, ceremonial and unpleasant to hold — cold, slippery,
+   and they transmit shock into the hand.
+4. **Value legibility at sprite scale.** The grip sits between a gold crossguard (N15) and a gold
+   pommel (N16). Dark leather gives a strong value break between them; steel between two golds
+   reads as one continuous metal mass and the sword loses its articulation at the size these
+   assets are actually viewed.
+
+**One argument deliberately NOT used, because it does not decide.** It is tempting to reason from
+the day's measurement — defect texels sit sub-pixel from material boundaries, so straddle error
+scales with the colour difference across the boundary, so a steel grip beside a steel blade would
+produce a *smaller* visible error. But the grip's neighbours are the crossguard and pommel, both
+gold; the blade sits on the far side of the crossguard. Steel-vs-gold and leather-vs-gold are both
+substantial boundaries, so the argument washes out. It is recorded here so nobody re-derives it and
+mistakes it for a reason.
+
+**This is a prediction, not a measurement.** N17 is expected to land because it occupies an empty
+surface with vocabulary the model has already landed twice. That expectation is exactly the kind of
+inherited claim this repo treats as a hypothesis wearing a fact's clothes — **verify it on the next
+generation before building on it**, and if it draws no response the way N11 did, the co-location
+law needs re-examining rather than the term needs re-wording.
 
 **N6 — "gold necklace" is struck.** The prompt carried it; there is no necklace at the throat in
 the target; there is a belt medallion. A term that misnames an element, and produces the right

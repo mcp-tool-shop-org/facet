@@ -40,7 +40,7 @@ Two mounted servers: `mcp__facet-record__*`, `mcp__facet-measure__*`. `record_he
 |---|---|
 | HEAD | re-measure at your open — `git log --oneline -1` |
 | working tree | `git status` **before every fold**; seats work uncommitted in a tree you also write to |
-| suite | **THE SUITE: 1072 tests, 1027 hermetic.** **RE-COUNT before quoting** — `pytest --collect-only -q` and again with `-m "not artifacts"`, currently 1072 total / 1027 hermetic. T34 pins every surface off the collector and they all change in the *same* commit |
+| suite | **THE SUITE: 1087 tests, 1042 hermetic.** **RE-COUNT before quoting** — `pytest --collect-only -q` and again with `-m "not artifacts"`, currently 1087 total / 1042 hermetic. T34 pins every surface off the collector and they all change in the *same* commit |
 | the record | the index rebuilds and verifies **19/19** over 40 experiments. No staleness findings at the declaration leg |
 | CI | green. Four inherited reds were repaired 2026-08-16 — do not let them back |
 | spend | **zero cloud credits all session.** Everything below is local |
@@ -105,12 +105,31 @@ all minority.
    *premultiplied* alpha — that injects a signed colour error maximal at midpoints and invisible
    except at alpha transitions, i.e. **exactly at material boundaries**; **(b)** does our blend
    average high frequency across views at all.
-3. **Camera geometry.** Our 8+2 is **literally SyncMVD's default** — inherited, never derived. And
-   **nothing in our rig looks up**: every camera is at 0° or +55°, while TEXTure adds a back-low
-   view at −60° and Hunyuan3D a −90°. A held blade's underside is unreachable by our set, which is
-   a direct candidate for E40's measured **74.28% never-hit**. More views is *not* the fix (MVPaint
-   FID 23.45 at N=8, **25.71 at N=16**); **breaking the ring is** (its best is N=8 at ±30°
-   interleaved elevation).
+3. **Camera geometry.** ⚠ **CORRECTED 2026-08-16, twice over — this entry read "our 8+2 is
+   literally SyncMVD's default." BOTH HALVES ARE FALSE.** The shipped W3 rig is **8 cameras
+   total**, not 10: yaw **0 and 180 sit at +55° *instead of* flat**, replacing the front and back
+   cameras rather than joining them; the other six are at elevation 0. Verified by an E42 seat and
+   re-verified by the advisor — 8 job dirs under `facet_E08/ARMB/state/`, each `cam.json`
+   confirming its own yaw/el. SyncMVD is 8 flat **plus** 2 elevated = 10, so ours is a *different
+   rig*, and "literally SyncMVD's default" is falsified.
+   **The consequence matters more than the correction:** our rig is **already partially
+   ring-broken** — 6 flat plus 2 at +55, both positive, at the two poles of the yaw circle. So
+   comparing it against MVPaint's ±30° interleaved set is **two ring-breaking strategies at equal
+   camera count**, not broken-versus-flat. An all-flat 8 is the only true control.
+   What survives unchanged: **nothing in our rig looks down.** A held blade's underside is
+   unreachable by our set, which is a direct candidate for E40's measured **74.28% never-hit**.
+   More views is *not* the fix (MVPaint FID 23.45 at N=8, **25.71 at N=16**); **breaking the ring
+   is** — its best is N=8 at ±30° interleaved elevation, **FID 20.89**, verified at Table S2.
+   **⚠ CORRECTED 2026-08-16: this entry previously read "TEXTure adds a back-low view at −60°."
+   That is FALSIFIED.** TEXTure §3.1 (arXiv:2302.01721) states 8 viewpoints plus two top/bottom —
+   a 10-view rig the same shape as ours — and its only concrete elevation is the *initial*
+   viewpoint at **+60°, positive**. Hunyuan3D's −90° is real, verified in
+   `Hunyuan3DTexGenConfig`, but it is weighted **0.05** against the front view's 1.0, ~20× less.
+   So *"the field looks down and we don't"* was never true: **downward surface is conceded across
+   this literature, not placement-solved** — Meta 3D TextureGen hands unpainted areas to an
+   inpainting network and Text2Tex's next-best-view is confined to non-below-horizon viewpoints.
+   Bounded by E42 before any generation spend; full sourcing in
+   [the sampling/rig swarm](../research/E41-E42-sampling-and-rig-study-swarm.md).
 4. **⚠ Re-run translations for `fr`, `it` and `pt-BR`, and DO NOT TRUST THE TOOL'S OWN STATUS
    FIELD.** `translate-all.mjs` reported `"status": "ok"` for all seven languages and **three
    were wrong**: `it` silently dropped the three new "What is not solved" bullets, `fr` dropped
