@@ -17,8 +17,8 @@
     "py_files_total": 112
   },
   "provenance": {
-    "corpus_files": 339,
-    "corpus_files_before_self_exclusion": 349,
+    "corpus_files": 343,
+    "corpus_files_before_self_exclusion": 353,
     "probe_interpreter": "E:\\AI-Models\\trellis2-env\\Scripts\\python.exe",
     "probe_interpreter_version": "3.13.13",
     "probe_skipped": false,
@@ -35,7 +35,7 @@
       "docs/experiments/E28-task3-report.md",
       "docs/instrument-census.md"
     ],
-    "test_files": 73
+    "test_files": 74
   },
   "rows": [
     {
@@ -3849,10 +3849,9 @@
       ],
       "b1_literals": [],
       "b2_literals": [],
-      "cited_count": 10,
-      "cited_count_raw": 10,
+      "cited_count": 9,
+      "cited_count_raw": 9,
       "cited_in": [
-        "docs/advisor-kickoff.md",
         "docs/experiments/E22-gates-report.md",
         "docs/experiments/E23-route-gates-report.md",
         "docs/experiments/E34-projection-coverage-report.md",

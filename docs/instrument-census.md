@@ -13,8 +13,8 @@
 | `.py` files in `tools/verify` | **10** |
 | — files of any other extension there | 0 |
 | **total members** | **112** |
-| corpus files read for axis D | 339 |
-| test files read for axis E | 73 |
+| corpus files read for axis D | 343 |
+| test files read for axis E | 74 |
 | probe interpreter | `E:\AI-Models\trellis2-env\Scripts\python.exe` (3.13.13) |
 
 ## Totals
@@ -172,7 +172,7 @@
 | 108 | `silhouette_agree.py` | diagnostics | no | 8 | no | 3 | yes | n/a | ambiguous | Is project_twins' LIVE raycast silhouette the same object as the shipped sidecar mask? |
 | 109 | `texel_provenance.py` | diagnostics | no | 17 | no | 14 | yes | n/a | texel_provenance | Where did this pixel's colour actually come from? |
 | 110 | `texpass_metrics.py` | diagnostics | no | 7 | no | 2 | no | n/a | no opinion | E05 — one metric table, computed identically for every arm. |
-| 111 | `tree_manifest.py` | verify | yes | 7 | no | 10 | yes | yes | none | Protection manifests for the read-only trees: verify one, or emit a new one. |
+| 111 | `tree_manifest.py` | verify | yes | 7 | no | 9 | yes | yes | none | Protection manifests for the read-only trees: verify one, or emit a new one. |
 | 112 | `turn_render.py` | verify | no | 14 | no | 30 | yes | n/a | none | Matched-framing turnaround render of a GLB. |
 
 ## Axis F — every `n/a` and every `false`, with its reason
