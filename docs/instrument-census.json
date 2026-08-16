@@ -17,8 +17,8 @@
     "py_files_total": 112
   },
   "provenance": {
-    "corpus_files": 343,
-    "corpus_files_before_self_exclusion": 353,
+    "corpus_files": 345,
+    "corpus_files_before_self_exclusion": 355,
     "probe_interpreter": "E:\\AI-Models\\trellis2-env\\Scripts\\python.exe",
     "probe_interpreter_version": "3.13.13",
     "probe_skipped": false,
@@ -1997,8 +1997,8 @@
       ],
       "b1_literals": [],
       "b2_literals": [],
-      "cited_count": 18,
-      "cited_count_raw": 24,
+      "cited_count": 19,
+      "cited_count_raw": 25,
       "cited_in": [
         "CLAUDE.md",
         "docs/experiments/E10-offsurface-r4ab-predictions.md",
@@ -2014,6 +2014,7 @@
         "docs/experiments/E35-armslate-spec.md",
         "docs/experiments/E35-clean-twins-kickoff.md",
         "docs/experiments/E37-remake-report.md",
+        "docs/experiments/E40-three-class-arms-kickoff.md",
         "docs/experiments/README.md",
         "docs/specs/measurement-mcp-spec.md",
         "docs/specs/placement-memo.md",
