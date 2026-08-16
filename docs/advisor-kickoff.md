@@ -183,9 +183,17 @@ dragon 3.71–7.25%, longsword **39.70–51.40%**. The galleon's zero is *unseen
    the fix may be much closer to turning on a mode that already exists than to implementing
    geodesic fill."* **Our own known-defects page already answers it:** `texpass_finalize.py`'s
    predicate is `fill = ~grown & (cnt > 0)` **with no island constraint** — *"`valid` decides when
-   to stop, never where to write."* Adobe's own docs describe our exact defect as the documented
-   behaviour of unconstrained padding: it *"stretch[es] a pixel until it reaches another UV island."*
-   Substance ships a chart-constrained alternative as a **toggle**.
+   to stop, never where to write."* ⚠ **CORRECTED 2026-08-16, at the primary source, by the seat
+   that inherited this paragraph and repeated it.** This line said *"Adobe's own docs describe our
+   exact defect as the documented behaviour of unconstrained padding: it 'stretch[es] a pixel until
+   it reaches another UV island.'"* **That reads the sentence backwards.** Fetched and read directly,
+   the sentence sits under *"Infinite padding generation"* and describes the island as a **wall that
+   halts the stretch**, not as a source colour is pulled from — Substance's dilation is
+   island-bounded **by construction**, which is the opposite of our defect rather than a description
+   of it. **The correction strengthens the case it was cited for**: the mature tools stop at island
+   boundaries and we do not. And the toggle is real and now named in three tools — Substance
+   `UV Padding: 2D/UV Space Neighbor` vs `3D Space Neighbor`, Blender `Margin Type: EXTEND` vs
+   `ADJACENT_FACES`, Mari `Bleed Patch Edges`.
 
    **And here is the precise gap nobody has closed.** The record already tested adding `& valid`
    and found it insufficient — *"still leaves 53.3% cross-island and strands 174,898 texels on the
