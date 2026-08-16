@@ -25,6 +25,33 @@ values live in its own profile and fixture, never inherited unmeasured.
   ([E10-offsurface-ruling.md](../experiments/E10-offsurface-ruling.md) Ruling 7);
   as-recorded stays beside it everywhere. *Historical: "the measurement is queued,
   Director-gated" — fired 2026-08-06, both tasks.*
+- ⚠ **RENDER-SPACE RESTATEMENT, added 2026-08-16 — every share above is in ATLAS TEXELS,
+  and for `dilation` that is 5.4× what a camera sees.** Measured on this subject's own
+  provenance atlas beside its 26 exported views
+  ([E39](../experiments/E39-w3-polish-kickoff.md)):
+
+  | class | % of the **written atlas** | % of **rendered figure px** | render ÷ atlas |
+  |---|---|---|---|
+  | `reference` | 68.82% | **92.31%** | 1.34× |
+  | `brush` | 4.23% | 2.74% | 0.65× |
+  | `dilation` | **26.95%** | **4.95%** | **0.18×** |
+
+  The 68.8 / 4.2 / 27.0 headline reproduces to the digit as an atlas share and **is not a
+  claim about appearance**. *Paint lives in big charts and holes live in small ones*, so the
+  same inspection paradox that makes a dilated texel's island small makes it cheap in screen
+  space. **Quote the space with the share.**
+- ⚠ **The defect that decides this asset's acceptance is `reference`-carried, not fill-carried**
+  ([E39](../experiments/E39-w3-polish-kickoff.md), [E40](../experiments/E40-three-class-arms-kickoff.md)).
+  Regions wearing another material's colour — gold on the tunic, skirt, boot tops and blade —
+  are **91.05% `reference` at 0.99× enrichment**, dead on base rate; cloth green out of place is
+  **68.46% `reference`**; and on the blade the surface's own paint is **18.77%** contaminated
+  against its dilation fill's **5.55%**. Three seats, three methods, three spaces, one answer.
+  Both gold mechanisms are live ~2:1 — twins disagreeing **≥ 29.9%** (a firm lower bound) and a
+  twin hallucinating within one view **≤ 70.1%** (a ceiling, *not* a measurement).
+- ⚠ **`canon/W3-IDENTITY.md` never names the sword GRIP.** N14–16 name the greatsword,
+  crossguard and pommel only, so no material standard exists for a surface the Director named
+  as defective. **Open, and the Director's to close** — recorded rather than filled with an
+  invented centre.
 
 ## The galleon (ACCEPTED, 2026-08-05)
 

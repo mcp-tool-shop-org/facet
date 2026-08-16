@@ -201,7 +201,24 @@ code](docs/known-defects.md).
 - **Stroke seams are not levelled.** A provenance boundary steps **5.5×** ordinary texture
   variation; the region the Director named steps **9.5×**.
 - **Dilation bleeds between unrelated atlas islands** — 74.9% of dilated texels take their
-  colour from another island, from a median 0.177 away on a figure 1.0 tall.
+  colour from another island, from a median 0.177 away on a figure 1.0 tall. ⚠ **That share is
+  in atlas texels and is not a claim about what a camera sees**: dilation is 26.95% of the
+  written atlas and **4.95% of rendered figure pixels**, a ratio of 0.18×. Paint lives in big
+  charts, holes live in small ones, so a dilated texel is cheap in screen space.
+- **⚑ The defect that decides acceptance is carried by the PAINT, not by any fill** — regions
+  wearing another material's colour, which no speckle statistic can see. Measured three ways by
+  three sessions in three spaces: **91.05% `reference`-carried at 0.99× enrichment**, dead on
+  base rate; the same class in cloth green **68.46% `reference`**; and on a thin blade the
+  surface's own painted texels **18.77%** contaminated against its dilation fill's **5.55%**.
+  The fill sources correctly from its nearest painted neighbour — and that neighbour is already
+  wrong. The blend itself is an undocumented two-band split
+  (`M + gaussian_blur_σ16(B − M)`) that measures **worst of four** alternatives on the same
+  points.
+- **The views are never independent, which bounds every blending fix.** For each defect blob,
+  **100% of faces with two or more contributing cameras have all of them inside a 90° span**
+  (median 45°), and 21% of defect faces are seen by one camera only. Adjacent views under
+  near-identical control fail together, so photogrammetry's published multi-view gains do not
+  transfer here at face value.
 - **Every reconstruction on this route is a hollow double-walled shell**, walls ~two
   voxels. No volumetric predicate is valid on one.
 
