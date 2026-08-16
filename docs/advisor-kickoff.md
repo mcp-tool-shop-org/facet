@@ -111,9 +111,20 @@ all minority.
    a direct candidate for E40's measured **74.28% never-hit**. More views is *not* the fix (MVPaint
    FID 23.45 at N=8, **25.71 at N=16**); **breaking the ring is** (its best is N=8 at ±30°
    interleaved elevation).
-4. **Translations are CONTENT-stale** — README.md's "What is not solved" gained three bullets and
-   the seven translated READMEs did not. **T34 pins only counts**, so tests pass and CI cannot see
-   it. `node E:/AI/polyglot-mcp/scripts/translate-all.mjs README.md`, watchdog up first.
+4. **⚠ Re-run translations for `fr`, `it` and `pt-BR`, and DO NOT TRUST THE TOOL'S OWN STATUS
+   FIELD.** `translate-all.mjs` reported `"status": "ok"` for all seven languages and **three
+   were wrong**: `it` silently dropped the three new "What is not solved" bullets, `fr` dropped
+   them *and* one of each count occurrence, and **`pt-BR` still says 890 / 850 tests** — numbers
+   from a long-dead state, meaning it was never re-translated from the current README. All three
+   are reverted to their previous (stale-prose, correct-count) state, so T34 is green at 50 and
+   **the tree is honest rather than tidy**. `ja` / `zh` / `es` / `hi` are fresh and carry the new
+   findings.
+   **The only signal that fired was a wall-clock anomaly in the JSON summary** — 184s, 182s, 198s
+   for fr/hi/it against **13.5s for pt-BR**. T34 caught two of three once on disk; it *cannot* see
+   Italian's missing prose, because it pins counts and not content. **Verify per file after any
+   translation run**, watch the per-language timing, and check content parity by eye.
+   Command: `node E:/AI/polyglot-mcp/scripts/translate-all.mjs README.md`, watchdog up first
+   (`translategemma:27b`).
 5. Tree-manifest guard spec · the resurrected `--bg-max-pct 2.0` default · E34 candidate anchors ·
    E38's A5/A9 and its shipping configuration · the 1,035 zero-UV-area faces `smart_decimate.py`
    cannot see.
