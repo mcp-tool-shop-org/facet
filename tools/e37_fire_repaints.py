@@ -379,6 +379,51 @@ def cmd_colormatch(args):
           f"{rec['dE_region_to_surround_after']:.2f}  (moved {rec['dE_moved_in_region_mean']:.2f} in region)")
 
 
+# ---------------------------------------------------------------- harmonize
+
+def cmd_harmonize(args):
+    """Phase 3: whole-view harmonization, mkl, scoped to the FIGURE.
+
+    The pre-registration said whole-view against whole-view. Amended here with its reason
+    stated: figure coverage varies 15.05%-25.81% across these eight views (profiles against
+    three-quarters), so a whole-FRAME statistic encodes how much background a view has, not
+    its wood tone -- matching them would drive the profiles' figure tone to compensate for
+    their extra backdrop. That is the same operand conflation E37-phase2-fire-report section 5
+    convicted one layer up. The transform is fitted on figure pixels only and applied to
+    figure pixels only; the backdrop is left exactly alone.
+    """
+    ref_img = np.asarray(Image.open(args.ref).convert("RGB")).astype(np.uint8)
+    ref_fig = np.asarray(Image.open(args.ref_figure).convert("L")).astype(np.float64) / 255.0 > 0.5
+    src = np.asarray(Image.open(args.src).convert("RGB")).astype(np.uint8)
+    fig = np.asarray(Image.open(args.figure).convert("L")).astype(np.float64) / 255.0 > 0.5
+
+    if int(fig.sum()) < 500 or int(ref_fig.sum()) < 500:
+        raise SystemExit(f"ANDON: too few figure px -- src {int(fig.sum())}, ref {int(ref_fig.sum())}")
+
+    lin = srgb_to_linear(src)
+    A, mt, mr = _mkl(lin[fig], srgb_to_linear(ref_img)[ref_fig])
+    moved = linear_to_srgb(((lin.reshape(-1, 3) - mt) @ A.T + mr).reshape(lin.shape))
+    out8 = src.copy()
+    out8[fig] = (moved[fig] * 255.0 + 0.5).astype(np.uint8)
+
+    # ANDON: the backdrop is not the subject of a wood harmonization and may not move.
+    n = int((out8[~fig] != src[~fig]).any(axis=-1).sum())
+    if n:
+        raise SystemExit(f"ANDON: harmonize moved {n} background px")
+
+    os.makedirs(os.path.dirname(args.out), exist_ok=True)
+    Image.fromarray(out8).save(args.out)
+    lb, la = rgb_to_lab(src), rgb_to_lab(out8)
+    rec = {"ref": os.path.basename(args.ref), "figure_px": int(fig.sum()),
+           "figure_Lab_before": [float(lb[fig][:, i].mean()) for i in range(3)],
+           "figure_Lab_after": [float(la[fig][:, i].mean()) for i in range(3)],
+           "dE_moved_on_figure_mean": float(delta_e76(lb, la)[fig].mean())}
+    json.dump(rec, open(args.out.replace(".png", "_harmonize.json"), "w"), indent=1)
+    print(f"[harmonize] {os.path.basename(args.out):16s} figure {rec['figure_px']:6d} px  "
+          f"moved {rec['dE_moved_on_figure_mean']:6.2f} dE  "
+          f"L*a*b* {np.round(rec['figure_Lab_before'],2)} -> {np.round(rec['figure_Lab_after'],2)}")
+
+
 # ---------------------------------------------------------------- lift mask
 
 def cmd_liftmask(args):
@@ -532,6 +577,14 @@ def main():
     q.add_argument("--out", required=True)
     q.add_argument("--ring", type=int, default=12)
     q.set_defaults(func=cmd_colormatch)
+
+    q = sub.add_parser("harmonize")
+    q.add_argument("--src", required=True)
+    q.add_argument("--figure", required=True)
+    q.add_argument("--ref", required=True)
+    q.add_argument("--ref-figure", required=True)
+    q.add_argument("--out", required=True)
+    q.set_defaults(func=cmd_harmonize)
 
     q = sub.add_parser("liftmask")
     q.add_argument("--mask", required=True)

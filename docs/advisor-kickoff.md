@@ -75,7 +75,7 @@ accessibility, not style, and pastes get a plain label, never "don't read."
 |---|---|
 | HEAD | the close commit — re-measure at your open; the working copy is SHARED with executor sessions and their commits interleave with yours |
 | CI | green at `f1c2b50`'s push lineage — re-verify `gh run list` at your open |
-| suite | **THE SUITE: 1067 tests, 1022 hermetic** (45 artifacts) — ⚠ pinned by T34; preserve the sentence shape. Re-count at your open: currently 1067 total / 1022 hermetic |
+| suite | **THE SUITE: 1068 tests, 1023 hermetic** (45 artifacts) — ⚠ pinned by T34; preserve the sentence shape. Re-count at your open: currently 1068 total / 1023 hermetic |
 | highest T | T73 (the phase-2 fire tests). The next arc takes T74+ |
 | published | facet-mcp 0.4.0 · @mcptoolshop/facet 0.4.0 · comfy-preflight 1.0.0 — both STUDIO_MEASURED entries implemented; closed both sides |
 | accepted assets | five — W3, galleon, dragon, longsword, the E34 performer (`ce793064…`, REOPENED at his zoom; formal disposition still his) |

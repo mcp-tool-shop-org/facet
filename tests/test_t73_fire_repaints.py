@@ -266,6 +266,43 @@ def test_colormatch_moves_nothing_outside_the_mask(tmp_path):
     assert (got[m <= 0] == img[m <= 0]).all()
 
 
+def test_harmonize_is_identity_on_its_own_reference_and_spares_the_backdrop(tmp_path):
+    """Phase 3. Two properties, each constructed so it can fail.
+
+    Matching a view to ITSELF must be the identity -- if the mkl fit were wrong the
+    reference would move too, and every other view's number would be measured against a
+    moving target. And the backdrop is not the subject of a wood harmonization: the
+    transform is fitted on figure pixels and applied to figure pixels only.
+    """
+    h, w = 80, 60
+    rng = np.random.default_rng(11)
+    img = (rng.random((h, w, 3)) * 50 + 100).astype(np.uint8)
+    fig = np.zeros((h, w)); fig[20:60, 15:45] = 255
+    ip, fp = tmp_path / "i.png", tmp_path / "f.png"
+    _rgb(ip, img); _write(fp, fig)
+
+    out = tmp_path / "self.png"
+    subprocess.run([sys.executable, str(TOOL), "harmonize", "--src", str(ip), "--figure", str(fp),
+                    "--ref", str(ip), "--ref-figure", str(fp), "--out", str(out)],
+                   check=True, capture_output=True)
+    got = np.asarray(Image.open(out).convert("RGB"))
+    rec = json.loads(Path(str(out).replace(".png", "_harmonize.json")).read_text())
+    assert rec["dE_moved_on_figure_mean"] < 0.01, "matching a view to itself must be the identity"
+    assert (got[fig <= 127] == img[fig <= 127]).all(), "the backdrop may not move"
+
+    # a genuinely different reference DOES move the figure -- otherwise the check above
+    # would pass even if the tool did nothing at all.
+    other = np.clip(img.astype(int) + 40, 0, 255).astype(np.uint8)
+    op = tmp_path / "o.png"; _rgb(op, other)
+    out2 = tmp_path / "moved.png"
+    subprocess.run([sys.executable, str(TOOL), "harmonize", "--src", str(ip), "--figure", str(fp),
+                    "--ref", str(op), "--ref-figure", str(fp), "--out", str(out2)],
+                   check=True, capture_output=True)
+    rec2 = json.loads(Path(str(out2).replace(".png", "_harmonize.json")).read_text())
+    assert rec2["dE_moved_on_figure_mean"] > 1.0, \
+        "a different reference must move the figure, or the identity test proves nothing"
+
+
 # ---------------------------------------------------------------- gates raise
 
 def test_every_gate_raises_and_survives_dash_O():
