@@ -69,3 +69,21 @@ measured 5.05/11.96 without it; predict inside).
   character profile, so the next character starts complete instead of rediscovering
   this. Consult #10's sequencing stands: E49 lands → his three crops re-cut → the
   free per-region disagreement measurement → the canon-fed regen on his credit word.
+- 2026-08-16, close of session — **DIRECTOR'S RULING on the E49 sheets: "It looks
+  great, but there's colored polygonal shapes now."** The strongest acceptance signal
+  this route has received, with one new defect class: flat-coloured angular patches
+  (green/yellow/orange triangles on the tabard and skirt, a gold triangle on the
+  boot). **Hypothesis, unverified, checkable in one overlay:** this arc's own fill
+  passes are the carrier — atlas islands at this fragmentation are often single mesh
+  triangles; the orphan fill painted each flat from a best-facing twin sample taken
+  with the UNERODED sil, so a boundary-adjacent sample imports the neighbouring
+  material and flat-fills a triangle-sized island with it. The provenance masks
+  (`orphan_fill_mask.npy`, `no_view_visible_mask.npy`, per mode, under
+  `E:\AI\training\facet_E49\atlas_*_eroded\`) were tagged for exactly this question:
+  overlay the Director's crop regions against them; if the shapes sit on filled
+  texels, the class is confirmed and the fix is the never-seen-surface POLICY already
+  on the decision list — neutral per-material fill instead of twin-sampling at
+  boundaries, or eroded-sil sampling with a palette gate for the visible orphans.
+  Next session opens here: (1) the overlay confirmation, (2) the policy decision to
+  the Director with the crops beside the masks, (3) then the standing sequence
+  (disagreement measurement → canon build-out → regen).
