@@ -572,6 +572,35 @@ the question*, the *premise inherited from your own dispatch*, and **the object 
 Its sibling in the same arc: a predicted **total** missed above band because *the term that
 dominates it was never measured* — open3d's manylinux wheel is 6.5× its Windows one.
 
+**A share measured in one space is not a claim about another.** Tenth arc, and the first where
+the mis-united number was the *advisor's own reasoning basis*. Every `dilation` figure this repo
+argues from is in **atlas texels**; the defect is judged in **rendered pixels**; on W3 the two
+differ by **5.4×** — 26.95% of the written atlas against 4.95% of what any camera sees, a ratio of
+**0.18×**. The mechanism was already written down one section away: *paint lives in big charts,
+holes live in small ones*, so the same inspection paradox that makes a dilated texel's island
+small makes it cheap in screen space. **Before quoting a provenance share, say which space it is
+in** — and if the question is "what does the asset look like," atlas shares are the wrong space.
+
+**And the eleventh: a prediction must not name a value the instrument cannot return.** E39's seat
+predicted 75% for a rate whose **ceiling — the instrument's reading when the answer is
+unambiguously yes — is 63.66%**. The prediction was above the maximum the measurement could
+produce, so it could not have been right at any state of the world. Its own diagnosis is the
+lesson: *"the controls were in the design and absent from the prediction."* The seat had built a
+floor and a ceiling into the instrument and then reasoned about the mechanism alone when writing
+the number. **Compute what your instrument reads when the thing is definitely true, and when it
+is definitely false, and predict inside that interval** — the same question this repo already
+asks of a metric before adopting it (*if those are the same number it is not measuring the arm*),
+turned on the prediction rather than the metric.
+
+**A bound is not a measurement, and which direction bounds firmly is a property of the
+evidence.** The same arc got this right and it is why its result is usable: *twin is clean at
+this pixel* proves the colour came from elsewhere, because **one view's absence is decisive about
+that view** — a firm lower bound of 29.9%. *Twin is gold at this pixel* proves only that this
+view is **a** source; it cannot poll the other seven, so 70.1% is a **ceiling on the complement,
+not a measurement of it**. The asymmetry was pre-registered before the number existed. **State
+which side of a two-sided question your evidence can close, before you look** — otherwise the
+loose side gets reported with the tight side's confidence.
+
 **An identity envelope that does not record the dependency set is not portable.** Every
 open3d-dependent number in this repo was measured against **`0.19.0+241aaee`** — a cp313
 *development* wheel from Open3D's `main-devel` channel, because PyPI's latest release publishes

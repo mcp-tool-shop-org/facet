@@ -309,3 +309,63 @@ The eight-view reprojection is built **only if** the cheap form does not resolve
 If the answer is (b), the swarm's headline finding is aimed at the wrong mechanism for this
 asset, and adopting SyncMVD on its strength would be the same error this arc was built to
 catch — one level up.
+
+### Amendment 3 — Task 2 ruled: BOTH mechanisms are live, roughly 2:1 (2026-08-16)
+
+Report: `E:\AI\training\facet_E39\task2-report.md`. `facet_E08` re-diffed clean at 818 files.
+
+**The cheap form was available and the check was worth insisting on.** All eight twins are
+752×1024 and register to their own export render at best shift **(0,0)**, under *two independent
+objectives* (median ΔE over a 7×7-eroded silhouette; gradient-magnitude NCC), both unimodal over
+|d| ≤ 8. No reprojection, no resampling, no keying was needed. The frame check was demanded
+because E04 Ruling 15 cost this route a 2 px mismatch; it came back clean, which is the outcome a
+cheap check is *supposed* to have most of the time.
+
+| | exact | tolerant r=3 |
+|---|---|---|
+| **measure** — twin is gold at gold-out-of-place (n=17,731) | **41.29%** | **55.28%** |
+| **ceiling** — twin is gold at *legitimate* gold (pauldron, n=68,855) | 63.66% | 81.14% |
+| **floor** — twin is gold at ordinary green tunic (n=335,495) | 0.43% | 1.50% |
+| **normalised** (measure − floor)/(ceiling − floor) | **64.6%** | **67.5%** |
+
+**RULED: both mechanisms are live, and neither can be dismissed.**
+
+- **(a) the twins disagree — ≥ 29.9%, a FIRM LOWER BOUND.** Where the twin rendering that pixel
+  is clean, the gold demonstrably came from another view. **One view's absence is decisive about
+  that view**, which is why this direction bounds firmly.
+- **(b) a twin hallucinated internally — ≤ 70.1%, an UPPER BOUND AND NOT A MEASUREMENT OF (b).**
+  Twin-gold at view *k* establishes that *k* is *a* source; it cannot poll the other seven. **The
+  executor pre-registered that asymmetry before the number existed**, which is what keeps the
+  bound honest instead of letting it read as a result.
+
+**The control that makes the number trustworthy is the tolerance plateau**, not the point value:
+normalised rises 64.6 → **70.1% by r=6 and does not move through r=10**. Registration slop is
+worth ~5.5 points and no more. Median ΔE(twin, asset) reads the same gradient independently —
+**22.87** at gold-out-of-place against **3.55** on ordinary green.
+
+**⛔ A pre-registered gate FIRED and the remedy is recorded rather than smoothed.** `y+090`'s own
+ceiling is **49.07%**, under the 60% floor set in advance. The remedy was to normalise **per
+view** rather than pool raw; **the view was not dropped**, and the firing is reported as a firing.
+Alongside it, `y+135` sits at **117.2% — above its own ceiling**, offered as an observation and
+not explained. ⚑ **The lead worth chasing: `e11_manifest.py:73-75` records twin_2 and twin_6 —
+`y+090` and `y+270` — as the accepted RE-ROLLS**, and `y+090` is the outlier. A re-rolled twin is
+a twin that made its material decisions in a separate sampling event.
+
+**The artifact decides it by eye** (`t2/t2_zoom_y+090_e+00.png`, twin | asset | split, 3×
+NEAREST, walked at native size at the advisor's seat): the twin carries a **brown leather bracer
+and a green skirt** exactly where the asset paints a **large gold hip plate**, marked red across
+nearly its whole area, with pose and silhouette agreeing. **And the twin is visibly cleaner and
+more materially coherent than the asset built from it** — which is a statement about where
+quality is lost, and is not something any number in this arc measured.
+
+**Consequence for the road.** SyncMVD and its family target **(a)**. (a) is **at least 29.9%** of
+the gold class and **at most 70.1%** — real, bounded, and *not the whole thing*. **Adopting a
+synchronisation method on the study-swarm's strength alone would have been the same error this
+arc was built to catch, one level up**, and Amendment 2's caution is now a measurement instead of
+a worry.
+
+**The executor's own miss is the most instructive result in the arc.** T2-P1 predicted 75%;
+the instrument's ceiling is **63.66%**, so **the prediction named a rate above the instrument's
+own maximum**. In its words: *"the controls were in the design and absent from the prediction."*
+This is a new member of the unit/population family and it is folded to
+[CLAUDE.md](../../CLAUDE.md) as its own law.
