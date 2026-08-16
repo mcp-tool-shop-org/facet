@@ -424,7 +424,40 @@ honest; quantifying it there without measuring it there would not be.*
 leaving the method at SCALED is catastrophic — utilisation collapses to 0.52% and the census
 worsens 25× — which is the same diagnosis from the other side.
 
-**Disposition: E38 is RUNNING and nothing here is adopted.** The residual is dominated by
-triangles with *exactly zero* UV area, which no resolution can help (0 × 4 = 0), and a Blender
-5.3 alpha carrying the merged conservative-rasterization fix is under test as a separate arm.
-The route remains pinned to 5.2.
+**Measured to a conclusion, 2026-08-16.** Population A against its 766-pixel baseline, all at
+4096 unless noted:
+
+| arm | Population A | Population B |
+|---|---|---|
+| A0 — stock 5.2 | 766 | 556 |
+| A1 `margin_method='ADD'` | 65 | 323 |
+| A4 `--res 8192` | 56 | — |
+| A1+A7 (`margin_type='EXTEND'`) | 31 | — |
+| A1+A7+A6' (bake `margin` 16) | **4** | 279 |
+| **A11 — Blender 5.3 alpha, STOCK settings** | **0** | **165** |
+| A11 + all three levers | 0 | **257** — *worse* |
+
+**Two answers, neither displacing the other.** On 5.2 today the three levers are right. On 5.3
+**change nothing** — they were compensating for a Blender defect and turn net-negative once it
+is gone, because tight packing carries its own independent cost on Population B. **5.2 remains
+the route**; the 5.3 alpha is an instrument.
+
+**Population B is INDEPENDENT of A**, closed by intervention rather than by geometry: the
+magenta refill moved 100% of B at A0 and **0.0%** of B at A11, median ΔE exactly 0.0. An earlier
+geometric criterion claimed to settle this and was **withdrawn** — its 1–2 texel window tested
+*bilinear* reach while B's nearest unpainted neighbour sat 7–8 texels away, inside a *mip*
+kernel. The advisor's mis-scoped radius; the interventional test is what closed it.
+
+**⚠ AND THE SCOPE CORRECTION THAT MATTERS MOST, at the Director's word 2026-08-16:** *"let's not
+over focus on the black artifacts. W3 is far from perfect and needs a serious polish."* He is
+right. This class measures **0.578% of W3's figure pixels and renders zero black there**. What is
+visibly wrong with W3 is **blotchiness across every material** — gold on tunic, skirt, boots and
+blade; green on the sword grip; brown-green smears on hands and bracers — which is the
+**cross-island bleed** entry above, at 74.9%. An entire arc was spent on a countable class while
+the dominant visible defect sat in this same document, measured, treated as a footnote. That is
+this repo's own recorded failure — *a metric that cannot separate an asset he rejected from one
+he accepted is not a metric* — committed again in a new costume.
+
+**Disposition: E38 RUNNING; nothing here is adopted.** Population B and the cross-island bleed
+above are plausibly one class at two sites — a render-time *read* and a bake-time *write* — and
+**that is unconfirmed and is the live question.**
