@@ -30,6 +30,24 @@ The authoritative version of this page, with the full evidence column, is
 | `e11_export_turnaround.py` | the dense-turnaround export: flat renders, exact silhouettes, class maps and owner slices as a sha-linked tree |
 | `facet_index.py` | the record's own index — `build` / `verify` / `q` / `claims` |
 
+## The composition chain (E45–E49, 2026-08-16)
+
+The seven tools that closed the projector question — the eight plates compose, and the
+rebuilt atlas renders beside the shipped one reached the Director's *"looks great"*.
+Five of the seven were built by an outside channel (ten for ten on nominated
+calibration claims, each verified here by running it before trust).
+
+| tool | what it does |
+|---|---|
+| `emit_view_aovs.py` | per-view G-buffers of a recorded state (depth, world pos/normal, surface id, callieri weights) — anchored by pixel-exact reproduction of the recorded silhouettes, 16/16 cameras at 0 px |
+| `callieri_border.py` | border weight, depth-edge mask, mixed-depth reject, facing weight — v1.0.1, warning-silenced, byte-identity proven |
+| `s3_composite.py` | the existence-proof compositor: view-dependent and view-independent stills, per-pixel disagreement, coverage, a flow hook |
+| `flow_estimate.py` | dense LK twin-to-mesh flow with sparse per-component confidence — the aperture problem is refused, not hallucinated |
+| `s3_run.py` | runs the compositor over a bundle, all targets, flow A/B via `--flow-dir` |
+| `s3_sheet.py` | native-pixel acceptance sheets — provenance as a panel, MISSING made explicit, crop geometry gated |
+| `twin_mesh_warp.py` | per-tile twin↔mesh correspondence, silhouette and interior legs, validated on injected shifts before any real measurement |
+| `atlas_from_aovs.py` | texel-driven atlas rebuild from a bundle — owner/blend modes, flow off/on, sentinel-honest coverage |
+
 ## Verification
 
 `turn_render.py` and `head_render.py` are the cameras; `head_crop.py` builds comparison

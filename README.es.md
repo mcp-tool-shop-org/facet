@@ -87,6 +87,18 @@ Las participaciones son de texeles válidos y **no son comparables entre sujetos
 
 **Es una canalización, no un generador de un solo carácter.** Contradiga la especificación en ocho elementos nombrados y el mensaje ganará **8 de 8**: ΔE medio de 46,3 frente a 6,2 en cinco controles mantenidos; mientras que la figura permanece siendo el mismo hombre. La estructura se mantiene mediante la malla y el control; los atributos nombrados se basan en el mensaje.
 
+**La consulta sobre el proyector se cerró el 16 de agosto de 2026** ([E45](docs/experiments/E45-warp-and-aov-kickoff.md)–[E49](docs/experiments/E49-finish-and-cap-kickoff.md)).
+Las ocho placas **se componen de**: reconstruidas a partir del conjunto por vista, utilizando
+bordes × orientación × pesos de visibilidad; el atlas renderiza lo que el Director consideró *"honesta y
+mucho mejor"* y luego *"tiene un aspecto excelente"* — en comparación con un atlas ya implementado cuyo recorrido estaba
+destruyendo la pintura. Las placas coinciden en este punto. La cadena que lo hizo está en `tools/`
+(`emit_view_aovs`, `s3_composite`, `flow_estimate`, `s3_run`, `s3_sheet`,
+`atlas_from_aovs`, `twin_mesh_warp`), cinco de las siete construidas por un canal externo
+cuyas calibraciones designadas han demostrado ser **exitosas en todos los casos**, y cada una se ha verificado aquí
+antes de confiar en ellas. Lo que queda se indica a continuación, no está oculto: una clase de polígonos de relleno bajo
+investigación, una superficie nunca vista que espera una política, y la construcción canónica que el
+Director consideró crucial.
+
 ## La ruta
 
 ```
@@ -120,13 +132,44 @@ Seis hallazgos, cada uno de los cuales requiere un experimento y cada uno de los
 
 Nombrado y medido, en la página principal en lugar de en una nota al pie. [Todos ellos, ubicados en el código](docs/known-defects.md).
 
-- **Algunas superficies visibles se mapean en el espacio del atlas que ninguna cocción escribe**, y se representan como el negro predeterminado sin modificar de la imagen. El "baker" de Blender utiliza un muestreo centrado en texeles, por lo que un triángulo que no se superpone a ningún centro de texel queda vacío; sus propios desarrolladores [nombraron el mecanismo y fusionaron una corrección](https://projects.blender.org/blender/blender/pulls/161752) dos semanas después de la versión en la que se midieron todos los números aquí. Es una propiedad de la ruta, no de un solo sujeto: medido en un activo, **no medido en los otros cuatro**.
-- **La banda de la hoja ocupa el 0.00% de la referencia de la etapa 1** en todas las ocho cámaras; el acero sobre un fondo gris se sitúa exactamente en el umbral de la clave. La unión rescata el 55.72%.
-- **Las costuras del trazo no están niveladas.** Un límite de procedencia presenta una variación de textura **5.5 veces mayor**; la región que nombró el Director presenta una variación **9.5 veces mayor**.
-- **La dilatación se extiende entre islas del atlas no relacionadas**: el 74.9% de los texeles dilatados toman su color de otra isla, a una distancia mediana de 0.177 en una figura de 1.0 de altura. ⚠ **Esta proporción está en texeles del atlas y no es una afirmación sobre lo que ve una cámara**: la dilatación representa el 26.95% del atlas escrito y el **4.95% de los píxeles de la figura renderizada**, una relación de 0.18. La pintura vive en gráficos grandes, los agujeros viven en gráficos pequeños, por lo que un texel dilatado es barato en el espacio de la pantalla.
-- **⚑ El defecto que decide la aceptación está contenido en la PINTURA, no en ningún relleno**: regiones que tienen el color de otro material, que ninguna estadística de moteado puede detectar. Medido de tres maneras por tres sesiones en tres espacios: **91.05% `reference` presente con un enriquecimiento de 0.99**, exactamente en la tasa base; la misma clase en verde tela **68.46% `reference`**; y en una hoja delgada, los propios texeles pintados de la superficie **18.77%** contaminados frente al **5.55%** de su relleno de dilatación. El relleno se obtiene correctamente de su vecino pintado más cercano, y ese vecino ya está mal. La mezcla en sí es una división de dos bandas no documentada (`M + gaussian_blur_σ16(B − M)`) que mide lo **peor de cuatro** alternativas en los mismos puntos.
-- **Las vistas nunca son independientes, lo que limita cada corrección de fusión.** Para cada grupo de defectos, el **100% de las caras con dos o más cámaras contribuyentes tienen todas dentro de un rango de 90°** (mediana de 45°) y el 21% de las caras defectuosas son vistas por una sola cámara. Las vistas adyacentes bajo un control casi idéntico fallan juntas, por lo que las ganancias publicadas en fotogrametría con múltiples vistas no se transfieren aquí tal cual.
-- **Cada reconstrucción en esta ruta es una carcasa hueca de doble pared**, paredes de ~dos vóxeles. Ningún predicado volumétrico es válido para uno.
+- **Algunas superficies visibles se asignan al espacio del atlas, pero ninguna textura las incluye**, y se renderizan como
+el negro predeterminado sin modificar de la imagen. El "baker" de Blender utiliza un muestreo centrado en texeles, por lo que un triángulo
+que no coincide con ningún centro de texel queda vacío; sus propios desarrolladores
+[identificaron el mecanismo e implementaron una solución](https://projects.blender.org/blender/blender/pulls/161752)
+dos semanas después de la compilación en la que se midieron todos los valores aquí. Es una propiedad del recorrido,
+no de un objeto específico: medido en un activo, **sin medir en los otros cuatro**.
+- **La banda de borde ocupa el 0,00% de la referencia de la etapa 1** en las ocho cámaras; el acero sobre un
+fondo gris se sitúa exactamente en el umbral clave. La unión rescata el 55,72%.
+- **Las costuras del trazo no están niveladas.** Un límite de procedencia presenta una diferencia de **5,5 veces** con la variación de textura normal; la región que el Director identificó presenta una diferencia de **9,5 veces**.
+- **La dilatación se extiende entre islas del atlas no relacionadas** — el 74,9% de los texeles dilatados toman su
+color de otra isla, a una distancia mediana de 0,177 en una figura de altura 1,0. ⚠ **Esta proporción se refiere a los texeles del atlas y no es una afirmación sobre lo que ve una cámara**: la dilatación representa el 26,95% del
+atlas renderizado y el **4,95% de los píxeles de la figura renderizada**, una relación de 0,18. La pintura se encuentra en mapas grandes, los agujeros en mapas pequeños, por lo que un texel dilatado es económico en términos de espacio en pantalla.
+- **⚑ El defecto que determina la aceptación está determinado por la PINTURA, no por ningún relleno** — regiones
+que muestran el color de otro material, algo que ninguna estadística de moteado puede detectar. Medido de tres maneras diferentes por
+tres sesiones en tres espacios: **91,05% `reference` con un enriquecimiento de 0,99**, exactamente en la
+tasa base; la misma clase en verde tela **68,46% `reference`**; y en una delgada lámina, los texeles pintados de la
+superficie **18,77%** contaminados frente al relleno de dilatación del **5,55%**.
+El relleno se obtiene correctamente de su vecino pintado más cercano, y ese vecino ya es
+incorrecto. La mezcla en sí es una división de dos bandas no documentada
+(`M + gaussian_blur_σ16(B − M)`) que mide el **peor de cuatro** valores alternativos en los mismos
+puntos.
+- **Las vistas nunca son independientes, lo que limita cualquier corrección de la mezcla.** Para cada grupo de defectos,
+el **100% de las caras con dos o más cámaras contribuyentes tienen todas dentro de un rango de 90°**
+(mediana de 45°), y el 21% de las caras defectuosas son vistas por una sola cámara. Las vistas adyacentes bajo
+un control casi idéntico fallan juntas, por lo que las ganancias publicadas en fotogrametría con múltiples vistas no
+se transfieren aquí tal cual.
+- **Cada reconstrucción en esta ruta es una cáscara hueca de doble pared**, paredes de aproximadamente dos
+voxeles. Ningún predicado volumétrico es válido para uno solo.
+- **Las placas difieren en límites de materiales no identificados, y la construcción canónica es crucial**
+(16 de agosto de 2026). La deformación interior a la malla medida fue de **3,5–11,1 px (mediana)** en las ocho vistas, en comparación con las medianas del contorno de 1,2–3,0; cada región residual que el Director
+marcó — corte de manga, mano, parte superior del botín — es una unión de materiales que la indicación generativa
+nunca nombró (la indicación registrada contiene seis elementos; agarre, guantelete, greba y
+mano aparecen **cero** veces). Su diagnóstico es el registro: *"Nunca construimos correctamente la construcción canónica."* La construcción canónica W3 y la regeneración alimentada por la construcción canónica son
+la reparación en etapas ([registro de envío E49](docs/experiments/E49-finish-and-cap-kickoff.md)).
+- **El 4,65–5,57% de los texeles válidos son superficies que ninguna cámara con anillo plano puede ver** — fallan
+en la compuerta de profundidad en todas las vistas, ninguna ruta de proyección puede pintarlos y el canal ya implementado los cubrió con la inundación ciega a la isla que creó las marcas oscuras. Necesitan una política (material neutro, pincel o aceptación), no una corrección
+([informe E49](docs/experiments/E49-finish-and-cap-report.md)).
+- **El pase de relleno completo del candidato renderiza polígonos planos y coloreados** — la única clase abierta del Director en las hojas de calidad aceptada (*"tiene un aspecto excelente, pero hay formas poligonales coloreadas"*). Hipótesis bajo prueba, máscaras de procedencia ya etiquetadas: islas huérfanas del tamaño de triángulos individuales, rellenadas de forma plana a partir de muestras gemelas adyacentes al límite tomadas con el contorno no erosionado.
 
 ## Cómo se ejecuta este repositorio
 

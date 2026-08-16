@@ -13,6 +13,60 @@ it, so a reader can check the claim rather than trust it.
 
 ## [Unreleased]
 
+## [0.5.0] — 2026-08-16
+
+**The plates compose, and the projector question closes.** One session ran five arcs
+([E45](docs/experiments/E45-warp-and-aov-kickoff.md)–[E49](docs/experiments/E49-finish-and-cap-kickoff.md)),
+two dispatched executor seats and three runner seats, and six build rounds through an
+outside channel whose nominated calibration claims held **ten for ten** — every one
+verified here by running it before anything trusted it. The rebuilt-atlas renders
+reached the Director's *"honestly a lot better"* and then *"looks great"*, beside a
+shipped atlas whose route had been destroying paint the eight plates agree on.
+
+### Added
+
+- **The S3 chain, seven tools** — `emit_view_aovs.py` (per-view G-buffers of the
+  shipped state, anchored by pixel-exact reproduction of the recorded silhouettes,
+  16/16 cameras at 0 px), `s3_composite.py` (the existence-proof compositor:
+  view-dependent and view-independent stills, disagreement diagnostics, a flow hook),
+  `flow_estimate.py` (dense LK with sparse per-component confidence and the aperture
+  problem handled rather than hallucinated), `s3_run.py` (the bundle runner, flow A/B
+  built in), `s3_sheet.py` + regions (native-pixel acceptance sheets with provenance
+  as a panel), `atlas_from_aovs.py` (texel-driven atlas rebuild, owner/blend ×
+  flow off/on), `twin_mesh_warp.py` (the per-tile correspondence instrument, validated
+  on constructed truth before any real measurement). Tests t77–t84; the suite grew
+  **1098 → 1182** (1135 hermetic) with the thirteen T34 count surfaces moved in the
+  same commits.
+- **The warp is measured** ([E45 report](docs/experiments/E45-warp-and-aov-report.md)):
+  interior tile offsets exceed silhouette offsets on **8 of 8 views** (medians
+  3.46–11.12 px vs 1.16–3.00), wrong-pairing controls separate 12.5×, and the twin
+  ring is **eight flat cameras** — the el-55 pair are brush cameras, and no twin
+  exists at elevation.
+- **Flow-corrected compositing reduces cross-view disagreement on 18 of 18 measured
+  rows** ([E46 report](docs/experiments/E46-s3-run-report.md)) — directionally
+  uniform, magnitude a trim (1.4–3.2 px median at 16–27% coverage), the lever was the
+  projection policy itself.
+
+### Changed
+
+- **`callieri_border.py` 1.0.0 → 1.0.1** — the inf−inf RuntimeWarnings at :209/:214
+  silenced by masked subtraction, proven byte-identical across all four public
+  surfaces on an inf-background fixture **and** a real frame, with the warning
+  provocation demonstrated against the old form and the T76 pin untouched (t84).
+- **`docs/index/conventions.json` `paid_for_by`** marched E4[0-4] → E4[0-9] as five
+  arcs landed — the t24 andon fired three times in one day, each firing a designed
+  leg doing its job, and the standing order it earned is written into the record: the
+  arc bound and the instrument census re-run are the **last** corpus-touching steps
+  of every fold.
+
+### Known, named, and staged
+
+- The fill-pass **polygon class** (the Director's one open ruling on the
+  accepted-grade sheets), **never-seen surface** (4.65–5.57% of valid texels,
+  needs a policy), and the **canon build-out** he named as the crux — all carried
+  with their evidence in the [E49 dispatch record](docs/experiments/E49-finish-and-cap-kickoff.md)
+  and on the front page.
+
 ## [0.4.0] — 2026-08-09
 
 **The measurement server ships.** Four releases put a record index in the wheel and left

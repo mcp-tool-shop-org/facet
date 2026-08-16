@@ -133,6 +133,18 @@ eight named elements and the prompt wins **8 of 8** — median ΔE 46.3 against 
 held controls — while the figure stays the same man. Structure is held by the mesh and
 control; named attributes ride the prompt.
 
+**The projector question closed on 2026-08-16** ([E45](docs/experiments/E45-warp-and-aov-kickoff.md)–[E49](docs/experiments/E49-finish-and-cap-kickoff.md)).
+The eight plates **compose**: rebuilt from the per-view bundle under
+border × facing × visibility weights, the atlas renders the Director ruled *"honestly a
+lot better"* and then *"looks great"* — beside a shipped atlas whose route had been
+destroying paint the plates agree on. The chain that did it is in `tools/`
+(`emit_view_aovs`, `s3_composite`, `flow_estimate`, `s3_run`, `s3_sheet`,
+`atlas_from_aovs`, `twin_mesh_warp`), five of the seven built by an outside channel
+whose nominated calibration claims have held **ten for ten**, every one verified here
+before trust. What remains is named below, not hidden: a fill-pass polygon class under
+investigation, never-seen surface awaiting a policy, and the canon build-out the
+Director called the crux.
+
 ## The route
 
 ```
@@ -221,6 +233,24 @@ code](docs/known-defects.md).
   transfer here at face value.
 - **Every reconstruction on this route is a hollow double-walled shell**, walls ~two
   voxels. No volumetric predicate is valid on one.
+- **The plates disagree at unnamed material boundaries, and the canon is the crux**
+  (2026-08-16). Interior twin-to-mesh warp measured **3.5–11.1 px median** across all
+  eight views against silhouette medians of 1.2–3.0; every residue region the Director
+  circled — sleeve cut, hand, boot-top — is a material joint the generation prompt
+  never named (the recorded prompt carries six elements; grip, gauntlet, greave and
+  hand appear **zero** times). His diagnosis is the record's: *"we never properly
+  built out the canon."* The W3 canon build-out and canon-fed twin regeneration are
+  the staged repair ([E49 dispatch record](docs/experiments/E49-finish-and-cap-kickoff.md)).
+- **4.65–5.57% of valid texels are surface no flat-ring camera can see** — they fail
+  the depth gate in every view, no projection route can paint them, and the shipped
+  pipeline papered them with the island-blind flood that made the dark marks. They
+  need a policy (neutral material, brush, or accept), not a fix
+  ([E49 report](docs/experiments/E49-finish-and-cap-report.md)).
+- **The complete-candidate fill pass renders flat coloured polygons** — the Director's
+  one open class on the accepted-grade sheets (*"looks great, but there's colored
+  polygonal shapes"*). Hypothesis under test, provenance masks already tagged: orphan
+  islands the size of single triangles, flat-filled from boundary-adjacent twin
+  samples taken with the uneroded silhouette.
 
 ## How this repo is run
 
