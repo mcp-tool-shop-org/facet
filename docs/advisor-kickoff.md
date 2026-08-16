@@ -40,7 +40,7 @@ Two mounted servers: `mcp__facet-record__*`, `mcp__facet-measure__*`. `record_he
 |---|---|
 | HEAD | re-measure at your open — `git log --oneline -1` |
 | working tree | `git status` **before every fold**; seats work uncommitted in a tree you also write to |
-| suite | **THE SUITE: 1087 tests, 1042 hermetic.** **RE-COUNT before quoting** — `pytest --collect-only -q` and again with `-m "not artifacts"`, currently 1087 total / 1042 hermetic. T34 pins every surface off the collector and they all change in the *same* commit |
+| suite | **THE SUITE: 1098 tests, 1053 hermetic.** **RE-COUNT before quoting** — `pytest --collect-only -q` and again with `-m "not artifacts"`, currently 1098 total / 1053 hermetic. T34 pins every surface off the collector and they all change in the *same* commit |
 | the record | the index rebuilds and verifies **19/19** over 40 experiments. No staleness findings at the declaration leg |
 | CI | green. Four inherited reds were repaired 2026-08-16 — do not let them back |
 | spend | **zero cloud credits all session.** Everything below is local |
