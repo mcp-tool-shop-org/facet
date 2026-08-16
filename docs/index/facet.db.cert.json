@@ -2,11 +2,11 @@
  "andon": [],
  "corpus": {
   "files": 388,
-  "id": "d284b03b77d8881eb069fa11d3009596cdb229ff1a3019d7163c7857db344543",
+  "id": "ffef00df6767f9754274cd2f36b808f7f6d0df7692ab69901603fdda8904d574",
   "manifest": {
    "CLAUDE.md": "77f9495e73997c5143bdf7b3c7aa4d60ef18d03b3470556080fd926446164d50",
-   "README.md": "8e65d5e8bea8eb3e1ec2ce4fc6c756123eeda272d05509705a8040da5b5c7c42",
-   "docs/advisor-kickoff.md": "db3e83803b2c28177984b2b4175c676676fcd127d943ee6caa0ec870f8f29852",
+   "README.md": "3102f8deea4cc3b880f237bc5e4342af277c0f7d24e3dec80d9277b047622743",
+   "docs/advisor-kickoff.md": "94062b3cd08aa2820e2ddd13462b82d27b830e006814c806466ee4df51abb2b2",
    "docs/arc-history.md": "5b2876b3fed7be95a6efc984f5e5a00b7c1675b10a169ee43803b50e091b48a8",
    "docs/brand/README.md": "81f425b6a101135b43463b35468f08a2db37af39c856c01f7fbdb6ce66598226",
    "docs/comfy-consult-1-brief.md": "3ffe0b6744a757c27bf2c8d30c02829e36ce257672c011cffee353c09536a6c2",
@@ -353,7 +353,7 @@
    "docs/experiments/E48-complete-candidate-report.md": "1a0e4d14fc24983500bb7bbe2db6d15b0477eb705c19622792a7661cb3e5560a",
    "docs/experiments/E49-finish-and-cap-kickoff.md": "7c9e01a43fdd3322d4b16c6bb9ec103c0f3eff09dac9cd96f1e582cadbc3d136",
    "docs/experiments/E49-finish-and-cap-report.md": "5b32040705f7106e09d4ba211b927ecf74a6197d57896e63bb2a3bbd71080dd8",
-   "docs/experiments/README.md": "768faa06ab825260597bd533f851782b0639a5db5e3f6c36d666c5db14eebe37",
+   "docs/experiments/README.md": "7cad4b33a8ff3376be40f95a5532b668d37476833d43793823e26be4f805be16",
    "docs/findings.md": "a67189c22c064bafaa9272b0a93bfcf81fcf5ab6b0529c67dfc88a5606e69b55",
    "docs/grok-consult-1-brief.md": "00e2db720f46c917d73337055380ed7427cb78897aa4a5b9cac1c504104e8c91",
    "docs/grok-consult-10-brief.md": "e2066f079f0708d93ca2963eb9d5e564e9bca96fdd4021f1fc1eff882e47d685",
@@ -406,9 +406,9 @@
   "rulings": 761
  },
  "db": {
-  "bytes": 14282752,
+  "bytes": 14299136,
   "path": "docs/index/facet.db",
-  "sha256": "c8f2a40da970c9579c095406595995d725690dd1b7046cf17490d866a3aa519f"
+  "sha256": "e573e3618372c51a974c2909b2008766e7a9d87ac812b6e1f16b0d0ddf662b00"
  },
  "determinism_leg": "byte-identity",
  "failures": [],
@@ -428,7 +428,7 @@
   "==============================================================================",
   "",
   "[leg 1] determinism - two builds from an unchanged record",
-  "  BYTE-IDENTICAL   14282752 bytes, both builds",
+  "  BYTE-IDENTICAL   14299136 bytes, both builds",
   "",
   "[corpus] ruling documents discovered by the sorted glob",
   "  E01-ruling-gate1.md                            arc E01                0 rows - prose only",
@@ -583,8 +583,8 @@
   "[vocabulary] what each declared vocabulary did not recognise",
   "             REPORT ONLY - this section never fails the run",
   "  artifact kinds         recognised  5270   unrecognised    0",
-  "  experiment status      recognised    84   unrecognised    4",
-  "      not recognised: **PLAN SUPERSEDED IN PLACE; S0 AND S1 R\u2026, **deprioritised by E07's ruling** \u2014 den\u2026  (+2 more occurrence(s))",
+  "  experiment status      recognised    88   unrecognised   10",
+  "      not recognised: **PLAN SUPERSEDED IN PLACE; S0 AND S1 R\u2026, **RUN; ALL FOUR CELLS REJECTED BY THE D\u2026, **RUN; THE DIRECTOR RULES \"HONESTLY A L\u2026, **RUN; THE DIRECTOR RULES \"IT LOOKS GRE\u2026, **deprioritised by E07's ruling** \u2014 den\u2026  (+5 more occurrence(s))",
   "  law paid_for_by        recognised    74   unrecognised    0",
   "  phenomenon markers     recognised    56   unrecognised  132",
   "      not recognised: AFFIRMED, AMENDED, CORRECTED, EXCLUDED, MEASURED, PLACED, REOPENED, RESOLVED  (+124 more occurrence(s))",
@@ -592,7 +592,7 @@
   "      not recognised: ## 0. What this seat verified before ruling, ## 1. A10 \u2014 a clean negative. Adopt nothing from it. RUL, ## 1. Half 1 \u2014 RATIFIED, and two of my predictions are d, ## 2. Half 2's substitution \u2014 RATIFIED, ## 2. The sweep's finding, and nobody picks a winner. RU, ## 3. The ruling that reorders the spec \u2014 acceptance is , ## 4. Consequently: R8 is no longer the first arm, ## 5. What this does not settle  (+28 more occurrence(s))",
   "  verdicts               recognised   322   unrecognised  134",
   "      not recognised: AFFIRMED, CORRECTED, MEASURED, NAMED, PLACED, REOPENED, RESOLVED, TRANSLATED  (+126 more occurrence(s))",
-  "  total unrecognised inputs: 306",
+  "  total unrecognised inputs: 312",
   "  mechanism: bm25(8.0, 1.0), candidates 400, phrase slots 3 - calibrated on facet@2026-08 (~250 files / 62k lines, seeded set 19); these are defaults, not measurements about your record",
   "",
   "==============================================================================",
@@ -601,7 +601,7 @@
  ],
  "unattributed_failures": [],
  "verb": "record_build",
- "verified_utc": "2026-08-16T23:25:30Z",
+ "verified_utc": "2026-08-16T23:39:01Z",
  "verify_exit_code": 0,
  "written_by": "tools/record_mcp.py"
 }
