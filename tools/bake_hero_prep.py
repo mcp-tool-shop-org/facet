@@ -56,6 +56,22 @@ ap.add_argument("--island-margin", type=float, default=0.001,
                      "pre-renders and the dilation fill extends past island borders.")
 ap.add_argument("--pack-margin", type=float, default=0.001,
                 help="pack_islands margin; same economics as --island-margin")
+ap.add_argument("--margin-method", default=None, choices=["SCALED", "ADD", "FRACTION"],
+                help="pack_islands margin_method. E38 Phase 2 A1 lever: SCALED (the "
+                     "operator's own RNA default, confirmed by introspection on this rig's "
+                     "5.2 -- no scene-level mirror overrides it, unlike bake margin_type/"
+                     "use_clear) scales the margin by island size; ADD applies an absolute "
+                     "gutter independent of island size. Default None -- when omitted, the "
+                     "pack_islands() call below does not pass margin_method at all, so "
+                     "Blender's own operator default governs and A0's own numbers stay "
+                     "byte-for-byte reproducible unchanged.")
+ap.add_argument("--shape-method", default=None, choices=["CONCAVE", "CONVEX", "AABB"],
+                help="pack_islands shape_method. E38 Phase 2 A3 lever: CONCAVE (the "
+                     "operator's own RNA default, confirmed by introspection) packs to each "
+                     "island's true concave outline, letting islands nest into each other's "
+                     "concavities; AABB packs to each island's axis-aligned bounding box, "
+                     "trading packing density for guaranteed separation. Default None -- "
+                     "same reproducibility guarantee as --margin-method above.")
 ap.add_argument("--reunwrap", action="store_true",
                 help="DELETE the incoming UV layer and rebuild it with smart_project. "
                      "This was the default until E05 and is kept only to reproduce "
@@ -316,7 +332,19 @@ scene.tool_settings.use_uv_select_sync = True
 me.polygons.foreach_set("select", vis_face.astype(np.int32))
 bpy.ops.object.mode_set(mode="EDIT")
 bpy.ops.mesh.select_mode(type="FACE")
-bpy.ops.uv.pack_islands(margin=args.pack_margin)
+# margin_method/shape_method are passed ONLY when explicitly requested, so an unqualified
+# run (every historical command, A0 included) takes the exact same code path it always did
+# -- omitting an operator kwarg lets Blender's own default govern, confirmed by RNA
+# introspection to be SCALED/CONCAVE with no scene-level override for either property
+# (unlike bake's own margin_type/use_clear, which DO have a scene mirror that silently
+# wins -- checked separately, not assumed the same way twice).
+_pack_kwargs = {"margin": args.pack_margin}
+if args.margin_method is not None:
+    _pack_kwargs["margin_method"] = args.margin_method
+if args.shape_method is not None:
+    _pack_kwargs["shape_method"] = args.shape_method
+print(f"[prep] pack_islands kwargs: {_pack_kwargs}", flush=True)
+bpy.ops.uv.pack_islands(**_pack_kwargs)
 bpy.ops.object.mode_set(mode="OBJECT")
 me = obj.data                      # stale again after the edit round trip
 uv_bake = me.uv_layers["uv_bake"]

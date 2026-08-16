@@ -93,7 +93,7 @@ export const config: SiteConfig = {
       features: [
         {
           title: 'Spec before, report after, ruling last',
-          desc: 'Every non-trivial change runs as a numbered experiment. The session that designs an experiment does not grade its results, and the session that runs it does not decide what they mean. Thirty-seven experiments are in the record, each with its predictions stated before the measurement.',
+          desc: 'Every non-trivial change runs as a numbered experiment. The session that designs an experiment does not grade its results, and the session that runs it does not decide what they mean. Thirty-nine experiments are in the record, each with its predictions stated before the measurement.',
         },
         {
           title: 'Corrections in place, never deletions',
@@ -113,7 +113,7 @@ export const config: SiteConfig = {
         },
         {
           title: 'Tests ride the commit',
-          desc: '1068 tests passing at two seats’ hands, with paths-gated CI on the 1023 hermetic ones. A commit that changes tool code carries tests for that code in the same commit; recorded anchors are ported into the harness rather than left in reports.',
+          desc: '1072 tests passing at two seats’ hands, with paths-gated CI on the 1027 hermetic ones. A commit that changes tool code carries tests for that code in the same commit; recorded anchors are ported into the harness rather than left in reports.',
         },
       ],
     },
