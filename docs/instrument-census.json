@@ -17,8 +17,8 @@
     "py_files_total": 112
   },
   "provenance": {
-    "corpus_files": 369,
-    "corpus_files_before_self_exclusion": 379,
+    "corpus_files": 370,
+    "corpus_files_before_self_exclusion": 380,
     "probe_interpreter": "E:\\AI-Models\\trellis2-env\\Scripts\\python.exe",
     "probe_interpreter_version": "3.13.13",
     "probe_skipped": false,
@@ -3902,8 +3902,8 @@
       ],
       "b1_literals": [],
       "b2_literals": [],
-      "cited_count": 32,
-      "cited_count_raw": 33,
+      "cited_count": 33,
+      "cited_count_raw": 34,
       "cited_in": [
         "docs/experiments/E02-report.md",
         "docs/experiments/E02-texture-stage-on-sound-inputs.md",
@@ -3935,6 +3935,7 @@
         "docs/experiments/E36-task0-report.md",
         "docs/experiments/E44-the-atlas-plan.md",
         "docs/experiments/E47-atlas-ab-kickoff.md",
+        "docs/experiments/E47-atlas-ab-report.md",
         "docs/experiments/README.md",
         "docs/tools.md"
       ],

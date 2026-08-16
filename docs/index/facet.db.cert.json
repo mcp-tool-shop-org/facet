@@ -1,8 +1,8 @@
 {
  "andon": [],
  "corpus": {
-  "files": 382,
-  "id": "efb49da816a3d31a762b46b39441db62bdb9bd78d922c8671617cfebafba50d3",
+  "files": 383,
+  "id": "fb018a80ebbc90436a3a34ca0238fb413dcff80b946278afb177271280a1e50f",
   "manifest": {
    "CLAUDE.md": "77f9495e73997c5143bdf7b3c7aa4d60ef18d03b3470556080fd926446164d50",
    "README.md": "e01790a8526740e78b377a1ffc5315ea9718ff3625a62f3c6eaf49657c94e7cc",
@@ -348,6 +348,7 @@
    "docs/experiments/E46-s3-run-kickoff.md": "52827ca0a1ceb050c0341d01b3483157c2f3273637471873218fb09e5284473d",
    "docs/experiments/E46-s3-run-report.md": "ab85747c5643012aae16ae7bbd3c1c8373890b3c7d17c22e68968a10e39a31af",
    "docs/experiments/E47-atlas-ab-kickoff.md": "3a62fa1b12bfe5809da91e5bd782f040b1ee45b96bfa42c5cb9f1d0edba73b91",
+   "docs/experiments/E47-atlas-ab-report.md": "7432bbd2367072f0f3a2496de7870a48da2b36e88c7ac4d27ac9c3b10dae07b1",
    "docs/experiments/README.md": "768faa06ab825260597bd533f851782b0639a5db5e3f6c36d666c5db14eebe37",
    "docs/findings.md": "a67189c22c064bafaa9272b0a93bfcf81fcf5ab6b0529c67dfc88a5606e69b55",
    "docs/grok-consult-1-brief.md": "00e2db720f46c917d73337055380ed7427cb78897aa4a5b9cac1c504104e8c91",
@@ -363,7 +364,7 @@
    "docs/handbook/index.md": "2481565674a67102d8bc5e5853ce95af48f5694a1f765032d543a07d7bdfbe20",
    "docs/handbook/profiles.md": "411d6c7cbe44cda94d969e05e9d3d8882d898334208c949551857b90b336165b",
    "docs/handbook/subjects.md": "21b276d4a30463a144bddfd69a00868919c480f0a15bfab733f3e763532412ba",
-   "docs/instrument-census.md": "819c5f01a3935654cf1d77b29bf5ed55410ca70bb55d3ccde6985ba34f5371c0",
+   "docs/instrument-census.md": "09dcb6213888bd59a7fc70dd85fab76158e4618fb3069feb7dfaeda56081aee0",
    "docs/known-defects.md": "1c59c6d043c003ace4306b27398797a26f2db55fd282d631b161c1aebecc959c",
    "docs/profiles-design.md": "926c5f767cbdd043ab2740abfbf40d3cc79a9cc765aea57b3ddc46d2202c4339",
    "docs/research/E35-speck-research-grounding.md": "8a61b222be36b22dd88248e723e5208078da1240973d8461c97d80631c07d7b6",
@@ -389,20 +390,20 @@
   }
  },
  "counts": {
-  "artifacts": 1004,
+  "artifacts": 1010,
   "decisions": 225,
   "experiments": 47,
-  "fts": 5597,
+  "fts": 5611,
   "handoffs": 31,
   "laws": 110,
   "phenomena": 28,
-  "prose_sections": 3391,
+  "prose_sections": 3399,
   "rulings": 761
  },
  "db": {
-  "bytes": 14077952,
+  "bytes": 14123008,
   "path": "docs/index/facet.db",
-  "sha256": "7ebcff1fe035ca4b7debedb487f0bf7ca006b7ede4e1eda699a56cb0122b0cc7"
+  "sha256": "611696631506bdafdf86ef7eefc055b84f511b613555d8c83db69ff2e9f39def"
  },
  "determinism_leg": "byte-identity",
  "failures": [],
@@ -422,7 +423,7 @@
   "==============================================================================",
   "",
   "[leg 1] determinism - two builds from an unchanged record",
-  "  BYTE-IDENTICAL   14077952 bytes, both builds",
+  "  BYTE-IDENTICAL   14123008 bytes, both builds",
   "",
   "[corpus] ruling documents discovered by the sorted glob",
   "  E01-ruling-gate1.md                            arc E01                0 rows - prose only",
@@ -540,11 +541,11 @@
   "  laws           110 rows   dangling 0",
   "  experiments     47 rows   dangling 0",
   "  handoffs        31 rows   dangling 0",
-  "  artifacts     1004 rows   dangling 0",
+  "  artifacts     1010 rows   dangling 0",
   "  phenomena       28 rows   dangling 0",
   "  decisions      225 rows   dangling 0",
-  "  fts           5597 rows   dangling 0",
-  "  total checked 2206, dangling 0",
+  "  fts           5611 rows   dangling 0",
+  "  total checked 2212, dangling 0",
   "",
   "[leg 4] the seeded question set - target within the top 3",
   "  canny values for the beast         rank 3   docs/experiments/E12-ruling.md \u00b7 Ruling 11a",
@@ -574,7 +575,7 @@
   "",
   "[vocabulary] what each declared vocabulary did not recognise",
   "             REPORT ONLY - this section never fails the run",
-  "  artifact kinds         recognised  5122   unrecognised    0",
+  "  artifact kinds         recognised  5160   unrecognised    0",
   "  experiment status      recognised    84   unrecognised    4",
   "      not recognised: **PLAN SUPERSEDED IN PLACE; S0 AND S1 R\u2026, **deprioritised by E07's ruling** \u2014 den\u2026  (+2 more occurrence(s))",
   "  law paid_for_by        recognised    74   unrecognised    0",
@@ -593,7 +594,7 @@
  ],
  "unattributed_failures": [],
  "verb": "record_build",
- "verified_utc": "2026-08-16T20:43:01Z",
+ "verified_utc": "2026-08-16T21:16:16Z",
  "verify_exit_code": 0,
  "written_by": "tools/record_mcp.py"
 }
