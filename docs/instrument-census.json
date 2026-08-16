@@ -17,8 +17,8 @@
     "py_files_total": 112
   },
   "provenance": {
-    "corpus_files": 345,
-    "corpus_files_before_self_exclusion": 355,
+    "corpus_files": 357,
+    "corpus_files_before_self_exclusion": 367,
     "probe_interpreter": "E:\\AI-Models\\trellis2-env\\Scripts\\python.exe",
     "probe_interpreter_version": "3.13.13",
     "probe_skipped": false,
@@ -35,7 +35,7 @@
       "docs/experiments/E28-task3-report.md",
       "docs/instrument-census.md"
     ],
-    "test_files": 74
+    "test_files": 75
   },
   "rows": [
     {
@@ -1059,7 +1059,7 @@
       "parse_error": null
     },
     {
-      "a_add_argument": 8,
+      "a_add_argument": 10,
       "a_argparse": true,
       "a_main_guard": false,
       "a_parse_args_module_level": true,
@@ -1074,7 +1074,8 @@
         "tests/test_t53_w3_ceiling_replay.py",
         "tests/test_t54_galleon_ceiling_replay.py",
         "tests/test_t55_dragon_ceiling_replay.py",
-        "tests/test_t60_instrument_dependency_surface.py"
+        "tests/test_t60_instrument_dependency_surface.py",
+        "tests/test_t75_ceiling_custom_cams.py"
       ],
       "anchored_in_basename_only": [
         "tests/test_t08_ceiling.py",
@@ -1083,12 +1084,13 @@
         "tests/test_t53_w3_ceiling_replay.py",
         "tests/test_t54_galleon_ceiling_replay.py",
         "tests/test_t55_dragon_ceiling_replay.py",
-        "tests/test_t60_instrument_dependency_surface.py"
+        "tests/test_t60_instrument_dependency_surface.py",
+        "tests/test_t75_ceiling_custom_cams.py"
       ],
       "b1_literals": [],
       "b2_literals": [],
-      "cited_count": 15,
-      "cited_count_raw": 18,
+      "cited_count": 17,
+      "cited_count_raw": 20,
       "cited_in": [
         "docs/experiments/E04-armT-halt2.md",
         "docs/experiments/E04-executor-session-record.md",
@@ -1104,7 +1106,9 @@
         "docs/experiments/E14-handoff2-report.md",
         "docs/experiments/E27-measurement-mcp-report.md",
         "docs/experiments/E27-predictions.md",
-        "docs/experiments/E31-publish-the-pipeline-kickoff.md"
+        "docs/experiments/E31-publish-the-pipeline-kickoff.md",
+        "docs/experiments/E42-camera-ring-coverage-bound.md",
+        "docs/experiments/E43-border-distance-ceiling.md"
       ],
       "dir": "tools/diagnostics",
       "docstring_line1": "E08 Gate 0, half 1 \u2014 how much of the figure can a styled reference physically reach?",
@@ -1115,7 +1119,7 @@
       "import_safe_modes": {},
       "import_safe_reason": "has a flag surface but no `__main__` guard, so probing it would EXECUTE the module body - against whatever subject its constants name. Not probed, deliberately",
       "invocable": false,
-      "lines": 244,
+      "lines": 355,
       "parse_error": null
     },
     {
@@ -1997,8 +2001,8 @@
       ],
       "b1_literals": [],
       "b2_literals": [],
-      "cited_count": 19,
-      "cited_count_raw": 25,
+      "cited_count": 20,
+      "cited_count_raw": 26,
       "cited_in": [
         "CLAUDE.md",
         "docs/experiments/E10-offsurface-r4ab-predictions.md",
@@ -2015,6 +2019,7 @@
         "docs/experiments/E35-clean-twins-kickoff.md",
         "docs/experiments/E37-remake-report.md",
         "docs/experiments/E40-three-class-arms-kickoff.md",
+        "docs/experiments/E41-where-the-wrong-colour-enters.md",
         "docs/experiments/README.md",
         "docs/specs/measurement-mcp-spec.md",
         "docs/specs/placement-memo.md",
@@ -3894,8 +3899,8 @@
       ],
       "b1_literals": [],
       "b2_literals": [],
-      "cited_count": 30,
-      "cited_count_raw": 31,
+      "cited_count": 31,
+      "cited_count_raw": 32,
       "cited_in": [
         "docs/experiments/E02-report.md",
         "docs/experiments/E02-texture-stage-on-sound-inputs.md",
@@ -3925,6 +3930,7 @@
         "docs/experiments/E35-armslate-spec.md",
         "docs/experiments/E35-clean-twins-kickoff.md",
         "docs/experiments/E36-task0-report.md",
+        "docs/experiments/E44-the-atlas-plan.md",
         "docs/experiments/README.md",
         "docs/tools.md"
       ],

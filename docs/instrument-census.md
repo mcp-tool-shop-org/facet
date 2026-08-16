@@ -13,8 +13,8 @@
 | `.py` files in `tools/verify` | **10** |
 | — files of any other extension there | 0 |
 | **total members** | **112** |
-| corpus files read for axis D | 345 |
-| test files read for axis E | 74 |
+| corpus files read for axis D | 357 |
+| test files read for axis E | 75 |
 | probe interpreter | `E:\AI-Models\trellis2-env\Scripts\python.exe` (3.13.13) |
 
 ## Totals
@@ -93,7 +93,7 @@
 | 29 | `e08_acceptance.py` | diagnostics | no | 18 | no | 4 | yes | n/a | none | E08 Arm A — what does each acceptance test actually cost? |
 | 30 | `e08_bg_derive.py` | diagnostics | no | 7 | no | 2 | no | n/a | none | E08 background arm, step 1 — derive the render background from the subject's gamut. |
 | 31 | `e08_bg_separation.py` | diagnostics | no | 6 | no | 4 | no | n/a | none | E08 A4 — is the subject separable from its background, and where does the cut fall? |
-| 32 | `e08_ceiling.py` | diagnostics | no | 8 | no | 15 | yes | n/a | reach_ceiling | E08 Gate 0, half 1 — how much of the figure can a styled reference physically reach? |
+| 32 | `e08_ceiling.py` | diagnostics | no | 10 | no | 17 | yes | n/a | reach_ceiling | E08 Gate 0, half 1 — how much of the figure can a styled reference physically reach? |
 | 33 | `e08_contradiction.py` | diagnostics | no | 9 | no | 0 | yes | n/a | none | E08 — the contradiction test: does the PROMPT override an attribute the route supplies? |
 | 34 | `e08_deltaE.py` | diagnostics | no | 10 | no | 1 | no | n/a | none | E08 — reference agreement in CIE Lab dE, against a styled reference view. |
 | 35 | `e08_intersect_delta.py` | diagnostics | no | 4 | no | 1 | yes | n/a | none | E08 Amendment 26 — what the trust-mask intersection actually moved. |
@@ -119,7 +119,7 @@
 | 55 | `e12_mouth_geometry.py` | diagnostics | no | 7 | no | 1 | yes | n/a | ambiguous | Is there a TONGUE inside this mesh's mouth, and can any exterior camera see it? |
 | 56 | `e12_n_sheet.py` | diagnostics | no | 4 | no | 0 | no | n/a | measure_report | N generations of ONE view, stacked full size, plus named regions at N x - and no number. |
 | 57 | `e12_nonmanifold.py` | diagnostics | no | 10 | no | 5 | yes | n/a | mesh_topology | E12 Gate 0 — where a reconstruction goes non-manifold, counted AND put on the picture. |
-| 58 | `e12_offsurface.py` | diagnostics | no | 9 | no | 19 | yes | n/a | offsurface_rate | Does a prep bake's position map lie ON the mesh? E10 Ruling 4's question, any subject. |
+| 58 | `e12_offsurface.py` | diagnostics | no | 9 | no | 20 | yes | n/a | offsurface_rate | Does a prep bake's position map lie ON the mesh? E10 Ruling 4's question, any subject. |
 | 59 | `e12_pair_cloud_step.py` | diagnostics | no | 8 | **yes** | 4 | no | n/a | none | E12 handoff 3 Task 4 — the styled target pair's cloud workflow, built and CHECKED on di… |
 | 60 | `e12_pair_sheet.py` | diagnostics | no | 9 | no | 1 | no | n/a | measure_report | clay \| control \| styled, one row per view, full size — the sheet that serves the eye. |
 | 61 | `e12_region_colour.py` | diagnostics | no | 6 | no | 0 | yes | n/a | none | Median Lab / chroma / hue inside named regions, masked to the silhouette — the tone cha… |
@@ -173,7 +173,7 @@
 | 109 | `texel_provenance.py` | diagnostics | no | 17 | no | 14 | yes | n/a | texel_provenance | Where did this pixel's colour actually come from? |
 | 110 | `texpass_metrics.py` | diagnostics | no | 7 | no | 2 | no | n/a | no opinion | E05 — one metric table, computed identically for every arm. |
 | 111 | `tree_manifest.py` | verify | yes | 7 | no | 9 | yes | yes | none | Protection manifests for the read-only trees: verify one, or emit a new one. |
-| 112 | `turn_render.py` | verify | no | 14 | no | 30 | yes | n/a | none | Matched-framing turnaround render of a GLB. |
+| 112 | `turn_render.py` | verify | no | 14 | no | 31 | yes | n/a | none | Matched-framing turnaround render of a GLB. |
 
 ## Axis F — every `n/a` and every `false`, with its reason
 

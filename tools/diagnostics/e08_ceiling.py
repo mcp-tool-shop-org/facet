@@ -14,7 +14,22 @@ which returns (0,-1,0) at yaw 0 and (0,1,0) at yaw 180 — the hardcoded pair. T
 ASSERTS that equivalence before reporting anything, so the generalisation is checked
 against the shipped code rather than argued for.
 
-  e08_ceiling.py --prep DIR [--sets 2,4,6,8,12] [--out-json c.json]
+  e08_ceiling.py --prep DIR [--sets 2,4,6,8,12] [--elev yaw:el,...] [--cams yaw:el,...]
+                 [--restrict-mask blade.npy] [--out-json c.json]
+
+E42 added `--cams`: an explicit camera set that REPLACES the ring entirely (no implicit
+yaws(n) flat ring underneath), for measuring a ring that is broken or absent rather than a
+flat ring plus extras — which `--elev` cannot express, since it unconditionally ORs its
+pairs onto a full flat ring. Absent, output is byte-identical to before the flag existed;
+present, it only adds a `custom` row inside each settings block, plus `parsed_elev` /
+`parsed_cams` echo fields at the top level so a consumer can verify what was actually
+parsed without re-reading argv.
+
+E42 Task 2 also added `--restrict-mask`: an externally-built boolean .npy over this
+prep's own NV valid-texel population (e.g. "is this texel on the blade"), reported as a
+nested `restricted` block inside the `custom` row only — pct there is of the restricted
+population, not of NV. Absent, unused. Shape-checked against NV with a real ANDON (raises;
+same-shape-wrong-order is a silent-wrong-number risk, not just a usage error).
 
 Standards compliance: PIN_PER_STEP — every threshold is a parameter and the defaults are
 project_twins' own. EXTERNAL_VERIFIER — reports reachable share; it does not say whether
@@ -36,6 +51,24 @@ ap.add_argument("--head-facing-min", type=float, default=0.18)
 ap.add_argument("--bias", type=float, default=3e-3)
 ap.add_argument("--noffs", type=float, default=1.5e-3)
 ap.add_argument("--elev", default="", help="extra elevated cameras, 'yaw:el,yaw:el'")
+ap.add_argument("--cams", default="",
+                help="explicit camera set, REPLACING the ring entirely - "
+                     "'yaw:el,yaw:el,...'. Unlike --elev (which ORs its pairs onto "
+                     "an unconditional flat N-ring - see the yaws(n) loop below - and "
+                     "so cannot express a ring with no flat component), this computes "
+                     "reachability for EXACTLY the listed cameras and nothing else: "
+                     "no implicit ring, any per-camera elevation. Absent, output is "
+                     "byte-identical to before this flag existed - it only ADDS a "
+                     "'custom' row inside settings when non-empty. E42.")
+ap.add_argument("--restrict-mask", default="",
+                help="path to a .npy boolean array over the SAME NV valid-texel "
+                     "population this tool already builds (e.g. 'is this valid "
+                     "texel on the blade'), built externally with e08_ceiling's "
+                     "own valid-texel convention (mask.npy > 0.5, flattened). "
+                     "When given, the 'custom' row (see --cams) ALSO reports "
+                     "reachability restricted to this population, as a nested "
+                     "'restricted' block. Absent, unused - byte-identical output. "
+                     "E42 Task 2.")
 ap.add_argument("--out-json")
 args = ap.parse_args()
 
@@ -51,6 +84,28 @@ N = np.load(os.path.join(args.prep, "nor.npy")).reshape(-1, 3)[valid].astype(np.
     * 2.0 - 1.0
 N /= np.linalg.norm(N, axis=1, keepdims=True) + 1e-12
 NV = P.shape[0]
+
+# E42 Task 2 - an optional population restriction, e.g. "which of these valid
+# texels sit on the blade". This is NOT a new blade definition: the population
+# is built externally (see E42's check_face_correspondence.py / build_blade_
+# restrict_mask.py) from E40 Seat C's own blade_face_ids, transferred onto
+# THIS prep's texels by nearest-face lookup - the geometric definition (which
+# crop boxes, which faces) is entirely inherited, unchanged. Shape is checked
+# because same-shape-wrong-content (a stale prep, a different valid-texel
+# order) would silently produce plausible, wrong, unfalsifiable restricted
+# numbers - the same risk class as a misparsed --cams, and the reason this one
+# DOES raise (T33's SITES count for this file moves 2 -> 3 with this commit).
+restrict_mask = None
+if args.restrict_mask:
+    restrict_mask = np.load(args.restrict_mask)
+    if restrict_mask.shape != (NV,):
+        raise AssertionError(
+            "ANDON: --restrict-mask shape %r != this prep's valid-texel count "
+            "(%d,) - population mismatch, likely a stale or wrong-prep mask"
+            % (restrict_mask.shape, NV))
+    restrict_mask = restrict_mask.astype(bool)
+    print(f"[ceiling] --restrict-mask: {int(restrict_mask.sum()):,} / {NV:,} "
+          f"valid texels in scope ({100.0*restrict_mask.mean():.2f}%)", flush=True)
 
 CX0, CY0, CX1, CY1 = meta["crop"]
 CROP_RES = meta["crop_res"]
@@ -113,6 +168,26 @@ for spec in [s for s in args.elev.split(",") if s.strip()]:
     y, e = spec.split(":")
     extra.append((float(y), float(e)))
 
+# E42 - a fully explicit camera set, parsed the same permissive way as --elev
+# above (plain unpack/float; a malformed spec raises a plain ValueError, same
+# as --elev always has - no new ANDON here, so T33's gate census for this file
+# does not move). Unlike `extra`, this list REPLACES the ring rather than
+# joining it: see the `if custom_cams:` block below, which unions ONLY these
+# cameras with no yaws(n) ring underneath.
+custom_cams = []
+for spec in [s for s in args.cams.split(",") if s.strip()]:
+    y, e = spec.split(":")
+    custom_cams.append((float(y), float(e)))
+
+# E42 - ECHO what was actually parsed, unconditionally, for both flags. Both
+# `extra` and `custom_cams` are parsed permissively (no ANDON) so a malformed
+# spec silently drops a pair or misreads one instead of refusing; this run's
+# entire output is camera sets, so a silent misparse would produce plausible,
+# wrong, unfalsifiable numbers. The echo makes that visible in the transcript
+# without adding a gate.
+print(f"[ceiling] parsed --elev: {extra}", flush=True)
+print(f"[ceiling] parsed --cams: {custom_cams}", flush=True)
+
 # ---- E12 Ruling 6e(i): the captions state the floors they RAN, not the floors
 # ---- one subject happened to have when the strings were typed ----------------
 # The three captions used to be the literals "body 0.45 / head 0.18",
@@ -159,6 +234,14 @@ if args.bias > WALL_FLOOR:
           flush=True)
 sets = [int(s) for s in args.sets.split(",")]
 out = {"valid_texels": int(NV), "head_band": int(headband.sum()), "settings": {}}
+# E42 - the echoed, parsed camera lists ride the JSON payload too, always
+# present (even empty), so a consumer can verify what was actually measured
+# without re-parsing the argv string itself.
+out["parsed_elev"] = [{"yaw": y, "el": e} for y, e in extra]
+out["parsed_cams"] = [{"yaw": y, "el": e} for y, e in custom_cams]
+if restrict_mask is not None:
+    out["restrict_mask"] = {"path": os.path.abspath(args.restrict_mask),
+                            "in_scope_texels": int(restrict_mask.sum())}
 # `settings` is keyed by the display label, and the labels move when the floors do
 # — which is the whole point of the 6e(i) repair, but it means a consumer must not
 # select a block by its caption. `e14_atlas_anatomy` did exactly that
@@ -194,6 +277,34 @@ for label, fb, fh in SETTINGS:
                                             "pct": round(float(R.mean() * 100), 2)}
             print(f"[ceiling]   {n:>3}+{len(extra)} elevated       "
                   f"{int(R.sum()):>9,}  {R.mean()*100:5.2f}% of valid")
+    if custom_cams:
+        # E42 - a fully explicit camera set: UNION of exactly these cameras,
+        # no yaws(n) ring underneath. This is the arm this flag exists for -
+        # a ring that is broken (or not a ring at all) rather than a flat
+        # ring plus extras.
+        R = np.zeros(NV, dtype=bool)
+        for y, e in custom_cams:
+            R |= reach(y, e, fb, fh)
+        rows["custom"] = {"cameras": len(custom_cams), "reachable": int(R.sum()),
+                          "pct": round(float(R.mean() * 100), 2),
+                          "cams": [{"yaw": y, "el": e} for y, e in custom_cams]}
+        print(f"[ceiling]   custom {len(custom_cams):>3} cams          "
+              f"{int(R.sum()):>9,}  {R.mean()*100:5.2f}% of valid  "
+              f"{[(y, e) for y, e in custom_cams]}")
+        if restrict_mask is not None:
+            # E42 Task 2 - the SAME per-texel reachability R, intersected with
+            # an externally-supplied population (e.g. blade texels). pct here
+            # is of the RESTRICTED population, not of NV - a different
+            # denominator, named explicitly so it cannot be misread as the
+            # whole-figure pct two lines above.
+            Rr = R & restrict_mask
+            in_scope = int(restrict_mask.sum())
+            rows["custom"]["restricted"] = {
+                "in_scope_texels": in_scope, "reachable": int(Rr.sum()),
+                "pct_of_restricted": round(float(Rr.sum() / max(in_scope, 1) * 100), 2)}
+            print(f"[ceiling]   custom {len(custom_cams):>3} cams  RESTRICTED   "
+                  f"{int(Rr.sum()):>9,} / {in_scope:>9,}  "
+                  f"{100.0*Rr.sum()/max(in_scope,1):5.2f}% of restricted scope")
     out["settings"][label] = rows
 
 # what a camera adds on its own, in production settings — is the gain the diagonals?

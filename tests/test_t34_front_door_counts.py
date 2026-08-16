@@ -468,12 +468,41 @@ def test_t34_every_pinned_site_states_the_collected_count(
 DIGIT_SITES_PER_README = 2
 
 
+# European locales write a thousands separator this matcher cannot read.
+# French renders 1072 as "1 072", so NUMBER - whose lookbehind class is
+# [A-Za-z\d.,:/=-] and does not contain   - sees the integers 1 and 72,
+# and the site reports ZERO. That is the SAME reading a stale translation
+# produces, so the leg cannot tell a correct French file from a dead one.
+# It FIRED on correct work for exactly this reason (2026-08-16, README.fr.md,
+# whose counts were current and non-breaking-space separated).
+#
+# A no-break or narrow-no-break space BETWEEN two digits is a group separator
+# and is never anything else, so collapsing it is unambiguous. This ADDS a form
+# the leg can read and REMOVES NO COVERAGE: a missing or stale count still
+# yields zero occurrences and still fails, which the second fixture below pins.
+#
+# Alternatives considered and rejected in writing, because each removes
+# coverage rather than adding capability: dropping README.fr.md from the
+# parametrization (loses French entirely); lowering DIGIT_SITES_PER_README to 1
+# (loses a site on all eight files); reverting the French translation to its
+# stale state (discards a correct file and restores the defect the run existed
+# to fix - this was done once, on this same misreading); and rewriting
+# README.fr.md to use bare digits (degrades the public French surface to suit a
+# test, and the generator reproduces the correct form on every future run).
+#
+# Scoped to this leg deliberately. The sweep at NUMBER's other consumer reads
+# English source surfaces, which carry no locale separators; narrowing the
+# change to the leg that reads generated translations keeps it auditable.
+GROUP_SEP = re.compile(r"(?<=\d)[  ](?=\d)")
+
+
 def digit_occurrences(root, rel, value):
-    """How many times `value` appears as a standalone integer in `rel`."""
+    """How many times `value` appears as a standalone integer in `rel`,
+    reading a locale group separator as part of the number."""
     p = os.path.join(root, rel)
     if not os.path.exists(p):
         return None
-    text = "\n".join(_lines(p))
+    text = GROUP_SEP.sub("", "\n".join(_lines(p)))
     return sum(1 for m in NUMBER.finditer(text) if int(m.group(1)) == value)
 
 
@@ -494,6 +523,43 @@ def test_t34_every_readme_carries_both_counts_twice(rel, counts):
             "READMEs regenerate together: `translate-all.mjs README.md "
             "--cache-clear` before the release commit, per the release-ordering "
             "law." % (rel, key, value, n, DIGIT_SITES_PER_README))
+
+
+def test_t34_digit_leg_reads_a_locale_group_separator(tmp_path):
+    """French writes 1072 as "1 072". Before this leg learned the group
+    separator, NUMBER read the integers 1 and 72 and the site reported ZERO -
+    identical to what a stale translation produces. The gate fired on a correct
+    file for that reason (2026-08-16, README.fr.md).
+
+    THE DISCRIMINATOR, and the reason this fixture is worth having: it asserts
+    first that the RAW matcher cannot find the value in this text. A fixture
+    that passes under the implementation it replaces does not test the change,
+    so if that assertion ever stops holding, this test has quietly stopped
+    testing anything and says so instead of going green."""
+    p = tmp_path / "README.xx.md"
+    p.write_text(
+        "les 1 072 tests, dont 1 027 hermetiques\n"
+        "localement 1 072 et 1 027 reproduits par le CI\n",
+        encoding="utf-8")
+    raw = [int(m.group(1))
+           for m in NUMBER.finditer(p.read_text(encoding="utf-8"))]
+    assert 1072 not in raw and 1027 not in raw, (
+        "fixture no longer discriminates: the raw matcher already reads the "
+        "separated form, so this test cannot fail under the old implementation")
+    assert digit_occurrences(str(tmp_path), "README.xx.md", 1072) == 2
+    assert digit_occurrences(str(tmp_path), "README.xx.md", 1027) == 2
+
+
+def test_t34_digit_leg_still_fires_on_a_stale_locale_file(tmp_path):
+    """The repair must not blunt the leg. A separator-formatted file quoting a
+    DEAD count still reports zero for the live one - and the second assertion
+    is what makes the first mean something, by proving the zero is a real
+    ABSENCE rather than a matcher that cannot read the form at all."""
+    p = tmp_path / "README.xx.md"
+    p.write_text("les 9 999 tests, dont 8 888 hermetiques\n",
+                 encoding="utf-8")
+    assert digit_occurrences(str(tmp_path), "README.xx.md", 1072) == 0
+    assert digit_occurrences(str(tmp_path), "README.xx.md", 9999) == 1
 
 
 def test_t34_every_declared_exemption_is_real():

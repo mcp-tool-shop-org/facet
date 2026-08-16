@@ -627,7 +627,8 @@ def reach_ceiling(prep: str, sets: str = "2,4,6,8,12",
                   facing_min: float | None = None,
                   head_facing_min: float | None = None,
                   bias: float | None = None, noffs: float | None = None,
-                  elev: str | None = None) -> dict:
+                  elev: str | None = None, cams: str | None = None,
+                  restrict_mask: str | None = None) -> dict:
     """How much of this surface can a given camera set actually paint?
 
     Wraps tools/diagnostics/e08_ceiling.py: the reachable-texel ceiling over
@@ -638,7 +639,14 @@ def reach_ceiling(prep: str, sets: str = "2,4,6,8,12",
     prep   a bake-prep directory: meta.json (with crop + crop_res), mask.npy,
            pos.npy, nor.npy, prep_uv.glb
     sets   comma-separated camera counts, e.g. "2,4,6,8,12"
-    elev   extra elevated cameras, "yaw:el,yaw:el"
+    elev   extra elevated cameras, ORed onto a full flat ring, "yaw:el,yaw:el"
+    cams   E42: an explicit camera set REPLACING the ring entirely (no
+           implicit flat ring underneath) - "yaw:el,yaw:el,...". Reported as
+           a 'custom' row inside each settings block.
+    restrict_mask  E42 Task 2: path to a .npy boolean array over this prep's
+           own valid-texel population (e.g. "is this texel on the blade"),
+           reported as a nested 'restricted' block inside the 'custom' row.
+           Requires cams to be set - the restriction only applies there.
     """
     _need_file(prep, "the prep directory",
                "Pass the bake-prep directory the route produced.")
@@ -658,6 +666,10 @@ def reach_ceiling(prep: str, sets: str = "2,4,6,8,12",
             "meta.json lacks %s" % ", ".join(missing),
             "The ceiling needs the head-band crop keys; a prep written "
             "before they existed cannot answer the head/body split."))
+    if restrict_mask:
+        _need_file(restrict_mask, "the restrict-mask file",
+                   "Pass a .npy boolean array over this prep's own "
+                   "valid-texel population.")
 
     params = {"prep": os.path.abspath(prep), "sets": sets}
     args = ["--prep", prep, "--sets", sets]
@@ -670,6 +682,12 @@ def reach_ceiling(prep: str, sets: str = "2,4,6,8,12",
     if elev:
         args += ["--elev", elev]
         params["elev"] = elev
+    if cams:
+        args += ["--cams", cams]
+        params["cams"] = cams
+    if restrict_mask:
+        args += ["--restrict-mask", restrict_mask]
+        params["restrict_mask"] = os.path.abspath(restrict_mask)
     fd, out_json = tempfile.mkstemp(suffix=".json", prefix="ceiling_")
     os.close(fd)
     try:

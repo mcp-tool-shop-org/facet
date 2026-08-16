@@ -60,7 +60,7 @@ SITES = {
     "diagnostics/e12_region_colour.py": 3, "diagnostics/e13_anchor_check.py": 3,
     "diagnostics/e13_gate1_sheet.py": 3, "diagnostics/e14_band_density.py": 3,
     "diagnostics/gained_bg_check.py": 3, "diagnostics/silhouette_agree.py": 3,
-    "diagnostics/e08_ceiling.py": 2, "diagnostics/e12_frame.py": 2,
+    "diagnostics/e08_ceiling.py": 3, "diagnostics/e12_frame.py": 2,
     "diagnostics/e12_head_sheet.py": 2, "diagnostics/e12_twin_readout.py": 2,
     "diagnostics/e13_a2_allocation.py": 2, "diagnostics/e13_payoff_sheet.py": 2,
     "diagnostics/e14_pair_readout.py": 2, "diagnostics/brush_reach.py": 1,
@@ -227,13 +227,18 @@ def test_t33_the_structural_check_can_fail():
 
 
 def test_t33_the_census_is_the_one_e25_measured():
-    """The population, pinned. Every converted site is now a raise and the per-file
-    counts are unchanged."""
+    """The population, pinned. Every converted site is now a raise, and the
+    per-file counts move only when a later arc moves them on purpose (this
+    file's own header, line 18) - which is what E42 did: e08_ceiling.py
+    gained a THIRD raise (--restrict-mask's population-shape ANDON, a new
+    gate rather than one of E25's 133 conversions), so the total below is
+    134, one over E25's own historical 133 (module docstring, line 3, left
+    alone - it describes what E25 converted, which did not change)."""
     for rel, n in SITES.items():
         src = io.open(tool(rel), encoding="utf-8").read()
         got = len(_andon_raises(src))
         assert got == n, "%s carries %d ANDON raises; E25 converted %d" % (rel, got, n)
-    assert sum(SITES.values()) == 133
+    assert sum(SITES.values()) == 134
     assert len(SITES) == 43
 
 

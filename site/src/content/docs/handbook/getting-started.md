@@ -23,10 +23,10 @@ Generation runs on metered cloud GPU; geometry and every measurement run locally
 ```bash
 git clone https://github.com/mcp-tool-shop-org/facet
 cd facet
-python -m pytest -m "not artifacts"   # the 1027 hermetic tests CI reproduces
+python -m pytest -m "not artifacts"   # the 1042 hermetic tests CI reproduces
 ```
 
-The full suite is 1072 tests. The 45 it deselects are the *artifacts* tier — they replay
+The full suite is 1087 tests. The 45 it deselects are the *artifacts* tier — they replay
 recorded trees that are not in git, so they pass locally and are skipped in CI by
 design.
 
