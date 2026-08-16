@@ -1,8 +1,8 @@
 {
  "andon": [],
  "corpus": {
-  "files": 351,
-  "id": "0bcb4c80e36d88bdd4c7f7fd39d558c424b4918885640e4b5251ab9311ed558e",
+  "files": 352,
+  "id": "0d3037852a7cdcfc3c3ec4ff9ecfb6c491163239e6318d8301dc49225db23c4b",
   "manifest": {
    "CLAUDE.md": "0f25a65bec22448ae07ff26256906eb19492beeaf3a08fb830961940e2b5c5d9",
    "README.md": "86a14f98ebd4930c5b80515faca8da3a45631ef48fae621249dfd84da2f3c3b1",
@@ -15,6 +15,7 @@
    "docs/comfy-consult-6.md": "c2e92798c5f2fb75f258f2cf8b8481dff5d1eb1653eb07d23dabc7d9340f0e73",
    "docs/comfy-consult-7-brief.md": "a920d2708df047ef6ca9a7465a4879988b4546e231ee74e979a9faacd34cb538",
    "docs/comfy-consult-7.md": "ee69f3f110d86c76335472b273deb50d03b345445eefeb15df90a160186dd885",
+   "docs/comfy-consult-8-brief.md": "654afddc78c715996df8cb07642b938711313da0f1f33c77cabace335a599105",
    "docs/concept-prep.md": "85a2db891ab3cc7df1968630e18e43382df2156cdd5610a2273f13d2d639a28a",
    "docs/context-architecture.md": "8555c7de2fe36ed81b9dfaedd8cb3679c3fb849d5ff2e42275135349082a083f",
    "docs/experiments/E01-facial-structure-ceiling.md": "53f992ff6aca14f59dab3ecaadc5fef1c9abe56f5c29600f427f316820ff90da",
@@ -335,7 +336,7 @@
    "docs/handbook/index.md": "2481565674a67102d8bc5e5853ce95af48f5694a1f765032d543a07d7bdfbe20",
    "docs/handbook/profiles.md": "411d6c7cbe44cda94d969e05e9d3d8882d898334208c949551857b90b336165b",
    "docs/handbook/subjects.md": "8bcaa95ec843c064ed94f8abb9f6cd2978c836a7cb563cffa5fc18f7b63aa7a1",
-   "docs/instrument-census.md": "d986ee0ce6f6fe32c0eb039a00a2226ccf1476fea22f1504d2d4a120178c83ad",
+   "docs/instrument-census.md": "ea0c544ce15c09494e92412584e6c4e5c39a822b29cdb32ffbccab0b8e44796b",
    "docs/known-defects.md": "a6384f8a53549a09d0b6a544ae722770b828d610aa770ab54a7003f565c1aed8",
    "docs/profiles-design.md": "926c5f767cbdd043ab2740abfbf40d3cc79a9cc765aea57b3ddc46d2202c4339",
    "docs/research/E35-speck-research-grounding.md": "8a61b222be36b22dd88248e723e5208078da1240973d8461c97d80631c07d7b6",
@@ -555,7 +556,7 @@
  ],
  "unattributed_failures": [],
  "verb": "record_build",
- "verified_utc": "2026-08-16T00:56:33Z",
+ "verified_utc": "2026-08-16T01:01:13Z",
  "verify_exit_code": 0,
  "written_by": "tools/record_mcp.py"
 }
