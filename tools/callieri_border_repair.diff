@@ -1,0 +1,55 @@
+diff --git a/tools/callieri_border.py b/tools/callieri_border.py
+index ecdcbac..cf8c517 100644
+--- a/tools/callieri_border.py
++++ b/tools/callieri_border.py
+@@ -53,6 +53,11 @@ file refuses to ship.
+ BACKGROUND SENTINEL. Prefer +inf (ray miss / far plane). NaN and -inf are
+ also treated as background. Do not use 0.0: a valid ortho Z can be near 0.
+ 
++v1.0.1 (E45 report): _finite_neighbour_jump subtracts only finite-finite
++pairs. Background-background inf-inf printed RuntimeWarning on every
++real frame; the pair mask already discarded those NaNs, so public
++arrays are byte-identical to 1.0.0. Pinned numbers are unchanged.
++
+ YES/NO INTERVALS.
+ 
+   border_weight        0 = on a zero (image border or depth edge).
+@@ -98,7 +103,7 @@ import sys
+ import numpy as np
+ from scipy.ndimage import distance_transform_edt
+ 
+-TOOL_VERSION = "1.0.0"
++TOOL_VERSION = "1.0.1"
+ 
+ # Default view axis in CAMERA space: Blender camera looks down -Z, a
+ # front-facing surface has camera-space normal +Z. facing = max(0, n.view).
+@@ -200,18 +205,27 @@ def _finite_neighbour_jump(depth, thr):
+     fattens that step and would make the construction unstateable, so it
+     is not OR-ed into the set. thr == 0 means "no finite-finite edge"
+     (a constant plane; float noise must not become a crease).
++
++    v1.0.1: subtract only where pair is True. Background-background
++    inf-inf printed RuntimeWarning on every real frame (E45 report);
++    the pair mask already discarded those NaNs. Same form as
++    _typical_neighbour_abs. Public arrays stay byte-identical.
+     """
+     if thr <= 0.0:
+         return np.zeros(depth.shape, dtype=bool)
+     fin = _finite(depth)
+     edge = np.zeros(depth.shape, dtype=bool)
+     pair = fin[:, :-1] & fin[:, 1:]
+-    jump = np.abs(depth[:, :-1] - depth[:, 1:]) > thr
++    jump = np.zeros(pair.shape, dtype=bool)
++    if pair.any():
++        jump[pair] = np.abs(depth[:, :-1][pair] - depth[:, 1:][pair]) > thr
+     hit = pair & jump
+     edge[:, :-1] |= hit
+     edge[:, 1:] |= hit
+     pair = fin[:-1, :] & fin[1:, :]
+-    jump = np.abs(depth[:-1, :] - depth[1:, :]) > thr
++    jump = np.zeros(pair.shape, dtype=bool)
++    if pair.any():
++        jump[pair] = np.abs(depth[:-1, :][pair] - depth[1:, :][pair]) > thr
+     hit = pair & jump
+     edge[:-1, :] |= hit
+     edge[1:, :] |= hit
