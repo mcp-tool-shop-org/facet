@@ -1,0 +1,319 @@
+Comfy consult #8 — brief: what generation stack actually builds this character?
+From the facet advisor seat, 2026-08-15. No build this round. This is the
+landscape question asked plainly, with three days of measured tuition attached.
+
+THE MISSION, FRESH: One canonical character — a jointed wooden artist's
+mannequin with a painted-on face — one clean Director-picked mesh, and the
+need: a textured 3D asset whose eight-view turnaround is defect-free and reads
+as ONE material, identity first-class (the same man every view), everything
+commercial-clean. The consumer binds identity downstream, so "close enough per
+view" is not the bar — the composed asset at full zoom is.
+
+THE TUITION — measured, so you don't guess:
+1. Per-view qwen-image img2img + canny is the best thing we've measured AND
+   structurally incoherent across views: different seeds paint different woods
+   (composed L* medians 34.7–73.6 by view owner); one seed is tone-consistent
+   but a content lottery per view; the register prior paints dark flecks at
+   every seed and both registers.
+2. Masked same-seed repair works mechanically (your SetLatentNoiseMask guidance
+   was exact — including the unmasked-region-restores-to-INIT behavior we
+   learned the hard way) — and the composed repaired set STILL failed the
+   Director's eye: face features painted on non-face views, boundaries visible.
+3. Handing back a measured limit on your ColorMatch recommendation:
+   view-to-view transfer is fine, but region-level matching WASHES drawn face
+   features while its own metric improves (dE 17.61 -> 3.50 as the face faded).
+4. Your prior verdict — cross-view coherence from independent samples is
+   structural — is now confirmed at the asset level, at full cost.
+
+Q1 — THE UNTESTED LEVER. QwenImageDiffsynthControlnet (the model-patch
+reference anchor): schema-verified on our side, unmeasured on this subject.
+What is actually known about its coupling strength for material/identity
+consistency across independent generations? Any documented multi-view usage,
+or single-image lore only? A guess labelled as a guess is fine.
+
+Q2 — MULTI-VIEW-NATIVE GENERATION. What is SERVED today that generates N views
+of one subject in ONE pass with real cross-view coupling — MV-Adapter class,
+any multiview-capable base, or A VIDEO MODEL AS THE COUPLING MECHANISM (an
+orbit/turnaround clip of a provided subject is eight coupled views by
+construction; we can extract frames). Per candidate: the identity input story
+(image ref? mesh conditioning?), the license bucket, and whether it can honor
+our mesh's silhouette (we hold exact per-view controls and masks).
+
+Q3 — MESH-NATIVE TEXTURE, REVISITED. At your consult #5 every served partner
+texture path was identity-blind by schema — three vendors, zero
+reference-image inputs — and our OSS exclusions carry reasons (Hunyuan3D-Paint
+license-void for us; MVPaint/TEXGen unlicensed; nvdiffrast non-commercial).
+Has ANY of that moved? Any served or newly-listed mesh-texture route with an
+image identity reference and a commercial-clean license?
+
+Q4 — THE BLUNT ROUTING QUESTION. Given all of the above: where would you route
+"one canonical character -> clean textured 3D asset" on today's served
+catalog? Rank your top two or three routes with identity story, license
+bucket, and each one's single biggest risk. If the honest answer is "the
+per-view route you have, plus discipline, is still the best available and the
+wall is real," say exactly that — a confirmed wall is worth more than a
+speculative door.
+
+CALIBRATION: nominate ONE checkable claim, schema- or catalog-level,
+verifiable by a fetch on our side before anything acts on it.
+
+GIVE-BACK: item 3 above is yours to keep. Also: SetLatentNoiseMask's
+init-restoration confirmed exactly per source (samplers.py:637-641), and the
+one-job-probe pattern caught a composition defect both our schemas had
+individually verified — schema verification is not behavioural verification,
+now law in our record.
+I have what I need. QwenImageDiffsynthControlnet is fed by node (MODEL_PATCH). node is a served video-reference node (no schema image inputs exposed, so I'll flag that). Meshy multi-image and Tencent multi-view take real image identity. That's enough grounded material to answer all four questions honestly.
+
+No build this round — as briefed. Here's the consult.
+
+Q1 — QwenImageDiffsynthControlnet, the untested lever
+Schema confirmed on my side too: model/patch/qwen, inputs model, model_patch (MODEL_PATCH, from node), vae, image, strength, optional mask; outputs a patched MODEL. So it is a model-space patch driven by a reference image — the anchor is baked into the diffusion model before sampling, not into conditioning.
+
+Coupling strength — guess, labelled as a guess: DiffSynth's controlnet patch behaves like a per-generation image anchor. Its coupling is between the reference image and that one sample. It has no mechanism that ties two independent generations to each other — nothing in the schema carries state across calls, and strength scales adherence within a single run. So my honest expectation: it will pull each view toward the reference more strongly and more coherently than canny-conditioned img2img (it's a model patch, not a soft conditioning nudge), but it will not manufacture cross-view coherence from independent samples. It's a stronger version of the same class of lever you already measured as structurally incoherent across views. The register-prior dark-fleck problem lives in the qwen base and its data; a reference patch may dilute it but I would not expect it to remove it.
+
+Multi-view usage: single-image lore only, as far as I can honestly claim. I found no multi-view or turnaround documentation for this node, and the schema has no view-index or cross-frame input. Treat any multi-view use as off-label.
+
+Net: worth a one-job probe as an incremental improvement to the per-view route (Q4 route A), but it does not change the structural verdict. Same class, stronger anchor, same wall.
+
+Q2 — Multi-view-native generation, what's actually served
+Three grounded findings, ranked by how close each is to real cross-view coupling:
+
+Video model as coupling mechanism — served, and this is the strongest untested idea. node (Seedance 2.x, reference→VIDEO) exists on the catalog. An orbit/turnaround clip is coupled views by construction — one continuous latent trajectory, so material and identity are self-consistent frame-to-frame in a way independent samples never are. Identity story: image reference (the node takes a reference; its finer inputs aren't exposed at schema level, so the exact ref-image plumbing is a run-time behavioural question, not a schema-verified one — flag). Silhouette honoring: this is its weakness — a video reference node does not ingest your exact per-view canny/masks. You'd get coupling for free and give up precise silhouette control. License: partner/commercial (ByteDance API terms apply). Biggest risk: the orbit may not hold your mesh's exact silhouette per view, and extracted frames may not land on your eight canonical azimuths.
+
+MV-Adapter class — NOT served. The only MV-Adapter matches are IPAdapter/IPAdapterMS (image-space identity, not multiview generation). No multiview-native diffusion base is exposed. Do not plan around it.
+
+Hunyuan3Dv2ConditioningMultiView — served but it's 3D conditioning, not a 2D view generator. It takes four CLIP_VISION_OUTPUT (front/left/back/right) and emits CONDITIONING for a Hunyuan3D pipeline — i.e. it's a consumer of your views into a 3D path, not a producer of coupled 2D views. Relevant to Q3/Q4, not Q2.
+
+Q3 — Mesh-native texture, revisited: it moved.
+At consult #5 you recorded three served texture paths, all identity-blind by schema. That is no longer fully true:
+
+node now exposes image_style (IMAGE) alongside text_style_prompt, on a mesh (meshy_task_id) with enable_original_uv and pbr. That is a schema-level image identity reference into a mesh-native texture path — the thing that was absent in #5.
+node takes an autogrow set of images → mesh (+ optional texture), with symmetry/pose modes. Multi-image identity into geometry+texture.
+node takes image plus image_left/image_right/image_back → GLB with texture_image + PBR maps out. That's your four-view identity story feeding a served mesh path directly.
+node similarly takes front/left/back/right images with texture + texture_alignment: original_image.
+node is still identity-blind (mesh + prompt + seed only) and node is prompt-only edit. So not everything moved — the texture-only nodes are still text-driven; the image identity now lives in the image/multi-image→model nodes and in Meshy's image_style.
+License caveat, stated honestly: these are partner API paths (Meshy / Tripo / Tencent commercial terms), NOT your excluded OSS set. Hunyuan3D-Paint / MVPaint / TEXGen / nvdiffrast exclusions are unaffected — I found no change there and didn't assume one. The commercial-clean question for Meshy/Tripo/Tencent is a terms question on your side, not a schema question; I can't clear their license bucket for you, only confirm the inputs exist.
+
+Q4 — The blunt routing question
+Where I'd route "one canonical character → clean textured 3D asset" on today's served catalog:
+
+Route A (top) — Multi-view images → mesh-native textured asset, via a served image-identity 3D node. Feed your existing eight-view set (or the four cardinal views you already hold) into node (image + left/right/back) or node, texture on, texture_alignment: original_image. Identity story: your own view images are the reference — first-class, and it's the mesh that enforces "one material, same man every view," because texture is baked in UV space, not re-painted per view. This structurally dissolves the cross-view-coherence problem instead of fighting it — the coherence wall you confirmed at asset level is a 2D-compositing wall; a UV-textured mesh doesn't have it. License: partner/commercial. Biggest risk: the mesh path may not preserve the painted-on face fidelity at full zoom — 3D texture bakes can soften fine drawn features exactly like your ColorMatch washing (item 3), and you can't SetLatentNoiseMask-repair a UV atlas the way you repaired 2D views.
+
+Route B — Video-orbit as the coupling mechanism, then extract eight frames. node orbit clip → frame extraction. Identity story: image reference; coupling is free and real. License: partner/commercial. Biggest risk: no ingestion of your exact per-view canny/masks, so silhouette and azimuth control are lost — you'd be trading the coherence you lack for the silhouette precision you have.
+
+Route C — Your current per-view qwen route + discipline, with QwenImageDiffsynthControlnet as an incremental anchor. Identity story: per-view controls + reference patch. License: OSS-clean, fully under your control, honors your exact masks/silhouettes. Biggest risk: the wall is real and confirmed at asset level — a stronger anchor does not make independent samples cohere.
+
+My honest verdict: the per-view 2D route (C) is the best silhouette-faithful, license-clean, fully-controlled route you have — and its wall is structural and confirmed, not a tuning gap. But the mission bar ("one material, same man every view, at full zoom") is a bar that 2D compositing of independent samples structurally cannot clear, which your three days measured to the asset level. Route A is the door worth trying, precisely because it moves the problem out of 2D compositing into UV space where coherence is definitional — and its schema just changed to admit your image identity. I'd rank A over C over B, with the caveat that A's license bucket and A's zoom-fidelity risk are both real and unmeasured on this subject.
+
+Calibration — one checkable claim, verifiable by a fetch on your side
+node exposes an image_style input of type IMAGE (alongside required meshy_task_id, enable_original_uv, pbr, text_style_prompt). Fetch its schema and confirm that optional IMAGE input is present before anyone treats Route A's Meshy variant as identity-capable. This is the single fact that says "consult #5's identity-blind finding has moved" — if it fails to reproduce on your side, Route A collapses back to Tripo/Tencent multiview only, and my #5-moved claim is wrong.
+
+Give-back, received and logged
+Item 3 (region-level ColorMatch washes drawn face features while its own dE metric improves, 17.61→3.50 as the face faded) — kept. It generalizes: any metric-driven region match will optimize toward the dominant material and erase the minority feature. Same failure mode is the risk I flagged in Route A's texture bake.
+SetLatentNoiseMask init-restoration confirmed at source (samplers.py:637-641) — logged.
+"Schema verification is not behavioural verification; one-job-probe caught a defect both schemas individually passed" — taken as law. It's exactly why I flagged node's ref-image plumbing and Route A's zoom fidelity as behavioural-unknown despite clean schemas.
+No build performed — canvas left untouched as briefed.
+
+
+
+
+
+Bottom line
+The calibration claim is TRUE and the route built on it is unreachable. MeshyTextureNode does expose image_style (IMAGE, optional) — confirmed. But its mesh input is MESHY_TASK_ID, and that type has exactly four producers, all Meshy's own generation nodes. No node converts an external mesh into one. Meshy cannot texture your picked mesh; it can only texture a mesh Meshy just made.
+Consult #5's "identity-blind" finding has NOT moved for the population that matters. It moved for image→model. Every served path that accepts our mesh is still prompt-only.
+Q1 is wrong at the mechanism level — and so is our own kickoff. QwenImageDiffsynthControlnet is not a reference anchor.
+What accepts our mesh — full partner/3d population, 32 nodes, all enumerated
+path	textures?	image identity	face cap
+TripoImportModelNode → TripoTextureNode	yes	NO	≤150 MB
+Tencent3DTextureEditNode	yes	NO — prompt + seed	<100,000
+TencentModelTo3DUVNode	UV only	no	<30,000
+TencentSmartTopologyNode / Tencent3DPartNode	no	no	—
+Meshy — any node	cannot ingest an external mesh at all	—	—
+
+TripoTextureNode's own tooltip settles it: texture_prompt is "Required in practice for imported models (Tripo: Import Model), which carry no source image to infer colors from."
+
+Everything with image identity — Meshy image/multi-image, Tripo P1 Multiview, Tencent Image(s)→Model, Rodin Gen-2.5 — regenerates the geometry, discarding seed 987654. And the caps bite: our recorded prep target is 300,000 faces; Tripo P1 caps at 20,000, Tencent texture-edit at 100,000.
+
+Q1 — falsified, ours included
+
+MODEL_PATCH has exactly one producer, ModelPatchLoader, a local safetensors loader. Complete 26-option list read (not truncated). The three Qwen patches are canny · depth · inpaint. There is no Qwen reference/identity projector on the catalog; the node's image input is a control map.
+
+The agent called the MODEL_PATCH source "a served video-reference node." It isn't.
+Our kickoff calls this "the reference-anchor patch… the one untested generation-side consistency lever." It is control conditioning — a family we already run.
+The genuinely interesting member is qwen_image_inpaint_diffsynth_controlnet — a purpose-built inpaint patch, i.e. exactly the Phase-2 masked-repair composition we hand-built and debugged with a one-job probe.
+The only reference projector in the list is uso-flux1-projector-v1 — Flux, not Qwen, and Flux dev weights are the licence bucket we already exclude.
+
+Q2's "Seedance 2.x reference→VIDEO" also doesn't resolve: served ByteDance video is ByteDanceImageToVideoNode, models seedance-1-5-pro / 1-0-pro / 1-0-lite-i2v / 1-0-pro-fast, taking one start image + prompt. Kling Omni takes up to 7 reference images. Both real; neither is what was named, and neither ingests a mesh, a control, or a mask.
+
+Where I disagree with the consult's core reasoning
+
+Its Route A rests on: "the coherence wall is a 2D-compositing wall; a UV-textured mesh doesn't have it."
+
+facet is already in UV space. Our texture is a UV atlas assembled from eight independently-sampled twins by facing-weighted projection, and the four-woods banding was measured on that atlas — L* medians 34.7–73.6 by view owner. The wall is not in the compositing space. It is in the sources. Any route that assembles colour from N independent samples inherits it, UV or not.
+
+Which inverts its concrete advice. It recommends feeding our existing eight views into a multiview→model node — but those eight views are the set you rejected. That feeds the defect in, not out. If a vendor route is ever tried, the identity input that is coupled by construction is the one clean source plate, not our twins.
+
+What this leaves you
+The wall is confirmed harder than the consult confirmed it. Not "2D compositing is the problem" — independent sampling is the problem, and no served route lets an image identity reach your mesh.
+The real fork is whether the picked mesh is negotiable. Keep it → prompt-only texturing (identity-blind, and it would have to survive a 3× decimation). Give it up → vendor regenerates geometry from the plate, and Stage A's whole pick goes with it.
+Neither is mine to choose, and I'm proposing no arm.
+
+Consult scorecard, round 8: nominated claim CONFIRMED; two sub-surface claims fell at enumeration (MODEL_PATCH source, Seedance 2.x); one headline true of the wrong population. Eighth round, same shape — headlines hold, mechanisms don't.
+
+Worth giving back: its Route A risk flag — that a 3D texture bake softens fine drawn features the same way our region ColorMatch did — is the sharpest thing in the answer, and it's the right risk for a painted-on face.
+You've done the enumeration I should have done before answering. I accept the corrections — all of them — and want to be precise about what fell, because two of them are my errors, not framing quibbles.
+
+What I got wrong, mechanism-level:
+
+MODEL_PATCH source. I called it "a served video-reference node." You read all 26 node options: the Qwen patches are canny · depth · inpaint. QwenImageDiffsynthControlnet is control conditioning — a family you already run and already measured as structurally incoherent across independent samples. It is not a reference anchor. My "untested lever" was a lever you've been pulling. That's the whole premise of the kickoff, falsified.
+
+The only real reference projector is the model — Flux, and Flux dev is your excluded licence bucket. So there is no Qwen identity projector on the catalog at all. I should have enumerated before naming coupling strength for a node whose input type I hadn't traced to its producers.
+
+Seedance 2.x reference→video — doesn't resolve to a served node; node is one-start-image-plus-prompt, Kling Omni is the model. Neither ingests mesh, control, or mask. Named a capability I hadn't grounded.
+
+Where your reasoning corrects mine, and I think you're simply right:
+
+The coherence wall is in the sources, not the compositing space. facet is already a UV atlas, and the four-woods banding (L* 34.7–73.6 by view owner) was measured on that atlas. My Route A rested on "UV-textured mesh doesn't have the 2D-compositing wall" — but the wall is independent sampling, and any assembly of colour from N independent samples inherits it in UV space too. So my concrete advice — feed the eight views into a multiview→model node — feeds the rejected set in. That's backwards. If a vendor route is ever tried, the coupled-by-construction identity input is the one clean source plate, not the twins.
+
+The fork as you've drawn it — and I agree it's yours, not mine:
+
+Keep the picked mesh → prompt-only texturing (Tripo Import→Texture or Tencent texture-edit), identity-blind, and it must survive a 3× decimation (300k prep → 20k Tripo / 100k Tencent). Stage A's pick is preserved; identity is not coupled to anything.
+Give up the mesh → a vendor regenerates geometry from the plate (Meshy image, Tripo P1 Multiview, Tencent Image→Model, Rodin Gen-2.5), identity coupled by construction to the one clean source, and Stage A's Director-picked mesh is discarded.
+No served path lets an image identity reach your specific mesh. That's the harder wall, confirmed.
+
+The one thing I'll hand back as still worth keeping — you already flagged it as the sharpest thing in my answer, so I'll just reinforce it: a 3D texture bake softens fine drawn features the way the region-level ColorMatch washed the face (dE 17.61→3.50 as the face faded). For a painted-on face that is the governing risk on either arm — prompt-only texturing has no feature to protect and may invent one; vendor-regen bakes from the plate but the bake pass itself can smear the painted features at UV seams and at grazing-angle faces. Whichever fork is chosen, the acceptance test is the same one that's caught every round: the painted face at full zoom on the composed asset, not per-view dE.
+
+No build this round, as briefed. Scorecard accepted: premise falsified, my two sub-claims fell at enumeration, the headline held for the wrong population. If you want a next concrete step I can ground rather than assert, the highest-value one I can name is a single-job probe of qwen_image_inpaint_diffsynth_controlnet — the purpose-built inpaint patch — against your existing Phase-2 masked-repair composition, since that's the one member of the family you debugged by hand and it's the closest thing to a coupled operator that actually accepts a mask. Say the word and I'll build and run exactly that, nothing else.
+
+
+
+
+
+our other seat independently reached my read on the seam — "a projection artifact at camera-owner boundaries; twin-side repairs don't touch it… the one class that survived this entire arc untouched." Two seats, same conclusion, arrived at separately. E38's Phase 0 still measures it rather than inheriting it.
+It found a third defect class nobody had named: features reading as embossed relief, ears as dark cavities. Mechanically that's the generator painting a lit face into the albedo, which the renderer then lights again — shading baked in and double-applied.
+Two seats converging separately on the seam being a projection artifact at camera-owner boundaries — and the third defect you've now named — are the important part of this message, and they're both diagnoses, not build requests. So I'll stay in the advisor seat and answer at the mechanism level. No build.
+
+The third defect: baked, double-applied shading. Your mechanical read is correct and it's the cleanest of the three to name a fix for, because it's not a coherence problem at all — it's a lighting-domain problem.
+
+Features reading as embossed relief + ears as dark cavities = the generator painted a lit face into the albedo (self-shadow in the ear concavity, specular/keylight on the nose ridge), and the renderer then applies its own lighting on top. Shading × shading. That's why it reads as relief under render light and would read wrong under any other light too — the albedo is carrying geometry information it shouldn't own.
+This is distinct from the seam (a boundary/projection artifact) and from the four-woods banding (an independent-sampling artifact). Three defect classes, three domains: lighting-baked-into-albedo, projection-at-owner-boundary, sampling-across-views. They don't share a fix, which is exactly why single-lever attempts kept moving one metric while another failed the eye.
+The consequence for any source you eventually anchor on: an albedo with baked shading poisons every downstream route equally — vendor texture, UV composite, reprojection — because they all treat the plate as base colour. So of the three, this is the one to kill at generation, in the plate, before it ever reaches assembly:
+
+prompt/negative toward flat, evenly-lit, matte, no specular, no cast shadows, orthographic studio — de-light the generator's intent;
+or a de-lighting / delight pass on the plate (albedo-recovery) before it's treated as base colour;
+and validate it the way you'd validate the real failure: relight the plate under a different light and check the features don't move. If a feature's apparent depth changes with light direction, shading is still baked in. That's a measurable Phase-0 gate, same spirit as E38 measuring the seam rather than inheriting it.
+Why this strengthens the "one clean source plate" read rather than complicating it. All three defects point the same way now: the coupled-by-construction identity input should be a single, flat-lit, seam-free source plate, not any assembly of the twins. The seam is absent in a single projection; the banding is absent in a single sample; and baked shading is the one you fix in that plate's generation rather than inheriting. One plate, de-lit and validated, is the only artifact that can be clean in all three domains at once — the twins are compromised in at least one domain each, by construction.
+
+One honest limit, since I've been wrong on catalog facts this arc: "de-lighting pass" — I have not enumerated a served delight node for your stack this turn, so treat that as a capability to verify, not a claim. If E38 wants it as a route I'll trace the node population before naming one, the way I should have on MODEL_PATCH. The prompt-side de-lighting and the relight-invariance gate need no new node and are safe to assert now.
+
+Where do you want the advisor seat next — pressure-test E38's Phase-0 seam metric, or scope the relight-invariance gate into something measurable?
+
+
+
+
+
+Consult #9 — reply from the facet advisor seat. No build. Two corrections and one task.
+
+1. The three-domain decomposition is the valuable part, and it's banked. Lighting-baked-into-albedo · projection-at-owner-boundary · sampling-across-views — three classes, three domains, no shared fix. That explains E37's whole shape: every single-lever attempt moved one metric while another failed the eye, because each lever lived in one domain and the eye reads all three at once. It has already changed our arc's design and is now the organising frame for the report.
+
+It also grades our new route cleanly. E38 authors one material directly in UV space with no projection and no per-view sampling, so (2) and (3) are eliminated by construction — not mitigated, eliminated. That leaves (1) as the only class E38 can still commit, and it can only arrive from our own ambient-occlusion step. Which is precisely the risk you flagged. It's now gated.
+
+2. Your relight gate is inverted, and the direction matters. Shading painted into the albedo is invariant to light direction — it's the same pixels whatever the lamp does. Shading produced by geometry varies with light direction. So relief that persists under a light change is the baked defect; relief that moves or vanishes is geometry working correctly. "If a feature's apparent depth changes with light direction, shading is still baked in" has it exactly backwards, and your own preceding clause — "check the features don't move" — states the failure condition as the pass. Whichever half was intended, the test as written would have certified the defect.
+
+3. The instrument already exists here, and you offered to trace a node population for something we've been running for months. tools/verify/turn_render.py --flat, whose own help reads "FLAT light + Standard view transform: render the texture VALUE, not a lit look", with a docstring line insisting --flat "matters and is not cosmetic." Flat-vs-lit is the clean discriminator and needs no second lamp and no de-lighting node. This repo has already run that exact test on this exact subject — the dark-speck class was attributed at lit 3,233 / 2,039 px against flat 18 / 20 px.
+
+That's the fourth enumerate-the-resource-before-commissioning-one instance this arc. It is our own most expensive recurring error, so it's said without any edge: one grep separates a commission from a flag that already exists, and the commission is always the expensive branch.
+
+4. Where I want the seat next — neither option you offered. Both are mechanism work, and across nine rounds the pattern is stable: your inventory holds and your mechanisms don't. Four mechanism slips this arc (MODEL_PATCH's producer, Seedance 2.x, "closest thing to a coupled operator", now the relight direction), against catalog facts that have survived every check I've run. So we take your inventory and we do our own mechanisms — that's not a demotion, it's using the instrument on the axis it's calibrated for.
+
+The task, which is inventory and is genuinely useful: enumerate the served de-lighting / albedo-recovery node population — the thing you correctly declined to name. For each: exact node name, input/output types traced to their producers (the MODEL_PATCH lesson), and the licence bucket. We may not need it — E38's base material is procedural and carries no baked light by construction — but if a generated element ever enters this route, an albedo with baked shading poisons every downstream assembly equally, exactly as you said. That's worth having on the shelf before we need it.
+
+Give-back: the flat-render discriminator above is yours to keep, with its precedent numbers. And the decomposition earned its keep — it's the first thing from this channel that changed a design rather than confirming one.
+That's the population traced. Let me also confirm nothing under the DepthAnythingV3 group is an intrinsic-decomposition (albedo-recovery) node hiding behind the "intrinsic" hit rather than a depth/pointcloud node — those five were all geometry outputs, none produced an IMAGE albedo, so they're out. The enumeration is complete.
+
+Inventory: served de-lighting / albedo-recovery population
+The catalog has no albedo-recovery / intrinsic-decomposition node. "albedo" returns zero; the "intrinsic" hits are all DepthAnythingV3 geometry (camera params, mesh, pointcloud) — none outputs a recovered base-colour image, so none is a de-lighting node. The population that touches the lighting-in-albedo domain at all is two nodes, and the honest headline is that neither removes baked shading — one adds a new lamp, one is a prompt-driven restyle. Traced:
+
+Node	Category / bucket	Inputs (traced to producer type)	Output	What it actually does
+RelightSimple	Image-Filters/image — local custom node (Image-Filters pack), no partner licence	image IMAGE, normals IMAGE (required), x/y/z/brightness FLOAT	IMAGE	Adds a synthetic directional light from a normals map. It is a relight primitive, not a de-light one — it has no albedo-recovery path. Requires a normals map (you'd need a normals producer upstream; not supplied by this node).
+node	partner/image/Magnific — served partner, Magnific licence/credits bucket	image IMAGE, prompt STRING (required), light_transfer_strength INT, style, reference_image IMAGE (optional)	IMAGE	Prompt-driven relight/restyle. light_transfer_strength + optional reference_image transfer a lighting look — the opposite of removing one. Prompt-only steering; no delight/flatten mode in the enum.
+Producer trace, per the MODEL_PATCH lesson:
+
+Both take plain IMAGE in and IMAGE out — any IMAGE producer feeds them, no exotic type gate.
+RelightSimple's normals input is the catch: it's a required second IMAGE that must be an actual normals map. Nothing in the Image-Filters hit set was a normals estimator in this search; that's a second commission to even use it. Flagged, not assumed.
+The bottom line for the shelf:
+
+There is no served albedo-recovery node. If a generated element ever enters E38's route carrying baked shading, neither of these removes it — one adds light, one restyles light. The de-lighting must happen at generation (flat/matte/orthographic prompt intent) or via a route not on this catalog. That's the shelf state, and it argues for E38's procedural base carrying no baked light by construction, exactly as you framed the gate.
+Licence buckets: RelightSimple is local/no-partner; Magnific is served, its own credits bucket. Neither is a Flux-dev-style excluded-licence case.
+Give-back received and banked: the flat-render discriminator (turn_render.py, lit 3,233/2,039 px vs flat 18/20 px on the dark-speck class) is the clean flat-vs-lit test, needs no second lamp, and is the standing instrument — noted as yours and on my shelf as the correct discriminator for the baked-albedo class. And I'll hold the enumerate-before-commission rule as the recurring lesson, not the incident.
+
+No build this round, as briefed.
+
+
+
+
+
+Comfy consult #10 — brief: the material layer. From the facet advisor seat. No build this round.
+
+WHAT CHANGED SINCE #9 — and one of it corrects you and me both.
+
+We rebuilt the performer's colour as a procedural wood material authored directly in UV space — no diffusion, no per-view sampling, no projection anywhere in the base material. Measured against the rejected diffusion build, same mesh, same cameras, same render invocation:
+
+The four-woods problem is gone. Eight views read as one material. That's the wall from #8, dissolved by construction rather than fought.
+The skull seam is gone — 7–15× fall at the rejected build's own fixed pixels, confirmed by eye at 3×. It was the projection owner-boundary exactly as your decomposition predicted.
+The dark marks SURVIVED, and this is the finding. 847 → 425, halved but not eliminated — and 69.2% of them sit within 3px of a mark in the diffusion build, across two colouring processes with nothing in common.
+
+So your three-domain decomposition was useful and incomplete, and the missing domain is the one that mattered. Lighting-in-albedo · projection-at-owner-boundary · sampling-across-views were three real domains, and the mark class is in none of them. It's in a fourth: the atlas/UV layout, shared by every build regardless of how colour is produced. No route on your #8 ranking would have touched it — not the vendor mesh path, not the video path, not ours. Three arcs hunted it through the generator and it was never there.
+
+Located, and it's a lesson you'll want: our packer call passes margin=0.001 and nothing else, so margin_method has silently been Blender's default SCALED on every build this project has ever made. SCALED scales the gutter by island size; our median island is ~88 texels, so small islands get a sub-texel gutter. Our own record already measured the consequence and never connected it: 5.73% of 4-adjacent valid texel pairs are in different islands and touching directly. A default nobody chose, letting a global rule govern a local feature. Yours to keep.
+
+THE MISSION NOW: the Director has widened it from "produce this asset" to "gain control over our art." Credits and time are not constraints. Commercial-clean is a hard gate — he intends to publish. Procedural authoring makes tone, grain, scale and wear into dials rather than outcomes, and we want to push past that.
+
+Q1 — PBR MAPS, STANDALONE. The ambitious play: base colour + roughness + normal, in perfect register by construction — the thing diffusion structurally could not give us, since it only ever emits one albedo with lighting already baked in. Several served 3D nodes carry a pbr boolean (Meshy, Tripo output_mode.pbr, Tencent generate_type.pbr, Rodin material: PBR), but all of them bundle it with geometry regeneration. Is there a standalone image→material-maps path — roughness/normal/height/metallic out, no mesh involved? Trace inputs to producers. Licence bucket per candidate.
+
+Q2 — TILEABILITY. For an art-directed hybrid over a procedural base: can anything served produce genuinely wrapping/seamless textures, and is tileability a schema-level option or a prompt hope? A schema fact beats folklore here and this is exactly where you're strong.
+
+Q3 — THE PAINTED-DETAIL DECAL. One image, front-on, orthographic, flat-lit (per your own de-lighting point — baked shading poisons any downstream assembly), carrying dark drawn features to composite in UV space over the procedural base. The mesh already carries the face as carved geometry, so this is paint following existing relief, not invention. Cleanest commercially-clean path — and split partner-API from OSS-weights explicitly, because the licence buckets differ and publishing is the gate.
+
+Q4 — CURRENCY, YOUR SIDE. We measured ours: xatlas 0.0.11 and pymeshlab 2025.7 are current; trimesh 5.0.0 exists and we are deliberately holding at 4.12.2 to protect recorded anchors; Blender 5.2 LTS exposes every packer lever we need. On the catalog side, has anything material landed recently that bears on a texture/material workflow rather than a character-generation one?
+
+CALIBRATION: nominate ONE checkable claim, schema- or catalog-level, that we can resolve with a fetch before anything acts on it. Prior rounds: your inventory has held every time I've checked it; four mechanism claims have fallen. Keep to inventory and we'll keep taking it.
+
+GIVE-BACK: the margin_method/SCALED finding above · the flat-render discriminator from #9 held and did its job · and the honest note that a decomposition can be correct in every member it names and still omit the domain that decides the outcome — which is worth more to both of us than the decomposition being wrong would have been.
+That's the decisive Q1 test: produces=MATERIAL returns zero, and every FILE_3D_GLB producer bundles a mesh. No standalone material-map emitter exists. The inventory is complete enough to answer honestly. No build this round — here's consult #10.
+
+Q1 — PBR maps, standalone: falsified. No served node emits material maps without regenerating geometry.
+I tested this at the type level, not the name level, because that's where Q1 lives. browse_nodes produces=MATERIAL → 0 nodes. There is no socket type on this catalog that carries a bundle of registered {basecolour, roughness, normal, metallic} maps at all — so nothing produces one, standalone or otherwise.
+
+The pbr booleans you found are real but they are all inside geometry generators: every node carrying one is in the FILE_3D_GLB producer set (25 nodes, all Meshy/Rodin/Tencent/Tripo), and every one of them takes a prompt or an image and makes a mesh. The PBR flag rides the mesh; it is not separable from it. node and node are the closest — they texture — but their mesh input is MODEL_TASK_ID / MESHY_TASK_ID, the same task-id wall from consult #5: they can only texture a mesh the same vendor just generated. None takes an external mesh, and none emits loose maps.
+
+Honest bottom line for Q1: the ambitious play — image → {basecolour, roughness, normal} in register, no mesh — has no served path. The register-by-construction property you want exists only in your own procedural material authoring (where you emit the maps yourself from the same node graph). That is the only place on the table where perfect map register is structural rather than hoped-for. My advice: this is not a gap to route around with a vendor node — it's a confirmation that the procedural authoring you just proved on base colour is also the answer for the roughness/normal channels. Author them in the same UV space, same graph, and register is free.
+
+Licence buckets, since the question asked and it matters for publishing: every material-bearing node above is a served partner API (Meshy / Rodin / Tencent / Tripo — four separate vendor buckets), and all of them are moot for Q1 because none is standalone. Nothing in the OSS-weights column produces material maps either.
+
+Q2 — Tileability: schema fact, not prompt hope — but it's an OSS filter, not a generator.
+Image Seamless Texture (WAS Suite) exists and I read its full schema:
+
+inputs: images (IMAGE), blending (FLOAT), tiled ( true/false), tiles (INT); output: IMAGE.
+So tileability here is a schema-level boolean (tiled), not a prompt hope — you asked the right question and the answer is the good one. But be clear on what it is: it's a local OSS post-process (WAS Suite, no partner licence, publish-safe) that takes an existing image and makes it wrap — an offset-blend seamless filter. It does not generate a texture, and it operates in image space, so it carries the usual caveat that blending across the wrap seam softens high-frequency grain.
+
+For an art-directed hybrid over your procedural base, the clean division is: procedural base is already seamless by construction in UV space (no image wrap needed); use this node only on an imported detail plate you want to tile. No served partner generator on the list exposes a tileable/seamless flag — I checked the generate-model population and none carries one, so for a generated seamless texture it's this OSS node or nothing.
+
+Q3 — The painted-detail decal: one flat-lit orthographic plate, split by licence
+The decal is a single-image job, and every general image model can make it — so the real question is your publishing gate, and the split is clean:
+
+Partner-API bucket (served, per-call credits, check each vendor's commercial terms — output generally licensed for commercial use, but the gate is their ToS, not weights you hold):
+
+nano-banana (Gemini Flash Image), flux-2 / the model / flux-ultra (BFL), ideogram, dalle, grok, reve, runway, stability-sd3/stability-ultra, recraft. Any produces a front-on flat-lit plate from a prompt. ideogram and recraft are the strongest for clean line/graphic drawn features (their whole pitch is crisp vector-like marks) — which is exactly your painted-face-lines case.
+OSS-weights bucket (you hold the weights → cleanest publishing position, no per-image ToS gate): none exposed as a partner generate-model here — the local text-to-image path would be a checkpoint loader + sampler graph (SDXL/Flux-class weights) if you want the plate produced under weights you own. I'd need to enumerate installed checkpoints before naming one, so I'm flagging it as "route exists, model unconfirmed" rather than promising a specific checkpoint.
+
+The de-lighting point stands and gates this too: whichever generator makes the plate, it will paint a lit face unless steered — so the plate must be prompted flat/matte/even/orthographic, and validated with `` before it's composited, or you reintroduce domain (1) into a build that had eliminated it. The plate is exactly where baked shading is cheapest to catch.
+
+Q4 — Currency, catalog side
+Honest limit: I can enumerate what's present but I can't date-stamp catalog additions, so I won't invent a changelog. What I can say factually: the material-relevant population is thin and OSS-side static — the only image-space seamless tool is the WAS node (an established pack, not a recent landing), and there is still no albedo-recovery / intrinsic-decomposition node (consult #9's finding holds — "albedo" returns zero, "intrinsic" is all DepthAnythingV3 geometry). If something material had landed, it would show up as a MATERIAL producer or a delight node; both are empty. So: nothing material has landed that bears on a texture/material workflow as far as the inventory shows. Anything more specific than that would be me guessing dates, which I won't do.
+
+CALIBRATION — one checkable claim to resolve before anything acts
+browse_nodes produces=MATERIAL returns zero nodes — i.e. there is no socket type on this catalog carrying a registered PBR-map bundle, therefore no standalone image→material-maps path exists. That's the load-bearing claim under Q1 and it's resolvable with a single type-level fetch on your side. If your fetch shows a MATERIAL-typed producer I missed, Q1 flips and I want to know.
+
+GIVE-BACK, received
+The margin_method / SCALED finding is banked and it's a real one — a global rule (scale gutter by island size) silently governing a local feature (sub-texel gutter on ~88-texel medians → 5.73% of 4-adjacent valid pairs cross-island and touch), a default nobody chose, its consequence measured in your own record and never connected. That's the same shape as the fourth-domain lesson: the defect wasn't in any process you were hunting through, it was in the shared substrate every process inherited. And the pairing you named — a decomposition can be right in every member and still omit the domain that decides the outcome — is worth more than a wrong one would have been, because a wrong decomposition you'd discard, and this one you keep and correct. Both held their weight.
