@@ -180,3 +180,17 @@ advisor's fold.
 - 2026-08-16 — dispatched as a background Opus seat at session open, together with Grok
   brief #5. The record server was recertified first (`record_build`, four legs, SERVING) —
   the previous session's final commit had left the served DB one commit stale.
+- 2026-08-16, later — **Grok build #5 landed and folded at `9cbe957`** while the seat ran:
+  `tools/s3_composite.py` + `tests/test_t77_s3_composite.py`, verified per protocol
+  (nominated selftest value exact; T34+T77 = 61 passed; 1107/1062 collected). ⚠ This
+  overturned a premise of the *brief*, not of this dispatch: **Grok Build has repo
+  access** (Director's word; the advisor had asserted the opposite twice from inherited
+  kickoff prose — corrected in place in `docs/advisor-kickoff.md`). The arrays-in contract
+  stands as design, not as necessity.
+- 2026-08-16, same steering — **t-number collision reconciled**: the seat's uncommitted
+  emitter tests had independently taken t77; steered mid-flight to rename to
+  `tests/test_t78_emit_view_aovs.py`, re-collect counts at land time, and optionally smoke
+  one view through `s3_composite` after Gate A (labelled diagnostic). Next free number is
+  t79 and is reserved to Grok's round-3 build (`docs/grok-consult-6-brief.md`, the flow
+  estimator — the correction tool for Q1's warp, distinct from this seat's instrument,
+  which remains the measurement of record).
