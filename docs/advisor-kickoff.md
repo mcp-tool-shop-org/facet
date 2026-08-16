@@ -76,7 +76,7 @@ as their own.** They will. That is the whole value.
 | HEAD | re-measure at your open — `git log --oneline -1`; it moves inside a session |
 | working tree | check `git status` **before every fold**; seats work uncommitted in a tree you also write to |
 | suite | **THE SUITE: 1072 tests, 1027 hermetic.** **RE-COUNT before quoting** — `pytest --collect-only -q` and the same with `-m "not artifacts"`, currently 1072 total / 1027 hermetic. T34 pins every surface off the collector, and every one of them changes in the *same* commit |
-| the record | the index rebuilds and verifies **19/19** over 39 experiments. No staleness findings at the declaration leg |
+| the record | the index rebuilds and verifies **19/19** over 40 experiments. No staleness findings at the declaration leg |
 | highest T | **T74** (landed) |
 | accepted assets | five — W3, galleon, dragon, longsword, the E34 performer (reopened) |
 | protected trees | manifests **HELD byte-identical before and after** the catalogue survey |
