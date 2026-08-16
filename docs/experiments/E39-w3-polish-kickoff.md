@@ -237,3 +237,75 @@ invisibly.
 ## Amendments
 
 *(appended in place, with dates and reasons)*
+
+### Amendment 1 — Task 1 ruled, and the advisor's candidate is dead (2026-08-16)
+
+Report: `E:\AI\training\facet_E39\task1-report.md`. **Gate 0 PASSED on two legs** — an eye leg
+at native 1:1 on all seven regions the Director named, and a specification leg whose material
+centres were derived from a *different object* than the one tested (recall 93–99% at ΔE>14).
+Nothing was written under `facet_E08`; 818 files, `Compare-Object` clean against a baseline taken
+at seat open.
+
+**RULED: the gold class is `reference`-carried. Road B.** `dilation` is genuinely enriched —
+1.76× / 1.92× / 2.22×, ranking stable across all three thresholds — and **cannot carry the
+regions**: 9.52% of detected-region pixels, **4.27%** of the area of regions ≥300 px, 11 regions
+against `reference`'s 369. On the tight population, **gold out of place is 91.05% `reference` at
+0.99× — dead on base rate.**
+
+**Two reasons this is accepted rather than dismissed as a boundary artifact**, since the advisor
+walked the tunic, skirt and blade zooms at native size at its own seat and the detector is
+visibly boundary-dominated: the executor **named that its window-41 bias runs in the direction
+that favours the advisor's candidate** and the result went the other way anyway; and the
+per-region dominance census does not depend on which components merged. §1 of the report states
+the limitation before §6 answers the same question on the tight population. **A leg whose
+weakness is declared by its own author, with the direction of the bias named, is worth more than
+a leg with no declared weakness.**
+
+**Two findings kept SEPARATE from the gold ruling rather than folded into it:**
+- **Green out of place is a different mechanism** — `brush` **5.49×**, `dilation` **3.34×**,
+  `reference` down to 68.46%. The same-island flood constraint may well be the right fix *for
+  this class*, which is not the class the Director named first.
+- **The blade is the one `dilation`-dominant large region**, at a **48.3% plurality** — not a
+  majority. A mixed case, and the region he called the largest single offence.
+
+**The unit reconciliation is the report's largest finding** and is folded to
+[known-defects.md](../known-defects.md): `dilation` is **26.95% of the written atlas and 4.95% of
+rendered figure pixels, 0.18×**. Every dilation figure this repo reasons from is in atlas texels
+— **including the ones in this dispatch's own §"The question"** — and overstates what a camera
+sees by 5.4×. Two inherited claims reproduce to the digit (68.82%, 26.95%); two do not and are
+withdrawn as unattributed rather than corrected (`813,773`, `33.9% of the atlas`).
+
+**The executor's P1/P2 missed badly** (24% → 4.95%; 66% → 92.31%) and its `predictions.md` had
+**named that exact trap and then anchored on the inherited atlas number anyway**, which is the
+most useful miss in the arc: the ritual saw the hazard and the number still came from the wrong
+unit. P3–P6 hit, including P5's own named alternative (the blade → `dilation`) landing as
+region #10.
+
+### Amendment 2 — Task 2 redefined before it ran (2026-08-16)
+
+**The `view_owner` route is closed, correctly.** `e11_manifest.py:93` declares
+`"owner_channel": False` — *"honestly absent, never synthesized"* — and no `owner_id_*.npy`
+exists in any of the 26 view directories. The seat enumerated before designing, which is the law.
+
+**`reference`-carried is consistent with two mechanisms that need completely different fixes**,
+and Task 2 as originally written did not separate them:
+
+- **(a) the twins DISAGREE** — one view paints gold where another paints cloth, and the
+  projection resolves the conflict badly. This is the study-swarm's finding, and SyncMVD is
+  aimed squarely at it.
+- **(b) the twins AGREE** — a twin simply painted gold on the tunic, the generator hallucinated
+  it *within one view*, and the projection faithfully carried a defect that was already there.
+  **No multi-view synchronisation fixes this**, because there is no cross-view conflict to
+  resolve.
+
+**Task 2's question is therefore: at gold-out-of-place surface points, do the twins agree or
+disagree?** Cheapest decisive form first — establish whether `pair_twin_y+000_e+00.png` is the
+same camera and framing as `views/y+000_e+00/asset.png`, because if it is, the front twin and the
+final front render compare pixel-to-pixel with no reprojection at all. Check the framing rather
+than assume it: this route has been bitten by a 2 px frame mismatch before (E04 Ruling 15).
+The eight-view reprojection is built **only if** the cheap form does not resolve it.
+
+**Why this matters beyond this arc:** the study-swarm's convergent recommendation assumes (a).
+If the answer is (b), the swarm's headline finding is aimed at the wrong mechanism for this
+asset, and adopting SyncMVD on its strength would be the same error this arc was built to
+catch — one level up.

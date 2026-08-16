@@ -71,6 +71,53 @@ carrying a source label: **74.9% of 813,773 dilated texels take their colour fro
 island**, from a median **0.177 away on a figure 1.0 tall** — 61 median triangle edges, 18%
 of the figure's height.
 
+⚠ **AMENDED 2026-08-16 ([E39](experiments/E39-w3-polish-kickoff.md) Task 1) — this entry was
+read for a whole arc as the explanation of W3's blotchiness, and it is not.** Two separate
+corrections, and the second is the larger:
+
+**1. Every number above is in ATLAS TEXELS; the defect is judged in RENDERED PIXELS, and for
+`dilation` the two differ by 5.4×.** Measured on W3's own `provenance_atlas_indexed.png` beside
+its 26 exported views:
+
+| class | % of the **written** atlas | % of **rendered** figure px | render ÷ atlas |
+|---|---|---|---|
+| `reference` | 68.82% | 92.31% | 1.34× |
+| `brush` | 4.23% | 2.74% | 0.65× |
+| `dilation` | **26.95%** | **4.95%** | **0.18×** |
+
+Written texels total 14.32% of the atlas, reproducing E07 Gate 0's packed coverage exactly, and
+*"68.8% of valid referenced"* reproduces to the digit at 68.82%. **The atlas share overstates
+what any camera sees by 5.4×** — dilation lives in gutters and in small islands, and *"paint
+lives in big charts, holes live in small ones"* (below) is why: the same inspection paradox that
+makes a dilated texel's island small makes it cheap in screen space. **A provenance share quoted
+in atlas texels is not a claim about the asset's appearance.** Tenth consecutive arc lost to the
+unit/population family, and the first where the mis-united number was the *advisor's* own
+reasoning basis.
+
+**2. `33.9% of the atlas` matches no denominator on this artifact** — the measured shares are
+26.95% of the written atlas and 3.86% of all texels. The figure is left in place, unrepaired,
+because its object is not identified: it may be a different arm's state, and re-deriving it while
+looking at the numbers that would judge it is retuning. **It is withdrawn as a citable quantity**
+until someone measures it with its object named. The same caution attaches to `813,773`: W3's own
+atlas carries **647,624** dilation texels, and E07 Gate 0's figure was measured on E06's C1 state
+— **two objects, one number, which is exactly the defect [E38's ruling](experiments/E38-ruling.md)
+adopted the object/methodology ledger against.** Neither is asserted wrong here; both are
+asserted *unattributed*.
+
+**3. The mechanism claim itself does not survive contact with the defect the Director named.**
+`dilation` IS enriched in wrong-material regions — 1.76× / 1.92× / 2.22× at three thresholds,
+ranking stable — and it is **capped far below what could carry them**: 9.52% of detected-region
+pixels, **4.27%** of the area of regions ≥300 px, and **11 regions against `reference`'s 369**.
+On the tight, specification-defined population, **gold out of place is 91.05% `reference` at an
+enrichment of 0.99× — dead on base rate**. The gold on the tunic, skirt, boots and blade arrives
+through the **twin projection**, not through the flood. **Green out of place is a different
+class and keeps this entry alive**: `brush` 5.49× and `dilation` 3.34×, `reference` down to
+68.46% — and the blade is the one `dilation`-dominant large region, at a 48.3% plurality.
+**So: this defect is real, it is where this entry says it is, and it is not the one that decides
+acceptance.** The 4.8×-enrichment sentence above rests on a **speckle** measure, and CLAUDE.md's
+own law holds that a 5×5 high-pass statistic is structurally blind to a large region of the wrong
+material — which is what a gold blob on a green tunic is.
+
 **The gutter is not the mechanism, and the minimal patch is worse than it looks.** Only
 **32.5%** of paths cross an invalid texel; adding the missing `& valid` still leaves 53.3%
 cross-island and strands **174,898** texels on the mean fallback, 238× more than now.
