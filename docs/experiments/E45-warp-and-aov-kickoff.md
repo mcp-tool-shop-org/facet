@@ -194,3 +194,15 @@ advisor's fold.
   t79 and is reserved to Grok's round-3 build (`docs/grok-consult-6-brief.md`, the flow
   estimator — the correction tool for Q1's warp, distinct from this seat's instrument,
   which remains the measurement of record).
+- 2026-08-16, close — **the seat landed; this arc is CLOSED at the reconciliation fold.**
+  Report: `docs/experiments/E45-warp-and-aov-report.md`. Gate A FIRED 2/8 on this
+  dispatch's own camera pairing (the anchor masks are all el 0; the el-55 cameras are
+  brush cameras; **no twin exists at el 55**) — the seat halted as written and
+  discriminated 16/16 recorded cameras at 0 px against their own artifacts. Gate C HELD.
+  Interior tile offsets exceed silhouette offsets on 8 of 8 views (medians 3.46–11.12 px
+  vs 1.16–3.00). The widening rule in this dispatch was **falsified as a procedure**. The
+  seat's two flagged HEAD reds (t24 `paid_for_by` bounded at E44; t41 census row moved by
+  this kickoff citing `e13_anchor_check.py`) were repaired in the fold — both were this
+  document's own debt. Follow-on: the run is E46
+  (`docs/experiments/E46-s3-run-kickoff.md`); the atlas-space arm is Grok round 5
+  (`docs/grok-consult-8-brief.md`).

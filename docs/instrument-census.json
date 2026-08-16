@@ -17,8 +17,8 @@
     "py_files_total": 112
   },
   "provenance": {
-    "corpus_files": 357,
-    "corpus_files_before_self_exclusion": 367,
+    "corpus_files": 366,
+    "corpus_files_before_self_exclusion": 376,
     "probe_interpreter": "E:\\AI-Models\\trellis2-env\\Scripts\\python.exe",
     "probe_interpreter_version": "3.13.13",
     "probe_skipped": false,
@@ -35,7 +35,7 @@
       "docs/experiments/E28-task3-report.md",
       "docs/instrument-census.md"
     ],
-    "test_files": 75
+    "test_files": 82
   },
   "rows": [
     {
@@ -2377,13 +2377,16 @@
       ],
       "b1_literals": [],
       "b2_literals": [],
-      "cited_count": 5,
-      "cited_count_raw": 7,
+      "cited_count": 8,
+      "cited_count_raw": 10,
       "cited_in": [
         "docs/experiments/E27-measurement-mcp-report.md",
         "docs/experiments/E27-predictions.md",
         "docs/experiments/E27-ruling.md",
+        "docs/experiments/E45-warp-and-aov-kickoff.md",
+        "docs/experiments/E45-warp-and-aov-report.md",
         "docs/experiments/README.md",
+        "docs/grok-consult-8-brief.md",
         "docs/specs/measurement-mcp-spec.md"
       ],
       "dir": "tools/diagnostics",

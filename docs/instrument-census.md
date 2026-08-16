@@ -13,8 +13,8 @@
 | `.py` files in `tools/verify` | **10** |
 | — files of any other extension there | 0 |
 | **total members** | **112** |
-| corpus files read for axis D | 357 |
-| test files read for axis E | 75 |
+| corpus files read for axis D | 366 |
+| test files read for axis E | 82 |
 | probe interpreter | `E:\AI-Models\trellis2-env\Scripts\python.exe` (3.13.13) |
 
 ## Totals
@@ -130,7 +130,7 @@
 | 66 | `e12_twin_readout.py` | diagnostics | no | 8 | no | 2 | yes | n/a | none | The two channels the palette gate is BLIND TO, per twin: achromatic mass, and registrat… |
 | 67 | `e12_view_visibility.py` | diagnostics | no | 11 | no | 1 | yes | n/a | ambiguous | E12 Ruling 9d — per-view element visibility, so the per-view stems are MEASURED not gue… |
 | 68 | `e13_a2_allocation.py` | diagnostics | no | 12 | no | 1 | yes | n/a | none | E13 A2 — the texel-allocation arithmetic, and the two frame checks it rides beside. |
-| 69 | `e13_anchor_check.py` | diagnostics | no | 5 | no | 5 | yes | n/a | none | E13 — the SPIRAL LAW's guard, run before a brush opens on a job. |
+| 69 | `e13_anchor_check.py` | diagnostics | no | 5 | no | 8 | yes | n/a | none | E13 — the SPIRAL LAW's guard, run before a brush opens on a job. |
 | 70 | `e13_crop_registration.py` | diagnostics | no | 7 | no | 1 | yes | n/a | none | E13 H2 — registration of a CROP-framed twin, keyed off a background region a crop frame |
 | 71 | `e13_gate1_sheet.py` | diagnostics | no | 11 | no | 1 | yes | n/a | measure_report | E13 Gate 1 — the house five-column sheet: reference \| asset \| provenance \| error \| … |
 | 72 | `e13_hole_map.py` | diagnostics | no | 16 | no | 1 | yes | n/a | ambiguous | E13 stroke lane — decompose stage 1's hole map, and answer Ruling 7's re-open check. |

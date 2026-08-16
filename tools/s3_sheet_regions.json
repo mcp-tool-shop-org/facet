@@ -1,0 +1,68 @@
+{
+  "label": "PROPOSALS. Not a ruling. Transcribed E40 four plus blade/grip for the views those sit on. Verify on the sheet before judging.",
+  "frame": {"W": 752, "H": 1024},
+  "box": "[x0, y0, x1, y1] half-open. crop is src[y0:y1, x0:x1]. Exceeding the source is an ANDON.",
+  "view_map": {
+    "0": "y+000_e+00",
+    "1": "y+045_e+00",
+    "7": "y+315_e+00"
+  },
+  "views": {
+    "0": [
+      {
+        "name": "tunic",
+        "box": [220, 360, 440, 580],
+        "from": "E40 TUNIC y+000_e+00 cx=330 cy=470 r=110 transcribed [cx-r, cy-r, cx+r, cy+r]"
+      },
+      {
+        "name": "skirt",
+        "box": [289, 560, 469, 740],
+        "from": "E40 SKIRT y+000_e+00 cx=379 cy=650 r=90 transcribed"
+      },
+      {
+        "name": "blade",
+        "box": [210, 80, 330, 500],
+        "from": "PROPOSAL from twin_0 steel bbox ~215-322 x 88-499, padded. Not a ruling."
+      },
+      {
+        "name": "grip",
+        "box": [225, 555, 275, 680],
+        "from": "PROPOSAL from twin_0 handle column ~x 230-260 y 565-630 plus pommel. Not a ruling."
+      }
+    ],
+    "1": [
+      {
+        "name": "tunic",
+        "box": [328, 390, 548, 610],
+        "from": "E40 TUNIC y+045_e+00 cx=438 cy=500 r=110 transcribed"
+      },
+      {
+        "name": "blade",
+        "box": [170, 70, 280, 510],
+        "from": "PROPOSAL from twin_1. Darker steel than v0; steel detector under-counted the tip. Not a ruling."
+      },
+      {
+        "name": "grip",
+        "box": [190, 540, 270, 720],
+        "from": "PROPOSAL from twin_1 below the gold guard. Not a ruling."
+      }
+    ],
+    "7": [
+      {
+        "name": "boot_tops",
+        "box": [228, 731, 368, 871],
+        "from": "E40 BOOT TOPS y+315_e+00 cx=298 cy=801 r=70 transcribed"
+      },
+      {
+        "name": "blade",
+        "box": [330, 80, 430, 500],
+        "from": "PROPOSAL from twin_7 steel bbox ~319-449 x 89-519, tightened in x. Not a ruling."
+      },
+      {
+        "name": "grip",
+        "box": [340, 470, 430, 580],
+        "from": "PROPOSAL from twin_7 hand/guard at mid-torso. Not a ruling."
+      }
+    ]
+  }
+}

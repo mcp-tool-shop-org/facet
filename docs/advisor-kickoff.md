@@ -43,7 +43,7 @@ not a test failure. Repair with `--basetemp=<scratch>`; it adds capability and r
 | | |
 |---|---|
 | HEAD | re-measure — `git log --oneline -1` |
-| suite | **THE SUITE: 1107 tests, 1062 hermetic.** RE-COUNT before quoting — `pytest --collect-only -q` and again with `-m "not artifacts"`, currently 1107 total / 1062 hermetic. T34 pins ~14 surfaces off the collector and they all move in the same commit |
+| suite | **THE SUITE: 1166 tests, 1121 hermetic.** RE-COUNT before quoting — `pytest --collect-only -q` and again with `-m "not artifacts"`, currently 1166 total / 1121 hermetic. T34 pins ~14 surfaces off the collector and they all move in the same commit |
 | the record | index recertified this session after **30 commits stale** — VERIFY PASSED, four legs, byte-identity, over 44 experiments. No staleness findings at the declaration leg |
 | CI | verify at open |
 | spend | **zero cloud credits, two sessions running.** Everything below is local |
