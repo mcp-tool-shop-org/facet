@@ -370,3 +370,55 @@ with the rule pre-registered before anything is computed. **One thing to watch, 
 foreclose the arm:** clustering means a blob may be visible to a *correlated set* of views rather
 than an independent sample, and **if a blob's reachable views all sit on one side of the figure,
 averaging has nothing to average over.**
+
+### Amendment 3 — G1 lands, and the green class turns out to have gold's shape (2026-08-16)
+
+**G0 is independent corroboration, not a number quoted twice.** E39's 44,864 wrong-green px and
+16.50% dilation share reproduced **exactly** through a fresh 26-view raycast against
+`facet_E06/C1/prep_uv.glb` — a different code path from E39's class-bincount. The seat drew that
+distinction itself, and it is the right one.
+
+**G1 (`--surface-aware`) did not halt.** Both gates pass, and the seat's *independent exact
+recount* of each is what makes them citable rather than tool-reported:
+
+| gate | limit | measured | headroom |
+|---|---|---|---|
+| median source distance | ≤ 3.0 edges | **0.7385** | 4.06× |
+| beyond 20 edges | ≤ 5% | **28 / 647,624 = 0.00432%** | ~1,157× |
+
+`mean_fallback = 0` is reported with its E14 Ruling 31d.1 caveat attached — **structural in that
+mode, therefore evidence of nothing.**
+
+**The arm's own number:** of the 7,402 dilation-carried green-out-of-place pixel instances, G1
+changes the fill source for 68.1% and **47.76% (3,535) exit the green-flagged zone.** The control
+that makes it readable: of the subset whose source did *not* change, **0.72%** exit — near-zero,
+as required.
+
+#### ⚑ RULED, and the correction is the advisor's framing rather than the seat's number
+
+Run it through E39's own table. Green-out-of-place is carried **`reference` 68.46% / `dilation`
+16.50% / `brush` 15.04%**. The 7,402 *is* the dilation share. So G1 clears
+**3,535 / 44,864 = 7.9% of the green class**, and **a perfect dilation-side fix caps at 16.5%.**
+
+**THE GREEN CLASS IS MAJORITY `reference`-CARRIED — the same shape as the gold class.** The 3.34×
+dilation and 5.49× brush enrichments are real, and they are **minority carriers**. [E39's
+Amendment 1](E39-w3-polish-kickoff.md) kept green "separate" from gold; that is **right about
+mechanism and wrong about magnitude**, and the advisor wrote it. Both classes are dominated by
+what the projection put there. **That convergence is the most valuable thing the arm produced and
+it is not the arm's own number.**
+
+**Consequence: G2 and G3 are NOT built.** Both live under the same 16.5% ceiling, and G1 already
+took half of it for free with a flag we already owned. Spending a new predicate implementation to
+compete for the remainder is the wrong move.
+
+**Re-aimed at the question the seat raised itself**, and it is the Director's-eye question:
+**exiting the flagged zone is not landing on the correct material.** No leather/skin/steel centre
+is frozen anywhere to test the arriving colour against. Freeze them from legitimate patches
+**derived from a different object than the one tested**, then measure what the 3,535 actually land
+on. Three outcomes rank the whole dilation road differently — right material (G1 is a genuine
+7.9%), *another* wrong material (G1 relocates the defect and the flag-exit figure is an artifact
+of the detector's own vocabulary), or indeterminate (G1 is a measured change of unknown sign).
+
+**Process note, recorded because the handling was correct.** The 47.76% was computed without a
+blind prediction, and the seat wrote that down plainly instead of inventing one afterwards. **A
+fabricated post-hoc prediction would have been the defect; naming the gap is not.**
