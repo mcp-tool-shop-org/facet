@@ -2,7 +2,7 @@
  "andon": [],
  "corpus": {
   "files": 387,
-  "id": "680bc68ce7753e4f29e8339e49b59191e5ede64a2cca24a43991c407147aa063",
+  "id": "e76d03eee8b6b6da809027c8861b0305c461aa299f686b39cf330c41cc17c51d",
   "manifest": {
    "CLAUDE.md": "77f9495e73997c5143bdf7b3c7aa4d60ef18d03b3470556080fd926446164d50",
    "README.md": "e01790a8526740e78b377a1ffc5315ea9718ff3625a62f3c6eaf49657c94e7cc",
@@ -351,7 +351,7 @@
    "docs/experiments/E47-atlas-ab-report.md": "7432bbd2367072f0f3a2496de7870a48da2b36e88c7ac4d27ac9c3b10dae07b1",
    "docs/experiments/E48-complete-candidate-kickoff.md": "e5f353cfacc3c051a0b998fba9c80836710f060d433e6ea0d58952054eab2029",
    "docs/experiments/E48-complete-candidate-report.md": "1a0e4d14fc24983500bb7bbe2db6d15b0477eb705c19622792a7661cb3e5560a",
-   "docs/experiments/E49-finish-and-cap-kickoff.md": "d0b8378777842bcf16aea1f0cb6d676554e7be88a217d486268d3a876e318eb9",
+   "docs/experiments/E49-finish-and-cap-kickoff.md": "fe4450afdac5ce61b41b41083cafa3ca7c1a39df753e4f32f899ae6c3d7f7dbf",
    "docs/experiments/README.md": "768faa06ab825260597bd533f851782b0639a5db5e3f6c36d666c5db14eebe37",
    "docs/findings.md": "a67189c22c064bafaa9272b0a93bfcf81fcf5ab6b0529c67dfc88a5606e69b55",
    "docs/grok-consult-1-brief.md": "00e2db720f46c917d73337055380ed7427cb78897aa4a5b9cac1c504104e8c91",
@@ -405,9 +405,9 @@
   "rulings": 761
  },
  "db": {
-  "bytes": 14200832,
+  "bytes": 14209024,
   "path": "docs/index/facet.db",
-  "sha256": "e36a6b324536ad2119cd1a5c0305458498ac30c79c451eab173606c6ecc3a42a"
+  "sha256": "d342b20be69dde1a794561b335f3e82dd7b72f56f9ce1a437bcf1866a14d607d"
  },
  "determinism_leg": "byte-identity",
  "failures": [],
@@ -427,7 +427,7 @@
   "==============================================================================",
   "",
   "[leg 1] determinism - two builds from an unchanged record",
-  "  BYTE-IDENTICAL   14200832 bytes, both builds",
+  "  BYTE-IDENTICAL   14209024 bytes, both builds",
   "",
   "[corpus] ruling documents discovered by the sorted glob",
   "  E01-ruling-gate1.md                            arc E01                0 rows - prose only",
@@ -600,7 +600,7 @@
  ],
  "unattributed_failures": [],
  "verb": "record_build",
- "verified_utc": "2026-08-16T22:21:03Z",
+ "verified_utc": "2026-08-16T22:34:19Z",
  "verify_exit_code": 0,
  "written_by": "tools/record_mcp.py"
 }

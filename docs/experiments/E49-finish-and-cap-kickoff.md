@@ -48,3 +48,24 @@ measured 5.05/11.96 without it; predict inside).
 
 - 2026-08-16, night — dispatched on the Director's "finish it" direction, alongside Grok
   consult #10 (the improvement question).
+- 2026-08-16, late night — **three Director rulings recorded** while this seat ran:
+  1. **SLEEVELESS STANDS.** *"The reference image is sleeveless, I don't have
+     preference."* N3 is unchanged; the armhole smear is tunic paint crossing onto
+     unnamed flesh, and the repair is naming the bare arm and the cut — never a
+     garment (consult #10's Amendment-15 reading, confirmed).
+  2. **W3 IS THE EXEMPLAR, not a character.** *"This isn't a real character, it's the
+     exemplar for the humanoid."* Its job is to prove the humanoid route; identity
+     decisions on it need completeness and fidelity to the reference, not taste
+     rulings per element.
+  3. **THE CRUX, in his words: "we never properly built out the canon."** The audit
+     agrees: the recorded generation prompt names six elements; grip/gauntlet/greave/
+     hand appear zero times; every defect region he circled is an unnamed surface or
+     joint. The studio constitution's own line — dense canon produces a trainable
+     style, thin canon produces noise — measured at twin level.
+  Follow-on: the **W3 canon build-out** — the complete named-surface table drafted
+  from the reference (own phrase per surface, boundary pairs named, occupancy marked),
+  ratified by the Director in one pass, then the twin regeneration from it. The
+  durable studio artifact alongside: a humanoid canon completeness checklist in the
+  character profile, so the next character starts complete instead of rediscovering
+  this. Consult #10's sequencing stands: E49 lands → his three crops re-cut → the
+  free per-region disagreement measurement → the canon-fed regen on his credit word.
