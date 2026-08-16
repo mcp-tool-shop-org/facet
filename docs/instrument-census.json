@@ -17,8 +17,8 @@
     "py_files_total": 112
   },
   "provenance": {
-    "corpus_files": 371,
-    "corpus_files_before_self_exclusion": 381,
+    "corpus_files": 372,
+    "corpus_files_before_self_exclusion": 382,
     "probe_interpreter": "E:\\AI-Models\\trellis2-env\\Scripts\\python.exe",
     "probe_interpreter_version": "3.13.13",
     "probe_skipped": false,
@@ -325,14 +325,15 @@
       ],
       "b1_literals": [],
       "b2_literals": [],
-      "cited_count": 5,
-      "cited_count_raw": 5,
+      "cited_count": 6,
+      "cited_count_raw": 6,
       "cited_in": [
         "docs/experiments/E04-executor-kickoff.md",
         "docs/experiments/E04-task1-report.md",
         "docs/experiments/E04-the-galleon-through-the-route.md",
         "docs/experiments/E10-step0-2-halt.md",
-        "docs/experiments/E22-gates-report.md"
+        "docs/experiments/E22-gates-report.md",
+        "docs/experiments/E48-complete-candidate-report.md"
       ],
       "dir": "tools/diagnostics",
       "docstring_line1": "E04 Task 1 - what is the crown blotch made of? Boundary alignment at an arbitrary camera.",
@@ -858,11 +859,12 @@
       "anchored_in_basename_only": [],
       "b1_literals": [],
       "b2_literals": [],
-      "cited_count": 2,
-      "cited_count_raw": 2,
+      "cited_count": 3,
+      "cited_count_raw": 3,
       "cited_in": [
         "docs/experiments/E07-gate0.md",
-        "docs/experiments/E10-step0-2-halt.md"
+        "docs/experiments/E10-step0-2-halt.md",
+        "docs/experiments/E48-complete-candidate-report.md"
       ],
       "dir": "tools/diagnostics",
       "docstring_line1": "E07 Gate 0 \u2014 test both premises before either fix is built. No GPU, no brush.",

@@ -13,7 +13,7 @@
 | `.py` files in `tools/verify` | **10** |
 | — files of any other extension there | 0 |
 | **total members** | **112** |
-| corpus files read for axis D | 371 |
+| corpus files read for axis D | 372 |
 | test files read for axis E | 84 |
 | probe interpreter | `E:\AI-Models\trellis2-env\Scripts\python.exe` (3.13.13) |
 
@@ -70,7 +70,7 @@
 | 6 | `commit_funnel.py` | diagnostics | no | 8 | no | 4 | no | n/a | none | E05 — which of commit's five tests actually rejects the texels? |
 | 7 | `e04_backdrop.py` | diagnostics | no | 4 | no | 4 | no | n/a | none | E04 Task 4b - derive the twins' backdrop (S-backdrop). |
 | 8 | `e04_bands.py` | diagnostics | no | 10 | no | 9 | no | n/a | none | E04 Task 4d - the landing table, the palette bands, and the backdrop re-derivation. |
-| 9 | `e04_blotch.py` | diagnostics | no | 16 | no | 5 | yes | n/a | none | E04 Task 1 - what is the crown blotch made of? Boundary alignment at an arbitrary camer… |
+| 9 | `e04_blotch.py` | diagnostics | no | 16 | no | 6 | yes | n/a | none | E04 Task 1 - what is the crown blotch made of? Boundary alignment at an arbitrary camer… |
 | 10 | `e04_frame_agree.py` | diagnostics | no | 8 | no | 4 | no | n/a | ambiguous | E04 Step 0 anchor 1c, REPLACEMENT INSTRUMENT — geometry against geometry, bound 0 px. |
 | 11 | `e04_g7_landing.py` | diagnostics | no | 10 | no | 2 | no | n/a | none | E04 Arm G7 - did `red gun port lids` land where `red-lined gun port lids` missed? |
 | 12 | `e04_g7_sheet.py` | diagnostics | no | 7 | no | 2 | no | n/a | measure_report | E04 Arm G7 - the comparison sheet. Built before the report is written, not after it. |
@@ -86,7 +86,7 @@
 | 22 | `e04_ship_measure.py` | diagnostics | no | 8 | no | 0 | no | n/a | none | E04 Task 4a - measure ship.json's suspended values from the designated mesh. |
 | 23 | `e04_stroke_cameras.py` | diagnostics | no | 20 | no | 5 | yes | n/a | reach_ceiling | E04 stage 2 - STROKE cameras, derived from the hole map the way Task 4a derived the |
 | 24 | `e04_twin_baseline.py` | diagnostics | no | 10 | no | 2 | no | n/a | none | E04 Arm T — the twin baseline. Measure, report, no bound anywhere. |
-| 25 | `e07_gate0.py` | diagnostics | no | 16 | no | 2 | no | n/a | none | E07 Gate 0 — test both premises before either fix is built. No GPU, no brush. |
+| 25 | `e07_gate0.py` | diagnostics | no | 16 | no | 3 | no | n/a | none | E07 Gate 0 — test both premises before either fix is built. No GPU, no brush. |
 | 26 | `e07_l1_andon.py` | diagnostics | no | 5 | no | 2 | no | n/a | none | E07 — evidence for the L1 back-facing ANDON. Diagnostic only; writes no atlas. |
 | 27 | `e07_l2_bound.py` | diagnostics | no | 14 | no | 5 | no | n/a | none | E07 L2 — the offline bound, before any GPU is spent. |
 | 28 | `e07_score_arm.py` | diagnostics | no | 12 | no | 0 | no | n/a | no opinion | E07 — the render-side half of §5's table, computed identically for every arm. |
