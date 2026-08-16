@@ -11,6 +11,27 @@ treat this seat's mechanism claims as candidates and its process rules as earned
 
 ---
 
+> # ⛔ SUPERSEDED 2026-08-16 — READ THIS BOX BEFORE THE ONE BELOW IT
+>
+> **This document's headline mechanism claim is DEAD.** It tells you W3's defect is cross-island
+> bleed at 74.9%. **[E39](experiments/E39-w3-polish-kickoff.md) measured it and killed it**: the
+> gold class is **`reference`-carried at 91.05%, enrichment 0.99× — dead on base rate.** The
+> dilation flood cannot carry it. Green is **68.46% `reference`-carried** too. **Both classes are
+> dominated by what the projection put there, not by the fill.**
+>
+> Read instead, in this order:
+> [E39's dispatch + its three amendments](experiments/E39-w3-polish-kickoff.md) ·
+> [the three-class study-swarm](research/E39-three-class-study-swarm.md) (32 findings) ·
+> [E40's spec + amendments](experiments/E40-three-class-arms-kickoff.md) (three seats, live).
+>
+> **Also corrected below and worth knowing before you plan anything:** *"W3 cannot be re-baked"*
+> is **false as stated** — the prep files live in `facet_E06/C1/prep`, and `finalize` replays
+> byte-identically, so fill-stage arms run on W3 itself. And the Adobe padding quote in the
+> study-swarm section reads **backwards** in the original.
+>
+> The rest of this document — the working system, the environment, the calibration record — still
+> stands. Only the mechanism claim and the two facts above are void.
+
 > # ⚑ E38 IS RUNNING. THE ROUTE QUESTION IS ANSWERED; THE POLISH QUESTION IS OPEN.
 >
 > **The Director's live direction, 2026-08-16, in his words:** *"let's not over focus on the
