@@ -592,6 +592,16 @@ is definitely false, and predict inside that interval** — the same question th
 asks of a metric before adopting it (*if those are the same number it is not measuring the arm*),
 turned on the prediction rather than the metric.
 
+**And the same law governs a DECISION RULE, not only a prediction: a threshold placed where the
+instrument cannot discriminate is not a threshold.** E40's gold seat asked whether a colour is
+the majority or the minority of the views that see it — a 50% line. Measured on the *definitely
+yes* population, unambiguously gold surface, **the instrument reaches a majority only 52–62% of
+the time.** So the decision line sat *above* what the instrument returns when the answer is yes,
+and a 35.86%-vs-32.63% split against it means almost nothing. **Calibrate the rule against the
+instrument's own yes-and-no populations before reading a verdict off it** — the seat had built
+both calibration populations and reported the raw split anyway, which is how the trap survives
+being known.
+
 **A bound is not a measurement, and which direction bounds firmly is a property of the
 evidence.** The same arc got this right and it is why its result is usable: *twin is clean at
 this pixel* proves the colour came from elsewhere, because **one view's absence is decisive about

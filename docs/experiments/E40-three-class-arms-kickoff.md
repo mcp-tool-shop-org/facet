@@ -286,3 +286,87 @@ following.**
 
 *Recorded rather than quietly fixed, because the next advisor inheriting a session where paste
 blocks look like the deliverable should see that they usually are not.*
+
+### Amendment 2 — all three Task 0/1 halts, ruled (2026-08-16)
+
+**Every seat halted where it was told to, and two of the three killed the hypothesis their own
+dispatch handed them.** Reports on disk at `E:\AI\training\facet_E40_{A,B,C}\`.
+
+#### Seat C — the blade mechanism is DEAD. Ruled, and re-aimed.
+
+| | blade | torso |
+|---|---|---|
+| best-of-8 facing, median | **0.9670** | 0.9155 |
+| ever-reachable across 8 views | **94.54%** | 92.18% |
+
+**The swarm's finding-19/20 synthesis is measured FALSE for W3's blade** — it is covered *better*
+than the torso. An external citation overturned by local measurement, which is what
+*everything from outside is a hypothesis* exists for.
+
+**Three things earn the negative:** it **anchored before believing anything downstream**
+(146,356 against a recorded 146,356, zero delta); it **caught its own degenerate metric** —
+pooled mean cosine over 8 evenly-spaced yaws is ~0 by trigonometric symmetry for *any* fixed
+direction, so P9/P10 could not have discriminated confirmed from killed, and it flagged that
+rather than reporting the ~0 as a finding; and it **scoped honestly**, noting the 48.3% comes
+from a 26-view census including an elevated camera outside its eight.
+
+**Re-aimed at our own policy, not at a new arm.** `texpass_finalize.py`'s docstring: the
+remaining holes are *"undersides, crevices and the blade flank (excluded from diffusion BY
+POLICY — thin hard-surface props take dilated projected colour, never invented content)."* If
+that routes the blade to dilation, **the 48.3% plurality is a design decision being observed,
+not a mechanism failing.** The seat reads the code before believing the docstring, because a
+docstring in that very file was already wrong about its own predicate.
+
+#### Seat B — settled by construction, which beats the archive. Ruled.
+
+In `--surface-aware` mode `grown = valid.copy()` runs **before** the loop, so mean fallback is
+**0 on every run regardless of input**; W3's build report records **565**. **565 ≠ 0 admits one
+branch only.** A live T50 replay producing a byte-identical atlas confirms it. **W3 ran the
+default flood.** The *"never built"* tension was the advisor's and never real — read complete it
+says *never adopted as the shipped default*, not that the flag does not exist.
+
+**And the out-of-scope finding that changes the arc** — see the correction above: **fill-stage
+arms run on W3's own real assets.** Authorized into B-Task 1 with **G1 (`--surface-aware`)
+first**, since it is a flag we already own whose blocking gate was withdrawn at E07 Gate 0.5 when
+the back-facing proxy inverted. Its mean-fallback count carries the E14 Ruling 31d.1 caveat:
+**structurally 0 in that mode, therefore not evidence of anything.**
+
+#### Seat A — the vote does not adjudicate, and the reason is the instrument. Ruled.
+
+**Gate 1 passed 11/11 byte-for-byte** against E39's stored counts (8 per-view + 3 pooled:
+17,731 / 68,855 / 335,495) — the seat reused the frozen population definitions rather than
+re-deriving them, which is what makes the numbers comparable across two arcs at all.
+
+Two readings that point opposite ways, and the seat correctly declined to choose:
+
+- **raw:** gold is narrowly the **minority** of reachable views — 35.86% minority vs 32.63%
+  majority at production's own `facing_min=0.45`.
+- **normalized:** against the same instrument's definitely-yes and definitely-no populations,
+  MEASURE lands **57–81% toward the gold-like end** on every metric/threshold combination.
+
+**RULED: the normalized reading is the defensible one, and the raw split is nearly
+uninformative — because the instrument's ceiling is 52–62%.** Even for *legitimate* gold, the
+multi-view vote reaches a majority only about half the time. **The 50% majority line sits above
+what the instrument returns when the answer is definitely yes**, so a split measured against it
+is measured against a line the instrument cannot reach. Same law that cost E39's P1 — *a value
+the instrument cannot return* — **turned on a decision rule instead of a prediction.**
+
+**And the normalized figure is recorded as a LEAN, not a finding.** 57–81% toward gold-like, on
+an instrument that weak, does not resolve (a) versus (b); it is consistent with E39 Task 2's 2:1
+and refines nothing away.
+
+**⚑ The seat's unpredicted finding is the most valuable thing in its report.** Gold-out-of-place
+dedups to unique faces at **19.7%**, against **~63%** for both calibration populations — it is
+**clustered into blobs at ~5 pixels per face.** Two consequences, both carried forward: the
+**effective sample size is ~5× smaller** than the pixel count suggests, so face counts are quoted
+beside pixel counts from here; and **blob-shaped is the signature of "a region wearing the wrong
+material"** — the Director's own defect class, corroborated independently of any provenance
+number, by a statistic no speckle measure could produce.
+
+**A-Task 2 re-aimed:** stop asking the vote to classify the mechanism and **measure whether the
+lever works** — what a multi-band recombination of the reachable views produces at those points,
+against A0's facing-weighted blend and A2's hard selection, graded on the legitimate material
+with the rule pre-registered before anything is computed. **One thing to watch, and it may
+foreclose the arm:** clustering means a blob may be visible to a *correlated set* of views rather
+than an independent sample, and **if a blob's reachable views all sit on one side of the figure,
+averaging has nothing to average over.**
