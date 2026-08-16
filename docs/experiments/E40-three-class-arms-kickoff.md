@@ -447,6 +447,103 @@ wrong-material region lives.
 hedge against a generator we do not control and cannot fix — and it works on assets already
 generated, including this one.
 
+### Amendment 4 — Seat C CLOSED, Seat A's arm measured, and W3 has ONE defect (2026-08-16)
+
+#### Seat C — CLOSED. The blade is not a third class.
+
+**The decisive number ends the seat's own four arms:** the blade's **own legitimately-painted
+texels are 18.77% gold-like**, against its **dilation fill's 5.55%**. The blade's gold arrives
+through the **paint**, not the fill. And its dilation is structurally *cleaner* than the whole
+atlas on both axes — **34.9% cross-island against 75.3%**, 7.5% via-gutter against 31.1%.
+
+**C1–C4 are cancelled.** Every one of them — separate texture set, `normalSeamWeight`, per-island
+cap, backface exclusion — attacks the fill, and **the fill is the cleaner half of this subject.**
+The seat found that before the advisor spent it.
+
+**It is an independent cross-check, and that is what makes it strong.** E39 reached
+*gold-out-of-place is 91.05% `reference`-carried, 7.41% dilation-carried* by screen-pixel class
+attribution over the whole figure. Seat C reached the same place on **one structure**, by
+**atlas-texel flood-source tracing against a frozen Lab centre**. Different method, different
+space, same answer.
+
+**The policy is real, selective, and incomplete.** `--thin-extent` at 0.03 in `texpass_iter.py`'s
+`emit()` is genuinely ~74× enriched on blade against torso — the docstring is not lying. But
+**74.28% of the blade's dilation texels were never hit by any of the 8 real stroke cameras at
+all.** Camera-coverage sparsity dominates deliberate exclusion, so *"policy explains it, stop"* —
+the outcome the advisor named as complete and valuable — **is not what the measurement supports**,
+and the seat refused it.
+
+**⚑ A withdrawn quantity restored with its object named.** [E39](E39-w3-polish-kickoff.md)
+measured 647,624 dilation texels against the record's 813,773 and the advisor **withdrew 813,773
+as unattributed** rather than re-deriving it. Seat C attributed it: **813,773 is the pre-rollback
+snapshot in `g0_A.json`, predating the A32 stroke-7 rollback; 647,624 is the current state and
+matches `provenance_atlas.png` exactly.** It caught this as a **stale-baseline risk before using
+the file**, then recomputed rather than assuming the two numbers' closeness was agreement. That
+is the only way a withdrawn number comes back.
+
+**Recorded, not dispatched:** the 74.28% never-hit figure is a real lever — the blade is
+**under-covered by the stroke camera set**, which is a *coverage* problem with a precedent
+([E34](E34-projection-coverage-kickoff.md) took the performer 2 views → 8 and cut holes-into-
+finalize by 83%). Its own arc, at the Director's timing.
+
+#### Seat A — the route ALREADY does a two-band split, and ours is the worst of four
+
+**⚑ Found before any candidate was computed, and it corrects this spec.** `project_twins.py:901-913`
+ships **`M + gaussian_blur_σ16(B − M)`** — owner-view colour plus an atlas-space-blurred
+correction toward the flat blend. Rearranged: **high frequency from ONE view, low frequency from
+the blend.** *That is the frequency-split philosophy, already half-implemented.* This spec called
+A0 *"the current facing-weight blend, full band"* — **wrong, and the advisor's error.** The
+question was never *should we adopt frequency-split*; it is **our band structure is wrong in a
+specific way.**
+
+| candidate | mean ΔE | vs shipped |
+|---|---|---|
+| **A0_actual** (what W3 shipped) | **34.24** | — |
+| A2 hard selection | 30.91 | **−9.7%** |
+| **A1 multi-band** | **29.36** | **−14.3%** |
+| A0_flat (ablation, not a primary arm) | 26.41 | −22.9% |
+
+**RULED: A1 and A2 are real, gated improvements over shipped**, agreeing in direction and
+magnitude across both `facing_min` thresholds. **The shipped configuration loses to all three.**
+
+**RULED: A0_flat is NOT adopted on this number.** The metric is ΔE to `local_median_lab`, and
+`gold_out_of_place` is *defined* as distance from `local_median_lab` — so grading movement toward
+the local median, on a population defined by distance from it, **rewards smoothing as such**, and
+A0_flat is the smoothest candidate. The seat's `dE(A1, A0_flat) = 6.86` control establishes A1 is
+not A0_flat in disguise; it does not rescue the metric for ranking A0_flat itself. **The seat
+flagged rather than recommended, and the ruling follows its caveat rather than passing it.**
+
+#### ⚑ The honest ceiling on the whole family, and it must travel with every citation
+
+The angular-spread check was required because it could foreclose the arm. **It half-did.**
+**100.0%** of `k_total ≥ 2` faces have a reachable-view span **≤ 90°**, median exactly **45°**,
+softening only to **96.6%** at blob level. The seat's own sentence is the finding: *"there is
+something to average but it is never independent — always adjacent, correlated cameras, never
+opposing ones."*
+
+Frequency-split outvotes a bad view **only when the other contributors are independent**.
+Adjacent cameras see nearly the same surface under nearly the same control, so when one
+hallucinates gold its neighbour probably does too. **A1's −14.3% is what this lever achieves with
+correlated inputs — not what the photogrammetry literature achieves with genuinely independent
+photographs.** Nobody may quote AliceVision's band structure at this route as though a 45° ring
+were the same situation. And **21.0% of faces have `k ≤ 1`** — nothing to blend at all, which no
+blend philosophy reaches.
+
+#### ⚑ THE CONVERGENCE: W3 has ONE defect, not three
+
+Measured three independent ways, by three seats, in three spaces:
+
+| class | finding |
+|---|---|
+| **gold** | `reference`-carried, 91.05% at 0.99× — base rate |
+| **green** | **68.46% `reference`-carried**; dilation caps at 16.5% of the class |
+| **blade** | its own paint 18.77% gold-like vs dilation 5.55%; geometric mechanism dead |
+
+**All three are dominated by what the projection put there.** The fill, the padding, the island
+predicate and the thin-geometry policy are all real, all minority, and none of them is the defect
+the Director's eye names. **The arc opened on three classes and closes on one**, and the one
+lives in the blend.
+
 **What the capability actually is, if the measurement supports it.** Today the blend is a single
 hardcoded formula: `w = facing^6.0`, with `facing_min = 0.45`, inside `project_twins.py`. There
 is no mode, no per-asset control, and no way for the Director to choose. **The deliverable is not
