@@ -260,3 +260,29 @@ diagnostic and it must not be used as a halt** — it is a perimeter-to-area sta
 ## Amendments
 
 *(appended in place, with dates and reasons)*
+
+### Amendment 1 — the seats were spawned, after the advisor first shelved them (2026-08-16)
+
+**All three seats run as dispatched Sonnet agents, spawned by the advisor**, steered on an open
+line, halting to it at Task 0.
+
+They did not start that way, and the reason is worth recording. The advisor wrote this spec and
+then delivered **three paste blocks** instead of starting the seats, on a reading of the
+Director's *"3 spawned Sonnet sessions"* as three sessions **he** would open. He asked why they
+were not already running.
+
+**The standard he ratified this same day answers it**, and the advisor had already followed it
+five times in this session — two E39 executor seats and five research agents, all spawned
+directly. [CLAUDE.md](../../CLAUDE.md)'s dispatched-seat section says it outright: *"Under this
+standard the advisor starts the seat itself, which serves that purpose more directly. The rule
+still binds for anything only the Director can begin."* Nothing here was his to begin.
+
+**So this is advisor rule 5's own failure — the shelf — one level up.** That rule exists because
+*"a spec sitting in `docs/experiments/` that nobody can start is a shelf, not a deliverable"*, and
+a paste block is the remedy **only when the advisor cannot start the thing itself**. Producing
+three specs and handing the Director the work of launching them is the same defect the rule was
+written against, wearing the rule's own clothes. **The law needed no change; it needed
+following.**
+
+*Recorded rather than quietly fixed, because the next advisor inheriting a session where paste
+blocks look like the deliverable should see that they usually are not.*
