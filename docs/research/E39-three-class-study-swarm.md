@@ -108,7 +108,7 @@ simultaneously**, once the levers are known. Two constraints on that, both alrea
 neither negotiable:
 
 - **W3 itself cannot be re-baked.** No `prep_uv.glb` / `mask.npy` / `pos.npy` / `meta.json`
-  survives — verified three times. Any arm that needs a re-bake needs a *different* subject;
+  survives — verified three times. (⚠ CORRECTED 2026-08-16, E40 Seat B: the four files DO survive at E:\AI\training\facet_E06\C1\prep\; the three prior checks searched facet_E08 only. Only STATE regeneration is impossible — finalize replays byte-identically on frozen state, so fill-stage arms run on W3 itself.) Any arm that needs to regenerate STATE needs a *different* subject;
   `facet_E33`, `facet_E37/stageC` and `saltroad_bake_fix` carry complete prep state and are the
   candidates.
 - **Three parallel seats collide on the count surfaces.** T34 pins stated counts against

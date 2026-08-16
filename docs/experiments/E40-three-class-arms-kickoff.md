@@ -26,7 +26,7 @@ From [E39](E39-w3-polish-kickoff.md), measured, not assumed:
 - **`dilation` is 26.95% of the written atlas and 4.95% of rendered figure pixels — 0.18×.**
   Quote provenance shares in the space you mean.
 - **W3 CANNOT BE RE-BAKED.** No `prep_uv.glb` / `mask.npy` / `pos.npy` / `meta.json` survives —
-  verified three times. W3's **mesh, 26 cameras, 8 aligned twins and `prov_class` maps DO
+  verified three times. ⚠ **CORRECTED 2026-08-16 by [E40](E40-three-class-arms-kickoff.md) Seat B, and the correction is the advisor's to own: those four files DO survive**, at `E:\AI\training\facet_E06\C1\prep\` — `mask.npy`, `meta.json`, `nor.npy`, `pos.npy`, `prep_uv.glb`, verified at the advisor's own seat. **The three prior "verifications" searched `facet_E08` only; the prep lives in `facet_E06`. Three searches of the wrong tree is one scope error repeated, not three verifications** — the exact family this record has lost nine arcs to. What is true is narrower and the original claim conflated two stages: regenerating W3's **state** would need new diffusion generation, which is gone; **`finalize` is a deterministic post-process over frozen state and replays byte-identically** — `tests/test_t50_w3_finalize_replay.py` does exactly that pairing (`facet_E08/ARMB/state` + `facet_E06/C1/prep`) and passed live. **So every fill-stage arm runs on W3's own real assets rather than a substitute subject.** W3's **mesh, 26 cameras, 8 aligned twins and `prov_class` maps DO
   survive**, so W3 remains available for *measurement* and unavailable for *re-baking*.
 - **The eight twins register to their own export renders at shift (0,0)** under two independent
   objectives. No reprojection or resampling is needed to compare a twin to a render.

@@ -110,9 +110,12 @@ output to `E:\AI\training\facet_E39\`. Confirm at the end that you wrote nothing
 `facet_E08` — a directory listing with mtimes is sufficient evidence.
 
 **W3 cannot be re-baked.** No `prep_uv.glb` / `mask.npy` / `pos.npy` / `meta.json` survives
-anywhere under `facet_E08` — verified three times now, including at this seat. Do not plan
-around re-running `bake_hero_prep` or `texpass_finalize` on W3. This arc is measurement on
-the finished artifact.
+anywhere under `facet_E08` — verified three times now, including at this seat. ⚠ **CORRECTED 2026-08-16 by [E40](E40-three-class-arms-kickoff.md) Seat B, and the correction is the advisor's to own: those four files DO survive**, at `E:\AI\training\facet_E06\C1\prep\` — `mask.npy`, `meta.json`, `nor.npy`, `pos.npy`, `prep_uv.glb`, verified at the advisor's own seat. **The three prior "verifications" searched `facet_E08` only; the prep lives in `facet_E06`. Three searches of the wrong tree is one scope error repeated, not three verifications** — the exact family this record has lost nine arcs to. What is true is narrower and the original claim conflated two stages: regenerating W3's **state** would need new diffusion generation, which is gone; **`finalize` is a deterministic post-process over frozen state and replays byte-identically** — `tests/test_t50_w3_finalize_replay.py` does exactly that pairing (`facet_E08/ARMB/state` + `facet_E06/C1/prep`) and passed live. **So every fill-stage arm runs on W3's own real assets rather than a substitute subject.**
+
+*The original instruction that followed here — "do not plan around re-running `bake_hero_prep`
+or `texpass_finalize` on W3" — was correct for **this** arc, which is pure measurement on the
+finished artifact, and is wrong as a general statement. It is superseded for E40: `bake_hero_prep`
+genuinely cannot be re-run (that regenerates state), and **`texpass_finalize` genuinely can**.*
 
 ---
 

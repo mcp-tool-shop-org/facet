@@ -126,7 +126,7 @@ figure-pixel outside-valid rate — longsword **0.808%** > W3 **0.578%** > drago
 galleon **0.000000%**. Whether it renders black does **not** generalise: W3 **0%** all views,
 dragon 3.71–7.25%, longsword **39.70–51.40%**. The galleon's zero is *unseen*, not absent —
 23,260 black background texels these eight cameras never sample. **W3 cannot be re-baked: no
-`prep_uv.glb`/`mask.npy`/`pos.npy`/`meta.json` survives.** Verified twice.
+`prep_uv.glb`/`mask.npy`/`pos.npy`/`meta.json` survives.** Verified twice. (⚠ CORRECTED 2026-08-16, E40 Seat B: the four files DO survive at E:\AI\training\facet_E06\C1\prep\; the three prior checks searched facet_E08 only. Only STATE regeneration is impossible — finalize replays byte-identically on frozen state, so fill-stage arms run on W3 itself.)
 
 ## IN FLIGHT AT THE CLOSE — check these before planning anything
 

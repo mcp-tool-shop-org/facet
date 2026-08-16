@@ -188,7 +188,7 @@ surfaces at **39**, span bumped to `E3[0-9]`, and the three kickoff anchors writ
   Population A is already 0, which is most of A5's stated case. **Not commissioned here.**
 - **The shipping configuration.** Ruling 2 gives the numbers and picks no winner. His call.
 - **The back-catalogue re-bake**, greenlit conditionally on the fix eliminating the class. It
-  does — but W3 cannot be re-baked at all (no `prep_uv.glb`/`mask.npy`/`pos.npy`/`meta.json`
+  does — but W3's STATE cannot be regenerated (⚠ CORRECTED 2026-08-16, E40 Seat B: the four files DO survive at E:\AI\training\facet_E06\C1\prep\; the three prior checks searched facet_E08 only. Only STATE regeneration is impossible — finalize replays byte-identically on frozen state, so fill-stage arms run on W3 itself.) (the original wording read: "no `prep_uv.glb`/`mask.npy`/`pos.npy`/`meta.json`
   survives; verified a third time at this seat), and the longsword is the only accepted asset
   carrying visible black. **He gets numbers, not a plan.**
 - **The zero-UV-area triangles.** 1,035 faces (0.345%) carry real 3D area and no UV footprint;
