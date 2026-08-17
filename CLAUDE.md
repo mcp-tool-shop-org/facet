@@ -98,6 +98,19 @@ mechanism named verbatim in Blender's own tracker with a fix already **merged** 
 `ADJACENT_FACES` explaining why the `EXTEND` arm worked (PR #162226, #119393), the confirmation
 that carrying UVs through decimation is the reverse of every documented pipeline, and the blunt
 finding that this route skips the high-to-low transfer bake that even AI-mesh pipelines keep.
+
+⚠ **Two of those three citations were WRONG, and this section is the proof of its own last
+sentence.** Resolved at `/api/v1/` 2026-08-17, one call per id: **#161752 is merged and its
+body does match** — conservative rasterization, texel-centre sampling. **#162226 is OPEN, not
+merged** — an adjacent-faces margin rewrite. **#119393 is OPEN and is a single defect**
+(adjacent-faces dilating inside a UV island, 4.0 against 3.6), **not a ~16-defect catalogue**;
+that characterisation was a research agent's summary and nobody had opened the issue. The
+correction matters because the ranking depended on it: conservative rasterization writes
+chart texels a triangle overlaps and **cannot** reach a UV that lands 17 px into a packer
+gutter, and adjacent-faces is not in this Blender at all. **The `~60%` in the sentence above
+is also a research-agent figure about the historical dark-mark class and has never been
+re-measured**; what IS measured, on the current renders, is a different and much smaller
+class — see the unmapped readout below.
 **Everything found that way is a hypothesis to verify locally, never a fact to adopt** — an
 outside claim gets exactly the treatment an advisor's claim gets. Resolve every external
 citation at its primary source before ruling on it: `projects.blender.org` 403s to a plain
