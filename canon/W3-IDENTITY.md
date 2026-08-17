@@ -35,17 +35,17 @@ is itself the test of it.**
 | N5 | gold scrollwork on the pauldrons | own phrase, not a modifier on N4 |
 | N6 | **a gold belt medallion** | **replaces "gold necklace"** — see below |
 | N7 | a brown leather belt | |
-| N8 | a dark red layered cloth skirt | |
-| N9 | green cloth panels in the skirt | own phrase, not a modifier on N8 |
-| N10 | brown leather bracers | measured to land |
-| N11 | **a gold plate on each outer forearm** | the promoted modifier — **this is the grammar test** |
+| N8 | a dark red layered cloth kilt | ⚠ **KILT, not skirt — the Director's ruling 2026-08-17.** The garment is a warrior's kilt and *skirt* was the wrong register for it. Renamed in the phrase, the surface id and N9 |
+| N9 | green cloth panels in the kilt | own phrase, not a modifier on N8 |
+| N10 | brown leather bracers | measured to land. ⚠ **QUESTIONED 2026-08-17:** plural, and the reference has no bracer on either forearm — the sword arm is bare and the free arm's leather is a wrist cuff belonging to N20's gauntlet |
+| N11 | **a gold plate on each outer forearm** | the promoted modifier — **this is the grammar test**. ⚠ **QUESTIONED 2026-08-17, and this may remove it as evidence.** Re-verified at 6–8×: there is **no gold on either forearm**. The single plate sits on the gauntlet over the back of the free hand, and *each* is wrong because the armour is asymmetric. Its measured no-response (median ΔE 1.07, two grammatical forms) has a simpler explanation than co-location — **the generator was asked for something the reference does not contain**. Amendment 15 stands on the knee plates and bracers; N11 stops being its sharpest example |
 | N12 | gold knee plates | measured to land |
 | N13 | heavy dark boots | present in every arm; kept named rather than assumed |
 | N14 | a massive greatsword | |
 | N15 | an ornate gold crossguard | own phrase, not a modifier on N14 |
 | N16 | a gold pommel | own phrase |
 | N17 | **a brown leather-wrapped grip** | **NEW 2026-08-16** — an unoccupied surface, not a promoted modifier. Own phrase, not a modifier on N14. ⚠ UNVERIFIED: predicted to land, must be checked on the next generation |
-| N18 | **bare hands** | **NEW 2026-08-17, DRAFTED — awaiting the Director's ratification.** Read off `twin_front.png` at 3×: both hands are bare flesh, the sword hand closed on the grip and the free hand open with fingers extended. No gauntlet and no glove anywhere on the figure. Filed `kind: bare` with `forbidden: [gauntlet, glove]`, the same shape as the sleeveless arms — so a gauntlet cannot be expressed onto a surface the reference leaves bare |
+| N18 | **brown leather gauntlets** | **NEW 2026-08-17, from the Director's own description after the advisor got it wrong twice.** Both hands, the same glove, extending up the arm and running **under** the gold arm brace. Draft 1 called both hands bare and forbade the word *gauntlet*; draft 2 called the armour asymmetric. Both were `twin_front.png` read as a description when it is a straight-on projection - the sword hand is shown **palm-on**. `twin_back.png` shows the brace on both arms and the advisor never opened it until told to |
 | N19 | **a brown leather shin guard** | **NEW 2026-08-17, DRAFTED — awaiting the Director's ratification, and the row it fills was mis-named.** There is no bare shin on this figure: the gold knee plate is large and angular, runs knee through upper shin, and its lower point overlaps the boot shaft directly, with brown leather and grey fleece visible behind and beside it. The old `greave` row described a surface that does not exist as a separate thing. Alternative on the table: delete both rows and let N12 own the whole knee-to-boot run — closer to how the reference reads, but it costs the boot-top joint its second operand |
 
 **N17 — the grip, added at the Director's delegation 2026-08-16.** He named the choice as leather
@@ -120,7 +120,7 @@ passes — a spec tuned until it passes is not a spec.**
 
 | element | why it is not filed |
 |---|---|
-| fur trim edging the knee plates | the clean-control arms produce it **unprompted**, which suggests mesh- or style-supplied. **Not filed until two clean-control arms show it**, per the knee-plate precedent: that armour also looked mesh-supplied and vanished the instant the control was cleaned. Arriving from the mesh through a *noisy* control is not the same as arriving from the mesh. |
+| fur trim edging the knee plates | ⚠ **2026-08-17: the Director looked at the knees and reports no knee fur - boot and golden knee guards only.** What is at the plate edges is loose wispy painted strands; the advisor read them as a material and that reading is withdrawn. STAYS UNDER TEST, unpromoted. Original note: the clean-control arms produce it **unprompted**, which suggests mesh- or style-supplied. **Not filed until two clean-control arms show it**, per the knee-plate precedent: that armour also looked mesh-supplied and vanished the instant the control was cleaned. Arriving from the mesh through a *noisy* control is not the same as arriving from the mesh. |
 
 ---
 

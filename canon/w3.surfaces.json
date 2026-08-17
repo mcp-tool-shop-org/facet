@@ -3,80 +3,405 @@
   "kind": "humanoid",
   "schema": 1,
   "source_identity": "canon/W3-IDENTITY.md",
-  "visual_target": ["canon/twin_front.png", "canon/twin_back.png"],
+  "visual_target": [
+    "canon/twin_front.png",
+    "canon/twin_back.png"
+  ],
   "note": "SURFACE is the row. occupant null is a hole. N5/N9/N11 are blocked additions, not second occupants. Sleeveless: upper_arm is occupied by bare flesh; a sleeve cannot be expressed. Verification is not stored here; canon_gate verify writes a sidecar.",
   "surfaces": [
-    {"id": "scalp", "name": "scalp", "occupant": {"id": "N1", "phrase": "a bald head", "provenance": "prompt"}},
-    {"id": "beard", "name": "beard", "occupant": {"id": "N2", "phrase": "a long red beard", "provenance": "prompt"}},
-    {"id": "torso", "name": "torso", "occupant": {"id": "N3", "phrase": "a dark green knitted sleeveless tunic", "provenance": "prompt"}},
-    {"id": "upper_arm_L", "name": "left upper arm", "occupant": {"id": "bare_arm_L", "phrase": null, "provenance": "prompt", "kind": "bare", "forbidden": ["sleeve"]}},
-    {"id": "upper_arm_R", "name": "right upper arm", "occupant": {"id": "bare_arm_R", "phrase": null, "provenance": "prompt", "kind": "bare", "forbidden": ["sleeve"]}},
-    {"id": "pauldron_L", "name": "left pauldron", "occupant": {"id": "N4", "phrase": "polished gold pauldrons", "provenance": "prompt"}},
-    {"id": "pauldron_R", "name": "right pauldron", "occupant": {"id": "N4", "phrase": "polished gold pauldrons", "provenance": "prompt"}},
-    {"id": "belt", "name": "belt band", "occupant": {"id": "N7", "phrase": "a brown leather belt", "provenance": "prompt"}},
-    {"id": "belt_front", "name": "belt front", "occupant": {"id": "N6", "phrase": "a gold belt medallion", "provenance": "prompt"}},
-    {"id": "skirt", "name": "skirt", "occupant": {"id": "N8", "phrase": "a dark red layered cloth skirt", "provenance": "prompt"}},
-    {"id": "forearm_L", "name": "left forearm", "occupant": {"id": "N10", "phrase": "brown leather bracers", "provenance": "prompt"}},
-    {"id": "forearm_R", "name": "right forearm", "occupant": {"id": "N10", "phrase": "brown leather bracers", "provenance": "prompt"}},
-    {"id": "knee_L", "name": "left knee", "occupant": {"id": "N12", "phrase": "gold knee plates", "provenance": "prompt"}},
-    {"id": "knee_R", "name": "right knee", "occupant": {"id": "N12", "phrase": "gold knee plates", "provenance": "prompt"}},
-    {"id": "boot_L", "name": "left boot", "occupant": {"id": "N13", "phrase": "heavy dark boots", "provenance": "prompt"}},
-    {"id": "boot_R", "name": "right boot", "occupant": {"id": "N13", "phrase": "heavy dark boots", "provenance": "prompt"}},
-    {"id": "hand_L", "name": "left hand", "occupant": {"id": "N18", "phrase": "bare hands", "provenance": "prompt", "kind": "bare", "forbidden": ["gauntlet", "glove"], "ratify": true}},
-    {"id": "hand_R", "name": "right hand", "occupant": {"id": "N18", "phrase": "bare hands", "provenance": "prompt", "kind": "bare", "forbidden": ["gauntlet", "glove"], "ratify": true}},
-    {"id": "greave_L", "name": "left shin, under the knee plate", "occupant": {"id": "N19", "phrase": "a brown leather shin guard", "provenance": "prompt", "ratify": true}},
-    {"id": "greave_R", "name": "right shin, under the knee plate", "occupant": {"id": "N19", "phrase": "a brown leather shin guard", "provenance": "prompt", "ratify": true}},
-    {"id": "blade", "name": "blade", "occupant": {"id": "N14", "phrase": "a massive greatsword", "provenance": "prompt"}},
-    {"id": "crossguard", "name": "crossguard", "occupant": {"id": "N15", "phrase": "an ornate gold crossguard", "provenance": "prompt"}},
-    {"id": "pommel", "name": "pommel", "occupant": {"id": "N16", "phrase": "a gold pommel", "provenance": "prompt"}},
-    {"id": "grip", "name": "grip", "occupant": {"id": "N17", "phrase": "a brown leather-wrapped grip", "provenance": "prompt"}},
-    {"id": "silhouette", "name": "silhouette", "occupant": {"id": "mesh_sil", "phrase": null, "provenance": "mesh"}},
-    {"id": "proportions", "name": "stocky proportions", "occupant": {"id": "mesh_body", "phrase": null, "provenance": "mesh"}},
-    {"id": "brushwork", "name": "painterly surface", "occupant": {"id": "style_brush", "phrase": "visible brushstrokes", "provenance": "style"}}
+    {
+      "id": "scalp",
+      "name": "scalp",
+      "occupant": {
+        "id": "N1",
+        "phrase": "a bald head",
+        "provenance": "prompt"
+      }
+    },
+    {
+      "id": "beard",
+      "name": "beard",
+      "occupant": {
+        "id": "N2",
+        "phrase": "a long red beard",
+        "provenance": "prompt"
+      }
+    },
+    {
+      "id": "torso",
+      "name": "torso",
+      "occupant": {
+        "id": "N3",
+        "phrase": "a dark green knitted sleeveless tunic",
+        "provenance": "prompt"
+      }
+    },
+    {
+      "id": "upper_arm_L",
+      "name": "left upper arm",
+      "occupant": {
+        "id": "bare_arm_L",
+        "phrase": null,
+        "provenance": "prompt",
+        "kind": "bare",
+        "forbidden": [
+          "sleeve"
+        ]
+      }
+    },
+    {
+      "id": "upper_arm_R",
+      "name": "right upper arm",
+      "occupant": {
+        "id": "bare_arm_R",
+        "phrase": null,
+        "provenance": "prompt",
+        "kind": "bare",
+        "forbidden": [
+          "sleeve"
+        ]
+      }
+    },
+    {
+      "id": "pauldron_L",
+      "name": "left pauldron",
+      "occupant": {
+        "id": "N4",
+        "phrase": "polished gold pauldrons",
+        "provenance": "prompt"
+      }
+    },
+    {
+      "id": "pauldron_R",
+      "name": "right pauldron",
+      "occupant": {
+        "id": "N4",
+        "phrase": "polished gold pauldrons",
+        "provenance": "prompt"
+      }
+    },
+    {
+      "id": "belt",
+      "name": "belt band",
+      "occupant": {
+        "id": "N7",
+        "phrase": "a brown leather belt",
+        "provenance": "prompt"
+      }
+    },
+    {
+      "id": "belt_front",
+      "name": "belt front",
+      "occupant": {
+        "id": "N6",
+        "phrase": "a gold belt medallion",
+        "provenance": "prompt"
+      }
+    },
+    {
+      "id": "kilt",
+      "name": "kilt",
+      "occupant": {
+        "id": "N8",
+        "phrase": "a dark red layered cloth kilt",
+        "provenance": "prompt"
+      }
+    },
+    {
+      "id": "forearm_L",
+      "name": "sword-arm forearm",
+      "occupant": {
+        "id": "N10",
+        "phrase": "brown leather bracers",
+        "provenance": "prompt"
+      }
+    },
+    {
+      "id": "forearm_R",
+      "name": "free-arm forearm",
+      "occupant": {
+        "id": "N10",
+        "phrase": "brown leather bracers",
+        "provenance": "prompt"
+      }
+    },
+    {
+      "id": "knee_L",
+      "name": "left knee",
+      "occupant": {
+        "id": "N12",
+        "phrase": "gold knee plates",
+        "provenance": "prompt"
+      }
+    },
+    {
+      "id": "knee_R",
+      "name": "right knee",
+      "occupant": {
+        "id": "N12",
+        "phrase": "gold knee plates",
+        "provenance": "prompt"
+      }
+    },
+    {
+      "id": "boot_L",
+      "name": "left boot",
+      "occupant": {
+        "id": "N13",
+        "phrase": "heavy dark boots",
+        "provenance": "prompt"
+      }
+    },
+    {
+      "id": "boot_R",
+      "name": "right boot",
+      "occupant": {
+        "id": "N13",
+        "phrase": "heavy dark boots",
+        "provenance": "prompt"
+      }
+    },
+    {
+      "id": "hand_L",
+      "name": "sword hand (grips the greatsword)",
+      "occupant": {
+        "id": "N18",
+        "phrase": "brown leather gauntlets",
+        "provenance": "prompt",
+        "ratify": true,
+        "note": "The Director left the word to the advisor 2026-08-17 (glove or gauntlet, no preference). GAUNTLET chosen: the schema allows one noun phrase per surface, and this surface carries leather with a plate running over the back of the hand - which is what the word gauntlet means. Glove would undersell the plate. His account of the object stands unchanged: the same covering on both hands, extending up the arm under the gold brace. The advisor read the sword hand as bare because twin_front.png shows it PALM-ON; twin_back.png shows the brace on both arms."
+      }
+    },
+    {
+      "id": "hand_R",
+      "name": "free hand (open, at the side)",
+      "occupant": {
+        "id": "N18",
+        "phrase": "brown leather gauntlets",
+        "provenance": "prompt",
+        "ratify": true,
+        "note": "The Director left the word to the advisor 2026-08-17 (glove or gauntlet, no preference). GAUNTLET chosen: the schema allows one noun phrase per surface, and this surface carries leather with a plate running over the back of the hand - which is what the word gauntlet means. Glove would undersell the plate. His account of the object stands unchanged: the same covering on both hands, extending up the arm under the gold brace. The advisor read the sword hand as bare because twin_front.png shows it PALM-ON; twin_back.png shows the brace on both arms."
+      }
+    },
+    {
+      "id": "greave_L",
+      "name": "left shin, under the knee plate",
+      "occupant": {
+        "id": "N19",
+        "phrase": "a brown leather shin guard",
+        "provenance": "prompt",
+        "ratify": true,
+        "note": "RULED 2026-08-17: the shin row STAYS and leather occupies it. The reference has no bare shin - the gold knee plate runs knee to boot - so the alternative was to delete these rows and let the knee plates own the whole run. Keeping them costs nothing and preserves the boot-top JOINT, which needs two surfaces to be a boundary between."
+      }
+    },
+    {
+      "id": "greave_R",
+      "name": "right shin, under the knee plate",
+      "occupant": {
+        "id": "N19",
+        "phrase": "a brown leather shin guard",
+        "provenance": "prompt",
+        "ratify": true,
+        "note": "RULED 2026-08-17: the shin row STAYS and leather occupies it. The reference has no bare shin - the gold knee plate runs knee to boot - so the alternative was to delete these rows and let the knee plates own the whole run. Keeping them costs nothing and preserves the boot-top JOINT, which needs two surfaces to be a boundary between."
+      }
+    },
+    {
+      "id": "blade",
+      "name": "blade",
+      "occupant": {
+        "id": "N14",
+        "phrase": "a massive greatsword",
+        "provenance": "prompt"
+      }
+    },
+    {
+      "id": "crossguard",
+      "name": "crossguard",
+      "occupant": {
+        "id": "N15",
+        "phrase": "an ornate gold crossguard",
+        "provenance": "prompt"
+      }
+    },
+    {
+      "id": "pommel",
+      "name": "pommel",
+      "occupant": {
+        "id": "N16",
+        "phrase": "a gold pommel",
+        "provenance": "prompt"
+      }
+    },
+    {
+      "id": "grip",
+      "name": "grip",
+      "occupant": {
+        "id": "N17",
+        "phrase": "a brown leather-wrapped grip",
+        "provenance": "prompt"
+      }
+    },
+    {
+      "id": "silhouette",
+      "name": "silhouette",
+      "occupant": {
+        "id": "mesh_sil",
+        "phrase": null,
+        "provenance": "mesh"
+      }
+    },
+    {
+      "id": "proportions",
+      "name": "stocky proportions",
+      "occupant": {
+        "id": "mesh_body",
+        "phrase": null,
+        "provenance": "mesh"
+      }
+    },
+    {
+      "id": "brushwork",
+      "name": "painterly surface",
+      "occupant": {
+        "id": "style_brush",
+        "phrase": "visible brushstrokes",
+        "provenance": "style"
+      }
+    }
   ],
   "ratification_queue": [
     {
       "id": "Q1",
-      "surfaces": ["hand_L", "hand_R"],
-      "finding": "Both hands are BARE FLESH in canon/twin_front.png at 3x. The sword hand grips a dark brown leather-wrapped grip; the free hand is open, fingers extended. No gauntlet, no glove anywhere on the figure.",
-      "drafted": "N18 'bare hands', kind bare, forbidden gauntlet/glove - the same shape as the sleeveless arms, so a gauntlet cannot be expressed onto a surface the reference leaves bare.",
-      "needs": "the Director's word on the phrase only; the observation is not in doubt."
+      "surfaces": [
+        "hand_L",
+        "hand_R"
+      ],
+      "finding": "WRONG TWICE, THEN SETTLED BY THE DIRECTOR. Draft 1 read 'both hands are BARE FLESH, no gauntlet anywhere' with forbidden:[gauntlet,glove] on both - which would have made the gate refuse the truth. He zoomed and asked whether that was not a gauntlet. Draft 2 then swung to 'the armour is ASYMMETRIC, one gauntlet not a pair'. Also wrong. HIS ACCOUNT, which is the canon: the same glove and brace are on BOTH arms; the front view shows the sword hand palm-on, which is why it registered as flesh. twin_back.png confirms the gold brace on both arms - and the advisor had that file the whole time and never opened it.",
+      "drafted": "N18 'brown leather gloves' on both hands, from his description. The forearm rows are back to N10 exactly as the record had them.",
+      "needs": "one naming ruling, not an observation. He calls the leather the GLOVE (hand, extending up under the brace) and the gold the ARM BRACE. The record's N10 is 'brown leather bracers' and N11 is 'a gold plate on each outer forearm'. If the leather is a glove that reaches the forearm, N10 may be naming the glove's upper half under a different word, and the hand and forearm rows may want one occupant between them rather than two."
+    },
+    {
+      "id": "Q5",
+      "surfaces": [
+        "hand_L",
+        "hand_R",
+        "forearm_L",
+        "forearm_R",
+        "upper_arm_L",
+        "upper_arm_R",
+        "pauldron_L",
+        "pauldron_R",
+        "knee_L",
+        "knee_R",
+        "boot_L",
+        "boot_R",
+        "greave_L",
+        "greave_R"
+      ],
+      "finding": "THE _L/_R SUFFIX IS UNDEFINED IN THE SCHEMA. Nothing says whether L means the character's left or the viewer's left, and until this figure turned out to be asymmetric it did not matter - every paired surface carried the same occupant, so the convention could be wrong without any consequence. It matters now: one hand is armoured and one is not, and a prompt built from a mirrored table would put the gauntlet on the wrong arm.",
+      "drafted": "the two hand and forearm rows are named by what they DO ('sword hand', 'free hand') rather than by side, so the corrected reading cannot be mis-applied while the convention is open.",
+      "needs": "a convention ruling, after which the side suffixes can be trusted for every paired surface in this file and in longsword.surfaces.json."
     },
     {
       "id": "Q2",
-      "surfaces": ["greave_L", "greave_R"],
+      "surfaces": [
+        "greave_L",
+        "greave_R"
+      ],
       "finding": "THE GREAVE WAS NOT A HOLE, IT WAS A MIS-DECOMPOSITION. There is no bare shin between the gold knee plate and the boot: the plate is large and angular, covers knee through upper shin, and its lower point overlaps the boot shaft directly. Brown leather and grey fleece are visible behind and beside it.",
       "drafted": "the surface renamed to 'shin, under the knee plate' and occupied by N19 'a brown leather shin guard'.",
-      "needs": "a decomposition ruling. The alternative is to delete both rows and let knee_L/knee_R own the whole knee-to-boot run, which is closer to how the reference reads but loses the boot-top joint's second operand."
+      "needs": "RULED 2026-08-17: the shin rows stay, occupied by leather, because deleting them would cost the boot-top joint its second operand."
     },
     {
       "id": "Q3",
-      "surfaces": ["forearm_L", "forearm_R", "skirt"],
-      "finding": "N11 (a gold plate on each outer forearm) and N9 (green cloth panels in the skirt) are recorded as blocked additions that DROPPED in generation - and BOTH ARE PLAINLY PRESENT IN THE REFERENCE TWIN. The forearm carries a brown leather bracer with a fur-trimmed cuff AND a gold plate over it; the skirt carries wine-red outer cloth AND green panels.",
-      "drafted": "nothing yet - this is a schema question, not a phrasing one.",
-      "needs": "a ruling on whether a surface whose reference shows two materials should carry ONE COMPOUND occupant ('a fur-cuffed brown leather bracer with a gold outer plate') rather than a base occupant plus a blocked addition. The co-location law says a spec cannot add to an occupied surface; expressing the pair as one occupant is the move that law leaves open, and it has never been tried."
+      "surfaces": [
+        "forearm_L",
+        "forearm_R",
+        "skirt"
+      ],
+      "finding": "WITHDRAWN 2026-08-17. This claimed N11 names 'a gold plate on each outer forearm' where the reference has no forearm gold and only one plate, and therefore that N11 was MIS-SPECIFIED rather than dropped - which would have removed it as the co-location law's sharpest example. The Director: there is a brace on BOTH arms. N11's 'each' is right and its placement is right. The claim was built on the same front-on projection error as Q1. AMENDMENT 15 IS UNDISTURBED and N11 remains its example; its dE 1.07 no-response goes back to the co-location explanation.",
+      "drafted": "nothing. N11 stays a blocked addition exactly as recorded.",
+      "needs": "OPEN, and it is the one genuinely untried move left. N9 'green cloth panels in the kilt' is recorded as a blocked addition that dropped, and the panels are plainly in the reference. The co-location law says a spec cannot add to an occupied surface - so the open question is whether a surface showing two materials should carry ONE COMPOUND occupant, 'a dark red layered cloth kilt with green panels', instead of a base plus a blocked addition. Nobody has tested it and it would need a generation to settle."
     },
     {
       "id": "Q4",
-      "surfaces": ["knee_L", "knee_R"],
-      "finding": "The fur/fleece trim edging the knee plates, filed UNDER TEST in W3-IDENTITY.md pending two clean-control arms, is clearly present in the reference twin at 3x.",
-      "drafted": "nothing - filing it is the Director's call under the rule that put it under test.",
-      "needs": "either promotion to a named element on the knee surface, or a compound occupant per Q3."
+      "surfaces": [
+        "knee_L",
+        "knee_R"
+      ],
+      "finding": "WITHDRAWN 2026-08-17 at the Director's word. This read 'the fur/fleece trim edging the knee plates is clearly present'. He zoomed the knees and reports boot and golden knee guards, no knee fur. Re-read at his zoom: what is at the plate edges is loose WISPY PAINTED STRANDS, light grey against the gold. Calling that a fur trim was an INTERPRETATION of ambiguous paint reported as an observation. The brown leather behind and beside each plate is NOT ambiguous and is unaffected - that is what N19 was drafted for.",
+      "drafted": "nothing. The UNDER TEST entry in W3-IDENTITY.md stays under test, unpromoted.",
+      "needs": "nothing further unless the Director rules otherwise. Recorded because the advisor asserted it twice - the hand draft and this - and both were over-readings of the reference at insufficient zoom."
     }
   ],
   "blocked_additions": [
-    {"id": "N5", "phrase": "gold scrollwork on the pauldrons", "onto": "pauldron_L", "why": "co-location; predicted to drop (Amendment 15)"},
-    {"id": "N9", "phrase": "green cloth panels in the skirt", "onto": "skirt", "why": "co-location; predicted to drop (Amendment 15)"},
-    {"id": "N11", "phrase": "a gold plate on each outer forearm", "onto": "forearm_L", "why": "measured drop, median dE 1.07 (Amendment 15)"}
+    {
+      "id": "N5",
+      "phrase": "gold scrollwork on the pauldrons",
+      "onto": "pauldron_L",
+      "why": "co-location; predicted to drop (Amendment 15)"
+    },
+    {
+      "id": "N9",
+      "phrase": "green cloth panels in the kilt",
+      "onto": "kilt",
+      "why": "co-location; predicted to drop (Amendment 15)"
+    },
+    {
+      "id": "N11",
+      "phrase": "a gold plate on each outer forearm",
+      "onto": "forearm_L",
+      "why": "measured drop, median dE 1.07 (Amendment 15)"
+    }
   ],
   "joints": [
-    {"id": "armhole_L", "a": "torso", "b": "upper_arm_L", "phrase": "the sleeveless armhole cut"},
-    {"id": "armhole_R", "a": "torso", "b": "upper_arm_R", "phrase": "the sleeveless armhole cut"},
-    {"id": "boot_top_L", "a": "boot_L", "b": "greave_L", "phrase": "gold plate against leather at the boot-top"},
-    {"id": "boot_top_R", "a": "boot_R", "b": "greave_R", "phrase": "gold plate against leather at the boot-top"},
-    {"id": "wrist_L", "a": "forearm_L", "b": "hand_L", "phrase": "flesh against leather at the fingers"},
-    {"id": "wrist_R", "a": "forearm_R", "b": "hand_R", "phrase": "flesh against leather at the fingers"},
-    {"id": "grip_guard", "a": "grip", "b": "crossguard", "phrase": "leather against gold at the guard"},
-    {"id": "grip_pommel", "a": "grip", "b": "pommel", "phrase": "leather against gold at the pommel"}
+    {
+      "id": "armhole_L",
+      "a": "torso",
+      "b": "upper_arm_L",
+      "phrase": "the sleeveless armhole cut"
+    },
+    {
+      "id": "armhole_R",
+      "a": "torso",
+      "b": "upper_arm_R",
+      "phrase": "the sleeveless armhole cut"
+    },
+    {
+      "id": "boot_top_L",
+      "a": "boot_L",
+      "b": "greave_L",
+      "phrase": "gold plate against leather at the boot-top"
+    },
+    {
+      "id": "boot_top_R",
+      "a": "boot_R",
+      "b": "greave_R",
+      "phrase": "gold plate against leather at the boot-top"
+    },
+    {
+      "id": "wrist_L",
+      "a": "forearm_L",
+      "b": "hand_L",
+      "phrase": "flesh against leather at the fingers"
+    },
+    {
+      "id": "wrist_R",
+      "a": "forearm_R",
+      "b": "hand_R",
+      "phrase": "flesh against leather at the fingers"
+    },
+    {
+      "id": "grip_guard",
+      "a": "grip",
+      "b": "crossguard",
+      "phrase": "leather against gold at the guard"
+    },
+    {
+      "id": "grip_pommel",
+      "a": "grip",
+      "b": "pommel",
+      "phrase": "leather against gold at the pommel"
+    }
   ]
 }

@@ -379,6 +379,11 @@
    "_the_artifact": "longsword_hero.glb, 49.6 MB, sha256 ab62bb4bd753f2cef4db74d0 (run/final/). Mix 45.25 reference / 2.07 brush / 52.68 dilation of valid; 88.71% of the rendered visible surface is reference; the stone's 67,904 are their own provenance sub-class (the garnet re-projection + the 1,436 collar repair), reference-class, never brush."
   },
   "restylize_views.py": {
+   "canon": {
+    "value": "canon/longsword.surfaces.json",
+    "why": "Attaches the longsword surface database to the twin spend. The live prompt in this block already names the IDENTITY phrases; the gate is how that stays true instead of drifting back to the W3 default.",
+    "from": "Grok build #17 / t91"
+   },
    "_backdrop_is_a_PROMPT_word_not_a_flag": "S-backdrop is delivered by prompt text once derived (_still_suspended.backdrop_derivation); --bg is the CLAY render's compositing colour for the control image, a different operand entirely (E01's contrast fix).",
    "bg": {
     "value": "0,0,0",

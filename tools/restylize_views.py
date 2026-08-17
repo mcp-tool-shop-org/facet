@@ -38,6 +38,7 @@ import argparse
 import sys as _sys, os as _os
 _sys.path.insert(0, _os.path.dirname(_os.path.abspath(__file__)))
 import subject_profile
+import canon_gate
 import json
 import os
 import time
@@ -89,6 +90,11 @@ ap.add_argument("--prompt", default=(
     "with a leather belt, heavy dark boots, holding a massive greatsword, plain "
     "grey background, visible brushstrokes, painterly worked surface"))
 ap.add_argument("--negative", default="watermark, text, logo, blurry, photo, deformed")
+ap.add_argument("--canon", default=None,
+                help="surfaces JSON. The subject --prompt is refused if it "
+                     "does not cover the ratified rows. Unratified rows are "
+                     "named, not required. Checks the fallback --prompt, not "
+                     "each --prompts stem (a rear camera may omit a beard).")
 ap.add_argument("--emit-only", action="store_true",
                 help="build and write the control image + exact figure mask per view, then "
                      "stop WITHOUT submitting to ComfyUI. For the Comfy Cloud path (E08 "
@@ -99,6 +105,18 @@ BASE = f"http://{args.host}"
 BG = np.array([float(v) for v in args.bg.split(",")], dtype=np.float32)
 if BG.max() > 1.0:
     BG = BG / 255.0
+# Canon check BEFORE mkdir. T31 pins that the masks ANDON at
+# restylize_views:197 creates --outdir first; this gate must not join
+# that set. A refused generation leaves nothing.
+if args.canon:
+    try:
+        _chk, _cov = canon_gate.refuse_uncovered(args.canon, args.prompt)
+    except canon_gate.Andon as e:
+        raise AssertionError(
+            "ANDON: canon does not cover ratified prompt: %s" % e)
+    if _cov["unratified_ids"]:
+        print("[canon] unratified (named, not required): %s"
+              % ",".join(_cov["unratified_ids"]), flush=True)
 os.makedirs(args.outdir, exist_ok=True)
 
 

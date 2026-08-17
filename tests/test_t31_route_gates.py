@@ -15,8 +15,9 @@ WHAT THIS FILE PINS, and what it deliberately does not:
     all three interpreter modes                                     (30 cases)
   * no ANDON gate in the twelve is a bare `assert`, by AST, with a
     can-fail leg that plants one and sees it caught
-  * the sixteen gates that are reachable on synthetic input REFUSE in
-    all three modes, leaving nothing behind                         (48 cases)
+  * the reachable gates on synthetic input REFUSE in all three modes,
+    leaving nothing behind. Sixteen at E23; seventeen at t91 when
+    restylize_views grew the canon path gate.
   * the census, so a later arc has to move these numbers on purpose
 
 NO TEST HERE ASSERTS THAT `PYTHONOPTIMIZE=1` DISABLES A GATE. That would anchor
@@ -78,7 +79,7 @@ ROUTE = sorted(BLENDER + PINNED)
 SITES = {"bake_hero_prep.py": 15, "brush_cloud_step.py": 9, "subject_profile.py": 6,
          "e13_harmonize.py": 5, "bake_hero_fuse.py": 4, "bake_hero_pack.py": 4,
          "silhouette_masks.py": 5, "cull_unseen.py": 3, "export_asset_source.py": 2,
-         "palette_gate.py": 2, "resample_atlas.py": 2, "restylize_views.py": 1}
+         "palette_gate.py": 2, "resample_atlas.py": 2, "restylize_views.py": 2}
 
 # ANDON gates in these files that ALREADY raised AssertionError before E23, so
 # the raise census below is not read as a conversion count. Measured at 48fa733:
@@ -105,7 +106,7 @@ REMAINING_ELSEWHERE = 1
 # No file is written by any of the sixteen - that half is asserted for every site
 # below - but "nothing was written" is not literally true for these two, and
 # pinning WHICH two means a third joining them fails this file.
-DIR_AHEAD_OF_GATE = {"silhouette_masks:107": ["o"], "restylize_views:197": ["o"]}
+DIR_AHEAD_OF_GATE = {"silhouette_masks:107": ["o"], "restylize_views:216": ["o"]}
 
 MODES = [("normal", [], {}),
          ("dash-O", ["-O"], {}),
@@ -243,9 +244,10 @@ def test_t31_the_census_is_the_one_e23_measured():
             "%s carries %d ANDON raises; E23 converted %d and %d already raised"
             % (rel, len(_andon_raises(src)), n, PRE_EXISTING_RAISES.get(rel, 0)))
     # 57 was E23's route total; 58 since the E35 arm slate added silhouette_masks'
-    # depth-support ANDON. The literal moves in the commit that moves the table above,
-    # which is the whole service this pin performs.
-    assert sum(SITES.values()) == 58
+    # depth-support ANDON; 59 at t91 when restylize_views grew the canon path
+    # gate (raise before mkdir). The literal moves in the commit that moves
+    # the table above, which is the whole service this pin performs.
+    assert sum(SITES.values()) == 59
 
     elsewhere = 0
     for dirpath, dirnames, filenames in os.walk(str(REPO / "tools")):
@@ -285,8 +287,9 @@ def test_t31_the_blender_pair_cannot_run_under_this_interpreter():
 # ---------------------------------------------------------------------------
 # 4. fire what can be fired
 # ---------------------------------------------------------------------------
-# Sixteen of the 57 are reachable on synthetic input under the pinned
-# interpreter. Which sixteen was MEASURED, not chosen: E23's probe walked every
+# Seventeen are reachable on synthetic input under the pinned
+# interpreter (sixteen at E23; restylize_views:115 added at t91).
+# Which ones was MEASURED, not chosen: E23's probe walked every
 # candidate and reported the ones whose intended ANDON reached stderr. The
 # unreachable remainder, and the reason for each, is in the report - including
 # brush_cloud_step:204, which no profile shape can reach because :353 tests the
@@ -297,6 +300,21 @@ def _png(path, w, h, v=200):
     import numpy as np
     Image.fromarray(np.zeros((h, w, 3), dtype="uint8") + v).save(str(path))
     return str(path)
+
+
+def _rv_thin_canon(d):
+    """restylize + a one-phrase canon the warrior default cannot cover."""
+    p = d / "c.surfaces.json"
+    p.write_text(json.dumps({
+        "subject": "X", "kind": "prop", "schema": 1,
+        "surfaces": [{
+            "id": "blade",
+            "occupant": {
+                "id": "P1", "phrase": "a steel blade", "provenance": "prompt"},
+        }],
+    }), encoding="utf-8")
+    return ["--inputs", _png(d / "a.png", 8, 8),
+            "--outdir", str(d / "o"), "--canon", str(p)]
 
 
 def _write_json(path, obj):
@@ -372,7 +390,9 @@ FIRE = [
     ("e13_harmonize:86", "e13_harmonize.py",
      lambda d: _eh(d, image="a=" + str(d / "nope.png")), "no such file"),
     ("palette_gate:69", "palette_gate.py", _pg, "--masks is parallel"),
-    ("restylize_views:197", "restylize_views.py",
+    ("restylize_views:115", "restylize_views.py",
+     _rv_thin_canon, "canon does not cover"),
+    ("restylize_views:216", "restylize_views.py",
      lambda d: ["--inputs", _png(d / "a.png", 8, 8), _png(d / "b.png", 8, 8),
                 "--outdir", str(d / "o"), "--masks", str(d / "a.png")],
      "--masks is parallel"),

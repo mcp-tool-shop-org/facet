@@ -32,7 +32,7 @@ IDENT = os.path.join(str(REPO), "canon", "W3-IDENTITY.md")
 def test_t87_selftest_exits_zero():
     rc, out, err = run_py("canon_gate.py", ["--selftest"])
     assert rc == 0, "selftest exited %d\n%s\n%s" % (rc, out, err)
-    assert "profile-default hits 6 of 19" in out, out
+    assert "profile-default hits 5 of 19" in out, out
     assert "fixture coverage 0.75" in out, out
 
 
@@ -49,7 +49,7 @@ def test_t87_profile_default_is_still_six_while_the_canon_grew():
     assert len(named) == 19
     prompt = C.profile_default_prompt()
     hit, miss = C.phrase_hits_in_text(prompt, named)
-    assert len(hit) == 6, (hit, miss)
+    assert len(hit) == 5, (hit, miss)
     assert "N17" in miss
 
 
@@ -84,7 +84,7 @@ def test_t87_w3_coverage_is_full_but_four_rows_are_UNRATIFIED():
         s["id"] for s in doc["surfaces"]
         if (s.get("occupant") or {}).get("ratify") is True)
     assert unratified == ["greave_L", "greave_R", "hand_L", "hand_R"], unratified
-    assert len(doc.get("ratification_queue", [])) == 4
+    assert len(doc.get("ratification_queue", [])) == 5
 
 
 def test_t87_w3_identity_pin():
@@ -116,7 +116,7 @@ def test_t87_negation_does_not_count_as_coverage():
         "a bald head, a long red beard, a dark green knitted sleeveless "
         "tunic, polished gold pauldrons, gold scrollwork on the pauldrons, "
         "a gold belt medallion, a brown leather belt, a dark red layered "
-        "cloth skirt, green cloth panels in the skirt, brown leather "
+        "cloth kilt, green cloth panels in the kilt, brown leather "
         "bracers, a gold plate on each outer forearm, gold knee plates, "
         "heavy dark boots, a massive greatsword, an ornate gold "
         "crossguard, a gold pommel, no a brown leather-wrapped grip")
@@ -131,11 +131,11 @@ def test_t87_sleeve_on_bare_arm_andon_sleeveless_does_not():
         "a bald head, a long red beard, a dark green knitted sleeveless "
         "tunic, polished gold pauldrons, gold scrollwork on the pauldrons, "
         "a gold belt medallion, a brown leather belt, a dark red layered "
-        "cloth skirt, green cloth panels in the skirt, brown leather "
+        "cloth kilt, green cloth panels in the kilt, brown leather "
         "bracers, a gold plate on each outer forearm, gold knee plates, "
         "heavy dark boots, a massive greatsword, an ornate gold "
-        "crossguard, a gold pommel, a brown leather-wrapped grip, bare "
-        "hands, a brown leather shin guard")
+        "crossguard, a gold pommel, a brown leather-wrapped grip, brown "
+        "leather gauntlets, a brown leather shin guard")
     ok = C.check_prompt(doc, base)
     assert ok["ok"], ok
     bad = C.check_prompt(doc, base + ", a shirt sleeve")

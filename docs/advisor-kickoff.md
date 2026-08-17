@@ -52,7 +52,7 @@ capability repair, not a failure).
 | | |
 |---|---|
 | HEAD | re-measure — `git log --oneline -1`; tag **v0.5.0** is pushed |
-| suite | **THE SUITE: 1252 tests, 1198 hermetic.** RE-COUNT before quoting — `pytest --collect-only -q` and again with `-m "not artifacts"`, currently 1252 total / 1198 hermetic. T34 pins ~14 surfaces off the collector and they all move in the same commit |
+| suite | **THE SUITE: 1266 tests, 1212 hermetic.** RE-COUNT before quoting — `pytest --collect-only -q` and again with `-m "not artifacts"`, currently 1266 total / 1212 hermetic. T34 pins ~14 surfaces off the collector and they all move in the same commit |
 | the record | four-leg verify SERVING at close, byte-identity, over 51 experiments. No staleness findings at the declaration leg — recertify with MCP `record_build` after any doc change |
 | CI | green through the v0.5.0 tag push at close — verify at open (`gh run list --limit 2`) |
 | spend | **zero cloud credits across E45–E49.** The regen arc will be the first spend and it is gated on the Director's word |
@@ -114,27 +114,44 @@ provenance masks tagged under `E:\AI\training\facet_E49\atlas_*_eroded\`) · the
 (`docs/index/conventions.json` `paid_for_by`, now E4[0-9]) and `instrument_census.py
 --committed` are the LAST corpus-touching steps of every fold.**
 
-## ▶ START HERE — the adopted sequence (consult #10 + the Director's rulings)
+## ▶ START HERE — next-session todos (2026-08-17 close)
 
-1. **The polygon overlay** — one script: the Director's three crop regions against
-   `orphan_fill_mask.npy` / `no_view_visible_mask.npy` (both modes, E49 tree). If the
-   shapes sit on filled texels the class is confirmed; the fix is already scoped
-   (neutral per-material fill for never-seen surface; palette-gated eroded-sil sampling
-   for visible orphans).
-2. **The never-seen policy decision to the Director** — his crops beside the masks:
-   neutral material, brush spend, or accept.
-3. **The free disagreement measurement** — plate-vs-plate disagreement scoped to his
-   three regions, read from `E:\AI\training\facet_E46\` existing maps. High → the regen
-   is the right spend. Low → the island-owner compositor pass first.
-4. **The W3 canon build-out — the crux.** Walk the reference structure by structure:
-   every visible surface its own noun phrase (the N17 pattern), every material cut named
-   as a boundary pair (the missing spec is the JOINT, never a fifth garment), occupancy
-   marked. He ratifies in ONE pass. Beside it: the humanoid canon completeness checklist
-   into `profiles/character.json`, so the exemplar's lesson outlives it.
-5. **The canon-fed twin regeneration** — all eight, this mesh, prompts derived from the
-   completed table, **on his credit word**. The regen kickoff carries E08 Amendment 13
-   in writing: the twin is projection source AND identity; a registration win must
-   never quietly replace the man.
+**The whole of items 1–3 in the previous list is DONE and every one of them came back
+negative.** E50: the fill passes are not the carrier of the flat patches. E51: both fill
+repairs built, render unchanged to the eye. Grok #12: no geometry to snap a material
+boundary to. Grok #15: the flats are a scatter artifact, and the colour is a real
+cross-view disagreement on an ALREADY-NAMED surface. Do not re-run any of them.
+
+1. **⚑ THE COMPOUND OCCUPANT — the Director's own item, and the first thing worth a
+   generation.** N9 *green cloth panels in the kilt* is recorded as a blocked addition
+   that dropped, and the panels are plainly in the reference. The co-location law says a
+   spec cannot add to an occupied surface — so the untried move is whether the kilt
+   should carry **one compound occupant**, *"a dark red layered cloth kilt with green
+   panels"*, instead of a base plus a blocked addition. **It can only be settled by a
+   generation**, so it is the first test to run when he spends. If it lands, the law's
+   whole blocked-addition class may be a schema artifact rather than a model limit.
+2. **The target-view-preferring compositor** — the free repair that follows from #15. The
+   flats are one view winning a wrap of the chest; preferring the target view addresses
+   the SHAPE without credits. Nothing has been built.
+3. **Carry the canon further** — deriving the prompt from the canon (Grok declined it for
+   a stated reason: it would make *"a burly bald warrior"* illegal and force the beard
+   onto the rear camera, which is what E01 exists for); surfaces files for **galleon,
+   dragon, logo, E10-LAYER** (they have IDENTITY.md and no JSON — do NOT generate them
+   under a clock, they need the reference walked); wiring `brush_cloud_step`; and
+   repairing the six-phrase default **after** it stops being the specimen.
+4. **Two canon rows still unratified** — `greave_L` / `greave_R`. The advisor decided the
+   shin decomposition itself (keep the row, leather occupies it, so the boot-top joint
+   keeps its second operand) and he has not ruled on it. `hand_L` / `hand_R` he settled
+   in person.
+5. **The atlas-side stamp for `unmapped`** — ~374 unique texels on view 0, no re-bake
+   needed. **Cosmetic**: exact magenta is 0.22% of the figure and repairing it will not
+   change how the asset looks. Ranked last on purpose.
+
+⚠ **The advisor's own reading of the reference is not evidence.** In one exchange this
+seat asserted bare hands (wrong), then asymmetric armour (wrong), then knee fur (wrong),
+then that N11 was mis-specified (wrong) — all from `twin_front.png` read as a description
+when it is a straight-on projection, with `twin_back.png` sitting unopened the whole time.
+Anything that cannot be stated without hedging goes to the Director as a question.
 
 Seats: **Sonnet for execution, Opus only where a seat designs an instrument. NEVER
 Fable subagents — ruled out by the Director 2026-08-16 on both cost and protocol

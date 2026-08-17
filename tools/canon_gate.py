@@ -59,23 +59,26 @@ CALIBRATION CLAIM (run --selftest; T87 pins the same numbers).
   zero times in that string. The brief's "six" is the profile default,
   not that file. Both numbers are the defect.
 
-  W3_NAMED was 17 when this was written and is 19 since 2026-08-17, when
-  the hand and shin rows were drafted off the reference. Neither hit count
-  moved. Completing the canon widened the gap: the profile default went
-  from 6/17 to 6/19 without a single character of the prompt changing,
-  which is the whole reason the ratio is computed and never stored.
+  W3_NAMED was 17 when this was written, 19 when the hand and shin rows were
+  drafted, and is 20 since the Director caught the hand draft: the free hand carries a
+  GAUNTLET, so the armour is ASYMMETRIC. The forearm rows were NOT enacted -
+  three contested readings in one session is where the advisor stopped. Neither hit count moved at any
+  step. Completing the canon widened the gap 6/17 -> 6/19 without a
+  single character of either prompt changing, which is the whole reason the
+  ratio is computed and never stored.
 
   python tools/canon_gate.py --selftest
 
 YES/NO INTERVALS.
 
-  coverage          named_prompt_surfaces / prompt_surfaces.
-                    prompt_surfaces = provenance prompt OR occupant
-                    is null. mesh and style are out of the denominator.
-                    Holes (occupant null) sit in the denominator.
-  prompt check      every occupant/blocked phrase must occur in the
-                    prompt; forbidden words must not (sleeve except
-                    sleeveless). Negation window: 24 chars.
+  coverage          named / prompt_surfaces. Occupancy, not ratification.
+                    ratified / prompt_surfaces is the spend number.
+                    A drafted row (ratify: true) stays in named and
+                    sits in unratified_ids. Holes sit in the denominator.
+  prompt check      ratified occupant/blocked phrases must occur.
+                    Unratified phrases are named, not required.
+                    Forbidden words still fire on every row.
+                    Negation window: 24 chars.
   occupancy         one prompt occupant per surface_id. A blocked
                     addition naming a surface that already has a
                     prompt occupant is the predicted-drop class,
@@ -119,15 +122,21 @@ NEG_WINDOW = 24
 
 # Article-stripped NAMED phrases in the profile default (measured).
 #
-# W3_NAMED moved 17 -> 19 on purpose 2026-08-17, in the commit that drafted the
-# hand and shin rows off canon/twin_front.png. The two hit counts DID NOT MOVE
+# W3_NAMED moved 17 -> 19 -> 21 on purpose 2026-08-17: the hand and shin rows,
+# then the asymmetric-arm correction the Director caught (N20 gauntlet, N21/N21b
+# bare arms). The two hit counts DID NOT MOVE
 # and that is the finding: the profile default still names 6 and the ARMB
 # workflow still names 16, so completing the canon WIDENED the gap rather than
 # closing it. A denominator that grows while the numerators hold is exactly the
 # moving-denominator trap this repo has been bitten by five times - so both
 # numerators stay pinned separately from the total, and the ratios are never
 # stored, only computed.
-PROFILE_DEFAULT_HITS = 6
+#
+# 6 -> 5 on 2026-08-17: the Director ruled the garment is a KILT, not a skirt.
+# The live default still says skirt, so renaming the canon cost a hit without
+# anyone touching the prompt - 6/17 -> 6/19 -> 5/19. Every canon repair so far
+# has WIDENED this gap, which is what a specimen is supposed to do.
+PROFILE_DEFAULT_HITS = 5
 ARMB_HITS = 16
 W3_NAMED = 19
 
@@ -205,19 +214,38 @@ def is_named(s):
     return False
 
 
+def is_unratified(s):
+    occ = s.get("occupant") or {}
+    return occ.get("ratify") is True
+
+
 def coverage(doc):
+    """Occupancy is not ratification. Both numbers are returned.
+
+    `coverage` stays named/prompt_surfaces so a drafted row is still a
+    filled hole. `ratified` / `ratified_coverage` are what a spend may
+    treat as the Director's canon. A 1.0000 occupancy with unratified
+    rows is not done.
+    """
     ps = prompt_surfaces(doc)
     if not ps:
         _andon("no prompt-relevant surfaces")
     named = [s for s in ps if is_named(s)]
     holes = [s for s in ps if s.get("occupant") is None]
+    unrat = [s for s in ps if is_unratified(s)]
+    ratified = [s for s in named if not is_unratified(s)]
+    n_ps = len(ps)
     return {
         "subject": doc.get("subject"),
-        "prompt_surfaces": len(ps),
+        "prompt_surfaces": n_ps,
         "named": len(named),
         "holes": len(holes),
         "hole_ids": [s["id"] for s in holes],
-        "coverage": float(len(named)) / float(len(ps)),
+        "coverage": float(len(named)) / float(n_ps),
+        "unratified": len(unrat),
+        "unratified_ids": [s["id"] for s in unrat],
+        "ratified": len(ratified),
+        "ratified_coverage": float(len(ratified)) / float(n_ps),
         "denominator": "prompt-relevant surfaces (prompt provenance or null occupant); mesh/style excluded",
     }
 
@@ -266,11 +294,34 @@ def forbidden_hits(doc, prompt):
     return hits
 
 
+def _unratified_ids(doc):
+    return {s["id"] for s in doc["surfaces"] if is_unratified(s)}
+
+
 def check_prompt(doc, prompt):
+    """Ratified phrases are required. Unratified phrases are reported.
+
+    A drafted row (`ratify: true`) is not the Director's canon. Requiring
+    it spends his credits on a phrase he has not seen. Omitting it from
+    the report would hide the draft. Forbidden words still fire on every
+    row, including drafts: adding a gauntlet is a spend in the wrong
+    direction.
+    """
     if prompt is None:
         _andon("need a prompt")
+    unrat_ids = _unratified_ids(doc)
     missing = []
+    unrat_missing = []
+    req = 0
     for sid, ph in required_phrases(doc):
+        raw_id = sid.split(":", 1)[-1] if sid.startswith("blocked:") else sid
+        # blocked additions are author-time inventory, not drafts
+        drafted = (raw_id in unrat_ids) and not sid.startswith("blocked:")
+        if drafted:
+            if not _present(ph, prompt):
+                unrat_missing.append({"surface": sid, "phrase": ph})
+            continue
+        req += 1
         if not _present(ph, prompt):
             missing.append({"surface": sid, "phrase": ph})
     forbidden = [{"surface": s, "word": w} for s, w in forbidden_hits(doc, prompt)]
@@ -278,9 +329,35 @@ def check_prompt(doc, prompt):
     return {
         "ok": ok,
         "missing": missing,
+        "unratified_missing": unrat_missing,
         "forbidden": forbidden,
-        "required": len(required_phrases(doc)),
+        "required": req,
     }
+
+
+def resolve_canon(path):
+    if not path:
+        return None
+    if os.path.isfile(path):
+        return os.path.abspath(path)
+    alt = os.path.join(_REPO, path)
+    if os.path.isfile(alt):
+        return os.path.abspath(alt)
+    _andon("no canon %s" % path)
+
+
+def refuse_uncovered(canon_path, prompt):
+    """The path gate. Import this; do not re-roll the check at each caller."""
+    path = resolve_canon(canon_path)
+    doc = load_canon(path)
+    chk = check_prompt(doc, prompt)
+    cov = coverage(doc)
+    if not chk["ok"]:
+        _andon(
+            "canon does not cover ratified prompt: missing=%s forbidden=%s; "
+            "unratified named not required: %s"
+            % (chk["missing"], chk["forbidden"], cov["unratified_ids"]))
+    return chk, cov
 
 
 def occupancy(doc):
@@ -438,6 +515,86 @@ def profile_default_prompt():
     return doc["tools"]["restylize_views.py"]["prompt"]["value"]
 
 
+# Identity files and the surfaces / profile they pair with, when they do.
+# LOGO has no NAMED table. E10-LAYER is a layer identity, not a twin subject.
+# Generating missing surfaces files is not this build.
+CENSUS_ROWS = (
+    ("W3", "canon/W3-IDENTITY.md", "canon/w3.surfaces.json",
+     "profiles/character.json"),
+    ("GALLEON", "canon/GALLEON-IDENTITY.md", None, "profiles/ship.json"),
+    ("DRAGON", "canon/DRAGON-IDENTITY.md", None, "profiles/beast.json"),
+    ("LONGSWORD", "canon/LONGSWORD-IDENTITY.md",
+     "canon/longsword.surfaces.json", "profiles/prop.json"),
+    ("E10-LAYER", "canon/E10-LAYER-IDENTITY.md", None, None),
+    ("LOGO", "canon/LOGO-IDENTITY.md", None, None),
+)
+
+
+def _profile_restylize_prompt(rel):
+    path = os.path.join(_REPO, rel.replace("/", os.sep))
+    if not os.path.isfile(path):
+        return None
+    doc = json.load(open(path, encoding="utf-8"))
+    block = (doc.get("tools") or {}).get("restylize_views.py") or {}
+    ent = block.get("prompt") or {}
+    return ent.get("value")
+
+
+def census():
+    """One row per IDENTITY.md. Quoteable. Does not invent surfaces files."""
+    rows = []
+    for subject, ident_rel, surf_rel, prof_rel in CENSUS_ROWS:
+        ident_path = os.path.join(_REPO, ident_rel.replace("/", os.sep))
+        named = []
+        if os.path.isfile(ident_path):
+            named = parse_named_table(open(ident_path, encoding="utf-8").read())
+        rec = {
+            "subject": subject,
+            "identity": ident_rel,
+            "identity_named": len(named),
+            "surfaces": surf_rel,
+            "occupancy": None,
+            "ratified": None,
+            "unratified": None,
+            "profile": prof_rel,
+            "profile_hits": None,
+            "profile_named": len(named) if named else None,
+        }
+        if surf_rel:
+            doc = load_canon(os.path.join(_REPO, surf_rel.replace("/", os.sep)))
+            cov = coverage(doc)
+            rec["occupancy"] = "%d/%d" % (cov["named"], cov["prompt_surfaces"])
+            rec["ratified"] = "%d/%d" % (cov["ratified"], cov["prompt_surfaces"])
+            rec["unratified"] = cov["unratified"]
+            rec["unratified_ids"] = cov["unratified_ids"]
+        if prof_rel and named:
+            prompt = _profile_restylize_prompt(prof_rel)
+            if prompt is not None:
+                hit, _miss = phrase_hits_in_text(prompt, named)
+                rec["profile_hits"] = len(hit)
+        rows.append(rec)
+    return rows
+
+
+def format_census(rows):
+    lines = [
+        "canon_gate %s  census  (occupancy is not ratification)"
+        % TOOL_VERSION,
+        "%-10s %7s %11s %10s %10s %s"
+        % ("subject", "named", "occupancy", "ratified", "prof_hit", "surfaces"),
+    ]
+    for r in rows:
+        lines.append(
+            "%-10s %7d %11s %10s %10s %s"
+            % (r["subject"], r["identity_named"],
+               r["occupancy"] or "-",
+               r["ratified"] or "-",
+               ("-" if r["profile_hits"] is None
+                else "%d/%d" % (r["profile_hits"], r["profile_named"])),
+               r["surfaces"] or "NONE"))
+    return "\n".join(lines) + "\n"
+
+
 def _selftest_calibration():
     named = w3_named_phrases()
     if len(named) != W3_NAMED:
@@ -547,6 +704,7 @@ def build_parser():
     i = sub.add_parser("pin-identity")
     add_canon(i)
     i.add_argument("--identity", default=None)
+    sub.add_parser("census", help="every IDENTITY + surfaces + profile default")
     v = sub.add_parser("verify")
     add_canon(v)
     v.add_argument("--twin", required=True)
@@ -569,13 +727,21 @@ def main(argv=None):
             return 0
         if not args.cmd:
             _andon("need a subcommand or --selftest")
+        if args.cmd == "census":
+            sys.stdout.write(format_census(census()))
+            return 0
         doc = load_canon(args.canon)
         if args.cmd == "coverage":
             cov = coverage(doc)
             sys.stdout.write(
-                "canon_gate %s  %s  coverage %.4f  named %d / %d  holes %s\n"
-                % (TOOL_VERSION, cov["subject"], cov["coverage"],
+                "canon_gate %s  %s  occupancy %d/%d  "
+                "ratified %d/%d  unratified %d %s  holes %s\n"
+                % (TOOL_VERSION, cov["subject"],
                    cov["named"], cov["prompt_surfaces"],
+                   cov["ratified"], cov["prompt_surfaces"],
+                   cov["unratified"],
+                   ("(" + ",".join(cov["unratified_ids"]) + ")")
+                   if cov["unratified_ids"] else "",
                    ",".join(cov["hole_ids"]) or "-"))
             return 0
         if args.cmd == "check":
@@ -584,7 +750,12 @@ def main(argv=None):
                 _andon(
                     "prompt failed: missing=%s forbidden=%s"
                     % (chk["missing"], chk["forbidden"]))
-            sys.stdout.write("prompt covers %d required phrases\n" % chk["required"])
+            extra = ""
+            if chk["unratified_missing"]:
+                extra = "  unratified_missing %d" % len(chk["unratified_missing"])
+            sys.stdout.write(
+                "prompt covers %d required phrases%s\n"
+                % (chk["required"], extra))
             return 0
         if args.cmd == "occupancy":
             occ = occupancy(doc)

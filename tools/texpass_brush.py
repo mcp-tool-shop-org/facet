@@ -11,6 +11,7 @@ import argparse
 import sys as _sys, os as _os
 _sys.path.insert(0, _os.path.dirname(_os.path.abspath(__file__)))
 import subject_profile
+import canon_gate
 import json
 import os
 import time
@@ -32,8 +33,21 @@ ap.add_argument("--prompt", default=(
     "with a leather belt, heavy dark boots, holding a massive greatsword, plain "
     "grey background, visible brushstrokes, painterly worked surface"))
 ap.add_argument("--negative", default="watermark, text, logo, blurry, photo, deformed")
+ap.add_argument("--canon", default=None,
+                help="surfaces JSON. The fallback --prompt is refused if it "
+                     "does not cover the ratified rows. Per-job stems from "
+                     "a prompts file are not this check.")
 args = ap.parse_args(subject_profile.bind(ap, "texpass_brush.py", None))
 BASE = f"http://{args.host}"
+if args.canon:
+    try:
+        _chk, _cov = canon_gate.refuse_uncovered(args.canon, args.prompt)
+    except canon_gate.Andon as e:
+        raise AssertionError(
+            "ANDON: canon does not cover ratified prompt: %s" % e)
+    if _cov["unratified_ids"]:
+        print("[canon] unratified (named, not required): %s"
+              % ",".join(_cov["unratified_ids"]), flush=True)
 
 
 def upload(path):

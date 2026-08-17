@@ -175,7 +175,7 @@ La discipline est aussi importante que le produit lui-même et qu'il existe une 
 - **Les échecs restent dans le dépôt avec leur raison.** [`tools/superseded/`](docs/tools.md)
 n'est pas un archive — n'importe qui peut exécuter ces outils et observer qu'ils échouent de la même manière.
 - **Un résultat négatif est un succès total**, rapporté et clôturé plutôt que modifié pour atteindre une valeur cible.
-- **Les tests sont liés au commit qui touche le code** — 1 252 tests réussis, évalués par deux personnes, avec des CI à accès limité sur les 1 198 tests hermétiques.
+- **Les tests sont liés au commit qui touche le code** — 1 266 tests réussis, évalués par deux personnes, avec des CI à accès limité sur les 1 212 tests hermétiques.
 - **Le dossier est interrogeable.** Un index SQLite + FTS5 sur l'ensemble de la séquence, vérifié sur quatre systèmes. Il a trouvé un nombre de décisions que le texte avait mal indiqué à trois endroits différents en comptant le dossier lui-même.
 
 ## Où tout se trouve
@@ -222,7 +222,7 @@ Exactement **un** ANDON simple `assert` reste quelque part sous `tools/` : `sup
 
 Blender 5.x, Python 3.11+ avec `numpy`, `scipy`, `trimesh`, `open3d`, `Pillow`, `spandrel`, `torch`. Une installation locale de ComfyUI n’est nécessaire que pour le pinceau de retouche. Développé sur une RTX 5090 ; la marge de VRAM est plus importante que la vitesse brute.
 
-L’intégration continue (CI) exécute l’ensemble hermétique de la suite sur **ubuntu-latest / Python 3.12** avec des installations fixes (`.github/workflows/ci.yml`) ; le niveau d’artefacts a besoin des arbres enregistrés sous `E:\AI\training`, qui ne sont pas dans Git, donc la CI les exclut intentionnellement. Localement, `python -m pytest` exécute les **1 252** tests et `python -m pytest -m "not artifacts"` exécute les **1 198** tests reproduits par la CI.
+L’intégration continue (CI) exécute l’ensemble hermétique de la suite sur **ubuntu-latest / Python 3.12** avec des installations fixes (`.github/workflows/ci.yml`) ; le niveau d’artefacts a besoin des arbres enregistrés sous `E:\AI\training`, qui ne sont pas dans Git, donc la CI les exclut intentionnellement. Localement, `python -m pytest` exécute les **1 266** tests et `python -m pytest -m "not artifacts"` exécute les **1 212** tests reproduits par la CI.
 
 ---
 

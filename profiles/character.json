@@ -109,6 +109,7 @@
     },
 
     "texpass_brush.py": {
+      "canon": {"value": "canon/w3.surfaces.json", "why": "Attaches the surface database to the brush spend. The six-phrase default in this same block is the specimen the gate refuses; this key is how the refuse happens before Comfy is called, not after.", "from": "Grok build #17 / t91"},
       "seed": {"value": 770700, "why": "Generation seed. Part of the recipe that made THIS asset reproducible.", "from": "E08 Task 3"},
       "steps": {"value": 20, "why": "Sampler steps for the inpainting brush - a generation-recipe value, not a principle.", "from": "E08"},
       "cfg": {"value": 2.5, "why": "Guidance for the brush.", "from": "E08"},
@@ -119,6 +120,7 @@
     },
 
     "restylize_views.py": {
+      "canon": {"value": "canon/w3.surfaces.json", "why": "Attaches the surface database to the twin spend. The six-phrase default in this same block is the specimen the gate refuses. First contact with --profile character.json is supposed to halt until the prompt covers the ratified rows.", "from": "Grok build #17 / t91"},
       "seed": {"value": 770700, "why": "Twin generation seed.", "from": "E08"},
       "steps": {"value": 20, "why": "Sampler steps for twin restylize.", "from": "E08"},
       "cfg": {"value": 2.5, "why": "Guidance for twin restylize.", "from": "E08"},

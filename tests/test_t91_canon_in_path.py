@@ -1,0 +1,181 @@
+"""T91 - the canon gate is in the generation path.
+
+Brief #17. canon_gate.py existed and nothing called it. A gate
+that is not in the path is a document again.
+
+restylize_views.py checks --canon BEFORE mkdir. T31's
+DIR_AHEAD_OF_GATE pin for the masks ANDON is a different site
+and moved 197 -> 215 on purpose in the same change-set.
+
+Ratification is not occupancy. Unratified rows are named, not
+required. The six-phrase profile default is the specimen: the
+gate refuses it. The prompt text is not repaired.
+
+A test that cannot fail is not a test. Hermetic tests do not
+open facet_E*.
+"""
+import ast
+import os
+import sys
+
+import pytest
+
+from conftest import REPO, run_py
+
+sys.path.insert(0, os.path.join(str(REPO), "tools"))
+import canon_gate as C  # noqa: E402
+
+W3 = os.path.join(str(REPO), "canon", "w3.surfaces.json")
+SWORD = os.path.join(str(REPO), "canon", "longsword.surfaces.json")
+
+# Ratified phrases only. No N18/N19.
+RATIFIED_PROMPT = (
+    "a bald head, a long red beard, a dark green knitted sleeveless "
+    "tunic, polished gold pauldrons, gold scrollwork on the pauldrons, "
+    "a gold belt medallion, a brown leather belt, a dark red layered "
+    "cloth kilt, green cloth panels in the kilt, brown leather "
+    "bracers, a gold plate on each outer forearm, gold knee plates, "
+    "heavy dark boots, a massive greatsword, an ornate gold "
+    "crossguard, a gold pommel, a brown leather-wrapped grip"
+)
+
+
+def test_t91_census_exits_zero():
+    rc, out, err = run_py("canon_gate.py", ["census"])
+    assert rc == 0, "census exited %d\n%s\n%s" % (rc, out, err)
+    assert "W3" in out and "20/24" in out, out
+    # 6 -> 5 on purpose 2026-08-17: the Director ruled the garment is a KILT and
+    # the live default still says skirt, so the canon rename cost a hit without
+    # the prompt changing. Every canon repair today widened this gap.
+    assert "5/19" in out, out
+    assert "NONE" in out, out
+
+
+def test_t91_w3_ratified_is_20_of_24():
+    """The quoteable number. Occupancy 24/24 is not this number."""
+    doc = C.load_canon(W3)
+    cov = C.coverage(doc)
+    assert cov["named"] == 24
+    assert cov["prompt_surfaces"] == 24
+    assert cov["coverage"] == 1.0
+    assert cov["ratified"] == 20
+    assert cov["unratified"] == 4
+    assert cov["unratified_ids"] == [
+        "hand_L", "hand_R", "greave_L", "greave_R"]
+    assert cov["ratified_coverage"] == pytest.approx(20.0 / 24.0)
+
+
+def test_t91_unratified_phrases_are_not_required():
+    """Can-fail: requiring a drafted phrase would treat a draft as ratified."""
+    doc = C.load_canon(W3)
+    chk = C.check_prompt(doc, RATIFIED_PROMPT)
+    assert chk["ok"], chk
+    missing_ids = {m["surface"] for m in chk["unratified_missing"]}
+    assert "hand_L" in missing_ids
+    assert "greave_L" in missing_ids
+    assert not any(m["surface"] == "grip" for m in chk["unratified_missing"])
+
+
+def test_t91_missing_ratified_phrase_still_refuses():
+    doc = C.load_canon(W3)
+    thin = RATIFIED_PROMPT.replace("a brown leather-wrapped grip", "")
+    chk = C.check_prompt(doc, thin)
+    assert not chk["ok"]
+    assert any("leather-wrapped grip" in m["phrase"] for m in chk["missing"])
+
+
+def test_t91_profile_default_is_refused_and_leaves_no_outdir(tmp_path):
+    """THE CHIP. Default prompt + --canon must halt before mkdir."""
+    out = tmp_path / "o"
+    rc, out_s, err = run_py("restylize_views.py", [
+        "--inputs", str(tmp_path / "nope.png"),
+        "--outdir", str(out),
+        "--canon", W3,
+    ])
+    both = out_s + err
+    assert rc != 0
+    assert "ANDON" in both
+    assert "canon does not cover" in both
+    assert "unratified named not required" in both
+    assert not out.exists(), "refused generation created --outdir"
+
+
+def test_t91_character_profile_attaches_the_canon(tmp_path):
+    """First contact with --profile character.json is the specimen."""
+    out = tmp_path / "o"
+    rc, out_s, err = run_py("restylize_views.py", [
+        "--profile", os.path.join(str(REPO), "profiles", "character.json"),
+        "--inputs", str(tmp_path / "nope.png"),
+        "--outdir", str(out),
+    ], cwd=str(REPO))
+    both = out_s + err
+    assert rc != 0
+    assert "ANDON" in both
+    assert "canon does not cover" in both
+    assert not out.exists()
+
+
+def test_t91_no_canon_flag_does_not_invent_a_check(tmp_path):
+    """Historical invocations without --canon stay on the old path.
+
+    They fail later (missing input), not on a canon they never named.
+    """
+    out = tmp_path / "o"
+    png = tmp_path / "a.png"
+    from PIL import Image
+    import numpy as np
+    Image.fromarray(np.zeros((8, 8, 3), dtype=np.uint8)).save(png)
+    rc, out_s, err = run_py("restylize_views.py", [
+        "--inputs", str(png),
+        "--outdir", str(out),
+        "--emit-only",
+    ])
+    both = out_s + err
+    assert "canon does not cover" not in both
+    # emit-only writes control+mask; that is the old path proceeding
+    assert out.exists() or "ANDON" in both
+
+
+def test_t91_longsword_profile_covers_its_canon():
+    """The prop profile was written against IDENTITY. The gate holds."""
+    doc = C.load_canon(SWORD)
+    prompt = C._profile_restylize_prompt("profiles/prop.json")
+    chk = C.check_prompt(doc, prompt)
+    assert chk["ok"], chk
+    assert chk["required"] == 5
+
+
+def test_t91_census_does_not_invent_surfaces():
+    rows = {r["subject"]: r for r in C.census()}
+    assert set(rows) == {
+        "W3", "GALLEON", "DRAGON", "LONGSWORD", "E10-LAYER", "LOGO"}
+    assert rows["GALLEON"]["surfaces"] is None
+    assert rows["DRAGON"]["surfaces"] is None
+    assert rows["W3"]["ratified"] == "20/24"
+    assert rows["LONGSWORD"]["occupancy"] == "5/5"
+
+
+def test_t91_restylize_has_two_andon_raises():
+    """T31 SITES moved 1 -> 2 in this change-set, on purpose."""
+    src = open(os.path.join(str(REPO), "tools", "restylize_views.py"),
+               encoding="utf-8").read()
+    tree = ast.parse(src)
+    n = 0
+    for node in ast.walk(tree):
+        if not (isinstance(node, ast.Raise) and isinstance(node.exc, ast.Call)):
+            continue
+        if not (isinstance(node.exc.func, ast.Name)
+                and node.exc.func.id == "AssertionError"):
+            continue
+        arg = ast.get_source_segment(src, node.exc.args[0]) or ""
+        if "ANDON" in arg or "str(e)" in arg:
+            n += 1
+    assert n == 2, "restylize ANDON raises: %d" % n
+
+
+def test_t91_no_andon_is_a_bare_assert():
+    src = open(os.path.join(str(REPO), "tools", "canon_gate.py"),
+               encoding="utf-8").read()
+    tree = ast.parse(src)
+    bares = [n.lineno for n in ast.walk(tree) if isinstance(n, ast.Assert)]
+    assert bares == [], "bare assert at lines %s" % bares

@@ -2,11 +2,11 @@
  "andon": [],
  "corpus": {
   "files": 399,
-  "id": "f142559aa6b5517d69360567cabc1429e0a30822299cdcf9713ca6d90bd4f548",
+  "id": "b7f39fa19d53fb4ef019192a6d599b959a150074f13cae9ba466ed04cf396bf0",
   "manifest": {
    "CLAUDE.md": "15beee75616d305a90e2344a6cbae2b8df0fe2abdb2d9c5863716ad1e626727c",
-   "README.md": "6fc4d2b420d5f9500a9a8bbd9379f77ae5a5bfeec29ac8d029f3133fa49d3a3b",
-   "docs/advisor-kickoff.md": "c6d2bac774f932c4aa879338bc3c83d6546550b29e2ae0cbdaeb8f730fdc33ef",
+   "README.md": "0bb5bb970a6f106a12b6cf614dfdfba16fc24a34317a0f3e1a0209a47139653d",
+   "docs/advisor-kickoff.md": "5b08f295f922b6f1e561100eceedca3ae0db505fec93b090c225dbc899e87272",
    "docs/arc-history.md": "5b2876b3fed7be95a6efc984f5e5a00b7c1675b10a169ee43803b50e091b48a8",
    "docs/brand/README.md": "81f425b6a101135b43463b35468f08a2db37af39c856c01f7fbdb6ce66598226",
    "docs/comfy-consult-1-brief.md": "3ffe0b6744a757c27bf2c8d30c02829e36ce257672c011cffee353c09536a6c2",
@@ -380,7 +380,7 @@
    "docs/handbook/index.md": "2481565674a67102d8bc5e5853ce95af48f5694a1f765032d543a07d7bdfbe20",
    "docs/handbook/profiles.md": "411d6c7cbe44cda94d969e05e9d3d8882d898334208c949551857b90b336165b",
    "docs/handbook/subjects.md": "21b276d4a30463a144bddfd69a00868919c480f0a15bfab733f3e763532412ba",
-   "docs/instrument-census.md": "6f4136ecc1a75b9bd488a343fdcb85a3145f4f4f5aa5de2aaff785544ad0b880",
+   "docs/instrument-census.md": "5fb9a46c8c0c81268a6c140ebce1dbe7b9c7a85ed66221de0cd6b1867f0b5eb0",
    "docs/known-defects.md": "1c59c6d043c003ace4306b27398797a26f2db55fd282d631b161c1aebecc959c",
    "docs/profiles-design.md": "926c5f767cbdd043ab2740abfbf40d3cc79a9cc765aea57b3ddc46d2202c4339",
    "docs/research/E35-speck-research-grounding.md": "8a61b222be36b22dd88248e723e5208078da1240973d8461c97d80631c07d7b6",
@@ -401,15 +401,15 @@
    "docs/style-registers.md": "e50cf95d28b3c1c79e1ed8200a39b543732b013da71c3b6d14d35b88f661a41f",
    "docs/tools.md": "c1c13f2c4968c48958ba9507722a4f741fed613ddb792b7b494b54a4a9cff242",
    "profiles/beast.json": "bdbaacf06aff54cf9bc0b400d17adf7ec719a074ccc8a5af24f5f1e436e6a926",
-   "profiles/character.json": "9eef3a95864a3fabf8642be9b214c9131655cc1facdb9a7e57d7833253ae53b1",
+   "profiles/character.json": "050b4315da75a138ef2672bd78d6850581935c23216671d43083560a8c95dcba",
    "profiles/ship.json": "4a198452a6ea85ed6a975b56d36ddf019109605a5bf65586c8ca2f3753661c47"
   }
  },
  "counts": {
   "artifacts": 1062,
-  "decisions": 225,
+  "decisions": 227,
   "experiments": 51,
-  "fts": 5756,
+  "fts": 5758,
   "handoffs": 31,
   "laws": 110,
   "phenomena": 28,
@@ -417,9 +417,9 @@
   "rulings": 761
  },
  "db": {
-  "bytes": 14520320,
+  "bytes": 14516224,
   "path": "docs/index/facet.db",
-  "sha256": "90b0773ac2f0df0124c576efdc5e7e22fd9c0e5235a2f53da96ef1b5ae6709eb"
+  "sha256": "ead3886ec68262b4bb12f8bf8546195105147fd288d8a5b0b02de9267147226f"
  },
  "determinism_leg": "byte-identity",
  "failures": [],
@@ -439,7 +439,7 @@
   "==============================================================================",
   "",
   "[leg 1] determinism - two builds from an unchanged record",
-  "  BYTE-IDENTICAL   14520320 bytes, both builds",
+  "  BYTE-IDENTICAL   14516224 bytes, both builds",
   "",
   "[corpus] ruling documents discovered by the sorted glob",
   "  E01-ruling-gate1.md                            arc E01                0 rows - prose only",
@@ -563,9 +563,9 @@
   "  handoffs        31 rows   dangling 0",
   "  artifacts     1062 rows   dangling 0",
   "  phenomena       28 rows   dangling 0",
-  "  decisions      225 rows   dangling 0",
-  "  fts           5756 rows   dangling 0",
-  "  total checked 2268, dangling 0",
+  "  decisions      227 rows   dangling 0",
+  "  fts           5758 rows   dangling 0",
+  "  total checked 2270, dangling 0",
   "",
   "[leg 4] the seeded question set - target within the top 3",
   "  canny values for the beast         rank 3   docs/experiments/E12-ruling.md \u00b7 Ruling 11a",
@@ -595,7 +595,7 @@
   "",
   "[vocabulary] what each declared vocabulary did not recognise",
   "             REPORT ONLY - this section never fails the run",
-  "  artifact kinds         recognised  5418   unrecognised    0",
+  "  artifact kinds         recognised  5416   unrecognised    0",
   "  experiment status      recognised    90   unrecognised   12",
   "      not recognised: **PLAN SUPERSEDED IN PLACE; S0 AND S1 R\u2026, **RUN** \u2192 [E51-fill-repair-report](E51-\u2026, **RUN; ALL FOUR CELLS REJECTED BY THE D\u2026, **RUN; THE DIRECTOR ACCEPTS THE SHEETS\u2026, **RUN; THE DIRECTOR RULES IT A CLEAR ST\u2026, **deprioritised by E07's ruling** \u2014 den\u2026  (+6 more occurrence(s))",
   "  law paid_for_by        recognised    74   unrecognised    0",
@@ -614,7 +614,7 @@
  ],
  "unattributed_failures": [],
  "verb": "record_build",
- "verified_utc": "2026-08-17T08:09:33Z",
+ "verified_utc": "2026-08-17T09:09:10Z",
  "verify_exit_code": 0,
  "written_by": "tools/record_mcp.py"
 }
