@@ -16,9 +16,10 @@ the structure: the gates, the outside channel, the Director's eye, and the recor
 >
 > The shipped atlas route was destroying paint the eight plates agree on. Rebuilt from
 > the per-view bundle under border × facing × visibility weights, the atlas renders
-> reached the Director's *"honestly a lot better"* (E48) and *"looks great"* (E49).
-> **W3 is the EXEMPLAR for the humanoid, not a character** — his ruling — and the crux,
-> in his words: *"we never properly built out the canon."*
+> cleared the Director's acceptance bar for the first time on this route — at E48 with
+> room to go further, then at E49 outright.
+> **W3 is the EXEMPLAR for the humanoid, not a character** — his ruling — and the crux
+> he named: the canon was never properly built out.
 >
 > **Open, in order:** the fill-pass **polygon class** (his one open ruling; hypothesis
 > tagged in provenance masks, unverified) · the **never-seen-surface policy** (4.65–5.57%
@@ -58,11 +59,11 @@ capability repair, not a failure).
 
 ## ⚖ THE DIRECTOR'S RULINGS — all on 2026-08-16, all in the E47/E49 dispatch records
 
-1. **E47's four unfilled diagnostics: REJECTED** — *"I don't see any recovered images."*
-   A diagnostic with holes is not a candidate; never hand him one again.
-2. **E48: "honestly a lot better, but we can do better."** The route lives.
-3. **E49: "It looks great, but there's colored polygonal shapes now."** The strongest
-   acceptance signal the route has received, one open class.
+1. **E47's four unfilled diagnostics: REJECTED** — he could see no recovered imagery in
+   them. A diagnostic with holes is not a candidate; never hand him one again.
+2. **E48: a clear step up, with room to go further.** The route lives.
+3. **E49: accepted, with one new defect class** — flat coloured polygonal shapes. The
+   strongest acceptance signal the route has received, one open class.
 4. **Sleeveless stands** — the reference is sleeveless, N3 unchanged; the armhole repair
    is naming the bare arm and the cut, never a garment (Amendment-15 law).
 5. **W3 is the exemplar** — completeness and fidelity to the reference, not per-element
@@ -128,8 +129,8 @@ provenance masks tagged under `E:\AI\training\facet_E49\atlas_*_eroded\`) · the
    never quietly replace the man.
 
 Seats: **Sonnet for execution, Opus only where a seat designs an instrument. NEVER
-Fable subagents (Director, 2026-08-16: "I can't afford that and it's against
-protocol") — always pass the model explicitly; an omitted model inherits Fable
+Fable subagents — ruled out by the Director 2026-08-16 on both cost and protocol
+grounds; always pass the model explicitly, since an omitted model inherits Fable
 silently.** Dispatches land in `docs/experiments/` before the seat starts; steering
 rulings append to the kickoff in place.
 

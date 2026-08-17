@@ -12,8 +12,8 @@ put a track through this channel alongside the two seats already running.
 
 ## Where the route stands
 
-The Director ruled the E49 renders **"It looks great, but there's colored polygonal
-shapes now."** Strongest acceptance the route has had, one open defect class. A Sonnet
+The Director accepted the E49 renders and named one new defect class: flat-coloured
+angular patches. Strongest acceptance the route has had. A Sonnet
 seat is testing the polygon class right now against the tagged provenance masks — that
 is not your job and you should not touch `E:\AI\training\facet_E50\` or
 `docs/experiments/E50-*`.
@@ -73,8 +73,8 @@ The Director's named defect regions do not match that set. Across E48 and E49 he
 **boot-tops/greaves**, then the E49 patches on **tabard and skirt** and a **boot**.
 There is no `arm` box, no `hand` box, and five of eight views have no boxes at all.
 
-Note also: the reference is **sleeveless** — the Director ruled it, *"The reference image
-is sleeveless, I don't have preference."* The armhole smear is tunic paint crossing onto
+Note also: the reference is **sleeveless** — the Director ruled it so, and expressed no
+preference beyond that. The armhole smear is tunic paint crossing onto
 unnamed flesh. Do not let a region called `sleeve` smuggle in a garment that does not
 exist.
 

@@ -8,11 +8,11 @@ protocol it goes to this channel with the advisor's candidates labelled as candi
 
 ---
 
-# Nine for nine. The Director says "honestly a lot better, but we can do better" — and asks how. Argue.
+# Nine for nine. The Director calls it a clear step up with room to go further, and asks how. Argue.
 
 ## Where the route stands tonight
 
-E47's four unfilled diagnostics were REJECTED ("I don't see any recovered images").
+E47's four unfilled diagnostics were REJECTED — he could see no recovered imagery in them.
 E48 ran the complete chain — A3-rule erosion on a derived bundle, both atlas modes,
 within-island fill, full renders, sheets (`docs/experiments/E48-complete-candidate-report.md`,
 sheets under `E:\AI\training\facet_E48\sheets\`). It landed incomplete by its own spec:
@@ -23,10 +23,10 @@ of the 4–8 px structure band. Both were the advisor's spec defects and both re
 running now as E49 (orphan islands sampled directly from their best-facing twin with
 uneroded sil; erosion capped exactly).
 
-**The Director's ruling on E48, verbatim: "This is honestly a lot better, but we can do
-better."** The route lives. He posted three crops naming the residue: **the arm/sleeve
-(mangled, mostly the shirt sleeve), the hand (slightly), the boot-tops/greaves** — and
-his own hypothesis: **"the proper prompt could probably address some of these."**
+**The Director's ruling on E48: a clear step up, with room to go further.** The route
+lives. He posted three crops naming the residue: **the arm/sleeve (mangled, mostly the
+shirt sleeve), the hand (slightly), the boot-tops/greaves** — and offered his own
+hypothesis, that a better prompt would likely address some of it.
 
 Note what his three regions have in common: every one is a **material boundary**
 (sleeve-edge/flesh, flesh/tunic-green at the fingers, gold-plate/leather at the

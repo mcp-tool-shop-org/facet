@@ -135,9 +135,9 @@ control; named attributes ride the prompt.
 
 **The projector question closed on 2026-08-16** ([E45](docs/experiments/E45-warp-and-aov-kickoff.md)–[E49](docs/experiments/E49-finish-and-cap-kickoff.md)).
 The eight plates **compose**: rebuilt from the per-view bundle under
-border × facing × visibility weights, the atlas renders the Director ruled *"honestly a
-lot better"* and then *"looks great"* — beside a shipped atlas whose route had been
-destroying paint the plates agree on. The chain that did it is in `tools/`
+border × facing × visibility weights, the atlas renders cleared the Director's
+acceptance bar for the first time on this route — twice, across two arcs — beside a
+shipped atlas whose route had been destroying paint the plates agree on. The chain that did it is in `tools/`
 (`emit_view_aovs`, `s3_composite`, `flow_estimate`, `s3_run`, `s3_sheet`,
 `atlas_from_aovs`, `twin_mesh_warp`), five of the seven built by an outside channel
 whose nominated calibration claims have held **ten for ten**, every one verified here
@@ -238,8 +238,8 @@ code](docs/known-defects.md).
   eight views against silhouette medians of 1.2–3.0; every residue region the Director
   circled — sleeve cut, hand, boot-top — is a material joint the generation prompt
   never named (the recorded prompt carries six elements; grip, gauntlet, greave and
-  hand appear **zero** times). His diagnosis is the record's: *"we never properly
-  built out the canon."* The W3 canon build-out and canon-fed twin regeneration are
+  hand appear **zero** times). His diagnosis is the record's: the canon was never
+  properly built out. The W3 canon build-out and canon-fed twin regeneration are
   the staged repair ([E49 dispatch record](docs/experiments/E49-finish-and-cap-kickoff.md)).
 - **4.65–5.57% of valid texels are surface no flat-ring camera can see** — they fail
   the depth gate in every view, no projection route can paint them, and the shipped
@@ -247,8 +247,8 @@ code](docs/known-defects.md).
   need a policy (neutral material, brush, or accept), not a fix
   ([E49 report](docs/experiments/E49-finish-and-cap-report.md)).
 - **The complete-candidate fill pass renders flat coloured polygons** — the Director's
-  one open class on the accepted-grade sheets (*"looks great, but there's colored
-  polygonal shapes"*). Hypothesis under test, provenance masks already tagged: orphan
+  one open class on the accepted-grade sheets, named at the same time he accepted
+  them. Hypothesis under test, provenance masks already tagged: orphan
   islands the size of single triangles, flat-filled from boundary-adjacent twin
   samples taken with the uneroded silhouette.
 
@@ -259,7 +259,7 @@ earlier arc ran ten sessions that each judged their own output and wrote conclus
 next session read as established fact. Nothing in that loop was checkable.
 
 - **Spec before the work, report after, ruling last** — and the session that designs an
-  experiment never grades its own results. Forty-nine experiments are in
+  experiment never grades its own results. Fifty-one experiments are in
   [the record](docs/experiments/).
 - **Corrections land in place, beside the measurement that overturned them**, never as
   quiet deletions. Six inherited claims were falsified in the founding session alone, and
@@ -280,7 +280,7 @@ next session read as established fact. Nothing in that loop was checkable.
 |---|---|
 | **[The handbook](docs/handbook/index.md)** | the guide — the route stage by stage, the subjects, the profile system |
 | **[Concept prep](docs/concept-prep.md)** | the candidate clay hop: its Gate 0 walk, its placement, and the licence item it opens |
-| **[The record](docs/experiments/)** | forty-nine experiments: spec, report, ruling, and every prediction stated before the measurement |
+| **[The record](docs/experiments/)** | fifty-one experiments: spec, report, ruling, and every prediction stated before the measurement |
 | **[What the route learned](docs/findings.md)** | the durable findings and the hard-won rules, in full |
 | **[Status of every tool](docs/tools.md)** | what works, what is superseded, and the evidence for each |
 | **[Known defects](docs/known-defects.md)** | everything not solved, measured and located in code |

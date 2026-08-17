@@ -85,8 +85,7 @@ are the arc's artifact — the Director's eye is the gate, and no metric substit
 - 2026-08-16, late — seat landed; report folded at `8093833`; Gate S held; two
   prediction misses reported (flow-on drops coverage 12/12 cells; blend moves more
   texels at smaller magnitude).
-- 2026-08-16, close — **DIRECTOR'S RULING: all four cells REJECTED.** His words: *"I
-  don't see any recovered images. They all still look broken."* The advisor's walk had
+- 2026-08-16, close — **DIRECTOR'S RULING: all four cells REJECTED.** His words: He could see no recovered imagery in any of them. The advisor's walk had
   reported interior-material recovery with boundary residue and called blend-off "the
   closest thing to the reference this pipeline has ever rendered" — **that sentence was
   a quality grade, which is not the advisor's call, and it is withdrawn.** What stands

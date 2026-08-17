@@ -1,8 +1,8 @@
 # E49 report — finish the candidate: orphan fill from source, erosion at its stated floor
 
 Executor seat (Sonnet tier), dispatched 2026-08-16 night at HEAD
-`acac4aa7472d062286b8d6ac00227458b1eed224`, on the Director's "finish it"
-direction after E48 ("This is honestly a lot better, but we can do better.").
+`acac4aa7472d062286b8d6ac00227458b1eed224`, on the Director's direction to finish it
+after E48, which he judged a clear step up with room to go further.
 Dispatch: `docs/experiments/E49-finish-and-cap-kickoff.md`. Full working
 record: `E:\AI\training\facet_E49\handoff.md` (kept current through every
 step) and `E:\AI\training\facet_E49\predictions.md` (written before step 1

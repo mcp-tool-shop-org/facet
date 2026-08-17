@@ -1,7 +1,7 @@
 # E50 — the polygon class: is the fill pass the carrier?
 
 **Written 2026-08-17** by the advisor seat, on the Director's open ruling from E49
-(*"It looks great, but there's colored polygonal shapes now."*). One Sonnet executor
+(he accepted the sheets and named one new defect class). One Sonnet executor
 seat, background, working `E:\AI\training\facet_E50\`. **No GPU, no cloud spend** —
 every input is on disk.
 

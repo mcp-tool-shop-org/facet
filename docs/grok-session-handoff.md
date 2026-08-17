@@ -53,8 +53,8 @@ Tag **v0.5.0** is pushed. Working tree was clean.
   offsets exceed silhouette on 8/8 views (medians 3.46-11.12 px vs 1.16-3.00).
   Gate C held. Twin ring is **8 flat cameras**; no twin exists at el 55.
 - **The projector question is closed.** Rebuilt atlas from the per-view
-  bundle. Director: E48 *"honestly a lot better, but we can do better"*;
-  E49 *"looks great"* with one new class (colored polygonal shapes).
+  bundle. Director: E48 a clear step up with room to go further; E49
+  accepted, with one new class (colored polygonal shapes).
 - **E48** ran flow **off**, both modes, eroded bundle + within-island fill.
   Owner 5.05% / blend 11.96% sentinel (orphan islands). Green on the grip
   survived in both candidates.

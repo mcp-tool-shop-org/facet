@@ -1,7 +1,7 @@
 # E49 — finish the candidate: orphan fill from source, erosion at its stated floor
 
 **Written 2026-08-16, night** by the advisor seat, on the Director's direction after E48
-(*"This is honestly a lot better, but we can do better."*). One Sonnet executor seat,
+(he judged E48 a clear step up with room to go further). One Sonnet executor seat,
 background, working `E:\AI\training\facet_E49\`.
 
 ## The two repairs (both were the advisor's spec defects in E48)
@@ -46,18 +46,18 @@ measured 5.05/11.96 without it; predict inside).
 
 ## Dispatch record
 
-- 2026-08-16, night — dispatched on the Director's "finish it" direction, alongside Grok
+- 2026-08-16, night — dispatched on the Director's direction to finish it, alongside Grok
   consult #10 (the improvement question).
 - 2026-08-16, late night — **three Director rulings recorded** while this seat ran:
   1. **SLEEVELESS STANDS.** *"The reference image is sleeveless, I don't have
      preference."* N3 is unchanged; the armhole smear is tunic paint crossing onto
      unnamed flesh, and the repair is naming the bare arm and the cut — never a
      garment (consult #10's Amendment-15 reading, confirmed).
-  2. **W3 IS THE EXEMPLAR, not a character.** *"This isn't a real character, it's the
-     exemplar for the humanoid."* Its job is to prove the humanoid route; identity
+  2. **W3 IS THE EXEMPLAR, not a character.** He ruled it is not a real character but the
+     exemplar for the humanoid. Its job is to prove the humanoid route; identity
      decisions on it need completeness and fidelity to the reference, not taste
      rulings per element.
-  3. **THE CRUX, in his words: "we never properly built out the canon."** The audit
+  3. **THE CRUX, as he named it: the canon was never properly built out.** The audit
      agrees: the recorded generation prompt names six elements; grip/gauntlet/greave/
      hand appear zero times; every defect region he circled is an unnamed surface or
      joint. The studio constitution's own line — dense canon produces a trainable
@@ -69,8 +69,8 @@ measured 5.05/11.96 without it; predict inside).
   character profile, so the next character starts complete instead of rediscovering
   this. Consult #10's sequencing stands: E49 lands → his three crops re-cut → the
   free per-region disagreement measurement → the canon-fed regen on his credit word.
-- 2026-08-16, close of session — **DIRECTOR'S RULING on the E49 sheets: "It looks
-  great, but there's colored polygonal shapes now."** The strongest acceptance signal
+- 2026-08-16, close of session — **DIRECTOR'S RULING on the E49 sheets: accepted, with
+  one new defect class named.** The strongest acceptance signal
   this route has received, with one new defect class: flat-coloured angular patches
   (green/yellow/orange triangles on the tabard and skirt, a gold triangle on the
   boot). **Hypothesis, unverified, checkable in one overlay:** this arc's own fill

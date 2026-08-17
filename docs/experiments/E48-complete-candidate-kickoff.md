@@ -1,7 +1,7 @@
 # E48 — a complete candidate render, or this route is done
 
 **Written 2026-08-16, late** by the advisor seat, immediately after the Director rejected
-all four E47 cells (*"I don't see any recovered images. They all still look broken."*).
+all four E47 cells (he could see no recovered imagery in any of them).
 One dispatched executor seat (Sonnet), background, working `E:\AI\training\facet_E48\`.
 
 ## The question, and the stakes

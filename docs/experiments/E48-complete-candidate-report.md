@@ -2,8 +2,7 @@
 
 Executor seat (Sonnet tier), dispatched 2026-08-16 late at HEAD
 `e9e19c56dcccbafd926d24856d0520ec8cf674c6`, immediately after the Director rejected
-all four E47 cells ("I don't see any recovered images. They all still look
-broken."). Dispatch: `docs/experiments/E48-complete-candidate-kickoff.md`. Full
+all four E47 cells (he could see no recovered imagery in any of them). Dispatch: `docs/experiments/E48-complete-candidate-kickoff.md`. Full
 working record: `E:\AI\training\facet_E48\handoff.md` (kept current through every
 step) and `E:\AI\training\facet_E48\predictions.md` (written before step 2 ran).
 HEAD did not move during this arc; `git status --short` is clean except for this

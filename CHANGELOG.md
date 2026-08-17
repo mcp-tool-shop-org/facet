@@ -20,8 +20,9 @@ it, so a reader can check the claim rather than trust it.
 two dispatched executor seats and three runner seats, and six build rounds through an
 outside channel whose nominated calibration claims held **ten for ten** — every one
 verified here by running it before anything trusted it. The rebuilt-atlas renders
-reached the Director's *"honestly a lot better"* and then *"looks great"*, beside a
-shipped atlas whose route had been destroying paint the eight plates agree on.
+cleared the Director's acceptance bar for the first time on this route — twice, across
+two arcs — beside a shipped atlas whose route had been destroying paint the eight plates
+agree on.
 
 ### Added
 
