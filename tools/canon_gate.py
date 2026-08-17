@@ -53,11 +53,17 @@ THE THESIS, ATTACKED.
 
 CALIBRATION CLAIM (run --selftest; T87 pins the same numbers).
   profiles/character.json restylize prompt contains exactly 6 of the
-  17 W3 NAMED phrases (article-stripped). The ARMB workflow the
+  W3 NAMED phrases (article-stripped). The ARMB workflow the
   older handoff cited (stroke_1_y+090_e+00_workflow.json:181) contains
-  16 of 17 and is missing only N17; grip/gauntlet/greave/hand appear
+  16 and is missing only N17; grip/gauntlet/greave/hand appear
   zero times in that string. The brief's "six" is the profile default,
   not that file. Both numbers are the defect.
+
+  W3_NAMED was 17 when this was written and is 19 since 2026-08-17, when
+  the hand and shin rows were drafted off the reference. Neither hit count
+  moved. Completing the canon widened the gap: the profile default went
+  from 6/17 to 6/19 without a single character of the prompt changing,
+  which is the whole reason the ratio is computed and never stored.
 
   python tools/canon_gate.py --selftest
 
@@ -112,9 +118,18 @@ DE_MISSED = 10.0
 NEG_WINDOW = 24
 
 # Article-stripped NAMED phrases in the profile default (measured).
+#
+# W3_NAMED moved 17 -> 19 on purpose 2026-08-17, in the commit that drafted the
+# hand and shin rows off canon/twin_front.png. The two hit counts DID NOT MOVE
+# and that is the finding: the profile default still names 6 and the ARMB
+# workflow still names 16, so completing the canon WIDENED the gap rather than
+# closing it. A denominator that grows while the numerators hold is exactly the
+# moving-denominator trap this repo has been bitten by five times - so both
+# numerators stay pinned separately from the total, and the ratios are never
+# stored, only computed.
 PROFILE_DEFAULT_HITS = 6
 ARMB_HITS = 16
-W3_NAMED = 17
+W3_NAMED = 19
 
 
 class Andon(ValueError):
@@ -431,8 +446,8 @@ def _selftest_calibration():
     hit, miss = phrase_hits_in_text(prompt, named)
     if len(hit) != PROFILE_DEFAULT_HITS:
         _andon(
-            "profile default hits %d of 17, not %d (hit=%s miss=%s)"
-            % (len(hit), PROFILE_DEFAULT_HITS, hit, miss))
+            "profile default hits %d of %d, not %d (hit=%s miss=%s)"
+            % (len(hit), W3_NAMED, PROFILE_DEFAULT_HITS, hit, miss))
     return hit, miss
 
 

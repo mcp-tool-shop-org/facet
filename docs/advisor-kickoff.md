@@ -52,7 +52,7 @@ capability repair, not a failure).
 | | |
 |---|---|
 | HEAD | re-measure — `git log --oneline -1`; tag **v0.5.0** is pushed |
-| suite | **THE SUITE: 1233 tests, 1181 hermetic.** RE-COUNT before quoting — `pytest --collect-only -q` and again with `-m "not artifacts"`, currently 1233 total / 1181 hermetic. T34 pins ~14 surfaces off the collector and they all move in the same commit |
+| suite | **THE SUITE: 1252 tests, 1198 hermetic.** RE-COUNT before quoting — `pytest --collect-only -q` and again with `-m "not artifacts"`, currently 1252 total / 1198 hermetic. T34 pins ~14 surfaces off the collector and they all move in the same commit |
 | the record | four-leg verify SERVING at close, byte-identity, over 51 experiments. No staleness findings at the declaration leg — recertify with MCP `record_build` after any doc change |
 | CI | green through the v0.5.0 tag push at close — verify at open (`gh run list --limit 2`) |
 | spend | **zero cloud credits across E45–E49.** The regen arc will be the first spend and it is gated on the Director's word |

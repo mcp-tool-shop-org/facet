@@ -1,12 +1,12 @@
 {
  "andon": [],
  "corpus": {
-  "files": 396,
-  "id": "1556288cc765e344e0d35461fa95324bcce3b1c27df0d916e156980e56b549bd",
+  "files": 399,
+  "id": "f142559aa6b5517d69360567cabc1429e0a30822299cdcf9713ca6d90bd4f548",
   "manifest": {
    "CLAUDE.md": "15beee75616d305a90e2344a6cbae2b8df0fe2abdb2d9c5863716ad1e626727c",
-   "README.md": "5777a623486f7096d13c51bfadf07b6eae80aa5e8997875134ac641d6d2805c0",
-   "docs/advisor-kickoff.md": "bc350129e4fa16eab15327b1d1b64a11c57cc9f553f31763f8724f4ee0260bae",
+   "README.md": "6fc4d2b420d5f9500a9a8bbd9379f77ae5a5bfeec29ac8d029f3133fa49d3a3b",
+   "docs/advisor-kickoff.md": "c6d2bac774f932c4aa879338bc3c83d6546550b29e2ae0cbdaeb8f730fdc33ef",
    "docs/arc-history.md": "5b2876b3fed7be95a6efc984f5e5a00b7c1675b10a169ee43803b50e091b48a8",
    "docs/brand/README.md": "81f425b6a101135b43463b35468f08a2db37af39c856c01f7fbdb6ce66598226",
    "docs/comfy-consult-1-brief.md": "3ffe0b6744a757c27bf2c8d30c02829e36ce257672c011cffee353c09536a6c2",
@@ -365,6 +365,9 @@
    "docs/grok-consult-12-brief.md": "d4fb3bc67289d312f0f1211d01955f8050b5c1b104da4f56cb12545b9fc4c87a",
    "docs/grok-consult-13-brief.md": "cd2ef0c9a13e1544aa679b942164e45553dc2b167e245a7cbe73e2a24ee59008",
    "docs/grok-consult-14-brief.md": "3d7dfa5efb35b9927232a1f44105ef60a404b832eeaac4c834b7ea6936e83dbf",
+   "docs/grok-consult-15-brief.md": "f70e72d050249dd2fe9375cb4686d9b026d7a3ac5a257a1256bf679285f92ada",
+   "docs/grok-consult-16-brief.md": "e7c7722e3d1b23e07134833a76028f257ed4dc00bf3cb13d09b5892f376e319e",
+   "docs/grok-consult-17-brief.md": "2888197334f00d2b86e4cb6f07c31bb77e69b7d97e644beacf3064b1cb63bd10",
    "docs/grok-consult-2-brief.md": "5f735752db7b4e4771ca04ca59322ac4328abf824b5f8d0cb785b781282a5730",
    "docs/grok-consult-3-brief.md": "bef86154b5d18862562bacd86ed0a1764002e49c0e2d366642522096bf9d77bb",
    "docs/grok-consult-4-brief.md": "ce20e6b1840dac87e06d6f0638f22f0e607eb20fac0cb134a60aa26cb6b79f87",
@@ -377,7 +380,7 @@
    "docs/handbook/index.md": "2481565674a67102d8bc5e5853ce95af48f5694a1f765032d543a07d7bdfbe20",
    "docs/handbook/profiles.md": "411d6c7cbe44cda94d969e05e9d3d8882d898334208c949551857b90b336165b",
    "docs/handbook/subjects.md": "21b276d4a30463a144bddfd69a00868919c480f0a15bfab733f3e763532412ba",
-   "docs/instrument-census.md": "536a746bde54734fd5752be8644dc5e560fb7a30a48c6c5495103c1f47f434d5",
+   "docs/instrument-census.md": "6f4136ecc1a75b9bd488a343fdcb85a3145f4f4f5aa5de2aaff785544ad0b880",
    "docs/known-defects.md": "1c59c6d043c003ace4306b27398797a26f2db55fd282d631b161c1aebecc959c",
    "docs/profiles-design.md": "926c5f767cbdd043ab2740abfbf40d3cc79a9cc765aea57b3ddc46d2202c4339",
    "docs/research/E35-speck-research-grounding.md": "8a61b222be36b22dd88248e723e5208078da1240973d8461c97d80631c07d7b6",
@@ -403,10 +406,10 @@
   }
  },
  "counts": {
-  "artifacts": 1061,
+  "artifacts": 1062,
   "decisions": 225,
   "experiments": 51,
-  "fts": 5755,
+  "fts": 5756,
   "handoffs": 31,
   "laws": 110,
   "phenomena": 28,
@@ -416,7 +419,7 @@
  "db": {
   "bytes": 14520320,
   "path": "docs/index/facet.db",
-  "sha256": "5468037a4b2b74e82f37146f1437b2770fb70ca8e124412c1b97b88e22b8fd0c"
+  "sha256": "90b0773ac2f0df0124c576efdc5e7e22fd9c0e5235a2f53da96ef1b5ae6709eb"
  },
  "determinism_leg": "byte-identity",
  "failures": [],
@@ -558,11 +561,11 @@
   "  laws           110 rows   dangling 0",
   "  experiments     51 rows   dangling 0",
   "  handoffs        31 rows   dangling 0",
-  "  artifacts     1061 rows   dangling 0",
+  "  artifacts     1062 rows   dangling 0",
   "  phenomena       28 rows   dangling 0",
   "  decisions      225 rows   dangling 0",
-  "  fts           5755 rows   dangling 0",
-  "  total checked 2267, dangling 0",
+  "  fts           5756 rows   dangling 0",
+  "  total checked 2268, dangling 0",
   "",
   "[leg 4] the seeded question set - target within the top 3",
   "  canny values for the beast         rank 3   docs/experiments/E12-ruling.md \u00b7 Ruling 11a",
@@ -592,7 +595,7 @@
   "",
   "[vocabulary] what each declared vocabulary did not recognise",
   "             REPORT ONLY - this section never fails the run",
-  "  artifact kinds         recognised  5412   unrecognised    0",
+  "  artifact kinds         recognised  5418   unrecognised    0",
   "  experiment status      recognised    90   unrecognised   12",
   "      not recognised: **PLAN SUPERSEDED IN PLACE; S0 AND S1 R\u2026, **RUN** \u2192 [E51-fill-repair-report](E51-\u2026, **RUN; ALL FOUR CELLS REJECTED BY THE D\u2026, **RUN; THE DIRECTOR ACCEPTS THE SHEETS\u2026, **RUN; THE DIRECTOR RULES IT A CLEAR ST\u2026, **deprioritised by E07's ruling** \u2014 den\u2026  (+6 more occurrence(s))",
   "  law paid_for_by        recognised    74   unrecognised    0",
@@ -611,7 +614,7 @@
  ],
  "unattributed_failures": [],
  "verb": "record_build",
- "verified_utc": "2026-08-17T07:30:51Z",
+ "verified_utc": "2026-08-17T08:09:33Z",
  "verify_exit_code": 0,
  "written_by": "tools/record_mcp.py"
 }

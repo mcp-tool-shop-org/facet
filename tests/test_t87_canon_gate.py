@@ -32,32 +32,59 @@ IDENT = os.path.join(str(REPO), "canon", "W3-IDENTITY.md")
 def test_t87_selftest_exits_zero():
     rc, out, err = run_py("canon_gate.py", ["--selftest"])
     assert rc == 0, "selftest exited %d\n%s\n%s" % (rc, out, err)
-    assert "profile-default hits 6 of 17" in out, out
+    assert "profile-default hits 6 of 19" in out, out
     assert "fixture coverage 0.75" in out, out
 
 
-def test_t87_profile_default_is_six_of_seventeen():
+def test_t87_profile_default_is_still_six_while_the_canon_grew():
+    """MOVED ON PURPOSE 2026-08-17. Was `..._six_of_seventeen`.
+
+    The canon went 17 -> 19 NAMED rows when the hand and shin surfaces were
+    drafted off the reference. The profile default did not change by a
+    character and still hits 6. Completing the canon WIDENED the gap, 6/17 to
+    6/19 - which is why this leg pins the two numbers separately and never the
+    ratio between them.
+    """
     named = C.w3_named_phrases()
-    assert len(named) == 17
+    assert len(named) == 19
     prompt = C.profile_default_prompt()
     hit, miss = C.phrase_hits_in_text(prompt, named)
     assert len(hit) == 6, (hit, miss)
     assert "N17" in miss
 
 
-def test_t87_w3_coverage_holes_are_hands_and_greaves():
-    """Can-fail: an element-keyed coverage cannot see these rows."""
+def test_t87_w3_coverage_is_full_but_four_rows_are_UNRATIFIED():
+    """MOVED ON PURPOSE 2026-08-17, in the commit that filled the holes.
+
+    Was `..._holes_are_hands_and_greaves`, pinning holes == 4. The advisor
+    walked canon/twin_front.png at 3x and drafted them: both hands are bare
+    flesh (N18), and the greave row was a MIS-DECOMPOSITION rather than a hole
+    - the gold knee plate runs knee to boot with leather and fleece behind it
+    (N19). Coverage is therefore 1.0.
+
+    The property this leg exists for is unchanged and is why it did not simply
+    become `holes == 0`: a surface-keyed canon shows you what an element list
+    cannot. It now shows the NEXT thing an element list cannot - that four rows
+    are drafted from the reference and have not been ratified by the Director.
+    A coverage of 1.0 with unratified rows must never read as done, so the
+    unratified count is pinned here and moving it needs the same deliberate
+    edit this one did.
+    """
     doc = C.load_canon(W3)
     cov = C.coverage(doc)
-    assert set(cov["hole_ids"]) == {
-        "hand_L", "hand_R", "greave_L", "greave_R"}
+    assert set(cov["hole_ids"]) == set(), cov["hole_ids"]
+    assert cov["holes"] == 0
     assert cov["named"] + cov["holes"] == cov["prompt_surfaces"]
     assert cov["coverage"] == pytest.approx(
         cov["named"] / cov["prompt_surfaces"])
-    assert cov["holes"] == 4
-    # 18 phrased + 2 bare + 4 holes = 24
     assert cov["prompt_surfaces"] == 24
-    assert cov["named"] == 20
+    assert cov["named"] == 24
+
+    unratified = sorted(
+        s["id"] for s in doc["surfaces"]
+        if (s.get("occupant") or {}).get("ratify") is True)
+    assert unratified == ["greave_L", "greave_R", "hand_L", "hand_R"], unratified
+    assert len(doc.get("ratification_queue", [])) == 4
 
 
 def test_t87_w3_identity_pin():
@@ -66,7 +93,11 @@ def test_t87_w3_identity_pin():
     assert rc == 0, "%s\n%s" % (out, err)
     doc = C.load_canon(W3)
     pin = C.pin_identity(doc, IDENT)
-    assert pin["named_rows"] == 17
+    # 17 -> 19 on purpose 2026-08-17: N18 bare hands and N19 the leather shin
+    # guard were drafted into BOTH files in the same commit. This leg is the
+    # two-files-one-truth gate and it FIRED when the JSON moved first, which is
+    # exactly its job - the markdown carries the reasoning a row cannot.
+    assert pin["named_rows"] == 19
 
 
 def test_t87_recorded_thin_prompt_is_refused():
@@ -103,7 +134,8 @@ def test_t87_sleeve_on_bare_arm_andon_sleeveless_does_not():
         "cloth skirt, green cloth panels in the skirt, brown leather "
         "bracers, a gold plate on each outer forearm, gold knee plates, "
         "heavy dark boots, a massive greatsword, an ornate gold "
-        "crossguard, a gold pommel, a brown leather-wrapped grip")
+        "crossguard, a gold pommel, a brown leather-wrapped grip, bare "
+        "hands, a brown leather shin guard")
     ok = C.check_prompt(doc, base)
     assert ok["ok"], ok
     bad = C.check_prompt(doc, base + ", a shirt sleeve")

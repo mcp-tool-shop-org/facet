@@ -45,6 +45,8 @@ is itself the test of it.**
 | N15 | an ornate gold crossguard | own phrase, not a modifier on N14 |
 | N16 | a gold pommel | own phrase |
 | N17 | **a brown leather-wrapped grip** | **NEW 2026-08-16** — an unoccupied surface, not a promoted modifier. Own phrase, not a modifier on N14. ⚠ UNVERIFIED: predicted to land, must be checked on the next generation |
+| N18 | **bare hands** | **NEW 2026-08-17, DRAFTED — awaiting the Director's ratification.** Read off `twin_front.png` at 3×: both hands are bare flesh, the sword hand closed on the grip and the free hand open with fingers extended. No gauntlet and no glove anywhere on the figure. Filed `kind: bare` with `forbidden: [gauntlet, glove]`, the same shape as the sleeveless arms — so a gauntlet cannot be expressed onto a surface the reference leaves bare |
+| N19 | **a brown leather shin guard** | **NEW 2026-08-17, DRAFTED — awaiting the Director's ratification, and the row it fills was mis-named.** There is no bare shin on this figure: the gold knee plate is large and angular, runs knee through upper shin, and its lower point overlaps the boot shaft directly, with brown leather and grey fleece visible behind and beside it. The old `greave` row described a surface that does not exist as a separate thing. Alternative on the table: delete both rows and let N12 own the whole knee-to-boot run — closer to how the reference reads, but it costs the boot-top joint its second operand |
 
 **N17 — the grip, added at the Director's delegation 2026-08-16.** He named the choice as leather
 or steel and left it to the advisor. **Leather**, for four reasons, given in the order of how much

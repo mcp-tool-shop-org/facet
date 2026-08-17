@@ -17,8 +17,8 @@
     "py_files_total": 112
   },
   "provenance": {
-    "corpus_files": 383,
-    "corpus_files_before_self_exclusion": 393,
+    "corpus_files": 386,
+    "corpus_files_before_self_exclusion": 396,
     "probe_interpreter": "E:\\AI-Models\\trellis2-env\\Scripts\\python.exe",
     "probe_interpreter_version": "3.13.13",
     "probe_skipped": false,
@@ -35,7 +35,7 @@
       "docs/experiments/E28-task3-report.md",
       "docs/instrument-census.md"
     ],
-    "test_files": 88
+    "test_files": 90
   },
   "rows": [
     {

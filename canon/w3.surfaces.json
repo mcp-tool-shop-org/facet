@@ -22,10 +22,10 @@
     {"id": "knee_R", "name": "right knee", "occupant": {"id": "N12", "phrase": "gold knee plates", "provenance": "prompt"}},
     {"id": "boot_L", "name": "left boot", "occupant": {"id": "N13", "phrase": "heavy dark boots", "provenance": "prompt"}},
     {"id": "boot_R", "name": "right boot", "occupant": {"id": "N13", "phrase": "heavy dark boots", "provenance": "prompt"}},
-    {"id": "hand_L", "name": "left hand", "occupant": null},
-    {"id": "hand_R", "name": "right hand", "occupant": null},
-    {"id": "greave_L", "name": "left boot-top / greave", "occupant": null},
-    {"id": "greave_R", "name": "right boot-top / greave", "occupant": null},
+    {"id": "hand_L", "name": "left hand", "occupant": {"id": "N18", "phrase": "bare hands", "provenance": "prompt", "kind": "bare", "forbidden": ["gauntlet", "glove"], "ratify": true}},
+    {"id": "hand_R", "name": "right hand", "occupant": {"id": "N18", "phrase": "bare hands", "provenance": "prompt", "kind": "bare", "forbidden": ["gauntlet", "glove"], "ratify": true}},
+    {"id": "greave_L", "name": "left shin, under the knee plate", "occupant": {"id": "N19", "phrase": "a brown leather shin guard", "provenance": "prompt", "ratify": true}},
+    {"id": "greave_R", "name": "right shin, under the knee plate", "occupant": {"id": "N19", "phrase": "a brown leather shin guard", "provenance": "prompt", "ratify": true}},
     {"id": "blade", "name": "blade", "occupant": {"id": "N14", "phrase": "a massive greatsword", "provenance": "prompt"}},
     {"id": "crossguard", "name": "crossguard", "occupant": {"id": "N15", "phrase": "an ornate gold crossguard", "provenance": "prompt"}},
     {"id": "pommel", "name": "pommel", "occupant": {"id": "N16", "phrase": "a gold pommel", "provenance": "prompt"}},
@@ -33,6 +33,36 @@
     {"id": "silhouette", "name": "silhouette", "occupant": {"id": "mesh_sil", "phrase": null, "provenance": "mesh"}},
     {"id": "proportions", "name": "stocky proportions", "occupant": {"id": "mesh_body", "phrase": null, "provenance": "mesh"}},
     {"id": "brushwork", "name": "painterly surface", "occupant": {"id": "style_brush", "phrase": "visible brushstrokes", "provenance": "style"}}
+  ],
+  "ratification_queue": [
+    {
+      "id": "Q1",
+      "surfaces": ["hand_L", "hand_R"],
+      "finding": "Both hands are BARE FLESH in canon/twin_front.png at 3x. The sword hand grips a dark brown leather-wrapped grip; the free hand is open, fingers extended. No gauntlet, no glove anywhere on the figure.",
+      "drafted": "N18 'bare hands', kind bare, forbidden gauntlet/glove - the same shape as the sleeveless arms, so a gauntlet cannot be expressed onto a surface the reference leaves bare.",
+      "needs": "the Director's word on the phrase only; the observation is not in doubt."
+    },
+    {
+      "id": "Q2",
+      "surfaces": ["greave_L", "greave_R"],
+      "finding": "THE GREAVE WAS NOT A HOLE, IT WAS A MIS-DECOMPOSITION. There is no bare shin between the gold knee plate and the boot: the plate is large and angular, covers knee through upper shin, and its lower point overlaps the boot shaft directly. Brown leather and grey fleece are visible behind and beside it.",
+      "drafted": "the surface renamed to 'shin, under the knee plate' and occupied by N19 'a brown leather shin guard'.",
+      "needs": "a decomposition ruling. The alternative is to delete both rows and let knee_L/knee_R own the whole knee-to-boot run, which is closer to how the reference reads but loses the boot-top joint's second operand."
+    },
+    {
+      "id": "Q3",
+      "surfaces": ["forearm_L", "forearm_R", "skirt"],
+      "finding": "N11 (a gold plate on each outer forearm) and N9 (green cloth panels in the skirt) are recorded as blocked additions that DROPPED in generation - and BOTH ARE PLAINLY PRESENT IN THE REFERENCE TWIN. The forearm carries a brown leather bracer with a fur-trimmed cuff AND a gold plate over it; the skirt carries wine-red outer cloth AND green panels.",
+      "drafted": "nothing yet - this is a schema question, not a phrasing one.",
+      "needs": "a ruling on whether a surface whose reference shows two materials should carry ONE COMPOUND occupant ('a fur-cuffed brown leather bracer with a gold outer plate') rather than a base occupant plus a blocked addition. The co-location law says a spec cannot add to an occupied surface; expressing the pair as one occupant is the move that law leaves open, and it has never been tried."
+    },
+    {
+      "id": "Q4",
+      "surfaces": ["knee_L", "knee_R"],
+      "finding": "The fur/fleece trim edging the knee plates, filed UNDER TEST in W3-IDENTITY.md pending two clean-control arms, is clearly present in the reference twin at 3x.",
+      "drafted": "nothing - filing it is the Director's call under the rule that put it under test.",
+      "needs": "either promotion to a named element on the knee surface, or a compound occupant per Q3."
+    }
   ],
   "blocked_additions": [
     {"id": "N5", "phrase": "gold scrollwork on the pauldrons", "onto": "pauldron_L", "why": "co-location; predicted to drop (Amendment 15)"},
