@@ -13,6 +13,11 @@ it, so a reader can check the claim rather than trust it.
 
 ## [Unreleased]
 
+- **`canon_gate` is the router** (t92). Schema 2 adds `legal_clauses` and
+  `scopes`. Cover is both directions; unlicensed residue refuses. Resolve is
+  subject id over the census + `canon/`. `brush_cloud_step graph` now stands
+  the gate before the workflow JSON exists. Worksheet is not this change-set.
+
 ## [0.6.0] — 2026-08-17
 
 **The canon becomes data, and the gate stands in front of the money.** The identity

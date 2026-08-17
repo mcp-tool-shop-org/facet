@@ -17,8 +17,8 @@
     "py_files_total": 112
   },
   "provenance": {
-    "corpus_files": 386,
-    "corpus_files_before_self_exclusion": 396,
+    "corpus_files": 395,
+    "corpus_files_before_self_exclusion": 405,
     "probe_interpreter": "E:\\AI-Models\\trellis2-env\\Scripts\\python.exe",
     "probe_interpreter_version": "3.13.13",
     "probe_skipped": false,
@@ -35,7 +35,7 @@
       "docs/experiments/E28-task3-report.md",
       "docs/instrument-census.md"
     ],
-    "test_files": 91
+    "test_files": 93
   },
   "rows": [
     {
@@ -197,9 +197,11 @@
       "b2_literals": [
         "E:/AI/training/saltroad_bake_fix"
       ],
-      "cited_count": 0,
-      "cited_count_raw": 1,
-      "cited_in": [],
+      "cited_count": 1,
+      "cited_count_raw": 2,
+      "cited_in": [
+        "docs/experiments/E54-router-landing-zone-report.md"
+      ],
       "dir": "tools/diagnostics",
       "docstring_line1": "Does the ControlNet hint actually SEE the green apron, the fingers, and the 3/4 face?",
       "file": "canny_probe.py",
@@ -1165,10 +1167,11 @@
       "anchored_in_basename_only": [],
       "b1_literals": [],
       "b2_literals": [],
-      "cited_count": 1,
-      "cited_count_raw": 1,
+      "cited_count": 2,
+      "cited_count_raw": 2,
       "cited_in": [
-        "docs/experiments/E08-gate0.md"
+        "docs/experiments/E08-gate0.md",
+        "docs/experiments/E53-n11-spec-arm-report.md"
       ],
       "dir": "tools/diagnostics",
       "docstring_line1": "E08 \u2014 reference agreement in CIE Lab dE, against a styled reference view.",
@@ -2003,8 +2006,8 @@
       ],
       "b1_literals": [],
       "b2_literals": [],
-      "cited_count": 20,
-      "cited_count_raw": 26,
+      "cited_count": 21,
+      "cited_count_raw": 27,
       "cited_in": [
         "CLAUDE.md",
         "docs/experiments/E10-offsurface-r4ab-predictions.md",
@@ -2022,6 +2025,7 @@
         "docs/experiments/E37-remake-report.md",
         "docs/experiments/E40-three-class-arms-kickoff.md",
         "docs/experiments/E41-where-the-wrong-colour-enters.md",
+        "docs/experiments/E52-target-first-flats-kickoff.md",
         "docs/experiments/README.md",
         "docs/specs/measurement-mcp-spec.md",
         "docs/specs/placement-memo.md",
@@ -2054,13 +2058,14 @@
       "b2_literals": [
         "mcp-tool-shop__saltroad-style-lora__saltroad_style_v2_lowlr_000001500.safetensors"
       ],
-      "cited_count": 4,
-      "cited_count_raw": 5,
+      "cited_count": 5,
+      "cited_count_raw": 6,
       "cited_in": [
         "docs/experiments/E12-handoff13-predictions.md",
         "docs/experiments/E12-repair-pair-sidecar.md",
         "docs/experiments/E12-task4-pair-sidecar.md",
-        "docs/experiments/E14-task4-report.md"
+        "docs/experiments/E14-task4-report.md",
+        "docs/experiments/E54-router-landing-zone-report.md"
       ],
       "dir": "tools/diagnostics",
       "docstring_line1": "E12 handoff 3 Task 4 \u2014 the styled target pair's cloud workflow, built and CHECKED on disk.",
@@ -3119,12 +3124,13 @@
       "b2_literals": [
         "E:/AI-Models/TRELLIS.2-repo"
       ],
-      "cited_count": 3,
-      "cited_count_raw": 3,
+      "cited_count": 4,
+      "cited_count_raw": 4,
       "cited_in": [
         "docs/experiments/E32-report.md",
         "docs/experiments/E33-report.md",
-        "docs/experiments/E33-the-first-performer-through-the-route.md"
+        "docs/experiments/E33-the-first-performer-through-the-route.md",
+        "docs/experiments/E54-router-landing-zone-report.md"
       ],
       "dir": "tools/diagnostics",
       "docstring_line1": "E32 Gate 0 - what the reconstructor ACTUALLY sees, reproduced from its own source.",
@@ -3677,11 +3683,12 @@
       "anchored_in_basename_only": [],
       "b1_literals": [],
       "b2_literals": [],
-      "cited_count": 2,
-      "cited_count_raw": 4,
+      "cited_count": 3,
+      "cited_count_raw": 5,
       "cited_in": [
         "docs/experiments/E37-stageB-reroll2-halt.md",
-        "docs/experiments/E37-stageB-selection-sheet.md"
+        "docs/experiments/E37-stageB-selection-sheet.md",
+        "docs/experiments/E53-n11-spec-arm-report.md"
       ],
       "dir": "tools/verify",
       "docstring_line1": "Contact sheet + per-view figure brightness readout.",
@@ -3959,7 +3966,7 @@
     "anchored_basename_only": 61,
     "any_add_argument": 106,
     "argparse": 106,
-    "cited": 93,
+    "cited": 94,
     "cited_raw": 112,
     "flag_surface": 106,
     "flag_surface_unguarded": 95,

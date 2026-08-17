@@ -1,7 +1,7 @@
 {
   "subject": "W3",
   "kind": "humanoid",
-  "schema": 1,
+  "schema": 2,
   "source_identity": "canon/W3-IDENTITY.md",
   "visual_target": [
     "canon/twin_front.png",
@@ -408,5 +408,41 @@
       "b": "pommel",
       "phrase": "leather against gold at the pommel"
     }
-  ]
+  ],
+  "legal_clauses": [
+    {
+      "id": "style_bg",
+      "phrase": "plain grey background",
+      "class": "style",
+      "from": "profiles/character.json restylize/texpass default, measured"
+    },
+    {
+      "id": "style_brush",
+      "phrase": "visible brushstrokes",
+      "class": "style",
+      "from": "same default; also the brushwork style occupant"
+    },
+    {
+      "id": "style_paint",
+      "phrase": "painterly worked surface",
+      "class": "style",
+      "from": "same default"
+    },
+    {
+      "id": "frame_subject",
+      "phrase": "a burly bald warrior",
+      "class": "framing",
+      "from": "same default. Not a surface. Declared so the reverse check does not invent a warn."
+    },
+    {
+      "id": "frame_holding",
+      "phrase": "holding",
+      "class": "framing",
+      "from": "same default"
+    }
+  ],
+  "scopes": {
+    "views": {},
+    "strokes": {}
+  }
 }

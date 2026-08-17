@@ -498,6 +498,19 @@ def test_t24_paid_for_by_reads_every_arc_the_record_has(facet_index_mod):
     """FAILS AT THE FROZEN VALUE. E16 through E33 are all in the record and the
     old declaration matched none of them."""
     m = facet_index_mod
+    # E54 repair pin (2026-08-17). The span-derived check below is the primary
+    # leg, but it can only fail while parse_experiments still reads the record:
+    # a broken span computation would silently shrink its range, and the leg
+    # could then no longer fail for exactly the arcs it exists to cover. The
+    # two arcs the router round added are pinned by name, so this block FAILS
+    # against the pre-repair declaration (bounded at E51:
+    # \b(E0[1-9]|E[1-4]\d|E5[01])\b) whatever the span computation returns.
+    # The bound leg below still refuses beyond-span arcs; extending the bound
+    # stays a deliberate edit, per the WHY A BOUND comment above.
+    for arc in ("E52", "E53"):
+        assert m.PAID_RE.search("this law was paid for by %s." % arc), (
+            "laws.paid_for_by cannot read %s, which the record has (pinned "
+            "by name; the span-derived check below is the general form)" % arc)
     hi = _record_arc_span(m)
     unreadable = ["E%02d" % n for n in range(1, hi + 1)
                   if not m.PAID_RE.search("this law was paid for by E%02d." % n)]

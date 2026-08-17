@@ -76,7 +76,7 @@ ROUTE = sorted(BLENDER + PINNED)
 # that population honestly. T69 carries the same two properties for it instead - the
 # firing legs in both interpreter modes, and the encode is checked before the output
 # directory is created, so it has no business in DIR_AHEAD_OF_GATE either.
-SITES = {"bake_hero_prep.py": 15, "brush_cloud_step.py": 9, "subject_profile.py": 6,
+SITES = {"bake_hero_prep.py": 15, "brush_cloud_step.py": 10, "subject_profile.py": 6,
          "e13_harmonize.py": 5, "bake_hero_fuse.py": 4, "bake_hero_pack.py": 4,
          "silhouette_masks.py": 5, "cull_unseen.py": 3, "export_asset_source.py": 2,
          "palette_gate.py": 2, "resample_atlas.py": 2, "restylize_views.py": 2}
@@ -245,9 +245,11 @@ def test_t31_the_census_is_the_one_e23_measured():
             % (rel, len(_andon_raises(src)), n, PRE_EXISTING_RAISES.get(rel, 0)))
     # 57 was E23's route total; 58 since the E35 arm slate added silhouette_masks'
     # depth-support ANDON; 59 at t91 when restylize_views grew the canon path
-    # gate (raise before mkdir). The literal moves in the commit that moves
-    # the table above, which is the whole service this pin performs.
-    assert sum(SITES.values()) == 59
+    # gate (raise before mkdir); 60 at t92 when brush_cloud_step grew the
+    # router (raise before the workflow JSON is written). The literal moves
+    # in the commit that moves the table above, which is the whole service
+    # this pin performs.
+    assert sum(SITES.values()) == 60
 
     elsewhere = 0
     for dirpath, dirnames, filenames in os.walk(str(REPO / "tools")):
@@ -359,6 +361,44 @@ def _bcs(d, prompts=None, block=None):
             "--out", str(d / "g.json"), "--profile", pf]
 
 
+def _ent(v):
+    return {"value": v, "why": "w", "from": "E00"}
+
+
+def _bcs_canon(d):
+    """Past pre-flight, then the router refuses, and --out is not written."""
+    pr = _write_json(d / "prompts.json",
+                     {"K": "plain grey background", "_negative": "n"})
+    canon = _write_json(d / "c.surfaces.json", {
+        "subject": "X", "kind": "prop", "schema": 2,
+        "legal_clauses": [
+            {"id": "bg", "phrase": "plain grey background", "class": "style"},
+        ],
+        "surfaces": [{
+            "id": "blade",
+            "occupant": {
+                "id": "P1", "phrase": "a steel blade", "provenance": "prompt"},
+        }],
+    })
+    block = {
+        "seed": _ent(770700), "steps": _ent(20), "cfg": _ent(2.5),
+        "cn-strength": _ent(1.0), "lora-w": _ent(0.75),
+        "prompt": _ent("x"), "negative": _ent("n"),
+    }
+    pf = _write_json(d / "p.json", {
+        "name": "x",
+        "tools": {"texpass_brush.py": block},
+        "_fixtures": {
+            "canon": {"path": canon},
+            "brush_prompts": {"path": pr},
+        },
+    })
+    job = d / "job"
+    job.mkdir(exist_ok=True)
+    return ["graph", "--job", str(job), "--key", "K", "--prompts", pr,
+            "--out", str(d / "g.json"), "--profile", pf]
+
+
 def _pg(d):
     a, b = _png(d / "a.png", 8, 8), _png(d / "b.png", 8, 8)
     return ["--palette", _write_json(d / "pal.json", {"bands": []}),
@@ -396,14 +436,16 @@ FIRE = [
      lambda d: ["--inputs", _png(d / "a.png", 8, 8), _png(d / "b.png", 8, 8),
                 "--outdir", str(d / "o"), "--masks", str(d / "a.png")],
      "--masks is parallel"),
-    ("brush_cloud_step:347", "brush_cloud_step.py",
+    ("brush_cloud_step:382", "brush_cloud_step.py",
      lambda d: _bcs(d, prompts={"other": "p", "_negative": "n"}), "no prompt for"),
-    ("brush_cloud_step:353", "brush_cloud_step.py",
+    ("brush_cloud_step:393", "brush_cloud_step.py",
      lambda d: _bcs(d, block={}), "no decided value for 'lora-w'"),
-    ("brush_cloud_step:208", "brush_cloud_step.py",
+    ("brush_cloud_step:219", "brush_cloud_step.py",
      lambda d: _bcs(d, block={"lora-w": {"value": 0.75}, "_NOT_CLEARED": True}), "_NOT_CLEARED"),
-    ("brush_cloud_step:214", "brush_cloud_step.py",
+    ("brush_cloud_step:226", "brush_cloud_step.py",
      lambda d: _bcs(d, block={"lora-w": {"value": 0.75}}), "has no decided value for"),
+    ("brush_cloud_step:407", "brush_cloud_step.py",
+     _bcs_canon, "canon does not cover"),
 ]
 FIRE_IDS = [f[0].replace(":", "_") for f in FIRE]
 

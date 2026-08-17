@@ -27,6 +27,7 @@ import json
 import os
 import sys
 
+import canon_gate
 import numpy as np
 from PIL import Image
 from scipy.ndimage import label, maximum_filter
@@ -350,6 +351,31 @@ def preflight(gr, P, key):
           f"reads them.", flush=True)
 
 
+def _canon_path_from_profile(prof, profile_path):
+    """Resolve the surfaces file the profile already named. No new registry.
+
+    `_fixtures.canon.path` first, then tools.texpass_brush.py.canon.value.
+    Absent means this subject has no answer — same as restylize without
+    --canon: do not invent a check. A named path that does not load is
+    refuse_uncovered's job.
+    """
+    fx = ((prof.get("_fixtures") or {}).get("canon") or {})
+    rel = fx.get("path") if isinstance(fx, dict) else None
+    if not rel:
+        blk = (prof.get("tools") or {}).get("texpass_brush.py") or {}
+        ent = blk.get("canon") if isinstance(blk, dict) else None
+        rel = ent.get("value") if isinstance(ent, dict) else None
+    if not rel:
+        return None
+    if os.path.isfile(rel):
+        return os.path.abspath(rel)
+    root = os.path.dirname(os.path.dirname(os.path.abspath(profile_path)))
+    alt = os.path.join(root, str(rel).replace("/", os.sep))
+    if os.path.isfile(alt):
+        return os.path.abspath(alt)
+    return rel
+
+
 if args.cmd == "graph":
     P = json.load(open(args.prompts, encoding="utf-8"))
     if not (args.key in P):
@@ -370,6 +396,16 @@ if args.cmd == "graph":
             f"it; this tool does not guess.")
     gr = build_graph(rn, mn, P[args.key], P["_negative"], args.seed, lora_w=_lwe["value"])
     preflight(gr, P, args.key)
+    # Router BEFORE makedirs / write. Same shape as restylize before mkdir.
+    # Paid spend: this JSON is what gets submitted. A covering-fail leaves
+    # nothing that can be posted.
+    _canon = _canon_path_from_profile(_prof, args.profile)
+    if _canon:
+        try:
+            canon_gate.refuse_uncovered(_canon, P[args.key])
+        except canon_gate.Andon as e:
+            raise AssertionError(
+                "ANDON: canon does not cover ratified prompt: %s" % e)
     os.makedirs(os.path.dirname(os.path.abspath(args.out)), exist_ok=True)
     # sorted keys + fixed separators so a byte-comparison of two saved JSONs is meaningful
     with open(args.out, "w", encoding="utf-8", newline="\n") as fh:

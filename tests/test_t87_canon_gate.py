@@ -3,7 +3,7 @@
 The instrument is tools/canon_gate.py plus canon/w3.surfaces.json.
 SURFACE is the row. A hole is a null occupant.
 
-A prompt that names six of seventeen phrases, a sleeve on a bare arm,
+A prompt that names five of nineteen phrases, a sleeve on a bare arm,
 a second occupant on an occupied surface, a hand-set verification
 field, or a bare assert fails at least one leg.
 
@@ -11,6 +11,7 @@ Hermetic tests do not open facet_E08. The artifacts leg re-reads the
 ARMB workflow the older handoff cited.
 """
 import ast
+import hashlib
 import json
 import os
 import sys
@@ -36,14 +37,18 @@ def test_t87_selftest_exits_zero():
     assert "fixture coverage 0.75" in out, out
 
 
-def test_t87_profile_default_is_still_six_while_the_canon_grew():
-    """MOVED ON PURPOSE 2026-08-17. Was `..._six_of_seventeen`.
+def test_t87_profile_default_hits_five_of_nineteen():
+    """MOVED ON PURPOSE 2026-08-17. Was `..._six_of_seventeen`, then
+    `..._is_still_six_while_the_canon_grew` - whose assertion already said 5
+    while its name still said six; E54 renamed it to what it asserts.
 
     The canon went 17 -> 19 NAMED rows when the hand and shin surfaces were
-    drafted off the reference. The profile default did not change by a
-    character and still hits 6. Completing the canon WIDENED the gap, 6/17 to
-    6/19 - which is why this leg pins the two numbers separately and never the
-    ratio between them.
+    drafted off the reference; the profile default did not change by a
+    character, so completing the canon WIDENED the gap, 6/17 to 6/19. Then
+    the kilt ruling (2da2e3e) renamed N8/N9 skirt -> kilt and the profile
+    default's `skirt` stopped matching N8: 6/19 -> 5/19, still without the
+    prompt moving a character. Which is why this leg pins the two numbers
+    separately and never the ratio between them.
     """
     named = C.w3_named_phrases()
     assert len(named) == 19
@@ -234,18 +239,42 @@ def test_t87_no_andon_is_a_bare_assert():
 
 
 @pytest.mark.artifacts
-def test_t87_armb_workflow_is_sixteen_of_seventeen(assets):
-    """The cited file is not the six. It is 16/17, missing only the grip."""
+def test_t87_armb_workflow_is_fourteen_of_nineteen(assets):
+    """MOVED ON PURPOSE 2026-08-17 (E54). Was `..._is_sixteen_of_seventeen`,
+    "16/17, missing only the grip" - and the recorded string has not changed
+    (sha256 pinned below; file mtime 2026-08-04, thirteen days before the
+    canon work). The canon moved under it, twice in one day, measured by
+    sweeping the NAMED list across canon/W3-IDENTITY.md revisions with this
+    leg's own code path (E54 report, task 2):
+
+      54bf90d  NAMED=17: hit 16, miss [N17]               (the recorded claim)
+      2e73ba8  NAMED=19: hit 16, miss [N17,N18,N19]       (hand+shin drafted)
+      2da2e3e  NAMED=19: hit 14, miss [N8,N9,N17,N18,N19]
+               (the garment was ruled a kilt: N8/N9 renamed skirt -> kilt,
+                and the recording says skirt twice, kilt never)
+
+    A frozen recording can only lose hits as the canon is corrected, and
+    each loss measures how far that recorded spend sits from today's canon -
+    which is what this pin is for, and why it is re-stated rather than
+    deleted."""
     wf = need(
         assets,
         "facet_E08/ARMB/out/stroke_1_y+090_e+00_workflow.json")
-    doc = json.loads(wf.read_text(encoding="utf-8"))
+    raw = wf.read_bytes()
+    # The recorded input is the contract here (E08 armB state is in the
+    # byte-hash family, CLAUDE.md); a change in the recorded tree must
+    # arrive as this notification, never as a silent hit-count move.
+    assert hashlib.sha256(raw).hexdigest() == (
+        "42547a4253f6b4d031b7e2d5c29ca6ada79751170e97009b7b77423982ddf576")
+    doc = json.loads(raw.decode("utf-8"))
     text = doc["7"]["inputs"]["text"]
     named = C.w3_named_phrases()
     hit, miss = C.phrase_hits_in_text(text, named)
-    assert len(hit) == 16, (hit, miss)
-    assert miss == ["N17"]
+    assert len(hit) == 14, (hit, miss)
+    assert miss == ["N8", "N9", "N17", "N18", "N19"], (hit, miss)
     low = text.lower()
+    assert low.count("skirt") == 2  # the pre-rename garment, frozen in the record
+    assert low.count("kilt") == 0
     assert low.count("grip") == 0
     assert low.count("gauntlet") == 0
     assert low.count("greave") == 0

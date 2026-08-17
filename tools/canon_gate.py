@@ -36,6 +36,39 @@ THE THESIS, ATTACKED.
   Exact-with-negation is the honest check: it would have refused
   the six-element default; it will not refuse a clever rewrite.
 
+THE ROUTER (build #18). canon_gate is the component every spend
+asks: what does the canon say, for THIS subject, at THIS scope,
+and is this prompt covered? It refuses when the answer is not
+covered, and it refuses when there is no answer at all.
+
+  Resolve     subject id -> file over SEARCH_PATH + CENSUS_ROWS.
+              GALLEON/DRAGON/LOGO/E10-LAYER refuse by name
+              (identity exists, surfaces missing).
+  Cover both  canon ⊆ prompt (exists) and prompt ⊆ canon (missing).
+              Reverse is armed only when legal_clauses is declared.
+              Unlicensed residue refuses. No warn verdict.
+  Scope       subject | view:ID | stroke:ID. A scope names surface
+              ids. No declaration is no answer. Boxes stay unbound
+              (s3_sheet_regions.json is PROPOSALS; verify --regions
+              is still free text). The human declares the id list
+              once per subject per view. Geometry and colour cannot
+              name a surface here (one PBR, 13,715 islands).
+  Version     schema 1 still loads. schema > SCHEMA_MAX is a stale
+              consumer. Schema 2 adds legal_clauses and scopes.
+
+WHAT THIS DOES NOT COVER.
+
+  Paraphrase and synonym matching. Semantic matching puts a model
+  inside a gate. Kind templates, occupant filling, IDENTITY ->
+  surfaces emission, spatial box binding, and the element-count
+  readout are tools/canon_worksheet.py (t93). Per-view --prompts
+  stems are not auto-checked until a view scope exists. Deriving
+  a prompt from the canon is still refused. s3_sheet_regions
+  names are not surface ids.
+
+  python tools/canon_gate.py resolve --subject GALLEON
+  python tools/canon_gate.py check --subject W3 --prompt "..." --scope subject
+
   Two files, one pin, neither generated from the other. IDENTITY.md
   keeps the arguments a JSON row cannot hold (four reasons the grip
   is leather; one argument recorded as unused). The JSON is what
@@ -79,6 +112,10 @@ YES/NO INTERVALS.
                     Unratified phrases are named, not required.
                     Forbidden words still fire on every row.
                     Negation window: 24 chars.
+                    Schema 2 reverse: residue after licensed spans
+                    (occupant phrases + blocked + legal_clauses)
+                    refuse. Same two verdicts as #17: refuse or
+                    report. Unlicensed is a refuse.
   occupancy         one prompt occupant per surface_id. A blocked
                     addition naming a surface that already has a
                     prompt occupant is the predicted-drop class,
@@ -110,15 +147,27 @@ if _TOOLS not in sys.path:
     sys.path.insert(0, _TOOLS)
 
 TOOL_VERSION = "1.0.0"
-SCHEMA = 1
+SCHEMA_MIN = 1
+SCHEMA_MAX = 2
+# SCHEMA is the consumer's understood ceiling. A file above it is a stale
+# consumer, not a bad file. Schema-1 files still load.
+SCHEMA = SCHEMA_MAX
 NEGATION = re.compile(r"\b(no|not|without|lacking)\b", re.I)
 SLEEVE = re.compile(r"\bsleeve(?!less)\b", re.I)
 NAMED_ROW = re.compile(
     r"^\|\s*([A-Z]\d+)\s*\|\s*(.*?)\s*\|", re.M)
 ARTICLE = re.compile(r"^a\s+", re.I)
+# Residue stopwords only. Not a style allowlist and not framing. "holding"
+# and "burly" stay off this list on purpose: they are declared on the subject
+# as legal_clauses or they are unlicensed.
+STOP = re.compile(
+    r"\b(a|an|the|with|and|or|of|on|in|at|to|for|from|by|as|"
+    r"his|her|its|their|this|that|each)\b", re.I)
 DE_LANDED = 2.3
 DE_MISSED = 10.0
 NEG_WINDOW = 24
+CLAUSE_CLASSES = ("style", "framing")
+SEARCH_PATH = (os.path.join(_REPO, "canon"),)
 
 # Article-stripped NAMED phrases in the profile default (measured).
 #
@@ -169,8 +218,14 @@ def load_canon(path):
     doc = json.load(open(path, encoding="utf-8"))
     if not isinstance(doc, dict):
         _andon("canon must be an object")
-    if int(doc.get("schema", -1)) != SCHEMA:
-        _andon("canon schema %r is not %d" % (doc.get("schema"), SCHEMA))
+    try:
+        ver = int(doc.get("schema", -1))
+    except (TypeError, ValueError):
+        ver = -1
+    if ver < SCHEMA_MIN:
+        _andon("canon schema %r is not >= %d" % (doc.get("schema"), SCHEMA_MIN))
+    if ver > SCHEMA_MAX:
+        _andon("stale consumer: canon schema %d > %d" % (ver, SCHEMA_MAX))
     if "surfaces" not in doc or not isinstance(doc["surfaces"], list):
         _andon("canon needs a surfaces list")
     ids = []
@@ -186,7 +241,49 @@ def load_canon(path):
     for j in doc.get("joints") or []:
         if j.get("a") not in ids or j.get("b") not in ids:
             _andon("joint %s names unknown surfaces" % j.get("id"))
+    _validate_router_fields(doc, ids)
     return doc
+
+
+def _validate_router_fields(doc, ids):
+    """Schema 2 fields. Legal on schema 1 if present; required of nothing."""
+    if "legal_clauses" in doc:
+        if not isinstance(doc["legal_clauses"], list):
+            _andon("legal_clauses must be a list")
+        cids = []
+        for i, c in enumerate(doc["legal_clauses"]):
+            if not isinstance(c, dict) or "id" not in c or "phrase" not in c:
+                _andon("legal_clause %d needs id and phrase" % i)
+            if c["id"] in cids:
+                _andon("duplicate legal_clause id %s" % c["id"])
+            cids.append(c["id"])
+            cls = c.get("class", "style")
+            if cls not in CLAUSE_CLASSES:
+                _andon("legal_clause %s class %r is not style or framing"
+                       % (c["id"], cls))
+    if "scopes" not in doc:
+        return
+    if not isinstance(doc["scopes"], dict):
+        _andon("scopes must be an object")
+    for bucket_name in ("views", "strokes"):
+        bucket = doc["scopes"].get(bucket_name)
+        if bucket is None:
+            continue
+        if not isinstance(bucket, dict):
+            _andon("scopes.%s must be an object" % bucket_name)
+        for name, rec in bucket.items():
+            if not isinstance(rec, dict):
+                _andon("scopes.%s.%s must be an object" % (bucket_name, name))
+            surfs = rec.get("surfaces")
+            if surfs is None:
+                continue
+            if not isinstance(surfs, list):
+                _andon("scopes.%s.%s.surfaces must be a list"
+                       % (bucket_name, name))
+            for sid in surfs:
+                if sid not in ids:
+                    _andon("scopes.%s.%s names unknown surface %s"
+                           % (bucket_name, name, sid))
 
 
 def prompt_surfaces(doc):
@@ -268,16 +365,22 @@ def _present(phrase, prompt):
         start = i + 1
 
 
-def required_phrases(doc):
+def required_phrases(doc, scope_ids=None):
     out = []
     for s in doc["surfaces"]:
+        if scope_ids is not None and s["id"] not in scope_ids:
+            continue
         occ = s.get("occupant") or {}
         ph = occ.get("phrase")
         if ph and occ.get("provenance") == "prompt":
             out.append((s["id"], ph))
     for b in doc.get("blocked_additions") or []:
-        if b.get("phrase"):
-            out.append(("blocked:%s" % b.get("id"), b["phrase"]))
+        if not b.get("phrase"):
+            continue
+        onto = b.get("onto")
+        if scope_ids is not None and onto not in scope_ids:
+            continue
+        out.append(("blocked:%s" % b.get("id"), b["phrase"]))
     return out
 
 
@@ -298,7 +401,97 @@ def _unratified_ids(doc):
     return {s["id"] for s in doc["surfaces"] if is_unratified(s)}
 
 
-def check_prompt(doc, prompt):
+def parse_scope(scope):
+    """'subject' | 'view:ID' | 'stroke:ID' | ('view', id)."""
+    if scope is None or scope == "subject":
+        return ("subject", None)
+    if isinstance(scope, tuple) and len(scope) == 2:
+        kind, name = scope
+        kind = str(kind).strip().lower()
+        if kind in ("subject",):
+            return ("subject", None)
+        if kind in ("view", "views"):
+            return ("view", None if name is None else str(name))
+        if kind in ("stroke", "strokes"):
+            return ("stroke", None if name is None else str(name))
+        _andon("scope kind %r is not subject, view, or stroke" % (kind,))
+    if isinstance(scope, str):
+        raw = scope.strip()
+        if raw == "subject":
+            return ("subject", None)
+        if ":" in raw:
+            kind, name = raw.split(":", 1)
+            return parse_scope((kind, name.strip()))
+    _andon("scope %r is not subject, view:ID, or stroke:ID" % (scope,))
+
+
+def scope_surface_ids(doc, scope="subject"):
+    """Which surface ids the gate requires at this scope.
+
+    subject -> None (all prompt surfaces). view/stroke -> the declared
+    list. A missing declaration is no answer: refuse. Empty surfaces
+    on a declared scope is no answer: refuse.
+    """
+    kind, name = parse_scope(scope)
+    if kind == "subject":
+        return None
+    bucket_name = "views" if kind == "view" else "strokes"
+    bucket = ((doc.get("scopes") or {}).get(bucket_name)) or {}
+    if name not in bucket:
+        _andon("no %s scope %s declared for %s"
+               % (kind, name, doc.get("subject")))
+    rec = bucket[name]
+    ids = rec.get("surfaces")
+    if not ids:
+        _andon("scope %s:%s names no surfaces" % (kind, name))
+    return set(ids)
+
+
+def licensed_phrases(doc):
+    """Spans the reverse check may remove from a prompt.
+
+    Occupant phrases (any provenance), blocked additions, and declared
+    legal_clauses. Not a model. Not a synonym table.
+    """
+    out = []
+    for s in doc["surfaces"]:
+        ph = (s.get("occupant") or {}).get("phrase")
+        if ph and str(ph).strip():
+            out.append(str(ph).strip())
+    for b in doc.get("blocked_additions") or []:
+        if b.get("phrase") and str(b["phrase"]).strip():
+            out.append(str(b["phrase"]).strip())
+    for c in doc.get("legal_clauses") or []:
+        if c.get("phrase") and str(c["phrase"]).strip():
+            out.append(str(c["phrase"]).strip())
+    return out
+
+
+def unlicensed_residue(doc, prompt):
+    """prompt minus licensed spans. Empty list if reverse is not armed.
+
+    Reverse is armed iff the file declares `legal_clauses` (schema 2).
+    Schema 1 stays one-directional: it cannot name the style class, so
+    it cannot honestly ask prompt ⊆ canon.
+    """
+    if "legal_clauses" not in doc:
+        return []
+    if prompt is None:
+        _andon("need a prompt")
+    work = prompt.lower()
+    phrases = sorted({p.lower() for p in licensed_phrases(doc) if p},
+                     key=len, reverse=True)
+    for ph in phrases:
+        work = work.replace(ph, " ")
+    work = re.sub(r"[^a-z0-9]+", " ", work)
+    work = STOP.sub(" ", work)
+    work = re.sub(r"\s+", " ", work).strip()
+    if not work:
+        return []
+    return [{"span": work}]
+
+
+def check_prompt(doc, prompt, scope="subject"):
     """Ratified phrases are required. Unratified phrases are reported.
 
     A drafted row (`ratify: true`) is not the Director's canon. Requiring
@@ -306,14 +499,19 @@ def check_prompt(doc, prompt):
     the report would hide the draft. Forbidden words still fire on every
     row, including drafts: adding a gauntlet is a spend in the wrong
     direction.
+
+    Reverse (schema 2): a residue after licensed spans are removed is
+    unlicensed and refuses. Same two verdicts as #17 — refuse or report.
+    Unlicensed is a refuse. There is no warn.
     """
     if prompt is None:
         _andon("need a prompt")
+    scope_ids = scope_surface_ids(doc, scope)
     unrat_ids = _unratified_ids(doc)
     missing = []
     unrat_missing = []
     req = 0
-    for sid, ph in required_phrases(doc):
+    for sid, ph in required_phrases(doc, scope_ids):
         raw_id = sid.split(":", 1)[-1] if sid.startswith("blocked:") else sid
         # blocked additions are author-time inventory, not drafts
         drafted = (raw_id in unrat_ids) and not sid.startswith("blocked:")
@@ -325,13 +523,17 @@ def check_prompt(doc, prompt):
         if not _present(ph, prompt):
             missing.append({"surface": sid, "phrase": ph})
     forbidden = [{"surface": s, "word": w} for s, w in forbidden_hits(doc, prompt)]
-    ok = (not missing) and (not forbidden)
+    unlicensed = unlicensed_residue(doc, prompt)
+    ok = (not missing) and (not forbidden) and (not unlicensed)
+    kind, name = parse_scope(scope)
     return {
         "ok": ok,
         "missing": missing,
         "unratified_missing": unrat_missing,
         "forbidden": forbidden,
+        "unlicensed": unlicensed,
         "required": req,
+        "scope": {"kind": kind, "id": name},
     }
 
 
@@ -346,17 +548,71 @@ def resolve_canon(path):
     _andon("no canon %s" % path)
 
 
-def refuse_uncovered(canon_path, prompt):
+def resolve_subject(subject, search_path=None):
+    """subject id -> surfaces file. Census first, then the search path.
+
+    A subject with an IDENTITY.md and no surfaces file is a named
+    refusal, not an unknown-subject error. That is the design: four
+    subjects stay undone until a human walks them.
+    """
+    if not subject or not str(subject).strip():
+        _andon("need a subject")
+    key = str(subject).strip()
+    ident_rel = None
+    surf_rel = None
+    for sub, ident, surf, _prof in CENSUS_ROWS:
+        if sub.lower() == key.lower():
+            ident_rel, surf_rel = ident, surf
+            break
+    if surf_rel:
+        path = os.path.join(_REPO, surf_rel.replace("/", os.sep))
+        if os.path.isfile(path):
+            return os.path.abspath(path)
+        _andon("no canon for subject %s (surfaces path %s missing)"
+               % (key, surf_rel))
+    roots = list(search_path) if search_path is not None else list(SEARCH_PATH)
+    names = (key + ".surfaces.json",
+             key.lower() + ".surfaces.json",
+             key.upper() + ".surfaces.json")
+    for root in roots:
+        for name in names:
+            p = os.path.join(root, name)
+            if os.path.isfile(p):
+                return os.path.abspath(p)
+    if ident_rel:
+        _andon("no canon for subject %s (identity exists, surfaces missing)"
+               % key)
+    _andon("unknown subject %s" % key)
+
+
+def cover(doc, prompt, scope="subject"):
+    """The router question: at this scope, is this prompt covered?"""
+    chk = check_prompt(doc, prompt, scope=scope)
+    cov = coverage(doc)
+    return {"check": chk, "coverage": cov}
+
+
+def ask(subject, prompt, scope="subject", search_path=None):
+    """Resolve + load + cover. Refuses when there is no canon at all."""
+    path = resolve_subject(subject, search_path=search_path)
+    doc = load_canon(path)
+    out = cover(doc, prompt, scope=scope)
+    out["path"] = path
+    return out
+
+
+def refuse_uncovered(canon_path, prompt, scope="subject"):
     """The path gate. Import this; do not re-roll the check at each caller."""
     path = resolve_canon(canon_path)
     doc = load_canon(path)
-    chk = check_prompt(doc, prompt)
+    chk = check_prompt(doc, prompt, scope=scope)
     cov = coverage(doc)
     if not chk["ok"]:
         _andon(
-            "canon does not cover ratified prompt: missing=%s forbidden=%s; "
-            "unratified named not required: %s"
-            % (chk["missing"], chk["forbidden"], cov["unratified_ids"]))
+            "canon does not cover ratified prompt: missing=%s forbidden=%s "
+            "unlicensed=%s; unratified named not required: %s"
+            % (chk["missing"], chk["forbidden"], chk.get("unlicensed") or [],
+               cov["unratified_ids"]))
     return chk, cov
 
 
@@ -660,6 +916,9 @@ def _selftest_gates(scratch):
     chk5 = check_prompt(doc, sless)
     if not chk5["ok"]:
         _andon("sleeveless was treated as a sleeve: %s" % chk5)
+    # schema 1: reverse is not armed
+    if chk.get("unlicensed"):
+        _andon("schema-1 fixture armed reverse: %s" % chk)
     occ = occupancy(doc)
     if not occ["blocked"] or occ["blocked"][0]["addition"] != "P9":
         _andon("blocked addition was not reported")
@@ -677,7 +936,89 @@ def _selftest_gates(scratch):
         _andon("unchanged half did not land: %s" % diff)
     if diff[1]["state"] != "missed":
         _andon("recoloured half was not missed: %s" % diff)
+    _selftest_router(scratch)
     return cov
+
+
+def _selftest_router(scratch):
+    """Schema 2: both directions, scope, resolve, stale consumer."""
+    fixture = {
+        "subject": "R2",
+        "kind": "prop",
+        "schema": 2,
+        "legal_clauses": [
+            {"id": "bg", "phrase": "plain grey background", "class": "style"},
+        ],
+        "scopes": {
+            "views": {
+                "0": {"surfaces": ["blade", "grip"], "status": "draft"},
+            },
+            "strokes": {},
+        },
+        "surfaces": [
+            {"id": "blade", "occupant": {
+                "id": "P1", "phrase": "a steel blade", "provenance": "prompt"}},
+            {"id": "grip", "occupant": {
+                "id": "P2", "phrase": "a leather grip", "provenance": "prompt"}},
+            {"id": "pommel", "occupant": {
+                "id": "P3", "phrase": "a gold pommel", "provenance": "prompt"}},
+        ],
+        "blocked_additions": [],
+        "joints": [],
+    }
+    path = os.path.join(scratch, "r2.surfaces.json")
+    json.dump(fixture, open(path, "w", encoding="utf-8"))
+    doc = load_canon(path)
+    covering = "a steel blade, a leather grip, a gold pommel, plain grey background"
+    chk = check_prompt(doc, covering)
+    if not chk["ok"]:
+        _andon("schema-2 covering prompt refused: %s" % chk)
+    neck = covering + ", gold necklace"
+    chk_n = check_prompt(doc, neck)
+    if chk_n["ok"]:
+        _andon("gold necklace passed the reverse check")
+    if not any("gold necklace" in (u.get("span") or "") for u in chk_n["unlicensed"]):
+        _andon("unlicensed residue missed gold necklace: %s" % chk_n)
+    view0 = check_prompt(doc, "a steel blade, a leather grip, plain grey background",
+                         scope="view:0")
+    if not view0["ok"]:
+        _andon("view:0 covering prompt refused: %s" % view0)
+    view0_thin = check_prompt(doc, "a steel blade, plain grey background",
+                              scope="view:0")
+    if view0_thin["ok"] or not any(m["phrase"] == "a leather grip"
+                                   for m in view0_thin["missing"]):
+        _andon("view:0 did not require the in-scope grip")
+    try:
+        check_prompt(doc, covering, scope="view:9")
+        _andon("undeclared view:9 did not refuse")
+    except Andon as e:
+        if "no view scope 9" not in str(e):
+            _andon("view:9 refused for the wrong reason: %s" % e)
+    try:
+        check_prompt(doc, covering, scope="stroke:k")
+        _andon("undeclared stroke did not refuse")
+    except Andon as e:
+        if "no stroke scope k" not in str(e):
+            _andon("stroke refused for the wrong reason: %s" % e)
+    stale = dict(fixture)
+    stale["schema"] = 3
+    stale_path = os.path.join(scratch, "stale.surfaces.json")
+    json.dump(stale, open(stale_path, "w", encoding="utf-8"))
+    try:
+        load_canon(stale_path)
+        _andon("schema 3 loaded on a schema-2 consumer")
+    except Andon as e:
+        if "stale consumer" not in str(e):
+            _andon("schema 3 refused for the wrong reason: %s" % e)
+    try:
+        resolve_subject("GALLEON")
+        _andon("GALLEON resolved to a surfaces file")
+    except Andon as e:
+        if "identity exists, surfaces missing" not in str(e):
+            _andon("GALLEON refused for the wrong reason: %s" % e)
+    w3 = resolve_subject("W3")
+    if not os.path.isfile(w3):
+        _andon("W3 did not resolve")
 
 
 def selftest(scratch=None):
@@ -689,30 +1030,45 @@ def selftest(scratch=None):
 
 def build_parser():
     p = argparse.ArgumentParser(
-        description="Canon surface database and the gates that load it.")
+        description="Canon router: resolve a subject, cover a prompt at a scope.")
     p.add_argument("--selftest", action="store_true")
     sub = p.add_subparsers(dest="cmd")
-    def add_canon(sp):
-        sp.add_argument("--canon", required=True)
+    def add_source(sp):
+        sp.add_argument("--canon", default=None)
+        sp.add_argument("--subject", default=None)
     c = sub.add_parser("coverage")
-    add_canon(c)
+    add_source(c)
     k = sub.add_parser("check")
-    add_canon(k)
+    add_source(k)
     k.add_argument("--prompt", required=True)
+    k.add_argument("--scope", default="subject",
+                   help="subject | view:ID | stroke:ID")
     o = sub.add_parser("occupancy")
-    add_canon(o)
+    add_source(o)
     i = sub.add_parser("pin-identity")
-    add_canon(i)
+    add_source(i)
     i.add_argument("--identity", default=None)
+    r = sub.add_parser("resolve", help="subject id -> surfaces file")
+    r.add_argument("--subject", required=True)
     sub.add_parser("census", help="every IDENTITY + surfaces + profile default")
     v = sub.add_parser("verify")
-    add_canon(v)
+    add_source(v)
     v.add_argument("--twin", required=True)
     v.add_argument("--reference", required=True)
     v.add_argument("--regions", required=True,
                    help="JSON list of {name, box:[x0,y0,x1,y1]}")
     v.add_argument("--write-sidecar", action="store_true")
     return p
+
+
+def _load_from_args(args):
+    if getattr(args, "canon", None):
+        path = resolve_canon(args.canon)
+        return load_canon(path), path
+    if getattr(args, "subject", None):
+        path = resolve_subject(args.subject)
+        return load_canon(path), path
+    _andon("need --canon or --subject")
 
 
 def main(argv=None):
@@ -722,7 +1078,8 @@ def main(argv=None):
             selftest()
             sys.stdout.write(
                 "calibration profile-default hits %d of %d  "
-                "fixture coverage 0.75  sleeve refused  sleeveless held\n"
+                "fixture coverage 0.75  sleeve refused  sleeveless held  "
+                "router reverse held\n"
                 % (PROFILE_DEFAULT_HITS, W3_NAMED))
             return 0
         if not args.cmd:
@@ -730,7 +1087,10 @@ def main(argv=None):
         if args.cmd == "census":
             sys.stdout.write(format_census(census()))
             return 0
-        doc = load_canon(args.canon)
+        if args.cmd == "resolve":
+            sys.stdout.write(resolve_subject(args.subject) + "\n")
+            return 0
+        doc, canon_path = _load_from_args(args)
         if args.cmd == "coverage":
             cov = coverage(doc)
             sys.stdout.write(
@@ -745,11 +1105,11 @@ def main(argv=None):
                    ",".join(cov["hole_ids"]) or "-"))
             return 0
         if args.cmd == "check":
-            chk = check_prompt(doc, args.prompt)
+            chk = check_prompt(doc, args.prompt, scope=args.scope)
             if not chk["ok"]:
                 _andon(
-                    "prompt failed: missing=%s forbidden=%s"
-                    % (chk["missing"], chk["forbidden"]))
+                    "prompt failed: missing=%s forbidden=%s unlicensed=%s"
+                    % (chk["missing"], chk["forbidden"], chk["unlicensed"]))
             extra = ""
             if chk["unratified_missing"]:
                 extra = "  unratified_missing %d" % len(chk["unratified_missing"])
@@ -780,7 +1140,7 @@ def main(argv=None):
             payload = {
                 "tool": "canon_gate.py",
                 "tool_version": TOOL_VERSION,
-                "canon": os.path.abspath(args.canon),
+                "canon": os.path.abspath(canon_path),
                 "regions": rows,
             }
             sys.stdout.write(
@@ -788,7 +1148,7 @@ def main(argv=None):
                 % (len(rows),
                    ", ".join("%s=%s" % (r["name"], r["state"]) for r in rows)))
             if args.write_sidecar:
-                _side = sidecar_path(args.canon)
+                _side = sidecar_path(canon_path)
                 # never write next to a canon in-repo unless asked; sidecar
                 # beside the canon path the caller named
                 with open(_side, "w", encoding="utf-8", newline="\n") as f:
