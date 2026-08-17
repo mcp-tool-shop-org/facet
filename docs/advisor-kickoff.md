@@ -66,9 +66,31 @@ only MCP `record_build` does, build and verify as one act. Run it, do not debug 
    instead of a base plus a blocked addition. **Only a generation settles it.** If it
    lands, the law's whole blocked-addition class may be a schema artifact rather than a
    model limit.
+
+   ⚠ **CORRECTED 2026-08-17 — this item's premise is falsified and the spend is refused.
+   N9 never dropped.** It arrives **unprompted** (Amendment 16,
+   `E08-ruling-gate0.md:1071-1073`) and it **responds to the prompt at ΔE 47.41, C\* 40.3 →
+   9.1** when named as its own co-located phrase from scratch
+   (`E08-contradiction-report.md:81`). The canon row says `"predicted to drop"`, not
+   measured, and Amendment 15's table does not contain N9 at all. The kilt has **no
+   headroom**, so the arm's works-perfectly state and its does-nothing state are the same
+   picture. The 1.07 no-response is a measurement of **patching**, not of co-location in a
+   from-scratch spec. Full ruling with locators, and the one number that is genuinely
+   missing (did N11 land in the SPEC arm), in
+   [E53-compound-occupant-ruling.md](experiments/E53-compound-occupant-ruling.md).
 2. **The target-view-preferring compositor** — free, and it follows directly from the
    flat-trace finding. The flats are one view winning a wrap of the chest; preferring the
    target view addresses the shape without credits. Nothing built.
+
+   ⚠ **CORRECTED 2026-08-17 — it is built, and it is the default.** `s3_composite.py`
+   takes `primary_mode` and argues target-first in its own docstring (lines 18-27);
+   `s3_run.py:117` and `:169` default it to `"target"`; `grok-session-handoff.md:89`
+   already recorded it. E46 ran it on **all 8 targets, both flow arms**, and wrote
+   `dependent.png` (target-first) beside `independent.png` (global argmax) for each.
+   **What is not built is target preference in the ATLAS, and it cannot be** — one texture
+   serves eight views. The open item is the measurement nobody took: read the flat
+   classifier against those stills. Dispatched as
+   [E52](experiments/E52-target-first-flats-kickoff.md).
 3. **Carry the canon further** — surfaces files for galleon, dragon, logo, E10-LAYER
    (**do NOT generate them under a clock**; they need the reference walked, and see the
    calibration section for what happens when this seat walks one carelessly); wiring
