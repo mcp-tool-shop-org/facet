@@ -33,9 +33,10 @@ The authoritative version of this page, with the full evidence column, is
 ## The composition chain (E45–E49, 2026-08-16)
 
 The seven tools that closed the projector question — the eight plates compose, and the
-rebuilt atlas renders beside the shipped one reached the Director's *"looks great"*.
-Five of the seven were built by an outside channel (ten for ten on nominated
-calibration claims, each verified here by running it before trust).
+rebuilt atlas renders cleared the Director's acceptance bar for the first time on this
+route. Five of the seven were built by an outside review channel (nominated calibration
+claims have held **seventeen for seventeen**, each verified here by running it before
+anything trusted the build).
 
 | tool | what it does |
 |---|---|
@@ -47,6 +48,34 @@ calibration claims, each verified here by running it before trust).
 | `s3_sheet.py` | native-pixel acceptance sheets — provenance as a panel, MISSING made explicit, crop geometry gated |
 | `twin_mesh_warp.py` | per-tile twin↔mesh correspondence, silhouette and interior legs, validated on injected shifts before any real measurement |
 | `atlas_from_aovs.py` | texel-driven atlas rebuild from a bundle — owner/blend modes, flow off/on, sentinel-honest coverage |
+
+## The canon gate (2026-08-17)
+
+The identity specification named seventeen elements. The workflow that generated the
+twins named sixteen. The profile default a fresh run would use names six. Nothing
+connected them, so four arcs repaired composition downstream of paint that was wrong at
+the source.
+
+**SURFACE is the row.** An element list cannot show you what is missing — the
+leather-wrapped grip was absent from a seventeen-row list and no reading of that list
+ever revealed it. A surface list with a nullable occupant makes the hole a row.
+
+| tool | what it does |
+|---|---|
+| `canon_gate.py` | coverage, occupancy, the author-time prompt check, the cross-subject census, and a sidecar verifier. Runs **inside** `restylize_views` and `texpass_brush`, before the output directory is created |
+| `canon/<subject>.surfaces.json` | the database: surfaces with occupants, joints as first-class rows between two surfaces, blocked additions recorded rather than installed |
+| `evidence.py` | the diagnostic layer — provenance classification, the acceptance sheet, and the numbers with their denominators and space declared |
+| `flat_trace.py` | render pixel → atlas texel → contributing view → that view's twin |
+
+```bash
+python tools/canon_gate.py census
+python tools/canon_gate.py check --canon canon/w3.surfaces.json --prompt "..."
+```
+
+**What it does not cover, stated rather than left to be discovered:** paraphrases,
+per-view stems, unratified drafts, subjects with no surfaces file, or whether a named
+material landed on the right surface. Four subjects have an IDENTITY.md and no surfaces
+JSON — left undone rather than generated without walking the reference.
 
 ## Verification
 

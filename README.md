@@ -139,11 +139,39 @@ border × facing × visibility weights, the atlas renders cleared the Director's
 acceptance bar for the first time on this route — twice, across two arcs — beside a
 shipped atlas whose route had been destroying paint the plates agree on. The chain that did it is in `tools/`
 (`emit_view_aovs`, `s3_composite`, `flow_estimate`, `s3_run`, `s3_sheet`,
-`atlas_from_aovs`, `twin_mesh_warp`), five of the seven built by an outside channel
-whose nominated calibration claims have held **ten for ten**, every one verified here
-before trust. What remains is named below, not hidden: a fill-pass polygon class under
-investigation, never-seen surface awaiting a policy, and the canon build-out the
-Director called the crux.
+`atlas_from_aovs`, `twin_mesh_warp`), built largely through an outside review channel
+whose nominated calibration claims have held **seventeen for seventeen**, every one
+verified here by running it before anything trusted the build.
+
+**The canon is data, and it gates the spend (2026-08-17).** The identity specification
+named seventeen elements; the workflow that generated the twins named sixteen; the
+profile default a fresh run would use named six. Nothing connected them, so four arcs
+repaired composition downstream of paint that was wrong at the source. The canon is now a
+database keyed on **surface** — an element list cannot show you what is missing, and a
+nullable occupant makes a hole a row — and `canon_gate` runs **inside** `restylize_views`
+and `texpass_brush`, before the output directory exists. A generation whose prompt does
+not cover the ratified canon is refused and nothing is written.
+
+```
+canon_gate 1.0.0  census  (occupancy is not ratification)
+subject      named   occupancy   ratified   prof_hit surfaces
+W3              19       24/24      24/24       5/19 canon/w3.surfaces.json
+GALLEON         13           -          -      11/13 NONE
+DRAGON          11           -          -      10/11 NONE
+LONGSWORD        5         5/5        5/5        4/5 canon/longsword.surfaces.json
+E10-LAYER        1           -          -          - NONE
+LOGO             0           -          -          - NONE
+```
+
+`prof_hit 5/19` is a **specimen left deliberately broken**: it is the live default a run
+would actually use, so the first `--profile character.json` is supposed to halt. Repairing
+the string would delete the evidence.
+
+**The gate's boundary, stated rather than left to be discovered.** It checks that the
+subject prompt contains the ratified canon phrases. It does **not** check paraphrases,
+per-view stems, unratified drafts, subjects with no surfaces file, or whether a named
+material landed on the right surface. Four subjects have an IDENTITY.md and no surfaces
+JSON — left undone rather than generated without walking the reference.
 
 ## The route
 
@@ -244,20 +272,25 @@ code](docs/known-defects.md).
   false claim out of them. What holds, and matters more: grip, gauntlet, greave and hand
   appear **zero** times in the 16-phrase prompt — because **no element for them exists in
   the canon at all**. A complete prompt still cannot name a hand that was never specified.
-  Measured on the surface list: **24 prompt-relevant surfaces, 20 named, coverage 0.833**,
-  the four holes being both hands and both greaves. The canon was never properly built
-  out, and the defect is a missing *surface*, not a dropped phrase. The W3 canon build-out and canon-fed twin regeneration are
-  the staged repair ([E49 dispatch record](docs/experiments/E49-finish-and-cap-kickoff.md)).
+  ✅ **CLOSED 2026-08-17** — the surface list is walked, filled and **24/24 ratified**, and
+  the gate now refuses a prompt that does not cover it.
 - **4.65–5.57% of valid texels are surface no flat-ring camera can see** — they fail
   the depth gate in every view, no projection route can paint them, and the shipped
   pipeline papered them with the island-blind flood that made the dark marks. They
   need a policy (neutral material, brush, or accept), not a fix
   ([E49 report](docs/experiments/E49-finish-and-cap-report.md)).
-- **The complete-candidate fill pass renders flat coloured polygons** — the Director's
-  one open class on the accepted-grade sheets, named at the same time he accepted
-  them. Hypothesis under test, provenance masks already tagged: orphan
-  islands the size of single triangles, flat-filled from boundary-adjacent twin
-  samples taken with the uneroded silhouette.
+- **Flat coloured polygons on the accepted-grade sheets** — the Director's one open class.
+  ⚠ **The fill-pass hypothesis is FALSIFIED (2026-08-17).** Orphan fill measures *below*
+  its own base rate at the defect (0.27x), the patches sit 90–99% on ordinary painted
+  texels, and the identical defect is present in a render built from an atlas that
+  predates the repair blamed for it. Traced instead to its source: the render view's own
+  twin is clean there, and a **different** view owns 97 of 115 defect pixels at facing
+  0.68 against 0.60. The angular patch is a **scatter artifact** and the colour is a real
+  cross-view disagreement on a surface that is already named — so a twin regeneration is
+  not justified by "the defect is in the twins". A compositor preferring the target view
+  is the scoped repair and costs nothing. *Superseded text, kept per the corrections rule:
+  "orphan islands the size of single triangles, flat-filled from boundary-adjacent twin
+  samples taken with the uneroded silhouette."*
 
 ## How this repo is run
 

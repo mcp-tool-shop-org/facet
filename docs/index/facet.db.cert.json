@@ -2,10 +2,10 @@
  "andon": [],
  "corpus": {
   "files": 399,
-  "id": "b7f39fa19d53fb4ef019192a6d599b959a150074f13cae9ba466ed04cf396bf0",
+  "id": "8440d610dee301276ad4b1461ff05be6e3a3ac6822783918be1ab47bb1d285a2",
   "manifest": {
    "CLAUDE.md": "15beee75616d305a90e2344a6cbae2b8df0fe2abdb2d9c5863716ad1e626727c",
-   "README.md": "0bb5bb970a6f106a12b6cf614dfdfba16fc24a34317a0f3e1a0209a47139653d",
+   "README.md": "eb7da4337112d13794229c965f7a7e145143f7e6c83d26e6c9d79154c865c7de",
    "docs/advisor-kickoff.md": "5b08f295f922b6f1e561100eceedca3ae0db505fec93b090c225dbc899e87272",
    "docs/arc-history.md": "5b2876b3fed7be95a6efc984f5e5a00b7c1675b10a169ee43803b50e091b48a8",
    "docs/brand/README.md": "81f425b6a101135b43463b35468f08a2db37af39c856c01f7fbdb6ce66598226",
@@ -406,10 +406,10 @@
   }
  },
  "counts": {
-  "artifacts": 1062,
+  "artifacts": 1063,
   "decisions": 227,
   "experiments": 51,
-  "fts": 5758,
+  "fts": 5759,
   "handoffs": 31,
   "laws": 110,
   "phenomena": 28,
@@ -417,9 +417,9 @@
   "rulings": 761
  },
  "db": {
-  "bytes": 14516224,
+  "bytes": 14520320,
   "path": "docs/index/facet.db",
-  "sha256": "ead3886ec68262b4bb12f8bf8546195105147fd288d8a5b0b02de9267147226f"
+  "sha256": "a54ac2b3f417b4f0a39b862c31001c4ccc5ae5395b42d6fc792c6db69ae61afd"
  },
  "determinism_leg": "byte-identity",
  "failures": [],
@@ -439,7 +439,7 @@
   "==============================================================================",
   "",
   "[leg 1] determinism - two builds from an unchanged record",
-  "  BYTE-IDENTICAL   14516224 bytes, both builds",
+  "  BYTE-IDENTICAL   14520320 bytes, both builds",
   "",
   "[corpus] ruling documents discovered by the sorted glob",
   "  E01-ruling-gate1.md                            arc E01                0 rows - prose only",
@@ -561,11 +561,11 @@
   "  laws           110 rows   dangling 0",
   "  experiments     51 rows   dangling 0",
   "  handoffs        31 rows   dangling 0",
-  "  artifacts     1062 rows   dangling 0",
+  "  artifacts     1063 rows   dangling 0",
   "  phenomena       28 rows   dangling 0",
   "  decisions      227 rows   dangling 0",
-  "  fts           5758 rows   dangling 0",
-  "  total checked 2270, dangling 0",
+  "  fts           5759 rows   dangling 0",
+  "  total checked 2271, dangling 0",
   "",
   "[leg 4] the seeded question set - target within the top 3",
   "  canny values for the beast         rank 3   docs/experiments/E12-ruling.md \u00b7 Ruling 11a",
@@ -595,7 +595,7 @@
   "",
   "[vocabulary] what each declared vocabulary did not recognise",
   "             REPORT ONLY - this section never fails the run",
-  "  artifact kinds         recognised  5416   unrecognised    0",
+  "  artifact kinds         recognised  5422   unrecognised    0",
   "  experiment status      recognised    90   unrecognised   12",
   "      not recognised: **PLAN SUPERSEDED IN PLACE; S0 AND S1 R\u2026, **RUN** \u2192 [E51-fill-repair-report](E51-\u2026, **RUN; ALL FOUR CELLS REJECTED BY THE D\u2026, **RUN; THE DIRECTOR ACCEPTS THE SHEETS\u2026, **RUN; THE DIRECTOR RULES IT A CLEAR ST\u2026, **deprioritised by E07's ruling** \u2014 den\u2026  (+6 more occurrence(s))",
   "  law paid_for_by        recognised    74   unrecognised    0",
@@ -614,7 +614,7 @@
  ],
  "unattributed_failures": [],
  "verb": "record_build",
- "verified_utc": "2026-08-17T09:09:10Z",
+ "verified_utc": "2026-08-17T10:10:01Z",
  "verify_exit_code": 0,
  "written_by": "tools/record_mcp.py"
 }

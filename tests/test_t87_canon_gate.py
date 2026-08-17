@@ -53,7 +53,7 @@ def test_t87_profile_default_is_still_six_while_the_canon_grew():
     assert "N17" in miss
 
 
-def test_t87_w3_coverage_is_full_but_four_rows_are_UNRATIFIED():
+def test_t87_w3_coverage_is_full_and_every_row_is_RATIFIED():
     """MOVED ON PURPOSE 2026-08-17, in the commit that filled the holes.
 
     Was `..._holes_are_hands_and_greaves`, pinning holes == 4. The advisor
@@ -62,13 +62,16 @@ def test_t87_w3_coverage_is_full_but_four_rows_are_UNRATIFIED():
     - the gold knee plate runs knee to boot with leather and fleece behind it
     (N19). Coverage is therefore 1.0.
 
-    The property this leg exists for is unchanged and is why it did not simply
-    become `holes == 0`: a surface-keyed canon shows you what an element list
-    cannot. It now shows the NEXT thing an element list cannot - that four rows
-    are drafted from the reference and have not been ratified by the Director.
-    A coverage of 1.0 with unratified rows must never read as done, so the
-    unratified count is pinned here and moving it needs the same deliberate
-    edit this one did.
+    MOVED AGAIN, SAME DAY: those four drafts were then wrong - the hands are
+    gauntleted, not bare, and the Director caught it - and the corrected rows
+    were RATIFIED by him on 2026-08-17. So the unratified set is now empty and
+    the four carry a ratified stamp instead.
+
+    The property this leg exists for is unchanged through both moves, and is why
+    it did not simply become `holes == 0`: a surface-keyed canon shows you what
+    an element list cannot. It shows holes, and then it shows drafts. Both
+    assertions stay so that a future draft has to move this pin on purpose the
+    way these two edits did.
     """
     doc = C.load_canon(W3)
     cov = C.coverage(doc)
@@ -83,7 +86,11 @@ def test_t87_w3_coverage_is_full_but_four_rows_are_UNRATIFIED():
     unratified = sorted(
         s["id"] for s in doc["surfaces"]
         if (s.get("occupant") or {}).get("ratify") is True)
-    assert unratified == ["greave_L", "greave_R", "hand_L", "hand_R"], unratified
+    assert unratified == [], unratified
+    ratified = sorted(
+        s["id"] for s in doc["surfaces"]
+        if (s.get("occupant") or {}).get("ratified"))
+    assert ratified == ["greave_L", "greave_R", "hand_L", "hand_R"], ratified
     assert len(doc.get("ratification_queue", [])) == 5
 
 

@@ -15,6 +15,7 @@ A test that cannot fail is not a test. Hermetic tests do not
 open facet_E*.
 """
 import ast
+import json
 import os
 import sys
 
@@ -28,7 +29,10 @@ import canon_gate as C  # noqa: E402
 W3 = os.path.join(str(REPO), "canon", "w3.surfaces.json")
 SWORD = os.path.join(str(REPO), "canon", "longsword.surfaces.json")
 
-# Ratified phrases only. No N18/N19.
+# Every RATIFIED phrase. N18 and N19 joined the set on 2026-08-17 when the
+# Director ratified all four drafted rows, so a prompt that omitted them stopped
+# being a covering prompt on that day - which is the gate doing its job on the
+# fixture rather than on a subject.
 RATIFIED_PROMPT = (
     "a bald head, a long red beard, a dark green knitted sleeveless "
     "tunic, polished gold pauldrons, gold scrollwork on the pauldrons, "
@@ -36,14 +40,15 @@ RATIFIED_PROMPT = (
     "cloth kilt, green cloth panels in the kilt, brown leather "
     "bracers, a gold plate on each outer forearm, gold knee plates, "
     "heavy dark boots, a massive greatsword, an ornate gold "
-    "crossguard, a gold pommel, a brown leather-wrapped grip"
+    "crossguard, a gold pommel, a brown leather-wrapped grip, brown "
+    "leather gauntlets, a brown leather shin guard"
 )
 
 
 def test_t91_census_exits_zero():
     rc, out, err = run_py("canon_gate.py", ["census"])
     assert rc == 0, "census exited %d\n%s\n%s" % (rc, out, err)
-    assert "W3" in out and "20/24" in out, out
+    assert "W3" in out and "24/24" in out, out
     # 6 -> 5 on purpose 2026-08-17: the Director ruled the garment is a KILT and
     # the live default still says skirt, so the canon rename cost a hit without
     # the prompt changing. Every canon repair today widened this gap.
@@ -51,29 +56,48 @@ def test_t91_census_exits_zero():
     assert "NONE" in out, out
 
 
-def test_t91_w3_ratified_is_20_of_24():
-    """The quoteable number. Occupancy 24/24 is not this number."""
+def test_t91_w3_ratified_is_24_of_24():
+    """MOVED ON PURPOSE 2026-08-17: the Director ratified all four drafted rows.
+
+    Was `..._is_20_of_24`. The distinction the leg exists for - occupancy is not
+    ratification - is unchanged and is why the two numbers are still asserted
+    separately rather than collapsed into one. They happen to be equal today.
+    """
     doc = C.load_canon(W3)
     cov = C.coverage(doc)
     assert cov["named"] == 24
     assert cov["prompt_surfaces"] == 24
     assert cov["coverage"] == 1.0
-    assert cov["ratified"] == 20
-    assert cov["unratified"] == 4
-    assert cov["unratified_ids"] == [
-        "hand_L", "hand_R", "greave_L", "greave_R"]
-    assert cov["ratified_coverage"] == pytest.approx(20.0 / 24.0)
+    assert cov["ratified"] == 24
+    assert cov["unratified"] == 0
+    assert cov["unratified_ids"] == []
+    assert cov["ratified_coverage"] == pytest.approx(1.0)
+    stamped = sorted(s["id"] for s in doc["surfaces"]
+                     if (s.get("occupant") or {}).get("ratified"))
+    assert stamped == ["greave_L", "greave_R", "hand_L", "hand_R"], stamped
 
 
 def test_t91_unratified_phrases_are_not_required():
-    """Can-fail: requiring a drafted phrase would treat a draft as ratified."""
-    doc = C.load_canon(W3)
+    """Can-fail: requiring a drafted phrase would treat a draft as ratified.
+
+    REBUILT 2026-08-17, not repointed. W3 has no unratified rows any more, so
+    reading this property off W3 would have made the leg unable to fail - the
+    exact trap this repo names. It now builds its own drafted row on a copy, so
+    the property is tested independently of whatever W3's ratification state
+    happens to be on any given day.
+    """
+    doc = json.loads(open(W3, encoding="utf-8").read())
+    for s in doc["surfaces"]:
+        if s["id"] == "hand_L":
+            s["occupant"].pop("ratified", None)
+            s["occupant"]["ratify"] = True
+            s["occupant"]["phrase"] = "a synthetic drafted phrase"
     chk = C.check_prompt(doc, RATIFIED_PROMPT)
     assert chk["ok"], chk
     missing_ids = {m["surface"] for m in chk["unratified_missing"]}
     assert "hand_L" in missing_ids
-    assert "greave_L" in missing_ids
     assert not any(m["surface"] == "grip" for m in chk["unratified_missing"])
+    assert not any(m["surface"] == "hand_L" for m in chk["missing"])
 
 
 def test_t91_missing_ratified_phrase_still_refuses():
@@ -151,7 +175,7 @@ def test_t91_census_does_not_invent_surfaces():
         "W3", "GALLEON", "DRAGON", "LONGSWORD", "E10-LAYER", "LOGO"}
     assert rows["GALLEON"]["surfaces"] is None
     assert rows["DRAGON"]["surfaces"] is None
-    assert rows["W3"]["ratified"] == "20/24"
+    assert rows["W3"]["ratified"] == "24/24"
     assert rows["LONGSWORD"]["occupancy"] == "5/5"
 
 

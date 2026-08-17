@@ -13,6 +13,71 @@ it, so a reader can check the claim rather than trust it.
 
 ## [Unreleased]
 
+## [0.6.0] — 2026-08-17
+
+**The canon becomes data, and the gate stands in front of the money.** The identity
+specification named seventeen elements; the workflow that generated the twins named
+sixteen; the profile default a fresh run would use named six. Nothing connected them, so
+four arcs spent themselves repairing composition downstream of paint that was wrong at
+the source. The canon is now a surface-keyed database and `canon_gate` runs **inside**
+`restylize_views` and `texpass_brush`, before the output directory exists.
+
+### Added
+
+- **`tools/canon_gate.py`** (t87, t91) — coverage, occupancy, the author-time prompt
+  check, the cross-subject census, and a sidecar verifier. **SURFACE is the row**: an
+  element list cannot show what is missing, and a nullable occupant makes a hole a row.
+  Joints are first-class between two surfaces, because the missing specification at every
+  failed region was the cut and never a fifth garment. Sleeveless is a bare occupant plus
+  a forbidden word. Verification writes a sidecar so the canon cannot certify itself.
+- **`canon/w3.surfaces.json`**, **`canon/longsword.surfaces.json`** — W3 at
+  **24/24 occupancy, 24/24 ratified** by the Director on 2026-08-17.
+- **`tools/evidence.py`** (t90) — the diagnostic layer. Seven arcs had each written their
+  own sheet builder and three seats wrote a `surfid` decode in a single session. It also
+  caught the eighth wrong classifier before it shipped: the atlas four-way is exhaustive
+  over *valid*, `unmapped` lives *outside* valid, and treating `~valid` as unmapped is the
+  packer gutter — millions of texels, not the 374 that were being looked for.
+- **`tools/flat_trace.py`** (t89), **`tools/region_disagreement.py`** (t85),
+  **`tools/boundary_repair.py`** (t86), **`tools/unmapped_readout.py`** (t88).
+
+Suite **1182 → 1266** (1212 hermetic).
+
+### Measured, and closed as negative
+
+- **The flat coloured patches are not a fill artifact.** Orphan fill measures *below* its
+  own base rate at them (0.27x), and the identical defect is present in a render built
+  from an atlas that predates the repair blamed for it.
+- **There is no geometry to snap a material boundary to** — one PBR material, 13,715 atlas
+  islands against sixteen named materials, a palette blind to gold-against-leather. 354
+  texels of 2.4 million.
+- **The magenta is cosmetic** — 0.22% of the figure; a 46x atlas-side cut moved the
+  on-screen count by six pixels.
+- **The flats trace to a plate nobody had checked.** The render view's twin is clean; a
+  different view owns 97 of 115 defect pixels at facing 0.68 against 0.60. The patch is a
+  scatter artifact and the colour is a real cross-view disagreement on an already-named
+  surface — so a twin regeneration is **not** justified by "the defect is in the twins".
+
+### Corrected in place
+
+- **Two of three Blender citations in CLAUDE.md were wrong**, resolved one call each at
+  `/api/v1/`: #162226 is open rather than merged, and #119393 is a single defect rather
+  than a catalogue. Load-bearing, because the merged fix cannot reach a UV in a gutter.
+- **"The generation prompt names six elements"** welded two files into one false sentence.
+  The workflow that made the twins named **sixteen of seventeen**; the six is the profile
+  default, which is left broken on purpose as the specimen.
+- **Four readings of the reference by the advisor were wrong** and the Director caught
+  each: bare hands, asymmetric armour, a knee-plate fur trim, and N11 as mis-specified.
+  All four came from treating a straight-on projection as a description while the back
+  reference sat unopened. **Amendment 15 is undisturbed.**
+
+### Known
+
+The gate checks that the subject prompt contains the ratified canon phrases. It does not
+check paraphrases, per-view stems, unratified drafts, subjects with no surfaces file, or
+whether a named material landed on the right surface. Four subjects have an IDENTITY.md
+and no surfaces JSON; those are left undone rather than generated without walking the
+reference.
+
 ## [0.5.0] — 2026-08-16
 
 **The plates compose, and the projector question closes.** One session ran five arcs
