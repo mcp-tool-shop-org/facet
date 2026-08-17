@@ -52,8 +52,8 @@ capability repair, not a failure).
 | | |
 |---|---|
 | HEAD | re-measure — `git log --oneline -1`; tag **v0.5.0** is pushed |
-| suite | **THE SUITE: 1182 tests, 1135 hermetic.** RE-COUNT before quoting — `pytest --collect-only -q` and again with `-m "not artifacts"`, currently 1182 total / 1135 hermetic. T34 pins ~14 surfaces off the collector and they all move in the same commit |
-| the record | four-leg verify SERVING at close, byte-identity, over 49 experiments. No staleness findings at the declaration leg — recertify with MCP `record_build` after any doc change |
+| suite | **THE SUITE: 1223 tests, 1173 hermetic.** RE-COUNT before quoting — `pytest --collect-only -q` and again with `-m "not artifacts"`, currently 1223 total / 1173 hermetic. T34 pins ~14 surfaces off the collector and they all move in the same commit |
+| the record | four-leg verify SERVING at close, byte-identity, over 51 experiments. No staleness findings at the declaration leg — recertify with MCP `record_build` after any doc change |
 | CI | green through the v0.5.0 tag push at close — verify at open (`gh run list --limit 2`) |
 | spend | **zero cloud credits across E45–E49.** The regen arc will be the first spend and it is gated on the Director's word |
 
@@ -68,8 +68,16 @@ capability repair, not a failure).
    is naming the bare arm and the cut, never a garment (Amendment-15 law).
 5. **W3 is the exemplar** — completeness and fidelity to the reference, not per-element
    taste. **No new humanoid**: nothing in the failure implicates the mesh.
-6. **The crux: the canon was never built out.** Verified to the digit — the recorded
-   generation prompt names six elements; grip/gauntlet/greave/hand appear **zero** times.
+6. **The crux: the canon was never built out.** ⚠ **CORRECTED 2026-08-17** — this read
+   "the recorded generation prompt names six elements", which welded two files into one
+   false claim. Measured: the workflow that generated the twins
+   (`facet_E08/ARMB/out/stroke_1_y+090_e+00_workflow.json:181`) names **16 of 17**,
+   missing only N17; `profiles/character.json`'s brush default names **6**. The finding
+   that survives is stronger: grip/gauntlet/greave/hand appear **zero** times in the
+   16-phrase prompt because **no canon element for them exists**. Surface coverage on W3
+   is **20 of 24 prompt-relevant surfaces, 0.833**, the holes being both hands and both
+   greaves. A missing surface, not a dropped phrase — which is why the canon database
+   keys on surfaces.
 
 ## ⚑ THE GROK CHANNEL — TEN FOR TEN, and it HAS REPO ACCESS
 

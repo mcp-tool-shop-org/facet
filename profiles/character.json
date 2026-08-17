@@ -19,6 +19,11 @@
       "why": "Per-view brush prompts keyed by job name, plus the _order array that sets the spiral. A shared prompt is what put a face on the back of a head in E01 and invented a corroded blade and a belt medallion in the first full loop. Pure subject content.",
       "from": "E08 Task 3"
     },
+    "canon": {
+      "path": "canon/w3.surfaces.json",
+      "why": "The machine-readable surface database. IDENTITY.md keeps the arguments; this file is what the gates load. Coverage, prompt refusal, occupancy and post-generation verify all read it. Not a copy of the palette.",
+      "from": "Grok build #13 / t87"
+    },
     "twin_prompts": {
       "path": "docs/experiments/E08-twin-prompts.json",
       "why": "The per-view twin prompts. Identity belongs to the prompt, not to the twin - the single most load-bearing architectural fact this repo measured (prompt wins 8 of 8, median dE 46.3 against 6.2 on held controls). So the file that names this character IS this character.",

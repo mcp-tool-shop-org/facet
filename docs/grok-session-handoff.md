@@ -64,10 +64,12 @@ Tag **v0.5.0** is pushed. Working tree was clean.
   verified.
 - **W3 is the exemplar**, not a character (Director). Sleeveless stands
   (N3 unchanged). No new humanoid. The crux: the canon was never built out.
-  Recorded generation prompt names six elements; grip/gauntlet/greave/hand
-  appear **zero** times. N17 (leather-wrapped grip) exists in
-  `canon/W3-IDENTITY.md`, UNVERIFIED, and is **not** in the ARMB twin prompt
-  (`facet_E08/ARMB/out/stroke_1_y+090_e+00_workflow.json:181`).
+  ⚠ CORRECTED 2026-08-17: the ARMB twin prompt
+  (`facet_E08/ARMB/out/stroke_1_y+090_e+00_workflow.json:181`) carries **16 of
+  17** and misses only N17; the **six** is `profiles/character.json`'s brush
+  default. grip/gauntlet/greave/hand are still **zero** — because the canon has
+  no element for them. W3 surface coverage **20 of 24, 0.833**; the holes are
+  both hands and both greaves.
 
 ## What Grok built (all folded unless noted)
 

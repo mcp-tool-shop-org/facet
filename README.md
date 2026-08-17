@@ -237,9 +237,16 @@ code](docs/known-defects.md).
   (2026-08-16). Interior twin-to-mesh warp measured **3.5–11.1 px median** across all
   eight views against silhouette medians of 1.2–3.0; every residue region the Director
   circled — sleeve cut, hand, boot-top — is a material joint the generation prompt
-  never named (the recorded prompt carries six elements; grip, gauntlet, greave and
-  hand appear **zero** times). His diagnosis is the record's: the canon was never
-  properly built out. The W3 canon build-out and canon-fed twin regeneration are
+  never named. ⚠ **CORRECTED 2026-08-17, and the correction sharpens the finding.** This
+  read "the recorded prompt carries six elements" — measured, that welds two different
+  files together. The workflow that generated the twins names **16 of 17**, missing only
+  the grip; the *brush profile default* names six. Both true, and the sentence made one
+  false claim out of them. What holds, and matters more: grip, gauntlet, greave and hand
+  appear **zero** times in the 16-phrase prompt — because **no element for them exists in
+  the canon at all**. A complete prompt still cannot name a hand that was never specified.
+  Measured on the surface list: **24 prompt-relevant surfaces, 20 named, coverage 0.833**,
+  the four holes being both hands and both greaves. The canon was never properly built
+  out, and the defect is a missing *surface*, not a dropped phrase. The W3 canon build-out and canon-fed twin regeneration are
   the staged repair ([E49 dispatch record](docs/experiments/E49-finish-and-cap-kickoff.md)).
 - **4.65–5.57% of valid texels are surface no flat-ring camera can see** — they fail
   the depth gate in every view, no projection route can paint them, and the shipped
@@ -268,8 +275,8 @@ next session read as established fact. Nothing in that loop was checkable.
   is not an archive — anyone can run those tools and watch them fail the same way.
 - **A negative result is a full success**, reported and closed rather than tuned toward a
   number.
-- **Tests ride the commit that touches the code** — 1182 passing at two seats' hands, with
-  paths-gated CI on the 1135 hermetic ones.
+- **Tests ride the commit that touches the code** — 1223 passing at two seats' hands, with
+  paths-gated CI on the 1173 hermetic ones.
 - **The record is queryable.** A SQLite + FTS5 index over the whole trail, verified on
   four legs. It found a ruling count the prose had wrong at three sites, by counting the
   record itself.
@@ -381,8 +388,8 @@ Developed against an RTX 5090; VRAM headroom matters more than raw speed.
 CI runs the hermetic subset of the suite on **ubuntu-latest / Python 3.12** with
 pinned installs (`.github/workflows/ci.yml`); the artifacts tier needs the recorded
 trees under `E:\AI\training`, which are not in git, so CI deselects them by design.
-Locally, `python -m pytest` runs all **1182** tests and `python -m pytest -m "not artifacts"`
-runs the **1135** CI reproduces.
+Locally, `python -m pytest` runs all **1223** tests and `python -m pytest -m "not artifacts"`
+runs the **1173** CI reproduces.
 
 ---
 

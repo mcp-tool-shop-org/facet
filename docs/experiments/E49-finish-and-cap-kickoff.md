@@ -58,10 +58,18 @@ measured 5.05/11.96 without it; predict inside).
      decisions on it need completeness and fidelity to the reference, not taste
      rulings per element.
   3. **THE CRUX, as he named it: the canon was never properly built out.** The audit
-     agrees: the recorded generation prompt names six elements; grip/gauntlet/greave/
-     hand appear zero times; every defect region he circled is an unnamed surface or
-     joint. The studio constitution's own line — dense canon produces a trainable
-     style, thin canon produces noise — measured at twin level.
+     agrees, and every defect region he circled is an unnamed surface or joint. The
+     studio constitution's own line — dense canon produces a trainable style, thin
+     canon produces noise — measured at twin level.
+     ⚠ **The audit's arithmetic is CORRECTED 2026-08-17.** It read "the recorded
+     generation prompt names six elements", which welded two files into one claim.
+     Measured at the fold: the workflow that generated the twins
+     (`facet_E08/ARMB/out/stroke_1_y+090_e+00_workflow.json:181`) carries **16 of 17**,
+     missing only N17; the **six** is `profiles/character.json`'s brush default. The
+     surviving finding is the sharper one — grip/gauntlet/greave/hand are zero in the
+     16-phrase prompt because **the canon has no element for them**, so no prompt could
+     have named them. W3 surface coverage measures **20 of 24, 0.833**; the four holes
+     are both hands and both greaves.
   Follow-on: the **W3 canon build-out** — the complete named-surface table drafted
   from the reference (own phrase per surface, boundary pairs named, occupancy marked),
   ratified by the Director in one pass, then the twin regeneration from it. The

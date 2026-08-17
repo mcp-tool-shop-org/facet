@@ -1,0 +1,21 @@
+{
+  "subject": "LONGSWORD",
+  "kind": "prop",
+  "schema": 1,
+  "source_identity": "canon/LONGSWORD-IDENTITY.md",
+  "note": "Prop proof that the schema is not humanoid-shaped. Surfaces transcribed from the IDENTITY named table; holes none yet.",
+  "surfaces": [
+    {"id": "blade", "name": "blade", "occupant": {"id": "L1", "phrase": "a battle-worn steel blade with a raised central ridge", "provenance": "prompt"}},
+    {"id": "crossguard", "name": "crossguard", "occupant": {"id": "L2", "phrase": "a blackened iron crossguard", "provenance": "prompt"}},
+    {"id": "boss", "name": "boss and collar rings", "occupant": {"id": "L3", "phrase": "gold collar rings", "provenance": "prompt"}},
+    {"id": "grip", "name": "grip", "occupant": {"id": "L4", "phrase": "an oxblood leather grip wrap", "provenance": "prompt"}},
+    {"id": "pommel", "name": "pommel", "occupant": {"id": "L5", "phrase": "a dark garnet gem pommel", "provenance": "prompt"}},
+    {"id": "silhouette", "name": "form and silhouette", "occupant": {"id": "mesh_sil", "phrase": null, "provenance": "mesh"}}
+  ],
+  "blocked_additions": [],
+  "joints": [
+    {"id": "blade_guard", "a": "blade", "b": "crossguard", "phrase": "steel against iron at the shoulder"},
+    {"id": "grip_guard", "a": "grip", "b": "crossguard", "phrase": "oxblood against iron at the guard"},
+    {"id": "grip_pommel", "a": "grip", "b": "pommel", "phrase": "oxblood against garnet at the pommel"}
+  ]
+}
