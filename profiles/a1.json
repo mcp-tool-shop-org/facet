@@ -1,0 +1,194 @@
+{
+  "name": "a1",
+  "subject": "A1 - the archivist, the reference-first exemplar. TRELLIS.2 1024_cascade from canon/A1_reference.png, seed 42, welded, decimated to 990,679 faces (E57). Canon RATIFIED by the Director 2026-08-17, as drafted (canon/a1.surfaces.json, 19 rows, 16/16 ratified occupancy). No mesh-specific bake/atlas has run yet (bake_hero_prep/texpass are the next arc's scope, not this one's).",
+  "provenance": "AUTHORED at E58 Stage D, 2026-08-18, from the ratified canon directly -- this is A1's FIRST profile; there is no prior generation to relocate values FROM (unlike W3's profiles/character.json, which extracted an ACCEPTED asset's own recipe). Every recipe value below (seed/steps/cfg/denoise/lora-w/cn-strength) is therefore a FIRST-RUN OPERATING POINT at the studio's established twin-restylize values (W3 profiles/character.json + longsword profiles/prop.json both cite E08 for the same seed/steps/cfg), not a value measured on THIS subject -- disclosed per the studio convention (profiles/beast.json's own 'FIRST-RUN OPERATING POINT... explicit so it is a decision, not silence').",
+  "_how_to_read_this": "Each entry is {value, why, from}. `value` is what the tool receives; `why` states whether this quantity is a first-run inheritance or something measured on A1 itself; `from` names the source. Spec: docs/experiments/E58-a1-twin-ring-kickoff.md.",
+  "_fixtures": {
+    "identity": {
+      "path": "canon/A1-IDENTITY.md",
+      "why": "The ten NAMED elements plus the framing clause. Identity belongs to the prompt; this file IS the archivist.",
+      "from": "E57 Stage 0 (ratified 2026-08-17)"
+    },
+    "canon": {
+      "path": "canon/a1.surfaces.json",
+      "why": "The machine-readable surface database. tools/diagnostics/e12_pair_cloud_step.py reads THIS key directly (_fixtures.canon.path) to resolve the fail-closed gate before authoring the paid twin graph -- confirmed by reading the tool's own code (E58 Stage B), not assumed.",
+      "from": "E57 Stage 0; E58 Stage B door-enumeration"
+    },
+    "twin_prompts": {
+      "path": "docs/experiments/E58-a1-twin-prompts.json",
+      "why": "Eight identical full-coverage prompts (all 18 ratified phrases, every view) -- see that file's own _rule_deviation_disclosed note for why this arc does NOT follow the W3/dragon per-view-drop convention. Verified against canon_gate.check_prompt() before being written (E58 Stage B): ok=True, missing=[], forbidden=[], unlicensed=[].",
+      "from": "E58 Stage B/D"
+    }
+  },
+  "tools": {
+    "verify/turn_render.py": {
+      "w": {
+        "value": 576,
+        "why": "MEASURED at E58 Stage C from A1's OWN mesh (tools/diagnostics/e12_frame.py): worst-of-8-yaws / height = 0.5604 (view 0, the front, essentially equal to the axis-only ratio -- this subject has no diagonal-worse-than-axis effect). 1024 * 0.5604 = 573.9, rounded up to /16 = 576. Deliberately NOT 752 (W3's inherited default): E57's own clay/flat renders used turn_render's unmodified default (752x1024) because no --profile was passed at Stage 2, and this profile's job is to stop that default silently recurring for any future render of this mesh.",
+        "from": "E58 Stage C; facet_E58/controls/A1_frame.json"
+      },
+      "h": {
+        "value": 1024,
+        "why": "Height reference; the fitted axis.",
+        "from": "E58 Stage C"
+      },
+      "views": {
+        "value": "0,1,2,3,4,5,6,7",
+        "why": "Eight eye-level yaws, matching every other subject's stage-1 convention.",
+        "from": "E58 Stage C"
+      },
+      "step": {
+        "value": 45.0,
+        "why": "Degrees per view index.",
+        "from": "E58 Stage C"
+      },
+      "yaw-offset": {
+        "value": 0.0,
+        "why": "View 0 is head-on by construction (TRELLIS output, no foreign orientation to correct for).",
+        "from": "E58 Stage C"
+      },
+      "fit-axis": {
+        "value": "height",
+        "why": "MEASURED, not inherited blind: A1's extent is x=0.5611 y=0.2214 z=1.0012 (Blender axes) -- z (vertical) is by far the largest, a standing humanoid clearly taller than wide, same shape class as W3. height-fit is the character convention and applies here on A1's own numbers, not by copying W3's choice unchecked.",
+        "from": "E58 Stage C; facet_E58/controls/A1_frame.json"
+      },
+      "tag": {
+        "value": "a1clay",
+        "why": "Filename stem; twin-prompt keys in E58-a1-twin-prompts.json must match it. Pinned so keys cannot drift.",
+        "from": "E58 Stage C"
+      },
+      "margin": {
+        "value": 1.204,
+        "why": "The studio's standard framing margin, unchanged across every subject to date; A1's own frame derivation (e12_frame.py) used it and its own coverage-ANDON did not fire, so it is confirmed sufficient for this mesh, not merely inherited.",
+        "from": "E58 Stage C; E04 Ruling 25 lineage"
+      }
+    },
+    "silhouette_masks.py": {
+      "tag": {
+        "value": "a1sil",
+        "why": "Filename stem for A1's exact raycast silhouettes.",
+        "from": "E58 Stage C"
+      },
+      "views": {
+        "value": "0,1,2,3,4,5,6,7",
+        "why": "Matches the eye-level camera set.",
+        "from": "E58 Stage C"
+      },
+      "step": {
+        "value": 45.0,
+        "why": "Degrees per view index.",
+        "from": "E58 Stage C"
+      },
+      "aspect": {
+        "value": "576,1024",
+        "why": "MUST move with turn_render.py's w/h or the render and the silhouette disagree (the galleon's measured 4.68% landscape-frame trap). A1's OWN derived frame, not W3's.",
+        "from": "E58 Stage C"
+      },
+      "fit-axis": {
+        "value": "height",
+        "why": "Moves WITH turn_render's fit-axis.",
+        "from": "E58 Stage C"
+      },
+      "margin": {
+        "value": 1.204,
+        "why": "Third member of the framing family, pinned together.",
+        "from": "E58 Stage C"
+      }
+    },
+    "restylize_views.py": {
+      "canon": {
+        "value": "canon/a1.surfaces.json",
+        "why": "Attaches the surface database to the (local-host-shaped) restylize spend path, for consistency with every other subject's profile even though this arc's actual submissions run through e12_pair_cloud_step.py's cloud path, which reads _fixtures.canon.path directly instead.",
+        "from": "E58 Stage B door-enumeration"
+      },
+      "seed": {
+        "value": 770700,
+        "why": "FIRST-RUN OPERATING POINT at the studio's shared twin-generation seed (W3 profiles/character.json AND longsword profiles/prop.json both cite E08 for this exact value). Pinned NOW, before any ring submission, per the charter's 'pin per-view seeds now, record them' -- all eight views share this one seed; per-subject seed variation has no precedent in this repo's prior twin generations (the distinct render+control pairing is what differentiates each view, not the seed). The ONE allowed spec-violation re-roll (if any) uses a NEW, recorded seed and is not this value.",
+        "from": "E08 (W3/longsword lineage); E58 Stage D"
+      },
+      "steps": {
+        "value": 20,
+        "why": "FIRST-RUN OPERATING POINT at the studio's shared value (W3/longsword, E08).",
+        "from": "E08"
+      },
+      "cfg": {
+        "value": 2.5,
+        "why": "FIRST-RUN OPERATING POINT at the studio's shared value (W3/longsword, E08).",
+        "from": "E08"
+      },
+      "denoise": {
+        "value": 0.92,
+        "why": "FIRST-RUN OPERATING POINT at W3's twin value (E08). No A1-specific denoise sweep has run.",
+        "from": "E08"
+      },
+      "lora-w": {
+        "value": 0.75,
+        "why": "FIRST-RUN OPERATING POINT at W3's/longsword's style-LoRA weight (the saltroad house style). NOT the beast's 0.0 -- that was a Director-ruled deviation (E12 Ruling 10b) made AFTER seeing a rejected pair; A1 has no generation yet to justify departing from the house default.",
+        "from": "E08 (W3/longsword lineage)"
+      },
+      "cn-strength": {
+        "value": 0.9,
+        "why": "FIRST-RUN OPERATING POINT at W3's twin-stage ControlNet strength (E08).",
+        "from": "E08"
+      },
+      "canny-low": {
+        "value": 0.4,
+        "why": "TOOL DEFAULT, untuned -- disclosed, not measured. E58 Stage C built A1's controls at this default (facet_E58/controls/ctrl/, Gate C passed: 8/8 bbox-consistent, all bytes sha256'd) WITHOUT running a subject-specific canny sensitivity sweep (the E12/E14 dragon/longsword precedent for deriving a subject-specific pair is out of this arc's charter scope). Flagged: the dragon's own history shows grey-on-grey clay commonly needs a MUCH lower pair (0.05/0.10 dragon, 0.10/0.25 longsword) than this tool default -- a future arc may need to measure and rule this the same way.",
+        "from": "restylize_views.py code default; E58 Stage C (explicitly not re-derived)"
+      },
+      "canny-high": {
+        "value": 0.8,
+        "why": "TOOL DEFAULT, untuned -- same disclosure as canny-low.",
+        "from": "restylize_views.py code default; E58 Stage C (explicitly not re-derived)"
+      },
+      "contour-width": {
+        "value": 3,
+        "why": "TOOL DEFAULT, used unmodified at E58 Stage C control-build.",
+        "from": "restylize_views.py code default"
+      },
+      "bg": {
+        "value": "0,0,0",
+        "why": "TOOL DEFAULT compositing colour for the keyed figure before Canny, used unmodified at E58 Stage C.",
+        "from": "restylize_views.py code default; E01 contrast fix lineage"
+      },
+      "tol": {
+        "value": 0.06,
+        "why": "TOOL DEFAULT figure-keying tolerance. NOTE: E58's actual controls did not use this path at all -- --masks supplied the exact raycast silhouette (facet_E58/controls/sil/), so figure_mask()/this tolerance never executed. Recorded because it is a registered argument, per the burden-of-proof convention.",
+        "from": "restylize_views.py code default"
+      },
+      "erode": {
+        "value": 5,
+        "why": "TOOL DEFAULT. Same non-execution note as tol -- --masks bypassed this path.",
+        "from": "restylize_views.py code default"
+      },
+      "negative": {
+        "value": "低分辨率，低画质，肢体畸形，手指畸形，画面过饱和，蜡像感，人脸无细节，过度光滑，画面具有AI感。构图混乱。文字模糊，扭曲",
+        "why": "FROM THE RECIPE, verbatim (charter Stage D: 'negative from the recipe') -- canon/A1-RECIPE.json's negative_text, NOT the generic 'watermark, text, logo, blurry, photo, deformed' every other subject's profile carries. A1 is the first subject whose negative has its own recorded provenance rather than being a studio-wide default.",
+        "from": "canon/A1-RECIPE.json"
+      },
+      "prompt": {
+        "value": "A young archivist in his 20s, plum long-vest with fine gold embroidery, a cream high-collared shirt, an umber sash, slim dark-green trousers, polished brown shoes, olive skin, tousled dark curls, ink-stained fingertips, curious brown eyes, a slight smile, painterly digital art with visible brushwork, rich saturated palette, crisp readable facial features, plain warm pale-grey studio backdrop, no weapons, no held objects, nothing crossing the body silhouette, head facing straight ahead, arms slightly away from the body, hands empty and open, feet planted and visible.",
+        "why": "FALLBACK prompt (protective-transcription class, E04 Ruling 22): an invocation that forgets --prompts still asks for THIS archivist rather than falling through to some other subject's default. Composed from the 18 ratified phrases as a comma-list (E12 Ruling 9c form). UPDATED at E59 Stage 0, 2026-08-18: appended 'head facing straight ahead' (canon/a1.surfaces.json's stage_head_forward, the Director's 2026-08-18 ruling), the 19th phrase and the first added after this file's own authoring. Stage 0 made the clause required:true-enforced; this profile's prompt is what canon_gate checks it against, and the E58-authored 18-phrase text (below this edit's predecessor) failed its own subject's canon the moment enforcement landed -- caught by test_t91_census_does_not_invent_surfaces going red, not tuned past. E58-a1-twin-prompts.json (the historical record of what E58 actually SUBMITTED) is deliberately NOT touched -- it stays a faithful record of a prior generation, predating this ruling. Re-verified clean against canon_gate.check_prompt() after this edit: ok=True, missing=[], forbidden=[], unlicensed=[]. | E59+: pose staging clauses added at the Directors direction 2026-08-18; required by the gate.",
+        "from": "E58 Stage B/D; E59 Stage 0; canon/a1.surfaces.json"
+      }
+    }
+  },
+  "cameras": {
+    "_stage_assignment": "The eye-level eight are STAGE 1 - the twin cameras, eye-level by construction on every subject so far. No elevated-camera question has been asked or measured for A1; out of this arc's scope.",
+    "eye_level": {
+      "value": [
+        0,
+        45,
+        90,
+        135,
+        180,
+        225,
+        270,
+        315
+      ],
+      "why": "Eight yaws at elevation 0, matching E58 Stage C's render/silhouette/control set exactly.",
+      "from": "E58 Stage C"
+    }
+  },
+  "_out_of_scope_this_profile": "bake_hero_prep.py / texpass_brush.py / texpass_iter.py / project_twins.py / cull_unseen.py blocks are NOT populated -- A1 has not been baked, painted, projected or culled. Those are the next arc's (texpass) scope per the E58 charter's own out-of-scope list. Populating them now would be values arriving by invention rather than measurement."
+}

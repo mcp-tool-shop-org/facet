@@ -28,6 +28,7 @@ import canon_gate as C  # noqa: E402
 
 W3 = os.path.join(str(REPO), "canon", "w3.surfaces.json")
 SWORD = os.path.join(str(REPO), "canon", "longsword.surfaces.json")
+A1 = os.path.join(str(REPO), "canon", "a1.surfaces.json")
 
 # Every RATIFIED phrase. N18 and N19 joined the set on 2026-08-17 when the
 # Director ratified all four drafted rows, so a prompt that omitted them stopped
@@ -193,6 +194,54 @@ def test_t91_census_does_not_invent_surfaces():
     assert rows["A1"]["identity"] == "canon/A1-IDENTITY.md"
     assert rows["A1"]["identity_named"] == 10
     assert rows["A1"]["occupancy"] == rows["A1"]["ratified"]
+    # E58 Stage D, 2026-08-18: CENSUS_ROWS' A1 pairing moved from the placeholder
+    # (profiles/character.json, W3's own profile, paired only because it was the
+    # one CENSUS_ROWS-shaped file that existed) to profiles/a1.json, A1's OWN
+    # profile authored from the ratified canon. Extended in this SAME
+    # non-parametrized function (not a new test function) so this edit adds zero
+    # new collected items and does not move T34's front-door counts - verified
+    # directly: `pytest --collect-only` reports 1339 both before and after this
+    # edit (unchanged from E57's own 1338 baseline plus the intervening E54/E57
+    # report files already in the corpus at this seat's start).
+    assert rows["A1"]["profile"] == "profiles/a1.json"
+    assert rows["A1"]["profile_named"] == 10
+    assert rows["A1"]["profile_hits"] == 10, (
+        "profiles/a1.json's restylize_views.py.prompt should hit all 10 NAMED "
+        "phrases now that the placeholder pairing is gone (E57 measured 0/10 "
+        "against W3's own prompt)")
+    # Full check_prompt() pass, not just the NAMED-phrase-hit count above -
+    # mirrors test_t91_longsword_profile_covers_its_canon's shape but stays
+    # inside THIS function for the same collection-count-neutral reason. Folds
+    # in the E58 Stage B finding: A1's OWN raw reference prose does NOT pass
+    # this check (unlicensed pose/lighting staging residue) while the profile's
+    # composed 18-phrase prompt does - this is the check that proves it stays
+    # true at HEAD, not just at the moment it was measured.
+    #
+    # E59 Stage 0, 2026-08-18: required moved 16 -> 17. canon/a1.surfaces.json
+    # gained a `required: true` legal_clause (stage_head_forward, the
+    # Director's ruling on the E58 ring) and canon_gate.py now folds a
+    # required legal_clause into the same count as a ratified occupant
+    # phrase. profiles/a1.json's prompt was authored one day before that
+    # ruling and did not carry the phrase - this exact assertion caught it
+    # (a1_chk["ok"] went False the moment enforcement landed), and the fix was
+    # to update the stale profile prompt, not this test. See profiles/a1.json
+    # tools.restylize_views.py.prompt.why for the update.
+    #
+    # E59 fold, same day: 17 -> 20. Three POSE staging clauses joined at the
+    # Director's direction that the prompt must speak of hand placement -
+    # stage_arms / stage_hands / stage_feet, all three verbatim from
+    # canon/A1-RECIPE.json. They are attested canon RECOVERED rather than
+    # invented: the reference's own prompt carried a full pose clause and the
+    # E57 draft kept only its negative half (no weapons / no held objects /
+    # nothing crossing the silhouette), so E58 generated eight views with
+    # nothing in the conditioning saying where the arms, hands or feet go.
+    # The profile prompt moved in the same change-set; this count is the pin
+    # that makes a silent drop impossible.
+    a1_doc = C.load_canon(A1)
+    a1_prompt = C._profile_restylize_prompt("profiles/a1.json")
+    a1_chk = C.check_prompt(a1_doc, a1_prompt)
+    assert a1_chk["ok"], a1_chk
+    assert a1_chk["required"] == 20
 
 
 def test_t91_clause_class_staging_accepted_unknown_still_andons(tmp_path):

@@ -119,11 +119,24 @@ def test_t92_undeclared_view_is_no_answer():
 
 
 def test_t92_declared_view_does_not_require_out_of_scope(tmp_path):
+    """Also E59 Stage 0's pytest-level home, extended in place rather than as
+    a new function: T34 pins the collected-item count across 8 READMEs +
+    SHIP_GATE.md + site-config.ts + handbook pages, and a new collected test
+    would force a translation regeneration, which is out of a Sonnet
+    session's authority (the studio's translation rule). Same reasoning E58
+    used to extend test_t91_census_does_not_invent_surfaces in place instead
+    of adding a function. The can-fail assertions for the new behaviour also
+    live in tools/canon_gate.py's own `_selftest_router`, exercised by
+    test_t92_selftest_still_holds below — this is the second, pytest-idiom
+    layer, not the only one.
+    """
     p = tmp_path / "x.surfaces.json"
     p.write_text(json.dumps({
         "subject": "X", "kind": "prop", "schema": 2,
         "legal_clauses": [
             {"id": "bg", "phrase": "plain grey background", "class": "style"},
+            {"id": "pose", "phrase": "head facing straight ahead",
+             "class": "staging", "required": True},
         ],
         "scopes": {"views": {"0": {"surfaces": ["blade"]}}, "strokes": {}},
         "surfaces": [
@@ -134,12 +147,31 @@ def test_t92_declared_view_does_not_require_out_of_scope(tmp_path):
         ],
     }), encoding="utf-8")
     doc = C.load_canon(str(p))
-    chk = C.check_prompt(doc, "a steel blade, plain grey background",
+    chk = C.check_prompt(doc, "a steel blade, plain grey background, "
+                              "head facing straight ahead",
                          scope="view:0")
     assert chk["ok"], chk
-    thin = C.check_prompt(doc, "plain grey background", scope="view:0")
+    thin = C.check_prompt(doc, "plain grey background, head facing straight ahead",
+                          scope="view:0")
     assert not thin["ok"]
     assert any("steel blade" in m["phrase"] for m in thin["missing"])
+
+    # (a) the required clause ("pose"), stripped -> refuses naming it, even
+    # at a NARROW view:0 scope that already excludes "grip" -- a legal_clause
+    # names no surface id, so scope-narrowing (which narrows by surface id)
+    # cannot honestly exempt it. This is the missing-required-clause half.
+    no_pose = C.check_prompt(doc, "a steel blade, plain grey background",
+                             scope="view:0")
+    assert not no_pose["ok"], no_pose
+    assert any(m["phrase"] == "head facing straight ahead"
+               for m in no_pose["missing"]), no_pose
+
+    # (b) the UNMARKED clause ("bg"), stripped -> still ok. Without this half
+    # a change that made every legal_clause mandatory by accident would pass
+    # (a) and go unnoticed here and on W3's five unmarked clauses alike.
+    no_bg = C.check_prompt(doc, "a steel blade, head facing straight ahead",
+                           scope="view:0")
+    assert no_bg["ok"], no_bg
 
 
 def test_t92_w3_occupants_were_not_edited():
@@ -251,6 +283,10 @@ def test_t92_selftest_still_holds():
     assert rc == 0, "selftest exited %d\n%s\n%s" % (rc, out, err)
     assert "profile-default hits 5 of 19" in out, out
     assert "router reverse held" in out, out
+    # E59 Stage 0: _selftest_router's own required-clause fixture ran and
+    # held (both halves - required refuses, unmarked stays optional). This
+    # is the pytest-visible seam onto the in-tool can-fail checks.
+    assert "required clause held" in out, out
 
 
 def test_t92_worksheet_landed_in_t93():

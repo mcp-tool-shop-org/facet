@@ -139,6 +139,12 @@ YES/NO INTERVALS.
                     (occupant phrases + blocked + legal_clauses)
                     refuse. Same two verdicts as #17: refuse or
                     report. Unlicensed is a refuse.
+                    A legal_clause marked required:true (E59 Stage
+                    0) must also occur, at every scope — folded
+                    into the same missing list, same refusal shape
+                    as a missing ratified occupant phrase. Unmarked
+                    clauses (the default) stay licensed-but-optional,
+                    unchanged.
   occupancy         one prompt occupant per surface_id. A blocked
                     addition naming a surface that already has a
                     prompt occupant is the predicted-drop class,
@@ -285,6 +291,9 @@ def _validate_router_fields(doc, ids):
             if cls not in CLAUSE_CLASSES:
                 _andon("legal_clause %s class %r is not one of %s"
                        % (c["id"], cls, "/".join(CLAUSE_CLASSES)))
+            if "required" in c and not isinstance(c["required"], bool):
+                _andon("legal_clause %s required must be a bool, got %r"
+                       % (c["id"], c["required"]))
     if "scopes" not in doc:
         return
     if not isinstance(doc["scopes"], dict):
@@ -491,6 +500,34 @@ def licensed_phrases(doc):
     return out
 
 
+def required_legal_clauses(doc):
+    """legal_clauses marked `required: true`. E59 Stage 0.
+
+    Until now every legal_clause was licensed-but-optional: `licensed_phrases()`
+    lets it occur without tripping the reverse/unlicensed check, but nothing
+    required it to occur, so a staging clause (e.g. A1's `stage_head_forward`,
+    "head facing straight ahead") could silently drop out of a prompt and the
+    gate would stay quiet. That made a ratified staging clause decorative.
+
+    Checked at EVERY scope, not filtered by scope_ids. A legal_clause names no
+    surface id, so the surface-id narrowing that view/stroke scopes use has no
+    honest way to exempt one — and the properties these clauses express
+    ("the head stays forward") are meant to hold at every view, not just at
+    subject scope. This is the strictest reading and the fail-closed one.
+
+    Unmarked clauses (no `required` key, or `required: false`) are untouched:
+    they keep exactly today's behaviour, licensed but optional. This list only
+    grows when a clause's own author opts it in — it does not retroactively
+    make every staging clause on every subject mandatory (W3 carries five
+    unmarked legal_clauses; none of them enter this list).
+    """
+    out = []
+    for c in doc.get("legal_clauses") or []:
+        if c.get("required") is True:
+            out.append(("clause:%s" % c["id"], c["phrase"]))
+    return out
+
+
 def unlicensed_residue(doc, prompt):
     """prompt minus licensed spans. Empty list if reverse is not armed.
 
@@ -527,6 +564,13 @@ def check_prompt(doc, prompt, scope="subject"):
     Reverse (schema 2): a residue after licensed spans are removed is
     unlicensed and refuses. Same two verdicts as #17 — refuse or report.
     Unlicensed is a refuse. There is no warn.
+
+    A `required: true` legal_clause (E59 Stage 0) is folded into the same
+    `missing` list, checked at every scope regardless of scope_ids — it
+    refuses exactly the way a missing ratified occupant phrase does, through
+    the same list and the same ANDON message shape. Clauses carry no
+    ratification flag (nothing in this schema drafts a legal_clause), so
+    there is no unratified-clause path to mirror `unrat_missing`.
     """
     if prompt is None:
         _andon("need a prompt")
@@ -546,6 +590,10 @@ def check_prompt(doc, prompt, scope="subject"):
         req += 1
         if not _present(ph, prompt):
             missing.append({"surface": sid, "phrase": ph})
+    for cid, ph in required_legal_clauses(doc):
+        req += 1
+        if not _present(ph, prompt):
+            missing.append({"surface": cid, "phrase": ph})
     forbidden = [{"surface": s, "word": w} for s, w in forbidden_hits(doc, prompt)]
     unlicensed = unlicensed_residue(doc, prompt)
     ok = (not missing) and (not forbidden) and (not unlicensed)
@@ -916,14 +964,12 @@ CENSUS_ROWS = (
      "canon/longsword.surfaces.json", "profiles/prop.json"),
     ("E10-LAYER", "canon/E10-LAYER-IDENTITY.md", None, None),
     ("LOGO", "canon/LOGO-IDENTITY.md", None, None),
-    # A1 - the reference-first exemplar (E57, 2026-08-17). "profiles/character.json"
-    # is W3's own profile, paired here only because it is the one CENSUS_ROWS-shaped
-    # profile file that currently exists - it is NOT A1's profile (A1 has none yet;
-    # a dedicated profile is later-arc work, same as canon_bind scope filling). The
-    # profile_hits column below will read against W3's default prompt, not A1's -
-    # reported as a known placeholder pairing, not a defect introduced here.
+    # A1 - the reference-first exemplar (E57 2026-08-17; profiled E58 2026-08-18).
+    # profiles/a1.json is A1's OWN profile, authored at E58 Stage D from the ratified
+    # canon directly (not relocated from an accepted asset - A1 has none yet). The
+    # placeholder pairing to W3's profiles/character.json (E57) is retired here.
     ("A1", "canon/A1-IDENTITY.md", "canon/a1.surfaces.json",
-     "profiles/character.json"),
+     "profiles/a1.json"),
 )
 
 
@@ -1202,6 +1248,70 @@ def _selftest_router(scratch):
     drift = report_replay_drift(load_canon(w3), "plain grey background")
     if drift["refuses"] or drift["verdict"] != "replay_drift":
         _andon("replay_drift refused or misnamed: %s" % drift)
+    _selftest_required_clause(scratch)
+
+
+def _selftest_required_clause(scratch):
+    """E59 Stage 0: legal_clause required:true must occur; unmarked must not.
+
+    Two can-fail checks, named separately in the charter so neither one alone
+    proves the change did what it says: (a) stripping the required clause
+    refuses, naming it, same shape as a missing ratified occupant phrase;
+    (b) stripping an UNMARKED clause does NOT refuse — without this half a
+    change that made every legal_clause mandatory by accident would pass (a)
+    and go unnoticed, on this fixture and on W3's five unmarked clauses alike.
+    """
+    fixture = {
+        "subject": "R3",
+        "kind": "prop",
+        "schema": 2,
+        "legal_clauses": [
+            {"id": "bg", "phrase": "plain grey background", "class": "style"},
+            {"id": "pose", "phrase": "head facing straight ahead",
+             "class": "staging", "required": True},
+        ],
+        "surfaces": [
+            {"id": "blade", "occupant": {
+                "id": "P1", "phrase": "a steel blade", "provenance": "prompt"}},
+        ],
+        "blocked_additions": [],
+        "joints": [],
+    }
+    path = os.path.join(scratch, "r3.surfaces.json")
+    json.dump(fixture, open(path, "w", encoding="utf-8"))
+    doc = load_canon(path)
+    full = "a steel blade, plain grey background, head facing straight ahead"
+    chk_full = check_prompt(doc, full)
+    if not chk_full["ok"]:
+        _andon("required-clause fixture: full prompt refused: %s" % chk_full)
+    # (a) the required clause, stripped -> refuses, naming it
+    stripped_required = "a steel blade, plain grey background"
+    chk_req = check_prompt(doc, stripped_required)
+    if chk_req["ok"] or not any(
+            m["phrase"] == "head facing straight ahead" for m in chk_req["missing"]):
+        _andon("required-clause fixture: missing required clause did not "
+               "refuse naming it: %s" % chk_req)
+    # (b) the UNMARKED clause ("bg"), stripped -> still ok. This is the half
+    # that proves the change did not make every staging clause mandatory.
+    stripped_unmarked = "a steel blade, head facing straight ahead"
+    chk_unmarked = check_prompt(doc, stripped_unmarked)
+    if not chk_unmarked["ok"]:
+        _andon("required-clause fixture: an UNMARKED clause's absence wrongly "
+               "refused (every staging clause would be mandatory): %s"
+               % chk_unmarked)
+    # a malformed `required` value is a load failure, not a silent default
+    bad = dict(fixture)
+    bad["legal_clauses"] = [dict(fixture["legal_clauses"][0]),
+                            {"id": "pose", "phrase": "x", "class": "staging",
+                             "required": "yes"}]
+    bad_path = os.path.join(scratch, "r3bad.surfaces.json")
+    json.dump(bad, open(bad_path, "w", encoding="utf-8"))
+    try:
+        load_canon(bad_path)
+        _andon("required: \"yes\" (a string, not a bool) loaded without refusing")
+    except Andon as e:
+        if "required must be a bool" not in str(e):
+            _andon("malformed required refused for the wrong reason: %s" % e)
 
 
 def selftest(scratch=None):
@@ -1262,7 +1372,8 @@ def main(argv=None):
             sys.stdout.write(
                 "calibration profile-default hits %d of %d  "
                 "fixture coverage 0.75  sleeve refused  sleeveless held  "
-                "router reverse held  fail-closed held\n"
+                "router reverse held  fail-closed held  "
+                "required clause held\n"
                 % (PROFILE_DEFAULT_HITS, W3_NAMED))
             return 0
         if not args.cmd:

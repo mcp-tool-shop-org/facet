@@ -17,8 +17,8 @@
     "py_files_total": 113
   },
   "provenance": {
-    "corpus_files": 405,
-    "corpus_files_before_self_exclusion": 415,
+    "corpus_files": 408,
+    "corpus_files_before_self_exclusion": 418,
     "probe_interpreter": "E:\\AI-Models\\trellis2-env\\Scripts\\python.exe",
     "probe_interpreter_version": "3.13.13",
     "probe_skipped": false,
@@ -1260,10 +1260,11 @@
       "anchored_in_basename_only": [],
       "b1_literals": [],
       "b2_literals": [],
-      "cited_count": 1,
-      "cited_count_raw": 1,
+      "cited_count": 2,
+      "cited_count_raw": 2,
       "cited_in": [
-        "docs/experiments/E08-registration.md"
+        "docs/experiments/E08-registration.md",
+        "docs/experiments/E59-head-forward-report.md"
       ],
       "dir": "tools/diagnostics",
       "docstring_line1": "E08 \u2014 does a twin register against the mesh it is supposed to be a reference for?",
@@ -1699,8 +1700,8 @@
       ],
       "b1_literals": [],
       "b2_literals": [],
-      "cited_count": 8,
-      "cited_count_raw": 8,
+      "cited_count": 10,
+      "cited_count_raw": 10,
       "cited_in": [
         "docs/experiments/E12-gate0-report.md",
         "docs/experiments/E14-gate0-report.md",
@@ -1709,6 +1710,8 @@
         "docs/experiments/E33-predictions.md",
         "docs/experiments/E33-report.md",
         "docs/experiments/E33-the-first-performer-through-the-route.md",
+        "docs/experiments/E58-a1-twin-ring-report.md",
+        "docs/experiments/E59-head-forward-report.md",
         "docs/tools.md"
       ],
       "dir": "tools/diagnostics",
@@ -2066,14 +2069,16 @@
       "b2_literals": [
         "mcp-tool-shop__saltroad-style-lora__saltroad_style_v2_lowlr_000001500.safetensors"
       ],
-      "cited_count": 6,
-      "cited_count_raw": 7,
+      "cited_count": 8,
+      "cited_count_raw": 9,
       "cited_in": [
         "docs/experiments/E12-handoff13-predictions.md",
         "docs/experiments/E12-repair-pair-sidecar.md",
         "docs/experiments/E12-task4-pair-sidecar.md",
         "docs/experiments/E14-task4-report.md",
         "docs/experiments/E54-router-landing-zone-report.md",
+        "docs/experiments/E58-a1-twin-ring-report.md",
+        "docs/experiments/E59-head-forward-report.md",
         "docs/grok-consult-20-brief.md"
       ],
       "dir": "tools/diagnostics",
@@ -2362,10 +2367,11 @@
       ],
       "b1_literals": [],
       "b2_literals": [],
-      "cited_count": 1,
-      "cited_count_raw": 1,
+      "cited_count": 2,
+      "cited_count_raw": 2,
       "cited_in": [
-        "docs/experiments/E12-handoff13-report.md"
+        "docs/experiments/E12-handoff13-report.md",
+        "docs/experiments/E59-head-forward-report.md"
       ],
       "dir": "tools/diagnostics",
       "docstring_line1": "E13 A2 \u2014 the texel-allocation arithmetic, and the two frame checks it rides beside.",
@@ -2436,10 +2442,11 @@
       ],
       "b1_literals": [],
       "b2_literals": [],
-      "cited_count": 1,
-      "cited_count_raw": 1,
+      "cited_count": 2,
+      "cited_count_raw": 2,
       "cited_in": [
-        "docs/experiments/E12-handoff13-report.md"
+        "docs/experiments/E12-handoff13-report.md",
+        "docs/experiments/E59-head-forward-report.md"
       ],
       "dir": "tools/diagnostics",
       "docstring_line1": "E13 H2 \u2014 registration of a CROP-framed twin, keyed off a background region a crop frame",
@@ -3058,13 +3065,14 @@
       "anchored_in_basename_only": [],
       "b1_literals": [],
       "b2_literals": [],
-      "cited_count": 4,
-      "cited_count_raw": 4,
+      "cited_count": 5,
+      "cited_count_raw": 5,
       "cited_in": [
         "docs/experiments/E14-handoff3-task2-report.md",
         "docs/experiments/E33-report.md",
         "docs/experiments/E34-projection-coverage-kickoff.md",
-        "docs/experiments/E34-projection-coverage-report.md"
+        "docs/experiments/E34-projection-coverage-report.md",
+        "docs/experiments/E59-head-forward-report.md"
       ],
       "dir": "tools/diagnostics",
       "docstring_line1": "Per-view twin registration against the EXACT raycast silhouette. Halts SUSPENDED.",
@@ -3225,10 +3233,11 @@
       ],
       "b1_literals": [],
       "b2_literals": [],
-      "cited_count": 1,
-      "cited_count_raw": 1,
+      "cited_count": 2,
+      "cited_count_raw": 2,
       "cited_in": [
-        "docs/experiments/E55-density-vs-identity-report.md"
+        "docs/experiments/E55-density-vs-identity-report.md",
+        "docs/experiments/E59-head-forward-report.md"
       ],
       "dir": "tools/diagnostics",
       "docstring_line1": "E55 \u2014 Gate B: count the elements in a generation prompt, by ONE mechanical rule.",
@@ -3530,11 +3539,12 @@
       "anchored_in_basename_only": [],
       "b1_literals": [],
       "b2_literals": [],
-      "cited_count": 3,
-      "cited_count_raw": 4,
+      "cited_count": 4,
+      "cited_count_raw": 5,
       "cited_in": [
         "docs/experiments/E37-stageB-selection-sheet.md",
         "docs/experiments/E37-stageC-prep-halt.md",
+        "docs/experiments/E59-head-forward-report.md",
         "docs/tools.md"
       ],
       "dir": "tools/verify",
@@ -3640,11 +3650,12 @@
       ],
       "b1_literals": [],
       "b2_literals": [],
-      "cited_count": 2,
-      "cited_count_raw": 2,
+      "cited_count": 3,
+      "cited_count_raw": 3,
       "cited_in": [
         "docs/experiments/E08-eightcam-predictions.md",
-        "docs/experiments/E08-intersection-regression.md"
+        "docs/experiments/E08-intersection-regression.md",
+        "docs/experiments/E59-head-forward-report.md"
       ],
       "dir": "tools/diagnostics",
       "docstring_line1": "How much of each twin's keyed paint sits on no surface at all?",
@@ -3813,12 +3824,13 @@
       ],
       "b1_literals": [],
       "b2_literals": [],
-      "cited_count": 3,
-      "cited_count_raw": 4,
+      "cited_count": 4,
+      "cited_count_raw": 5,
       "cited_in": [
         "docs/experiments/E08-executor-kickoff.md",
         "docs/experiments/E08-intersection-regression.md",
-        "docs/experiments/E08-ruling-gate0.md"
+        "docs/experiments/E08-ruling-gate0.md",
+        "docs/experiments/E59-head-forward-report.md"
       ],
       "dir": "tools/diagnostics",
       "docstring_line1": "Is project_twins' LIVE raycast silhouette the same object as the shipped sidecar mask?",
@@ -3977,8 +3989,8 @@
       ],
       "b1_literals": [],
       "b2_literals": [],
-      "cited_count": 34,
-      "cited_count_raw": 35,
+      "cited_count": 36,
+      "cited_count_raw": 37,
       "cited_in": [
         "docs/experiments/E02-report.md",
         "docs/experiments/E02-texture-stage-on-sound-inputs.md",
@@ -4012,6 +4024,8 @@
         "docs/experiments/E47-atlas-ab-kickoff.md",
         "docs/experiments/E47-atlas-ab-report.md",
         "docs/experiments/E57-a1-reference-first-report.md",
+        "docs/experiments/E58-a1-twin-ring-report.md",
+        "docs/experiments/E59-head-forward-report.md",
         "docs/experiments/README.md",
         "docs/tools.md"
       ],

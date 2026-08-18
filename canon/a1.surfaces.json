@@ -6,7 +6,7 @@
   "visual_target": [
     "canon/A1_reference.png"
   ],
-  "note": "SURFACE is the row. occupant null is a hole. Reference-first subject: the visual target and the identity were born together - every occupant phrase below is a verbatim substring of the reference's own generating prompt (canon/A1-RECIPE.json). NO WEAPON by the Director's direction; no prop surfaces exist and none may be added without a ruling. A1 is symmetric on every paired surface, so the _L/_R suffix cannot mis-apply while the side convention question stands. RATIFIED by the Director 2026-08-17, as drafted - all 19 rows and all five queue positions. Machine convention (canon_gate.py is_unratified): ratification is the ABSENCE of 'ratify': true on an occupant; this file carries no draft flags, so machine state and the Director's word agree - a future draft that must read as unratified needs the flag per row until his word. His standing principle at ratification, paraphrased: the quality is made in the edit - ratification is a baseline, not a freeze, and a post-ratification canon edit is an ordinary versioned move whose test is the next generation.",
+  "note": "SURFACE is the row. occupant null is a hole. Reference-first subject: the visual target and the identity were born together - every occupant phrase below is a verbatim substring of the reference's own generating prompt (canon/A1-RECIPE.json). NO WEAPON by the Director's direction; no prop surfaces exist and none may be added without a ruling. A1 is symmetric on every paired surface, so the _L/_R suffix cannot mis-apply while the side convention question stands. RATIFIED by the Director 2026-08-17, as drafted - all 19 rows and all five queue positions. Machine convention (canon_gate.py is_unratified): ratification is the ABSENCE of 'ratify': true on an occupant; this file carries no draft flags, so machine state and the Director's word agree - a future draft that must read as unratified needs the flag per row until his word. His standing principle at ratification, paraphrased: the quality is made in the edit - ratification is a baseline, not a freeze, and a post-ratification canon edit is an ordinary versioned move whose test is the next generation. FIRST EDIT UNDER THAT PRINCIPLE, 2026-08-18, after the E58 twin ring: the staging clause stage_head_forward is ADDED at his direction (the head must not turn toward the camera through the turnaround), and he ruled the ring's identity ACCEPTABLE against the reference - so the twins are this man and the identity question the advisor raised is closed. He also corrected the advisor's weighting of the ink reading: it is a minor register difference, not a headline defect, and it is not a work item.",
   "surfaces": [
     {
       "id": "hair",
@@ -344,6 +344,34 @@
       "phrase": "nothing crossing the body silhouette",
       "class": "staging",
       "from": "the generating prompt"
+    },
+    {
+      "id": "stage_head_forward",
+      "phrase": "head facing straight ahead",
+      "class": "staging",
+      "required": true,
+      "from": "THE DIRECTOR'S RULING 2026-08-18, on the E58 twin ring. NOT from the reference's generating prompt - this is the first A1 canon element the reference could not have taught, because a single front-on plate cannot show a turnaround property. In the E58 ring the head rotates back toward the camera as the body turns; it must stay aligned with the body through every view, so only the front view shows the face frontally. The mesh and the controls are NOT the cause: A1's head is straight on the mesh by construction (built from a front-facing reference) and the E57 clay ring shows it straight at every yaw - the generator overrode a correct control. Marked required:true so the gate enforces it rather than merely licensing it; the enforcement is E59's first task, ahead of any spend."
+    },
+    {
+      "id": "stage_arms",
+      "phrase": "arms slightly away from the body",
+      "class": "staging",
+      "required": true,
+      "from": "THE DIRECTORS DIRECTION 2026-08-18: the prompt must speak of hand placement. VERBATIM from canon/A1-RECIPE.json positive_text, so this is attested canon recovered, not invented - the reference prompt carried a full pose clause and the E57 canon draft kept only its NEGATIVE half (no weapons / no held objects / nothing crossing the silhouette) while dropping the POSITIVE half. E58 generated eight views with nothing in the conditioning saying where the arms, hands or feet go. required:true so the gate enforces it. NOTE the phrase NOT adopted: the recipe also says \"standing in a relaxed A-pose facing the camera\" - facing the camera is VIEW-SPECIFIC and must never enter a non-front twin prompt, which is why the pose is split into the three view-independent clauses below rather than carried as one string."
+    },
+    {
+      "id": "stage_hands",
+      "phrase": "hands empty and open",
+      "class": "staging",
+      "required": true,
+      "from": "THE DIRECTORS DIRECTION 2026-08-18: the prompt must speak of hand placement. VERBATIM from canon/A1-RECIPE.json positive_text, so this is attested canon recovered, not invented - the reference prompt carried a full pose clause and the E57 canon draft kept only its NEGATIVE half (no weapons / no held objects / nothing crossing the silhouette) while dropping the POSITIVE half. E58 generated eight views with nothing in the conditioning saying where the arms, hands or feet go. required:true so the gate enforces it. NOTE the phrase NOT adopted: the recipe also says \"standing in a relaxed A-pose facing the camera\" - facing the camera is VIEW-SPECIFIC and must never enter a non-front twin prompt, which is why the pose is split into the three view-independent clauses below rather than carried as one string."
+    },
+    {
+      "id": "stage_feet",
+      "phrase": "feet planted and visible",
+      "class": "staging",
+      "required": true,
+      "from": "THE DIRECTORS DIRECTION 2026-08-18: the prompt must speak of hand placement. VERBATIM from canon/A1-RECIPE.json positive_text, so this is attested canon recovered, not invented - the reference prompt carried a full pose clause and the E57 canon draft kept only its NEGATIVE half (no weapons / no held objects / nothing crossing the silhouette) while dropping the POSITIVE half. E58 generated eight views with nothing in the conditioning saying where the arms, hands or feet go. required:true so the gate enforces it. NOTE the phrase NOT adopted: the recipe also says \"standing in a relaxed A-pose facing the camera\" - facing the camera is VIEW-SPECIFIC and must never enter a non-front twin prompt, which is why the pose is split into the three view-independent clauses below rather than carried as one string."
     }
   ],
   "scopes": {

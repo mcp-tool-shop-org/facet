@@ -47,13 +47,35 @@ nothing here tests it.
 | N5 | polished brown shoes | low shoes, not boots — laced, brown leather |
 | N6 | olive skin | face, neck, hands |
 | N7 | tousled dark curls | |
-| N8 | ink-stained fingertips | ⚠ the painted extent EXCEEDS the phrase — marks across both hands, palms and backs. Queue item Q2: the phrase is canon by law; adopting the painted extent means re-wording, untested until the next generation |
+| N8 | ink-stained fingertips | lands. On the E58 ring it renders darker and glossier than a working stain — the register is *soaked* where it should read *dirty from work*. **The Director weighted this as minor and not a work item** (2026-08-18), correcting an advisor report that gave it headline space; it is recorded here and does not gate anything. ⚠ The advisor's Q2 prediction — that the phrase would produce LESS ink than the reference — missed in the direction it named |
 | N9 | curious brown eyes | |
 | N10 | a slight smile | |
 
 **The archivist's working identity:** the framing clause *"A young archivist in his
 20s"* is the subject's register — a scholar, not a soldier. It is a framing clause, not
 a surface (see `legal_clauses` in the surfaces file).
+
+## POSE — canon, and the first element the reference could not teach
+
+**⚑ `stage_head_forward` — "head facing straight ahead". The Director's ruling, 2026-08-18,
+on the E58 twin ring.** The head stays aligned with the body through every view of a
+turnaround; only the front view shows the face frontally. In the E58 ring the head rotates
+back toward the camera as the body turns, which is wrong.
+
+**A single front-on plate cannot show this.** Every other element in this file was read off
+the reference or its prompt; a turnaround property has no front-on signature, so the canon
+could only learn it once a ring existed. That is not a defect in the reference-first method
+— it is the boundary of what one plate can carry, and it is worth recording as such.
+
+**The mesh and the controls are not the cause, by construction.** A1's head is straight on
+the mesh (built from a front-facing reference) and the E57 clay ring shows it straight at
+every yaw. The generator overrode a correct control — so the lever is the prompt, the
+negative, and the control's strength against denoise, not the geometry.
+
+Declared `required: true` in [a1.surfaces.json](a1.surfaces.json) so the gate ENFORCES it
+rather than licensing it. Staging clauses to date are licensed-but-optional, which would let
+this silently drop from a prompt; making canon mean *enforced* is E59's first task and
+precedes any spend.
 
 ## MESH-SUPPLIED — arrives through the control from geometry; record the dependency
 
