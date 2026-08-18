@@ -1,0 +1,758 @@
+{
+ "_purpose": "Per-material Lab palette bands for A1, derived from the single frozen reference (canon/A1_reference.png) at E57 Stage 1. UNLIKE the ratified E04/E12/E14 palettes, this is NOT derived from a multi-view, mesh-projected, exact-silhouette-masked target pair with a materials-estimated.json landing table - no mesh exists yet (Stage 2 has not run) and no materials-estimated file was authored for A1. This is a single-image, hand-placed region-box read (same evidentiary shape as tools/diagnostics/e12_region_colour.py, not tools/diagnostics/e04_bands.py). It DESCRIBES the reference; it GATES NOTHING this arc (no allowed_bands/gate block in the E04/E12/E14 sense) - per the E57 charter.",
+ "_chroma_floor": {
+  "adopted": 12.0,
+  "note": "Inherited from W3/galleon/beast/longsword, CHECKED (not re-derived) against this subject's own pooled chroma density - see A1_chroma_density.json for the full scan and the report for the antimode/knee reading."
+ },
+ "_hue_statistic": "circular mean of unit vectors among pixels with C* >= floor (atan2(mean(sin h), mean(cos h))), NOT a linear median. hue_resultant_length is the mean resultant length R in [0,1] - low R means the above-floor hues are spread out, not concentrated, and the centre is correspondingly less meaningful; report R beside every centre.",
+ "materials": [
+  {
+   "n_id": "N1",
+   "phrase": "plum long-vest with fine gold embroidery",
+   "member_regions": [
+    "vest_torso",
+    "vest_skirt_L",
+    "vest_skirt_R"
+   ],
+   "px": 67931,
+   "median_L": 14.92,
+   "median_C": 16.98,
+   "under_floor_pct": 35.46,
+   "hue_votes_n": 43845,
+   "hue_centre_deg": 38.5,
+   "hue_resultant_length": 0.854,
+   "median_rgb255": [
+    57,
+    31,
+    26
+   ]
+  },
+  {
+   "n_id": "N2",
+   "phrase": "a cream high-collared shirt",
+   "member_regions": [
+    "sleeve_L",
+    "sleeve_R"
+   ],
+   "px": 45084,
+   "median_L": 62.82,
+   "median_C": 23.27,
+   "under_floor_pct": 16.02,
+   "hue_votes_n": 37863,
+   "hue_centre_deg": 77.5,
+   "hue_resultant_length": 0.994,
+   "median_rgb255": [
+    166,
+    150,
+    127
+   ]
+  },
+  {
+   "n_id": "N3",
+   "phrase": "an umber sash",
+   "member_regions": [
+    "sash"
+   ],
+   "px": 7261,
+   "median_L": 23.38,
+   "median_C": 28.87,
+   "under_floor_pct": 9.78,
+   "hue_votes_n": 6551,
+   "hue_centre_deg": 66.5,
+   "hue_resultant_length": 0.978,
+   "median_rgb255": [
+    80,
+    49,
+    12
+   ]
+  },
+  {
+   "n_id": "N4",
+   "phrase": "slim dark-green trousers",
+   "member_regions": [
+    "trousers_L",
+    "trousers_R"
+   ],
+   "px": 6726,
+   "median_L": 13.8,
+   "median_C": 11.2,
+   "under_floor_pct": 58.59,
+   "hue_votes_n": 2785,
+   "hue_centre_deg": 119.3,
+   "hue_resultant_length": 0.977,
+   "median_rgb255": [
+    29,
+    38,
+    23
+   ]
+  },
+  {
+   "n_id": "N5",
+   "phrase": "polished brown shoes",
+   "member_regions": [
+    "shoe_L",
+    "shoe_R"
+   ],
+   "px": 3907,
+   "median_L": 18.52,
+   "median_C": 22.91,
+   "under_floor_pct": 9.34,
+   "hue_votes_n": 3542,
+   "hue_centre_deg": 49.7,
+   "hue_resultant_length": 0.979,
+   "median_rgb255": [
+    75,
+    33,
+    17
+   ]
+  },
+  {
+   "n_id": "N6",
+   "phrase": "olive skin",
+   "member_regions": [
+    "face_skin"
+   ],
+   "px": 702,
+   "median_L": 34.02,
+   "median_C": 28.64,
+   "under_floor_pct": 0.28,
+   "hue_votes_n": 700,
+   "hue_centre_deg": 54.4,
+   "hue_resultant_length": 0.996,
+   "median_rgb255": [
+    114,
+    68,
+    44
+   ]
+  },
+  {
+   "n_id": "N7",
+   "phrase": "tousled dark curls",
+   "member_regions": [
+    "hair"
+   ],
+   "px": 19879,
+   "median_L": 14.75,
+   "median_C": 10.2,
+   "under_floor_pct": 57.8,
+   "hue_votes_n": 8389,
+   "hue_centre_deg": 66.3,
+   "hue_resultant_length": 0.974,
+   "median_rgb255": [
+    50,
+    33,
+    24
+   ]
+  },
+  {
+   "n_id": "N8",
+   "phrase": "ink-stained fingertips",
+   "member_regions": [
+    "hand_L",
+    "hand_R"
+   ],
+   "px": 15360,
+   "median_L": 39.52,
+   "median_C": 21.51,
+   "under_floor_pct": 22.94,
+   "hue_votes_n": 11837,
+   "hue_centre_deg": 48.9,
+   "hue_resultant_length": 0.993,
+   "median_rgb255": [
+    129,
+    81,
+    60
+   ]
+  },
+  {
+   "n_id": "N9",
+   "phrase": "curious brown eyes",
+   "member_regions": [
+    "eyes"
+   ],
+   "px": 2958,
+   "median_L": 57.51,
+   "median_C": 35.27,
+   "under_floor_pct": 3.48,
+   "hue_votes_n": 2855,
+   "hue_centre_deg": 55.5,
+   "hue_resultant_length": 0.995,
+   "median_rgb255": [
+    187,
+    123,
+    85
+   ]
+  },
+  {
+   "n_id": "N10",
+   "phrase": "a slight smile",
+   "member_regions": [
+    "mouth"
+   ],
+   "px": 1525,
+   "median_L": 64.0,
+   "median_C": 29.1,
+   "under_floor_pct": 0.0,
+   "hue_votes_n": 1525,
+   "hue_centre_deg": 70.4,
+   "hue_resultant_length": 0.961,
+   "median_rgb255": [
+    190,
+    146,
+    100
+   ]
+  }
+ ],
+ "regions": [
+  {
+   "region_id": "hair",
+   "n_id": "N7",
+   "label": "tousled dark curls",
+   "rect_px": [
+    471,
+    66,
+    664,
+    169
+   ],
+   "rect_frac": [
+    0.415,
+    0.045,
+    0.585,
+    0.115
+   ],
+   "px": 19879,
+   "median_L": 14.75,
+   "median_C": 10.2,
+   "chroma_p25": 4.16,
+   "chroma_p75": 13.82,
+   "under_floor_pct": 57.8,
+   "hue_votes_n": 8389,
+   "hue_centre_deg": 66.3,
+   "hue_resultant_length": 0.974,
+   "median_rgb255": [
+    50,
+    33,
+    24
+   ],
+   "min_dist_to_backdrop_corners_dE": 33.51
+  },
+  {
+   "region_id": "face_skin",
+   "n_id": "N6",
+   "label": "olive skin (nasolabial fold beside the smile, in shadow - NOT a flat lit cheek plane, see report)",
+   "rect_px": [
+    514,
+    207,
+    540,
+    234
+   ],
+   "rect_frac": [
+    0.453,
+    0.141,
+    0.476,
+    0.159
+   ],
+   "px": 702,
+   "median_L": 34.02,
+   "median_C": 28.64,
+   "chroma_p25": 22.62,
+   "chroma_p75": 34.47,
+   "under_floor_pct": 0.28,
+   "hue_votes_n": 700,
+   "hue_centre_deg": 54.4,
+   "hue_resultant_length": 0.996,
+   "median_rgb255": [
+    114,
+    68,
+    44
+   ],
+   "min_dist_to_backdrop_corners_dE": 24.93
+  },
+  {
+   "region_id": "eyes",
+   "n_id": "N9",
+   "label": "curious brown eyes",
+   "rect_px": [
+    505,
+    188,
+    607,
+    217
+   ],
+   "rect_frac": [
+    0.445,
+    0.128,
+    0.535,
+    0.148
+   ],
+   "px": 2958,
+   "median_L": 57.51,
+   "median_C": 35.27,
+   "chroma_p25": 30.49,
+   "chroma_p75": 41.25,
+   "under_floor_pct": 3.48,
+   "hue_votes_n": 2855,
+   "hue_centre_deg": 55.5,
+   "hue_resultant_length": 0.995,
+   "median_rgb255": [
+    187,
+    123,
+    85
+   ],
+   "min_dist_to_backdrop_corners_dE": 17.04
+  },
+  {
+   "region_id": "mouth",
+   "n_id": "N10",
+   "label": "a slight smile",
+   "rect_px": [
+    531,
+    269,
+    592,
+    294
+   ],
+   "rect_frac": [
+    0.468,
+    0.183,
+    0.522,
+    0.2
+   ],
+   "px": 1525,
+   "median_L": 64.0,
+   "median_C": 29.1,
+   "chroma_p25": 26.97,
+   "chroma_p75": 35.2,
+   "under_floor_pct": 0.0,
+   "hue_votes_n": 1525,
+   "hue_centre_deg": 70.4,
+   "hue_resultant_length": 0.961,
+   "median_rgb255": [
+    190,
+    146,
+    100
+   ],
+   "min_dist_to_backdrop_corners_dE": 5.01
+  },
+  {
+   "region_id": "vest_torso",
+   "n_id": "N1",
+   "label": "plum long-vest (torso panel)",
+   "rect_px": [
+    516,
+    397,
+    619,
+    588
+   ],
+   "rect_frac": [
+    0.455,
+    0.27,
+    0.545,
+    0.4
+   ],
+   "px": 19673,
+   "median_L": 20.35,
+   "median_C": 23.0,
+   "chroma_p25": 19.51,
+   "chroma_p75": 27.77,
+   "under_floor_pct": 11.01,
+   "hue_votes_n": 17507,
+   "hue_centre_deg": 41.2,
+   "hue_resultant_length": 0.915,
+   "median_rgb255": [
+    78,
+    37,
+    30
+   ],
+   "min_dist_to_backdrop_corners_dE": 31.48
+  },
+  {
+   "region_id": "vest_skirt_L",
+   "n_id": "N1",
+   "label": "plum long-vest (left skirt flap)",
+   "rect_px": [
+    408,
+    765,
+    471,
+    1148
+   ],
+   "rect_frac": [
+    0.36,
+    0.52,
+    0.415,
+    0.78
+   ],
+   "px": 24129,
+   "median_L": 11.56,
+   "median_C": 10.43,
+   "chroma_p25": 4.85,
+   "chroma_p75": 12.12,
+   "under_floor_pct": 73.78,
+   "hue_votes_n": 6326,
+   "hue_centre_deg": 52.0,
+   "hue_resultant_length": 0.779,
+   "median_rgb255": [
+    31,
+    31,
+    19
+   ],
+   "min_dist_to_backdrop_corners_dE": 36.75
+  },
+  {
+   "region_id": "vest_skirt_R",
+   "n_id": "N1",
+   "label": "plum long-vest (right skirt flap)",
+   "rect_px": [
+    664,
+    765,
+    727,
+    1148
+   ],
+   "rect_frac": [
+    0.585,
+    0.52,
+    0.64,
+    0.78
+   ],
+   "px": 24129,
+   "median_L": 14.53,
+   "median_C": 18.6,
+   "chroma_p25": 14.74,
+   "chroma_p75": 19.94,
+   "under_floor_pct": 17.06,
+   "hue_votes_n": 20012,
+   "hue_centre_deg": 31.9,
+   "hue_resultant_length": 0.839,
+   "median_rgb255": [
+    58,
+    26,
+    29
+   ],
+   "min_dist_to_backdrop_corners_dE": 37.33
+  },
+  {
+   "region_id": "sleeve_L",
+   "n_id": "N2",
+   "label": "cream shirt (left sleeve)",
+   "rect_px": [
+    289,
+    485,
+    391,
+    706
+   ],
+   "rect_frac": [
+    0.255,
+    0.33,
+    0.345,
+    0.48
+   ],
+   "px": 22542,
+   "median_L": 58.85,
+   "median_C": 22.63,
+   "chroma_p25": 14.27,
+   "chroma_p75": 23.77,
+   "under_floor_pct": 23.61,
+   "hue_votes_n": 17220,
+   "hue_centre_deg": 75.4,
+   "hue_resultant_length": 0.997,
+   "median_rgb255": [
+    154,
+    140,
+    122
+   ],
+   "min_dist_to_backdrop_corners_dE": 8.25
+  },
+  {
+   "region_id": "sleeve_R",
+   "n_id": "N2",
+   "label": "cream shirt (right sleeve)",
+   "rect_px": [
+    744,
+    485,
+    846,
+    706
+   ],
+   "rect_frac": [
+    0.655,
+    0.33,
+    0.745,
+    0.48
+   ],
+   "px": 22542,
+   "median_L": 69.25,
+   "median_C": 24.04,
+   "chroma_p25": 19.63,
+   "chroma_p75": 25.19,
+   "under_floor_pct": 8.42,
+   "hue_votes_n": 20643,
+   "hue_centre_deg": 79.3,
+   "hue_resultant_length": 0.993,
+   "median_rgb255": [
+    195,
+    164,
+    133
+   ],
+   "min_dist_to_backdrop_corners_dE": 4.12
+  },
+  {
+   "region_id": "sash",
+   "n_id": "N3",
+   "label": "umber sash",
+   "rect_px": [
+    499,
+    577,
+    636,
+    630
+   ],
+   "rect_frac": [
+    0.44,
+    0.392,
+    0.56,
+    0.428
+   ],
+   "px": 7261,
+   "median_L": 23.38,
+   "median_C": 28.87,
+   "chroma_p25": 22.27,
+   "chroma_p75": 34.71,
+   "under_floor_pct": 9.78,
+   "hue_votes_n": 6551,
+   "hue_centre_deg": 66.5,
+   "hue_resultant_length": 0.978,
+   "median_rgb255": [
+    80,
+    49,
+    12
+   ],
+   "min_dist_to_backdrop_corners_dE": 31.61
+  },
+  {
+   "region_id": "trousers_L",
+   "n_id": "N4",
+   "label": "dark-green trousers (left shin, mid-fabric, off the inner-seam highlight)",
+   "rect_px": [
+    448,
+    1236,
+    505,
+    1295
+   ],
+   "rect_frac": [
+    0.395,
+    0.84,
+    0.445,
+    0.88
+   ],
+   "px": 3363,
+   "median_L": 16.28,
+   "median_C": 12.12,
+   "chroma_p25": 9.54,
+   "chroma_p75": 14.2,
+   "under_floor_pct": 49.0,
+   "hue_votes_n": 1715,
+   "hue_centre_deg": 123.7,
+   "hue_resultant_length": 0.996,
+   "median_rgb255": [
+    35,
+    43,
+    27
+   ],
+   "min_dist_to_backdrop_corners_dE": 32.84
+  },
+  {
+   "region_id": "trousers_R",
+   "n_id": "N4",
+   "label": "dark-green trousers (right shin, mid-fabric, off the inner-seam highlight)",
+   "rect_px": [
+    630,
+    1236,
+    687,
+    1295
+   ],
+   "rect_frac": [
+    0.555,
+    0.84,
+    0.605,
+    0.88
+   ],
+   "px": 3363,
+   "median_L": 12.16,
+   "median_C": 10.43,
+   "chroma_p25": 6.92,
+   "chroma_p75": 13.3,
+   "under_floor_pct": 68.18,
+   "hue_votes_n": 1070,
+   "hue_centre_deg": 112.0,
+   "hue_resultant_length": 0.958,
+   "median_rgb255": [
+    26,
+    34,
+    21
+   ],
+   "min_dist_to_backdrop_corners_dE": 36.79
+  },
+  {
+   "region_id": "shoe_L",
+   "n_id": "N5",
+   "label": "polished brown shoes (left, vamp leather)",
+   "rect_px": [
+    403,
+    1332,
+    465,
+    1361
+   ],
+   "rect_frac": [
+    0.355,
+    0.905,
+    0.41,
+    0.925
+   ],
+   "px": 1798,
+   "median_L": 17.45,
+   "median_C": 25.64,
+   "chroma_p25": 20.56,
+   "chroma_p75": 30.45,
+   "under_floor_pct": 5.06,
+   "hue_votes_n": 1707,
+   "hue_centre_deg": 45.1,
+   "hue_resultant_length": 0.994,
+   "median_rgb255": [
+    72,
+    31,
+    16
+   ],
+   "min_dist_to_backdrop_corners_dE": 36.17
+  },
+  {
+   "region_id": "shoe_R",
+   "n_id": "N5",
+   "label": "polished brown shoes (right, vamp leather)",
+   "rect_px": [
+    675,
+    1317,
+    732,
+    1354
+   ],
+   "rect_frac": [
+    0.595,
+    0.895,
+    0.645,
+    0.92
+   ],
+   "px": 2109,
+   "median_L": 19.52,
+   "median_C": 21.79,
+   "chroma_p25": 16.5,
+   "chroma_p75": 27.09,
+   "under_floor_pct": 12.99,
+   "hue_votes_n": 1835,
+   "hue_centre_deg": 54.0,
+   "hue_resultant_length": 0.971,
+   "median_rgb255": [
+    76,
+    37,
+    20
+   ],
+   "min_dist_to_backdrop_corners_dE": 32.19
+  },
+  {
+   "region_id": "hand_L",
+   "n_id": "N8",
+   "label": "ink-stained fingertips (left hand)",
+   "rect_px": [
+    215,
+    728,
+    295,
+    824
+   ],
+   "rect_frac": [
+    0.19,
+    0.495,
+    0.26,
+    0.56
+   ],
+   "px": 7680,
+   "median_L": 42.03,
+   "median_C": 22.74,
+   "chroma_p25": 12.57,
+   "chroma_p75": 31.58,
+   "under_floor_pct": 22.83,
+   "hue_votes_n": 5927,
+   "hue_centre_deg": 49.5,
+   "hue_resultant_length": 0.993,
+   "median_rgb255": [
+    138,
+    86,
+    63
+   ],
+   "min_dist_to_backdrop_corners_dE": 17.36
+  },
+  {
+   "region_id": "hand_R",
+   "n_id": "N8",
+   "label": "ink-stained fingertips (right hand)",
+   "rect_px": [
+    840,
+    728,
+    920,
+    824
+   ],
+   "rect_frac": [
+    0.74,
+    0.495,
+    0.81,
+    0.56
+   ],
+   "px": 7680,
+   "median_L": 36.7,
+   "median_C": 20.54,
+   "chroma_p25": 12.66,
+   "chroma_p75": 28.04,
+   "under_floor_pct": 23.05,
+   "hue_votes_n": 5910,
+   "hue_centre_deg": 48.3,
+   "hue_resultant_length": 0.993,
+   "median_rgb255": [
+    121,
+    75,
+    56
+   ],
+   "min_dist_to_backdrop_corners_dE": 18.4
+  }
+ ],
+ "_dropped_regions": "A 'neck, above the collar' region (N6) was attempted and DROPPED after visual verification: the shirt's mandarin collar rises to the jawline in this reference and no reliably separable bare-neck-skin patch exists (a first-pass box at y=0.215-0.235 measured hue 77.3, near-identical to the shirt's own pooled hue 77.5, confirming it was sampling collar fabric, not skin). A second, brighter face-skin sample was also attempted (searching the character's-left temple/upper-cheek for a flatter, more lit patch) and DROPPED: the lowest-contamination candidates found there all read median luminance ~149, matching this image's own backdrop corner samples almost exactly, and are backdrop beyond the hair silhouette, not skin - confirmed by comparing against the recorded corner_lab_medians. This repo's backdrop hue (75-85 deg) and chroma sit close enough to plausible skin/shirt values on THIS image that hue/chroma alone cannot discriminate them; only verified spatial containment inside the figure silhouette can, and no automated low-variance or brightness-biased search substitutes for that here. N6 (olive skin) is measured via the single verified face_skin region alone. Reported as a measurement, not an omission - same class as the beast palette's 'D3 has no hue band' finding.",
+ "backdrop_corner_samples": {
+  "top_left": {
+   "Lab": [
+    48.14,
+    0.8,
+    9.59
+   ]
+  },
+  "top_right": {
+   "Lab": [
+    66.63,
+    6.06,
+    24.18
+   ]
+  },
+  "bottom_left": {
+   "Lab": [
+    68.55,
+    1.81,
+    13.37
+   ]
+  },
+  "bottom_right": {
+   "Lab": [
+    81.12,
+    4.62,
+    24.03
+   ]
+  }
+ },
+ "_provenance": {
+  "authored": "2026-08-17, E57 Stage 1",
+  "measured_by": "E:\\AI\\training\\facet_E57\\derive_a1_palette.py (new script, lives in facet_E57 per the charter, not tools/ - see report for why e04_bands.py's contract does not fit a single-image, no-mesh subject)",
+  "measured_on": "canon/A1_reference.png (the sole frozen reference; no twin/mesh silhouette exists yet)",
+  "identity": "canon/A1-IDENTITY.md",
+  "status": "PENDING - Stage 1 is a report, not a ratification. Canon itself (the phrases) was ratified 2026-08-17; these MEASURED bands were derived after that ratification and are not themselves part of what was ratified."
+ }
+}

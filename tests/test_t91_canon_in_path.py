@@ -172,13 +172,49 @@ def test_t91_longsword_profile_covers_its_canon():
 
 
 def test_t91_census_does_not_invent_surfaces():
+    # E57, 2026-08-17: A1 joined CENSUS_ROWS. Not parametrized on purpose - this
+    # test iterates census() internally, so widening its assertions here does not
+    # add a new collected item and does not move T34's front-door counts (verified:
+    # `pytest --collect-only` reports 1338 both before and after this edit).
     rows = {r["subject"]: r for r in C.census()}
     assert set(rows) == {
-        "W3", "GALLEON", "DRAGON", "LONGSWORD", "E10-LAYER", "LOGO"}
+        "W3", "GALLEON", "DRAGON", "LONGSWORD", "E10-LAYER", "LOGO", "A1"}
     assert rows["GALLEON"]["surfaces"] is None
     assert rows["DRAGON"]["surfaces"] is None
     assert rows["W3"]["ratified"] == "24/24"
     assert rows["LONGSWORD"]["occupancy"] == "5/5"
+    # A1's own row: 19 surfaces total, 16 with a "prompt"-provenance occupant (the
+    # NAMED ones canon_gate counts toward occupancy - silhouette/proportions/
+    # brushwork are mesh- or style-provenance and are not prompt surfaces), and
+    # RATIFIED 2026-08-17 as drafted (canon_gate reads ratification as the ABSENCE
+    # of "ratify": true - a1.surfaces.json carries no draft flags, so occupancy
+    # and ratified read equal, same shape as W3's post-ratification row above).
+    assert rows["A1"]["surfaces"] == "canon/a1.surfaces.json"
+    assert rows["A1"]["identity"] == "canon/A1-IDENTITY.md"
+    assert rows["A1"]["identity_named"] == 10
+    assert rows["A1"]["occupancy"] == rows["A1"]["ratified"]
+
+
+def test_t91_clause_class_staging_accepted_unknown_still_andons(tmp_path):
+    # E57 fold, 2026-08-17: "staging" joined CLAUSE_CLASSES after census FIRED
+    # on A1's ratified canon (four staging-class shot clauses). Two legs, both
+    # can fail: the first fails if the widening is reverted, the second fails
+    # if the membership check is deleted outright.
+    def doc(cls):
+        p = tmp_path / (cls + ".surfaces.json")
+        p.write_text(json.dumps({
+            "subject": "X", "kind": "prop", "schema": 2,
+            "surfaces": [{"id": "s", "occupant": {
+                "id": "P1", "phrase": "a thing", "provenance": "prompt"}}],
+            "legal_clauses": [
+                {"id": "c1", "phrase": "on a stand", "class": cls}],
+        }), encoding="utf-8")
+        return str(p)
+
+    assert C.load_canon(doc("staging"))["legal_clauses"][0]["class"] == "staging"
+    with pytest.raises(C.Andon) as e:
+        C.load_canon(doc("lighting"))
+    assert "lighting" in str(e.value)
 
 
 def test_t91_restylize_has_one_andon_raise():

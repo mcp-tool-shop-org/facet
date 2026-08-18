@@ -189,7 +189,10 @@ STOP = re.compile(
 DE_LANDED = 2.3
 DE_MISSED = 10.0
 NEG_WINDOW = 24
-CLAUSE_CLASSES = ("style", "framing")
+# "staging" joined 2026-08-17 (E57 fold): shot clauses - backdrop, no weapons,
+# no held objects, clear silhouette - are neither the paint nor the subject.
+# A1's ratified canon carries four; census FIRED on the ratified file first.
+CLAUSE_CLASSES = ("style", "framing", "staging")
 SEARCH_PATH = (os.path.join(_REPO, "canon"),)
 
 # Article-stripped NAMED phrases in the profile default (measured).
@@ -280,8 +283,8 @@ def _validate_router_fields(doc, ids):
             cids.append(c["id"])
             cls = c.get("class", "style")
             if cls not in CLAUSE_CLASSES:
-                _andon("legal_clause %s class %r is not style or framing"
-                       % (c["id"], cls))
+                _andon("legal_clause %s class %r is not one of %s"
+                       % (c["id"], cls, "/".join(CLAUSE_CLASSES)))
     if "scopes" not in doc:
         return
     if not isinstance(doc["scopes"], dict):
@@ -913,6 +916,14 @@ CENSUS_ROWS = (
      "canon/longsword.surfaces.json", "profiles/prop.json"),
     ("E10-LAYER", "canon/E10-LAYER-IDENTITY.md", None, None),
     ("LOGO", "canon/LOGO-IDENTITY.md", None, None),
+    # A1 - the reference-first exemplar (E57, 2026-08-17). "profiles/character.json"
+    # is W3's own profile, paired here only because it is the one CENSUS_ROWS-shaped
+    # profile file that currently exists - it is NOT A1's profile (A1 has none yet;
+    # a dedicated profile is later-arc work, same as canon_bind scope filling). The
+    # profile_hits column below will read against W3's default prompt, not A1's -
+    # reported as a known placeholder pairing, not a defect introduced here.
+    ("A1", "canon/A1-IDENTITY.md", "canon/a1.surfaces.json",
+     "profiles/character.json"),
 )
 
 

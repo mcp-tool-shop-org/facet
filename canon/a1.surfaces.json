@@ -1,0 +1,353 @@
+{
+  "subject": "A1",
+  "kind": "humanoid",
+  "schema": 2,
+  "source_identity": "canon/A1-IDENTITY.md",
+  "visual_target": [
+    "canon/A1_reference.png"
+  ],
+  "note": "SURFACE is the row. occupant null is a hole. Reference-first subject: the visual target and the identity were born together - every occupant phrase below is a verbatim substring of the reference's own generating prompt (canon/A1-RECIPE.json). NO WEAPON by the Director's direction; no prop surfaces exist and none may be added without a ruling. A1 is symmetric on every paired surface, so the _L/_R suffix cannot mis-apply while the side convention question stands. RATIFIED by the Director 2026-08-17, as drafted - all 19 rows and all five queue positions. Machine convention (canon_gate.py is_unratified): ratification is the ABSENCE of 'ratify': true on an occupant; this file carries no draft flags, so machine state and the Director's word agree - a future draft that must read as unratified needs the flag per row until his word. His standing principle at ratification, paraphrased: the quality is made in the edit - ratification is a baseline, not a freeze, and a post-ratification canon edit is an ordinary versioned move whose test is the next generation.",
+  "surfaces": [
+    {
+      "id": "hair",
+      "name": "hair",
+      "occupant": {
+        "id": "N7",
+        "phrase": "tousled dark curls",
+        "provenance": "prompt"
+      }
+    },
+    {
+      "id": "face",
+      "name": "face",
+      "occupant": {
+        "id": "N6",
+        "phrase": "olive skin",
+        "provenance": "prompt",
+        "note": "light stubble is painted and UNNAMED - queue item Q4. Until ruled, the face's occupant is the skin phrase alone."
+      }
+    },
+    {
+      "id": "eyes",
+      "name": "eyes",
+      "occupant": {
+        "id": "N9",
+        "phrase": "curious brown eyes",
+        "provenance": "prompt"
+      }
+    },
+    {
+      "id": "mouth",
+      "name": "mouth",
+      "occupant": {
+        "id": "N10",
+        "phrase": "a slight smile",
+        "provenance": "prompt"
+      }
+    },
+    {
+      "id": "neck",
+      "name": "neck, above the collar",
+      "occupant": {
+        "id": "N6",
+        "phrase": "olive skin",
+        "provenance": "prompt"
+      }
+    },
+    {
+      "id": "vest_torso",
+      "name": "vest, buttoned chest panel",
+      "occupant": {
+        "id": "N1",
+        "phrase": "plum long-vest with fine gold embroidery",
+        "provenance": "prompt",
+        "note": "ONE garment across two spatial rows (this and vest_skirt) - the prompt names one long-vest. The two-garment reading is queue item Q3."
+      }
+    },
+    {
+      "id": "vest_skirt",
+      "name": "vest, open skirt below the sash",
+      "occupant": {
+        "id": "N1",
+        "phrase": "plum long-vest with fine gold embroidery",
+        "provenance": "prompt"
+      }
+    },
+    {
+      "id": "shirt_collar",
+      "name": "shirt collar and throat opening",
+      "occupant": {
+        "id": "N2",
+        "phrase": "a cream high-collared shirt",
+        "provenance": "prompt"
+      }
+    },
+    {
+      "id": "sleeve_L",
+      "name": "left sleeve, billowed with banded cuff",
+      "occupant": {
+        "id": "N2",
+        "phrase": "a cream high-collared shirt",
+        "provenance": "prompt"
+      }
+    },
+    {
+      "id": "sleeve_R",
+      "name": "right sleeve, billowed with banded cuff",
+      "occupant": {
+        "id": "N2",
+        "phrase": "a cream high-collared shirt",
+        "provenance": "prompt"
+      }
+    },
+    {
+      "id": "sash",
+      "name": "waist sash",
+      "occupant": {
+        "id": "N3",
+        "phrase": "an umber sash",
+        "provenance": "prompt",
+        "note": "the painted sash reads olive-gold; the word is the attested canon - queue item Q5. The palette band records what landed."
+      }
+    },
+    {
+      "id": "trousers",
+      "name": "trousers",
+      "occupant": {
+        "id": "N4",
+        "phrase": "slim dark-green trousers",
+        "provenance": "prompt"
+      }
+    },
+    {
+      "id": "shoe_L",
+      "name": "left shoe",
+      "occupant": {
+        "id": "N5",
+        "phrase": "polished brown shoes",
+        "provenance": "prompt"
+      }
+    },
+    {
+      "id": "shoe_R",
+      "name": "right shoe",
+      "occupant": {
+        "id": "N5",
+        "phrase": "polished brown shoes",
+        "provenance": "prompt"
+      }
+    },
+    {
+      "id": "hand_L",
+      "name": "left hand, open and empty",
+      "occupant": {
+        "id": "N8",
+        "phrase": "ink-stained fingertips",
+        "provenance": "prompt",
+        "note": "painted extent exceeds the phrase - marks across palm and back, both hands - queue item Q2. The base flesh is N6 olive skin; the ink is the phrase's contribution and the pair is a compound-in-fact whose declared form awaits the ruling."
+      }
+    },
+    {
+      "id": "hand_R",
+      "name": "right hand, open and empty",
+      "occupant": {
+        "id": "N8",
+        "phrase": "ink-stained fingertips",
+        "provenance": "prompt",
+        "note": "same as hand_L."
+      }
+    },
+    {
+      "id": "silhouette",
+      "name": "silhouette",
+      "occupant": {
+        "id": "mesh_sil",
+        "phrase": null,
+        "provenance": "mesh",
+        "note": "no mesh exists yet - binds at E57 Stage 2."
+      }
+    },
+    {
+      "id": "proportions",
+      "name": "proportions",
+      "occupant": {
+        "id": "mesh_body",
+        "phrase": "realistic stylized proportions",
+        "provenance": "mesh",
+        "note": "dual-attested: the phrase is in the generating prompt AND the mesh will carry the body once built (W3 Amendment 12 precedent: the mesh's body is the character's body)."
+      }
+    },
+    {
+      "id": "brushwork",
+      "name": "painterly surface",
+      "occupant": {
+        "id": "style_brush",
+        "phrase": "visible brushwork",
+        "provenance": "style"
+      }
+    }
+  ],
+  "ratification_queue": [
+    {
+      "id": "Q1",
+      "surfaces": [],
+      "finding": "THE NAME. Subject id drafted A1, working name 'the archivist' (the prompt's own word for him). Files follow the id: A1-IDENTITY.md, a1.surfaces.json, A1-RECIPE.json, A1_reference.png.",
+      "drafted": "A1 / the archivist.",
+      "needs": "ratify or rename. A rename before ratification is one commit; after, it is a canon edit.",
+      "status": "RATIFIED 2026-08-17 - A1, the archivist, as drafted"
+    },
+    {
+      "id": "Q2",
+      "surfaces": [
+        "hand_L",
+        "hand_R"
+      ],
+      "finding": "INK EXTENT. The prompt says 'ink-stained fingertips'; the paint carries marks across both hands, palms and backs, well past fingertips. You probably expect the image to be canon; the identity-in-the-prompt law makes the PHRASE canon, and the phrase says fingertips - a future generation prompted with it will likely show less ink than this reference.",
+      "drafted": "the phrase as attested, N8 on both hand rows.",
+      "needs": "adopt the phrase as-is, or re-word toward the painted extent (a re-word is a canon edit, untested until the next generation).",
+      "status": "RATIFIED 2026-08-17 - the phrase as attested, as drafted; a future re-word stays available as an ordinary canon edit"
+    },
+    {
+      "id": "Q3",
+      "surfaces": [
+        "vest_torso",
+        "vest_skirt"
+      ],
+      "finding": "GARMENT DECOMPOSITION. Drafted as ONE garment - the prompt's 'plum long-vest' - occupying two spatial rows: buttoned chest panel, open skirt below the sash. The alternative reading of the paint is two garments (outer coat + fitted under-vest). The prompt named one; the draft follows the prompt rather than the advisor's reading of the paint - the W3 queue recorded twice what over-reading paint at insufficient zoom costs.",
+      "drafted": "one occupant N1 across both rows.",
+      "needs": "your eye at full zoom: one garment or two.",
+      "status": "RATIFIED 2026-08-17 - one garment across two spatial rows, as drafted"
+    },
+    {
+      "id": "Q4",
+      "surfaces": [
+        "face"
+      ],
+      "finding": "STUBBLE. Light stubble is painted on the jaw and appears in no phrase - by the law it is arriving by accident and will leave the same way on the next generation.",
+      "drafted": "unnamed; the face row carries olive skin alone.",
+      "needs": "name it (compound candidate: 'olive skin with light stubble' - same untested compound class as the W3 kilt question) or let it leave.",
+      "status": "RATIFIED 2026-08-17 - stubble stays unnamed and leaves on the next generation, as drafted"
+    },
+    {
+      "id": "Q5",
+      "surfaces": [
+        "sash"
+      ],
+      "finding": "THE UMBER WORD. The sash phrase says 'umber'; the painted sash reads olive-gold. The word is the attested canon and produced THIS sash; the palette band (E57 Stage 1) will record what it measures.",
+      "drafted": "the phrase as attested.",
+      "needs": "nothing to proceed; re-word only if you want the word to match the paint.",
+      "status": "RATIFIED 2026-08-17 - the umber word stands, as drafted"
+    }
+  ],
+  "blocked_additions": [],
+  "joints": [
+    {
+      "id": "collar_throat",
+      "a": "shirt_collar",
+      "b": "neck",
+      "phrase": "cream collar against olive skin"
+    },
+    {
+      "id": "vest_shirt",
+      "a": "vest_torso",
+      "b": "shirt_collar",
+      "phrase": "plum vest edge against cream shirt"
+    },
+    {
+      "id": "sash_top",
+      "a": "sash",
+      "b": "vest_torso",
+      "phrase": "sash against the buttoned vest panel"
+    },
+    {
+      "id": "sash_bottom",
+      "a": "sash",
+      "b": "vest_skirt",
+      "phrase": "sash against the vest skirt"
+    },
+    {
+      "id": "hem",
+      "a": "vest_skirt",
+      "b": "trousers",
+      "phrase": "plum hem against dark green"
+    },
+    {
+      "id": "shoe_top_L",
+      "a": "trousers",
+      "b": "shoe_L",
+      "phrase": "dark green against brown leather at the ankle"
+    },
+    {
+      "id": "shoe_top_R",
+      "a": "trousers",
+      "b": "shoe_R",
+      "phrase": "dark green against brown leather at the ankle"
+    },
+    {
+      "id": "wrist_L",
+      "a": "sleeve_L",
+      "b": "hand_L",
+      "phrase": "cream cuff against ink-stained skin"
+    },
+    {
+      "id": "wrist_R",
+      "a": "sleeve_R",
+      "b": "hand_R",
+      "phrase": "cream cuff against ink-stained skin"
+    }
+  ],
+  "legal_clauses": [
+    {
+      "id": "frame_subject",
+      "phrase": "A young archivist in his 20s",
+      "class": "framing",
+      "from": "the generating prompt's identity clause. Not a surface. Declared so the reverse check does not invent a warn."
+    },
+    {
+      "id": "style_paint",
+      "phrase": "painterly digital art with visible brushwork",
+      "class": "style",
+      "from": "the generating prompt's style clause"
+    },
+    {
+      "id": "style_palette",
+      "phrase": "rich saturated palette",
+      "class": "style",
+      "from": "the generating prompt's style clause"
+    },
+    {
+      "id": "style_face",
+      "phrase": "crisp readable facial features",
+      "class": "style",
+      "from": "the generating prompt's style clause"
+    },
+    {
+      "id": "stage_bg",
+      "phrase": "plain warm pale-grey studio backdrop",
+      "class": "staging",
+      "from": "the generating prompt's staging clause; future twin generations stage the same way"
+    },
+    {
+      "id": "stage_no_weapons",
+      "phrase": "no weapons",
+      "class": "staging",
+      "from": "the generating prompt; the Director's direction - a held object confuses the profile"
+    },
+    {
+      "id": "stage_no_held",
+      "phrase": "no held objects",
+      "class": "staging",
+      "from": "the generating prompt"
+    },
+    {
+      "id": "stage_clear_sil",
+      "phrase": "nothing crossing the body silhouette",
+      "class": "staging",
+      "from": "the generating prompt"
+    }
+  ],
+  "scopes": {
+    "views": {},
+    "strokes": {}
+  }
+}

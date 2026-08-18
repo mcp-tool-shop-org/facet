@@ -1,0 +1,53 @@
+{
+  "source_filename": "A1_reference.png",
+  "sha256": "9417cd6492df34354e5d3f3d7809bf89ddd074f5b1b18725c166a59b97b48dde",
+  "bytes": 1643259,
+  "size": {
+    "width": 1136,
+    "height": 1472
+  },
+  "mode": "RGB",
+  "positive_text": "Full-body character concept, single figure centered, standing in a relaxed A-pose facing the camera, arms slightly away from the body, hands empty and open, feet planted and visible, plain warm pale-grey studio backdrop, soft even studio lighting with warm colour in the shadows, painterly digital art with visible brushwork, realistic stylized proportions, rich saturated palette, crisp readable facial features, no weapons, no held objects, nothing crossing the body silhouette. A young archivist in his 20s: plum long-vest with fine gold embroidery over a cream high-collared shirt, an umber sash, slim dark-green trousers and polished brown shoes; olive skin, tousled dark curls, ink-stained fingertips, curious brown eyes and a slight smile.",
+  "negative_text": "低分辨率，低画质，肢体畸形，手指畸形，画面过饱和，蜡像感，人脸无细节，过度光滑，画面具有AI感。构图混乱。文字模糊，扭曲",
+  "positive_node_id": "238:227",
+  "negative_node_id": "238:228",
+  "model": "qwen_image_2512_fp8_e4m3fn.safetensors",
+  "sampler_name": "euler",
+  "scheduler": "simple",
+  "seed": 106,
+  "denoise": 1.0,
+  "steps": 50,
+  "cfg": 4.0,
+  "latent_width": 1140,
+  "latent_height": 1472,
+  "loras_in_graph": [
+    {
+      "node_id": "238:221",
+      "lora_name": "Qwen-Image-2512-Lightning-4steps-V1.0-fp32.safetensors",
+      "strength_model": 1.0
+    }
+  ],
+  "active_model_branch": {
+    "branch": "base_unet_no_lora",
+    "unet_name": "qwen_image_2512_fp8_e4m3fn.safetensors"
+  },
+  "model_sampling_shift": 3.1000000000000005,
+  "node_class_inventory": {
+    "PrimitiveFloat": 2,
+    "CLIPLoader": 1,
+    "VAELoader": 1,
+    "LoraLoaderModelOnly": 1,
+    "ModelSamplingAuraFlow": 1,
+    "PrimitiveInt": 2,
+    "UNETLoader": 1,
+    "CLIPTextEncode": 2,
+    "PrimitiveBoolean": 1,
+    "KSampler": 1,
+    "VAEDecode": 1,
+    "EmptySD3LatentImage": 1,
+    "ComfySwitchNode": 3,
+    "SaveImage": 1
+  },
+  "node_count_total": 19,
+  "unreadable_fields": []
+}

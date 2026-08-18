@@ -13,7 +13,7 @@
 | `.py` files in `tools/verify` | **10** |
 | — files of any other extension there | 0 |
 | **total members** | **113** |
-| corpus files read for axis D | 402 |
+| corpus files read for axis D | 405 |
 | test files read for axis E | 97 |
 | probe interpreter | `E:\AI-Models\trellis2-env\Scripts\python.exe` (3.13.13) |
 
@@ -31,7 +31,7 @@
 | B1 | **subject-bound**, module-level literal | **11** | 113 |
 | B2 | subject marker in any non-docstring literal | 12 | 113 |
 | C | has a docstring | 113 | 113 |
-| D | **cited** in ≥1 corpus file | **96** | 113 |
+| D | **cited** in ≥1 corpus file | **97** | 113 |
 | D | — with this arc's own documents left IN (the contaminated read) | 113 | 113 |
 | E | **anchored** — basename *or* module name as literal text under `tests/` | **63** | 113 |
 | E | — basename-with-`.py` only (the stricter read) | 63 | 113 |
@@ -69,7 +69,7 @@
 | 5 | `canny_probe.py` | diagnostics | no | 0 | **yes** | 1 | no | n/a | none | Does the ControlNet hint actually SEE the green apron, the fingers, and the 3/4 face? |
 | 6 | `commit_funnel.py` | diagnostics | no | 8 | no | 4 | no | n/a | none | E05 — which of commit's five tests actually rejects the texels? |
 | 7 | `e04_backdrop.py` | diagnostics | no | 4 | no | 4 | no | n/a | none | E04 Task 4b - derive the twins' backdrop (S-backdrop). |
-| 8 | `e04_bands.py` | diagnostics | no | 10 | no | 9 | no | n/a | none | E04 Task 4d - the landing table, the palette bands, and the backdrop re-derivation. |
+| 8 | `e04_bands.py` | diagnostics | no | 10 | no | 10 | no | n/a | none | E04 Task 4d - the landing table, the palette bands, and the backdrop re-derivation. |
 | 9 | `e04_blotch.py` | diagnostics | no | 16 | no | 6 | yes | n/a | none | E04 Task 1 - what is the crown blotch made of? Boundary alignment at an arbitrary camer… |
 | 10 | `e04_frame_agree.py` | diagnostics | no | 8 | no | 4 | no | n/a | ambiguous | E04 Step 0 anchor 1c, REPLACEMENT INSTRUMENT — geometry against geometry, bound 0 px. |
 | 11 | `e04_g7_landing.py` | diagnostics | no | 10 | no | 2 | no | n/a | none | E04 Arm G7 - did `red gun port lids` land where `red-lined gun port lids` missed? |
@@ -122,7 +122,7 @@
 | 58 | `e12_offsurface.py` | diagnostics | no | 9 | no | 21 | yes | n/a | offsurface_rate | Does a prep bake's position map lie ON the mesh? E10 Ruling 4's question, any subject. |
 | 59 | `e12_pair_cloud_step.py` | diagnostics | no | 10 | **yes** | 6 | yes | n/a | none | E12 handoff 3 Task 4 — the styled target pair's cloud workflow, built and CHECKED on di… |
 | 60 | `e12_pair_sheet.py` | diagnostics | no | 9 | no | 1 | no | n/a | measure_report | clay \| control \| styled, one row per view, full size — the sheet that serves the eye. |
-| 61 | `e12_region_colour.py` | diagnostics | no | 6 | no | 0 | yes | n/a | none | Median Lab / chroma / hue inside named regions, masked to the silhouette — the tone cha… |
+| 61 | `e12_region_colour.py` | diagnostics | no | 6 | no | 3 | yes | n/a | none | Median Lab / chroma / hue inside named regions, masked to the silhouette — the tone cha… |
 | 62 | `e12_region_crops.py` | diagnostics | no | 17 | no | 2 | no | n/a | none | Crop the SAME world-space region out of every view's image, under the route's own frami… |
 | 63 | `e12_stem_delta.py` | diagnostics | no | 6 | no | 5 | no | n/a | none | ANDON: assert a twin-prompts rebuild differs from its predecessor by EXACTLY the named … |
 | 64 | `e12_thin_curve.py` | diagnostics | no | 13 | no | 8 | yes | n/a | thin_extent_curve | The `thin_extent` cost curve, measured on THIS mesh, with a region fraction beside it. |
@@ -139,8 +139,8 @@
 | 75 | `e13_thin_inputs.py` | diagnostics | no | 13 | no | 3 | yes | n/a | ambiguous | E13 — thin_extent's DECISION INPUTS, at the brush's level. Assembles; proposes nothing. |
 | 76 | `e14_atlas_anatomy.py` | diagnostics | no | 11 | no | 3 | yes | n/a | ambiguous | What IS the atlas, on a hollow double-walled mesh? Three linked questions, one pass. |
 | 77 | `e14_backdrop_checks.py` | diagnostics | no | 7 | no | 2 | yes | n/a | none | E14 handoff 2, Task 3.2 — the three checks the backdrop derivation does NOT do. |
-| 78 | `e14_band_density.py` | diagnostics | no | 9 | no | 2 | yes | n/a | none | The three questions `e04_bands.py` does not answer, for the prop's palette derivation. |
-| 79 | `e14_band_edges.py` | diagnostics | no | 7 | no | 1 | no | n/a | none | Band EDGES by a stated rule, applied once, with the rule's own sensitivity beside it. |
+| 78 | `e14_band_density.py` | diagnostics | no | 9 | no | 3 | yes | n/a | none | The three questions `e04_bands.py` does not answer, for the prop's palette derivation. |
+| 79 | `e14_band_edges.py` | diagnostics | no | 7 | no | 2 | no | n/a | none | Band EDGES by a stated rule, applied once, with the rule's own sensitivity beside it. |
 | 80 | `e14_deep_share.py` | diagnostics | no | 7 | no | 1 | no | n/a | no opinion | The STANDING DEPTH DIAGNOSTIC — E14 Ruling 17c, required beside every gate table. |
 | 81 | `e14_demote_garnet.py` | diagnostics | no | 7 | no | 3 | yes | n/a | none | THE GARNET DEMOTION — E14 Ruling 24f, run ONCE before stroke 1. |
 | 82 | `e14_garnet_reproject.py` | diagnostics | no | 6 | no | 0 | yes | n/a | none | THE GARNET RE-PROJECTION's restricted write — E14 Ruling 26c/5 (mechanism M2). |
@@ -149,7 +149,7 @@
 | 85 | `e14_pair_sheet.py` | diagnostics | no | 7 | no | 1 | no | n/a | measure_report | The styled pair's acceptance sheet: REFERENCE \| CONTROL \| ASSET, plus the hilt at zoo… |
 | 86 | `e14_repair_collar.py` | diagnostics | no | 12 | no | 3 | yes | n/a | none | THE COLLAR-JUNCTION REPAIR - E14 Ruling 27c, run ONCE as handoff 8's step 0. |
 | 87 | `e14_stroke_watch.py` | diagnostics | no | 5 | no | 1 | no | n/a | none | THE PER-STROKE EYE-GATE WATCHES, measured and LOCATED - E14 handoff 8, Ruling 27e's for… |
-| 88 | `e14_topology.py` | diagnostics | no | 8 | no | 14 | yes | n/a | mesh_topology | E14 Gate 0 - the topology facts `mesh_stats` does not print. NO VERDICT. |
+| 88 | `e14_topology.py` | diagnostics | no | 8 | no | 15 | yes | n/a | mesh_topology | E14 Gate 0 - the topology facts `mesh_stats` does not print. NO VERDICT. |
 | 89 | `e14_twin_registration.py` | diagnostics | no | 6 | no | 4 | no | n/a | none | Per-view twin registration against the EXACT raycast silhouette. Halts SUSPENDED. |
 | 90 | `e32_plate_geometry.py` | diagnostics | yes | 6 | no | 4 | yes | yes | none | E32 Gate 0 - a concept plate's OWN geometry, before anything reconstructs it. NO VERDIC… |
 | 91 | `e32_route_preprocess.py` | diagnostics | yes | 3 | no | 4 | yes | yes | none | E32 Gate 0 - what the reconstructor ACTUALLY sees, reproduced from its own source. |
@@ -160,21 +160,21 @@
 | 96 | `gained_bg_check.py` | diagnostics | no | 9 | no | 1 | yes | n/a | none | E08 Amendment 28 Ruling 2 — did the intersection's GAINED texels admit background? |
 | 97 | `gate0_sheet.py` | verify | no | 8 | no | 8 | yes | n/a | measure_report | E04 Gate 0 sheet — the source concept beside what it reconstructed into, per candidate. |
 | 98 | `gate1_sheet.py` | verify | no | 16 | no | 7 | yes | n/a | measure_report | The Gate 1 sheet — reference \| asset \| provenance \| error, at the Director's zoom. |
-| 99 | `gate_mesh.py` | verify | yes | 4 | no | 10 | yes | yes | none | HARD MESH GATE -- may the pipeline spend money downstream of this mesh? Exit 0 = yes. |
+| 99 | `gate_mesh.py` | verify | yes | 4 | no | 13 | yes | yes | none | HARD MESH GATE -- may the pipeline spend money downstream of this mesh? Exit 0 = yes. |
 | 100 | `hair_agree.py` | diagnostics | no | 7 | no | 0 | no | n/a | none | Measure whether a GENERATED view's hair boundary agrees with the MESH's hair geometry. |
 | 101 | `hair_edge.py` | diagnostics | no | 8 | no | 0 | no | n/a | none | Extract the mesh's OWN hair/face boundary as a control hint. |
 | 102 | `head_crop.py` | verify | no | 13 | no | 3 | no | n/a | measure_report | Head-crop comparison sheet, with the head band LOCATED rather than guessed. |
 | 103 | `head_render.py` | verify | no | 11 | no | 19 | yes | n/a | none | Head-framed close-up renders of a GLB — the Director-zoom verification camera. |
 | 104 | `head_yaw.py` | diagnostics | no | 6 | no | 0 | no | n/a | none | Locate the direction a MESH's head actually faces, by mirror symmetry. |
 | 105 | `keyed_outside.py` | diagnostics | no | 9 | no | 2 | yes | n/a | ambiguous | How much of each twin's keyed paint sits on no surface at all? |
-| 106 | `mesh_stats.py` | verify | no | 9 | no | 25 | yes | n/a | mesh_stats | Identical measurement of any mesh — the numeric half of a comparison. |
+| 106 | `mesh_stats.py` | verify | no | 9 | no | 26 | yes | n/a | mesh_stats | Identical measurement of any mesh — the numeric half of a comparison. |
 | 107 | `montage.py` | verify | no | 7 | no | 7 | no | n/a | ambiguous | Contact sheet + per-view figure brightness readout. |
 | 108 | `prep_front.py` | diagnostics | no | 0 | **yes** | 0 | no | n/a | none | Prepare the front render for the paint pass. |
 | 109 | `silhouette_agree.py` | diagnostics | no | 8 | no | 3 | yes | n/a | ambiguous | Is project_twins' LIVE raycast silhouette the same object as the shipped sidecar mask? |
 | 110 | `texel_provenance.py` | diagnostics | no | 17 | no | 14 | yes | n/a | texel_provenance | Where did this pixel's colour actually come from? |
 | 111 | `texpass_metrics.py` | diagnostics | no | 7 | no | 2 | no | n/a | no opinion | E05 — one metric table, computed identically for every arm. |
 | 112 | `tree_manifest.py` | verify | yes | 7 | no | 9 | yes | yes | none | Protection manifests for the read-only trees: verify one, or emit a new one. |
-| 113 | `turn_render.py` | verify | no | 14 | no | 33 | yes | n/a | none | Matched-framing turnaround render of a GLB. |
+| 113 | `turn_render.py` | verify | no | 14 | no | 34 | yes | n/a | none | Matched-framing turnaround render of a GLB. |
 
 ## Axis F — every `n/a` and every `false`, with its reason
 

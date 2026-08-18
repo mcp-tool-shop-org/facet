@@ -17,8 +17,8 @@
     "py_files_total": 113
   },
   "provenance": {
-    "corpus_files": 402,
-    "corpus_files_before_self_exclusion": 412,
+    "corpus_files": 405,
+    "corpus_files_before_self_exclusion": 415,
     "probe_interpreter": "E:\\AI-Models\\trellis2-env\\Scripts\\python.exe",
     "probe_interpreter_version": "3.13.13",
     "probe_skipped": false,
@@ -287,8 +287,8 @@
       "anchored_in_basename_only": [],
       "b1_literals": [],
       "b2_literals": [],
-      "cited_count": 9,
-      "cited_count_raw": 10,
+      "cited_count": 10,
+      "cited_count_raw": 11,
       "cited_in": [
         "docs/experiments/E04-g7-predictions.md",
         "docs/experiments/E04-g7-report.md",
@@ -298,7 +298,8 @@
         "docs/experiments/E12-ruling.md",
         "docs/experiments/E12-task45-report.md",
         "docs/experiments/E14-handoff3-predictions.md",
-        "docs/experiments/E14-handoff3-task1-report.md"
+        "docs/experiments/E14-handoff3-task1-report.md",
+        "docs/experiments/E57-a1-reference-first-report.md"
       ],
       "dir": "tools/diagnostics",
       "docstring_line1": "E04 Task 4d - the landing table, the palette bands, and the backdrop re-derivation.",
@@ -2130,9 +2131,13 @@
       ],
       "b1_literals": [],
       "b2_literals": [],
-      "cited_count": 0,
-      "cited_count_raw": 1,
-      "cited_in": [],
+      "cited_count": 3,
+      "cited_count_raw": 4,
+      "cited_in": [
+        "docs/experiments/E57-a1-reference-first-kickoff.md",
+        "docs/experiments/E57-a1-reference-first-report.md",
+        "docs/experiments/README.md"
+      ],
       "dir": "tools/diagnostics",
       "docstring_line1": "Median Lab / chroma / hue inside named regions, masked to the silhouette \u2014 the tone channel.",
       "file": "e12_region_colour.py",
@@ -2691,11 +2696,12 @@
       ],
       "b1_literals": [],
       "b2_literals": [],
-      "cited_count": 2,
-      "cited_count_raw": 2,
+      "cited_count": 3,
+      "cited_count_raw": 3,
       "cited_in": [
         "docs/experiments/E14-handoff3-task1-report.md",
-        "docs/experiments/E25-diagnostics-gates-report.md"
+        "docs/experiments/E25-diagnostics-gates-report.md",
+        "docs/experiments/E57-a1-reference-first-report.md"
       ],
       "dir": "tools/diagnostics",
       "docstring_line1": "The three questions `e04_bands.py` does not answer, for the prop's palette derivation.",
@@ -2720,10 +2726,11 @@
       "anchored_in_basename_only": [],
       "b1_literals": [],
       "b2_literals": [],
-      "cited_count": 1,
-      "cited_count_raw": 1,
+      "cited_count": 2,
+      "cited_count_raw": 2,
       "cited_in": [
-        "docs/experiments/E14-handoff3-task1-report.md"
+        "docs/experiments/E14-handoff3-task1-report.md",
+        "docs/experiments/E57-a1-reference-first-report.md"
       ],
       "dir": "tools/diagnostics",
       "docstring_line1": "Band EDGES by a stated rule, applied once, with the rule's own sensitivity beside it.",
@@ -3009,8 +3016,8 @@
       ],
       "b1_literals": [],
       "b2_literals": [],
-      "cited_count": 14,
-      "cited_count_raw": 20,
+      "cited_count": 15,
+      "cited_count_raw": 21,
       "cited_in": [
         "docs/experiments/E14-gate0-report.md",
         "docs/experiments/E27-measurement-mcp-report.md",
@@ -3024,6 +3031,7 @@
         "docs/experiments/E32-report.md",
         "docs/experiments/E32-ruling.md",
         "docs/experiments/E33-predictions.md",
+        "docs/experiments/E57-a1-reference-first-report.md",
         "docs/experiments/README.md",
         "docs/specs/measurement-mcp-spec.md"
       ],
@@ -3426,9 +3434,10 @@
       ],
       "b1_literals": [],
       "b2_literals": [],
-      "cited_count": 10,
-      "cited_count_raw": 12,
+      "cited_count": 13,
+      "cited_count_raw": 15,
       "cited_in": [
+        "CLAUDE.md",
         "docs/experiments/E04-executor-kickoff.md",
         "docs/experiments/E04-gate0-report.md",
         "docs/experiments/E12-executor-kickoff.md",
@@ -3436,6 +3445,8 @@
         "docs/experiments/E14-executor-kickoff.md",
         "docs/experiments/E14-gate0-report.md",
         "docs/experiments/E27-predictions.md",
+        "docs/experiments/E57-a1-reference-first-kickoff.md",
+        "docs/experiments/E57-a1-reference-first-report.md",
         "docs/experiments/README.md",
         "docs/profiles-design.md",
         "docs/tools.md"
@@ -3681,8 +3692,8 @@
       ],
       "b1_literals": [],
       "b2_literals": [],
-      "cited_count": 25,
-      "cited_count_raw": 29,
+      "cited_count": 26,
+      "cited_count_raw": 30,
       "cited_in": [
         "docs/experiments/E01-facial-structure-ceiling.md",
         "docs/experiments/E04-armT-halt2.md",
@@ -3707,6 +3718,7 @@
         "docs/experiments/E31-publish-the-pipeline-report.md",
         "docs/experiments/E33-predictions.md",
         "docs/experiments/E33-the-first-performer-through-the-route.md",
+        "docs/experiments/E57-a1-reference-first-report.md",
         "docs/specs/measurement-mcp-spec.md",
         "docs/tools.md"
       ],
@@ -3965,8 +3977,8 @@
       ],
       "b1_literals": [],
       "b2_literals": [],
-      "cited_count": 33,
-      "cited_count_raw": 34,
+      "cited_count": 34,
+      "cited_count_raw": 35,
       "cited_in": [
         "docs/experiments/E02-report.md",
         "docs/experiments/E02-texture-stage-on-sound-inputs.md",
@@ -3999,6 +4011,7 @@
         "docs/experiments/E44-the-atlas-plan.md",
         "docs/experiments/E47-atlas-ab-kickoff.md",
         "docs/experiments/E47-atlas-ab-report.md",
+        "docs/experiments/E57-a1-reference-first-report.md",
         "docs/experiments/README.md",
         "docs/tools.md"
       ],
@@ -4020,7 +4033,7 @@
     "anchored_basename_only": 63,
     "any_add_argument": 107,
     "argparse": 107,
-    "cited": 96,
+    "cited": 97,
     "cited_raw": 113,
     "flag_surface": 107,
     "flag_surface_unguarded": 95,

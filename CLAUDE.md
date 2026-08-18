@@ -325,11 +325,16 @@ can be judged on its total; one that trades cannot. A2R gained 148,693 texels an
 and the net says nothing about whether what arrived is as trustworthy as what departed.
 Characterise the losses by location and quality before banking the net.
 
-**Corner-median keying has failed three times; it is retired.** A single background sample
+**Corner-median keying has failed four times; it is retired.** A single background sample
 assumes a flat field, and nothing in this pipeline has one: painted concept art has a gradient
 and a cast shadow (E01, which keyed a third of the lower background as figure), a Workbench
-clay render is grey on grey (which lost a quarter of the silhouette), and a diffusion model
-paints a lit studio backdrop (which returned 31–76% painted against a 19.01% truth). Fit the
+clay render is grey on grey (which lost a quarter of the silhouette), a diffusion model
+paints a lit studio backdrop (which returned 31–76% painted against a 19.01% truth), and a
+diffusion reference's own backdrop gradient (E57 — corner L* spans 48.1–81.1 across the four
+corners; a single-corner sample read the figure as touching all four frame edges at 79.6% of
+frame, caught at the seat's Gate 2 and replaced with a human-read grid overlay). ⚠ The shape
+still ships in one consumer: `tools/verify/gate_mesh.py` `load_fig()` samples one corner —
+flagged at E57, unrepaired. Fit the
 background over a border ring instead — a quadratic reduces to the corner median on a flat
 field, so old numbers stay comparable. **Where geometry can answer the question, use geometry:**
 *is there surface here* is the raycast silhouette, exactly, and keying should never have been

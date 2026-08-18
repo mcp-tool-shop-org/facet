@@ -234,7 +234,7 @@
     ]
   },
   "laws": {
-    "paid_for_by": "\\b(E0[1-9]|E[1-4]\\d|E5[0-6])\\b"
+    "paid_for_by": "\\b(E0[1-9]|E[1-4]\\d|E5[0-8])\\b"
   },
   "sweep": {
     "current_state_files": [
