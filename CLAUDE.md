@@ -742,6 +742,27 @@ in Python. The same caution applies to any `$'…'`, `!`, or backtick form: veri
 expanded before believing the count. Third member of this family and the first where the
 instrument was the *shell* rather than the pager.
 
+**And a piped long-running command can die WITHOUT a message at all.** Measured 2026-08-18:
+`pytest` piped through `tail` / `Select-Object -Last` / `Select-String` returned **exit 255
+with completely empty output** — no error, no traceback, no tally — on a run that **passes
+71/71 when its output is redirected to a file instead**. So the pager is not only a
+truncation hazard (above); on this rig it can take the process down and leave nothing to
+read, which looks exactly like a hang or a crash in the code under test. **Write the run to
+a file, then read the file** — and note that a piped exit code is separately untrustworthy:
+`pytest | tail` exits with `tail`'s 0 over a failed suite, which hid two real failures in
+the same session.
+
+**A test that builds the index is not safe to run beside a session that rebuilds it.** A
+concurrent seat reported `test_t01b_encoding_matrix` hard-crashing at exit 255 and proved
+it was not its own doing by reverting its files and reproducing at HEAD. Re-run afterwards
+at a quiet tree, **all three T01 legs pass, cp1252 included** — so the crash was not in the
+tree it was blamed on. The probable mechanism, stated as inference rather than measurement:
+that seat ran while this one was inside `record_build`, which regenerates `docs/index/
+facet.db` from scratch, and T01 builds and verifies a DB. It is the same family as the
+count-surface collision already recorded above — **two live sessions share more than the
+count surfaces; they share the index artifacts.** Reserve the DB in the dispatch, or run
+index tests when no rebuild is in flight.
+
 ⚠ **Console encoding is the other one.** This rig's console is **cp1252**: printing `→`
 (U+2192) from a Python script raises `UnicodeEncodeError` and kills the script *after* its
 writes have landed. It happened twice in one session, both times in a count-reconciliation

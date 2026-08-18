@@ -104,6 +104,39 @@ phrases` / `_present` / `unlicensed_residue` directly rather than a bespoke text
   **genuine** canon-only phrase is `head facing straight ahead` — correctly so, since it is
   the Director's 2026-08-18 post-hoc ruling and could not have been in the 2026-08-17
   recipe.
+
+  > ### ⚠ Advisor correction appended 2026-08-18, after the fold — the instrument was
+  > repaired and these numbers moved.
+  >
+  > **The 21/3 above was accurate when measured and is now stale.** The seat diagnosed the
+  > artifact correctly and hand-corrected around it; the underlying defect has since been
+  > **fixed in the instrument** rather than in the reading. `canon_gate._present` now cuts
+  > its negation look-back at the nearest clause boundary (`_neg_window`, `CLAUSE_END`),
+  > authored in a concurrent session the Director started from a flagged chip — **not this
+  > seat's work and not the advisor's.**
+  >
+  > **Re-measured against the repaired instrument: `in_both=23`, `canon_only=1`.** The two
+  > phantom absences are gone and the single genuine canon-only phrase — `head facing
+  > straight ahead` — is exactly the one the seat identified by hand. **The hand-correction
+  > was right, and it is no longer needed.**
+  >
+  > The repair carries a declared trade-off rather than a hidden one: a *distributive*
+  > negator (*"without a sword, a shield"*) now reads its second item as present. That form
+  > was never reliably handled — the flat window only reached it when the intervening items
+  > happened to fit inside 24 characters, which is a property of item lengths rather than a
+  > design — and the direction kept is the one a gate cares about: the old failure was a
+  > false **refusal** of a prompt carrying its required phrase; the new one is a false accept
+  > of a form the corpus does not contain. It is asserted in the test and stated in the
+  > docstring.
+  >
+  > **No live gate verdict moved.** `check_prompt` was run over every `canon/*.surfaces.json`
+  > against every recipe text before and after: byte-identical results. A1's only refusal
+  > remains `stage_head_forward`, which is a genuine absence.
+  >
+  > Appended rather than rewritten, per this repo's rule that a correction is more useful
+  > than the original — and flagged for this ruling by the chip session itself, which
+  > declined to edit another seat's report and routed the call here instead. That was the
+  > right boundary.
 - **Recipe-only (canon debt, reported not fixed — "a canon edit is the Director's"):** one
   residue span, `"full body character concept single figure centered standing relaxed
   pose facing camera soft even studio lighting warm colour shadows over"`. Decomposes into:
