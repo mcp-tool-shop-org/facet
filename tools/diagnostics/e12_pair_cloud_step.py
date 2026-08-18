@@ -66,7 +66,16 @@ ap.add_argument("--seed", type=int, default=None,
                      "recorded deviation and does not silence the value check")
 ap.add_argument("--prefix", default=None, help="SaveImage filename_prefix")
 ap.add_argument("--out", required=True)
+ap.add_argument("--subject", default=None,
+                help="census subject id. Names the identity-only escape.")
+ap.add_argument("--no-canon", action="store_true",
+                help="explicit ungated escape for an identity-only subject.")
 args = ap.parse_args()
+
+_TOOLS = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+if _TOOLS not in sys.path:
+    sys.path.insert(0, _TOOLS)
+import canon_gate  # noqa: E402
 
 prof = json.load(open(args.profile, encoding="utf-8"))
 blk = prof.get("tools", {}).get("restylize_views.py")
@@ -88,6 +97,18 @@ if args.key not in P:
     raise SystemExit("ANDON: no prompt for %s in %s" % (args.key, args.prompts))
 pos, neg = P[args.key], P["_negative"]
 seed = pv("seed") if args.seed is None else args.seed
+
+# Fail-closed as soon as the prompt exists, before a graph is built.
+_fx = ((prof.get("_fixtures") or {}).get("canon") or {})
+_canon_path = _fx.get("path") if isinstance(_fx, dict) else None
+try:
+    _canon = canon_gate.require_canon(
+        pos, canon_path=_canon_path, subject=args.subject,
+        no_canon=args.no_canon, profile_path=args.profile)
+except canon_gate.Andon as e:
+    raise SystemExit(str(e))
+if not _canon["gated"]:
+    print("[canon] UNGATED: %s" % _canon["note"], flush=True)
 
 # ⚠ NO-LORA IS THE ABSENCE OF A NODE, NOT A WEIGHT OF ZERO (E12 Ruling 10b).
 # The Director's directive — "none at all is better than making the same texture for

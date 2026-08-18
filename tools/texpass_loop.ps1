@@ -38,8 +38,13 @@
 #
 #   texpass_loop.ps1 -Tools E:\AI\facet\tools -Prep DIR -StateDir DIR -Glb packed.glb
 #                    -Stage1Atlas styled.png -OutDir DIR -PromptsJson prompts.json
+#                    [-Profile profiles/character.json] [-Canon canon/w3.surfaces.json]
 #                    [-ThinExtent 0.03] [-Seed 770700] [-From 1] [-To 8]
 #                    [-SeedState] [-StopBeforeCommit] [-SkipFinalize]
+#
+#   This file is a TRANSPORT. The canon gate lives in texpass_brush.py.
+#   Pass -Profile or -Canon through; omitting both is now an ANDON in the
+#   tool, not a silent ungated spend.
 
 param(
   [Parameter(Mandatory=$true)][string]$Tools,
@@ -61,6 +66,8 @@ param(
   [switch]$SeedState,
   [switch]$StopBeforeCommit,
   [switch]$SkipFinalize,
+  [string]$Profile = '',
+  [string]$Canon = '',
   [string]$Python  = 'E:\AI-Models\trellis2-env\Scripts\python.exe',
   [string]$Blender = 'C:\Program Files\Blender Foundation\Blender 5.2\blender.exe'
 )
@@ -126,6 +133,8 @@ for ($i = $From; $i -le $To; $i++) {
 
   $brushArgs = @('--job', "$StateDir\$job", '--seed', $Seed, '--prompt', $p)
   if ($negative) { $brushArgs += @('--negative', $negative) }
+  if ($Profile) { $brushArgs += @('--profile', $Profile) }
+  if ($Canon) { $brushArgs += @('--canon', $Canon) }
   & $Python "$Tools\texpass_brush.py" @brushArgs 2>&1 | Select-String '\[brush\]|ANDON'
 
   if ($StopBeforeCommit) {

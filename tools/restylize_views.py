@@ -95,6 +95,12 @@ ap.add_argument("--canon", default=None,
                      "does not cover the ratified rows. Unratified rows are "
                      "named, not required. Checks the fallback --prompt, not "
                      "each --prompts stem (a rear camera may omit a beard).")
+ap.add_argument("--subject", default=None,
+                help="census subject id (W3, GALLEON, ...). Used to resolve "
+                     "a surfaces file or to name an identity-only escape.")
+ap.add_argument("--no-canon", action="store_true",
+                help="explicit ungated escape. Only for a census subject "
+                     "that has IDENTITY and no surfaces. Refused on W3.")
 ap.add_argument("--emit-only", action="store_true",
                 help="build and write the control image + exact figure mask per view, then "
                      "stop WITHOUT submitting to ComfyUI. For the Comfy Cloud path (E08 "
@@ -105,18 +111,18 @@ BASE = f"http://{args.host}"
 BG = np.array([float(v) for v in args.bg.split(",")], dtype=np.float32)
 if BG.max() > 1.0:
     BG = BG / 255.0
-# Canon check BEFORE mkdir. T31 pins that the masks ANDON at
-# restylize_views:197 creates --outdir first; this gate must not join
-# that set. A refused generation leaves nothing.
-if args.canon:
-    try:
-        _chk, _cov = canon_gate.refuse_uncovered(args.canon, args.prompt)
-    except canon_gate.Andon as e:
-        raise AssertionError(
-            "ANDON: canon does not cover ratified prompt: %s" % e)
-    if _cov["unratified_ids"]:
-        print("[canon] unratified (named, not required): %s"
-              % ",".join(_cov["unratified_ids"]), flush=True)
+# Canon check BEFORE mkdir. T31 pins that the masks ANDON creates
+# --outdir first; this gate must not join that set. A refused
+# generation leaves nothing. Fail-closed: silence is dead. Andon
+# keeps its type (not re-wrapped as AssertionError).
+_canon = canon_gate.require_canon(
+    args.prompt, canon_path=args.canon, subject=args.subject,
+    no_canon=args.no_canon, profile_path=args.profile)
+if not _canon["gated"]:
+    print("[canon] UNGATED: %s" % _canon["note"], flush=True)
+elif (_canon.get("coverage") or {}).get("unratified_ids"):
+    print("[canon] unratified (named, not required): %s"
+          % ",".join(_canon["coverage"]["unratified_ids"]), flush=True)
 os.makedirs(args.outdir, exist_ok=True)
 
 

@@ -139,10 +139,11 @@ def test_t91_character_profile_attaches_the_canon(tmp_path):
     assert not out.exists()
 
 
-def test_t91_no_canon_flag_does_not_invent_a_check(tmp_path):
-    """Historical invocations without --canon stay on the old path.
+def test_t91_no_canon_flag_is_fail_closed(tmp_path):
+    """MOVED ON PURPOSE 2026-08-17 (t94). Was 'does not invent a check'.
 
-    They fail later (missing input), not on a canon they never named.
+    Silence is the defect #20 exists for. A restylize with neither
+    --canon nor --no-canon now ANDON's before mkdir.
     """
     out = tmp_path / "o"
     png = tmp_path / "a.png"
@@ -155,9 +156,10 @@ def test_t91_no_canon_flag_does_not_invent_a_check(tmp_path):
         "--emit-only",
     ])
     both = out_s + err
-    assert "canon does not cover" not in both
-    # emit-only writes control+mask; that is the old path proceeding
-    assert out.exists() or "ANDON" in both
+    assert rc != 0
+    assert "ANDON" in both
+    assert "no canon:" in both
+    assert not out.exists(), "ungated restylize created --outdir"
 
 
 def test_t91_longsword_profile_covers_its_canon():
@@ -179,8 +181,11 @@ def test_t91_census_does_not_invent_surfaces():
     assert rows["LONGSWORD"]["occupancy"] == "5/5"
 
 
-def test_t91_restylize_has_two_andon_raises():
-    """T31 SITES moved 1 -> 2 in this change-set, on purpose."""
+def test_t91_restylize_has_one_andon_raise():
+    """MOVED ON PURPOSE 2026-08-17 (t94). Was two: the canon wrap plus
+    the masks ANDON. The wrap is gone; Andon keeps its type inside
+    require_canon. The masks AssertionError is the one raise left.
+    """
     src = open(os.path.join(str(REPO), "tools", "restylize_views.py"),
                encoding="utf-8").read()
     tree = ast.parse(src)
@@ -194,7 +199,7 @@ def test_t91_restylize_has_two_andon_raises():
         arg = ast.get_source_segment(src, node.exc.args[0]) or ""
         if "ANDON" in arg or "str(e)" in arg:
             n += 1
-    assert n == 2, "restylize ANDON raises: %d" % n
+    assert n == 1, "restylize ANDON raises: %d" % n
 
 
 def test_t91_no_andon_is_a_bare_assert():

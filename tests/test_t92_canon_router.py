@@ -210,8 +210,12 @@ def test_t92_brush_cloud_step_writes_nothing_on_necklace(tmp_path):
     assert not out.exists(), "refused graph wrote --out"
 
 
-def test_t92_no_canon_on_cloud_step_does_not_invent_a_check(tmp_path):
-    """Historical profiles without a canon fixture stay on the old path."""
+def test_t92_no_canon_on_cloud_step_is_fail_closed(tmp_path):
+    """MOVED ON PURPOSE 2026-08-17 (t94). A profile without a canon
+    fixture used to write the graph. Silence is dead: it now ANDON's
+    and --out is not written. The named escape is --no-canon plus a
+    census identity-only subject.
+    """
     out = tmp_path / "g.json"
     prompts = tmp_path / "prompts.json"
     prompts.write_text(json.dumps({
@@ -236,9 +240,10 @@ def test_t92_no_canon_on_cloud_step_does_not_invent_a_check(tmp_path):
         "--profile", str(prof),
     ], cwd=str(REPO))
     both = out_s + err
-    assert "canon does not cover" not in both
-    assert rc == 0, both
-    assert out.exists()
+    assert rc != 0
+    assert "ANDON" in both
+    assert "no canon:" in both
+    assert not out.exists(), "ungated graph wrote --out"
 
 
 def test_t92_selftest_still_holds():

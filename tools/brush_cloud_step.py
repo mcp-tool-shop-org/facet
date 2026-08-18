@@ -149,6 +149,10 @@ g.add_argument("--out", required=True)
 g.add_argument("--render-name", default=None, help="cloud input name; defaults to local")
 g.add_argument("--mask-name", default=None)
 g.add_argument("--seed", type=int, default=None)
+g.add_argument("--subject", default=None,
+                help="census subject id. Names the identity-only escape.")
+g.add_argument("--no-canon", action="store_true",
+                help="explicit ungated escape for an identity-only subject.")
 g.add_argument("--profile", required=True,
                help="REQUIRED, and there is deliberately no way to skip it (E04 Ruling 24). "
                     "The subject profile whose texpass_brush.py block the values entering "
@@ -399,13 +403,12 @@ if args.cmd == "graph":
     # Router BEFORE makedirs / write. Same shape as restylize before mkdir.
     # Paid spend: this JSON is what gets submitted. A covering-fail leaves
     # nothing that can be posted.
-    _canon = _canon_path_from_profile(_prof, args.profile)
-    if _canon:
-        try:
-            canon_gate.refuse_uncovered(_canon, P[args.key])
-        except canon_gate.Andon as e:
-            raise AssertionError(
-                "ANDON: canon does not cover ratified prompt: %s" % e)
+    _canon_path = _canon_path_from_profile(_prof, args.profile)
+    _canon = canon_gate.require_canon(
+        P[args.key], canon_path=_canon_path, subject=args.subject,
+        no_canon=args.no_canon, profile_path=args.profile)
+    if not _canon["gated"]:
+        print("[canon] UNGATED: %s" % _canon["note"], flush=True)
     os.makedirs(os.path.dirname(os.path.abspath(args.out)), exist_ok=True)
     # sorted keys + fixed separators so a byte-comparison of two saved JSONs is meaningful
     with open(args.out, "w", encoding="utf-8", newline="\n") as fh:

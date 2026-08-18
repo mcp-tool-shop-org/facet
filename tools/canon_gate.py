@@ -36,10 +36,25 @@ THE THESIS, ATTACKED.
   Exact-with-negation is the honest check: it would have refused
   the six-element default; it will not refuse a clever rewrite.
 
-THE ROUTER (build #18). canon_gate is the component every spend
-asks: what does the canon say, for THIS subject, at THIS scope,
-and is this prompt covered? It refuses when the answer is not
-covered, and it refuses when there is no answer at all.
+THE ROUTER (build #18 / #20). canon_gate is the component every
+spend asks: what does the canon say, for THIS subject, at THIS
+scope, and is this prompt covered? It refuses when the answer is
+not covered, and it refuses when there is no answer at all.
+
+FAIL-CLOSED (#20). An optional `if args.canon` is not a gate. A
+missing flag is the same defect as a shell chain that can drop the
+check. require_canon is the spend helper: silence is dead. The
+escape for a subject that genuinely has no surfaces is census-
+backed `--no-canon --subject NAME`. `--no-canon` on a subject that
+HAS surfaces is a refuse (the checkbox trap). A run that proceeds
+ungated prints `[canon] UNGATED:` and names the identity-only
+subject.
+
+THE BOUNDARY. The gate stands in front of every file that AUTHORS
+a spend (restylize_views, texpass_brush, brush_cloud_step,
+e12_pair_cloud_step). The transport (MCP submit, texpass_loop.ps1)
+does not re-check. Submission-time theatre is declined: if the
+graph was refused, there is nothing licensed to post.
 
   Resolve     subject id -> file over SEARCH_PATH + CENSUS_ROWS.
               GALLEON/DRAGON/LOGO/E10-LAYER refuse by name
@@ -64,7 +79,12 @@ WHAT THIS DOES NOT COVER.
   readout are tools/canon_worksheet.py (t93). Per-view --prompts
   stems are not auto-checked until a view scope exists. Deriving
   a prompt from the canon is still refused. s3_sheet_regions
-  names are not surface ids.
+  names are not surface ids. e37_fire_repaints is a REPLAY of a
+  recorded prompt: refuse_uncovered would halt a faithful replay
+  the moment the canon moved under it (t87: ARMB 16/17 -> 14/19).
+  report_replay_drift reports and does not refuse. ig2mv is a
+  different backbone with no subject binding; it is not this
+  gate. The MCP transport is not a second gate.
 
   python tools/canon_gate.py resolve --subject GALLEON
   python tools/canon_gate.py check --subject W3 --prompt "..." --scope subject
@@ -85,20 +105,20 @@ WHAT THIS DOES NOT COVER.
   palette_gate.py). The surfaces file does not carry a grade.
 
 CALIBRATION CLAIM (run --selftest; T87 pins the same numbers).
-  profiles/character.json restylize prompt contains exactly 6 of the
-  W3 NAMED phrases (article-stripped). The ARMB workflow the
-  older handoff cited (stroke_1_y+090_e+00_workflow.json:181) contains
-  16 and is missing only N17; grip/gauntlet/greave/hand appear
-  zero times in that string. The brief's "six" is the profile default,
-  not that file. Both numbers are the defect.
+  profiles/character.json restylize prompt contains exactly 5 of the
+  W3 NAMED phrases (article-stripped). Was 6 until the kilt ruling
+  renamed N8/N9; the live default still says skirt. The ARMB
+  workflow (stroke_1_y+090_e+00_workflow.json) was 16 of 17 when
+  recorded (missing N17 only). The canon then moved under the
+  frozen string: NAMED 17->19 (N18/N19) then the kilt rename, so
+  the same bytes now hit 14 of 19 (miss N8, N9, N17, N18, N19).
+  t87 artifacts pins the sha256 and the 14. The numerators moved
+  because the canon was corrected, not because the recording did.
+  The brief's "six" was the profile default, not that file.
 
-  W3_NAMED was 17 when this was written, 19 when the hand and shin rows were
-  drafted, and is 20 since the Director caught the hand draft: the free hand carries a
-  GAUNTLET, so the armour is ASYMMETRIC. The forearm rows were NOT enacted -
-  three contested readings in one session is where the advisor stopped. Neither hit count moved at any
-  step. Completing the canon widened the gap 6/17 -> 6/19 without a
-  single character of either prompt changing, which is the whole reason the
-  ratio is computed and never stored.
+  W3_NAMED is 19 (the NAMED table). Completing the canon widened
+  the gap without the profile default moving a character, which
+  is why the ratio is computed and never stored.
 
   python tools/canon_gate.py --selftest
 
@@ -171,22 +191,20 @@ SEARCH_PATH = (os.path.join(_REPO, "canon"),)
 
 # Article-stripped NAMED phrases in the profile default (measured).
 #
-# W3_NAMED moved 17 -> 19 -> 21 on purpose 2026-08-17: the hand and shin rows,
-# then the asymmetric-arm correction the Director caught (N20 gauntlet, N21/N21b
-# bare arms). The two hit counts DID NOT MOVE
-# and that is the finding: the profile default still names 6 and the ARMB
-# workflow still names 16, so completing the canon WIDENED the gap rather than
-# closing it. A denominator that grows while the numerators hold is exactly the
-# moving-denominator trap this repo has been bitten by five times - so both
-# numerators stay pinned separately from the total, and the ratios are never
-# stored, only computed.
+# W3_NAMED is 19 (the NAMED table). The two live numerators DID move, and
+# that is the finding: the profile default went 6 -> 5 when the garment
+# was ruled a kilt (the prompt still says skirt); the frozen ARMB string
+# went 16 -> 14 for the same rename plus the N18/N19 draft sitting under
+# a recording that never named them. Completing the canon WIDENED the
+# gap. Numerators stay pinned separately from the total; the ratio is
+# never stored, only computed.
 #
 # 6 -> 5 on 2026-08-17: the Director ruled the garment is a KILT, not a skirt.
 # The live default still says skirt, so renaming the canon cost a hit without
 # anyone touching the prompt - 6/17 -> 6/19 -> 5/19. Every canon repair so far
 # has WIDENED this gap, which is what a specimen is supposed to do.
 PROFILE_DEFAULT_HITS = 5
-ARMB_HITS = 16
+ARMB_HITS = 14
 W3_NAMED = 19
 
 
@@ -616,6 +634,115 @@ def refuse_uncovered(canon_path, prompt, scope="subject"):
     return chk, cov
 
 
+def subject_status(subject):
+    """Census lookup that does not raise. Used by require_canon.
+
+    surfaces       - IDENTITY + a surfaces file that loads
+    identity-only  - IDENTITY, no surfaces (GALLEON/DRAGON/LOGO/E10-LAYER)
+    unknown        - not in the census
+    """
+    if not subject or not str(subject).strip():
+        return {"status": "unknown", "subject": None, "path": None,
+                "identity": None}
+    key = str(subject).strip()
+    for sub, ident, surf, _prof in CENSUS_ROWS:
+        if sub.lower() != key.lower():
+            continue
+        if surf:
+            path = os.path.join(_REPO, surf.replace("/", os.sep))
+            if os.path.isfile(path):
+                return {"status": "surfaces", "subject": sub, "path": path,
+                        "identity": ident}
+            return {"status": "identity-only", "subject": sub, "path": None,
+                    "identity": ident}
+        return {"status": "identity-only", "subject": sub, "path": None,
+                "identity": ident}
+    return {"status": "unknown", "subject": key, "path": None, "identity": None}
+
+
+def infer_subject_from_profile(profile_path):
+    """Match a profile path to a CENSUS_ROWS subject. None if not listed."""
+    if not profile_path:
+        return None
+    try:
+        have = os.path.normcase(os.path.abspath(profile_path))
+    except (TypeError, ValueError, OSError):
+        return None
+    for sub, _ident, _surf, prof_rel in CENSUS_ROWS:
+        if not prof_rel:
+            continue
+        want = os.path.normcase(os.path.abspath(
+            os.path.join(_REPO, prof_rel.replace("/", os.sep))))
+        if have == want:
+            return sub
+    return None
+
+
+def report_replay_drift(doc, prompt, scope="subject"):
+    """Replay verdict. Reports; never refuses on missing/unlicensed/forbidden.
+
+    A recorded prompt is a historical object. The canon moving under it
+    (t87: ARMB 16/17 -> 14/19) is drift to name, not a reason to halt a
+    faithful replay. refuses is always False. That is not a warn checkbox:
+    the record is mandatory and a test pins that a covering-fail still
+    returns replay_drift rather than ok-and-silent.
+    """
+    chk = check_prompt(doc, prompt, scope=scope)
+    return {
+        "verdict": "replay_match" if chk["ok"] else "replay_drift",
+        "check": chk,
+        "refuses": False,
+    }
+
+
+def require_canon(prompt, canon_path=None, subject=None, no_canon=False,
+                  profile_path=None, scope="subject"):
+    """Fail-closed spend gate. Silence is dead.
+
+    --no-canon is the named escape, and only for a census identity-only
+    subject. Combining it with a surfaces path, or aiming it at W3, is
+    a refuse. That is the checkbox trap.
+    """
+    if prompt is None:
+        _andon("need a prompt")
+    path = (str(canon_path).strip() if canon_path else None) or None
+    subj = (str(subject).strip() if subject else None) or None
+    if not subj:
+        subj = infer_subject_from_profile(profile_path)
+    if no_canon and path:
+        _andon("no-canon refused: surfaces attached at %s" % path)
+    if path:
+        chk, cov = refuse_uncovered(path, prompt, scope=scope)
+        return {"gated": True, "subject": subj, "path": path,
+                "check": chk, "coverage": cov, "note": None}
+    if subj:
+        st = subject_status(subj)
+        if st["status"] == "surfaces":
+            if no_canon:
+                _andon(
+                    "no-canon refused: %s has surfaces at %s"
+                    % (st["subject"], st["path"]))
+            chk, cov = refuse_uncovered(st["path"], prompt, scope=scope)
+            return {"gated": True, "subject": st["subject"], "path": st["path"],
+                    "check": chk, "coverage": cov, "note": None}
+        if st["status"] == "identity-only":
+            if not no_canon:
+                _andon(
+                    "no canon for subject %s (identity exists, surfaces "
+                    "missing); pass --no-canon to proceed ungated"
+                    % st["subject"])
+            note = ("%s identity exists, surfaces missing"
+                    % st["subject"])
+            return {"gated": False, "subject": st["subject"], "path": None,
+                    "check": None, "coverage": None, "note": note}
+        _andon("unknown subject %s" % subj)
+    if no_canon:
+        _andon("no-canon requires a census subject")
+    _andon(
+        "no canon: pass --canon PATH, or --subject NAME, or "
+        "--no-canon --subject NAME for an identity-only subject")
+
+
 def occupancy(doc):
     """One prompt occupant per surface. Blocked additions stay blocked."""
     collisions = []
@@ -1019,6 +1146,25 @@ def _selftest_router(scratch):
     w3 = resolve_subject("W3")
     if not os.path.isfile(w3):
         _andon("W3 did not resolve")
+    # fail-closed
+    try:
+        require_canon("anything")
+        _andon("silence did not refuse")
+    except Andon as e:
+        if "no canon:" not in str(e):
+            _andon("silence refused for the wrong reason: %s" % e)
+    try:
+        require_canon("anything", no_canon=True, subject="W3")
+        _andon("no-canon on W3 did not refuse")
+    except Andon as e:
+        if "no-canon refused" not in str(e):
+            _andon("no-canon W3 refused for the wrong reason: %s" % e)
+    ung = require_canon("anything", no_canon=True, subject="GALLEON")
+    if ung["gated"] or "GALLEON" not in (ung.get("note") or ""):
+        _andon("GALLEON --no-canon was not ungated: %s" % ung)
+    drift = report_replay_drift(load_canon(w3), "plain grey background")
+    if drift["refuses"] or drift["verdict"] != "replay_drift":
+        _andon("replay_drift refused or misnamed: %s" % drift)
 
 
 def selftest(scratch=None):
@@ -1079,7 +1225,7 @@ def main(argv=None):
             sys.stdout.write(
                 "calibration profile-default hits %d of %d  "
                 "fixture coverage 0.75  sleeve refused  sleeveless held  "
-                "router reverse held\n"
+                "router reverse held  fail-closed held\n"
                 % (PROFILE_DEFAULT_HITS, W3_NAMED))
             return 0
         if not args.cmd:

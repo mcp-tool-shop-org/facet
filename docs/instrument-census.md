@@ -8,40 +8,40 @@
 
 | | |
 |---|---|
-| `.py` files in `tools/diagnostics` | **102** |
+| `.py` files in `tools/diagnostics` | **103** |
 | — files of any other extension there | 0 |
 | `.py` files in `tools/verify` | **10** |
 | — files of any other extension there | 0 |
-| **total members** | **112** |
-| corpus files read for axis D | 395 |
-| test files read for axis E | 93 |
+| **total members** | **113** |
+| corpus files read for axis D | 398 |
+| test files read for axis E | 95 |
 | probe interpreter | `E:\AI-Models\trellis2-env\Scripts\python.exe` (3.13.13) |
 
 ## Totals
 
 | axis | measure | count | of |
 |---|---|---:|---:|
-| A | **invocable** (argparse **and** ≥1 `add_argument` **and** a `__main__` guard) | **11** | 112 |
-| A | — imports `argparse` | 106 | 112 |
-| A | — has ≥1 `add_argument` | 106 | 112 |
-| A | — has a `__main__` guard | 12 | 112 |
-| A | — **flag surface** (argparse **and** ≥1 `add_argument`, guard not required) | **106** | 112 |
-| A | — calls `parse_args()` at module level | 96 | 112 |
-| A | — **flag surface but UNGUARDED** (the house style) | **95** | 112 |
-| B1 | **subject-bound**, module-level literal | **11** | 112 |
-| B2 | subject marker in any non-docstring literal | 12 | 112 |
-| C | has a docstring | 112 | 112 |
-| D | **cited** in ≥1 corpus file | **94** | 112 |
-| D | — with this arc's own documents left IN (the contaminated read) | 112 | 112 |
-| E | **anchored** — basename *or* module name as literal text under `tests/` | **61** | 112 |
-| E | — basename-with-`.py` only (the stricter read) | 61 | 112 |
-| F | **import-safe** in all three modes | **11** | 112 |
-| F | — not clean in some mode | 0 | 112 |
-| F | — **`n/a`**, property not defined (reason per row) | 101 | 112 |
-| G | *proposed* to answer one of the spec's eight | *27* | 112 |
-| G | *proposed* `none` | *64* | 112 |
-| G | *proposed* `ambiguous` | *18* | 112 |
-| G | *`no opinion`* | *3* | 112 |
+| A | **invocable** (argparse **and** ≥1 `add_argument` **and** a `__main__` guard) | **12** | 113 |
+| A | — imports `argparse` | 107 | 113 |
+| A | — has ≥1 `add_argument` | 107 | 113 |
+| A | — has a `__main__` guard | 13 | 113 |
+| A | — **flag surface** (argparse **and** ≥1 `add_argument`, guard not required) | **107** | 113 |
+| A | — calls `parse_args()` at module level | 97 | 113 |
+| A | — **flag surface but UNGUARDED** (the house style) | **95** | 113 |
+| B1 | **subject-bound**, module-level literal | **11** | 113 |
+| B2 | subject marker in any non-docstring literal | 12 | 113 |
+| C | has a docstring | 113 | 113 |
+| D | **cited** in ≥1 corpus file | **96** | 113 |
+| D | — with this arc's own documents left IN (the contaminated read) | 113 | 113 |
+| E | **anchored** — basename *or* module name as literal text under `tests/` | **63** | 113 |
+| E | — basename-with-`.py` only (the stricter read) | 63 | 113 |
+| F | **import-safe** in all three modes | **12** | 113 |
+| F | — not clean in some mode | 0 | 113 |
+| F | — **`n/a`**, property not defined (reason per row) | 101 | 113 |
+| G | *proposed* to answer one of the spec's eight | *28* | 113 |
+| G | *proposed* `none` | *64* | 113 |
+| G | *proposed* `ambiguous` | *18* | 113 |
+| G | *`no opinion`* | *3* | 113 |
 
 ## Axis G — the proposal, by tool
 
@@ -54,7 +54,7 @@
 | `offsurface_rate` | `e10_offsurface.py`, `e12_offsurface.py` |
 | `texel_provenance` | `texel_provenance.py` |
 | `anchor_check` | `anchor_compare.py` |
-| `measure_report` | `e04_g7_sheet.py`, `e04_sheet_renders.py`, `e12_ab_sheet.py`, `e12_head_sheet.py`, `e12_n_sheet.py`, `e12_pair_sheet.py`, `e13_gate1_sheet.py`, `e13_payoff_sheet.py`, `e14_pair_sheet.py`, `e33_register_sheet.py`, `gate0_sheet.py`, `gate1_sheet.py`, `head_crop.py` |
+| `measure_report` | `e04_g7_sheet.py`, `e04_sheet_renders.py`, `e12_ab_sheet.py`, `e12_head_sheet.py`, `e12_n_sheet.py`, `e12_pair_sheet.py`, `e13_gate1_sheet.py`, `e13_payoff_sheet.py`, `e14_pair_sheet.py`, `e33_register_sheet.py`, `e55_prompt_elements.py`, `gate0_sheet.py`, `gate1_sheet.py`, `head_crop.py` |
 
 ## Every file
 
@@ -94,8 +94,8 @@
 | 30 | `e08_bg_derive.py` | diagnostics | no | 7 | no | 2 | no | n/a | none | E08 background arm, step 1 — derive the render background from the subject's gamut. |
 | 31 | `e08_bg_separation.py` | diagnostics | no | 6 | no | 4 | no | n/a | none | E08 A4 — is the subject separable from its background, and where does the cut fall? |
 | 32 | `e08_ceiling.py` | diagnostics | no | 10 | no | 17 | yes | n/a | reach_ceiling | E08 Gate 0, half 1 — how much of the figure can a styled reference physically reach? |
-| 33 | `e08_contradiction.py` | diagnostics | no | 9 | no | 0 | yes | n/a | none | E08 — the contradiction test: does the PROMPT override an attribute the route supplies? |
-| 34 | `e08_deltaE.py` | diagnostics | no | 10 | no | 2 | no | n/a | none | E08 — reference agreement in CIE Lab dE, against a styled reference view. |
+| 33 | `e08_contradiction.py` | diagnostics | no | 9 | no | 1 | yes | n/a | none | E08 — the contradiction test: does the PROMPT override an attribute the route supplies? |
+| 34 | `e08_deltaE.py` | diagnostics | no | 10 | no | 3 | no | n/a | none | E08 — reference agreement in CIE Lab dE, against a styled reference view. |
 | 35 | `e08_intersect_delta.py` | diagnostics | no | 4 | no | 1 | yes | n/a | none | E08 Amendment 26 — what the trust-mask intersection actually moved. |
 | 36 | `e08_metric_probe.py` | diagnostics | no | 11 | no | 1 | no | n/a | none | E08 Gate 0, half 2 — can the hold-one-out metric be validated at all, and on what? |
 | 37 | `e08_registration.py` | diagnostics | no | 5 | no | 1 | no | n/a | none | E08 — does a twin register against the mesh it is supposed to be a reference for? |
@@ -120,7 +120,7 @@
 | 56 | `e12_n_sheet.py` | diagnostics | no | 4 | no | 0 | no | n/a | measure_report | N generations of ONE view, stacked full size, plus named regions at N x - and no number. |
 | 57 | `e12_nonmanifold.py` | diagnostics | no | 10 | no | 5 | yes | n/a | mesh_topology | E12 Gate 0 — where a reconstruction goes non-manifold, counted AND put on the picture. |
 | 58 | `e12_offsurface.py` | diagnostics | no | 9 | no | 21 | yes | n/a | offsurface_rate | Does a prep bake's position map lie ON the mesh? E10 Ruling 4's question, any subject. |
-| 59 | `e12_pair_cloud_step.py` | diagnostics | no | 8 | **yes** | 5 | no | n/a | none | E12 handoff 3 Task 4 — the styled target pair's cloud workflow, built and CHECKED on di… |
+| 59 | `e12_pair_cloud_step.py` | diagnostics | no | 10 | **yes** | 6 | yes | n/a | none | E12 handoff 3 Task 4 — the styled target pair's cloud workflow, built and CHECKED on di… |
 | 60 | `e12_pair_sheet.py` | diagnostics | no | 9 | no | 1 | no | n/a | measure_report | clay \| control \| styled, one row per view, full size — the sheet that serves the eye. |
 | 61 | `e12_region_colour.py` | diagnostics | no | 6 | no | 0 | yes | n/a | none | Median Lab / chroma / hue inside named regions, masked to the silhouette — the tone cha… |
 | 62 | `e12_region_crops.py` | diagnostics | no | 17 | no | 2 | no | n/a | none | Crop the SAME world-space region out of every view's image, under the route's own frami… |
@@ -154,26 +154,27 @@
 | 90 | `e32_plate_geometry.py` | diagnostics | yes | 6 | no | 4 | yes | yes | none | E32 Gate 0 - a concept plate's OWN geometry, before anything reconstructs it. NO VERDIC… |
 | 91 | `e32_route_preprocess.py` | diagnostics | yes | 3 | no | 4 | yes | yes | none | E32 Gate 0 - what the reconstructor ACTUALLY sees, reproduced from its own source. |
 | 92 | `e33_register_sheet.py` | diagnostics | yes | 9 | no | 1 | yes | yes | measure_report | E33 Gate 0 - the register sheet: concept \| clay \| control \| one column per CANDIDATE… |
-| 93 | `flagged_identity.py` | diagnostics | no | 11 | no | 1 | yes | n/a | ambiguous | E08 Amendment 29 — WHAT are the background-flagged rim texels? |
-| 94 | `foreshorten_table.py` | diagnostics | no | 5 | no | 0 | no | n/a | none | Per-view foreshortening table for the HEAD region. |
-| 95 | `gained_bg_check.py` | diagnostics | no | 9 | no | 1 | yes | n/a | none | E08 Amendment 28 Ruling 2 — did the intersection's GAINED texels admit background? |
-| 96 | `gate0_sheet.py` | verify | no | 8 | no | 8 | yes | n/a | measure_report | E04 Gate 0 sheet — the source concept beside what it reconstructed into, per candidate. |
-| 97 | `gate1_sheet.py` | verify | no | 16 | no | 7 | yes | n/a | measure_report | The Gate 1 sheet — reference \| asset \| provenance \| error, at the Director's zoom. |
-| 98 | `gate_mesh.py` | verify | yes | 4 | no | 10 | yes | yes | none | HARD MESH GATE -- may the pipeline spend money downstream of this mesh? Exit 0 = yes. |
-| 99 | `hair_agree.py` | diagnostics | no | 7 | no | 0 | no | n/a | none | Measure whether a GENERATED view's hair boundary agrees with the MESH's hair geometry. |
-| 100 | `hair_edge.py` | diagnostics | no | 8 | no | 0 | no | n/a | none | Extract the mesh's OWN hair/face boundary as a control hint. |
-| 101 | `head_crop.py` | verify | no | 13 | no | 3 | no | n/a | measure_report | Head-crop comparison sheet, with the head band LOCATED rather than guessed. |
-| 102 | `head_render.py` | verify | no | 11 | no | 19 | yes | n/a | none | Head-framed close-up renders of a GLB — the Director-zoom verification camera. |
-| 103 | `head_yaw.py` | diagnostics | no | 6 | no | 0 | no | n/a | none | Locate the direction a MESH's head actually faces, by mirror symmetry. |
-| 104 | `keyed_outside.py` | diagnostics | no | 9 | no | 2 | yes | n/a | ambiguous | How much of each twin's keyed paint sits on no surface at all? |
-| 105 | `mesh_stats.py` | verify | no | 9 | no | 25 | yes | n/a | mesh_stats | Identical measurement of any mesh — the numeric half of a comparison. |
-| 106 | `montage.py` | verify | no | 7 | no | 3 | no | n/a | ambiguous | Contact sheet + per-view figure brightness readout. |
-| 107 | `prep_front.py` | diagnostics | no | 0 | **yes** | 0 | no | n/a | none | Prepare the front render for the paint pass. |
-| 108 | `silhouette_agree.py` | diagnostics | no | 8 | no | 3 | yes | n/a | ambiguous | Is project_twins' LIVE raycast silhouette the same object as the shipped sidecar mask? |
-| 109 | `texel_provenance.py` | diagnostics | no | 17 | no | 14 | yes | n/a | texel_provenance | Where did this pixel's colour actually come from? |
-| 110 | `texpass_metrics.py` | diagnostics | no | 7 | no | 2 | no | n/a | no opinion | E05 — one metric table, computed identically for every arm. |
-| 111 | `tree_manifest.py` | verify | yes | 7 | no | 9 | yes | yes | none | Protection manifests for the read-only trees: verify one, or emit a new one. |
-| 112 | `turn_render.py` | verify | no | 14 | no | 33 | yes | n/a | none | Matched-framing turnaround render of a GLB. |
+| 93 | `e55_prompt_elements.py` | diagnostics | yes | 3 | no | 1 | yes | yes | measure_report | E55 — Gate B: count the elements in a generation prompt, by ONE mechanical rule. |
+| 94 | `flagged_identity.py` | diagnostics | no | 11 | no | 1 | yes | n/a | ambiguous | E08 Amendment 29 — WHAT are the background-flagged rim texels? |
+| 95 | `foreshorten_table.py` | diagnostics | no | 5 | no | 0 | no | n/a | none | Per-view foreshortening table for the HEAD region. |
+| 96 | `gained_bg_check.py` | diagnostics | no | 9 | no | 1 | yes | n/a | none | E08 Amendment 28 Ruling 2 — did the intersection's GAINED texels admit background? |
+| 97 | `gate0_sheet.py` | verify | no | 8 | no | 8 | yes | n/a | measure_report | E04 Gate 0 sheet — the source concept beside what it reconstructed into, per candidate. |
+| 98 | `gate1_sheet.py` | verify | no | 16 | no | 7 | yes | n/a | measure_report | The Gate 1 sheet — reference \| asset \| provenance \| error, at the Director's zoom. |
+| 99 | `gate_mesh.py` | verify | yes | 4 | no | 10 | yes | yes | none | HARD MESH GATE -- may the pipeline spend money downstream of this mesh? Exit 0 = yes. |
+| 100 | `hair_agree.py` | diagnostics | no | 7 | no | 0 | no | n/a | none | Measure whether a GENERATED view's hair boundary agrees with the MESH's hair geometry. |
+| 101 | `hair_edge.py` | diagnostics | no | 8 | no | 0 | no | n/a | none | Extract the mesh's OWN hair/face boundary as a control hint. |
+| 102 | `head_crop.py` | verify | no | 13 | no | 3 | no | n/a | measure_report | Head-crop comparison sheet, with the head band LOCATED rather than guessed. |
+| 103 | `head_render.py` | verify | no | 11 | no | 19 | yes | n/a | none | Head-framed close-up renders of a GLB — the Director-zoom verification camera. |
+| 104 | `head_yaw.py` | diagnostics | no | 6 | no | 0 | no | n/a | none | Locate the direction a MESH's head actually faces, by mirror symmetry. |
+| 105 | `keyed_outside.py` | diagnostics | no | 9 | no | 2 | yes | n/a | ambiguous | How much of each twin's keyed paint sits on no surface at all? |
+| 106 | `mesh_stats.py` | verify | no | 9 | no | 25 | yes | n/a | mesh_stats | Identical measurement of any mesh — the numeric half of a comparison. |
+| 107 | `montage.py` | verify | no | 7 | no | 5 | no | n/a | ambiguous | Contact sheet + per-view figure brightness readout. |
+| 108 | `prep_front.py` | diagnostics | no | 0 | **yes** | 0 | no | n/a | none | Prepare the front render for the paint pass. |
+| 109 | `silhouette_agree.py` | diagnostics | no | 8 | no | 3 | yes | n/a | ambiguous | Is project_twins' LIVE raycast silhouette the same object as the shipped sidecar mask? |
+| 110 | `texel_provenance.py` | diagnostics | no | 17 | no | 14 | yes | n/a | texel_provenance | Where did this pixel's colour actually come from? |
+| 111 | `texpass_metrics.py` | diagnostics | no | 7 | no | 2 | no | n/a | no opinion | E05 — one metric table, computed identically for every arm. |
+| 112 | `tree_manifest.py` | verify | yes | 7 | no | 9 | yes | yes | none | Protection manifests for the read-only trees: verify one, or emit a new one. |
+| 113 | `turn_render.py` | verify | no | 14 | no | 33 | yes | n/a | none | Matched-framing turnaround render of a GLB. |
 
 ## Axis F — every `n/a` and every `false`, with its reason
 

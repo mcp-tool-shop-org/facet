@@ -5,7 +5,7 @@
         "dir": "tools/diagnostics",
         "non_py_files": 0,
         "non_py_names": [],
-        "py_files": 102
+        "py_files": 103
       },
       {
         "dir": "tools/verify",
@@ -14,11 +14,11 @@
         "py_files": 10
       }
     ],
-    "py_files_total": 112
+    "py_files_total": 113
   },
   "provenance": {
-    "corpus_files": 395,
-    "corpus_files_before_self_exclusion": 405,
+    "corpus_files": 398,
+    "corpus_files_before_self_exclusion": 408,
     "probe_interpreter": "E:\\AI-Models\\trellis2-env\\Scripts\\python.exe",
     "probe_interpreter_version": "3.13.13",
     "probe_skipped": false,
@@ -35,7 +35,7 @@
       "docs/experiments/E28-task3-report.md",
       "docs/instrument-census.md"
     ],
-    "test_files": 93
+    "test_files": 95
   },
   "rows": [
     {
@@ -1141,9 +1141,11 @@
       ],
       "b1_literals": [],
       "b2_literals": [],
-      "cited_count": 0,
-      "cited_count_raw": 1,
-      "cited_in": [],
+      "cited_count": 1,
+      "cited_count_raw": 2,
+      "cited_in": [
+        "docs/experiments/E55-density-vs-identity-report.md"
+      ],
       "dir": "tools/diagnostics",
       "docstring_line1": "E08 \u2014 the contradiction test: does the PROMPT override an attribute the route supplies?",
       "file": "e08_contradiction.py",
@@ -1167,11 +1169,12 @@
       "anchored_in_basename_only": [],
       "b1_literals": [],
       "b2_literals": [],
-      "cited_count": 2,
-      "cited_count_raw": 2,
+      "cited_count": 3,
+      "cited_count_raw": 3,
       "cited_in": [
         "docs/experiments/E08-gate0.md",
-        "docs/experiments/E53-n11-spec-arm-report.md"
+        "docs/experiments/E53-n11-spec-arm-report.md",
+        "docs/experiments/E55-density-vs-identity-kickoff.md"
       ],
       "dir": "tools/diagnostics",
       "docstring_line1": "E08 \u2014 reference agreement in CIE Lab dE, against a styled reference view.",
@@ -2044,28 +2047,33 @@
       "parse_error": null
     },
     {
-      "a_add_argument": 8,
+      "a_add_argument": 10,
       "a_argparse": true,
       "a_main_guard": false,
       "a_parse_args_module_level": true,
-      "anchored": false,
-      "anchored_basename_only": false,
-      "anchored_in": [],
-      "anchored_in_basename_only": [],
+      "anchored": true,
+      "anchored_basename_only": true,
+      "anchored_in": [
+        "tests/test_t94_fail_closed.py"
+      ],
+      "anchored_in_basename_only": [
+        "tests/test_t94_fail_closed.py"
+      ],
       "b1_literals": [
         "mcp-tool-shop__saltroad-style-lora__saltroad_style_v2_lowlr_000001500.safetensors"
       ],
       "b2_literals": [
         "mcp-tool-shop__saltroad-style-lora__saltroad_style_v2_lowlr_000001500.safetensors"
       ],
-      "cited_count": 5,
-      "cited_count_raw": 6,
+      "cited_count": 6,
+      "cited_count_raw": 7,
       "cited_in": [
         "docs/experiments/E12-handoff13-predictions.md",
         "docs/experiments/E12-repair-pair-sidecar.md",
         "docs/experiments/E12-task4-pair-sidecar.md",
         "docs/experiments/E14-task4-report.md",
-        "docs/experiments/E54-router-landing-zone-report.md"
+        "docs/experiments/E54-router-landing-zone-report.md",
+        "docs/grok-consult-20-brief.md"
       ],
       "dir": "tools/diagnostics",
       "docstring_line1": "E12 handoff 3 Task 4 \u2014 the styled target pair's cloud workflow, built and CHECKED on disk.",
@@ -2076,7 +2084,7 @@
       "import_safe_modes": {},
       "import_safe_reason": "has a flag surface but no `__main__` guard, so probing it would EXECUTE the module body - against whatever subject its constants name. Not probed, deliberately",
       "invocable": false,
-      "lines": 251,
+      "lines": 272,
       "parse_error": null
     },
     {
@@ -3189,6 +3197,44 @@
       "parse_error": null
     },
     {
+      "a_add_argument": 3,
+      "a_argparse": true,
+      "a_main_guard": true,
+      "a_parse_args_module_level": true,
+      "anchored": true,
+      "anchored_basename_only": true,
+      "anchored_in": [
+        "tests/test_t41_instrument_census.py",
+        "tests/test_t95_e55_prompt_elements.py"
+      ],
+      "anchored_in_basename_only": [
+        "tests/test_t41_instrument_census.py",
+        "tests/test_t95_e55_prompt_elements.py"
+      ],
+      "b1_literals": [],
+      "b2_literals": [],
+      "cited_count": 1,
+      "cited_count_raw": 1,
+      "cited_in": [
+        "docs/experiments/E55-density-vs-identity-report.md"
+      ],
+      "dir": "tools/diagnostics",
+      "docstring_line1": "E55 \u2014 Gate B: count the elements in a generation prompt, by ONE mechanical rule.",
+      "file": "e55_prompt_elements.py",
+      "flag_surface": true,
+      "g_proposal": "measure_report",
+      "import_safe": "true",
+      "import_safe_modes": {
+        "-O": "clean",
+        "PYTHONOPTIMIZE=1": "clean",
+        "normal": "clean"
+      },
+      "import_safe_reason": "",
+      "invocable": true,
+      "lines": 256,
+      "parse_error": null
+    },
+    {
       "a_add_argument": 11,
       "a_argparse": true,
       "a_main_guard": false,
@@ -3683,12 +3729,14 @@
       "anchored_in_basename_only": [],
       "b1_literals": [],
       "b2_literals": [],
-      "cited_count": 3,
-      "cited_count_raw": 5,
+      "cited_count": 5,
+      "cited_count_raw": 7,
       "cited_in": [
         "docs/experiments/E37-stageB-reroll2-halt.md",
         "docs/experiments/E37-stageB-selection-sheet.md",
-        "docs/experiments/E53-n11-spec-arm-report.md"
+        "docs/experiments/E53-n11-spec-arm-report.md",
+        "docs/experiments/E55-density-vs-identity-kickoff.md",
+        "docs/experiments/E55-density-vs-identity-report.md"
       ],
       "dir": "tools/verify",
       "docstring_line1": "Contact sheet + per-view figure brightness readout.",
@@ -3962,25 +4010,25 @@
     }
   ],
   "totals": {
-    "anchored": 61,
-    "anchored_basename_only": 61,
-    "any_add_argument": 106,
-    "argparse": 106,
-    "cited": 94,
-    "cited_raw": 112,
-    "flag_surface": 106,
+    "anchored": 63,
+    "anchored_basename_only": 63,
+    "any_add_argument": 107,
+    "argparse": 107,
+    "cited": 96,
+    "cited_raw": 113,
+    "flag_surface": 107,
     "flag_surface_unguarded": 95,
     "g_ambiguous": 18,
-    "g_mapped": 27,
+    "g_mapped": 28,
     "g_no_opinion": 3,
     "g_none": 64,
-    "has_docstring": 112,
+    "has_docstring": 113,
     "import_safe_false": 0,
     "import_safe_na": 101,
-    "import_safe_true": 11,
-    "invocable": 11,
-    "main_guard": 12,
-    "parse_args_module_level": 96,
+    "import_safe_true": 12,
+    "invocable": 12,
+    "main_guard": 13,
+    "parse_args_module_level": 97,
     "parse_errors": 0,
     "subject_bound_b1": 11,
     "subject_bound_b2": 12

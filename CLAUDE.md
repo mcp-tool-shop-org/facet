@@ -728,6 +728,22 @@ to a file, or use a form with no cap — and prefer a command that reports a tot
 `--name-only`, `--count`) so a truncation surfaces as a mismatch. **A paging flag is not a
 measurement instrument.**
 
+**And its sibling on this rig: a shell quoting form that does not expand returns a plausible
+number rather than an error.** `grep -c $'\r'` does **not** expand in the Bash tool here — it
+degrades to counting lines containing the letter **r**, and reported *"CRLF on 440 lines"* for a
+file with **zero** CR bytes (E55). Nothing failed; a well-formed integer came back and it was
+measuring a different question. **For line endings use `git ls-files --eol`**, or read the bytes
+in Python. The same caution applies to any `$'…'`, `!`, or backtick form: verify the quoting
+expanded before believing the count. Third member of this family and the first where the
+instrument was the *shell* rather than the pager.
+
+⚠ **Console encoding is the other one.** This rig's console is **cp1252**: printing `→`
+(U+2192) from a Python script raises `UnicodeEncodeError` and kills the script *after* its
+writes have landed. It happened twice in one session, both times in a count-reconciliation
+script, leaving the tree half-edited and the verification line unprinted. **Keep tool output
+ASCII** — the kickoff already says so, and this is why — and make any repair script
+**idempotent**, because the run that dies mid-sweep is the one you have to re-run.
+
 ## Judging artifacts
 
 - **Textures under FLAT light.** A Blender Workbench STUDIO render is not a texture readout —

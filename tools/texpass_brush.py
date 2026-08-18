@@ -37,17 +37,22 @@ ap.add_argument("--canon", default=None,
                 help="surfaces JSON. The fallback --prompt is refused if it "
                      "does not cover the ratified rows. Per-job stems from "
                      "a prompts file are not this check.")
+ap.add_argument("--subject", default=None,
+                help="census subject id. Names the identity-only escape.")
+ap.add_argument("--no-canon", action="store_true",
+                help="explicit ungated escape for an identity-only subject.")
 args = ap.parse_args(subject_profile.bind(ap, "texpass_brush.py", None))
 BASE = f"http://{args.host}"
-if args.canon:
-    try:
-        _chk, _cov = canon_gate.refuse_uncovered(args.canon, args.prompt)
-    except canon_gate.Andon as e:
-        raise AssertionError(
-            "ANDON: canon does not cover ratified prompt: %s" % e)
-    if _cov["unratified_ids"]:
-        print("[canon] unratified (named, not required): %s"
-              % ",".join(_cov["unratified_ids"]), flush=True)
+# Fail-closed BEFORE any upload. texpass_loop.ps1 is a transport; this
+# is the irreversible step. Andon keeps its type.
+_canon = canon_gate.require_canon(
+    args.prompt, canon_path=args.canon, subject=args.subject,
+    no_canon=args.no_canon, profile_path=getattr(args, "profile", None))
+if not _canon["gated"]:
+    print("[canon] UNGATED: %s" % _canon["note"], flush=True)
+elif (_canon.get("coverage") or {}).get("unratified_ids"):
+    print("[canon] unratified (named, not required): %s"
+          % ",".join(_canon["coverage"]["unratified_ids"]), flush=True)
 
 
 def upload(path):

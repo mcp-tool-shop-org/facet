@@ -91,8 +91,11 @@ SMOKE = [r for r in SCOPE if r not in (BLENDER, PRE_ARGPARSE_FILE_WORK)]
 # --emit without --out/--occasion, a manifest that does not verify, and the selftest
 # refusing to report PASSED on a walk that misbehaves. All three are raises, so -O
 # cannot delete them, and T70 runs the fixture under PYTHONOPTIMIZE=1 to show it.
-SYSTEMEXIT_ANDONS = 35          # across 16 files; 3 of those also hold assert ANDONs
-SYSTEMEXIT_ANDON_FILES = 16
+SYSTEMEXIT_ANDONS = 36          # across 17 files; 3 of those also hold assert ANDONs
+#                                 35/16 -> 36/17 at E55: e55_prompt_elements.py raises
+#                                 SystemExit for its Gate B halt, same shape as its
+#                                 neighbours. The pin moves in the commit that adds it.
+SYSTEMEXIT_ANDON_FILES = 17
 
 # After E25 the only ANDON assert left anywhere under tools/ is superseded/'s one.
 # E22 Ruling 4 ruled it NEVER converted - those tools are kept so anyone can run them

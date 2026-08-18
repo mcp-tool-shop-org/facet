@@ -153,6 +153,13 @@ _G = {
         # gate0_sheet / gate1_sheet / head_crop sit in this list). Following that
         # precedent deliberately rather than opening a new bucket for one file.
         "e33_register_sheet.py",
+        # 102 -> 103 at E55. Line 1 is "E55 - Gate B: count the elements in a
+        # generation prompt, by ONE mechanical rule", which names a question the
+        # spec's eight do not list at all - it counts phrases in a PROMPT, not a
+        # property of a mesh or a texel. `none` by the stated rule, not `no
+        # opinion`: line 1 says exactly what it measures, so nothing had to be
+        # inferred from the body.
+        "e55_prompt_elements.py",
     ],
     "mesh_stats": [
         "mesh_stats.py",

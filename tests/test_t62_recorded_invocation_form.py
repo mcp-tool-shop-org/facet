@@ -54,6 +54,10 @@ RUNNABLE = (
     # E33: same form - a __main__ guard and an argparse surface, so `--help` parses and
     # exits before any file is opened. Named here on purpose, not swept in.
     "diagnostics/e33_register_sheet.py",
+    # E55: same form again - a __main__ guard and an argparse surface, so `--help`
+    # parses and exits before any prompt file is opened. Named here on purpose in
+    # the commit that adds the instrument, not swept in.
+    "diagnostics/e55_prompt_elements.py",
     "verify/anchor_compare.py",
     "verify/gate_mesh.py",
     # E35 close: the protection-manifest walk. Same form again - a __main__ guard and an

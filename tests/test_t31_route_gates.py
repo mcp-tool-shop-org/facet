@@ -76,10 +76,10 @@ ROUTE = sorted(BLENDER + PINNED)
 # that population honestly. T69 carries the same two properties for it instead - the
 # firing legs in both interpreter modes, and the encode is checked before the output
 # directory is created, so it has no business in DIR_AHEAD_OF_GATE either.
-SITES = {"bake_hero_prep.py": 15, "brush_cloud_step.py": 10, "subject_profile.py": 6,
+SITES = {"bake_hero_prep.py": 15, "brush_cloud_step.py": 9, "subject_profile.py": 6,
          "e13_harmonize.py": 5, "bake_hero_fuse.py": 4, "bake_hero_pack.py": 4,
          "silhouette_masks.py": 5, "cull_unseen.py": 3, "export_asset_source.py": 2,
-         "palette_gate.py": 2, "resample_atlas.py": 2, "restylize_views.py": 2}
+         "palette_gate.py": 2, "resample_atlas.py": 2, "restylize_views.py": 1}
 
 # ANDON gates in these files that ALREADY raised AssertionError before E23, so
 # the raise census below is not read as a conversion count. Measured at 48fa733:
@@ -106,7 +106,7 @@ REMAINING_ELSEWHERE = 1
 # No file is written by any of the sixteen - that half is asserted for every site
 # below - but "nothing was written" is not literally true for these two, and
 # pinning WHICH two means a third joining them fails this file.
-DIR_AHEAD_OF_GATE = {"silhouette_masks:107": ["o"], "restylize_views:216": ["o"]}
+DIR_AHEAD_OF_GATE = {"silhouette_masks:107": ["o"], "restylize_views:222": ["o"]}
 
 MODES = [("normal", [], {}),
          ("dash-O", ["-O"], {}),
@@ -246,10 +246,11 @@ def test_t31_the_census_is_the_one_e23_measured():
     # 57 was E23's route total; 58 since the E35 arm slate added silhouette_masks'
     # depth-support ANDON; 59 at t91 when restylize_views grew the canon path
     # gate (raise before mkdir); 60 at t92 when brush_cloud_step grew the
-    # router (raise before the workflow JSON is written). The literal moves
-    # in the commit that moves the table above, which is the whole service
-    # this pin performs.
-    assert sum(SITES.values()) == 60
+    # router; 58 at t94 when those two canon wraps stopped being
+    # AssertionError (Andon keeps its type; the raise lives in
+    # canon_gate.require_canon). The literal moves in the commit that
+    # moves the table above, which is the whole service this pin performs.
+    assert sum(SITES.values()) == 58
 
     elsewhere = 0
     for dirpath, dirnames, filenames in os.walk(str(REPO / "tools")):
@@ -430,21 +431,22 @@ FIRE = [
     ("e13_harmonize:86", "e13_harmonize.py",
      lambda d: _eh(d, image="a=" + str(d / "nope.png")), "no such file"),
     ("palette_gate:69", "palette_gate.py", _pg, "--masks is parallel"),
-    ("restylize_views:115", "restylize_views.py",
+    ("restylize_views:require_canon", "restylize_views.py",
      _rv_thin_canon, "canon does not cover"),
-    ("restylize_views:216", "restylize_views.py",
+    ("restylize_views:222", "restylize_views.py",
      lambda d: ["--inputs", _png(d / "a.png", 8, 8), _png(d / "b.png", 8, 8),
-                "--outdir", str(d / "o"), "--masks", str(d / "a.png")],
+                "--outdir", str(d / "o"), "--masks", str(d / "a.png"),
+                "--no-canon", "--subject", "GALLEON"],
      "--masks is parallel"),
-    ("brush_cloud_step:382", "brush_cloud_step.py",
+    ("brush_cloud_step:386", "brush_cloud_step.py",
      lambda d: _bcs(d, prompts={"other": "p", "_negative": "n"}), "no prompt for"),
-    ("brush_cloud_step:393", "brush_cloud_step.py",
+    ("brush_cloud_step:397", "brush_cloud_step.py",
      lambda d: _bcs(d, block={}), "no decided value for 'lora-w'"),
-    ("brush_cloud_step:219", "brush_cloud_step.py",
+    ("brush_cloud_step:223", "brush_cloud_step.py",
      lambda d: _bcs(d, block={"lora-w": {"value": 0.75}, "_NOT_CLEARED": True}), "_NOT_CLEARED"),
-    ("brush_cloud_step:226", "brush_cloud_step.py",
+    ("brush_cloud_step:230", "brush_cloud_step.py",
      lambda d: _bcs(d, block={"lora-w": {"value": 0.75}}), "has no decided value for"),
-    ("brush_cloud_step:407", "brush_cloud_step.py",
+    ("brush_cloud_step:require_canon", "brush_cloud_step.py",
      _bcs_canon, "canon does not cover"),
 ]
 FIRE_IDS = [f[0].replace(":", "_") for f in FIRE]

@@ -54,8 +54,10 @@ EXPECTED_PY_FILES = {
     # judged for axis G in the same commit (E32 Ruling 7's procedure - the pin
     # moves deliberately, driven off the tree, never off a transcribed list).
     # 101 -> 102 at E33: e33_register_sheet.py, judged for axis G in the same
+    # commit. 102 -> 103 at E55: e55_prompt_elements.py, judged `none` in the
+    # same commit - the pin and the judgment move together or the ANDON fires.
     # commit under the same procedure.
-    "tools/diagnostics": 102,
+    "tools/diagnostics": 103,
     # 8 -> 9 at E28 task 2c: anchor_compare.py entered by ruling + wrap
     # (Ruling 10, Ruling 3's entry rule), census re-run in the same commit.
     # 9 -> 10 at the E35 close: tree_manifest.py, the protection-manifest walk that
