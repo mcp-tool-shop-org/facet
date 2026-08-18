@@ -20,8 +20,8 @@ process.env.MCPTOOLSHOP_LAUNCH_CONFIG = JSON.stringify({
   toolName: "facet",
   owner: "mcp-tool-shop-org",
   repo: "facet",
-  version: "0.6.0",
-  tag: "v0.6.0",
+  version: "0.7.0",
+  tag: "v0.7.0",
 });
 
 require("@mcptoolshop/npm-launcher/bin/mcptoolshop-launch.js");

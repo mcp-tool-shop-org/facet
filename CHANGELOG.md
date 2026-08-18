@@ -13,6 +13,73 @@ it, so a reader can check the claim rather than trust it.
 
 ## [Unreleased]
 
+## [0.7.0] — 2026-08-17
+
+**The gate closes fail-closed, a generation gets an identity, and a surface starts
+becoming a set of faces.** v0.6.0 made the canon data and put a gate in front of the
+spend. This release closes the three holes still in it: the gate was optional, a
+generation could not be replayed, and a canon surface was still only a word.
+
+### Added
+
+- **Fail-closed at every authoring site** (t94). A tool that authors a spend and is given
+  no canon **refuses**, and `--outdir` is never created. The v0.6.0 shape was
+  `if args.canon:` — omit the flag and the gate did not run, silently, which the shipped
+  `texpass_loop.ps1` driver did. The escape is **census-backed**:
+  `--no-canon --subject GALLEON` proceeds and announces itself; `--no-canon --subject W3`
+  is **refused**, because W3 has surfaces. Wired at `restylize_views`, `texpass_brush`,
+  `brush_cloud_step` and `e12_pair_cloud_step`. `ig2mv_licensefree` and
+  `e37_fire_repaints` were refused with reasons rather than wired.
+- **The router reads both directions** (t92). A phrase naming something the canon does not
+  contain is now refused, not just a missing one — and there was one in the live default,
+  `gold necklace`, already measured as misnaming the gold belt medallion. Schema 2 declares
+  the legal non-surface clauses; schema 1 files stay one-directional by design.
+- **`tools/canon_worksheet.py`** (t93) — kind templates so a hole is a row, IDENTITY to
+  inventory, joints as pairs to confirm, per-view scope slots, spatial bind, and the density
+  readout that prints all three numbers (24 prompt surfaces / 25 required checks / 19 unique
+  elements). **Structurally incapable of filling an occupant**, and tested for it.
+- **`tools/gen_record.py`** (t96) — extends the existing sidecar rather than replacing it.
+  Immutable `recipe_id` (NFC + CRLF→LF before hashing), movable `alias` outside the hash,
+  declared producer, and the canon the gate allowed. Unreachable fields are recorded
+  **absent with a reason** and validation refuses a string in those slots.
+- **`tools/canon_bind.py`** (t97) — surface id to face set. 27 rows, every one empty,
+  **0.00% of the figure bound**; `blade` and `grip` reach `proposal` with their boxes as
+  seeds. `skirt` stays unmatched rather than silently mapped to `kilt`.
+
+Suite **1319 → 1338** (1284 hermetic).
+
+### Measured, and closed as negative
+
+- **The target-view compositor does not fix the flat class** — it already existed and was
+  already the default, and it *raises* the count at the named target (38 → 40) and sharply
+  at two others (23 → 64, 36 → 110). Shape is ownership, colour is not.
+- **Co-location survives from-scratch specification** — the gold forearm plate is absent
+  from the sixteen-element arm, and the compound form had already been tried and split.
+- **Element count cannot be separated from element identity** on the plates already paid
+  for, structurally rather than statistically. One-sided bound: over 10 → 17 elements,
+  count removed nothing present at 10.
+- **No honest wrong-material check exists today.** The nearest detector fires at 39.90% on
+  a pauldron that is correctly gold, above five of the seven regions the Director named.
+
+### Corrected in place
+
+- The front page claimed a target-view compositor was *"the scoped repair and costs
+  nothing."* It goes the wrong way; corrected with the measurement beside it.
+- **The asset accepted at Gate 1 and the asset later called far from perfect are the same
+  file.** A seat assembling a labelled accept/reject set found both classes collapsing onto
+  one tree and halted. Acceptance is a ruling at a date; defects are per-surface.
+- A `DIRECTOR-VERIFIED` label on a set of region boxes is unsupported at source.
+- Two advisor gate defects: a direction pair (fire-here / silent-there) that a worthless
+  boundary detector passes — the fix is a **margin**, `min(named) - max(control) >=
+  min_margin` — and a per-view direction count over a fixed image-space box where three of
+  eight rows could not move.
+
+### Known
+
+The canon binds **0.00%** of the figure. Until a surface is a set of faces, *is this region
+the wrong material* is not computable. Filling the face sets and scope lists is a human
+walk; the worksheet only makes it cheap.
+
 - **`canon_gate` is the router** (t92). Schema 2 adds `legal_clauses` and
   `scopes`. Cover is both directions; unlicensed residue refuses. Resolve is
   subject id over the census + `canon/`. `brush_cloud_step graph` now stands
