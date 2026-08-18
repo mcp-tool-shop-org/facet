@@ -13,7 +13,18 @@ Four subject classes, one route. Every number below carries its denominator — 
 coverage figure quoted without one is not a number in this repo — and every subject's
 values live in its own profile and fixture, never inherited unmeasured.
 
-## W3 — the character (ACCEPTED, 2026-08-04)
+## W3 — the character (ACCEPTED 2026-08-04, and CALLED FAR FROM PERFECT 2026-08-16)
+
+:::caution[These are the same file, and nothing said so until a seat went looking]
+`facet_E08\ARMB\` is both the asset the Director accepted at Gate 1 and the asset he later
+said *needs a serious polish*. This page carried the acceptance and the known-defects page
+carried the defect, and neither noted they were one object — so a seat assembling a labelled
+accept/reject set found its positive class and its negative class collapsing onto the same
+tree, and **halted** ([E56](https://github.com/mcp-tool-shop-org/facet/blob/main/docs/experiments/E56-wrong-material-check-report.md)).
+Acceptance here is a ruling on an artifact at a date, never a permanent grade, and the two
+rulings do not contradict each other. Any comparison that treats "accepted" as a label needs
+a **per-surface** class, not a per-asset one.
+:::
 
 - **Record:** [E08-ruling-gate0.md](https://github.com/mcp-tool-shop-org/facet/blob/main/docs/experiments/E08-ruling-gate0.md), 35 amendments.
   Fixture: [canon/W3-IDENTITY.md](https://github.com/mcp-tool-shop-org/facet/blob/main/canon/W3-IDENTITY.md) — a test fixture, not a

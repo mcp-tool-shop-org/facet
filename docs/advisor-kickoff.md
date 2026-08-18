@@ -50,8 +50,8 @@ only MCP `record_build` does, build and verify as one act. Run it, do not debug 
 | | |
 |---|---|
 | HEAD | re-measure — `git log --oneline -1`. **v0.6.0 PUBLISHED and verified live: npm 0.6.0, PyPI 0.6.0, GitHub Release with 5 assets** |
-| suite | **THE SUITE: 1319 tests, 1265 hermetic.** RE-COUNT before quoting — `pytest --collect-only -q` and again with `-m "not artifacts"`, currently 1319 total / 1265 hermetic. T34 pins ~14 surfaces off the collector and they all move in the same commit |
-| the record | four-leg verify SERVING at close, byte-identity, over 51 experiments. No staleness findings at the declaration leg — recertify with MCP `record_build` after any doc change |
+| suite | **THE SUITE: 1338 tests, 1284 hermetic.** RE-COUNT before quoting — `pytest --collect-only -q` and again with `-m "not artifacts"`, currently 1338 total / 1284 hermetic. T34 pins ~14 surfaces off the collector and they all move in the same commit |
+| the record | four-leg verify SERVING at close, byte-identity, over 56 experiments. No staleness findings at the declaration leg — recertify with MCP `record_build` after any doc change |
 | canon | W3 **24/24 ratified**; LONGSWORD 5/5. Galleon, dragon, logo, E10-LAYER have IDENTITY.md and **no surfaces JSON** |
 | the specimen | `profiles/character.json` names **5 of 19** and the gate refuses it. **LEFT BROKEN ON PURPOSE** — the first `--profile character.json` run is supposed to halt |
 | spend | **zero cloud credits, still.** Every arc this session was free |

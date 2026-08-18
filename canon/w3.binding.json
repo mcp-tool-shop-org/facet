@@ -1,0 +1,269 @@
+{
+  "type": "binding",
+  "schema": 1,
+  "tool": "canon_bind.py",
+  "tool_version": "1.0.0",
+  "subject": "W3",
+  "kind": "humanoid",
+  "source_surfaces": "canon/w3.surfaces.json",
+  "unit": "face",
+  "surfaces": [
+    {
+      "id": "scalp",
+      "faces": [],
+      "status": "open",
+      "seeds": [],
+      "ratified": false
+    },
+    {
+      "id": "beard",
+      "faces": [],
+      "status": "open",
+      "seeds": [],
+      "ratified": false
+    },
+    {
+      "id": "torso",
+      "faces": [],
+      "status": "open",
+      "seeds": [],
+      "ratified": false
+    },
+    {
+      "id": "upper_arm_L",
+      "faces": [],
+      "status": "open",
+      "seeds": [],
+      "ratified": false
+    },
+    {
+      "id": "upper_arm_R",
+      "faces": [],
+      "status": "open",
+      "seeds": [],
+      "ratified": false
+    },
+    {
+      "id": "pauldron_L",
+      "faces": [],
+      "status": "open",
+      "seeds": [],
+      "ratified": false
+    },
+    {
+      "id": "pauldron_R",
+      "faces": [],
+      "status": "open",
+      "seeds": [],
+      "ratified": false
+    },
+    {
+      "id": "belt",
+      "faces": [],
+      "status": "open",
+      "seeds": [],
+      "ratified": false
+    },
+    {
+      "id": "belt_front",
+      "faces": [],
+      "status": "open",
+      "seeds": [],
+      "ratified": false
+    },
+    {
+      "id": "kilt",
+      "faces": [],
+      "status": "open",
+      "seeds": [],
+      "ratified": false
+    },
+    {
+      "id": "forearm_L",
+      "faces": [],
+      "status": "open",
+      "seeds": [],
+      "ratified": false
+    },
+    {
+      "id": "forearm_R",
+      "faces": [],
+      "status": "open",
+      "seeds": [],
+      "ratified": false
+    },
+    {
+      "id": "knee_L",
+      "faces": [],
+      "status": "open",
+      "seeds": [],
+      "ratified": false
+    },
+    {
+      "id": "knee_R",
+      "faces": [],
+      "status": "open",
+      "seeds": [],
+      "ratified": false
+    },
+    {
+      "id": "boot_L",
+      "faces": [],
+      "status": "open",
+      "seeds": [],
+      "ratified": false
+    },
+    {
+      "id": "boot_R",
+      "faces": [],
+      "status": "open",
+      "seeds": [],
+      "ratified": false
+    },
+    {
+      "id": "hand_L",
+      "faces": [],
+      "status": "open",
+      "seeds": [],
+      "ratified": false
+    },
+    {
+      "id": "hand_R",
+      "faces": [],
+      "status": "open",
+      "seeds": [],
+      "ratified": false
+    },
+    {
+      "id": "greave_L",
+      "faces": [],
+      "status": "open",
+      "seeds": [],
+      "ratified": false
+    },
+    {
+      "id": "greave_R",
+      "faces": [],
+      "status": "open",
+      "seeds": [],
+      "ratified": false
+    },
+    {
+      "id": "blade",
+      "faces": [],
+      "status": "proposal",
+      "seeds": [
+        {
+          "kind": "box",
+          "view": "0",
+          "box": [
+            210,
+            80,
+            330,
+            500
+          ],
+          "from": "PROPOSAL from twin_0 steel bbox ~215-322 x 88-499, padded. Not a ruling."
+        },
+        {
+          "kind": "box",
+          "view": "1",
+          "box": [
+            170,
+            70,
+            280,
+            510
+          ],
+          "from": "PROPOSAL from twin_1. Darker steel than v0; steel detector under-counted the tip. Not a ruling."
+        },
+        {
+          "kind": "box",
+          "view": "7",
+          "box": [
+            330,
+            80,
+            430,
+            500
+          ],
+          "from": "PROPOSAL from twin_7 steel bbox ~319-449 x 89-519, tightened in x. Not a ruling."
+        }
+      ],
+      "ratified": false
+    },
+    {
+      "id": "crossguard",
+      "faces": [],
+      "status": "open",
+      "seeds": [],
+      "ratified": false
+    },
+    {
+      "id": "pommel",
+      "faces": [],
+      "status": "open",
+      "seeds": [],
+      "ratified": false
+    },
+    {
+      "id": "grip",
+      "faces": [],
+      "status": "proposal",
+      "seeds": [
+        {
+          "kind": "box",
+          "view": "0",
+          "box": [
+            225,
+            555,
+            275,
+            680
+          ],
+          "from": "PROPOSAL from twin_0 handle column ~x 230-260 y 565-630 plus pommel. Not a ruling."
+        },
+        {
+          "kind": "box",
+          "view": "1",
+          "box": [
+            190,
+            540,
+            270,
+            720
+          ],
+          "from": "PROPOSAL from twin_1 below the gold guard. Not a ruling."
+        },
+        {
+          "kind": "box",
+          "view": "7",
+          "box": [
+            340,
+            470,
+            430,
+            580
+          ],
+          "from": "PROPOSAL from twin_7 hand/guard at mid-torso. Not a ruling."
+        }
+      ],
+      "ratified": false
+    },
+    {
+      "id": "silhouette",
+      "faces": [],
+      "status": "open",
+      "seeds": [],
+      "ratified": false
+    },
+    {
+      "id": "proportions",
+      "faces": [],
+      "status": "open",
+      "seeds": [],
+      "ratified": false
+    },
+    {
+      "id": "brushwork",
+      "faces": [],
+      "status": "open",
+      "seeds": [],
+      "ratified": false
+    }
+  ]
+}

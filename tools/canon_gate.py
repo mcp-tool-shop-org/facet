@@ -70,6 +70,9 @@ graph was refused, there is nothing licensed to post.
               name a surface here (one PBR, 13,715 islands).
   Version     schema 1 still loads. schema > SCHEMA_MAX is a stale
               consumer. Schema 2 adds legal_clauses and scopes.
+  Binding     tools/canon_bind.py. A surface is a face set. Empty
+              faces are 0.00% of the figure. Names stay on the
+              surfaces file.
 
 WHAT THIS DOES NOT COVER.
 
@@ -955,8 +958,28 @@ def census():
             if prompt is not None:
                 hit, _miss = phrase_hits_in_text(prompt, named)
                 rec["profile_hits"] = len(hit)
+        rec["bind"] = None
+        if surf_rel:
+            rec["bind"] = _bind_census_cell(surf_rel)
         rows.append(rec)
     return rows
+
+
+def _bind_census_cell(surf_rel):
+    """Sibling .binding.json coverage, or NONE. Faces, not pixels."""
+    import canon_bind as B
+    path = os.path.join(_REPO, surf_rel.replace("/", os.sep))
+    bpath = B.binding_path(path)
+    if not os.path.isfile(bpath):
+        return "NONE"
+    try:
+        surf = load_canon(path)
+        bind = B.load_binding(bpath, surf)
+        cov = B.coverage(bind)
+    except Exception as e:
+        return "ANDON %s" % e
+    return "%d/%d faces, %d proposed" % (
+        cov["bound"], cov["surfaces"], cov["proposed"])
 
 
 def format_census(rows):
@@ -975,6 +998,9 @@ def format_census(rows):
                ("-" if r["profile_hits"] is None
                 else "%d/%d" % (r["profile_hits"], r["profile_named"])),
                r["surfaces"] or "NONE"))
+    lines.append("bind (faces; 0.00 is unbound; names live on the surfaces file)")
+    for r in rows:
+        lines.append("  %-10s %s" % (r["subject"], r.get("bind") or "NONE"))
     return "\n".join(lines) + "\n"
 
 

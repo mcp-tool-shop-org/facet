@@ -35,7 +35,7 @@ The authoritative version of this page, with the full evidence column, is
 The seven tools that closed the projector question — the eight plates compose, and the
 rebuilt atlas renders cleared the Director's acceptance bar for the first time on this
 route. Five of the seven were built by an outside review channel (nominated calibration
-claims have held **seventeen for seventeen**, each verified here by running it before
+claims have held **twenty-one for twenty-one**, each verified here by running it before
 anything trusted the build).
 
 | tool | what it does |
@@ -62,20 +62,50 @@ ever revealed it. A surface list with a nullable occupant makes the hole a row.
 
 | tool | what it does |
 |---|---|
-| `canon_gate.py` | coverage, occupancy, the author-time prompt check, the cross-subject census, and a sidecar verifier. Runs **inside** `restylize_views` and `texpass_brush`, before the output directory is created |
+| `canon_gate.py` | the **router**: resolve a subject to its canon, cover a prompt in both directions, carry a scope, census every subject, verify via a sidecar. Runs **inside** every tool that authors a generation, before the output directory is created |
+| `canon_worksheet.py` | the **authoring half**: kind templates so a hole is a row, IDENTITY → inventory, joints as pairs to confirm, per-view scope slots, spatial bind, and the density readout. Structurally cannot fill an occupant |
 | `canon/<subject>.surfaces.json` | the database: surfaces with occupants, joints as first-class rows between two surfaces, blocked additions recorded rather than installed |
 | `evidence.py` | the diagnostic layer — provenance classification, the acceptance sheet, and the numbers with their denominators and space declared |
 | `flat_trace.py` | render pixel → atlas texel → contributing view → that view's twin |
 
 ```bash
 python tools/canon_gate.py census
-python tools/canon_gate.py check --canon canon/w3.surfaces.json --prompt "..."
+python tools/canon_gate.py check --subject W3 --prompt "..."
+python tools/canon_gate.py check --canon canon/w3.surfaces.json --prompt "..." --scope subject
 ```
 
-**What it does not cover, stated rather than left to be discovered:** paraphrases,
-per-view stems, unratified drafts, subjects with no surfaces file, or whether a named
-material landed on the right surface. Four subjects have an IDENTITY.md and no surfaces
-JSON — left undone rather than generated without walking the reference.
+### Fail-closed, and why the escape is census-backed
+
+A tool that authors a spend and is given no canon **refuses** rather than proceeding
+quietly. The previous shape was `if args.canon:` — so omitting a flag walked past the gate
+in silence, and the shipped PowerShell driver did exactly that.
+
+```bash
+# no canon and no escape -> ANDON, and --outdir is never created
+python tools/restylize_views.py --emit-only --inputs IN --outdir OUT --prompt "..."
+
+# the escape names a subject the census knows has an IDENTITY and no surfaces
+python tools/restylize_views.py ... --no-canon --subject GALLEON   # proceeds, announces
+python tools/restylize_views.py ... --no-canon --subject W3        # REFUSED: W3 has surfaces
+```
+
+Requiring a census subject is what stops the escape becoming a checkbox: wearing it means a
+deliberate edit of the census, and you cannot invent a subject that has no IDENTITY.
+
+### Both directions
+
+Checking that the prompt **contains** the canon finds a thin prompt. Checking that
+everything in the prompt **is** canon finds a phrase naming something the subject does not
+have. Schema 2 declares the legal non-surface clauses (style, framing) so the reverse check
+does not fire on `plain grey background`; schema 1 files stay one-directional by design, so
+adding the reverse could not make an older subject start refusing its own style words.
+
+**What it does not cover, stated rather than left to be discovered:** paraphrases and
+synonyms — semantic matching would put a model inside a gate — per-view stems until a view
+scope is declared, unratified drafts, subjects with no surfaces file, or whether a named
+material landed on the right surface. Scope slots exist with empty surface lists: filling
+them is a human walk, same as filling occupants. Four subjects have an IDENTITY.md and no
+surfaces JSON — left undone rather than generated without walking the reference.
 
 ## Verification
 
@@ -105,5 +135,5 @@ same way.
 
 ```bash
 python tools/facet_index.py q "<anything>"   # ask the record
-python -m pytest -m "not artifacts"          # the 1265 hermetic tests CI runs
+python -m pytest -m "not artifacts"          # the 1284 hermetic tests CI runs
 ```

@@ -39,6 +39,7 @@ import sys as _sys, os as _os
 _sys.path.insert(0, _os.path.dirname(_os.path.abspath(__file__)))
 import subject_profile
 import canon_gate
+import gen_record
 import json
 import os
 import time
@@ -285,17 +286,18 @@ for _i, path in enumerate(args.inputs):
                     "filename": img["filename"], "subfolder": img.get("subfolder", ""),
                     "type": img["type"]})
                 dst = os.path.join(args.outdir, f"{stem}.png")
-                with open(dst, "wb") as fh:
-                    fh.write(urllib.request.urlopen(f"{BASE}/view?{q}", timeout=120).read())
+                raw = urllib.request.urlopen(f"{BASE}/view?{q}", timeout=120).read()
                 print(f"[restyle] {stem} -> {dst}  ({time.time() - t0:.0f}s)", flush=True)
-                # Provenance travels WITH the artifact. The pair this project treats as
-                # canon has an unknown-parameters section in its manifest because no
-                # sidecar existed when it was made, and it therefore cannot be
-                # regenerated — measured, not feared (E08 director ruling).
+                # Provenance travels WITH the artifact. The pair this project
+                # treats as canon has an unknown-parameters section in its
+                # manifest because no sidecar existed when it was made, and
+                # it therefore cannot be regenerated — measured, not feared
+                # (E08 director ruling). write_generation refuses to leave
+                # an image without a sibling _gen.json (the SPEC/ hole).
                 import hashlib
                 side = {
                     "output": os.path.basename(dst),
-                    "output_sha256": hashlib.sha256(open(dst, "rb").read()).hexdigest(),
+                    "output_sha256": hashlib.sha256(raw).hexdigest(),
                     "input": os.path.abspath(path),
                     "input_sha256": hashlib.sha256(open(path, "rb").read()).hexdigest(),
                     "mask": os.path.abspath(args.masks[_i]) if args.masks else None,
@@ -312,9 +314,8 @@ for _i, path in enumerate(args.inputs):
                     "control_px": {"total": n_ctrl, "canny": n_edge, "contour": n_contour},
                     "figure_mask_pct_of_frame": round(float((fm > 0.5).mean() * 100), 3),
                 }
-                with open(os.path.join(args.outdir, f"{stem}_gen.json"), "w",
-                          encoding="utf-8") as fh:
-                    json.dump(side, fh, indent=1)
+                rec = gen_record.build_record(side, canon_verdict=_canon)
+                gen_record.write_generation(args.outdir, stem, raw, rec)
                 print(f"[restyle] {stem}: provenance -> {stem}_gen.json", flush=True)
                 break
         if time.time() - t0 > 900:

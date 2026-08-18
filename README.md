@@ -140,7 +140,7 @@ acceptance bar for the first time on this route — twice, across two arcs — b
 shipped atlas whose route had been destroying paint the plates agree on. The chain that did it is in `tools/`
 (`emit_view_aovs`, `s3_composite`, `flow_estimate`, `s3_run`, `s3_sheet`,
 `atlas_from_aovs`, `twin_mesh_warp`), built largely through an outside review channel
-whose nominated calibration claims have held **seventeen for seventeen**, every one
+whose nominated calibration claims have held **twenty for twenty**, every one
 verified here by running it before anything trusted the build.
 
 **The canon is data, and it gates the spend (2026-08-17).** The identity specification
@@ -148,9 +148,25 @@ named seventeen elements; the workflow that generated the twins named sixteen; t
 profile default a fresh run would use named six. Nothing connected them, so four arcs
 repaired composition downstream of paint that was wrong at the source. The canon is now a
 database keyed on **surface** — an element list cannot show you what is missing, and a
-nullable occupant makes a hole a row — and `canon_gate` runs **inside** `restylize_views`
-and `texpass_brush`, before the output directory exists. A generation whose prompt does
+nullable occupant makes a hole a row — and `canon_gate` runs **inside** the tools that
+author a generation, before the output directory exists. A generation whose prompt does
 not cover the ratified canon is refused and nothing is written.
+
+**It is a router, and it is fail-closed.** It resolves a subject to its canon file, covers
+a prompt in **both** directions, and carries a scope. **A tool that authors a spend and is
+given no canon does not proceed quietly — it refuses.** The escape for a subject that
+genuinely has none is census-backed and cannot be worn by a subject that does:
+`--no-canon --subject GALLEON` proceeds and announces itself; `--no-canon --subject W3` is
+**refused**, because W3 has surfaces. That closes the checkbox by construction rather than
+by convention, and it matters because the previous shape — `if args.canon:` — let the
+shipped PowerShell driver walk past the gate in silence.
+
+**The second direction is the one that catches a real defect.** Checking that the prompt
+*contains* the canon finds a thin prompt. Checking that everything in the prompt *is* canon
+finds a phrase naming something the character does not have — and there was one sitting in
+the live default: **`gold necklace`**, which this repo had already measured as misnaming
+the gold belt medallion, *"and the element survives by accident."* A covering prompt with
+that phrase appended now returns `missing: 0` and refuses anyway, naming the clause.
 
 ```
 canon_gate 1.0.0  census  (occupancy is not ratification)
@@ -167,11 +183,34 @@ LOGO             0           -          -          - NONE
 would actually use, so the first `--profile character.json` is supposed to halt. Repairing
 the string would delete the evidence.
 
-**The gate's boundary, stated rather than left to be discovered.** It checks that the
-subject prompt contains the ratified canon phrases. It does **not** check paraphrases,
-per-view stems, unratified drafts, subjects with no surfaces file, or whether a named
-material landed on the right surface. Four subjects have an IDENTITY.md and no surfaces
-JSON — left undone rather than generated without walking the reference.
+**And there is a worksheet, because the four subjects with no canon are not going to walk
+themselves.** It emits every surface a subject's *kind* implies — so a hole is a row before
+anyone has named it — turns an IDENTITY.md into an inventory, carries joints as pairs to
+confirm, and reserves per-view scope slots. It is **structurally incapable of filling an
+occupant**, and that is the property it is tested for: a poison phrase arriving with a
+surface already assigned is not written. Generating canon is a human walking a reference;
+the worksheet only makes the walk cheap and complete.
+
+**The gate's boundary, stated rather than left to be discovered.** It checks the ratified
+canon phrases in both directions, at a scope. It does **not** check paraphrases or
+synonyms — semantic matching would put a model inside a gate, which this repo refuses on
+principle — nor per-view stems until a view scope is declared, nor whether a named material
+landed on the *right* surface. Scope slots exist and their surface lists are empty: filling
+them is a human walk, same as filling occupants. Four subjects have an IDENTITY.md and no
+surfaces JSON — left undone rather than generated without walking the reference.
+
+**How many elements a prompt can carry is measured, and it does not reach the canon.** The
+literature prices each added prompt element at a cost to whether elements appear at all, over
+a range far below ours, so an Opus seat asked whether the plates already paid for could
+settle it. **They cannot, and the reason is structural** — no element in the corpus holds its
+phrase constant while the count around it varies *and* is capable of being absent. What they
+do give is a one-sided bound, from five prompts at one camera with byte-identical control,
+mask and seed: over an element ladder of **10 → 17**, count removed **nothing** that was
+present at 10, while an identity flip at *zero* count change moved the full calibration
+interval. **W3's canon asks for 19, and the corpus never reaches it**
+([E55](docs/experiments/E55-density-vs-identity-report.md)). The studio prints the three
+numbers that get collapsed — 24 prompt surfaces, 25 required checks, 19 unique elements —
+so a coverage count is never quoted against an element-count measurement.
 
 ## The route
 
@@ -287,8 +326,19 @@ code](docs/known-defects.md).
   twin is clean there, and a **different** view owns 97 of 115 defect pixels at facing
   0.68 against 0.60. The angular patch is a **scatter artifact** and the colour is a real
   cross-view disagreement on a surface that is already named — so a twin regeneration is
-  not justified by "the defect is in the twins". A compositor preferring the target view
-  is the scoped repair and costs nothing. *Superseded text, kept per the corrections rule:
+  not justified by "the defect is in the twins".
+  ⚠ **And the repair this page proposed is FALSIFIED too (2026-08-17).** It read *"a
+  compositor preferring the target view is the scoped repair and costs nothing."* The
+  compositor already existed and was already the default; measured against the flat
+  classifier on stills from one recorded run, target-first **raises** the count at the
+  named target (38 → 40) and raises it sharply at two others (23 → 64, 36 → 110), growing
+  *more* connected as it does. The mechanism: **shape is ownership, colour is not.** The
+  olive is view 6's own paint of a surface view 6 is painting correctly, so at target 6 —
+  where target-first means *prefer view 6* — the policy maximises exactly the paint the
+  defect is made of. **An ownership policy cannot repair a cross-view colour disagreement
+  on a correctly-attributed surface**, which retires the family rather than one arm of it
+  ([E52](docs/experiments/E52-target-first-flats-ruling.md)). What is left is a paint
+  question and it costs a generation. *Superseded text, kept per the corrections rule:
   "orphan islands the size of single triangles, flat-filled from boundary-adjacent twin
   samples taken with the uneroded silhouette."*
 
@@ -299,7 +349,7 @@ earlier arc ran ten sessions that each judged their own output and wrote conclus
 next session read as established fact. Nothing in that loop was checkable.
 
 - **Spec before the work, report after, ruling last** — and the session that designs an
-  experiment never grades its own results. Fifty-one experiments are in
+  experiment never grades its own results. Fifty-six experiments are in
   [the record](docs/experiments/).
 - **Corrections land in place, beside the measurement that overturned them**, never as
   quiet deletions. Six inherited claims were falsified in the founding session alone, and
@@ -308,8 +358,8 @@ next session read as established fact. Nothing in that loop was checkable.
   is not an archive — anyone can run those tools and watch them fail the same way.
 - **A negative result is a full success**, reported and closed rather than tuned toward a
   number.
-- **Tests ride the commit that touches the code** — 1319 passing at two seats' hands, with
-  paths-gated CI on the 1265 hermetic ones.
+- **Tests ride the commit that touches the code** — 1338 passing at two seats' hands, with
+  paths-gated CI on the 1284 hermetic ones.
 - **The record is queryable.** A SQLite + FTS5 index over the whole trail, verified on
   four legs. It found a ruling count the prose had wrong at three sites, by counting the
   record itself.
@@ -320,7 +370,7 @@ next session read as established fact. Nothing in that loop was checkable.
 |---|---|
 | **[The handbook](docs/handbook/index.md)** | the guide — the route stage by stage, the subjects, the profile system |
 | **[Concept prep](docs/concept-prep.md)** | the candidate clay hop: its Gate 0 walk, its placement, and the licence item it opens |
-| **[The record](docs/experiments/)** | fifty-one experiments: spec, report, ruling, and every prediction stated before the measurement |
+| **[The record](docs/experiments/)** | fifty-six experiments: spec, report, ruling, and every prediction stated before the measurement |
 | **[What the route learned](docs/findings.md)** | the durable findings and the hard-won rules, in full |
 | **[Status of every tool](docs/tools.md)** | what works, what is superseded, and the evidence for each |
 | **[Known defects](docs/known-defects.md)** | everything not solved, measured and located in code |
@@ -366,7 +416,7 @@ sweep re-runnable; the full policy is in [SECURITY.md](SECURITY.md):
   credential-shaped file tracked.
 - **No telemetry.** None collected, none sent. There is no opt-out because there is
   nothing to opt out of.
-- **Network egress:** two tools of thirty-six open a socket — `restylize_views.py`
+- **Network egress:** two tools open a socket — `restylize_views.py`
   and `texpass_brush.py` — and both call a ComfyUI HTTP API at `--host`, **default
   `127.0.0.1:8188`**. Nothing else in `tools/` makes a network call.
 - **Permissions:** ordinary user. No elevation, no service install, no system-settings
@@ -377,7 +427,7 @@ only lists reassurances is not a threat model: **file operations are not sandbox
 (a tool writes wherever its arguments say); **absolute local paths are baked into many
 tools and docs** — 114 occurrences across 26 files, not secrets but a disclosure of one
 machine's layout, and the reason most tools will not run unmodified elsewhere; and
-**unexpected failures surface as Python tracebacks in the 36 unpublished research
+**unexpected failures surface as Python tracebacks in the unpublished research
 scripts**, with no `--debug` gate. Deliberate halts are `ANDON:` messages carrying the
 measurement that fired them. That is the research-instrument contract, and
 [SHIP_GATE.md](SHIP_GATE.md) records exactly when it stops being good enough — which for
@@ -421,8 +471,8 @@ Developed against an RTX 5090; VRAM headroom matters more than raw speed.
 CI runs the hermetic subset of the suite on **ubuntu-latest / Python 3.12** with
 pinned installs (`.github/workflows/ci.yml`); the artifacts tier needs the recorded
 trees under `E:\AI\training`, which are not in git, so CI deselects them by design.
-Locally, `python -m pytest` runs all **1319** tests and `python -m pytest -m "not artifacts"`
-runs the **1265** CI reproduces.
+Locally, `python -m pytest` runs all **1338** tests and `python -m pytest -m "not artifacts"`
+runs the **1284** CI reproduces.
 
 ---
 

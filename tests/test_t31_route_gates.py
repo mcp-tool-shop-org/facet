@@ -106,7 +106,7 @@ REMAINING_ELSEWHERE = 1
 # No file is written by any of the sixteen - that half is asserted for every site
 # below - but "nothing was written" is not literally true for these two, and
 # pinning WHICH two means a third joining them fails this file.
-DIR_AHEAD_OF_GATE = {"silhouette_masks:107": ["o"], "restylize_views:222": ["o"]}
+DIR_AHEAD_OF_GATE = {"silhouette_masks:107": ["o"], "restylize_views:223": ["o"]}
 
 MODES = [("normal", [], {}),
          ("dash-O", ["-O"], {}),
@@ -433,7 +433,7 @@ FIRE = [
     ("palette_gate:69", "palette_gate.py", _pg, "--masks is parallel"),
     ("restylize_views:require_canon", "restylize_views.py",
      _rv_thin_canon, "canon does not cover"),
-    ("restylize_views:222", "restylize_views.py",
+    ("restylize_views:223", "restylize_views.py",
      lambda d: ["--inputs", _png(d / "a.png", 8, 8), _png(d / "b.png", 8, 8),
                 "--outdir", str(d / "o"), "--masks", str(d / "a.png"),
                 "--no-canon", "--subject", "GALLEON"],

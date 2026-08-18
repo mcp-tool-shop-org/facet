@@ -17,8 +17,8 @@
     "py_files_total": 113
   },
   "provenance": {
-    "corpus_files": 398,
-    "corpus_files_before_self_exclusion": 408,
+    "corpus_files": 402,
+    "corpus_files_before_self_exclusion": 412,
     "probe_interpreter": "E:\\AI-Models\\trellis2-env\\Scripts\\python.exe",
     "probe_interpreter_version": "3.13.13",
     "probe_skipped": false,
@@ -35,7 +35,7 @@
       "docs/experiments/E28-task3-report.md",
       "docs/instrument-census.md"
     ],
-    "test_files": 95
+    "test_files": 97
   },
   "rows": [
     {
@@ -3204,11 +3204,15 @@
       "anchored": true,
       "anchored_basename_only": true,
       "anchored_in": [
+        "tests/test_t33_diagnostics_gates.py",
         "tests/test_t41_instrument_census.py",
+        "tests/test_t62_recorded_invocation_form.py",
         "tests/test_t95_e55_prompt_elements.py"
       ],
       "anchored_in_basename_only": [
+        "tests/test_t33_diagnostics_gates.py",
         "tests/test_t41_instrument_census.py",
+        "tests/test_t62_recorded_invocation_form.py",
         "tests/test_t95_e55_prompt_elements.py"
       ],
       "b1_literals": [],
@@ -3729,14 +3733,16 @@
       "anchored_in_basename_only": [],
       "b1_literals": [],
       "b2_literals": [],
-      "cited_count": 5,
-      "cited_count_raw": 7,
+      "cited_count": 7,
+      "cited_count_raw": 9,
       "cited_in": [
         "docs/experiments/E37-stageB-reroll2-halt.md",
         "docs/experiments/E37-stageB-selection-sheet.md",
         "docs/experiments/E53-n11-spec-arm-report.md",
         "docs/experiments/E55-density-vs-identity-kickoff.md",
-        "docs/experiments/E55-density-vs-identity-report.md"
+        "docs/experiments/E55-density-vs-identity-report.md",
+        "docs/experiments/E56-wrong-material-check-kickoff.md",
+        "docs/experiments/E56-wrong-material-check-report.md"
       ],
       "dir": "tools/verify",
       "docstring_line1": "Contact sheet + per-view figure brightness readout.",
