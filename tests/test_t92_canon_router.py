@@ -306,6 +306,16 @@ def test_t92_selftest_still_holds():
     assert "front/flat/consolidated gated" in out2, out2
     assert "rear drops face" in out2, out2
 
+    # E61 Stage 0: canon_compose.py gains garment_join="over" (isolates the
+    # single preposition E60's failure traced to), joints=(...) (emits a
+    # licensed-not-required joint phrase), and with_occupant_phrase (compose
+    # + gate-check against a modified in-memory doc, never touching canon on
+    # disk) - same precedent as above, extended into THIS already-collected
+    # function rather than a new test item (T34 constraint, see above).
+    assert "garment-join-over held" in out2, out2
+    assert "joint-emit held" in out2, out2
+    assert "occupant-override held" in out2, out2
+
 
 def test_t92_worksheet_landed_in_t93():
     """#18 fenced the generator so the router could prove the schema first.

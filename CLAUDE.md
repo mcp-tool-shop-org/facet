@@ -761,7 +761,13 @@ that seat ran while this one was inside `record_build`, which regenerates `docs/
 facet.db` from scratch, and T01 builds and verifies a DB. It is the same family as the
 count-surface collision already recorded above — **two live sessions share more than the
 count surfaces; they share the index artifacts.** Reserve the DB in the dispatch, or run
-index tests when no rebuild is in flight.
+index tests when no rebuild is in flight. Second instrument, same family (2026-08-18,
+twice measured): `test_t30_the_refused_code_discriminates` — verify exiting PARTIAL(4)
+on its own scratch DB — has failed ONLY in full-suite runs that overlapped another live
+pytest process, and passes 27/27 solo at the identical tree both times. The scratch-path
+isolation the fixture documents (E16) is evidently not the whole story; mechanism
+unidentified, stated as inference. Treat a t30/t01 failure in a suite that overlapped
+another session as concurrency until it reproduces alone.
 
 ⚠ **Console encoding is the other one.** This rig's console is **cp1252**: printing `→`
 (U+2192) from a Python script raises `UnicodeEncodeError` and kills the script *after* its

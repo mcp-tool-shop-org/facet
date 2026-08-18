@@ -108,6 +108,51 @@ Standards compliance (CLAUDE.md workflow-standards.md, scored 0-3):
     unmodified - this file never re-implements or loosens the reverse/
     forward coverage check it depends on.
 
+  E61 ADDENDUM (garment_join, joints, with_occupant_phrase): scores
+  unchanged from above - same shape, same guarantees. PIN_PER_STEP stays 2
+  (still code, not data, that decides which preposition/joints a caller may
+  request). ANDON_AUTHORITY stays 2 (three new can-fail legs in selftest(),
+  same raise-not-assert class as everything else here). EXTERNAL_VERIFIER
+  stays 3 (with_occupant_phrase's own can-fail leg checks the SAME text
+  against BOTH the modified doc and the live one, proving the live gate's
+  requirement is real and enforced, not just internally consistent with
+  itself).
+
+E61 ADDITIONS (layering-repair arms, docs/experiments/E61-layering-repairs-
+kickoff.md). Three new knobs, all opt-in via keyword args so every existing
+call (E60's Stage 2, this file's own selftest) keeps producing byte-identical
+output with no argument supplied.
+
+  garment_join="and" (default) | "over" - only wired into form="grouped"
+    (Andon otherwise). Changes ONE connector: the head-pair join inside
+    _join_grouped_garments from " and " to " over ", isolating the single
+    preposition E60 traced its failure to (the reference's own recipe joins
+    vest+shirt with "over"; STOP already admits it - E60 fold). Everything
+    else about the grouped join (comma list, final "and") is untouched. Has
+    no effect when a subject has <=3 garments (the degenerate plain-list
+    branch of _join_grouped_garments never reaches the head-pair code path)
+    - declared, not silently absorbed; A1 always has 5.
+
+  joints=() - a tuple of doc["joints"] ids to emit as additional trailing
+    sentences (capitalised, period-closed), via the now-licensed (E60 fold)
+    joint phrases. Licensing is not requiring: joints=() (default) emits
+    nothing and is unaffected; nothing in canon_gate requires a joint phrase
+    to appear. Wired into BOTH flat and grouped/consolidated forms
+    symmetrically, so the parameter is never silently a no-op in one branch.
+
+  with_occupant_phrase(doc, n_id, phrase) - returns a DEEP-COPIED doc with
+    every surface carrying occupant id `n_id` given a new phrase; the caller
+    passes this copy to compose() AND to check_composed() so a prompt is
+    always composed and gated against the SAME assumptions. Built because
+    E61's P0/P1 arms compose against A1's PRE-repair N1 text ("a plum
+    long-vest with fine gold embroidery", no "sleeveless") without touching
+    canon/a1.surfaces.json on disk - the charter's own words: "Build it by
+    parameterising the composer, NOT by reverting the canon files on disk."
+    Checking such text against the LIVE (post-repair) doc would ANDON on a
+    missing required phrase for a reason that has nothing to do with the arm
+    under test; checking it against the doc this same function produced
+    tests what the arm can actually be honest about.
+
 CLI:
   python tools/canon_compose.py --selftest
   python tools/canon_compose.py compose --canon canon/a1.surfaces.json \
@@ -118,6 +163,7 @@ CLI:
 from __future__ import annotations
 
 import argparse
+import copy
 import json
 import os
 import re
@@ -254,6 +300,43 @@ def clause(doc, clause_id):
     return None
 
 
+def _joint_phrase(doc, joint_id):
+    """doc['joints'] entry's phrase, by id. E61 addition. ANDONs on an
+    unknown id rather than silently emitting nothing - a typo'd id here
+    should never quietly compose as if joints=() had been passed."""
+    for j in doc.get("joints") or []:
+        if j.get("id") == joint_id:
+            ph = j.get("phrase")
+            if not ph:
+                _andon("joint %r has no phrase" % (joint_id,))
+            return ph
+    _andon("no joint %r in canon (declared: %s)"
+           % (joint_id, [j.get("id") for j in doc.get("joints") or []]))
+
+
+def with_occupant_phrase(doc, n_id, phrase):
+    """A DEEP COPY of doc with every surface carrying occupant id `n_id`
+    given `phrase` instead. E61 addition - see module docstring's E61
+    ADDITIONS note for why this exists: compose() AND check_composed() are
+    meant to run against the SAME modified doc, never the live one for one
+    and this copy for the other.
+
+    ANDONs if n_id names no occupant in doc - a silent no-op here would let
+    a typo'd id compose against the UNCHANGED live phrase while the caller
+    believes it built pre-repair text, which is exactly the kind of
+    unmeasured claim this repo's own rules warn against."""
+    d2 = copy.deepcopy(doc)
+    found = False
+    for s in d2["surfaces"]:
+        occ = s.get("occupant")
+        if occ and occ.get("id") == n_id:
+            occ["phrase"] = phrase
+            found = True
+    if not found:
+        _andon("with_occupant_phrase: no occupant %r in doc" % (n_id,))
+    return d2
+
+
 def clauses_by_class(doc, cls):
     return [c for c in doc.get("legal_clauses") or [] if c.get("class") == cls]
 
@@ -296,16 +379,19 @@ def _join_and_list(items):
     return ", ".join(items[:-1]) + " and " + items[-1]
 
 
-def _join_grouped_garments(phrases):
-    """Arm P: the first two garments and-bound (the worn-together pair the
-    recipe expressed with the illegal 'over'), the remainder a comma list
-    with a final 'and'. Degrades to a plain and-list below 4 items, where
-    the head-plus-rest construction would just repeat 'and' twice."""
+def _join_grouped_garments(phrases, head_sep=" and "):
+    """Arm P: the first two garments joined by `head_sep` (the worn-together
+    pair the recipe expressed with the illegal 'over'; E61 adds the option
+    to pass ' over ', the reference's own word, now STOP-admitted), the
+    remainder a comma list with a final 'and'. Degrades to a plain and-list
+    below 4 items, where the head-plus-rest construction would just repeat
+    'and' twice - head_sep has NO EFFECT in that branch (declared, not
+    silently absorbed; see module docstring's E61 ADDITIONS note)."""
     phrases = [p for p in phrases if p]
     n = len(phrases)
     if n <= 3:
         return _join_and_list(phrases)
-    head = phrases[0] + " and " + phrases[1]
+    head = phrases[0] + head_sep + phrases[1]
     middle = phrases[2:-1]
     tail = phrases[-1]
     return ", ".join([head] + middle) + " and " + tail
@@ -381,26 +467,41 @@ def _garment_feature_split(doc, fv):
 FORMS = ("grouped", "flat", "consolidated")
 
 
-def compose(doc, view="front", form="grouped"):
+def compose(doc, view="front", form="grouped", garment_join="and", joints=()):
     """canon -> prompt. Pure function: does not check the gate (see
-    check_composed) and does not write anything."""
+    check_composed) and does not write anything.
+
+    garment_join and joints are E61 additions (see module docstring's E61
+    ADDITIONS note); both default to values that reproduce E60's own output
+    byte-for-byte when omitted."""
     if form not in FORMS:
         _andon("form must be one of %s, got %r" % (FORMS, form))
+    if garment_join not in ("and", "over"):
+        _andon("garment_join must be 'and' or 'over', got %r" % (garment_join,))
+    if garment_join != "and" and form != "grouped":
+        _andon("garment_join=%r only applies to form='grouped' (got form=%r) "
+               "- flat has no head-pair to redirect and consolidated's "
+               "joiner is a different construction entirely"
+               % (garment_join, form))
     fv = face_visible(view)
     garments, features = _garment_feature_split(doc, fv)
     framing = clause(doc, "frame_subject") or ""
     style_phrases = _style_phrases(doc, fv)
     pose, bg, neg = _staging_groups(doc)
+    joint_phrases = [_joint_phrase(doc, jid) for jid in joints]
 
     if form == "flat":
         # profiles/a1.json's own convention: framing, garments, features,
         # style, backdrop, negatives, THEN pose last (E59 Stage 0 literally
         # appended the pose clauses to an already-written flat string).
-        parts = [framing] + garments + features + style_phrases + bg + neg + pose
+        # joint_phrases appended last of all (E61) - empty by default, so
+        # this is a no-op unless a caller opts in.
+        parts = ([framing] + garments + features + style_phrases + bg + neg
+                 + pose + joint_phrases)
         parts = [p for p in parts if p]
         return _cap(", ".join(parts) + ".")
 
-    # grouped / consolidated: framing -> staging -> style -> identity
+    # grouped / consolidated: framing -> staging -> style -> identity -> joints
     sec_framing = (_cap(framing) + ".") if framing else ""
 
     staging_bits = []
@@ -414,16 +515,21 @@ def compose(doc, view="front", form="grouped"):
 
     sec_style = (_cap(_join_and_list(style_phrases)) + ".") if style_phrases else ""
 
-    garment_joiner = (_join_consolidated_garments if form == "consolidated"
-                       else _join_grouped_garments)
-    garment_text = garment_joiner(garments)
+    if form == "consolidated":
+        garment_text = _join_consolidated_garments(garments)
+    else:
+        head_sep = " over " if garment_join == "over" else " and "
+        garment_text = _join_grouped_garments(garments, head_sep=head_sep)
     feature_text = _join_and_list(features)
     if garment_text and feature_text:
         sec_identity = _cap(garment_text) + "; " + feature_text + "."
     else:
         sec_identity = _cap(garment_text or feature_text) + "."
 
-    sections = [s for s in (sec_framing, sec_staging, sec_style, sec_identity) if s]
+    sec_joints = (_cap(_join_and_list(joint_phrases)) + ".") if joint_phrases else ""
+
+    sections = [s for s in (sec_framing, sec_staging, sec_style, sec_identity, sec_joints)
+                if s]
     return " ".join(sections)
 
 
@@ -530,11 +636,81 @@ def selftest():
                "(canon/A1-IDENTITY.md), so an empty residue means this "
                "function is not really stripping licensed phrases")
 
+    # CAN-FAIL LEG (E61): garment_join="over" changes exactly the vest-shirt
+    # connector and the result still passes the gate. Proven by reverting -
+    # if compose() ignored the parameter (E60's hardcoded " and "), " over "
+    # would never appear here and this leg would ANDON.
+    p_over = compose(doc, view="front", form="grouped", garment_join="over")
+    if " over " not in p_over:
+        _andon("garment_join='over' did not produce ' over ' in the "
+               "composed text: %r" % p_over)
+    chk_over = check_composed(doc, p_over)
+    if not chk_over["ok"]:
+        _andon("garment_join='over' compose failed the gate: missing=%s "
+               "forbidden=%s unlicensed=%s"
+               % (chk_over["missing"], chk_over["forbidden"], chk_over["unlicensed"]))
+    # an inapplicable combination refuses rather than silently ignoring the knob
+    try:
+        compose(doc, view="front", form="flat", garment_join="over")
+    except Andon:
+        pass
+    else:
+        _andon("garment_join='over' with form='flat' did not refuse")
+
+    # CAN-FAIL LEG (E61): joints=(...) emits the named joint phrase and the
+    # result still passes the gate; the DEFAULT (no joints requested) must
+    # NOT emit it - licensing is not requiring, proven in both directions.
+    p_joint = compose(doc, view="front", form="grouped", joints=("vest_shirt",))
+    if "plum vest edge against cream shirt" not in p_joint.lower():
+        _andon("joints=('vest_shirt',) did not emit the joint phrase: %r" % p_joint)
+    chk_joint = check_composed(doc, p_joint)
+    if not chk_joint["ok"]:
+        _andon("joints=('vest_shirt',) compose failed the gate: missing=%s "
+               "forbidden=%s unlicensed=%s"
+               % (chk_joint["missing"], chk_joint["forbidden"], chk_joint["unlicensed"]))
+    if "plum vest edge against cream shirt" in p_front.lower():
+        _andon("default compose (joints=()) unexpectedly emitted a joint "
+               "phrase - licensing must not be requiring")
+    try:
+        compose(doc, view="front", form="grouped", joints=("no-such-joint",))
+    except Andon:
+        pass
+    else:
+        _andon("an unknown joint id did not refuse")
+
+    # CAN-FAIL LEG (E61): with_occupant_phrase actually changes composed
+    # text, the modified doc's OWN gate accepts its own (older) text, and -
+    # critically - that SAME text is REJECTED by the LIVE canon, proving the
+    # live sleeveless requirement is real and would catch a regressed arm
+    # rather than merely being internally consistent with itself.
+    old_n1 = "a plum long-vest with fine gold embroidery"
+    doc_pre = with_occupant_phrase(doc, "N1", old_n1)
+    p_pre = compose(doc_pre, view="front", form="grouped")
+    if "sleeveless" in p_pre.lower():
+        _andon("with_occupant_phrase override did not take effect - "
+               "'sleeveless' is still present: %r" % p_pre)
+    chk_pre_own = check_composed(doc_pre, p_pre)
+    if not chk_pre_own["ok"]:
+        _andon("pre-repair compose failed its OWN (modified-doc) gate: %s" % chk_pre_own)
+    chk_pre_vs_live = check_composed(doc, p_pre)
+    if chk_pre_vs_live["ok"]:
+        _andon("pre-repair text unexpectedly PASSED the live canon's gate - "
+               "the sleeveless requirement is not being enforced: %s" % chk_pre_vs_live)
+    try:
+        with_occupant_phrase(doc, "N_NO_SUCH_OCCUPANT", "x")
+    except Andon:
+        pass
+    else:
+        _andon("with_occupant_phrase silently accepted an unknown occupant id")
+
     return {
         "front_ok": True, "flat_ok": True, "consolidated_ok": True,
         "rear_drops_face": True,
         "anchor_in_both": len(diff["in_both"]),
         "anchor_canon_only": len(diff["canon_only"]),
+        "garment_join_over_ok": True,
+        "joint_emit_ok": True,
+        "occupant_override_ok": True,
     }
 
 
@@ -581,7 +757,8 @@ def main(argv=None):
             r = selftest()
             sys.stdout.write(
                 "selftest PASS  front/flat/consolidated gated  "
-                "rear drops face  anchor in_both=%d canon_only=%d\n"
+                "rear drops face  anchor in_both=%d canon_only=%d  "
+                "garment-join-over held  joint-emit held  occupant-override held\n"
                 % (r["anchor_in_both"], r["anchor_canon_only"]))
             return 0
         if not args.cmd:
