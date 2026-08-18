@@ -40,7 +40,7 @@ nothing here tests it.
 
 | # | element | note |
 |---|---|---|
-| N1 | plum long-vest with fine gold embroidery | ONE garment per the prompt: buttoned panel at the chest, open skirt below the sash, knee-length. The two-garment reading (coat + under-vest) is queue item Q3 |
+| N1 | a sleeveless plum long-vest with fine gold embroidery | SLEEVELESS, declared 2026-08-18 (E60): the vest ends at the armhole and the cream shirt sleeves show beneath it. W3 precedent - the word lives in the garment phrase, not in a forbidden-word rule, because A1's arms are covered rather than bare. ONE garment per the prompt: buttoned panel at the chest, open skirt below the sash, knee-length. The two-garment reading (coat + under-vest) is queue item Q3 |
 | N2 | a cream high-collared shirt | collar shows at the throat; full billowed sleeves with banded cuffs are this garment's — the prompt names the shirt once and the sleeves arrive with it |
 | N3 | an umber sash | the painted sash reads olive-gold; the WORD is the attested canon and the palette band will record what landed (queue item Q5) |
 | N4 | slim dark-green trousers | |

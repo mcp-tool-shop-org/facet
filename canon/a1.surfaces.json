@@ -6,7 +6,7 @@
   "visual_target": [
     "canon/A1_reference.png"
   ],
-  "note": "SURFACE is the row. occupant null is a hole. Reference-first subject: the visual target and the identity were born together - every occupant phrase below is a verbatim substring of the reference's own generating prompt (canon/A1-RECIPE.json). NO WEAPON by the Director's direction; no prop surfaces exist and none may be added without a ruling. A1 is symmetric on every paired surface, so the _L/_R suffix cannot mis-apply while the side convention question stands. RATIFIED by the Director 2026-08-17, as drafted - all 19 rows and all five queue positions. Machine convention (canon_gate.py is_unratified): ratification is the ABSENCE of 'ratify': true on an occupant; this file carries no draft flags, so machine state and the Director's word agree - a future draft that must read as unratified needs the flag per row until his word. His standing principle at ratification, paraphrased: the quality is made in the edit - ratification is a baseline, not a freeze, and a post-ratification canon edit is an ordinary versioned move whose test is the next generation. FIRST EDIT UNDER THAT PRINCIPLE, 2026-08-18, after the E58 twin ring: the staging clause stage_head_forward is ADDED at his direction (the head must not turn toward the camera through the turnaround), and he ruled the ring's identity ACCEPTABLE against the reference - so the twins are this man and the identity question the advisor raised is closed. He also corrected the advisor's weighting of the ink reading: it is a minor register difference, not a headline defect, and it is not a work item.",
+  "note": "SURFACE is the row. occupant null is a hole. Reference-first subject: the visual target and the identity were born together - every occupant phrase below is a verbatim substring of the reference's own generating prompt (canon/A1-RECIPE.json). NO WEAPON by the Director's direction; no prop surfaces exist and none may be added without a ruling. A1 is symmetric on every paired surface, so the _L/_R suffix cannot mis-apply while the side convention question stands. RATIFIED by the Director 2026-08-17, as drafted - all 19 rows and all five queue positions. Machine convention (canon_gate.py is_unratified): ratification is the ABSENCE of 'ratify': true on an occupant; this file carries no draft flags, so machine state and the Director's word agree - a future draft that must read as unratified needs the flag per row until his word. His standing principle at ratification, paraphrased: the quality is made in the edit - ratification is a baseline, not a freeze, and a post-ratification canon edit is an ordinary versioned move whose test is the next generation. FIRST EDIT UNDER THAT PRINCIPLE, 2026-08-18, after the E58 twin ring: the staging clause stage_head_forward is ADDED at his direction (the head must not turn toward the camera through the turnaround), and he ruled the ring's identity ACCEPTABLE against the reference - so the twins are this man and the identity question the advisor raised is closed. He also corrected the advisor's weighting of the ink reading: it is a minor register difference, not a headline defect, and it is not a work item. SECOND EDIT 2026-08-18: N1 gains the word SLEEVELESS (E60 fold) - the reference's sleevelessness had been arriving from a preposition rather than from canon, and by the identity law an unnamed property leaves on the next generation.",
   "surfaces": [
     {
       "id": "hair",
@@ -59,9 +59,9 @@
       "name": "vest, buttoned chest panel",
       "occupant": {
         "id": "N1",
-        "phrase": "plum long-vest with fine gold embroidery",
+        "phrase": "a sleeveless plum long-vest with fine gold embroidery",
         "provenance": "prompt",
-        "note": "ONE garment across two spatial rows (this and vest_skirt) - the prompt names one long-vest. The two-garment reading is queue item Q3."
+        "note": "ONE garment across two spatial rows (this and vest_skirt) - the prompt names one long-vest. The two-garment reading is queue item Q3. | SLEEVELESS DECLARED 2026-08-18 (E60 fold). W3 solves this in the garment phrase itself (\"a dark green knitted sleeveless tunic\"), and A1 needs the same because its arms are NOT bare - the shirt sleeves cover them - so W3's other mechanism (bare upper_arm + forbidden \"sleeve\") would be wrong here and would forbid the shirt's own sleeves. E60 measured the cost of leaving it implicit: the composed prompt rendered this vest as a full-sleeved coat at 2 of 3 seeds. The reference got its sleevelessness from the preposition \"over\", never from canon."
       }
     },
     {
@@ -69,8 +69,9 @@
       "name": "vest, open skirt below the sash",
       "occupant": {
         "id": "N1",
-        "phrase": "plum long-vest with fine gold embroidery",
-        "provenance": "prompt"
+        "phrase": "a sleeveless plum long-vest with fine gold embroidery",
+        "provenance": "prompt",
+        "note": "SLEEVELESS DECLARED 2026-08-18 (E60 fold). W3 solves this in the garment phrase itself (\"a dark green knitted sleeveless tunic\"), and A1 needs the same because its arms are NOT bare - the shirt sleeves cover them - so W3's other mechanism (bare upper_arm + forbidden \"sleeve\") would be wrong here and would forbid the shirt's own sleeves. E60 measured the cost of leaving it implicit: the composed prompt rendered this vest as a full-sleeved coat at 2 of 3 seeds. The reference got its sleevelessness from the preposition \"over\", never from canon."
       }
     },
     {

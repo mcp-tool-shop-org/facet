@@ -27,6 +27,7 @@ import canon_gate as C  # noqa: E402
 
 W3 = os.path.join(str(REPO), "canon", "w3.surfaces.json")
 SWORD = os.path.join(str(REPO), "canon", "longsword.surfaces.json")
+A1 = os.path.join(str(REPO), "canon", "a1.surfaces.json")
 IDENT = os.path.join(str(REPO), "canon", "W3-IDENTITY.md")
 
 
@@ -322,3 +323,63 @@ def test_t87_armb_workflow_is_fourteen_of_nineteen(assets):
     assert low.count("gauntlet") == 0
     assert low.count("greave") == 0
     assert low.count("hand") == 0
+
+
+def test_t87_spatial_prepositions_are_connective_not_material():
+    """E60 fold. Two legs, both able to fail.
+
+    A preposition says where one declared thing sits relative to another; it
+    cannot introduce an undeclared material. Excluding "over" while admitting
+    "on" was an inconsistency, and it was load-bearing: A1's reference recipe
+    joins its two garments with "over", the gate refused it, and a composer
+    built without it rendered the sleeveless vest as a full-sleeved coat at
+    2 of 3 seeds (E60 Stage 2).
+    """
+    for w in ("over", "under", "beneath", "above", "below",
+              "behind", "beside", "across", "around", "through"):
+        assert C.STOP.search(w), "%r is not admitted as connective" % w
+    # can-fail the other way: a MATERIAL word must still not be swallowed.
+    for w in ("velvet", "brass", "leather", "holding", "burly"):
+        assert not C.STOP.search(w), "%r must not be a stopword" % w
+
+
+def test_t87_joint_phrases_are_licensed_not_required():
+    """E60 fold. A joint row already declares the relationship between two
+    surfaces; its phrase is canon exactly as an occupant phrase is, and it was
+    simply never licensed - which left a composer unable to state a layering
+    the canon already knew.
+
+    Licensing is NOT requiring, and the second leg is what proves it: a prompt
+    that omits every joint phrase must still pass.
+    """
+    doc = C.load_canon(A1)
+    lic = C.licensed_phrases(doc)
+    joints = [j["phrase"] for j in doc.get("joints") or [] if j.get("phrase")]
+    assert joints, "fixture has no joint phrases - leg cannot fail"
+    for ph in joints:
+        assert ph in lic, "joint phrase not licensed: %r" % ph
+    # not required: the live profile prompt names no joint and still passes.
+    prompt = C._profile_restylize_prompt("profiles/a1.json")
+    assert not any(j.lower() in prompt.lower() for j in joints)
+    assert C.check_prompt(doc, prompt)["ok"]
+
+
+def test_t87_a1_vest_is_declared_sleeveless():
+    """E60 fold. The reference's sleevelessness arrived from the preposition
+    "over", never from canon - so by the identity law it would leave on the
+    next generation, and E60 measured exactly that (full-sleeved coat, 2 of 3
+    seeds). W3 solves this in the garment phrase itself; A1 needs the same
+    form rather than W3's bare-arm mechanism, because A1's arms are COVERED by
+    the shirt and forbidding "sleeve" would forbid the shirt's own sleeves.
+    """
+    doc = C.load_canon(A1)
+    vest = [s for s in doc["surfaces"] if s["id"].startswith("vest_")]
+    assert len(vest) == 2, [s["id"] for s in vest]
+    for s in vest:
+        assert "sleeveless" in s["occupant"]["phrase"].lower(), s["id"]
+    # the shirt still owns the sleeve surfaces - sleevelessness of the vest
+    # must not have been expressed by forbidding the word outright.
+    sleeves = [s for s in doc["surfaces"] if s["id"].startswith("sleeve_")]
+    assert len(sleeves) == 2
+    for s in sleeves:
+        assert s["occupant"]["id"] == "N2", s["id"]

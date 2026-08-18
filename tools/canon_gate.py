@@ -189,8 +189,16 @@ ARTICLE = re.compile(r"^a\s+", re.I)
 # Residue stopwords only. Not a style allowlist and not framing. "holding"
 # and "burly" stay off this list on purpose: they are declared on the subject
 # as legal_clauses or they are unlicensed.
+# SPATIAL PREPOSITIONS JOINED 2026-08-18 (E60 fold). A preposition carries no
+# material claim - it says where one declared thing sits relative to another -
+# and "on" was already admitted, so excluding "over" was an inconsistency
+# rather than a policy. It was a load-bearing one: A1's reference recipe joins
+# the two garments with "over", the gate refused it, and a composer built
+# without it rendered the sleeveless vest as a full-sleeved coat at 2 of 3
+# seeds (E60). Licensing a preposition cannot admit an undeclared material.
 STOP = re.compile(
     r"\b(a|an|the|with|and|or|of|on|in|at|to|for|from|by|as|"
+    r"over|under|beneath|above|below|behind|beside|across|around|through|"
     r"his|her|its|their|this|that|each)\b", re.I)
 DE_LANDED = 2.3
 DE_MISSED = 10.0
@@ -526,6 +534,15 @@ def licensed_phrases(doc):
     for c in doc.get("legal_clauses") or []:
         if c.get("phrase") and str(c["phrase"]).strip():
             out.append(str(c["phrase"]).strip())
+    # JOINTS JOINED 2026-08-18 (E60 fold). A joint row already declares the
+    # relationship between two surfaces ("plum vest edge against cream shirt"),
+    # so its phrase is canon exactly as an occupant phrase is - it was simply
+    # never licensed, which left a composer unable to state a layering the canon
+    # already knew. Licensing is not requiring: a joint phrase MAY be emitted and
+    # nothing refuses a prompt that omits it.
+    for j in doc.get("joints") or []:
+        if j.get("phrase") and str(j["phrase"]).strip():
+            out.append(str(j["phrase"]).strip())
     return out
 
 
