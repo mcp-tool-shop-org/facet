@@ -112,3 +112,51 @@ itself carries sleevelessness on that preposition alone with no `sleeveless` wor
 **If P1 fails, that reasoning is wrong and the declaration is what matters** — which is the
 more useful outcome, because a word in canon is portable to every future character and a
 preposition is a property of one sentence.
+
+## Dispatch record (living)
+
+- 2026-08-18 — spec written; three repairs landed and proven-can-fail at the advisor's
+  hand (commit 5df9d20); seat dispatched on Sonnet, background.
+- 2026-08-18 — **outside-channel ruling folded, mid-flight.** The channel read the E60
+  fold beside its own prompt-craft build and called the three repairs **convergence, not
+  a merge request** — pcraft independently grew the same three ideas (spatial relations,
+  licensed joints, absence-as-a-word). Its brief was ruled on as follows.
+
+  **Verified before acting (the channel's own protocol).** Its checkable claims about
+  pcraft are verbatim true at source: `GATE_FAIL=2 / PARTIAL_UNCONFIRMED=3 /
+  GATE_UNAVAILABLE=4` in `errors.py`, `Zone.UNAVAILABLE` in the gate, and *"calibrated
+  for absence earns required"* literally in its schema. Its claim that **"facet already
+  has exit 4" is overstated**: exactly one site (`tools/s3_run.py`, could-not-run refusal)
+  carries the pattern — a precedent, not a convention. Reported back as such.
+
+  **ADOPTED NOW, into the running arc (steer sent to the seat):** measurement rows gain an
+  explicit **UNAVAILABLE** state behind a calibrated box-preflight — a seed that slides
+  the figure so the sleeve box samples vest fabric is *could-not-see*, not a failed arm,
+  and an unavailable row does not vote. E59 Gate 1 is the paid-for precedent; the seat's
+  preflight calibrates against E60's twelve known images, and if it cannot separate a
+  valid box from a slid one on those, it says so rather than inventing a threshold.
+
+  **ADOPTED AS E62, opens when E61's sheet exists — not before:** the schema patch, facet
+  spelling only, no pcraft import. (a) `depends_on` edges — after E61 reports, the winning
+  layering carrier becomes a **relation row with a parent** in the surfaces file, not more
+  prose in N1; P1-vs-P2 is literally "is the preposition a depends_on, or is the adjective
+  the atom." (b) The **collision law**: a forbidden token is illegal when it is a substring
+  of a licensed occupant phrase — the A1 sleeveless reasoning (forbidding `sleeve` would
+  delete the shirt's own sleeves) promoted from an advisor's memory to a schema check.
+  W3 keeps its bare-arm mechanism; A1 structurally cannot have it, and the schema will
+  know why. (c) Measurement-side `unavailable` made a convention rather than one tool's
+  habit. **Not edited now because the seat shares `canon_gate.py` in flight** — the
+  two-live-sessions law covers instruments as well as indexes.
+
+  **DECLINED, with the channel in agreement:** pcraft as a dependency (different object:
+  it gates atoms against pixels, facet gates phrases against a surface database before
+  spend); VLM/CLIP judges (E60 finding 6 stands); a composer learning loop (optimising
+  toward a gate metric is how the sleeve happened); pcraft's RGB palette-hist (strictly
+  worse than A1-palette's circular-hue/chroma-floor form); OpenPose plates (the control
+  is this mesh's own clay; E59 measured the generator overriding a *correct* control);
+  identity adapters (the A1 PNG is the identity plate; twins belong to the mesh); the
+  cross-family guard (one generation family here).
+
+  **Sequencing accepted as given:** no second prompt-form experiment and no "try pcraft
+  on A1" until E61's sheet exists. If P1 and P2 both fail, the next lever is E59's unpaid
+  denoise-vs-control question — not a contract question.
