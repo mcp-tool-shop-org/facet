@@ -160,3 +160,34 @@ preposition is a property of one sentence.
   **Sequencing accepted as given:** no second prompt-form experiment and no "try pcraft
   on A1" until E61's sheet exists. If P1 and P2 both fail, the next lever is E59's unpaid
   denoise-vs-control question — not a contract question.
+- 2026-08-18, minutes later — **THE ADVISOR'S STEER CARRIED A WRONG EXAMPLE, CAUGHT BY THE
+  CHANNEL BEFORE ANY PIXEL WAS SCORED. Corrected by a superseding steer.** The prior entry's
+  rule said "a seed that slides the figure so the sleeve box samples vest fabric is
+  unavailable." Wrong: on E60's twelve frames the forearm never leaves `sleeve_L`'s
+  rectangle — the four ~64–67° cells still hold an arm there, and what fills the box is the
+  vest's NEW SLEEVE. **Vest-fabric-in-a-forearm-box is the defect E61 exists to count. It
+  votes.** Implemented as steered, that example would have marked the four defect cells
+  UNAVAILABLE, made P1-vs-P2 undecidable, and the denominator honesty rule would have been
+  hiding exactly the thing it was steered in to protect.
+
+  The correction, sent as a superseding steer: **three states** — UNAVAILABLE (box not on a
+  forearm at all; a SPATIAL question; does not vote) / AVAILABLE+present (Δhue < 9°) /
+  AVAILABLE+occluded (Δhue 63–67° or vest in box) — with the preflight forbidden from using
+  N2 hue, N1 L*, or any vest-match, **because those are the readout and a readout must not
+  gate its own availability.** Also forbidden: keying occupancy as departure-from-backdrop.
+  The palette file's own recorded numbers make that key an inverter — sleeve_L sits
+  **8.25 dE** from the backdrop corners and sleeve_R **4.12**, cream hue centre 77.5° in
+  the backdrop's own neighbourhood, so present-sleeve cells read empty and vest-occluded
+  cells read occupied: the retired corner-median family wearing a new face. Expected and
+  stated in advance: **no spatial cut separates E60's twelve** (all have an arm in the
+  box), in which case the preflight reports *cannot discriminate on this corpus*, every
+  E61 row stays AVAILABLE, and hue does the work it was calibrated for — E59 Gate 1 used
+  correctly, the instrument that cannot see saying so and stepping aside.
+
+  All three of the channel's checkable numbers were verified against
+  `canon/A1-palette.json` before the correction was acted on: `sleeve_L rect_px
+  [289, 485, 391, 706]`, the 8.25/4.12 backdrop distances, hue centre 77.5° — every one
+  verbatim in the file. **The channel read this repo's own instruments more carefully than
+  the advisor's steer did.** The advisor's error family is already named in its record:
+  a check whose form assumed its answer — this one assumed "box contaminated" could only
+  mean "box displaced," when the contamination IS the phenomenon under measurement.
