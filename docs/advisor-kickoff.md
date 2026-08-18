@@ -42,6 +42,18 @@ first.** A REFUSING server after doc commits means the last session forgot `reco
 the CLI moves the DB but never writes the certificate; only MCP `record_build` does, build
 and verify as one act. Run it, do not debug it.
 
+⚠ **THIS SESSION OPENS REFUSING, AND THE RECORD IS SOUND — run `record_build` ONCE, FIRST,
+and it goes green.** The E57 fold corrected a law's heading (corner-median keying: three
+firings → four) and the seeded fixture that names that row by its heading text with it. The
+mounted server had loaded `docs/index/conventions.json` **at its process start** and kept
+comparing against the retired expectation, so leg 4 scored MISS *while returning the target
+row at rank 1* — three MCP builds in a row, each writing a FAILED certificate for a corpus
+that is fine. The CLI, which reads the fixture fresh from disk, returned **VERIFY PASSED —
+all four legs** on the same commit. The committed certificate is therefore FAILED and
+**stale by construction**; a fresh server process re-certifies it. Recorded because the
+line above says *run it, do not debug it*, and a session that ran it three times needs the
+next instruction rather than the same one.
+
 ⚠ `pytest` needs `--basetemp=<scratch>` on this rig (Windows symlink PermissionError).
 
 ## THE LIVE STATE
