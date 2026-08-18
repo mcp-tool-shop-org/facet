@@ -288,6 +288,24 @@ def test_t92_selftest_still_holds():
     # is the pytest-visible seam onto the in-tool can-fail checks.
     assert "required clause held" in out, out
 
+    # E60 Stage 0: tools/canon_compose.py (canon -> prompt) gets the SAME
+    # treatment, extended into THIS function rather than a new test item -
+    # T34 pins the collected-pytest-item count against 15 doc surfaces
+    # across 8 languages, and a Sonnet executor session cannot regenerate
+    # the 7 translations (the studio's translation rule reserves that to
+    # advisor sessions/the user), so a new top-level test would strand T34
+    # red for a reason this session cannot close. Following E59's exact
+    # precedent: substantive coverage lives in canon_compose.selftest()
+    # (in-tool, ANDON-raising - front/flat/consolidated forms pass the
+    # gate at the front view, a rear-view compose demonstrably drops
+    # face-bearing phrases and nothing else, the anchor diff is
+    # non-degenerate); this is the pytest-visible seam onto it.
+    rc2, out2, err2 = run_py("canon_compose.py", ["--selftest"])
+    assert rc2 == 0, "canon_compose selftest exited %d\n%s\n%s" % (rc2, out2, err2)
+    assert "selftest PASS" in out2, out2
+    assert "front/flat/consolidated gated" in out2, out2
+    assert "rear drops face" in out2, out2
+
 
 def test_t92_worksheet_landed_in_t93():
     """#18 fenced the generator so the router could prove the schema first.

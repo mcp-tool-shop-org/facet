@@ -195,6 +195,9 @@ STOP = re.compile(
 DE_LANDED = 2.3
 DE_MISSED = 10.0
 NEG_WINDOW = 24
+# A negator binds inside its own clause, so the look-back stops at the
+# nearest clause boundary as well as at NEG_WINDOW chars.
+CLAUSE_END = re.compile(r"[,.;]")
 # "staging" joined 2026-08-17 (E57 fold): shot clauses - backdrop, no weapons,
 # no held objects, clear silhouette - are neither the paint nor the subject.
 # A1's ratified canon carries four; census FIRED on the ratified file first.
@@ -380,6 +383,33 @@ def coverage(doc):
     }
 
 
+def _neg_window(hay, i):
+    """The look-back a negator may bind across: NEG_WINDOW chars, cut at the
+    nearest clause boundary.
+
+    THE CUT IS THE FIX (E60 Stage 1, reproduced). A flat character window
+    lets an adjacent list item's own negator leak forward. In A1-RECIPE.json's
+    positive_text the 24 chars before "no held objects" are
+    "l features, no weapons, " - the `no` that fires belongs to the PRECEDING
+    item - so two of A1's three staging clauses read absent while textually
+    present and unnegated.
+
+    DECLARED BOUNDARY. This trades one error for its opposite: a negator that
+    distributes over a list - "without a sword, a shield" - now reads the
+    second item as present. That form was never reliably handled, because the
+    flat window only reached it when the intervening items fit inside 24
+    characters; it was a property of item lengths, not a design. The direction
+    kept is the one a gate cares about: the flat window's failure is a false
+    REFUSAL of a prompt that carries its required phrase, and this one's is a
+    false accept of a form the corpus does not contain.
+    """
+    w = hay[max(0, i - NEG_WINDOW):i]
+    last = None
+    for m in CLAUSE_END.finditer(w):
+        last = m
+    return w if last is None else w[last.end():]
+
+
 def _present(phrase, prompt):
     """True if phrase occurs and is not negated in the preceding window."""
     p = phrase.strip()
@@ -392,8 +422,7 @@ def _present(phrase, prompt):
         i = hay.find(needle, start)
         if i < 0:
             return False
-        window = hay[max(0, i - NEG_WINDOW):i]
-        if not NEGATION.search(window):
+        if not NEGATION.search(_neg_window(hay, i)):
             return True
         start = i + 1
 

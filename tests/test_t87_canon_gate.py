@@ -136,6 +136,49 @@ def test_t87_negation_does_not_count_as_coverage():
     assert not chk["ok"]
     assert any("leather-wrapped grip" in m["phrase"] for m in chk["missing"])
 
+    # E60 Stage 1 - ADJACENT NEGATION CLAUSES, reproduced. A flat character
+    # look-back lets a list item's own negator leak onto the NEXT item: the 24
+    # chars before "no held objects" are "l features, no weapons, " and the
+    # `no` in them belongs to "no weapons". Two of A1's three staging clauses
+    # read absent while textually present and unnegated.
+    #
+    # CAN-FAIL, stated. The first assert pins that the leaked negator is
+    # really inside the flat window, so the two after it exercise the clause
+    # cut instead of passing for free - without it this leg would be green
+    # under the implementation it exists to replace.
+    stage = ("crisp readable facial features, no weapons, no held objects, "
+             "nothing crossing the body silhouette. A young archivist")
+    i = stage.find("no held objects")
+    flat = stage[i - C.NEG_WINDOW:i]
+    assert C.NEGATION.search(flat), flat
+    assert C._present("no held objects", stage), flat
+    assert C._present("nothing crossing the body silhouette", stage)
+    assert C._present("no weapons", stage)
+
+    # the same shape on the ratified artifact, so the fixture is not
+    # hypothetical. A recipe that drops these phrases fails HERE, deliberately.
+    recipe = os.path.join(str(REPO), "canon", "A1-RECIPE.json")
+    with open(recipe, encoding="utf-8") as fh:
+        pos = json.load(fh)["positive_text"]
+    for ph in ("no weapons", "no held objects",
+               "nothing crossing the body silhouette"):
+        assert ph in pos.lower(), ph          # precondition, not the claim
+        assert C._present(ph, pos), ph
+
+    # A negator still binds inside its own clause, at any distance the window
+    # reaches, and at the start of the string.
+    assert not C._present("a sword", "the figure stands without a sword")
+    assert not C._present("gold knee plates", "lacking gold knee plates")
+    assert not C._present("a sword", "no a sword")
+
+    # DECLARED BOUNDARY (E60). The cut trades one error for its opposite: a
+    # negator distributing over a list now reads later items as present. It is
+    # pinned rather than hidden - the flat window only ever reached this form
+    # when the intervening items fit inside 24 characters, so it was a property
+    # of item lengths and not a design.
+    assert C._present("a shield", "without a sword, a shield")
+    assert not C._present("a sword", "without a sword, a shield")
+
 
 def test_t87_sleeve_on_bare_arm_andon_sleeveless_does_not():
     doc = C.load_canon(W3)
