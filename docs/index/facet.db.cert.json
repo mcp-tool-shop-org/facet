@@ -1,8 +1,8 @@
 {
  "andon": [],
  "corpus": {
-  "files": 438,
-  "id": "82d6c96f75fa9b43ef748326631c0074a0f380ca249b8d45ff01ca60731eb12a",
+  "files": 439,
+  "id": "1690218e4b643bce3aad592606f7ed314319df5c57d3e6fa6bdd097c5d916e22",
   "manifest": {
    "CLAUDE.md": "93c35f3f9ebe37f483728897184ecfa4dbdd66bf4cf74d9c351330bd6f89ca17",
    "README.md": "0eee595731a5dbeebd7bed3a9243736bfc0f4463a07e744b77a6e9729652eaec",
@@ -390,7 +390,8 @@
    "docs/experiments/E66-v6-profile-scope-report.md": "1dd761138a6a51d6e7263f5e55603251a2f6ccd2c6fbd20f9b5fec168fe434ee",
    "docs/experiments/E67-a1-paint-prep-kickoff.md": "a8892a78adc6f24cdcfaede40b27da424ba036bfbefab1787daffac0925784fd",
    "docs/experiments/E67-a1-paint-prep-report.md": "773cb322906833c3a5349542e019d126800396bb4cee1ffa4e57f06695460801",
-   "docs/experiments/README.md": "ed6a00bdfb6f731959a32986723399cf066feceb50b135c058b7093ccd905588",
+   "docs/experiments/E67-contamination-map-report.md": "d8870e535db49b03f9263019477328a3f5963657a213388b1ef6e3830d8c004d",
+   "docs/experiments/README.md": "7eba0261d720baa3961a5edacfca960aaa99e96e89e0938ca9806c53d128bf22",
    "docs/findings.md": "a67189c22c064bafaa9272b0a93bfcf81fcf5ab6b0529c67dfc88a5606e69b55",
    "docs/grok-consult-1-brief.md": "00e2db720f46c917d73337055380ed7427cb78897aa4a5b9cac1c504104e8c91",
    "docs/grok-consult-10-brief.md": "ea7684e233982263e621fc1364d45788cd6c5402fc1bdee38c54aee65581a000",
@@ -418,7 +419,7 @@
    "docs/handbook/index.md": "2481565674a67102d8bc5e5853ce95af48f5694a1f765032d543a07d7bdfbe20",
    "docs/handbook/profiles.md": "411d6c7cbe44cda94d969e05e9d3d8882d898334208c949551857b90b336165b",
    "docs/handbook/subjects.md": "98485c9a6c66760ec4bc4fef0ff0b5f7ac385bc40681c88562a5e493262914e7",
-   "docs/instrument-census.md": "ee3a4abdefdae3f0e223f74a3332d384923c39ae141e7b9b86ed782d3d73286f",
+   "docs/instrument-census.md": "b8f0992210ddb7f0330a47937c693decb657f91c7d71191efa580b55d12409ad",
    "docs/known-defects.md": "1c59c6d043c003ace4306b27398797a26f2db55fd282d631b161c1aebecc959c",
    "docs/measurement-conventions.md": "a89e766ef7e35e7e2d2ffb9533eb5dcb68f3c6d74fd56a6ddfdaf270771b1c60",
    "docs/profiles-design.md": "926c5f767cbdd043ab2740abfbf40d3cc79a9cc765aea57b3ddc46d2202c4339",
@@ -445,20 +446,20 @@
   }
  },
  "counts": {
-  "artifacts": 1268,
+  "artifacts": 1275,
   "decisions": 227,
   "experiments": 67,
-  "fts": 6437,
+  "fts": 6458,
   "handoffs": 31,
   "laws": 113,
   "phenomena": 28,
-  "prose_sections": 3935,
+  "prose_sections": 3949,
   "rulings": 768
  },
  "db": {
-  "bytes": 16236544,
+  "bytes": 16293888,
   "path": "docs/index/facet.db",
-  "sha256": "e66f53389a27e041285d1a259057eb124084aea40e7578fab182b7431e27583c"
+  "sha256": "0bbac576a693b45b9e943f512c92b05cbcc8df0923f534b82680b34689a31661"
  },
  "determinism_leg": "byte-identity",
  "failures": [],
@@ -478,7 +479,7 @@
   "==============================================================================",
   "",
   "[leg 1] determinism - two builds from an unchanged record",
-  "  BYTE-IDENTICAL   16236544 bytes, both builds",
+  "  BYTE-IDENTICAL   16293888 bytes, both builds",
   "",
   "[corpus] ruling documents discovered by the sorted glob",
   "  E01-ruling-gate1.md                            arc E01                0 rows - prose only",
@@ -617,11 +618,11 @@
   "  laws           113 rows   dangling 0",
   "  experiments     67 rows   dangling 0",
   "  handoffs        31 rows   dangling 0",
-  "  artifacts     1268 rows   dangling 0",
+  "  artifacts     1275 rows   dangling 0",
   "  phenomena       28 rows   dangling 0",
   "  decisions      227 rows   dangling 0",
-  "  fts           6437 rows   dangling 0",
-  "  total checked 2502, dangling 0",
+  "  fts           6458 rows   dangling 0",
+  "  total checked 2509, dangling 0",
   "",
   "[leg 4] the seeded question set - target within the top 3",
   "  canny values for the beast         rank 3   docs/experiments/E12-ruling.md \u00b7 Ruling 11a",
@@ -651,7 +652,7 @@
   "",
   "[vocabulary] what each declared vocabulary did not recognise",
   "             REPORT ONLY - this section never fails the run",
-  "  artifact kinds         recognised  6548   unrecognised    0",
+  "  artifact kinds         recognised  6574   unrecognised    0",
   "  experiment status      recognised   102   unrecognised   32",
   "      not recognised: **PLAN SUPERSEDED IN PLACE; S0 AND S1 R\u2026, **RUN** \u2192 [E51-fill-repair-report](E51-\u2026, **RUN; A CLEAN NEGATIVE, AND THE ARM IS\u2026, **RUN; ABSENT** \u2192 [E53-n11-spec-arm-rep\u2026, **RUN; ALL FOUR CELLS REJECTED BY THE D\u2026, **RUN; THE DIRECTOR ACCEPTS THE SHEETS\u2026, **RUN; THE DIRECTOR RULES IT A CLEAR ST\u2026, **deprioritised by E07's ruling** \u2014 den\u2026  (+24 more occurrence(s))",
   "  law paid_for_by        recognised    78   unrecognised    0",
@@ -670,7 +671,7 @@
  ],
  "unattributed_failures": [],
  "verb": "record_build",
- "verified_utc": "2026-08-19T04:39:54Z",
+ "verified_utc": "2026-08-19T05:14:25Z",
  "verify_exit_code": 0,
  "written_by": "tools/record_mcp.py"
 }
