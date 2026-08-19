@@ -61,8 +61,8 @@ next instruction rather than the same one.
 | | |
 |---|---|
 | HEAD | re-measure — `git log --oneline -1`. **v0.7.0 tagged and pushed**; verify the publish by three live version strings (npm, PyPI, GitHub Release), never by a green tick |
-| suite | **THE SUITE: 1342 tests, 1288 hermetic.** RE-COUNT before quoting — `pytest --collect-only -q` and again with `-m "not artifacts"`, currently 1342 total / 1288 hermetic. T34 pins ~14 count surfaces **and** a separate set of experiment-count surfaces read off the status table in `docs/experiments/README.md` — that table is the authority, not the index. ⚠ **T34 also pins three anchor SENTENCES in this file**; rewrite one and it fires, and one of them is the fixture a can-fail leg rewrites by hand, so restore the phrasing verbatim rather than re-pinning it |
-| the record | four-leg verify SERVING at close, byte-identity, over 68 experiments. No staleness findings at the declaration leg — recertify with MCP `record_build` after any doc change. 415 corpus files; `paid_for_by` reports 0 unrecognised |
+| suite | **THE SUITE: 1346 tests, 1289 hermetic.** RE-COUNT before quoting — `pytest --collect-only -q` and again with `-m "not artifacts"`, currently 1346 total / 1289 hermetic. T34 pins ~14 count surfaces **and** a separate set of experiment-count surfaces read off the status table in `docs/experiments/README.md` — that table is the authority, not the index. ⚠ **T34 also pins three anchor SENTENCES in this file**; rewrite one and it fires, and one of them is the fixture a can-fail leg rewrites by hand, so restore the phrasing verbatim rather than re-pinning it |
+| the record | four-leg verify SERVING at close, byte-identity, over 69 experiments. No staleness findings at the declaration leg — recertify with MCP `record_build` after any doc change. 415 corpus files; `paid_for_by` reports 0 unrecognised |
 | canon | W3 24/24 ratified, **binding 0/27 faces**; LONGSWORD 5/5. Galleon, dragon, logo, E10-LAYER have IDENTITY.md and no surfaces JSON |
 | the specimen | `profiles/character.json` names **5 of 19** and the gate refuses it. **LEFT BROKEN ON PURPOSE** |
 | spend | **zero cloud credits, still** |

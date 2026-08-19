@@ -111,6 +111,21 @@ ap.add_argument("--headband-bg-withhold", action="store_true",
                      "it; otherwise left for stage 2's brush). OFF BY DEFAULT: the "
                      "code path below this flag's checks is byte-identical to the "
                      "pre-E68 tool when it is not passed.")
+ap.add_argument("--bg-withhold-scope", default="headband",
+                choices=["headband", "all"],
+                help="E69 (docs/experiments/E69-whole-figure-withhold-kickoff.md): "
+                     "scope of --headband-bg-withhold's own predicate. 'headband' "
+                     "(the default) is E68's exact rule, unchanged -- withhold is "
+                     "tested on head-band texels only, and this flag's mere presence "
+                     "at its default changes nothing (the anchor proves the omitted- "
+                     "flag AND headband-scoped paths both still reproduce their "
+                     "pre-E69 recordings exactly). 'all' widens the SAME predicate "
+                     "(dE_bg < the tool's existing --bg-de -- no new threshold) to "
+                     "every accepted texel on the figure, head-band or not: geometry "
+                     "says figure, paint says wall, leave a hole, wherever that "
+                     "happens rather than only at the head. Has no effect unless "
+                     "--headband-bg-withhold is also passed. Does not touch --bg-de "
+                     "or --bg-max-pct.")
 ap.add_argument("--edge-min-struct", type=int, default=50,
                 help="structures smaller than this are keying specks, not parts")
 ap.add_argument("--edge-absolute", action="store_true",
@@ -865,21 +880,29 @@ for _view_i, view in enumerate(VIEWS):
     relaxed = d_s[inm] < e_abs_s[inm]
     dE_bg = np.linalg.norm(srgb_to_lab(col) - srgb_to_lab(bgcol), axis=-1)
 
-    # HEAD-BAND BACKGROUND WITHHOLD (E68). Opt-in, OFF by default -- every line from
-    # `p_tr` onward is UNCHANGED CODE operating on whatever population reaches it, so
-    # with the flag off that population is exactly the pre-E68 one, byte for byte.
-    # On head-band texels ONLY, if THIS view's own twin sample sits within the tool's
-    # EXISTING --bg-de of THIS view's own EXISTING fitted background (the dE_bg just
-    # computed two lines up -- no new threshold, --bg-max-pct untouched), the texel is
-    # removed from the accepted population HERE, before `relaxed`/the ANDON's own
-    # population are read, rather than only reported after.
+    # HEAD-BAND BACKGROUND WITHHOLD (E68), SCOPE WIDENED TO EVERY FACE (E69). Opt-in,
+    # OFF by default -- every line from `p_tr` onward is UNCHANGED CODE operating on
+    # whatever population reaches it, so with the flag off that population is exactly
+    # the pre-E68 one, byte for byte. At `--bg-withhold-scope headband` (the default,
+    # unchanged from E68) this block computes exactly what E68 computed: `hb` is
+    # `headband[idx]`. At `--bg-withhold-scope all`, `hb` widens to every accepted
+    # texel on this view, head-band or not: if THIS view's own twin sample sits within
+    # the tool's EXISTING --bg-de of THIS view's own EXISTING fitted background (the
+    # dE_bg just computed two lines up -- no new threshold, --bg-max-pct untouched),
+    # the texel is removed from the accepted population HERE, before `relaxed`/the
+    # ANDON's own population are read, rather than only reported after -- the
+    # identical rule E68 wrote, run over a wider domain rather than a new rule.
     if args.headband_bg_withhold:
-        hb = headband[idx]
+        if args.bg_withhold_scope == "all":
+            hb = np.ones(len(idx), dtype=bool)
+        else:
+            hb = headband[idx]
         withhold = hb & (dE_bg < args.bg_de)
         n_hb, n_wh = int(hb.sum()), int(withhold.sum())
+        scope_nm = "WHOLE-FIGURE" if args.bg_withhold_scope == "all" else "head-band"
         if n_hb:
-            print(f"[twins] {view['name']}: head-band withhold — {n_wh:,} of {n_hb:,} "
-                  f"head-band-accepted texels ({n_wh / n_hb * 100:.2f}%) sit within dE "
+            print(f"[twins] {view['name']}: {scope_nm} withhold — {n_wh:,} of {n_hb:,} "
+                  f"{scope_nm}-accepted texels ({n_wh / n_hb * 100:.2f}%) sit within dE "
                   f"{args.bg_de:.0f} of THIS view's own background; withheld (not "
                   f"written by this view; becomes a hole unless another view writes "
                   f"it).", flush=True)
@@ -969,6 +992,14 @@ if args.headband_bg_withhold:
     print(f"[twins] head-band hole cost (POOLED, all views): {hb_holes:,} / "
           f"{hb_total:,} head-band texels ({hb_holes / max(hb_total, 1) * 100:.2f}%) "
           f"ended unwritten", flush=True)
+    if args.bg_withhold_scope == "all":
+        # E69: the SAME pooled hole-cost measurement, over every valid texel rather
+        # than only the head band -- diagnostic only, nothing downstream reads it.
+        fig_total = int(validA.sum())
+        fig_holes = int(hole.sum())
+        print(f"[twins] WHOLE-FIGURE hole cost (POOLED, all views): {fig_holes:,} / "
+              f"{fig_total:,} valid texels ({fig_holes / max(fig_total, 1) * 100:.2f}%) "
+              f"ended unwritten", flush=True)
 
 Image.fromarray((atlas * 255).round().astype(np.uint8)).save(args.out)
 Image.fromarray((hole * 255).astype(np.uint8)).save(
