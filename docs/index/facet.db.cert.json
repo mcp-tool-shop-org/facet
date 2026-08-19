@@ -2,7 +2,7 @@
  "andon": [],
  "corpus": {
   "files": 445,
-  "id": "370baf70d3075eb03f0623b61d3f67b7b369e196553d34f66e83f22c4909539e",
+  "id": "ef89e9de6b4e959957f67fb297de463bb008468462da6f6d305ada9602190576",
   "manifest": {
    "CLAUDE.md": "93c35f3f9ebe37f483728897184ecfa4dbdd66bf4cf74d9c351330bd6f89ca17",
    "README.md": "aba8d5b889d33085d8c69a054d314cf4b6194f9c74db78a182ce21b4b8ad451f",
@@ -397,7 +397,7 @@
    "docs/experiments/E69-whole-figure-withhold-report.md": "fe8c5ca3ff0a47fb204091cdc39c49b21e97cb92dec9fd7ba5758eaae604bf45",
    "docs/experiments/E70-baked-look-kickoff.md": "9693699f6d893c298b2749c6370da22bb52c6541ed225741720268127bcb2881",
    "docs/experiments/E70-baked-look-report.md": "5f3a3c4cd73e7dfbde1593fcdde7e0e3053bfe20352c1c1794bba162c1caa742",
-   "docs/experiments/README.md": "5affa520e33938f1fdf725a53315f6e20852131201e0e04c5a0ec13163e4db41",
+   "docs/experiments/README.md": "97548daf17bfbab993a1f6a73f90bfdc61aaf574ebeae926e1aff5f5fe97b4a7",
    "docs/findings.md": "a67189c22c064bafaa9272b0a93bfcf81fcf5ab6b0529c67dfc88a5606e69b55",
    "docs/grok-consult-1-brief.md": "00e2db720f46c917d73337055380ed7427cb78897aa4a5b9cac1c504104e8c91",
    "docs/grok-consult-10-brief.md": "ea7684e233982263e621fc1364d45788cd6c5402fc1bdee38c54aee65581a000",
@@ -463,9 +463,9 @@
   "rulings": 768
  },
  "db": {
-  "bytes": 16543744,
+  "bytes": 16539648,
   "path": "docs/index/facet.db",
-  "sha256": "4557587dc59830f3abd21469e49005faeb909b3f9bb5b237417e9080f94d7a1a"
+  "sha256": "9db45904186eb0bd8c48c90fa360b6b99831be7803b07e0f436a74dd9a4be524"
  },
  "determinism_leg": "byte-identity",
  "failures": [],
@@ -485,7 +485,7 @@
   "==============================================================================",
   "",
   "[leg 1] determinism - two builds from an unchanged record",
-  "  BYTE-IDENTICAL   16543744 bytes, both builds",
+  "  BYTE-IDENTICAL   16539648 bytes, both builds",
   "",
   "[corpus] ruling documents discovered by the sorted glob",
   "  E01-ruling-gate1.md                            arc E01                0 rows - prose only",
@@ -680,7 +680,7 @@
  ],
  "unattributed_failures": [],
  "verb": "record_build",
- "verified_utc": "2026-08-19T07:44:29Z",
+ "verified_utc": "2026-08-19T07:47:54Z",
  "verify_exit_code": 0,
  "written_by": "tools/record_mcp.py"
 }
