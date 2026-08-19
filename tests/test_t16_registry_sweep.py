@@ -27,16 +27,30 @@ SWEEP = "diagnostics/e04_registry_sweep.py"
 
 # profile -> (exit code, undecided count, _per_invocation count)
 END_STATE = {
-    "beast": (0, 0, 3),
-    "ship": (0, 0, 3),
-    "prop": (1, 1, 3),
-    "character": (1, 18, 1),
+    "beast": (0, 0, 4),
+    "ship": (0, 0, 4),
+    "prop": (1, 1, 4),
+    "character": (1, 18, 2),
 }
 # 84, not c284693's 85: T14 (E16 Ruling 4a) reclassified texpass_iter's
 # edge-frac as CODE in the sweep's section-6 transcription, so it leaves the
 # subject-data population on all four profiles. This pin moved in T14's own
 # commit, which is the tests-ride-the-commit law doing its job.
-TOTAL_FLAGS = 84
+#
+# 85 again from 2026-08-19, and NOT for T14's reason: project_twins gained
+# --bg-withhold-scope at E68, widened at E69. THE FLAG LANDED WITHOUT MOVING
+# THIS TABLE and the five legs here have been red ever since - through the E69
+# and E70 folds, both of which reported a green suite. The probable mechanism
+# is this repo's own recorded one, `pytest | tail` exiting with tail's 0 over a
+# failed suite. The repair classified the flag as _per_invocation in all four
+# profiles (it is inert unless the store_true --headband-bg-withhold is passed,
+# and E68 ran it at 'headband' while E69 ran it at 'all' on the SAME subject),
+# which is why ONLY this total and the per-invocation counts move: every
+# profile returns to the exit code and undecided count it was already pinned
+# at. A value-based classification would have moved the undecided counts too,
+# so that invariance is the evidence the classification is right rather than
+# convenient.
+TOTAL_FLAGS = 85
 
 
 def _run_sweep(profile):

@@ -127,6 +127,9 @@
    }
   },
   "project_twins.py": {
+   "_per_invocation": {
+     "bg-withhold-scope": "SUPPLIED PER INVOCATION, never from this profile - the flag is INERT unless the store_true --headband-bg-withhold is passed (project_twins.py:884-896: with the switch off, every line from `p_tr` onward is byte-identical to the pre-E68 tool). It selects which experiment is running rather than a fact about this subject: E68 ran it at 'headband' and E69 at 'all' on the SAME subject in the same week, so no single value is correct for this route. Added in the commit that moves T16's pins, per the tests-ride-the-commit law - the flag landed at E68/E69 without this entry and T16 has been red since."
+   },
    "fit-axis": {
     "value": "height",
     "why": "The framing family on its FOURTH consumer (E12 Ruling 24a exposed the slot; 26a completed the pin). The beast's adopted value was width BECAUSE that subject is landscape - the family pins per subject, and this subject is portrait. The projector's width-fit derivation reproducing the beast's masks at IoU 1.000000 was a fact about agreement with THAT frame derivation; this subject's masks derive height-fit, and the projector must agree with THEM. The measurement dispatch's sweep certifies the family's coherence before anything projects.",

@@ -121,6 +121,9 @@
    }
   },
   "project_twins.py": {
+   "_per_invocation": {
+     "bg-withhold-scope": "SUPPLIED PER INVOCATION, never from this profile - the flag is INERT unless the store_true --headband-bg-withhold is passed (project_twins.py:884-896: with the switch off, every line from `p_tr` onward is byte-identical to the pre-E68 tool). It selects which experiment is running rather than a fact about this subject: E68 ran it at 'headband' and E69 at 'all' on the SAME subject in the same week, so no single value is correct for this route. Added in the commit that moves T16's pins, per the tests-ride-the-commit law - the flag landed at E68/E69 without this entry and T16 has been red since."
+   },
    "fit-axis": {
     "value": "width",
     "why": "ADOPTED E12 Ruling 24a - the FOURTH framing-family consumer (turn_render, silhouette_masks, texpass_iter, now the projector). The tool historically derived its frame height-fit internally; handoff 13's read-before-run found it, and the width-fit derivation reproduces the recorded silhouette masks at IoU 1.000000 where height-fit measures 0.986006 - geometry, not preference. A0L (height-fit) is retained in the E13 record as the alternative's measured cost floor.",
