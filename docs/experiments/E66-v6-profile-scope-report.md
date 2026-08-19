@@ -277,6 +277,20 @@ anything — the advisor folds.
 - Sheet: `E:\AI\training\facet_E66\reroll\sheet\E66_reroll_sheet.png`
 - Gate E check: `E:\AI\training\facet_E66\reroll\..\gate_e_check.log`
   (scratchpad copy; rerun trivially from the paths listed in this report)
+
+## Director verdict (2026-08-19)
+
+**66 REROLL is the winner.** Seed 314159 is the accepted v6 cell.
+
+Head: true profile, with the body. Chest: nearest of the four rolls to
+the declared materials; the remaining maroon diagonal is accepted as
+part of this cell, not a reason to reject it. The seed-770700 frame
+stays in the record as a rejected kept artifact. The one-re-roll law
+stays spent. No third roll.
+
+This closes A1's twin stage: E65 v0–v5 and v7, plus this frame as v6.
+Manifest: `E:\AI\training\facet_A1_accepted_ring\MANIFEST.json`.
+
 - Handoff (live record, kept current through this session):
   `E:\AI\training\facet_E66\reroll\handoff.md`
 - Job: `prompt_id 7acb17b9-06b9-4813-b06b-8ff2259e9afd`
