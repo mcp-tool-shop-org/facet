@@ -17,8 +17,8 @@
     "py_files_total": 113
   },
   "provenance": {
-    "corpus_files": 420,
-    "corpus_files_before_self_exclusion": 430,
+    "corpus_files": 421,
+    "corpus_files_before_self_exclusion": 431,
     "probe_interpreter": "E:\\AI-Models\\trellis2-env\\Scripts\\python.exe",
     "probe_interpreter_version": "3.13.13",
     "probe_skipped": false,
