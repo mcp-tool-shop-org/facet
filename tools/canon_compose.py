@@ -118,6 +118,23 @@ Standards compliance (CLAUDE.md workflow-standards.md, scored 0-3):
   requirement is real and enforced, not just internally consistent with
   itself).
 
+  E62 ADDENDUM (depends_on consultation): PIN_PER_STEP - 2, unchanged (the
+  edge is read live from canon_gate.depends_on_pairs(doc), never retyped).
+  ANDON_AUTHORITY - 2 (the new refusal is unconditional - runs on every
+  form's output, not opt-in - and carries three REQUIRED can-fail legs,
+  each proven by reversion: see the fence-1 legs in selftest() and this
+  arc's report for the monkeypatch transcripts). NAMED_COMPENSATORS - n/a,
+  unchanged. DECOMPOSE_BY_SECRETS - 2 (the depends_on check is its own
+  function, _refuse_if_and_joins_a_dependent_pair, called from both
+  compose() return points rather than folded into either joiner).
+  UNCERTAINTY_GATED_HUMANS - 2 (A1's depends_on rows are DRAFT canon,
+  marked as such in a1.surfaces.json's own notes, reported for the
+  Director's ratification at the fold - same standing as every other
+  canon-data decision in this file). EXTERNAL_VERIFIER - 2 (the check runs
+  through canon_gate.depends_on_pairs(), never re-deriving the edge; not 3
+  because the "and" vs "over"/unjoined DECISION is this file's own code,
+  same as every other joiner choice here).
+
 E61 ADDITIONS (layering-repair arms, docs/experiments/E61-layering-repairs-
 kickoff.md). Three new knobs, all opt-in via keyword args so every existing
 call (E60's Stage 2, this file's own selftest) keeps producing byte-identical
@@ -152,6 +169,39 @@ output with no argument supplied.
     missing required phrase for a reason that has nothing to do with the arm
     under test; checking it against the doc this same function produced
     tests what the arm can actually be honest about.
+
+E62 ADDITIONS (the schema patch, docs/experiments/E62-schema-patch-kickoff.
+md). compose() now REFUSES a depends_on pair coordinated with "and" -
+unconditionally, on every form's output, not behind a keyword arg.
+
+  _refuse_if_and_joins_a_dependent_pair(doc, composed_text) - called at
+    BOTH of compose()'s return points (flat's early return, and the
+    grouped/consolidated join at the bottom). Reads canon_gate.
+    depends_on_pairs(doc), resolves each edge to its two occupants' CURRENT
+    phrases via named_occupants() (honest for a with_occupant_phrase-
+    modified doc too), and refuses if the composed text contains either
+    phrase directly adjacent to " and " the other - case-insensitive, both
+    orders, an exact two-phrase substring test rather than a bare "and"
+    search (which would fire on a phrase's own internal "and", e.g. "hands
+    empty and open"). "over" is licensed; leaving the pair unjoined (flat
+    form) is licensed; "and" between exactly those two phrases is the one
+    illegal join, and it is not opt-in - a caller cannot silently produce
+    it by omitting an argument.
+
+  LOAD-BEARING CONSEQUENCE, stated rather than left to be discovered: A1's
+  canon (canon/a1.surfaces.json) now declares vest_torso/vest_skirt
+  depends_on: ["N2"] (the vest layers over the shirt). Because
+  garment_join's OWN default has always been "and" (E60's original,
+  unfixed behaviour, kept as the default on purpose - see the E61 ADDITIONS
+  note above), compose(doc, form="grouped") with NO garment_join argument
+  now ANDONs on A1 by design: the bare default coordinates exactly the
+  depends_on pair with "and" in the head-pair join. This is fence 1a
+  working, not a regression - every caller of compose() on a subject with a
+  depends_on-linked head pair must now pass garment_join="over" or use
+  form="flat" (or "consolidated", if the pair does not land in ITS last
+  two garments - A1's does not, so consolidated is unaffected). selftest()
+  below passes garment_join="over" explicitly everywhere its OWN leg is
+  not itself testing the "and" refusal.
 
 CLI:
   python tools/canon_compose.py --selftest
@@ -337,6 +387,56 @@ def with_occupant_phrase(doc, n_id, phrase):
     return d2
 
 
+def _dependent_phrase_pairs(doc):
+    """(child_phrase, parent_phrase) for every depends_on edge declared on
+    doc, lowercased, resolved via named_occupants() so a phrase reflects
+    whatever text is ACTUALLY live in `doc` right now - honest for a
+    with_occupant_phrase-modified copy too, matching this file's existing
+    E61 discipline (compose() and check_composed() always run against the
+    SAME doc). E62 addition - the composer's own consultation of the
+    depends_on edge (charter: "canon_compose consults the edge")."""
+    pairs = canon_gate.depends_on_pairs(doc)
+    if not pairs:
+        return []
+    by_id = {o["n_id"]: o["phrase"] for o in named_occupants(doc)}
+    out = []
+    for pair in pairs:
+        a, b = tuple(pair)
+        pa, pb = by_id.get(a), by_id.get(b)
+        if pa and pb:
+            out.append((pa.lower(), pb.lower()))
+    return out
+
+
+def _refuse_if_and_joins_a_dependent_pair(doc, composed_text):
+    """E62 fence 1: a depends_on pair may be composed with 'over' (licensed,
+    E61/5df9d20) or left unjoined (flat form, Arm L - also licensed, held
+    3/3 in E61) but may NEVER be coordinated with the bare word 'and'
+    directly between their two phrases - no comma, no other word between
+    them. Over is not required; and is the one illegal join.
+
+    Checked on the OUTPUT TEXT, case-insensitively (matching this file's own
+    p_rear.lower()/lower_front convention elsewhere), in both phrase orders,
+    as an EXACT two-phrase adjacency test - not a bare 'and' substring
+    search, which would fire on the word appearing anywhere else in the
+    prompt (a phrase's own internal text can carry 'and', e.g. "hands empty
+    and open"). This runs uniformly across all three forms rather than as a
+    flag threaded through every joiner: flat is safe by construction (it
+    never emits 'and' between garment phrases at all - see this file's own
+    module docstring); consolidated is safe for a HEAD pair specifically
+    (its 'and' joins only the LAST two garments); grouped's head-pair join
+    is exactly where 'and' is the historical default this law forbids for a
+    depends_on pair. Checking the text once, generically, covers all three
+    without assuming which internal code path built it."""
+    lower = composed_text.lower()
+    for pa, pb in _dependent_phrase_pairs(doc):
+        if (pa + " and " + pb) in lower or (pb + " and " + pa) in lower:
+            _andon(
+                "depends_on pair coordinated with 'and': %r / %r - licensed "
+                "joins are 'over' or leaving them unjoined, never 'and' "
+                "(E62 fence 1)" % (pa, pb))
+
+
 def clauses_by_class(doc, cls):
     return [c for c in doc.get("legal_clauses") or [] if c.get("class") == cls]
 
@@ -499,7 +599,9 @@ def compose(doc, view="front", form="grouped", garment_join="and", joints=()):
         parts = ([framing] + garments + features + style_phrases + bg + neg
                  + pose + joint_phrases)
         parts = [p for p in parts if p]
-        return _cap(", ".join(parts) + ".")
+        result = _cap(", ".join(parts) + ".")
+        _refuse_if_and_joins_a_dependent_pair(doc, result)
+        return result
 
     # grouped / consolidated: framing -> staging -> style -> identity -> joints
     sec_framing = (_cap(framing) + ".") if framing else ""
@@ -530,7 +632,9 @@ def compose(doc, view="front", form="grouped", garment_join="and", joints=()):
 
     sections = [s for s in (sec_framing, sec_staging, sec_style, sec_identity, sec_joints)
                 if s]
-    return " ".join(sections)
+    result = " ".join(sections)
+    _refuse_if_and_joins_a_dependent_pair(doc, result)
+    return result
 
 
 def check_composed(doc, prompt, scope="subject"):
@@ -572,7 +676,15 @@ def anchor_diff(doc, recipe_text):
 def selftest():
     doc = canon_gate.load_canon(os.path.join(_REPO, "canon", "a1.surfaces.json"))
 
-    p_front = compose(doc, view="front", form="grouped")
+    # E62: A1's canon now declares vest_torso/vest_skirt depends_on: ["N2"]
+    # (the vest layers over the shirt). garment_join="over" is passed
+    # EXPLICITLY everywhere below that this function needs a passing
+    # grouped compose, because the bare default (garment_join="and") now
+    # ANDONs on this doc by design - fence 1's own can-fail leg (a), proven
+    # with real data further down, is exactly that refusal. Every leg below
+    # this point that is not itself testing garment_join uses "over" so its
+    # own (unrelated) assertions stay isolated from the fence-1 concern.
+    p_front = compose(doc, view="front", form="grouped", garment_join="over")
     chk = check_composed(doc, p_front)
     if not chk["ok"]:
         _andon("front-view grouped compose failed the gate: missing=%s "
@@ -597,7 +709,7 @@ def selftest():
     # contained a face phrase must fail. Checked directly against the
     # composed text - A1 declares no view scopes, so canon_gate cannot be
     # asked to gate a specific view (see module docstring).
-    p_rear = compose(doc, view="rear", form="grouped")
+    p_rear = compose(doc, view="rear", form="grouped", garment_join="over")
     lower_rear = p_rear.lower()
     face_phrases = ("curious brown eyes", "a slight smile",
                      "crisp readable facial features")
@@ -660,7 +772,8 @@ def selftest():
     # CAN-FAIL LEG (E61): joints=(...) emits the named joint phrase and the
     # result still passes the gate; the DEFAULT (no joints requested) must
     # NOT emit it - licensing is not requiring, proven in both directions.
-    p_joint = compose(doc, view="front", form="grouped", joints=("vest_shirt",))
+    p_joint = compose(doc, view="front", form="grouped", joints=("vest_shirt",),
+                      garment_join="over")
     if "plum vest edge against cream shirt" not in p_joint.lower():
         _andon("joints=('vest_shirt',) did not emit the joint phrase: %r" % p_joint)
     chk_joint = check_composed(doc, p_joint)
@@ -685,7 +798,13 @@ def selftest():
     # rather than merely being internally consistent with itself.
     old_n1 = "a plum long-vest with fine gold embroidery"
     doc_pre = with_occupant_phrase(doc, "N1", old_n1)
-    p_pre = compose(doc_pre, view="front", form="grouped")
+    # with_occupant_phrase deep-copies the WHOLE doc and overrides only the
+    # occupant.phrase field, so doc_pre still carries vest_torso/vest_skirt's
+    # depends_on: ["N2"] (a sibling of "occupant", untouched by the
+    # override) - garment_join="over" is needed here for the same E62
+    # reason as p_front/p_rear/p_joint above; this leg's own concern is the
+    # "sleeveless" wording, not the connector.
+    p_pre = compose(doc_pre, view="front", form="grouped", garment_join="over")
     if "sleeveless" in p_pre.lower():
         _andon("with_occupant_phrase override did not take effect - "
                "'sleeveless' is still present: %r" % p_pre)
@@ -703,6 +822,51 @@ def selftest():
     else:
         _andon("with_occupant_phrase silently accepted an unknown occupant id")
 
+    # CAN-FAIL LEG (E62 fence 1a, REQUIRED): the OLD default
+    # (garment_join="and") on the LIVE A1 doc - which now declares
+    # vest_torso/vest_skirt depends_on: ["N2"] - must refuse. Real data, not
+    # a synthetic fixture: this is the concrete case the charter names.
+    try:
+        compose(doc, view="front", form="grouped")  # garment_join defaults to "and"
+        _andon("compose() with the default garment_join='and' did NOT "
+               "refuse A1's depends_on-linked pair (N1 vest / N2 shirt) - "
+               "fence 1a is not enforced")
+    except Andon as e:
+        if "depends_on pair coordinated with" not in str(e):
+            _andon("default and-join refused for the wrong reason: %s" % e)
+
+    # CAN-FAIL LEG (E62 fence 1b, REQUIRED): a FLAT list naming both
+    # garments as separate noun phrases with NO preposition must still
+    # pass - this is Arm L, which E61 measured held 3/3. p_flat/chk_flat
+    # above already prove the gate accepts it; asserted explicitly here so
+    # this leg exists so nobody "helpfully" requires the word "over" and
+    # refuses Arm L (the charter's own words).
+    vest_ph = shirt_ph = None
+    for o in named_occupants(doc):
+        if o["n_id"] == "N1":
+            vest_ph = o["phrase"].lower()
+        if o["n_id"] == "N2":
+            shirt_ph = o["phrase"].lower()
+    if not vest_ph or not shirt_ph:
+        _andon("could not resolve N1/N2 phrases to check the flat-form leg")
+    lower_flat = p_flat.lower()
+    if (vest_ph + " and " + shirt_ph) in lower_flat or (shirt_ph + " and " + vest_ph) in lower_flat:
+        _andon("flat form unexpectedly coordinates the depends_on pair with "
+               "'and' - fence 1b (Arm L must pass unjoined) is violated")
+    if vest_ph not in lower_flat or shirt_ph not in lower_flat:
+        _andon("flat form dropped a depends_on occupant phrase entirely - "
+               "cannot prove the unjoined leg without both phrases present")
+
+    # CAN-FAIL LEG (E62 fence 1c, REQUIRED): 'over' composes cleanly for the
+    # SAME depends_on pair. p_over/chk_over above already prove the gate
+    # accepts it; this additionally proves 'over' sits directly between the
+    # two dependent phrases specifically, not merely present somewhere in
+    # the prompt.
+    lower_over = p_over.lower()
+    if (vest_ph + " over " + shirt_ph) not in lower_over:
+        _andon("garment_join='over' did not place 'over' directly between "
+               "the depends_on pair's own two phrases: %r" % p_over)
+
     return {
         "front_ok": True, "flat_ok": True, "consolidated_ok": True,
         "rear_drops_face": True,
@@ -711,6 +875,9 @@ def selftest():
         "garment_join_over_ok": True,
         "joint_emit_ok": True,
         "occupant_override_ok": True,
+        "depends_on_and_refused": True,
+        "depends_on_flat_ok": True,
+        "depends_on_over_ok": True,
     }
 
 
@@ -758,7 +925,8 @@ def main(argv=None):
             sys.stdout.write(
                 "selftest PASS  front/flat/consolidated gated  "
                 "rear drops face  anchor in_both=%d canon_only=%d  "
-                "garment-join-over held  joint-emit held  occupant-override held\n"
+                "garment-join-over held  joint-emit held  occupant-override held  "
+                "depends-on and-refused  depends-on flat-held  depends-on over-held\n"
                 % (r["anchor_in_both"], r["anchor_canon_only"]))
             return 0
         if not args.cmd:

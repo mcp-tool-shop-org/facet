@@ -125,6 +125,45 @@ CALIBRATION CLAIM (run --selftest; T87 pins the same numbers).
 
   python tools/canon_gate.py --selftest
 
+DEPENDS_ON AND THE COLLISION LAW (E62, schema patch).
+
+  depends_on. A surface row (or joint) may carry
+  depends_on: [<parent occupant id>] - a layering relation spelled
+  as a parented edge rather than more prose on the child occupant.
+  A1's vest_torso/vest_skirt (occupant N1) depend on N2 (the
+  shirt): the vest layers OVER the shirt. Validated at load time
+  (unknown parent id refuses; self-dependency refuses);
+  depends_on_pairs(doc) resolves the edges to occupant-id pairs,
+  collapsed across every surface a shared occupant sits on. Consumed
+  by tools/canon_compose.py's compose(), never by this file - the
+  gate validates the relation exists and is well-formed, the
+  composer is what respects it when building a sentence. DRAFT on
+  A1 until the Director ratifies it at the fold; the field is
+  schema, not a canon ratification mechanism, so it carries no
+  ratify flag of its own (see a1.surfaces.json's own inline notes).
+
+  collision_hits(doc). A forbidden token (occ.forbidden) is a
+  collision - and refuses at load time - when EITHER branch fires.
+  BRANCH M (mechanical): the token, matched by the gate's OWN
+  matcher (_forbidden_matches - the exact function forbidden_hits()
+  calls, including the real SLEEVE object, never a re-derived
+  pattern), fires inside another licensed phrase of the SAME
+  subject. W3 stays legal: forbidding "sleeve" fires on nothing
+  among W3's phrases, because the SLEEVE lookahead exempts its one
+  "sleeveless" mention and nothing else licensed carries the word.
+  BRANCH D (declared): doc['protected_tokens'] ({token: reason})
+  names a token this subject protects regardless of what Branch M
+  can see - built because a subject's protection is not always
+  DERIVABLE from its phrases. A1's shirt sleeves are real surfaces
+  but the word "sleeve" appears in no A1 occupant phrase ("a cream
+  high-collared shirt" under-names them), so Branch M alone would
+  ALLOW forbidden:["sleeve"] on A1; Branch D's declaration is what
+  stops that mistake. Two subjects, two reasons, kept distinct: W3
+  may forbid "sleeve" (nothing licensed has a true one); A1 may not
+  (its sleeves are real and under-named).
+
+  python tools/canon_gate.py --selftest    # both branches proven
+
 YES/NO INTERVALS.
 
   coverage          named / prompt_surfaces. Occupancy, not ratification.
@@ -283,6 +322,17 @@ def load_canon(path):
         if j.get("a") not in ids or j.get("b") not in ids:
             _andon("joint %s names unknown surfaces" % j.get("id"))
     _validate_router_fields(doc, ids)
+    # E62: depends_on (schema) and protected_tokens (Branch D schema) are
+    # validated structurally first, then collision_hits() runs both branches
+    # unconditionally - every canon file gets this check for free on every
+    # load, which is what makes "every existing canon file validates
+    # unchanged" a real anchor rather than an assumption.
+    _validate_depends_on(doc, _occupant_ids(doc))
+    _validate_protected_tokens(doc)
+    hits = collision_hits(doc)
+    if hits:
+        _andon("forbidden token collides with a licensed phrase or a "
+               "declared protection: %s" % hits)
     return doc
 
 
@@ -454,16 +504,165 @@ def required_phrases(doc, scope_ids=None):
     return out
 
 
+def _forbidden_matches(word, text):
+    """The gate's OWN token-matching semantics for one forbidden word against
+    one span of text - factored out of forbidden_hits() (behavior-preserving;
+    the two branches below are byte-identical to that function's prior inline
+    form) so collision_hits() (E62 fence 2, Branch M) uses EXACTLY this
+    logic, never a re-implementation or a pattern quoted in markdown (the
+    charter's own correction, 2026-08-18: the first spec draft quoted this
+    pattern and lost its word boundaries to the fold tooling - the fix is to
+    call the compiled SLEEVE object directly, here and in collision_hits,
+    rather than re-deriving anything). 'sleeve' routes through the SLEEVE
+    lookahead (exempts 'sleeveless'); every other word is a \\b-bounded
+    regex."""
+    if word.lower() == "sleeve":
+        return bool(SLEEVE.search(text))
+    return bool(re.search(r"\b%s\b" % re.escape(word), text, re.I))
+
+
 def forbidden_hits(doc, prompt):
     hits = []
     for s in doc["surfaces"]:
         occ = s.get("occupant") or {}
         for w in occ.get("forbidden") or []:
-            if w.lower() == "sleeve":
-                if SLEEVE.search(prompt):
-                    hits.append((s["id"], w))
-            elif re.search(r"\b%s\b" % re.escape(w), prompt, re.I):
+            if _forbidden_matches(w, prompt):
                 hits.append((s["id"], w))
+    return hits
+
+
+def _occupant_ids(doc):
+    """Every occupant id declared anywhere in doc['surfaces']. E62 shared
+    helper - depends_on validation and depends_on_pairs() both need the same
+    known-occupant set, and building it twice would be two chances for the
+    two to disagree about what 'known' means."""
+    ids = set()
+    for s in doc["surfaces"]:
+        occ = s.get("occupant")
+        if occ and occ.get("id"):
+            ids.add(occ["id"])
+    return ids
+
+
+def _validate_depends_on(doc, occ_ids):
+    """E62 schema: a surface row (or joint) may carry
+    depends_on: [<parent occupant id>] - 'vest_torso/vest_skirt depend on
+    N2' (charter). Refuses (raise, not assert - E22's law) when an entry
+    names an occupant id no occupant in this doc declares, or when a row
+    depends on its own occupant - a relation cannot depend on itself.
+
+    Checked on BOTH surfaces and joints, because the charter's schema line
+    names both locations. Only SURFACES carry real E62 data today (A1's two
+    vest rows) - a joint's depends_on is licensed by this validator and
+    consulted by nothing: canon_compose.py's fence-1 check only reads
+    surface-level depends_on (see depends_on_pairs() below and that file's
+    own module docstring). Licensing the field on joints without requiring
+    or consuming it there matches this repo's own 'over is licensed, never
+    required' shape, applied to a schema location rather than a word.
+    """
+    def _check(owner_kind, owner_id, self_occ_id, dep):
+        if dep is None:
+            return
+        if not isinstance(dep, list):
+            _andon("%s %s depends_on must be a list" % (owner_kind, owner_id))
+        for parent in dep:
+            if not isinstance(parent, str) or not parent:
+                _andon("%s %s depends_on entries must be non-empty strings, "
+                       "got %r" % (owner_kind, owner_id, parent))
+            if parent not in occ_ids:
+                _andon(
+                    "%s %s depends_on names unknown occupant %r (known "
+                    "occupants: %s)" % (owner_kind, owner_id, parent,
+                                        sorted(occ_ids)))
+            if self_occ_id and parent == self_occ_id:
+                _andon("%s %s depends_on names its own occupant %r - a "
+                       "relation cannot depend on itself"
+                       % (owner_kind, owner_id, parent))
+
+    for s in doc["surfaces"]:
+        occ = s.get("occupant") or {}
+        _check("surface", s["id"], occ.get("id"), s.get("depends_on"))
+    for j in doc.get("joints") or []:
+        _check("joint", j.get("id"), None, j.get("depends_on"))
+
+
+def depends_on_pairs(doc):
+    """Every depends_on edge as a set of frozenset({child_id, parent_id})
+    pairs, collapsed across every surface a shared occupant sits on (E62). A
+    relation is between two OCCUPANTS, not between two surfaces: N1 sits on
+    both vest_torso and vest_skirt, both declaring depends_on: ["N2"]; this
+    collapses to ONE edge frozenset({"N1", "N2"}), not two. Surfaces only -
+    see _validate_depends_on's note on why joints are validated but not
+    consulted here."""
+    pairs = set()
+    for s in doc["surfaces"]:
+        occ = s.get("occupant")
+        if not occ or not occ.get("id"):
+            continue
+        child = occ["id"]
+        for parent in s.get("depends_on") or []:
+            if parent != child:
+                pairs.add(frozenset((child, parent)))
+    return pairs
+
+
+def _validate_protected_tokens(doc):
+    """E62 fence 2, Branch D schema: doc['protected_tokens'] is a
+    {token: reason} object, both strings, both non-empty. Structural check
+    only - collision_hits() below is what actually consults it against a
+    subject's forbidden declarations."""
+    pt = doc.get("protected_tokens")
+    if pt is None:
+        return
+    if not isinstance(pt, dict):
+        _andon("protected_tokens must be an object of token -> reason")
+    for k, v in pt.items():
+        if not isinstance(k, str) or not k:
+            _andon("protected_tokens key must be a non-empty string, got %r" % (k,))
+        if not isinstance(v, str) or not v.strip():
+            _andon("protected_tokens[%r] reason must be a non-empty string" % (k,))
+
+
+def collision_hits(doc):
+    """E62 fence 2 (corrected spec, c3da18e) - two branches, and neither is
+    `if needle in haystack`. A forbidden token is a collision on this
+    subject when EITHER branch fires.
+
+    BRANCH M (mechanical): _forbidden_matches - the exact function
+    forbidden_hits() itself calls, never a re-implementation - fires the
+    forbidden token inside a licensed phrase of the same subject
+    (licensed_phrases(), the gate's own full aggregate: occupant phrases,
+    blocked additions, legal_clauses, joint phrases). This is the W3 case
+    run in reverse: W3's "a dark green knitted sleeveless tunic" plus
+    forbidden:["sleeve"] on the bare-arm surfaces is LEGAL, because the
+    SLEEVE lookahead exempts "sleeveless" while naive `"sleeve" in phrase`
+    is True and a substring law would refuse W3's own ratified prompt.
+
+    BRANCH D (declared): doc['protected_tokens'] names a token this subject
+    protects regardless of what Branch M can see. Exists because a
+    subject's protection is not always DERIVABLE from its phrases -
+    measured at spec-correction time (reconfirmed by this arc's selftest):
+    the SLEEVE matcher fires on NONE of A1's licensed phrases (the shirt
+    occupant's phrase is "a cream high-collared shirt" - no literal
+    "sleeve" token), so Branch M alone would ALLOW forbidden:["sleeve"] on
+    A1, and a later prompt naming the shirt's real sleeves would then be
+    wrongly refused - the exact case this law exists to prevent. Declared,
+    not derived: this function never infers protection from a surface NAME
+    (a name is not a licensed phrase) and implements no third mechanism.
+    """
+    hits = []
+    licensed = licensed_phrases(doc)
+    protected = {k.lower(): v for k, v in (doc.get("protected_tokens") or {}).items()}
+    for s in doc["surfaces"]:
+        occ = s.get("occupant") or {}
+        for w in occ.get("forbidden") or []:
+            for phrase in licensed:
+                if _forbidden_matches(w, phrase):
+                    hits.append({"branch": "M", "forbidding_surface": s["id"],
+                                 "word": w, "phrase": phrase})
+            if w.lower() in protected:
+                hits.append({"branch": "D", "forbidding_surface": s["id"],
+                             "word": w, "reason": protected[w.lower()]})
     return hits
 
 
@@ -1360,11 +1559,118 @@ def _selftest_required_clause(scratch):
             _andon("malformed required refused for the wrong reason: %s" % e)
 
 
+def _selftest_collision(scratch):
+    """E62 fence 2 - both branches, each proven by a can-fail leg.
+
+    (a) W3 - the NAMED FIXTURE the charter requires stay green, run against
+        the REAL file (not a copy): Branch M's matcher fires on nothing
+        among W3's licensed phrases, because the only candidate containing
+        'sleeve' is "a dark green knitted sleeveless tunic" and the
+        lookahead exempts it. The two real forbidden:["sleeve"] rows
+        (upper_arm_L/R) therefore do not collide.
+
+    (b) A SYNTHETIC subject whose licensed phrase carries a TRUE (unguarded)
+        sleeve token, plus forbidden:["sleeve"] declared elsewhere - the
+        positive case W3 is deliberately built NOT to exercise. Must refuse
+        under Branch M. A negative control (the same fixture with the
+        forbidden list emptied) must load clean, proving the refusal was
+        about the collision and not some other defect in the fixture.
+
+    (c) A1 - Branch D. First reconfirms the advisor's own spec-correction-
+        time measurement: Branch M alone does not cover A1 (no licensed
+        phrase of A1's contains an unguarded 'sleeve'). Then a COPY of A1's
+        real doc, with forbidden:["sleeve"] injected onto shirt_collar,
+        must refuse under Branch D (the protected_tokens declaration this
+        arc adds to the real file). Finally the SAME injected copy with
+        protected_tokens removed must load CLEAN - the charter's own
+        required proof that the protection lives in the DATA, not in a
+        comment: strip the declaration and the identical mutation slips
+        through both branches.
+    """
+    # (a) W3 - real file, must stay green after the patch
+    w3_doc = load_canon(resolve_subject("W3"))
+    w3_hits = collision_hits(w3_doc)
+    if w3_hits:
+        _andon("W3's real canon collides after the E62 patch - the named "
+               "fixture (sleeve on a bare arm / sleeveless tunic) broke: %s"
+               % w3_hits)
+
+    # (b) synthetic subject - Branch M positive case
+    synth = {
+        "subject": "COLFIX", "kind": "prop", "schema": 1,
+        "surfaces": [
+            {"id": "torso", "occupant": {
+                "id": "P1", "phrase": "a linen shirt with a rolled sleeve",
+                "provenance": "prompt"}},
+            {"id": "arm", "occupant": {
+                "id": "bare", "phrase": None, "provenance": "prompt",
+                "kind": "bare", "forbidden": ["sleeve"]}},
+        ],
+    }
+    synth_path = os.path.join(scratch, "colfix.surfaces.json")
+    json.dump(synth, open(synth_path, "w", encoding="utf-8"))
+    try:
+        load_canon(synth_path)
+        _andon("synthetic subject with a true sleeve token in a licensed "
+               "phrase + forbidden:['sleeve'] did NOT refuse under Branch M")
+    except Andon as e:
+        if "collides" not in str(e):
+            _andon("synthetic Branch M subject refused for the wrong "
+                   "reason: %s" % e)
+    synth_clean = json.loads(json.dumps(synth))
+    synth_clean["surfaces"][1]["occupant"]["forbidden"] = []
+    clean_path = os.path.join(scratch, "colfix_clean.surfaces.json")
+    json.dump(synth_clean, open(clean_path, "w", encoding="utf-8"))
+    load_canon(clean_path)  # must NOT raise - proves the refusal above was real
+
+    # (c) A1 - Branch D
+    a1_path = resolve_subject("A1")
+    a1_doc_raw = json.load(open(a1_path, encoding="utf-8"))
+    if "sleeve" not in (a1_doc_raw.get("protected_tokens") or {}):
+        _andon("canon/a1.surfaces.json is missing the E62 protected_tokens "
+               "'sleeve' declaration this leg depends on")
+    lic = licensed_phrases(load_canon(a1_path))
+    if any(_forbidden_matches("sleeve", p) for p in lic):
+        _andon("A1's licensed phrases now contain an unguarded 'sleeve' "
+               "token - Branch M would already cover this case and the "
+               "Branch D can-fail leg below would prove nothing")
+
+    injected = json.loads(json.dumps(a1_doc_raw))
+    found_shirt = False
+    for s in injected["surfaces"]:
+        if s["id"] == "shirt_collar":
+            occ = s["occupant"]
+            occ["forbidden"] = list(occ.get("forbidden") or []) + ["sleeve"]
+            found_shirt = True
+    if not found_shirt:
+        _andon("A1 fixture: shirt_collar surface not found to inject onto")
+    inj_path = os.path.join(scratch, "a1_injected.surfaces.json")
+    json.dump(injected, open(inj_path, "w", encoding="utf-8"))
+    try:
+        load_canon(inj_path)
+        _andon("A1 + forbidden:['sleeve'] on shirt_collar did NOT refuse - "
+               "Branch D is not enforcing the protected_tokens declaration")
+    except Andon as e:
+        if "collides" not in str(e):
+            _andon("A1 Branch D injection refused for the wrong reason: %s" % e)
+
+    # the can-fail proof itself: SAME injected mutation, declaration removed
+    # -> must load CLEAN. This is what proves the protection lives in the
+    # data rather than in a comment.
+    injected_no_decl = json.loads(json.dumps(injected))
+    injected_no_decl.pop("protected_tokens", None)
+    no_decl_path = os.path.join(scratch, "a1_injected_no_decl.surfaces.json")
+    json.dump(injected_no_decl, open(no_decl_path, "w", encoding="utf-8"))
+    load_canon(no_decl_path)  # must NOT raise
+
+
 def selftest(scratch=None):
     _selftest_calibration()
     if scratch is None:
         scratch = tempfile.mkdtemp(prefix="canon_gate_")
-    return _selftest_gates(scratch)
+    result = _selftest_gates(scratch)
+    _selftest_collision(scratch)
+    return result
 
 
 def build_parser():
@@ -1419,7 +1725,8 @@ def main(argv=None):
                 "calibration profile-default hits %d of %d  "
                 "fixture coverage 0.75  sleeve refused  sleeveless held  "
                 "router reverse held  fail-closed held  "
-                "required clause held\n"
+                "required clause held  "
+                "collision branch-M held  collision branch-D held\n"
                 % (PROFILE_DEFAULT_HITS, W3_NAMED))
             return 0
         if not args.cmd:

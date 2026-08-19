@@ -118,6 +118,16 @@ nothing** — the Director ranks.
 `gate_mesh.py` is character-only and its head/shoulder logic is meaningless on other
 subjects. Both non-character profiles carry `mesh_gate: none` for exactly that reason.
 
+### The UNAVAILABLE convention
+
+A measurement row separates two questions that a single "measured" verdict would
+conflate: *is there anything here to measure* (spatial) and *what does it show* (the
+finding). Three states, not two — `UNAVAILABLE` / `AVAILABLE+present` /
+`AVAILABLE+occluded` — because collapsing the last two hides the defect the instrument
+exists to find inside a withhold count. Full convention, the worked example (E61's
+sleeve-occlusion readout), and a minimal row schema:
+[docs/measurement-conventions.md](https://github.com/mcp-tool-shop-org/facet/blob/main/docs/measurement-conventions.md).
+
 ## Superseded — kept because the failure is the lesson
 
 `tools/superseded/` is not an archive. It is the mechanism that stops a falsified

@@ -36,6 +36,16 @@ def test_t87_selftest_exits_zero():
     assert rc == 0, "selftest exited %d\n%s\n%s" % (rc, out, err)
     assert "profile-default hits 5 of 19" in out, out
     assert "fixture coverage 0.75" in out, out
+    # E62 fence 2: the collision law - Branch M (mechanical, the gate's own
+    # matcher) and Branch D (declared, protected_tokens) - extended into
+    # THIS already-collected test rather than a new item, same
+    # T34-constraint precedent E59/E60/E61 all used. Substantive coverage
+    # (the synthetic Branch M fixture, A1's real Branch D injection, the
+    # can-fail proof that removing the declaration un-refuses it) lives
+    # in-tool at canon_gate._selftest_collision; this is the pytest-visible
+    # seam onto it.
+    assert "collision branch-M held" in out, out
+    assert "collision branch-D held" in out, out
 
 
 def test_t87_profile_default_hits_five_of_nineteen():
@@ -383,3 +393,23 @@ def test_t87_a1_vest_is_declared_sleeveless():
     assert len(sleeves) == 2
     for s in sleeves:
         assert s["occupant"]["id"] == "N2", s["id"]
+
+    # E62 fence 2, Branch D. A1's shirt sleeves are real, so forbidding
+    # "sleeve" anywhere on this subject must refuse even though no A1
+    # occupant phrase contains the word (Branch M alone cannot see this
+    # case - reconfirmed directly below rather than merely asserted).
+    assert "sleeve" in (doc.get("protected_tokens") or {}), (
+        "A1 is missing the E62 protected_tokens declaration")
+    lic = C.licensed_phrases(doc)
+    assert len(lic) == 39, len(lic)
+    assert not any(C._forbidden_matches("sleeve", p) for p in lic), (
+        "A1's licensed phrases now contain an unguarded 'sleeve' token - "
+        "Branch M would already cover this case")
+
+    # E62 fence 1. vest_torso/vest_skirt depend_on N2 (the shirt) - the
+    # measured law from E61 rides this edge: composing the pair with "and"
+    # must refuse, "over" or leaving them unjoined must not.
+    pairs = C.depends_on_pairs(doc)
+    assert frozenset(("N1", "N2")) in pairs, pairs
+    for s in vest:
+        assert s.get("depends_on") == ["N2"], (s["id"], s.get("depends_on"))

@@ -316,6 +316,21 @@ def test_t92_selftest_still_holds():
     assert "joint-emit held" in out2, out2
     assert "occupant-override held" in out2, out2
 
+    # E62 fence 1: canon_gate.py gains depends_on (a surface's layering
+    # relation to a parent occupant, validated at load time) and the
+    # collision law - Branch M (mechanical, the gate's own matcher) /
+    # Branch D (declared, protected_tokens) - same T34-constraint
+    # precedent as above, extended into THIS already-collected function.
+    # canon_compose.py consults the depends_on edge: A1's canon now
+    # declares vest_torso/vest_skirt depends_on N2 (the shirt), so the OLD
+    # default (garment_join="and") refuses that pair, a flat list (Arm L)
+    # still passes unjoined, and garment_join="over" still passes.
+    assert "collision branch-M held" in out, out
+    assert "collision branch-D held" in out, out
+    assert "depends-on and-refused" in out2, out2
+    assert "depends-on flat-held" in out2, out2
+    assert "depends-on over-held" in out2, out2
+
 
 def test_t92_worksheet_landed_in_t93():
     """#18 fenced the generator so the router could prove the schema first.
