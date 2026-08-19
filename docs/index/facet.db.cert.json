@@ -655,7 +655,7 @@
  ],
  "unattributed_failures": [],
  "verb": "record_build",
- "verified_utc": "2026-08-19T00:47:14Z",
+ "verified_utc": "2026-08-19T00:51:13Z",
  "verify_exit_code": 0,
  "written_by": "tools/record_mcp.py"
 }
