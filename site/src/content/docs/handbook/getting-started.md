@@ -79,7 +79,7 @@ before the measurement:
 spec written BEFORE the work  →  report written AFTER  →  advisor ruling LAST
 ```
 
-Sixty-six experiments are in
+Sixty-seven experiments are in
 [docs/experiments](https://github.com/mcp-tool-shop-org/facet/tree/main/docs/experiments).
 You do not have to read them linearly — the record is indexed:
 

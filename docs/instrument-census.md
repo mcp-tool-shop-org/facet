@@ -13,7 +13,7 @@
 | `.py` files in `tools/verify` | **10** |
 | — files of any other extension there | 0 |
 | **total members** | **113** |
-| corpus files read for axis D | 424 |
+| corpus files read for axis D | 425 |
 | test files read for axis E | 97 |
 | probe interpreter | `E:\AI-Models\trellis2-env\Scripts\python.exe` (3.13.13) |
 
@@ -110,7 +110,7 @@
 | 46 | `e12_crop_silhouette.py` | diagnostics | no | 8 | no | 4 | yes | n/a | ambiguous | An exact mesh silhouette at an ARBITRARY crop camera — the mask a head-crop control nee… |
 | 47 | `e12_elevated.py` | diagnostics | no | 9 | no | 3 | yes | n/a | reach_ceiling | Does this subject buy anything from elevated cameras? Measured, the ship's own method. |
 | 48 | `e12_family_mass.py` | diagnostics | no | 12 | no | 0 | no | n/a | none | How much of a named region wears a named COLOUR FAMILY - reported per image, never gate… |
-| 49 | `e12_frame.py` | diagnostics | no | 8 | no | 10 | yes | n/a | none | E12 Gate 0 — derive a turnaround render frame from THIS mesh, and show the derivation. |
+| 49 | `e12_frame.py` | diagnostics | no | 8 | no | 11 | yes | n/a | none | E12 Gate 0 — derive a turnaround render frame from THIS mesh, and show the derivation. |
 | 50 | `e12_head_evidence.py` | diagnostics | no | 15 | no | 6 | yes | n/a | none | E12 Gate 0 — head-region evidence on a raw reconstruction. NO VERDICT. |
 | 51 | `e12_head_render.py` | diagnostics | no | 13 | no | 10 | yes | n/a | none | E12 Gate 0 — a head crop render framed by a MEASURED box, not an inherited rect. |
 | 52 | `e12_head_sheet.py` | diagnostics | no | 5 | no | 1 | yes | n/a | measure_report | E12 Gate 0 — compose one candidate's head crops into ONE artifact, at full size. |
@@ -174,7 +174,7 @@
 | 110 | `texel_provenance.py` | diagnostics | no | 17 | no | 14 | yes | n/a | texel_provenance | Where did this pixel's colour actually come from? |
 | 111 | `texpass_metrics.py` | diagnostics | no | 7 | no | 2 | no | n/a | no opinion | E05 — one metric table, computed identically for every arm. |
 | 112 | `tree_manifest.py` | verify | yes | 7 | no | 9 | yes | yes | none | Protection manifests for the read-only trees: verify one, or emit a new one. |
-| 113 | `turn_render.py` | verify | no | 14 | no | 36 | yes | n/a | none | Matched-framing turnaround render of a GLB. |
+| 113 | `turn_render.py` | verify | no | 14 | no | 37 | yes | n/a | none | Matched-framing turnaround render of a GLB. |
 
 ## Axis F — every `n/a` and every `false`, with its reason
 
