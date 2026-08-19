@@ -13,7 +13,7 @@
 | `.py` files in `tools/verify` | **10** |
 | — files of any other extension there | 0 |
 | **total members** | **113** |
-| corpus files read for axis D | 431 |
+| corpus files read for axis D | 432 |
 | test files read for axis E | 98 |
 | probe interpreter | `E:\AI-Models\trellis2-env\Scripts\python.exe` (3.13.13) |
 
@@ -174,7 +174,7 @@
 | 110 | `texel_provenance.py` | diagnostics | no | 17 | no | 14 | yes | n/a | texel_provenance | Where did this pixel's colour actually come from? |
 | 111 | `texpass_metrics.py` | diagnostics | no | 7 | no | 2 | no | n/a | no opinion | E05 — one metric table, computed identically for every arm. |
 | 112 | `tree_manifest.py` | verify | yes | 7 | no | 9 | yes | yes | none | Protection manifests for the read-only trees: verify one, or emit a new one. |
-| 113 | `turn_render.py` | verify | no | 14 | no | 37 | yes | n/a | none | Matched-framing turnaround render of a GLB. |
+| 113 | `turn_render.py` | verify | no | 14 | no | 38 | yes | n/a | none | Matched-framing turnaround render of a GLB. |
 
 ## Axis F — every `n/a` and every `false`, with its reason
 
