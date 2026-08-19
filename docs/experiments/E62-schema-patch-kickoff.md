@@ -32,27 +32,45 @@ word and refuses Arm L, which held 3/3; (c) a compose emitting *over* for the pa
 passes. *Over* is licensed. *And* between those two occupants is the illegal join.
 *Over* is not required.
 
-**2. The collision law.** A `forbidden` token is illegal when the gate's own matching
-semantics would fire it against a licensed occupant phrase of the same subject. This
-promotes the A1 sleeveless reasoning — forbidding *sleeve* would delete the shirt's own
-sleeves — from an advisor's memory to a schema check. ⚠ COLLISION IS A TOKEN RULE, NOT `if needle in haystack`. The matcher already
-exists at canon_gate.py:185: `SLEEVE = re.compile(r"sleeve(?!less)", re.I)`.
-W3's occupant is *"a dark green knitted sleeveless tunic"* and W3 forbids *sleeve* —
-Python `"sleeve" in phrase` is True for that pair, so **a substring collision law
-refuses W3's own ratified prompt.** The collision check therefore fires only when the
-gate's OWN token matcher (lookahead included) would fire the forbidden token inside a
-licensed phrase. NAMED FIXTURE, must stay green after the patch: the existing selftest
-legs `"sleeve on a bare arm did not fire"` and `"sleeveless was treated as a sleeve"`
-(canon_gate.py:1170/1174, verified verbatim at spec time).
+**2. The collision law — two branches, and neither is substring.**
+A `forbidden` token is illegal on a subject when EITHER branch fires. ⚠ Corrected in
+place 2026-08-18: the first landing of this item quoted the sleeve pattern with its
+word boundaries mangled by the fold tooling, and specified only the mechanical branch —
+which the channel showed leaves A1 unprotected. Both defects were checkable and checked.
 
-**Two cases, kept distinct — do not collapse them into one comment.** W3: *sleeve* is
-forbiddable because the lookahead exempts *sleeveless* and W3 has no true sleeves — the
-token fires on nothing licensed. A1: *sleeve* is NOT forbiddable even under the
-lookahead, because the shirt's sleeves are REAL sleeves on licensed surfaces — the token
-would kill a legitimate occupant. The schema records both reasons.
+**Branch M (mechanical):** the gate's OWN compiled matcher — copy the object at
+`canon_gate.py:185`, NEVER a pattern quoted in this or any markdown — fires the
+forbidden token inside a licensed phrase of the same subject. This is the W3 case run
+in reverse: W3's *"a dark green knitted sleeveless tunic"* plus `forbidden: sleeve` is
+LEGAL because the lookahead exempts *sleeveless* — while naive `"sleeve" in phrase` is
+True and a substring law would refuse W3's own ratified prompt. NAMED FIXTURE, must
+stay green after the patch: the selftest legs at canon_gate.py:1170/:1174
+(*"sleeve on a bare arm did not fire"* / *"sleeveless was treated as a sleeve"*).
 
-**3. `unavailable` as a measurement convention.** Three states — MEASURED /
-UNAVAILABLE — where UNAVAILABLE is decided by a SPATIAL question only: the readout may
+**Branch D (declared):** the subject's surfaces file carries a `protected_tokens`
+declaration — token to reason — and forbidding a protected token refuses. This exists
+because A1's protection is NOT derivable from its phrases: measured at spec-correction
+time, the SLEEVE matcher fires on NONE of A1's 39 licensed phrases (*"a cream
+high-collared shirt"* carries no sleeve token; the cuff joint carries none), so Branch M
+alone would ALLOW `forbidden: ["sleeve"]` on A1 — and a later prompt naming the shirt's
+real sleeves would then be refused, the exact case this law exists to prevent. The seat
+adds to `canon/a1.surfaces.json`:
+`"protected_tokens": {"sleeve": "the shirt's sleeves are real surfaces; N2's ratified
+phrase under-names them"}` — **DRAFT canon data, marked for the Director's ratification
+at the fold**, same standing as the depends_on rows. The declaration is honest, not
+derived; the seat must NOT derive protection from surface NAMES (names are not licensed
+phrases) and must NOT invent any third mechanism.
+
+Can-fail legs, all proven by reversion: (a) W3 fixture green with Branch M live;
+(b) a synthetic subject whose licensed phrase carries a true sleeve token + `forbidden:
+sleeve` REFUSES under Branch M; (c) A1 + `forbidden: ["sleeve"]` on any surface REFUSES
+under Branch D, and removing the declaration makes leg (c) fail — which is the proof the
+protection lives in the data, not in a comment. **Two cases, two reasons, kept distinct:**
+W3 may forbid *sleeve* (lookahead exempts its garment; nothing licensed has true
+sleeves); A1 may not (its sleeves are real and under-named) — and after this lands the
+schema knows both reasons instead of the next advisor having to remember them.
+
+**3. `unavailable` as a measurement convention.** E61's three states, kept exactly — **UNAVAILABLE / AVAILABLE+present / AVAILABLE+occluded** — where UNAVAILABLE is decided by a SPATIAL question only. ⚠ Corrected in place: this item first read 'MEASURED / UNAVAILABLE', two names — and collapsing present and occluded into one MEASURED state is how the defect gets counted as a withhold again. The occluded state IS the finding: the readout may
 never gate its own availability, and departure-from-backdrop keying is forbidden (the
 palette file's own numbers make it an inverter: sleeve_L 8.25 dE from the backdrop
 corners at hue 77.5° in the backdrop's neighbourhood). The convention's worked example
