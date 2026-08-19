@@ -416,10 +416,10 @@
         "note": "E64 probe view. face/eyes/mouth/neck out; style_face keys off the omission, is not a surface."
       },
       "6": {
-        "surfaces": ["hair", "face", "eyes", "mouth", "neck", "shirt_collar", "vest_torso", "vest_skirt", "sleeve_L", "sleeve_R", "sash", "trousers", "shoe_L", "shoe_R", "hand_L", "hand_R"],
-        "status": "RATIFIED by the Director 2026-08-18",
+        "surfaces": ["hair", "face", "neck", "shirt_collar", "vest_torso", "vest_skirt", "sleeve_L", "sleeve_R", "sash", "trousers", "shoe_L", "shoe_R", "hand_L", "hand_R"],
+        "status": "RATIFIED by the Director 2026-08-19 (E66) - eyes and mouth dropped",
         "yaw": 270,
-        "note": "profile, mirrored - keeps the face set (charter). Drafted for ratification; not probed this arc."
+        "note": "E66: Director ruled E65 perfect except this view. Drop eyes + mouth (style_face follows). Keep hair, face/olive skin, neck - clay_6 is a profile cheek. v2 keeps the full face set (it aligned). N9 phrase untouched."
       },
       "7": {
         "surfaces": ["hair", "face", "eyes", "mouth", "neck", "shirt_collar", "vest_torso", "vest_skirt", "sleeve_L", "sleeve_R", "sash", "trousers", "shoe_L", "shoe_R", "hand_L", "hand_R"],
