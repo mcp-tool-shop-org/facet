@@ -6,7 +6,7 @@
   "visual_target": [
     "canon/A1_reference.png"
   ],
-  "note": "SURFACE is the row. occupant null is a hole. Reference-first subject: the visual target and the identity were born together - every occupant phrase below is a verbatim substring of the reference's own generating prompt (canon/A1-RECIPE.json). NO WEAPON by the Director's direction; no prop surfaces exist and none may be added without a ruling. A1 is symmetric on every paired surface, so the _L/_R suffix cannot mis-apply while the side convention question stands. RATIFIED by the Director 2026-08-17, as drafted - all 19 rows and all five queue positions. Machine convention (canon_gate.py is_unratified): ratification is the ABSENCE of 'ratify': true on an occupant; this file carries no draft flags, so machine state and the Director's word agree - a future draft that must read as unratified needs the flag per row until his word. His standing principle at ratification, paraphrased: the quality is made in the edit - ratification is a baseline, not a freeze, and a post-ratification canon edit is an ordinary versioned move whose test is the next generation. FIRST EDIT UNDER THAT PRINCIPLE, 2026-08-18, after the E58 twin ring: the staging clause stage_head_forward is ADDED at his direction (the head must not turn toward the camera through the turnaround), and he ruled the ring's identity ACCEPTABLE against the reference - so the twins are this man and the identity question the advisor raised is closed. He also corrected the advisor's weighting of the ink reading: it is a minor register difference, not a headline defect, and it is not a work item. SECOND EDIT 2026-08-18: N1 gains the word SLEEVELESS (E60 fold) - the reference's sleevelessness had been arriving from a preposition rather than from canon, and by the identity law an unnamed property leaves on the next generation. THIRD EDIT 2026-08-18 (E64 fold): scopes.views gains all eight camera-index rows (\"0\"..\"7\", the FLAT_RING convention, yaw 0/45/.../315). DRAFT canon data, marked for the Director's ratification at the fold - same standing as E62's depends_on/protected_tokens rows: the field is schema, not a canon ratification mechanism, so it carries no ratify flag of its own; each row's own \"status\":\"draft\" is the visible marker and the spend that would use them waits for his word. The Director walked clay_3 and clay_5 himself and enumerated the rear lists (hands INCLUDED - both palms are in the clay, N8 is canon); the front-facing lists (0/1/2/6/7) keep the full face set, including the two profile views (2, 90 degrees; 6, 270 degrees) where a cheek, one eye and the lips remain visible - drafted here for ratification but not probed this arc. The rear lists (3/4/5) omit face, eyes, mouth and neck (\"the collar eats it\") and, being legal_clauses rather than surfaces, omit style_face by omitting the face-bearing surfaces that key its emission - never by naming a clause id in a surfaces array.",
+  "note": "SURFACE is the row. occupant null is a hole. Reference-first subject: the visual target and the identity were born together - every occupant phrase below is a verbatim substring of the reference's own generating prompt (canon/A1-RECIPE.json). NO WEAPON by the Director's direction; no prop surfaces exist and none may be added without a ruling. A1 is symmetric on every paired surface, so the _L/_R suffix cannot mis-apply while the side convention question stands. RATIFIED by the Director 2026-08-17, as drafted - all 19 rows and all five queue positions. Machine convention (canon_gate.py is_unratified): ratification is the ABSENCE of 'ratify': true on an occupant; this file carries no draft flags, so machine state and the Director's word agree - a future draft that must read as unratified needs the flag per row until his word. His standing principle at ratification, paraphrased: the quality is made in the edit - ratification is a baseline, not a freeze, and a post-ratification canon edit is an ordinary versioned move whose test is the next generation. FIRST EDIT UNDER THAT PRINCIPLE, 2026-08-18, after the E58 twin ring: the staging clause stage_head_forward is ADDED at his direction (the head must not turn toward the camera through the turnaround), and he ruled the ring's identity ACCEPTABLE against the reference - so the twins are this man and the identity question the advisor raised is closed. He also corrected the advisor's weighting of the ink reading: it is a minor register difference, not a headline defect, and it is not a work item. SECOND EDIT 2026-08-18: N1 gains the word SLEEVELESS (E60 fold) - the reference's sleevelessness had been arriving from a preposition rather than from canon, and by the identity law an unnamed property leaves on the next generation. THIRD EDIT 2026-08-18 (E64 fold): scopes.views gains all eight camera-index rows (\"0\"..\"7\", the FLAT_RING convention, yaw 0/45/.../315). RATIFIED by the Director 2026-08-18, all eight lists as drafted, after his own re-walk of clay_2/3/4/5 against the JSON. His kept property, recorded not rewritten: v2 is a true profile (cheek, one eye, lips) and leaving \"curious brown eyes\" required there is a phrase-vs-visibility mismatch of the same family as N2 under-naming the sleeves - if a later profile probe cares, that is its own edit; N9 is not rewritten for an unspent view. The Director walked clay_3 and clay_5 himself and enumerated the rear lists (hands INCLUDED - both palms are in the clay, N8 is canon); the front-facing lists (0/1/2/6/7) keep the full face set, including the two profile views (2, 90 degrees; 6, 270 degrees) where a cheek, one eye and the lips remain visible - drafted here for ratification but not probed this arc. The rear lists (3/4/5) omit face, eyes, mouth and neck (\"the collar eats it\") and, being legal_clauses rather than surfaces, omit style_face by omitting the face-bearing surfaces that key its emission - never by naming a clause id in a surfaces array.",
   "surfaces": [
     {
       "id": "hair",
@@ -384,46 +384,46 @@
     "views": {
       "0": {
         "surfaces": ["hair", "face", "eyes", "mouth", "neck", "shirt_collar", "vest_torso", "vest_skirt", "sleeve_L", "sleeve_R", "sash", "trousers", "shoe_L", "shoe_R", "hand_L", "hand_R"],
-        "status": "draft",
+        "status": "RATIFIED by the Director 2026-08-18",
         "yaw": 0
       },
       "1": {
         "surfaces": ["hair", "face", "eyes", "mouth", "neck", "shirt_collar", "vest_torso", "vest_skirt", "sleeve_L", "sleeve_R", "sash", "trousers", "shoe_L", "shoe_R", "hand_L", "hand_R"],
-        "status": "draft",
+        "status": "RATIFIED by the Director 2026-08-18",
         "yaw": 45
       },
       "2": {
         "surfaces": ["hair", "face", "eyes", "mouth", "neck", "shirt_collar", "vest_torso", "vest_skirt", "sleeve_L", "sleeve_R", "sash", "trousers", "shoe_L", "shoe_R", "hand_L", "hand_R"],
-        "status": "draft",
+        "status": "RATIFIED by the Director 2026-08-18",
         "yaw": 90,
         "note": "profile - cheek, one eye, lips in profile keep the face set (charter). Drafted for ratification; not probed this arc."
       },
       "3": {
         "surfaces": ["hair", "vest_torso", "vest_skirt", "shirt_collar", "sleeve_L", "sleeve_R", "sash", "trousers", "shoe_L", "shoe_R", "hand_L", "hand_R"],
-        "status": "draft",
+        "status": "RATIFIED by the Director 2026-08-18",
         "yaw": 135,
         "note": "E64 probe view. face/eyes/mouth/neck out; style_face keys off the omission, is not a surface."
       },
       "4": {
         "surfaces": ["hair", "vest_torso", "vest_skirt", "shirt_collar", "sleeve_L", "sleeve_R", "sash", "trousers", "shoe_L", "shoe_R", "hand_L", "hand_R"],
-        "status": "draft",
+        "status": "RATIFIED by the Director 2026-08-18",
         "yaw": 180
       },
       "5": {
         "surfaces": ["hair", "vest_torso", "vest_skirt", "shirt_collar", "sleeve_L", "sleeve_R", "sash", "trousers", "shoe_L", "shoe_R", "hand_L", "hand_R"],
-        "status": "draft",
+        "status": "RATIFIED by the Director 2026-08-18",
         "yaw": 225,
         "note": "E64 probe view. face/eyes/mouth/neck out; style_face keys off the omission, is not a surface."
       },
       "6": {
         "surfaces": ["hair", "face", "eyes", "mouth", "neck", "shirt_collar", "vest_torso", "vest_skirt", "sleeve_L", "sleeve_R", "sash", "trousers", "shoe_L", "shoe_R", "hand_L", "hand_R"],
-        "status": "draft",
+        "status": "RATIFIED by the Director 2026-08-18",
         "yaw": 270,
         "note": "profile, mirrored - keeps the face set (charter). Drafted for ratification; not probed this arc."
       },
       "7": {
         "surfaces": ["hair", "face", "eyes", "mouth", "neck", "shirt_collar", "vest_torso", "vest_skirt", "sleeve_L", "sleeve_R", "sash", "trousers", "shoe_L", "shoe_R", "hand_L", "hand_R"],
-        "status": "draft",
+        "status": "RATIFIED by the Director 2026-08-18",
         "yaw": 315
       }
     },
