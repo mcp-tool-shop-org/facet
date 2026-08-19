@@ -69,16 +69,24 @@ next instruction rather than the same one.
 
 ## ▶ NEXT-SESSION TODOS
 
-1. **⚑ FILL THE BINDING.** `canon_bind` exists; 0.00% is bound. This is the crux and
-   everything else waits on it. The channel's own read: colour cannot name a surface (three
-   arcs measured that), joints name adjacency rather than occupancy, and the visibility AOVs
-   are not a faceset — so **honest derivation today is two exact-id box seeds, not 60%.** The
-   rest is a human walk. Ask what makes that walk cheapest; never ask a model to invent faces.
-2. **The scope lists** follow the binding (face set ∧ visibility), and **per-view prompt
-   stems** follow the scope lists. Both are blocked until item 1 moves.
-3. **The wrong-material check** is not commissionable yet and E56 says why: its label classes
-   need a **per-surface** level, which needs the binding. Do not re-commission it at the asset
-   level — that collapsed once already.
+1. **⚑ PAINT THE MESH — E67 is the opener.** A1's twin stage is CLOSED (Director,
+   2026-08-19): the accepted eight-view ring is at `E:\AI\training\facet_A1_accepted_ring\`
+   with a sha256 manifest, on the E57 seed-42 GLB. **Paint does not wait on binding** — see
+   the correction under item 3.
+
+2. **The scope lists are FILLED and RATIFIED** (E64, all eight; ratified `cda174b`), and
+   per-view prompt stems are live — the composer emits from them and the gate refuses an
+   out-of-scope phrase at `view:N`. ⚠ **CORRECTED IN PLACE 2026-08-19: this item used to
+   read "both are blocked until item 1 moves," and item 1 used to read "fill the binding,
+   everything else waits on it." That was wrong and it would have misrouted the next
+   reader.** The scopes were derived from the CLAY — the Director's own walk of clay_2/3/4/5
+   — not from facesets, and they cleared the rear head-crank (E64, E65 v4, E66) with cn
+   never leaving the shelf. Binding was never their precondition.
+
+3. **The wrong-material check** still needs the binding, and that is the ONLY thing measured
+   to need it: E56's label classes require a per-surface level. **Binding remains the named
+   debt (W3 0/27, A1 NONE) and is NOT a gate on unwrapping or painting this mesh.** Do not
+   re-commission the check at the asset level — that collapsed once already.
 4. **The four subjects with no canon** — the worksheet makes the walk cheap now. Still a human
    walk; do NOT generate them under a clock.
 5. **The paint question** — every cheap compositing hypothesis is spent. What remains costs a
