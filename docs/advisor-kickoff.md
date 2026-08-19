@@ -58,22 +58,35 @@ PermissionError; a reused basetemp went bad mid-session).
 |---|---|
 | HEAD | re-measure — `git log --oneline -1`. **54+ commits ahead of origin, UNPUSHED** — the push is the Director's separate decision and has been all session |
 | suite | **THE SUITE: 1346 tests, 1289 hermetic.** RE-COUNT before quoting — `pytest --collect-only -q` and again with `-m "not artifacts"`, currently 1346 total / 1289 hermetic. T34 pins ~14 count surfaces **and** a separate set of experiment-count surfaces read off the status table in `docs/experiments/README.md` — that table is the authority, not the index. ⚠ **T34 also pins three anchor SENTENCES in this file**; rewrite one and it fires, and one of them is the fixture a can-fail leg rewrites by hand, so restore the phrasing verbatim rather than re-pinning it |
-| the record | four-leg verify SERVING at close, byte-identity, over 71 experiments. No staleness findings at the declaration leg — recertify with MCP `record_build` after any doc change. 446 corpus files; `paid_for_by` reports 0 unrecognised |
+| the record | four-leg verify SERVING at close, byte-identity, over 72 experiments. No staleness findings at the declaration leg — recertify with MCP `record_build` after any doc change. 446 corpus files; `paid_for_by` reports 0 unrecognised |
 | canon | **A1: 19 rows, 16/16 ratified, prof_hit 10/10, 8 view scopes ratified, depends_on + protected_tokens ratified.** W3 24/24 ratified, binding 0/27; LONGSWORD 5/5 |
 | the asset | `E:\AI\training\facet_A1_accepted_ring\` (8 twins + sha256 manifest) · `facet_E69\bake\atlas_widescope.png` · `facet_E70\sheet\` (the approved sheet, 48 panels) |
 | spend | ~40 generations total this arc, all on the A1 line. The Director removed the credit constraint for the window; it was never the binding constraint — design quality was |
 
 ## ▶ NEXT-SESSION TODOS
 
-1. **⚑ E71 IS DISPATCHED — read its report when it lands, and rule.** Two arms, one
-   graded: **Arm R** fills the 58,346 reachable-unwritten texels (which contain his
-   1,468); **Arm F** fills all 2,044,423, reported not graded. **Gate D validates the
-   reachability partition rather than the fill** — if `__reachable__` is right the two
-   arms render pixel-identically across eight cameras, and a non-zero difference is a
-   finding about the BAKE. The bleed question is no longer left to the eye alone:
-   `palette_gate.py` (which **E51 built** — enumerated, and its `orphan_fill`/
-   `fill_repair_e51` arms are recorded as the WRONG family here, so do not re-enumerate
-   them) runs differentially over E70's renders vs Arm R's.
+1. **E71 IS RULED AND CLOSED - and Gate D found a defect in the ADVISOR'S OWN
+   amendment, not in the bake.** 81,452 differing px (1.726%).
+   `tools/texpass_finalize.py:68` is `have = valid & ~holes`, so ONE MASK governs both
+   the fill target and the source pool - scoping Arm R's `holes.png` moved 1,986,077
+   grey-107 texels INTO the source pool, and **44.03% of Arm R's fills are still exactly
+   grey**, 474 of the Director's own 1,468 among them. **Arm F is the sound arm** for
+   anything a camera can see. Neither adopted. Two instruments came back UNAVAILABLE and
+   the seat halted rather than inventing around either: `canon/A1-palette.json` gates
+   nothing (no `allowed_bands`/`min_chroma`/`gate`), and the sheet's reference column
+   cannot be built - no recorded correspondence between the reference's 1136x1472 pixel
+   space and the 576x1024 ortho frame, proven with two naive-crop artifacts. **Authoring
+   A1's palette bands, and establishing that correspondence, are two separate
+   pre-registered jobs nobody has done.**
+1b. **E72 - STROKE ONE - IS SPECIFIED AND WAITING.** Stage 0 is FREE and gates the spend:
+   measure the per-view brush canvas with `emit` on all eight yaws, DERIVE the stroke
+   order from it (do NOT inherit W3's profile-first spiral - A1 has no elevated cameras),
+   propose `scopes.strokes` for his ratification (canon is his; the slot is ratified and
+   `{}`), author `E72-a1-brush-prompts.json`, populate `profiles/a1.json`'s missing
+   `_fixtures.brush_prompts` / `_fixtures.palette` / texpass blocks, and end at
+   `texpass_iter.py selftest` - a HARD GATE per that tool's own docstring. Stage 1 is ONE
+   stroke. **The brush writes into HOLE texels only**, so E72 and E71's fill are
+   ALTERNATIVES for the same texels, not stages.
 2. **⚑ THE RECORD WATCHES THREE OF FIVE PROFILES — the advisor's next item.**
    `conventions.json` `corpora.profile_files` declares beast/character/ship;
    `prop.json` and `a1.json` have **never** been declared (`git log -S` returns nothing).
@@ -95,7 +108,7 @@ PermissionError; a reused basetemp went bad mid-session).
    `profiles/a1.json`'s own note saying its `project_twins.py` block is unpopulated
    because the values "would be arriving by invention" is now **stale** — A1 has been
    projected and baked, so the values would arrive by measurement.
-4. **Stroke one** — the first brush. A SPEND, therefore his. Do not open it unasked.
+4. **Stroke one is GREEN** (Director, 2026-08-19) and is now E72 above. The spend itself is still one generation and still his to watch land.
 5. **The clay-ridge at v6's chest seam** — named, untested, and NOT a reason to reopen
    twins (his ruling). Four rolls there produced four different phantom garments.
 6. **Binding (W3 0/27, A1 NONE)** — the named debt. It gates the **wrong-material check**
