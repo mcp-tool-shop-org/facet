@@ -17,8 +17,8 @@
     "py_files_total": 113
   },
   "provenance": {
-    "corpus_files": 432,
-    "corpus_files_before_self_exclusion": 442,
+    "corpus_files": 433,
+    "corpus_files_before_self_exclusion": 443,
     "probe_interpreter": "E:\\AI-Models\\trellis2-env\\Scripts\\python.exe",
     "probe_interpreter_version": "3.13.13",
     "probe_skipped": false,
@@ -3990,8 +3990,8 @@
       ],
       "b1_literals": [],
       "b2_literals": [],
-      "cited_count": 38,
-      "cited_count_raw": 39,
+      "cited_count": 39,
+      "cited_count_raw": 40,
       "cited_in": [
         "docs/experiments/E02-report.md",
         "docs/experiments/E02-texture-stage-on-sound-inputs.md",
@@ -4029,6 +4029,7 @@
         "docs/experiments/E59-head-forward-report.md",
         "docs/experiments/E67-a1-paint-prep-report.md",
         "docs/experiments/E70-baked-look-report.md",
+        "docs/experiments/E71-hole-fill-kickoff.md",
         "docs/experiments/README.md",
         "docs/tools.md"
       ],

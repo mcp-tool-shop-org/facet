@@ -752,6 +752,47 @@ a file, then read the file** — and note that a piped exit code is separately u
 `pytest | tail` exits with `tail`'s 0 over a failed suite, which hid two real failures in
 the same session.
 
+**And the third way is the worst, because nothing about it is deterministic: a pytest run
+on this rig intermittently dies with exit 127 and NO OUTPUT AT ALL.** Measured repeatedly
+2026-08-19, with output redirected to a file and never piped, so this is not the pager
+trap above. The whole suite ran to completion and printed its tally; three consecutive
+later attempts at the same command and the same tree produced a nine-byte file and exit
+127 — pytest never emitted a character. `test_t34` did the same twice and then passed
+every one of its legs, unchanged, on the next attempt. Re-running the identical command
+is what fixes it; clearing scratch basetemps was tried and did not.
+
+A separate trap of the same family IS mechanically explained and is worth avoiding on its
+own: a sweep written as `while read -r f; do "$PY" -m pytest ... "$f" > log; done < list`
+lets the child consume the LOOP's stdin, and it returned a well-formed exit 127 with a
+zero-byte log for fourteen of the files it was handed, every one of which passes when run
+alone. Redirect the child's stdin (`< /dev/null`) inside any loop that runs a subprocess.
+Because the intermittent kill produces the same signature, the two cannot be told apart
+from a single observation — so do both: redirect stdin, and retry.
+
+**The rule this leaves is not a flag, it is a habit: write the run to a file and decide
+from the TALLY LINE in that file, never from the exit code.** A short or empty file
+beside a non-zero code means the run did not happen; re-run it, and never report it as a
+failure of the code under test. That is now the third distinct way a long command dies
+quietly here — pager truncation, the piped exit-255 with empty output, and this — and all
+three hand back something that looks like an answer.
+
+**And the kill is CUMULATIVE, which is why a long session gets worse rather than noisier.**
+Measured 2026-08-19 after the above: `instrument_census.py` spawns one `--help` subprocess
+per instrument, and late in a session it died at **the same tool every time** - six
+consecutive attempts across both shells, no traceback, no stderr - while that tool's
+`--help` ran clean on its own and a hand-written `subprocess.run` of the identical command
+returned 0. So the failing thing was neither the tool nor the census: it was **roughly the
+fortieth spawned subprocess in one shell lineage**. That reframes the intermittent 127s
+above as the same mechanism seen early, and it means retrying in place is the wrong
+instinct once the signature is deterministic.
+
+**The cure is a fully DETACHED process**, and it worked on the first attempt after those
+six failures - `Start-Process -PassThru -NoNewWindow` with `-RedirectStandardOutput` and
+`-RedirectStandardError`, then poll the pid and read the files. The census went 113/113,
+exit 0. Use it for anything that spawns many children or runs longer than a few minutes -
+the suite included - and reach for it as soon as the signature appears rather than
+spending attempts on retries.
+
 **A test that builds the index is not safe to run beside a session that rebuilds it.** A
 concurrent seat reported `test_t01b_encoding_matrix` hard-crashing at exit 255 and proved
 it was not its own doing by reverting its files and reproducing at HEAD. Re-run afterwards
