@@ -1,40 +1,43 @@
 # Advisor kickoff
 
-Paste into a fresh advisor session. **Rewritten 2026-08-17**, at the close of the session
-that shipped **v0.7.0** — the gate went fail-closed, a generation got an identity, a surface
-began becoming a set of faces, and six hypotheses died on measurement.
+Paste into a fresh advisor session. **Rewritten 2026-08-19**, at the close of the session that
+built A1 — the reference-first exemplar — from a downloaded PNG to a painted figure approved
+at the Director's eye, across the arc
+from E57 to E70 in one sitting.
 
-**Read the calibration section before you trust anything this seat wrote.** It shipped a
-prohibition onto a public surface built on a number nobody had verified, stated its central
-tension against the wrong count, wrote three wrong premises into one dispatch, broke a
-translation with a string replace and then misdiagnosed it out loud, and hit the same console
-trap twice with the same character. What held was the structure: the gates, the outside
-channel, the citation gate, the seats' willingness to halt, his eye, and the record.
+**Read the calibration section before you trust anything this seat wrote.** Its central
+ruling on the paint contamination was FALSIFIED by the measurement it ordered; it stalled on
+two decisions that were its own to make and was told so; it committed a message describing an
+edit that never ran, because its own shell chain walked past a failed assertion; and it aimed
+an experiment's probe at a view that did not carry the defect. What held was the structure:
+the gates, the outside channel, the seats' willingness to halt and to contradict it, his eye,
+and the record.
 
 ---
 
-> # ⚑ THE ONE NUMBER THAT MATTERS: THE CANON BINDS **0.00%** OF THE FIGURE.
+> # ⚑ A1 IS A PAINTED FIGURE, APPROVED. THE BRUSH IS OPEN.
 >
-> `canon_gate` knows what material belongs on `torso`. **Nothing in this repo knows which
-> pixels are `torso`.** `scopes.views == {}` by construction; the hand-box file reaches
-> **7.95%** strict, and three of its five names do not resolve as surface ids.
+> Reference with its own embedded recipe → ratified canon → approved mesh → a venue that
+> reproduced the reference **pixel-identically three times** → an accepted eight-view twin
+> ring → both named defects measured to a mechanism and cleared → a bake standing beside its
+> twin, **APPROVED 2026-08-19**.
 >
-> Four open items are the same missing thing: a wrong-material check, the empty scope lists,
-> per-view prompt stems, and per-surface accept/reject labels. **`canon_bind` is built and
-> honest — 27 rows, every one empty, 2 proposals.** Filling it is the work.
+> **cn never came off the shelf.** Every fix removed a cause instead of applying force
+> against one.
 >
-> **The credits are still unspent.** Every arc this session was free.
+> **Named next target: the holes** — 1,468 texels, 0.0423%, at vest opening, collar, cuffs
+> and crown. A **fill** question, FREE (dilation from real neighbouring paint), not a
+> paint-quality one. **Stroke one is a spend and therefore his.**
 
 ## Your first move
 
 ```
 git pull
-CLAUDE.md                                   <- the law book, read it whole
-CHANGELOG.md                                <- 0.7.0 is this session in release form
-docs/grok-consult-22-brief.md               <- the channel's latest, and its shape
-docs/experiments/E56-wrong-material-check-report.md   <- the halt that reorganised the work
-python tools/canon_gate.py census           <- occupancy, and the bind-coverage block
-python tools/canon_bind.py --selftest       <- 27 rows, 0 faces, 2 proposals
+CLAUDE.md                                          <- the law book, read it whole
+docs/experiments/README.md                         <- the status table IS the authority
+docs/experiments/E70-baked-look-report.md          <- the approved sheet
+canon/a1.surfaces.json                             <- 19 rows, 8 view scopes, all ratified
+python tools/canon_gate.py census                  <- A1 16/16, prof_hit 10/10
 ```
 
 Two mounted servers: `mcp__facet-record__*`, `mcp__facet-measure__*`. **`record_health`
@@ -42,160 +45,94 @@ first.** A REFUSING server after doc commits means the last session forgot `reco
 the CLI moves the DB but never writes the certificate; only MCP `record_build` does, build
 and verify as one act. Run it, do not debug it.
 
-⚠ **THIS SESSION OPENS REFUSING, AND THE RECORD IS SOUND — run `record_build` ONCE, FIRST,
-and it goes green.** The E57 fold corrected a law's heading (corner-median keying: three
-firings → four) and the seeded fixture that names that row by its heading text with it. The
-mounted server had loaded `docs/index/conventions.json` **at its process start** and kept
-comparing against the retired expectation, so leg 4 scored MISS *while returning the target
-row at rank 1* — three MCP builds in a row, each writing a FAILED certificate for a corpus
-that is fine. The CLI, which reads the fixture fresh from disk, returned **VERIFY PASSED —
-all four legs** on the same commit. The committed certificate is therefore FAILED and
-**stale by construction**; a fresh server process re-certifies it. Recorded because the
-line above says *run it, do not debug it*, and a session that ran it three times needs the
-next instruction rather than the same one.
-
-⚠ `pytest` needs `--basetemp=<scratch>` on this rig (Windows symlink PermissionError).
+⚠ `pytest` needs `--basetemp=<FRESH scratch dir per run>` on this rig (Windows symlink
+PermissionError; a reused basetemp went bad mid-session).
 
 ## THE LIVE STATE
 
 | | |
 |---|---|
-| HEAD | re-measure — `git log --oneline -1`. **v0.7.0 tagged and pushed**; verify the publish by three live version strings (npm, PyPI, GitHub Release), never by a green tick |
+| HEAD | re-measure — `git log --oneline -1`. **54+ commits ahead of origin, UNPUSHED** — the push is the Director's separate decision and has been all session |
 | suite | **THE SUITE: 1346 tests, 1289 hermetic.** RE-COUNT before quoting — `pytest --collect-only -q` and again with `-m "not artifacts"`, currently 1346 total / 1289 hermetic. T34 pins ~14 count surfaces **and** a separate set of experiment-count surfaces read off the status table in `docs/experiments/README.md` — that table is the authority, not the index. ⚠ **T34 also pins three anchor SENTENCES in this file**; rewrite one and it fires, and one of them is the fixture a can-fail leg rewrites by hand, so restore the phrasing verbatim rather than re-pinning it |
 | the record | four-leg verify SERVING at close, byte-identity, over 70 experiments. No staleness findings at the declaration leg — recertify with MCP `record_build` after any doc change. 415 corpus files; `paid_for_by` reports 0 unrecognised |
-| canon | W3 24/24 ratified, **binding 0/27 faces**; LONGSWORD 5/5. Galleon, dragon, logo, E10-LAYER have IDENTITY.md and no surfaces JSON |
-| the specimen | `profiles/character.json` names **5 of 19** and the gate refuses it. **LEFT BROKEN ON PURPOSE** |
-| spend | **zero cloud credits, still** |
+| canon | **A1: 19 rows, 16/16 ratified, prof_hit 10/10, 8 view scopes ratified, depends_on + protected_tokens ratified.** W3 24/24 ratified, binding 0/27; LONGSWORD 5/5 |
+| the asset | `E:\AI\training\facet_A1_accepted_ring\` (8 twins + sha256 manifest) · `facet_E69\bake\atlas_widescope.png` · `facet_E70\sheet\` (the approved sheet, 48 panels) |
+| spend | ~40 generations total this arc, all on the A1 line. The Director removed the credit constraint for the window; it was never the binding constraint — design quality was |
 
 ## ▶ NEXT-SESSION TODOS
 
-1. **⚑ PAINT THE MESH — E67 is the opener.** A1's twin stage is CLOSED (Director,
-   2026-08-19): the accepted eight-view ring is at `E:\AI\training\facet_A1_accepted_ring\`
-   with a sha256 manifest, on the E57 seed-42 GLB. **Paint does not wait on binding** — see
-   the correction under item 3.
+1. **⚑ THE HOLES — free, and the named next target.** 1,468 texels (0.0423%) at vest
+   opening, collar, cuffs and crown, plus E68's crown holes. Fill by dilation **from real
+   neighbouring paint**. E51 already built and measured a fill family — **enumerate it
+   before commissioning anything** (that law has fired five times in this record).
+2. **Stroke one** — the first brush. A SPEND, therefore his. Do not open it unasked.
+3. **The clay-ridge at v6's chest seam** — named, untested, and NOT a reason to reopen
+   twins (his ruling). Four rolls there produced four different phantom garments.
+4. **Binding (W3 0/27, A1 NONE)** — the named debt. It gates the **wrong-material check**
+   (E56's label classes need a per-surface level) and **NOTHING ELSE**. ⚠ The line saying
+   "everything else waits on it" was WRONG and was killed at E67: the view scopes came from
+   the CLAY, not from facesets, and they cleared the head-crank without any binding.
 
-2. **The scope lists are FILLED and RATIFIED** (E64, all eight; ratified `cda174b`), and
-   per-view prompt stems are live — the composer emits from them and the gate refuses an
-   out-of-scope phrase at `view:N`. ⚠ **CORRECTED IN PLACE 2026-08-19: this item used to
-   read "both are blocked until item 1 moves," and item 1 used to read "fill the binding,
-   everything else waits on it." That was wrong and it would have misrouted the next
-   reader.** The scopes were derived from the CLAY — the Director's own walk of clay_2/3/4/5
-   — not from facesets, and they cleared the rear head-crank (E64, E65 v4, E66) with cn
-   never leaving the shelf. Binding was never their precondition.
+## ⚑ LAWS THIS ARC EARNED — do not re-derive any of them
 
-3. **The wrong-material check** still needs the binding, and that is the ONLY thing measured
-   to need it: E56's label classes require a per-surface level. **Binding remains the named
-   debt (W3 0/27, A1 NONE) and is NOT a gate on unwrapping or painting this mesh.** Do not
-   re-commission the check at the asset level — that collapsed once already.
-4. **The four subjects with no canon** — the worksheet makes the walk cheap now. Still a human
-   walk; do NOT generate them under a clock.
-5. **The paint question** — every cheap compositing hypothesis is spent. What remains costs a
-   generation, and it is his call.
+- **A seat's sentence about its own output is not a measurement.** E64's seat described its
+  own clean panels as still cranked; the Director ruled for the pixels. Then E69's seat
+  applied the same law **to its own headline, unprompted** — its 0.00% ANDON is
+  self-consistency, because the withhold predicate and the ANDON's re-test share one array
+  and one comparison. **Never quote that 0.00% as "the bake is good."**
+- **The illegal join is coordinating a layered pair with "and"** in grouped prose. *Over* is
+  **licensed, never required** — a flat list with no join held 3/3 too, so requiring the word
+  would refuse a form that works.
+- **A MINIMUM at one sampled box on the reference frame is not a typical value across the
+  twins.** That was the advisor's E67 error: it read `min_dist_to_backdrop_corners_dE` as
+  characterising a whole material and ruled a cream-vs-grey collision that the map
+  falsified — the real mass was 78.94% mesh-hair-in-front-of-wall.
+- **The moving-denominator law fired a fifth time** (E68): removing hair shrank the ANDON's
+  own denominator nearly as much as its numerator. Judge an intervention by an absolute it
+  cannot game.
+- **Two live sessions share the index artifacts**, not just the count surfaces. `t30`/`t01`
+  failures in a suite overlapping another pytest process are concurrency until they
+  reproduce alone (measured twice).
+- **A piped long-running command can die at exit 255 with EMPTY output** on this rig — no
+  error, no tally — on a run that passes when redirected to a file. Write to a file, read
+  the file. Piped exit codes also lie (`pytest | tail` exits with tail's 0).
 
-## ⚑ THE GROK CHANNEL — TWENTY-TWO FOR TWENTY-TWO
+## ⚑ STANDING REQUIREMENT — every sheet in the paint line
 
-It reads the tree, writes tools and tests, runs the suite, and leaves everything uncommitted
-for the advisor's fold. Briefs at `docs/grok-consult-N-brief.md`, 1–22 exist. **Next test
-file: t98. Next brief: #23.**
+> The warm rim light in the twins is still paint.
+> The overlay dots are still the map.
 
-**The protocol, unchanged and earning:** every brief ends *nominate one checkable claim* →
-**verify by RUNNING it before anything trusts the build** → report back either way → hand it
-candidates labelled candidates and tell it to argue.
+His words, because a future reader will otherwise take an overlay for a rendering artifact
+or the paint's own rim for contamination.
 
-**It has cut down or refused a brief ten rounds running and been right every time.** This
-session it refused to derive prompts, refused tiered modes as a GUI answer to a GUI question,
-refused to write view lists from empty face sets, refused a 60%-derivable framing as
-unreachable from what is in git, and **returned the general fix for a gate-design defect this
-advisor had shipped into three dispatches.** Write briefs that can be refused.
+## THE FOLD ORDER — it fired repeatedly; follow it exactly
 
-⚠ **PUBLIC SURFACES ARE LEAD-AUTHORED** — README, translations, CHANGELOG, SHIP_GATE,
-`site/**`, `docs/handbook/**`, repo metadata. A studio law, earned when a docs subagent was
-killed mid-run and its work reverted. Brief #18's change-set touched CHANGELOG and that was
-the advisor's to catch. Fence every seat and every brief off them explicitly.
+After adding experiment N: (1) status-table row in `docs/experiments/README.md` — **that
+table is the authority for the experiment count**; (2) T34 count surfaces including all 8
+translations (**README.fr uses U+00A0 as its thousands separator**); (3)
+`docs/index/conventions.json` `laws.paid_for_by` bound extended **explicitly** to E-N (a test
+forbids wildcards); (4) `python tools/instrument_census.py --committed`; (5) THEN the suite;
+(6) THEN MCP `record_build`. Steps 3–4 are the last corpus-touching steps — running the suite
+first re-discovers them as failures.
 
-## WHAT DIED THIS SESSION — do not re-derive any of it
+## ⚠ THE ADVISOR'S CALIBRATION — this session's shapes
 
-- **The target-view compositor.** It already existed and had been the default since E46.
-  Measured, it *raises* the flat count at the named target (38 → 40) and sharply at two
-  others (23 → 64, 36 → 110). **Shape is ownership, colour is not** — an ownership policy
-  cannot repair a cross-view colour disagreement on a correctly-attributed surface.
-- **The compound occupant on the kilt.** N9 never dropped — it arrives *unprompted* and
-  responds at ΔE 47.41. The kilt has no headroom, so the arm reads the same whether it works
-  or does nothing.
-- **The compound occupant on the forearm.** Already tried in E08: `gold-trimmed brown leather
-  bracers` **SPLIT**, head noun landing and modifier dropping. Three forms measured, all
-  refused. A fourth grammatical form is a reroll with a syntax tree attached.
-- **Count-vs-identity from existing plates.** Structurally unseparable; no re-read fixes it.
-  One-sided bound survives: over 10 → 17 elements, count removed nothing present at 10.
-- **A per-asset accept/reject label set.** The accepted asset and the defective asset are the
-  same file.
-- **The local-median wrong-material detector.** 0.00% interior recall at 66.53 ΔE separation,
-  and it fires at 39.90% on a pauldron that is correctly gold.
+1. **Its central paint ruling was falsified by the measurement it ordered.** The map it
+   commissioned proved the contamination was hair, not the cream-vs-grey collision it had
+   ruled with confidence. Ordering the measurement was right; the ruling was not.
+2. **It stalled on two decisions that were its own** — a canon edit to a character it
+   invented, and a choice between two repairs — and was told: *think in solutions, not
+   problems.* Both were taken the same hour, and the "which one" question was answered by
+   running both.
+3. **It committed a message describing an edit that never ran**, because its fold script's
+   assertion failed and the shell chain continued past the non-zero exit. This repo's own
+   shell-chain law, fired at the advisor's hand, twice, both times in a fold script.
+4. **It aimed E59's probe at a view with no defect**, then had the error caught by the
+   outside channel — which also caught its `UNAVAILABLE` steer that would have classified the
+   defect itself as unmeasurable.
+5. It blurred two distinct fails into one narrative and was corrected with a table.
 
-## ⚠ CALIBRATION — this seat's failures, so you distrust the right things
-
-- **A prohibition on a public surface, built on an unverified number.** The advisor wrote
-  *"do not build a rewriter tuned on aesthetics"* into a FORECLOSED list from a research
-  agent's figures. The citation gate returned **contradicted**; the abstract, fetched
-  directly, contains neither number and concludes the opposite way. Both findings withdrawn,
-  the prohibition struck and **left visible**. *No finding reaches architecture unverified —
-  and the gate only caught it because it was run.*
-- **The central tension stated against the wrong count.** W3 is 24 prompt surfaces / 25 gate
-  checks / 19 unique elements, and the cited slope is about elements. The advisor quoted the
-  gate-check number. Thirteenth consecutive arc on the unit/population family, committed this
-  time in a brief.
-- **Three wrong premises in one dispatch** (E56), including repeating a `DIRECTOR-VERIFIED`
-  label on region boxes that is **unsupported at source** — his words there are two
-  sentences; the region list is an advisor's walk of them, and the boxes are a third hand's
-  reading.
-- **A gate pair that a worthless instrument passes.** Fire-on-named / silent-on-control is
-  satisfied by any boundary detector. The fix, returned by the channel: a **margin**,
-  `min(named) - max(control) >= min_margin`. Use it on every detector dispatch.
-- **A direction count over a fixed image-space box**, where three of eight rows read 0 in
-  both arms and could not exhibit either direction.
-- **An anchor path taken from a directory listing rather than from the test that pins it.**
-- **Mechanical, and both now in the law book:** a bare digit replace corrupts the CI run id
-  containing `1266`; `README.fr.md` writes its counts with a **non-breaking space**, so a
-  plain replace half-updates it — and the advisor then reported that as *"fr.md is missing a
-  mention"* and fenced a seat off it, sending it to chase an advisor bug. Also: SHIP_GATE's
-  lineage is a history that **appends**, and a bump moved its tail and dropped a state. And
-  the cp1252 console killed a reconciler **twice, on the same character**, after its writes
-  had landed.
-
-**The rule that follows:** this seat's readings are not evidence. Run the chip. Read the
-listing complete. Take the anchor from the test that pins it.
-
-## Environment
-
-```
-python   E:\AI-Models\trellis2-env\Scripts\python.exe      <- ABSOLUTE, always
-blender  "C:\Program Files\Blender Foundation\Blender 5.2\blender.exe"   -b -P via PowerShell only
-assets   E:\AI\training\facet_E0*\  facet_E4*\  facet_E5*\   (shipped: facet_E08\ARMB\)
-watchdog pwsh -NoProfile -File E:\AI\training\_watchdog_start.ps1   <- verify before GPU work
-```
-
-Hard-blocked: polycount · reddit · docs.blender.org · marmoset · web.archive.org;
-projects.blender.org answers at `/api/v1/`. **ASCII in tool output** — this console is
-cp1252 and a stray arrow kills a script *after* its writes land. `argparse` eats leading
-minus signs. Scripts create their own output dirs. **A `$'…'` quoting form does not expand in
-the Bash tool** — for line endings use `git ls-files --eol`, never a shell escape.
-
-**Release ordering**, which has now held twice: five version surfaces move together
-(`package.json`, `pyproject.toml`, `tools/record_mcp.py`, and `bin/facet.js`'s `version` +
-`tag`) · `.github/release-notes-vX.Y.Z.md` must **EXIST** before the tag · translations
-regenerate before the tag via `translate-all.mjs README.md --cache-clear` · **the tag push is
-what publishes** — `release.yml` fires on `v*` and does both registries via OIDC, so do not
-run `npm publish` by hand · verify by three live version strings, never by a green tick.
-
-## Do not
-
-End a session the Director has not ended · announce work instead of doing it · reproduce his
-words verbatim on any public surface — this repo is PUBLIC · delegate a public surface to a
-seat or the channel · present a surface you have not walked at native zoom, defects first,
-before any number · grade quality in any register · state an interpretation of the reference
-in the voice of an observation · run the arc-bound/census/count steps anywhere but LAST in a
-fold · `git add -A` · quote an external claim before resolving it at its primary source ·
-spawn a Fable subagent without his live word · re-derive anything in WHAT DIED.
-
-**Deciding is the job. Predicting is not. Announcing is not either. And an image is broken if
-any of it is.**
+**What worked, and is worth repeating:** dispatching seats and steering them mid-flight;
+verifying every outside-channel claim at source before acting (three were checkable, three
+checked out, one was overstated and reported back); folding every arc with its errors named
+in the commit; and letting the Director's eye be the only acceptance gate.
