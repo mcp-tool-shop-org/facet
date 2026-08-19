@@ -173,6 +173,26 @@ def test_t92_declared_view_does_not_require_out_of_scope(tmp_path):
                            scope="view:0")
     assert no_bg["ok"], no_bg
 
+    # E64 fence 2: the CONTAINS-refuses direction, on this SAME fixture.
+    # "a leather grip" (P2, the "grip" surface) is a real surface on this
+    # doc but NOT in view:0's declared list (["blade"]) - present at that
+    # scope, it now refuses, named in a new `out_of_scope` category rather
+    # than `missing`/`forbidden`/`unlicensed`.
+    with_grip = C.check_prompt(
+        doc, "a steel blade, a leather grip, plain grey background, "
+             "head facing straight ahead", scope="view:0")
+    assert not with_grip["ok"], with_grip
+    assert any(h["phrase"] == "a leather grip"
+               for h in with_grip["out_of_scope"]), with_grip
+    # subject scope is UNAFFECTED by the identical bytes - "grip" is a
+    # REQUIRED surface there, not an excluded one, so out_of_scope must be
+    # empty and ok must hold.
+    subj_with_grip = C.check_prompt(
+        doc, "a steel blade, a leather grip, plain grey background, "
+             "head facing straight ahead")
+    assert subj_with_grip["ok"], subj_with_grip
+    assert subj_with_grip["out_of_scope"] == [], subj_with_grip
+
 
 def test_t92_w3_occupants_were_not_edited():
     """Schema 2 added keys. Ratified occupant phrases did not move."""
@@ -330,6 +350,22 @@ def test_t92_selftest_still_holds():
     assert "depends-on and-refused" in out2, out2
     assert "depends-on flat-held" in out2, out2
     assert "depends-on over-held" in out2, out2
+
+    # E64: canon_gate.py gains out_of_scope_hits (a phrase belonging to a
+    # surface OUTSIDE a declared view/stroke scope is a refusal if present -
+    # the other half of E59's requiring-only scope check, closing the E63
+    # confound where a front-composed prompt satisfied a rear scope's
+    # requirements trivially, being a superset of them). canon_compose.py
+    # consults it at A1's own two probe views (v3/v5, yaw 135/225): the
+    # scope lists now populate all eight `scopes.views` entries (this arc's
+    # own DRAFT canon), so compose() emits from the declared list generally
+    # (garments and features alike, not just the face-bound features the
+    # old fv-only rule ever touched) and the reversion proof - the actual
+    # front-composed prompt checked at a rear scope - is caught by name.
+    assert "out-of-scope refusal held" in out, out
+    assert "view-scope v3/v5 gated" in out2, out2
+    assert "reversion caught" in out2, out2
+    assert "v0-missing refused" in out2, out2
 
 
 def test_t92_worksheet_landed_in_t93():

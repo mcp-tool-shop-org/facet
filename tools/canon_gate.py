@@ -67,7 +67,12 @@ graph was refused, there is nothing licensed to post.
               (s3_sheet_regions.json is PROPOSALS; verify --regions
               is still free text). The human declares the id list
               once per subject per view. Geometry and colour cannot
-              name a surface here (one PBR, 13,715 islands).
+              name a surface here (one PBR, 13,715 islands). A
+              phrase belonging to a surface OUTSIDE the declared
+              list is a refusal too if present (E64;
+              out_of_scope_hits) - not just a missing requirement.
+              subject scope has nothing outside it by definition
+              and is never affected.
   Version     schema 1 still loads. schema > SCHEMA_MAX is a stale
               consumer. Schema 2 adds legal_clauses and scopes.
   Binding     tools/canon_bind.py. A surface is a face set. Empty
@@ -164,6 +169,39 @@ DEPENDS_ON AND THE COLLISION LAW (E62, schema patch).
 
   python tools/canon_gate.py --selftest    # both branches proven
 
+OUT-OF-SCOPE REFUSAL (E64, view-scope fill).
+
+  The requiring direction (scope_surface_ids + required_phrases, E59)
+  narrows what a scope DEMANDS. It was silent on what a scope PROHIBITS:
+  a prompt composed for the wrong camera is a strict superset of any
+  narrower scope's requirements, so it satisfied that check trivially.
+  E63's own Arm P is the measured instance - composed at view='front' for
+  yaw 135/225 - and the reason it could not be caught sooner is exactly
+  this: A1 declared no scopes.views at all, so canon_gate.check_prompt
+  could not be asked "view:3" in the first place.
+
+  out_of_scope_hits(doc, prompt, scope_ids). At a declared view/stroke
+  scope, a prompt-provenance occupant phrase whose occupant owns NO surface
+  inside scope_ids is now a refusal if PRESENT. Checked generically, by
+  surface membership only - this file carries no notion of "face" or any
+  other subject-specific vocabulary (that lives in canon_compose.py; see
+  its own module docstring for why style_face, a legal_clause rather than a
+  surface, needs a different mechanism entirely - a clause names no surface
+  id, so scope-narrowing by surface id has no honest way to gate it here).
+  scope_ids is None at subject scope (nothing is "outside" the whole
+  subject by definition), so out_of_scope_hits always returns [] there -
+  every existing spend site (restylize_views.py, texpass_brush.py,
+  brush_cloud_step.py, all via require_canon at subject scope) is
+  unaffected; the mechanism only activates for a caller that passes
+  scope="view:ID"/"stroke:ID", which nothing did before this arc.
+
+  Folded into check_prompt()'s own `ok`: a new `out_of_scope` list sits
+  beside `missing`/`forbidden`/`unlicensed` in its return dict, and
+  refuse_uncovered()'s ANDON message names it alongside the other three so
+  a spend-site failure is never silent about which check fired.
+
+  python tools/canon_gate.py --selftest    # out-of-scope refusal proven
+
 YES/NO INTERVALS.
 
   coverage          named / prompt_surfaces. Occupancy, not ratification.
@@ -184,6 +222,20 @@ YES/NO INTERVALS.
                     as a missing ratified occupant phrase. Unmarked
                     clauses (the default) stay licensed-but-optional,
                     unchanged.
+                    At a declared view/stroke scope (E64), an
+                    occupant phrase whose surfaces are ALL outside
+                    that scope's list is now ALSO a refusal if
+                    present — out_of_scope, checked by surface
+                    membership only (no face/subject-specific
+                    vocabulary in this file — see
+                    out_of_scope_hits()). subject scope is never
+                    affected: scope_ids is None there, so nothing
+                    is "outside" it. Closes the E63 confound: a
+                    prompt composed for the wrong camera is a
+                    SUPERSET of what a narrower scope requires, so
+                    it satisfied the requiring-only check trivially;
+                    presence of its extra, out-of-scope content is
+                    what this catches.
   occupancy         one prompt occupant per surface_id. A blocked
                     addition naming a surface that already has a
                     prompt occupant is the predicted-drop class,
@@ -716,6 +768,67 @@ def scope_surface_ids(doc, scope="subject"):
     return set(ids)
 
 
+def out_of_scope_hits(doc, prompt, scope_ids):
+    """E64: at a declared view/stroke scope, an occupant phrase whose
+    occupant owns NO surface inside scope_ids must be ABSENT from the
+    prompt. subject scope (scope_ids is None) has nothing outside it by
+    definition, so this always returns [] there - unaffected, exactly as
+    every existing subject-scope caller already expects (require_canon's
+    real spend sites - restylize_views.py, texpass_brush.py,
+    brush_cloud_step.py - all gate at subject scope today; none of them
+    pass scope="view:*"/"stroke:*" yet, so this function is dormant for
+    every caller in the repo until one does).
+
+    THE HOLE THIS CLOSES. Before this function, a declared scope could only
+    REQUIRE in-scope phrases (scope_surface_ids + required_phrases). A
+    prompt composed for the WRONG camera - E63's own confound, Arm P
+    submitted at view='front' for yaw 135/225 - is a SUPERSET of what any
+    narrower scope requires, so it satisfied that check trivially and would
+    have passed check_prompt(doc, prompt, scope="view:3") even after
+    scopes.views existed. This is the other half: presence of an
+    out-of-scope occupant phrase is now itself a refusal.
+
+    GENERIC, NOT FACE-SPECIFIC. Checked by surface membership only - this
+    file names no "face" concept anywhere. canon/a1.surfaces.json's rear
+    scopes (E64) exclude "eyes" and "mouth" (dropping N9/N10, the two
+    charter-named face phrases this mechanism was built to catch) AND
+    "face"/"neck" (dropping N6, "olive skin" - never named in the charter's
+    can-fail list, but excluded from those scopes' surface lists all the
+    same, and caught here for the same reason, by the same generic rule).
+    style_face (a legal_clause, not a surface) has no surface id to be
+    "outside" of and is therefore NOT covered by this function - see
+    canon_compose.py's own module docstring for how its scope-conditioned
+    inclusion is proven instead.
+
+    An occupant sharing surfaces both inside and outside scope_ids (none on
+    any canon file in this repo today - every named occupant's surface set
+    sits wholly inside or wholly outside each declared view) is treated as
+    IN scope: it is only "out of scope" if scope_ids excludes every surface
+    it sits on.
+    """
+    if scope_ids is None:
+        return []
+    hits = []
+    checked = set()
+    for s in doc["surfaces"]:
+        occ = s.get("occupant") or {}
+        if occ.get("provenance") != "prompt":
+            continue
+        ph = occ.get("phrase")
+        occ_id = occ.get("id")
+        if not ph or not occ_id or occ_id in checked:
+            continue
+        sibling_ids = [s2["id"] for s2 in doc["surfaces"]
+                       if (s2.get("occupant") or {}).get("id") == occ_id]
+        if any(sid in scope_ids for sid in sibling_ids):
+            continue
+        checked.add(occ_id)
+        if _present(ph, prompt):
+            hits.append({"occupant": occ_id, "phrase": ph,
+                        "surfaces": sibling_ids})
+    return hits
+
+
 def licensed_phrases(doc):
     """Spans the reverse check may remove from a prompt.
 
@@ -816,6 +929,11 @@ def check_prompt(doc, prompt, scope="subject"):
     the same list and the same ANDON message shape. Clauses carry no
     ratification flag (nothing in this schema drafts a legal_clause), so
     there is no unratified-clause path to mirror `unrat_missing`.
+
+    E64: at a declared view/stroke scope, a phrase belonging to an occupant
+    with no surface in scope_ids is a NEW refusal category, `out_of_scope`
+    — see out_of_scope_hits()'s own docstring. subject scope is unaffected
+    (scope_ids is None there, so this is always []).
     """
     if prompt is None:
         _andon("need a prompt")
@@ -841,7 +959,8 @@ def check_prompt(doc, prompt, scope="subject"):
             missing.append({"surface": cid, "phrase": ph})
     forbidden = [{"surface": s, "word": w} for s, w in forbidden_hits(doc, prompt)]
     unlicensed = unlicensed_residue(doc, prompt)
-    ok = (not missing) and (not forbidden) and (not unlicensed)
+    out_of_scope = out_of_scope_hits(doc, prompt, scope_ids)
+    ok = (not missing) and (not forbidden) and (not unlicensed) and (not out_of_scope)
     kind, name = parse_scope(scope)
     return {
         "ok": ok,
@@ -849,6 +968,7 @@ def check_prompt(doc, prompt, scope="subject"):
         "unratified_missing": unrat_missing,
         "forbidden": forbidden,
         "unlicensed": unlicensed,
+        "out_of_scope": out_of_scope,
         "required": req,
         "scope": {"kind": kind, "id": name},
     }
@@ -927,9 +1047,9 @@ def refuse_uncovered(canon_path, prompt, scope="subject"):
     if not chk["ok"]:
         _andon(
             "canon does not cover ratified prompt: missing=%s forbidden=%s "
-            "unlicensed=%s; unratified named not required: %s"
+            "unlicensed=%s out_of_scope=%s; unratified named not required: %s"
             % (chk["missing"], chk["forbidden"], chk.get("unlicensed") or [],
-               cov["unratified_ids"]))
+               chk.get("out_of_scope") or [], cov["unratified_ids"]))
     return chk, cov
 
 
@@ -1664,12 +1784,86 @@ def _selftest_collision(scratch):
     load_canon(no_decl_path)  # must NOT raise
 
 
+def _selftest_out_of_scope(scratch):
+    """E64 fence 2 - a phrase belonging to a surface OUTSIDE a declared
+    view/stroke scope is a refusal if present, checked generically by
+    surface membership (no face-specific vocabulary here - see
+    out_of_scope_hits()'s own docstring; canon_compose.py's selftest proves
+    the same property on A1's real data, plus the reversion proof against
+    E63's actual confound).
+
+    Four can-fail legs, because a boundary this shape can be wrong four
+    ways: (a) an in-scope phrase, present, is fine - the new check must not
+    fire on correct work; (b) an out-of-scope phrase, present, refuses,
+    NAMING it - the positive case this function exists for; (c) subject
+    scope is UNAFFECTED - the identical bytes that refuse at view:0 (where
+    "grip" is excluded) must pass at subject scope (where "grip" is simply
+    a required surface, not an excluded one) - proves scope_ids=None truly
+    short-circuits rather than merely producing an empty list by accident;
+    (d) fence 1 - a scopes.views entry naming an unknown surface id refuses
+    AT LOAD TIME, the exact mechanism that would have caught a typo in this
+    arc's own eight hand-written lists before any of them reached a gate
+    call.
+    """
+    fixture = {
+        "subject": "OOS", "kind": "prop", "schema": 2,
+        "legal_clauses": [],
+        "scopes": {
+            "views": {"0": {"surfaces": ["blade"], "status": "draft"}},
+            "strokes": {},
+        },
+        "surfaces": [
+            {"id": "blade", "occupant": {
+                "id": "P1", "phrase": "a steel blade", "provenance": "prompt"}},
+            {"id": "grip", "occupant": {
+                "id": "P2", "phrase": "a leather grip", "provenance": "prompt"}},
+        ],
+        "blocked_additions": [],
+        "joints": [],
+    }
+    path = os.path.join(scratch, "oos.surfaces.json")
+    json.dump(fixture, open(path, "w", encoding="utf-8"))
+    doc = load_canon(path)
+
+    # (a) an in-scope phrase, present, is fine
+    in_scope_ok = check_prompt(doc, "a steel blade", scope="view:0")
+    if not in_scope_ok["ok"] or in_scope_ok["out_of_scope"]:
+        _andon("in-scope-only prompt was flagged out_of_scope: %s" % in_scope_ok)
+
+    # (b) the CONTAINS-refuses direction, named
+    with_grip = check_prompt(doc, "a steel blade, a leather grip", scope="view:0")
+    if with_grip["ok"]:
+        _andon("out-of-scope 'a leather grip' at view:0 did not refuse")
+    if not any(h["phrase"] == "a leather grip" for h in with_grip["out_of_scope"]):
+        _andon("out_of_scope did not name the offending phrase: %s" % with_grip)
+
+    # (c) subject scope unaffected by the identical bytes
+    subj = check_prompt(doc, "a steel blade, a leather grip")
+    if not subj["ok"] or subj["out_of_scope"]:
+        _andon("subject scope was affected by out_of_scope logic: %s" % subj)
+
+    # (d) fence 1 - an unresolvable scope list entry refuses at load time
+    bad = json.loads(json.dumps(fixture))
+    bad["scopes"]["views"]["0"]["surfaces"] = ["blade", "no-such-surface"]
+    bad_path = os.path.join(scratch, "oos_bad.surfaces.json")
+    json.dump(bad, open(bad_path, "w", encoding="utf-8"))
+    try:
+        load_canon(bad_path)
+        _andon("a scopes.views entry naming an unknown surface id did not "
+               "refuse at load time")
+    except Andon as e:
+        if "names unknown surface" not in str(e):
+            _andon("unknown-surface scope entry refused for the wrong "
+                   "reason: %s" % e)
+
+
 def selftest(scratch=None):
     _selftest_calibration()
     if scratch is None:
         scratch = tempfile.mkdtemp(prefix="canon_gate_")
     result = _selftest_gates(scratch)
     _selftest_collision(scratch)
+    _selftest_out_of_scope(scratch)
     return result
 
 
@@ -1726,7 +1920,8 @@ def main(argv=None):
                 "fixture coverage 0.75  sleeve refused  sleeveless held  "
                 "router reverse held  fail-closed held  "
                 "required clause held  "
-                "collision branch-M held  collision branch-D held\n"
+                "collision branch-M held  collision branch-D held  "
+                "out-of-scope refusal held\n"
                 % (PROFILE_DEFAULT_HITS, W3_NAMED))
             return 0
         if not args.cmd:
@@ -1755,8 +1950,10 @@ def main(argv=None):
             chk = check_prompt(doc, args.prompt, scope=args.scope)
             if not chk["ok"]:
                 _andon(
-                    "prompt failed: missing=%s forbidden=%s unlicensed=%s"
-                    % (chk["missing"], chk["forbidden"], chk["unlicensed"]))
+                    "prompt failed: missing=%s forbidden=%s unlicensed=%s "
+                    "out_of_scope=%s"
+                    % (chk["missing"], chk["forbidden"], chk["unlicensed"],
+                       chk.get("out_of_scope") or []))
             extra = ""
             if chk["unratified_missing"]:
                 extra = "  unratified_missing %d" % len(chk["unratified_missing"])

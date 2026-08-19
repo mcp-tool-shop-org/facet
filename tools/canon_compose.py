@@ -26,20 +26,61 @@ from that closed set on purpose; nothing here invents connective vocabulary.
 
 THE VIEW ARGUMENT, and its actual scope. canon/A1-IDENTITY.md's POSE section
 states the law this mechanises: "only the front view shows the face
-frontally." The face-bearing clauses this file drops at a non-front view are
+frontally." Through E60-E63, A1's canon carried no declared `scopes.views`
+entries at all, so canon_gate.check_prompt(scope="view:N") ANDONed for any
+view id on this subject; Gate 1 (the composer's prompt must pass the gate)
+was exercised, and only claimed to hold, at the FRONT view (scope="subject"),
+and a rear-view compose was checked directly against its OWN text (does it
+still contain a face phrase) rather than through the gate, because there was
+no declared scope for the gate to check it against.
+
+E64 FILLS THE LISTS (docs/experiments/E64-view-scopes-kickoff.md). A1's
+canon now declares all eight `scopes.views` entries ("0".."7", the
+FLAT_RING camera-index convention already used by canon_worksheet.py,
+canon_bind.py, and E58's own graph_N.json naming - yaw = 45 * int(id)),
+each an explicit, human-authored surface-id list (the Director's own clay
+walk), marked DRAFT pending his ratification. compose() now resolves a view
+to its declared scope when one exists (resolve_view_scope(), below) and
+emits FROM THAT LIST generally: which occupants - garments AND features
+alike, not just the face-bearing ones - receive a phrase, and whether the
+style_face legal_clause is included, both key off the scope's own surface
+set rather than the OLD binary face_visible(view) yaw==0 rule alone. That
+rule survives UNCHANGED as the fallback for any subject, or any view, with
+no declared scope - W3, LONGSWORD, and A1 itself before this arc all still
+produce byte-identical output (selftest() re-derives the front-view
+byte-identity rather than asserting it, and the full ring of legacy callers
+- garment_join="over", joints=(...), with_occupant_phrase - is otherwise
+untouched).
+
+The face-bearing clauses this file drops at a non-face-bearing scope remain
 exactly the charter's own list - eyes (N9), mouth/smile (N10), and the
 style_face legal_clause ("crisp readable facial features") - not a general
 per-surface visibility table for all ten NAMED elements across all eight
-yaws (that is twin-ring territory and out of E60's scope by the charter's
-own words). A1's canon carries no declared `scopes.views` entries, so
-canon_gate.check_prompt(scope="view:N") ANDONs for any view id on this
-subject; Gate 1 (the composer's prompt must pass the gate) is therefore only
-exercised, and only claimed to hold, at the FRONT view (scope="subject"),
-which is the only view Stage 2 ever spends against. A rear-view compose is
-checked directly against its OWN text (does it still contain a face phrase)
-rather than through the gate, because there is no declared scope for the
-gate to check it against - this is reported, not glossed over, in
-selftest()'s own comments.
+yaws (that is still twin-ring territory and still out of this composer's
+scope by the charter's own words: only v3/v5 are probed this arc). What is
+NEW is that "face-bearing" is now read FROM the declared scope (does it
+name a surface in FACE_SURFACE_IDS?) rather than re-derived from the yaw a
+second time - which is why a rear scope that ALSO excludes "face" and
+"neck" (the charter's own words: "neck - the collar eats it") correctly
+drops N6 ("olive skin") too, though neither surface was ever in
+FACE_SURFACE_IDS and the charter's own can-fail list never names it: the
+exclusion follows the DECLARED LIST, not a second face-specific rule
+layered on top of it.
+
+A view/stroke scope, once declared, is gated BOTH ways through the real
+canon_gate: missing an in-scope required phrase refuses (E59's own
+mechanism, unchanged - scope_surface_ids + required_phrases); and, new at
+E64, a phrase belonging to a surface OUTSIDE the declared scope is ALSO a
+refusal if present (canon_gate.out_of_scope_hits) - this is what catches
+E63's own Arm P confound (composed at view='front' regardless of camera)
+where the OLD requiring-only mechanism could not, because a front-composed
+prompt is a strict superset of what any narrower scope requires and so
+satisfied it trivially. style_face has no surface of its own, so it is NOT
+covered by that gate-level mechanism (fence 4: "style_face is a
+legal_clause, not a surface... putting a clause id in a surfaces array is
+an ANDON") - its scope-conditioned inclusion is proven directly against the
+composed text in selftest(), the same way all three face phrases were
+proven before any scope existed at all.
 
 THREE FORMS, one composer:
   grouped       (Arm P) - framing -> staging -> style -> identity, garments
@@ -134,6 +175,36 @@ Standards compliance (CLAUDE.md workflow-standards.md, scored 0-3):
   through canon_gate.depends_on_pairs(), never re-deriving the edge; not 3
   because the "and" vs "over"/unjoined DECISION is this file's own code,
   same as every other joiner choice here).
+
+  E64 ADDENDUM (view-scope consultation, resolve_view_scope): PIN_PER_STEP -
+  2, unchanged (the scope list is read live from doc["scopes"]["views"],
+  never retyped; the camera-index<->yaw mapping is code, matching this
+  file's existing "grouping choices are code" carve-out - a different
+  camera convention would need a code change, not a config change).
+  ANDON_AUTHORITY - 2 (new can-fail legs in selftest() prove BOTH
+  directions at A1's two actual probe views, v3 and v5 - correctly-composed
+  text passes its own scope gate and drops all three face phrases; AND the
+  reversion proof, that a front-composed prompt - E63's own confound,
+  reused verbatim rather than synthesised - now refuses when checked at
+  either rear scope, naming the phrase, where the OLD requiring-only
+  mechanism could not). NAMED_COMPENSATORS - n/a, unchanged (still no
+  spend, no write outside stdout). DECOMPOSE_BY_SECRETS - 2
+  (resolve_view_scope is its own function; a subject's camera/yaw
+  convention change touches only it, not the joiners or
+  _garment_feature_split's own filtering logic, which gained one optional
+  scope_ids parameter rather than a rewrite). UNCERTAINTY_GATED_HUMANS - 3
+  (the eight scope lists are DRAFT canon data, written from the Director's
+  own clay walk, reported for his ratification at the fold BEFORE any
+  spend - same standing as E62's depends_on/protected_tokens rows, and here
+  the spend itself waits on his word, not merely the canon edit).
+  EXTERNAL_VERIFIER - 2 (the CONTAINS-refuses direction for two of the
+  three face phrases - eyes, mouth - runs through canon_gate.check_prompt's
+  new out_of_scope mechanism, unmodified by this file; style_face - a
+  legal_clause, not a surface - has no gate-level path and is proven
+  directly against composed text instead, same as every face-phrase check
+  this file made before any scope existed; not 3 because that boundary is a
+  disclosed, structural limitation - fence 4 - rather than full external
+  verification of all three phrases).
 
 E61 ADDITIONS (layering-repair arms, docs/experiments/E61-layering-repairs-
 kickoff.md). Three new knobs, all opt-in via keyword args so every existing
@@ -267,8 +338,55 @@ def face_visible(view):
     face frontally.' Mechanised as: face-bearing clauses appear ONLY at
     yaw 0. This is deliberately binary, not a graded band across the 45-
     and 315-degree views - see the module docstring's VIEW ARGUMENT note
-    for why a finer table is out of this arc's scope."""
+    for why a finer table is out of this arc's scope.
+
+    UNCHANGED BY E64 - this stays the fallback for a subject (or a view)
+    with no declared scope. resolve_view_scope(), below, is what a scoped
+    compose() actually consults; it calls this function only when no scope
+    is declared for the resolved camera index."""
     return parse_view(view) == 0
+
+
+# E64: FLAT_RING's own camera-index convention (canon_worksheet.py,
+# canon_bind.py, test_t92's own scopes.views fixtures, E58's graph_N.json
+# naming) - "0".."7" for yaw 0/45/.../315, never "v0".."v7" (that prefix is
+# this arc's charter using it as a human-readable row label only).
+_CAM_YAWS = (0, 45, 90, 135, 180, 225, 270, 315)
+
+
+def resolve_view_scope(doc, view):
+    """(scope_ids, fv) for this view.
+
+    scope_ids - the declared surface-id set for this view's camera index
+    (doc["scopes"]["views"][cam]["surfaces"]), or None if undeclared: no
+    scopes block at all, an empty {} bucket (every canon file in this repo
+    before E64, and A1 itself before this commit), no entry for this
+    camera, or a yaw not on the 8-camera ring (parse_view accepts any
+    integer degree; only the eight FLAT_RING values have a camera index to
+    look up). None is the LEGACY path - every existing caller on every
+    OTHER subject, and every call this file's own selftest made before
+    E64, is completely unaffected: this function was not called at all
+    before this arc, so "returns the legacy answer" is the only behaviour
+    that could keep them byte-identical, and it does (proven in selftest()
+    by re-deriving front-view byte-identity rather than asserting it).
+
+    fv (face_visible) - whether the declared scope names a face-bearing
+    surface (FACE_SURFACE_IDS: "eyes", "mouth") when scope_ids is known;
+    the legacy binary face_visible(view) rule (yaw == 0) otherwise. Module
+    docstring's own words: "the composer emits from the scope list" - once
+    a scope exists, whether face content (features AND the style_face
+    legal_clause alike) appears is a property of THAT declared list, not
+    of the yaw number read a second time through a separate rule.
+    """
+    yaw = parse_view(view)
+    cam = str(_CAM_YAWS.index(yaw)) if yaw in _CAM_YAWS else None
+    bucket = ((doc.get("scopes") or {}).get("views")) or {}
+    rec = bucket.get(cam) if cam is not None else None
+    surfs = rec.get("surfaces") if rec else None
+    if not surfs:
+        return None, face_visible(view)
+    scope_ids = set(surfs)
+    return scope_ids, bool(scope_ids & FACE_SURFACE_IDS)
 
 
 # ---------------------------------------------------------------------------
@@ -552,11 +670,29 @@ def _style_phrases(doc, fv):
     return out
 
 
-def _garment_feature_split(doc, fv):
+def _garment_feature_split(doc, fv, scope_ids=None):
+    """garments, feature-phrases - which occupants compose() emits.
+
+    scope_ids=None (default, legacy) - EXACTLY today's rule: garments
+    unfiltered (every garment occupant always emits, at any view), features
+    filtered to non-face-bound only when `not fv`. Every existing caller on
+    every subject without a declared scope reproduces this byte-for-byte.
+
+    scope_ids given (E64) - the GENERAL form of "emit from the scope list"
+    (module docstring): occupants are first filtered to those owning at
+    least one surface in scope_ids, GARMENTS INCLUDED - not just the
+    face-bound features the legacy rule alone ever touched. This is why a
+    rear scope that excludes "face" and "neck" (not merely "eyes"/"mouth")
+    also drops N6 ("olive skin"): the exclusion follows the declared list
+    itself, so nothing here re-derives "face-bound" a second time once a
+    scope is known - fv is only consulted below when scope_ids is None.
+    """
     occs = named_occupants(doc)
+    if scope_ids is not None:
+        occs = [o for o in occs if any(sid in scope_ids for sid in o["surface_ids"])]
     garments = [o["phrase"] for o in occs if is_garment(o)]
     features = [o for o in occs if not is_garment(o)]
-    if not fv:
+    if scope_ids is None and not fv:
         features = [o for o in features if not is_face_bound(o)]
     return garments, [o["phrase"] for o in features]
 
@@ -573,7 +709,13 @@ def compose(doc, view="front", form="grouped", garment_join="and", joints=()):
 
     garment_join and joints are E61 additions (see module docstring's E61
     ADDITIONS note); both default to values that reproduce E60's own output
-    byte-for-byte when omitted."""
+    byte-for-byte when omitted.
+
+    E64: `view` now resolves through resolve_view_scope() first. When the
+    doc declares a scope for this view's camera index, occupant selection
+    AND face-content inclusion both key off that declared list (module
+    docstring's VIEW ARGUMENT note); otherwise every consumer keeps
+    face_visible(view)'s old binary rule exactly, byte-for-byte."""
     if form not in FORMS:
         _andon("form must be one of %s, got %r" % (FORMS, form))
     if garment_join not in ("and", "over"):
@@ -583,8 +725,8 @@ def compose(doc, view="front", form="grouped", garment_join="and", joints=()):
                "- flat has no head-pair to redirect and consolidated's "
                "joiner is a different construction entirely"
                % (garment_join, form))
-    fv = face_visible(view)
-    garments, features = _garment_feature_split(doc, fv)
+    scope_ids, fv = resolve_view_scope(doc, view)
+    garments, features = _garment_feature_split(doc, fv, scope_ids=scope_ids)
     framing = clause(doc, "frame_subject") or ""
     style_phrases = _style_phrases(doc, fv)
     pose, bg, neg = _staging_groups(doc)
@@ -705,10 +847,15 @@ def selftest():
                "forbidden=%s unlicensed=%s"
                % (chk_cons["missing"], chk_cons["forbidden"], chk_cons["unlicensed"]))
 
-    # CAN-FAIL LEG (charter Stage 0): a rear-view compose that still
-    # contained a face phrase must fail. Checked directly against the
-    # composed text - A1 declares no view scopes, so canon_gate cannot be
-    # asked to gate a specific view (see module docstring).
+    # CAN-FAIL LEG (charter Stage 0, E64 UPGRADE): a rear-view compose that
+    # still contained a face phrase must fail. Originally checked ONLY
+    # directly against the composed text, because A1 declared no view
+    # scopes and canon_gate could not be asked to gate a specific view. As
+    # of E64, A1's canon declares all eight - the direct-text check stays
+    # (it is still the only mechanism that can see style_face, a
+    # legal_clause with no surface id of its own - fence 4), and the
+    # gate-level legs further down add the real canon_gate.check_prompt
+    # proof for the two surface-bound phrases.
     p_rear = compose(doc, view="rear", form="grouped", garment_join="over")
     lower_rear = p_rear.lower()
     face_phrases = ("curious brown eyes", "a slight smile",
@@ -725,13 +872,87 @@ def selftest():
         if ph not in lower_front:
             _andon("front-view compose is missing the face phrase %r" % ph)
 
-    # dropping face content must not silently drop anything else
+    # dropping face content must not silently drop anything else. E64: now
+    # that A1 declares scopes.views, "rear" (yaw 180) resolves to camera
+    # "4"'s list, which excludes "face" AND "neck" - not just "eyes"/
+    # "mouth" - so N6 ("olive skin", the sole occupant of both) now
+    # correctly drops too (charter: "neck - the collar eats it"). The
+    # exemption set is therefore computed from the SAME resolved scope
+    # compose() itself used, not from the older two-surface is_face_bound
+    # heuristic, which would wrongly demand "olive skin" survive a scope
+    # that excludes both of its surfaces by name. Falls back to
+    # is_face_bound when no scope is declared, matching compose()'s own
+    # legacy path exactly (proven never to trigger here, since A1 now
+    # always resolves a scope for "rear" - this is the fallback's contract,
+    # not a live branch on this subject any more).
+    rear_scope_ids, _rear_fv = resolve_view_scope(doc, "rear")
     for entry in named_occupants(doc):
-        if is_face_bound(entry):
+        if rear_scope_ids is not None:
+            if not any(sid in rear_scope_ids for sid in entry["surface_ids"]):
+                continue
+        elif is_face_bound(entry):
             continue
         if entry["phrase"].lower() not in lower_rear:
-            _andon("rear-view compose dropped a non-face phrase: %r"
-                   % entry["phrase"])
+            _andon("rear-view compose dropped a phrase its own declared "
+                   "scope still includes: %r" % entry["phrase"])
+
+    # CAN-FAIL LEG (E64 fence 2, REQUIRED, both directions, "proven by
+    # reversion" - the charter's own words). v3 (yaw 135) and v5 (yaw 225)
+    # are this arc's two actual probe views - E63's Arm P confound composed
+    # them at view='front' regardless of camera; this proves the NEW
+    # per-view scope machinery both composes them correctly AND catches
+    # that exact confound where the OLD requiring-only gate (E59) could
+    # not, because a front-composed prompt is a strict superset of what any
+    # narrower scope requires.
+    for cam_yaw, cam_name in ((135, "3"), (225, "5")):
+        p_v = compose(doc, view=cam_yaw, form="grouped", garment_join="over")
+        chk_v = check_composed(doc, p_v, scope="view:%s" % cam_name)
+        if not chk_v["ok"]:
+            _andon("view %d correctly-composed prompt failed its own scope "
+                   "gate: %s" % (cam_yaw, chk_v))
+        lower_v = p_v.lower()
+        for ph in face_phrases:
+            if ph in lower_v:
+                _andon("view %d compose still contains the face phrase %r"
+                       % (cam_yaw, ph))
+        # REVERSION: E63's actual confound - the FRONT-composed prompt
+        # (p_front, built above) checked at THIS rear scope. A superset of
+        # what scope_surface_ids alone requires, so the OLD requiring-only
+        # mechanism would have passed it silently; canon_gate.
+        # out_of_scope_hits (E64) is what refuses it now.
+        bad = check_composed(doc, p_front, scope="view:%s" % cam_name)
+        if bad["ok"]:
+            _andon("view %d: E63's own confound (front-composed text) "
+                   "passed the view scope gate - the new mechanism does "
+                   "not catch what it exists to catch" % cam_yaw)
+        oos_phrases = {h["phrase"] for h in bad.get("out_of_scope") or []}
+        for ph in ("curious brown eyes", "a slight smile"):
+            if ph not in oos_phrases:
+                _andon("view %d: front-composed text checked at this scope "
+                       "did not name %r as out_of_scope: %s"
+                       % (cam_yaw, ph, bad))
+
+    # CAN-FAIL LEG (E64 fence 2, REQUIRED): the MISSING direction, at the
+    # newly-declared v0 scope specifically - p_front IS compose(doc,
+    # view=0, ...) (parse_view("front") == parse_view(0) == 0), so this
+    # reuses it rather than recomposing. The generic mechanism is already
+    # proven on a synthetic fixture at T92; this is the same property on
+    # A1's own real front-view prompt and its own newly-declared "0" scope.
+    chk_v0 = check_composed(doc, p_front, scope="view:0")
+    if not chk_v0["ok"]:
+        _andon("front-view prompt failed its own newly-declared view:0 "
+               "scope gate: %s" % chk_v0)
+    thin_v0 = p_front.replace("curious brown eyes", "")
+    if "curious brown eyes" in thin_v0:
+        _andon("thinning fixture did not remove the phrase - the leg below "
+               "would prove nothing")
+    chk_thin_v0 = check_composed(doc, thin_v0, scope="view:0")
+    if chk_thin_v0["ok"]:
+        _andon("view:0 prompt missing 'curious brown eyes' passed its own "
+               "scope gate")
+    if not any(m["phrase"] == "curious brown eyes" for m in chk_thin_v0["missing"]):
+        _andon("view:0 thinned prompt refused for the wrong reason: %s"
+               % chk_thin_v0)
 
     # anchor sanity - non-degenerate, not a re-assertion of Stage 1's own
     # numbers (those are reported, never pinned - charter: "not a byte
@@ -878,6 +1099,9 @@ def selftest():
         "depends_on_and_refused": True,
         "depends_on_flat_ok": True,
         "depends_on_over_ok": True,
+        "view_scope_v3_v5_ok": True,
+        "view_scope_reversion_caught": True,
+        "view_scope_v0_missing_refused": True,
     }
 
 
@@ -926,7 +1150,8 @@ def main(argv=None):
                 "selftest PASS  front/flat/consolidated gated  "
                 "rear drops face  anchor in_both=%d canon_only=%d  "
                 "garment-join-over held  joint-emit held  occupant-override held  "
-                "depends-on and-refused  depends-on flat-held  depends-on over-held\n"
+                "depends-on and-refused  depends-on flat-held  depends-on over-held  "
+                "view-scope v3/v5 gated  reversion caught  v0-missing refused\n"
                 % (r["anchor_in_both"], r["anchor_canon_only"]))
             return 0
         if not args.cmd:
