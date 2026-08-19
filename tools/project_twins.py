@@ -98,6 +98,19 @@ ap.add_argument("--bg-max-pct", type=float, default=2.0,
                      "already-trusted set, so 2%% is an order of magnitude above work "
                      "already accepted, while E01's contamination (a third of a "
                      "region keyed as figure) would exceed it outright.")
+ap.add_argument("--headband-bg-withhold", action="store_true",
+                help="E68 (docs/experiments/E68-headband-withhold-kickoff.md): on "
+                     "head-band texels ONLY, withhold (do not write) a texel whose OWN "
+                     "twin sample sits within the tool's EXISTING --bg-de of THIS "
+                     "view's own EXISTING fitted background -- the same dE_bg that "
+                     "already fed the background-contamination ANDON, now also read "
+                     "as a per-texel write gate rather than only an aggregate halt "
+                     "condition. Introduces no new threshold and does not touch "
+                     "--bg-de or --bg-max-pct. A withheld texel becomes a hole (filled "
+                     "by another view if one reaches it and does not also withhold "
+                     "it; otherwise left for stage 2's brush). OFF BY DEFAULT: the "
+                     "code path below this flag's checks is byte-identical to the "
+                     "pre-E68 tool when it is not passed.")
 ap.add_argument("--edge-min-struct", type=int, default=50,
                 help="structures smaller than this are keying specks, not parts")
 ap.add_argument("--edge-absolute", action="store_true",
@@ -851,6 +864,30 @@ for _view_i, view in enumerate(VIEWS):
     bgcol = bilinear(bg_img, px, py).astype(np.float32)
     relaxed = d_s[inm] < e_abs_s[inm]
     dE_bg = np.linalg.norm(srgb_to_lab(col) - srgb_to_lab(bgcol), axis=-1)
+
+    # HEAD-BAND BACKGROUND WITHHOLD (E68). Opt-in, OFF by default -- every line from
+    # `p_tr` onward is UNCHANGED CODE operating on whatever population reaches it, so
+    # with the flag off that population is exactly the pre-E68 one, byte for byte.
+    # On head-band texels ONLY, if THIS view's own twin sample sits within the tool's
+    # EXISTING --bg-de of THIS view's own EXISTING fitted background (the dE_bg just
+    # computed two lines up -- no new threshold, --bg-max-pct untouched), the texel is
+    # removed from the accepted population HERE, before `relaxed`/the ANDON's own
+    # population are read, rather than only reported after.
+    if args.headband_bg_withhold:
+        hb = headband[idx]
+        withhold = hb & (dE_bg < args.bg_de)
+        n_hb, n_wh = int(hb.sum()), int(withhold.sum())
+        if n_hb:
+            print(f"[twins] {view['name']}: head-band withhold — {n_wh:,} of {n_hb:,} "
+                  f"head-band-accepted texels ({n_wh / n_hb * 100:.2f}%) sit within dE "
+                  f"{args.bg_de:.0f} of THIS view's own background; withheld (not "
+                  f"written by this view; becomes a hole unless another view writes "
+                  f"it).", flush=True)
+        keep = ~withhold
+        idx, px, py, col, bgcol, dE_bg = (idx[keep], px[keep], py[keep], col[keep],
+                                          bgcol[keep], dE_bg[keep])
+        relaxed = relaxed[keep]
+
     p_tr = float((dE_bg[~relaxed] < args.bg_de).mean() * 100) if (~relaxed).any() else 0.0
     if relaxed.any():
         p_rx = float((dE_bg[relaxed] < args.bg_de).mean() * 100)
@@ -920,6 +957,18 @@ var = float(atlas[validA].var())
 print(f"[twins] atlas variance {var:.5f}  holes {int(hole.sum()):,}", flush=True)
 if not (var > 0.001):
     raise AssertionError("ANDON: atlas uniform")
+
+if args.headband_bg_withhold:
+    # POOLED (all-view) hole cost inside the head band: a texel is a hole here only if
+    # EVERY view that could otherwise have reached it withheld it (or no view ever
+    # reached it at all, for reasons unrelated to the withhold -- e.g. facing/erosion).
+    # Diagnostic only; nothing downstream reads this array.
+    headband_atlas = scatter(headband[:, None].astype(np.float32), 1)[..., 0] > 0.5
+    hb_total = int((validA & headband_atlas).sum())
+    hb_holes = int((hole & headband_atlas).sum())
+    print(f"[twins] head-band hole cost (POOLED, all views): {hb_holes:,} / "
+          f"{hb_total:,} head-band texels ({hb_holes / max(hb_total, 1) * 100:.2f}%) "
+          f"ended unwritten", flush=True)
 
 Image.fromarray((atlas * 255).round().astype(np.uint8)).save(args.out)
 Image.fromarray((hole * 255).astype(np.uint8)).save(
