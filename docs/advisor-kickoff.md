@@ -1,9 +1,9 @@
 # Advisor kickoff
 
 Paste into a fresh advisor session. **Rewritten 2026-08-19**, at the close of the session that
-built A1 — the reference-first exemplar — from a downloaded PNG to a painted figure approved
-at the Director's eye, across the arc
-from E57 to E70 in one sitting.
+took A1 — the reference-first exemplar — from a downloaded PNG to **a painted figure with one
+accepted brush stroke**, across E57→E72, and cut it as **v0.8.0, published and live on both
+registries**.
 
 **Read the calibration section before you trust anything this seat wrote.** Its central
 ruling on the paint contamination was FALSIFIED by the measurement it ordered; it stalled on
@@ -56,9 +56,10 @@ PermissionError; a reused basetemp went bad mid-session).
 
 | | |
 |---|---|
-| HEAD | re-measure — `git log --oneline -1`. **54+ commits ahead of origin, UNPUSHED** — the push is the Director's separate decision and has been all session |
+| HEAD | re-measure — `git log --oneline -1`. **`99466de`, PUSHED, in sync with origin, tree clean.** The Director authorised commit/push/merge 2026-08-19; there is no branch and nothing to merge — every seat works uncommitted in the shared tree and the advisor folds by pathspec |
+| release | **v0.8.0 PUBLISHED 2026-08-19 and live-verified at source, not read off the workflow.** PyPI `facet-mcp` **0.8.0** (wheel + sdist), npm `@mcptoolshop/facet` **0.8.0**, GitHub Release `v0.8.0` with 5 assets, docs site HTTP 200 serving the new handbook. ⚠ The FIRST tag failed at `gh release create` — **`.github/release-notes-vX.Y.Z.md` is REQUIRED and nine prior releases each carry one.** Nothing published (PyPI/npm are steps 11-14 and were skipped), so the tag was moved rather than a v0.8.1 cut. **Four sites declare the version** — `pyproject.toml`, `package.json`, `bin/facet.js` (which also pins the exact tag) and `record_mcp.py`'s `SERVER_VERSION` — and the release gates on all four; `MEASURE_VERSION` is NOT one of them and stays at 0.4.0. **Run translations with `--cache-clear` before any tag**: T34 caught `README.pt-BR.md` carrying stale counts from a cached run, an hour before they would have been immutable |
 | suite | **THE SUITE: 1346 tests, 1289 hermetic.** RE-COUNT before quoting — `pytest --collect-only -q` and again with `-m "not artifacts"`, currently 1346 total / 1289 hermetic. T34 pins ~14 count surfaces **and** a separate set of experiment-count surfaces read off the status table in `docs/experiments/README.md` — that table is the authority, not the index. ⚠ **T34 also pins three anchor SENTENCES in this file**; rewrite one and it fires, and one of them is the fixture a can-fail leg rewrites by hand, so restore the phrasing verbatim rather than re-pinning it |
-| the record | four-leg verify SERVING at close, byte-identity, over 72 experiments. No staleness findings at the declaration leg — recertify with MCP `record_build` after any doc change. 446 corpus files; `paid_for_by` reports 0 unrecognised |
+| the record | four-leg verify SERVING at close, byte-identity, over 72 experiments. No staleness findings at the declaration leg — recertify with MCP `record_build` after any doc change. 450 corpus files; `paid_for_by` reports 0 unrecognised |
 | canon | **A1: 19 rows, 16/16 ratified, prof_hit 10/10, 8 view scopes ratified, depends_on + protected_tokens ratified.** W3 24/24 ratified, binding 0/27; LONGSWORD 5/5 |
 | the asset | `E:\AI\training\facet_A1_accepted_ring\` (8 twins + sha256 manifest) · `facet_E69\bake\atlas_widescope.png` · `facet_E70\sheet\` (the approved sheet, 48 panels) |
 | spend | ~40 generations total this arc, all on the A1 line. The Director removed the credit constraint for the window; it was never the binding constraint — design quality was |
@@ -277,6 +278,25 @@ first re-discovers them as failures.
    tests-ride-the-commit law, violated by the commits that added the flag, and hidden by
    this repo's own already-recorded `pytest | tail` trap. **Run the suite yourself, to a
    file, and read the tally.** An inherited "suite is green" is an inherited claim.
+
+9. **It shipped FIVE specification defects of one shape in one session, and caught none of
+   them itself.** Name the file, open the file: a fill arm whose scoped mask contaminated its
+   own source pool; a palette adopted as an instrument that gates nothing; a sheet column
+   croppable from no recorded correspondence; an `emit` invocation with no frame flag; and
+   its own correction to that one, which re-armed the trap by naming `--profile` as a frame
+   source. **A Sonnet seat caught three after spending its time; the outside channel caught
+   two before anything was spent.** A tenth of the same shape closed the day - the release
+   failed because nine prior releases each carry a `.github/release-notes-vX.Y.Z.md` and it
+   did not write the tenth.
+10. **Seven instrument defects the same day**, every one returning a well-formed answer to a
+   slightly different question than the one asked: a `while read` loop eating its child's
+   stdin; a `json.dumps` re-dump that would have churned four profiles; a retry guard testing
+   output SIZE instead of completion; two background waiters left polling for markers whose
+   producers it had killed, one visible on the Director's screen for over three hours; a
+   watcher whose `grep -c` exited 1 on zero matches and so reported FAILED **because the suite
+   PASSED**; and a grep searching for a regular space against French's U+00A0.
+   **The cure that actually worked, every time: check the instrument against a case it should
+   have handled.**
 
 **What worked, and is worth repeating:** dispatching seats and steering them mid-flight;
 verifying every outside-channel claim at source before acting (three were checkable, three

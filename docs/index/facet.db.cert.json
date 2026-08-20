@@ -2,11 +2,11 @@
  "andon": [],
  "corpus": {
   "files": 450,
-  "id": "48a07591f33650668beab46f4a52628886ceded2a13f90e24d91f4216b387637",
+  "id": "42a479fdb93377828ffcb0fa9412711631167a00bf66b82d60573afc284b3a7c",
   "manifest": {
    "CLAUDE.md": "77063b6a3a0fdc6dfe70dd2c247f06c1956ea4e378507e91811f8e5db9a8ecbc",
    "README.md": "bfcad15e3c663f0ff3da08f8710c62d674b0f241cad1d6fcb942dd5c6c2b818f",
-   "docs/advisor-kickoff.md": "650cee3c41c4dfa8496243be827133680baa94cba208e85a61f79f70d54255e9",
+   "docs/advisor-kickoff.md": "d9560196f62b6dcc4a89c092104d1b25d9ed81983fe7edd78e40de0d366451f8",
    "docs/arc-history.md": "5b2876b3fed7be95a6efc984f5e5a00b7c1675b10a169ee43803b50e091b48a8",
    "docs/brand/README.md": "81f425b6a101135b43463b35468f08a2db37af39c856c01f7fbdb6ce66598226",
    "docs/comfy-consult-1-brief.md": "3ffe0b6744a757c27bf2c8d30c02829e36ce257672c011cffee353c09536a6c2",
@@ -470,7 +470,7 @@
  "db": {
   "bytes": 16977920,
   "path": "docs/index/facet.db",
-  "sha256": "a4c2ae574b5022bc55d9da53a82c8b4deadabb392f7df1967699f3069dd83efe"
+  "sha256": "b982ba3fb881af0a182e6db42702a54ae5be2fa1680438a0e05add7fb9d830de"
  },
  "determinism_leg": "byte-identity",
  "failures": [],
@@ -668,7 +668,7 @@
   "",
   "[vocabulary] what each declared vocabulary did not recognise",
   "             REPORT ONLY - this section never fails the run",
-  "  artifact kinds         recognised  7252   unrecognised    0",
+  "  artifact kinds         recognised  7254   unrecognised    0",
   "  experiment status      recognised   110   unrecognised   34",
   "      not recognised: **PLAN SUPERSEDED IN PLACE; S0 AND S1 R\u2026, **RUN** \u2192 [E51-fill-repair-report](E51-\u2026, **RUN; A CLEAN NEGATIVE, AND THE ARM IS\u2026, **RUN; ABSENT** \u2192 [E53-n11-spec-arm-rep\u2026, **RUN; ALL FOUR CELLS REJECTED BY THE D\u2026, **RUN; THE DIRECTOR ACCEPTS THE SHEETS\u2026, **RUN; THE DIRECTOR RULES IT A CLEAR ST\u2026, **deprioritised by E07's ruling** \u2014 den\u2026  (+26 more occurrence(s))",
   "  law paid_for_by        recognised    80   unrecognised    0",
@@ -687,7 +687,7 @@
  ],
  "unattributed_failures": [],
  "verb": "record_build",
- "verified_utc": "2026-08-20T02:29:32Z",
+ "verified_utc": "2026-08-20T03:11:36Z",
  "verify_exit_code": 0,
  "written_by": "tools/record_mcp.py"
 }
