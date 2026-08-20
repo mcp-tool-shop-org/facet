@@ -453,6 +453,27 @@ on correct work once already*. **The token is an author's declaration, not a mar
 forgot to type.** A gate whose author never declared it is a documentation defect at that site,
 repaired by writing the token — not a reason to widen the rule to every assert.
 
+**And the subtlest gate failure of all: an ANDON that checks a source was NAMED is satisfied
+without the value ever ARRIVING.** `texpass_iter`'s emit gate refuses to guess a frame -
+`if args.mode == "emit" and args.profile is None and not _aspect_explicit` - and it is a real
+guard with a real scalp: it exists because a silent default once emitted a prop at 752 px
+against its true 240, **3.1x too wide**, committing through a different projection than the one
+that lit it with no error anywhere. But it tests *that a profile was pointed at*, not *that a
+frame came back*. Passing `--profile` makes the first clause false and the ANDON goes quiet;
+the frame is then read from `args.aspect`, which `bind()` overwrites **only if that profile
+carries a block for THIS tool**. `profiles/a1.json` carries `verify/turn_render.py`,
+`silhouette_masks.py` and `restylize_views.py` and **no `texpass_iter.py`** - its `576,1024`
+lives on a tool this one never reads - so **the documented cure silently re-opens the
+documented defect**, on exactly the subject whose profile is incomplete. Note where the proxy
+fails: **precisely when you need the guard.** A complete profile would have supplied the frame
+anyway, so the check only matters in the case it cannot see. **Gate on the value that arrived,
+not on the flag that was supposed to fetch it** - and where a gate cannot reach the value, say
+so at the site rather than letting the flag stand in for it. Found by the **outside channel**
+2026-08-19 while a seat was mid-flight, and the advisor's own steer had re-armed the trap one
+message earlier by naming `--profile` as the frame source. **The guard itself is not retuned
+here** (Director, 2026-08-19): the law is recorded, the live invocations pass `--aspect`
+explicitly, and changing E14's construction is a separate sitting.
+
 **A gate that measures the RESULT halts. A gate that measures the environment's ability to
 run the measurement may be repaired.** The halt rule's own stated reason is that a session
 which *changed a parameter and re-ran* hit the same gate harder — it is about tuning a

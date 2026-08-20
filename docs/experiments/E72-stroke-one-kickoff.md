@@ -123,8 +123,17 @@ calls and read each exit code.
 E70's construction, reused: `bake_hero_pack.py` → `turn_render --flat` →
 `silhouette_masks.py` → E70's `e70_build_sheet.py` and `crop_boxes.json`.
 
-Columns: **A1 reference | accepted twin | pre-stroke mesh | post-stroke mesh**, at
-matched zoom and crop, head and collar crops required. **Rank nothing.**
+Columns: **accepted twin | pre-stroke mesh | post-stroke mesh**, at matched zoom and
+crop, head and collar crops required. **Rank nothing.**
+
+⚠ **The `A1 reference` column originally specified here is WITHDRAWN, and E71 is why.**
+That arc's seat measured it: `canon/A1_reference.png` is 1136x1472 against this route's
+576x1024 calibrated ortho frame, and **no recorded correspondence between those spaces
+exists** in `profiles/a1.json`, the E57/E58 reports or `canon_compose.py`. Applying E70's
+literal crop boxes to the reference yields an empty-background head crop and a badly
+misregistered collar crop, both saved as proof artifacts under `facet_E71\data\`.
+Establishing that correspondence is a separate pre-registered job nobody has done. The
+accepted twin is the registered comparison and it shares the frame.
 
 Failure modes the sheet must be able to show: the brush composing a *different*
 character in the stroked region; a seam at the stroke boundary; the stroke taking
@@ -171,3 +180,164 @@ Ratifying the stroke scopes — **that is the Director's**.
   free and gates the spend. The brush-canvas measurement, the stroke order, the
   stroke scopes and the profile population are all Stage 0 because **none of them
   should be decided while looking at a generation that has already been paid for.**
+
+---
+
+## ⚠ AMENDMENT 1 — 2026-08-19 — what stroke one CANNOT do, ruled before it runs
+
+The Director ruled the vertical peach banding across A1's face on the E70/E71 head crop:
+it is **view ownership at UV chart boundaries**, styled texels with different owning
+cameras — not dirt, and not the cream-vs-grey hole class. Confirmed at source before this
+amendment: `project_twins.py:936-939` is winner-take-all (`take = w > best_w[idx]`), the
+face is seen by the front view and the two 45° quarters, and those twins disagree on skin
+value by **R 13.0 / G 13.9 / B 18.3** across the accepted ring. Full entry in
+[known-defects](../known-defects.md).
+
+**E72 will not erase the stripes, and the reason is structural rather than a matter of
+effort.** `texpass_iter.py` commits into **HOLE texels only; styled texels are never
+overwritten.** The bands are styled.
+
+| what you see on the crop | cause | can stroke one touch it? |
+|---|---|---|
+| vertical peach bands, cheeks and forehead | styled texels, different owners | **No** — styled is frozen |
+| grey patches in hair, collar, vest | RGB(107) holes | **Yes** — that is the brush canvas |
+
+**So the sheet this arc produces must not be read as a face fix, and the report must say so
+in its own words.** If the bands are still there afterwards, that is the expected outcome and
+not a failure of the stroke.
+
+**Stroke one answers exactly one question**, and the arc is graded on it alone: *does the
+brush continue this man into the holes, or compose a new one?*
+
+**Out of scope, added:** evening the face. Both candidate remedies — letting the front view
+own the whole head band, or a seam-blend **allowed to rewrite styled skin**, which no stage
+in this route may currently do — are **new doctrine for a later sitting**, not this one.
+
+**Enumerated for that sitting so it is not commissioned twice:** the tool already computes a
+weighted average alongside the winner (`sumW` / `sumWC`, `project_twins.py:934-935`), and the
+blended atlas is **already on disk** at
+`E:\AI\training\facet_E69\bake\atlas_widescope_blend.png`, written by the same run that
+produced the approved `atlas_widescope.png`. Whether it reads better is a look question and it
+is free to render. That is not a claim that it fixes the banding — only that the artifact
+exists and nobody has put it in front of the Director.
+
+---
+
+## ⚠ AMENDMENT 2 — 2026-08-19 — the invocations in Stage 0 and Stage 1 CANNOT RUN as written
+
+Found by the **outside channel** ([consult #23](../grok-consult-23-brief.md)) while the Stage 0
+seat was executing this spec. Verified at source before the seat was steered. The defect is the
+advisor's, and so is the correction that followed it.
+
+**Stage 0 step 3 and Stage 1 step 1 invoke `texpass_iter.py emit` with no frame.**
+
+    texpass_iter.py:133
+    if args.mode == "emit" and args.profile is None and not _aspect_explicit:
+        ANDON: `emit` needs a frame it was given, not one it guessed.
+
+That is E14 Ruling 29c living in the tool. Its default `--aspect` is **752,1024** — W3's
+portrait framing. **A1's measured frame is 576,1024.** The prop's own frame is 240x1024, so
+the silent default that earned this guard was **3.1x too wide**, committing through a different
+projection than the one that lit it, with no error anywhere.
+
+**⚠ The trap inside the trap: `selftest` skips this ANDON.** The refusal is narrowed to
+`mode == "emit"` deliberately — `commit` reads W/H out of the emitted `cam.json` and gating it
+would fire on correct work. So **Stage 0's hard gate, the thing standing between this arc and a
+paid generation, would pass on W3's frame while the real stroke ran on A1's.** A green gate that
+never saw the thing it gates.
+
+**⚠ And `--profile` does NOT close it — the advisor's first correction re-armed the trap.**
+
+    texpass_iter.py:132   _aspect_explicit = any(a == "--aspect" or a.startswith("--aspect=") for a in _argv)
+    texpass_iter.py:142   W, H = (int(x) for x in args.aspect.split(","))
+
+Passing `--profile` makes `args.profile is None` **false**, so the ANDON goes quiet; the frame
+is then read from `args.aspect`, which `bind()` overwrites **only if the profile carries a block
+for THIS tool**. `profiles/a1.json`'s `tools` keys are exactly
+`['verify/turn_render.py', 'silhouette_masks.py', 'restylize_views.py']` — **no
+`texpass_iter.py`**, and its `576,1024` sits on `silhouette_masks`, which `bind()` never reads
+here. The documented cure silently re-opens the documented defect, on exactly the subject whose
+profile is incomplete. **That law is now in CLAUDE.md; E14's guard is NOT retuned in this arc**
+(Director, 2026-08-19).
+
+### The corrected invocations — binding
+
+1. **`--aspect 576,1024` explicitly on EVERY `emit`, and on `selftest`.** Not `--profile` as the
+   frame source. `--aspect` is the only flag that sets the frame here today.
+2. **`--profile` is required for `brush_cloud_step.py graph`** (`:156`, `required=True`, E04
+   Ruling 24, no skip) — where it is identity and provenance, **not a frame**. Stage 1 step 2 as
+   originally written never builds a graph.
+3. If Stage 0 step 7 populates a `texpass_iter.py` block in `profiles/a1.json`, `aspect` goes in
+   it with `value`/`why`/`from` — and **the live invocations still pass `--aspect` explicitly
+   this arc** rather than trusting a block written the same hour.
+4. **The verbatim argv of every `emit` and of the `selftest` is reported**, not described. Any
+   emit or selftest already run unframed is **void** and is declared rather than quietly re-run
+   over.
+
+### And `e70_build_sheet.py` is not reusable — the spec's claim was wrong
+
+`E:\AI\training\facet_E70\scripts\e70_build_sheet.py:14` is `ROOT = r"E:\AI\training\facet_E70"`,
+hardcoded, laying out **two** columns and carrying SHA literals. A three-column E72 sheet is a
+**new script**, not a reuse. Say so plainly rather than bending that one.
+
+### Why this is recorded at length rather than quietly fixed
+
+These are the **fourth and fifth** defects of one shape the advisor shipped in this session —
+naming a tool and not opening it — after three that a Sonnet seat caught in E71. The first three
+cost a seat's time; these two were caught **before** anything was spent, by a channel the
+advisor had not opened all session. A future reader deciding how much to trust these two specs
+should weigh that: **E71's Amendments 1-4 and this file's Stage 0/1 invocations were written by
+a seat that named tools without opening them.**
+
+---
+
+## ⚠ AMENDMENT 3 — 2026-08-19 — the debt strokes 2–8 do NOT get a free ride on
+
+**Director, 2026-08-19: stroke one runs with the prompt string as drafted. The recut is
+refused for this sitting, and the debt is recorded rather than carried silently.**
+
+### Why the string stands at yaw 90
+
+`head facing straight ahead` is the **body-relative staging clause**, not *look at the
+camera*. It is this repo's own wording for the anti-crank direction — E66's kickoff states
+the defect as *the head turns toward the camera when it should stay straight ahead*. At yaw
+90 a body-relative "straight ahead" **is** the profile, so the clause does not fight the
+silhouette. Measured: the eight keys carry **one distinct prompt string**, so the clause is
+uniform and body-relative rather than per-view and camera-relative.
+
+Recutting the set for a camera-relative "in profile" phrase is **refused this sitting** and
+the reason is mechanical, not stylistic: `brush_cloud_step.py:407` gates at
+`scope="subject"`, and **A1 licenses no orientation clause**, so a per-view orientation
+phrase would land as **unlicensed residue**. And the yaw-90 mask is hair fringe, collar,
+vest opening and a shoe — **not a blank face** — so the clause is acting as an anti-crank
+instruction on those texels rather than as a fight with the view.
+
+### ⚠ THE DEBT — it binds strokes 2 through 8, and it is unresolved
+
+**The same single prompt string names `eyes`, a smile, and `face` on the REAR cameras.**
+The seat measured this and disclosed it rather than resolving it (report §step 6,
+`logs\step6_verify_prompt_console.txt`), and the measurement is informational **only because
+nothing in the repo currently calls `canon_gate` with a view scope from a real spend site**:
+
+| scope | result |
+|---|---|
+| `scope="subject"` — **what `brush_cloud_step.py` actually gates on** | `ok=True`, missing/forbidden/unlicensed/out_of_scope all empty |
+| `scope="view:0/1/2/7"` | **pass** |
+| `scope="view:3"`, `"view:4"`, `"view:5"` | **FAIL — 3 `out_of_scope` hits each: `face`, `eyes`, `mouth`** |
+| `scope="view:6"` | **FAIL — 2 `out_of_scope` hits: `eyes`, `mouth`** |
+
+Those are exactly the surfaces each `scopes.views` entry drops. **This is the E58/E63
+mechanism, disclosed and unresolved.**
+
+**Stroke one is yaw 90, and view:2 PASSES. That is the whole reason it may run.**
+
+**Strokes 2–8 do not get a free ride on this file** (Director, 2026-08-19). Before any of
+them is spent, one of two things is decided and written down:
+
+1. wire `brush_cloud_step.py` to a **per-view** scope, so the gate the record already knows
+   how to compute is the gate that actually guards the spend; or
+2. accept the subject-scope mismatch **permanently and in writing**, with the reason.
+
+Neither is decided here, and **neither may be decided by a seat mid-spend.** A stroke on any
+of views 3/4/5/6 with this file and no decision is a spend against a prompt the record can
+already show is out of scope for that camera.

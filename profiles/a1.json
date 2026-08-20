@@ -18,6 +18,16 @@
       "path": "docs/experiments/E58-a1-twin-prompts.json",
       "why": "Eight identical full-coverage prompts (all 18 ratified phrases, every view) -- see that file's own _rule_deviation_disclosed note for why this arc does NOT follow the W3/dragon per-view-drop convention. Verified against canon_gate.check_prompt() before being written (E58 Stage B): ok=True, missing=[], forbidden=[], unlicensed=[].",
       "from": "E58 Stage B/D"
+    },
+    "brush_prompts": {
+      "path": "docs/experiments/E72-a1-brush-prompts.json",
+      "why": "Per-stroke brush prompts for A1's eight eye-level stroke cameras. brush_cloud_step.py's pre-flight (E04 Ruling 24) checks --prompts IS this file by realpath, unmodified, before any workflow JSON is written -- so this entry is what makes that check pass rather than a coincidence of a matching filename. IDENTICAL full-coverage prompt on all 8 keys (E58's convention, not W3's per-view-orientation one) -- MECHANICAL reason, not stylistic: brush_cloud_step.py's canon_gate call runs at scope=subject with no per-view exemption reachable, so a per-view-dropped or orientation-augmented prompt would be a missing-phrase or unlicensed-residue refusal on this subject. See the fixture's own _convention_followed_and_why_MECHANICAL_NOT_STYLISTIC note.",
+      "from": "E72 Stage 0 step 6 (executor seat); verified against canon_gate.py directly, ok=True at scope=subject"
+    },
+    "palette": {
+      "path": "canon/A1-palette.json",
+      "why": "Per-material Lab palette bands, hand-placed region-box read on the single frozen reference (E57 Stage 1) -- ten materials, chroma floor 12.0 (checked, not re-derived, against this subject's own pooled chroma density). Existed, unreferenced from any profile, since E57; this arc is the first to point a profile at it. UNLIKE the ratified W3/galleon/beast/longsword palettes, this file GATES NOTHING (no allowed_bands/min_chroma/gate block in the E04/E12/E14 sense, by its own _purpose field) -- E71 confirmed this directly: palette_gate.py exits 1, KeyError allowed_bands, against this exact file, on real E70/Arm-R renders. Pointed at here as a DESCRIPTIVE fixture (what E57 Stage 1 measured the reference to look like), not as an armed gate -- arming it is a separate, unperformed job.",
+      "from": "E57 Stage 1; E71 (confirmed non-gating, KeyError reproduced against real renders)"
     }
   },
   "tools": {
@@ -171,6 +181,90 @@
         "why": "FALLBACK prompt (protective-transcription class, E04 Ruling 22): an invocation that forgets --prompts still asks for THIS archivist rather than falling through to some other subject's default. Composed from the 18 ratified phrases as a comma-list (E12 Ruling 9c form). UPDATED at E59 Stage 0, 2026-08-18: appended 'head facing straight ahead' (canon/a1.surfaces.json's stage_head_forward, the Director's 2026-08-18 ruling), the 19th phrase and the first added after this file's own authoring. Stage 0 made the clause required:true-enforced; this profile's prompt is what canon_gate checks it against, and the E58-authored 18-phrase text (below this edit's predecessor) failed its own subject's canon the moment enforcement landed -- caught by test_t91_census_does_not_invent_surfaces going red, not tuned past. E58-a1-twin-prompts.json (the historical record of what E58 actually SUBMITTED) is deliberately NOT touched -- it stays a faithful record of a prior generation, predating this ruling. Re-verified clean against canon_gate.check_prompt() after this edit: ok=True, missing=[], forbidden=[], unlicensed=[]. | E59+: pose staging clauses added at the Directors direction 2026-08-18; required by the gate. | E60 fold: N1 gained SLEEVELESS; prompt follows the ratified phrase.",
         "from": "E58 Stage B/D; E59 Stage 0; canon/a1.surfaces.json"
       }
+    },
+    "texpass_iter.py": {
+      "edge-mode": {
+        "value": "global",
+        "why": "DECIDED at the tool default, the same universal reasoning recorded on every other subject in this repo (character.json, ship.json carry byte-identical entries). E14 Ruling 24c ported A3's local-half-width bound to this tool as an OPT-IN mode and adopted it NOWHERE -- 'global' is what every commit this route has made runs under, A1 included (no commit has run on A1 yet, but nothing licenses a different starting mode). 'local' waits for a stroke lane that brings its own evidence.",
+        "from": "E14 Ruling 24c; character.json/ship.json (identical entries)"
+      },
+      "edge-frac": {
+        "value": 0.3333333333333333,
+        "why": "A3's invariant -- erosion may never exceed a third of a structure's own local half-width. Read ONLY under --edge-mode local, which A1 does not run either; recorded so it cannot arrive by silence if a future ruling adopts the mode.",
+        "from": "E08 Amendment 3; E14 Ruling 24c"
+      },
+      "facing-min": {
+        "value": 0.25,
+        "why": "FIRST-RUN OPERATING POINT at the tool's own code default -- the ship.json/character.json convention: silence resolves to inheritance, so an explicit adoption of the default is a decision, not a guess. COMMIT-only parameter, not exercised by E72 Stage 0's own emit-only measurement; no A1-specific commit has run to measure a departure.",
+        "from": "E06 (the code default's origin); adopted explicit E72 Stage 0"
+      },
+      "edge-dist": {
+        "value": 4.0,
+        "why": "FIRST-RUN OPERATING POINT at the code default, same reasoning as facing-min. COMMIT-only parameter, not exercised by E72 Stage 0's own emit-only measurement.",
+        "from": "E06; adopted explicit E72 Stage 0"
+      },
+      "mask-dilate": {
+        "value": 9,
+        "why": "FIRST-RUN OPERATING POINT at the code default. This ONE emit-relevant flag WAS exercised by E72 Stage 0's own 8 measurement calls (the profile carried no block at that time, so the calls ran under this same code-default value directly, confirmed by console output) -- SPENT in that narrow sense, not merely adopted.",
+        "from": "E06; confirmed as the value E72 Stage 0's emit calls actually ran under"
+      },
+      "thin-extent": {
+        "value": 0.0,
+        "why": "OFF, RULED -- not a measurement gap. The thin-extent policy exists for a thin hard-surface prop (W3's greatsword; sized to it at 0.03). A1 carries NO WEAPON and NO HELD OBJECT by the Director's direction (canon/a1.surfaces.json legal_clauses stage_no_weapons/stage_no_held, both ratified, both licensed at every scope) -- there is no thin prop on this subject for the flag to withhold from diffusion. 0.0 is the tool's own 'off' default, adopted deliberately -- same class of decision as ship.json's bake_hero_prep.head-scale=1.0 ('ALLOCATION: NONE, RULED'). This ALSO was exercised by E72 Stage 0's own emit calls (implicitly, as the code default, since no --thin-extent flag was passed).",
+        "from": "canon/a1.surfaces.json (stage_no_weapons, stage_no_held); tool default; confirmed as the value E72 Stage 0's emit calls actually ran under"
+      },
+      "aspect": {
+        "value": "576,1024",
+        "why": "MEASURED, not the tool's code default (752,1024, which is W3's portrait framing and is WRONG for A1 -- silently emitting at it is exactly the failure E14 Ruling 29c exists to prevent, and that ANDON does NOT prevent it for `selftest`, whose internal emit() call bypasses the ANDON's mode=='emit' guard entirely). Moves WITH this same profile's OWN verify/turn_render.py.w/h and silhouette_masks.py.aspect entries (E58 Stage C) -- the THIRD consumer of A1's own measured frame. Confirmed load-bearing directly, not asserted: E72 Stage 0 step 3's own 8 emit calls passed this exact value explicitly on the command line (this block did not exist in the profile at call time) and every one of the 8 resulting cam.json files reads W=576 H=1024, checked directly, not sampled.",
+        "from": "E58 Stage C; profiles/a1.json's own verify/turn_render.py block; confirmed E72 Stage 0 step 3 (all 8 cam.json files)"
+      },
+      "fit-axis": {
+        "value": "height",
+        "why": "Moves WITH turn_render's fit-axis (E58 Stage C: A1's extent is x=0.5611 y=0.2214 z=1.0012 -- a standing humanoid clearly taller than wide, the same shape class as W3). Equals the tool's own code default, but recorded explicitly per this profile's own established convention (its turn_render.py/silhouette_masks.py blocks already carry this key explicitly) rather than left to a silent coincidence.",
+        "from": "E58 Stage C; profiles/a1.json's own verify/turn_render.py block"
+      },
+      "margin": {
+        "value": 1.204,
+        "why": "The framing family's third key on this THIRD consumer, pinned with aspect/fit-axis for the same reason. Equals the tool's own code default and the studio's standard framing margin, used unchanged across every subject to date; A1's own frame derivation (E58 Stage C) used it without its coverage-ANDON firing.",
+        "from": "E58 Stage C; profiles/a1.json's own verify/turn_render.py block; E04 Ruling 25 lineage"
+      }
+    },
+    "texpass_brush.py": {
+      "seed": {
+        "value": 770700,
+        "why": "FIRST-RUN OPERATING POINT at the studio's shared value, matching this profile's OWN restylize_views.py.seed and W3's/ship's texpass_brush.py.seed. Structurally required, not optional: brush_cloud_step.py graph's pre-flight (E04 Ruling 24) refuses to build a workflow JSON at all if this block is absent or this key is undecided.",
+        "from": "E08 (W3/ship lineage); profiles/a1.json's own restylize_views.py block"
+      },
+      "steps": {
+        "value": 20,
+        "why": "FIRST-RUN OPERATING POINT at the studio's shared value.",
+        "from": "E08"
+      },
+      "cfg": {
+        "value": 2.5,
+        "why": "FIRST-RUN OPERATING POINT at the studio's shared value.",
+        "from": "E08"
+      },
+      "lora-w": {
+        "value": 0.75,
+        "why": "FIRST-RUN OPERATING POINT at the studio's shared style-LoRA weight, matching this profile's own restylize_views.py.lora-w. NOT the beast's 0.0 -- that was a Director-ruled deviation made AFTER seeing a rejected pair (E12 Ruling 10b); A1 has no brush generation yet to justify departing from the house default.",
+        "from": "E08 (W3/ship lineage)"
+      },
+      "cn-strength": {
+        "value": 1.0,
+        "why": "FIRST-RUN OPERATING POINT at the BRUSH stage's own value -- NOT the twin-stage 0.9 already recorded on this profile's restylize_views.py.cn-strength. Same distinction character.json/ship.json both record explicitly: the brush's ControlNet is an inpainting ControlNet at denoise 1.0 inside the mask, and both the character and ship routes ran it at 1.0.",
+        "from": "E04 Ruling 23 (the character/ship precedent for this exact distinction)"
+      },
+      "prompt": {
+        "value": "A young archivist in his 20s, a sleeveless plum long-vest with fine gold embroidery, a cream high-collared shirt, an umber sash, slim dark-green trousers, polished brown shoes, olive skin, tousled dark curls, ink-stained fingertips, curious brown eyes, a slight smile, painterly digital art with visible brushwork, rich saturated palette, crisp readable facial features, plain warm pale-grey studio backdrop, no weapons, no held objects, nothing crossing the body silhouette, head facing straight ahead, arms slightly away from the body, hands empty and open, feet planted and visible.",
+        "why": "FALLBACK prompt (protective-transcription class, E04 Ruling 22), byte-identical to this profile's OWN restylize_views.py.prompt -- so an invocation that forgets --prompts still asks for THIS archivist rather than some other subject's default. The route passes per-stroke prompts from docs/experiments/E72-a1-brush-prompts.json and never reaches this fallback; documenting it here is what stops a forgotten flag from silently asking the cloud for someone else's identity.",
+        "from": "profiles/a1.json's own restylize_views.py.prompt (E58 Stage B/D; E59 Stage 0; E60 fold)"
+      },
+      "negative": {
+        "value": "低分辨率，低画质，肢体畸形，手指畸形，画面过饱和，蜡像感，人脸无细节，过度光滑，画面具有AI感。构图混乱。文字模糊，扭曲",
+        "why": "A1's own recipe-sourced negative, matching this profile's own restylize_views.py.negative -- the SAME judgment call ship.json's own texpass_brush.py.negative makes and discloses ('No stroke has run here, so this subject has earned no brush-stage terms yet; when it does they are added the way W3's were, with the measurement'). This is a DOCUMENTARY field only: brush_cloud_step.py's pre-flight checks the ACTUAL negative entering the graph against docs/experiments/E72-a1-brush-prompts.json's own _negative field, never against this value (a mismatch here would only print a non-gating diagnostic, 'do NOT both match') -- kept byte-identical to that fixture's _negative on purpose so the diagnostic reads clean.",
+        "from": "canon/A1-RECIPE.json negative_text; ship.json's identically-shaped precedent and disclosure"
+      }
     }
   },
   "cameras": {
@@ -190,5 +284,5 @@
       "from": "E58 Stage C"
     }
   },
-  "_out_of_scope_this_profile": "bake_hero_prep.py / texpass_brush.py / texpass_iter.py / project_twins.py / cull_unseen.py blocks are NOT populated -- A1 has not been baked, painted, projected or culled. Those are the next arc's (texpass) scope per the E58 charter's own out-of-scope list. Populating them now would be values arriving by invention rather than measurement."
+  "_out_of_scope_this_profile": "UPDATED 2026-08-19 (E72 Stage 0 step 7). texpass_iter.py and texpass_brush.py are NOW POPULATED above -- E72 measured A1's per-view brush canvas with the former and the latter is structurally required by brush_cloud_step.py graph's pre-flight for the Stage 1 stroke this arc's dispatch authorizes but does not run. bake_hero_prep.py / project_twins.py / cull_unseen.py remain UNPOPULATED, and that is now a scope decision rather than a blanket 'not baked yet' note (A1 HAS been baked, painted and projected by prior arcs -- the note's own former premise is stale): none of those three tools is invoked by E72 (Stage 0 packs the GLB with the separate, profile-blind bake_hero_pack.py; project_twins and cull_unseen are explicitly out of this arc's scope per its own dispatch), and backfilling project_twins.py's ~15-key block in particular from imperfect archaeology of prior arcs' invocations risks exactly the 'value arriving by invention rather than measurement' failure this repo's own law forbids. Left for a session that actually invokes those three tools, or one whose sole job is that archaeology."
 }

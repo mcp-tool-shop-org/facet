@@ -149,6 +149,73 @@ but the median *texel* does not live in a median island.
 
 ---
 
+
+## Vertical peach banding across A1's face — view ownership at chart boundaries (Director, 2026-08-19)
+
+**The twin's face is one continuous wash; the bake is cut into vertical strips of different
+peach.** Ruled by the Director on the E70/E71 head crop. **It is not dirt, and it is not the
+cream-vs-grey hole class** — those are the separate RGB(107) patches in hair, collar and vest.
+
+**Mechanism, ruled by the Director and confirmed at source before this entry was written.**
+`tools/project_twins.py:936-939` is winner-take-all, not averaging:
+
+```
+take = w > best_w[idx]
+best_w[idx[take]] = w[take]
+owner_c[idx[take]]  = col[take]
+owner_i[idx[take]]  = _view_i
+```
+
+One camera wins each texel outright, by facing weight. A1's face is seen by the front view and
+the two 45° quarters, **and those twins do not agree on skin value** — the front is flatter and
+cooler, the quarters warmer and more modelled. Wherever two UV charts on the face are owned by
+different cameras, the disagreement lands as a hard step. **The bands are island boundaries.**
+
+Measured, on the accepted ring's own head crops: across-view skin spread **R 13.0 / G 13.9 /
+B 18.3** (max−min of per-view mean skin RGB). That is the size of the step available at any
+ownership boundary, and it is a property of eight independent generations rather than of any
+defect in one of them.
+
+**What the evidence is, and what it is not.** The measurement here is the **twin-beside-mesh
+pair at the Director's zoom** — the twin's face continuous, the bake's cut into strips. An
+advisor's column-step statistic over a small crop is a weak instrument for this and was
+withdrawn as such: it separated the two images by 19 steps against 30, which is not what a
+reader of the pair sees. Same for a warm-pixel skin mask written the same minute, which
+selected 30,123 px in the twin against 7,703 in the bake — different populations, so its
+colour delta measured the mask.
+
+**This is not caused by the hole fill and E71's arms do not touch it.** Arm F's render carries
+the identical banding. It is baked into the stage-1 atlas.
+
+**⚠ The scope of E70's approval, stated so the record does not overstate it.** The Director
+approved E70 on **identity and the garment set** — recognisably the same man, plum vest, cream
+sleeves, umber sash, green trousers, brown shoes, crown not bald, shirt not backdrop grey. The
+banding **was already present on that sheet's `v0_mesh_head.png`** and the approval did not
+cover it. **It is a real fail of "seamless face"** and it stands as an open defect on an
+approved artifact — the two are not in conflict, and the record must not read the approval as
+covering a property nobody graded.
+
+**The brush cannot fix it, and this is structural rather than a matter of effort.**
+`texpass_iter.py` commits edited pixels into **HOLE texels only; styled texels are never
+overwritten**. The bands are styled texels. So:
+
+| what you see | cause | can a brush stroke touch it? |
+|---|---|---|
+| vertical peach bands on cheeks and forehead | styled texels, different owners | **No** — commit writes holes only; styled is frozen |
+| grey patches in hair, collar, vest | RGB(107) holes | **Yes** — that is the brush canvas |
+
+**Two candidate remedies, both NEW DOCTRINE and neither in scope for stroke one** (Director,
+2026-08-19): let the front view own the whole head band; or a seam-blend that is **allowed to
+rewrite styled skin**, which no stage in this route may currently do.
+
+**Enumerated for whoever runs that sitting, so it is not commissioned twice:** the tool
+**already computes a weighted average alongside the winner** — `sumW` / `sumWC` at
+`project_twins.py:934-935` — and **the blended atlas is already on disk**,
+`E:\AI\training\facet_E69\bake\atlas_widescope_blend.png`, written by the same run that
+produced the approved `atlas_widescope.png`. Whether it reads better is a look question and it
+is free to render. That is not a claim that it fixes the banding; it is a claim that the
+artifact exists and nobody has put it in front of the Director.
+
 ## Tooling defects
 
 *Added 2026-08-08 at the v0.2.0 release read-back. The route's defects are above; this

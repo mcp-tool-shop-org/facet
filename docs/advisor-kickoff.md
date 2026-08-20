@@ -63,6 +63,27 @@ PermissionError; a reused basetemp went bad mid-session).
 | the asset | `E:\AI\training\facet_A1_accepted_ring\` (8 twins + sha256 manifest) · `facet_E69\bake\atlas_widescope.png` · `facet_E70\sheet\` (the approved sheet, 48 panels) |
 | spend | ~40 generations total this arc, all on the A1 line. The Director removed the credit constraint for the window; it was never the binding constraint — design quality was |
 
+## ⛑ USE THE OUTSIDE CHANNEL. IT IS HEADLESS AND IT IS ONE COMMAND.
+
+```
+"C:/Users/mikey/.grok/bin/grok" -p "<brief>"     # single turn, prints to stdout, exits
+```
+
+**23 consults, 23 chips held.** It has repo access, it is a different model family, and it is
+named in this file as one of four things that held this project together.
+
+⚠ **The 2026-08-19 advisor ran an ENTIRE session without opening it** - two dispatched seats,
+a fold, a spec, a push - and shipped **five defects of one shape**: naming a tool and not
+opening it. The first three cost a Sonnet seat its time. The fourth and fifth were **live in a
+spec a seat was executing**, and the channel found both in one round, one of them being the
+advisor's own correction to the other. Worse, that advisor **scored its own specs against this
+repo's EXTERNAL_VERIFIER standard, awarding itself 2/3, while never using the external verifier
+that exists.** A self-assessed external-verifier score is the standard's own defect.
+
+**Send a brief before dispatching a seat, not after it reports.** Latest round:
+[grok-consult-23](grok-consult-23-brief.md). Next Grok test file starts at **t85**; Grok memory
+is off by default (`/memory on` in the TUI, or check `~/.grok/config.toml`).
+
 ## ▶ NEXT-SESSION TODOS
 
 1. **E71 IS RULED AND CLOSED - and Gate D found a defect in the ADVISOR'S OWN
@@ -87,6 +108,41 @@ PermissionError; a reused basetemp went bad mid-session).
    `texpass_iter.py selftest` - a HARD GATE per that tool's own docstring. Stage 1 is ONE
    stroke. **The brush writes into HOLE texels only**, so E72 and E71's fill are
    ALTERNATIVES for the same texels, not stages.
+1d. **⚠ STROKES 2-8 ARE BLOCKED ON A DECISION NOBODY HAS MADE.** Stroke one (yaw 90)
+   ran because `scope="view:2"` PASSES. The single brush-prompt string names `eyes`, a
+   smile and `face` on the REAR cameras, and the seat measured that
+   **`view:3` / `view:4` / `view:5` each FAIL with 3 `out_of_scope` hits (face, eyes,
+   mouth) and `view:6` FAILS with 2 (eyes, mouth)** - exactly the surfaces those
+   `scopes.views` entries drop. It is informational ONLY because
+   `brush_cloud_step.py:407` gates at `scope="subject"` and nothing calls a view scope
+   from a real spend site. **Before any of strokes 2-8 is spent, decide and WRITE DOWN
+   one of:** (a) wire `brush_cloud_step.py` to a per-view scope, so the gate the record
+   can already compute is the gate that guards the spend; or (b) accept the
+   subject-scope mismatch permanently, in writing, with the reason. **Neither may be
+   decided by a seat mid-spend** (Director, 2026-08-19). E58/E63 mechanism.
+
+1c. **The three consult-#23 rulings, taken and not yet executed.**
+   - **Q1 - the scoped fill is NOT pointless.** The repair: full `holes.png` (correct source
+     pool), then restore unreachable texels to 107. Worth wanting on three counts -
+     `styled_mask`/`holes.png` stay honest so a later elevated camera cannot mistake a 3D
+     smear for paint; unseen surface keeps the declared constant rather than a neighbour
+     walk; and 57% of valid texels no eye-level camera sees, so filling them changes the
+     approved atlas in a way no sheet can convict. If `__reachable__` is right, Arm F and
+     (full-holes fill + restore grey) render identically while the **atlases differ**.
+     Grade the 58,346. Adopt neither arm.
+   - **Q2 - the face-band sitting: THREE crops, one sitting, his eye.** winner-take-all
+     (approved) | `atlas_widescope_blend.png` (already on disk, free, can fail) |
+     head-band-front-owned (if built). **Do NOT ship blend-everywhere** - vest and shirt
+     edges are meant to be sharp, and softening the whole figure to fix cheek steps is the
+     compositor family. Front-owns-the-head-band is the cheap correct shape because the band
+     is already first-class (`--head-facing-min`, `--head-edge-dist`, the crop rect).
+     **Predict the cost: vertical cheek stripes traded for a RING at the band boundary -
+     jaw, hairline, collar. Sheet the jaw.** Not stroke one; styled is frozen.
+   - **Q3 - unify the corpus definition, then declare all five profiles.** The library's
+     `corpus_manifest` walking markdown-only is the narrower, stale definition; unify it onto
+     the server's list (markdown + declared profiles). **Do not stop the server adding
+     `PROFILE_FILES` - profiles are decisions.** Own commit, own count pins. Not E72.
+
 2. **⚑ THE RECORD WATCHES THREE OF FIVE PROFILES — the advisor's next item.**
    `conventions.json` `corpora.profile_files` declares beast/character/ship;
    `prop.json` and `a1.json` have **never** been declared (`git log -S` returns nothing).

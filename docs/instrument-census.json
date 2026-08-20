@@ -17,8 +17,8 @@
     "py_files_total": 113
   },
   "provenance": {
-    "corpus_files": 435,
-    "corpus_files_before_self_exclusion": 445,
+    "corpus_files": 437,
+    "corpus_files_before_self_exclusion": 447,
     "probe_interpreter": "E:\\AI-Models\\trellis2-env\\Scripts\\python.exe",
     "probe_interpreter_version": "3.13.13",
     "probe_skipped": false,
@@ -3990,9 +3990,10 @@
       ],
       "b1_literals": [],
       "b2_literals": [],
-      "cited_count": 40,
-      "cited_count_raw": 41,
+      "cited_count": 43,
+      "cited_count_raw": 44,
       "cited_in": [
+        "CLAUDE.md",
         "docs/experiments/E02-report.md",
         "docs/experiments/E02-texture-stage-on-sound-inputs.md",
         "docs/experiments/E04-armT-halt.md",
@@ -4031,7 +4032,9 @@
         "docs/experiments/E70-baked-look-report.md",
         "docs/experiments/E71-hole-fill-kickoff.md",
         "docs/experiments/E71-hole-fill-report.md",
+        "docs/experiments/E72-stroke-one-kickoff.md",
         "docs/experiments/README.md",
+        "docs/grok-consult-23-brief.md",
         "docs/tools.md"
       ],
       "dir": "tools/verify",

@@ -427,6 +427,87 @@
         "yaw": 315
       }
     },
-    "strokes": {}
+    "strokes": {
+      "y+090_e+00": {
+        "surfaces": ["hair", "face", "eyes", "mouth", "neck", "shirt_collar", "vest_torso", "vest_skirt", "sleeve_L", "sleeve_R", "sash", "trousers", "shoe_L", "shoe_R", "hand_L", "hand_R"],
+        "status": "RATIFIED by the Director 2026-08-19 (E72) - reuse of the ratified scopes.views entry at this yaw; a stroke camera at a yaw IS the twin camera at that yaw, which is the mechanism that cleared the head crank. No second visibility analysis.",
+        "yaw": 90,
+        "el": 0,
+        "order": 1,
+        "hole_px_measured": 17868,
+        "hole_px_unit": "screen-space dilated-hole PIXELS in the 576x1024 job frame, NOT atlas texels (E72 Stage 0 step 3; all 8 emits exit 0, all 8 cam.json verified W=576 H=1024).",
+        "note": "STROKE ONE. Reuses scopes.views['2'] (profile - cheek, one eye, lips in profile keep the full face set per that entry's own note). Lowest measured hole count of all 8 views."
+      },
+      "y+135_e+00": {
+        "surfaces": ["hair", "vest_torso", "vest_skirt", "shirt_collar", "sleeve_L", "sleeve_R", "sash", "trousers", "shoe_L", "shoe_R", "hand_L", "hand_R"],
+        "status": "RATIFIED by the Director 2026-08-19 (E72) - reuse of the ratified scopes.views entry at this yaw; a stroke camera at a yaw IS the twin camera at that yaw, which is the mechanism that cleared the head crank. No second visibility analysis.",
+        "yaw": 135,
+        "el": 0,
+        "order": 2,
+        "hole_px_measured": 23346,
+        "hole_px_unit": "screen-space dilated-hole PIXELS in the 576x1024 job frame, NOT atlas texels (E72 Stage 0 step 3; all 8 emits exit 0, all 8 cam.json verified W=576 H=1024).",
+        "note": "Reuses scopes.views['3'] (face/eyes/mouth/neck out; style_face keys off the omission, per that entry's own note)."
+      },
+      "y+180_e+00": {
+        "surfaces": ["hair", "vest_torso", "vest_skirt", "shirt_collar", "sleeve_L", "sleeve_R", "sash", "trousers", "shoe_L", "shoe_R", "hand_L", "hand_R"],
+        "status": "RATIFIED by the Director 2026-08-19 (E72) - reuse of the ratified scopes.views entry at this yaw; a stroke camera at a yaw IS the twin camera at that yaw, which is the mechanism that cleared the head crank. No second visibility analysis.",
+        "yaw": 180,
+        "el": 0,
+        "order": 3,
+        "hole_px_measured": 20309,
+        "hole_px_unit": "screen-space dilated-hole PIXELS in the 576x1024 job frame, NOT atlas texels (E72 Stage 0 step 3; all 8 emits exit 0, all 8 cam.json verified W=576 H=1024).",
+        "note": "Reuses scopes.views['4']. Lowest measured hole/figure RATIO of all 8 views (11.61%) - see step3's metric-divergence note; not the metric this order was committed to, named for completeness."
+      },
+      "y+225_e+00": {
+        "surfaces": ["hair", "vest_torso", "vest_skirt", "shirt_collar", "sleeve_L", "sleeve_R", "sash", "trousers", "shoe_L", "shoe_R", "hand_L", "hand_R"],
+        "status": "RATIFIED by the Director 2026-08-19 (E72) - reuse of the ratified scopes.views entry at this yaw; a stroke camera at a yaw IS the twin camera at that yaw, which is the mechanism that cleared the head crank. No second visibility analysis.",
+        "yaw": 225,
+        "el": 0,
+        "order": 4,
+        "hole_px_measured": 23471,
+        "hole_px_unit": "screen-space dilated-hole PIXELS in the 576x1024 job frame, NOT atlas texels (E72 Stage 0 step 3; all 8 emits exit 0, all 8 cam.json verified W=576 H=1024).",
+        "note": "Reuses scopes.views['5']."
+      },
+      "y+270_e+00": {
+        "surfaces": ["hair", "face", "neck", "shirt_collar", "vest_torso", "vest_skirt", "sleeve_L", "sleeve_R", "sash", "trousers", "shoe_L", "shoe_R", "hand_L", "hand_R"],
+        "status": "RATIFIED by the Director 2026-08-19 (E72) - reuse of the ratified scopes.views entry at this yaw; a stroke camera at a yaw IS the twin camera at that yaw, which is the mechanism that cleared the head crank. No second visibility analysis.",
+        "yaw": 270,
+        "el": 0,
+        "order": 5,
+        "hole_px_measured": 19174,
+        "hole_px_unit": "screen-space dilated-hole PIXELS in the 576x1024 job frame, NOT atlas texels (E72 Stage 0 step 3; all 8 emits exit 0, all 8 cam.json verified W=576 H=1024).",
+        "note": "Reuses scopes.views['6'] (eyes+mouth dropped per the Director's E66 ruling on this specific view; hair/face/neck kept). Second-lowest measured hole count."
+      },
+      "y+045_e+00": {
+        "surfaces": ["hair", "face", "eyes", "mouth", "neck", "shirt_collar", "vest_torso", "vest_skirt", "sleeve_L", "sleeve_R", "sash", "trousers", "shoe_L", "shoe_R", "hand_L", "hand_R"],
+        "status": "RATIFIED by the Director 2026-08-19 (E72) - reuse of the ratified scopes.views entry at this yaw; a stroke camera at a yaw IS the twin camera at that yaw, which is the mechanism that cleared the head crank. No second visibility analysis.",
+        "yaw": 45,
+        "el": 0,
+        "order": 6,
+        "hole_px_measured": 37699,
+        "hole_px_unit": "screen-space dilated-hole PIXELS in the 576x1024 job frame, NOT atlas texels (E72 Stage 0 step 3; all 8 emits exit 0, all 8 cam.json verified W=576 H=1024).",
+        "note": "Reuses scopes.views['1']."
+      },
+      "y+315_e+00": {
+        "surfaces": ["hair", "face", "eyes", "mouth", "neck", "shirt_collar", "vest_torso", "vest_skirt", "sleeve_L", "sleeve_R", "sash", "trousers", "shoe_L", "shoe_R", "hand_L", "hand_R"],
+        "status": "RATIFIED by the Director 2026-08-19 (E72) - reuse of the ratified scopes.views entry at this yaw; a stroke camera at a yaw IS the twin camera at that yaw, which is the mechanism that cleared the head crank. No second visibility analysis.",
+        "yaw": 315,
+        "el": 0,
+        "order": 7,
+        "hole_px_measured": 38381,
+        "hole_px_unit": "screen-space dilated-hole PIXELS in the 576x1024 job frame, NOT atlas texels (E72 Stage 0 step 3; all 8 emits exit 0, all 8 cam.json verified W=576 H=1024).",
+        "note": "Reuses scopes.views['7']."
+      },
+      "y+000_e+00": {
+        "surfaces": ["hair", "face", "eyes", "mouth", "neck", "shirt_collar", "vest_torso", "vest_skirt", "sleeve_L", "sleeve_R", "sash", "trousers", "shoe_L", "shoe_R", "hand_L", "hand_R"],
+        "status": "RATIFIED by the Director 2026-08-19 (E72) - reuse of the ratified scopes.views entry at this yaw; a stroke camera at a yaw IS the twin camera at that yaw, which is the mechanism that cleared the head crank. No second visibility analysis.",
+        "yaw": 0,
+        "el": 0,
+        "order": 8,
+        "hole_px_measured": 43747,
+        "hole_px_unit": "screen-space dilated-hole PIXELS in the 576x1024 job frame, NOT atlas texels (E72 Stage 0 step 3; all 8 emits exit 0, all 8 cam.json verified W=576 H=1024).",
+        "note": "Reuses scopes.views['0']. Highest measured hole count of all 8 views - last in the proposed order by construction."
+      }
+    }
   }
 }
