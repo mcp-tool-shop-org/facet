@@ -128,6 +128,29 @@ pre-registered reach ceiling, against which they land **86–93%**: the differen
 the rows is geometry, not regression. [Full numbers, with their
 denominators](docs/handbook/subjects.md).
 
+**A fifth subject is mid-loop, and it is the first built reference-first
+(2026-08-17 → 2026-08-19).** A1, "the archivist", was started from a reference carrying its
+own embedded recipe rather than from a clay concept, and every stage since has been gated on
+that: canon ratified at **16/16 surfaces** before a mesh existed, a mesh approved at the
+Director's eye, a venue that reproduced the reference **pixel-identically three times**, an
+accepted eight-view twin ring with a sha256 manifest, and two named contamination failures
+each measured to a mechanism before anything was changed. The bake was approved
+[2026-08-19](docs/experiments/E70-baked-look-report.md) — **on identity and the garment
+set, and that is the whole scope of that approval.**
+
+**Then the brush opened, and it writes into holes only.** Stroke one landed at yaw 90 on
+2026-08-19: the invariance ANDON read **0.014 lv with a largest hot component of 0 px**
+outside the figure across 472,318 px tested, and `commit` wrote **3,585 texels**, taking holes
+**2,044,423 → 2,040,838** with the source atlas re-verified byte-identical afterwards. At
+the Director's zoom the pale triangle at the vest collar-to-shoulder went plum and the seam
+reads as one garment. It did not invent a face, turn the head, or paint a second vest.
+
+**The methodological result matters more than the asset.** Across that whole arc the
+ControlNet strength was never touched — every fix **removed a cause** rather than applying
+force against one. Two of the failures were the advisor's own specification defects, caught by
+executor seats and by an outside review channel before a credit was spent, and both are named
+in the record with the measurement that overturned them.
+
 **It is a pipeline, not a one-character generator.** Contradict the specification on
 eight named elements and the prompt wins **8 of 8** — median ΔE 46.3 against 6.2 on five
 held controls — while the figure stays the same man. Structure is held by the mesh and
@@ -177,6 +200,7 @@ DRAGON          11           -          -      10/11 NONE
 LONGSWORD        5         5/5        5/5        4/5 canon/longsword.surfaces.json
 E10-LAYER        1           -          -          - NONE
 LOGO             0           -          -          - NONE
+A1              10       16/16      16/16      10/10 canon/a1.surfaces.json
 ```
 
 `prof_hit 5/19` is a **specimen left deliberately broken**: it is the live default a run
@@ -293,6 +317,22 @@ code](docs/known-defects.md).
   wrong. The blend itself is an undocumented two-band split
   (`M + gaussian_blur_σ16(B − M)`) that measures **worst of four** alternatives on the same
   points.
+- **⚑ A painted face comes out banded, and it is the ownership finding above arriving on
+  an accepted asset.** A1's twin face is one continuous wash; the bake is cut into vertical
+  strips of different peach. `project_twins` is **winner-take-all** — one camera wins each
+  texel outright by facing weight, ownership rather than averaging — and the face is seen by
+  the front view and the two 45° quarters, which **disagree on skin value by R 13.0 / G 13.9
+  / B 18.3** across the accepted ring. Wherever two UV charts on the face are owned by
+  different cameras the disagreement lands as a hard step, so **the bands are island
+  boundaries, not dirt** — and not the grey hole class either. **The brush structurally
+  cannot fix it**: `commit` writes into hole texels only and styled texels are frozen. Two
+  remedies are named and neither is taken — let the front view own the whole head band, or a
+  seam-blend **allowed to rewrite styled skin**, which no stage in this route may currently do.
+  The weighted average is already accumulated in the tool and the blended atlas already exists
+  on disk; nobody has put it in front of the Director. **This was present on the sheet the bake
+  was approved from**, and the approval covered identity and the garment set — an open defect
+  on an accepted artifact is not a contradiction, but the record must not read an approval as
+  covering a property nobody graded.
 - **The views are never independent, which bounds every blending fix.** For each defect blob,
   **100% of faces with two or more contributing cameras have all of them inside a 90° span**
   (median 45°), and 21% of defect faces are seen by one camera only. Adjacent views under

@@ -7,11 +7,86 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 
 **A note on what a version means here.** A version in this file is a claim about
 **the state of the record**: which experiments are closed, which assets the Director
-has accepted, and what the tools measurably do at that commit. The tag carries it —
-there is no manifest to bump. Every entry below points at the ruling that established
-it, so a reader can check the claim rather than trust it.
+has accepted, and what the tools measurably do at that commit. Every entry below points
+at the ruling that established it, so a reader can check the claim rather than trust it.
+
+⚠ **Corrected 2026-08-19.** This paragraph read *"The tag carries it — there is no
+manifest to bump."* That is false and was false when written: **four sites declare the
+version** — `pyproject.toml`, `package.json`, `bin/facet.js` (which also pins the exact
+tag) and `tools/record_mcp.py`'s `SERVER_VERSION` — and `release.yml` **gates the
+release on all four matching the tag**, because drift ships an npm wrapper that 404s at
+a user's `npx` rather than failing in CI. `tests/test_t27_packaging_shape.py` has been
+testing that consistency the whole time. The sentence is kept here rather than deleted,
+per this repo's corrections rule.
 
 ## [Unreleased]
+
+## [0.8.0] — 2026-08-19
+
+**A subject is built reference-first, and the brush takes its first stroke.** v0.7.0 made
+the canon a database and put a fail-closed gate in front of the spend. This arc uses it:
+A1 — "the archivist" — is the first subject whose canon was ratified **before a mesh
+existed**, and the first to reach a committed brush stroke.
+
+### Added
+
+- **A1, the reference-first exemplar** (E57–E70). Canon ratified at **16/16 surfaces,
+  10/10 profile hits**, from a reference carrying its own embedded recipe rather than from
+  a clay concept. Mesh approved at the Director's eye; a venue that reproduced the reference
+  **pixel-identically three times**; an accepted eight-view twin ring with a sha256 manifest.
+  The bake was approved 2026-08-19 **on identity and the garment set — that is the whole
+  scope of that approval**, and the record says so rather than letting a later reader widen it.
+- **`scopes.strokes`, ratified** (E72). Eight stroke keys, each **reusing the already-ratified
+  `scopes.views` entry at the same yaw** — a stroke camera at a yaw is the twin camera at that
+  yaw, which is the mechanism that cleared the head crank, so no second visibility analysis was
+  performed. Stroke order **derived** from a measured per-view brush canvas rather than
+  inherited: W3's order assumes a two-pole asymmetry A1 does not have.
+- **Stroke one, committed** (E72 Stage 1). One generation at `y+090_e+00`. The first-stroke
+  invariance ANDON read **0.014 lv, largest hot component 0 px** outside the figure across
+  472,318 px; `commit` wrote **3,585 texels**, holes **2,044,423 → 2,040,838**; the source
+  atlas re-verified **byte-identical** to the approved bake's recorded hash. Both gates were run
+  as separate calls with each exit code read individually, per the stroke-7 law.
+- **`profiles/a1.json` populated from measurement** — `texpass_iter` / `texpass_brush` blocks
+  and the `brush_prompts` / `palette` fixtures. The file's own note said those blocks stayed
+  empty because the values "would be arriving by invention"; A1 has now been projected and
+  baked, so they arrive by measurement, and the stale note was amended in the same change.
+
+### Fixed
+
+- **The suite had been red since E68 and two folds reported it green.** `--bg-withhold-scope`
+  landed in `project_twins` without moving `test_t16_registry_sweep`'s pinned table — the
+  tests-ride-the-commit law violated by the commits that added the flag. Classified
+  `_per_invocation` in all four route profiles, with the sweep's own output as the evidence
+  that the classification is right rather than convenient: **every profile returns to the exit
+  code and undecided count it was already pinned at**, and only the flag total moves.
+
+### Known defects — added, not fixed
+
+- **Vertical peach banding across a painted face.** `project_twins` is winner-take-all, one
+  camera per texel; the face is seen by the front view and two 45° quarters that **disagree on
+  skin value by R 13.0 / G 13.9 / B 18.3**, so chart-ownership boundaries land as hard steps.
+  **The brush cannot reach it** — `commit` writes holes only, styled texels are frozen. Two
+  remedies named, neither taken.
+- **`texpass_iter selftest` writes real texels into the state it gates.** The hard gate that
+  protects a paid generation performs a real `commit()`, and left **9,489 texels permanently
+  marked STYLED** in a shared state directory. Caught before the spend, disclosed before it
+  could touch a number, and ruled: **`selftest` gets its own directory, and is not "fixed" by
+  committing those texels.**
+
+### Method
+
+- **An ANDON that checks a source was NAMED is satisfied without the value ever ARRIVING.**
+  `texpass_iter`'s emit gate refuses to guess a frame — but passing `--profile` silences it
+  while supplying nothing, because the frame only arrives if that profile carries a block for
+  *that tool*. The proxy fails **precisely when the guard is needed**. Recorded as law; the
+  guard itself is deliberately **not** retuned.
+- **Consult #23** (`docs/grok-consult-23-brief.md`). The outside channel found **two live
+  specification defects in a spec a seat was executing**, one of them the advisor's own
+  correction to the other. Its calibration chip held on all four parts — **twenty-three for
+  twenty-three**. The round is recorded with the admission that the advisor had self-scored
+  2/3 against this repo's own EXTERNAL_VERIFIER standard while never opening the external
+  channel, which is that standard's own defect.
+
 
 ## [0.7.0] — 2026-08-17
 
