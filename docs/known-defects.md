@@ -218,6 +218,32 @@ artifact exists and nobody has put it in front of the Director.
 
 ## Tooling defects
 
+### `texpass_iter selftest` writes REAL texels into the state it is gating (E72, 2026-08-19)
+
+**The gate that protects a paid generation leaves permanent residue in the directory it
+guards.** `selftest` emits, fake-inpaints by local blur, and **runs a real `commit()`** - by
+design, because that is how it proves styled texels stay byte-identical and holes strictly
+shrink. But the texels it writes are indistinguishable from real paint afterwards: E72's
+Stage 0 selftest left **9,489 yaw-0 texels marked permanently STYLED** in the shared
+`state/` directory, so the "pristine E69 bake" the Stage 1 stroke was about to emit against
+was not pristine.
+
+**Found before it could touch a number**, by the Stage 1 seat rather than by a check - it
+noticed while preparing to emit, reset `atlas.png` / `holes.png` / `styled_mask.npy` from
+sha256-verified E69 copies, **disclosed the reset in `predictions.md` before running
+anything**, and then re-emitted yaw 90 to prove the reset was inert: 106,893 figure px /
+17,868 hole px, reproducing Stage 0's numbers exactly.
+
+**Why it matters beyond one arc.** The residue is silent, it is in the *shared* state dir, and
+it accumulates - a lane resuming across sessions would emit against a mixture of real paint
+and blur-fill with nothing anywhere saying so. The gate's own honesty is what creates it:
+`commit` is the only way to test `commit`.
+
+**Director's ruling, 2026-08-19: before stroke two, `selftest` gets its own directory. It is
+NOT to be "fixed" by committing those texels.** The residue is not paint and must not be
+promoted to paint to make the problem go away.
+
+
 *Added 2026-08-08 at the v0.2.0 release read-back. The route's defects are above; this
 section is for the instruments themselves, which are now published products and so have
 users who are not this repo.*

@@ -99,16 +99,21 @@ is off by default (`/memory on` in the TUI, or check `~/.grok/config.toml`).
    space and the 576x1024 ortho frame, proven with two naive-crop artifacts. **Authoring
    A1's palette bands, and establishing that correspondence, are two separate
    pre-registered jobs nobody has done.**
-1b. **E72 - STROKE ONE - IS SPECIFIED AND WAITING.** Stage 0 is FREE and gates the spend:
-   measure the per-view brush canvas with `emit` on all eight yaws, DERIVE the stroke
-   order from it (do NOT inherit W3's profile-first spiral - A1 has no elevated cameras),
-   propose `scopes.strokes` for his ratification (canon is his; the slot is ratified and
-   `{}`), author `E72-a1-brush-prompts.json`, populate `profiles/a1.json`'s missing
-   `_fixtures.brush_prompts` / `_fixtures.palette` / texpass blocks, and end at
-   `texpass_iter.py selftest` - a HARD GATE per that tool's own docstring. Stage 1 is ONE
-   stroke. **The brush writes into HOLE texels only**, so E72 and E71's fill are
-   ALTERNATIVES for the same texels, not stages.
-1d. **⚠ STROKES 2-8 ARE BLOCKED ON A DECISION NOBODY HAS MADE.** Stroke one (yaw 90)
+2. **⚑ STROKE ONE IS TAKEN AND ACCEPTED (Director, 2026-08-19): CONTINUED, SAME MAN.**
+   One generation at `y+090_e+00`. `invar` mean 0.014 lv / 0 px hot; `commit` wrote 3,585
+   texels, holes 2,044,423 -> 2,040,838; E69's atlas byte-identical to E70's Gate C record.
+   The vest collar-to-shoulder triangle went plum and the seam reads as ONE garment. The
+   brush did not invent a face, turn the head, or paint a second vest. **The brush loop is
+   open and it works.**
+3. **⚠ BEFORE STROKE TWO: `selftest` GETS ITS OWN DIRECTORY.** The hard gate performs a
+   real `commit()` and left **9,489 yaw-0 texels permanently STYLED** in the shared `state/`
+   dir - the Stage 1 seat caught it, reset from sha256-verified E69 copies and proved the
+   reset inert before spending. **It is NOT to be fixed by committing those texels**
+   (Director). Blur-fill is not paint. See [known-defects](known-defects.md).
+4. **The thin grey gap at the vest-hem/trouser junction STAYS A HOLE** - present pre and
+   post, left alone deliberately (Director). Not a defect to chase.
+
+5. **⚠ STROKES 2-8 ARE BLOCKED ON A DECISION NOBODY HAS MADE.** Stroke one (yaw 90)
    ran because `scope="view:2"` PASSES. The single brush-prompt string names `eyes`, a
    smile and `face` on the REAR cameras, and the seat measured that
    **`view:3` / `view:4` / `view:5` each FAIL with 3 `out_of_scope` hits (face, eyes,
@@ -121,7 +126,7 @@ is off by default (`/memory on` in the TUI, or check `~/.grok/config.toml`).
    subject-scope mismatch permanently, in writing, with the reason. **Neither may be
    decided by a seat mid-spend** (Director, 2026-08-19). E58/E63 mechanism.
 
-1c. **The three consult-#23 rulings, taken and not yet executed.**
+6. **The three consult-#23 rulings, taken and not yet executed.**
    - **Q1 - the scoped fill is NOT pointless.** The repair: full `holes.png` (correct source
      pool), then restore unreachable texels to 107. Worth wanting on three counts -
      `styled_mask`/`holes.png` stay honest so a later elevated camera cannot mistake a 3D
@@ -143,7 +148,7 @@ is off by default (`/memory on` in the TUI, or check `~/.grok/config.toml`).
      the server's list (markdown + declared profiles). **Do not stop the server adding
      `PROFILE_FILES` - profiles are decisions.** Own commit, own count pins. Not E72.
 
-2. **⚑ THE RECORD WATCHES THREE OF FIVE PROFILES — the advisor's next item.**
+7. **⚑ THE RECORD WATCHES THREE OF FIVE PROFILES — the advisor's next item.**
    `conventions.json` `corpora.profile_files` declares beast/character/ship;
    `prop.json` and `a1.json` have **never** been declared (`git log -S` returns nothing).
    Measured: `record_health` says 446 corpus files, `certificate.corpus_manifest` says
@@ -153,7 +158,7 @@ is off by default (`/memory on` in the TUI, or check `~/.grok/config.toml`).
    *declared-but-absent* and structurally cannot see *present-but-undeclared*. Deferred
    out of the E71 fold on scope, not doubt: it moves the `decisions` table and the corpus
    count, so it wants its own commit, its own count surfaces and its own suite run.
-3. **⚑ THE APPROVED ATLAS HAS NO RECORDED RECIPE.** `--headband-bg-withhold` is off by
+8. **⚑ THE APPROVED ATLAS HAS NO RECORDED RECIPE.** `--headband-bg-withhold` is off by
    default and `--bg-withhold-scope` defaults to `headband`; the approved state needed
    both, at `all`. Verified three ways (the joint console prints `WHOLE-FIGURE` nine
    times; E69's stated totals match this session's own independent measurement of the
@@ -164,10 +169,9 @@ is off by default (`/memory on` in the TUI, or check `~/.grok/config.toml`).
    `profiles/a1.json`'s own note saying its `project_twins.py` block is unpopulated
    because the values "would be arriving by invention" is now **stale** — A1 has been
    projected and baked, so the values would arrive by measurement.
-4. **Stroke one is GREEN** (Director, 2026-08-19) and is now E72 above. The spend itself is still one generation and still his to watch land.
-5. **The clay-ridge at v6's chest seam** — named, untested, and NOT a reason to reopen
+9. **The clay-ridge at v6's chest seam** — named, untested, and NOT a reason to reopen
    twins (his ruling). Four rolls there produced four different phantom garments.
-6. **Binding (W3 0/27, A1 NONE)** — the named debt. It gates the **wrong-material check**
+10. **Binding (W3 0/27, A1 NONE)** — the named debt. It gates the **wrong-material check**
    (E56's label classes need a per-surface level) and **NOTHING ELSE**. ⚠ The line saying
    "everything else waits on it" was WRONG and was killed at E67: the view scopes came from
    the CLAY, not from facesets, and they cleared the head-crank without any binding.

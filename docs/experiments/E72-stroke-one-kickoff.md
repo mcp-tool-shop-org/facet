@@ -341,3 +341,54 @@ them is spent, one of two things is decided and written down:
 Neither is decided here, and **neither may be decided by a seat mid-spend.** A stroke on any
 of views 3/4/5/6 with this file and no decision is a spend against a prompt the record can
 already show is out of scope for that camera.
+
+---
+
+## AMENDMENT 4 — 2026-08-19 — stroke one is TAKEN and ACCEPTED, and three things are ruled with it
+
+**The Director, 2026-08-19, on the Stage 1 sheet: CONTINUED. Same man. Stroke one is taken.**
+
+The pale triangle at the vest collar-to-shoulder went plum and the seam reads as **one
+garment, not a new one**. Hem and shoe ticks are the same class. Head, hair, profile and the
+peach bands are unchanged — as they must be, styled and frozen. **It did not invent a face,
+turn the head, or paint a second vest.**
+
+The arc's single question is answered: **the brush continued this man into the holes.**
+
+### The three rulings that ride with the acceptance
+
+1. ⚠ **`selftest` gets its own directory before stroke two — and is NOT to be "fixed" by
+   committing its texels.** The gate that protects the spend performs a real `commit()` and
+   left **9,489 yaw-0 texels permanently marked STYLED** in the shared `state/` dir. The
+   Stage 1 seat caught it before spending, reset from sha256-verified E69 copies, disclosed
+   the reset in `predictions.md` **before it could touch a number**, and proved the reset
+   inert by re-emitting yaw 90 to Stage 0's exact figures. Full entry in
+   [known-defects](../known-defects.md). **Blur-fill is not paint and must not be promoted to
+   paint to make the problem go away.**
+
+2. ⚠ **The thin grey gap at the vest-hem/trouser junction STAYS A HOLE.** Present pre-stroke
+   and post-stroke; the stroke did not close it. **Left alone deliberately** — it is not a
+   defect to be chased in this arc.
+
+3. ⚠ **Strokes 2–8 remain blocked on the Amendment 3 debt, and `brush_cloud_step.py` is NOT to
+   be wired to a per-view scope in the afterglow of a pass.** One stroke passing at
+   `scope="view:2"` is not evidence about views 3/4/5/6, which the record can already show
+   fail. That debt is decided in the clear, in its own sitting, or accepted permanently in
+   writing — **and neither by a seat mid-spend.**
+
+### What Stage 1 measured
+
+| | |
+|---|---|
+| generations | **one**, submitted once, completed once — no retry, no second seed |
+| `invar` ANDON | **PASS** — mean 0.014 lv, largest hot component **0 px** outside the figure across 472,318 px tested; uniform sub-unit is the codec boundary, not a repainted backdrop |
+| `commit` | **PASS** — **3,585 texels** written, holes **2,044,423 → 2,040,838**, no ANDON fired |
+| E69 source atlas | sha256 `66b8602b…`, **byte-identical to E70's Gate C record** |
+| P4 residual shape | **confirmed**, at the clean end of its band |
+| P5 texels closed | **confirmed** — 3,585, inside both the 1,000–9,000 band and the 2,500–4,500 central guess |
+| P6 continuity | **the seat refused to score it** and handed it to the Director's eye with factual sheet evidence — the role boundary working |
+
+Both gates were run as **separate calls with each exit code read individually**, per E08
+stroke 7's law. The seat also reported two operational hiccups it caught without damage: a
+Bash `cp` blocked by the session's permission classifier, and an unquoted backslash path that
+exited 2 before touching any state.
