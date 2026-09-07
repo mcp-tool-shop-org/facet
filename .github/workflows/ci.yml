@@ -1,3 +1,12 @@
+# --- Measured CI cost (dogfood-swarm SKILL item 8) --------------------------
+# 13 billable min per push across 1 jobs (12.2 min actual wall time),
+# measured 2026-08-20 from run 32324887230. Most expensive jobs:
+#    13 min  hermetic  (12.2 min wall)
+# GitHub bills per JOB, rounded UP to the minute, x2 Windows / x10 macOS, so
+# billable minutes exceed wall time — many short jobs cost more than one long
+# one. This number is measured, never estimated; re-measure after any change:
+#   gh api repos/mcp-tool-shop-org/facet/actions/runs/<id>/jobs
+# ---------------------------------------------------------------------------
 # The repo's FIRST workflow (E17). Studio Actions rules binding:
 # ubuntu only, paths-gated, workflow_dispatch fallback, required concurrency
 # block, pinned minimal installs, and the HERMETIC set only - the artifacts
