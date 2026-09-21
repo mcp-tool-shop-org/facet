@@ -74,6 +74,13 @@ at the bottom of this page does not reach it**. The Apache-2.0 default has neith
 Full designation, with the measured prompt effect and the wiring finding that a **widget is
 not an input**: [concept prep](../concept-prep.md).
 
+When the reference holds something, the prompt replaces `hands empty and open` with the
+clauses in [`canon/HELD-PROP.md`](../../canon/HELD-PROP.md). It names which hand closes,
+what that hand grips, where the object's inner face meets the body, where the free hand
+is, and that the feet are planted. A front plate hides the gap between the object and
+the chest, so a side view is required before that hold is accepted. The word "holding"
+does not place the object by itself.
+
 ### 1 — Form first, style second
 
 Feed the reconstructor a **clay** image: sculpt-like, planes deliberately exaggerated, no
