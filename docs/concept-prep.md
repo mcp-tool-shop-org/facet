@@ -63,7 +63,10 @@ form-first finding (reconstructors read surface noise as geometry); *matte warm-
 monochrome* strips the colour a reconstructor would misread; *keep the subject's overall
 pose, silhouette and identity recognizable* preserves the original concept's usability as
 the downstream canon reference; *seamless plain light grey studio background* removes the
-segmentation fight before it starts.
+segmentation fight before it starts. When the subject holds something, the
+prompt also carries the held-prop contract in `canon/HELD-PROP.md`: which
+hand grips it, where the object's inner face meets the body, where the free
+hand is, and a side view before the hold is accepted.
 
 ## Gate 0 — the walk, 2026-08-09
 
