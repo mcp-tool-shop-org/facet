@@ -16,7 +16,65 @@ The prompt must say all of these, in positive language:
 5. Head level and aligned with the body.
 6. Plain ground, no plinth.
 
-## ⚠ CORRECTION, same day — the rule stands, my reason for it did NOT
+## ⚠ RESOLVED, same day — it IS the pose, but the variable is SEPARATION
+
+**Third and final state of this section. Both earlier states are kept below, because the
+sequence is the useful part.** The mechanism is **arm-to-torso separation**, and it is now
+demonstrated in both directions on one character:
+
+| Drell mesh | width | arms | riggable |
+|---|---|---|---|
+| original | 0.4190 | one forward, fists closed | **False** |
+| watertight rebuild | 0.4190 | one forward, fists closed | **False** |
+| narrow A-pose | 0.4185 | down, near-vertical, pauldrons overlapping them | **False** |
+| **wide A-pose** | **0.5483** | **out, clear background between arm and body** | **TRUE** |
+
+Same character, same generator, same reconstruction settings, same decimation. The only
+thing that moved was how far the arms stand off the torso.
+
+**And width alone is not the variable — separation is.** Merchant passes at width 0.3773,
+*narrower* than the Drell A-pose that fails at 0.4185. Merchant is unarmoured, so its arms
+hang clear of a narrow torso. Drell's flared pauldrons bridge the upper arm into the torso
+silhouette, so an armoured figure needs the arms raised further to reach the same actual
+separation. **Armour costs you arm angle.**
+
+### So the clause needs the gap stated, not the direction
+
+Clause 1 above says "held away from the torso". That was not enough: it produced arms
+hanging near-vertical and the check refused. The requirement is a **visible, continuous gap
+of background between each arm and the body, from armpit to wrist** — and for a figure in
+plate with pauldrons, reaching that takes roughly a forty-five degree lift.
+
+### The base figure is a BIND POSE, not a shipping pose
+
+The pose that passed looks like a man surrendering. That does not matter and is worth
+saying plainly: the base figure exists to be rigged, and a rigged figure is posed afterwards
+by its bones. Optimise the base pose for the rigger, not for the eye. This is why T-pose and
+A-pose are industry bind poses in the first place.
+
+### What the rig came back with
+
+`drell_rigged_mixamo.glb`, Mixamo spec, **23 joints**, skinned (JOINTS_0 + WEIGHTS_0),
+root `Root`, hierarchy depth 9, anatomy coherent (hips 0.535 of height, head 0.840, toes
+0.016). **Hand joints `mixamorig:LeftHand` and `mixamorig:RightHand` are the sockets.**
+No finger joints - a 23-bone reduced biped, not the ~65-bone full Mixamo skeleton.
+
+**Tripo DID replace the mesh**, as pre-registered: 140,234 vertices returned against
+686,676 sent, re-normalised to height 1.0 with feet at the origin. That is why the route
+takes only the bones. Mapping them back is a similarity transform, exactly because the proxy
+was sent standing in the real mesh's own world space.
+
+Sockets in our coordinates, and checked rather than assumed: `RightHand` sits **0.6 mm**
+from the mesh surface with 831 vertices within 40 mm; `LeftHand` **33.3 mm** with 424. Both
+are in real hand geometry; the left one is offset enough to want refining. `compute_occupancy`
+reports False for both and means nothing here - this mesh class is a hollow double-walled
+shell, and this repo already records that a volumetric predicate reads *outside* at a
+standing figure's own chest.
+
+---
+
+## ⚠ SUPERSEDED CORRECTION, kept for the sequence — "the pose is not the cause"
+
 
 **The causal claim below is FALSIFIED and is kept rather than deleted, because the
 correction is the useful part.** I wrote that the pose is what decides whether a figure can
