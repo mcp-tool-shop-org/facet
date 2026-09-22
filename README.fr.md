@@ -173,7 +173,7 @@ La rigueur est aussi importante que le processus lui-même, et elle répond à u
 - **Les corrections sont intégrées en même temps que les mesures qui les ont invalidées**, et non sous forme de suppressions discrètes. Six affirmations initiales ont été réfutées lors de la première session, et les six sont toujours accessibles à côté de ce qui les a remplacées.
 - **Les échecs restent dans le dépôt avec leur justification.** [`tools/superseded/`](docs/tools.md) n’est pas une archive ; chacun peut exécuter ces outils et observer qu’ils échouent de la même manière.
 - **Un résultat négatif est un succès total**, qui est signalé et clôturé plutôt que d’être ajusté pour atteindre une valeur cible.
-- **Les tests sont liés au commit qui modifie le code** — 1 375 tests réussis, évalués par deux personnes, avec une intégration continue basée sur les chemins pour les 1 304 tests hermétiques.
+- **Les tests sont liés au commit qui modifie le code** — 1 375 tests réussis, évalués par deux personnes, avec une intégration continue basée sur les chemins pour les 1 318 tests hermétiques.
 - **Les archives peuvent être consultées.** Un index SQLite + FTS5 couvre l’ensemble du processus et a été vérifié à quatre reprises. Il a identifié un nombre de décisions erroné dans le texte à trois endroits, en comptant les entrées des archives elles-mêmes.
 
 ## Où tout se trouve
@@ -232,7 +232,7 @@ test on purpose.
 
 Blender 5.x, Python 3.11+ avec `numpy`, `scipy`, `trimesh`, `open3d`, `Pillow`, `spandrel`, `torch`. Une installation locale de ComfyUI n’est nécessaire que pour le pinceau d’inpainting. Développé sur une RTX 5090 ; la marge de VRAM est plus importante que la vitesse brute.
 
-CI exécute l’ensemble hermétique de la suite sur ubuntu-latest / Python 3.12 avec des installations fixes (`.github/workflows/ci.yml`) ; le niveau des artefacts nécessite les arbres enregistrés sous `E:\AI\training`, qui ne sont pas dans git, de sorte que CI les désélectionne par conception. Localement, `python -m pytest` exécute les 1 375 tests et `python -m pytest -m "not artifacts"` exécute les 1 304 tests reproduits par CI.
+CI exécute l’ensemble hermétique de la suite sur ubuntu-latest / Python 3.12 avec des installations fixes (`.github/workflows/ci.yml`) ; le niveau des artefacts nécessite les arbres enregistrés sous `E:\AI\training`, qui ne sont pas dans git, de sorte que CI les désélectionne par conception. Localement, `python -m pytest` exécute les 1 375 tests et `python -m pytest -m "not artifacts"` exécute les 1 318 tests reproduits par CI.
 
 ---
 

@@ -399,7 +399,7 @@ next session read as established fact. Nothing in that loop was checkable.
 - **A negative result is a full success**, reported and closed rather than tuned toward a
   number.
 - **Tests ride the commit that touches the code** — 1375 passing at two seats' hands, with
-  paths-gated CI on the 1304 hermetic ones.
+  paths-gated CI on the 1318 hermetic ones.
 - **The record is queryable.** A SQLite + FTS5 index over the whole trail, verified on
   four legs. It found a ruling count the prose had wrong at three sites, by counting the
   record itself.
@@ -512,7 +512,7 @@ CI runs the hermetic subset of the suite on **ubuntu-latest / Python 3.12** with
 pinned installs (`.github/workflows/ci.yml`); the artifacts tier needs the recorded
 trees under `E:\AI\training`, which are not in git, so CI deselects them by design.
 Locally, `python -m pytest` runs all **1375** tests and `python -m pytest -m "not artifacts"`
-runs the **1304** CI reproduces.
+runs the **1318** CI reproduces.
 
 ---
 

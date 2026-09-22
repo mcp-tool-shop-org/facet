@@ -179,7 +179,7 @@ form-exaggerated clay concept ──► image-to-3D ──► weld ──► den
 - **更正会直接应用到相应的位置，与推翻它的测量结果并列显示**，而不是以静默删除的方式进行。仅在最初的环节中，就有六项既定主张被证明是错误的，并且这六项都仍然可以与替代它们的内容一起查看。
 - **失败的结果将保留在仓库中，并附带其原因。**[`tools/superseded/`](docs/tools.md)不是一个存档——任何人都可以运行这些工具，并观察它们以相同的方式失败。
 - **负面结果也是一种完全的成功**，它会被报告和记录下来，而不是调整到某个数值。
-- **测试与修改代码的代码提交相关联**——共有 1375 个通过测试，由两个参与者进行，并且在 1304 个隔离环境中启用了基于路径的 CI（持续集成）。
+- **测试与修改代码的代码提交相关联**——共有 1375 个通过测试，由两个参与者进行，并且在 1318 个隔离环境中启用了基于路径的 CI（持续集成）。
 - **可以查询记录。**对整个流程使用 SQLite + FTS5 索引进行验证，并在四个方面进行了验证。它发现，在三个站点中，散文描述的结论与实际计数不符，这是通过统计记录本身得出的。
 
 ## 所有内容的位置
@@ -227,7 +227,7 @@ facet 完全在您自己的机器上运行——每个工具都是一个脚本�
 
 Blender 5.x，Python 3.11+，以及`numpy`、`scipy`、`trimesh`、`open3d`、`Pillow`、`spandrel`、`torch`。仅需要本地安装ComfyUI才能使用修复画笔。该项目是在RTX 5090上开发的；VRAM的可用空间比原始速度更重要。
 
-CI在**ubuntu-latest / Python 3.12**上运行套件中的hermetic子集，并进行固定安装（`.github/workflows/ci.yml`）；artifacts层需要记录的树结构，这些树结构位于`E:\AI\training`中，但不在git中，因此CI会故意将其排除。本地，`python -m pytest`运行所有**1375**个测试，而`python -m pytest -m "not artifacts"`运行CI重现的**1304**个测试。
+CI在**ubuntu-latest / Python 3.12**上运行套件中的hermetic子集，并进行固定安装（`.github/workflows/ci.yml`）；artifacts层需要记录的树结构，这些树结构位于`E:\AI\training`中，但不在git中，因此CI会故意将其排除。本地，`python -m pytest`运行所有**1375**个测试，而`python -m pytest -m "not artifacts"`运行CI重现的**1318**个测试。
 
 ---
 
