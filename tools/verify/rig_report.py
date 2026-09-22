@@ -20,8 +20,23 @@ Reports:
   * the skeleton: joint count, the root, hand/finger joints by name, full hierarchy depth
   * skinning: whether primitives carry JOINTS_0 and WEIGHTS_0 at all
 
-ANDON on --require-same-mesh when the vertex count or the bbox moved, and on
---require-skin when nothing in the file is skinned. Both are stated on the command line.
+⚠ USE --require-same-shape, NOT --require-same-mesh. The count-and-bbox form was written
+first and it is brittle in one direction that matters: a rig round trip can re-index or
+weld vertices on export and change the reported count without moving a single point, so a
+gate that refuses any count delta false-halts on a mesh that is geometrically intact. That
+criticism came from the Comfy consult channel on 2026-09-22, before any result existed,
+which is the only legitimate time to move a gate - and it is the repo's own law about
+putting the andon on the direction the invariant does not bound.
+
+--require-same-shape is the answer: it asks whether every returned vertex sits on a vertex
+the sent mesh already had. That is a SET question, so re-ordering and welding are invisible
+to it, while a retopology fails - a newly placed vertex lands on the old SURFACE but not on
+an old VERTEX, so its distance is about the sent mesh's own vertex spacing. The tool prints
+that spacing beside the result so the reader can see what a retopology would have scored
+instead of taking the threshold on trust.
+
+ANDON on --require-same-shape, on --require-same-mesh, and on --require-skin. All three are
+stated on the command line.
 
   python rig_report.py --glb rigged.glb [--against original.glb]
                        [--require-same-mesh] [--require-skin] [--json-out ...]
@@ -119,6 +134,46 @@ def skeleton_summary(g):
     }
 
 
+def compare_shape(returned, original, tol):
+    """Is every returned vertex sitting on a vertex the original already had?
+
+    A SET comparison, so re-ordering and re-indexing are invisible to it - which is the
+    whole point, and is what --require-same-mesh gets wrong. The discriminator is that a
+    retopologised vertex lands on the original SURFACE but not on an original VERTEX, so
+    its nearest-original-vertex distance is about the original's own vertex spacing, which
+    is reported beside the result rather than assumed.
+
+    Imported lazily: the JSON-only paths above must keep working on a container with no
+    BIN chunk, and on an interpreter with no mesh stack.
+    """
+    import numpy as np
+    import trimesh
+    from scipy.spatial import cKDTree
+
+    def verts(p):
+        s = trimesh.load(p, process=False)
+        g = s.to_geometry() if hasattr(s, "to_geometry") else s
+        return np.asarray(g.vertices, dtype=np.float64)
+
+    a, b = verts(returned), verts(original)
+    tree = cKDTree(b)
+    d, _ = tree.query(a, k=1, workers=-1)
+    # The original's own spacing, so the reader can see what a retopology WOULD score
+    # without having to guess. Computed over UNIQUE positions: a reconstruction carries
+    # many coincident vertices at UV and normal seams, so a raw 2nd-nearest query returns
+    # 0.000 on this very subject - a meaningless number in the report that decides the
+    # round trip. Measured on drell_body_s42.glb: 664,162 vertices, and the naive form
+    # reported zero spacing.
+    uniq = np.unique(np.round(b, 9), axis=0)
+    sample = uniq[np.random.default_rng(0).choice(len(uniq), size=min(20000, len(uniq)),
+                                                  replace=False)]
+    dd, _ = cKDTree(uniq).query(sample, k=2, workers=-1)
+    within = int((d <= tol).sum())
+    return {"count": int(len(a)), "within": within, "fraction": within / max(1, len(a)),
+            "median": float(np.median(d)), "p99": float(np.percentile(d, 99)),
+            "max": float(d.max()), "reference_spacing": float(np.median(dd[:, 1]))}
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--glb", required=True, help="the GLB that came back")
@@ -129,6 +184,21 @@ def main():
                          "This is the gate that catches a service quietly retopologising.")
     ap.add_argument("--require-skin", action="store_true",
                     help="ANDON if no primitive carries JOINTS_0 and WEIGHTS_0")
+    ap.add_argument("--require-same-shape", action="store_true",
+                    help="ANDON unless --shape-frac of the returned mesh's vertices sit "
+                         "within --shape-tol of a vertex of --against. THIS IS THE GATE "
+                         "TO USE. It is order- and index-invariant, so a rig that re-indexes "
+                         "or welds on export still passes, while a mesh whose vertices were "
+                         "newly placed - a retopology - fails, because a new vertex lands on "
+                         "the old SURFACE but not on an old VERTEX. --require-same-mesh "
+                         "cannot tell those two apart and will false-halt on the harmless one.")
+    ap.add_argument("--shape-tol", type=float, default=1e-5,
+                    help="coincidence distance in model units. glTF stores float32, so an "
+                         "unchanged position round-trips exactly; 1e-5 is slack for a "
+                         "re-quantisation, not for a moved vertex.")
+    ap.add_argument("--shape-frac", type=float, default=0.999,
+                    help="fraction of returned vertices that must be coincident. Not 1.0: a "
+                         "welder can legitimately drop a handful of degenerates.")
     ap.add_argument("--bbox-tol", type=float, default=1e-4,
                     help="per-axis bbox tolerance for --require-same-mesh, in model units")
     ap.add_argument("--json-out", default=None)
@@ -180,10 +250,27 @@ def main():
             print("    returned %s" % [[round(c, 5) for c in b_new[0]], [round(c, 5) for c in b_new[1]]])
             print("    sent     %s" % [[round(c, 5) for c in b_ref[0]], [round(c, 5) for c in b_ref[1]]])
 
+    shape = None
+    if args.require_same_shape:
+        if not args.against:
+            shape = {"error": "--require-same-shape needs --against"}
+        else:
+            shape = compare_shape(args.glb, args.against, args.shape_tol)
+            print("\n  SHAPE, returned vertices vs the sent vertex SET "
+                  "(order- and index-invariant):")
+            print("    coincident within %.1e : %.4f%%  (%d of %d)"
+                  % (args.shape_tol, 100.0 * shape["fraction"],
+                     shape["within"], shape["count"]))
+            print("    distance to nearest sent vertex: median %.3e  p99 %.3e  max %.3e"
+                  % (shape["median"], shape["p99"], shape["max"]))
+            print("    the sent mesh's own vertex spacing (median NN) is %.3e - a "
+                  "RETOPOLOGY lands near this, a re-index lands at 0"
+                  % shape["reference_spacing"])
+
     skinned = any(p["has_joints"] and p["has_weights"] for p in prims)
     result = {"glb": args.glb, "against": args.against, "total_vertices": total_v,
               "reference_vertices": ref_total, "same_mesh": same, "skinned": skinned,
-              "primitives": prims, "skeleton": skel}
+              "shape": shape, "primitives": prims, "skeleton": skel}
     if args.json_out:
         with open(args.json_out, "w", encoding="utf-8") as f:
             json.dump(result, f, indent=2)
@@ -195,6 +282,15 @@ def main():
         elif not same:
             fail.append("the returned mesh is NOT the one that was sent - the service "
                         "replaced the geometry rather than skinning it")
+    if args.require_same_shape:
+        if shape is None or "error" in shape:
+            fail.append("--require-same-shape needs --against; there is nothing to compare to")
+        elif shape["fraction"] < args.shape_frac:
+            fail.append("only %.4f%% of returned vertices sit on a sent vertex (need %.4f%%); "
+                        "median offset %.3e against the sent mesh's own %.3e spacing - the "
+                        "vertices were newly PLACED, not re-indexed"
+                        % (100.0 * shape["fraction"], 100.0 * args.shape_frac,
+                           shape["median"], shape["reference_spacing"]))
     if args.require_skin and not skinned:
         fail.append("no primitive carries both JOINTS_0 and WEIGHTS_0 - nothing in this "
                     "file is skinned")

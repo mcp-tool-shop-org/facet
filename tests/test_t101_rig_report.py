@@ -24,6 +24,8 @@ import subprocess
 import sys
 import tempfile
 
+import trimesh
+
 TOOL = pathlib.Path(__file__).resolve().parents[1] / "tools" / "verify" / "rig_report.py"
 _spec = importlib.util.spec_from_file_location("rig_report", TOOL)
 rig_report = importlib.util.module_from_spec(_spec)
@@ -157,3 +159,90 @@ def test_t101_a_non_glb_is_refused_rather_than_parsed():
         r = subprocess.run([sys.executable, str(TOOL), "--glb", str(p)],
                            capture_output=True, text=True, stdin=subprocess.DEVNULL)
         assert r.returncode != 0 and "ANDON" in (r.stdout + r.stderr)
+
+
+# ---------------------------------------------------------------------------
+# --require-same-shape: the gate the Comfy consult's Q3 criticism produced.
+# A rig round trip may re-index or weld on export. A count-and-bbox gate cannot
+# tell that from a retopology and false-halts on the harmless one; these legs
+# pin that the shape gate tells them apart, in BOTH directions.
+# ---------------------------------------------------------------------------
+
+def _real_glb(mesh, path):
+    path.write_bytes(trimesh.exchange.gltf.export_glb(trimesh.Scene({"body": mesh})))
+    return path
+
+
+def test_t101_a_reindexed_mesh_passes_the_shape_gate():
+    """Same points, shuffled order and a changed vertex count. This is the case the
+    count-and-bbox gate gets WRONG, so it is checked here as a pass AND as a false-halt."""
+    import numpy as np
+    base = trimesh.creation.icosphere(subdivisions=3, radius=0.4)
+    rng = np.random.default_rng(0)
+    perm = rng.permutation(len(base.vertices))
+    inv = np.argsort(perm)
+    shuffled = trimesh.Trimesh(vertices=base.vertices[perm], faces=inv[base.faces],
+                               process=False)
+    with tempfile.TemporaryDirectory() as d:
+        a = _real_glb(base, pathlib.Path(d) / "sent.glb")
+        b = _real_glb(shuffled, pathlib.Path(d) / "back.glb")
+        out = pathlib.Path(d) / "o.json"
+        r = subprocess.run([sys.executable, str(TOOL), "--glb", str(b), "--against", str(a),
+                            "--require-same-shape", "--json-out", str(out)],
+                           capture_output=True, text=True, stdin=subprocess.DEVNULL)
+        log = r.stdout + r.stderr
+        assert r.returncode == 0, "a re-indexed mesh was refused by the shape gate\n%s" % log
+        data = json.loads(out.read_text())
+        assert data["shape"]["fraction"] >= 0.999, data["shape"]
+        assert data["shape"]["max"] < 1e-5, data["shape"]
+
+
+def test_t101_a_decimated_mesh_fails_the_shape_gate():
+    """CAN-FAIL LEG for the shape gate. New vertices land on the old SURFACE but not on
+    an old VERTEX, which is the only thing separating a retopology from a re-index."""
+    with tempfile.TemporaryDirectory() as d:
+        sent = trimesh.creation.icosphere(subdivisions=4, radius=0.4)
+        back = trimesh.creation.icosphere(subdivisions=3, radius=0.4)
+        # a coarser icosphere shares its parent's vertices, so rotate it off the shared
+        # lattice: the fixture must be a genuinely different vertex SET or it cannot fail
+        back.apply_transform(trimesh.transformations.rotation_matrix(0.21, [0.3, 1, 0.2]))
+        a = _real_glb(sent, pathlib.Path(d) / "sent.glb")
+        b = _real_glb(back, pathlib.Path(d) / "back.glb")
+        out = pathlib.Path(d) / "o.json"
+        r = subprocess.run([sys.executable, str(TOOL), "--glb", str(b), "--against", str(a),
+                            "--require-same-shape", "--json-out", str(out)],
+                           capture_output=True, text=True, stdin=subprocess.DEVNULL)
+        log = r.stdout + r.stderr
+        assert r.returncode == 2, "a re-tessellated mesh passed the shape gate\n%s" % log
+        assert "newly PLACED" in log, log
+        data = json.loads(out.read_text())
+        assert data["shape"]["median"] > 0, data["shape"]
+
+
+def test_t101_the_shape_gate_needs_something_to_compare_against():
+    with tempfile.TemporaryDirectory() as d:
+        p = _real_glb(trimesh.creation.icosphere(subdivisions=2), pathlib.Path(d) / "x.glb")
+        r = subprocess.run([sys.executable, str(TOOL), "--glb", str(p), "--require-same-shape"],
+                           capture_output=True, text=True, stdin=subprocess.DEVNULL)
+        assert r.returncode == 2 and "nothing to compare to" in (r.stdout + r.stderr)
+
+
+def test_t101_the_reference_spacing_is_not_zero_on_a_seamed_mesh():
+    """A reconstruction carries coincident vertices at UV and normal seams, so a naive
+    2nd-nearest query returns 0.000 and the reported spacing means nothing. Measured on
+    drell_body_s42.glb, which is exactly that shape. The figure must come from UNIQUE
+    positions or the number beside the verdict is noise."""
+    if not BODY.exists():
+        return
+    import json as _json
+    with tempfile.TemporaryDirectory() as d:
+        out = pathlib.Path(d) / "o.json"
+        r = subprocess.run([sys.executable, str(TOOL), "--glb", str(BODY), "--against",
+                            str(BODY), "--require-same-shape", "--json-out", str(out)],
+                           capture_output=True, text=True, stdin=subprocess.DEVNULL)
+        assert r.returncode == 0, r.stdout + r.stderr
+        shape = _json.loads(out.read_text())["shape"]
+        assert shape["fraction"] == 1.0 and shape["max"] == 0.0, shape
+        assert shape["reference_spacing"] > 0.0, (
+            "reference spacing came back %r - the duplicate-vertex trap is back, and the "
+            "number printed beside the verdict is meaningless" % shape["reference_spacing"])
