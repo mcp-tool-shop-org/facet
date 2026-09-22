@@ -92,3 +92,35 @@ already measures this before writing something that measures it worse.*
   has eight of them.
 - **That anything about the assets improved.** This treatment moved documentation,
   packaging and metadata. No asset was re-baked, re-brushed or re-judged.
+
+---
+
+## Addendum — a third error, made at the tag itself
+
+`v0.8.1` was tagged and pushed **without `.github/release-notes-v0.8.1.md`**, which
+`release.yml` passes to `gh release create` as `--notes-file`. A tag without one fails at
+that step.
+
+The document that warns about this is the one this session had already opened:
+`docs/advisor-kickoff.md`'s release row records that **the first v0.8.0 tag failed the same
+way**, that the file is REQUIRED, and that nine prior releases each carry one. The tag went
+out before that line was read. *Reading the handoff is not the same as reading the row you
+are about to depend on.*
+
+**Nothing irreversible ran.** `gh release create` is step 10 of the publish job and both
+registries are steps 11 and 14, so the failure sits ahead of every publish. The run was
+cancelled while the binaries were still building; `gh release list` confirmed no `v0.8.1`
+release existed and neither PyPI nor npm had been touched. The notes file was written,
+committed, and the tag force-moved onto that commit rather than a `v0.8.2` being cut for a
+missing file — the same remedy the v0.8.0 row records.
+
+**Why this is worth a paragraph rather than a line.** The workflow's ordering is what made
+the mistake cheap: the cheapest check in the job runs before the two expensive irreversible
+ones. That is not luck, it is the shape the file was written in, and it is the argument for
+putting a gate in front of a publish rather than after it.
+
+**What would have caught it earlier:** nothing in the repo. `release.yml` names the file at
+run time and no test asserts that a notes file exists for the version in `package.json`.
+That is a gap, it is named here rather than fixed in the same breath, and the fix is one
+leg in `test_t27_packaging_shape.py` — which already reads the release workflow and already
+checks the four version declarations agree.
