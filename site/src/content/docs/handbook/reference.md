@@ -118,6 +118,26 @@ nothing** — the Director ranks.
 `gate_mesh.py` is character-only and its head/shoulder logic is meaningless on other
 subjects. Both non-character profiles carry `mesh_gate: none` for exactly that reason.
 
+`turn_render.py` films **transparent by default**; `--opaque` is the escape. The claim
+that an opaque render equals a transparent one composited over the background colour was
+tested and is false — the opaque background dithers over four values and the figure rim
+sits 4.34/255 away in linear space — so the two are different images and the flag says
+which one you asked for.
+
+### After the paint — the rig and the prop
+
+Two gates cover the stage a textured mesh is not the end of. Both are covered in full on
+[Props and rigs](../props-and-rigs/); the short form:
+
+| tool | question | refusal |
+|---|---|---|
+| `verify/rig_report.py` | did the auto-rigger return my mesh, with a skeleton and skinning | `--require-same-shape` compares vertex and face **sets**, not counts |
+| `verify/prop_contact.py` | is this prop **held**, or merely touching | reports a minimum distance **and a contact area** — a kiss at one vertex is refused |
+| `prop_scale.py` | is this prop its real size | a mesh still normalised to ~1.002 on its longest axis is an unscaled reconstruction wearing a prop's sidecar, and exits 2 |
+
+Scene unit for every prop in the library: **1.0 unit = 1.8 m**, declared once rather than
+assumed per placement.
+
 ### The UNAVAILABLE convention
 
 A measurement row separates two questions that a single "measured" verdict would
@@ -140,6 +160,7 @@ same way.
 | `retopo_bake.py` | failed twice: the selected-to-active ray bake returned black, and re-UVing a decimated mesh produced 119,776 islands whose packing margins collapsed every island to a sliver |
 | `tint_prime.py` | statistical colour priming, falsified three ways. Height bands have no horizontal awareness, so arm-versus-torso assignment changes per view. Structural, not tunable — **do not retry** |
 | `project_prime.py`, `facing_atlas.py`, and three others | earlier projection experiments, superseded by `project_twins.py` and the texture-space loop |
+| `rigid_plate_weights.py` | rigid plate binding does not fix the shoulder tearing it was built for. All three repairs were measured and all three failed — rigid under 5% is indistinguishable from the original, rigid under 20% is worse, and eight smoothing passes still tear |
 
 ## The two commands worth memorising
 

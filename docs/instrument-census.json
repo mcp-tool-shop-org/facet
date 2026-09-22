@@ -17,8 +17,8 @@
     "py_files_total": 117
   },
   "provenance": {
-    "corpus_files": 437,
-    "corpus_files_before_self_exclusion": 447,
+    "corpus_files": 438,
+    "corpus_files_before_self_exclusion": 448,
     "probe_interpreter": "E:\\AI-Models\\facet-env\\Scripts\\python.exe",
     "probe_interpreter_version": "3.12.13",
     "probe_skipped": false,
@@ -3496,10 +3496,11 @@
       ],
       "b1_literals": [],
       "b2_literals": [],
-      "cited_count": 13,
-      "cited_count_raw": 15,
+      "cited_count": 14,
+      "cited_count_raw": 16,
       "cited_in": [
         "CLAUDE.md",
+        "README.md",
         "docs/experiments/E04-executor-kickoff.md",
         "docs/experiments/E04-gate0-report.md",
         "docs/experiments/E12-executor-kickoff.md",
@@ -3870,16 +3871,23 @@
       "anchored": true,
       "anchored_basename_only": true,
       "anchored_in": [
-        "tests/test_t100_prop_contact_gate.py"
+        "tests/test_t100_prop_contact_gate.py",
+        "tests/test_t41_instrument_census.py",
+        "tests/test_t62_recorded_invocation_form.py"
       ],
       "anchored_in_basename_only": [
-        "tests/test_t100_prop_contact_gate.py"
+        "tests/test_t100_prop_contact_gate.py",
+        "tests/test_t41_instrument_census.py",
+        "tests/test_t62_recorded_invocation_form.py"
       ],
       "b1_literals": [],
       "b2_literals": [],
-      "cited_count": 0,
-      "cited_count_raw": 0,
-      "cited_in": [],
+      "cited_count": 2,
+      "cited_count_raw": 2,
+      "cited_in": [
+        "README.md",
+        "docs/handbook/props-and-rigs.md"
+      ],
       "dir": "tools/verify",
       "docstring_line1": "Contact gate for a held prop. A NUMBER, not an eye.",
       "file": "prop_contact.py",
@@ -3900,16 +3908,23 @@
       "anchored": true,
       "anchored_basename_only": true,
       "anchored_in": [
-        "tests/test_t101_rig_report.py"
+        "tests/test_t101_rig_report.py",
+        "tests/test_t41_instrument_census.py",
+        "tests/test_t62_recorded_invocation_form.py"
       ],
       "anchored_in_basename_only": [
-        "tests/test_t101_rig_report.py"
+        "tests/test_t101_rig_report.py",
+        "tests/test_t41_instrument_census.py",
+        "tests/test_t62_recorded_invocation_form.py"
       ],
       "b1_literals": [],
       "b2_literals": [],
-      "cited_count": 0,
-      "cited_count_raw": 0,
-      "cited_in": [],
+      "cited_count": 2,
+      "cited_count_raw": 2,
+      "cited_in": [
+        "README.md",
+        "docs/handbook/props-and-rigs.md"
+      ],
       "dir": "tools/verify",
       "docstring_line1": "What came back from an auto-rig: is it OUR mesh, and what skeleton is on it?",
       "file": "rig_report.py",
@@ -4173,8 +4188,8 @@
     "anchored_basename_only": 65,
     "any_add_argument": 111,
     "argparse": 111,
-    "cited": 97,
-    "cited_raw": 113,
+    "cited": 99,
+    "cited_raw": 115,
     "flag_surface": 111,
     "flag_surface_unguarded": 98,
     "g_ambiguous": 18,

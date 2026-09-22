@@ -21,6 +21,94 @@ per this repo's corrections rule.
 
 ## [Unreleased]
 
+## [0.8.1] — 2026-09-22
+
+**A figure gets a skeleton, a prop gets a size, and four measured instruments arrive to
+say whether either one is true.** v0.8.0 closed on a painted subject. This release is
+about what happens *after* paint: a character that has to be posed, and objects that have
+to be held. Nothing here touches the texture route.
+
+**The finding this release is built around is a negative one and it is still open.** A
+second subject — a harbour guard for `ai-rpg-stage` — reconstructs cleanly and then fails
+auto-rigging, and four candidate causes were ruled out by measurement rather than by
+argument: untextured input, component count, mesh topology, and the pose itself. **The
+discriminator is UNIDENTIFIED.** `canon/BASE-FIGURE.md` carries the table of what was
+tried and declines to name a cause, because the one cause this repo did name — arm-to-torso
+separation — was falsified inside the same hour by a true A-pose that failed at a *wider*
+separation than a pose that passed.
+
+### Added
+
+- **The held-prop contact gate** — `tools/verify/prop_contact.py`. A prop that touches a
+  figure at one vertex is not held. The gate reports a minimum point-to-surface distance
+  **and a contact AREA**, because a count is a fraction of however many samples the prop
+  happened to get. Defaults `--tol 0.002`, `--min-area 0.0005` units squared (about 16 cm
+  squared on a 1.8 m figure), both flags rather than constants, and both set independently
+  of the result they judge. The asset that prompted it had a minimum of 0.00072 and a
+  contact patch of 97 points out of 624,510: it passed "touching" and was plainly not held.
+- **The prop library size contract** — `tools/prop_scale.py` and `canon/PROP-LIBRARY.md`.
+  Every reconstruction this route makes comes back normalised to **1.002 on its longest
+  axis** — measured on four unrelated assets, to three decimals — so a prop mesh carries no
+  true scale at all, and a heater shield loaded as-is is 1.8 m tall. A prop's real size is
+  now declared once in millimetres, stored in a sidecar, and checked rather than trusted.
+  Scene unit: **1.0 unit = 1.8 m**. The tool refuses an unscaled reconstruction wearing a
+  prop's sidecar, which is the exact mistake the contract exists to prevent.
+- **The rig readout** — `tools/verify/rig_report.py`. Reads a GLB container directly and
+  reports what an auto-rigger returned: mesh identity against the submitted file, skeleton
+  joints by name, and whether skinning is present. `--require-same-shape` compares vertex
+  and face sets rather than counts, because an order-invariant question deserves an
+  order-invariant check.
+- **Posing by stated world direction** — `tools/pose_rig.py`. Aims named bones at directions
+  written down in the call rather than at guessed Euler axes, and bakes the deformed mesh.
+  Its measured ceiling is in the docs beside it: roughly 20 degrees of arm rotation stays
+  clean and roughly 110 degrees shreds the shoulders.
+- **`canon/BASE-FIGURE.md`** — base figures carry no props, arms to the side. The reason
+  first written for this rule was wrong and the correction is kept in place beside it.
+- **Canon clause 7 — five digits per hand.** It exists because clause 2 caused it: a
+  six-fingered hand reached an accepted sheet past four gates that could not see hands.
+  Hands are now an acceptance item at the Director's zoom.
+- **29 tests** — T99 (film mode, 6 legs), T100 (contact gate, 5), T101 (rig readout, 12),
+  T102 (prop size contract, 6). Each can-fail leg comes first in its file.
+
+### Changed
+
+- **`turn_render.py` films transparent by DEFAULT; `--opaque` is the escape.** The claim
+  that an opaque render equals a transparent one composited over the background colour was
+  tested and is **false**: the opaque background dithers over four values and the figure rim
+  sits 4.34/255 away in linear space. T99 pins those numbers rather than the claim.
+- **The environment law admits there are two interpreters.** `facet-env` (3.12.13) carries
+  the CI pins; `trellis2-env` (3.10.11) carries the TRELLIS wheels. `.mcp.json` points both
+  servers at `facet-env`.
+- **Paths in the record are written portably** — `%USERPROFILE%` and `$HOME` rather than one
+  machine's absolute paths.
+- `canon/HELD-PROP.md` is scope-narrowed to what it actually governs.
+
+### Fixed
+
+- The hermetic test count was an arithmetic error, not a measurement. Four count surfaces
+  that T34's own PINS table enumerates had been chased one CI cycle at a time instead of
+  read off the table.
+- T33's ANDON pin and T41's instrument census moved to the measured values:
+  **45 SystemExit ANDONs across 21 files**, **105 diagnostics** and **12 verify** instruments.
+
+### Superseded
+
+- `tools/superseded/rigid_plate_weights.py` — rigid plate binding does not fix the shoulder
+  tearing it was built for. All three repairs were measured and all three failed: rigid
+  under 5% is indistinguishable from the original, rigid under 20% is worse, and eight
+  smoothing passes still tear. Kept runnable, with the measurement, next to the code.
+
+### What 0.8.1 does NOT assert
+
+- That the rig question is answered. Four causes are eliminated; the discriminator is not
+  known, and `canon/BASE-FIGURE.md` says so rather than picking the most plausible survivor.
+- That the second subject is finished. Geometry, rig and props are measured; **the texture
+  stage has not been run on it.**
+- That a prop has been mounted. The contact gate exists and is tested on synthetic meshes
+  with a known separation; no prop has been placed in a hand and accepted at the
+  Director's eye.
+
+
 ## [0.8.0] — 2026-08-19
 
 **A subject is built reference-first, and the brush takes its first stroke.** v0.7.0 made
@@ -690,7 +778,7 @@ is not a philosophical objection to suppressing output; it is a live dependency.
 `0.1.0`'s binary told operators the wrong thing about their own machine. Inside a
 PyInstaller onefile, `__file__` lives in a temp extraction directory, so the server
 resolved its default index against that — printing
-`db: C:\Users\…\Temp\docs/index/facet.db`, a path that cannot exist — and every
+`db: %USERPROFILE%\...\Temp\docs/index/facet.db`, a path that cannot exist — and every
 refusal hint said *"run `python tools/facet_index.py build`"*, a command with no
 `tools/` directory to run it in and possibly no Python at all.
 

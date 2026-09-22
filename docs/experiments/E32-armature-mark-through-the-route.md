@@ -3,7 +3,7 @@
 **Seat:** executor · **Spec written:** 2026-08-10, before any work · **Advisor rules after the
 report** · **Director judges the sheets** · **Credit ceiling: ZERO** — every stage is local.
 
-Subject: `C:\Users\mikey\Downloads\ComfyUI_00122_.png` — a clay render of a wire armature figure,
+Subject: `%USERPROFILE%\Downloads\ComfyUI_00122_.png` — a clay render of a wire armature figure,
 2048×2048, light grey subject on a grey vertical gradient. It is the `armature` project's brand
 mark, so a usable GLB is directly wanted as well as informative.
 

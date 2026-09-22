@@ -335,7 +335,7 @@ close shows only files this arc touched).
 - Logs: `E:\AI\training\facet_E62\*.log` (baseline, per-stage, both revert-proof
   transcripts, census before/after)
 - Revert-proof scripts (scratchpad, not part of the repo):
-  `C:\Users\mikey\AppData\Local\Temp\claude\E--AI-facet\428295a0-ff4d-49f0-b0a2-
+  `%USERPROFILE%\AppData\Local\Temp\claude\E--AI-facet\428295a0-ff4d-49f0-b0a2-
   024d00acf529\scratchpad\revert_proof_fence{1,2}.py`
 
 ## Standards compliance — re-affirmed against what was actually built

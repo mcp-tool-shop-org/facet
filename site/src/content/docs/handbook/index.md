@@ -36,7 +36,9 @@ repo gets its treatment.
 
 Companion pages: **[Subject profiles](../profiles/)** — the loader, the decision forms,
 the registry sweep · **[The subjects](../subjects/)** — the four subjects' numbers, with
-their denominators.
+their denominators · **[Props and rigs](../props-and-rigs/)** — the stage after paint,
+opening with the subject that will not auto-rig and the two contracts that make a prop a
+prop.
 
 ---
 
@@ -84,11 +86,11 @@ Full designation, with the measured prompt effect and the wiring finding that a 
 not an input**: [concept prep](https://github.com/mcp-tool-shop-org/facet/blob/main/docs/concept-prep.md).
 
 When the reference holds something, the prompt replaces `hands empty and open` with the
-clauses in [`canon/HELD-PROP.md`](https://github.com/mcp-tool-shop-org/facet/blob/main/canon/HELD-PROP.md).
-It names which hand closes, what that hand grips, where the object's inner face meets
-the body, where the free hand is, and that the feet are planted. A front plate hides
-the gap between the object and the chest, so a side view is required before that hold
-is accepted. The word "holding" does not place the object by itself.
+clauses in [`canon/HELD-PROP.md`](https://github.com/mcp-tool-shop-org/facet/blob/main/canon/HELD-PROP.md). It names which hand closes,
+what that hand grips, where the object's inner face meets the body, where the free hand
+is, and that the feet are planted. A front plate hides the gap between the object and
+the chest, so a side view is required before that hold is accepted. The word "holding"
+does not place the object by itself.
 
 ### 1 — Form first, style second
 

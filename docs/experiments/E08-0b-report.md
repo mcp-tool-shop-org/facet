@@ -62,7 +62,7 @@ hue×chroma density for both. Numbers: `ANCHOR/anchor_dE.json`.
 ## Corrections to my own work, and they cost time
 
 **The LoRA was already on Comfy Cloud from the day before.** I did not check, and instead pushed
-a fresh copy to `mikeyfrilot/saltroad-lora` and imported it. The run used the one that was
+a fresh copy to `<operator>/saltroad-lora` and imported it. The run used the one that was
 already there:
 
 ```
@@ -70,7 +70,7 @@ mcp-tool-shop__saltroad-style-lora__saltroad_style_v2_lowlr_000001500.safetensor
 ```
 
 **Checking the Model Library for an existing copy costs one call and comes before creating a
-delivery path.** The `mikeyfrilot/saltroad-lora` repo I created is redundant and can be deleted.
+delivery path.** The `<operator>/saltroad-lora` repo I created is redundant and can be deleted.
 
 **I also mis-ordered the two candidate names.** Holding a name that showed `FINISHED` in the
 import panel, I submitted the *other* one first on the reasoning that a same-filename model under

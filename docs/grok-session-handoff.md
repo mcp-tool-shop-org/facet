@@ -6,7 +6,7 @@ next-session start, not a ruling.
 Grok experimental memory is **off by default** and was **not running** at the
 end of the session that wrote this (config had lost `[memory] enabled`;
 `~/.grok/memory/` did not exist). Do not assume prior Grok turns are in
-context. Re-check `C:\Users\mikey\.grok\config.toml` for `[memory] enabled =
+context. Re-check `%USERPROFILE%\.grok\config.toml` for `[memory] enabled =
 true`, then type `/memory on` in the TUI prompt box. `--no-memory` still wins.
 
 ## Who you are in this tree

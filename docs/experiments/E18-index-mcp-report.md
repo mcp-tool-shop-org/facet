@@ -345,7 +345,7 @@ E18 D4 - dogfood over the .mcp.json mount path
 command: E:\AI-Models\trellis2-env\Scripts\python.exe
 args:    ['tools/record_mcp.py']
 cwd:     E:\AI\facet
-db:      C:\Users\mikey\AppData\Local\Temp\claude\E--AI-facet\45bdddfd-d0c7-4df4-a673-4e1c484b23b7\scratchpad\dogfood\facet.db   (scratch; the tracked index is untouched)
+db:      %USERPROFILE%\AppData\Local\Temp\claude\E--AI-facet\45bdddfd-d0c7-4df4-a673-4e1c484b23b7\scratchpad\dogfood\facet.db   (scratch; the tracked index is untouched)
 
 server:  facet-record v0.0.0
 tools:   6
@@ -364,9 +364,9 @@ STATE 3a - REFUSING: there is no index at all
   error:             {"error": true, "code": "INDEX_MISSING", "message": "no index at C:\\Users\\mikey\\AppData\\Local\\Temp\\claude\\E--AI-facet\\45bdddfd-d0c7-4df4-a673-4e1c484b23b7\\scratchpad\\dogfood\\facet.db", "hint": "Run python tools/facet_index.py build   (or call record
   record_query against it:
   is_error: true
-  | Error executing tool record_query: REFUSED: no index at C:\Users\mikey\AppData\Local\Temp\claude\E--AI-facet\45bdddfd-d0c7-4df4-a673-4e1c484b23b7\scratchpad\dogfood\facet.db
+  | Error executing tool record_query: REFUSED: no index at %USERPROFILE%\AppData\Local\Temp\claude\E--AI-facet\45bdddfd-d0c7-4df4-a673-4e1c484b23b7\scratchpad\dogfood\facet.db
   |   code:      INDEX_MISSING
-  |   message:   no index at C:\Users\mikey\AppData\Local\Temp\claude\E--AI-facet\45bdddfd-d0c7-4df4-a673-4e1c484b23b7\scratchpad\dogfood\facet.db
+  |   message:   no index at %USERPROFILE%\AppData\Local\Temp\claude\E--AI-facet\45bdddfd-d0c7-4df4-a673-4e1c484b23b7\scratchpad\dogfood\facet.db
   |   hint:      Run python tools/facet_index.py build   (or call record_build)
   |   retryable: true
   | {"code": "INDEX_MISSING", "error": true, "hint": "Run python tools/facet_index.py build   (or call record_build)", "message": "no index at C:\\Users\\mikey\\AppData\\Local\\Temp\\claude\\E--AI-facet\\45bdddfd-d0c7-4df4-a673-4e1c484b23b7\\scratchpad\\dogfood\\facet.db", "retryable": true}
@@ -379,9 +379,9 @@ STATE 3b - REFUSING: a DB somebody produced, with no certificate
   state:             "REFUSING"
   error:             {"error": true, "code": "INDEX_NEVER_VERIFIED", "message": "the index at C:\\Users\\mikey\\AppData\\Local\\Temp\\claude\\E--AI-facet\\45bdddfd-d0c7-4df4-a673-4e1c484b23b7\\scratchpad\\dogfood\\facet.db carries no certificate", "hint": "A DB somebody produced i
   is_error: true
-  | Error executing tool record_query: REFUSED: the index at C:\Users\mikey\AppData\Local\Temp\claude\E--AI-facet\45bdddfd-d0c7-4df4-a673-4e1c484b23b7\scratchpad\dogfood\facet.db carries no certificate
+  | Error executing tool record_query: REFUSED: the index at %USERPROFILE%\AppData\Local\Temp\claude\E--AI-facet\45bdddfd-d0c7-4df4-a673-4e1c484b23b7\scratchpad\dogfood\facet.db carries no certificate
   |   code:      INDEX_NEVER_VERIFIED
-  |   message:   the index at C:\Users\mikey\AppData\Local\Temp\claude\E--AI-facet\45bdddfd-d0c7-4df4-a673-4e1c484b23b7\scratchpad\dogfood\facet.db carries no certificate
+  |   message:   the index at %USERPROFILE%\AppData\Local\Temp\claude\E--AI-facet\45bdddfd-d0c7-4df4-a673-4e1c484b23b7\scratchpad\dogfood\facet.db carries no certificate
   |   hint:      A DB somebody produced is not a verified DB. Run python tools/facet_index.py build   (or call record_build)
   |   retryable: true
   | {"code": "INDEX_NEVER_VERIFIED", "error": true, "hint": "A DB somebody produced is not a verified DB. Run python tools/facet_index.py build   (or call record_build)", "message": "the index at C:\\Users\\mikey\\AppData\\Local\\Temp\\claude\\E--AI-facet\\45bdddfd-d0c7-4df4-a673-4e1c484b23b7\\scratchpad\\dogfood\\facet.db carries no certificate", "retryable": true}

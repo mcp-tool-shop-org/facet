@@ -9,7 +9,7 @@ of which this session does not do.
 prompt_id   5d820ce8-6ac9-49fa-bb00-d50ce5e9312e
 job_status  error / prompt_outputs_failed_validation
 node 5      LoraLoaderModelOnly
-detail      lora_name 'mikeyfrilot__saltroad-lora__saltroad_style_v2_lowlr_000001500.safetensors'
+detail      lora_name '<operator>__saltroad-lora__saltroad_style_v2_lowlr_000001500.safetensors'
             not in (list of length 144)
 ```
 
@@ -22,7 +22,7 @@ checked against the artifact that proves otherwise. [E08-anchor-workflow-api.jso
 the 0b anchor's recipe, which **ran successfully on this cloud at ΔE 0.84**, carries:
 
 ```json
-"lora_name": "mikeyfrilot__saltroad-lora__saltroad_style_v2_lowlr_000001500.safetensors"
+"lora_name": "<operator>__saltroad-lora__saltroad_style_v2_lowlr_000001500.safetensors"
 ```
 
 **Byte-identical to what stroke 1 submitted.** So the string is not a prediction and not a typo —
@@ -33,8 +33,8 @@ it is the name that already worked. **The recipe did not change; the resource di
 | probe | result |
 |---|---|
 | `search_models q:"saltroad"` | **0 results** |
-| `search_models type:lora q:"mikeyfrilot"` | **0 results** |
-| `get_node LoraLoaderModelOnly` full uncapped option list | no `saltroad`, no `mikeyfrilot__*` entry anywhere |
+| `search_models type:lora q:"<operator>"` | **0 results** |
+| `get_node LoraLoaderModelOnly` full uncapped option list | no `saltroad`, no `<operator>__*` entry anywhere |
 | the cloud worker's own list, from the error | length **144**, name absent |
 
 Two different list lengths are worth recording: the node catalog's option list is several hundred
@@ -67,8 +67,8 @@ reassurance when it is in fact the caveat that bit.
 exactly these three items as out of an executor's scope, and every one of them is what the fix
 requires:
 
-1. **An HF *read* token for `mikeyfrilot` in Comfy Cloud → Settings → Secrets.** The recorded
-   existing secret is for `SaintEloi`, which cannot read a private `mikeyfrilot` repo. Entering a
+1. **An HF *read* token for `<operator>` in Comfy Cloud → Settings → Secrets.** The recorded
+   existing secret is for `SaintEloi`, which cannot read a private `<operator>` repo. Entering a
    token is a credential action.
 2. **Model Library → Import → the HF blob URL → type LoRA.** Browser-only: `upload_file`'s schema
    is `.jpg/.jpeg/.png/.webp/.gif` and the official API has no import endpoint.

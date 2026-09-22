@@ -458,7 +458,7 @@ test_t98_bg_withhold_scope.py`), and this report.
 - Code diff: `tools/project_twins.py` (uncommitted, in place; `git diff -- tools/
   project_twins.py` for the literal patch)
 - New test: `tests/test_t98_bg_withhold_scope.py` (uncommitted, untracked)
-- Working scripts (scratchpad copies): `C:\Users\mikey\AppData\Local\Temp\claude\
+- Working scripts (scratchpad copies): `%USERPROFILE%\AppData\Local\Temp\claude\
   E--AI-facet\428295a0-ff4d-49f0-b0a2-024d00acf529\scratchpad\` — `e69_gate0.py`,
   `e69_gateB_assert.py`, `e69_gateC_assert.py`, `e69_step1_validate.py`,
   `e69_step2_pooled.py`, `e69_step3_region.py`, `e69_step4_newterritory.py`,

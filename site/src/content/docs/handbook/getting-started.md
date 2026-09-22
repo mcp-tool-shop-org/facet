@@ -20,6 +20,12 @@ whole of the setup.
 
 Generation runs on metered cloud GPU; geometry and every measurement run locally.
 
+**There are two interpreters here, and the split is deliberate.** The suite and the
+served MCP tools run under the environment that carries the CI pins (3.12); the
+reconstruction stage runs under a second one pinned to 3.10, because the TRELLIS wheels
+it needs are built for it. Everything in this handbook that is not a reconstruction runs
+under the first. A tool that fails to import on one is usually being asked from the other.
+
 ```bash
 git clone https://github.com/mcp-tool-shop-org/facet
 cd facet
@@ -79,7 +85,7 @@ before the measurement:
 spec written BEFORE the work  →  report written AFTER  →  advisor ruling LAST
 ```
 
-Seventy-two experiments are in
+Seventy-three experiments are in
 [docs/experiments](https://github.com/mcp-tool-shop-org/facet/tree/main/docs/experiments).
 You do not have to read them linearly — the record is indexed:
 

@@ -279,7 +279,7 @@ session touched nothing inside `E:\AI\facet` itself; every output lives under
   `overlay_clay0_752x1024.png`, `overlay_a1clay0_576x1024.png`,
   `overlay_twin_v0_576x1024.png`, `uv_layout.png`, `silhouette_check_v0.png`,
   `silhouette_check_v6.png`
-- Working scripts (copies): `C:\Users\mikey\AppData\Local\Temp\claude\E--AI-facet\
+- Working scripts (copies): `%USERPROFILE%\AppData\Local\Temp\claude\E--AI-facet\
   428295a0-ff4d-49f0-b0a2-024d00acf529\scratchpad\` — `gate0_provenance.py`, `check_uv.py`,
   `gate1_head_region.py`, `gate1_draw_overlay.py`, `silhouette_overlay.py`,
   `build_uv_layout.py`, `build_sheet.py`

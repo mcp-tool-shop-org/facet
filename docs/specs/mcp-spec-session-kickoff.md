@@ -12,7 +12,7 @@ building starts, and that is a later session.
 cd E:\AI\facet && git pull
 python tools/facet_index.py build            <- the E15 ritual; query the record via q
 CLAUDE.md                                    <- the repo's discipline; your specs cite it
-C:\Users\mikey\.claude\projects\F--AI\memory\memory\facet-mcp-tool-candidates.md
+%USERPROFILE%\.claude\projects\F--AI\memory\memory\facet-mcp-tool-candidates.md
                                              <- the banked candidates + the opening decision
 docs/experiments/E15-ruling.md               <- what the index IS (the four-leg gate, the law)
 tools/facet_index.py                         <- the proven CLI the first spec wraps

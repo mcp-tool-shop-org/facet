@@ -418,7 +418,7 @@ the release workflow already has a runner for.
 facet-measure.exe --print-tools          -> exit 0, 8 tools listed
 facet-measure.exe over stdio, mesh_stats -> REFUSED: verify/mesh_stats.py exited 1
     facet-measure.exe: error: unrecognized arguments:
-      C:\Users\...\Temp\tools\verify\mesh_stats.py --glb ...
+      %USERPROFILE%\...\Temp\tools\verify\mesh_stats.py --glb ...
 ```
 
 Two facts collide in that line:

@@ -39,10 +39,10 @@ Image.MAX_IMAGE_PIXELS = None
 DEFAULTS = {"seed": 770700, "steps": 20, "cfg": 2.5, "lora_w": 0.75, "cn_strength": 1.0}
 # ⚠ CORRECTED (E08 Amendment 31). The cloud's name for the imported LoRA, enumerated in the
 # Model Library UI by the advisor. The previous value —
-# `mikeyfrilot__saltroad-lora__...` — is the REDUNDANT import that has since vanished; it is
+# `<operator>__saltroad-lora__...` — is the REDUNDANT import that has since vanished; it is
 # the one 0b ran on, and stroke 1 was rejected with it at `not in (list of length 144)`.
 # The copy below is the ORIGINAL, imported 8/1/26, the one Amendment 21 found already present
-# before the mikeyfrilot delivery path was built on top of it.
+# before the <operator> delivery path was built on top of it.
 #
 # THE TRAP, banked: `search_models` and this node's own option list do NOT see account
 # imports — both return zero for "saltroad" while the card sits in the library. So "absent

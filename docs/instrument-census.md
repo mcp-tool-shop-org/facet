@@ -13,7 +13,7 @@
 | `.py` files in `tools/verify` | **12** |
 | — files of any other extension there | 0 |
 | **total members** | **117** |
-| corpus files read for axis D | 437 |
+| corpus files read for axis D | 438 |
 | test files read for axis E | 102 |
 | probe interpreter | `E:\AI-Models\facet-env\Scripts\python.exe` (3.12.13) |
 
@@ -31,8 +31,8 @@
 | B1 | **subject-bound**, module-level literal | **11** | 117 |
 | B2 | subject marker in any non-docstring literal | 12 | 117 |
 | C | has a docstring | 117 | 117 |
-| D | **cited** in ≥1 corpus file | **97** | 117 |
-| D | — with this arc's own documents left IN (the contaminated read) | 113 | 117 |
+| D | **cited** in ≥1 corpus file | **99** | 117 |
+| D | — with this arc's own documents left IN (the contaminated read) | 115 | 117 |
 | E | **anchored** — basename *or* module name as literal text under `tests/` | **65** | 117 |
 | E | — basename-with-`.py` only (the stricter read) | 65 | 117 |
 | F | **import-safe** in all three modes | **13** | 117 |
@@ -162,7 +162,7 @@
 | 98 | `gained_bg_check.py` | diagnostics | no | 9 | no | 1 | yes | n/a | none | E08 Amendment 28 Ruling 2 — did the intersection's GAINED texels admit background? |
 | 99 | `gate0_sheet.py` | verify | no | 8 | no | 8 | yes | n/a | measure_report | E04 Gate 0 sheet — the source concept beside what it reconstructed into, per candidate. |
 | 100 | `gate1_sheet.py` | verify | no | 16 | no | 7 | yes | n/a | measure_report | The Gate 1 sheet — reference \| asset \| provenance \| error, at the Director's zoom. |
-| 101 | `gate_mesh.py` | verify | yes | 4 | no | 13 | yes | yes | none | HARD MESH GATE -- may the pipeline spend money downstream of this mesh? Exit 0 = yes. |
+| 101 | `gate_mesh.py` | verify | yes | 4 | no | 14 | yes | yes | none | HARD MESH GATE -- may the pipeline spend money downstream of this mesh? Exit 0 = yes. |
 | 102 | `hair_agree.py` | diagnostics | no | 7 | no | 0 | no | n/a | none | Measure whether a GENERATED view's hair boundary agrees with the MESH's hair geometry. |
 | 103 | `hair_edge.py` | diagnostics | no | 8 | no | 0 | no | n/a | none | Extract the mesh's OWN hair/face boundary as a control hint. |
 | 104 | `head_crop.py` | verify | no | 13 | no | 4 | no | n/a | measure_report | Head-crop comparison sheet, with the head band LOCATED rather than guessed. |
@@ -172,8 +172,8 @@
 | 108 | `mesh_stats.py` | verify | no | 9 | no | 26 | yes | n/a | mesh_stats | Identical measurement of any mesh — the numeric half of a comparison. |
 | 109 | `montage.py` | verify | no | 7 | no | 7 | no | n/a | ambiguous | Contact sheet + per-view figure brightness readout. |
 | 110 | `prep_front.py` | diagnostics | no | 0 | **yes** | 0 | no | n/a | none | Prepare the front render for the paint pass. |
-| 111 | `prop_contact.py` | verify | no | 7 | no | 0 | yes | n/a | none | Contact gate for a held prop. A NUMBER, not an eye. |
-| 112 | `rig_report.py` | verify | yes | 9 | no | 0 | yes | yes | none | What came back from an auto-rig: is it OUR mesh, and what skeleton is on it? |
+| 111 | `prop_contact.py` | verify | no | 7 | no | 2 | yes | n/a | none | Contact gate for a held prop. A NUMBER, not an eye. |
+| 112 | `rig_report.py` | verify | yes | 9 | no | 2 | yes | yes | none | What came back from an auto-rig: is it OUR mesh, and what skeleton is on it? |
 | 113 | `silhouette_agree.py` | diagnostics | no | 8 | no | 4 | yes | n/a | ambiguous | Is project_twins' LIVE raycast silhouette the same object as the shipped sidecar mask? |
 | 114 | `texel_provenance.py` | diagnostics | no | 17 | no | 14 | yes | n/a | texel_provenance | Where did this pixel's colour actually come from? |
 | 115 | `texpass_metrics.py` | diagnostics | no | 7 | no | 2 | no | n/a | no opinion | E05 — one metric table, computed identically for every arm. |

@@ -43,7 +43,7 @@ recorded as irreproducible?
 
 | | |
 |---|---|
-| source file | `C:\Users\mikey\Downloads\Qwen-Image-2512_00021_.png` |
+| source file | `%USERPROFILE%\Downloads\Qwen-Image-2512_00021_.png` |
 | sha256 | `9417cd6492df34354e5d3f3d7809bf89ddd074f5b1b18725c166a59b97b48dde` |
 | frame | 1136 × 1472 RGB — both ÷16, generator-legal by construction |
 | embedded | full ComfyUI graph: `prompt` + `workflow` keys present |

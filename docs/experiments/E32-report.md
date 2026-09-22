@@ -19,7 +19,7 @@ Credits spent: **zero**. Every stage ran locally. Nothing was uploaded, publishe
 | reconstruction peak | GEN 3.4 GB · to_glb 2.7 GB · **overall 3.4 GB** — far below the ceiling; it was never approached |
 | python | `E:\AI-Models\trellis2-env\Scripts\python.exe` |
 | blender | 5.2, `-b -P` headless, driven from PowerShell |
-| subject | `E:\AI\training\facet_E32\armature_mark_clay.png`, sha256 `ade49b60…f9a1` — **matches the dispatch, and is byte-identical to `C:\Users\mikey\Downloads\ComfyUI_00122_.png`** (same length, same hash) |
+| subject | `E:\AI\training\facet_E32\armature_mark_clay.png`, sha256 `ade49b60…f9a1` — **matches the dispatch, and is byte-identical to `%USERPROFILE%\Downloads\ComfyUI_00122_.png`** (same length, same hash) |
 
 ---
 
@@ -30,7 +30,7 @@ Credits spent: **zero**. Every stage ran locally. Nothing was uploaded, publishe
 | 1 | `mesh_character.py` takes `--ptype 1024_cascade` | **holds** |
 | 2 | `project_texture.py` is in `3d-prerender/`, not `saltroad_bake_fix/tools/` | **holds — the skill's path is wrong.** Enumerated both directories; `saltroad_bake_fix/tools/` has 33 files and does not contain it |
 | 3 | `turn_render.py` is in `saltroad_bake_fix/tools/` | **holds.** ⚠ `facet/tools/verify/turn_render.py` also exists and **differs**; the dispatch's copy was used |
-| 4 | `memory/character-turnaround-pipeline.md` — the skill's required reading | **MISSING, confirmed independently.** Searched all of `C:\Users\mikey\.claude\projects` for `*turnaround*`: zero hits. The only `character`-named memory file is `comedic-moods-character-voice-model.md`, unrelated. **It was not read, and nothing here stands on it.** The skill body was the only surviving statement of the procedure |
+| 4 | `memory/character-turnaround-pipeline.md` — the skill's required reading | **MISSING, confirmed independently.** Searched all of `%USERPROFILE%\.claude\projects` for `*turnaround*`: zero hits. The only `character`-named memory file is `comedic-moods-character-voice-model.md`, unrelated. **It was not read, and nothing here stands on it.** The skill body was the only surviving statement of the procedure |
 | 5 | `pipe.run` runs `rembg`; a grey-on-grey plate needs no pre-keying | **holds in outcome, wrong in mechanism — see §2** |
 | 6 | the subject is a thin-tube lattice | **holds, measured** |
 

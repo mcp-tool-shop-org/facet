@@ -27,7 +27,9 @@ repo gets its treatment.
 
 Companion pages: **[Subject profiles](profiles.md)** — the loader, the decision forms,
 the registry sweep · **[The subjects](subjects.md)** — the four subjects' numbers, with
-their denominators.
+their denominators · **[Props and rigs](props-and-rigs.md)** — the stage after paint,
+opening with the subject that will not auto-rig and the two contracts that make a prop a
+prop.
 
 ---
 

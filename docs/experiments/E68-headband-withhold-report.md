@@ -315,7 +315,7 @@ were folded between the 39 this session's kickoff inherited and the 44 measured 
 - Combined before/after sheet: `remap\sheet\E68_before_after_sheet.png`
 - Code diff: `tools/project_twins.py` (uncommitted, in place; `git diff -- tools/
   project_twins.py` for the literal patch)
-- Working scripts (scratchpad copies): `C:\Users\mikey\AppData\Local\Temp\claude\
+- Working scripts (scratchpad copies): `%USERPROFILE%\AppData\Local\Temp\claude\
   E--AI-facet\428295a0-ff4d-49f0-b0a2-024d00acf529\scratchpad\` — `e68_gate0.py`,
   `e68_gateB_assert.py`, `e68_remap.py`, `e68_remap_part2.py`, `e68_remap_part3.py`
 

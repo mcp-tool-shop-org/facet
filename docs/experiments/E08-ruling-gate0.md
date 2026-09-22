@@ -1278,7 +1278,7 @@ ceiling and ~79% is the ceiling at any count tested. The honest framing of E08's
 > logged in, and it decides whether 0b's ΔE branch is the expected path or the fallback.
 >
 > **Do not ask anyone to verify the token first.** Attempt the import. If the token cannot read
-> `mikeyfrilot/saltroad-lora`, it fails at download and *that is the measurement* — a distinct
+> `<operator>/saltroad-lora`, it fails at download and *that is the measurement* — a distinct
 > failure mode from a bad URL, and cheaper to observe than to confirm in advance.
 >
 > **Halt conditions unchanged:** report deviations at the top, stop on anything unexpected rather
@@ -2076,7 +2076,7 @@ ceiling and ~79% is the ceiling at any count tested. The honest framing of E08's
 > ```
 >
 > **This is the pre-existing copy Amendment 21 discovered** — imported three days before the
-> `mikeyfrilot` delivery path was redundantly built on top of it. The redundant import is the
+> `<operator>` delivery path was redundantly built on top of it. The redundant import is the
 > one that vanished; the original stands. Three candidate causes for the vanishing were
 > named; none needs distinguishing, because nothing needs re-importing. **The Director's new
 > token is not needed for this resume** — it matters only in the fallback below.
@@ -2087,7 +2087,7 @@ ceiling and ~79% is the ceiling at any count tested. The honest framing of E08's
 > only. "Absent from the node list" ≠ "absent from the library." **Enumerate imports in the
 > browser; the library UI is the ground truth for them.** The stroke-1 rejection is then
 > explained: validation resolves imports server-side against the account's imported set, and
-> the deleted `mikeyfrilot` entry moved from accepted-with-warning to rejected.
+> the deleted `<operator>` entry moved from accepted-with-warning to rejected.
 >
 > ### Resume protocol — no further advisor round-trip
 >
@@ -2096,7 +2096,7 @@ ceiling and ~79% is the ceiling at any count tested. The honest framing of E08's
 >    substituted to the string above — the only change — and compare against the same local
 >    N11 output. **Reproduces the recorded cross-boundary residual class (uniform, ~ΔE 0.84,
 >    held < contra structure) → the weights are the same in effect; proceed.** Fails →
->    HALT: the copies differ, and re-importing the proven `mikeyfrilot` copy with the new
+>    HALT: the copies differ, and re-importing the proven `<operator>` copy with the new
 >    token becomes the path.
 > 2. Substitute the same string in `stroke_1_*_workflow.json` node 5, re-save, resubmit.
 >    Inputs are already uploaded; `emit` stands.

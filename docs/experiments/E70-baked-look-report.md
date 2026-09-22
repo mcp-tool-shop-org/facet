@@ -288,7 +288,7 @@ commit` was run by this seat.
   `E:\AI\training\facet_E70\scripts\e70_derive_crops.py`,
   `E:\AI\training\facet_E70\scripts\e70_build_sheet.py`,
   `E:\AI\training\facet_E70\scripts\e70_spotcheck_bg.py`
-  (scratchpad originals also left at `C:\Users\mikey\AppData\Local\Temp\claude\
+  (scratchpad originals also left at `%USERPROFILE%\AppData\Local\Temp\claude\
   E--AI-facet\428295a0-ff4d-49f0-b0a2-024d00acf529\scratchpad\`)
 - Live handoff: `E:\AI\training\facet_E70\handoff.md`
 

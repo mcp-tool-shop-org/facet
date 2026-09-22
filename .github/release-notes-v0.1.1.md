@@ -2,7 +2,7 @@
 
 `v0.1.0`'s binary was wrong about your machine. Inside a PyInstaller onefile,
 `__file__` lives in a temp extraction directory — so the server resolved its default
-index against that, printing `db: C:\Users\…\Temp\docs/index/facet.db` (a path that
+index against that, printing `db: %USERPROFILE%\...\Temp\docs/index/facet.db` (a path that
 cannot exist), and every refusal hint told you to run
 `python tools/facet_index.py build` — a command with no `tools/` directory to run it
 in, and possibly no Python at all.

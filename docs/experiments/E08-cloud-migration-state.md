@@ -31,7 +31,7 @@ how the file reaches HF.**
 Director's direction: *"use it through huggingface."*
 
 ```
-repo    mikeyfrilot/saltroad-lora     PRIVATE
+repo    <operator>/saltroad-lora     PRIVATE
 file    saltroad_style_v2_lowlr_000001500.safetensors
 bytes   295,144,520
 commit  ae98e936960635570f7b85845f18c276f286f678
@@ -46,12 +46,12 @@ permission classifier blocked it from this session twice.
 
 ## 0a-remaining — what is still outstanding, and why it is not mine
 
-1. **A `mikeyfrilot` HF *read* token in Comfy Cloud → Settings → Secrets.** The existing secret is
-   for `SaintEloi` (per `comfy-cloud-run.md`), which cannot read a private `mikeyfrilot` repo.
+1. **A `<operator>` HF *read* token in Comfy Cloud → Settings → Secrets.** The existing secret is
+   for `SaintEloi` (per `comfy-cloud-run.md`), which cannot read a private `<operator>` repo.
    Entering a token is a credential action and is not something this session does.
 2. **Model Library → Import → the HF blob URL → type LoRA.** Browser-only, per correction 2.
 3. **Read back the real `lora_name`.** Predicted
-   `mikeyfrilot__saltroad-lora__saltroad_style_v2_lowlr_000001500.safetensors` from the
+   `<operator>__saltroad-lora__saltroad_style_v2_lowlr_000001500.safetensors` from the
    `<owner>__<repo>__<file>` pattern in `comfy-cloud-run.md`, **but predicted is not measured** —
    the string must be read off the imported card, not assumed.
 

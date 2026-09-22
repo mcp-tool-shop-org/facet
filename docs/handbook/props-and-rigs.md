@@ -1,0 +1,165 @@
+# Props and rigs — what happens after the paint
+
+The route's first five subjects ended at a textured mesh. A game needs more than that: a
+figure has to be posed, and it has to hold things. This page covers the stage after paint
+— and it opens with a negative result, because that is what the stage has produced so far.
+
+---
+
+## The subject that will not rig
+
+A harbour guard was reconstructed to test posing and props. It reconstructs cleanly and
+then **fails auto-rigging.** Four candidate causes were eliminated by measurement:
+
+| candidate | how it was tested | outcome |
+|---|---|---|
+| untextured input | submitted a textured plate and an untextured one | **eliminated** — both fail |
+| component count | compared against a subject that rigs, by shell count | **eliminated** |
+| mesh topology | manifold edges, shells, watertightness | **eliminated** |
+| the pose | a narrow A-pose and a wide one, measured arm-to-torso separation | **eliminated** |
+
+**The discriminator is unidentified.** [`canon/BASE-FIGURE.md`](../../canon/BASE-FIGURE.md)
+carries this table and declines to name a cause.
+
+That refusal is the interesting part. This repo *did* name a cause — arm-to-torso
+separation — and wrote it into canon. It was falsified inside the same hour: a true A-pose
+failed at separation 0.5412 while a wider pose passed at 0.5483, so the variable moved the
+wrong way. The canon document now carries the table and no cause, which is the honest state
+rather than the most plausible survivor.
+
+### What a rig that exists can take
+
+Where a rig does exist, posing has a **measured ceiling rather than a fix**:
+
+- roughly **20 degrees** of arm rotation stays clean
+- roughly **110 degrees** shreds the shoulders
+
+Rigid plate binding was built to repair that and does not. All three repairs were measured
+and all three failed — rigid under 5% is indistinguishable from the original, rigid under
+20% is worse, and eight smoothing passes still tear. The tool lives in `tools/superseded/`
+where anyone can run it and watch it fail the same way.
+
+`tools/pose_rig.py` aims named bones at **directions stated in the call** rather than at
+guessed Euler axes, and bakes the deformed mesh through a duplicate-and-apply rather than
+leaving it in a modifier stack. It filters to armature-skinned meshes, because an auto-rig
+return can contain geometry that is not part of the figure at all.
+
+---
+
+## Reading what an auto-rigger gave back
+
+`tools/verify/rig_report.py` opens the GLB container directly — JSON chunk, accessors,
+`JOINTS_0` / `WEIGHTS_0`, skins — and reports three things:
+
+1. **mesh identity** against the file that was submitted (`--against`)
+2. **skeleton joints by name**, so a 23-joint biped is recognisable as one
+3. **whether skinning is present at all**
+
+`--require-same-shape` compares vertex and face **sets**, not counts. An earlier
+`--require-same-mesh` compared counts and was brittle for the reason any count is: two
+different meshes can agree on a number. The question "did the rigger return my mesh" is
+order-invariant, so the check is too.
+
+---
+
+## A prop has a real size, and it is declared
+
+**Every reconstruction this route makes comes back normalised to 1.002 on its longest
+axis.** Measured on four unrelated assets — a body, an A-pose body and two shields — to
+three decimals. So a prop mesh carries **no true scale at all**, and a heater shield loaded
+as it arrives is 1.8 m tall: a door, not a shield.
+
+The figure is correctly sized only by coincidence, because a human is what the unit box
+happened to be fitted to.
+
+The scene unit system, stated once rather than assumed: **1.0 unit = 1.8 m.**
+
+```bash
+# build a library prop at true size
+python tools/prop_scale.py --glb raw.glb --out props/shield.glb \
+    --name heater_shield --real-mm 758 --axis height --attach forearm_l
+
+# check one
+python tools/prop_scale.py --verify props/shield.glb
+```
+
+`--real-mm` is **authored**, not read off a normalised mesh. The size lands in a
+`.prop.json` sidecar beside the GLB, and `--verify` checks the file against its own
+declaration rather than trusting it.
+
+**The refusal that matters:** a prop whose longest axis measures ~1.002 is an *unscaled
+reconstruction wearing a prop's sidecar*, and `--verify` exits 2 while reporting the real
+size in millimetres. That is the exact mistake the contract exists to prevent — a file that
+looks like a prop, declares a sensible size, and is a door.
+
+The predecessor to this contract was a `HEIGHT_FRAC = 0.42` in a compose script: a size
+chosen by eye, per placement, with nothing recording what the object was supposed to *be*.
+
+---
+
+## A prop that touches is not a prop that is held
+
+`tools/verify/prop_contact.py` measures the gap between a prop and the figure. It reports
+two numbers, and the second one is the point:
+
+- **minimum point-to-surface distance** — do these two surfaces meet anywhere
+- **contact AREA** — how much of the prop is actually against the figure
+
+A minimum of zero says two surfaces meet somewhere. One vertex meets somewhere. The asset
+that prompted this tool had a minimum of **0.00072** and a contact patch of **97 points out
+of 624,510** — it passed "touching" and was plainly not being gripped.
+
+The floor is an **area**, not a count, because a count is a fraction of however many samples
+the prop happened to get, and is therefore a property of tessellation rather than of
+contact. The tool samples vertices *and* area-weighted surface points for that reason.
+
+```bash
+python tools/verify/prop_contact.py --glb posed.glb --prop shield \
+    --tol 0.002 --min-area 0.0005 --json-out contact.json
+```
+
+Both thresholds are **flags rather than constants**, and both are set independently of the
+result they judge. A gate whose threshold is buried in its source cannot be stated in a
+report, and a threshold chosen after seeing the number it judges is not a threshold.
+
+Defaults: `--tol 0.002` units, `--min-area 0.0005` units squared — about **16 cm squared**
+on a 1.8 m figure.
+
+---
+
+## Base figures carry no props
+
+Standing rule: a base figure is generated **arms to the side, holding nothing.** Props are
+separate GLBs, stored at true size, attached afterwards.
+
+The first reason written for this rule was wrong and the correction is kept in place beside
+it in [`canon/BASE-FIGURE.md`](../../canon/BASE-FIGURE.md). The rule survived the correction because
+it is right for a different reason than the one first given: a prop modelled into a figure
+cannot be swapped, cannot be sized, and cannot be checked — all three of which the contracts
+above exist to do.
+
+---
+
+## Clause 7 — five digits per hand
+
+A six-fingered hand reached an accepted sheet **past four gates that could not see hands.**
+The Director found it by looking.
+
+Canon clause 7 exists because clause 2 caused it, and it is worth stating plainly: no metric
+in this repo could separate a five-fingered hand from a six-fingered one, because every one
+of them was measuring colour statistics, silhouette agreement or surface coverage. Hands are
+now an acceptance item at the Director's zoom.
+
+This is the same lesson the repo keeps re-learning in new clothes: **a measurable proxy is
+not a conservative substitute for asking.**
+
+---
+
+## What this stage does NOT claim
+
+- **No prop has been mounted and accepted.** Both contracts are tested against synthetic
+  meshes at a known separation. Nothing has been placed in a hand and ruled on at the
+  Director's zoom, so the contact gate has no scalp on a real asset.
+- **The rig question is open.** Four causes are eliminated; the fifth is not known.
+- **The second subject is not textured.** Geometry, rig and props are measured; the texture
+  route has not been run on it.

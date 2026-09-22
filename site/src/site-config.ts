@@ -72,7 +72,7 @@ export const config: SiteConfig = {
         },
         {
           title: 'Ask geometry, not a threshold',
-          desc: 'Corner-median keying failed three times here — painted art has a gradient, clay is grey on grey, diffusion paints a lit backdrop. Replacing the key with the exact raycast silhouette moved reference coverage 28.4% → 39.1% of valid texels, strictly additive, with no diffusion and no GPU.',
+          desc: 'Corner-median keying has failed four times here — painted art has a gradient, clay is grey on grey, diffusion paints a lit backdrop, and a diffusion reference’s own corners span L* 48.1–81.1. Replacing the key with the exact raycast silhouette moved reference coverage 28.4% → 39.1% of valid texels, strictly additive, with no diffusion and no GPU.',
         },
         {
           title: 'Cull from the atlas, never the mesh',
@@ -93,7 +93,7 @@ export const config: SiteConfig = {
       features: [
         {
           title: 'Spec before, report after, ruling last',
-          desc: 'Every non-trivial change runs as a numbered experiment. The session that designs an experiment does not grade its results, and the session that runs it does not decide what they mean. Seventy-two experiments are in the record, each with its predictions stated before the measurement.',
+          desc: 'Every non-trivial change runs as a numbered experiment. The session that designs an experiment does not grade its results, and the session that runs it does not decide what they mean. Seventy-three experiments are in the record, each with its predictions stated before the measurement.',
         },
         {
           title: 'Corrections in place, never deletions',
@@ -144,6 +144,16 @@ export const config: SiteConfig = {
           'Reconstructions are hollow double-walled shells',
           'Walls ~two voxels around an empty cavity, measured three independent ways with two accepted assets as controls.',
           'A route-wide property — no volumetric predicate is valid on them',
+        ],
+        [
+          'One subject reconstructs cleanly and will not auto-rig',
+          'Four candidate causes eliminated by measurement — untextured input, component count, topology, pose. The one cause this repo did name was falsified the same hour, at a separation that moved the wrong way.',
+          'canon/BASE-FIGURE.md — the table stands, the discriminator does not',
+        ],
+        [
+          'No prop has been mounted and accepted',
+          'The size contract and the contact gate are tested against synthetic meshes at a known separation. Nothing has been placed in a hand and ruled on at the Director’s zoom.',
+          'verify/prop_contact.py — an instrument with no scalp on a real asset',
         ],
       ],
     },

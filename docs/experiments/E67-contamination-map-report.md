@@ -260,7 +260,7 @@ from the advisor's own fold of the first sitting's report, visible in `git log`)
 
 - Live handoff (both sittings): `E:\AI\training\facet_E67\handoff.md`
 - Read-only reimplementation + validation: scratchpad copy at
-  `C:\Users\mikey\AppData\Local\Temp\claude\E--AI-facet\428295a0-ff4d-49f0-b0a2-024d00acf529\scratchpad\map_contamination.py`;
+  `%USERPROFILE%\AppData\Local\Temp\claude\E--AI-facet\428295a0-ff4d-49f0-b0a2-024d00acf529\scratchpad\map_contamination.py`;
   console: `E:\AI\training\facet_E67\map\logs\run1_stdout.txt`,
   `logs\reproduction_console.txt`
 - Classification: scratchpad copy at `...\scratchpad\classify_contamination.py`;

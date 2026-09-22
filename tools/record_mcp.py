@@ -105,7 +105,7 @@ from mcp.types import ToolAnnotations                 # noqa: E402
 # extraction directory - so facet_index.REPO points at nowhere useful and
 # DB_DEFAULT names a path that cannot exist. Found by INSTALLING THE PUBLISHED
 # 0.1.0 BINARY and reading its own banner, which printed
-# `db: C:\Users\...\Temp\docs/index/facet.db`. The workflow was green the whole
+# `db: %USERPROFILE%\...\Temp\docs/index/facet.db`. The workflow was green the whole
 # time; only running the artifact a user actually receives surfaced it.
 FROZEN = bool(getattr(sys, "frozen", False))
 
@@ -163,7 +163,7 @@ CERT_SCHEMA_ACCEPTED = (CERT_SCHEMA, "facet-record-index-certificate/1")
 # publish on a mismatch, because bin/facet.js installs an EXACT pinned version
 # from PyPI - a drift here ships a wrapper that fetches a package that does not
 # exist.
-SERVER_VERSION = "0.8.0"
+SERVER_VERSION = "0.8.1"
 
 # The env var exists so tests and scratch runs bind a copy instead of the
 # tracked artifact. It selects WHICH derived DB, never which corpus.

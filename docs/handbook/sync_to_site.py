@@ -54,6 +54,11 @@ SYNCED = {
         "The profile loader, the decision forms a subject must answer, and the registry sweep that gates them.",
         3,
     ),
+    "props-and-rigs": (
+        "Props and rigs",
+        "The stage after paint: why one subject will not auto-rig, what a posed rig can take, and the two contracts that make a prop a prop - a declared true size and a measured contact area.",
+        4,
+    ),
 }
 
 # Link rewrites, applied in order. Repo-relative markdown links become GitHub URLs;
@@ -66,6 +71,7 @@ REWRITES = [
     (re.compile(r"\]\(\.\./([A-Za-z0-9_-]+\.md)\)"), r"](%s/docs/\1)" % REPO_BLOB),
     (re.compile(r"\]\(profiles\.md\)"), "](../profiles/)"),
     (re.compile(r"\]\(subjects\.md\)"), "](../subjects/)"),
+    (re.compile(r"\]\(props-and-rigs\.md\)"), "](../props-and-rigs/)"),
     (re.compile(r"\]\(index\.md\)"), "](../)"),
 ]
 

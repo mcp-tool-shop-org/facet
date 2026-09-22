@@ -139,7 +139,7 @@ Scoped properly, the **actual card surface in the corpus is exactly one input**:
 >
 > ```
 > 26x  mcp-tool-shop__saltroad-style-lora__saltroad_style_v2_lowlr_000001500.safetensors
->  1x  mikeyfrilot__saltroad-lora__saltroad_style_v2_lowlr_000001500.safetensors
+>  1x  <operator>__saltroad-lora__saltroad_style_v2_lowlr_000001500.safetensors
 > ```
 >
 > Same trained weights, different cloud-side namespace prefix from a re-import under another

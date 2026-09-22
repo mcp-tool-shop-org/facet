@@ -218,7 +218,7 @@ A check that cannot fail is not a check.
 | query | rows |
 |---|---|
 | `q="saltroad"`, `type="lora"` | **0** |
-| `q="mikeyfrilot"` | **0** |
+| `q="<operator>"` | **0** |
 | `q="qwen_image_fp8_e4m3fn"` | 1 |
 | `q="qwen_2.5_vl_7b_fp8_scaled"` | 1 |
 | `q="qwen_image_vae"` | 1 |

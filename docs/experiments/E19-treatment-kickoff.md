@@ -14,9 +14,9 @@ session does not re-audit it.
 cd E:\AI\facet && git pull
 python tools/facet_index.py build                <- the E15 ritual (seeded set 19)
 CLAUDE.md                                        <- read first, follow exactly
-C:/Users/mikey/.claude/projects/F--AI/memory/full-treatment.md      <- THE PROTOCOL,
-C:/Users/mikey/.claude/projects/F--AI/memory/handbook-playbook.md      read all three
-C:/Users/mikey/.claude/projects/F--AI/memory/shipcheck.md              END TO END
+$HOME/.claude/projects/F--AI/memory/full-treatment.md      <- THE PROTOCOL,
+$HOME/.claude/projects/F--AI/memory/handbook-playbook.md      read all three
+$HOME/.claude/projects/F--AI/memory/shipcheck.md              END TO END
 README.md + docs/experiments/README.md           <- the measured state you are
                                                     presenting, not rewriting
 ```

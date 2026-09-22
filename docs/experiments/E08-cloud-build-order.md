@@ -56,7 +56,7 @@ E08-anchor-N11
 
 | # | node | inputs |
 |---|---|---|
-| 5 | `LoraLoaderModelOnly` | `model` ← **node 1** · `lora_name` = `mikeyfrilot__saltroad-lora__saltroad_style_v2_lowlr_000001500.safetensors` · `strength_model` = `0.75` |
+| 5 | `LoraLoaderModelOnly` | `model` ← **node 1** · `lora_name` = `<operator>__saltroad-lora__saltroad_style_v2_lowlr_000001500.safetensors` · `strength_model` = `0.75` |
 | 6 | `ModelSamplingAuraFlow` | `model` ← **node 5** · `shift` = `3.1` |
 
 > **Order is load-bearing:** UNET → LoRA → ModelSamplingAuraFlow. Not UNET → ModelSampling → LoRA.

@@ -65,3 +65,31 @@ inflating a verdict. D moved one point for the same reason: the verify story was
 already real, and the version/manifest/dependency items are ruled out until extraction
 rather than solved. E is 8 rather than 10 because translations are staged for the
 advisor's own run and the Pages deploy waits on the Director's word.
+
+---
+
+## Re-score at v0.8.1 — 2026-09-22
+
+The section above is the E19 record and stays as written. This is a fresh read, **not a
+revision of it**: eight releases have landed since, and three of the five rows moved for
+reasons that are in the record rather than in a judgement call.
+
+`npx @mcptoolshop/shipcheck audit` at this commit: **28 checked / 0 unchecked / 9 skipped,
+100%.** Every skip carries a written reason and a re-open condition.
+
+| Category | E19 (2026-08-08) | v0.8.1 | what moved it |
+|----------|------------------|--------|---------------|
+| A. Security | 9/10 | 9/10 | unchanged, and the residual point is the same one — two posture items are **disclosed** gaps (unsandboxed file writes, baked absolute paths), not closed ones |
+| B. Error Handling | 4/10 | **8/10** | E21 gave the two installed commands a structured failure shape and an exit-code registry; E22 added **`4` REFUSED** for a fired gate; E22/E23/E25 converted **278** ANDON sites from `assert` to `raise`, closing a class that `python -O` could delete silently |
+| C. Operator Docs | 9/10 | 9/10 | unchanged. A CHANGELOG, a support-status statement and a runtime/CI note all landed; the residual point is that the research scripts outside the two published commands still surface raw tracebacks |
+| D. Shipping Hygiene | 6/10 | **9/10** | nine tags, four version declarations gated against the tag by `release.yml`, a published npm launcher and a PyPI wheel, and a 1376-test suite with 1319 hermetic tests in paths-gated CI |
+| E. Identity (soft) | 8/10 | **10/10** | logo, seven translations, landing page, Starlight handbook with a working pagefind index, GitHub description, homepage and twelve topics — all live |
+| **Overall** | 36/50 | **45/50** | |
+
+**The five points that are missing are real and each is named.** A and C are each held at
+9 by a disclosed gap rather than an unknown one, and B is held at 8 because the contract is
+closed for `facet-index` and `facet-mcp` and **not** for the ~100 research instruments under
+`tools/`, which are a research-instrument surface by design and say so.
+
+**What this scorecard does not measure:** whether the assets are good. That is the
+Director's eye, and no row here approximates it.

@@ -25,7 +25,7 @@ Source copied to two destinations:
 ```
 expected:  9417cd6492df34354e5d3f3d7809bf89ddd074f5b1b18725c166a59b97b48dde  (len=64)
 
-9417cd6492df34354e5d3f3d7809bf89ddd074f5b1b18725c166a59b97b48dde  MATCH  C:\Users\mikey\Downloads\Qwen-Image-2512_00021_.png
+9417cd6492df34354e5d3f3d7809bf89ddd074f5b1b18725c166a59b97b48dde  MATCH  %USERPROFILE%\Downloads\Qwen-Image-2512_00021_.png
 9417cd6492df34354e5d3f3d7809bf89ddd074f5b1b18725c166a59b97b48dde  MATCH  E:\AI\training\facet_E57\reference\A1_reference.png
 9417cd6492df34354e5d3f3d7809bf89ddd074f5b1b18725c166a59b97b48dde  MATCH  E:\AI\facet\canon\A1_reference.png
 ```

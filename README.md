@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="README.ja.md">日本語</a> | <a href="README.zh.md">中文</a> | <a href="README.es.md">Español</a> | <a href="README.fr.md">Français</a> | <a href="README.hi.md">हिन्दी</a> | <a href="README.it.md">Italiano</a> | <a href="README.pt-BR.md">Português (BR)</a>
+  <a href="README.md">English</a> | <a href="README.ja.md">日本語</a> | <a href="README.zh.md">中文</a> | <a href="README.es.md">Español</a> | <a href="README.fr.md">Français</a> | <a href="README.hi.md">हिन्दी</a> | <a href="README.it.md">Italiano</a> | <a href="README.pt-BR.md">Português (BR)</a>
 </p>
 
 <p align="center">
@@ -236,6 +236,33 @@ interval. **W3's canon asks for 19, and the corpus never reaches it**
 numbers that get collapsed — 24 prompt surfaces, 25 required checks, 19 unique elements —
 so a coverage count is never quoted against an element-count measurement.
 
+**A sixth subject went in to answer a different question, and returned a negative result
+(2026-09-22).** A harbour guard for `ai-rpg-stage` was reconstructed to test what happens
+*after* paint — posing and props — and it reconstructs cleanly and then **fails
+auto-rigging.** Four candidate causes were eliminated by measurement rather than by
+argument: untextured input, component count, mesh topology, and the pose. **The
+discriminator is unidentified**, and [`canon/BASE-FIGURE.md`](canon/BASE-FIGURE.md) carries
+the table of what was tried while declining to name a cause — because the one cause this
+repo did name, arm-to-torso separation, was falsified inside the same hour by a true A-pose
+that failed at a *wider* separation than a pose that passed.
+
+**What came out of it is a size contract and two gates.** Every reconstruction this route
+makes comes back normalised to **1.002 on its longest axis** — measured on four unrelated
+assets, to three decimals — so a prop mesh carries no true scale at all and a heater shield
+loaded as-is is a 1.8 m door. A prop's real size is now declared once in millimetres, stored
+beside the file and checked rather than trusted (`tools/prop_scale.py`, scene unit **1.0 =
+1.8 m**). A prop that *touches* a figure at one vertex is not held, so the contact gate
+reports a minimum distance **and a contact area** (`tools/verify/prop_contact.py`) — the
+asset that prompted it touched at 0.00072 across 97 points out of 624,510 and was plainly
+not being gripped. And an auto-rig's return is now read rather than assumed:
+`tools/verify/rig_report.py` names the joints, compares the mesh as a *set* rather than a
+count, and says whether skinning is there at all.
+
+**A six-fingered hand reached an accepted sheet past four gates that could not see hands.**
+The Director found it by looking. Canon clause 7 — five digits per hand — exists because
+clause 2 caused it, and hands are now an acceptance item at his zoom rather than a thing
+the metrics were quietly silent about.
+
 ## The route
 
 ```
@@ -282,8 +309,11 @@ measurements](docs/findings.md).
   be reaching the image only through noise in a broken ControlNet.
 - **Ask geometry, not a threshold.** Replacing a keyed mask with the exact raycast
   silhouette moved reference coverage **28.4% → 39.1%** of valid texels — strictly
-  additive, no diffusion, no GPU. Corner-median keying has now failed three times here
-  and is retired.
+  additive, no diffusion, no GPU. Corner-median keying has now failed **four** times here
+  and is retired — a painted gradient, a grey-on-grey clay render, a diffusion model's lit
+  studio backdrop, and a diffusion reference whose own corners span L\* 48.1–81.1. ⚠ The
+  shape still ships in one consumer, `tools/verify/gate_mesh.py`, which samples a single
+  corner: named here rather than quietly carried.
 - **Cull what no camera can see, from the atlas and never the mesh.** 49% of atlas texels
   are invisible from outside; excluding those faces cut interpolation **68%**. Excluding
   rather than deleting makes the failure impossible instead of merely detectable.
@@ -382,6 +412,19 @@ code](docs/known-defects.md).
   "orphan islands the size of single triangles, flat-filled from boundary-adjacent twin
   samples taken with the uneroded silhouette."*
 
+- **A reconstruction that will not auto-rig, with no known discriminator.** One of the six
+  subjects reconstructs cleanly and fails auto-rigging. Untextured input, component count,
+  mesh topology and the pose are each eliminated by measurement — and the cause this repo
+  *did* name was falsified in the same hour, so the table stands without one. Posing a rig
+  that does exist has a measured ceiling rather than a fix: roughly 20 degrees of arm
+  rotation stays clean, roughly 110 shreds the shoulders, and rigid plate binding
+  [does not repair it](docs/tools.md) — all three attempted repairs were measured and all
+  three failed.
+- **No prop has been mounted and accepted.** The size contract and the contact gate exist
+  and are tested against synthetic meshes at a known separation. Nothing has yet been placed
+  in a hand and ruled on at the Director's zoom, and until that happens the gate is an
+  instrument with no scalp on a real asset.
+
 ## How this repo is run
 
 The discipline is as much the product as the pipeline is, and it exists for a reason: an
@@ -389,7 +432,7 @@ earlier arc ran ten sessions that each judged their own output and wrote conclus
 next session read as established fact. Nothing in that loop was checkable.
 
 - **Spec before the work, report after, ruling last** — and the session that designs an
-  experiment never grades its own results. Seventy-two experiments are in
+  experiment never grades its own results. Seventy-three experiments are in
   [the record](docs/experiments/).
 - **Corrections land in place, beside the measurement that overturned them**, never as
   quiet deletions. Six inherited claims were falsified in the founding session alone, and
@@ -409,8 +452,9 @@ next session read as established fact. Nothing in that loop was checkable.
 | | |
 |---|---|
 | **[The handbook](docs/handbook/index.md)** | the guide — the route stage by stage, the subjects, the profile system |
+| **[Props and rigs](docs/handbook/props-and-rigs.md)** | the stage after paint: the subject that will not auto-rig, and the two contracts that make a prop a prop |
 | **[Concept prep](docs/concept-prep.md)** | the candidate clay hop: its Gate 0 walk, its placement, and the licence item it opens |
-| **[The record](docs/experiments/)** | seventy-two experiments: spec, report, ruling, and every prediction stated before the measurement |
+| **[The record](docs/experiments/)** | seventy-three experiments: spec, report, ruling, and every prediction stated before the measurement |
 | **[What the route learned](docs/findings.md)** | the durable findings and the hard-won rules, in full |
 | **[Status of every tool](docs/tools.md)** | what works, what is superseded, and the evidence for each |
 | **[Known defects](docs/known-defects.md)** | everything not solved, measured and located in code |
@@ -507,6 +551,12 @@ each one.
 Blender 5.x, Python 3.11+ with `numpy`, `scipy`, `trimesh`, `open3d`, `Pillow`,
 `spandrel`, `torch`. A local ComfyUI install is needed only for the inpainting brush.
 Developed against an RTX 5090; VRAM headroom matters more than raw speed.
+
+**Two interpreters, and the split is deliberate.** The suite, the served MCP tools and
+every measurement run under the environment carrying the CI pins (3.12). The
+reconstruction stage runs under a second one pinned to **3.10**, because the TRELLIS
+wheels it needs are built for it. A tool that fails to import is usually being asked from
+the other one.
 
 CI runs the hermetic subset of the suite on **ubuntu-latest / Python 3.12** with
 pinned installs (`.github/workflows/ci.yml`); the artifacts tier needs the recorded

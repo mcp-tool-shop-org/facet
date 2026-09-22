@@ -237,7 +237,7 @@ memory store:
   `sprite-foundry/3d-prerender/` as the productized stage-3 home (corrected 2026-07-28). The
   skill is pointing at a path the map already moved.
 * **The skill's required reading, `memory/character-turnaround-pipeline.md`, does not exist.**
-  Searched all of `C:\Users\mikey\.claude\projects` for `*turnaround*`: zero hits. The executor
+  Searched all of `%USERPROFILE%\.claude\projects` for `*turnaround*`: zero hits. The executor
   recorded the gap and **did not pretend to have read it**, which is the right handling of a
   broken pointer in one's own dispatch.
 * **`turn_render.py` exists twice and the copies differ** — `saltroad_bake_fix/tools/` (used) and

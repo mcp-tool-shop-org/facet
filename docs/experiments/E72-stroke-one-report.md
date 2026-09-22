@@ -560,7 +560,7 @@ entry — the 19-phrase string, unmodified, no orientation clause, exactly as Am
 negative (node 8) matches the CJK recipe string; `LoraLoaderModelOnly` (node 5) carries
 `mcp-tool-shop__saltroad-style-lora__saltroad_style_v2_lowlr_000001500.safetensors` at
 `strength_model 0.75` (the E08 Amendment 31-corrected name, not the old rejected
-`mikeyfrilot__...` one); `LoadImage` nodes 9/10 carry exactly the two cloud-returned names from
+`<operator>__...` one); `LoadImage` nodes 9/10 carry exactly the two cloud-returned names from
 step 2; 17 nodes total. **Link topology checked by hand, not trusted to dry_run alone** (this
 repo's own law): every `[node_id, slot]` reference in all 17 nodes resolves to a node id
 present in the same graph; no self-links, no dangling targets, no orphan cycles.

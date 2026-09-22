@@ -19,7 +19,7 @@ enumerated from source and then queried, not assumed from the restylize migratio
 | text encoder | `qwen_2.5_vl_7b_fp8_scaled.safetensors` | present |
 | VAE | `qwen_image_vae.safetensors` | present |
 | **controlnet** | `Qwen-Image-InstantX-ControlNet-**Inpainting**.safetensors` | **present**, exact name |
-| **LoRA** | `mikeyfrilot__saltroad-lora__saltroad_style_v2_lowlr_000001500.safetensors` | present (imported; name read off the card, not predicted) |
+| **LoRA** | `<operator>__saltroad-lora__saltroad_style_v2_lowlr_000001500.safetensors` | present (imported; name read off the card, not predicted) |
 | **node** | `ControlNetInpaintingAliMamaApply` | **present**, `core` pack, input signature matches the graph exactly |
 
 > **A correction to my own inference, made mid-check.** Reading
