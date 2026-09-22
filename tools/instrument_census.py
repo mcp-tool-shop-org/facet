@@ -189,7 +189,23 @@ _G = {
     # or emit a new one" - names tree integrity, which is not one of the eight spec
     # questions, and the tool returns HELD/FIRED rather than a measurement. `gate_mesh`
     # is the precedent applied deliberately: a VERDICT tool is `none`.
+    # AT THE DRELL ARC four files joined the censused homes, judged under the same
+    # rule - docstring line 1 plus filename, never the body:
+    #   `prop_contact.py` - line 1 is "Contact gate for a held prop. A NUMBER, not
+    #     an eye." Prop-to-figure contact is not one of the eight, and gate_mesh's
+    #     precedent already puts a VERDICT tool at `none`.
+    #   `rig_report.py` - line 1 asks "is it OUR mesh, and what skeleton is on it?"
+    #     `anchor_check` was considered and REJECTED: an anchor asks whether a
+    #     RECORDED NUMBER reproduces, this asks whether a third party returned the
+    #     mesh it was given. `mesh_topology` was considered and rejected too - a
+    #     skeleton is not the mesh's topology.
+    #   `facing_masks.py` - a render stage, and task 2-pre already judged the two
+    #     render stages `none`.
+    #   `facing_silhouette_gap.py` - a per-facing screen-space readout the spec does
+    #     not list. Not `measure_report`: it builds no sheet.
     "none": [
+        "facing_masks.py", "facing_silhouette_gap.py",
+        "prop_contact.py", "rig_report.py",
         "build_masks.py", "canny_probe.py", "commit_funnel.py",
         "e04_backdrop.py", "e04_bands.py", "e04_blotch.py",
         "e04_g7_landing.py", "e04_g7_where.py", "e04_invar_probe.py",

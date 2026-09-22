@@ -1,11 +1,11 @@
 {
   "mcpServers": {
     "facet-record": {
-      "command": "E:\\AI-Models\\trellis2-env\\Scripts\\python.exe",
+      "command": "E:\\AI-Models\\facet-env\\Scripts\\python.exe",
       "args": ["tools/record_mcp.py"]
     },
     "facet-measure": {
-      "command": "E:\\AI-Models\\trellis2-env\\Scripts\\python.exe",
+      "command": "E:\\AI-Models\\facet-env\\Scripts\\python.exe",
       "args": ["tools/measure_mcp.py"]
     }
   }

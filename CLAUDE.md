@@ -875,10 +875,32 @@ This is the Robot rig — **drives C and E only. No D:, no F:.** Any `F:/AI/...`
 inherited document means `E:/AI/...`.
 
 ```
-python    E:\AI-Models\trellis2-env\Scripts\python.exe
+python    E:\AI-Models\facet-env\Scripts\python.exe        <- the SUITE and the MCP servers
+trellis   E:\AI-Models\trellis2-env\Scripts\python.exe     <- reconstruction ONLY
 blender   "C:\Program Files\Blender Foundation\Blender 5.2\blender.exe"
 assets    E:\AI\training\facet_E0*\  and  E:\AI\training\saltroad_bake_fix\
 ```
+
+⚠ **TWO INTERPRETERS as of 2026-09-22, and the split is the point.** This law named one
+python until `trellis2-env` was rebuilt as **Python 3.10.11** — it had been **3.13.13**,
+which `docs/experiments/E18-index-mcp-predictions.md` records. The rebuild took `pytest`,
+`mcp` and `record_index` with it, and `record-index` refuses to install below 3.11, so this
+repo could not run its own suite or start its own MCP servers: `facet-measure` and
+`facet-record` were dead at session start and `test_t23_the_declared_command_actually_starts_the_server`
+failed on the rig while passing in CI, because CI skips a Windows path it does not have.
+
+The rebuild also silently replaced open3d `0.19.0+241aaee` — a cp313 development wheel —
+with released `0.20.0`, moving the dependency behind every open3d-measured number in this
+repo with nothing in the identity envelope able to see it.
+
+`facet-env` is **Python 3.12.13 carrying CI's exact pins**, the same version `ci.yml` uses,
+with `open3d==0.19.0` restored. `trellis2-env` is deliberately left alone: it hosts
+`torch 2.14.0+cu130` and the TRELLIS.2 wheels, and reconstruction works on it today. All
+four TRELLIS wheels actually installed ship cp311/cp312/cp313 builds, so the 3.10 rebuild
+was never forced by them.
+
+They are different jobs and should not share an interpreter. `tools/reconstruct_mesh.py`
+runs under `trellis`; everything else in this repo runs under `python`.
 
 **Run all Blender work through PowerShell** — Git Bash mangles the paths and every call
 fails with `Error: Please select a file`.

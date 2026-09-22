@@ -5,22 +5,22 @@
         "dir": "tools/diagnostics",
         "non_py_files": 0,
         "non_py_names": [],
-        "py_files": 103
+        "py_files": 105
       },
       {
         "dir": "tools/verify",
         "non_py_files": 0,
         "non_py_names": [],
-        "py_files": 10
+        "py_files": 12
       }
     ],
-    "py_files_total": 113
+    "py_files_total": 117
   },
   "provenance": {
     "corpus_files": 437,
     "corpus_files_before_self_exclusion": 447,
-    "probe_interpreter": "E:\\AI-Models\\trellis2-env\\Scripts\\python.exe",
-    "probe_interpreter_version": "3.13.13",
+    "probe_interpreter": "E:\\AI-Models\\facet-env\\Scripts\\python.exe",
+    "probe_interpreter_version": "3.12.13",
     "probe_skipped": false,
     "probe_timeout_s": 90,
     "self_documents_excluded": [
@@ -35,7 +35,7 @@
       "docs/experiments/E28-task3-report.md",
       "docs/instrument-census.md"
     ],
-    "test_files": 98
+    "test_files": 102
   },
   "rows": [
     {
@@ -3257,6 +3257,58 @@
       "parse_error": null
     },
     {
+      "a_add_argument": 9,
+      "a_argparse": true,
+      "a_main_guard": false,
+      "a_parse_args_module_level": true,
+      "anchored": false,
+      "anchored_basename_only": false,
+      "anchored_in": [],
+      "anchored_in_basename_only": [],
+      "b1_literals": [],
+      "b2_literals": [],
+      "cited_count": 0,
+      "cited_count_raw": 0,
+      "cited_in": [],
+      "dir": "tools/diagnostics",
+      "docstring_line1": "Render the figure and the prop as SEPARATE silhouettes through ONE shared camera.",
+      "file": "facing_masks.py",
+      "flag_surface": true,
+      "g_proposal": "none",
+      "import_safe": "n/a",
+      "import_safe_modes": {},
+      "import_safe_reason": "has a flag surface but no `__main__` guard, so probing it would EXECUTE the module body - against whatever subject its constants name. Not probed, deliberately",
+      "invocable": false,
+      "lines": 88,
+      "parse_error": null
+    },
+    {
+      "a_add_argument": 4,
+      "a_argparse": true,
+      "a_main_guard": false,
+      "a_parse_args_module_level": true,
+      "anchored": false,
+      "anchored_basename_only": false,
+      "anchored_in": [],
+      "anchored_in_basename_only": [],
+      "b1_literals": [],
+      "b2_literals": [],
+      "cited_count": 0,
+      "cited_count_raw": 0,
+      "cited_in": [],
+      "dir": "tools/diagnostics",
+      "docstring_line1": "Per-facing silhouette gap. A DIAGNOSTIC. It is deliberately NOT a gate.",
+      "file": "facing_silhouette_gap.py",
+      "flag_surface": true,
+      "g_proposal": "none",
+      "import_safe": "n/a",
+      "import_safe_modes": {},
+      "import_safe_reason": "has a flag surface but no `__main__` guard, so probing it would EXECUTE the module body - against whatever subject its constants name. Not probed, deliberately",
+      "invocable": false,
+      "lines": 87,
+      "parse_error": null
+    },
+    {
       "a_add_argument": 11,
       "a_argparse": true,
       "a_main_guard": false,
@@ -3811,6 +3863,70 @@
       "parse_error": null
     },
     {
+      "a_add_argument": 7,
+      "a_argparse": true,
+      "a_main_guard": false,
+      "a_parse_args_module_level": true,
+      "anchored": true,
+      "anchored_basename_only": true,
+      "anchored_in": [
+        "tests/test_t100_prop_contact_gate.py"
+      ],
+      "anchored_in_basename_only": [
+        "tests/test_t100_prop_contact_gate.py"
+      ],
+      "b1_literals": [],
+      "b2_literals": [],
+      "cited_count": 0,
+      "cited_count_raw": 0,
+      "cited_in": [],
+      "dir": "tools/verify",
+      "docstring_line1": "Contact gate for a held prop. A NUMBER, not an eye.",
+      "file": "prop_contact.py",
+      "flag_surface": true,
+      "g_proposal": "none",
+      "import_safe": "n/a",
+      "import_safe_modes": {},
+      "import_safe_reason": "has a flag surface but no `__main__` guard, so probing it would EXECUTE the module body - against whatever subject its constants name. Not probed, deliberately",
+      "invocable": false,
+      "lines": 212,
+      "parse_error": null
+    },
+    {
+      "a_add_argument": 9,
+      "a_argparse": true,
+      "a_main_guard": true,
+      "a_parse_args_module_level": false,
+      "anchored": true,
+      "anchored_basename_only": true,
+      "anchored_in": [
+        "tests/test_t101_rig_report.py"
+      ],
+      "anchored_in_basename_only": [
+        "tests/test_t101_rig_report.py"
+      ],
+      "b1_literals": [],
+      "b2_literals": [],
+      "cited_count": 0,
+      "cited_count_raw": 0,
+      "cited_in": [],
+      "dir": "tools/verify",
+      "docstring_line1": "What came back from an auto-rig: is it OUR mesh, and what skeleton is on it?",
+      "file": "rig_report.py",
+      "flag_surface": true,
+      "g_proposal": "none",
+      "import_safe": "true",
+      "import_safe_modes": {
+        "-O": "clean",
+        "PYTHONOPTIMIZE=1": "clean",
+        "normal": "clean"
+      },
+      "import_safe_reason": "",
+      "invocable": true,
+      "lines": 307,
+      "parse_error": null
+    },
+    {
       "a_add_argument": 8,
       "a_argparse": true,
       "a_main_guard": false,
@@ -3976,17 +4092,19 @@
       "parse_error": null
     },
     {
-      "a_add_argument": 14,
+      "a_add_argument": 15,
       "a_argparse": true,
       "a_main_guard": false,
       "a_parse_args_module_level": true,
       "anchored": true,
       "anchored_basename_only": true,
       "anchored_in": [
-        "tests/test_t69_silhouette_depth.py"
+        "tests/test_t69_silhouette_depth.py",
+        "tests/test_t99_turn_render_film.py"
       ],
       "anchored_in_basename_only": [
-        "tests/test_t69_silhouette_depth.py"
+        "tests/test_t69_silhouette_depth.py",
+        "tests/test_t99_turn_render_film.py"
       ],
       "b1_literals": [],
       "b2_literals": [],
@@ -4046,30 +4164,30 @@
       "import_safe_modes": {},
       "import_safe_reason": "has a flag surface but no `__main__` guard, so probing it would EXECUTE the module body - against whatever subject its constants name. Not probed, deliberately",
       "invocable": false,
-      "lines": 162,
+      "lines": 188,
       "parse_error": null
     }
   ],
   "totals": {
-    "anchored": 63,
-    "anchored_basename_only": 63,
-    "any_add_argument": 107,
-    "argparse": 107,
+    "anchored": 65,
+    "anchored_basename_only": 65,
+    "any_add_argument": 111,
+    "argparse": 111,
     "cited": 97,
     "cited_raw": 113,
-    "flag_surface": 107,
-    "flag_surface_unguarded": 95,
+    "flag_surface": 111,
+    "flag_surface_unguarded": 98,
     "g_ambiguous": 18,
     "g_mapped": 28,
     "g_no_opinion": 3,
-    "g_none": 64,
-    "has_docstring": 113,
+    "g_none": 68,
+    "has_docstring": 117,
     "import_safe_false": 0,
-    "import_safe_na": 101,
-    "import_safe_true": 12,
-    "invocable": 12,
-    "main_guard": 13,
-    "parse_args_module_level": 97,
+    "import_safe_na": 104,
+    "import_safe_true": 13,
+    "invocable": 13,
+    "main_guard": 14,
+    "parse_args_module_level": 100,
     "parse_errors": 0,
     "subject_bound_b1": 11,
     "subject_bound_b2": 12
