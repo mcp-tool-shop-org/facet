@@ -15,6 +15,38 @@ The prompt must say all of these, in positive language:
 4. `feet planted and visible`, flat on the ground.
 5. Head level and aligned with the body.
 6. Plain ground, no plinth.
+7. **Each hand has exactly five digits: four fingers and one thumb.** Say it in the prompt,
+   in those words, every time.
+
+## ⚠ Clause 7 exists because clause 2 caused the defect
+
+The Director found six digits — five fingers and a thumb — on **both** hands of the plate
+this file's own clause produced, and it was in the generated plate rather than introduced by
+the reconstruction.
+
+**The mechanism is this contract's doing.** The plate before it (`drell_body_s45.png`) had
+**closed fists**, which hide finger count entirely. Clause 2 requires hands *empty and open*
+— which is right for rigging and right for a grip — and opening them exposed the generator's
+weakest subject. A clause added for one good reason imported a defect nothing was looking
+for.
+
+One re-roll at a new seed with the digit count stated explicitly fixed both hands
+(`drell_body_apose_s49.png`, seed 49). The rejected plate stays on disk with its
+measurement, per the repo's own bound: one re-roll, and a second failure would have been the
+result rather than a third roll.
+
+### And the reason it shipped: nothing in this pipeline looks at the figure
+
+Four gates were built on this route — contact area, rig return, prop size, bake integrity —
+and **not one of them looks at whether the character is anatomically right.** Every gate
+measured a relationship between two objects; none measured the subject. A six-fingered hand
+passes all four.
+
+**A HANDS PANEL is now part of acceptance**, not a gate: both hands, cropped and zoomed, on
+the sheet beside the figure, every plate, before anything downstream is built on it. This is
+the repo's own cheapest-diagnostic rule applied to the subject rather than to the join —
+finger count is an eye check, and inventing a number for it would be exactly the measurable
+proxy this record warns against.
 
 ## ⚠ THE DISCRIMINATOR IS UNIDENTIFIED. Read the table; do not read a cause into it.
 
