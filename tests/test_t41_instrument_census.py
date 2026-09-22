@@ -56,8 +56,13 @@ EXPECTED_PY_FILES = {
     # 101 -> 102 at E33: e33_register_sheet.py, judged for axis G in the same
     # commit. 102 -> 103 at E55: e55_prompt_elements.py, judged `none` in the
     # same commit - the pin and the judgment move together or the ANDON fires.
+    # 103 -> 105 at the Drell arc: the two per-facing silhouette diagnostics, both
+    # judged `none` for axis G in the same commit. NEITHER IS NAMED HERE ON
+    # PURPOSE - `this_file_does_not_perturb_axis_e` below forbids T41 from being a
+    # module's only anchor, and naming them in this very comment made it exactly
+    # that. Caught locally by that leg before it reached CI.
     # commit under the same procedure.
-    "tools/diagnostics": 103,
+    "tools/diagnostics": 105,
     # 8 -> 9 at E28 task 2c: anchor_compare.py entered by ruling + wrap
     # (Ruling 10, Ruling 3's entry rule), census re-run in the same commit.
     # 9 -> 10 at the E35 close: tree_manifest.py, the protection-manifest walk that
@@ -66,7 +71,13 @@ EXPECTED_PY_FILES = {
     # in this same commit under the file's own rule - line 1 names tree integrity, not
     # one of the eight spec questions, and it returns HELD/FIRED rather than a
     # measurement, on `gate_mesh`'s verdict-tool precedent. Census re-run here too.
-    "tools/verify": 10,
+    # 10 -> 12 at the Drell arc: prop_contact.py and rig_report.py, both judged
+    # `none` for axis G in the same commit. rig_report.py also joins T62's runnable
+    # set - it carries argparse plus a __main__ guard, so `--help` parses and exits
+    # before any file is opened. prop_contact.py does NOT: its argparse is at module
+    # level, which is this corpus's house style and the reason the invocable clause
+    # holds on so few files.
+    "tools/verify": 12,
 }
 
 

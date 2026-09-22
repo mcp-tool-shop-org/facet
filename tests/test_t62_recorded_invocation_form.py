@@ -41,6 +41,12 @@ DIRS = ("diagnostics", "verify")
 # MEASURED at E31 over tools/diagnostics + tools/verify: the files that carry
 # BOTH a __main__ guard and an argparse import, so `--help` is safe to run.
 RUNNABLE = (
+    # Drell arc: rig_report.py carries a __main__ guard AND an argparse surface
+    # inside main(), so `--help` parses and exits without reading a GLB. Named here
+    # on purpose rather than swept in. prop_contact.py is NOT here - its argparse
+    # runs at module level, so importing it parses argv, which is this corpus's
+    # house style and exactly what makes the runnable set a small minority.
+    "verify/rig_report.py",
     "diagnostics/e10_claim_replay.py",
     "diagnostics/e10_consumers_subject.py",
     "diagnostics/e10_offsurface.py",
