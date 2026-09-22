@@ -12,7 +12,13 @@ holds DATA (a projection-confidence map) rather than colour, the render must be 
 round on this asset (a self-check failed at 34/255 that should have passed at ~1/255).
 
   blender -b -P turn_render.py -- --glb <in.glb> --out <dir> --tag proj [--views 0,1,7]
-                                  [--w 752 --h 1024] [--flat] [--clay]
+                                  [--w 752 --h 1024] [--flat] [--clay] [--opaque]
+
+THE FILM IS TRANSPARENT BY DEFAULT as of 2026-09-22 (Director). --opaque restores the old
+behaviour and is REQUIRED to reproduce any invocation recorded before that date: the figure
+is bit-identical between the two modes, but the frame is not recoverable by compositing
+(the opaque background is dithered and the antialiased rim lands ~0.8/255 off). The numbers
+are in --opaque's own help, and the anchor that produced them is T39.
 """
 import argparse
 import sys as _sys, os as _os
@@ -44,6 +50,23 @@ ap.add_argument("--h", type=int, default=1024)
 ap.add_argument("--flat", action="store_true",
                 help="FLAT light + Standard view transform: render the texture VALUE, not a lit look")
 ap.add_argument("--clay", action="store_true", help="uniform grey: geometry only, no texture")
+ap.add_argument("--opaque", action="store_true",
+                help="render the --bg colour into the film instead of leaving it "
+                     "transparent. TRANSPARENT IS THE DEFAULT as of 2026-09-22 (Director). "
+                     "A RECORDED INVOCATION FROM BEFORE THAT DATE NEEDS THIS FLAG. "
+                     "Measured on the same GLB, same view, both modes: the FIGURE is "
+                     "bit-identical -- max |diff| 0.0000 over 181,487 fully-opaque pixels, "
+                     "so no measurement that reads the figure is affected either way. The "
+                     "frame is NOT recoverable by compositing, and an earlier draft of this "
+                     "text wrongly said it was: the opaque background is DITHERED across "
+                     "four values (154,154,156 / 154,154,157 / 155,155,157 / 155,155,158), "
+                     "so no constant composite reproduces it, and the antialiased rim -- "
+                     "7,711 px, 0.98%% of frame -- lands at max 4.34/255, mean 0.80/255 off "
+                     "even composited in LINEAR space (sRGB-space compositing is worse, max "
+                     "10.91). Byte-identity therefore needs the flag, not arithmetic. "
+                     "What the default buys is the silhouette: a facing sheet and a sprite "
+                     "both need the alpha, and keying it back out of a flat grey is the "
+                     "corner-median mistake this repo has retired four times.")
 ap.add_argument("--bg", default="0.181,0.181,0.188",
                 help="viewport background, linear RGB. The default is the measured "
                      "reference grey; derive a replacement with "
@@ -118,6 +141,8 @@ scene.camera = cam
 scene.render.resolution_x = args.w
 scene.render.resolution_y = args.h
 scene.render.image_settings.file_format = "PNG"
+scene.render.image_settings.color_mode = "RGBA"
+scene.render.film_transparent = not args.opaque
 scene.render.engine = "BLENDER_WORKBENCH"
 sh = scene.display.shading
 sh.light = "FLAT" if args.flat else "STUDIO"
@@ -158,4 +183,5 @@ for idx in [int(v) for v in args.views.split(",")]:
     cam.rotation_euler = (math.radians(90), 0, th)
     scene.render.filepath = f"{args.out}/{args.tag}_{idx}.png"
     bpy.ops.render.render(write_still=True)
-    print(f"[turn] view {idx}  yaw {idx*args.step + args.yaw_offset:6.1f}deg  -> {args.tag}_{idx}.png", flush=True)
+    print(f"[turn] view {idx}  yaw {idx*args.step + args.yaw_offset:6.1f}deg  "
+          f"film {'opaque' if args.opaque else 'transparent'}  -> {args.tag}_{idx}.png", flush=True)
