@@ -21,6 +21,25 @@ into the arm (97 -> 6,198 points over a 64 mm sweep on the first subject), so a 
 chosen to maximise contact impales the figure. Set the floor from what a grip needs; read the
 minimum beside it.
 
+THE FLOOR IS CALIBRATED, NOT ASSERTED. Measured on the first subject by sliding the same
+shield back along the arm, contact tolerance 2 mm, 200k samples:
+
+    fist kiss (as shipped)        0.000144 units^2      4.7 sq cm at 1.8 m
+    sunk into the fist            0.002482             80.4
+    against the forearm           0.011981            388.2
+    at the torso                  0.025939            840.4
+
+The default --min-area 0.0005 (16 sq cm) sits in an 80x gap between a kiss and a carry,
+which is what makes it a usable line rather than a taste. The yes-population was measured
+before the floor was trusted, per this repo's rule about calibrating a rule against what
+the instrument returns when the answer is definitely yes and definitely no.
+
+AND WATCH THE SAMPLE COUNT NEAR ZERO. That 0.000144 rests on about 46 of 200,000 samples,
+so it carries roughly 15% relative noise - the same asset read 0.000097 on a run that also
+counted vertices. Far from the floor this does not matter; a number within a factor of two
+of --min-area should be re-read at a higher --samples. The tool prints the backing count
+for exactly this reason.
+
 AND THE FLOOR IS AN AREA, NOT A COUNT. A count is a fraction of however many samples the
 prop happened to get, so the same physical contact scores far higher on a small prop than a
 large one and the floor stops meaning one thing across a prop library. T100 found this the
@@ -149,8 +168,16 @@ print("  figure candidates within tol     : %d of %d" % (body_patch, len(q_body)
 if patch:
     pc = q_prop[d_prop <= args.tol]
     print("  contact patch extent %s" % np.round(pc.max(0) - pc.min(0), 4).tolist())
+n_hit = int((d_prop[nv:] <= args.tol).sum())
+per_sample = float(prop.area) / max(1, len(d_prop) - nv)
 print("  CONTACT AREA  prop side %.6f   figure side %.6f   (units^2; prop total %.5f)"
       % (contact_area, body_area, prop.area))
+print("                backed by %d of %d area samples, %.3e units^2 each"
+      % (n_hit, len(d_prop) - nv, per_sample))
+if n_hit and n_hit < 100:
+    print("                ^ NOTE: an estimate resting on %d samples carries about "
+          "%.0f%% relative noise (1/sqrt n). Raise --samples before reading a verdict "
+          "off a number this close to zero." % (n_hit, 100.0 / (n_hit ** 0.5)))
 
 result = {
     "glb": args.glb, "tol": args.tol, "min_area_required": args.min_area,
@@ -161,6 +188,8 @@ result = {
     "min_mm_at_1800": float(d_prop.min() * 1800),
     "prop_candidates": int(len(q_prop)),
     "prop_points_in_contact": patch,
+    "area_samples_in_contact": n_hit,
+    "units2_per_sample": per_sample,
     "body_points_in_contact": body_patch,
 }
 if args.json_out:
