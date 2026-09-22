@@ -171,3 +171,41 @@ asked whether the figure could be rigged at all.
 other half — *generate the pose that rigs* — is currently unsupported for this character:
 the pose was changed to the one that works on two other figures and the answer did not move.
 Whatever Drell is refused for, it is not yet known.
+
+---
+
+## The bind-pose tax, measured 2026-09-22
+
+The wide A-pose that passes the rig check is far from any shipping pose, and closing that
+distance costs geometry. Measured on `drell_rigged_mixamo.glb`, same rig, same bake, one
+variable — how far the upper-arm bones are rotated from the bind pose:
+
+| rotation from bind | shoulders |
+|---|---|
+| 0° (bind) | clean |
+| **~20°** | **clean** |
+| **~110°** (arms to the sides) | **shredded** — pauldrons torn into spikes |
+
+Tripo's auto-weights cannot carry a large arm rotation on this armour, and the mechanism is
+visible in the class: **the pauldrons are separate shells**, partly weighted to the torso and
+partly to the arm, so they come apart first and worst.
+
+**So the base pose is a trade, not a free choice.** Raise the arms far enough and the rig
+check passes but the shipping pose costs a 110° rotation the weights cannot survive. Lower
+them and the check refuses outright. The usable base pose is **the smallest arm angle that
+still passes the free rig check** — which is findable by bisection between the narrow A-pose
+(refused) and the wide one (accepted), at zero cost per probe, and is a reusable pipeline
+constant once measured rather than a per-character judgement.
+
+⚠ **Not yet measured.** The bisection has not been run. Until it is, a shipping pose from
+this route needs either a small rotation off a lucky bind pose, or weight repair, and
+neither is currently automated.
+
+### One more property of the service's output, recorded so nobody debugs it twice
+
+**Tripo's rigged GLB ships a stray unskinned 42-vertex Icosphere at ±1.0** beside the body.
+Taking every `MESH` object from the import blows a baked bbox to 1.90 × 2.00 × 2.00 and
+adds 42 vertices that were never sent. `tools/pose_rig.py` filters on *has an ARMATURE
+modifier* — semantic, not a name or a size threshold — and gates on both vertex count and
+longest axis. Both gates fired on the first implementation, which is how the icosphere was
+found at all.
