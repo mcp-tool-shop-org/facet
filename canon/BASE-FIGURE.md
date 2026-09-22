@@ -16,7 +16,42 @@ The prompt must say all of these, in positive language:
 5. Head level and aligned with the body.
 6. Plain ground, no plinth.
 
-## ⚠ RESOLVED, same day — it IS the pose, but the variable is SEPARATION
+## ⚠ THE DISCRIMINATOR IS UNIDENTIFIED. Read the table; do not read a cause into it.
+
+**This section has carried two causal claims today and both were falsified within the hour.
+It now carries none.** First "the pose is the cause" (falsified by a narrow A-pose that
+still refused); then "the variable is arm-to-torso separation" (falsified by a true A-pose
+that refuses at width 0.5412, within 1.3% of the wide pose that passes at 0.5483).
+
+Both were inferences by elimination from a single comparison, which is this advisor's
+recorded failure mode, and canon is the wrong place to keep testing one. **The data below
+is measured and stands. The explanation is open.**
+
+| subject / pose | width | depth | riggable |
+|---|---|---|---|
+| merchant, arms down | 0.3773 | 0.2197 | **True** |
+| halle, arms down | 0.4978 | 0.3205 | **True** |
+| drell, one arm forward | 0.4190 | 0.3207 | False |
+| drell, same pose rebuilt watertight (182 comps, 99.2% shell) | 0.4190 | 0.3207 | False |
+| drell, narrow A-pose, arms vertical | 0.4185 | 0.2643 | False |
+| drell, **true A-pose**, arms down and out 45° | **0.5412** | 0.2502 | False |
+| drell, wide pose, arms **up** and out | 0.5483 | 0.4202 | **True** |
+
+**Ruled out by measurement, each on its own test:** untextured input; component count (on
+the operand actually submitted, not an inherited figure); topology (a watertight rebuild in
+the same pose still refuses); overall width; reach from the trunk axis (halle reaches
+further than drell and passes); and depth (merchant is the shallowest of all and passes).
+
+**The only clean split left in the table is that Drell passes with his arms ABOVE horizontal
+and refuses below it, while merchant and halle pass below it.** That is a description, not a
+mechanism. The standing hypothesis — **untested** — is an interaction between Drell's flared
+pauldrons and arms below horizontal: the pauldron may bridge the upper arm into the torso in
+a way a skeleton fitter cannot separate, and merchant and halle have no pauldrons to do it.
+Nobody has measured that, and it must not be written here as though somebody had.
+
+---
+
+## ⚠ SUPERSEDED CLAIM, kept for the sequence — "the variable is SEPARATION"
 
 **Third and final state of this section. Both earlier states are kept below, because the
 sequence is the useful part.** The mechanism is **arm-to-torso separation**, and it is now
