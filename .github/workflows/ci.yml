@@ -40,6 +40,9 @@ on:
       # land in a terminal commit of their own, so widening to the directory
       # would fire CI on an artifact that has no test of its own to run.
       - "docs/index/conventions.json"
+      # the committed Atlas map (2026-09-23): `atlas check` below compares it
+      # with the tree, so an edit to atlas/ alone must fire the check.
+      - "atlas/**"
   workflow_dispatch:
 
 concurrency:
@@ -79,6 +82,16 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
+      # Atlas (the generated repository map under atlas/) needs Node 22 or
+      # later, and this job never set Node up, so it would get whatever the
+      # runner image ships. It is set up here, pinned by SHA, before the check
+      # that the committed map still matches the tree.
+      - name: Set up Node for the Atlas check
+        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version: 22
+      - name: Atlas check
+        run: npx --yes @dogfood-lab/atlas@1.14.0 check
       # mcp 2.0.0 (E18): the official Python SDK, the current release verified
       # on PyPI 2026-08-08 and pinned here in the same commit as the first test
       # that needs it. tools/record_mcp.py imports it at module level, so it is
