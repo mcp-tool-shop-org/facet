@@ -1,4 +1,8 @@
 {
+  "authorship": {
+    "parts": [],
+    "places": []
+  },
   "boundaries": [
     {
       "breakage": {
@@ -238,8 +242,8 @@
         "path": ".github/release-notes-v0.8.1.md"
       },
       {
-        "commits": 10,
-        "lines": 175,
+        "commits": 12,
+        "lines": 201,
         "path": ".github/workflows/ci.yml"
       },
       {
@@ -331,6 +335,31 @@
         "commits": 64,
         "lines": 359,
         "path": "SHIP_GATE.md"
+      },
+      {
+        "commits": 2,
+        "lines": 168,
+        "path": "atlas/README.md"
+      },
+      {
+        "commits": 2,
+        "lines": 84,
+        "path": "atlas/boundaries.yaml"
+      },
+      {
+        "commits": 2,
+        "lines": 470,
+        "path": "atlas/page.json"
+      },
+      {
+        "commits": 2,
+        "lines": 10338,
+        "path": "atlas/statistics.json"
+      },
+      {
+        "commits": 2,
+        "lines": 28944,
+        "path": "atlas/structure.json"
       },
       {
         "commits": 12,
@@ -4731,11 +4760,11 @@
   },
   "confidence": {
     "level": "low",
-    "reason": "fewer than 20 source files reach 10 revisions in the window"
+    "reason": "fewer than 25 source files reach 10 revisions in the window"
   },
-  "generatedAt": "2026-09-23T17:51:32.077Z",
+  "generatedAt": "2026-09-30T20:10:05.015Z",
   "generatedFrom": {
-    "commit": "7c06851b09889baad6cc9fd55c64f8b851c1fefc"
+    "commit": "8d2fa3456e3412198ed38bbb069775efebe65d86"
   },
   "pairs": [
     {
@@ -5139,16 +5168,18 @@
     "couplingPopulation": "source",
     "fallenShared": 3,
     "floor": "fallen",
+    "floorHeld": false,
     "floorTrigger": "revision-depth",
-    "headDate": "2026-09-22T05:28:05-04:00",
-    "inScopeFiles": 909,
+    "headDate": "2026-09-23T11:28:18-07:00",
+    "inScopeFiles": 914,
     "pinnedStart": null,
-    "qualifyingCommits": 909,
+    "priorFloor": "fallen",
+    "qualifyingCommits": 910,
     "qualifyingMinimum": 30,
     "revisions": 5,
     "shared": 10,
     "sharedFloorUsed": 3,
-    "since": "2026-03-26T09:28:05.000Z",
+    "since": "2026-03-27T18:28:18.000Z",
     "sourceExtensions": [
       ".js",
       ".mjs",
@@ -5158,9 +5189,12 @@
       ".tsx",
       ".mts",
       ".cts",
-      ".py"
+      ".py",
+      ".rs",
+      ".gd"
     ],
     "sourceFileReach": 20,
+    "sourceFileRise": 25,
     "sourceFilesReachingStrongFloor": 10,
     "strength": 0.5,
     "windowDays": 180
