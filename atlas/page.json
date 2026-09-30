@@ -8,17 +8,97 @@
   ],
   "breaks": [
     {
-      "doors": 1,
+      "doors": 4,
       "importedBy": [],
       "importedByTests": [
         "tests"
       ],
       "kind": "part",
-      "name": "tools"
+      "name": "tools",
+      "partLabel": "tools"
     }
   ],
   "changes": {
-    "first": true
+    "fileCounts": {
+      "added": 0,
+      "changed": 1,
+      "moved": 0,
+      "parts": 1,
+      "removed": 0
+    },
+    "items": [
+      {
+        "kind": "door",
+        "sentence": "Deploy site to GitHub Pages now also runs site/astro.config.mjs and site/src/.",
+        "subjects": [
+          ".github/workflows/pages.yml",
+          "site/astro.config.mjs",
+          "site/src/"
+        ]
+      },
+      {
+        "kind": "door",
+        "sentence": "Release now also runs tools/facet_index.py and tools/record_mcp.py.",
+        "subjects": [
+          ".github/workflows/release.yml",
+          "tools/facet_index.py",
+          "tools/record_mcp.py"
+        ]
+      },
+      {
+        "kind": "door",
+        "sentence": "Release now also checks tools/diagnostics/ and tools/verify/.",
+        "subjects": [
+          ".github/workflows/release.yml",
+          "tools/diagnostics/",
+          "tools/verify/"
+        ]
+      },
+      {
+        "kind": "door",
+        "sentence": "And 3 more changes to doors.",
+        "subjects": []
+      },
+      {
+        "kind": "landing",
+        "sentence": "docs/brand/four-accepted-assets.png is now written by docs/brand/make_asset_sheet.py.",
+        "subjects": [
+          "docs/brand/four-accepted-assets.png",
+          "docs/brand/make_asset_sheet.py"
+        ]
+      },
+      {
+        "kind": "landing",
+        "sentence": "docs/experiments/E14-brush-prompts.json is now written by tools/diagnostics/e14_make_brush_prompts.py.",
+        "subjects": [
+          "docs/experiments/E14-brush-prompts.json",
+          "tools/diagnostics/e14_make_brush_prompts.py"
+        ]
+      },
+      {
+        "kind": "landing",
+        "sentence": "tools/diagnostics/front_padded.png is now written by tools/diagnostics/prep_front.py.",
+        "subjects": [
+          "tools/diagnostics/front_padded.png",
+          "tools/diagnostics/prep_front.py"
+        ]
+      },
+      {
+        "kind": "landing",
+        "sentence": "And 86 more new writers and readers of places.",
+        "subjects": []
+      },
+      {
+        "kind": "counts",
+        "sentence": "1 file changed content, across 1 part.",
+        "subjects": []
+      }
+    ],
+    "since": {
+      "commit": "7c06851b09889baad6cc9fd55c64f8b851c1fefc",
+      "generatedAt": "2026-09-23T17:51:32.077Z"
+    },
+    "unchanged": false
   },
   "changesTogether": [
     {
@@ -98,14 +178,20 @@
     }
   ],
   "changesTogetherNote": [
-    "Confidence is low: fewer than 20 source files reach 10 revisions in the window.",
-    "Window: 180 days; a pair counts from 3 shared commits."
+    "Confidence is low: fewer than 25 source files reach 10 revisions in the window.",
+    "Window: 180 days; a pair counts from 3 shared commits, since 10 source files reach 10 revisions; the floor rises to 10 when 25 do."
   ],
   "changesTogetherWithTests": 0,
-  "commit": "7c06851b09889baad6cc9fd55c64f8b851c1fefc",
+  "commit": "8d2fa3456e3412198ed38bbb069775efebe65d86",
+  "defaultBranch": "main",
+  "derived": "10 parts, mostly Markdown (489 files); code in Python (292), CSS (2), JavaScript (2), TypeScript (2), Astro (1), PowerShell (1) and shell (1). Work enters through 6 doors; the busiest is ci, which reaches 2 parts. It publishes to npm and PyPI. It deploys a site to GitHub Pages. People run facet, facet-index and facet-mcp.",
   "doors": [
     {
+      "checks": [],
+      "checksCount": 0,
+      "checksMore": 0,
       "file": ".github/workflows/ci.yml",
+      "id": ".github/workflows/ci.yml",
       "landings": [],
       "name": "ci",
       "pushes": false,
@@ -118,13 +204,14 @@
         {
           "boundary": "tools",
           "depth": 1,
-          "files": 3
+          "files": 30
         }
       ],
       "runs": [
         "tests/"
       ],
       "runsCount": 1,
+      "runsMore": 0,
       "sends": [],
       "stages": [],
       "triggers": [
@@ -133,13 +220,27 @@
       ]
     },
     {
+      "checks": [],
+      "checksCount": 0,
+      "checksMore": 0,
       "file": ".github/workflows/pages.yml",
+      "id": ".github/workflows/pages.yml",
       "landings": [],
       "name": "Deploy site to GitHub Pages",
       "pushes": false,
-      "reach": [],
-      "runs": [],
-      "runsCount": 0,
+      "reach": [
+        {
+          "boundary": "site",
+          "depth": 0,
+          "files": 5
+        }
+      ],
+      "runs": [
+        "site/astro.config.mjs",
+        "site/src/"
+      ],
+      "runsCount": 2,
+      "runsMore": 0,
       "sends": [
         "deploys the site"
       ],
@@ -150,13 +251,30 @@
       ]
     },
     {
+      "checks": [
+        "tools/diagnostics/",
+        "tools/verify/"
+      ],
+      "checksCount": 2,
+      "checksMore": 0,
       "file": ".github/workflows/release.yml",
+      "id": ".github/workflows/release.yml",
       "landings": [],
       "name": "Release",
       "pushes": false,
-      "reach": [],
-      "runs": [],
-      "runsCount": 0,
+      "reach": [
+        {
+          "boundary": "tools",
+          "depth": 0,
+          "files": 123
+        }
+      ],
+      "runs": [
+        "tools/facet_index.py",
+        "tools/record_mcp.py"
+      ],
+      "runsCount": 2,
+      "runsMore": 0,
       "sends": [
         "publishes to npm and PyPI",
         "creates a GitHub release"
@@ -166,16 +284,110 @@
         "when a tag matching `v*` is pushed",
         "or by hand"
       ]
+    },
+    {
+      "checks": [],
+      "checksCount": 0,
+      "checksMore": 0,
+      "file": "package.json",
+      "id": "package.json#facet",
+      "kind": "command",
+      "landings": [],
+      "name": "facet",
+      "pushes": false,
+      "reach": [
+        {
+          "boundary": "bin",
+          "depth": 0,
+          "files": 1
+        }
+      ],
+      "runs": [
+        "bin/facet.js"
+      ],
+      "runsCount": 1,
+      "runsMore": 0,
+      "sends": [],
+      "stages": [],
+      "triggers": []
+    },
+    {
+      "checks": [],
+      "checksCount": 0,
+      "checksMore": 0,
+      "file": "pyproject.toml",
+      "id": "pyproject.toml#facet-index",
+      "kind": "command",
+      "landings": [],
+      "name": "facet-index",
+      "pushes": false,
+      "reach": [
+        {
+          "boundary": "tools",
+          "depth": 0,
+          "files": 1
+        }
+      ],
+      "runs": [
+        "tools/facet_index.py"
+      ],
+      "runsCount": 1,
+      "runsMore": 0,
+      "sends": [],
+      "stages": [],
+      "triggers": []
+    },
+    {
+      "checks": [],
+      "checksCount": 0,
+      "checksMore": 0,
+      "file": "pyproject.toml",
+      "id": "pyproject.toml#facet-mcp",
+      "kind": "command",
+      "landings": [],
+      "name": "facet-mcp",
+      "pushes": false,
+      "reach": [
+        {
+          "boundary": "tools",
+          "depth": 0,
+          "files": 2
+        }
+      ],
+      "runs": [
+        "tools/record_mcp.py"
+      ],
+      "runsCount": 1,
+      "runsMore": 0,
+      "sends": [],
+      "stages": [],
+      "triggers": []
     }
   ],
   "duplicates": [],
   "duplicatesLead": null,
   "duplicatesNote": [],
+  "edges": [],
+  "engine": "1.24.0",
   "generated": [
+    {
+      "fromRoot": true,
+      "place": "docs/brand/four-accepted-assets.png",
+      "writers": [
+        "docs/brand/make_asset_sheet.py"
+      ]
+    },
     {
       "place": "docs/experiments/E04-brush-prompts.json",
       "writers": [
         "tools/diagnostics/e04_make_brush_prompts.py"
+      ]
+    },
+    {
+      "fromRoot": true,
+      "place": "docs/experiments/E14-brush-prompts.json",
+      "writers": [
+        "tools/diagnostics/e14_make_brush_prompts.py"
       ]
     },
     {
@@ -185,30 +397,54 @@
       ]
     }
   ],
-  "generatedAt": "2026-09-23T17:51:32.077Z",
+  "generatedAt": "2026-09-30T20:10:05.015Z",
   "limits": [
-    "205 import sites could not be resolved.",
-    "306 writes and 153 reads use paths built at run time and are not named here.",
-    "Statistics confidence is low: fewer than 20 source files reach 10 revisions in the window."
+    "6 imports could not be resolved: `tests/conftest.py` imports a path built at run time; `tests/test_t25_mask_geometry.py` imports a path built at run time; `tests/test_t27_packaging_shape.py` imports a path built at run time; and 3 more.",
+    "91 writes and 56 reads use paths built at run time and are not named here.",
+    "1 write goes to places this repository does not track, so it is not listed as generated.",
+    "455 writes and 135 reads go to a path their caller passes, not to this repository.",
+    "6 writes and 12 reads go to the directory the command is run in or a path their caller passes, not to this repository.",
+    "2 reads go to the directory the command is run in (docs/ and tools/), not to this repository.",
+    "Statistics confidence is low: fewer than 25 source files reach 10 revisions in the window."
   ],
   "mainDoor": ".github/workflows/ci.yml",
+  "partLabels": {
+    ".claude": ".claude",
+    ".github": ".github",
+    "bin": "bin",
+    "canon": "canon",
+    "docs": "docs",
+    "profiles": "profiles",
+    "root": "the repository root",
+    "site": "site",
+    "tests": "tests",
+    "tools": "tools"
+  },
   "parts": 10,
   "readers": [],
   "repo": "mcp-tool-shop-org/facet",
   "sequences": [],
+  "startDoor": "pyproject.toml#facet-mcp",
   "startHere": [
-    ".github/workflows/ci.yml",
-    "tests/",
-    "tools/verify/rig_report.py"
+    "tools/record_mcp.py",
+    "tools/facet_index.py"
   ],
+  "startReason": "This path follows facet-mcp (a command people run) from its entry, since ci runs only tests.",
   "summary": null,
   "summaryFrom": null,
   "testFiles": 133,
   "testedBy": {
     "bin": 0,
-    "tools": 3
+    "tools": 55
   },
+  "unnamedWrites": 91,
   "unread": [
+    {
+      "place": "docs/brand/four-accepted-assets.png",
+      "writers": [
+        "docs/brand/make_asset_sheet.py"
+      ]
+    },
     {
       "place": "docs/experiments/E04-brush-prompts.json",
       "writers": [
@@ -216,12 +452,13 @@
       ]
     },
     {
-      "place": "site/src/content/docs/handbook/",
+      "place": "docs/experiments/E14-brush-prompts.json",
       "writers": [
-        "docs/handbook/sync_to_site.py"
+        "tools/diagnostics/e14_make_brush_prompts.py"
       ]
     }
   ],
+  "unreadFiles": 0,
   "unreadNote": [],
   "untested": [
     {
@@ -231,5 +468,5 @@
     }
   ],
   "untestedNote": [],
-  "written": 2
+  "written": 4
 }

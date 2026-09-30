@@ -91,7 +91,7 @@ jobs:
         with:
           node-version: 22
       - name: Atlas check
-        run: npx --yes @dogfood-lab/atlas@1.14.0 check
+        run: npx --yes @dogfood-lab/atlas@1.24.0 check
       # mcp 2.0.0 (E18): the official Python SDK, the current release verified
       # on PyPI 2026-08-08 and pinned here in the same commit as the first test
       # that needs it. tools/record_mcp.py imports it at module level, so it is

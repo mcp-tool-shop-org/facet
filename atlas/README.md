@@ -1,25 +1,36 @@
 # facet: how it works
 
-Mapped at 2026-09-23 from commit 7c06851.
+Mapped at 2026-09-30 from commit 8d2fa34 by Atlas 1.24.0.
 
 ## What this is
 
-10 parts. Work enters through 3 doors; the busiest is ci, which reaches 2 parts.
+10 parts, mostly Markdown (489 files); code in Python (292), CSS (2), JavaScript (2), TypeScript (2), Astro (1), PowerShell (1) and shell (1). Work enters through 6 doors; the busiest is ci, which reaches 2 parts. It publishes to npm and PyPI. It deploys a site to GitHub Pages. People run facet, facet-index and facet-mcp.
 
-## What changed since the last map
+## What changed since 2026-09-23 (7c06851)
 
-This is the first map.
+- Deploy site to GitHub Pages now also runs site/astro.config.mjs and site/src/.
+- Release now also runs tools/facet_index.py and tools/record_mcp.py.
+- Release now also checks tools/diagnostics/ and tools/verify/.
+- And 3 more changes to doors.
+- docs/brand/four-accepted-assets.png is now written by docs/brand/make_asset_sheet.py.
+- docs/experiments/E14-brush-prompts.json is now written by tools/diagnostics/e14_make_brush_prompts.py.
+- tools/diagnostics/front_padded.png is now written by tools/diagnostics/prep_front.py.
+- And 86 more new writers and readers of places.
+- 1 file changed content, across 1 part.
 
 ## What comes in
 
 1. **ci.** On a push touching 10 paths; or by hand. Runs tests/.
-2. **Deploy site to GitHub Pages.** On a push to main touching 2 paths; or by hand. Runs no file this map can see.
-3. **Release.** When a tag matching `v*` is pushed; or by hand. Runs no file this map can see.
+2. **Deploy site to GitHub Pages.** On a push to main touching 2 paths; or by hand. Runs site/astro.config.mjs and site/src/.
+3. **Release.** When a tag matching `v*` is pushed; or by hand. Runs tools/facet_index.py and tools/record_mcp.py; checks tools/diagnostics/ and tools/verify/.
+4. **facet** (a command people run). Runs bin/facet.js.
+5. **facet-index** (a command people run). Runs tools/facet_index.py.
+6. **facet-mcp** (a command people run). Runs tools/record_mcp.py.
 
 ## What happens through ci
 
 1. The workflow runs tests/ in tests.
-2. That reaches tools (3 files).
+2. That reaches tools (30 files).
 
 ## Who reads the results
 
@@ -27,13 +38,19 @@ ci writes nothing this map can see.
 
 ## The other doors
 
-**Deploy site to GitHub Pages** runs no file this map can see and deploys the site.
+**Deploy site to GitHub Pages** runs site/astro.config.mjs and site/src/, and deploys the site.
 
-**Release** runs no file this map can see, publishes to npm and PyPI, and creates a GitHub release.
+**Release** runs tools/facet_index.py and tools/record_mcp.py, checks tools/diagnostics/ and tools/verify/, publishes to npm and PyPI, and creates a GitHub release.
+
+**facet** (a command people run) runs bin/facet.js.
+
+**facet-index** (a command people run) runs tools/facet_index.py.
+
+**facet-mcp** (a command people run) runs tools/record_mcp.py.
 
 ## What breaks what
 
-- **tools** is imported only from tests, by 1 part (tests), and sits on the path of 1 door.
+- **tools** is imported only from tests, by 1 part (tests), and sits on the path of 4 doors.
 
 ## What tends to change together
 
@@ -43,9 +60,9 @@ ci writes nothing this map can see.
 - **tests/test_t87_canon_gate.py** and **tools/canon_gate.py** changed together in 7 of 13 commits, and the tests part imports the tools part.
 - **tests/test_t62_recorded_invocation_form.py** and **tools/instrument_census.py** changed together in 5 of 10 commits, and the tests part imports the tools part.
 
-Confidence is low: fewer than 20 source files reach 10 revisions in the window.
+Confidence is low: fewer than 25 source files reach 10 revisions in the window.
 
-Window: 180 days; a pair counts from 3 shared commits.
+Window: 180 days; a pair counts from 3 shared commits, since 10 source files reach 10 revisions; the floor rises to 10 when 25 do.
 
 ## What no test touches
 
@@ -53,8 +70,9 @@ Window: 180 days; a pair counts from 3 shared commits.
 
 ## Written but never read
 
+- **docs/brand/four-accepted-assets.png** is written by docs/brand/make_asset_sheet.py and read by nothing else in this repository.
 - **docs/experiments/E04-brush-prompts.json** is written by tools/diagnostics/e04_make_brush_prompts.py and read by nothing else in this repository.
-- **site/src/content/docs/handbook/** is written by docs/handbook/sync_to_site.py and read by nothing else in this repository.
+- **docs/experiments/E14-brush-prompts.json** is written by tools/diagnostics/e14_make_brush_prompts.py and read by nothing else in this repository.
 
 ## Helpers that look duplicated
 
@@ -62,23 +80,29 @@ No two parts export a helper that looks alike.
 
 ## Generated, never hand-edited
 
+- **docs/brand/four-accepted-assets.png** is written by docs/brand/make_asset_sheet.py when run from the repository root, and committed.
 - **docs/experiments/E04-brush-prompts.json** is written by tools/diagnostics/e04_make_brush_prompts.py.
+- **docs/experiments/E14-brush-prompts.json** is written by tools/diagnostics/e14_make_brush_prompts.py when run from the repository root, and committed.
 - **site/src/content/docs/handbook/** is written by docs/handbook/sync_to_site.py.
 
 ## Hand-authored
 
-People write .claude/, .github/, canon/, profiles/ and the repository root. Nothing in this repository writes to them.
+People write .claude/, .github/, canon/, profiles/ and the repository root; 91 writes with paths built at run time may land here.
 
 ## Where to start
 
-.github/workflows/ci.yml → tests/ → tools/verify/rig_report.py
+tools/record_mcp.py → tools/facet_index.py
 
-Read those in order to follow one push end to end.
+Read those in order to follow one run of facet-mcp end to end. This path follows facet-mcp (a command people run) from its entry, since ci runs only tests.
 
 ## What this map cannot see
 
-- 205 import sites could not be resolved.
-- 306 writes and 153 reads use paths built at run time and are not named here.
-- Statistics confidence is low: fewer than 20 source files reach 10 revisions in the window.
+- 6 imports could not be resolved: `tests/conftest.py` imports a path built at run time; `tests/test_t25_mask_geometry.py` imports a path built at run time; `tests/test_t27_packaging_shape.py` imports a path built at run time; and 3 more.
+- 91 writes and 56 reads use paths built at run time and are not named here.
+- 1 write goes to places this repository does not track, so it is not listed as generated.
+- 455 writes and 135 reads go to a path their caller passes, not to this repository.
+- 6 writes and 12 reads go to the directory the command is run in or a path their caller passes, not to this repository.
+- 2 reads go to the directory the command is run in (docs/ and tools/), not to this repository.
+- Statistics confidence is low: fewer than 25 source files reach 10 revisions in the window.
 
 Regenerate with `npx --yes @dogfood-lab/atlas map`.
