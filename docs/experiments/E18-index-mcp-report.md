@@ -361,7 +361,7 @@ STATE 3a - REFUSING: there is no index at all
 ------------------------------------------------------------------------------
   serving:           false
   state:             "REFUSING"
-  error:             {"error": true, "code": "INDEX_MISSING", "message": "no index at C:\\Users\\mikey\\AppData\\Local\\Temp\\claude\\E--AI-facet\\45bdddfd-d0c7-4df4-a673-4e1c484b23b7\\scratchpad\\dogfood\\facet.db", "hint": "Run python tools/facet_index.py build   (or call record
+  error:             {"error": true, "code": "INDEX_MISSING", "message": "no index at %USERPROFILE%\\AppData\\Local\\Temp\\claude\\E--AI-facet\\45bdddfd-d0c7-4df4-a673-4e1c484b23b7\\scratchpad\\dogfood\\facet.db", "hint": "Run python tools/facet_index.py build   (or call record
   record_query against it:
   is_error: true
   | Error executing tool record_query: REFUSED: no index at %USERPROFILE%\AppData\Local\Temp\claude\E--AI-facet\45bdddfd-d0c7-4df4-a673-4e1c484b23b7\scratchpad\dogfood\facet.db
@@ -369,7 +369,7 @@ STATE 3a - REFUSING: there is no index at all
   |   message:   no index at %USERPROFILE%\AppData\Local\Temp\claude\E--AI-facet\45bdddfd-d0c7-4df4-a673-4e1c484b23b7\scratchpad\dogfood\facet.db
   |   hint:      Run python tools/facet_index.py build   (or call record_build)
   |   retryable: true
-  | {"code": "INDEX_MISSING", "error": true, "hint": "Run python tools/facet_index.py build   (or call record_build)", "message": "no index at C:\\Users\\mikey\\AppData\\Local\\Temp\\claude\\E--AI-facet\\45bdddfd-d0c7-4df4-a673-4e1c484b23b7\\scratchpad\\dogfood\\facet.db", "retryable": true}
+  | {"code": "INDEX_MISSING", "error": true, "hint": "Run python tools/facet_index.py build   (or call record_build)", "message": "no index at %USERPROFILE%\\AppData\\Local\\Temp\\claude\\E--AI-facet\\45bdddfd-d0c7-4df4-a673-4e1c484b23b7\\scratchpad\\dogfood\\facet.db", "retryable": true}
 
 ------------------------------------------------------------------------------
 STATE 3b - REFUSING: a DB somebody produced, with no certificate
@@ -377,14 +377,14 @@ STATE 3b - REFUSING: a DB somebody produced, with no certificate
   (copied the tracked DB in; no certificate beside it)
   serving:           false
   state:             "REFUSING"
-  error:             {"error": true, "code": "INDEX_NEVER_VERIFIED", "message": "the index at C:\\Users\\mikey\\AppData\\Local\\Temp\\claude\\E--AI-facet\\45bdddfd-d0c7-4df4-a673-4e1c484b23b7\\scratchpad\\dogfood\\facet.db carries no certificate", "hint": "A DB somebody produced i
+  error:             {"error": true, "code": "INDEX_NEVER_VERIFIED", "message": "the index at %USERPROFILE%\\AppData\\Local\\Temp\\claude\\E--AI-facet\\45bdddfd-d0c7-4df4-a673-4e1c484b23b7\\scratchpad\\dogfood\\facet.db carries no certificate", "hint": "A DB somebody produced i
   is_error: true
   | Error executing tool record_query: REFUSED: the index at %USERPROFILE%\AppData\Local\Temp\claude\E--AI-facet\45bdddfd-d0c7-4df4-a673-4e1c484b23b7\scratchpad\dogfood\facet.db carries no certificate
   |   code:      INDEX_NEVER_VERIFIED
   |   message:   the index at %USERPROFILE%\AppData\Local\Temp\claude\E--AI-facet\45bdddfd-d0c7-4df4-a673-4e1c484b23b7\scratchpad\dogfood\facet.db carries no certificate
   |   hint:      A DB somebody produced is not a verified DB. Run python tools/facet_index.py build   (or call record_build)
   |   retryable: true
-  | {"code": "INDEX_NEVER_VERIFIED", "error": true, "hint": "A DB somebody produced is not a verified DB. Run python tools/facet_index.py build   (or call record_build)", "message": "the index at C:\\Users\\mikey\\AppData\\Local\\Temp\\claude\\E--AI-facet\\45bdddfd-d0c7-4df4-a673-4e1c484b23b7\\scratchpad\\dogfood\\facet.db carries no certificate", "retryable": true}
+  | {"code": "INDEX_NEVER_VERIFIED", "error": true, "hint": "A DB somebody produced is not a verified DB. Run python tools/facet_index.py build   (or call record_build)", "message": "the index at %USERPROFILE%\\AppData\\Local\\Temp\\claude\\E--AI-facet\\45bdddfd-d0c7-4df4-a673-4e1c484b23b7\\scratchpad\\dogfood\\facet.db carries no certificate", "retryable": true}
 
 ------------------------------------------------------------------------------
 record_build - the E15 ritual as ONE act (build + the four legs)
