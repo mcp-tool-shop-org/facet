@@ -242,8 +242,8 @@
         "path": ".github/release-notes-v0.8.1.md"
       },
       {
-        "commits": 12,
-        "lines": 201,
+        "commits": 14,
+        "lines": 205,
         "path": ".github/workflows/ci.yml"
       },
       {
@@ -252,8 +252,8 @@
         "path": ".github/workflows/pages.yml"
       },
       {
-        "commits": 4,
-        "lines": 335,
+        "commits": 5,
+        "lines": 337,
         "path": ".github/workflows/release.yml"
       },
       {
@@ -337,8 +337,8 @@
         "path": "SHIP_GATE.md"
       },
       {
-        "commits": 2,
-        "lines": 168,
+        "commits": 4,
+        "lines": 292,
         "path": "atlas/README.md"
       },
       {
@@ -347,18 +347,18 @@
         "path": "atlas/boundaries.yaml"
       },
       {
-        "commits": 2,
-        "lines": 470,
+        "commits": 4,
+        "lines": 1040,
         "path": "atlas/page.json"
       },
       {
-        "commits": 2,
-        "lines": 10338,
+        "commits": 4,
+        "lines": 10446,
         "path": "atlas/statistics.json"
       },
       {
-        "commits": 2,
-        "lines": 28944,
+        "commits": 4,
+        "lines": 43536,
         "path": "atlas/structure.json"
       },
       {
@@ -1772,8 +1772,8 @@
         "path": "docs/experiments/E18-index-mcp-predictions.md"
       },
       {
-        "commits": 3,
-        "lines": 642,
+        "commits": 5,
+        "lines": 658,
         "path": "docs/experiments/E18-index-mcp-report.md"
       },
       {
@@ -2882,13 +2882,13 @@
         "path": "docs/index/conventions.json"
       },
       {
-        "commits": 141,
+        "commits": 143,
         "lines": 0,
         "path": "docs/index/facet.db"
       },
       {
-        "commits": 111,
-        "lines": 4345,
+        "commits": 113,
+        "lines": 4573,
         "path": "docs/index/facet.db.cert.json"
       },
       {
@@ -3057,8 +3057,8 @@
         "path": "site/astro.config.mjs"
       },
       {
-        "commits": 2,
-        "lines": 13654,
+        "commits": 4,
+        "lines": 13666,
         "path": "site/package-lock.json"
       },
       {
@@ -4762,9 +4762,9 @@
     "level": "low",
     "reason": "fewer than 25 source files reach 10 revisions in the window"
   },
-  "generatedAt": "2026-09-30T20:10:05.015Z",
+  "generatedAt": "2026-11-11T22:17:01.796Z",
   "generatedFrom": {
-    "commit": "8d2fa3456e3412198ed38bbb069775efebe65d86"
+    "commit": "80ff9acb93eb27bfcbd221ae15bf449e78063e90"
   },
   "pairs": [
     {
@@ -5078,9 +5078,9 @@
     {
       "a": "docs/index/facet.db",
       "b": "docs/index/facet.db.cert.json",
-      "either": 145,
-      "shared": 106,
-      "strength": 0.731034
+      "either": 146,
+      "shared": 107,
+      "strength": 0.732877
     },
     {
       "a": "docs/instrument-census.json",
@@ -5170,16 +5170,16 @@
     "floor": "fallen",
     "floorHeld": false,
     "floorTrigger": "revision-depth",
-    "headDate": "2026-09-23T11:28:18-07:00",
+    "headDate": "2026-10-20T16:07:10-04:00",
     "inScopeFiles": 914,
     "pinnedStart": null,
     "priorFloor": "fallen",
-    "qualifyingCommits": 910,
+    "qualifyingCommits": 914,
     "qualifyingMinimum": 30,
     "revisions": 5,
     "shared": 10,
     "sharedFloorUsed": 3,
-    "since": "2026-03-27T18:28:18.000Z",
+    "since": "2026-04-23T20:07:10.000Z",
     "sourceExtensions": [
       ".js",
       ".mjs",
